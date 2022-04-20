@@ -1,0 +1,10 @@
+provider_clsid           ={769A12A0-04BF-11D8-AE8B-00A0C907DB93};
+error_service_clsid      ={769A12A1-04BF-11D8-AE8B-00A0C907DB93};
+data_link_page_clsid     ={769A12A2-04BF-11D8-AE8B-00A0C907DB93};
+adv_data_link_page_clsid ={769A12A3-04BF-11D8-AE8B-00A0C907DB93};
+provider_prog_id         ="LCPI.IBProvider.5";
+provider_prog_id_no_ver  ="LCPI.IBProvider";
+provider_descr           ="LCPI OLE DB Provider for InterBase [v5]";
+error_service_descr      ="LCPI.IBProvider Error Lookup [v5]";
+data_link_page_descr     ="LCPI.IBProvider Data Link Page [v5]";
+adv_data_link_page_descr ="LCPI.IBProvider Advanced Data Link Page [v5]";

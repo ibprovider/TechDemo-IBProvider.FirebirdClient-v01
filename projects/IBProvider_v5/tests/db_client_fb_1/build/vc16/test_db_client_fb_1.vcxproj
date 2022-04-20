@@ -1,0 +1,1640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{17CAC660-0829-4A58-B9BD-E105F9D2A868}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>test_db_client_fb_1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="test_db_client_fb_1.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="test_db_client_fb_1.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="test_db_client_fb_1.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="test_db_client_fb_1.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=dc;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <MinimalRebuild>false</MinimalRebuild>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <PrecompiledHeaderFile />
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <EnablePREfast>false</EnablePREfast>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Rpcrt4.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=dc;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <MinimalRebuild>false</MinimalRebuild>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Rpcrt4.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=i;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <PrecompiledHeaderFile />
+      <Optimization>Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Rpcrt4.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=i;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <Optimization>Disabled</Optimization>
+      <WarningLevel>Level3</WarningLevel>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Rpcrt4.lib;kernel32.lib;user32.lib;advapi32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_datetime_services.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_guids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__descr.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__descrs.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__op_ctx.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__op_set_props.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__values.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values__get.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values__set.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_convert.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_context_std.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_routers.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_utils.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_services.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_safe_array.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_utils.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant_compare.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant_type_info.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\variant\comparator\ole_auto_variant__comparator_context__std.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_base.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\t_list_external.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32lib.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_error.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_library.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_registry.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource_versioninfo.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_time.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\_pch_.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05__clsids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05__private_clsids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05__props_ids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05__props_values.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__mbc_buffer_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__mbc_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__ucs2_to_mbc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_bit16_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__mbc_buffer_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__mbc_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__ucs2_to_mbc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_jis_traits.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_octets.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v003\ibp_cs_icu_v003.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v003\ibp_cs_icu_v003__provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v003\ibp_cs_icu_v003__text_stream__mbc_buffer_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v003\ibp_cs_icu_v003__text_stream__mbc_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v003\ibp_cs_icu_v003__text_stream__ucs2_to_mbc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__mbc_buffer_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__mbc_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__ucs2_to_mbc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2__data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_std_collations.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_sdl_reader.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__srv_operation_v1.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\remote_fb__api_hlp__xsqlda__error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities__Process_PrepareInfoBuf.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities__Parse_XSQLDA.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__api_p10__db__attach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__api_p10__db__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__connect_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__connect_op_ctx.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__dpb_v1_values_installer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__get_database_std_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__api_p11__db__attach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__api_p11__db__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__connect_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__connect_op_ctx.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__dpb_v1_values_installer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__get_database_std_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__cancel.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__allocate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__execute.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__fetch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__srv_resource_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__array__get_slice.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__array__put_slice.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__cancel.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__flush.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__read.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__write.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__attach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__dsql__execute_immediate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__commit.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__commit_retaining.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__detach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__execute.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__fetch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_columns.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_parameters.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__open.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__rollback.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__rollback_retaining.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__start.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__allocate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_svc_p12__db__cancel_operation.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__array_slice_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__blob_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__connect_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__connect_op_ctx.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__dpb_v1_values_installer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_DATA_DESCRS.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Calc_XSQLDA_MAX_XDR_SIZE.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Parse_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\rpc\remote_fb__api_p12_rpc__blob__read.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__cancel.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__allocate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__execute.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__fetch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__srv_resource_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__array__get_slice.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__array__put_slice.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__cancel.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__flush.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__open.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__read.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__write.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__attach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__create.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__detach.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__dsql__execute_immediate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__allocate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__close.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__drop.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__execute.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__fetch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_columns.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_parameters.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__commit.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__commit_retaining.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__prepare.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__rollback.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__rollback_retaining.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__start.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_svc_p13__db__cancel_operation.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__add_server_keys.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__array_slice_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__blob_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__connect_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__connect_op_ctx.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__initialize_compressor.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__initialize_crypt.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__process_auth_response.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Alloc_XSQLDA_MSG_NULLS.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_DATA_DESCRS.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_NULLS.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Calc_XSQLDA_MAX_XDR_SIZE.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Parse_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__error_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__error_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__blob.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__statement.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\legacy\remote_fb__plugin_auth_legacy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\legacy\remote_fb__plugin_auth_legacy_factory.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\srp\remote_fb__plugin_auth_srp_factory.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\srp\remote_fb__plugin_auth_srp_p13.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\win_sspi\remote_fb__plugin_auth_win_sspi.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\win_sspi\remote_fb__plugin_auth_win_sspi_factory.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset01\v01\remote_fb__ports__base_v01__initializers__pset01_v01.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset01\v01\remote_fb__ports__base_v01__initializers__pset01_v01__init_p10.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset01\v01\remote_fb__ports__base_v01__initializers__pset01_v01__init_p11.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset01\v01\remote_fb__ports__base_v01__initializers__pset01_v01__init_p12.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset02\v01\remote_fb__ports__base_v01__initializers__pset02_v01.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset02\v01\remote_fb__ports__base_v01__initializers__pset02_v01__init_p13__accept_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset02\v01\remote_fb__ports__base_v01__initializers__pset02_v01__init_p13__cond_accept.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01_reader.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01_writer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\factories\inet\remote_fb__ports__factories__inet.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\inet\remote_fb__ports__inet.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\compressor\zlib1\remote_fb__ports__streams__compressor_zlib1.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\crypt\arc4\remote_fb__ports__streams__crypt_arc4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\inet\remote_fb__ports__streams__inet__socket.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\inet\remote_fb__ports__streams__inet__static_cfg.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set01\remote_fb__protocol_set01.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set02\remote_fb__protocol_set02.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__array_slice_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__client_connect_block_v1.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__client_connect_block_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__api.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p10_lazy_send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p10_no_lazy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p11_lazy_send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p11_no_lazy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p12_no_lazy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p12_lazy_send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p13_lazy_send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p13_no_lazy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__enc_crypt.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__enc_crypt__helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key__symmetric.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key_array.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__memory_pool.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_data_element_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__get_array_slice_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__srv_error_utils_v1.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__srv_resource_id.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__transaction.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\remote_fb__protocol.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p10\remote_fb__transmission__pset01__p10a__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p10\remote_fb__transmission__pset01__p10s__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p11\remote_fb__transmission__pset01__p11a__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p11\remote_fb__transmission__pset01__p11s__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12s__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__xdr__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__xdr__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet_decoder_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet_encoder_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet__receive.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet__send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__xdr__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__xdr__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13a__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13s__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__op__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__op__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__xdr__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__xdr__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13_init\remote_fb__transmission__pset02__p13_init__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet_decoder_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet_encoder_descr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet__receive.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet__send.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__xdr__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__xdr__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__decoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__encoder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12a__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p_init\remote_fb__transmission__pset01__p_init__packet_stream.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common__oledb_error_text.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common__svc__status_vector_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\impl\db_obj__dbms_fb__common_impl__svc__status_vector_utils__v1_set02.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\api\db_obj__dbms_fb__v02_5_0__api__error_descrs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__blr_printer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__svc__status_vector_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\api\db_obj__dbms_fb__v03_0_0__api__error_descrs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__auth__srp_remote_password.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__auth__srp_remote_password.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__svc__status_vector_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_base.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_blob_writer_buf.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_charset_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_data_types.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_operation_reg.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_service_utils.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_service_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_types.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_utility.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__processor.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_create__processor.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_connection_settings.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_database_info_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_ids.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_error_code_descr2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\dummy\ibp_dummy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_adapter.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_bind_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_bug_check.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_build_message.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_collection.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_element.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_elements.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_messages.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bncore.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_mp_invmod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_mp_montgomery_reduce.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_s_mp_mul_digs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_s_mp_mul_high_digs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_s_mp_sqr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_2expt.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_abs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_add.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_add_d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_clamp.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_clear_v3.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_cmp.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_cmp_d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_cmp_mag.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_copy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_count_bits_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_debug__check_int__light.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_debug__check_int__total.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_div.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_div_2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_div_2d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_div_3.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_div_d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_dr_is_modulus.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_dr_reduce.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_dr_setup.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_dump_w.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_exch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_exptmod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_exptmod_fast.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_grow.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_init_v3.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_invmod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_invmod_slow.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_karatsuba_mul.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_karatsuba_sqr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_lshd.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mod_2d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_montgomery_calc_normalization.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_montgomery_reduce.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_montgomery_setup.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mul.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mulmod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mul_2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mul_2d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_mul_d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_radix_size.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_radix_smap.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_read_radix.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_read_unsigned_bin_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_2k.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_2k_l.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_2k_setup.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_2k_setup_l.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_is_2k.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_is_2k_l.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_reduce_setup.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_rshd.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_set_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_sqr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_sub.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_sub_d.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_toom_mul.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_toom_sqr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_toradix_n.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_to_unsigned_bin.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_unsigned_bin_size_v2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_zero.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_add.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_exptmod.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_mul_digs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_mul_high_digs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_sqr.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_s_mp_sub.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_private.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\ibp_external__zlib1_builtin__api_provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__adler32.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__crc32.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__deflate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffast.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inflate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inftrees.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__trees.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zutil.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\dll\ibp_external__zlib1_dll__api_provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_com.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_com_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_com_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_debug.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_memory.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_resources.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_sqlncli.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_sys_props.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__custom_error_object.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_element_wrapper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_lookup.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text__for_win32_error_msg.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__sql_error_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\ibp_oledb__prop__system_ids.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit__all.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit_ext.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit_std.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dscreate__all.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dscreate.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_ext.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_std.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_sys.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__ds_std.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__session__all.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__session_ext.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__session_std.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descrs__factory.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descrs__factory__dbinit_ext.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descrs__factory__dbinit_std.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descr_data.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descr_data__index_by_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__cset_collation_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__cset_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__deferred_data_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__dll_lock_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__enum_i2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__enum_i4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__enum_string.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__flags_i4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__neg1_zero_positive_i4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__non_negative_i4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__not_empty_string.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__numeric_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__simple_string.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__tr_iso_level.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__array_rw_mode.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__array_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__asynch_fetch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__auto_commit_ddl.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__auto_insert_field_rule.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__auto_update_field_rule.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbclient_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbdate_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtime_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__db_page_size.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dialect.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__first_week_day.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__guid_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__ignore_err_param.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__integ_auth.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__keywords_list.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__modify_trans_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__multi_stmts_exec_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__named_param_prefix.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__named_param_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__nested_trans_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__prompt.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__provider_error_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__refresh_trans_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_protocol.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_protocol_arch.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_protocol_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_wire_compression.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_wire_compression_type.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__remote_wire_crypt.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__reset_ds_session_sinks_rule.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__reset_ds_tr_rule.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__rowset_file__sys_flags.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__schema_cache.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__schema_ldr_cfg__check_constraints.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__schema_ldr_cfg__descriptions.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__schema_restrictions.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__server_data_back_read.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__sql_cache__scope.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__support_square_delim_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__tr_abort_flags.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__type_of_db_users.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__wchars_in_utf8_symbol.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_default_value\ibp_oledb__props2__handler__get_default_value__prop__ProviderName.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__common__SecData.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__prop__CnStatus.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__prop__ResetDs.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\prepare_get_value\ibp_oledb__props2__handler__prepare_get_value__prop__CnStatus.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\prepare_set_value\ibp_oledb__props2__handler__prepare_set_value__prop__ExtProps.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\prepare_set_value\ibp_oledb__props2__handler__prepare_set_value__prop__ResetDS.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\data\ibp_oledb__props2__handler_data__CnStatus.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\ibp_oledb__props2__utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\values\datasource\ibp_oledb__props2__values__datasource.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\values\ibp_oledb__props2__values.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__descr_builder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_loader.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_version_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\structure\ibp_base64.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\structure\ibp_biginteger.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha1.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha1__low_endian_4.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source_lib\structure\internal\code\ibp--lcpi.lib.structure.internal.throw_error__parameter_list.cpp" />
+    <ClCompile Include="..\..\source\main.cpp" />
+    <ClCompile Include="..\..\source\push_test__exec_mt.cpp" />
+    <ClCompile Include="..\..\source\push_test__filter.cpp" />
+    <ClCompile Include="..\..\source\tests.cpp" />
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\TestsFor__RemoteFB__P12__ArraySlice_Utilities__ParseSDL.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__AddServerKeys\TestsFor__RemoteFB__P13__AddServerKeys.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\TestsFor__RemoteFB__P13__ProcessAuthResponse.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Alloc_XSQLDA_MSG_NULLS.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__001.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp" />
+    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.cpp" />
+    <ClCompile Include="..\..\source\tests\fb_v25\FB25_Test_009__BlrPrinter.cpp" />
+    <ClCompile Include="..\..\source\tests\fb_v25\FB25_Test_010__CheckBlrPrinter.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_001__Analyze_v2.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_002__Analyze_v3.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_003__Analyze_v3__inet4.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_004__Analyze_v3__inet6.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\Socket\INET_Socket_Test_002__unspec.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\Socket\INET_Socket_Test_003__inet4.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\Socket\INET_Socket_Test_004__inet6.cpp" />
+    <ClCompile Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\set01\TestsFor__PSET01__001_Mix.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\set01\TestsFor__PSET01__002__unk_auth.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\set02\TestsFor__PSET02__001_Mix.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v10\TestsFor__P10__001_Mix.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Compression\TestsFor__P13_Compression_01__zlib1_dll.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Legacy_Auth\TestsFor__P13_Legacy_Auth_003__connect_db.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Legacy_Auth\TestsFor__P13_Legacy_Auth_004__create_db.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Srp\TestsFor__P13_Srp_001__connect_db.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Srp\TestsFor__P13_Srp_002__create_db.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Win_Sspi\TestsFor__P13_Win_Sspi_003__connect_db.cpp" />
+    <ClCompile Include="..\..\source\tests\protocol\v13\Win_Sspi\TestsFor__P13_Win_Sspi_004__create_db.cpp" />
+    <ClCompile Include="..\..\source\tests\units\RemoteFB__ErrorUtils\TestsFor__RemoteFB__ErrorUtils__01.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_001__smallint.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_002__integer.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_003__bigint.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_004__float.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_005__double.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_006__date.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_007__time.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_008__timestamp.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_009__char.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_004__float.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_005__double.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_006__date.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_007__time.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_008__timestamp.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_009__char.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_010__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_01__StmtExecute.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_02__StmtFetch.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_03__ExecuteImmediate.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_002__check_align.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\boolean\WORK_Fields__boolean_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\char\WORK_Fields__char_001__sz7.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\date\WORK_Fields__date_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D03_01.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D07_02.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D15_05.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\double\WORK_Fields__double_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\float\WORK_Fields__float_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_002__check_align.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N03_01.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N07_02.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N15_05.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_002__check_align.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\timestamp\WORK_Fields__timestamp_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\time\WORK_Fields__time_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\varchar\WORK_Fields__varchar_001__sz7.cpp" />
+    <ClCompile Include="..\..\source\tests\inet\INET_Test_002__RemotePort.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Fields\WORK_Fields__002__nulls.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_001__short.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_002__long.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_003__int64.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_004__float.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_005__double.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_006__type_time.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_007__type_date.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_008__timestamp.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_009__char.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_010__varchar.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_011__blob.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_012__array.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_013__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_003__int64.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_004__float.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_005__double.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_006__type_time.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_007__type_date.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_008__timestamp.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_009__char.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_010__varchar.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_011__blob.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_012__array.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_03__MARS.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_04__MARS_Failed.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_06__close_stmt.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_07__commit.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_08__rollback.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_09__commit_retaining.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_10__rollback_retaining.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_11__sql_commit.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_12__sql_rollback.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_13__sql_commit_retaining.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_14__sql_rollback_retaining.cpp" />
+    <ClCompile Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__signed_long.cpp" />
+    <ClCompile Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__unsigned_long.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_003__Connector.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_004__StartTransaction__v1.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_004__StartTransaction__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_005__Rollback.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_005__Rollback__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_006__Commit.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_006__Commit__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_007__RollbackRetaining.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_007__RollbackRetaining__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_008__CommitRetaining.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_008__CommitRetaining__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_009__PrepareTransaction.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_010__DetachDatabase.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_011__CreateDatabase.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_012__DropDatabase.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_013__StmtAllocate__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_013__StmtAllocate__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_014__StmtDrop__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_014__StmtDrop__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_016__GetColumns.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_018__GetParameters.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_022__OpenBlob__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_022__OpenBlob__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_024__GetBlobInfo.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_025__ReadBlob.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v0.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_027__WriteBlob.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_028__FlushBlob.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_029__CancelBlob__v1_no_lazy.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_029__CancelBlob__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_030__PutArraySlice.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_031__GetArraySlice.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_032__ExecuteImmediate.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_033__GetDatabaseInfo.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_M01__WorkWithCursor.cpp" />
+    <ClCompile Include="..\..\source\test_base.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\source\test_base.cpp" />
+    <ClCompile Include="..\..\source\test_check_errors.cpp" />
+    <ClCompile Include="..\..\source\test_cn_params.cpp" />
+    <ClCompile Include="..\..\source\test_expression_parser.cpp" />
+    <ClCompile Include="..\..\source\test_func.cpp" />
+    <ClCompile Include="..\..\source\test_func_v2.cpp" />
+    <ClCompile Include="..\..\source\test_log_stream.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\source\test_memory.cpp" />
+    <ClCompile Include="..\..\source\test_operation_context.cpp" />
+    <ClCompile Include="..\..\source\test_perf_timers.cpp" />
+    <ClCompile Include="..\..\source\test_services.cpp" />
+    <ClCompile Include="..\..\source\test_services__pset01.cpp" />
+    <ClCompile Include="..\..\source\test_services__pset02.cpp" />
+    <ClCompile Include="..\..\source\test_state2.cpp" />
+    <ClCompile Include="..\..\source\test_state2_storage.cpp" />
+    <ClCompile Include="..\..\source\test_summary_builder.cpp" />
+    <ClCompile Include="..\..\source\test_tracer_utils.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\source\test_utilities.cpp" />
+    <ClCompile Include="..\..\source\xsqlda_v1_wrapper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\t_list_external.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\t_smart_object.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32lib.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_error.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_library.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_mt.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_resource.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_time.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_ascii_traits.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__mbc_buffer_to_ucs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__mbc_to_ucs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__ucs2_to_mbc.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_bit16.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_bit16_data.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_bit16_traits.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_data.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8_map.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__mbc_buffer_to_ucs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__mbc_to_ucs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_bit8__text_stream__ucs2_to_mbc.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_jis_traits.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_octets.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_unicode_fss_traits.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_utf8_traits.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2__data.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2__helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\charsets\ibp_charset_std_collations.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_sdl_reader.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__srv_operation_v1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\remote_fb__api_hlp__xsqlda__error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__api_p10.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__api_p10__db__attach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__api_p10__db__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__connect_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__connect_op_ctx.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__dpb_v1_values_installer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p10\remote_fb__p10__get_database_std_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__api_p11.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__api_p11__db__attach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__api_p11__db__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__connect_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__connect_op_ctx.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__dpb_v1_values_installer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p11\remote_fb__p11__get_database_std_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__cancel.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__allocate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__execute.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__fetch.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__srv_resource_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__array__get_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__array__put_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__cancel.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__flush.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__read.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__write.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__attach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__dsql__execute_immediate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__commit.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__commit_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__detach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__execute.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__fetch.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_columns.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_parameters.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__open.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__rollback.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__rollback_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__trans__start.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__allocate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_svc_p12__db__cancel_operation.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__array_slice_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__blob_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__connect_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__connect_op_ctx.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__dpb_v1_values_installer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__srv_operation.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\rpc\remote_fb__api_p12_rpc__blob__read.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__cancel.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__allocate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__execute.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__fetch.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__srv_resource_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__array__get_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__array__put_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__cancel.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__flush.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__open.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__read.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__blob__write.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__attach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__detach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__db__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__dsql__execute_immediate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__allocate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__execute.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__fetch.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_columns.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_parameters.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__commit.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__commit_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__rollback.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__rollback_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__trans__start.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_svc_p13__db__cancel_operation.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__add_server_keys.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__array_slice_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__blob_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__connect_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__connect_op_ctx.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__initialize_compressor.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__initialize_crypt.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__process_auth_response.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__srv_operation.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__error_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__error_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__array__get_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__array__put_slice.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__cancel.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__create.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__flush.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__open.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__read.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__blob__write.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__db__detach.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__db__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__db__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__dsql__execute_immediate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__allocate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__close.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__drop.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__execute.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__fetch.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__get_columns.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__get_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__get_parameters.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__commit.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__commit_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__prepare.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__rollback.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__rollback_retaining.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__trans__start.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\svc\remote_fb__api_svc__db__cancel_operation.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__blob.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__statement.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle__blob.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle__statement.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle__transaction.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\legacy\remote_fb__plugin_auth_legacy.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\legacy\remote_fb__plugin_auth_legacy_factory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\remote_fb__plugin_auth.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\remote_fb__plugin_auth_factory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\srp\remote_fb__plugin_auth_srp_factory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\srp\remote_fb__plugin_auth_srp_p13.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\win_sspi\remote_fb__plugin_auth_win_sspi.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\plugins\auth\win_sspi\remote_fb__plugin_auth_win_sspi_factory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset01\v01\remote_fb__ports__base_v01__initializers__pset01_v01.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\initializers\pset02\v01\remote_fb__ports__base_v01__initializers__pset02_v01.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01_reader.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\base\v01\remote_fb__ports__base_v01_writer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\factories\inet\remote_fb__ports__factories__inet.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\inet\remote_fb__ports__inet.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\compressor\zlib1\remote_fb__ports__streams__compressor_zlib1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\crypt\arc4\remote_fb__ports__streams__crypt_arc4.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\inet\remote_fb__ports__streams__inet__socket.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\inet\remote_fb__ports__streams__inet__static_cfg.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\streams\inet\remote_fb__ports__streams__inet__types.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set01\remote_fb__protocol_set01.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set01\remote_fb__protocol_set01__forward.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set02\remote_fb__protocol_set02.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\set02\remote_fb__protocol_set02__forward.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__api_entry.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__array_slice_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__client_connect_block_v1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__client_connect_block_v2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector_data.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__enc_crypt.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__enc_crypt__helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__flags.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__forward.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__info_buffer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key__symmetric.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key_array.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__memory_pool.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__memory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_data_element_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__get_array_slice_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__srv_error_utils_v1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__srv_resource_id.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__transaction.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\protocol\remote_fb__protocol.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p10\remote_fb__transmission__pset01__p10a__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p10\remote_fb__transmission__pset01__p10s__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p11\remote_fb__transmission__pset01__p11a__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p11\remote_fb__transmission__pset01__p11s__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12s__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__xdr__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__xdr__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__op__info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet_decoder_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet_encoder_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet__receive.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__packet__send.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__xdr__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\remote_fb__transmission__pset01__xdr__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13a__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13s__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__op__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__op__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__xdr__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13\remote_fb__transmission__pset02__p13__xdr__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\p13_init\remote_fb__transmission__pset02__p13_init__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__op__info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet_decoder_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet_encoder_descr.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet__receive.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__packet__send.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__xdr__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset02\remote_fb__transmission__pset02__xdr__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__decoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__encoder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12a__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p_init\remote_fb__transmission__pset01__p_init__packet_stream.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\api\errors\set02\db_obj__dbms_fb__common__api__errors__set02__scodes.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common__oledb_error_text.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\db_obj__dbms_fb__common__svc__status_vector_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\common\impl\db_obj__dbms_fb__common_impl__svc__status_vector_utils__v1_set02.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\api\db_obj__dbms_fb__v02_5_0__api__blr_codes.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\api\db_obj__dbms_fb__v02_5_0__api__error_codes.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\api\db_obj__dbms_fb__v02_5_0__api__error_descrs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__blr_printer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__factories.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__svc__status_vector_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\api\db_obj__dbms_fb__v03_0_0__api__error_descrs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__auth__srp_remote_password.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__svc__status_vector_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_base.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_blob_writer_buf.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_charset.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_charset_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_charset_manager_v2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_operation_reg.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_service_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_svc.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_types.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_utility.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_data_types.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__installer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__processor.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_create__installer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_create__processor.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_connection_settings.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_database_info_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_ids.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_error_code_descr2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_bug_check.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_build_message.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_codes.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_collection.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_elements.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_messages.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_records_r.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_class.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_private.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_superclass.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\ibp_external__zlib1_builtin__api_provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__crc32.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__deflate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__gzguts.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffast.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffixed.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inflate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inftrees.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__trees.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zconf.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zlib.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zutil.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\dll\ibp_external__zlib1_dll__api_provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\ibp_external__zlib1__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\ibp_external__zlib1__api_provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_debug.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_forward.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_memory.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_resources.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_sqlncli.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit_ext.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit_std.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit__all.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dscreate.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dscreate__all.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_ext.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_std.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dsinfo_sys.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__ds_std.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\values\datasource\ibp_oledb__props2__values__datasource.h" />
+    <ClInclude Include="..\..\..\..\provider\source\oledb\props2\values\ibp_oledb__props2__values.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__descr_builder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_entry_point.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_loader.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_version_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\structure\ibp_base64.h" />
+    <ClInclude Include="..\..\..\..\provider\source\structure\ibp_biginteger.h" />
+    <ClInclude Include="..\..\..\..\provider\source\structure\ibp_sha1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\structure\ibp_sha2.h" />
+    <ClInclude Include="..\..\source\push_test__exec_mt.h" />
+    <ClInclude Include="..\..\source\push_test__filter.h" />
+    <ClInclude Include="..\..\source\tests.h" />
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\TestsFor__RemoteFB__P12__ArraySlice_Utilities__ParseSDL.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h" />
+    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__AddServerKeys\TestsFor__RemoteFB__P13__AddServerKeys.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\TestsFor__RemoteFB__P13__ProcessAuthResponse.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Alloc_XSQLDA_MSG_NULLS.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__001.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h" />
+    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.h" />
+    <ClInclude Include="..\..\source\tests\fb_v25\FB25_Test_009__BlrPrinter.h" />
+    <ClInclude Include="..\..\source\tests\fb_v25\FB25_Test_010__CheckBlrPrinter.h" />
+    <ClInclude Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_001__Analyze_v2.h" />
+    <ClInclude Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_002__Analyze_v3.h" />
+    <ClInclude Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_003__Analyze_v3__inet4.h" />
+    <ClInclude Include="..\..\source\tests\inet\PortFactory\INET_PortFactory_Test_004__Analyze_v3__inet6.h" />
+    <ClInclude Include="..\..\source\tests\inet\Socket\INET_Socket_Test_002__unspec.h" />
+    <ClInclude Include="..\..\source\tests\inet\Socket\INET_Socket_Test_003__inet4.h" />
+    <ClInclude Include="..\..\source\tests\inet\Socket\INET_Socket_Test_004__inet6.h" />
+    <ClInclude Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.h" />
+    <ClInclude Include="..\..\source\tests\protocol\set01\TestsFor__PSET01__001_Mix.h" />
+    <ClInclude Include="..\..\source\tests\protocol\set01\TestsFor__PSET01__002__unk_auth.h" />
+    <ClInclude Include="..\..\source\tests\protocol\set02\TestsFor__PSET02__001_Mix.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v10\TestsFor__P10__001_Mix.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Compression\TestsFor__P13_Compression_01__zlib1_dll.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Legacy_Auth\TestsFor__P13_Legacy_Auth_003__connect_db.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Legacy_Auth\TestsFor__P13_Legacy_Auth_004__create_db.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Srp\TestsFor__P13_Srp_001__connect_db.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Srp\TestsFor__P13_Srp_002__create_db.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Win_Sspi\TestsFor__P13_Win_Sspi_003__connect_db.h" />
+    <ClInclude Include="..\..\source\tests\protocol\v13\Win_Sspi\TestsFor__P13_Win_Sspi_004__create_db.h" />
+    <ClInclude Include="..\..\source\tests\units\RemoteFB__ErrorUtils\TestsFor__RemoteFB__ErrorUtils__01.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_001__smallint.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_002__integer.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_003__bigint.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_004__float.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_005__double.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_006__date.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_007__time.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_008__timestamp.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_009__char.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_004__float.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_005__double.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_006__date.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_007__time.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_008__timestamp.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_009__char.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_010__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_01__StmtExecute.h" />
+    <ClInclude Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_02__StmtFetch.h" />
+    <ClInclude Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_03__ExecuteImmediate.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_002__check_align.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\boolean\WORK_Fields__boolean_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\char\WORK_Fields__char_001__sz7.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\date\WORK_Fields__date_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D03_01.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D07_02.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D15_05.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\double\WORK_Fields__double_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\float\WORK_Fields__float_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_002__check_align.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N03_01.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N07_02.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N15_05.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_002__check_align.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\timestamp\WORK_Fields__timestamp_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\time\WORK_Fields__time_001.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\varchar\WORK_Fields__varchar_001__sz7.h" />
+    <ClInclude Include="..\..\source\tests\inet\INET_Test_002__RemotePort.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.h" />
+    <ClInclude Include="..\..\source\tests\work\Fields\WORK_Fields__002__nulls.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_001__short.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_002__long.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_003__int64.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_004__float.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_005__double.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_006__type_time.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_007__type_date.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_008__timestamp.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_009__char.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_010__varchar.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_011__blob.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_012__array.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_013__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_003__int64.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_004__float.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_005__double.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_006__type_time.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_007__type_date.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_008__timestamp.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_009__char.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_010__varchar.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_011__blob.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_012__array.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_03__MARS.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_04__MARS_Failed.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_06__close_stmt.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_07__commit.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_08__rollback.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_09__commit_retaining.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_10__rollback_retaining.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_11__sql_commit.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_12__sql_rollback.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_13__sql_commit_retaining.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_14__sql_rollback_retaining.h" />
+    <ClInclude Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__signed_long.h" />
+    <ClInclude Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__unsigned_long.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_003__Connector.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_004__StartTransaction__v1.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_004__StartTransaction__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_005__Rollback.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_005__Rollback__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_006__Commit.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_006__Commit__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_007__RollbackRetaining.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_007__RollbackRetaining__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_008__CommitRetaining.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_008__CommitRetaining__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_009__PrepareTransaction.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_010__DetachDatabase.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_011__CreateDatabase.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_012__DropDatabase.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_013__StmtAllocate__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_013__StmtAllocate__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_014__StmtDrop__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_014__StmtDrop__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_016__GetColumns.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_018__GetParameters.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_022__OpenBlob__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_022__OpenBlob__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_024__GetBlobInfo.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_025__ReadBlob.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v0.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_026__CreateBlob__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_027__WriteBlob.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_028__FlushBlob.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_029__CancelBlob__v1_no_lazy.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_029__CancelBlob__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_030__PutArraySlice.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_031__GetArraySlice.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_032__ExecuteImmediate.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_033__GetDatabaseInfo.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_M01__WorkWithCursor.h" />
+    <ClInclude Include="..\..\source\test_base.h" />
+    <ClInclude Include="..\..\source\test_check_errors.h" />
+    <ClInclude Include="..\..\source\test_cn_params.h" />
+    <ClInclude Include="..\..\source\test_expression_parser.h" />
+    <ClInclude Include="..\..\source\test_func.h" />
+    <ClInclude Include="..\..\source\test_func_v2.h" />
+    <ClInclude Include="..\..\source\test_log_stream.h" />
+    <ClInclude Include="..\..\source\test_memory.h" />
+    <ClInclude Include="..\..\source\test_operation_context.h" />
+    <ClInclude Include="..\..\source\test_perf_timers.h" />
+    <ClInclude Include="..\..\source\test_services.h" />
+    <ClInclude Include="..\..\source\test_state2.h" />
+    <ClInclude Include="..\..\source\test_state2_storage.h" />
+    <ClInclude Include="..\..\source\test_summary_builder.h" />
+    <ClInclude Include="..\..\source\test_tracer_utils.h" />
+    <ClInclude Include="..\..\source\test_utilities.h" />
+    <ClInclude Include="..\..\source\xsqlda_v1_wrapper.h" />
+    <ClInclude Include="..\..\_pch_local_.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg.rc" />
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb25.rc" />
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb30.rc" />
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_reg_data.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\provider\rc\ibp_msg.rh">
+      <FileType>CppHeader</FileType>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_err_eng.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_err_ids.rh">
+      <FileType>CppHeader</FileType>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_err_rus.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb25.rh" />
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb25_err_eng.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb25_err_ids.rh">
+      <FileType>CppHeader</FileType>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb25_err_rus.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb30.rh" />
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_eng.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_ids.rh" />
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_rus.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_subsystems.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_subsystems.rh">
+      <FileType>CppHeader</FileType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

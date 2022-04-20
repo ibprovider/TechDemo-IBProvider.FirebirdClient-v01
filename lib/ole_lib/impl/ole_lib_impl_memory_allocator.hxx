@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////
+//OLE Library implementation.
+//                                                Dmitry Kovalenko. 13.08.2004
+
+////////////////////////////////////////////////////////////////////////////////
+//Memory allocator for COM-objects
+
+DECLARE_WRAP_ALLOCATOR(TComObjectMemoryAllocator);
+
+////////////////////////////////////////////////////////////////////////////////
+//Helper utility for work with TComObjectMemoryAllocator
+
+inline void* ComObjectAllocMemory(size_t const sz)
+ {return TComObjectMemoryAllocator::instance.allocate(sz);}
+
+inline void ComObjectFreeMemory(void* const pv)
+ {TComObjectMemoryAllocator::instance.deallocate(pv,0);}
+
+////////////////////////////////////////////////////////////////////////////////

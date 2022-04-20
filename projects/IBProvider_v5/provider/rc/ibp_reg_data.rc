@@ -1,0 +1,46 @@
+////////////////////////////////////////////////////////////////////////////////
+//Resources for components registrations
+//                                               Dmitry Kovalenko. 05.06.2006
+
+#include "rc/ibp_reg_data.rh"
+#include "source/ibp_cfg_compile__edition_ids.h"
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef IBP_EDITION_ID
+# error "IBP_EDITION_ID not defined"
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+IBP_ID_PROG_REG         LCPI.PROG_REG "rc/ibp_reg_comp.txt"
+
+//------------------------------------------------------------------------
+
+#if  (IBP_EDITION_ID==IBP_EDITION_ID__PROF)
+
+# ifdef _IBP_BUILD__CREATE_TRIAL
+IBP_ID_PROG_REG_PARAMS  LCPI.PROG_REG_PARAMS "rc/ibp_reg_params_prof_trial.txt"
+# else
+IBP_ID_PROG_REG_PARAMS  LCPI.PROG_REG_PARAMS "rc/ibp_reg_params_prof.txt"
+#endif
+
+#elif(IBP_EDITION_ID==IBP_EDITION_ID__FREE)
+
+IBP_ID_PROG_REG_PARAMS  LCPI.PROG_REG_PARAMS "rc/ibp_reg_params_free.txt"
+
+#elif(IBP_EDITION_ID==IBP_EDITION_ID__LITE)
+
+# ifdef _IBP_BUILD__CREATE_TRIAL
+IBP_ID_PROG_REG_PARAMS  LCPI.PROG_REG_PARAMS "rc/ibp_reg_params_lite_trial.txt"
+# else
+IBP_ID_PROG_REG_PARAMS  LCPI.PROG_REG_PARAMS "rc/ibp_reg_params_lite.txt"
+# endif
+
+#else
+
+# error "Unknown IBP_EDITION_ID"
+
+#endif
+
+////////////////////////////////////////////////////////////////////////////////

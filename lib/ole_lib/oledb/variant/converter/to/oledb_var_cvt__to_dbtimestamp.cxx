@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+//DBVARIANT implementation. convert to DBTIMESTAMP
+//                                                 Dmitry Kovalenko. 20.07.2003
+
+////////////////////////////////////////////////////////////////////////////////
+// to dbtimestamp
+
+HRESULT DBVARIANT::to_dbtimestamp(value_dbstamp_n_type* const value) const
+{
+ assert(value);
+
+ const TDBVariant_TypeCvtContext_Std ctx;
+
+ return DBVariant__to_DBTIMESTAMP_ex(&ctx,*this,value);
+}//to_dbtimestamp
+
+////////////////////////////////////////////////////////////////////////////////

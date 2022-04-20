@@ -1,0 +1,52 @@
+//автоподтверждение операций в контексте сессии
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__SESSION__AUTO_COMMIT,
+  OLEDB_PDESCR2(L"Session AutoCommit"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  false,
+  /*post init calls*/)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__SESSION__INNER_TRANS,
+  OLEDB_PDESCR2(L"Session InnerTrans"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  false,
+  /*post init calls*/)
+
+#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__SESSION__SCHEMA_CACHE,
+  OLEDB_PDESCR2(L"Session Schema Cache"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_schema_cache__default,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_cache::GetInstancePtr()))
+
+#endif
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__SESSION__AUTO_COMMIT_DDL,
+  OLEDB_PDESCR2(L"Session AutoCommit DDL"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_auto_commit_ddl__default,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_commit_ddl::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__SESSION__AUTO_COMMIT_DDL_LEVEL,
+  OLEDB_PDESCR2(L"Session AutoCommit DDL Level"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_auto_commit_ddl_level__default,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__SESSION__TR_ABORT_FLAGS,
+  OLEDB_PDESCR2(L"Session Transaction Abort Flags"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_tr_abort_flags__default,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__tr_abort_flags::GetInstancePtr()))

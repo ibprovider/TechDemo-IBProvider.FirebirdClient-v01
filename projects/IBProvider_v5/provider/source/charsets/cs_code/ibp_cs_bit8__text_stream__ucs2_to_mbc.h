@@ -1,0 +1,94 @@
+////////////////////////////////////////////////////////////////////////////////
+//! \ingroup ibp_charset
+//! \file    ibp_cs_bit8__text_stream__ucs2_to_mbc.h
+//! \brief   Конвертор потока UCS2-символов в поток MultiByte-символов
+//! \author  Kovalenko Dmitry
+//! \date    07.12.2008
+#ifndef _ibp_cs_bit8__text_stream__ucs2_to_mbc_H_
+#define _ibp_cs_bit8__text_stream__ucs2_to_mbc_H_
+
+#include "source/charsets/cs_code/ibp_cs_bit8.h"
+
+namespace lcpi{namespace ibp{
+////////////////////////////////////////////////////////////////////////////////
+//! \addtogroup ibp_charset
+//! @{
+////////////////////////////////////////////////////////////////////////////////
+//class t_ibp_cs_bit8::tag_text_stream__ucs2_to_mbc
+
+/// <summary>
+///  Конвертор потока UCS2-символов в поток MultiByte-символов
+/// </summary>
+class t_ibp_cs_bit8::tag_text_stream__ucs2_to_mbc
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_text_stream__mbc)
+{
+ private:
+  typedef tag_text_stream__ucs2_to_mbc                 self_type;
+
+  tag_text_stream__ucs2_to_mbc(const self_type&);
+  self_type& operator = (const self_type&);
+
+  /// <summary>
+  ///  Деструктор
+  /// </summary>
+  virtual ~tag_text_stream__ucs2_to_mbc();
+
+ public:
+  /// <summary>
+  ///  Конструктор инициализации
+  /// </summary>
+  //! \param[in] charset
+  //!  Not NULL. Кодовая страница формируемых MultiByte-символов
+  //! \param[in] source__ucs2
+  //!  Not NULL. Входящий поток UCS2-символов
+  tag_text_stream__ucs2_to_mbc(const t_ibp_cs_bit8*            charset,
+                               db_obj::t_db_text_stream__ucs2* source__ucs2);
+
+  //t_db_text_stream__mbc interface --------------------------------------
+  /// <summary>
+  ///  Чтение символов
+  /// </summary>
+  //! \param[in]  mbc_buffer_size
+  //! \param[out] mbc_buffer
+  //! \param[out] cb_readed
+  //!  Not NULL
+  //! \return
+  //! - db_cs_result__ok
+  //! - db_cs_result__fail
+  virtual db_obj::t_db_cs_result
+           read_mbc
+            (size_type  mbc_buffer_size,
+             char*      mbc_buffer,
+             size_type* cb_readed) COMP_W000004_OVERRIDE_FINAL;
+
+ private: //internal typedefs --------------------------------------------
+  typedef structure::t_multi_thread_traits               thread_traits;
+  typedef thread_traits::guard_type                      guard_type;
+  typedef thread_traits::lock_guard_type                 lock_guard_type;
+
+ private:
+  ///MT-защита объекта
+  guard_type m_guard;
+
+  ///Кодовая страница входящего потока MultiByte-символов
+  t_ibp_cs_bit8::self_cptr const m_charset;
+
+  ///Поток MultiByte-символов
+  db_obj::t_db_text_stream__ucs2_ptr const m_source__ucs2;
+
+ private:
+  ///Текущая позиция в буфере входящих данных
+  size_type m_buffer_pos;
+
+  ///Количество символов в буфере входящих данных
+  size_type m_buffer_size;
+
+  ///Буфер входящих данных
+  wchar_t m_buffer[4*1024];
+};//class t_ibp_cs_bit8::tag_text_stream__ucs2_to_mbc
+
+////////////////////////////////////////////////////////////////////////////////
+//! @}
+////////////////////////////////////////////////////////////////////////////////
+}/*nms ibp*/}/*nms lcpi*/
+#endif

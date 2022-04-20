@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+
+//! \attention
+//!  ¬се свойства должны иметь EMPTY-значение по умолчанию. Ќа это опираетс€
+//!  алгоритм формировани€ списка свойств IBP_OLEDB__DataSource::ModifyDataSource и
+//!  IBP_OLEDB__ConnectData::InstallCreateProps.
+
+//ѕользователь все равно не имеет возможности читать значени€ этих свойств.
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__DSCREATE__DEFAULT_CHARSET,
+  IBP_DBPROP_NAME__DSCREATE__DEFAULT_CHARSET,
+  OLEDB_PROPFLAGS_DATASOURCECREATEW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_name::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__DSCREATE__DATABASE_PAGE_SIZE,
+  IBP_DBPROP_NAME__DSCREATE__DATABASE_PAGE_SIZE,
+  OLEDB_PROPFLAGS_DATASOURCECREATEW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__db_page_size::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__DSCREATE__DATABASE_DIALECT,
+  IBP_DBPROP_NAME__DSCREATE__DATABASE_DIALECT,
+  OLEDB_PROPFLAGS_DATASOURCECREATEW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dialect::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__DSCREATE__DEFAULT_CHARSET_COLLATION,
+  IBP_DBPROP_NAME__DSCREATE__DEFAULT_CHARSET_COLLATION,
+  OLEDB_PROPFLAGS_DATASOURCECREATEW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_collation_name::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__DSCREATE__TYPE_OF_DATABASE_USERS,
+  IBP_DBPROP_NAME__DSCREATE__TYPE_OF_DATABASE_USERS,
+  OLEDB_PROPFLAGS_DATASOURCECREATEW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__type_of_db_users::GetInstancePtr()))
+
+////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+//DBVARIANT implementation. convert to IUNKNOWN
+//                                                 Dmitry Kovalenko. 20.07.2003
+
+////////////////////////////////////////////////////////////////////////////////
+// to IUnknown*
+
+HRESULT DBVARIANT::to_unknown(value_unknown_n_type* const value) const
+{
+ assert(value);
+
+ const TDBVariant_TypeCvtContext_Std ctx;
+
+ return DBVariant__to_IUNKNOWN_ex(&ctx,*this,IID_IUnknown,value);
+}//to_unknown
+
+////////////////////////////////////////////////////////////////////////////////

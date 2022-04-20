@@ -1,0 +1,150 @@
+<!-- Original resource for IBProvider components registrations -->
+
+<!--
+ We have only one request:
+  - Please, save in component descriptions 'LCPI' signature. Thank You! :-)
+-->
+
+<!--
+ Build-in parameters:
+  1. %module%
+   - location of DLL
+
+  2. %module_version%
+   - Module version: xx.xx.xx.xx
+
+  4. %provider_clsid%
+   - CLSID of OLEDB Provider
+
+  5. %error_service_clsid%
+   - CLSID of OLEDB Provider Error Service
+
+  6. %data_link_page_clsid%
+   - CLSID of component with connection page for "Data Link" Dialog
+
+  7. %adv_data_link_page_clsid%
+   - CLSID of component with advanced connection page for "Data Link" Dialog
+
+  8. %provider_prog_id%
+   - Build-in OLEDB Provider 'ProgID'
+
+  9. %provider_prog_id_no_ver%
+   - Build-in OLEDB Provider 'VersionIndependentProgID'
+
+ 10. %provider_descr%
+   - Build-in OLEDB Provider Description
+
+ 11. %error_service_descr%
+   - Build-in OLEDB Provider Error Service Description
+
+ 12. %data_link_page_descr%
+   - Build-in "Data Link" Connection Page Description
+
+ 13. Reserved :)
+
+ 14. %adv_data_link_descr%
+   - Build-in "Data Link" Advanced Conenction Page Description
+-->
+
+<prog_reg>
+ <component name="OLEDB Provider">
+  <key name="HKCR">
+   <key name="CLSID">
+    <key name="%provider_clsid%" delete="force">
+     <value name="">%provider_prog_id%</value>
+     <value name="OLEDB_Services" type="n">-1</value>
+
+     <!-- settings for trace build of IBProvider -->
+     <value name="flush_log_period" type="n">0</value>
+
+     <key name="ExtendedErrors">
+      <value name="">Extended Error Service</value>
+      <key name="%error_service_clsid%">%error_service_descr%</key>
+     </key>
+
+     <key name="InprocServer32">
+      <value name="">%module%</value>
+      <value name="ThreadingModel">Both</value>
+     </key>
+
+     <key name="OLE DB Provider">%provider_descr%</key>
+
+     <key name="ProgID">%provider_prog_id%</key>
+
+     <key name="VersionIndependentProgID">%provider_prog_id_no_ver%</key>
+
+     <key name="Version">%module_version%</key>
+    </key> <!-- provider_clsid -->
+   </key> <!-- CLSID -->
+
+   <!-- ProgID -->
+   <key name="%provider_prog_id%" delete="force">
+    <value name="">%provider_descr%</value>
+    <key name="CLSID">%provider_clsid%</key>
+   </key>
+
+   <!-- VersionIndependentProgID -->
+   <key name="%provider_prog_id_no_ver%" delete="force">
+    <value name="">%provider_descr%</value>
+
+    <key name="CLSID">%provider_clsid%</key>
+
+    <key name="CurVer">%provider_prog_id%</key>
+   </key>
+  </key> <!-- HKCR -->
+ </component> <!-- OLEDB Provider -->
+ 
+ <!-- -------------------------------------------------------------- -->
+ <component name="OLEDB Provider Error Services">
+  <key name="HKCR">
+   <key name="CLSID">
+    <key name="%error_service_clsid%" delete="force">
+     <value name="">%error_service_descr%</value>
+     
+     <key name="InprocServer32">
+      <value name="">%module%</value>
+      <value name="ThreadingModel">Both</value>
+     </key>
+
+     <key name="Version">%module_version%</key>
+    </key> <!-- error_service_clsid -->
+   </key> <!-- CLSID -->
+
+  </key> <!-- HKCR -->
+ </component> <!-- OLEDB Provider Error Services -->
+
+ <!-- -------------------------------------------------------------- -->
+ <component name="Connection Page">
+  <key name="HKCR">
+   <key name="CLSID">
+    <key name="%data_link_page_clsid%" delete="force">
+     <value name="">%data_link_page_descr%</value>
+     <key name="InprocServer32">
+       <value name="">%module%</value>
+       <value name="ThreadingModel">Both</value>
+     </key>
+
+     <key name="Version">%module_version%</key>
+    </key>
+   </key>
+  </key> <!-- HKCR -->
+ </component> <!-- Connection Page -->
+
+ <!-- -------------------------------------------------------------- -->
+ <component name="Advanced Connection Page">
+  <key name="HKCR">
+   <key name="CLSID">
+    <key name="%adv_data_link_page_clsid%" delete="force">
+     <value name="">%adv_data_link_page_descr%</value>
+     <key name="InprocServer32">
+       <value name="">%module%</value>
+       <value name="ThreadingModel">Both</value>
+     </key>
+
+     <key name="Version">%module_version%</key>
+    </key>
+   </key>
+  </key> <!-- HKCR -->
+ </component> <!-- Advanced Connection Page -->
+
+</prog_reg>

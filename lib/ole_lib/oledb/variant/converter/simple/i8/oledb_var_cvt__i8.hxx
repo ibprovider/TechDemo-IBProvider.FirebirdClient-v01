@@ -1,0 +1,37 @@
+////////////////////////////////////////////////////////////////////////////////
+//Declare type converters from DBTYPE_I8.
+//                                                     Roman Piminov, 14.03.2008
+////////////////////////////////////////////////////////////////////////////////
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,i1)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,i2)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,i4)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,i8)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,ui1)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,ui2)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,ui4)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,ui8)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,r4)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,r8)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,cy)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,decimal)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,numeric)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,str)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,wstr)
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,bstr)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,bool)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,bytes)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3(i8,variant)
+
+DECLARE_OLEDB_TYPE_CONVERTER_V3__TO_IUNKNOWN(i8)
+
+DECLARE_OLEDB_TYPE_CONVERTER_TO_ARRAY_V2(i8,array_ui1)
+
+////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,28 @@
+////////////////////////////////////////////////////////////////////////////////
+//IBProvider resources. Messages tables. 
+//                                               Dmitry Kovalenko. 08.04.2003.
+#include "rc/ibp_msg.rh"
+#include <winnt.rh>
+
+////////////////////////////////////////////////////////////////////////////////
+//Message Table Resource [ENGLISH]
+
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_ERR          11 "rc/msg_table/IBP_MSG_ERR_ENG.bin"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_UI           11 "rc/msg_table/IBP_MSG_UI_ENG.bin"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_SUBSYSTEMS   11 "rc/msg_table/IBP_MSG_SUBSYSTEMS_ENG.bin"
+
+////////////////////////////////////////////////////////////////////////////////
+//Message Table Resource [RUSSIAN]
+
+LANGUAGE LANG_RUSSIAN, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_ERR          11 "rc/msg_table/IBP_MSG_ERR_RUS.bin"
+
+LANGUAGE LANG_RUSSIAN, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_UI           11 "rc/msg_table/IBP_MSG_UI_RUS.bin"
+
+////////////////////////////////////////////////////////////////////////////////

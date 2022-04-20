@@ -1,0 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
+#include <_pch_.h>
+#pragma hdrstop
+
+#include <ole_lib/ole_auto/variant/comparator/impl/simple/ui4/ole_auto_variant_cmp__ui4.h>
+
+namespace ole_lib{namespace variant_comparator{namespace impl{
+////////////////////////////////////////////////////////////////////////////////
+
+#include <ole_lib/ole_auto/variant/comparator/impl/simple/ui4/ole_auto_variant_cmp__ui4.cxx>
+
+////////////////////////////////////////////////////////////////////////////////
+}/*nms impl*/}/*nms variant_comparator*/}/*nms ole_lib*/

@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+//DBVARIANT implementation. Convert to DBTYPE_DECIMAL
+//                                                Kovalenko Dmitry. 31.08.2003.
+
+////////////////////////////////////////////////////////////////////////////////
+//to decimal
+
+HRESULT DBVARIANT::to_decimal(value_decimal_n_type* const value)const
+{
+ assert(value);
+
+ const TDBVariant_TypeCvtContext_Std ctx;
+
+ return DBVariant__to_DECIMAL_ex(&ctx,*this,value);
+}//to_decimal
+
+////////////////////////////////////////////////////////////////////////////////

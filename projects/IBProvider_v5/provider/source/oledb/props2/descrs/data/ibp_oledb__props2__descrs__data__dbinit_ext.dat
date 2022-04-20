@@ -1,0 +1,854 @@
+////////////////////////////////////////////////////////////////////////////////
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__CTYPE,
+  OLEDB_PDESCR2(L"ctype\0charset"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_name::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ROLENAME,
+  OLEDB_PDESCR2(L"role"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__INIT__NUM_BUFFERS,
+  OLEDB_PDESCR2(L"num_buffers"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__non_negative_i4::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__SYS_ENCRYPT_PASSWORD,
+  OLEDB_PDESCR2(L"sys_encrypt_password\0sep"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr())
+   .PostInit_SetHandler_GetValue(IBP_OLEDB_Props2__Handler__GetValue__Common__SecData::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__GARBAGE_COLLECT,
+  OLEDB_PDESCR2(L"garbage_collect"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  true,
+  /*post init calls*/)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__INIT__SQL_DIALECT,
+  OLEDB_PDESCR2(L"dialect"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dialect::GetInstancePtr()))
+
+//разрешение автоматического старта и подтверждения транзакций -----------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__AUTOCOMMIT,
+  OLEDB_PDESCR2(L"auto_commit"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  false,
+  /*post init calls*/)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__AUTOCOMMITLEVEL,
+  OLEDB_PDESCR2(L"auto_commit_level"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ISOLATIONLEVEL_REPEATABLEREAD,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))
+
+//произвольный доступ к создаваемых наборам рядов
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__BICURSOR,
+  OLEDB_PDESCR2(L"bicursor"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  false,
+  /*post init calls*/)
+
+//разрешение внутренних транзакций
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__INNER_TRANS, /*13*/
+  OLEDB_PDESCR2(L"inner_trans"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  true,
+  /*post init calls*/)
+
+//разрешение обрезания пробелов в CHAR-строках
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__TRUNCATE_CHAR, /*14*/
+  OLEDB_PDESCR2(L"truncate_char"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__truncate_char__default,
+  /*post init calls*/)
+
+//режим кэширования метаданных
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SCHEMA_CACHE, /*15*/
+  OLEDB_PDESCR2(L"schema_cache"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_schema_cache__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_cache::GetInstancePtr()))
+
+//разрешение поддержки ODBC представления символов в тексте запроса
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__SUPPORT_ODBC_QUERY,
+  OLEDB_PDESCR2(L"support_odbc_query"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__support_odbc_query__default,
+  /*post init calls*/)
+
+//принудительная подготовка запроса и определение его параметров
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__FORCE_PREPARE_STMT,
+  OLEDB_PDESCR2(L"force_prepare_stmt"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__force_prepare_stmt__default,
+  /*post init calls*/)
+
+//работа с UNICODE строками ----------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__UNICODE_MODE,
+  OLEDB_PDESCR2(L"unicode_mode"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__unicode_mode__default,
+  /*post init calls*/)
+
+//очистка списка параметров при установке текста запроса -----------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__CLEAR_PARAM_INFO,
+  OLEDB_PDESCR2(L"clear_param_info"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__clear_param_info__default,
+  /*post init calls*/)
+
+//автоматичекое получение списка параметров ------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__AUTO_PARAM_DESCRIBE,
+  OLEDB_PDESCR2(L"auto_param_describe"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  true,
+  /*post init calls*/)
+
+//префикс именованных параметров -----------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__NAMED_PARAM_PREFIX,
+  OLEDB_PDESCR2(L"named_param_prefix"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  L":",
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__named_param_prefix::GetInstancePtr()))
+
+//игнорирование команды Un-prepare запроса -------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__IGNORE_UNPREPARE,
+  OLEDB_PDESCR2(L"ignore_unprepare"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__ignore_unprepare__default,
+  /*post init calls*/)
+
+//Транслирование запроса "exec SP" в запрос с именованными параметрами ---
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__EXEC_SP_NAMED_PARAM,
+  OLEDB_PDESCR2(L"exec_sp_named_param"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__exec_sp_named_param__default,
+  /*post init calls*/)
+
+//режим выполнения DDL запросов ------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__AUTO_COMMIT_DDL, /*28*/
+  OLEDB_PDESCR2(L"auto_commit_ddl"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_auto_commit_ddl__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_commit_ddl::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__AUTO_COMMIT_DDL_LEVEL, /*29*/
+  OLEDB_PDESCR2(L"auto_commit_ddl_level"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_auto_commit_ddl_level__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))
+
+//использование виртуальной памяти для хранения кэша результирующего множества
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ROWSET_VM_USING, /*30*/
+  OLEDB_PDESCR2(L"rowset_vm_using"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_rowset_vm_using__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//настройка поддержки вложенных транзакций -------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__NESTED_TRANS, /*31*/
+  OLEDB_PDESCR2(L"nested_trans"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__nested_trans__default,
+  /*post init calls*/)
+
+//Игнорирование ошибок в параметрах команды ------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__IGNORE_ERR_PARAM, /*34*/
+  OLEDB_PDESCR2(L"ignore_err_param"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__ignore_err_param__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__ignore_err_param::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NESTED_TRANS_RULES, /*35*/
+  OLEDB_PDESCR2(L"nested_trans_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__nested_trans_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__nested_trans_rules::GetInstancePtr()))
+
+//настройки клиента ------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__DBCLIENT_LIBRARY, /*48*/
+  IBP_DBPROP_NAME__INIT__DBCLIENT_LIBRARY,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__DBCLIENT_TYPE, /*49*/
+  OLEDB_PDESCR2(L"dbclient_type"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__dbclient_type__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbclient_type::GetInstancePtr()))
+
+//Поддержка квотирования имен с использованием квадратных скобок ---------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SUPPORT_SQUARE_DELIM_NAME, /*50*/
+  IBP_DBPROP_NAME__STD__SUPPORT_SQUARE_DELIM_NAME,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_support_square_delim_name___none,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__support_square_delim_name::GetInstancePtr()))
+
+//Режим публикации ключевых слов IDBInfo::GetKeywords --------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__KEYWORDS_LIST, /*51*/
+  OLEDB_PDESCR2(L"keywords_list"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_keywords_list__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__keywords_list::GetInstancePtr()))
+
+//Первый день недели -----------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__FIRST_WEEK_DAY, /*52*/
+  OLEDB_PDESCR2(L"first_week_day"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day::GetInstancePtr()))
+
+//Флаги отката транзакции ------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__TR_ABORT_FLAGS, /*53*/
+  OLEDB_PDESCR2(L"tr_abort_flags"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_tr_abort_flags__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__tr_abort_flags::GetInstancePtr()))
+
+//Разрешение выполнять триггеры уровня базы данных -----------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL__EMPTY
+ (IBP_DBPROP__INIT__ENABLE_DB_TRIGGERS, /*54*/
+  OLEDB_PDESCR2(L"enable_db_triggers"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  /*post init calls*/)
+
+//конвертация элементов массивов в VT-совместимые типы -------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ARRAY_TYPE, /*55*/
+  OLEDB_PDESCR2(L"array_type"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_array_type__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__array_type::GetInstancePtr()))
+
+//Правила сброса источника данных при наличии активных транзакций --------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__RESET_DS_TR_RULE, /*56*/
+  OLEDB_PDESCR2(L"reset_ds_tr_rule"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_reset_ds_tr_rule__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__reset_ds_tr_rule::GetInstancePtr()))
+
+//Правила обработки NUMERIC_I2 -------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NUMERIC_I2_RULES,
+  OLEDB_PDESCR2(L"numeric_i2_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_numeric_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NUMERIC_I4_RULES,
+  OLEDB_PDESCR2(L"numeric_i4_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_numeric_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NUMERIC_I8_RULES,
+  OLEDB_PDESCR2(L"numeric_i8_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_numeric_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::GetInstancePtr()))
+
+//Файловый путь к внешней ICU библиотеке ---------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ICU_LIBRARY, /*60*/
+  OLEDB_PDESCR2(L"icu_library"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBCLIENT_LOCK_RULES, /*61*/
+  OLEDB_PDESCR2(L"dbclient_lock_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dll_lock_rule__unload,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__dll_lock_rules::GetInstancePtr()))
+
+//имя кодовой страницы пользователя --------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__CTYPE_USER, /*62*/
+  OLEDB_PDESCR2(L"ctype_user"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_name::GetInstancePtr()))
+
+//имя кодовой страницы для интерпретации NONE ----------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__CTYPE_NONE, /*63*/
+  OLEDB_PDESCR2(L"ctype_none"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_name::GetInstancePtr()))
+
+//пользовательский тип, эмулирующий тип BOOLEAN --------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__USER_TYPE_BOOLEAN, /*64*/
+  OLEDB_PDESCR2(L"user_type_boolean"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//пользовательский тип, эмулирующий тип GUID -----------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__USER_TYPE_GUID, /*65*/
+  OLEDB_PDESCR2(L"user_type_guid"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//время жизни запросов в пуле --------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__STMT_CACHE__TIME, /*66*/
+  OLEDB_PDESCR2(L"stmt_cache__time"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_stmt_cache_time__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//размер пула запросов ---------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__STMT_CACHE__SIZE, /*67*/
+  OLEDB_PDESCR2(L"stmt_cache__size"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_stmt_cache_size__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//время жизни подготовленных запросов в пуле запросов --------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__STMT_CACHE__REQ_LIFE_TIME, /*68*/
+  OLEDB_PDESCR2(L"stmt_cache__req_life_time"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_stmt_cache_req_life_time__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ROWSET_FILE__SYS_FLAGS, /*69*/
+  OLEDB_PDESCR2(L"rowset_file__sys_flags"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_rowset_file_sys_flags__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__rowset_file__sys_flags::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ROWSET_FILE__WRITE_BLOCK_SIZE, /*70*/
+  OLEDB_PDESCR2(L"rowset_file__write_block_size"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_rowset_file__write_block_size__default,     // [2019-01-16] CHANGED, was empty
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__non_negative_i4::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+//! \todo
+//!  Use EMPTY default value
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ROWSET__MEMORY_USAGE, /*71*/
+  OLEDB_PDESCR2(L"rowset__memory_usage"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  0L,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__non_negative_i4::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__TEMP_FILE_DIR, /*72*/
+  OLEDB_PDESCR2(L"temp_file_dir"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DEFERRED_DATA,
+  OLEDB_PDESCR2(L"deferred_data"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__deferred_data__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__deffered_data_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBTIME_RULES,
+  OLEDB_PDESCR2(L"dbtime_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dbtime_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbtime_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBTIMESTAMP_RULES,
+  OLEDB_PDESCR2(L"dbtimestamp_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dbtimestamp_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbtimestamp_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__MULTI_STMTS_EXEC_RULES,
+  OLEDB_PDESCR2(L"multi_stmts_exec_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__multi_stmts_exec_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__multi_stmts_exec_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DEFERRED_OUT_PARAM,
+  OLEDB_PDESCR2(L"deferred_out_param"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__deferred_out_param__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__deffered_data_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+//! \todo
+//!  Use EMPTY default value
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__TEMP_STG__MEMORY_USAGE,
+  OLEDB_PDESCR2(L"temp_stg__memory_usage"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  0L,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__non_negative_i4::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__IB_TR_PARAMS__READ_COMMITTED,
+  OLEDB_PDESCR2(L"ib_tr_params__read_committed"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__ib_tr_params__read_committed__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__IB_TR_PARAMS__REPEATABLE_READ,
+  OLEDB_PDESCR2(L"ib_tr_params__repeatable_read"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__ib_tr_params__repeatable_read__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__IB_TR_PARAMS__SERIALIZABLE,
+  OLEDB_PDESCR2(L"ib_tr_params__serializable"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__ib_tr_params__serializable__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__OPEN_ROWSET__SQL,
+  OLEDB_PDESCR2(L"open_rowset__sql"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__open_rowset__sql__default,
+  /*post init calls*/)
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NAMED_PARAM_RULES,
+  OLEDB_PDESCR2(L"named_param_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__named_param_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__named_param_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__ASYNCH_FETCH,
+  OLEDB_PDESCR2(L"asynch_fetch"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__asynch_fetch__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__asynch_fetch::GetInstancePtr()))
+
+//Правила сброса источника данных при наличии подписчиков у сессии -------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__RESET_DS_SESSION_SINKS_RULE,
+  OLEDB_PDESCR2(L"reset_ds_session_sinks_rule"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_reset_ds_session_sinks_rule__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__reset_ds_session_sinks_rule::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__DBCLIENT_LIBRARY_64,
+  OLEDB_PDESCR2(L"dbclient_library_64"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ICU_LIBRARY_64,
+  OLEDB_PDESCR2(L"icu_library_64"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS,
+  OLEDB_PDESCR2(L"schema_ldr_cfg__check_constraints"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__schema_ldr_cfg__check_constraints__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_ldr_cfg__check_constraints::GetInstancePtr()))
+
+#endif
+
+//------------------------------------------------------------------------
+#if(IBP_ENGINE_DIRECT_FB!=0)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__PROTOCOL_TYPE,
+  OLEDB_PDESCR2(L"remote:protocol_type"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_type::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__PROTOCOL, /*90*/
+  OLEDB_PDESCR2(L"remote:protocol"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__WIRE_CRYPT, /*91*/
+  IBP_DBPROP_NAME__INIT__REMOTE__WIRE_CRYPT,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_wire_crypt::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__AUTH, /*92*/
+  IBP_DBPROP_NAME__INIT__REMOTE__AUTH,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__WIRE_COMPRESSION, /*93*/
+  IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_wire_compression::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__WIRE_COMPRESSION_LIBRARY, /*94*/
+  IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION_LIBRARY,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__WIRE_COMPRESSION_LIBRARY_64, /*95*/
+  IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION_LIBRARY_64,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+#endif
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__PROTOCOL_ARCHITECTURE, /*96*/
+  OLEDB_PDESCR2(L"remote:protocol_arch"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ARRAY_RW_MODE, /*97*/
+  OLEDB_PDESCR2(L"array_rw_mode"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__array_rw_mode::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBDATE_RULES,
+  OLEDB_PDESCR2(L"dbdate_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dbdate_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbdate_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__PROVIDER_ERROR_RULES,
+  OLEDB_PDESCR2(L"provider_error_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__provider_error_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__provider_error_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__WCHARS_IN_UTF8_SYMBOL,
+  OLEDB_PDESCR2(L"wchars_in_utf8_symbol"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__wchars_in_utf8_symbol__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__wchars_in_utf8_symbol::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__SCHEMA_RESTRICTIONS,
+  OLEDB_PDESCR2(L"schema_restrictions"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__schema_restrictions__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_restrictions::GetInstancePtr()))
+
+#endif
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__GUID_RULES,
+  OLEDB_PDESCR2(L"guid_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__guid_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__guid_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SCHEMA_LDR_CFG__DESCRIPTIONS,
+  OLEDB_PDESCR2(L"schema_ldr_cfg__descriptions"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__schema_ldr_cfg__descriptions__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_ldr_cfg__descriptions::GetInstancePtr()))
+
+#endif
+
+//размер кэша парсера запросов -------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SQL_CACHE__SIZE, /*105*/
+  OLEDB_PDESCR2(L"sql_cache__size"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__sql_cache__size__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//время жизни элемента в кэше парсера запросов ---------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SQL_CACHE__TIME, /*106*/
+  OLEDB_PDESCR2(L"sql_cache__time"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__sql_cache__time__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//максимальная длина SQL кэшируемого парсером запросов -------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4__EMPTY
+ (IBP_DBPROP__INIT__SQL_CACHE__MAX_LEN, /*107*/
+  OLEDB_PDESCR2(L"sql_cache__max_len"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__neg1_zero_positive_i4::GetInstancePtr()))
+
+//область действия кэша парсера SQL запросов -----------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
+ (IBP_DBPROP__INIT__SQL_CACHE__SCOPE, /*108*/
+  OLEDB_PDESCR2(L"sql_cache__scope"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__sql_cache__scope__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__sql_cache__scope::GetInstancePtr()))
+
+//идентификатор кэша парсера SQL запросов --------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__SQL_CACHE__INSTANCE_ID, /*109*/
+  OLEDB_PDESCR2(L"sql_cache__instance_id"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+#if(IBP_ENGINE_DIRECT_FB!=0)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__REMOTE__WIRE_COMPRESSION_TYPE, /*128*/
+  IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION_TYPE,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_wire_compression_type::GetInstancePtr()))
+
+#endif //IBP_ENGINE_DIRECT_FB!=0
+
+//настройки хранилища обновляемого множества -----------------------------
+#if(IBP_ENGINE_UPDATE_ROWSET!=0)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2__EMPTY
+ (IBP_DBPROP__INIT__AUTO_INSERT_FIELD_RULE,
+  OLEDB_PDESCR2(L"auto_insert_field_rule"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_insert_field_rule::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2
+ (IBP_DBPROP__INIT__AUTO_UPDATE_FIELD_RULE /*258*/,
+  OLEDB_PDESCR2(L"auto_update_field_rule"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_auto_update_field_rule__all,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_update_field_rule::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__SERVER_DATA_BACK_READ /*259*/,
+  OLEDB_PDESCR2(L"server_data_back_read"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__server_data_back_read__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__server_data_back_read::GetInstancePtr()))
+
+//параметры транзакции обновления данных в наборе рядов ------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2
+ (IBP_DBPROP__INIT__MODIFY_TRANS_TYPE /*272*/,
+  OLEDB_PDESCR2(L"modify_trans_type"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_modify_trans_mutable,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__modify_trans_type::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__MODIFY_TRANS_LEVEL,
+  OLEDB_PDESCR2(L"modify_trans_level"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ISOLATIONLEVEL_REPEATABLEREAD,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))
+
+//параметры транзакции перечитывания данных набора рядов -----------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2
+ (IBP_DBPROP__INIT__REFRESH_TRANS_TYPE,
+  OLEDB_PDESCR2(L"refresh_trans_type"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_refresh_trans_mutable,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__refresh_trans_type::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__REFRESH_TRANS_LEVEL,
+  OLEDB_PDESCR2(L"refresh_trans_level"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ISOLATIONLEVEL_REPEATABLEREAD,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+
+//включение поддержки обновляемых множеств
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__ENABLE_UPDATABLE_ROWSET,
+  OLEDB_PDESCR2(L"enable_updatable_rowset"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  true,
+  /*post init calls*/)
+
+#endif //IBP_ENGINE_UPDATE_ROWSET
+
+////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,81 @@
+////////////////////////////////////////////////////////////////////////////////
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_AUTH_INTEGRATED, /*7*/
+  OLEDB_PDESCR2(L"Integrated Security"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__integ_auth::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_AUTH_PASSWORD, /*9*/
+  IBP_DBPROP_NAME__INIT__PASSWORD,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,                  //[2018-12-13] CHANGED!
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr())
+   .PostInit_SetHandler_GetValue(IBP_OLEDB_Props2__Handler__GetValue__Common__SecData::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (DBPROP_AUTH_PERSIST_SENSITIVE_AUTHINFO, /*11*/
+  OLEDB_PDESCR2(L"Persist Security Info"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  false,
+  /*post init calls*/)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_AUTH_USERID, /*12*/
+  IBP_DBPROP_NAME__INIT__USER_ID,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,                  //[2018-12-13] CHANGED!
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_INIT_DATASOURCE, /*59*/
+  IBP_DBPROP_NAME__INIT__DATA_SOURCE,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,                  //[2018-12-13] CHANGED!
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_DATA
+ (IBP_OLEDB_Props2__DescrData::tag_init__empty(),
+  DBPROP_INIT_HWND, /*60*/
+  IBP_DBPROP_NAME__INIT__HWND,
+  OLEDB_PROPFLAGS_DBINITRW,
+  0,
+  IBP_VT_WINDOW_HANDLE _LITER_COMMA_
+  DBPROPOPTIONS_OPTIONAL,
+  /*post init calls*/)
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_INIT_LOCATION, /*62*/
+  IBP_DBPROP_NAME__INIT__LOCATION,
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2
+ (DBPROP_INIT_PROMPT, /*64*/
+  OLEDB_PDESCR2(L"Prompt"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  DBPROMPT_NOPROMPT,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__prompt::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (DBPROP_INIT_PROVIDERSTRING, /*160*/
+  OLEDB_PDESCR2(L"Extended Properties"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__simple_string::GetInstancePtr())
+   .PostInit_SetHandler_PrepareSetValue(IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::GetInstancePtr()))
+
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (DBPROP_INIT_OLEDBSERVICES, /*248*/
+  OLEDB_PDESCR2(L"OLE DB Services"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  -1L,
+  /*post init calls*/)
+
+////////////////////////////////////////////////////////////////////////////////

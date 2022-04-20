@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////////////////////////////////
+//explicit type of arguments
+//                                                 Dmitry Kovalenko. 16.12.2006.
+#ifndef _t_explicit_H_
+#define _t_explicit_H_
+
+#include <structure/t_common.h>
+
+#include <lcpi/infrastructure/core/structure/t_explicit.h>
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+
+using namespace ::lcpi::infrastructure::core::structure;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

@@ -1,0 +1,77 @@
+////////////////////////////////////////////////////////////////////////////////
+//IBProvider Resources.
+//                                                Kovalenko Dmitry. 05.12.2014.
+#ifndef _ibp_msg_subsystems_RH_
+#define _ibp_msg_subsystems_RH_
+
+////////////////////////////////////////////////////////////////////////////////
+//ISC API.
+
+#define IBP_SUBSYSTEM__ISC_API__INIT_CN                                   1000
+#define IBP_SUBSYSTEM__ISC_API                                            1001
+#define IBP_SUBSYSTEM__ISC_API_V1                                         1002
+#define IBP_SUBSYSTEM__ISC_API_V2                                         1003
+
+////////////////////////////////////////////////////////////////////////////////
+//ISC API. Firebird
+
+#define IBP_SUBSYSTEM__ISC_API__INIT_CN_TO_FB                             1100
+#define IBP_SUBSYSTEM__ISC_API__FB0_9                                     1101
+#define IBP_SUBSYSTEM__ISC_API__FB1_0                                     1102
+#define IBP_SUBSYSTEM__ISC_API__FB1_5                                     1103
+#define IBP_SUBSYSTEM__ISC_API__FB2_0                                     1104
+#define IBP_SUBSYSTEM__ISC_API__FB2_1                                     1105
+#define IBP_SUBSYSTEM__ISC_API__FB2_5                                     1106
+#define IBP_SUBSYSTEM__ISC_API__FB2_5_1                                   1107
+#define IBP_SUBSYSTEM__ISC_API__FB3_0                                     1108
+#define IBP_SUBSYSTEM__ISC_API__FB3_0_4                                   1109
+
+////////////////////////////////////////////////////////////////////////////////
+//ISC API. InterBase
+
+#define IBP_SUBSYSTEM__ISC_API__INIT_CN_TO_IB                             1200
+#define IBP_SUBSYSTEM__ISC_API__IB4_0                                     1201
+#define IBP_SUBSYSTEM__ISC_API__IB5_0                                     1202
+#define IBP_SUBSYSTEM__ISC_API__IB6_0                                     1203
+#define IBP_SUBSYSTEM__ISC_API__IB6_5                                     1204
+#define IBP_SUBSYSTEM__ISC_API__IB7_0                                     1205
+#define IBP_SUBSYSTEM__ISC_API__IB7_1                                     1206
+#define IBP_SUBSYSTEM__ISC_API__IB7_5                                     1207
+#define IBP_SUBSYSTEM__ISC_API__IB8_0                                     1208
+#define IBP_SUBSYSTEM__ISC_API__IB9_0                                     1209
+#define IBP_SUBSYSTEM__ISC_API__IB10_0                                    1210
+#define IBP_SUBSYSTEM__ISC_API__IB11_0                                    1211
+#define IBP_SUBSYSTEM__ISC_API__IB12_0                                    1212
+#define IBP_SUBSYSTEM__ISC_API__IB13_0                                    1213
+#define IBP_SUBSYSTEM__ISC_API__IB14_0                                    1214
+
+////////////////////////////////////////////////////////////////////////////////
+//ISC API. InterBase
+
+#define IBP_SUBSYSTEM__ISC_API__INIT_CN_TO_YA                             1300
+
+#define IBP_SUBSYSTEM__ISC_API__YA                                        1301
+
+////////////////////////////////////////////////////////////////////////////////
+//RemoteFB
+
+#define IBP_SUBSYSTEM__REMOTE_FB                                          1400
+
+#define IBP_SUBSYSTEM__REMOTE_FB__INET                                    1410
+
+#define IBP_SUBSYSTEM__REMOTE_FB__PSET01                                  1420
+#define IBP_SUBSYSTEM__REMOTE_FB__PSET02                                  1421
+
+#define IBP_SUBSYSTEM__REMOTE_FB__P10                                     1430
+#define IBP_SUBSYSTEM__REMOTE_FB__P11                                     1431
+#define IBP_SUBSYSTEM__REMOTE_FB__P12                                     1432
+#define IBP_SUBSYSTEM__REMOTE_FB__P13                                     1433
+
+////////////////////////////////////////////////////////////////////////////////
+//DirectFB
+
+#define IBP_SUBSYSTEM__DIRECT_FB                                          1500
+#define IBP_SUBSYSTEM__DIRECT_FB__INIT_CN                                 1501
+
+////////////////////////////////////////////////////////////////////////////////
+#endif

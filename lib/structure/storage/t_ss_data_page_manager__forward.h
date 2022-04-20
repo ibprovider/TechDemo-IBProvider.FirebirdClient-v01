@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////////////////////////////////
+//! \ingroup structure_storage_dpm
+//! \file    t_ss_data_page_manager__forward.h
+//! \brief   Data Page Manager. Forward declarations.
+//! \author  Kovalenko Dmitry
+//! \date    22.01.2010
+#ifndef _t_ss_data_page_manager__forward_H_
+#define _t_ss_data_page_manager__forward_H_
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+
+template<class TTraits>
+class t_ss_data_page_manager;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

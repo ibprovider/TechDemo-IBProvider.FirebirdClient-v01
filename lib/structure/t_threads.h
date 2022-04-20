@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////
+//Library for thread's configurations
+//                                               Dmitry Kovalenko. 21.04.2004
+#ifndef _t_threads_H_
+#define _t_threads_H_
+
+#include <structure/t_thread_traits__single.h>
+#include <structure/t_thread_traits__multi.h>
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+//contianings
+
+////////////////////////////////////////////////////////////////////////////////
+//typedefs
+
+typedef t_thread_traits__single t_single_thread_traits;
+typedef t_thread_traits__multi  t_multi_thread_traits;
+
+typedef t_multi_thread_traits   t_def_thread_traits;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

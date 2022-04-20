@@ -1,0 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+//DBVARIANT Comparator.
+//                                                Kovalenko Dmitry. 14.10.2017.
+#ifndef _oledb_variant_cmp2__null_HXX_
+#define _oledb_variant_cmp2__null_HXX_
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const TDBVariantComparator2_Descr1 g_DBVariantComparator2_Descr1__NULL__Simple;
+
+extern const TDBVariantComparator2_Descr1 g_DBVariantComparator2_Descr1__NULL__Array;
+
+////////////////////////////////////////////////////////////////////////////////
+#endif

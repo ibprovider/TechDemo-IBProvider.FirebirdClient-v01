@@ -1,0 +1,7 @@
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (DBPROP_SESS_AUTOCOMMITISOLEVELS,
+  OLEDB_PDESCR2(L"Autocommit Isolation Levels"),
+  OLEDB_PROPFLAGS_SESSIONRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ISOLATIONLEVEL_REPEATABLEREAD,
+  .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::GetInstancePtr()))

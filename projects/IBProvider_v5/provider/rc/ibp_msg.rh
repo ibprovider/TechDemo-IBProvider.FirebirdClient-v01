@@ -1,0 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////
+//IBProvider resources. Messages resources IDs
+//                                     Created by Dmitry Kovalenko. 08.04.2003
+#ifndef _ibp_msg_RH_
+#define _ibp_msg_RH_
+
+////////////////////////////////////////////////////////////////////////////////
+//Messages Tables Resources IDs
+
+#define IBP_MSG_TABLE_ERR                               1
+#define IBP_MSG_TABLE_UI                                2
+#define IBP_MSG_TABLE_SUBSYSTEMS                        3
+
+////////////////////////////////////////////////////////////////////////////////
+#endif

@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////
+//IBProvider resources. Firebird 2.5 error message table.
+//                                     Created by Dmitry Kovalenko. 16.10.2015
+#include "rc/ibp_msg_fb25.rh"
+#include <winnt.rh>
+
+////////////////////////////////////////////////////////////////////////////////
+//Message Table Resource [ENGLISH]
+
+LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_FB25_ERR     11 "rc/msg_table/IBP_MSG_FB25_ERR_ENG.bin"
+
+////////////////////////////////////////////////////////////////////////////////
+//Message Table Resource [RUSSIAN]
+
+LANGUAGE LANG_RUSSIAN, SUBLANG_NEUTRAL
+IBP_MSG_TABLE_FB25_ERR     11 "rc/msg_table/IBP_MSG_FB25_ERR_RUS.bin"
+
+////////////////////////////////////////////////////////////////////////////////
