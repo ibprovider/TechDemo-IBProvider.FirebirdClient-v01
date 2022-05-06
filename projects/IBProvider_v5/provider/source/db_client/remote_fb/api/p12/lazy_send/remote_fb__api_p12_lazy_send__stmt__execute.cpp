@@ -421,7 +421,7 @@ protocol::P_USHORT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execut
    //------- p_sqlfree_statement
    packet1.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
-   //------- p_sqlfree_statement
+   //------- p_sqlfree__option
    packet1.p_sqlfree.p_sqlfree__option=isc_api::ibp_isc_DSQL_close;
   }//if send_op1_close
 
@@ -709,7 +709,7 @@ protocol::P_OBJCT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execute
    //----- p_sqlfree_statement
    packet1.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
-   //----- p_sqlfree_statement
+   //----- p_sqlfree__option
    packet1.p_sqlfree.p_sqlfree__option=isc_api::ibp_isc_DSQL_close;
   }//if send_op1_close
 

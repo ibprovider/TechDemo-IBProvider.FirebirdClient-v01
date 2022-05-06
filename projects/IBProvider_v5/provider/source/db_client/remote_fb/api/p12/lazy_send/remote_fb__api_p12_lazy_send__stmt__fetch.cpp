@@ -427,7 +427,7 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    //--------------- p_sqlfree_statement
    packet1__close.p_sqlfree.p_sqlfree__statement=pStmt->m_ID.get_value();
 
-   //--------------- p_sqlfree_statement
+   //--------------- p_sqlfree__option
    packet1__close.p_sqlfree.p_sqlfree__option=isc_api::ibp_isc_DSQL_close;
   }//if send_op1__close
 

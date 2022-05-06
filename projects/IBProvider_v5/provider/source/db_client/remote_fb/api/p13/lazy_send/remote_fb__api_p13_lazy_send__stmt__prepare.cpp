@@ -574,7 +574,7 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
   //------------- p_sqlfree_statement
   packet1__close.p_sqlfree.p_sqlfree__statement=pStmt->m_ID.get_value();
 
-  //------------- p_sqlfree_statement
+  //------------- p_sqlfree__option
   packet1__close.p_sqlfree.p_sqlfree__option=isc_api::ibp_isc_DSQL_close;
 
   //---------------------------------------- 3. build packet2

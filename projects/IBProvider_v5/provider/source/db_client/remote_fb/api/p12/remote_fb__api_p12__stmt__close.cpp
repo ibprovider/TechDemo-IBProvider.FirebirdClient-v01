@@ -91,7 +91,7 @@ void RemoteFB__API_P12__CloseStatement::exec(RemoteFB__ConnectorData* const pDat
   //---------------------------------------- p_sqlfree_statement
   packet.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
-  //---------------------------------------- p_sqlfree_statement
+  //---------------------------------------- p_sqlfree__option
   packet.p_sqlfree.p_sqlfree__option=isc_api::ibp_isc_DSQL_close;
 
   //---------------------------------------- 3. send packet
