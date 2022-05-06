@@ -432,7 +432,7 @@ void RemoteFB__API_P13_LAZY_SEND__FetchStatement::helper__fetch_next_rows
   {
    packet1__close.operation = c_OperationID1__close;
 
-   //--------------- p_sqlfree_statement
+   //--------------- p_sqlfree__statement
    packet1__close.p_sqlfree.p_sqlfree__statement=pStmt->m_ID.get_value();
 
    //--------------- p_sqlfree__option

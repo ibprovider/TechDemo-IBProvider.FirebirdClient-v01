@@ -75,7 +75,7 @@ void RemoteFB__API_P13__DropStatement::exec(RemoteFB__ConnectorData* const pData
 
   packet.operation = c_OperationID;
 
-  //---------------------------------------- p_sqlfree_statement
+  //---------------------------------------- p_sqlfree__statement
   packet.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
   //---------------------------------------- p_sqlfree__option

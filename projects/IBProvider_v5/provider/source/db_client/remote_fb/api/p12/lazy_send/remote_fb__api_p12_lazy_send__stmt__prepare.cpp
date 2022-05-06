@@ -572,7 +572,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
 
   packet1__close.operation = c_OperationID1__close;
 
-  //------------- p_sqlfree_statement
+  //------------- p_sqlfree__statement
   packet1__close.p_sqlfree.p_sqlfree__statement=pStmt->m_ID.get_value();
 
   //------------- p_sqlfree__option

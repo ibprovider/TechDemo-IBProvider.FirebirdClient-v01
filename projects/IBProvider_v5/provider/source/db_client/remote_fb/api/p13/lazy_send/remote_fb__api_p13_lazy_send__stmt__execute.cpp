@@ -433,7 +433,7 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
   {
    packet1.operation = c_OperationID1;
 
-   //------- p_sqlfree_statement
+   //------- p_sqlfree__statement
    packet1.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
    //------- p_sqlfree__option
@@ -749,7 +749,7 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
   {
    packet1.operation = c_OperationID1;
 
-   //----- p_sqlfree_statement
+   //----- p_sqlfree__statement
    packet1.p_sqlfree.p_sqlfree__statement=(*pStmtHandle)->m_ID.get_value();
 
    //----- p_sqlfree__option
