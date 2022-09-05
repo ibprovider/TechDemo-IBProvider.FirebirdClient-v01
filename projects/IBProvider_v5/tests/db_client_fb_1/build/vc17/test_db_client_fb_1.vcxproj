@@ -738,7 +738,6 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__type_of_db_users.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__wchars_in_utf8_symbol.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_default_value\ibp_oledb__props2__handler__get_default_value__prop__ProviderName.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_default_value\ibp_oledb__props2__handler__get_default_value__prop__Updatability.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__common__SecData.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__prop__CnStatus.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__prop__ResetDs.cpp" />

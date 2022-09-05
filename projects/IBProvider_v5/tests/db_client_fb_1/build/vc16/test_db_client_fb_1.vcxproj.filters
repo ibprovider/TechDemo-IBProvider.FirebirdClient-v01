@@ -2929,9 +2929,6 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_default_value\ibp_oledb__props2__handler__get_default_value__prop__ProviderName.cpp">
       <Filter>IBP\source\oledb\props2\handlers\code\get_default_value</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_default_value\ibp_oledb__props2__handler__get_default_value__prop__Updatability.cpp">
-      <Filter>IBP\source\oledb\props2\handlers\code\get_default_value</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\get_value\ibp_oledb__props2__handler__get_value__common__SecData.cpp">
       <Filter>IBP\source\oledb\props2\handlers\code\get_value</Filter>
     </ClCompile>
