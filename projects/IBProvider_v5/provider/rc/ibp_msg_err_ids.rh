@@ -1707,6 +1707,12 @@
 /// \b Params: ICU Provider, Charset Name
 #define IBP_MCE_ICU__CANT_CONV_ONE_ASCII_TO_UNICODE_2                     12725
 
+//------------------------------------------------------------------------------
+
+/// \brief ICU: Failed to initialize.<br>
+/// \b Params: ICU Provider, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_INITIALIZE_2                               12726
+
 ////////////////////////////////////////////////////////////////////////////////
 //Messages for Generators of Database Object Scripts
 

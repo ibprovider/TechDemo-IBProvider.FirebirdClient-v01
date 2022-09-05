@@ -7,8 +7,11 @@
 #ifndef _ibp_os_win32__dll_loader_H_
 #define _ibp_os_win32__dll_loader_H_
 
+#include "source/os/ibp_os__dll.h"
 #include "source/ibp_char.h"
-#include "source/ibp_memory.h"
+
+#include <ole_lib/ole_base.h>
+#include <structure/stl/t_stl_map.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -25,7 +28,8 @@ class t_ibp_os_win32__dll_loader;
 /// <summary>
 ///  Загрузчик DLL
 /// </summary>
-class t_ibp_os_win32__dll_loader:public IBP_SmartMemoryObject
+class t_ibp_os_win32__dll_loader COMP_W000006_CLASS_FINAL
+ :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(t_ibp_os__dll)
 {
  private:
   typedef t_ibp_os_win32__dll_loader                  self_type;
@@ -50,39 +54,40 @@ class t_ibp_os_win32__dll_loader:public IBP_SmartMemoryObject
 
  public:
   /// <summary>
-  ///  Фабрика класса
-  /// </summary>
-  //! \param[in] DLL_Name
-  //! \param[in] DLL_Lock_Rule
-  //!  Правила блокировки DLL в памяти.
-  //!
-  //! <seealso cref="ibp::t_ibp_propval_dll_lock_rule"/>
-  static self_ptr create(t_ibp_str_box DLL_Name,
-                         long          DLL_Lock_Rule);
-
- public:
-  /// <summary>
   ///  Получение дескриптора DLL
   /// </summary>
-  HINSTANCE get_dll_handle()const;
+  virtual HINSTANCE get_dll_handle()const COMP_W000004_OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение указателя на точку входа в DLL. THROW
   /// </summary>
   //! \param[in] point_name
-  FARPROC get_proc_address(LPCSTR point_name)const;//throw
+  virtual FARPROC get_proc_address(LPCSTR point_name)const COMP_W000004_OVERRIDE_FINAL;//throw
 
   /// <summary>
   ///  Пытаемся получить указатель на точку входа в DLL.
   /// </summary>
   //! \param[in] point_name
-  FARPROC try_get_proc_address(LPCSTR point_name)const;
+  virtual FARPROC try_get_proc_address(LPCSTR point_name)const COMP_W000004_OVERRIDE_FINAL;
 
- private:
+  /// <summary>
+  ///  Getting a DLL service object. THROW.
+  /// </summary>
+  //! \param[in] rSvcObjID
+  //! \param[in] pfnServiceObjCreator
+  //!  Pointer to the creator of a service object.
+  //! \return
+  //!  Not NULL.
+  virtual IBP_SmartInterfacePtr get_service_obj(REFGUID                 rSvcObjID,
+                                                pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
+
+ public:
   /// <summary>
   ///  Запрещаем выгрузку DLL из памяти
   /// </summary>
   void lock_in_memory();
+
+  bool is_locked_in_memory()const;
 
  private:
   ///Название модуля
@@ -93,6 +98,21 @@ class t_ibp_os_win32__dll_loader:public IBP_SmartMemoryObject
 
   ///Признак заблокированности DLL в памяти
   LONG               m_NoUnLoad;
+
+ private:
+  typedef structure::t_multi_thread_traits                 thread_traits;
+  typedef thread_traits::guard_type                        guard_type;
+  typedef thread_traits::lock_guard_type                   lock_guard_type;
+
+  typedef structure::t_stl_map
+           <GUID,
+            IBP_SmartInterfacePtr,
+            ole_lib::TGuidLess,
+            IBP_MemoryAllocator>                           service_objects_map_type;
+
+ private:
+  guard_type                  m_ServiceObjs_Guard;
+  service_objects_map_type    m_ServiceObjs;
 };//class t_ibp_os_win32__dll_loader
 
 ////////////////////////////////////////////////////////////////////////////////

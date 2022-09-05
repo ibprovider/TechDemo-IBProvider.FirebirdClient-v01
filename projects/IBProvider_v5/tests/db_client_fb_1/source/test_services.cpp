@@ -7,6 +7,8 @@
 #include "source/db_client/remote_fb/ports/factories/inet/remote_fb__ports__factories__inet.h"
 #include "source/db_client/remote_fb/ports/streams/inet/remote_fb__ports__streams__inet__static_cfg.h"
 #include "source/db_obj/isc_base/isc_initialize_utils.h"
+#include "source/ibp_global_objects_data__dlls.h"
+
 #include <structure/test_obj/t_tso_user.h>
 
 namespace ibp_test{
@@ -63,7 +65,7 @@ TestServices::winsock_dll_ptr
 
  try
  {
-  spDLL=new winsock_dll_type(pDllName);
+  spDLL=ibp::IBP_GlobalObjectsData__DLLs::GetDLL(pDllName,0);
 
   _TSO_CHECK(spDLL!=nullptr);
  }

@@ -16,6 +16,8 @@
 
 #include "source/error_services/ibp_error_utils.h"
 
+#include "source/ibp_global_objects_data__dlls.h"
+
 #include <win32lib/win32lib.h>
 
 #include <structure/utilities/string/trim.h>
@@ -942,16 +944,17 @@ db_obj::t_db_charset_const_ptr
 //------------------------------------------------------------------------
 void t_ibp_charset_manager_v2::helper__create_icu_provider()
 {
- typedef t_ibp_os__dll_loader dll_type;
- typedef dll_type::self_ptr   dll_ptr;
+ typedef os::t_ibp_os__dll_ptr dll_ptr;
 
  ///Загрузка DLL
  const dll_ptr
-  spDLL(dll_type::create(m_icu_library,
-                         ibprovider::ibp_propval_dll_lock_rule__force_unload));
+  spDLL
+   (IBP_GlobalObjectsData__DLLs::GetDLL
+     (m_icu_library,
+      ibprovider::ibp_propval_dll_lock_rule__force_unload));
 
  ///Загрузка сведений о версии DLL
- t_ibp_os__dll_version_info dll_ver_info;
+ os::t_ibp_os__dll_version_info dll_ver_info;
 
  if(!dll_ver_info.load(spDLL->get_dll_handle()))
  {

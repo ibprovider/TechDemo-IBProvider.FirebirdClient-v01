@@ -21,6 +21,8 @@
 
 #include "source/error_services/ibp_error.h"
 
+#include "source/ibp_global_objects_data__dlls.h"
+
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__P12__ConnectOpCtx
@@ -68,12 +70,13 @@ void RemoteFB__P12__ConnectOpCtx::request_auth_data
  if(!m_spAuthProvider)
  {
   typedef auth_provider_type                provider_type;
-  typedef provider_type::dll_type           dll_type;
-  typedef dll_type::self_ptr                dll_ptr;
+  typedef os::t_ibp_os__dll_ptr             dll_ptr;
 
   const dll_ptr
-   spDll(dll_type::create(IBP_T("secur32.dll"),
-                          ibprovider::ibp_propval_dll_lock_rule__unload));
+   spDll
+    (IBP_GlobalObjectsData__DLLs::GetDLL
+      (IBP_T("secur32.dll"),
+       ibprovider::ibp_propval_dll_lock_rule__unload));
 
   assert(spDll);
 

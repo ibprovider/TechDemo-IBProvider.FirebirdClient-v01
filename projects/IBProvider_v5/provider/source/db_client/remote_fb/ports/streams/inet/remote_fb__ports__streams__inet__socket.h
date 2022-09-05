@@ -13,6 +13,7 @@
 #include "source/os/win32/winsock/ibp_os_win32_winsock__provider.h"
 #include <structure/t_simple_buffer.h>
 #include <structure/t_str_parameter.h>
+#include <structure/t_const_str_box.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace ports{namespace streams{namespace inet{
 ////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup ibp_oledb__props2
-//! \file    ibp_oledb__props2__system_ids.cpp
+//! \ingroup ibp_oledb
+//! \file    ibp_oledb__prop__system_ids.cpp
 //! \brief   Идентификаторы системных OLE DB свойств провайдера
 //! \author  Kovalenko Dmitry
 //! \date    09.01.2019

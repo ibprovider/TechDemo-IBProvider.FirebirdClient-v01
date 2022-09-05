@@ -321,7 +321,7 @@ void WORK_StmtFetch_Test_01__Failed::tag_impl::run(context_type* const pCtx)cons
    continue;
   }//catch
 
-  throw std::runtime_error("We wait the error!");
+  svc::Throw_WeWaitTheError();
  }//for[ever]
 
  _TSO_CHECK(hStmt);

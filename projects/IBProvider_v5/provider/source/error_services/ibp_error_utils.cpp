@@ -481,10 +481,11 @@ void IBP_ThrowBugCheck2(t_ibp_error&         Errors,
  assert(FAILED(hr));
 
  t_ibp_error_element::self_ptr
-  spErrRec(structure::not_null_ptr
-            (new t_ibp_error_element
-                  (hr,
-                   ibp_mce_common__bug_check_3)));
+  spErrRec
+   (structure::not_null_ptr
+     (new t_ibp_error_element
+           (hr,
+            ibp_mce_common__bug_check_3)));
 
  assert(spErrRec);
 

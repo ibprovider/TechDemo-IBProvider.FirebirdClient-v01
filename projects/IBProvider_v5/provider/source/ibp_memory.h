@@ -26,6 +26,10 @@ using IBP_SmartMemoryObject
  =oledb_lib::t_oledb_smart_memory_object;
 
 //------------------------------------------------------------------------
+using IBP_SmartInterfacePtr
+ =lcpi::infrastructure::core::structure::t_smart_object_ptr<IBP_SmartInterface>;
+
+//------------------------------------------------------------------------
 #define IBP_DEF_INTERFACE_IMPL_DYNAMIC(Interface)                         \
  lcpi::lib::structure::t_basic_smart_interface_impl__dynamic              \
   <Interface,ibp::IBP_MemoryAllocator>

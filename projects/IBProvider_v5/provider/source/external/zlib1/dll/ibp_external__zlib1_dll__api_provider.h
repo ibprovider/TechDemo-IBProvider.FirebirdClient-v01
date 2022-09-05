@@ -6,7 +6,6 @@
 
 #include "source/external/zlib1/ibp_external__zlib1__api_provider.h"
 #include "source/os/ibp_os__dll_entry_point.h"
-#include "source/os/ibp_os__dll_loader.h"
 #include "source/ibp_memory.h"
 
 namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace dll{
@@ -14,7 +13,7 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace dll{
 //class ZLIB1_DLL__ApiProvider
 
 #define DEF_ZLIB1_POINT(func_name)                                          \
- ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
+ ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
 
 class ZLIB1_DLL__ApiProvider COMP_W000006_CLASS_FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(ZLIB1__ApiProvider)
@@ -26,9 +25,9 @@ class ZLIB1_DLL__ApiProvider COMP_W000006_CLASS_FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_ibp_os__dll_loader                         dll_type;
+  typedef os::t_ibp_os__dll                            dll_type;
 
-  typedef dll_type::self_ptr                           dll_ptr;
+  typedef os::t_ibp_os__dll_ptr                        dll_ptr;
 
  private:
   ZLIB1_DLL__ApiProvider(dll_type* pDLL);

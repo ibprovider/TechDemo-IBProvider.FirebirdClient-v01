@@ -20,13 +20,6 @@
 
 #include "source/Version/ibp_v05_info_data.h"
 
-////////////////////////////////////////////////////////////////////////////////
-//мьютекс монопольного подключения к базе данных
-
-#ifndef IBP_BUILD_TESTCODE
-HANDLE g_hAttachDatabaseGuard=NULL;
-#endif
-
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //static data
@@ -46,14 +39,6 @@ bool TIBP_ComModule::Init(HINSTANCE const hInstance)
   for(;;)
   {
    sm_hInstance=hInstance;
-
-#ifndef IBP_BUILD_TESTCODE
-   //TODO 5: задать имя уникальное в рамках процесса (использовать PID)
-   g_hAttachDatabaseGuard=::CreateMutex(NULL,false,NULL);
-
-   if(!g_hAttachDatabaseGuard)
-    break;
-#endif // !IBP_BUILD_TESTCODE
 
    //создание куч
    if(!THelper::InitHeaps())
@@ -145,15 +130,6 @@ void TIBP_ComModule::Term()
 
  //разрушаем собственные кучи
  THelper::TermHeaps();
-
-#ifndef IBP_BUILD_TESTCODE
- if(g_hAttachDatabaseGuard!=NULL)
- {
-  _VERIFY(::CloseHandle(g_hAttachDatabaseGuard));
-
-  g_hAttachDatabaseGuard=NULL;
- }
-#endif // !IBP_BUILD_TESTCODE
 }//Term
 
 ////////////////////////////////////////////////////////////////////////////////

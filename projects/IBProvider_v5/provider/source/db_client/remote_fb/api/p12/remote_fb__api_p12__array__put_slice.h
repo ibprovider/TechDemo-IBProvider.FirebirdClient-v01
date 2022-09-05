@@ -41,7 +41,7 @@ class RemoteFB__API_P12__PutArraySlice LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Сохранение массива.
   /// </summary>
-  //! \param[in] OpCtx
+  //! \param[in] opCtx
   //! \param[in] pData
   //!  Not null
   //! \param[in] pTrHandle

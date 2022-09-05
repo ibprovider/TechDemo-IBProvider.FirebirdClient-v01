@@ -309,7 +309,7 @@ void RemoteFB__HandleData_Statement::Dangerous__CloseCursorOfClosingTr()
  //-----------------------------------------
  assert(m_ID.has_value());
 
- //У НАС НЕЗАКРЫТЫЙ КУРСОР, значит он подключен к транзакции.
+ //WE HAVE AN UNCLOSED CURSOR, it means that it's connected to the transaction.
  assert(m_pClosingTr!=nullptr);
 
  //----------

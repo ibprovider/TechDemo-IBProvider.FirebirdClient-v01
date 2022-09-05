@@ -4,8 +4,8 @@
 //! \brief   ”тилиты дл€ распаковки данных сетевого пакета.
 //! \author  Kovalenko Dmitry
 //! \date    23.11.2014.
-#ifndef _remote_fb__xdr__decoder_H_
-#define _remote_fb__xdr__decoder_H_
+#ifndef _remote_fb__transmission__xdr__decoder_H_
+#define _remote_fb__transmission__xdr__decoder_H_
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
 

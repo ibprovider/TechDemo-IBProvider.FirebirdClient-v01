@@ -7,7 +7,7 @@
 #ifndef _ibp_os_win32__dll_entry_point_H_
 #define _ibp_os_win32__dll_entry_point_H_
 
-#include "source/os/win32/ibp_os_win32__dll_loader.h"
+#include "source/os/ibp_os__dll.h"
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,9 +37,9 @@ class t_ibp_os_win32__dll_entry_point
  public: //typedefs ------------------------------------------------------
   typedef TFunc                                          func_type;
 
-  typedef t_ibp_os_win32__dll_loader                     dll_type;
+  typedef t_ibp_os__dll                                  dll_type;
 
-  typedef dll_type::self_ptr                             dll_ptr;
+  typedef t_ibp_os__dll_ptr                              dll_ptr;
 
  public: //---------------------------------------------------------------
   /// <summary>

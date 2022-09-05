@@ -83,7 +83,7 @@ class TIBP_ComModule::TData
   ///  Конструктор по-умолчанию
   /// </summary>
   //! \param[in] hInstance
-  TData(HINSTANCE hInstance);
+  explicit TData(HINSTANCE hInstance);
 
   /// <summary>
   ///  Деструктор

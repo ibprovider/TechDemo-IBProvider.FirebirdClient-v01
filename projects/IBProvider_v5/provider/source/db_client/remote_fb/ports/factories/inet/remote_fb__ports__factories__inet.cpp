@@ -14,6 +14,9 @@
 #include "source/db_client/remote_fb/ports/inet/remote_fb__ports__inet.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
 #include "source/error_services/ibp_error_utils.h"
+
+#include "source/ibp_global_objects_data__dlls.h"
+
 #include <structure/t_latin.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace ports{namespace factories{namespace inet{
@@ -767,18 +770,18 @@ ports::streams::inet::RemoteFB__INET_Socket::self_ptr
                                             wstr_box_type const ucs2_host,
                                             wstr_box_type const ucs2_port)
 {
- typedef winsock::t_winsock__provider::dll_type winsock_dll_ldr_type;
-
- winsock_dll_ldr_type::self_ptr
+ const os::t_ibp_os__dll_ptr
   spWinsockDLL
-   (structure::not_null_ptr
-     (new winsock_dll_ldr_type
-           (ports::streams::inet::RemoteFB__INET_StaticCfg::c_WinSockDllName))); //throw
+   (IBP_GlobalObjectsData__DLLs::GetDLL
+     (ports::streams::inet::RemoteFB__INET_StaticCfg::c_WinSockDllName,
+      ibprovider::ibp_propval_dll_lock_rule__force_unload)); //throw
 
  assert(spWinsockDLL);
 
  winsock::t_winsock__provider::self_ptr
-  spWinsockProvider(winsock::t_winsock__provider::create(spWinsockDLL)); //throw
+  spWinsockProvider
+   (winsock::t_winsock__provider::create
+     (spWinsockDLL)); //throw
 
  assert(spWinsockProvider);
 

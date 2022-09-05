@@ -71,7 +71,7 @@ class RemoteFB__PortStream__Compressor_ZLib1 COMP_W000006_CLASS_FINAL
   /// </summary>
   //! \param[in] pZApiProvider
   //!  Not null.
-  //! \param[in] pBaseStream
+  //! \param[in] pParentStream
   //!  Not null
   //! \param[in] cbBuffer
   //!  Размер write-буфера. Ненулевое значение.

@@ -2322,6 +2322,11 @@ enum ibp_msg_code_type
  ibp_mce_icu__cant_conv_one_ascii_to_unicode_2
   =IBP_MCE_ICU__CANT_CONV_ONE_ASCII_TO_UNICODE_2,
 
+ /// \brief ICU: Ошибка инициализации.<br>
+ /// \b Params: ICU Provider, ICU Error Code
+ ibp_mce_icu__failed_to_initialize_2
+  =IBP_MCE_ICU__FAILED_TO_INITIALIZE_2,
+
  /////////////////////////////////////////////////////////////////////////
  //Messages for Generators of Database Object Scripts
 

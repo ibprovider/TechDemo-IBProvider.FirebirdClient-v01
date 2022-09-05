@@ -7,11 +7,7 @@
 #include <_pch_.h>
 #pragma hdrstop
 
-#ifndef IBP_BUILD_TESTCODE
-# include "source/ibp_global_objects_data__dlls.h"
-#else
-# include "source/os/win32/ibp_os_win32__dll_loader.h"
-#endif
+#include "source/os/win32/ibp_os_win32__dll_loader.h"
 
 #include "source/error_services/ibp_error.h"
 
@@ -58,36 +54,6 @@ t_ibp_os_win32__dll_loader::~t_ibp_os_win32__dll_loader()
 }//~t_ibp_os_win32__dll_loader
 
 //------------------------------------------------------------------------
-t_ibp_os_win32__dll_loader::self_ptr t_ibp_os_win32__dll_loader::create
-                                           (t_ibp_str_box const DLL_Name,
-                                            long          const DLL_Lock_Rule)
-{
-#ifndef IBP_BUILD_TESTCODE
- if(DLL_Lock_Rule==ibprovider::ibp_propval_dll_lock_rule__unload)
- {
-  return IBP_GlobalObjectsData__DLLs::GetDLL(DLL_Name);
- }//ibp_propval_dll_lock_rule__unload
-
- if(DLL_Lock_Rule==ibprovider::ibp_propval_dll_lock_rule__no_unload)
- {
-  self_ptr
-   spDLL(IBP_GlobalObjectsData__DLLs::GetDLL(DLL_Name));
-
-  assert(spDLL);
-
-  spDLL->lock_in_memory();
-
-  assert(spDLL);
-
-  return /*move*/ spDLL;
- }//ibp_propval_dll_lock_rule__no_unload
-#endif //ndef IBP_BUILD_TESTCODE
-
- //DEFAULT: Force unload
- return structure::not_null_ptr(new self_type(DLL_Name));
-}//create
-
-//------------------------------------------------------------------------
 FARPROC t_ibp_os_win32__dll_loader::get_proc_address(LPCSTR const point_name)const
 {
  assert(point_name!=nullptr);
@@ -128,12 +94,57 @@ FARPROC t_ibp_os_win32__dll_loader::try_get_proc_address(LPCSTR const point_name
 }//try_get_proc_address
 
 //------------------------------------------------------------------------
+IBP_SmartInterfacePtr t_ibp_os_win32__dll_loader::get_service_obj
+                             (REFGUID                 rServiceObjID,
+                              pfn_service_obj_creator pfnServiceObjCreator)
+{
+ assert(pfnServiceObjCreator);
+
+ const lock_guard_type __lock(m_ServiceObjs_Guard);
+
+ const service_objects_map_type::const_iterator
+  x=m_ServiceObjs.find(rServiceObjID);
+
+ if(x!=m_ServiceObjs.cend())
+ {
+  assert((*x).second);
+
+  return (*x).second.not_null_ptr();
+ }//if
+
+ assert(x==m_ServiceObjs.cend());
+
+ IBP_SmartInterfacePtr
+  spNewServiceObj
+   =pfnServiceObjCreator();
+
+ assert(spNewServiceObj);
+
+ _VERIFY
+  (m_ServiceObjs.insert(service_objects_map_type::value_type(rServiceObjID,spNewServiceObj))
+    DEBUG_CODE(.second));
+
+ assert(spNewServiceObj);
+
+ return spNewServiceObj;
+}//get_service_obj
+
+//------------------------------------------------------------------------
 void t_ibp_os_win32__dll_loader::lock_in_memory()
 {
  /// Устанавливаем m_NoUnLoad равным 1. Используем InterlockedExchange.
 
  ::InterlockedExchange(&m_NoUnLoad,1);
 }//lock_in_memory
+
+//------------------------------------------------------------------------
+bool t_ibp_os_win32__dll_loader::is_locked_in_memory()const
+{
+ if(m_NoUnLoad==0)
+  return false;
+
+ return true;
+}//is_locked_in_memory
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms win32*/}/*nms os*/}/*nms ibp*/}/*nms lcpi*/

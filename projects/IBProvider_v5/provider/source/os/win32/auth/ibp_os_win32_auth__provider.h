@@ -35,7 +35,8 @@ class t_auth__provider:public IBP_SmartMemoryObject
  public: //typedefs ------------------------------------------------------
   typedef structure::t_smart_object_ptr<self_type>  self_ptr;
 
-  typedef t_ibp_os_win32__dll_loader                dll_type;
+  typedef t_ibp_os__dll                             dll_type;
+  typedef t_ibp_os__dll_ptr                         dll_ptr;
 
  private:
   /// <summary>
@@ -75,7 +76,7 @@ class t_auth__provider:public IBP_SmartMemoryObject
 
  private:
   /// ”казатель на загрузчик DLL
-  dll_type::self_ptr const m_spDLL;
+  dll_ptr const m_spDLL;
 
  private:
   API::AUTH__CredHandle  m_hCred;

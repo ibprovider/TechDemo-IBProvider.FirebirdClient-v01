@@ -4,8 +4,8 @@
 //! \brief   Информационные утилиты для работы с данными сетевого пакета.
 //! \author  Kovalenko Dmitry
 //! \date    05.09.2015
-#ifndef _remote_fb__xdr__info_H_
-#define _remote_fb__xdr__info_H_
+#ifndef _remote_fb__transmission__xdr__info_H_
+#define _remote_fb__transmission__xdr__info_H_
 
 #include <structure/t_common.h>
 

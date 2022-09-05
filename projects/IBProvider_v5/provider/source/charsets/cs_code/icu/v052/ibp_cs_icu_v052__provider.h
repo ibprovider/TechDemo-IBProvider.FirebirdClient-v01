@@ -8,10 +8,10 @@
 #define _ibp_cs_icu_v052__provider_H_
 
 #include "source/charsets/ibp_charset_provider.h"
-#include "source/os/ibp_os__dll_entry_point.h"
-#include "source/os/ibp_os__dll_loader.h"
-
 #include "source/charsets/cs_code/icu/v052/ibp_cs_icu_v052__api.h"
+
+#include "source/os/ibp_os__dll_entry_point.h"
+#include "source/os/ibp_os__dll_init_mutex.h"
 
 namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{namespace v052{
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 //class t_ibp_icu_provider
 
 #define DEF_ICU_POINT(func_name)                                          \
- ibp::ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
+ ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
 
 /// <summary>
 ///  Провайдер доступа к ICU API v52
@@ -44,11 +44,13 @@ class t_ibp_icu_provider
   /// Self smart-pointer
   typedef structure::t_smart_object_ptr<self_type>   self_ptr;
 
-  typedef ibp::t_ibp_os__dll_loader                  dll_type;
-
-  typedef dll_type::self_ptr                         dll_ptr;
+  typedef ibp::os::t_ibp_os__dll                     dll_type;
+  typedef ibp::os::t_ibp_os__dll_ptr                 dll_ptr;
 
  public:
+  DEF_ICU_POINT(u_init);
+  DEF_ICU_POINT(u_cleanup);
+
   DEF_ICU_POINT(ucnv_open);
   DEF_ICU_POINT(ucnv_close);
 
@@ -88,8 +90,27 @@ class t_ibp_icu_provider
    load_cs(const cs_name_box_type& cs_name) COMP_W000004_OVERRIDE_FINAL;
 
  private:
+  typedef os::t_ibp_os__dll_init_mutex           dll_init_mutex_type;
+  typedef os::t_ibp_os__dll_init_mutex::self_ptr dll_init_mutex_ptr;
+
+ private:
+  static dll_init_mutex_ptr helper__get_dll_init_mutex(dll_type* pDLL);
+
+  static IBP_SmartInterfacePtr helper__create_dll_init_mutex();
+
+  void helper__init_op();
+
+  void helper__uninit_op();
+
+ private:
   /// Указатель на загрузчик DLL
   dll_ptr const m_spDLL;
+
+  /// DLL initialization mutex
+  dll_init_mutex_ptr const m_spDllInitMutex;
+
+ private:
+  static const GUID sm_DllInitSvcObjID;
 };//class t_ibp_icu_provider
 
 #undef DEF_ICU_POINT

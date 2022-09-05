@@ -646,6 +646,7 @@ bool isc_ignore_numeric_scale(long numeric_rules,
                               long sqlsubtype);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 #define ISC_EXPORT_V5                     __stdcall
 #define ISC_EXPORT_VARARG_V5              __cdecl
 

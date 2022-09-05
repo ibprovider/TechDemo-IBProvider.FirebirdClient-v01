@@ -4,8 +4,8 @@
 //! \brief   Интерфейс потока пакетов.
 //! \author  Kovalenko Dmitry
 //! \date    15.02.2015.
-#ifndef _remote_fb__packet_stream_H_
-#define _remote_fb__packet_stream_H_
+#ifndef _remote_fb__transmission__packet_stream_H_
+#define _remote_fb__transmission__packet_stream_H_
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
 

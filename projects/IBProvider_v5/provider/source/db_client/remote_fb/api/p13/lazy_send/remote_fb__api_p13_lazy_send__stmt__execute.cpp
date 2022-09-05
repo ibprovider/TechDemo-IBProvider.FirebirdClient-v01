@@ -403,7 +403,7 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
  //-----------------------------------------------------------------------
 
  //[2015-11-15]
- // У нас может висеть не выполненная операция закрытия курсора.
+ // У нас может висеть невыполненная операция закрытия курсора.
  // IBProvider на текущий момент выполняет эту операцию без учета типа запроса.
  // В будущем, предлагаю в отладочной сборке ругаться на этот беспредел.
 
@@ -530,11 +530,12 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
     assert((*pStmtHandle)->m_pClosingTr);
 
     if(const t_ibp_error_element::self_ptr
-       spErrRec=pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-        (pData,
-         c_OperationID1,
-         packet1.p_resp,
-         E_FAIL))
+        spErrRec
+         =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     {
      // [2015-11-15] Я не знаю как протестировать данную ошибку.
 
@@ -664,7 +665,7 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
  //-----------------------------------------------------------------------
 
  //[2015-11-15]
- // У нас может висеть не выполненная операция закрытия курсора.
+ // У нас может висеть невыполненная операция закрытия курсора.
  // IBProvider на текущий момент выполняет эту операцию без учета типа запроса.
  // В будущем, предлагаю в отладочной сборке ругаться на этот беспредел.
 
@@ -889,11 +890,12 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
     assert((*pStmtHandle)->m_pClosingTr);
 
     if(const t_ibp_error_element::self_ptr
-       spErrRec=pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-        (pData,
-         c_OperationID1,
-         packet1.p_resp,
-         E_FAIL))
+        spErrRec
+         =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     {
      // [2015-11-15] Я не знаю как протестировать данную ошибку.
 

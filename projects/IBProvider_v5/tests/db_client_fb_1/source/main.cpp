@@ -7,10 +7,16 @@
 #include "source/push_test__filter.h"
 #include "source/push_test__exec_mt.h"
 #include "source/test_summary_builder.h"
-#include <structure/test_obj/t_tso_user.h>
+
+#include "source/ibp_global_objects_data__dlls.h"
+
 #include <ole_lib/oledb/oledb_memory.h>
 #include <ole_lib/ole_lib.h>
+
 #include <win32lib/win32_error.h>
+
+#include <structure/test_obj/t_tso_user.h>
+
 #include <conio.h>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -213,31 +219,35 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  //-----------------------------------------------------------------------
  auto const cInitialAllocBlocks=_Module.TestCode__GetAllocBlockCount();
 
- try
  {
-  TTestListProcessor processor(spExecutor,spParams,spRootLog);
+  ibp::IBP_GlobalObjectsData__DLLs::tagTestInitializer __InitializerForDlls;
 
-  if(!processor.run())
+  try
   {
-   spExecutor->cancel();
+   TTestListProcessor processor(spExecutor,spParams,spRootLog);
+
+   if(!processor.run())
+   {
+    spExecutor->cancel();
+   }
   }
- }
- catch(...)
- {
-  TTSO_ExceptionRouter::route(RootTracer);
- }
+  catch(...)
+  {
+   TTSO_ExceptionRouter::route(RootTracer);
+  }
 
- //---------------------------------------- stop executors
- try
- {
-  spExecutor->stop__no_throw();
- }
- catch(...)
- {
-  assert(false);
+  //---------------------------------------- stop executors
+  try
+  {
+   spExecutor->stop__no_throw();
+  }
+  catch(...)
+  {
+   assert(false);
 
-  spRootLog->add_other_error_count(1);
- }//catch
+   spRootLog->add_other_error_count(1);
+  }//catch
+ }
 
  //-----------------------------------------
  auto const cFinishlAllocBlocks=_Module.TestCode__GetAllocBlockCount();
@@ -262,12 +272,13 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
 
   RootTracer<<send;
 
-  TTSO_SummaryBuilder::print_total_ex(RootTracer,
-                                      L"",
-                                      spRootLog->get_total_error_count(),
-                                      spRootLog->get_total_warning_count(),
-                                      spRootLog->get_pass_count(),
-                                      spRootLog->get_total_test_count());
+  TTSO_SummaryBuilder::print_total_ex
+   (RootTracer,
+    L"",
+    spRootLog->get_total_error_count(),
+    spRootLog->get_total_warning_count(),
+    spRootLog->get_pass_count(),
+    spRootLog->get_total_test_count());
  }//if PrintSummaryErrors
 
  //----------------------------------------- EXIT

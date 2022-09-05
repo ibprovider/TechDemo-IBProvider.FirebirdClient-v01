@@ -145,22 +145,27 @@ void WORK_Test_010__DetachDatabase::tag_impl::test_002__err__bad_cn_handle
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                          spConnector);
+  svc::RemoteFB_Connector__DetachDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {
   typedef TestCheckErrors errSvc;
 
-  errSvc::print_exception_ok(tracer,exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec__srv_err__bad_cn_handle
-                         (tracer,
-                          spConnector->GetData()->m_DBMS_Name,
-                          exc.get_record(0));
+   (tracer,
+    spConnector->GetData()->m_DBMS_Name,
+    exc.get_record(0));
+
   return;
  }//catch
 
@@ -277,37 +282,44 @@ void WORK_Test_010__DetachDatabase::tag_impl::test_004__err__has_active_tr
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &tr_handle1);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &tr_handle1);
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle2(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &tr_handle2);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &tr_handle2);
 
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                          spConnector);
+  svc::RemoteFB_Connector__DetachDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {
   typedef TestCheckErrors errSvc;
 
-  errSvc::print_exception_ok(tracer,exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec__srv_err__failed_to_detach__has_active_tr
-                         (tracer,
-                          exc.get_record(0),
-                          spConnector->GetData()->m_DBMS_Name,
-                          2);
+   (tracer,
+    exc.get_record(0),
+    spConnector->GetData()->m_DBMS_Name,
+    2);
+
   return;
  }//catch
 
@@ -353,36 +365,43 @@ void WORK_Test_010__DetachDatabase::tag_impl::test_005__err__has_prep_tr
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &tr_handle1);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &tr_handle1);
 
- svc::RemoteFB_Connector__PrepareTransaction(tracer,
-                                            spConnector,
-                                            &tr_handle1,
-                                            0,
-                                            nullptr);
+ svc::RemoteFB_Connector__PrepareTransaction
+  (tracer,
+   spConnector,
+   &tr_handle1,
+   0,
+   nullptr);
 
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                          spConnector);
+  svc::RemoteFB_Connector__DetachDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {
   typedef TestCheckErrors errSvc;
 
-  errSvc::print_exception_ok(tracer,exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec__srv_err__failed_to_detach__has_active_tr
-                         (tracer,
-                          exc.get_record(0),
-                          spConnector->GetData()->m_DBMS_Name,
-                          1);
+   (tracer,
+    exc.get_record(0),
+    spConnector->GetData()->m_DBMS_Name,
+    1);
+
   return;
  }//catch
 

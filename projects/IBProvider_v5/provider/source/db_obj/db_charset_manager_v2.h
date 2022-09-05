@@ -75,7 +75,7 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_db_charset_manager_v2:public t_db_smart_inte
   /// <summary>
   ///  Получение кодовой страницы по идентификатору
   /// </summary>
-  //! \param[in] cs_name
+  //! \param[in] cs_id
   virtual t_db_charset_const_ptr get_charset(db_cs_id cs_id)=0;
 
  public: //вспомогательный интерфейс -------------------------------------

@@ -18,6 +18,8 @@
 #include "source/external/zlib1/dll/ibp_external__zlib1_dll__api_provider.h"
 #include "source/external/zlib1/builtin/ibp_external__zlib1_builtin__api_provider.h"
 
+#include "source/ibp_global_objects_data__dlls.h"
+
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p13{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__P13__InitializeCompressor
@@ -143,7 +145,7 @@ ZLIB1__ApiProviderPtr
 
  const ZLIB1_DLL__ApiProvider::dll_ptr
   spDll
-   (ZLIB1_DLL__ApiProvider::dll_type::create
+   (IBP_GlobalObjectsData__DLLs::GetDLL
      (DLL_Name,
       ibprovider::ibp_propval_dll_lock_rule__force_unload)); //throw
 

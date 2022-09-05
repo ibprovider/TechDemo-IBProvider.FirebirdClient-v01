@@ -48,7 +48,7 @@ class TestServices
 
   typedef winsock_provider_type::dll_type               winsock_dll_type;
 
-  typedef winsock_dll_type::self_ptr                    winsock_dll_ptr;
+  typedef winsock_provider_type::dll_ptr                winsock_dll_ptr;
 
   //----------------------------------------
   typedef remote_fb_inet_stream::RemoteFB__INET_Socket  remote_fb_inet_socket_type;
