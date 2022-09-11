@@ -11,7 +11,7 @@ std::wstring clsid_to_wstring(REFCLSID rclsid)
  OLECHAR wsz_guid[128];
 
  //len will be containing terminate null
- const int len=::StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
+ const int len=LCPI_OS__StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
 
  assert(len>0);
  assert(len<_DIM_(wsz_guid));
@@ -25,7 +25,7 @@ std::string clsid_to_string(REFCLSID rclsid)
  OLECHAR wsz_guid[128];
 
  //len will be containing terminal null
- const int len=::StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
+ const int len=LCPI_OS__StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
 
  assert(len>0);
  assert(len<_DIM_(wsz_guid));
@@ -39,7 +39,7 @@ t_string clsid_to_tstr(REFCLSID rclsid)
  OLECHAR wsz_guid[128];
 
  //len will be containing terminal null
- const int len=::StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
+ const int len=LCPI_OS__StringFromGUID2(rclsid,wsz_guid,_DIM_(wsz_guid)-1);
 
  assert(len>0);
  assert(len<_DIM_(wsz_guid));
@@ -55,10 +55,10 @@ HRESULT string_to_clsid(structure::wstr_parameter str_clsid,GUID* pguid)
 {
  assert(pguid!=NULL);
 
- if(CLSIDFromString(const_cast<wchar_t* const>(str_clsid.c_str()),pguid)==S_OK)
+ if(LCPI_OS__CLSIDFromString(const_cast<wchar_t* const>(str_clsid.c_str()),pguid)==S_OK)
   return S_OK;
 
- return CLSIDFromProgID(str_clsid.c_str(),pguid);//second attempt
+ return LCPI_OS__CLSIDFromProgID(str_clsid.c_str(),pguid);//second attempt
 }//wstring_to_clsid
 
 //ANSI -------------------------------------------------------------------
@@ -68,10 +68,10 @@ HRESULT string_to_clsid(const structure::str_parameter _str_clsid,GUID* pguid)
 
  const std::wstring str_clsid(structure::ansi_to_unicode(_str_clsid.c_str()));
 
- if(CLSIDFromString(const_cast<std::wstring::value_type*>(str_clsid.c_str()),pguid)==S_OK)
+ if(LCPI_OS__CLSIDFromString(const_cast<std::wstring::value_type*>(str_clsid.c_str()),pguid)==S_OK)
   return S_OK;
 
- return CLSIDFromProgID(str_clsid.c_str(),pguid);//second attempt
+ return LCPI_OS__CLSIDFromProgID(str_clsid.c_str(),pguid);//second attempt
 }//string_to_clsid
 
 ////////////////////////////////////////////////////////////////////////////////

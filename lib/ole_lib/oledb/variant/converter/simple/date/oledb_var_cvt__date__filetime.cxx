@@ -14,7 +14,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(date,filetime)::internal__convert_value_to_fil
 
  SYSTEMTIME systime;
 
- if(!::VariantTimeToSystemTime(dbvar.dateVal,&systime))
+ if(LCPI_OS__VariantTimeToSystemTime(dbvar.dateVal,&systime)==FALSE)
   return DB_E_CANTCONVERTVALUE;
 
  if(!::SystemTimeToFileTime(&systime,&result->set_not_null().value()))

@@ -101,7 +101,7 @@ HRESULT t_base_ole_error::set_error_info(REFIID exc_riid)const
 
  assert(spErrorInfo);
 
- return ::SetErrorInfo(0L,spErrorInfo);
+ return LCPI_OS__SetErrorInfo(0L,spErrorInfo);
 }//set_error_info
 
 #endif

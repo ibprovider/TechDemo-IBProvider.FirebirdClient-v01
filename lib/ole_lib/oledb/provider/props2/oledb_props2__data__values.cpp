@@ -751,7 +751,7 @@ bool OLEDB_Props2__Data__Values::Internal__ExtractValue
  assert(pResultValue!=nullptr);
 
  HRESULT const hr
-  =::VariantChangeType
+  =LCPI_OS__VariantChangeType
     (pResultValue,
      const_cast<VARIANT*>(&sourceValue),
      0,

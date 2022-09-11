@@ -100,12 +100,12 @@ HRESULT SafeCreateInstance(REFCLSID        clsid,
  (*ppv)=nullptr;
 
  const HRESULT hr
-  =::CoCreateInstance
-      (clsid,
-       pUnkOuter,
-       dwClsContext,
-       riid,
-       ppv);
+  =LCPI_OS__CoCreateInstance
+    (clsid,
+     pUnkOuter,
+     dwClsContext,
+     riid,
+     ppv);
 
  if(hr!=S_OK)
  {

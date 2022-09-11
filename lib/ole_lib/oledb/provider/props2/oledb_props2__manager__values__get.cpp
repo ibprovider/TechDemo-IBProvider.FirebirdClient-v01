@@ -341,7 +341,7 @@ HRESULT OLEDB_Props2__Manager__Values::GetProperties
 
    assert(pDbProp==_eDbProp);
 
-   ::CoTaskMemFree(pDestDbSet->rgProperties);
+   LCPI_OS__CoTaskMemFree(pDestDbSet->rgProperties);
   }//for pDestDbSet
 
   assert(pDestDbSet==_eDestDbSet);

@@ -1957,13 +1957,13 @@ TDBPropertySetBuffer& TDBPropertySetBuffer::Clear()
     _VERIFY_EQ(ole_lib::Variant_Clear(&pProp->vValue),S_OK);
    }
 
-   ::CoTaskMemFree(pSet->rgProperties);
+   LCPI_OS__CoTaskMemFree(pSet->rgProperties);
 
    pSet->rgProperties=NULL;
    pSet->cProperties=0;
   }//for pSet
 
-  ::CoTaskMemFree(m_pPropSets);
+  LCPI_OS__CoTaskMemFree(m_pPropSets);
  }//if m_pPropSets!=NULL
 
  m_pPropSets=NULL;
@@ -2042,7 +2042,7 @@ TDBPropertyInfoSetBuffer& TDBPropertyInfoSetBuffer::Clear()
 {
  if(m_pStringBuffer!=NULL)
  {
-  ::CoTaskMemFree(m_pStringBuffer);
+  LCPI_OS__CoTaskMemFree(m_pStringBuffer);
 
   m_pStringBuffer=NULL;
  }
@@ -2073,16 +2073,16 @@ TDBPropertyInfoSetBuffer& TDBPropertyInfoSetBuffer::Clear()
     _VERIFY_EQ(ole_lib::Variant_Clear(&iProp->vValues),S_OK);
    }//for iProp
 
-   ::CoTaskMemFree(iSet->rgPropertyInfos);
+   LCPI_OS__CoTaskMemFree(iSet->rgPropertyInfos);
 
    iSet->rgPropertyInfos=NULL;
    iSet->cPropertyInfos =0;
   }//for iSet
 
-  ::CoTaskMemFree(m_pPropInfoSets);
+  LCPI_OS__CoTaskMemFree(m_pPropInfoSets);
  }//if m_pPropInfoSets!=NULL
 
- m_cPropInfoSets=NULL;
+ m_cPropInfoSets=0;
  m_pPropInfoSets=NULL;
 
  return *this;
@@ -2174,7 +2174,7 @@ HRESULT TDBDataBufferUtils::FreeDataEx(DBTYPE      const wType,
      //Free the allocated block
      if((*ppByRef)!=NULL && (Flags&free_flag__byref)!=0)
      {
-      ::CoTaskMemFree(*ppByRef);
+      LCPI_OS__CoTaskMemFree(*ppByRef);
 
       (*ppByRef)=NULL;
      }
@@ -2199,7 +2199,8 @@ HRESULT TDBDataBufferUtils::FreeDataEx(DBTYPE      const wType,
       //Free the block of memory
       if(pVector->ptr!=NULL)
       {
-       ::CoTaskMemFree(pVector->ptr);
+       LCPI_OS__CoTaskMemFree(pVector->ptr);
+
        pVector->ptr=NULL;
       }
      }//if dbfree_vector

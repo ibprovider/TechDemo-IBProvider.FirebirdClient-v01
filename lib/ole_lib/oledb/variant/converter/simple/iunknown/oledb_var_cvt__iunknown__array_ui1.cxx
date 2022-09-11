@@ -44,7 +44,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(iunknown,array_ui1)::internal__convert_value_t
 
  ole_lib::TBaseSafeArray sa;
 
- sa.ref_sa()=::SafeArrayCreate(VT_UI1,1,&bound);
+ sa.ref_sa()=LCPI_OS__SafeArrayCreate(VT_UI1,1,&bound);
 
  if(sa.sa()==NULL)
   return E_FAIL;
@@ -53,8 +53,13 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(iunknown,array_ui1)::internal__convert_value_t
  {
   void* pvData=NULL;
 
-  if(::SafeArrayAccessData(sa,&pvData)!=S_OK)
+  HRESULT const hr
+   =LCPI_OS__SafeArrayAccessData(sa,&pvData);
+
+  if(FAILED(hr))
    return E_FAIL;
+
+  assert(hr==S_OK);
 
   const ole_lib::TSafeArrayAutoUnAccessData sa_auto_unaccess(sa);
 

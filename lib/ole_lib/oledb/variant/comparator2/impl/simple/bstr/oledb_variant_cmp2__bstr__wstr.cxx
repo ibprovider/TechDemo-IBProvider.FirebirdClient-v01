@@ -15,7 +15,7 @@ OLEDB_VARIANT_COMPARATOR2_CLASS__SIMPLE__COMPARE_VALUES(BSTR,WSTR)
  assert(v1.wType==DBTYPE_BSTR);
  assert(v2.wType==DBTYPE_WSTR);
 
- const size_t n1=(v1.bstrVal?::SysStringLen(v1.bstrVal):0);
+ const size_t n1=(v1.bstrVal?LCPI_OS__SysStringLen(v1.bstrVal):0);
 
  CHECK_READ_TYPED_PTR(v2.wstrVal.ptr,v2.wstrVal.len);
 

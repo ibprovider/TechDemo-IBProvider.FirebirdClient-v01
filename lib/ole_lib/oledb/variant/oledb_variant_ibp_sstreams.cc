@@ -113,7 +113,7 @@ HRESULT __stdcall basic_dbvariant_ibp_sstream<IInterface,PIID,TChar,Allocator>::
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pcchRead!=NULL)
   (*pcchRead)=0;
@@ -190,7 +190,7 @@ HRESULT __stdcall basic_dbvariant_ibp_sstream<IInterface,PIID,TChar,Allocator>::
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pcchWritten)
   (*pcchWritten)=0;

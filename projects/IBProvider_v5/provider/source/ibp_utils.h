@@ -122,17 +122,15 @@ class IBP_Utils
 
  public:
   template<typename TChar>
-  static bool TestChar_IsLatin(TChar ch);
+  static bool TestChar_IsLatin(TChar ch)=delete;
 
   template<typename TChar>
-  static bool TestChar_IsDigit(TChar ch);
+  static bool TestChar_IsDigit(TChar ch)=delete;
 
  public:
-  template<>
-  static bool TestChar_IsLatin<wchar_t>(wchar_t ch);
+  static bool TestChar_IsLatin(wchar_t ch);
 
-  template<>
-  static bool TestChar_IsDigit<wchar_t>(wchar_t ch);
+  static bool TestChar_IsDigit(wchar_t ch);
 
  public:
   static bool IsValidCharsetName

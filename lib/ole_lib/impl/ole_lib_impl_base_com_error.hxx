@@ -44,7 +44,7 @@ class t_base_com_error:virtual public structure::t_exception
 
 #if(OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO!=0)
   /// <summary>
-  ///  Registration of object with error information (call ::SetErrorInfo). Can throw.
+  ///  Registration of object with error information (call LCPI_OS__SetErrorInfo). Can throw.
   /// </summary>
   //! \param[in] exc_iid
   //! \return

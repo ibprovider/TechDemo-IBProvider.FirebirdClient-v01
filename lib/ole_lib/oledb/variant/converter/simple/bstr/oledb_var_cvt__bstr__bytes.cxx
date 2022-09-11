@@ -12,7 +12,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,bytes)::internal__convert_value_to_bytes
  assert(dbvar.TestDataStatus__IsOK());
  assert(result!=NULL);
 
- const size_t bstrLen=dbvar.bstrVal?::SysStringByteLen(dbvar.bstrVal):0;
+ const size_t bstrLen=dbvar.bstrVal?LCPI_OS__SysStringByteLen(dbvar.bstrVal):0;
 
  CHECK_READ_PTR(dbvar.bstrVal,bstrLen);
 

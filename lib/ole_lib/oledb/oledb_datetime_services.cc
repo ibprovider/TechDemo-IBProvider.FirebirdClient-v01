@@ -854,7 +854,7 @@ bool str_to_date(t_oledb_value__DATE* const date,const charT* str,size_t n)
 
  t_oledb_value__DATE tmp;
 
- if(!::SystemTimeToVariantTime(&systime,&tmp))
+ if(LCPI_OS__SystemTimeToVariantTime(&systime,&tmp)==FALSE)
   return false;
 
  (*date)=tmp;

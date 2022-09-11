@@ -5,29 +5,18 @@
 #ifndef _ole_lib_H_
 #define _ole_lib_H_
 
-#include <ole_lib/ole_ptr_std.h>
+#ifdef OLE_LIB_NO_OLE_AUTO
+#else
+# include <ole_lib/ole_auto/ole_auto_type_info__cache.h>
+#endif
+
+# include <ole_lib/ole_ptr_std.h>
 
 #include <structure/t_smart_vector.h>
 
 #include <structure/stl/t_stl_map.h>
 
 namespace ole_lib{
-////////////////////////////////////////////////////////////////////////////////
-//content
-
-#ifndef OLE_LIB_NO_OLE_AUTO
-
-template<class Allocator>
-class TTypeInfoAccelerator;
-
-template<class Allocator>
-class TTypeInfoCacheItem;
-
-template<class Allocator>
-class TTypeInfoCache;
-
-#endif //OLE_LIB_NO_OLE_AUTO
-
 ////////////////////////////////////////////////////////////////////////////////
 //include files with implementations
 
@@ -40,15 +29,6 @@ class TTypeInfoCache;
 #include <ole_lib/impl/ole_lib_impl_template_unknown2.hxx>
 #include <ole_lib/impl/ole_lib_impl_class_factory.hxx>
 
-#ifndef OLE_LIB_NO_OLE_AUTO
-
-#include <ole_lib/impl/ole_lib_impl_type_info__attr.hxx>
-#include <ole_lib/impl/ole_lib_impl_type_info__func_desc.hxx>
-#include <ole_lib/impl/ole_lib_impl_type_info__accelerator.hxx>
-#include <ole_lib/impl/ole_lib_impl_type_info__cache.hxx>
-
-#endif
-
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef OLE_LIB_NO_COM_MODULE
@@ -58,10 +38,4 @@ extern TComModule _Module;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace ole_lib
-
-////////////////////////////////////////////////////////////////////////////////
-#include <ole_lib/ole_lib.cc>
-////////////////////////////////////////////////////////////////////////////////
 #endif
-
-

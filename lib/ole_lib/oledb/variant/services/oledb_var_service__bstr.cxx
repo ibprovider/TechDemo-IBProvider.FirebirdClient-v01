@@ -59,10 +59,10 @@ HRESULT t_oledb_type_service_BSTR::internal__get_data__ok
  {
   assert(cbMemSize>=sizeof(value_type));
 
-  const UINT           wstr_len =dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0;
+  const UINT           wstr_len =dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0;
   const wchar_t* const wstr     =dbvar.bstrVal?dbvar.bstrVal:L"";
 
-  (*reinterpret_cast<BSTR*>(pBuffer))=::SysAllocStringLen(wstr,wstr_len); /*!*/
+  (*reinterpret_cast<BSTR*>(pBuffer))=LCPI_OS__SysAllocStringLen(wstr,wstr_len); /*!*/
 
   if((*reinterpret_cast<BSTR*>(pBuffer))==NULL) //ошибка выделения памяти
   {
@@ -203,7 +203,7 @@ std::wstring t_oledb_type_service_BSTR::get_print_wstr(const DBVARIANT& dbvar)co
  }
  else
  {
-  const UINT lenBStr=::SysStringLen(dbvar.bstrVal);
+  const UINT lenBStr=LCPI_OS__SysStringLen(dbvar.bstrVal);
 
   CHECK_READ_TYPED_PTR(dbvar.bstrVal,lenBStr);
 

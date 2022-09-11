@@ -106,7 +106,7 @@ HRESULT __stdcall basic_dbvariant_sstream<Allocator>::Read(void*  const pv,
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pcbRead!=NULL)
   (*pcbRead)=0;
@@ -177,7 +177,7 @@ HRESULT __stdcall basic_dbvariant_sstream<Allocator>::Write(const void* const pv
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pcbWritten)
   (*pcbWritten)=0;

@@ -8,7 +8,7 @@ HRESULT DBVARIANT_CVT_UTILS::EmptyBStr(value_cpp_bstr_n_type* const result)
 {
  assert(result);
 
- BSTR bstrTmp=::SysAllocStringLen(L"",0);
+ BSTR bstrTmp=LCPI_OS__SysAllocStringLen(L"",0);
 
  if(bstrTmp==NULL)
   return E_OUTOFMEMORY;

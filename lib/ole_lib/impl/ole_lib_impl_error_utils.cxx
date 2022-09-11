@@ -42,7 +42,7 @@ HRESULT BuildExcepInfo(HRESULT hr,EXCEPINFO* const pExcepInfo)
 
   IErrorInfoPtr spEI;
 
-  if(SUCCEEDED(::GetErrorInfo(0,&spEI.ref_ptr())) && spEI)
+  if(SUCCEEDED(LCPI_OS__GetErrorInfo(0,&spEI.ref_ptr())) && spEI)
   {
    TBSTR tmpSource;
    TBSTR tmpDescription;

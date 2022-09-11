@@ -51,7 +51,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__named_param_prefix::ExtractV
 
  assert(tmpValue.vt==VT_BSTR);
 
- const size_t sz=tmpValue.bstrVal?::SysStringLen(tmpValue.bstrVal):0;
+ const size_t sz=tmpValue.bstrVal?LCPI_OS__SysStringLen(tmpValue.bstrVal):0;
 
  if(sz==0)
  {

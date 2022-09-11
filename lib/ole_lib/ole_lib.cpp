@@ -16,13 +16,6 @@ namespace ole_lib{
 #include <ole_lib/impl/ole_lib_impl_base_unknown2__with_free_thread_marshaler.cxx>
 #include <ole_lib/impl/ole_lib_impl_class_factory.cxx>
 
-#ifndef OLE_LIB_NO_OLE_AUTO
-
-#include <ole_lib/impl/ole_lib_impl_type_info__attr.cxx>
-#include <ole_lib/impl/ole_lib_impl_type_info__func_desc.cxx>
-
-#endif
-
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef OLE_LIB_NO_COM_MODULE

@@ -25,7 +25,7 @@ HRESULT DBVARIANT_CVT_UTILS::BytesToArrayUI1(const void* const pvBuffer,
 
  ole_lib::TBaseSafeArray sa;
 
- sa.ref_sa()=::SafeArrayCreate(VT_UI1,1,&bound);
+ sa.ref_sa()=LCPI_OS__SafeArrayCreate(VT_UI1,1,&bound);
 
  if(sa.sa()==NULL)
   return E_FAIL;
@@ -34,8 +34,13 @@ HRESULT DBVARIANT_CVT_UTILS::BytesToArrayUI1(const void* const pvBuffer,
  {
   void* pvData=NULL;
 
-  if(::SafeArrayAccessData(sa,&pvData)!=S_OK)
+  HRESULT const hr
+   =LCPI_OS__SafeArrayAccessData(sa,&pvData);
+
+  if(FAILED(hr))
    return E_FAIL;
+
+  assert(hr==S_OK);
 
   const ole_lib::TSafeArrayAutoUnAccessData sa_auto_unaccess(sa);
 

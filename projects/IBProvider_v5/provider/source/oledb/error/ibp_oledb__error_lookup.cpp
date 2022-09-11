@@ -54,7 +54,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetErrorDescription
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrSource!=nullptr)
   (*pbstrSource)=nullptr;
@@ -146,7 +146,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetHelpInfo
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrHelpFile!=nullptr)
   (*pbstrHelpFile)=nullptr;
@@ -166,7 +166,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::ReleaseErrors
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  return S_OK;
 }//ReleaseErrors

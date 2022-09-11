@@ -516,7 +516,7 @@ HRESULT basic_dbvariant<Allocator>::assign_as_ARRAY
 
   if(pElementTypeInfo->FixedLen())
   {
-   const UINT cbElement=::SafeArrayGetElemsize(dest.arrayVal2.ptr);
+   const UINT cbElement=LCPI_OS__SafeArrayGetElemsize(dest.arrayVal2.ptr);
 
    assert_msg(pElementTypeInfo->Size==cbElement,
               "wElementType="<<wElementType<<"\n"

@@ -26,8 +26,10 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bytes,bstr)::internal__convert_value_to_bstr
 
  assert(static_cast<UINT>(dbvar.bytesVal.byte_count())==dbvar.bytesVal.byte_count());
 
- BSTR bstrTmp=::SysAllocStringByteLen(reinterpret_cast<char*>(dbvar.bytesVal.ptr),
-                                      static_cast<UINT>(dbvar.bytesVal.byte_count()));
+ BSTR bstrTmp
+  =LCPI_OS__SysAllocStringByteLen
+     (reinterpret_cast<char*>(dbvar.bytesVal.ptr),
+      static_cast<UINT>(dbvar.bytesVal.byte_count()));
 
  if(bstrTmp==NULL)
   return E_OUTOFMEMORY;

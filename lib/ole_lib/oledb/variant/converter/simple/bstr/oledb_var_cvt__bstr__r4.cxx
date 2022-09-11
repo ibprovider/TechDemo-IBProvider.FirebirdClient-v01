@@ -12,7 +12,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,r4)::internal__convert_value_to_r4
  assert(dbvar.TestDataStatus__IsOK());
  assert(result!=NULL);
 
- const size_t bstrLen=(dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0);
+ const size_t bstrLen=(dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0);
 
  double tmp(0);
 

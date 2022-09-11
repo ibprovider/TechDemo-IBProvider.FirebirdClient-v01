@@ -47,7 +47,7 @@ HRESULT TOleStatus::set_disp_error(HRESULT hr,bool use_error_info,const std::str
 
   IErrorInfoPtr spErrorInfo;
 
-  if(::GetErrorInfo(0,&spErrorInfo.ref_ptr())==NOERROR && spErrorInfo)
+  if(LCPI_OS__GetErrorInfo(0,&spErrorInfo.ref_ptr())==NOERROR && spErrorInfo)
   {
    TBSTR bstr;
 

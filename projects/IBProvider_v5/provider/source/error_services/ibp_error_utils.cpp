@@ -212,7 +212,7 @@ HRESULT IBP_SetErrorInfo(REFCLSID                     ProviderCLSID,
   needSetErrorInfo=true; //у нас уже были какие-то ошибки
 
  if(needSetErrorInfo)
-  return ::SetErrorInfo(0L,spErrorObject);
+  return LCPI_OS__SetErrorInfo(0L,spErrorObject);
 
  //были проблемы с регистрацией ошибок
  return E_FAIL;

@@ -16,7 +16,7 @@ OLEDB_VARIANT_COMPARATOR2_CLASS__SIMPLE__COMPARE_VALUES(BSTR,STR)
  assert(v2.wType==DBTYPE_STR);
 
  //------
- const size_t n1=(v1.bstrVal?::SysStringLen(v1.bstrVal):0);
+ const size_t n1=(v1.bstrVal?LCPI_OS__SysStringLen(v1.bstrVal):0);
 
  //------
  std::wstring wstrVal2;

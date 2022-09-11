@@ -12,6 +12,9 @@
 #include <structure/t_const_str_box.h>
 #include <structure/t_exception.h>
 
+#include <lcpi/infrastructure/os/windows-ole32.h>
+#include <lcpi/infrastructure/os/windows-oleaut32.h>
+
 #include <olectl.h>
 //#include <oleidl.h>
 
@@ -58,17 +61,12 @@ using structure::t_string;
 ////////////////////////////////////////////////////////////////////////////////
 //Include declarations files
 
-#include <ole_lib/impl/ole_lib_impl_com_initialize.hxx>
-#include <ole_lib/impl/ole_lib_impl_ole_initialize.hxx>
-
 #include <ole_lib/impl/ole_lib_impl_co_task_memory.hxx>
 
 #include <ole_lib/impl/ole_lib_impl_clipboard_formats.hxx>
 
 #include <ole_lib/impl/ole_lib_impl_test_utils.hxx>
 #include <ole_lib/impl/ole_lib_impl_guid_utils.hxx>
-#include <ole_lib/impl/ole_lib_impl_type_utils.hxx>
-#include <ole_lib/impl/ole_lib_impl_copy_utils.hxx>
 
 #include <ole_lib/impl/ole_lib_impl_bstr_utils.hxx>
 #include <ole_lib/impl/ole_lib_impl_bstr.hxx>

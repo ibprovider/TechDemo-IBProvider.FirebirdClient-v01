@@ -64,7 +64,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorElementWrapper::GetErrorDescription
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrSource!=NULL)
   (*pbstrSource)=NULL;

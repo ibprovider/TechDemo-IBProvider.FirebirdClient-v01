@@ -137,7 +137,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(iunknown,bstr)::tag_cvt_funcs::from_ibp_ss_wc
 
  ole_lib::TBSTR tmp;
 
- tmp.ref_bstr()=::SysAllocStringByteLen(NULL,static_cast<UINT>(cBytes));
+ tmp.ref_bstr()=LCPI_OS__SysAllocStringByteLen(NULL,static_cast<UINT>(cBytes));
 
  if(tmp.bstr()==NULL)
   return E_OUTOFMEMORY;
@@ -196,7 +196,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(iunknown,bstr)::tag_cvt_funcs::from_ss
 
  ole_lib::TBSTR tmp;
 
- tmp.ref_bstr()=::SysAllocStringByteLen(NULL,static_cast<UINT>(cBytes));
+ tmp.ref_bstr()=LCPI_OS__SysAllocStringByteLen(NULL,static_cast<UINT>(cBytes));
 
  if(tmp.bstr()==NULL)
   return E_OUTOFMEMORY;

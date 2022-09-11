@@ -156,96 +156,96 @@ DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_date,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__DATE)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_DATE)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_bstr,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__BSTR)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_BSTR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_variant,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__VARIANT)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_VARIANT)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_iunknown,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__IUNKNOWN)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_IUNKNOWN)
 
 //------------------------------------------------------------------------ [copy]
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_copy,
                                             array_filetime,
                                             array_filetime,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_FILETIME)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_bytes,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__BYTES)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_BYTES)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_str,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__STR)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_STR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_wstr,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__WSTR)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_WSTR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_dbdate,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__DBDATE)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_DBDATE)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_dbtime,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIME)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_DBTIME)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_dbtimestamp,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIMESTAMP)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_DBTIMESTAMP)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_filetime,
                                             array_dbtime2,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIME2)
+                                            oledb_typeid__ARRAY_FILETIME,
+                                            oledb_typeid__ARRAY_DBTIME2)
 
 //------------------------------------------------------------------------
 static const DBVARIANT::LPCTYPECONVERTER g_converters__array_filetime_to_array[146]=

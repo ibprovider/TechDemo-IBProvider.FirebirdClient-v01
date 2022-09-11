@@ -54,8 +54,11 @@ HRESULT TBaseUnknown2_WithFreeThreadMarshaler::Helper__Create_IMarshal()
 {
  IUnknown* pUnk(NULL);
 
- const HRESULT hr=::CoCreateFreeThreadedMarshaler(this->GetOuterUnknown(),
-                                                  &pUnk);
+ const HRESULT hr
+  =LCPI_OS__CoCreateFreeThreadedMarshaler
+    (this->GetOuterUnknown(),
+     &pUnk);
+
  if(FAILED(hr))
  {
   ODS_LEVEL_3("ERROR: Can't create free thread marshaler hr=0x"<<std::hex<<hr);

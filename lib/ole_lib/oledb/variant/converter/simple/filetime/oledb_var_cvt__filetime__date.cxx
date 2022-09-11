@@ -17,7 +17,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(filetime,date)::internal__convert_value_to_dat
  if(!::FileTimeToSystemTime(&dbvar.filetimeVal,&st))
   return DB_E_CANTCONVERTVALUE;
 
- if(!::SystemTimeToVariantTime(&st,&result->set_not_null().value()))
+ if(LCPI_OS__SystemTimeToVariantTime(&st,&result->set_not_null().value())==FALSE)
   return DB_E_CANTCONVERTVALUE;
 
  return S_OK;

@@ -119,10 +119,15 @@ static HRESULT Variant_Copy_BSTR(VARIANT* pDest,const VARIANT* pSource)
 
  if(pSource->bstrVal!=NULL)
  {
-  bstr.ref_bstr()=::SysAllocStringLen(pSource->bstrVal,::SysStringLen(pSource->bstrVal));
+  BSTR const tmp
+   =LCPI_OS__SysAllocStringLen
+     (pSource->bstrVal,
+      LCPI_OS__SysStringLen(pSource->bstrVal));
 
-  if(bstr.bstr()==NULL)
+  if(tmp==nullptr)
    return E_OUTOFMEMORY;
+
+  bstr.ref_bstr()=tmp;
  }//if
 
  {
@@ -810,11 +815,15 @@ HRESULT Variant_CopyInd_ByRef_BSTR(VARIANT* pDest,const VARIANT* pSource) // !!!
  {
   if((*pSource->pbstrVal)!=NULL)                                          // !!!
   {
-   x.ref_bstr()=::SysAllocStringLen((*pSource->pbstrVal),
-                                    ::SysStringLen(*pSource->pbstrVal));
+   BSTR const tmp
+    =LCPI_OS__SysAllocStringLen
+      (*(pSource->pbstrVal),
+       LCPI_OS__SysStringLen(*(pSource->pbstrVal)));
 
-   if(x.bstr()==NULL)
+   if(tmp==nullptr)
     return E_OUTOFMEMORY;
+
+   x.ref_bstr()=tmp;
   }
  }//if
 
@@ -1403,7 +1412,7 @@ DEF_VAR_TYPE_INFO(BYREF_UINT_PTR,
 DEF_VAR_TYPE_INFO(BYREF_FILETIME,
                   VT_BYREF|VT_FILETIME,
                   sizeof(FILETIME*),
-                  DBTYPE_BYREF|DBTYPE_FILETIME,
+                  DBTYPE(DBTYPE_BYREF)|DBTYPE(DBTYPE_FILETIME),
                   NULL,
                   NULL,
                   NULL);

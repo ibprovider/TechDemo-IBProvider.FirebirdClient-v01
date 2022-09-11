@@ -10,7 +10,7 @@ TBSTR& TBSTR::AllocStringLenEx(LPCWSTR const str,size_type const sz)
  if(!structure::can_numeric_cast<sys_size_type>(sz))
   throw std::bad_alloc();
 
- BSTR tmp_bstr=::SysAllocStringLen(str,static_cast<sys_size_type>(sz));
+ BSTR tmp_bstr=LCPI_OS__SysAllocStringLen(str,static_cast<sys_size_type>(sz));
 
  if(tmp_bstr==NULL)
   throw std::bad_alloc();

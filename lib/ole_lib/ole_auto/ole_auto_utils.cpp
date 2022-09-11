@@ -12,6 +12,7 @@
 #include <ole_lib/ole_auto/ole_auto_variant_type_info.h>
 #include <ole_lib/ole_ptr.h>
 #include <structure/t_str_formatter.h>
+
 #include <vector>
 
 namespace ole_lib{
@@ -118,7 +119,7 @@ HRESULT Variant_Clear(VARIANT* const pVariant)
  if(pVariantTypeInfo && pVariantTypeInfo->pfVariantClear)
   return pVariantTypeInfo->pfVariantClear(pVariant);
 
- return ::VariantClear(pVariant);
+ return LCPI_OS__VariantClear(pVariant);
 }//Variant_Clear
 
 //------------------------------------------------------------------------
@@ -139,7 +140,7 @@ HRESULT Variant_Copy(VARIANT* const pDest,const VARIANT* const pSource)
  if(pVariantTypeInfo && pVariantTypeInfo->pfVariantCopy)
   return pVariantTypeInfo->pfVariantCopy(pDest,pSource);
 
- return ::VariantCopy(pDest,const_cast<VARIANT*>(pSource));
+ return LCPI_OS__VariantCopy(pDest,const_cast<VARIANT*>(pSource));
 }//Variant_Copy
 
 //------------------------------------------------------------------------
@@ -157,7 +158,7 @@ HRESULT Variant_CopyInd(VARIANT* const pDest,const VARIANT* const pSource)
  if(pVariantTypeInfo && pVariantTypeInfo->pfVariantCopyInd)
   return pVariantTypeInfo->pfVariantCopyInd(pDest,pSource);
 
- return ::VariantCopyInd(pDest,const_cast<VARIANT*>(pSource));
+ return LCPI_OS__VariantCopyInd(pDest,const_cast<VARIANT*>(pSource));
 }//Variant_CopyInd
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -299,7 +300,7 @@ HRESULT SafeArray_ClearElements(SAFEARRAY*          const pSA,
  assert(pSA);
  assert(pfCleaner);
 
- const UINT cDim=::SafeArrayGetDim(pSA);
+ const UINT cDim=LCPI_OS__SafeArrayGetDim(pSA);
 
  size_t n=cDim?1:0;
 
@@ -308,7 +309,7 @@ HRESULT SafeArray_ClearElements(SAFEARRAY*          const pSA,
   n=n*pSA->rgsabound[iDim].cElements;
  }//for iDim
 
- const UINT cbElement=::SafeArrayGetElemsize(pSA);
+ const UINT cbElement=LCPI_OS__SafeArrayGetElemsize(pSA);
 
  if(cbElement==0)
   return E_FAIL;
@@ -344,7 +345,7 @@ HRESULT SafeArray_Destroy(SAFEARRAY* const pSA)
  if(pSA==NULL)
   return S_OK;
 
- const UINT cbElement=::SafeArrayGetElemsize(pSA);
+ const UINT cbElement=LCPI_OS__SafeArrayGetElemsize(pSA);
 
  PFSafeArray_Cleaner pfCleaner=NULL;
 
@@ -384,7 +385,7 @@ HRESULT SafeArray_Destroy(SAFEARRAY* const pSA)
    return clear_hr;
  }//if
 
- return ::SafeArrayDestroy(pSA);
+ return LCPI_OS__SafeArrayDestroy(pSA);
 }//SafeArray_Destroy
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -398,12 +399,12 @@ static HRESULT SafeArray_Copy_Variant(SAFEARRAY*  const pSA,
 
  (*pout)=NULL;
 
- const UINT cbSourceElement=::SafeArrayGetElemsize(pSA);
+ const UINT cbSourceElement=LCPI_OS__SafeArrayGetElemsize(pSA);
 
  if(cbSourceElement!=sizeof(VARIANT))
   return E_FAIL;
 
- const UINT cDim=::SafeArrayGetDim(pSA);
+ const UINT cDim=LCPI_OS__SafeArrayGetDim(pSA);
 
  size_t n=cDim?1:0;
 
@@ -420,13 +421,16 @@ static HRESULT SafeArray_Copy_Variant(SAFEARRAY*  const pSA,
 
  TBaseSafeArray target_sa;
 
- target_sa.ref_sa()=::SafeArrayCreate(VT_VARIANT,
-                                      cDim,
-                                      bound_vector.data());
+ target_sa.ref_sa()
+  =LCPI_OS__SafeArrayCreate
+    (VT_VARIANT,
+     cDim,
+     bound_vector.data());
+
  if(target_sa.sa()==NULL)
   return E_OUTOFMEMORY;
 
- const UINT cbTargetElement=::SafeArrayGetElemsize(target_sa);
+ const UINT cbTargetElement=LCPI_OS__SafeArrayGetElemsize(target_sa);
 
  assert(cbTargetElement==sizeof(VARIANT));
 
@@ -436,7 +440,7 @@ static HRESULT SafeArray_Copy_Variant(SAFEARRAY*  const pSA,
  //----------------
 #ifndef NDEBUG
  {
-  assert(::SafeArrayGetDim(target_sa)==cDim);
+  assert(LCPI_OS__SafeArrayGetDim(target_sa)==cDim);
 
   for(UINT x=0;x!=cDim;++x)
   {
@@ -521,7 +525,7 @@ HRESULT SafeArray_Copy(SAFEARRAY*  const pSA,
  if(get_vt_hr==S_OK && vt==VT_VARIANT)
   return ole_lib::SafeArray_Copy_Variant(pSA,pout);
 
- return ::SafeArrayCopy(pSA,pout);
+ return LCPI_OS__SafeArrayCopy(pSA,pout);
 }//SafeArray_Copy
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -533,7 +537,7 @@ HRESULT SafeArray_GetVarType(SAFEARRAY* const psa,
  if(psa==NULL || pElementType==NULL)
   return E_INVALIDARG;
 
- const UINT cbElement=::SafeArrayGetElemsize(psa);
+ const UINT cbElement=LCPI_OS__SafeArrayGetElemsize(psa);
 
  switch(psa->fFeatures&c_SafeArrayDataFeaturesMask)
  {
@@ -578,7 +582,7 @@ HRESULT SafeArray_GetVarType(SAFEARRAY* const psa,
   }//case FADF_VARIANT
  }//switch
 
- return ::SafeArrayGetVartype(psa,pElementType);
+ return LCPI_OS__SafeArrayGetVartype(psa,pElementType);
 }//SafeArray_GetVarType
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -26,7 +26,7 @@ OLEDB_VARIANT_COMPARATOR2_CLASS__SIMPLE__COMPARE_VALUES(STR,BSTR)
   return DBVariantCmpCode__err__generic;
 
  //------
- const size_t n2=(v2.bstrVal?::SysStringLen(v2.bstrVal):0);
+ const size_t n2=(v2.bstrVal?LCPI_OS__SysStringLen(v2.bstrVal):0);
 
  //------
  return DBValueComparator::compare__str

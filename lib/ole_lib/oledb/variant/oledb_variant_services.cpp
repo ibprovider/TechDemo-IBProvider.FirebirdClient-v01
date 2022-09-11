@@ -227,7 +227,8 @@ t_oledb_type_service_ARRAY_##dbtype::length_type                              \
  (                                                                            \
   if(dbvar.arrayVal2.ptr!=NULL)                                               \
   {                                                                           \
-   const UINT x=::SafeArrayGetElemsize(dbvar.arrayVal2.ptr);                  \
+   const UINT x=LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr);           \
+                                                                              \
    assert_msg(x==sizeof(element_type),                                        \
               "Elemsize="<<x<<"\n"                                            \
               "sizeof  ="<<sizeof(element_type));                             \
@@ -325,7 +326,7 @@ t_oledb_type_service_ARRAY_STR::length_type
  if(dbvar.arrayVal2.ptr==NULL)
   return 0;
 
- return ::SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
+ return LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
 }//ARRAY_STR::internal__get_length__ok
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -341,7 +342,7 @@ t_oledb_type_service_ARRAY_WSTR::length_type
  if(dbvar.arrayVal2.ptr==NULL)
   return 0;
 
- return ::SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
+ return LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
 }//ARRAY_WSTR::internal__get_length__ok
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -357,7 +358,7 @@ t_oledb_type_service_ARRAY_BYTES::length_type
  if(dbvar.arrayVal2.ptr==NULL)
   return 0;
 
- return ::SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
+ return LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr)/sizeof(element_type);
 }//ARRAY_BYTES::internal__get_length__ok
 
 ////////////////////////////////////////////////////////////////////////////////

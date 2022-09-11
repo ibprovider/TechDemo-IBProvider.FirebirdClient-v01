@@ -289,7 +289,7 @@ HRESULT t_oledb_type_service_BYTES::set_element                           //!!!
 
  if(source.wType==DBTYPE_BSTR)
  {
-  DBVARIANT::size_type bstr_length=(source.bstrVal?::SysStringLen(source.bstrVal):0);
+  DBVARIANT::size_type bstr_length=(source.bstrVal?LCPI_OS__SysStringLen(source.bstrVal):0);
 
   DEBUG_CODE(size_t const debug__bstr_length__copy=bstr_length;)
 

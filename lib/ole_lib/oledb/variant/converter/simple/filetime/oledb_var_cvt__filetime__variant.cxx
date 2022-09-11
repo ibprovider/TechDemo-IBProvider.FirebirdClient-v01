@@ -20,7 +20,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(filetime,variant)::internal__convert_value_to_
 
  DATE dt;
 
- if(!::SystemTimeToVariantTime(&st,&dt))
+ if(LCPI_OS__SystemTimeToVariantTime(&st,&dt)==FALSE)
   return DB_E_CANTCONVERTVALUE;
 
  //----------------------------------

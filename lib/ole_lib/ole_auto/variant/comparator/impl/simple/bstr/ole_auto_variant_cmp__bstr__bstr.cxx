@@ -15,8 +15,8 @@ OLE_AUTO_VARIANT_COMPARATOR_CLASS__SIMPLE__EXEC(BSTR,BSTR)
  assert(v1.vt==VT_BSTR);
  assert(v2.vt==VT_BSTR);
 
- const UINT l1=(v1.bstrVal?::SysStringLen(v1.bstrVal):0);
- const UINT l2=(v2.bstrVal?::SysStringLen(v2.bstrVal):0);
+ const UINT l1=(v1.bstrVal?LCPI_OS__SysStringLen(v1.bstrVal):0);
+ const UINT l2=(v2.bstrVal?LCPI_OS__SysStringLen(v2.bstrVal):0);
 
  const OLECHAR*       p1=v1.bstrVal;
  const OLECHAR* const e1=p1+l1;

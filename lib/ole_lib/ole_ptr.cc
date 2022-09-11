@@ -382,7 +382,7 @@ HRESULT IPtr<T,piid>::CreateInstance(REFCLSID        clsid,
 
  interface_type* pI=NULL;
 
- m_hr=::CoCreateInstance(clsid,pUnkOuter,clsContext,iid(),reinterpret_cast<void**>(&pI));
+ m_hr=LCPI_OS__CoCreateInstance(clsid,pUnkOuter,clsContext,iid(),reinterpret_cast<void**>(&pI));
 
  if(m_hr!=NOERROR)
   return m_hr;

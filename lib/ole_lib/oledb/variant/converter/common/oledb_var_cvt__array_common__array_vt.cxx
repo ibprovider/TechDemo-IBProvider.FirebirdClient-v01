@@ -39,7 +39,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_vt)::internal__convert_valu
   return E_FAIL;
 
  //---------
- const UINT SourceElementSize=::SafeArrayGetElemsize(dbvar.arrayVal2.ptr);
+ const UINT SourceElementSize=LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr);
 
  if((SourceElementSize==0) ||
     (lpSourceElementTypeInfo->FixedLen() && SourceElementSize!=lpSourceElementTypeInfo->Size))
@@ -82,7 +82,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_vt)::internal__convert_valu
 
  ole_lib::TBaseSafeArray sa;
 
- const UINT cDim=::SafeArrayGetDim(dbvar.arrayVal2.ptr);
+ const UINT cDim=LCPI_OS__SafeArrayGetDim(dbvar.arrayVal2.ptr);
 
  size_t n=cDim?1:0;
 
@@ -97,12 +97,13 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_vt)::internal__convert_valu
   bound_vector.push_back(dbvar.arrayVal2.ptr->rgsabound[cDim-x-1]);
  }//if
 
- const HRESULT create_sa_hr=oledb_lib::DBVariant_CreateArray
-                                        (TargetElementType,
-                                         TargetElementSize,
-                                         cDim,
-                                         bound_vector.data(),
-                                         &sa.ref_sa());
+ const HRESULT create_sa_hr
+  =oledb_lib::DBVariant_CreateArray
+    (TargetElementType,
+     TargetElementSize,
+     cDim,
+     bound_vector.data(),
+     &sa.ref_sa());
 
  if(FAILED(create_sa_hr))
   return E_FAIL;
@@ -110,7 +111,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_vt)::internal__convert_valu
  if(sa.sa()==NULL)
   return E_FAIL;
 
- TargetElementSize=::SafeArrayGetElemsize(sa);
+ TargetElementSize=LCPI_OS__SafeArrayGetElemsize(sa);
 
  //---------
  ole_lib::TSafeArrayAccessor dest_accessor(sa,false);

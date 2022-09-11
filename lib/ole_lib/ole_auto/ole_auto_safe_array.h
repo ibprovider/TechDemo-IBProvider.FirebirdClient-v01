@@ -12,8 +12,10 @@
 #endif
 
 #include "structure/t_common.h"
+
 #include <vector>
-#include <OleAuto.h>
+
+#include <lcpi/infrastructure/os/windows-oleaut32.h>
 
 namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////

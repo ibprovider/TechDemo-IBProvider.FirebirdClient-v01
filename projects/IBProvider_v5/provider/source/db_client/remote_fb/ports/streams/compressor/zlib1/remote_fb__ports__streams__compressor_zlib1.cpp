@@ -180,8 +180,6 @@ RemoteFB__PortStreamPtr
   throw std::bad_alloc();
 
  //-----------------------------------------
- const size_t offset_write_buf=total_sz;
-
  if(!structure::append_memory_size(total_sz,cbBuffer))
   throw std::bad_alloc();
 

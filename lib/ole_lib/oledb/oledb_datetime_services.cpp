@@ -217,24 +217,34 @@ bool dbdate_to_date(const DBDATE& dbdate,DATE& date)
  if(!dbdate_to_systime(dbdate,&systime))
   return false;
 
- return ::SystemTimeToVariantTime(&systime,&date)!=FALSE;
+ if(LCPI_OS__SystemTimeToVariantTime(&systime,&date)==FALSE)
+  return false;
+
+ return true;
 }//dbdate_to_date
 
 //------------------------------------------------------------------------
 bool dbtime_to_date(const DBTIME& dbtime,DATE& date)
 {
+ //TODO [2022-09-08] Delete this!
+
  SYSTEMTIME systime={};
 
  if(!dbtime_to_systime(dbtime,&systime))
   return false;
 
- return ::SystemTimeToVariantTime(&systime,&date)!=FALSE;
+ if(LCPI_OS__SystemTimeToVariantTime(&systime,&date)==FALSE)
+  return false;
+
+ return true;
 }//dbtime_to_date
 
 //------------------------------------------------------------------------
 bool dbtime2_to_date(const t_oledb_value__DBTIME2& dbtime2,
                      t_oledb_value__DATE*    const date)
 {
+ //TODO [2022-09-08] Delete this!
+
  assert(date);
 
  SYSTEMTIME systime={};
@@ -242,7 +252,10 @@ bool dbtime2_to_date(const t_oledb_value__DBTIME2& dbtime2,
  if(!dbtime2_to_systime(dbtime2,&systime))
   return false;
 
- return ::SystemTimeToVariantTime(&systime,date)!=FALSE;
+ if(LCPI_OS__SystemTimeToVariantTime(&systime,date)==FALSE)
+  return false;
+
+ return true;
 }//dbtime2_to_date
 
 //------------------------------------------------------------------------
@@ -253,7 +266,10 @@ bool dbstamp_to_date(const DBTIMESTAMP& stamp,DATE& date)
  if(!dbstamp_to_systime(stamp,&systime))
   return false;
 
- return ::SystemTimeToVariantTime(&systime,&date)!=FALSE;
+ if(LCPI_OS__SystemTimeToVariantTime(&systime,&date)==FALSE)
+  return false;
+
+ return true;
 }//dbstamp_to_date
 
 //------------------------------------------------------------------------
@@ -526,7 +542,7 @@ bool date_to_dbdate(const DATE& date,DBDATE& dbdate)
 {
  SYSTEMTIME systime={};
 
- if(!VariantTimeToSystemTime(date,&systime))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&systime)==FALSE)
   return false;
 
  dbdate.year  = systime.wYear  ;
@@ -541,7 +557,7 @@ bool date_to_dbtime(const DATE& date,DBTIME& dbtime)
 {
  SYSTEMTIME systime={};
 
- if(!VariantTimeToSystemTime(date,&systime))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&systime)==FALSE)
   return false;
 
  dbtime.hour   = systime.wHour   ;
@@ -558,7 +574,7 @@ bool date_to_dbtime2(const DATE& date,t_oledb_value__DBTIME2* const dbtime2)
 
  SYSTEMTIME systime={};
 
- if(!VariantTimeToSystemTime(date,&systime))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&systime)==FALSE)
   return false;
 
  dbtime2->hour     = systime.wHour   ;
@@ -576,7 +592,7 @@ bool date_to_dbstamp(const DATE& date,DBTIMESTAMP* const dbstamp)
 
  SYSTEMTIME systime={};
 
- if(!VariantTimeToSystemTime(date,&systime))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&systime)==FALSE)
   return false;
 
  return systime_to_dbstamp(systime,dbstamp);

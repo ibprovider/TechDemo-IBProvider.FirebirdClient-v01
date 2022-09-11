@@ -22,16 +22,20 @@ HRESULT basic_dbvariant<Allocator>::CreateArray_HR(DBTYPE    const             w
 
  ole_lib::TBaseSafeArray sa;
 
- HRESULT const hr=DBVariant_CreateArray(wElementType,
-                                        ElementLength,
-                                        cDim,
-                                        rgsaBound,
-                                        &sa.ref_sa());
+ HRESULT const hr
+  =DBVariant_CreateArray
+    (wElementType,
+     ElementLength,
+     cDim,
+     rgsaBound,
+     &sa.ref_sa());
+
  if(FAILED(hr))
   return hr;
 
- //устанавливаем указатель на массив
  assert(hr==S_OK);
+
+ //Setup a pointer to array
 
  this->Clear(); //throw?, can erase ElementIID.
 
@@ -97,11 +101,12 @@ HRESULT basic_dbvariant<Allocator>::SetArray_HR(DBTYPE       const wElementType,
  if(lpTypeInfo==NULL)
   return E_UNEXPECTED;
 
- if(lpArray!=NULL && lpTypeInfo->FixedLen() &&
-    lpTypeInfo->Size!=::SafeArrayGetElemsize(const_cast<LPSAFEARRAY>(lpArray)))
+ if(lpArray!=NULL &&
+    lpTypeInfo->FixedLen() &&
+    lpTypeInfo->Size!=LCPI_OS__SafeArrayGetElemsize(const_cast<LPSAFEARRAY>(lpArray)))
  {
   ODS_LEVEL_3("[ERR]: dbvariant::SetArray. Need size="<<lpTypeInfo->Size<<" "
-              "Obtained="<<::SafeArrayGetElemsize(const_cast<LPSAFEARRAY>(lpArray)));
+              "Obtained="<<LCPI_OS__SafeArrayGetElemsize(const_cast<LPSAFEARRAY>(lpArray)));
 
   return E_UNEXPECTED;//bad size of array element
  }

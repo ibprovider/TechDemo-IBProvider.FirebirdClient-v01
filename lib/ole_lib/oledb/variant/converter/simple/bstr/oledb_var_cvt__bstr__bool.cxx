@@ -19,7 +19,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,bool)::internal__convert_value_to_bool
  assert(result!=NULL);
 
  const wchar_t*        s=dbvar.bstrVal;
- const wchar_t* const _e=s+(dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0);
+ const wchar_t* const _e=s+(dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0);
 
  s=structure::miss_space2(s,_e);
 

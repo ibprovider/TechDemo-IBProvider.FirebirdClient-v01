@@ -261,8 +261,7 @@ bool IBP_Utils::TestProviderErrorRules__append_summary_info(long const rules)
 }//TestProviderErrorRules__append_summary_info
 
 //------------------------------------------------------------------------
-template<>
-bool IBP_Utils::TestChar_IsLatin<wchar_t>(wchar_t const ch)
+bool IBP_Utils::TestChar_IsLatin(wchar_t const ch)
 {
  if(L'a'<=ch && ch<=L'z')
   return true;
@@ -274,8 +273,7 @@ bool IBP_Utils::TestChar_IsLatin<wchar_t>(wchar_t const ch)
 }//TestChar_IsLatin
 
 //------------------------------------------------------------------------
-template<>
-bool IBP_Utils::TestChar_IsDigit<wchar_t>(wchar_t const ch)
+bool IBP_Utils::TestChar_IsDigit(wchar_t const ch)
 {
  if(L'0'<=ch && ch<=L'9')
   return true;

@@ -85,8 +85,10 @@ class TBSTR
    {return this->SetWStr(str);}
 
  public://selectors ------------------------------------------------------
-  HRESULT GetBStr(BSTR* const bstr)const
-   {return CopyBSTR(m_bstr,bstr);}
+#if 0 //[2022-09-08] It looks strange. Bye Bye.
+  HRESULT GetBStr(BSTR* const pbstr)const
+   {return CopyBSTR(m_bstr,pbstr);}
+#endif
 
   std::string    str() const {return ole_lib::BStrToString(m_bstr);}
   std::wstring  wstr() const {return ole_lib::BStrToWStr(m_bstr);}
@@ -129,7 +131,7 @@ class TBSTR
 
 inline TBSTR::size_type TBSTR::is_bstr::length()const
 {
- return this->value?::SysStringLen(this->value):0;
+ return this->value?LCPI_OS__SysStringLen(this->value):0;
 }//length
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -154,7 +156,7 @@ inline BSTR& TBSTR::ref_bstr(bool free)
 //------------------------------------------------------------------------
 inline TBSTR::size_type TBSTR::length()const
 {
- return m_bstr?::SysStringLen(m_bstr):0;
+ return m_bstr?LCPI_OS__SysStringLen(m_bstr):0;
 }//length
 
 //------------------------------------------------------------------------

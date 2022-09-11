@@ -64,7 +64,7 @@ inline TSafeArray::TSafeArray(VARTYPE               const vt,
 //------------------------------------------------------------------------
 inline UINT TSafeArray::GetDim()
 {
- return (m_psa==NULL)?0:(::SafeArrayGetDim(m_psa));
+ return (m_psa==NULL)?0:(LCPI_OS__SafeArrayGetDim(m_psa));
 }//GetDim
 
 ////////////////////////////////////////////////////////////////////////////////

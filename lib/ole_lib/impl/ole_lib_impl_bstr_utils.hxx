@@ -6,6 +6,8 @@
 
 void FreeBStr(BSTR& bstr);
 
+HRESULT CopyBStr2(BSTR Source,BSTR* pTarget);
+
 ////////////////////////////////////////////////////////////////////////////////
 //ANSI --> BSTR
 
@@ -36,13 +38,13 @@ inline HRESULT StringToBStr(BSTR* bstr,const std::string& source,bool create_emp
 
 inline std::string BStrToString(std::string* const result,const BSTR bstr)
 {
- return structure::unicode_to_ansi(result,bstr,(bstr?::SysStringLen(bstr):0));
+ return structure::unicode_to_ansi(result,bstr,(bstr?LCPI_OS__SysStringLen(bstr):0));
 }
 
 //------------------------------------------------------------------------
 inline std::string BStrToString(const BSTR bstr)
 {
- return structure::unicode_to_ansi(bstr,(bstr?::SysStringLen(bstr):0));
+ return structure::unicode_to_ansi(bstr,(bstr?LCPI_OS__SysStringLen(bstr):0));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +55,7 @@ inline std::wstring& BStrToWStr(std::wstring* const result,const BSTR source)
  if(!source)
   return result->clear(),*result;
 
- return result->assign(source,::SysStringLen(source));
+ return result->assign(source,LCPI_OS__SysStringLen(source));
 }//BStrToWStr
 
 //------------------------------------------------------------------------
@@ -62,7 +64,7 @@ inline std::wstring BStrToWStr(const BSTR source)
  if(!source)
   return std::wstring();
 
- return std::wstring(source,::SysStringLen(source));
+ return std::wstring(source,LCPI_OS__SysStringLen(source));
 }//BStrToWStr
 
 // UNICODE -> BSTR -------------------------------------------------------
@@ -137,7 +139,7 @@ inline HRESULT TStrToBStr(BSTR* bstr,const std::wstring& source,bool create_empt
 
 inline t_string BStrToTStr(const BSTR source)
 {
- return structure::wstr_to_tstr(source,source?::SysStringLen(source):0);
+ return structure::wstr_to_tstr(source,source?LCPI_OS__SysStringLen(source):0);
 }//BStrToTStr
 
 //------------------------------------------------------------------------
@@ -150,7 +152,7 @@ inline __STL_DEF_BASIC_STRING(charT) BStrToUnkStr(const BSTR bstr);
 template<>
 inline std::string BStrToUnkStr<char>(const BSTR bstr)
 {
- return structure::unicode_to_ansi(bstr,bstr?::SysStringLen(bstr):0);
+ return structure::unicode_to_ansi(bstr,bstr?LCPI_OS__SysStringLen(bstr):0);
 }//BStrToUnkStr<char>
 
 //------------------------------------------------------------------------
@@ -166,7 +168,7 @@ inline std::wstring BStrToUnkStr<wchar_t>(const BSTR bstr)
 
 inline structure::t_const_wstr_box BStrToBox(const BSTR bstr)
 {
- return structure::make_str_box(bstr,bstr?::SysStringLen(bstr):0);
+ return structure::make_str_box(bstr,bstr?LCPI_OS__SysStringLen(bstr):0);
 }//BStrToBox
 
 ////////////////////////////////////////////////////////////////////////////////

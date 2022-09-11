@@ -13,11 +13,12 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,array_ui1)::internal__convert_value_to_ar
  assert(dbvar.TestDataStatus__IsOK());
  assert(result!=NULL);
 
- const size_t bstrLen=(dbvar.bstrVal?::SysStringByteLen(dbvar.bstrVal):0);
+ const size_t bstrLen=(dbvar.bstrVal?LCPI_OS__SysStringByteLen(dbvar.bstrVal):0);
 
- return DBVARIANT_CVT_UTILS::BytesToArrayUI1(dbvar.bstrVal,
-                                             bstrLen,
-                                             result);
+ return DBVARIANT_CVT_UTILS::BytesToArrayUI1
+         (dbvar.bstrVal,
+          bstrLen,
+          result);
 }//internal__convert_value_to_array
 
 //------------------------------------------------------------------------

@@ -156,216 +156,216 @@ DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_i2,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__I2)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_I2)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_i4,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__I4)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_I4)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_r4,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__R4)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_R4)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_r8,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__R8)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_R8)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_cy,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__CY)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_CY)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_date,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DATE)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DATE)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_bstr,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__BSTR)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_BSTR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_bool,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__BOOL)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_BOOL)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_variant,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__VARIANT)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_VARIANT)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_iunknown,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__IUNKNOWN)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_IUNKNOWN)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_decimal,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DECIMAL)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DECIMAL)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_i1,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__I1)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_I1)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_ui1,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__UI1)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_UI1)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_ui2,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__UI2)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_UI2)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_ui4,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__UI4)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_UI4)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_i8,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__I8)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_I8)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_ui8,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__UI8)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_UI8)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_filetime,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__FILETIME)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_FILETIME)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_guid,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_GUID)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_bytes,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__BYTES)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_BYTES)
 
 //------------------------------------------------------------------------ [copy]
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_copy,
                                             array_str,
                                             array_str,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__STR)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_STR)
 
 //------------------------------------------------------------------------ [spec]
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_wstr,
                                             array_str,
                                             array_wstr,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__WSTR)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_WSTR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_numeric,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__NUMERIC)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_NUMERIC)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_dbdate,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DBDATE)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DBDATE)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_dbtime,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIME)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DBTIME)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_dbtimestamp,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIMESTAMP)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DBTIMESTAMP)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_str,
                                             array_dbtime2,
-                                            DBTYPE_ARRAY|oledb_typeid__STR,
-                                            DBTYPE_ARRAY|oledb_typeid__DBTIME2)
+                                            oledb_typeid__ARRAY_STR,
+                                            oledb_typeid__ARRAY_DBTIME2)
 
 //------------------------------------------------------------------------
 static const DBVARIANT::LPCTYPECONVERTER g_converters__array_str_to_array[146]=

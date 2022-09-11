@@ -13,8 +13,34 @@ void FreeBStr(BSTR& bstr)
 
  bstr=nullptr;
 
- ::SysFreeString(tmp);
+ LCPI_OS__SysFreeString(tmp);
 }//FreeBStr
+
+////////////////////////////////////////////////////////////////////////////////
+
+HRESULT CopyBStr2(BSTR Source,BSTR* const pTarget)
+{
+ assert(pTarget!=nullptr);
+
+ if(pTarget==nullptr)
+  return E_POINTER;
+
+ if((*pTarget)!=nullptr)
+  return E_POINTER;
+
+ if(Source==(*pTarget))
+  return S_OK;
+
+ if(Source!=nullptr)
+ {
+  (*pTarget)=LCPI_OS__SysAllocStringLen(Source,LCPI_OS__SysStringLen(Source));
+  
+  if((*pTarget)==nullptr)
+   return E_OUTOFMEMORY;
+ }//if
+
+ return S_OK;
+}//CopyBStr2
 
 ////////////////////////////////////////////////////////////////////////////////
 //Function for string conversion [OLE Automation]
@@ -42,7 +68,7 @@ BSTR StringToBStr(const char* source,
   if(!create_empty)
    return nullptr;  
  
-  if(BSTR const result=::SysAllocStringLen(nullptr,0))
+  if(BSTR const result=LCPI_OS__SysAllocStringLen(nullptr,0))
    return result;
 
   throw std::bad_alloc();
@@ -92,7 +118,7 @@ BSTR StringToBStr(const char* source,
  //----------------------------------------- FINISH
 
  //выделяем память без учета завершающего символа
- BSTR result=::SysAllocStringLen(nullptr,wlen);
+ BSTR result=LCPI_OS__SysAllocStringLen(nullptr,wlen);
 
  if(result==nullptr)
   throw std::bad_alloc();
@@ -214,7 +240,7 @@ BSTR WStrToBStr(const wchar_t* source,
  if(!structure::can_numeric_cast<UINT>(source_len))
   throw std::length_error("Length error in WStrToBstr");
 
- BSTR const result=::SysAllocStringLen(source,static_cast<UINT>(source_len));
+ BSTR const result=LCPI_OS__SysAllocStringLen(source,static_cast<UINT>(source_len));
 
  if(result==nullptr)
   throw std::bad_alloc();

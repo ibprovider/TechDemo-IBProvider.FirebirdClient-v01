@@ -641,7 +641,9 @@ HRESULT DBVARIANT::TCvtAdapter_Array::Detach()
  if(m_lpsa==NULL)
   return S_OK;
 
- const HRESULT hr=::SafeArrayUnaccessData(m_lpsa);
+ const HRESULT hr=LCPI_OS__SafeArrayUnaccessData(m_lpsa);
+
+ assert(hr==S_OK || FAILED(hr));
 
  if(SUCCEEDED(hr))
   m_lpsa=NULL;
@@ -679,16 +681,16 @@ HRESULT DBVARIANT::TCvtAdapter_Array::Unpack_VectorUI1_To_Bytes(const DBVARIANT&
 
   assert(source.arrayVal2.ptr!=NULL);
 
-  if(::SafeArrayGetDim(source.arrayVal2.ptr)!=1)
+  if(LCPI_OS__SafeArrayGetDim(source.arrayVal2.ptr)!=1)
    return DB_E_CANTCONVERTVALUE;
 
-  if(::SafeArrayGetElemsize(source.arrayVal2.ptr)!=sizeof(unsigned char))
+  if(LCPI_OS__SafeArrayGetElemsize(source.arrayVal2.ptr)!=sizeof(unsigned char))
    return DB_E_CANTCONVERTVALUE;
 
   {
    VARTYPE vt=VT_EMPTY;
 
-   if(::SafeArrayGetVartype(source.arrayVal2.ptr,&vt)==S_OK)
+   if(LCPI_OS__SafeArrayGetVartype(source.arrayVal2.ptr,&vt)==S_OK)
    {
     if(vt!=VT_UI1)
      return DB_E_CANTCONVERTVALUE;
@@ -698,10 +700,10 @@ HRESULT DBVARIANT::TCvtAdapter_Array::Unpack_VectorUI1_To_Bytes(const DBVARIANT&
   LONG lb=0;
   LONG ub=0;
 
-  if(FAILED(::SafeArrayGetLBound(source.arrayVal2.ptr,1,&lb)))
+  if(FAILED(LCPI_OS__SafeArrayGetLBound(source.arrayVal2.ptr,1,&lb)))
    return E_FAIL;
 
-  if(FAILED(::SafeArrayGetUBound(source.arrayVal2.ptr,1,&ub)))
+  if(FAILED(LCPI_OS__SafeArrayGetUBound(source.arrayVal2.ptr,1,&ub)))
    return E_FAIL;
 
   if(lb!=0 || ub<-1)
@@ -711,12 +713,19 @@ HRESULT DBVARIANT::TCvtAdapter_Array::Unpack_VectorUI1_To_Bytes(const DBVARIANT&
 
   void* lpData=NULL;
 
-  if(FAILED(::SafeArrayAccessData(source.arrayVal2.ptr,&lpData)))
-   return E_FAIL;
+  {
+   HRESULT const hr
+    =LCPI_OS__SafeArrayAccessData(source.arrayVal2.ptr,&lpData);
+
+   if(FAILED(hr))
+    return E_FAIL;
+
+   assert(hr==S_OK);
+  }//local
 
   if(cbByte!=0 && lpData==NULL)
   {
-   _VERIFY_EQ(::SafeArrayUnaccessData(source.arrayVal2.ptr),S_OK);
+   _VERIFY_EQ(LCPI_OS__SafeArrayUnaccessData(source.arrayVal2.ptr),S_OK);
 
    return E_FAIL;
   }
@@ -780,7 +789,7 @@ HRESULT UnpackVariantToDBVariant(const VARIANT& var,DBVARIANT* const dbvar)
      return E_FAIL;
    }
 
-   const UINT cbElement=::SafeArrayGetElemsize(psa);
+   const UINT cbElement=LCPI_OS__SafeArrayGetElemsize(psa);
 
    if(cbElement!=pArrayElementVarTypeInfo->size)
     return E_FAIL;
@@ -1241,7 +1250,7 @@ HRESULT DBVariant_MakeArrayOffset(const DBVARIANT&              Array,
   return E_UNEXPECTED;
  }
 
- (*pcbElementSize)=::SafeArrayGetElemsize(Array.arrayVal2.ptr);
+ (*pcbElementSize)=LCPI_OS__SafeArrayGetElemsize(Array.arrayVal2.ptr);
 
  DBVARIANT::LPCTYPEINFO const pTypeInfo=DBVARIANT::GetInfo(wElementType);
 
@@ -1262,7 +1271,7 @@ HRESULT DBVariant_MakeArrayOffset(const DBVARIANT&              Array,
 
  //create offset and check bounds ----------------------------------------
  {
-  const UINT cSafeArrayDim=::SafeArrayGetDim(Array.arrayVal2.ptr);
+  const UINT cSafeArrayDim=LCPI_OS__SafeArrayGetDim(Array.arrayVal2.ptr);
 
   assert(cPoints==cSafeArrayDim);
 
@@ -1281,16 +1290,16 @@ HRESULT DBVariant_MakeArrayOffset(const DBVARIANT&              Array,
 
  for(UINT x=0;x!=cPoints;++x)
  {
-  assert_s(sizeof(x)==sizeof(::SafeArrayGetDim(Array.arrayVal2.ptr)));
+  assert_s(sizeof(x)==sizeof(LCPI_OS__SafeArrayGetDim(Array.arrayVal2.ptr)));
 
-  hr=::SafeArrayGetLBound(Array.arrayVal2.ptr,x+1,&lbound);
+  hr=LCPI_OS__SafeArrayGetLBound(Array.arrayVal2.ptr,x+1,&lbound);
 
   assert_msg(hr==S_OK,"hr==0x"<<std::hex<<hr);
 
   if(FAILED(hr))
    return hr;
 
-  hr=::SafeArrayGetUBound(Array.arrayVal2.ptr,x+1,&ubound);
+  hr=LCPI_OS__SafeArrayGetUBound(Array.arrayVal2.ptr,x+1,&ubound);
 
   assert_msg(hr==S_OK,"hr==0x"<<std::hex<<hr);
 
@@ -1503,12 +1512,16 @@ HRESULT DBVariant_CreateArray(DBTYPE                const wElementType,
     return E_INVALIDARG;
 
    //создаем массив, исходя из размера элемента
-   HRESULT hr;
+   {
+    HRESULT const hr
+     =LCPI_OS__SafeArrayAllocDescriptor(static_cast<safearray_cdims_type>(cDim),&sa.ref_sa());
 
-   if((hr=::SafeArrayAllocDescriptor(static_cast<safearray_cdims_type>(cDim),&sa.ref_sa()))!=S_OK)
-    return hr;
+    if(FAILED(hr))
+     return hr;
 
-   assert(sa.sa()!=NULL);
+    assert(hr==S_OK);
+    assert(sa.sa()!=NULL);
+   }//local
 
    assert_s(sizeof(sa.sa()->cbElements)==sizeof(ULONG));
 
@@ -1518,13 +1531,20 @@ HRESULT DBVariant_CreateArray(DBTYPE                const wElementType,
    for(size_t i=0;i!=cDim;++i)
     sa.sa()->rgsabound[cDim-i-1]=rgsaBound[i];
 
-   //выделяем память под данные
-   if(FAILED(hr=::SafeArrayAllocData(sa)))
    {
-    _VERIFY_EQ(::SafeArrayDestroyDescriptor(sa.Release()),S_OK);
+    //выделяем память под данные
+    HRESULT const hr
+     =LCPI_OS__SafeArrayAllocData(sa);
 
-    return hr;
-   }
+    if(FAILED(hr))
+    {
+     _VERIFY_EQ(LCPI_OS__SafeArrayDestroyDescriptor(sa.Release()),S_OK);
+
+     return hr;
+    }//if
+
+    assert(hr==S_OK);
+   }//local
 
    break;
   }//default
@@ -1532,9 +1552,12 @@ HRESULT DBVariant_CreateArray(DBTYPE                const wElementType,
 
  if(sa.sa()==NULL)
  {
-  sa.ref_sa()=::SafeArrayCreate(_vt,
-                                static_cast<safearray_cdims_type>(cDim),
-                                const_cast<SAFEARRAYBOUND*>(rgsaBound));
+  sa.ref_sa()
+   =LCPI_OS__SafeArrayCreate
+     (_vt,
+      static_cast<safearray_cdims_type>(cDim),
+      const_cast<SAFEARRAYBOUND*>(rgsaBound));
+
   if(sa.sa()==NULL)
    return E_OUTOFMEMORY;
  }//if

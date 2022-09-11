@@ -12,7 +12,7 @@ void* OLE_CoTaskMemAlloc(SIZE_T const sz,bool const alloc_empty)
    return nullptr;
  }//if
 
- if(void* const pv=::CoTaskMemAlloc(sz))
+ if(void* const pv=LCPI_OS__CoTaskMemAlloc(sz))
  {
   CHECK_READ_WRITE_PTR(pv,sz);
 
@@ -27,7 +27,7 @@ void* OLE_CoTaskMemAlloc(SIZE_T const sz,bool const alloc_empty)
 //------------------------------------------------------------------------
 void OLE_CoTaskMemFree(void* const pv)
 {
- return ::CoTaskMemFree(pv);
+ return LCPI_OS__CoTaskMemFree(pv);
 }//OLE_CoTaskMemFree
 
 ////////////////////////////////////////////////////////////////////////////////

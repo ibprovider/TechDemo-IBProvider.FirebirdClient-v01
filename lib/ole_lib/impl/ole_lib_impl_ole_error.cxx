@@ -90,7 +90,7 @@ void t_ole_error::throw_disp_error(HRESULT      const hr,
 
  std::string err_text;
 
- if(::GetErrorInfo(0,&spErrorInfo.ref_ptr())==NOERROR)
+ if(LCPI_OS__GetErrorInfo(0,&spErrorInfo.ref_ptr())==NOERROR)
  {
   if(spErrorInfo)
   {

@@ -156,56 +156,56 @@ DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_bstr,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__BSTR)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_BSTR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_variant,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__VARIANT)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_VARIANT)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_iunknown,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__IUNKNOWN)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_IUNKNOWN)
 
 //------------------------------------------------------------------------ [copy]
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_copy,
                                             array_guid,
                                             array_guid,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_GUID)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_bytes,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__BYTES)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_BYTES)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_str,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__STR)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_STR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_guid,
                                             array_wstr,
-                                            DBTYPE_ARRAY|oledb_typeid__GUID,
-                                            DBTYPE_ARRAY|oledb_typeid__WSTR)
+                                            oledb_typeid__ARRAY_GUID,
+                                            oledb_typeid__ARRAY_WSTR)
 
 //------------------------------------------------------------------------
 static const DBVARIANT::LPCTYPECONVERTER g_converters__array_guid_to_array[/*146*/]=

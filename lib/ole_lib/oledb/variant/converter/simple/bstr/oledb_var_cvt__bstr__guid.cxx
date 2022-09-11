@@ -12,7 +12,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,guid)::internal__convert_value_to_guid
  assert(dbvar.TestDataStatus__IsOK());
  assert(result!=NULL);
 
- const size_t bstrLen=(dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0);
+ const size_t bstrLen=(dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0);
 
  return DBVARIANT_CVT_UTILS::WStrToGUID(dbvar.bstrVal,
                                         bstrLen,

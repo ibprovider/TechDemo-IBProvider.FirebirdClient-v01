@@ -17,7 +17,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,iunknown)::internal__convert_value_to_iun
 
  if(impl_helper::IsRequestOf_IBP_SEQ_STREAM_WC(result_iid))
  {
-  const size_t Len=(dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0);
+  const size_t Len=(dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0);
 
   return impl_helper::Create_IBP_SEQ_STREAM_WC(Len,
                                                dbvar.bstrVal,
@@ -32,7 +32,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,iunknown)::internal__convert_value_to_iun
  }//if MBC
 
  //default stream
- const size_t bytesLen=sizeof(*dbvar.bstrVal)*(dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0);
+ const size_t bytesLen=sizeof(*dbvar.bstrVal)*(dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0);
 
  return impl_helper::Create_DEFAULT_SEQ_STREAM(bytesLen,
                                                dbvar.bstrVal,

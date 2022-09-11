@@ -65,7 +65,7 @@ HRESULT t_oledb_type_service_VARIANT::internal__get_data__ok
  {
   assert(cbMemSize>=sizeof(value_type));
 
-  ::VariantInit(reinterpret_cast<value_type*>(pBuffer));
+  LCPI_OS__VariantInit(reinterpret_cast<value_type*>(pBuffer));
 
   HRESULT const hr
    =ole_lib::Variant_CopyInd(reinterpret_cast<value_type*>(pBuffer),

@@ -461,18 +461,22 @@ class basic_dbvariant:public DBVARIANT
                       REFIID       ElementIID,
                       LPCSAFEARRAY lpArray);
 
-  //create array of elements of wElementType
-  //ElementLength - size of variable length elements
-  //                DBTYPE_STR/DBTYPE_WSTR - in symbol
-  //                DBTYPE_BYTES           - in bytes
-  //                for other types is used known size
-  //cDim          - count of dimensions
-  //rgsaBound     - data for the each dimension
-
-  //for VT element types used SafeArrayCreate
-  //for outer elelement types used two step creatined process -
-  //  1 SafeArrayAllocDescriptor + set cbElements=count of bytes
-  //  2 SafeArrayAllocData
+  //
+  // Create array of elements of wElementType
+  //
+  // ElementLength - size of variable length elements
+  //                 DBTYPE_STR/DBTYPE_WSTR - in symbol
+  //                 DBTYPE_BYTES           - in bytes
+  //                 for other types is used a known size
+  // cDim          - count of dimensions
+  // rgsaBound     - data for the each dimension
+  //
+  // for VT element types used LCPI_OS__SafeArrayCreate
+  // 
+  // for other element types will use two steps creation process:
+  //   1 LCPI_OS__SafeArrayAllocDescriptor + set cbElements=count of bytes
+  //   2 LCPI_OS__SafeArrayAllocData
+  //
   HRESULT CreateArray_HR(DBTYPE                wElementType,
                          size_t                ElementLength,
                          REFIID                ElementIID,

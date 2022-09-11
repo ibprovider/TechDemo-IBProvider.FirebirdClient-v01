@@ -14,7 +14,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,dbtime2)::internal__convert_value_to_dbti
 
  t_oledb_value__DBTIME2 x;
 
- const size_t bstrLen=dbvar.bstrVal?::SysStringLen(dbvar.bstrVal):0;
+ const size_t bstrLen=dbvar.bstrVal?LCPI_OS__SysStringLen(dbvar.bstrVal):0;
 
  if(!oledb_lib::str_to_dbtime2(&x,dbvar.bstrVal,bstrLen))
   return DB_E_CANTCONVERTVALUE;

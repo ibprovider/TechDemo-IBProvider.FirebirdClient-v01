@@ -172,7 +172,7 @@ bool IBP_OLEDB_Props2__Utils::ExtractValue__BSTR(const VARIANT& srcVariant,
  assert(pResult_Variant);
 
  HRESULT const hr
-  =::VariantChangeType
+  =LCPI_OS__VariantChangeType
     (pResult_Variant,
      const_cast<VARIANT*>(&srcVariant),
      0,
@@ -195,7 +195,7 @@ bool IBP_OLEDB_Props2__Utils::ExtractValue__I2(const VARIANT& srcVariant,
  assert(pResult_Variant);
 
  HRESULT const hr
-  =::VariantChangeType
+  =LCPI_OS__VariantChangeType
     (pResult_Variant,
      const_cast<VARIANT*>(&srcVariant),
      0,
@@ -218,7 +218,7 @@ bool IBP_OLEDB_Props2__Utils::ExtractValue__I4(const VARIANT& srcVariant,
  assert(pResult_Variant);
 
  HRESULT const hr
-  =::VariantChangeType
+  =LCPI_OS__VariantChangeType
     (pResult_Variant,
      const_cast<VARIANT*>(&srcVariant),
      0,

@@ -156,48 +156,48 @@ DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_error,
                                             array_i4,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__I4)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_I4)
 
 //------------------------------------------------------------------------ [copy]
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_copy,
                                             array_error,
                                             array_error,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_ERROR)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_error,
                                             array_variant,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__VARIANT)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_VARIANT)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_error,
                                             array_iunknown,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__IUNKNOWN)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_IUNKNOWN)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_error,
                                             array_ui4,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__UI4)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_UI4)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_error,
                                             array_bytes,
-                                            DBTYPE_ARRAY|oledb_typeid__ERROR,
-                                            DBTYPE_ARRAY|oledb_typeid__BYTES)
+                                            oledb_typeid__ARRAY_ERROR,
+                                            oledb_typeid__ARRAY_BYTES)
 
 //------------------------------------------------------------------------
 static const DBVARIANT::LPCTYPECONVERTER g_converters__array_error_to_array[/*146*/]=

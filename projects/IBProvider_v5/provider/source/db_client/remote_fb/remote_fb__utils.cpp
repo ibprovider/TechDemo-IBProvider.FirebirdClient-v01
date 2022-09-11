@@ -387,7 +387,7 @@ void RemoteFB__Utils::System_CharUpperBStr(BSTR           const bstr,
  if(!bstr)
   return;
 
- const UINT n=::SysStringLen(bstr);
+ const UINT n=LCPI_OS__SysStringLen(bstr);
 
  self_type::System_CharUpperBuff
   (bstr,

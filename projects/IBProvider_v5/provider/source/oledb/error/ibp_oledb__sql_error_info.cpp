@@ -70,7 +70,7 @@ HRESULT __stdcall IBP_OLEDB__SQLErrorInfo::Clone(IUnknown*  const pUnkOuter,
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  //-----------------------------------------
  if(ppClone==nullptr)
@@ -128,7 +128,7 @@ HRESULT __stdcall IBP_OLEDB__SQLErrorInfo::GetSQLInfo
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrSQLState!=nullptr)
   (*pbstrSQLState)=nullptr;

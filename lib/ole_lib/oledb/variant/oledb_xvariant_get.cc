@@ -262,7 +262,7 @@ HRESULT basic_dbvariant<Allocator>::GetDataEx(LPCCONVCONTEXT const pConvCtx,
  {
   if(cbMemSize!=0)
   {
-   SeparateBuffer=reinterpret_cast<char*>(::CoTaskMemAlloc(cbMemSize));
+   SeparateBuffer=reinterpret_cast<char*>(LCPI_OS__CoTaskMemAlloc(cbMemSize));
 
    if(!SeparateBuffer)
    {

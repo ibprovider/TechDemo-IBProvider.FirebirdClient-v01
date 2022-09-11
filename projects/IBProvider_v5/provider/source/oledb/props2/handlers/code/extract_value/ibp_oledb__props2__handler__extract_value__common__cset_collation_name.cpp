@@ -73,7 +73,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_collation_name::Extra
 
  {
   wchar_t*       p=tmpValue.bstrVal;
-  wchar_t* const e=p+(tmpValue.bstrVal?::SysStringLen(tmpValue.bstrVal):0);
+  wchar_t* const e=p+(tmpValue.bstrVal?LCPI_OS__SysStringLen(tmpValue.bstrVal):0);
 
   //[2019-02-20] Problem with VS2015 [Secure iterators...]
   //std::transform(p,e,p,structure::t_latin_upper<wchar_t>());

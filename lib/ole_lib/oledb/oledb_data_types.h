@@ -72,6 +72,44 @@ enum t_oledb_typeid
  /*x2000*/ oledb_typeid__ARRAY            = DBTYPE_ARRAY,
  /*x4000*/ oledb_typeid__BYREF            = DBTYPE_BYREF,
  /*x8000*/ oledb_typeid__RESERVED         = DBTYPE_RESERVED,
+
+ /* ---------------------------------------------------------------------- */
+ oledb_typeid__ARRAY_I2                   = oledb_typeid__ARRAY|oledb_typeid__I2,
+ oledb_typeid__ARRAY_I4                   = oledb_typeid__ARRAY|oledb_typeid__I4,
+ oledb_typeid__ARRAY_R4                   = oledb_typeid__ARRAY|oledb_typeid__R4,
+ oledb_typeid__ARRAY_R8                   = oledb_typeid__ARRAY|oledb_typeid__R8,
+ oledb_typeid__ARRAY_CY                   = oledb_typeid__ARRAY|oledb_typeid__CY,
+ oledb_typeid__ARRAY_DATE                 = oledb_typeid__ARRAY|oledb_typeid__DATE,
+ oledb_typeid__ARRAY_BSTR                 = oledb_typeid__ARRAY|oledb_typeid__BSTR,
+ oledb_typeid__ARRAY_IDISPATCH            = oledb_typeid__ARRAY|oledb_typeid__IDISPATCH,
+ oledb_typeid__ARRAY_ERROR                = oledb_typeid__ARRAY|oledb_typeid__ERROR,
+ oledb_typeid__ARRAY_BOOL                 = oledb_typeid__ARRAY|oledb_typeid__BOOL,
+ oledb_typeid__ARRAY_VARIANT              = oledb_typeid__ARRAY|oledb_typeid__VARIANT,
+ oledb_typeid__ARRAY_IUNKNOWN             = oledb_typeid__ARRAY|oledb_typeid__IUNKNOWN,
+ oledb_typeid__ARRAY_DECIMAL              = oledb_typeid__ARRAY|oledb_typeid__DECIMAL,
+
+ oledb_typeid__ARRAY_I1                   = oledb_typeid__ARRAY|oledb_typeid__I1,
+ oledb_typeid__ARRAY_UI1                  = oledb_typeid__ARRAY|oledb_typeid__UI1,
+ oledb_typeid__ARRAY_UI2                  = oledb_typeid__ARRAY|oledb_typeid__UI2,
+ oledb_typeid__ARRAY_UI4                  = oledb_typeid__ARRAY|oledb_typeid__UI4,
+
+ oledb_typeid__ARRAY_I8                   = oledb_typeid__ARRAY|oledb_typeid__I8,
+ oledb_typeid__ARRAY_UI8                  = oledb_typeid__ARRAY|oledb_typeid__UI8,
+
+ oledb_typeid__ARRAY_FILETIME             = oledb_typeid__ARRAY|oledb_typeid__FILETIME,
+
+ oledb_typeid__ARRAY_GUID                 = oledb_typeid__ARRAY|oledb_typeid__GUID,
+
+ oledb_typeid__ARRAY_BYTES                = oledb_typeid__ARRAY|oledb_typeid__BYTES,
+ oledb_typeid__ARRAY_STR                  = oledb_typeid__ARRAY|oledb_typeid__STR,
+ oledb_typeid__ARRAY_WSTR                 = oledb_typeid__ARRAY|oledb_typeid__WSTR,   
+ oledb_typeid__ARRAY_NUMERIC              = oledb_typeid__ARRAY|oledb_typeid__NUMERIC,
+
+ oledb_typeid__ARRAY_DBDATE               = oledb_typeid__ARRAY|oledb_typeid__DBDATE,
+ oledb_typeid__ARRAY_DBTIME               = oledb_typeid__ARRAY|oledb_typeid__DBTIME,
+ oledb_typeid__ARRAY_DBTIMESTAMP          = oledb_typeid__ARRAY|oledb_typeid__DBTIMESTAMP,
+
+ oledb_typeid__ARRAY_DBTIME2              = oledb_typeid__ARRAY|oledb_typeid__DBTIME2,
 };//enum t_oledb_typeid
 
 ////////////////////////////////////////////////////////////////////////////////

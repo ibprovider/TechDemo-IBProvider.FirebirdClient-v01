@@ -39,7 +39,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_wstr)::internal__convert_va
   return E_FAIL;
 
  //---------
- const UINT SourceElementSize=::SafeArrayGetElemsize(dbvar.arrayVal2.ptr);
+ const UINT SourceElementSize=LCPI_OS__SafeArrayGetElemsize(dbvar.arrayVal2.ptr);
 
  if((SourceElementSize==0) ||
     (lpSourceElementTypeInfo->FixedLen() && SourceElementSize!=lpSourceElementTypeInfo->Size))
@@ -50,7 +50,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_wstr)::internal__convert_va
  //----------------------
  typedef structure::t_stl_vector<SAFEARRAYBOUND,TOLEDBMemoryAllocator> sa_bounds_type;
 
- const UINT cDim=::SafeArrayGetDim(dbvar.arrayVal2.ptr);
+ const UINT cDim=LCPI_OS__SafeArrayGetDim(dbvar.arrayVal2.ptr);
 
  size_t n=cDim?1:0;
 
@@ -126,12 +126,13 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_wstr)::internal__convert_va
  //------------ Create target SAFEARRAY
  ole_lib::TBaseSafeArray sa;
 
- const HRESULT create_sa_hr=oledb_lib::DBVariant_CreateArray
-                                        (DBTYPE_WSTR,
-                                         str_max_size,
-                                         cDim,
-                                         bound_vector.data(),
-                                         &sa.ref_sa());
+ const HRESULT create_sa_hr
+  =oledb_lib::DBVariant_CreateArray
+    (DBTYPE_WSTR,
+     str_max_size,
+     cDim,
+     bound_vector.data(),
+     &sa.ref_sa());
 
  if(FAILED(create_sa_hr))
   return E_FAIL;
@@ -139,7 +140,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,array_wstr)::internal__convert_va
  if(sa.sa()==NULL)
   return E_FAIL;
 
- const UINT TargetElementSize=::SafeArrayGetElemsize(sa);
+ const UINT TargetElementSize=LCPI_OS__SafeArrayGetElemsize(sa);
 
  assert(str_max_size*sizeof(string_type::value_type)<=TargetElementSize);
 

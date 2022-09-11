@@ -31,7 +31,9 @@ HRESULT TSafeArrayAutoUnAccessData::UnAccess()
  if(m_lpsa==NULL)
   return S_OK;
 
- const HRESULT hr=::SafeArrayUnaccessData(m_lpsa);
+ const HRESULT hr=LCPI_OS__SafeArrayUnaccessData(m_lpsa);
+
+ assert(hr==S_OK || FAILED(hr));
 
  if(SUCCEEDED(hr))
   m_lpsa=NULL;
@@ -49,13 +51,19 @@ TSafeArrayAccessor::TSafeArrayAccessor(LPSAFEARRAY const lpsa,
 {
  assert(lpsa!=NULL);
 
- const HRESULT hr=::SafeArrayAccessData(lpsa,&m_pData);
+ const HRESULT hr=LCPI_OS__SafeArrayAccessData(lpsa,&m_pData);
 
- if(SUCCEEDED(hr))
-   m_lpsa=lpsa;
+ if(FAILED(hr))
+ {
+  if(throw_error)
+   t_base_ole_error::throw_error(hr,"TSafeArrayAccessor::TSafeArrayAccessor");
+ }
  else
- if(throw_error)
-  t_base_ole_error::throw_error(hr,"TSafeArrayAccessor::TSafeArrayAccessor");
+ {
+  assert(hr==S_OK);
+
+  m_lpsa=lpsa;
+ }//else
 }//TSafeArrayAccessor
 
 //------------------------------------------------------------------------
@@ -70,7 +78,9 @@ HRESULT TSafeArrayAccessor::ReleaseData()
  if(m_lpsa==NULL)
   return S_OK;
 
- const HRESULT hr=::SafeArrayUnaccessData(m_lpsa);
+ const HRESULT hr=LCPI_OS__SafeArrayUnaccessData(m_lpsa);
+
+ assert(hr==S_OK || FAILED(hr));
 
  if(SUCCEEDED(hr))
  {
@@ -140,7 +150,7 @@ LONG TSafeArray::GetLBound(UINT const nDim)
 
  LONG lBound;
 
- DEBUG_CODE(const HRESULT hr=)::SafeArrayGetLBound(m_psa,nDim,&lBound);
+ DEBUG_CODE(const HRESULT hr=)LCPI_OS__SafeArrayGetLBound(m_psa,nDim,&lBound);
 
  assert_msg(hr==NOERROR,"nDim=="<<nDim<<"\nGetDim()=="<<this->GetDim());
 
@@ -156,7 +166,7 @@ LONG TSafeArray::GetUBound(UINT const nDim)
 
  LONG uBound;
 
- DEBUG_CODE(const HRESULT hr=) ::SafeArrayGetUBound(m_psa,nDim,&uBound);
+ DEBUG_CODE(const HRESULT hr=)LCPI_OS__SafeArrayGetUBound(m_psa,nDim,&uBound);
 
  assert_msg(hr==NOERROR,"nDim=="<<nDim<<"\nGetDim()=="<<this->GetDim());
 
@@ -188,8 +198,12 @@ void TSafeArray::Create(VARTYPE               const vt,
 
  this->Destroy();
 
- m_psa=reinterpret_cast<SAFEARRAY*>
-        (::SafeArrayCreate(vt,cDim,const_cast<SAFEARRAYBOUND*>(rgsaBound)));
+ m_psa
+  =reinterpret_cast<SAFEARRAY*>
+    (LCPI_OS__SafeArrayCreate
+      (vt,
+       cDim,
+       const_cast<SAFEARRAYBOUND*>(rgsaBound)));
 
  if(m_psa==NULL)
   throw std::bad_alloc();
@@ -223,17 +237,19 @@ void TSafeArray::GetElement(const LONG* const pIndices,
 {
  DEBUG_CODE(this->CheckIndex(pIndices,"get");)
 
- const HRESULT hr=::SafeArrayGetElement(m_psa,
-                                        const_cast<LONG*>(pIndices),
-                                        pv);
+ const HRESULT hr
+  =LCPI_OS__SafeArrayGetElement
+    (m_psa,
+     const_cast<LONG*>(pIndices),
+     pv);
 
  if(hr==E_OUTOFMEMORY)
   throw std::bad_alloc();
 
- assert_msg(hr==NOERROR,"hr==0x"<<std::hex<<hr);
-
- if(hr!=S_OK)
+ if(FAILED(hr))
   t_base_ole_error::throw_error(hr,"TSafeArray::GetElement");
+
+ assert_msg(hr==NOERROR,"hr==0x"<<std::hex<<hr);
 }//GetElement
 
 //------------------------------------------------------------------------
@@ -242,17 +258,19 @@ void TSafeArray::PutElement(const LONG* const pIndices,
 {
  DEBUG_CODE(this->CheckIndex(pIndices,"put");)
 
- const HRESULT hr=::SafeArrayPutElement(m_psa,
-                                        const_cast<LONG*>(pIndices),
-                                        const_cast<void*>(pv));
+ const HRESULT hr
+  =LCPI_OS__SafeArrayPutElement
+    (m_psa,
+     const_cast<LONG*>(pIndices),
+     const_cast<void*>(pv));
 
  if(hr==E_OUTOFMEMORY)
   throw std::bad_alloc();
 
- assert_msg(hr==NOERROR,"hr==0x"<<std::hex<<hr);
-
- if(hr!=S_OK)
+ if(FAILED(hr))
   t_base_ole_error::throw_error(hr,"TSafeArray::PutElement");
+
+ assert_msg(hr==NOERROR,"hr==0x"<<std::hex<<hr);
 }//PutElement
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -40,22 +40,7 @@ class isc_integer_to_portable_format
 
  public:
   template<size_t N,typename TNumeric>
-  static void exec(tag_buffer<N>* buffer,TNumeric value);
-
-  template<>
-  static void exec<1,byte_type>(tag_buffer<1>* buffer,byte_type value);
-
-  template<>
-  static void exec<2,ushort_type>(tag_buffer<2>* buffer,ushort_type value);
-
-  template<>
-  static void exec<2,short_type>(tag_buffer<2>* buffer,short_type value);
-
-  template<>
-  static void exec<4,ui4_type>(tag_buffer<4>* buffer,ui4_type value);
-
-  template<>
-  static void exec<4,long_type>(tag_buffer<4>* buffer,long_type value);
+  static void exec(tag_buffer<N>* buffer,TNumeric value)=delete;
 };//class isc_integer_to_portable_format
 
 ////////////////////////////////////////////////////////////////////////////////

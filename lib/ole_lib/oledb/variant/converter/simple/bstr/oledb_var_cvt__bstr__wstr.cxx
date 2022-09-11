@@ -19,7 +19,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,wstr)::internal__convert_value_to_wstr
   return S_OK;
  }
 
- std::wstring tmp(dbvar.bstrVal,::SysStringLen(dbvar.bstrVal));
+ std::wstring tmp(dbvar.bstrVal,LCPI_OS__SysStringLen(dbvar.bstrVal));
 
  result->set_not_null().value().swap(tmp);
 

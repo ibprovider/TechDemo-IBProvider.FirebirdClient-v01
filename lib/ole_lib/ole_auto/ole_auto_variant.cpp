@@ -4,6 +4,7 @@
 
 #include <ole_lib/ole_auto/ole_auto_variant.h>
 #include <ole_lib/ole_ptr.h>
+
 #include <sstream>
 
 namespace ole_lib{
@@ -164,7 +165,7 @@ void TVariant::CopyInEnumerator(VARIANT* const pVariant)const
  assert(pVariant);
  assert(pVariant->vt==VT_EMPTY);
 
- ::VariantInit(pVariant);
+ LCPI_OS__VariantInit(pVariant);
 
  ole_lib::Variant_Copy_Throw(/*pDest*/pVariant,/*pSource*/this);//throw
 }//CopyInEnumerator
@@ -333,7 +334,7 @@ TVariant& TVariant::SetWStr_v2(const structure::t_const_wstr_box& wstr) //throw
 //------------------------------------------------------------------------
 TVariant& TVariant::SetBStr_v2(const BSTR bstr)
 {
- const UINT length=bstr?::SysStringLen(bstr):0;
+ const UINT length=bstr?LCPI_OS__SysStringLen(bstr):0;
 
  return this->SetWStr_v2(structure::make_str_box(bstr,length));
 }//SetBStr_v2
@@ -503,7 +504,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
    {
     SYSTEMTIME sys;
 
-    if(!VariantTimeToSystemTime(pVariant->date,&sys))
+    if(LCPI_OS__VariantTimeToSystemTime(pVariant->date,&sys)==FALSE)
      return E_FAIL;
 
     _GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
@@ -518,7 +519,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
 
     SYSTEMTIME sys;
 
-    if(!VariantTimeToSystemTime(*pVariant->pdate,&sys))
+    if(LCPI_OS__VariantTimeToSystemTime(*pVariant->pdate,&sys)==FALSE)
      return E_FAIL;
 
     _GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
@@ -603,7 +604,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
    {
     TBaseVariant var;
 
-    const HRESULT hr=::VariantChangeType(&var,const_cast<VARIANT*>(pVariant),0,VT_BSTR);
+    const HRESULT hr=LCPI_OS__VariantChangeType(&var,const_cast<VARIANT*>(pVariant),0,VT_BSTR);
 
     if(hr==S_OK)
      (*pStr)=BStrToString(var.bstrVal);
@@ -650,7 +651,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
    {
     SYSTEMTIME sys;
 
-    if(!VariantTimeToSystemTime(pVariant->date,&sys))
+    if(LCPI_OS__VariantTimeToSystemTime(pVariant->date,&sys)==FALSE)
      return E_FAIL;
 
     _GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
@@ -665,7 +666,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
 
     SYSTEMTIME sys;
 
-    if(!VariantTimeToSystemTime(*(pVariant->pdate),&sys))
+    if(LCPI_OS__VariantTimeToSystemTime(*(pVariant->pdate),&sys)==FALSE)
      return E_FAIL;
 
     _GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
@@ -695,7 +696,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
   case VT_BSTR:
    {
     if(pVariant->bstrVal!=NULL)
-     pStr->assign(pVariant->bstrVal,::SysStringLen(pVariant->bstrVal));
+     pStr->assign(pVariant->bstrVal,LCPI_OS__SysStringLen(pVariant->bstrVal));
 
     return NOERROR;
    }//VT_BSTR
@@ -706,7 +707,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
      return E_POINTER;
 
     if((*pVariant->pbstrVal)!=NULL)
-     pStr->assign(*pVariant->pbstrVal,::SysStringLen(*pVariant->pbstrVal));
+     pStr->assign(*pVariant->pbstrVal,LCPI_OS__SysStringLen(*pVariant->pbstrVal));
 
     return NOERROR;
    }//VT_BSTR|VT_BYREF
@@ -752,10 +753,10 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
    {
     TBaseVariant var;
 
-    const HRESULT hr=::VariantChangeType(&var,const_cast<VARIANT*>(pVariant),0,VT_BSTR);
+    const HRESULT hr=LCPI_OS__VariantChangeType(&var,const_cast<VARIANT*>(pVariant),0,VT_BSTR);
 
     if(hr==S_OK && var.bstrVal!=NULL)
-     pStr->assign(var.bstrVal,::SysStringLen(var.bstrVal));
+     pStr->assign(var.bstrVal,LCPI_OS__SysStringLen(var.bstrVal));
 
     return hr;
    }
@@ -785,7 +786,7 @@ HRESULT TVariant::to_bstr(const VARIANT* pVariant,BSTR* pBSTR)
     if(pVariant->bstrVal==NULL)
      return S_OK;
 
-    *pBSTR=::SysAllocStringLen(pVariant->bstrVal,::SysStringLen(pVariant->bstrVal));
+    (*pBSTR)=LCPI_OS__SysAllocStringLen(pVariant->bstrVal,LCPI_OS__SysStringLen(pVariant->bstrVal));
 
     if((*pBSTR)==NULL)
      return E_OUTOFMEMORY;
@@ -802,7 +803,7 @@ HRESULT TVariant::to_bstr(const VARIANT* pVariant,BSTR* pBSTR)
     if((*(pVariant->pbstrVal))==NULL)
      return S_OK;
 
-    *pBSTR=::SysAllocStringLen(*pVariant->pbstrVal,::SysStringLen(*pVariant->pbstrVal));
+    (*pBSTR)=LCPI_OS__SysAllocStringLen(*pVariant->pbstrVal,LCPI_OS__SysStringLen(*pVariant->pbstrVal));
 
     if((*pBSTR)==NULL)
      return E_OUTOFMEMORY;
@@ -836,7 +837,11 @@ HRESULT TVariant::to_bstr(const VARIANT* pVariant,BSTR* pBSTR)
  assert(Dest.vt==VT_EMPTY);                                                   \
                                                                               \
  HRESULT const hr=                                                            \
-  ::VariantChangeType(&Dest,const_cast<VARIANT*>(pVariant),0,(VT_DEST_TYPE)); \
+  LCPI_OS__VariantChangeType                                                  \
+    (&Dest,                                                                   \
+     const_cast<VARIANT*>(pVariant),                                          \
+     0,                                                                       \
+     (VT_DEST_TYPE));                                                         \
                                                                               \
  if(hr==S_OK)                                                                 \
  {                                                                            \
@@ -1227,7 +1232,7 @@ std::string TVariant::variant_date_to_str(DATE date,bool WithTime)
 {
  SYSTEMTIME sys;
 
- if(!VariantTimeToSystemTime(date,&sys))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&sys)==FALSE)
   return std::string();
 
  char tmp[256];
@@ -1254,7 +1259,7 @@ std::wstring TVariant::variant_date_to_wstr(DATE date,bool WithTime)
 {
  SYSTEMTIME sys;
 
- if(!VariantTimeToSystemTime(date,&sys))
+ if(LCPI_OS__VariantTimeToSystemTime(date,&sys)==FALSE)
   return std::wstring();
 
  wchar_t tmp[256];
@@ -1353,7 +1358,7 @@ std::wstring TVariant::tag_print_variant::str()const
     return L"bstr\"\"";
 
    os<<L"bstr\"";
-   os.write(m_data.bstrVal,::SysStringLen(m_data.bstrVal));
+   os.write(m_data.bstrVal,LCPI_OS__SysStringLen(m_data.bstrVal));
    os<<L"\"";
    break;
 

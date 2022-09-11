@@ -26,7 +26,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,str)::internal__convert_value_to_str
  structure::unicode_to_ansi
   (&tmp,
    dbvar.bstrVal,
-   ::SysStringLen(dbvar.bstrVal),
+   LCPI_OS__SysStringLen(dbvar.bstrVal),
    &error);
 
  if(error)

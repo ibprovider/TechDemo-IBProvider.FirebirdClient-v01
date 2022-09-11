@@ -64,7 +64,7 @@ HRESULT __stdcall TIBPBindErrorData::GetText(LCID  const lcid,
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrText==NULL)
   return E_INVALIDARG;

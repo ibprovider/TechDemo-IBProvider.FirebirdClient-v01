@@ -157,24 +157,24 @@ DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_copy,
                                             array_idispatch,
                                             array_idispatch,
-                                            DBTYPE_ARRAY|oledb_typeid__IDISPATCH,
-                                            DBTYPE_ARRAY|oledb_typeid__IDISPATCH)
+                                            oledb_typeid__ARRAY_IDISPATCH,
+                                            oledb_typeid__ARRAY_IDISPATCH)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_idispatch,
                                             array_variant,
-                                            DBTYPE_ARRAY|oledb_typeid__IDISPATCH,
-                                            DBTYPE_ARRAY|oledb_typeid__VARIANT)
+                                            oledb_typeid__ARRAY_IDISPATCH,
+                                            oledb_typeid__ARRAY_VARIANT)
 
 //------------------------------------------------------------------------
 DEFINE_OLEDB_TYPE_CONVERTER_OBJ_TO_ARRAY_V3(array_common,
                                             array_vt,
                                             array_idispatch,
                                             array_iunknown,
-                                            DBTYPE_ARRAY|oledb_typeid__IDISPATCH,
-                                            DBTYPE_ARRAY|oledb_typeid__IUNKNOWN)
+                                            oledb_typeid__ARRAY_IDISPATCH,
+                                            oledb_typeid__ARRAY_IUNKNOWN)
 
 //------------------------------------------------------------------------
 static const DBVARIANT::LPCTYPECONVERTER g_converters__array_idispatch_to_array[14]=

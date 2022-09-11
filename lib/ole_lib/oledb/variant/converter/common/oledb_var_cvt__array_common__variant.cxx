@@ -49,7 +49,7 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,variant)::internal__convert_value
   bound.cElements=0;
   bound.lLbound=0;
 
-  sa.ref_sa()=::SafeArrayCreate(ElementVarType,1,&bound);
+  sa.ref_sa()=LCPI_OS__SafeArrayCreate(ElementVarType,1,&bound);
 
   if(sa.sa()==NULL)
    return E_OUTOFMEMORY;
@@ -58,11 +58,15 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(array_common,variant)::internal__convert_value
  {
   assert(dbvar.arrayVal2.ptr!=NULL);
 
-  const HRESULT to_array_hr=DBVariant__to_ARRAY_ex(pConvCtx,
-                                                   dbvar,
-                                                   DBTYPE(DBTYPE_ARRAY|ElementVarType),
-                                                   IID_IUnknown,
-                                                   &sa.ref_sa());
+  const HRESULT
+   to_array_hr
+    =DBVariant__to_ARRAY_ex
+      (pConvCtx,
+       dbvar,
+       DBTYPE(DBTYPE_ARRAY|ElementVarType),
+       IID_IUnknown,
+       &sa.ref_sa());
+
   if(FAILED(to_array_hr))
    return to_array_hr;
 

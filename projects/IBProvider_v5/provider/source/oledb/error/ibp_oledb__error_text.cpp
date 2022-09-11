@@ -69,7 +69,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorText::GetText(LCID  const lcid,
 {
  OLE_LIB_IMETHOD_PROLOG
 
- ::SetErrorInfo(0,nullptr);
+ LCPI_OS__SetErrorInfo(0,nullptr);
 
  if(pbstrText==nullptr)
   return E_INVALIDARG;

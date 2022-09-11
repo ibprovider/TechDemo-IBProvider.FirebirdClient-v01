@@ -23,17 +23,12 @@ using namespace structure;
 ////////////////////////////////////////////////////////////////////////////////
 //Include implementation files
 
-#include <ole_lib/impl/ole_lib_impl_com_initialize.cxx>
-#include <ole_lib/impl/ole_lib_impl_ole_initialize.cxx>
-
 #include <ole_lib/impl/ole_lib_impl_co_task_memory.cxx>
 
 #include <ole_lib/impl/ole_lib_impl_clipboard_formats.cxx>
 
 #include <ole_lib/impl/ole_lib_impl_test_utils.cxx>
 #include <ole_lib/impl/ole_lib_impl_guid_utils.cxx>
-#include <ole_lib/impl/ole_lib_impl_type_utils.cxx>
-#include <ole_lib/impl/ole_lib_impl_copy_utils.cxx>
 
 #include <ole_lib/impl/ole_lib_impl_bstr_utils.cxx>
 #include <ole_lib/impl/ole_lib_impl_bstr.cxx>
