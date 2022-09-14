@@ -223,6 +223,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_library.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_registry.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource.cpp" />
@@ -994,6 +995,7 @@
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_error.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_library.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_mt.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_resource.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_time.h" />

@@ -8,36 +8,109 @@
 namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
 
-static const size_t c_ver_info_align_amount=4;
+static const size_t c_ver_info_align=4;
 
 //------------------------------------------------------------------------
-template<typename T>
-const T* ver_info_align_ptr(const T* p)
+static size_t ver_info__get_distance(const void* const beg,const void* const end)
 {
- assert_s(sizeof(UINT_PTR)==sizeof(T*));
+ assert(beg<=end);
 
- //! \todo
- //!  REWRITE THIS!
+ return reinterpret_cast<const char*>(end)-reinterpret_cast<const char*>(beg);
+}//ver_info__get_distance
 
- UINT_PTR const x=reinterpret_cast<UINT_PTR>(p);
+//------------------------------------------------------------------------
+static const void* ver_info_align_ptr(const void* const ptr,const void* const end)
+{
+ assert(ptr<=end);
 
- return reinterpret_cast<const T*>((x+(c_ver_info_align_amount-1))&(~UINT_PTR(c_ver_info_align_amount-1)));
+ assert_s(c_ver_info_align!=0);
+ assert_s(sizeof(UINT_PTR)==sizeof(void*));
+
+ UINT_PTR const x_ptr=reinterpret_cast<UINT_PTR>(ptr);
+ UINT_PTR const x_end=reinterpret_cast<UINT_PTR>(end);
+
+ const UINT_PTR x_mod=(x_ptr%c_ver_info_align);
+
+ assert(x_mod<c_ver_info_align);
+
+ if(x_mod==0)
+  return ptr;
+
+ assert(x_mod>0);
+
+ const UINT_PTR x_add=(c_ver_info_align-x_mod);
+
+ assert(0<x_add);
+ assert(x_add<c_ver_info_align);
+ assert((x_add+x_mod)==c_ver_info_align);
+
+ if((x_end-x_ptr)<x_add)
+  return end; //we prevent an overflow of buffer
+
+ UINT_PTR const x_res=x_ptr+x_add;
+
+ assert(x_ptr<x_res);
+ assert(x_res<=x_end);
+
+ return reinterpret_cast<const void*>(x_res);
 }//ver_info_align_ptr
 
 //------------------------------------------------------------------------
-const wchar_t* ver_info_entry__get_key(const t_ver_info_src_id              srcID,
-                                       const t_ver_info_element::tag_entry* pEntry)
+#ifndef NDEBUG
+
+//
+// The complete verification of the ver_info_align_ptr work.
+//
+static void DEBUG__check__ver_info_align_ptr()
+{
+ union
+ {
+  __int64 value;
+  char    bytes[sizeof(2*c_ver_info_align)];
+ } data;
+
+ assert(ver_info_align_ptr(data.bytes,_END_(data.bytes))==data.bytes);
+
+ assert_s(c_ver_info_align>0);
+
+ for(const char* p=data.bytes+1;p!=data.bytes+c_ver_info_align;++p)
+ {
+  assert(ver_info_align_ptr(p,_END_(data.bytes))==data.bytes+c_ver_info_align);
+ }//for p
+
+ for(const char* p=data.bytes+1;p!=data.bytes+c_ver_info_align;++p)
+ {
+  assert(ver_info_align_ptr(p,data.bytes+c_ver_info_align)==data.bytes+c_ver_info_align);
+ }//for p
+
+ for(size_t s=c_ver_info_align;s>=2;--s)
+ {
+  for(const char* p=data.bytes+1;p!=data.bytes+s;++p)
+  {
+   assert(ver_info_align_ptr(p,data.bytes+s)==data.bytes+s);
+  }//for p
+ }//for s
+}//DEBUG__check__ver_info_align_ptr
+
+STARTUP_CODE__DEBUG(DEBUG__check__ver_info_align_ptr)
+
+#endif //NDEBUG
+
+//------------------------------------------------------------------------
+static structure::t_const_wstr_box ver_info_entry__get_key
+                             (t_ver_info_src_id                    const srcID,
+                              const t_ver_info_element::tag_entry* const pEntry)
 {
  assert(pEntry);
 
- const wchar_t* szKey=pEntry->szKey;
+ const wchar_t* pv=pEntry->szKey;
 
- const void* const pvEnd=reinterpret_cast<const char*>(pEntry)+pEntry->wLength;
+ const void* const pvEnd=pEntry->end();
 
- for(;szKey<pvEnd;++szKey)
+ for(;pv<pvEnd;++pv)
  {
-  if((*szKey)==0)
-   return pEntry->szKey;
+  if((*pv)==0)
+   return structure::t_const_wstr_box(pEntry->szKey,pv-pEntry->szKey);
  }
 
  t_ver_info_error(srcID,ver_info_mce__cant_detect_key_of_ver_info_block_0).raise();
@@ -48,44 +121,32 @@ const wchar_t* ver_info_entry__get_key(const t_ver_info_src_id              srcI
 }//ver_info_entry__get_key
 
 //------------------------------------------------------------------------
-const void* ver_info_entry__get_value(const t_ver_info_src_id              srcID,
-                                      const t_ver_info_element::tag_entry* pEntry,
-                                      size_t                               cbValueElement)
+static const void* ver_info_entry__get_value
+                             (t_ver_info_src_id                    const srcID,
+                              const t_ver_info_element::tag_entry* const pEntry,
+                              const void*                          const pData,
+                              size_t                               const cbValueElement)
 {
  assert(pEntry);
+ assert(pEntry<pData);
+ assert(pData<=pEntry->end());
  assert(cbValueElement!=0);
 
- if(pEntry->wValueLength==0)
-  return nullptr;
+ const void* const eEntry=pEntry->end();
 
- const wchar_t* const pwszKey=ver_info_entry__get_key(srcID,pEntry);
+ const void* const pValue=ver_info_align_ptr(pData,eEntry);
 
- assert(pwszKey);
-
- const char* const pValue=ver_info_align_ptr(reinterpret_cast<const char*>(pwszKey+wcslen(pwszKey)+1));
-
- const char* const eEntry=reinterpret_cast<const char*>(pEntry)+pEntry->wLength;
-
- if(!(pValue<eEntry))
- {
-  t_ver_info_error exc(srcID,ver_info_mce__bad_value_offset_3);
-
-  exc<<ver_info_entry__get_key(srcID,pEntry)
-     <<pEntry->wLength
-     <<(pValue-reinterpret_cast<const char*>(pEntry));
-
-  exc.raise();
- }//if
+ assert(pValue<=eEntry);
 
  const size_t cbValueLength=cbValueElement*pEntry->wValueLength;
 
- if(size_t(eEntry-pValue)<cbValueLength)
+ if(ver_info__get_distance(pValue,eEntry)<cbValueLength)
  {
   t_ver_info_error exc(srcID,ver_info_mce__bad_value_size_4);
 
   exc<<ver_info_entry__get_key(srcID,pEntry)
      <<pEntry->wLength
-     <<(pValue-reinterpret_cast<const char*>(pEntry))
+     <<ver_info__get_distance(pEntry,pValue)
      <<cbValueLength;
 
   exc.raise();
@@ -100,20 +161,18 @@ const void* ver_info_entry__get_value(const t_ver_info_src_id              srcID
 struct t_ver_info_std_entry
 {
  public:
-  typedef t_ver_info_element_ptr (creator_ptr)();
+  typedef t_ver_info_element_ptr (creator_ptr)(const t_ver_info_element::tag_entry&);
 
  public:
   const wchar_t*  szKey;
   creator_ptr*    creator;
 
-  bool operator == (const wchar_t* Key)const
+  bool operator == (const structure::t_const_wstr_box& Key)const
    {
-    assert(Key!=NULL);
-
-    return wcscmp(this->szKey,Key)==0;
+    return structure::equal_to_string(Key,this->szKey);
    }//operator ==
 
-  bool operator != (const wchar_t* Key)const
+  bool operator != (const structure::t_const_wstr_box& Key)const
    {
     return !((*this)==Key);
    }//operator !=
@@ -122,35 +181,24 @@ struct t_ver_info_std_entry
 ////////////////////////////////////////////////////////////////////////////////
 //elements factories
 
-t_ver_info_element_ptr create_ver_info_element__VS_VERSION_INFO()
+template<class TVerInfoElement>
+t_ver_info_element_ptr create_ver_info_element__GENERIC(const t_ver_info_element::tag_entry& entry)
 {
- return structure::not_null_ptr(new t_ver_info_element__VS_VERSION_INFO());
-}//create_ver_info_element__VS_VERSIONINFO
-
-//------------------------------------------------------------------------
-t_ver_info_element_ptr create_ver_info_element__StringFileInfo()
-{
- return structure::not_null_ptr(new t_ver_info_element__StringFileInfo());
-}//create_ver_info_element__StringFileInfo
-
-//------------------------------------------------------------------------
-t_ver_info_element_ptr create_ver_info_element__VarFileInfo()
-{
- return structure::not_null_ptr(new t_ver_info_element__VarFileInfo());
-}//create_ver_info_element__VarFileInfo
+ return TVerInfoElement::create(entry);
+}//create_ver_info_element__GENERIC
 
 ////////////////////////////////////////////////////////////////////////////////
 
 static const t_ver_info_std_entry g_std_entries[]=
 {
  {L"VS_VERSION_INFO",
-  create_ver_info_element__VS_VERSION_INFO},
+  create_ver_info_element__GENERIC<t_ver_info_element__VS_VERSION_INFO>},
 
  {L"StringFileInfo",
-  create_ver_info_element__StringFileInfo},
+  create_ver_info_element__GENERIC<t_ver_info_element__StringFileInfo>},
 
  {L"VarFileInfo",
-  create_ver_info_element__VarFileInfo},
+  create_ver_info_element__GENERIC<t_ver_info_element__VarFileInfo>},
 };//g_std_entries
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +226,8 @@ const t_ver_info_element::tag_entry*
 
  //--------------------------
  const t_ver_info_element::tag_entry* const
-  pEntry=reinterpret_cast<const t_ver_info_element::tag_entry*>(pvBlock);
+  pEntry
+   =reinterpret_cast<const t_ver_info_element::tag_entry*>(pvBlock);
 
  if(cbBlock<size_t(pEntry->wLength))
  {
@@ -208,41 +257,62 @@ const t_ver_info_element::tag_entry*
 }//load_ver_info_element__get_entry
 
 //------------------------------------------------------------------------
-t_ver_info_element_ptr load_ver_info_element(const void* pvBlock,size_t cbBlock)
+using t_load_ver_info_element2_result
+ =std::pair<t_ver_info_element_ptr,const void*>;
+
+//------------------------------------------------------------------------
+static t_load_ver_info_element2_result load_ver_info_element2
+                                           (const void* const pvBlock,
+                                            size_t      const cbBlock)
 {
  const t_ver_info_element::tag_entry* const
-  pEntry(load_ver_info_element__get_entry(ver_info_src__load_ver_info_element,pvBlock,cbBlock));
+  pEntry
+   =load_ver_info_element__get_entry
+     (ver_info_src__load_ver_info_element,
+      pvBlock,
+      cbBlock);
+
+ assert(pEntry!=nullptr);
+
+ structure::t_const_wstr_box const
+  keyName
+   =ver_info_entry__get_key
+     (ver_info_src__load_ver_info_element,
+      pEntry);
 
  //--------------------------
- const wchar_t* const szKey=
-  ver_info_entry__get_key(ver_info_src__load_ver_info_element,pEntry);
-
- //--------------------------
- const t_ver_info_std_entry*
-  const pEntryInfo=std::find(g_std_entries,_END_(g_std_entries),szKey);
+ const t_ver_info_std_entry* const
+  pEntryInfo
+   =std::find(g_std_entries,_END_(g_std_entries),keyName);
 
  if(pEntryInfo==_END_(g_std_entries))
  {
   t_ver_info_error exc(ver_info_src__load_ver_info_element,
                        ver_info_mce__unk_element_key_1);
 
-  exc<<szKey;
+  exc<<keyName;
 
   exc.raise();
- }
+ }//if
 
  //--------------------------
  assert(pEntryInfo->creator!=NULL);
 
- const t_ver_info_element_ptr spElement(pEntryInfo->creator());
+ t_ver_info_element_ptr
+  spElement
+   (pEntryInfo->creator(*pEntry));
 
  //--------------------------
  assert(spElement);
 
- spElement->load(*pEntry);
+ return t_load_ver_info_element2_result(__STL_MOVE_VALUE(spElement),pEntry->end());
+}//load_ver_info_element2
 
- //--------------------------
- return spElement;
+//------------------------------------------------------------------------
+t_ver_info_element_ptr load_ver_info_element(const void* const pvBlock,
+                                             size_t      const cbBlock)
+{
+ return load_ver_info_element2(pvBlock,cbBlock).first;
 }//load_ver_info_element
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -301,8 +371,8 @@ const t_ver_info_error_traits::msg_entry_type
  {ver_info_mce__bad_value_size_4,
   L"Bad value size in key [%1]Entry size %2. Value offset %3. Value size %4."},
 
- {ver_info_mce__bad_value_offset_3,
-  L"Bad value offset in key [%1]. Entry size %2. Value offset %3."},
+ //{ver_info_mce__bad_value_offset_3,
+ // L"Bad value offset in key [%1]. Entry size %2. Value offset %3."},
 
  {ver_info_mce__cant_process_string_value_1,
   L"Cant process string value of key [%1]."},
@@ -395,13 +465,16 @@ const std::wstring& t_ver_info_element::key()const
 }//key
 
 //------------------------------------------------------------------------
-void t_ver_info_element::load(const tag_entry& entry)
+const void* t_ver_info_element::internal__load(const tag_entry& entry)
 {
- m_key.clear();
+ const structure::t_const_wstr_box
+  keyName
+   (ver_info_entry__get_key(this->src_id(),&entry));
 
- //-------
- m_key=ver_info_entry__get_key(this->src_id(),&entry);
-}//load
+ m_key=keyName.make_str();
+
+ return keyName.ptr+keyName.len+1;
+}//internal__load
 
 //------------------------------------------------------------------------
 bool t_ver_info_element::eq_key(const wchar_t* const pwszKey,
@@ -510,6 +583,16 @@ t_ver_info_element__VS_VERSION_INFO::t_ver_info_element__VS_VERSION_INFO()
 t_ver_info_element__VS_VERSION_INFO::~t_ver_info_element__VS_VERSION_INFO()
 {;}
 
+//------------------------------------------------------------------------
+t_ver_info_element__VS_VERSION_INFO::self_ptr t_ver_info_element__VS_VERSION_INFO::create(const tag_entry& entry)
+{
+ self_ptr x(structure::not_null_ptr(new self_type()));
+
+ x->internal__load(entry);
+
+ return x;
+}//create
+
 //selectors --------------------------------------------------------------
 const VS_FIXEDFILEINFO* t_ver_info_element__VS_VERSION_INFO::fixed_info(bool must_exists)const
 {
@@ -526,7 +609,7 @@ const VS_FIXEDFILEINFO* t_ver_info_element__VS_VERSION_INFO::fixed_info(bool mus
 }//fixed_info
 
 //interface --------------------------------------------------------------
-void t_ver_info_element__VS_VERSION_INFO::load(const tag_entry& entry)
+const void* t_ver_info_element__VS_VERSION_INFO::internal__load(const tag_entry& entry)
 {
  //! struct VS_VERSIONINFO:
  //! - WORD wLength;
@@ -538,13 +621,11 @@ void t_ver_info_element__VS_VERSION_INFO::load(const tag_entry& entry)
  //! - WORD Padding2[];
  //! - WORD Children[];
 
- //-----------
- m_childs.clear();
+ assert(m_ffi.null());
+ assert(m_childs.empty());
 
  //-----------
- inherited::load(entry);
-
- const void* const pValue=ver_info_entry__get_value(this->src_id(),&entry,1);
+ const void* pOurData=inherited::internal__load(entry);
 
  if(entry.wValueLength==0)
  {
@@ -553,7 +634,11 @@ void t_ver_info_element__VS_VERSION_INFO::load(const tag_entry& entry)
  else
  if(sizeof(VS_FIXEDFILEINFO)<=entry.wValueLength)
  {
-  m_ffi=*reinterpret_cast<const VS_FIXEDFILEINFO*>(pValue);
+  pOurData=ver_info_entry__get_value(this->src_id(),&entry,pOurData,1);
+
+  m_ffi=*reinterpret_cast<const VS_FIXEDFILEINFO*>(pOurData);
+
+  pOurData=reinterpret_cast<const char*>(pOurData)+entry.wValueLength;
  }
  else
  {
@@ -567,18 +652,35 @@ void t_ver_info_element__VS_VERSION_INFO::load(const tag_entry& entry)
   exc.raise();
  }//if
 
- const char*       pChildren=ver_info_align_ptr(reinterpret_cast<const char*>(pValue)+entry.wValueLength);
- const char* const eChildren=reinterpret_cast<const char*>(&entry)+entry.wLength;
+ const void* const eChildren=entry.end();
 
- assert(pChildren<=eChildren);
-
- while(pChildren<eChildren)
+ for(;;)
  {
-  m_childs.push_back(load_ver_info_element(pChildren,eChildren-pChildren));
+  const void* const pChildren=ver_info_align_ptr(pOurData,eChildren);
 
-  pChildren=ver_info_align_ptr(pChildren+reinterpret_cast<const tag_entry*>(pChildren)->wLength);
- }//while
-}//load
+  if(pChildren==eChildren)
+   break;
+
+  assert(pChildren<eChildren);
+
+  const size_t cbTail=ver_info__get_distance(pChildren,eChildren);
+
+  t_load_ver_info_element2_result
+   childData
+    (load_ver_info_element2(pChildren,cbTail));
+
+  assert(childData.first);
+
+  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+
+  assert(pChildren<childData.second);
+  assert(childData.second<=eChildren);
+
+  pOurData=childData.second;
+ }//for[ever]
+
+ return eChildren;
+}//internal__load
 
 //------------------------------------------------------------------------
 t_ver_info_element__VS_VERSION_INFO::size_type
@@ -607,19 +709,25 @@ t_ver_info_element__String::~t_ver_info_element__String()
 {;}
 
 //------------------------------------------------------------------------
-t_ver_info_element__String::self_ptr
+t_ver_info_element__String::create_result_type
  t_ver_info_element__String::create(const void* const pvBlock,
                                     size_t      const cbBlock)
 {
- const tag_entry*
-  const pEntry(load_ver_info_element__get_entry
-                 (ver_info_src__ver_info_element__String,pvBlock,cbBlock));
+ const tag_entry* const
+  pEntry
+   =load_ver_info_element__get_entry
+     (ver_info_src__ver_info_element__String,
+      pvBlock,
+      cbBlock);
 
  const self_ptr spString(structure::not_null_ptr(new self_type()));
 
- spString->load(*pEntry);
+ const void* const eData=spString->internal__load(*pEntry);
 
- return spString;
+ assert(pvBlock<eData);
+ assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
+
+ return create_result_type(__STL_MOVE_VALUE(spString),eData);
 }//create
 
 //------------------------------------------------------------------------
@@ -629,7 +737,7 @@ const std::wstring& t_ver_info_element__String::value()const
 }//value
 
 //interface --------------------------------------------------------------
-void t_ver_info_element__String::load(const tag_entry& entry)
+const void* t_ver_info_element__String::internal__load(const tag_entry& entry)
 {
  //! struct String:
  //! - WORD wLength;
@@ -639,20 +747,19 @@ void t_ver_info_element__String::load(const tag_entry& entry)
  //! - WORD Padding[];
  //! - WORD Value[];
 
- //--------
- m_value.clear();
+ assert(m_value.empty());
 
  //--------
- inherited::load(entry);
+ const void* const pOurData=inherited::internal__load(entry);
 
  //--------
  if(entry.wType==1)
  {
-  const wchar_t* const pwszValue=
-   reinterpret_cast<const wchar_t*>(ver_info_entry__get_value(this->src_id(),&entry,sizeof(WORD)));
-
-  if(pwszValue!=NULL)
+  if(entry.wValueLength!=0)
   {
+   const wchar_t* const pwszValue=
+    reinterpret_cast<const wchar_t*>(ver_info_entry__get_value(this->src_id(),&entry,pOurData,sizeof(WORD)));
+
    const void* const eEntry=
     reinterpret_cast<const char*>(pwszValue)+(entry.wValueLength*sizeof(WORD));
 
@@ -671,7 +778,7 @@ void t_ver_info_element__String::load(const tag_entry& entry)
    }
 
    m_value.assign(pwszValue,ewszValue);
-  }//if pwszValue!=NULL
+  }//if entry.wValueLength!=0
  }
  else
  {
@@ -684,6 +791,8 @@ void t_ver_info_element__String::load(const tag_entry& entry)
 
   exc.raise();
  }//else
+
+ return entry.end();
 }//load
 
 //------------------------------------------------------------------------
@@ -712,25 +821,31 @@ t_ver_info_element__StringTable::~t_ver_info_element__StringTable()
 {;}
 
 //------------------------------------------------------------------------
-t_ver_info_element__StringTable::self_ptr
+t_ver_info_element__StringTable::create_result_type
  t_ver_info_element__StringTable::create(const void* const pvBlock,
                                          size_t      const cbBlock)
 {
  const tag_entry*
-  const pEntry(load_ver_info_element__get_entry
-                (ver_info_src__ver_info_element__StringTable,pvBlock,cbBlock));
+  const pEntry
+   =load_ver_info_element__get_entry
+     (ver_info_src__ver_info_element__StringTable,
+      pvBlock,
+      cbBlock);
 
  assert(pEntry);
 
- const self_ptr spStringTable(structure::not_null_ptr(new self_type()));
+ self_ptr spStringTable(structure::not_null_ptr(new self_type()));
 
- spStringTable->load(*pEntry);
+ const void* const eData=spStringTable->internal__load(*pEntry);
 
- return spStringTable;
+ assert(pvBlock<eData);
+ assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
+
+ return create_result_type(__STL_MOVE_VALUE(spStringTable),eData);
 }//create
 
 //interface --------------------------------------------------------------
-void t_ver_info_element__StringTable::load(const tag_entry& entry)
+const void* t_ver_info_element__StringTable::internal__load(const tag_entry& entry)
 {
  //! struct StringTable:
  //! - WORD wLength;
@@ -741,26 +856,41 @@ void t_ver_info_element__StringTable::load(const tag_entry& entry)
  //! - String Children[];
 
  //-----------
- m_childs.clear();
+ assert(m_childs.empty());
 
  //------------
- inherited::load(entry);
+ const void* pOurData=inherited::internal__load(entry);
 
  //------------
- const wchar_t* const pwszKey(ver_info_entry__get_key(this->src_id(),&entry));
+ const void* const eChildren=entry.end();
 
- const char*       pChildren=ver_info_align_ptr(reinterpret_cast<const char*>(pwszKey+wcslen(pwszKey)+1));
- const char* const eChildren=reinterpret_cast<const char*>(&entry)+entry.wLength;
-
- assert(pChildren<=eChildren);
-
- while(pChildren<eChildren)
+ for(;;)
  {
-  m_childs.push_back(t_ver_info_element__String::create(pChildren,eChildren-pChildren));
+  const void* const pChildren=ver_info_align_ptr(pOurData,eChildren);
 
-  pChildren=ver_info_align_ptr(pChildren+reinterpret_cast<const tag_entry*>(pChildren)->wLength);
- }//while
-}//load
+  if(pChildren==eChildren)
+   break;
+
+  assert(pChildren<eChildren);
+
+  const size_t cbTail
+   =ver_info__get_distance(pChildren,eChildren);
+
+  auto childData
+   (t_ver_info_element__String::create(pChildren,cbTail));
+
+  assert(childData.first);
+
+  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+
+  assert(pChildren<childData.second);;
+  assert(childData.second<=eChildren);
+
+  pOurData=childData.second;
+ }//for[ever]
+
+ return eChildren;
+}//internal__load
 
 //------------------------------------------------------------------------
 t_ver_info_element__StringTable::size_type
@@ -789,8 +919,18 @@ t_ver_info_element__StringFileInfo::t_ver_info_element__StringFileInfo()
 t_ver_info_element__StringFileInfo::~t_ver_info_element__StringFileInfo()
 {;}
 
+//------------------------------------------------------------------------
+t_ver_info_element__StringFileInfo::self_ptr t_ver_info_element__StringFileInfo::create(const tag_entry& entry)
+{
+ self_ptr x(structure::not_null_ptr(new self_type()));
+
+ x->internal__load(entry);
+
+ return x;
+}//create
+
 //interface --------------------------------------------------------------
-void t_ver_info_element__StringFileInfo::load(const tag_entry& entry)
+const void* t_ver_info_element__StringFileInfo::internal__load(const tag_entry& entry)
 {
  //! struct StringFileInfo:
  //! - WORD wLength;
@@ -801,26 +941,40 @@ void t_ver_info_element__StringFileInfo::load(const tag_entry& entry)
  //! - StringTable Children[];
 
  //-----------
- m_childs.clear();
+ assert(m_childs.empty());
 
  //-----------
- inherited::load(entry);
+ const void* pOurData=inherited::internal__load(entry);
 
  //-----------
- const wchar_t* const pwszKey(ver_info_entry__get_key(this->src_id(),&entry));
+ const void* const eChildren=entry.end();
 
- const char*       pChildren=ver_info_align_ptr(reinterpret_cast<const char*>(pwszKey+wcslen(pwszKey)+1));
- const char* const eChildren=reinterpret_cast<const char*>(&entry)+entry.wLength;
-
- assert(pChildren<=eChildren);
-
- while(pChildren<eChildren)
+ for(;;)
  {
-  m_childs.push_back(t_ver_info_element__StringTable::create(pChildren,eChildren-pChildren));
+  const void* const pChildren=ver_info_align_ptr(pOurData,eChildren);
 
-  pChildren=ver_info_align_ptr(pChildren+reinterpret_cast<const tag_entry*>(pChildren)->wLength);
- }//while
-}//load
+  if(pChildren==eChildren)
+   break;
+
+  assert(pChildren<eChildren);
+
+  const size_t cbTail=ver_info__get_distance(pChildren,eChildren);
+
+  auto childData
+   (t_ver_info_element__StringTable::create(pChildren,cbTail));
+
+  assert(childData.first);
+
+  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+
+  assert(pChildren<childData.second);;
+  assert(childData.second<=eChildren);
+
+  pOurData=childData.second;
+ }//for[ever]
+
+ return eChildren;
+}//internal__load
 
 //------------------------------------------------------------------------
 t_ver_info_element__StringFileInfo::size_type
@@ -850,21 +1004,28 @@ t_ver_info_element__Var::~t_ver_info_element__Var()
 {;}
 
 //------------------------------------------------------------------------
-t_ver_info_element__Var::self_ptr
+t_ver_info_element__Var::create_result_type
  t_ver_info_element__Var::create(const void* const pvBlock,
                                  size_t      const cbBlock)
 {
- const tag_entry* const pEntry=
-  load_ver_info_element__get_entry(ver_info_src__ver_info_element__Var,pvBlock,cbBlock);
+ const tag_entry* const
+  pEntry
+   =load_ver_info_element__get_entry
+     (ver_info_src__ver_info_element__Var,
+      pvBlock,
+      cbBlock);
 
  assert(pEntry);
 
  //---------------
- const self_ptr spVar(structure::not_null_ptr(new self_type()));
+ self_ptr spVar(structure::not_null_ptr(new self_type()));
 
- spVar->load(*pEntry);
+ const void* const eData=spVar->internal__load(*pEntry);
 
- return spVar;
+ assert(pvBlock<eData);
+ assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
+
+ return create_result_type(__STL_MOVE_VALUE(spVar),eData);
 }//create
 
 //selectors --------------------------------------------------------------
@@ -905,7 +1066,7 @@ std::wstring t_ver_info_element__Var::id_as_str(size_type const i)const
 }//id_as_str
 
 //interface --------------------------------------------------------------
-void t_ver_info_element__Var::load(const tag_entry& entry)
+const void* t_ver_info_element__Var::internal__load(const tag_entry& entry)
 {
  //! struct Var:
  //! - WORD wLength;
@@ -916,14 +1077,21 @@ void t_ver_info_element__Var::load(const tag_entry& entry)
  //! - DWORD Value[];
 
  //---------
- m_ids.clear();
+ assert(m_ids.empty());
 
  //---------
- inherited::load(entry);
+ const void* pOurData=inherited::internal__load(entry);
 
  //-----------
  if(entry.wType==0)
  {
+  pOurData
+   =ver_info_entry__get_value
+     (this->src_id(),
+      &entry,
+      pOurData,
+      1);
+
   if((entry.wValueLength%sizeof(DWORD))!=0)
   {
    t_ver_info_error exc(this->src_id(),
@@ -935,20 +1103,19 @@ void t_ver_info_element__Var::load(const tag_entry& entry)
   }//if
 
   //-----------
-  const wchar_t* const pwszKey(ver_info_entry__get_key(this->src_id(),&entry));
+  const void*       pID=pOurData;
+  const void* const eID=reinterpret_cast<const char*>(pID)+entry.wValueLength;
 
-  const char*       pID=ver_info_align_ptr(reinterpret_cast<const char*>(pwszKey+wcslen(pwszKey)+1));
-  const char* const eID=reinterpret_cast<const char*>(pID)+entry.wValueLength;
+  assert(pID<=eID);
+  assert(eID<=entry.end());
 
   //-----------
-  assert(pID<=eID);
-
   while(pID<eID)
   {
    m_ids.push_back(_MAKELONG(*(reinterpret_cast<const WORD*>(pID)+1),
                              *(reinterpret_cast<const WORD*>(pID))));
 
-   pID+=sizeof(DWORD);
+   pID=reinterpret_cast<const char*>(pID)+sizeof(DWORD);
   }//while
  }
  else
@@ -962,7 +1129,9 @@ void t_ver_info_element__Var::load(const tag_entry& entry)
 
   exc.raise();
  }//else
-}//load
+
+ return entry.end();
+}//internal__load
 
 //------------------------------------------------------------------------
 t_ver_info_element__Var::size_type t_ver_info_element__Var::child_count()const
@@ -989,29 +1158,54 @@ t_ver_info_element__VarFileInfo::t_ver_info_element__VarFileInfo()
 t_ver_info_element__VarFileInfo::~t_ver_info_element__VarFileInfo()
 {;}
 
-//interface --------------------------------------------------------------
-void t_ver_info_element__VarFileInfo::load(const tag_entry& entry)
+//------------------------------------------------------------------------
+t_ver_info_element__VarFileInfo::self_ptr t_ver_info_element__VarFileInfo::create(const tag_entry& entry)
 {
- m_childs.clear();
+ self_ptr x(structure::not_null_ptr(new self_type()));
+
+ x->internal__load(entry);
+
+ return x;
+}//create
+
+//interface --------------------------------------------------------------
+const void* t_ver_info_element__VarFileInfo::internal__load(const tag_entry& entry)
+{
+ assert(m_childs.empty());
 
  //-----------
- inherited::load(entry);
+ const void* pOurData=inherited::internal__load(entry);
 
  //-----------
- const wchar_t* const pwszKey(ver_info_entry__get_key(this->src_id(),&entry));
+ const void* const eChildren=entry.end();
 
- const char*       pChildren=ver_info_align_ptr(reinterpret_cast<const char*>(pwszKey+wcslen(pwszKey)+1));
- const char* const eChildren=reinterpret_cast<const char*>(&entry)+entry.wLength;
-
- assert(pChildren<=eChildren);
-
- while(pChildren<eChildren)
+ for(;;)
  {
-  m_childs.push_back(t_ver_info_element__Var::create(pChildren,eChildren-pChildren));
+  const void* const pChildren=ver_info_align_ptr(pOurData,eChildren);
 
-  pChildren=ver_info_align_ptr(pChildren+reinterpret_cast<const tag_entry*>(pChildren)->wLength);
+  if(pChildren==eChildren)
+   break;
+
+  assert(pChildren<eChildren);
+
+  const size_t cbTail
+   =ver_info__get_distance(pChildren,eChildren);
+
+  auto childData
+   (t_ver_info_element__Var::create(pChildren,cbTail));
+
+  assert(childData.first);
+
+  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+
+  assert(pChildren<childData.second);;
+  assert(childData.second<=eChildren);
+
+  pOurData=childData.second;
  }//while
-}//load
+
+ return eChildren;
+}//internal__load
 
 //------------------------------------------------------------------------
 t_ver_info_element__VarFileInfo::size_type
