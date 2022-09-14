@@ -142,10 +142,27 @@ LPSAFEARRAY& TBaseSafeArray::ref_sa(bool const destroy)
 ////////////////////////////////////////////////////////////////////////////////
 //class TSafeArray
 
-LONG TSafeArray::GetLBound(UINT const nDim)
+UINT TSafeArray::GetDim()const
+{
+ if(m_psa==nullptr)
+ {
+  assert(false);
+
+  throw std::runtime_error("[BUG CHECK] TSafeArray::GetDim - m_psa is null.");
+ }//if
+
+ assert(m_psa!=nullptr);
+
+ return LCPI_OS__SafeArrayGetDim(m_psa);
+}//GetDim
+
+//------------------------------------------------------------------------
+LONG TSafeArray::GetLBound(UINT const nDim)const
 {
  assert(m_psa!=NULL);
- assert_msg(nDim>0 && nDim<=this->GetDim(),"nDim=="<<nDim<<"\n"
+
+ assert_msg(nDim>0 && nDim<=this->GetDim(),
+              "nDim=="<<nDim<<"\n"
                                            "GetDim()=="<<this->GetDim());
 
  LONG lBound;
@@ -158,10 +175,12 @@ LONG TSafeArray::GetLBound(UINT const nDim)
 }//GetLBound
 
 //------------------------------------------------------------------------
-LONG TSafeArray::GetUBound(UINT const nDim)
+LONG TSafeArray::GetUBound(UINT const nDim)const
 {
  assert(m_psa!=NULL);
- assert_msg(nDim>0 && nDim<=this->GetDim(),"nDim=="<<nDim<<"\n"
+
+ assert_msg(nDim>0 && nDim<=this->GetDim(),
+              "nDim=="<<nDim<<"\n"
                                            "GetDim()=="<<this->GetDim());
 
  LONG uBound;

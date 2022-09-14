@@ -168,9 +168,11 @@ class TSafeArray:public TBaseSafeArray
   TSafeArray(VARTYPE vt,UINT cDim,const SAFEARRAYBOUND* const rgsaBound);// throw(bad_alloc)
 
  public: //selectors -----------------------------------------------------
-  UINT GetDim();
-  LONG GetLBound(UINT nDim);//nDim in [1..N]
-  LONG GetUBound(UINT nDim);//nDim in [1..N]
+  UINT GetDim()const;
+
+  LONG GetLBound(UINT nDim)const;//nDim in [1..N]
+
+  LONG GetUBound(UINT nDim)const;//nDim in [1..N]
 
  public: //modificators --------------------------------------------------
   //создание вектора с нижним индексом lower и числом элементов count

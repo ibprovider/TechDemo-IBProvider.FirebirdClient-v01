@@ -61,12 +61,6 @@ inline TSafeArray::TSafeArray(VARTYPE               const vt,
  this->Create(vt,cDim,rgsaBound);
 }//TSafeArray
 
-//------------------------------------------------------------------------
-inline UINT TSafeArray::GetDim()
-{
- return (m_psa==NULL)?0:(LCPI_OS__SafeArrayGetDim(m_psa));
-}//GetDim
-
 ////////////////////////////////////////////////////////////////////////////////
 //template class TemplateSafeArray
 
