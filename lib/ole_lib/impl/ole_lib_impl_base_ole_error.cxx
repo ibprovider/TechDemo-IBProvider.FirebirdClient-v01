@@ -62,7 +62,7 @@ HRESULT t_base_ole_error::set_error_info(REFIID exc_riid)const
  ICreateErrorInfoPtr spCreateErrorInfo;
 
  {
-  const HRESULT hr=::CreateErrorInfo(&spCreateErrorInfo.ref_ptr());
+  const HRESULT hr=LCPI_OS__CreateErrorInfo(&spCreateErrorInfo.ref_ptr());
 
   if(FAILED(hr))
    return hr;

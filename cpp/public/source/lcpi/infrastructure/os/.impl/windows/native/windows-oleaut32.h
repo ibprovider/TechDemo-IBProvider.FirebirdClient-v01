@@ -96,5 +96,8 @@
 #define LCPI_OS__GetErrorInfo \
  ::GetErrorInfo
 
+#define LCPI_OS__CreateErrorInfo \
+ ::CreateErrorInfo
+
 ////////////////////////////////////////////////////////////////////////////////
 #endif
