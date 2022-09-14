@@ -49,7 +49,7 @@ class t_basic_const_str_box COMP_W000006_CLASS_FINAL
   ///Указатель на массив символов
   pointer      ptr;
 
-  ///Количество символов в строке
+  ///The count of symbols in our string
   size_type    len;
 
  public:

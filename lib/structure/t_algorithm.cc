@@ -39,7 +39,7 @@ typename Container::iterator
  const Container::iterator i=find(x.begin(),x.end(),value);
 
  return (i==x.end())?i:x.erase(i);
-}
+}//erase_element
 
 //------------------------------------------------------------------------
 template<class Container,class T>
