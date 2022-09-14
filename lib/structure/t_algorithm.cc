@@ -13,9 +13,16 @@ inline TSize align_up(TSize s,TAmount a)
 {
  assert(a>0);
 
- const TSize mod=TSize(s%a);
+ const TAmount mod=TAmount(s%a);
 
- return (mod==0)?s:TSize(s+a-mod);
+ assert(mod<a);
+
+ if(mod==0)
+  return s;
+
+ assert(0<mod);
+
+ return TSize(s+(a-mod));
 }//align_up
 
 //------------------------------------------------------------------------
@@ -24,7 +31,9 @@ inline TSize align_down(TSize s,TAmount a)
 {
  assert(a>0);
 
- const TSize mod=TSize(s%a);
+ const TAmount mod=TAmount(s%a);
+
+ assert(mod<a);
 
  return TSize(s-mod);
 }//align_down
