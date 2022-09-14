@@ -270,10 +270,6 @@ class DBVARIANT_CVT_UTILS
  public: //Service for DBTYPE_BSTR ---------------------------------------
   static HRESULT EmptyBStr(value_cpp_bstr_n_type* result);
 
-  static HRESULT StrToBStr(value_cpp_bstr_n_type* result,
-                           const char*            str,
-                           size_type              length);
-
   static HRESULT WStrToBStr(value_cpp_bstr_n_type* result,
                             const wchar_t*         str,
                             size_type              length);

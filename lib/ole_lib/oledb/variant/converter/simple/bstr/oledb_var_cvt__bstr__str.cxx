@@ -4,7 +4,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,str)::internal__convert_value_to_str
-                                            (LPCCONVCONTEXT const /*pConvCtx*/,
+                                            (LPCCONVCONTEXT const pConvCtx,
                                              const DBVARIANT&     dbvar,
                                              result_type*   const result)const
 {
@@ -19,22 +19,18 @@ HRESULT OLEDB_TYPE_CONVERTER_NAME(bstr,str)::internal__convert_value_to_str
   return S_OK;
  }
 
- bool error=false;
+ DBVARIANT dbvar2;
 
- std::string tmp;
+ dbvar2.SetDataStatus__OK();
 
- structure::unicode_to_ansi
-  (&tmp,
-   dbvar.bstrVal,
-   LCPI_OS__SysStringLen(dbvar.bstrVal),
-   &error);
+ dbvar2.wstrVal.ptr=dbvar.bstrVal;
+ dbvar2.wstrVal.len=LCPI_OS__SysStringLen(dbvar.bstrVal);
 
- if(error)
-  return DB_E_CANTCONVERTVALUE;
+ dbvar2.wType=oledb_typeid__WSTR;
 
- result->set_not_null().value().swap(tmp);
+ const HRESULT cvt_hr2=DBVariant__to_STR_ex(pConvCtx,dbvar2,result);
 
- return S_OK;
+ return cvt_hr2;
 }//internal__convert_value_to_str
 
 //------------------------------------------------------------------------
