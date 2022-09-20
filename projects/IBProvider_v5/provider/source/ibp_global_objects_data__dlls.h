@@ -29,7 +29,7 @@ class IBP_GlobalObjectsData__DLLs COMP_W000006_CLASS_FINAL
 
  public:
   /// <summary>
-  ///  Getting an object, which services an enternal DLL. THROW.
+  ///  Getting an object, which services an external DLL. THROW.
   /// </summary>
   //! \param[in] DLL_Name
   //!  Path to DLL

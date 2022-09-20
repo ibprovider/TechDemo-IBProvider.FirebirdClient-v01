@@ -35,7 +35,7 @@ class t_ibp_os__dlls COMP_W000006_CLASS_FINAL
   //interface ------------------------------------------------------------
 
   /// <summary>
-  ///  Getting an object, which services an enternal DLL. THROW.
+  ///  Getting an object, which services an external DLL. THROW.
   /// </summary>
   //! \param[in] DLL_Name
   //!  Path to DLL
