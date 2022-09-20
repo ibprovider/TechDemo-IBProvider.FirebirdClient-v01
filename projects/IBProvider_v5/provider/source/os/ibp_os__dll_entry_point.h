@@ -14,11 +14,8 @@ namespace lcpi{namespace ibp{namespace os{
 //struct t_ibp_os__dll_entry_point
 
 template<class Func>
-struct ibp_os__dll_entry_point
-{
- public:
-  typedef os::win32::t_ibp_os_win32__dll_entry_point<Func> type;
-};//struct ibp_os__dll_entry_point
+using ibp_os__dll_entry_point
+ =os::win32::t_ibp_os_win32__dll_entry_point<Func>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms os*/}/*nms ibp*/}/*nms lcpi*/

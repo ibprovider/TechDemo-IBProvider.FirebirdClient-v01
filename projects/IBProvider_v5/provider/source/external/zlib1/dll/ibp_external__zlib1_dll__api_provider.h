@@ -13,7 +13,7 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace dll{
 //class ZLIB1_DLL__ApiProvider
 
 #define DEF_ZLIB1_POINT(func_name)                                          \
- ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
+ ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*> m_##func_name
 
 class ZLIB1_DLL__ApiProvider COMP_W000006_CLASS_FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(ZLIB1__ApiProvider)

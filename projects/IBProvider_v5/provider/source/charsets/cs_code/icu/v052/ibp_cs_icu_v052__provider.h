@@ -21,7 +21,7 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 //class t_ibp_icu_provider
 
 #define DEF_ICU_POINT(func_name)                                          \
- ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*>::type m_##func_name
+ ibp::os::ibp_os__dll_entry_point<api::t_fn_##func_name*> m_##func_name
 
 /// <summary>
 ///  Провайдер доступа к ICU API v52
