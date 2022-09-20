@@ -66,7 +66,7 @@ void t_ibp_os_win32__dll_version_info::tag_loader::load(HINSTANCE  const hInstan
   CHECK_READ_PTR(pvResource,cbResource);
 
   //распаковка ресурса
-  load_ver_info_element(pvResource,cbResource).swap(spVerInfo);
+  spVerInfo=load_ver_info_element(pvResource,cbResource);
 
   assert(spVerInfo);
  }//local
@@ -140,8 +140,9 @@ const VS_FIXEDFILEINFO*
 
  typedef win32lib::t_ver_info_element__VS_VERSION_INFO root_element_type;
 
- const root_element_type*
-  const pRootVerInfo=dynamic_cast<const root_element_type*>(pVerInfo);
+ const root_element_type* const
+  pRootVerInfo
+   =dynamic_cast<const root_element_type*>(pVerInfo);
 
  if(!pRootVerInfo)
   throw std::runtime_error("#error. can't find VS_FIXEDFILEINFO of client library.");
