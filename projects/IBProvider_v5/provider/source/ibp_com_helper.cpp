@@ -35,6 +35,7 @@
 #include <win32lib/win32_resource.h>
 #include <win32lib/win32_registry.h>
 #include <win32lib/win32_error.h>
+#include <win32lib/win32_memory_allocator.h>
 
 #include "rc/ibp_reg_data.rh"
 
@@ -70,6 +71,10 @@ bool TIBP_ComModule::THelper::InitHeaps()
    g_ObjectHeap.vFree);
 
  oledb_lib::TOLEDBMemoryAllocator::adapter::SetMemoryManager
+  (g_DataHeap.vAlloc,
+   g_DataHeap.vFree);
+
+ win32lib::TWin32MemoryAllocator::adapter::SetMemoryManager
   (g_DataHeap.vAlloc,
    g_DataHeap.vFree);
 
