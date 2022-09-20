@@ -145,7 +145,7 @@ const VS_FIXEDFILEINFO*
    =dynamic_cast<const root_element_type*>(pVerInfo);
 
  if(!pRootVerInfo)
-  throw std::runtime_error("#error. can't find VS_FIXEDFILEINFO of client library.");
+  throw std::runtime_error("#error. Can't find VS_FIXEDFILEINFO of client library.");
 
  return pRootVerInfo->fixed_info(true);
 }//get_fixed_info
