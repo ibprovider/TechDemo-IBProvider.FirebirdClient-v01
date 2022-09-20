@@ -87,7 +87,8 @@ t_ibp_os__dll_ptr t_ibp_os__dlls::GetDLL(t_ibp_str_box const DLL_Name,
   spDllProxy
    =structure::not_null_ptr
      (new t_ibp_os__dll_proxy
-       (__STL_MOVE_VALUE(spDLL)));
+       (this,
+        __STL_MOVE_VALUE(spDLL)));
 
  assert(spDllProxy);
 

@@ -9,15 +9,16 @@
 
 #include "source/os/ibp_os__dll_proxy.h"
 
-#include "source/ibp_global_objects_data__dlls.h"
-
 namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os__dll_proxy
 
-t_ibp_os__dll_proxy::t_ibp_os__dll_proxy(t_ibp_os__dll_loader::self_ptr&& spDllLoader)
- :m_spDllLoader(__STL_MOVE_VALUE(spDllLoader))
+t_ibp_os__dll_proxy::t_ibp_os__dll_proxy(t_ibp_os__dlls*     const        pDLLs,
+                                         t_ibp_os__dll_loader::self_ptr&& spDllLoader)
+ :m_spDLLs(structure::not_null_ptr(pDLLs))
+ ,m_spDllLoader(__STL_MOVE_VALUE(spDllLoader))
 {
+ assert(m_spDLLs);
  assert(m_spDllLoader);
 
  //
@@ -35,7 +36,7 @@ t_ibp_os__dll_proxy::~t_ibp_os__dll_proxy()
  //
  // The protected release loader of DLL.
  //
- IBP_GlobalObjectsData__DLLs::ReleaseDLL(&m_spDllLoader);
+ m_spDLLs->ReleaseDLL(&m_spDllLoader);
 
  assert(!m_spDllLoader);
 }//~t_ibp_os__dll_proxy

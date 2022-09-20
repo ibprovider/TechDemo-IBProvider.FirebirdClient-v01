@@ -7,7 +7,7 @@
 #ifndef _ibp_os__dll_proxy_H_
 #define _ibp_os__dll_proxy_H_
 
-#include "source/os/ibp_os__dll_loader.h"
+#include "source/os/ibp_os__dlls.h"
 
 namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +31,8 @@ class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
   virtual ~t_ibp_os__dll_proxy();
 
  public:
-  explicit t_ibp_os__dll_proxy(t_ibp_os__dll_loader::self_ptr&& spDllLoader);
+  t_ibp_os__dll_proxy(t_ibp_os__dlls*                  pDLLs,
+                      t_ibp_os__dll_loader::self_ptr&& spDllLoader);
   
   //interface -------------------------------------------------------
   /// <summary>
@@ -63,6 +64,8 @@ class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
                                                 pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
 
  private:
+  t_ibp_os__dlls::self_ptr const m_spDLLs;
+
   t_ibp_os__dll_loader::self_ptr m_spDllLoader;
 };//class t_ibp_os__dll_proxy
 
