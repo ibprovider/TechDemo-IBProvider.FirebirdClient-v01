@@ -125,8 +125,6 @@ class TIBP_ComModule
 #endif
 
  private:
-  friend class THelper;
-
   static HINSTANCE sm_hInstance;
   static TData*    sm_pData;
 };//class TIBP_ComModule
