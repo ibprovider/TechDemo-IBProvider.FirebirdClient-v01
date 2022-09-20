@@ -7,7 +7,7 @@
 #ifndef _ibp_os__dlls_H_
 #define _ibp_os__dlls_H_
 
-#include "source/os/ibp_os__dll_loader.h"
+#include "source/os/ibp_os__dll_loader_descr.h"
 
 #include <structure/tree/t_tree_avl.h>
 
@@ -62,8 +62,8 @@ class t_ibp_os__dlls COMP_W000006_CLASS_FINAL
   typedef thread_traits::lock_guard_type           lock_guard_type;
 
   typedef structure::t_tree_avl
-           <t_ibp_os__dll_descr,
-            t_ibp_os__dll_less_operator,
+           <t_ibp_os__dll_loader_descr,
+            t_ibp_os__dll_loader_descr_less_operator,
             IBP_MemoryAllocator>                   items_type;
 
  private:

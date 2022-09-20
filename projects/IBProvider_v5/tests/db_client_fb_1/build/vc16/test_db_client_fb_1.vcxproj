@@ -1368,6 +1368,7 @@
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_entry_point.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_init_mutex.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_loader.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_loader_descr.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_proxy.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_version_info.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__api.h" />
