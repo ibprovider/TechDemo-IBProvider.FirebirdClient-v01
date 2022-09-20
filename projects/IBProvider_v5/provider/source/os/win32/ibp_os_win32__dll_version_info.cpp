@@ -158,13 +158,14 @@ std::wstring t_ibp_os_win32__dll_version_info::tag_loader::get_lang_and_cp_id
 
  typedef win32lib::t_ver_info_element__Var var_element_type;
 
- const var_element_type*
-  const pVar=dynamic_cast<const var_element_type*>(pVerInfo->query(L"\\VarFileInfo\\Translation",true).ptr());
+ const structure::t_smart_object_ptr<const var_element_type>
+  spVar
+   =dynamic_cast<const var_element_type*>(pVerInfo->query(L"\\VarFileInfo\\Translation",true).ptr());
 
- if(!pVar || pVar->id_count()==0)
+ if(!spVar || spVar->id_count()==0)
   throw std::runtime_error("#error. can't detect translation of client library version info");
 
- return pVar->id_as_str(0);
+ return spVar->id_as_str(0);
 }//get_lang_and_cp_id
 
 //------------------------------------------------------------------------
