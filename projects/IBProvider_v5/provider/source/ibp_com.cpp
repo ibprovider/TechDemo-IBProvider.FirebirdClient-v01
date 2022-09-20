@@ -45,7 +45,7 @@ bool TIBP_ComModule::Init(HINSTANCE const hInstance)
     break;
 
    //инициализация служебных данных
-   if(!THelper::InitData())
+   if(!THelper::InitData(hInstance))
     break;
 
 #ifndef IBP_BUILD_TESTCODE

@@ -106,7 +106,7 @@ void TIBP_ComModule::THelper::Helper__DestroyHeap(THeap& UNUSED_ARG(Heap))
 ////////////////////////////////////////////////////////////////////////////////
 //Инициализация/деинициализация собственных данных
 
-bool TIBP_ComModule::THelper::InitData()
+bool TIBP_ComModule::THelper::InitData(HINSTANCE hInstance)
 {
  assert(sm_pData==NULL);
 
@@ -114,7 +114,7 @@ bool TIBP_ComModule::THelper::InitData()
 
  try
  {
-  sm_pData=new TData(_Module.GetModuleInstance());
+  sm_pData=new TData(hInstance);
 
  #if(IBP_CFG_HAS_MODULE_CONFIG)
   //обработка служебной конфигурации модуля

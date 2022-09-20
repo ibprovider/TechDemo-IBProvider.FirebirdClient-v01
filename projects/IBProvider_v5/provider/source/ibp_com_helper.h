@@ -27,7 +27,7 @@ class TIBP_ComModule::THelper
   static void TermHeaps();
 
  public: //”правление глобальными данными модул€ -------------------------
-  static bool InitData();
+  static bool InitData(HINSTANCE hInstance);
   static void TermData();
 
  public:
