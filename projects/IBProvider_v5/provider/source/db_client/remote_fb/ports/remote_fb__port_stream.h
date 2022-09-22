@@ -35,7 +35,7 @@ class RemoteFB__PortStream:public RemoteFB__SmartInterface
 
    /// Поток компрессора
    stream_class__compressor  =3,
-  };//tag_stream_class
+  };//enum tag_stream_class
 
  public:
   /// <summary>
