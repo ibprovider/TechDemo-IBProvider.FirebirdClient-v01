@@ -117,7 +117,7 @@ void RemoteFB__Port_BASE_v01::tag_writer::begin_write()
    IBP_BUG_CHECK__DEBUG
     (c_bugcheck_src,
      L"#002",
-     L"port already locked by other write-operation");
+     L"port is already locked by another write-operation");
   }//case - in_use
 
   case c_state__failed:

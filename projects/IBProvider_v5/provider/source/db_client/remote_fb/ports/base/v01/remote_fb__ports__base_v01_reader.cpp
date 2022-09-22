@@ -125,7 +125,7 @@ void RemoteFB__Port_BASE_v01::tag_reader::begin_read()
    IBP_BUG_CHECK__DEBUG
     (c_bugcheck_src,
      L"#002",
-     L"port already locked by other read-operation");
+     L"port is already locked by another read-operation");
   }//case
 
   case c_state__failed:
