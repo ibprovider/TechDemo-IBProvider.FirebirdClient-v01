@@ -92,7 +92,7 @@ t_ibp_icu_provider::dll_init_mutex_ptr
  const wchar_t* const c_bugcheck_src
   =L"icu::v052::t_ibp_icu_provider::helper__get_dll_init_mutex";
 
- IBP_SmartInterfacePtr
+ IBP_SmartObjectPtr
   spSvcObj
    (pDLL->get_service_obj
      (sm_DllInitSvcObjID,
@@ -113,7 +113,7 @@ t_ibp_icu_provider::dll_init_mutex_ptr
 }//helper__get_dll_init_mutex
 
 //------------------------------------------------------------------------
-IBP_SmartInterfacePtr t_ibp_icu_provider::helper__create_dll_init_mutex()
+IBP_SmartObjectPtr t_ibp_icu_provider::helper__create_dll_init_mutex()
 {
  return structure::not_null_ptr
          (new dll_init_mutex_type());

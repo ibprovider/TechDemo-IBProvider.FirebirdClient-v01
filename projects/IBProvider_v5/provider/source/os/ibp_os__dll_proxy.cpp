@@ -66,7 +66,7 @@ FARPROC t_ibp_os__dll_proxy::try_get_proc_address(LPCSTR point_name)const
 }//try_get_proc_address
 
 //------------------------------------------------------------------------
-IBP_SmartInterfacePtr t_ibp_os__dll_proxy::get_service_obj
+IBP_SmartObjectPtr t_ibp_os__dll_proxy::get_service_obj
                              (REFGUID                 rServiceObjID,
                               pfn_service_obj_creator pfnServiceObjCreator)
 {

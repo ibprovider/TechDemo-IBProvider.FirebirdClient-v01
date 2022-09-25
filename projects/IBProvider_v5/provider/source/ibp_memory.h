@@ -22,13 +22,6 @@ using IBP_MemoryAllocator
 using IBP_SmartInterface
  =lcpi::infrastructure::core::structure::t_smart_interface;
 
-using IBP_SmartMemoryObject
- =oledb_lib::t_oledb_smart_memory_object;
-
-//------------------------------------------------------------------------
-using IBP_SmartInterfacePtr
- =lcpi::infrastructure::core::structure::t_smart_object_ptr<IBP_SmartInterface>;
-
 //------------------------------------------------------------------------
 #define IBP_DEF_INTERFACE_IMPL_DYNAMIC(Interface)                         \
  lcpi::lib::structure::t_basic_smart_interface_impl__dynamic              \
@@ -38,6 +31,19 @@ using IBP_SmartInterfacePtr
 #define IBP_DEF_INTERFACE_IMPL_STATIC(Interface)                          \
  lcpi::lib::structure::t_basic_smart_interface_impl__static_v2            \
   <Interface>
+
+////////////////////////////////////////////////////////////////////////////////
+
+using IBP_SmartObject
+ =IBP_SmartInterface;
+
+//------------------------------------------------------------------------
+using IBP_SmartObjectPtr
+ =lcpi::infrastructure::core::structure::t_smart_object_ptr<IBP_SmartObject>;
+
+//------------------------------------------------------------------------
+using IBP_SmartMemoryObject
+ =IBP_DEF_INTERFACE_IMPL_DYNAMIC(IBP_SmartObject);
 
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_MemoryWithDebugChecks

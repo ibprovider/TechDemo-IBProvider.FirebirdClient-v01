@@ -78,8 +78,8 @@ class t_ibp_os_win32__dll_loader COMP_W000006_CLASS_FINAL
   //!  Pointer to the creator of a service object.
   //! \return
   //!  Not NULL.
-  virtual IBP_SmartInterfacePtr get_service_obj(REFGUID                 rSvcObjID,
-                                                pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
+  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rSvcObjID,
+                                             pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
 
  public:
   /// <summary>
@@ -106,7 +106,7 @@ class t_ibp_os_win32__dll_loader COMP_W000006_CLASS_FINAL
 
   typedef structure::t_stl_map
            <GUID,
-            IBP_SmartInterfacePtr,
+            IBP_SmartObjectPtr,
             ole_lib::TGuidLess,
             IBP_MemoryAllocator>                           service_objects_map_type;
 

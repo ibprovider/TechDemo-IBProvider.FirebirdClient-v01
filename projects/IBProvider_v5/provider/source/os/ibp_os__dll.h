@@ -17,7 +17,7 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
 {
  public:
   using pfn_service_obj_creator
-   =IBP_SmartInterfacePtr (*)();
+   =IBP_SmartObjectPtr (*)();
 
  public:
   /// <summary>
@@ -45,8 +45,8 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
   //!  Pointer to the creator of a service object.
   //! \return
   //!  Not NULL.
-  virtual IBP_SmartInterfacePtr get_service_obj(REFGUID                 rServiceObjID,
-                                                pfn_service_obj_creator pfnServiceObjCreator)=0;
+  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rServiceObjID,
+                                             pfn_service_obj_creator pfnServiceObjCreator)=0;
 };//class t_ibp_os__dll
 
 ////////////////////////////////////////////////////////////////////////////////

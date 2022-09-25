@@ -100,7 +100,7 @@ FARPROC t_ibp_os_win32__dll_loader::try_get_proc_address(LPCSTR const point_name
 }//try_get_proc_address
 
 //------------------------------------------------------------------------
-IBP_SmartInterfacePtr t_ibp_os_win32__dll_loader::get_service_obj
+IBP_SmartObjectPtr t_ibp_os_win32__dll_loader::get_service_obj
                              (REFGUID                 rServiceObjID,
                               pfn_service_obj_creator pfnServiceObjCreator)
 {
@@ -120,7 +120,7 @@ IBP_SmartInterfacePtr t_ibp_os_win32__dll_loader::get_service_obj
 
  assert(x==m_ServiceObjs.cend());
 
- IBP_SmartInterfacePtr
+ IBP_SmartObjectPtr
   spNewServiceObj
    =pfnServiceObjCreator();
 

@@ -96,7 +96,7 @@ class t_ibp_icu_provider
  private:
   static dll_init_mutex_ptr helper__get_dll_init_mutex(dll_type* pDLL);
 
-  static IBP_SmartInterfacePtr helper__create_dll_init_mutex();
+  static IBP_SmartObjectPtr helper__create_dll_init_mutex();
 
   void helper__init_op();
 

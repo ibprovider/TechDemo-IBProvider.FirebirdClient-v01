@@ -60,8 +60,8 @@ class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
   //!  Pointer to the creator of a service object.
   //! \return
   //!  Not NULL.
-  virtual IBP_SmartInterfacePtr get_service_obj(REFGUID                 rServiceObjID,
-                                                pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
+  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rServiceObjID,
+                                             pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
 
  private:
   t_ibp_os__dlls::self_ptr const m_spDLLs;
