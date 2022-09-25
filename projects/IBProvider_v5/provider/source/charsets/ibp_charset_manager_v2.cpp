@@ -1009,7 +1009,8 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
    namespace icu_ns=ibp::charsets::cs_code::icu::v003;
 
    m_icu_provider
-    =structure::not_null_ptr(new icu_ns::t_ibp_icu_provider(spDLL));
+    =structure::not_null_ptr
+      (new icu_ns::t_ibp_icu_provider(spDLL));
   }//if
   else
   {
@@ -1037,7 +1038,8 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
    namespace icu_ns=ibp::charsets::cs_code::icu::v052;
 
    m_icu_provider
-    =structure::not_null_ptr(new icu_ns::t_ibp_icu_provider(spDLL));
+    =structure::not_null_ptr
+      (new icu_ns::t_ibp_icu_provider(spDLL));
   }
   else
   {
