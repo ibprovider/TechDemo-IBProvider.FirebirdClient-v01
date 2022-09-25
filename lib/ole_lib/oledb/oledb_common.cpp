@@ -1675,10 +1675,12 @@ void TDBID::FillDBID(const DBID&       SourceDBID,
 
   pDBID->uName.pwszName=pBufferPos;
 
-  pBufferPos=structure::copy(x,
-                             x+NameLength+1, //копирование вместе с терминальным нулем
-                             pBufferPos,
-                             pBufferEnd).second;
+  pBufferPos
+   =structure::copy
+     (x,
+      x+NameLength+1, //copying with a terminate zero
+      pBufferPos,
+      pBufferEnd).second;
 
   assert(pBufferPos<=pBufferEnd);
  }//else - копирование имени
@@ -1687,7 +1689,6 @@ void TDBID::FillDBID(const DBID&       SourceDBID,
 ////////////////////////////////////////////////////////////////////////////////
 //class TDBID
 
-//------------------------------------------------------------------------
 TDBID::TDBID(astr_box_type const Name)
 {
  this->uName.pwszName=OLEDBMemoryAllocator_AllocWStr(Name);
