@@ -1364,7 +1364,7 @@ std::wstring TDBID::PrintUnicode(const DBID& dbid)
  switch(dbid.eKind)
  {
   case DBKIND_GUID_NAME:
-   text<<clsid_to_wstring(dbid.uGuid.guid)
+   text<<ole_lib::guid_to_wstring(dbid.uGuid.guid)
        <<L","
          L"\""
        <<(dbid.uName.pwszName?dbid.uName.pwszName:L"")
@@ -1372,7 +1372,7 @@ std::wstring TDBID::PrintUnicode(const DBID& dbid)
    break;
 
   case DBKIND_GUID_PROPID:
-   text<<clsid_to_wstring(dbid.uGuid.guid)
+   text<<ole_lib::guid_to_wstring(dbid.uGuid.guid)
        <<L","
        <<dbid.uName.ulPropid;
    break;
@@ -1384,7 +1384,7 @@ std::wstring TDBID::PrintUnicode(const DBID& dbid)
    break;
 
   case DBKIND_PGUID_NAME:
-   text<<clsid_to_wstring(dbid.uGuid.pguid?*dbid.uGuid.pguid:CLSID_NULL)
+   text<<ole_lib::guid_to_wstring(dbid.uGuid.pguid?*dbid.uGuid.pguid:CLSID_NULL)
        <<L","
          L"\""
        <<(dbid.uName.pwszName?dbid.uName.pwszName:L"")
@@ -1392,7 +1392,7 @@ std::wstring TDBID::PrintUnicode(const DBID& dbid)
    break;
 
   case DBKIND_PGUID_PROPID:
-   text<<clsid_to_wstring(dbid.uGuid.pguid?*dbid.uGuid.pguid:CLSID_NULL)
+   text<<ole_lib::guid_to_wstring(dbid.uGuid.pguid?*dbid.uGuid.pguid:CLSID_NULL)
        <<L","
        <<dbid.uName.ulPropid;
    break;
@@ -1402,7 +1402,7 @@ std::wstring TDBID::PrintUnicode(const DBID& dbid)
    break;
 
   case DBKIND_GUID:
-   text<<clsid_to_wstring(dbid.uGuid.guid);
+   text<<ole_lib::guid_to_wstring(dbid.uGuid.guid);
    break;
  }//switch dbid
 
