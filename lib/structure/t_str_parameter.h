@@ -67,7 +67,7 @@ class t_str_parameter
 
   bool empty()const
   {
-   return !m_s || (*m_s)==0;
+   return m_s==nullptr || (*m_s)==0;
   }//empty
 
   size_t length()const
