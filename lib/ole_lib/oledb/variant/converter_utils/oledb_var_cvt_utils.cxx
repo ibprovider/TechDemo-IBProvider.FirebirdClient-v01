@@ -659,107 +659,124 @@ HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID__HEX(const charT* const beg,
                                                      const charT* const DEBUG_CODE(end),
                                                      GUID*        const result)
 {
+ assert(beg<end);
+ assert((end-beg)==36);
+
+ assert(result!=nullptr);
+
  typedef structure::t_char_traits2<charT> ct2;
+ typedef unsigned char                    byte_type;
+
+ struct parser
+ {
+  static bool exec(size_t const nBytes,const charT* s,byte_type* d)
+  {
+   byte_type x[2];
+
+   for(const byte_type* const ed=d+nBytes;d!=ed;++d)
+   {
+    byte_type*             px=x;
+    const byte_type* const ex=_END_(x);
+
+    for(;px!=ex;++px)
+    {
+     if((*s)>=ct2::ch_0() && (*s)<=ct2::ch_9())
+      (*px)=byte_type((*s)-ct2::ch_0());
+     else
+     if((*s)>=ct2::ch_letter_a() && (*s)<=ct2::ch_letter_f())
+      (*px)=byte_type(10+((*s)-ct2::ch_letter_a()));
+     else
+     if((*s)>=ct2::ch_letter_A() && (*s)<=ct2::ch_letter_F())
+      (*px)=byte_type(10+((*s)-ct2::ch_letter_A()));
+     else
+      return false;
+
+     ++s;
+    }//for px
+
+    (*d)=byte_type((x[0]<<4)+x[1]);
+   }//for d
+
+   return true;
+  }//exec
+ };//struct parser
 
  //123456789012345678901234567890123456
  //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
 
- assert(beg<end);
- assert((end-beg)==36);
-
  const charT* s=beg;
 
- typedef unsigned char byte_type;
-
  //typedef struct _GUID {
- //   unsigned long  Data1;    //3 2 1 0
- //   unsigned short Data2;    //5 4
- //   unsigned short Data3;    //7 6
- //   unsigned char  Data4[8]; //8 9 10 11 12 13 14 15
+ //   unsigned long  Data1;    // 4
+ //   unsigned short Data2;    // 2
+ //   unsigned short Data3;    // 2
+ //   unsigned char  Data4[8]; // 8
  //} GUID;
 
  byte_type data[16];
 
- // 3 2 1 0
+ byte_type* d=data;
+
+ if(!parser::exec(4,s,d))
+  return DB_E_CANTCONVERTVALUE;
+
+ s+=8; d+=4;
+
+ if((*s)!=ct2::ch_minus())
+  return DB_E_CANTCONVERTVALUE;
+
+ ++s;
+
+ if(!parser::exec(2,s,d))
+  return DB_E_CANTCONVERTVALUE;
+
+ s+=4; d+=2;
+
+ if((*s)!=ct2::ch_minus())
+  return DB_E_CANTCONVERTVALUE;
+
+ ++s;
+
+ if(!parser::exec(2,s,d))
+  return DB_E_CANTCONVERTVALUE;
+
+ s+=4; d+=2;
+
+ if((*s)!=ct2::ch_minus())
+  return DB_E_CANTCONVERTVALUE;
+
+ ++s;
+
+ if(!parser::exec(2,s,d))
+  return DB_E_CANTCONVERTVALUE;
+
+ s+=4; d+=2;
+
+ if((*s)!=ct2::ch_minus())
+  return DB_E_CANTCONVERTVALUE;
+
+ ++s;
+
+ if(!parser::exec(6,s,d))
+  return DB_E_CANTCONVERTVALUE;
+
+ assert((s+12)==end);
+ assert((d+6)==_END_(data));
+
+ // 0 1 2 3
  //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
-
- const signed char
-  rules[]
-   ={3,2,1,0,
-     -1,
-     5,4,
-     -1,
-     7,6,
-     -1,
-     8,9,
-     -1,
-     10,11,12,13,14,15};
-
- for(size_t i=0;i!=_DIM_(rules);++i)
- {
-  assert(s!=end);
-
-  if(rules[i]==-1)
-  {
-   if((*s)!=ct2::ch_minus())
-    return DB_E_CANTCONVERTVALUE;
-
-   ++s;
-
-   continue;
-  }//if
-
-  assert_hint(rules[i]>=0);
-  assert_hint(rules[i]<_DIM_(data));
-
-  byte_type cur_byte;
-
-  if((*s)>='0' && (*s)<='9')
-   cur_byte=byte_type((*s)-'0');
-  else
-  if((*s)>='a' && (*s)<='f')
-   cur_byte=byte_type(10+((*s)-'a'));
-  else
-  if((*s)>='A' && (*s)<='F')
-   cur_byte=byte_type(10+((*s)-'A'));
-  else
-   return DB_E_CANTCONVERTVALUE;
-
-  ++s;
-
-  assert(s!=end);
-
-  cur_byte=byte_type(cur_byte<<4);
-
-  if((*s)>='0' && (*s)<='9')
-   cur_byte=byte_type(cur_byte+byte_type((*s)-'0'));
-  else
-  if((*s)>='a' && (*s)<='f')
-   cur_byte=byte_type(cur_byte+byte_type(10+((*s)-'a')));
-  else
-  if((*s)>='A' && (*s)<='F')
-   cur_byte=byte_type(cur_byte+byte_type(10+((*s)-'A')));
-  else
-   return DB_E_CANTCONVERTVALUE;
-
-  data[rules[i]]=cur_byte;
-
-  ++s;
- }//for i
-
- assert(s==end);
 
  typedef unsigned __int16 word_type;
  typedef unsigned __int32 dword_type;
 
- result->Data1= (dword_type(data[0]))
-               +(dword_type(data[1])<<8)
-               +(dword_type(data[2])<<16)
-               +(dword_type(data[3])<<24);
+ result->Data1=((dword_type(data[0])<<24)
+               +(dword_type(data[1])<<16)
+               +(dword_type(data[2])<<8)
+               +(dword_type(data[3])));
 
- result->Data2=word_type((word_type(data[4]))+(word_type(data[5])<<8));
+ result->Data2=word_type((word_type(data[4])<<8)+(word_type(data[5])));
 
- result->Data3=word_type((word_type(data[6]))+(word_type(data[7])<<8));
+ result->Data3=word_type((word_type(data[6])<<8)+(word_type(data[7])));
 
  assert(_DIM_(result->Data4)==8);
 
