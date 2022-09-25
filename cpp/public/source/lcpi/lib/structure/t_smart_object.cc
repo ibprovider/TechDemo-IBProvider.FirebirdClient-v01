@@ -4,6 +4,8 @@
 #ifndef _cpp_public_lcpi_lib_structure__t_smart_object_CC_
 #define _cpp_public_lcpi_lib_structure__t_smart_object_CC_
 
+#include <utility>
+
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_smart_interface_impl__static_v2
