@@ -21,6 +21,7 @@ t_string TestIID(REFIID riid)
 }//TestIID
 
 ////////////////////////////////////////////////////////////////////////////////
+
 #define DEFINE_HRESULT_NAME(hr_code,hr_sign) \
  {HRESULT(hr_code),_T(hr_sign)},
 
