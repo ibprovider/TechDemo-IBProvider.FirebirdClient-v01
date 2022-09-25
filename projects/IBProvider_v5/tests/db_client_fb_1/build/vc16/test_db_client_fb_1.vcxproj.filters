@@ -3157,6 +3157,9 @@
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.cpp">
       <Filter>lib\win32lib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.cpp">
+      <Filter>IBP\source\os\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -4959,6 +4962,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_loader_descr.h">
       <Filter>IBP\source\os\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__path_utils.h">
+      <Filter>IBP\source\os\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.h">
+      <Filter>IBP\source\os\win32\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

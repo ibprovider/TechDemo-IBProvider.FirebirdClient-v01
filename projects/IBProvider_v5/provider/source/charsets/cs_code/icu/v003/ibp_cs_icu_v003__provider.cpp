@@ -9,6 +9,9 @@
 
 #include "source/charsets/cs_code/icu/v003/ibp_cs_icu_v003.h"
 #include "source/error_services/ibp_error_bug_check.h"
+#include "source/os/ibp_os__path_utils.h"
+
+#include <win32lib/win32lib.h>
 
 namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{namespace v003{
 ////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +27,8 @@ const GUID t_ibp_icu_provider::sm_DllInitSvcObjID
  m_##func_name(pDLL,#func_name"_3_0")
 
 t_ibp_icu_provider::t_ibp_icu_provider(dll_type* const pDLL)
- :INIT_ICU_POINT(u_init)
+ :INIT_ICU_POINT(u_setDataDirectory)
+ ,INIT_ICU_POINT(u_init)
  ,INIT_ICU_POINT(u_cleanup)
  ,INIT_ICU_POINT(ucnv_open)
  ,INIT_ICU_POINT(ucnv_close)
@@ -50,6 +54,7 @@ t_ibp_icu_provider::t_ibp_icu_provider(dll_type* const pDLL)
  // Initialization of pointers to primary functions.
  //
 
+ m_u_setDataDirectory.point();
  m_u_init.point();
  m_u_cleanup.point();
 
@@ -122,6 +127,27 @@ IBP_SmartObjectPtr t_ibp_icu_provider::helper__create_dll_init_mutex()
 //------------------------------------------------------------------------
 void t_ibp_icu_provider::helper__init_op()
 {
+ {
+  const t_ibp_string modulePath
+   =win32lib::GetModuleFileName(m_spDLL->get_dll_handle());
+
+  const t_ibp_string moduleDir
+   =os::t_ibp_os__path_utils::GetParentDir
+     (modulePath).make_str();
+
+  if(!moduleDir.empty())
+  {
+   assert(structure::test_prefix
+            (modulePath.cbegin(),
+             modulePath.cend(),
+             moduleDir.cbegin(),
+             moduleDir.cend())==moduleDir.cend());
+
+   m_u_setDataDirectory.point()(structure::tstr_to_str(moduleDir).c_str());
+  }//if
+ }//local
+
+ //-----------------------------------------
  api::UErrorCode icu_status=api::U_ZERO_ERROR;
 
  m_u_init.point()(&icu_status);

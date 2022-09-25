@@ -48,6 +48,8 @@ class t_ibp_icu_provider
   typedef ibp::os::t_ibp_os__dll_ptr                 dll_ptr;
 
  public:
+  DEF_ICU_POINT(u_setDataDirectory);
+
   DEF_ICU_POINT(u_init);
   DEF_ICU_POINT(u_cleanup);
 

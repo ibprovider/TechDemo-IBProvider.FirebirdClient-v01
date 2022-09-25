@@ -756,6 +756,7 @@
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_init_mutex.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_loader.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_version_info.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__provider.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\structure\ibp_base64.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\structure\ibp_biginteger.cpp" />
@@ -1371,6 +1372,7 @@
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_loader_descr.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_proxy.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__dll_version_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\ibp_os__path_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__api.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__descr_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__provider.h" />
@@ -1378,6 +1380,7 @@
     <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_init_mutex.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_loader.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__dll_version_info.h" />
+    <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__api.h" />
     <ClInclude Include="..\..\..\..\provider\source\os\win32\winsock\ibp_os_win32_winsock__provider.h" />
     <ClInclude Include="..\..\..\..\provider\source\structure\ibp_base64.h" />

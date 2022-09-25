@@ -951,6 +951,29 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
 typedef void (ICU_EXPORT2 ICU_FN(u_cleanup))
  (void);
 
+/**
+ * Set the ICU data directory.
+ * The data directory is where common format ICU data files (.dat files)
+ *   are loaded from.  Note that normal use of the built-in ICU
+ *   facilities does not require loading of an external data file;
+ *   unless you are adding custom data to ICU, the data directory
+ *   does not need to be set.
+ *
+ * This function should be called at most once in a process, before the
+ * first ICU operation (e.g., u_init()) that will require the loading of an
+ * ICU data file.
+ * This function is not thread-safe. Use it before calling ICU APIs from
+ * multiple threads.
+ *
+ * @param directory The directory to be set.
+ *
+ * @see u_init
+ * @stable ICU 2.0
+ */
+
+typedef void (ICU_EXPORT2 ICU_FN(u_setDataDirectory))
+ (const char* directory);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 #undef ICU_FN
