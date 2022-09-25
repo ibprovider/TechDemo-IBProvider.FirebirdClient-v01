@@ -45,7 +45,7 @@ t_db_object_ptr query_db_service(t_db_object* const service_provider_obj,
 
   if(ServiceName==NULL || (*ServiceName)==0)
   {
-   exc<<ole_lib::clsid_to_wstring(rguidService);
+   exc<<ole_lib::guid_to_wstring(rguidService);
   }
   else
   {
