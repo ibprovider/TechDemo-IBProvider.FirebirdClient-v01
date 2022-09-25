@@ -228,9 +228,9 @@ class TRegistry
   //void   WriteBinary(const t_string& name,DWORD buf_size,char* buffer);
 
  protected:
-  HKEY GetBaseKey()const;
+  HKEY Helper__GetBaseKey()const;
 
-  void ChangeKey(HKEY hNewKey);
+  void Helper__ChangeKey(HKEY hNewKey);
 };//class TRegistry
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -359,85 +359,85 @@ inline HKEY TRegistry::GetKeyEx(str_arg_type const key_name,
                                 REGSAM       const samDesired,
                                 LONG*        const lpResult)
 {
- return GetKeyEx(this->GetBaseKey(),key_name,samDesired,lpResult);
+ return GetKeyEx(this->Helper__GetBaseKey(),key_name,samDesired,lpResult);
 }
 
 //------------------------------------------------------------------------
 inline LONG TRegistry::GetValueInfo(str_arg_type   key_name,
                                     TRegDataInfo&  data)
 {
- return GetValueInfo(this->GetBaseKey(),key_name,data);
+ return GetValueInfo(this->Helper__GetBaseKey(),key_name,data);
 }
 
 //------------------------------------------------------------------------
 inline LONG TRegistry::GetKeyInfo(TRegKeyInfo& info)
 {
- return GetKeyInfo(this->GetBaseKey(),info);
+ return GetKeyInfo(this->Helper__GetBaseKey(),info);
 }
 
 //------------------------------------------------------------------------
 inline DWORD TRegistry::GetDataSize(str_arg_type const name,
                                     LONG*        const lResult)
 {
- return GetDataSize(this->GetBaseKey(),name,lResult);
+ return GetDataSize(this->Helper__GetBaseKey(),name,lResult);
 }
 
 //------------------------------------------------------------------------
 inline bool TRegistry::KeyExists(str_arg_type const name)
 {
- return KeyExists(this->GetBaseKey(),name);
+ return KeyExists(this->Helper__GetBaseKey(),name);
 }
 
 //------------------------------------------------------------------------
 inline bool TRegistry::ValueExists(str_arg_type name)
 {
- return ValueExists(this->GetBaseKey(),name);
+ return ValueExists(this->Helper__GetBaseKey(),name);
 }
 
 //------------------------------------------------------------------------
 inline LONG TRegistry::DeleteKey(str_arg_type key_name)
 {
- return DeleteKey(this->GetBaseKey(),key_name);
+ return DeleteKey(this->Helper__GetBaseKey(),key_name);
 }
 
 //------------------------------------------------------------------------
 inline LONG TRegistry::DeleteKey(str_arg_type path,str_arg_type key_name)
 {
- return DeleteKey(this->GetBaseKey(),path,key_name);
+ return DeleteKey(this->Helper__GetBaseKey(),path,key_name);
 }
 
 //------------------------------------------------------------------------
 inline LONG TRegistry::DeleteValue(str_arg_type name)
 {
- return ::RegDeleteValue(this->GetBaseKey(),name.str());
+ return ::RegDeleteValue(this->Helper__GetBaseKey(),name.str());
 }
 
 //------------------------------------------------------------------------
 inline void TRegistry::GetKeyNames(TNameArray& names)
 {
- GetKeyNames(this->GetBaseKey(),names);
+ GetKeyNames(this->Helper__GetBaseKey(),names);
 }
 
 //------------------------------------------------------------------------
 inline void TRegistry::GetValueNames(TNameArray& names)
 {
- GetValueNames(this->GetBaseKey(),names);
+ GetValueNames(this->Helper__GetBaseKey(),names);
 }
 
 //------------------------------------------------------------------------
 inline bool TRegistry::HasSubKeys()
 {
- return HasSubKeys(this->GetBaseKey());
+ return HasSubKeys(this->Helper__GetBaseKey());
 }
 
 //------------------------------------------------------------------------
-inline HKEY TRegistry::GetBaseKey()const
+inline HKEY TRegistry::Helper__GetBaseKey()const
 {
  return (CurrentKey==NULL)?RootKey:CurrentKey;
-}//GetBaseKey
+}//Helper__GetBaseKey
 
 //------------------------------------------------------------------------
-inline void TRegistry::ChangeKey(HKEY const hNewKey)
+inline void TRegistry::Helper__ChangeKey(HKEY const hNewKey)
 {
  //TODO: [BUG?] if hNewKey==currentKey
 
@@ -447,7 +447,7 @@ inline void TRegistry::ChangeKey(HKEY const hNewKey)
  this->CloseKey();
 
  this->CurrentKey=hNewKey;
-}//ChangeKey
+}//Helper__ChangeKey
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TRegistry::TKey - inline implementation

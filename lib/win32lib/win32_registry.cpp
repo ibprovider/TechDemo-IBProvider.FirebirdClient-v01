@@ -563,7 +563,7 @@ LONG TRegistry::OpenKeyEx(str_arg_type const key_name,
 
  const LONG lResult
   =self_type::OpenKeyEx
-    (this->GetBaseKey(),
+    (this->Helper__GetBaseKey(),
      key_name,
      &tmpKey,
      samDesired,
@@ -573,7 +573,7 @@ LONG TRegistry::OpenKeyEx(str_arg_type const key_name,
  {
   assert(tmpKey!=NULL);
   
-  this->ChangeKey(tmpKey);
+  this->Helper__ChangeKey(tmpKey);
  }//if
 
  return lResult;
@@ -586,7 +586,7 @@ t_string TRegistry::ReadString(str_arg_type const name,
                                LONG*        const lpResult)
 {
  return self_type::ReadString
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           name,
           lpResult);
 }//ReadString
@@ -597,7 +597,7 @@ bool TRegistry::WriteString(str_arg_type const name,
                             LONG*        const lpResult)
 {
  return self_type::WriteString
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           name,
           text,
           lpResult);
@@ -610,7 +610,7 @@ t_string TRegistry::ReadString(str_arg_type const sub_key,
                                LONG*        const lpResult)
 {
  return self_type::ReadString
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           sub_key,
           name,
           create_sub_key,
@@ -625,7 +625,7 @@ bool TRegistry::WriteString(str_arg_type const sub_key,
                             LONG*        const lpResult)
 {
  return self_type::WriteString
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           sub_key,
           name,
           text,
@@ -638,7 +638,7 @@ LONG TRegistry::ReadInteger(str_arg_type const name,
                             LONG*        const lpResult)
 {
  return self_type::ReadInteger
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           name,
           lpResult);
 }//ReadInteger
@@ -649,7 +649,7 @@ bool TRegistry::WriteInteger(str_arg_type const name,
                              LONG*        const lpResult)
 {
  return self_type::WriteInteger
-         (this->GetBaseKey(),
+         (this->Helper__GetBaseKey(),
           name,
           digit,
           lpResult);
