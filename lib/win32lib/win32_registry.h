@@ -434,7 +434,7 @@ inline bool TRegistry::HasSubKeys()
 inline HKEY TRegistry::GetBaseKey()const
 {
  return (CurrentKey==NULL)?RootKey:CurrentKey;
-}
+}//GetBaseKey
 
 //------------------------------------------------------------------------
 inline void TRegistry::ChangeKey(HKEY const hNewKey)
