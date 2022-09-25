@@ -85,7 +85,7 @@ void RemoteFB__Port_BASE_v01::tag_writer::begin_write()
 
   default:
   {
-   //ERROR - [BUG CHECK] неизвестное read-состояние порта
+   //ERROR - [BUG CHECK] неизвестное состояние порта
 
    structure::wstr_formatter freason(L"unexpected state of port: %1");
 
