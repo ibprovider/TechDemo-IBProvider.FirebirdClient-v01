@@ -339,12 +339,14 @@ inline bool TRegistry::WriteInteger(HKEY         const key,
                                     LONG         const value,
                                     LONG*        const lpResult)
 {
- const LONG lResult=::RegSetValueEx(key,
-                                    name.str(),
-                                    0,
-                                    REG_DWORD,
-                                    reinterpret_cast<const BYTE*>(&value),
-                                    sizeof(value));
+ const LONG lResult
+  =::RegSetValueEx
+      (key,
+       name.str(),
+       0,
+       REG_DWORD,
+       reinterpret_cast<const BYTE*>(&value),
+       sizeof(value));
 
  if(lpResult!=NULL)
   (*lpResult)=lResult;

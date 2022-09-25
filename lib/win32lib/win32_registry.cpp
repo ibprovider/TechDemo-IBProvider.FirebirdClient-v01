@@ -561,11 +561,13 @@ LONG TRegistry::OpenKeyEx(str_arg_type const key_name,
 {
  HKEY tmpKey=NULL;
 
- const LONG lResult=self_type::OpenKeyEx(this->GetBaseKey(),
-                                         key_name,
-                                         &tmpKey,
-                                         samDesired,
-                                         create);
+ const LONG lResult
+  =self_type::OpenKeyEx
+    (this->GetBaseKey(),
+     key_name,
+     &tmpKey,
+     samDesired,
+     create);
 
  if(lResult==ERROR_SUCCESS)
  {
@@ -583,9 +585,10 @@ LONG TRegistry::OpenKeyEx(str_arg_type const key_name,
 t_string TRegistry::ReadString(str_arg_type const name,
                                LONG*        const lpResult)
 {
- return self_type::ReadString(this->GetBaseKey(),
-                              name,
-                              lpResult);
+ return self_type::ReadString
+         (this->GetBaseKey(),
+          name,
+          lpResult);
 }//ReadString
 
 //------------------------------------------------------------------------
@@ -593,10 +596,11 @@ bool TRegistry::WriteString(str_arg_type const name,
                             const t_string&    text,
                             LONG*        const lpResult)
 {
- return self_type::WriteString(this->GetBaseKey(),
-                               name,
-                               text,
-                               lpResult);
+ return self_type::WriteString
+         (this->GetBaseKey(),
+          name,
+          text,
+          lpResult);
 }//WriteString
 
 //------------------------------------------------------------------------
@@ -605,11 +609,12 @@ t_string TRegistry::ReadString(str_arg_type const sub_key,
                                bool         const create_sub_key,
                                LONG*        const lpResult)
 {
- return self_type::ReadString(this->GetBaseKey(),
-                              sub_key,
-                              name,
-                              create_sub_key,
-                              lpResult);
+ return self_type::ReadString
+         (this->GetBaseKey(),
+          sub_key,
+          name,
+          create_sub_key,
+          lpResult);
 }//ReadString
 
 //------------------------------------------------------------------------
@@ -619,21 +624,23 @@ bool TRegistry::WriteString(str_arg_type const sub_key,
                             bool         const create_sub_key,
                             LONG*        const lpResult)
 {
- return self_type::WriteString(this->GetBaseKey(),
-                               sub_key,
-                               name,
-                               text,
-                               create_sub_key,
-                               lpResult);
+ return self_type::WriteString
+         (this->GetBaseKey(),
+          sub_key,
+          name,
+          text,
+          create_sub_key,
+          lpResult);
 }//WriteString
 
 //------------------------------------------------------------------------
 LONG TRegistry::ReadInteger(str_arg_type const name,
                             LONG*        const lpResult)
 {
- return self_type::ReadInteger(this->GetBaseKey(),
-                               name,
-                               lpResult);
+ return self_type::ReadInteger
+         (this->GetBaseKey(),
+          name,
+          lpResult);
 }//ReadInteger
 
 //------------------------------------------------------------------------
@@ -641,10 +648,11 @@ bool TRegistry::WriteInteger(str_arg_type const name,
                              LONG         const digit,
                              LONG*        const lpResult)
 {
- return self_type::WriteInteger(this->GetBaseKey(),
-                                name,
-                                digit,
-                                lpResult);
+ return self_type::WriteInteger
+         (this->GetBaseKey(),
+          name,
+          digit,
+          lpResult);
 }//WriteInteger
 
 ////////////////////////////////////////////////////////////////////////////////
