@@ -336,14 +336,14 @@ void TIBP_ComModule::THelper::Helper__ProcessRegParam__CLSID
   (*pclsid)=user_clsid;
 
   //запоминаем назначенный идентификатор компоненты
-  (*(i.position)).value()=ole_lib::clsid_to_tstr(user_clsid);
+  (*(i.position)).value()=ole_lib::guid_to_tstr(user_clsid);
 
   return;
  }//if
 
  (*pclsid)=default_clsid;
 
- params.set(prop_id,ole_lib::clsid_to_tstr(default_clsid));
+ params.set(prop_id,ole_lib::guid_to_tstr(default_clsid));
 }//Helper__ProcessRegParam__CLSID
 
 //------------------------------------------------------------------------
@@ -485,7 +485,7 @@ void TIBP_ComModule::THelper::Helper__ReadFlushLogFilePeriod()
 
  win32lib::t_string reg_path(_T("CLSID\\"));
 
- reg_path+=ole_lib::clsid_to_tstr(sm_pData->m_CLSID_IBProvider);
+ reg_path+=ole_lib::guid_to_tstr(sm_pData->m_CLSID_IBProvider);
 
  if(Reg.OpenKeyEx(reg_path,KEY_READ,/*create*/false)==ERROR_SUCCESS)
   TData::sm_FlushLogFilePeriod=Reg.ReadInteger(ibp_sprop_flush_log_period,NULL);
