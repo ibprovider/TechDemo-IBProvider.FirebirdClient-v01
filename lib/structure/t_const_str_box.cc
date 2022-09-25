@@ -171,6 +171,21 @@ typename t_basic_const_str_box<charT>::string_type
 
 //------------------------------------------------------------------------
 template<typename charT>
+typename t_basic_const_str_box<charT>::self_type
+ t_basic_const_str_box<charT>::substr(size_t const offset,
+                                      size_t const length)const
+{
+ CHECK_READ_TYPED_PTR(this->ptr,this->len);
+
+ assert(offset<=this->len);
+
+ const size_t resultLength=(std::min)(length,this->len-offset);
+
+ return self_type(this->ptr+offset,resultLength);
+}//substr
+
+//------------------------------------------------------------------------
+template<typename charT>
 typename t_basic_const_str_box<charT>::reference
  t_basic_const_str_box<charT>::front()const
 {

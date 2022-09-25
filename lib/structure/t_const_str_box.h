@@ -124,6 +124,13 @@ class t_basic_const_str_box COMP_W000006_CLASS_FINAL
   /// </summary>
   string_type make_str()const;
 
+  /// <summary>
+  ///  Getting substirng
+  /// </summary>
+  //! \param[in] offset
+  //! \param[in] length
+  self_type substr(size_t offset,size_t length)const;
+
  public:
   reference front()const;
 
