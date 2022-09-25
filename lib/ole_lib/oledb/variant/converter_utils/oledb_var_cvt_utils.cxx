@@ -603,7 +603,7 @@ size_t DBVARIANT_CVT_UTILS::Helper__GuidToText(const cvt_ctx_type* const pCvtCtx
 template<class charT>
 HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID(const charT* const str,
                                                 size_t       const length,
-                                                GUID*        const  result)
+                                                GUID*        const result)
 {
  typedef structure::t_char_traits2<charT> ct2;
 
