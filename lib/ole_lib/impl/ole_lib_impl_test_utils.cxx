@@ -14,8 +14,15 @@ t_string TestIID(REFIID riid)
 
  win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
 
- if(Reg.OpenKeyEx(t,KEY_READ,false)==NOERROR && !(t=Reg.ReadString(_T(""),NULL)).empty())
-  return t;
+ //TODO: use KEY_QUERY_VALUE
+
+ if(Reg.OpenKeyEx(t,KEY_READ,false)==ERROR_SUCCESS)
+ {
+  t=Reg.ReadString(_T(""),nullptr);
+
+  if(!t.empty())
+   return t;
+ }
 
  return str_iid;
 }//TestIID
