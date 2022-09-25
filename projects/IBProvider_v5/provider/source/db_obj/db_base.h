@@ -46,15 +46,6 @@ inline REFGUID LCPI_IBP_NMS::db_obj::__db_guid<LCPI_IBP_NMS::interface_type>()  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//aliases
-
-typedef t_db_smart_interface                               t_db_object;
-
-typedef structure::t_smart_object_ptr<t_db_object>         t_db_object_ptr;
-
-typedef structure::t_smart_object_ptr<const t_db_object>   t_db_object_const_ptr;
-
-////////////////////////////////////////////////////////////////////////////////
 //forward declaration
 
 //db guard ---------------------------------------------------------------

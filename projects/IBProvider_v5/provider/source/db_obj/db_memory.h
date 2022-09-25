@@ -40,12 +40,21 @@ typedef structure::t_smart_interface                  t_db_smart_interface;
  structure::t_basic_smart_interface_impl__static_v2<Interface>
 
 ////////////////////////////////////////////////////////////////////////////////
+//aliases
+
+typedef t_db_smart_interface                               t_db_object;
+
+typedef structure::t_smart_object_ptr<t_db_object>         t_db_object_ptr;
+
+typedef structure::t_smart_object_ptr<const t_db_object>   t_db_object_const_ptr;
+
+////////////////////////////////////////////////////////////////////////////////
 //class t_db_smart_memory_object
 
 /// <summary>
 ///  Базовый класс smart-объектов
 /// </summary>
-typedef IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(t_db_smart_interface)
+typedef IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(t_db_object)
  t_db_smart_memory_object;
 
 ////////////////////////////////////////////////////////////////////////////////
