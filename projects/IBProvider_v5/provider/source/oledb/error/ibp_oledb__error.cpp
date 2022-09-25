@@ -908,9 +908,12 @@ oledb_lib::IErrorLookupPtr IBP_OLEDB__Error::Helper__CreateErrorLookup(REFCLSID 
   {
    oledb_lib::IErrorLookupPtr x;
 
-   if(SUCCEEDED(x.CreateInstance(_Module.Get_CLSID_IBProviderErrors(),
-                                 nullptr,
-                                 CLSCTX_INPROC_SERVER)))
+   if(SUCCEEDED(ole_lib::SafeCreateInstance
+                  (_Module.Get_CLSID_IBProviderErrors(),
+                   nullptr,
+                   CLSCTX_INPROC_SERVER,
+                   x.iid(),
+                   x.ppv())))
    {
     assert(x);
 
@@ -987,9 +990,12 @@ oledb_lib::IErrorLookupPtr IBP_OLEDB__Error::Helper__CreateErrorLookup_Reg(REFCL
 
  oledb_lib::IErrorLookupPtr spErrorLookup;
 
- if(SUCCEEDED(spErrorLookup.CreateInstance(name_buf.buffer(),
-                                           nullptr,
-                                           CLSCTX_INPROC_SERVER)))
+ if(SUCCEEDED(ole_lib::SafeCreateInstance
+               (name_buf.buffer(),
+                nullptr,
+                CLSCTX_INPROC_SERVER,
+                spErrorLookup.iid(),
+                spErrorLookup.ppv())))
  {
   assert(spErrorLookup);
 
