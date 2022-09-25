@@ -8,7 +8,7 @@ t_string TestIID(REFIID riid)
 {
  win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
 
- t_string str_iid(clsid_to_tstr(riid));
+ t_string str_iid(guid_to_tstr(riid));
 
  t_string t(_T("Interface\\"));
 
