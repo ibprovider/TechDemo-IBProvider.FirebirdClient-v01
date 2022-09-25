@@ -55,14 +55,20 @@ class t_str_parameter
  public:
   //return: CAN BE NULL
   const char_type* c_str()const
-   {return m_s;}
+  {
+   return m_s;
+  }//c_str
 
   //return: NOT NULL
   const char_type* str()const
-   {return m_s?m_s:&sm_null_char;}
+  {
+   return m_s?m_s:&sm_null_char;
+  }//str
 
   bool empty()const
-   {return !m_s || (*m_s)==0;}
+  {
+   return !m_s || (*m_s)==0;
+  }//empty
 
   size_t length()const
   {
