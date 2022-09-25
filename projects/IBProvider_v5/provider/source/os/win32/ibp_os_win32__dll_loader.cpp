@@ -22,8 +22,12 @@ t_ibp_os_win32__dll_loader::t_ibp_os_win32__dll_loader(t_ibp_str_box const DLL_N
  ,m_hDLL(NULL)
  ,m_NoUnLoad(0)
 {
- ///Загрузка DLL
- m_hDLL=::LoadLibrary(structure::tstr_to_tstr(m_DLL_Name).c_str());
+ ///
+ /// Loading DLL with LOAD_WITH_ALTERED_SEARCH_PATH flag.
+ ///
+ m_hDLL=::LoadLibraryEx(structure::tstr_to_tstr(m_DLL_Name).c_str(),
+                        NULL,
+                        LOAD_WITH_ALTERED_SEARCH_PATH);
 
  if(m_hDLL==NULL)
  {
