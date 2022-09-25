@@ -1006,7 +1006,7 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMaxCharSize))
  *    failure, as usual.
  *
  * @stable ICU 2.6
- */  
+ */
 typedef void (ICU_EXPORT2 ICU_FN(u_init))
  (UErrorCode *status);
 
@@ -1025,10 +1025,10 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
  * just before the library unload.
  * <p>
  * u_cleanup() also clears any ICU heap functions, mutex functions or
- * trace functions that may have been set for the process.  
+ * trace functions that may have been set for the process.
  * This has the effect of restoring ICU to its initial condition, before
  * any of these override functions were installed.  Refer to
- * u_setMemoryFunctions(), u_setMutexFunctions and 
+ * u_setMemoryFunctions(), u_setMutexFunctions and
  * utrace_setFunctions().  If ICU is to be reinitialized after after
  * calling u_cleanup(), these runtime override functions will need to
  * be set up again if they are still required.
@@ -1044,7 +1044,7 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
  * calling u_init().  An application must invoke u_init() first from one single
  * thread before allowing other threads call u_init().  All threads existing
  * at the time of the first thread's call to u_init() must also call
- * u_init() themselves before continuing with other ICU operations.  
+ * u_init() themselves before continuing with other ICU operations.
  * <p>
  * The use of u_cleanup() just before an application terminates is optional,
  * but it should be called only once for performance reasons. The primary

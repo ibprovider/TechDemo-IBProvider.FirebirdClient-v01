@@ -879,7 +879,7 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMaxCharSize))
 /**
  *  Initialize ICU.  This function loads and initializes data items
  *  that are required internally by various ICU functions.  Use of this explicit
- *  initialization is required in multi-threaded applications; in 
+ *  initialization is required in multi-threaded applications; in
  *  single threaded apps, use is optional, but incurs little additional
  *  cost, and is thus recommended.
  *  <p>
@@ -890,7 +890,7 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMaxCharSize))
  *  application must guarantee that the first call to u_init() happen
  *  without contention, in a single thread only.
  *  <p>
- *  If <code>u_setMemoryFunctions()</code> or 
+ *  If <code>u_setMemoryFunctions()</code> or
  *  <code>u_setMutexFunctions</code> are needed (uncommon), they must be
  *  called _before_ <code>u_init()</code>.
  *  <p>
@@ -904,7 +904,7 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMaxCharSize))
  *    failure, as usual.
  *
  * @draft ICU 2.6
- */  
+ */
 
 typedef void (ICU_EXPORT2 ICU_FN(u_init))
  (UErrorCode *status);
@@ -934,7 +934,7 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
  * calling u_init().  An application must invoke u_init() first from one single
  * thread before allowing other threads call u_init().  All threads existing
  * at the time of the first thread's call to u_init() must also call
- * u_init() themselves before continuing with other ICU operations.  
+ * u_init() themselves before continuing with other ICU operations.
  * <p>
  * The use of u_cleanup() just before an application terminates is optional,
  * but it should be called only once for performance reasons. The primary
