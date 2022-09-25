@@ -230,7 +230,7 @@ class TRegistry
  protected:
   HKEY GetBaseKey()const;
 
-  void ChangeKey(HKEY newKey);
+  void ChangeKey(HKEY hNewKey);
 };//class TRegistry
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -437,12 +437,16 @@ inline HKEY TRegistry::GetBaseKey()const
 }
 
 //------------------------------------------------------------------------
-inline void TRegistry::ChangeKey(HKEY newKey)
+inline void TRegistry::ChangeKey(HKEY const hNewKey)
 {
- //TODO: [BUG?] if newKey==currentKey
+ //TODO: [BUG?] if hNewKey==currentKey
+
+ // [2022-09-23] Research
+ assert(hNewKey!=this->CurrentKey);
+
  this->CloseKey();
 
- CurrentKey=newKey;
+ this->CurrentKey=hNewKey;
 }//ChangeKey
 
 ////////////////////////////////////////////////////////////////////////////////
