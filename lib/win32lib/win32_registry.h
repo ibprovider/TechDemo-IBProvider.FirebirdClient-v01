@@ -304,7 +304,7 @@ inline TRegistry::TRegistry(const TRegistry& reg,REGSAM samDesired)
 //------------------------------------------------------------------------
 inline TRegistry::~TRegistry()
 {
- this->CloseKey();
+ _VERIFY_EQ(this->CloseKey(),ERROR_SUCCESS);
 }//~TRegistry
 
 //------------------------------------------------------------------------
