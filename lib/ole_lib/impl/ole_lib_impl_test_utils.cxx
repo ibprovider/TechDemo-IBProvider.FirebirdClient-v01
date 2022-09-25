@@ -6,13 +6,13 @@
 
 t_string TestIID(REFIID riid)
 {
- win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
-
  t_string str_iid(guid_to_tstr(riid));
 
  t_string t(_T("Interface\\"));
 
  t+=str_iid;
+
+ win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
 
  if(Reg.OpenKeyEx(t,KEY_READ,false)==NOERROR && !(t=Reg.ReadString(_T(""),NULL)).empty())
   return t;
