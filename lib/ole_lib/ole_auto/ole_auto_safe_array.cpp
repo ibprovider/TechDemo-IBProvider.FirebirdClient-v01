@@ -163,7 +163,7 @@ LONG TSafeArray::GetLBound(UINT const nDim)const
 
  assert_msg(nDim>0 && nDim<=this->GetDim(),
               "nDim=="<<nDim<<"\n"
-                                           "GetDim()=="<<this->GetDim());
+              "GetDim()=="<<this->GetDim());
 
  LONG lBound;
 
@@ -181,7 +181,7 @@ LONG TSafeArray::GetUBound(UINT const nDim)const
 
  assert_msg(nDim>0 && nDim<=this->GetDim(),
               "nDim=="<<nDim<<"\n"
-                                           "GetDim()=="<<this->GetDim());
+              "GetDim()=="<<this->GetDim());
 
  LONG uBound;
 
