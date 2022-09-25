@@ -12,9 +12,9 @@ std::string    clsid_to_string(REFCLSID);
 t_string       clsid_to_tstr(REFCLSID);
 
 //------------------------------------------------------------------------
-HRESULT string_to_clsid(structure::wstr_parameter const str_clsid,GUID* const pguid);
+HRESULT string_to_clsid(structure::wstr_parameter const str_clsid,GUID* const pclsid);
 
-HRESULT string_to_clsid(structure::str_parameter const str_clsid,GUID* const pguid);
+HRESULT string_to_clsid(structure::str_parameter const str_clsid,GUID* const pclsid);
 
 ////////////////////////////////////////////////////////////////////////////////
 //GUID to TEXT
