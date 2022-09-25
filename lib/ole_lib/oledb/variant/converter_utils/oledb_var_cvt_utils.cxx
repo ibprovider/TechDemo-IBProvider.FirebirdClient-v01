@@ -605,6 +605,8 @@ HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID(const charT* const str,
                                                 size_t       const length,
                                                 GUID*        const result)
 {
+ assert(result!=nullptr);
+
  typedef structure::t_char_traits2<charT> ct2;
 
  CHECK_READ_TYPED_PTR(str,length);
