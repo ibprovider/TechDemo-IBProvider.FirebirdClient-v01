@@ -953,7 +953,7 @@ oledb_lib::IErrorLookupPtr IBP_OLEDB__Error::Helper__CreateErrorLookup_Reg(REFCL
  //поиск в реестре сведений об обработчике ошибок
  structure::t_basic_str_formatter<win32lib::t_char> fpath(_T("CLSID\\%1\\ExtendedErrors"));
 
- fpath<<ole_lib::clsid_to_wstring(ProviderClsID);
+ fpath<<ole_lib::guid_to_wstring(ProviderClsID);
 
  win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
 
