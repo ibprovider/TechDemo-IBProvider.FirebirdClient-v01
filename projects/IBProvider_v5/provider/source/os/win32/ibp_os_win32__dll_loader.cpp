@@ -46,8 +46,10 @@ t_ibp_os_win32__dll_loader::~t_ibp_os_win32__dll_loader()
  // Здесь был try{}catch(...){} вокруг кода. Думаю, это реально глупая затея.
  // Если там что-то будет падать, то пусть падает все.
 
- ///Выгрузка DLL
- if(m_NoUnLoad==0 && m_hDLL)
+ ///
+ /// Выгрузка DLL.
+ ///
+ if(m_NoUnLoad==0 && m_hDLL!=NULL)
  {
   _VERIFY(::FreeLibrary(m_hDLL));
  }//if
