@@ -12,5 +12,7 @@
 
 #define LCPI_CPP_CFG__CLASS__FINAL                           final
 
+#define LCPI_CPP_CFG__DECLSPEC__NORETURN                     __declspec(noreturn)
+
 ////////////////////////////////////////////////////////////////////////////////
 #endif

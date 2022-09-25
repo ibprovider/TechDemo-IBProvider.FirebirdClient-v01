@@ -13,6 +13,8 @@
 //
 // LCPI_CPP_CFG__CLASS__FINAL
 //
+// LCPI_CPP_CFG__DECLSPEC__NORETURN
+//
 ////////////////////////////////////////////////////////////////////////////////
 //Known compiler IDs
 
@@ -74,6 +76,11 @@
 //------------------------------------------------------------------------
 #ifndef LCPI_CPP_CFG__CLASS__FINAL
 # error LCPI_CPP_CFG__CLASS__FINAL not defined
+#endif
+
+//------------------------------------------------------------------------
+#ifndef LCPI_CPP_CFG__DECLSPEC__NORETURN
+# error LCPI_CPP_CFG__DECLSPEC__NORETURN not defined
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
