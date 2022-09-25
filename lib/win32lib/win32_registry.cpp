@@ -301,7 +301,7 @@ t_string TRegistry::ReadString(HKEY         const hkey,
  TDataBuffer buffer;
  t_string    value;
 
- LONG lResult=GetValueInfo(hkey,name,type,buffer);
+ LONG lResult=self_type::GetValueInfo(hkey,name,type,buffer);
 
  if(lResult==ERROR_SUCCESS)
  {
