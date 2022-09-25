@@ -103,6 +103,9 @@ class t_smart_object_ptr final
 
   internal_pointer detach();
 
+ public:
+  internal_pointer& ref_ptr();
+
  public: //selectors -----------------------------------------------------
   pointer ptr() const;
 

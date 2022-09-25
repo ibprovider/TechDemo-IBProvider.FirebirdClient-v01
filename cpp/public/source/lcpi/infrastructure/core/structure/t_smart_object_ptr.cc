@@ -294,6 +294,18 @@ inline typename t_smart_object_ptr<T,traits_data>::internal_pointer
  return tmp;
 }//detach
 
+//------------------------------------------------------------------------
+template<class T,class traits_data>
+inline typename t_smart_object_ptr<T,traits_data>::internal_pointer&
+ t_smart_object_ptr<T,traits_data>::ref_ptr()
+{
+ this->Release();
+
+ assert(!m_ptr);
+
+ return m_ptr;
+}//ref_ptr
+
 //selectors --------------------------------------------------------------
 template<class T,class traits_data>
 inline typename t_smart_object_ptr<T,traits_data>::pointer
