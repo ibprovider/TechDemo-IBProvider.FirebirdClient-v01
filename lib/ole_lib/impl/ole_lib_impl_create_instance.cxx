@@ -114,7 +114,9 @@ HRESULT SafeCreateInstance(REFCLSID        clsid,
  }
 
  if((*ppv)==nullptr)
+ {
   return E_FAIL;
+ }
 
  return hr;
 }//SafeCreateInstance
