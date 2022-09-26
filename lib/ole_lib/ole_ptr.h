@@ -8,7 +8,7 @@
 #define _ole_ptr_H_
 
 #include <ole_lib/ole_base.h>
-#include <structure/t_str_parameter.h>
+//#include <structure/t_str_parameter.h>
 #include <structure/t_not_null_ptr.h>
 #include <structure/stl/t_stl_vector.h>
 
@@ -96,8 +96,10 @@ class IPtr
  public:
   typedef T                               interface_type;
   
+#if 0 // 2022-09-24
   typedef structure::str_parameter        str_param_type;
   typedef structure::wstr_parameter       wstr_param_type;
+#endif
 
  public:
   HRESULT m_hr;
@@ -145,10 +147,12 @@ class IPtr
 
   void** ppv();
 
+#if 0 // 2022-09-24
   HRESULT CreateInstance(str_param_type  ProgID,IUnknown* owner,DWORD clsContext);
   HRESULT CreateInstance(wstr_param_type ProgID,IUnknown* owner,DWORD clsContext);
 
   HRESULT CreateInstance(REFCLSID clsid,IUnknown* owner,DWORD clsContext);
+#endif
 
   HRESULT QueryInterface(REFIID riid,void** ppv,HRESULT null_ptr_hr/*=E_FAIL*/)const;
 
@@ -219,8 +223,10 @@ class IPtr<IUnknown,&IID_IUnknown>
  public:
   typedef IUnknown                        interface_type;
   
+#if 0 // 2022-09-24
   typedef structure::str_parameter        str_param_type;
   typedef structure::wstr_parameter       wstr_param_type;
+#endif
 
  public:
   HRESULT m_hr;
@@ -252,10 +258,12 @@ class IPtr<IUnknown,&IID_IUnknown>
 
   void** ppv();
 
+#if 0 // 2022-09-24
   HRESULT CreateInstance(str_param_type  ProgID,IUnknown* owner,DWORD clsContext);
   HRESULT CreateInstance(wstr_param_type ProgID,IUnknown* owner,DWORD clsContext);
 
   HRESULT CreateInstance(REFCLSID clsid,IUnknown* owner,DWORD clsContext);
+#endif
 
   HRESULT QueryInterface(REFIID riid,void** ppv,HRESULT null_ptr_hr/*=E_FAIL*/)const;
 

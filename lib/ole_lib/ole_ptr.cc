@@ -345,6 +345,8 @@ void** IPtr<T,piid>::ppv ()
 }//ppv
 
 //------------------------------------------------------------------------
+#if 0 // 2022-09-24
+
 template<class T,const IID* piid>
 HRESULT IPtr<T,piid>::CreateInstance(str_param_type const ProgID,
                                      IUnknown*      const pUnkOuter,
@@ -396,6 +398,8 @@ HRESULT IPtr<T,piid>::CreateInstance(REFCLSID        clsid,
 
  return m_hr;
 }//CreateInstance
+
+#endif // 2022-09-24
 
 //------------------------------------------------------------------------
 template<class T,const IID* piid>
