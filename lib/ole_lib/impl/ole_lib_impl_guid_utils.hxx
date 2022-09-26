@@ -5,11 +5,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 //CLSID<-->TEXT conversions
 
+#if 0 // [2022-09-22] Temporary removed. They must have a different meaning.
+
 std::wstring   clsid_to_wstring(REFCLSID);
 
 std::string    clsid_to_string(REFCLSID);
 
 t_string       clsid_to_tstr(REFCLSID);
+
+#endif // if 0
 
 //------------------------------------------------------------------------
 HRESULT string_to_clsid(structure::wstr_parameter const str_clsid,GUID* const pclsid);

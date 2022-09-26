@@ -203,6 +203,8 @@ bool tag_text_to_guid<charT>::helper__parse_hex(size_t const nBytes,
 ////////////////////////////////////////////////////////////////////////////////
 //CLSID --> TEXT conversions
 
+#if 0 // [2022-09-22] Temporary removed. They must have a different meaning.
+
 //UNICODE ----------------------------------------------------------------
 std::wstring clsid_to_wstring(REFCLSID rclsid)
 {
@@ -244,6 +246,8 @@ t_string clsid_to_tstr(REFCLSID rclsid)
                                //no terminate null
  return structure::wstr_to_tstr(wsz_guid,len-1);
 }//clsid_to_tstr
+
+#endif // if 0
 
 ////////////////////////////////////////////////////////////////////////////////
 //TEXT --> CLSID conversions
