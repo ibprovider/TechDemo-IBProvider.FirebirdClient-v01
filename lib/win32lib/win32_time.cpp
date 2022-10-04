@@ -100,6 +100,7 @@ BOOL TThreadTime::Start(bool restart)
  }
 
  FILETIME tmp;
+
  return ::GetThreadTimes(GetCurrentThread(),
                          &tmp,               //creation time
                          &tmp,               //exit time
