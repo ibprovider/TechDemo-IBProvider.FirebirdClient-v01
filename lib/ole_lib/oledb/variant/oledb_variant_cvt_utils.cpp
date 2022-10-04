@@ -12,6 +12,8 @@
 #include <structure/t_first_last.h>
 #include <structure/t_zero.h>
 
+#include <lcpi/lib/structure/utilities/string_to_uuid.h>
+
 #include <array>
 #include <float.h>
 

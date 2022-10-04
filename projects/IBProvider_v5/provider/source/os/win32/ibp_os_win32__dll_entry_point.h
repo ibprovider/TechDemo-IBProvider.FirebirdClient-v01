@@ -9,6 +9,8 @@
 
 #include "source/os/ibp_os__dll.h"
 
+#include <lcpi/lib/structure/debug/debug_code.h>
+
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_os_win32
@@ -68,7 +70,7 @@ class t_ibp_os_win32__dll_entry_point
   /// <summary>
   ///  Символьное имя функции
   /// </summary>
-  LPCSTR point_name()const
+  LPCSTR point_name() const
   {
    return m_point_name;
   }//point_name
@@ -82,15 +84,22 @@ class t_ibp_os_win32__dll_entry_point
   //! Если точка входа отсутствует, то генерируется исключение
   const func_type point() const
   {
-   if(m_point==nullptr)
-   {
-    InterlockedCompareExchangePointer
-     (reinterpret_cast<void* volatile*>(&m_point),
-      m_spDLL->get_proc_address(m_point_name), //throw
-      NULL);
-   }//if
+   if(m_point!=nullptr)
+    return m_point;
 
-   assert(m_point!=nullptr);
+   auto const point=(func_type)m_spDLL->get_proc_address(m_point_name);
+
+   assert(point!=nullptr);
+
+   LCPI__DEBUG_CODE(auto const prevPoint=)
+    lcpi::lib::structure::mt::interlocked::compare_exchange
+     (&m_point,
+      point,
+      nullptr);
+
+   assert(prevPoint==nullptr || prevPoint==point);
+
+   assert(m_point==point);
 
    return m_point;
   }//point
@@ -100,19 +109,25 @@ class t_ibp_os_win32__dll_entry_point
   /// </summary>
   bool test_point() const
   {
-   if(m_point==nullptr)
-   {
-    if(FARPROC const p=m_spDLL->try_get_proc_address(m_point_name))
-    {
-     //запоминаем полученный адрес
-     InterlockedCompareExchangePointer
-      (reinterpret_cast<void* volatile*>(&m_point),
-       p,
-       NULL);
-    }//if
-   }//if
+   if(m_point!=nullptr)
+    return true;
 
-   return m_point!=nullptr;
+   auto const point=(func_type)m_spDLL->get_proc_address(m_point_name);
+
+   if(point==nullptr)
+    return false;
+
+   LCPI__DEBUG_CODE(auto const prevPoint=)
+    lcpi::lib::structure::mt::interlocked::compare_exchange
+     (&m_point,
+      point,
+      nullptr);
+
+   assert(prevPoint==nullptr || prevPoint==point);
+
+   assert(m_point==point);
+
+   return true;
   }//test_point
 
  private:

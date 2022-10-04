@@ -10,7 +10,7 @@ namespace structure{
 
 template<class tag_base_smem_obj>
 t_basic_thread_controller__win32<tag_base_smem_obj>::t_basic_thread_controller__win32()
- :m_StopSignal(0)
+ :m_aStopSignal(0)
 {
  if(!m_StopEvent.Create(NULL,/*manual_reset*/true,/*init_state*/false))
   win32lib::t_win32_error::throw_error(::GetLastError(),"Create Thread StopEvent");
@@ -33,7 +33,7 @@ template<class tag_base_smem_obj>
 void t_basic_thread_controller__win32<tag_base_smem_obj>::start_thread_impl()
 {
  assert(m_Thread.handle==NULL);
- assert(m_StopSignal==0);
+ assert(m_aStopSignal==0);
  
  if(!m_Thread.Create(NULL,8196,self_type::ThreadEntryPoint,this,0))
  {
@@ -61,7 +61,7 @@ void t_basic_thread_controller__win32<tag_base_smem_obj>::stop_thread_impl()
  if(m_Thread.handle==NULL)
   return;
  
- ::InterlockedIncrement(&m_StopSignal);
+ m_aStopSignal.store(1);
  
  _VERIFY(m_StopEvent.Set());
  
@@ -116,7 +116,7 @@ template<class tag_base_smem_obj>
 RELEASE_CODE(inline)
 LONG t_basic_thread_controller__win32<tag_base_smem_obj>::get_stop_signal()const
 {
- return m_StopSignal;
+ return m_aStopSignal.load();
 }//get_stop_signal
 
 ////////////////////////////////////////////////////////////////////////////////

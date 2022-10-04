@@ -95,11 +95,12 @@ BOOL TThreadTime::Start(bool restart)
 {
  if(restart)
  {
-  m_KernelSumTime=
+  m_KernelSumTime=0;
   m_UserSumTime  =0;
  }
 
  FILETIME tmp;
+
  return ::GetThreadTimes(GetCurrentThread(),
                          &tmp,               //creation time
                          &tmp,               //exit time

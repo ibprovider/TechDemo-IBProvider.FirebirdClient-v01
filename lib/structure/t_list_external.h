@@ -49,7 +49,7 @@ class t_list_external_base__with_size
 
 //t_traits specification
 // - typedef node_ptr_type
-// - node_ptr_type null_ptr()const
+// - node_ptr_type null_ptr()const;
 // - node_ptr_type get_prev(node_ptr_type node)const;
 // - node_ptr_type get_next(node_ptr_type node)const;
 // - void set_prev(node_ptr_type node,node_ptr_type new_prev)const;

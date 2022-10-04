@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_decrement_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_decrement_CC_
 
-#include <assert.h>
+#include <lcpi/lib/structure/debug/assert.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
@@ -16,17 +16,17 @@ namespace detail{
 class interlocked_decrement_impl
 {
  public:
-  static long exec(volatile long* const pValue)
+  static long exec(long volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
 
-  static unsigned int exec(volatile unsigned int* const pValue)
+  static unsigned int exec(unsigned int volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
 
-  static unsigned __int64 exec(volatile unsigned __int64* const pValue)
+  static unsigned __int64 exec(unsigned __int64 volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
@@ -36,15 +36,15 @@ class interlocked_decrement_impl
 }//namespace detail
 
 ////////////////////////////////////////////////////////////////////////////////
-//class interlocked_decrement
+//class interlocked
 
 template<typename T>
-T interlocked::decrement(T* const pValue)
+T interlocked::decrement(T volatile* const pValue)
 {
- assert(pValue);
+ LCPI__assert(pValue);
 
  return detail::interlocked_decrement_impl::exec(pValue);
-}//exec
+}//decrement
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms mt*/}/*nms structure*/}/*nms lib*/}/*nms lcpi*/

@@ -5,7 +5,7 @@
 #define _t_zero_H_
 
 #if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma hdrstop
+# pragma once
 #endif
 
 #include <structure/t_numeric_initializator.h>

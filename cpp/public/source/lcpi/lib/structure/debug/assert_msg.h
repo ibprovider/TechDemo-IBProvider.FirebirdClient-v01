@@ -13,6 +13,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //define extended test condition  - assert_msg
 
+#ifndef LCPI_GCRT_run_assert
+# error LCPI_GCRT_run_assert not defined!
+#endif
+
 #if defined(NDEBUG_MSG) || defined(NDEBUG)
 
 # define LCPI__assert_msg(p,msg)   LCPI__assert(p)
@@ -25,7 +29,7 @@
                                                                           \
   if(_assert_msg_cond_)                                                   \
   {                                                                       \
-   std::ostringstream __assert_str__;                                     \
+   ::std::ostringstream __assert_str__;                                   \
                                                                           \
    __assert_str__<<std::endl<<msg<<std::endl<<#p;                         \
                                                                           \
