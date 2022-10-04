@@ -196,8 +196,9 @@ class t_err_record_with_params_base
 //  static source_id_type get_def_source_id()
 
 template<class record_traits,class charT>
-class t_err_record_with_params:public t_err_record_with_params_base<charT>
-                              ,public record_traits::record_data_ext_type
+class t_err_record_with_params
+ :public t_err_record_with_params_base<charT>
+ ,public record_traits::record_data_ext_type
 {
  private:
   typedef t_err_record_with_params<record_traits,charT>     self_type;
