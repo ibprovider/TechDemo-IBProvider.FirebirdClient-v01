@@ -4,7 +4,8 @@
 #ifndef _lcpi_lib_structure_utilities__string__string_builder_H_
 #define _lcpi_lib_structure_utilities__string__string_builder_H_
 
-#include <structure/t_common.h>
+#include <structure/t_negative_one.h>
+#include <string>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
