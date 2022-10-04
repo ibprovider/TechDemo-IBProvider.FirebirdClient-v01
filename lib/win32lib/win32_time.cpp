@@ -95,7 +95,7 @@ BOOL TThreadTime::Start(bool restart)
 {
  if(restart)
  {
-  m_KernelSumTime=
+  m_KernelSumTime=0;
   m_UserSumTime  =0;
  }
 
