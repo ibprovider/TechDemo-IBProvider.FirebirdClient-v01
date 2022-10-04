@@ -71,6 +71,8 @@
 #  define LCPI_CRT_LIBRARY_ID                              LCPI_CRT_LIBRARY_ID__VISUALC_V90
 # elif  (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V140)
 #  define LCPI_CRT_LIBRARY_ID                              LCPI_CRT_LIBRARY_ID__VISUALC_V90
+# elif  (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V150)
+#  define LCPI_CRT_LIBRARY_ID                              LCPI_CRT_LIBRARY_ID__VISUALC_V90
 # else
 #  error "Can't detect CRT ID. Unknown complier."
 # endif

@@ -19,7 +19,8 @@
 //Known compiler IDs
 
 #define LCPI_CPP_COMP_ID__VISUALC_V120         0x400000C0
-#define LCPI_CPP_COMP_ID__VISUALC_V140         0x400000D0
+#define LCPI_CPP_COMP_ID__VISUALC_V140         0x400000E0
+#define LCPI_CPP_COMP_ID__VISUALC_V150         0x400000F0
 
 ////////////////////////////////////////////////////////////////////////////////
 //Detect compiler ID
@@ -28,7 +29,9 @@
 
 # if defined(_MSC_VER)
 
-#  if   (_MSC_VER>=1900)
+#  if   (_MSC_VER>=1910)
+#    define LCPI_CPP_COMP_ID__CURRENT                   LCPI_CPP_COMP_ID__VISUALC_V150
+#  elif (_MSC_VER>=1900)
 #    define LCPI_CPP_COMP_ID__CURRENT                   LCPI_CPP_COMP_ID__VISUALC_V140
 #  elif (_MSC_VER>=1800)
 #    define LCPI_CPP_COMP_ID__CURRENT                   LCPI_CPP_COMP_ID__VISUALC_V120
@@ -46,6 +49,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //Config for current compiler
+
+//VC140 ------------------------------------------------------------------
+#if (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V150)
+
+# include <lcpi/config/compiler/.config_compiler__vc14.h>
+
+#endif //LCPI_CPP_COMP_ID__VISUALC_V150
 
 //VC140 ------------------------------------------------------------------
 #if (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V140)
