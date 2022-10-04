@@ -7,6 +7,8 @@
 #include <structure/mt/t_mt_thread_controller.h>
 #include <win32lib/win32_mt.h>
 
+#include <atomic>
+
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_thread_controller__win32
@@ -50,7 +52,7 @@ class t_basic_thread_controller__win32:public t_basic_thread_controller<tag_base
 
  private:
   win32lib::TEvent       m_StopEvent;
-  LONG                   m_StopSignal;
+  std::atomic<LONG>      m_aStopSignal;
 };//class t_basic_thread_controller__win32
 
 ////////////////////////////////////////////////////////////////////////////////
