@@ -1,12 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
-//Реализация шаблонов из <t_char_traits2.h>
-//                                      Коваленко Дмитрий. 8 апреля 2002 года.
-#ifndef _t_char_traits2_CC_
-#define _t_char_traits2_CC_
+//LCPI Instrumental Library for C++
+//                                                 Dmitry Kovalenko. 21.01.2002.
+#ifndef _cpp_public_lcpi_lib_structure__t_char_traits2_CC_
+#define _cpp_public_lcpi_lib_structure__t_char_traits2_CC_
 
-#include <structure/t_negative_one.h>
+#include <lcpi/lib/structure/debug/assert.h>
 
-namespace structure{
+#include <lcpi/lib/structure/t_negative_one.h>
+
+namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //specialization t_char_traits2<char>
 
@@ -40,7 +42,7 @@ inline
 t_char_traits2<char>::char_type
 t_char_traits2<char>::to_hex_u(byte_type const x)
 {
- assert(x<16);
+ LCPI__assert(x<16);
 
  return "0123456789ABCDEF"[x];
 }//to_hex_u
@@ -50,7 +52,7 @@ inline
 t_char_traits2<char>::char_type
 t_char_traits2<char>::to_hex_l(byte_type const x)
 {
- assert(x<16);
+ LCPI__assert(x<16);
 
  return "0123456789abcdef"[x];
 }//to_hex_l
@@ -139,7 +141,7 @@ inline
 t_char_traits2<wchar_t>::char_type
 t_char_traits2<wchar_t>::to_hex_u(byte_type const x)
 {
- assert(x<16);
+ LCPI__assert(x<16);
 
  return L"0123456789ABCDEF"[x];
 }//to_hex_u
@@ -149,7 +151,7 @@ inline
 t_char_traits2<wchar_t>::char_type
 t_char_traits2<wchar_t>::to_hex_l(byte_type const x)
 {
- assert(x<16);
+ LCPI__assert(x<16);
 
  return L"0123456789abcdef"[x];
 }//to_hex_l
@@ -206,5 +208,5 @@ inline t_char_traits2<wchar_t>::byte_type
 }//from_dec
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif

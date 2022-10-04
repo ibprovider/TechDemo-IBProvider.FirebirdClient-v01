@@ -23,16 +23,13 @@ class tag_text_to_guid
   //  {6CB31410-F4E9-4565-83A7-D263FD3FB4F8}
   //
 
-  static const size_t c_STR_SIZE=36+2;
+  static const size_t c_UUID_STR_SIZE=36;
+
+  static const size_t c_GUID_STR_SIZE=c_UUID_STR_SIZE+2;
 
  public:
   static bool exec(const charT* const str,
                    GUID*        const result);
-  
- private:
-  static bool helper__parse_hex(size_t const nBytes,
-                                const charT* s,
-                                byte_type*   d);  
 };//class tag_text_to_guid
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -52,150 +49,43 @@ bool tag_text_to_guid<charT>::exec(const charT* const str,
  const charT* const beg=str;
  const charT* const end=beg+structure::string_length(str);
 
- if((end-beg)!=self_type::c_STR_SIZE)
+ if((end-beg)!=self_type::c_GUID_STR_SIZE)
   return false;
 
  //-----------------------------------------------------------------------
  const charT* s=beg;
 
- if((*s)!=char_traits2::ch_open_fbracket()) // '{'
+ if(s[0]!=char_traits2::ch_open_fbracket()) // '{'
   return false;
 
  ++s;
 
- //123456789012345678901234567890123456
- //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
-
- //typedef struct _GUID {
- //   unsigned long  Data1;    // 4
- //   unsigned short Data2;    // 2
- //   unsigned short Data3;    // 2
- //   unsigned char  Data4[8]; // 8
- //} GUID;
-
- byte_type data[16];
-
- byte_type* d=data;
-
- if(!self_type::helper__parse_hex(4,s,d))
+ if(s[self_type::c_UUID_STR_SIZE]!=char_traits2::ch_close_fbracket()) // '}'
   return false;
 
- s+=8; d+=4;
+ const auto* const e=s+c_UUID_STR_SIZE;
 
- if((*s)!=char_traits2::ch_minus()) // L'-'
-  return false;
+ const auto uuid_parser_r
+  =lcpi::lib::structure::string_to_uuid(s,e,result);
 
- ++s;
+ LCPI__assert(uuid_parser_r.first>=s);
+ LCPI__assert(uuid_parser_r.first<=e);
 
- if(!self_type::helper__parse_hex(2,s,d))
-  return false;
-
- s+=4; d+=2;
-
- if((*s)!=char_traits2::ch_minus()) // L'-'
-  return false;
-
- ++s;
-
- if(!self_type::helper__parse_hex(2,s,d))
-  return false;
-
- s+=4; d+=2;
-
- if((*s)!=char_traits2::ch_minus()) // L'-'
-  return false;
-
- ++s;
-
- if(!self_type::helper__parse_hex(2,s,d))
-  return false;
-
- s+=4; d+=2;
-
- if((*s)!=char_traits2::ch_minus()) // L'-'
-  return false;
-
- ++s;
-
- if(!self_type::helper__parse_hex(6,s,d))
-  return false;
-
- s+=12;
-
- assert((s)<end);
- assert((d+6)==_END_(data));
-
- if((*s)!=char_traits2::ch_close_fbracket()) // '}'
-  return false;
-
- assert((s+1)==end);
-
- // 0 1 2 3
- //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
-
- typedef unsigned __int16 word_type;
- typedef unsigned __int32 dword_type;
-
- result->Data1=((dword_type(data[0])<<24)
-               +(dword_type(data[1])<<16)
-               +(dword_type(data[2])<<8)
-               +(dword_type(data[3])));
-
- result->Data2=word_type((word_type(data[4])<<8)+(word_type(data[5])));
-
- result->Data3=word_type((word_type(data[6])<<8)+(word_type(data[7])));
-
- assert_s(_DIM_(result->Data4)==8);
-
- result->Data4[0]=data[8];
- result->Data4[1]=data[9];
- result->Data4[2]=data[10];
- result->Data4[3]=data[11];
- result->Data4[4]=data[12];
- result->Data4[5]=data[13];
- result->Data4[6]=data[14];
- result->Data4[7]=data[15];
-
- return true;
-}//exec
-
-//------------------------------------------------------------------------
-template<typename charT>
-bool tag_text_to_guid<charT>::helper__parse_hex(size_t const nBytes,
-                                                const charT* s,
-                                                byte_type*   d)
-{
- CHECK_READ_TYPED_PTR  (s,2*nBytes);
- CHECK_WRITE_TYPED_PTR (d,nBytes);
-
- byte_type x[2];
-
- for(const byte_type* const ed=d+nBytes;d!=ed;++d)
+#ifndef NDEBUG
+ if(uuid_parser_r.second)
  {
-  byte_type*             px=x;
-  const byte_type* const ex=_END_(x);
+  LCPI__assert(uuid_parser_r.first==e);
 
-  for(;px!=ex;++px)
-  {
-   if((*s)>=char_traits2::ch_0() && (*s)<=char_traits2::ch_9())
-    (*px)=byte_type((*s)-char_traits2::ch_0());
-   else
-   if((*s)>=char_traits2::ch_letter_a() && (*s)<=char_traits2::ch_letter_f())
-    (*px)=byte_type(10+((*s)-char_traits2::ch_letter_a()));
-   else
-   if((*s)>=char_traits2::ch_letter_A() && (*s)<=char_traits2::ch_letter_F())
-    (*px)=byte_type(10+((*s)-char_traits2::ch_letter_A()));
-   else
-    return false;
+  LCPI__assert((*uuid_parser_r.first)==char_traits2::ch_close_fbracket());
+ }
+ else
+ {
+  LCPI__assert(uuid_parser_r.first<e);
+ }
+#endif
 
-   ++s;
-  }//for px
-
-  (*d)=byte_type((x[0]<<4)+x[1]);
- }//for d
-
- return true;
-}//helper__parse_hex
+ return uuid_parser_r.second;
+}//exec
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace

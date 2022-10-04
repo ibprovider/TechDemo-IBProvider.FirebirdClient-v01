@@ -656,7 +656,7 @@ HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID(const charT* const str,
 //------------------------------------------------------------------------
 template<class charT>
 HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID__HEX(const charT* const beg,
-                                                     const charT* const DEBUG_CODE(end),
+                                                     const charT* const end,
                                                      GUID*        const result)
 {
  assert(beg<end);
@@ -664,130 +664,16 @@ HRESULT DBVARIANT_CVT_UTILS::Helper__TextToGUID__HEX(const charT* const beg,
 
  assert(result!=nullptr);
 
- typedef structure::t_char_traits2<charT> ct2;
- typedef unsigned char                    byte_type;
+ const auto uuid_parser_r
+  =lcpi::lib::structure::string_to_uuid
+    (beg,
+     end,
+     result);
 
- struct parser
- {
-  static bool exec(size_t const nBytes,const charT* s,byte_type* d)
-  {
-   byte_type x[2];
-
-   for(const byte_type* const ed=d+nBytes;d!=ed;++d)
-   {
-    byte_type*             px=x;
-    const byte_type* const ex=_END_(x);
-
-    for(;px!=ex;++px)
-    {
-     if((*s)>=ct2::ch_0() && (*s)<=ct2::ch_9())
-      (*px)=byte_type((*s)-ct2::ch_0());
-     else
-     if((*s)>=ct2::ch_letter_a() && (*s)<=ct2::ch_letter_f())
-      (*px)=byte_type(10+((*s)-ct2::ch_letter_a()));
-     else
-     if((*s)>=ct2::ch_letter_A() && (*s)<=ct2::ch_letter_F())
-      (*px)=byte_type(10+((*s)-ct2::ch_letter_A()));
-     else
-      return false;
-
-     ++s;
-    }//for px
-
-    (*d)=byte_type((x[0]<<4)+x[1]);
-   }//for d
-
-   return true;
-  }//exec
- };//struct parser
-
- //123456789012345678901234567890123456
- //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
-
- const charT* s=beg;
-
- //typedef struct _GUID {
- //   unsigned long  Data1;    // 4
- //   unsigned short Data2;    // 2
- //   unsigned short Data3;    // 2
- //   unsigned char  Data4[8]; // 8
- //} GUID;
-
- byte_type data[16];
-
- byte_type* d=data;
-
- if(!parser::exec(4,s,d))
+ if(!uuid_parser_r.second)
   return DB_E_CANTCONVERTVALUE;
 
- s+=8; d+=4;
-
- if((*s)!=ct2::ch_minus())
-  return DB_E_CANTCONVERTVALUE;
-
- ++s;
-
- if(!parser::exec(2,s,d))
-  return DB_E_CANTCONVERTVALUE;
-
- s+=4; d+=2;
-
- if((*s)!=ct2::ch_minus())
-  return DB_E_CANTCONVERTVALUE;
-
- ++s;
-
- if(!parser::exec(2,s,d))
-  return DB_E_CANTCONVERTVALUE;
-
- s+=4; d+=2;
-
- if((*s)!=ct2::ch_minus())
-  return DB_E_CANTCONVERTVALUE;
-
- ++s;
-
- if(!parser::exec(2,s,d))
-  return DB_E_CANTCONVERTVALUE;
-
- s+=4; d+=2;
-
- if((*s)!=ct2::ch_minus())
-  return DB_E_CANTCONVERTVALUE;
-
- ++s;
-
- if(!parser::exec(6,s,d))
-  return DB_E_CANTCONVERTVALUE;
-
- assert((s+12)==end);
- assert((d+6)==_END_(data));
-
- // 0 1 2 3
- //xxXXxxXX-xxXX-xxXX-xxXX-xxXXxxXXxxXX
-
- typedef unsigned __int16 word_type;
- typedef unsigned __int32 dword_type;
-
- result->Data1=((dword_type(data[0])<<24)
-               +(dword_type(data[1])<<16)
-               +(dword_type(data[2])<<8)
-               +(dword_type(data[3])));
-
- result->Data2=word_type((word_type(data[4])<<8)+(word_type(data[5])));
-
- result->Data3=word_type((word_type(data[6])<<8)+(word_type(data[7])));
-
- assert(_DIM_(result->Data4)==8);
-
- result->Data4[0]=data[8];
- result->Data4[1]=data[9];
- result->Data4[2]=data[10];
- result->Data4[3]=data[11];
- result->Data4[4]=data[12];
- result->Data4[5]=data[13];
- result->Data4[6]=data[14];
- result->Data4[7]=data[15];
+ LCPI__assert(uuid_parser_r.first==end);
 
  return S_OK;
 }//Helper__TextToGUID__HEX
