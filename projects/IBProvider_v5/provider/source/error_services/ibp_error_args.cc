@@ -7,9 +7,7 @@
 #ifndef _ibp_error_args_CC_
 #define _ibp_error_args_CC_
 
-#include "source/oledb/error/ibp_oledb__error_text_factory.h"
-
-#include <ole_lib/oledb/variant/oledb_variant_numeric_installer.h>
+#include <ole_lib/oledb/variant/oledb_variant.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,17 +27,14 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (mce_code_type const mce_code_0)
 {
- const ole_lib::IUnknownPtr spUnk(oledb::IBP_CreateErrorText(mce_code_0));
+ IBP_ERRORVARIANT errVar;
 
- assert(spUnk);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,mce_code_0);
 
- oledb_lib::DBVARIANT dbvar;
+ assert(errVar.vt==IBP_EVT::V_IBP_MSG_CODE);
+ assert(errVar.value.valueIBProviderMsgCode==mce_code_0);
 
- dbvar.wType      =DBTYPE_IUNKNOWN;
- dbvar.unkVal.ptr =spUnk;
- dbvar.unkVal.iid =ibprovider::IID_IBP_IText;
-
- return this->add_arg(dbvar);
+ return this->add_arg(errVar);
 }//operator << mce_code_type
 
 //------------------------------------------------------------------------
@@ -47,12 +42,14 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (bool const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType    =DBTYPE_BOOL;
- dbvar.boolVal  =(x?VARIANT_TRUE:VARIANT_FALSE);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_BOOL);
+ assert(errVar.value.valueBool==x);
+
+ return this->add_arg(errVar);
 }//operator << bool
 
 //------------------------------------------------------------------------
@@ -60,11 +57,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (signed __int8 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_I1);
+
+ return this->add_arg(errVar);
 }//operator << I1
 
 //------------------------------------------------------------------------
@@ -72,11 +71,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (unsigned __int8 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_UI1);
+
+ return this->add_arg(errVar);
 }//operator << UI1
 
 //------------------------------------------------------------------------
@@ -84,11 +85,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (signed __int16 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_I2);
+
+ return this->add_arg(errVar);
 }//operator << I2
 
 //------------------------------------------------------------------------
@@ -96,11 +99,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (unsigned __int16 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_UI2);
+
+ return this->add_arg(errVar);
 }//operator << UI2
 
 //------------------------------------------------------------------------
@@ -108,11 +113,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (signed __int32 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_I4);
+
+ return this->add_arg(errVar);
 }//operator << I4
 
 //------------------------------------------------------------------------
@@ -120,11 +127,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (unsigned __int32 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_UI4);
+
+ return this->add_arg(errVar);
 }//operator << UI4
 
 //------------------------------------------------------------------------
@@ -132,11 +141,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (signed __int64 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_I8);
+
+ return this->add_arg(errVar);
 }//operator << I8
 
 //------------------------------------------------------------------------
@@ -144,11 +155,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (unsigned __int64 const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_UI8);
+
+ return this->add_arg(errVar);
 }//operator << UI8
 
 //------------------------------------------------------------------------
@@ -156,23 +169,27 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (signed long const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
-}//operator << long
+ assert(errVar.vt==IBP_EVT::V_LONG);
+
+ return this->add_arg(errVar);
+}//operator << signed long
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (unsigned long const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- DBVariant__NumericInstaller(&dbvar,x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_ULONG);
+
+ return this->add_arg(errVar);
 }//operator << unsigned long
 
 //------------------------------------------------------------------------
@@ -180,14 +197,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (double const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType=oledb_lib::oledb_typeid__R8;
- dbvar.valR8=x;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- assert(dbvar.TestDataStatus__IsOK());
+ assert(errVar.vt==IBP_EVT::V_R8);
 
- return this->add_arg(dbvar);
+ return this->add_arg(errVar);
 }//operator << double
 
 //------------------------------------------------------------------------
@@ -195,12 +211,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (REFGUID x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType   =DBTYPE_GUID;
- dbvar.guidVal =x;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_GUID);
+
+ return this->add_arg(errVar);
 }//operator << GUID
 
 //------------------------------------------------------------------------
@@ -208,13 +225,15 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (const char* const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType      =DBTYPE_STR;
- dbvar.strVal.len =x?strlen(x):0;
- dbvar.strVal.ptr =const_cast<char*>(x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_STR);
+ assert(errVar.value.valueStr.ptr==x);
+ assert(errVar.value.valueStr.len==(x?strlen(x):0));
+
+ return this->add_arg(errVar);
 }//operator << const char*
 
 //------------------------------------------------------------------------
@@ -222,27 +241,27 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (const std::string& x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType      =DBTYPE_STR;
- dbvar.strVal.len =x.size();
- dbvar.strVal.ptr =const_cast<char*>(x.c_str());
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_STR);
+
+ return this->add_arg(errVar);
 }//operator << const string&
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (structure::str_parameter x)
+ t_ibp_error_args<Traits>::operator << (structure::str_parameter const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType      =DBTYPE_STR;
- dbvar.strVal.len =x.length();
- dbvar.strVal.ptr =const_cast<char*>(x.c_str());
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x.c_str());
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_STR);
+
+ return this->add_arg(errVar);
 }//operator << structure::str_parameter
 
 //------------------------------------------------------------------------
@@ -250,15 +269,17 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (structure::t_const_str_box const x)
 {
- CHECK_READ_TYPED_PTR(x.ptr,x.len)
+ CHECK_READ_TYPED_PTR(x.data(),x.size())
 
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType      =DBTYPE_STR;
- dbvar.strVal.len =x.len;
- dbvar.strVal.ptr =const_cast<char*>(x.ptr);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_STR);
+ assert(errVar.value.valueStr.ptr==x.ptr);
+ assert(errVar.value.valueStr.len==x.len);
+
+ return this->add_arg(errVar);
 }//operator << structure::t_const_str_box
 
 //------------------------------------------------------------------------
@@ -266,13 +287,15 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (const wchar_t* const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.len =x?wcslen(x):0;
- dbvar.wstrVal.ptr =const_cast<wchar_t*>(x);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_WSTR);
+ assert(errVar.value.valueWStr.ptr==x);
+ assert(errVar.value.valueWStr.len==(x?wcslen(x):0));
+
+ return this->add_arg(errVar);
 }//operator << const wchar_t*
 
 //------------------------------------------------------------------------
@@ -280,13 +303,13 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (const std::wstring& x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.len =x.size();
- dbvar.wstrVal.ptr =const_cast<wchar_t*>(x.c_str());
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_WSTR);
+
+ return this->add_arg(errVar);
 }//operator << const wstring&
 
 //------------------------------------------------------------------------
@@ -294,13 +317,15 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (structure::wstr_parameter const x)
 {
- oledb_lib::DBVARIANT dbvar;
+ // [2022-10-21] Not used in IBProvider code.
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.len =x.length();
- dbvar.wstrVal.ptr =const_cast<wchar_t*>(x.c_str());
+ IBP_ERRORVARIANT errVar;
 
- return this->add_arg(dbvar);
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x.c_str());
+
+ assert(errVar.vt==IBP_EVT::V_WSTR);
+
+ return this->add_arg(errVar);
 }//operator << structure::wstr_parameter
 
 //------------------------------------------------------------------------
@@ -310,13 +335,15 @@ typename t_ibp_error_args<Traits>::out_return_type&
 {
  CHECK_READ_TYPED_PTR(x.data(),x.size())
 
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.len =x.size();
- dbvar.wstrVal.ptr =const_cast<wchar_t*>(x.data());
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,x);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_WSTR);
+ assert(errVar.value.valueWStr.ptr==x.ptr);
+ assert(errVar.value.valueWStr.len==x.len);
+
+ return this->add_arg(errVar);
 }//operator << structure::t_const_wstr_box
 
 //------------------------------------------------------------------------
@@ -324,122 +351,164 @@ template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (IUnknown* const pUnk)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_IUNKNOWN;
- dbvar.unkVal.ptr  =pUnk;
- dbvar.unkVal.iid  =IID_IUnknown;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,pUnk);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_IUNKNOWN);
+
+ return this->add_arg(errVar);
 }//operator << IUnknown*
 
-//------------------------------------------------------------------------
-template<class Traits>
-typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (IDispatch* const pDisp)
-{
- oledb_lib::DBVARIANT dbvar;
-
- dbvar.wType       =DBTYPE_IDISPATCH;
- dbvar.dispVal.ptr =pDisp;
-
- return this->add_arg(dbvar);
-}//operator << IDispatch*
+// //------------------------------------------------------------------------
+// template<class Traits>
+// typename t_ibp_error_args<Traits>::out_return_type&
+//  t_ibp_error_args<Traits>::operator << (IDispatch* const pDisp)
+// {
+//  oledb_lib::DBVARIANT dbvar;
+// 
+//  dbvar.wType       =DBTYPE_IDISPATCH;
+//  dbvar.dispVal.ptr =pDisp;
+// 
+//  return this->add_arg(dbvar);
+// }//operator << IDispatch*
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (ibprovider::IBP_IText* const pText)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_IUNKNOWN;
- dbvar.unkVal.ptr  =pText;
- dbvar.unkVal.iid  =ibprovider::IID_IBP_IText;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,pText);
 
- return this->add_arg(dbvar);
+ assert(errVar.vt==IBP_EVT::V_IUNKNOWN);
+
+ return this->add_arg(errVar);
 }//operator << IBP_IText*
+
+//------------------------------------------------------------------------
+// template<class Traits>
+// typename t_ibp_error_args<Traits>::out_return_type&
+//  t_ibp_error_args<Traits>::operator << (const ole_lib::TBSTR& x)
+// {
+//  oledb_lib::DBVARIANT dbvar;
+// 
+//  dbvar.wType       =DBTYPE_WSTR;
+//  dbvar.wstrVal.len =x.length();
+//  dbvar.wstrVal.ptr =const_cast<wchar_t*>(x.bstr());
+// 
+//  return this->add_arg(dbvar);
+// }//operator << TBSTR
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (const ole_lib::TBSTR& x)
+ t_ibp_error_args<Traits>::operator << (structure::t_err_record* const pErrRec)
 {
- oledb_lib::DBVARIANT dbvar;
+ assert(pErrRec);
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.len =x.length();
- dbvar.wstrVal.ptr =const_cast<wchar_t*>(x.bstr());
+ IBP_ERRORVARIANT errVar;
 
- return this->add_arg(dbvar);
-}//operator << TBSTR
+ IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD_PTR(&errVar,pErrRec);
+
+ assert(errVar.vt==IBP_EVT::V_CPP_ERR_RECORD);
+ assert(errVar.value.pCppErrRecord==pErrRec);
+
+ return this->add_arg(errVar);
+}//operator << structure::t_err_record*
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (ibp_err_data__symbol__tag<char> x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType      =DBTYPE_STR;
- dbvar.strVal.ptr =&x.symbol;
- dbvar.strVal.len =1;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,structure::make_str_box(&x.symbol,1));
 
- return this->add_arg(dbvar);
-}//operator << t_ansi_symbol
+ assert(errVar.vt==IBP_EVT::V_STR);
+ assert(errVar.value.valueStr.ptr==&x.symbol);
+ assert(errVar.value.valueStr.len==1);
+
+ return this->add_arg(errVar);
+}//operator << ibp_err_data__symbol__tag<char>
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (ibp_err_data__symbol__tag<wchar_t> x)
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType       =DBTYPE_WSTR;
- dbvar.wstrVal.ptr =&x.symbol;
- dbvar.wstrVal.len =1;
+ IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,structure::make_str_box(&x.symbol,1));
 
- return this->add_arg(dbvar);
-}//operator << t_unicode_symbol
+ assert(errVar.vt==IBP_EVT::V_WSTR);
+ assert(errVar.value.valueWStr.ptr==&x.symbol);
+ assert(errVar.value.valueWStr.len==1);
+
+ return this->add_arg(errVar);
+}//operator << ibp_err_data__symbol__tag<wchar_t>
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (ibp_err_data__null_sign const UNUSED_ARG(x))
 {
- oledb_lib::DBVARIANT dbvar;
+ IBP_ERRORVARIANT errVar;
 
- dbvar.wType=DBTYPE_NULL;
+ IBP_ERRORVARIANT_UTILS::LinkWith__NULL(&errVar);
 
- return this->add_arg(dbvar);
-}//operator << t_null_sign
+ assert(errVar.vt==IBP_EVT::V_NULL);
+
+ return this->add_arg(errVar);
+}//operator << ibp_err_data__null_sign
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (ibp_err_data__win32_error_msg const x)
 {
- const ole_lib::IUnknownPtr
-  spUnk(oledb::IBP_CreateErrorText_ForWin32ErrorMsg(x.errorCode));
+ IBP_ERRORVARIANT errVar;
 
- assert(spUnk);
+ IBP_ERRORVARIANT_UTILS::LinkWith__WIN32_ERR(&errVar,x.errorCode);
 
- oledb_lib::DBVARIANT dbvar;
+ assert(errVar.vt==IBP_EVT::V_WIN32_ERR);
+ assert(errVar.value.valueWin32Err==x.errorCode);
 
- dbvar.wType      =DBTYPE_IUNKNOWN;
- dbvar.unkVal.ptr =spUnk;
- dbvar.unkVal.iid =ibprovider::IID_IBP_IText;
-
- return this->add_arg(dbvar);
+ return this->add_arg(errVar);
 }//operator << win32_error_msg_type
 
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::push_arg(const base_variant_type& x)
+ t_ibp_error_args<Traits>::push_arg__as_wstr(const oledb_lib::DBVARIANT& x)
 {
- return this->add_arg(x);
-}//push_arg
+ assert(x.wType==oledb_lib::oledb_typeid__WSTR);
+
+ assert(x.TestDataStatus__IsOK_or_IsNull());
+
+ if(x.wType!=oledb_lib::oledb_typeid__WSTR)
+ {
+  assert_msg(false,"wType: "<<x.wType);
+
+  return (*this)<<L"<bad arg value type>";
+ }//if
+
+ if(x.TestDataStatus__IsOK())
+ {
+  return (*this)<<structure::make_str_box(x.wstrVal.ptr,x.wstrVal.len);
+ }//if
+
+ if(x.TestDataStatus__IsNull())
+ {
+  return (*this)<<ibp_err_data__null_sign();
+ }//if
+
+ assert_msg(false,"bad status: "<<x.GetDataStatus());
+
+ return (*this)<<L"<bad arg value status>";
+}//push_arg__as_wstr
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

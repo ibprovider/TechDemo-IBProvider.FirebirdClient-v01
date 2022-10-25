@@ -5,6 +5,7 @@
 #include <ole_lib/ole_auto/ole_auto_variant_type_info.h>
 #include <ole_lib/ole_auto/ole_auto_utils.h>
 #include <ole_lib/ole_ptr.h>
+#include <ole_lib/ole_base.h>
 #include <oledb.h>
 
 namespace ole_lib{

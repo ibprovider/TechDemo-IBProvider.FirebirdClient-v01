@@ -106,6 +106,9 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   typedef t_ibp_error_element                       error_record_type;
   typedef t_ibp_error_element::self_ptr             error_record_ptr;
 
+  using get_cerr_obj_type
+   =t_ibp_get_custom_error_object;
+
  private:
   class tag_error_adapter_with_limit;
 
@@ -134,10 +137,10 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   /// </summary>
   //! \param[in] err_code
   //! \param[in] msg_code
-  //! \param[in] pCErr
-  t_ibp_error(HRESULT                 err_code,
-              mc_type                 msg_code,
-              ibprovider::IBP_IClone* pCErr);
+  //! \param[in] pGetCErr
+  t_ibp_error(HRESULT            err_code,
+              mc_type            msg_code,
+              get_cerr_obj_type* pGetCErr);
 
   /// <summary>
   ///  Конструктор инициализации
@@ -155,11 +158,11 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   //! \param[in] err_code
   //! \param[in] subsys_id
   //! \param[in] msg_code
-  //! \param[in] pCErr
-  t_ibp_error(HRESULT                 err_code,
-              subsys_id_type          subsys_id,
-              mc_type                 msg_code,
-              ibprovider::IBP_IClone* pCErr);
+  //! \param[in] pGetCErr
+  t_ibp_error(HRESULT            err_code,
+              subsys_id_type     subsys_id,
+              mc_type            msg_code,
+              get_cerr_obj_type* pGetCErr);
 
   /// <summary>
   ///  Конструктор инициализации
@@ -182,6 +185,14 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   explicit t_ibp_error(error_record_type* const record);
 
   virtual ~t_ibp_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+
+  //----------------------------------------------------------------------
+#ifdef IBP_BUILD_TESTCODE
+  const error_record_ptr& TESTCODE__get_cur_error_record()const
+  {
+   return m_cur_error;
+  }//TESTCODE__get_cur_error_record
+#endif
 
   //assign operators -----------------------------------------------------
   self_type& operator = (const self_type& exc);
@@ -224,18 +235,18 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   self_type& add_error(HRESULT err_code,
                        mc_type msg_code);
 
-  self_type& add_error(HRESULT                 err_code,
-                       mc_type                 msg_code,
-                       ibprovider::IBP_IClone* pCErr);
+  self_type& add_error(HRESULT            err_code,
+                       mc_type            msg_code,
+                       get_cerr_obj_type* pGetCErr);
 
-  self_type& add_error(HRESULT        err_code,
-                       subsys_id_type subsys_id,
-                       mc_type        msg_code);
+  self_type& add_error(HRESULT            err_code,
+                       subsys_id_type     subsys_id,
+                       mc_type            msg_code);
 
-  self_type& add_error(HRESULT                 err_code,
-                       subsys_id_type          subsys_id,
-                       mc_type                 msg_code,
-                       ibprovider::IBP_IClone* pCErr);
+  self_type& add_error(HRESULT            err_code,
+                       subsys_id_type     subsys_id,
+                       mc_type            msg_code,
+                       get_cerr_obj_type* pGetCErr);
 
   self_type& add_error(base_error_record_type* pError);
 

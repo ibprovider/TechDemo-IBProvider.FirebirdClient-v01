@@ -1,5 +1,7 @@
 <!-- Original resource for IBProvider components registrations -->
 
+<!-- UTF8 without BOM -->
+
 <!--
  We have only one request:
   - Please, save in component descriptions 'LCPI' signature. Thank You! :-)

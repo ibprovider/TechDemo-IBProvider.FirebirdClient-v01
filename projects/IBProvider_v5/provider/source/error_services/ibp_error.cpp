@@ -82,14 +82,14 @@ t_ibp_error::t_ibp_error(HRESULT const err_code,
 }//t_ibp_error
 
 //------------------------------------------------------------------------
-t_ibp_error::t_ibp_error(HRESULT                 const err_code,
-                         mc_type                 const msg_code,
-                         ibprovider::IBP_IClone* const pCErr)
+t_ibp_error::t_ibp_error(HRESULT            const err_code,
+                         mc_type            const msg_code,
+                         get_cerr_obj_type* const pGetCErr)
  :base_error_type(err_code)
 {
  this->add_error(err_code,
                  msg_code,
-                 pCErr);
+                 pGetCErr);
 }//t_ibp_error
 
 //------------------------------------------------------------------------
@@ -104,16 +104,16 @@ t_ibp_error::t_ibp_error(HRESULT        const err_code,
 }//t_ibp_error
 
 //------------------------------------------------------------------------
-t_ibp_error::t_ibp_error(HRESULT                 const err_code,
-                         subsys_id_type          const subsys_id,
-                         mc_type                 const msg_code,
-                         ibprovider::IBP_IClone* const pCErr)
+t_ibp_error::t_ibp_error(HRESULT            const err_code,
+                         subsys_id_type     const subsys_id,
+                         mc_type            const msg_code,
+                         get_cerr_obj_type* const pGetCErr)
  :base_error_type(err_code)
 {
  this->add_error(err_code,
                  subsys_id,
                  msg_code,
-                 pCErr);
+                 pGetCErr);
 }//t_ibp_error
 
 //------------------------------------------------------------------------
@@ -262,14 +262,17 @@ t_ibp_error& t_ibp_error::add_error(HRESULT const err_code,
 }//add new error
 
 //------------------------------------------------------------------------
-t_ibp_error& t_ibp_error::add_error(HRESULT                 const err_code,
-                                    mc_type                 const msg_code,
-                                    ibprovider::IBP_IClone* const pCErr)
+t_ibp_error& t_ibp_error::add_error(HRESULT            const err_code,
+                                    mc_type            const msg_code,
+                                    get_cerr_obj_type* const pGetCErr)
 {
- error_record_ptr
-  x(structure::not_null_ptr(new error_record_type(err_code,
-                                                  msg_code,
-                                                  pCErr)));
+ error_record_ptr x
+  (structure::not_null_ptr
+    (new error_record_type
+      (err_code,
+       msg_code,
+       pGetCErr)));
+
  assert(x);
 
  m_errors.push_back(x);
@@ -288,10 +291,13 @@ t_ibp_error& t_ibp_error::add_error(HRESULT        const err_code,
                                     subsys_id_type const subsys_id,
                                     mc_type        const msg_code)
 {
- error_record_ptr
-  x(structure::not_null_ptr(new error_record_type(err_code,
-                                                  subsys_id,
-                                                  msg_code)));
+ error_record_ptr x
+  (structure::not_null_ptr
+    (new error_record_type
+      (err_code,
+       subsys_id,
+       msg_code)));
+
  assert(x);
 
  m_errors.push_back(x);
@@ -306,16 +312,19 @@ t_ibp_error& t_ibp_error::add_error(HRESULT        const err_code,
 }//add new error
 
 //------------------------------------------------------------------------
-t_ibp_error& t_ibp_error::add_error(HRESULT                 const err_code,
-                                    subsys_id_type          const subsys_id,
-                                    mc_type                 const msg_code,
-                                    ibprovider::IBP_IClone* const pCErr)
+t_ibp_error& t_ibp_error::add_error(HRESULT            const err_code,
+                                    subsys_id_type     const subsys_id,
+                                    mc_type            const msg_code,
+                                    get_cerr_obj_type* const pGetCErr)
 {
- error_record_ptr
-  x(structure::not_null_ptr(new error_record_type(err_code,
-                                                  subsys_id,
-                                                  msg_code,
-                                                  pCErr)));
+ error_record_ptr x
+  (structure::not_null_ptr
+    (new error_record_type
+      (err_code,
+       subsys_id,
+       msg_code,
+       pGetCErr)));
+
  assert(x);
 
  m_errors.push_back(x);

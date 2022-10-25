@@ -12,10 +12,10 @@
 
 #define _LCPI_DIM_(arrayValue) \
  (std::extent                  \
-    <std::enable_if            \
+    <std::enable_if_t          \
        <std::is_array<decltype(arrayValue)>::value && std::rank<decltype(arrayValue)>::value==1, \
         decltype(arrayValue)>  \
-     ::type>                   \
+    >                          \
   ::value)
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -144,7 +144,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
 
  private:
   typedef structure::t_stl_vector
-           <oledb_lib::TDBVariant,
+           <IBP_ErrorVariant,
             db_obj::t_db_memory_allocator> args_type;
 
   /// <summary>
@@ -160,7 +160,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
                     DWORD                       msg_code,
                     LCID                        lcid,
                     size_t                      cArgs,
-                    const oledb_lib::DBVARIANT* rgArgs)const=0;
+                    const IBP_ErrorVariant*     rgArgs)const=0;
 
   virtual bool internal__is_useless_error_code
                    (const status_type s)const=0;

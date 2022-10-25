@@ -50,6 +50,14 @@ inline DWORD TFileHandle::GetSize(LPDWORD const lpFileSizeHigh)const
  return ::GetFileSize(handle,lpFileSizeHigh);
 }//GetSize
 
+//------------------------------------------------------------------------
+inline BOOL TFileHandle::GetSizeEx(PLARGE_INTEGER const lpFileSize)const
+{
+ assert(this->IsOpen());
+
+ return ::GetFileSizeEx(handle,lpFileSize);
+}//GetSizeEx
+
 ////////////////////////////////////////////////////////////////////////////////
 //class TTemporaryFile64
 

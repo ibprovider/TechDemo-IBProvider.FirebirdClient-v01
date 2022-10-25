@@ -2,6 +2,7 @@
 #include <_pch_.h>
 #pragma hdrstop
 
+#include <ole_lib/ole_base.h>
 #include <ole_lib/ole_ptr.h>
 #include <win32lib/win32_registry.h>
 #include <win32lib/win32_error.h>
@@ -12,7 +13,7 @@
 #include <structure/utilities/string/trim.h>
 #include <structure/utilities/string/string_length.h>
 
-#include <lcpi/lib/structure/utilities/string_to_uuid.h>
+#include <lcpi/lib/com/base/com_base__string_to_guid.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 #include <ole_lib/impl/ole_lib_impl_std_guids.cxx>

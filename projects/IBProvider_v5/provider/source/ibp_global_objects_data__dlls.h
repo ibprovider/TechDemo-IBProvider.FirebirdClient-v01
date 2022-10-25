@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_GlobalObjectsData__DLLs
 
-class IBP_GlobalObjectsData__DLLs COMP_W000006_CLASS_FINAL
+class IBP_GlobalObjectsData__DLLs LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef IBP_GlobalObjectsData__DLLs       self_type;

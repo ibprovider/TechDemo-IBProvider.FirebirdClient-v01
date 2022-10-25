@@ -22,8 +22,7 @@ namespace lcpi{namespace ibp{namespace oledb{
 ///  Компонента с интерфейсом ISQLErrorInfo
 /// </summary>
 class IBP_OLEDB__SQLErrorInfo LCPI_CPP_CFG__CLASS__FINAL
- :public ibprovider::IBP_IClone
- ,public ISQLErrorInfo
+ :public ISQLErrorInfo
  ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
 {
  private:
@@ -56,22 +55,20 @@ class IBP_OLEDB__SQLErrorInfo LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Конструирование COM-объекта
   /// </summary>
+  //! \param[in] pUnkOuter
   //! \param[in] strSQLState
   //! \param[in] lNativeError
   //! \return
   //!  Полностью инициализированный COM-объект
-  static ole_lib::IPtr2<ibprovider::IBP_IClone> Create(str_arg_type strSQLState,
-                                                       LONG         lNativeError);
+  static lib::com::base::IUnknownPtr Create(IUnknown*    pUnkOuter,
+                                            str_arg_type strSQLState,
+                                            LONG         lNativeError);
 
   //Root interface -------------------------------------------------------
   OLE_LIB__DECLARE_ROOT_INTERFACE
 
   //IUnknown interface ---------------------------------------------------
   OLE_LIB__DECLARE_IUNKNOWN
-
-  //IBP_IClone interface -------------------------------------------------
-  virtual HRESULT __stdcall Clone(IUnknown*  pUnkOuter,
-                                  IUnknown** ppClone) COMP_W000004_OVERRIDE_FINAL;
 
   //ISQLErrorInfo interface ----------------------------------------------
   virtual HRESULT __stdcall GetSQLInfo(BSTR* pbstrSQLState,

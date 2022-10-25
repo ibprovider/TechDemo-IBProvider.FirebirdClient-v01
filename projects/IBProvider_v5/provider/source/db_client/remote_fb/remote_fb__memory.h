@@ -34,7 +34,7 @@ using RemoteFB__SmartInterface
 //------------------------------------------------------------------------
 
 using RemoteFB__SmartObjectPtr
- =structure::t_smart_object_ptr<RemoteFB__SmartInterface>                   ;
+ =lib::structure::t_smart_object_ptr<RemoteFB__SmartInterface>;
 
 //------------------------------------------------------------------------
 #define REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(Interface)                  \

@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure__t_smart_object_H_
 #define _cpp_public_lcpi_lib_structure__t_smart_object_H_
 
-#include <lcpi/infrastructure/core/structure/t_smart_interface.h>
+#include <lcpi/lib/structure/t_smart_interface.h>
 #include <lcpi/lib/structure/cnt_ref_traits.h>
 
 namespace lcpi{namespace lib{namespace structure{

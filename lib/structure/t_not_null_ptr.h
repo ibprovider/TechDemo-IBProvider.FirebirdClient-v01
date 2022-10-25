@@ -6,13 +6,13 @@
 
 #include <structure/t_common.h>
 
-#include <lcpi/infrastructure/core/structure/t_not_null_ptr.h>
+#include <lcpi/lib/structure/t_not_null_ptr.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_not_null_ptr
 
-using namespace ::lcpi::infrastructure::core::structure;
+using namespace ::lcpi::lib::structure;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure

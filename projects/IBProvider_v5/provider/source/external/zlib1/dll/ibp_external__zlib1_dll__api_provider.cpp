@@ -20,7 +20,7 @@ ZLIB1_DLL__ApiProvider::ZLIB1_DLL__ApiProvider(dll_type* const pDLL)
  ,INIT_ZLIB1_POINT(inflateInit_)
  ,INIT_ZLIB1_POINT(inflate)
  ,INIT_ZLIB1_POINT(inflateEnd)
- ,m_spDLL(structure::not_null_ptr(pDLL))
+ ,m_spDLL(lib::structure::not_null_ptr(pDLL))
 {
  //! \todo
  //!  Реализировать форсированную инициализацию через конструктор
@@ -43,7 +43,7 @@ ZLIB1__ApiProviderPtr ZLIB1_DLL__ApiProvider::create(dll_type* const pDLL)
 {
  assert(pDLL);
 
- return structure::not_null_ptr(new self_type(pDLL));
+ return lib::structure::not_null_ptr(new self_type(pDLL));
 }//create
 
 //ZLIB1__ApiProvider interface -------------------------------------------

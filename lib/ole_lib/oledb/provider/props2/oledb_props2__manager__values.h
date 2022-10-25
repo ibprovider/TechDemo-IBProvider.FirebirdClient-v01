@@ -29,11 +29,11 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
 
   typedef structure::t_closure
            <void,
-           const OLEDB_Props2__Data__Values*,
-           REFGUID,
-           DBPROPID,
-           DBPROPOPTIONS,
-           const VARIANT&>                  SetPropValueTriggerType;
+            const OLEDB_Props2__Data__Values*,
+            REFGUID,
+            DBPROPID,
+            DBPROPOPTIONS,
+            const VARIANT&>                 SetPropValueTriggerType;
 
 
  public:

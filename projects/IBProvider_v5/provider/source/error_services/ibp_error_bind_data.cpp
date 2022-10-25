@@ -31,7 +31,7 @@ OLE_LIB__DEFINE_DEBUG_COM_LIVE(TIBPBindErrorData)
 TIBPBindErrorData::TIBPBindErrorData(ordinal_type  const index,
                                      HRESULT       const err_code,
                                      msg_code_type const msg_code)
- :inherited   (NULL)
+ :inherited   (nullptr)
  ,m_index     (index)
  ,m_err_code  (err_code)
  ,m_msg_code  (msg_code)
@@ -62,7 +62,7 @@ OLE_LIB__END_ROOT_INTERFACE(inherited)
 HRESULT __stdcall TIBPBindErrorData::GetText(LCID  const lcid,
                                              BSTR* const pbstrText)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 
@@ -113,7 +113,7 @@ TIBPBindErrorData& TIBPBindErrorData::add_arg(const base_variant_type& x)
 
  assert(!m_params.full());
 
- m_params.push_back(x);
+ m_params.emplace_back(x);
 
  return *this;
 }//add_arg

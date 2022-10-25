@@ -10,7 +10,7 @@
 #include "source/ibp_com_helper.h"
 
 #ifndef IBP_BUILD_TESTCODE
-# include "source/error_services/ibp_error_utils.h"
+# include "source/oledb/ibp_oledb__exception_handler.h"
 # include "source/error_services/ibp_error__com_module_is_shutdown.h"
 # include "source/ibp_global_objects.h"
 #endif
@@ -414,7 +414,7 @@ HRESULT TIBP_ComModule::CurrentExceptionHandler(REFCLSID   ComponentID,
   }
   catch(std::exception& exc)
   {
-   return IBP_OLEDBErrorExceptionHandler
+   return oledb::IBP_OLEDBErrorExceptionHandler
            (ComponentID,
             InterfaceID,
             &exc,
@@ -422,7 +422,7 @@ HRESULT TIBP_ComModule::CurrentExceptionHandler(REFCLSID   ComponentID,
   }
   catch(...)
   {
-   return IBP_OLEDBErrorExceptionHandler
+   return oledb::IBP_OLEDBErrorExceptionHandler
            (ComponentID,
             InterfaceID,
             nullptr,

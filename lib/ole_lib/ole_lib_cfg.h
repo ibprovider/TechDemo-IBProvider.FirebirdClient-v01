@@ -4,6 +4,8 @@
 #ifndef _ole_lib_cfg_H_
 #define _ole_lib_cfg_H_
 
+#include <lcpi/lib/com/.config.h>
+
 #include <structure/t_common.h>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,11 +40,6 @@
 # else
 #  define OLE_LIB_DEFAULT_TYPE_HOLDER void* //DEFAULT
 # endif
-#endif
-
-//------------------------------------------------------------------------
-#ifndef OLE_LIB_IMETHOD_PROLOG
-# define OLE_LIB_IMETHOD_PROLOG
 #endif
 
 //------------------------------------------------------------------------

@@ -14,6 +14,8 @@
 
 #define OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO 0
 
+#define OLEDB_LIB_NO_ADODB_TYPES
+
 ////////////////////////////////////////////////////////////////////////////////
 //IBProvider code configuration
 

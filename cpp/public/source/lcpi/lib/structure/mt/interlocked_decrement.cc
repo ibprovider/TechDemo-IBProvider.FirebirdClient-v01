@@ -21,6 +21,11 @@ class interlocked_decrement_impl
    return ::InterlockedDecrement(pValue);
   }//exec
 
+  static long exec(unsigned long volatile* const pValue)
+  {
+   return ::InterlockedDecrement(pValue);
+  }//exec
+
   static unsigned int exec(unsigned int volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);

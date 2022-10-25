@@ -12,8 +12,6 @@
 #include "source/error_services/ibp_error_bind_data.h"
 #include "source/error_services/ibp_error_utils.h"
 
-#include "source/oledb/error/ibp_oledb__error_element_wrapper.h"
-
 #include <win32lib/win32_error.h>
 
 namespace lcpi{namespace ibp{
@@ -355,11 +353,11 @@ void t_ibp_error_adapter::push_ibp_error_ex(mc_type                   const mc_i
 
   assert(spErrorRecord);
 
-  (*spNewErrorRecord)<<oledb::IBP_OLEDB__ErrorElementWrapper::Create(spErrorRecord);
+  (*spNewErrorRecord)<<spErrorRecord;
 
   //------ регистрируем Custom-ошибку в новой записи
   if(const auto* const pX=dynamic_cast<const t_ibp_error_element*>(spErrorRecord.ptr()))
-   spNewErrorRecord->m_spCustomError=pX->m_spCustomError;
+   spNewErrorRecord->m_spGetCustomError=pX->m_spGetCustomError;
 
   //------
   this->push_error(spNewErrorRecord);
@@ -404,11 +402,11 @@ void t_ibp_error_adapter::push_row_ibp_error_ex
 
   assert(spErrorRecord);
 
-  (*spNewErrorRecord)<<oledb::IBP_OLEDB__ErrorElementWrapper::Create(spErrorRecord);
+  (*spNewErrorRecord)<<spErrorRecord;
 
   //------ регистрируем Custom-ошибку в новой записи
   if(const auto* const pX=dynamic_cast<const t_ibp_error_element*>(spErrorRecord.ptr()))
-   spNewErrorRecord->m_spCustomError=pX->m_spCustomError;
+   spNewErrorRecord->m_spGetCustomError=pX->m_spGetCustomError;
 
   //------
   this->push_error(spNewErrorRecord);

@@ -36,7 +36,7 @@ HRESULT __stdcall TClassFactory::CreateInstance(IUnknown* const pUnkOuter,
                                                 REFIID          riid,
                                                 void**    const ppv)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  assert(m_spCreator);
 
@@ -95,7 +95,7 @@ HRESULT __stdcall TClassFactory::CreateInstance(IUnknown* const pUnkOuter,
 //------------------------------------------------------------------------
 HRESULT __stdcall TClassFactory::LockServer(BOOL const flock)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(flock)
   _Module.Lock();

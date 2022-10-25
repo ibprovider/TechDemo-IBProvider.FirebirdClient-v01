@@ -30,7 +30,7 @@ class t_ibp_os_win32__dll_init_mutex COMP_W000006_CLASS_FINAL
   virtual ~t_ibp_os_win32__dll_init_mutex();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>         self_ptr;
+  typedef lib::structure::t_smart_object_ptr<self_type>    self_ptr;
 
   typedef structure::t_closure_r0<void>                    op_func_type;
 

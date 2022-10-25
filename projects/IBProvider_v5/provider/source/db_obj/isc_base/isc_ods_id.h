@@ -9,6 +9,8 @@
 
 #include "source/db_obj/isc_base/isc_base.h"
 
+#include <structure/t_str_formatter.h>
+
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup isc_base

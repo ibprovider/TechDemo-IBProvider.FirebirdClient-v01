@@ -18,7 +18,6 @@
 #include "source/ibp_memory.h"
 #include "source/ibp_subsystem_ids.h"
 #include "source/ibp_limits.h"
-#include <ole_lib/oledb/variant/oledb_xvariant.h>
 #include <ole_lib/ole_auto/ole_auto_variant.h>
 #include <structure/error/t_err_record.h>
 #include <structure/t_fix_vector.h>
@@ -72,13 +71,20 @@ class t_ibp_error_element
 
  public: //typedefs ------------------------------------------------------
   ///Смарт-указатель на объект
-  typedef structure::t_smart_object_ptr<self_type>  self_ptr;
+  typedef structure::t_smart_object_ptr<const self_type>  self_cptr;
+  typedef structure::t_smart_object_ptr<self_type>        self_ptr;
 
   typedef inherited_record::string_type             string_type;
   typedef inherited_record::system_id_type          system_id_type;
   typedef inherited_record::subsystem_id_type       subsystem_id_type;
   typedef inherited_record::lcid_type               lcid_type;
   typedef inherited_record::help_ctx_id_type        help_ctx_id_type;
+
+  using get_cerr_obj_type
+   =t_ibp_get_custom_error_object;
+
+  using get_cerr_obj_ptr
+   =lib::structure::t_smart_object_ptr<get_cerr_obj_type>;
 
   DECLARE_IPTR_TYPE(IErrorInfo);
   DECLARE_IPTR_TYPE(IErrorRecords);
@@ -87,7 +93,7 @@ class t_ibp_error_element
 
   typedef structure::t_fix_vector
            <ibp_limc_MaxErrorArgsCount,
-            oledb_lib::TDBVariant>                  params_type;
+            IBP_ErrorVariant>                       params_type;
 
  public:
   ///Идентификатор источника ошибки
@@ -106,7 +112,7 @@ class t_ibp_error_element
   params_type m_params;
 
   ///Custom error object
-  ole_lib::IPtr2<ibprovider::IBP_IClone> m_spCustomError;
+  get_cerr_obj_ptr m_spGetCustomError;
 
  public:
   /// <summary>
@@ -122,10 +128,10 @@ class t_ibp_error_element
   /// </summary>
   //! \param[in] err_code
   //! \param[in] msg_code
-  //! \param[in] pCErr
-  t_ibp_error_element(HRESULT                 err_code,
-                      mc_type                 msg_code,
-                      ibprovider::IBP_IClone* pCErr);
+  //! \param[in] pGetCErr
+  t_ibp_error_element(HRESULT            err_code,
+                      mc_type            msg_code,
+                      get_cerr_obj_type* pGetCErr);
 
   /// <summary>
   ///  Конструктор инициализации
@@ -143,11 +149,11 @@ class t_ibp_error_element
   //! \param[in] err_code
   //! \param[in] subsys_id
   //! \param[in] msg_code
-  //! \param[in] pCErr
-  t_ibp_error_element(HRESULT                 err_code,
-                      t_ibp_subsystem_id      subsys_id,
-                      mc_type                 msg_code,
-                      ibprovider::IBP_IClone* pCErr);
+  //! \param[in] pGetCErr
+  t_ibp_error_element(HRESULT            err_code,
+                      t_ibp_subsystem_id subsys_id,
+                      mc_type            msg_code,
+                      get_cerr_obj_type* pGetCErr);
 
   //smart interface ------------------------------------------------------
   SLIB__DECLARE_SMART_OBJ_MANAGEMENT_METHODS__FINAL
@@ -165,7 +171,7 @@ class t_ibp_error_element
   /// <summary>
   ///  Получение SQLSTATE ошибки. THROW.
   /// </summary>
-  std::wstring get_sqlstate()const;
+  std::string get_sqlstate()const;
 
   //t_err_record interface -----------------------------------------------
   /// <summary>

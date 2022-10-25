@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-//Structures for work with UTF_FSS [UNICODE_FSS] charset
+//Structures for work with UTF8 charset.
 //                                                Kovalenko Dmitry. 20.07.2011.
 #ifndef _structure_charsets_t_cs_utf8_H_
 #define _structure_charsets_t_cs_utf8_H_

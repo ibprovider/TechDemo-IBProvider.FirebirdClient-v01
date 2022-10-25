@@ -207,29 +207,6 @@ void IBP_ThrowBugCheck_UnknownSqlParserScope(const wchar_t*              const p
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void IBP_ThrowBugCheck_UnexpectedOLEDBType(const wchar_t* const place,
-                                           const wchar_t* const point,
-                                           DBTYPE         const wType)
-{
- assert(place);
- assert(point);
-
- //ERROR - wrong oledb-type of time-column
- const oledb_lib::t_oledb_string
-  typeName(oledb_lib::DBVARIANT::GetTypeName(wType,0));
-
- assert_msg(false,"Unexpected oledb-type: ["<<structure::tstr_to_str(typeName)<<"]");
-
- structure::wstr_formatter
-  freason(L"Unexpected OLEDB-type: %1");
-
- freason<<typeName;
-
- IBP_ThrowBugCheck(place,point,freason.c_str());
-}//IBP_ThrowBugCheck_UnexpectedOLEDBType
-
-////////////////////////////////////////////////////////////////////////////////
-
 void IBP_ThrowBugCheck_InfoBuf__UnexpectedEnd(const wchar_t* const place,
                                               const wchar_t* const point)
 {
@@ -433,7 +410,7 @@ void IBP_ThrowBugCheck__IncorrectWorkOfGetTempFileName
  IBP_BUG_CHECK__DEBUG(place,
                       point,
                       freason.c_str());
-}//IBP_ThrowBugCheck__IncorrectWorkOfGetTempFIleName
+}//IBP_ThrowBugCheck__IncorrectWorkOfGetTempFileName
 
 ////////////////////////////////////////////////////////////////////////////////
 

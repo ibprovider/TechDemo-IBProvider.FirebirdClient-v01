@@ -27,16 +27,16 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{namespace winsock{
 class t_winsock__provider:public IBP_SmartMemoryObject
 {
  private:
-  typedef t_winsock__provider                       self_type;
+  typedef t_winsock__provider                            self_type;
 
   t_winsock__provider(const self_type&);
   self_type& operator = (const self_type);
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>  self_ptr;
+  typedef lib::structure::t_smart_object_ptr<self_type>  self_ptr;
 
-  typedef t_ibp_os__dll                             dll_type;
-  typedef t_ibp_os__dll_ptr                         dll_ptr;
+  typedef t_ibp_os__dll                                  dll_type;
+  typedef t_ibp_os__dll_ptr                              dll_ptr;
 
  private:
   /// <summary>

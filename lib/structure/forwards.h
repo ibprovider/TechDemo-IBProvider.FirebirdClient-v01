@@ -4,24 +4,21 @@
 #ifndef _lcpi_lib_structure__forwards_H_
 #define _lcpi_lib_structure__forwards_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/structure/forwards.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
-template<typename charT>
-class t_basic_const_str_box;
+using ::lcpi::lib::structure::t_basic_const_str_box;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-template<typename charT,class charTraits=std::char_traits<charT>>
-class t_basic_const_string;
+using ::lcpi::lib::structure::t_basic_const_string;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-template<typename T>
-class t_first_last;
+using ::lcpi::lib::structure::t_first_last;
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/
 #endif

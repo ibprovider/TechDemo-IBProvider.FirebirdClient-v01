@@ -2,6 +2,8 @@
 #ifndef _db_services_utility_CC_
 #define _db_services_utility_CC_
 
+#include <structure/utilities/string/string_length.h>
+
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //Запрос сервиса через интерфейс t_db_service_provider

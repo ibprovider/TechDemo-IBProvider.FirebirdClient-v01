@@ -32,7 +32,7 @@ IBP_OLEDB_Props2__HandlerData__CnStatus::~IBP_OLEDB_Props2__HandlerData__CnStatu
 IBP_OLEDB_Props2__HandlerData__CnStatus::self_ptr
  IBP_OLEDB_Props2__HandlerData__CnStatus::Create(LONG const CnStatus)
 {
- return structure::not_null_ptr(new self_type(CnStatus));
+ return lib::structure::not_null_ptr(new self_type(CnStatus));
 }//Create
 
 //------------------------------------------------------------------------

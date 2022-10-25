@@ -20,20 +20,33 @@ class interlocked_compare_exchange__impl
  public:
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pValue,T2* newValue,std::nullptr_t testValue);
+
+  static unsigned long exec(unsigned long volatile* pValue,unsigned long newValue,unsigned long testValue);
 };//class interlocked_compare_exchange__impl
 
 //------------------------------------------------------------------------
 template<typename T1,typename T2>
-T1* interlocked_compare_exchange__impl::exec(T1* volatile*  const pDestination,
+T1* interlocked_compare_exchange__impl::exec(T1* volatile*  const pValue,
                                              T2*            const newValue,
                                              std::nullptr_t const testValue)
 {
- LCPI__assert(pDestination);
+ LCPI__assert(pValue);
 
  using T1_x=typename std::remove_const<T1>::type;
 
- return (T1*)InterlockedCompareExchangePointer((void**)(pDestination),const_cast<T1_x*>(static_cast<T1*>(newValue)),testValue);
+ return (T1*)InterlockedCompareExchangePointer((void**)(pValue),const_cast<T1_x*>(static_cast<T1*>(newValue)),testValue);
 }//exec - T1**, T2*, nullptr
+
+//------------------------------------------------------------------------
+inline unsigned long interlocked_compare_exchange__impl::exec
+                                           (unsigned long volatile* const pValue,
+                                            unsigned long           const newValue,
+                                            unsigned long           const testValue)
+{
+ LCPI__assert(pValue);
+
+ return InterlockedCompareExchange(pValue,newValue,testValue);
+}//exec - unsigned long
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace detail

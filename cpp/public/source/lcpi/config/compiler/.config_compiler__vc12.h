@@ -14,5 +14,7 @@
 
 #define LCPI_CPP_CFG__DECLSPEC__NORETURN                     __declspec(noreturn)
 
+#define LCPI_CPP_CFG__DECLSPEC__NOVTABLE                     __declspec(novtable)
+
 ////////////////////////////////////////////////////////////////////////////////
 #endif

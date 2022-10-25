@@ -14,6 +14,8 @@
 // LCPI_CPP_CFG__CLASS__FINAL
 //
 // LCPI_CPP_CFG__DECLSPEC__NORETURN
+// 
+// LCPI_CPP_CFG__DECLSPEC__NOVTABLE
 //
 ////////////////////////////////////////////////////////////////////////////////
 //Known compiler IDs
@@ -91,6 +93,11 @@
 //------------------------------------------------------------------------
 #ifndef LCPI_CPP_CFG__DECLSPEC__NORETURN
 # error LCPI_CPP_CFG__DECLSPEC__NORETURN not defined
+#endif
+
+//------------------------------------------------------------------------
+#ifndef LCPI_CPP_CFG__DECLSPEC__NOVTABLE
+# error LCPI_CPP_CFG__DECLSPEC__NOVTABLE not defined
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

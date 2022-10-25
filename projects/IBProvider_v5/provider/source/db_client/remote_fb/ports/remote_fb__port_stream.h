@@ -92,7 +92,7 @@ class RemoteFB__PortStream:public RemoteFB__SmartInterface
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef structure::t_smart_object_ptr<RemoteFB__PortStream> RemoteFB__PortStreamPtr;
+typedef lib::structure::t_smart_object_ptr<RemoteFB__PortStream> RemoteFB__PortStreamPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

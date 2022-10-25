@@ -16,7 +16,7 @@ t_string GetErrorMsg(DWORD const dwErrorCode,
 {
  t_string retValue;
 
- TCHAR* Pointer=NULL;
+ TCHAR* Pointer=nullptr;
 
  const DWORD res=::FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
                                  FORMAT_MESSAGE_IGNORE_INSERTS |
@@ -26,7 +26,7 @@ t_string GetErrorMsg(DWORD const dwErrorCode,
                                  0,
                                  (TCHAR*)&Pointer,
                                  0,
-                                 NULL);
+                                 nullptr);
  if(Pointer && res>0)
  {
   typedef HLOCAL __stdcall t_local_free(HLOCAL);

@@ -15,7 +15,7 @@
 #include "source/db_obj/isc_base/isc_dbms_ids.h"
 #include "source/db_obj/db_service_utils.h"
 
-#include "source/oledb/error/ibp_oledb__sql_error_info.h"
+#include "source/error_services/ibp_custom_error_object__sql.h"
 
 #include "source/error_services/ibp_error.h"
 
@@ -292,8 +292,8 @@ t_ibp_error_element::self_ptr
  //-------------- формирование объекта с дополнительным описанием ошибки
  assert(structure::can_numeric_cast<LONG>(IscGeneralError));
 
- spErrRec->m_spCustomError
-  =ibp::oledb::IBP_OLEDB__SQLErrorInfo::Create
+ spErrRec->m_spGetCustomError
+  =ibp::t_ibp_custom_error_object__sql::create
     (strSQLState,
      static_cast<LONG>(IscGeneralError));
 

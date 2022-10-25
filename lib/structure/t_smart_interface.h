@@ -4,9 +4,7 @@
 #ifndef _lcpi_lib__t_smart_interface_H_
 #define _lcpi_lib__t_smart_interface_H_
 
-#include <structure/t_common.h>
-
-#include <lcpi/infrastructure/core/structure/t_smart_interface.h>
+#include <lcpi/lib/structure/t_smart_interface.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +12,7 @@ namespace structure{
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef ::lcpi::infrastructure::core::structure::t_smart_interface t_smart_interface;
+typedef ::lcpi::lib::structure::t_smart_interface t_smart_interface;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

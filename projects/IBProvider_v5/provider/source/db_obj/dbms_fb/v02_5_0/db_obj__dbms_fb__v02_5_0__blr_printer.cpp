@@ -12,6 +12,7 @@
 #include "source/error_services/ibp_error.h"
 
 #include <structure/utilities/string/trim.h>
+#include <structure/utilities/string/string_length.h>
 #include <structure/t_str_formatter.h>
 #include <structure/t_value_with_null.h>
 
