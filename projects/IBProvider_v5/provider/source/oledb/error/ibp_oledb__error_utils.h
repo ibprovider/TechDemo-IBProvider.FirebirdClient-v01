@@ -8,10 +8,9 @@
 #define _ibp_oledb__error_utils_H_
 
 #include "source/error_services/ibp_error_codes.h"
+#include "source/error_services/ibp_error_variant.h"
 
 #include "source/ibp_forward.h"
-
-#include <ole_lib/oledb/variant/oledb_variant_fwrd.h>
 
 #include <structure/error/t_err_record.h>
 
@@ -54,7 +53,7 @@ class IBP_OLEDB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                                  const VARIANT&                varSubSystemID,
                                  mc_type                       msg_code,
                                  size_t                        cArgs,
-                                 const oledb_lib::DBVARIANT*   rgArgs);
+                                 const IBP_ErrorVariant*       rgArgs);
 };//class IBP_OLEDB__ErrorUtils
 
 ////////////////////////////////////////////////////////////////////////////////

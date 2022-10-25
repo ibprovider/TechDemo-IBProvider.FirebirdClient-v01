@@ -64,6 +64,9 @@ class IBP_OLEDB__CustomErrorObject LCPI_CPP_CFG__CLASS__FINAL
                               /*[out]*/ OLECHAR**              ppStringsBuffer) COMP_W000004_OVERRIDE_FINAL;
 
  private:
+  bool BaseUnknown__IsSupportedInterface(REFIID riid)const;
+
+ private:
   /// Объект с описанием ошибки. Not NULL.
   const structure::t_err_record::self_cptr m_spErrRecord;
 

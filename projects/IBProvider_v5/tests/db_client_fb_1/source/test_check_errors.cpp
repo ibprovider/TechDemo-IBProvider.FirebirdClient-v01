@@ -7243,7 +7243,7 @@ bool TestCheckErrors::error_rec__check_sqlstate_and_native_code
   return false;
  }//if
 
- if(!pErrElement->m_spCustomError)
+ if(!pErrElement->m_spGetCustomError)
  {
   tracer(tso_msg_error,-1)<<L"No CustomError object."<<send;
 
@@ -7252,7 +7252,7 @@ bool TestCheckErrors::error_rec__check_sqlstate_and_native_code
 
  DECLARE_IPTR_TYPE(ISQLErrorInfo);
 
- const ISQLErrorInfoPtr spSQLErrorInfo(pErrElement->m_spCustomError);
+ const ISQLErrorInfoPtr spSQLErrorInfo(pErrElement->m_spGetCustomError->get_custom_error_object(nullptr));
 
  if(!spSQLErrorInfo)
  {

@@ -32,8 +32,12 @@ using t_basic_smart_object_base2
 
 ////////////////////////////////////////////////////////////////////////////////
 
+template<class Allocator>
+using t_basic_smart_memory_object
+ =t_basic_smart_interface_impl__dynamic<t_smart_interface,Allocator>;
+
 using t_smart_memory_object
- =t_basic_smart_interface_impl__dynamic<t_smart_interface,t_void_allocator>;
+ =t_basic_smart_memory_object<t_void_allocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 

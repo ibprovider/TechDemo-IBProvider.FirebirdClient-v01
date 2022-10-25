@@ -34,15 +34,16 @@ IBP_OLEDB__SQLErrorInfo::~IBP_OLEDB__SQLErrorInfo()
 }//~IBP_OLEDB__SQLErrorInfo
 
 //------------------------------------------------------------------------
-ole_lib::IPtr2<ibprovider::IBP_IClone>
- IBP_OLEDB__SQLErrorInfo::Create(str_arg_type const strSQLState,
+lib::com::base::IUnknownPtr
+ IBP_OLEDB__SQLErrorInfo::Create(IUnknown*    const pUnkOuter,
+                                 str_arg_type const strSQLState,
                                  LONG         const lNativeError)
 {
- const ole_lib::IPtr2<self_type>
+ const ole_lib::INondelegatingPtr2<self_type>
   spX
    (structure::not_null_ptr
      (new self_type
-       (/*pUnkOuter*/nullptr,
+       (pUnkOuter,
         strSQLState,
         lNativeError)));
 
@@ -55,78 +56,20 @@ ole_lib::IPtr2<ibprovider::IBP_IClone>
 
  assert(hr==S_OK);
 
- return structure::not_null_ptr(spX.ptr());
+ return structure::not_null_ptr(spX->GetNondelegatingUnknown());
 }//Create
 
 //Root interface ---------------------------------------------------------
 OLE_LIB__DEFINE_ROOT_INTERFACE(IBP_OLEDB__SQLErrorInfo)
- OLE_LIB__ROOT_STATIC_INTERFACE_NS(ibprovider::,IBP_IClone)
  OLE_LIB__ROOT_STATIC_INTERFACE(ISQLErrorInfo)
 OLE_LIB__END_ROOT_INTERFACE(inherited)
-
-//IBP_IClone interface ---------------------------------------------------
-HRESULT __stdcall IBP_OLEDB__SQLErrorInfo::Clone(IUnknown*  const pUnkOuter,
-                                                 IUnknown** const ppClone)
-{
- OLE_LIB_IMETHOD_PROLOG
-
- LCPI_OS__SetErrorInfo(0,nullptr);
-
- //-----------------------------------------
- if(ppClone==nullptr)
-  return E_INVALIDARG;
-
- //-----------------------------------------
- (*ppClone)=nullptr;
-
- //-----------------------------------------
- OLE_LIB__DECLARE_HR(S_OK)
-
- _OLE_TRY_
- {
-  if(pUnkOuter==nullptr)
-  {
-   //возвращаем указатель на самого себя
-
-   ole_lib::CopyComInterface2(this->GetOuterUnknown(),*ppClone);
-  }
-  else
-  {
-   //создаем агрегированный объект
-
-   const ole_lib::INondelegatingPtr2<self_type>
-    spX
-     (structure::not_null_ptr
-       (new self_type
-         (pUnkOuter,
-          m_strSQLState,
-          m_lNativeError)));
-
-   assert(spX);
-
-   const HRESULT init_hr=spX->Init();
-
-   if(FAILED(init_hr))
-    ole_lib::t_base_com_error::throw_error(hr);
-
-   assert(init_hr==S_OK);
-
-   hr=spX.get_out(IID_IUnknown,ppClone);
-
-   assert(hr==S_OK);
-  }//else
- }
- _OLE_CATCHES2_CODE_
-
- return hr;
-}//Clone
 
 //ISQLErrorInfo interface ------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__SQLErrorInfo::GetSQLInfo
                                            (BSTR* const pbstrSQLState,
                                             LONG* const plNativeError)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 

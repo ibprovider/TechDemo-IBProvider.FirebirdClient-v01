@@ -52,7 +52,7 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
 ////////////////////////////////////////////////////////////////////////////////
 
 using t_ibp_os__dll_ptr
- =structure::t_smart_object_ptr<t_ibp_os__dll>;
+ =lib::structure::t_smart_object_ptr<t_ibp_os__dll>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms os*/}/*nms ibp*/}/*nms lcpi*/

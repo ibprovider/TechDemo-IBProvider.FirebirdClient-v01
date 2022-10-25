@@ -23,7 +23,8 @@ namespace lcpi{namespace ibp{
 ///  Набор утилит для работы с локалью
 /// </summary>
 template<typename charT>
-class t_ibp_basic_locale_services:public IBP_SmartMemoryObject
+class t_ibp_basic_locale_services LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_SmartMemoryObject
 {
  private:
   typedef t_ibp_basic_locale_services                        self_type;
@@ -131,7 +132,7 @@ typedef t_ibp_basic_locale_services<structure::t_char>  t_ibp_sys_locale_service
 ///  Функтор для сравнения символов без учета регистра
 /// </summary>
 template<typename charT>
-class t_ibp_basic_equal_char_i
+class t_ibp_basic_equal_char_i LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef t_ibp_basic_equal_char_i<charT>               self_type;

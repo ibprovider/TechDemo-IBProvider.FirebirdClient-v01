@@ -74,6 +74,8 @@ class TFileHandle
 
   DWORD GetSize(LPDWORD lpFileSizeHigh)const;
 
+  BOOL GetSizeEx(PLARGE_INTEGER lpFileSize)const;
+
   BOOL Write(LPCVOID       lpBuffer,
              DWORD         nNumberOfBytesToWrite,
              DWORD&        nNumberOfBytesWritten,

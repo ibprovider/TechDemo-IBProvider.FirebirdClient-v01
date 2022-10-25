@@ -45,7 +45,7 @@ OLE_LIB__END_ROOT_INTERFACE(inherited)
 //IErrorInfo interface ---------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetSource(BSTR* const pbstrSource)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrSource==nullptr)
   return E_INVALIDARG;
@@ -68,7 +68,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetSource(BSTR* const pbstrSource)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetDescription(BSTR* const pbstrDescription)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrDescription==nullptr)
   return E_INVALIDARG;
@@ -91,7 +91,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetDescription(BSTR* const pbstrDescript
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetGUID(GUID* const pguid)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pguid==nullptr)
   return E_INVALIDARG;
@@ -114,7 +114,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetGUID(GUID* const pguid)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetHelpContext(DWORD* const pdwHelpContext)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pdwHelpContext==nullptr)
   return E_INVALIDARG;
@@ -137,7 +137,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetHelpContext(DWORD* const pdwHelpConte
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__ErrorInfo::GetHelpFile(BSTR* const pbstrHelpFile)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrHelpFile==nullptr)
   return E_INVALIDARG;

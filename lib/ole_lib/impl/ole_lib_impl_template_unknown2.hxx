@@ -43,7 +43,7 @@ HRESULT __stdcall TemplateUnknown2<TOwnerClass,PIID>::NondelegatingQueryInterfac
                                                        (REFIID       riid,
                                                         void** const ppv)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(riid==*PIID)
  {

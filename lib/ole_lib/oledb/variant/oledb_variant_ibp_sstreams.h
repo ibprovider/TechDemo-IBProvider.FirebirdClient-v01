@@ -20,8 +20,9 @@ class basic_dbvariant_ibp_sstream;
 //template class basic_dbvariant_sstream
 
 template<class IInterface,const IID* PIID,class TChar,class Allocator>
-class basic_dbvariant_ibp_sstream:public IInterface
-                                 ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
+class basic_dbvariant_ibp_sstream
+ :public IInterface
+ ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
 {
  private:
   typedef basic_dbvariant_ibp_sstream<IInterface,PIID,TChar,Allocator> self_type;

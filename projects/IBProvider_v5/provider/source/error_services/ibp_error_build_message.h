@@ -11,9 +11,8 @@
 # pragma once
 #endif
 
+#include "source/error_services/ibp_error_variant.h"
 #include "source/ibp_resources.h"
-#include <ole_lib/oledb/variant/oledb_variant_fwrd.h>
-#include <structure/t_common.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,29 +33,13 @@ class TIBP_MessageTextBuilder
   static std::wstring GetSystemErrorMsg(LCID  lcid,
                                         DWORD errorCode);
 
+ public:
   static bool BuildSrc(std::wstring*   pResultText,
                        const VARIANT&  varSourceID);
 
+ public:
   /// <summary>
-  ///  Формирование текста ошибки [VARIANT version]
-  /// </summary>
-  //! \param[out] pResultText
-  //! \param[in]  varSubSystemId
-  //! \param[in]  msg_code
-  //! \param[in]  lcid
-  //! \param[in]  cArgs
-  //! \param[in]  rgArgs
-  //! \param[in]  ErrorCode
-  static bool Build(std::wstring*   pResultText,
-                    const VARIANT&  varSubSystemId,
-                    DWORD           msg_code,
-                    LCID            lcid,
-                    size_t          cArgs,
-                    const VARIANT*  rgArgs,
-                    HRESULT         ErrorCode);
-
-  /// <summary>
-  ///  Формирование текста ошибки [DBVARIANT version]
+  ///  Формирование текста ошибки [IBP_ErrorVariant version]
   /// </summary>
   //! \param[out] pResultText
   //! \param[in]  varSubSystemId
@@ -70,11 +53,11 @@ class TIBP_MessageTextBuilder
                     DWORD                       msg_code,
                     LCID                        lcid,
                     size_t                      cArgs,
-                    const oledb_lib::DBVARIANT* rgArgs,
+                    const IBP_ErrorVariant*     rgArgs,
                     HRESULT                     ErrorCode);
 
   /// <summary>
-  ///  Формирование текста ошибки [DBVARIANT version]
+  ///  Формирование текста ошибки [IBP_ErrorVariant version]
   /// </summary>
   //! \param[out] pResultText
   //! \param[in]  msg_code
@@ -86,7 +69,42 @@ class TIBP_MessageTextBuilder
                     DWORD                       msg_code,
                     LCID                        lcid,
                     size_t                      cArgs,
-                    const oledb_lib::DBVARIANT* rgArgs,
+                    const IBP_ErrorVariant*     rgArgs,
+                    const TIBP_MsgTableLoader&  MsgTableLoader);
+
+ public:
+  /// <summary>
+  ///  Формирование текста ошибки [IBP_ERRORVARIANT version]
+  /// </summary>
+  //! \param[out] pResultText
+  //! \param[in]  varSubSystemId
+  //! \param[in]  msg_code
+  //! \param[in]  lcid
+  //! \param[in]  cArgs
+  //! \param[in]  rgArgs
+  //! \param[in]  ErrorCode
+  static bool Build(std::wstring*               pResultText,
+                    const VARIANT&              varSubSystemId,
+                    DWORD                       msg_code,
+                    LCID                        lcid,
+                    size_t                      cArgs,
+                    const IBP_ERRORVARIANT*     rgArgs,
+                    HRESULT                     ErrorCode);
+
+  /// <summary>
+  ///  Формирование текста ошибки [IBP_ERRORVARIANT version]
+  /// </summary>
+  //! \param[out] pResultText
+  //! \param[in]  msg_code
+  //! \param[in]  lcid
+  //! \param[in]  cArgs
+  //! \param[in]  rgArgs
+  //! \param[in]  MsgTableLoader
+  static bool Build(std::wstring*               pResultText,
+                    DWORD                       msg_code,
+                    LCID                        lcid,
+                    size_t                      cArgs,
+                    const IBP_ERRORVARIANT*     rgArgs,
                     const TIBP_MsgTableLoader&  MsgTableLoader);
 
  private:
@@ -103,7 +121,7 @@ class TIBP_MessageTextBuilder
                                        DWORD                       msg_code,
                                        LCID                        lcid,
                                        size_t                      cArgs,
-                                       const oledb_lib::DBVARIANT* rgArgs,
+                                       const IBP_ERRORVARIANT*     rgArgs,
                                        const TIBP_MsgTableLoader&  MsgTableLoader);
 
   /// <summary>

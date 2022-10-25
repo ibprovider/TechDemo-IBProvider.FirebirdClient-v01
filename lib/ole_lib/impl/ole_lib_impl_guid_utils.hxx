@@ -23,11 +23,11 @@ HRESULT string_to_clsid(structure::str_parameter const str_clsid,GUID* const pcl
 ////////////////////////////////////////////////////////////////////////////////
 //GUID to TEXT
 
-std::wstring   guid_to_wstring(REFGUID guid);
+using lcpi::lib::com::base::guid_to_wstring;
 
-std::string    guid_to_string(REFGUID guid);
+using lcpi::lib::com::base::guid_to_string;
 
-t_string       guid_to_tstr(REFGUID guid);
+structure::t_string guid_to_tstr(REFGUID guid);
 
 ////////////////////////////////////////////////////////////////////////////////
 //compare guids

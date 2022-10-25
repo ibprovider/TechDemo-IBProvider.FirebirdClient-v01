@@ -9,7 +9,6 @@
 #include <lcpi/lib/common_utilities.h>
 
 #include <iterator> //std::iterator_traits
-#include <type_traits>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -114,7 +113,7 @@ std::pair<Iterator,bool> string_to_uuid__impl__random<Iterator>::exec
  s =parse_hex_result.pos;
  d+=4;
 
- if((*s)!=L'-')
+ if((*s)!=char_traits2::ch_minus())
   return std::make_pair(s,false);
 
  ++s;
@@ -127,7 +126,7 @@ std::pair<Iterator,bool> string_to_uuid__impl__random<Iterator>::exec
  s =parse_hex_result.pos;
  d+=2;
 
- if((*s)!=L'-')
+ if((*s)!=char_traits2::ch_minus())
   return std::make_pair(s,false);
 
  ++s;
@@ -140,7 +139,7 @@ std::pair<Iterator,bool> string_to_uuid__impl__random<Iterator>::exec
  s =parse_hex_result.pos;
  d+=2;
 
- if((*s)!=L'-')
+ if((*s)!=char_traits2::ch_minus())
   return std::make_pair(s,false);
 
  ++s;
@@ -153,7 +152,7 @@ std::pair<Iterator,bool> string_to_uuid__impl__random<Iterator>::exec
  s =parse_hex_result.pos;
  d+=2;
 
- if((*s)!=L'-')
+ if((*s)!=char_traits2::ch_minus())
   return std::make_pair(s,false);
 
  ++s;
@@ -213,7 +212,7 @@ typename string_to_uuid__impl__random<Iterator>::tag_parse_hex_result
  for(const byte_type* const ed=d+nBytes;d!=ed;++d)
  {
   byte_type*             px=x;
-  const byte_type* const ex=_END_(x);
+  const byte_type* const ex=_LCPI_END_(x);
 
   for(;px!=ex;++px)
   {

@@ -1,0 +1,29 @@
+////////////////////////////////////////////////////////////////////////////////
+//Instrumental library for C++. Forward declarations.
+//                                               Kovalenko Dmitry. 06.10.2016.
+#ifndef _cpp_public_lcpi_lib_structure__forwards_H_
+#define _cpp_public_lcpi_lib_structure__forwards_H_
+
+#include <lcpi/lib/.config.h>
+
+#include <string>
+
+namespace lcpi{namespace lib{namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+
+template<typename charT>
+class t_basic_const_str_box;
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<typename charT,class charTraits=std::char_traits<charT>>
+class t_basic_const_string;
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<typename T>
+class t_first_last;
+
+////////////////////////////////////////////////////////////////////////////////
+}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
+#endif

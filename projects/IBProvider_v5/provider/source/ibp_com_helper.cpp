@@ -30,12 +30,13 @@
 #include "source/ibp_sys_props.h"
 #include "source/ibp_guids.h"
 
-#include <ole_lib/oledb/variant/oledb_variant_cvt_utils.h>
 #include <win32lib/win32_memory_heap.h>
 #include <win32lib/win32_resource.h>
 #include <win32lib/win32_registry.h>
 #include <win32lib/win32_error.h>
 #include <win32lib/win32_memory_allocator.h>
+
+#include <lcpi/lib/com/base/com_base__string_to_guid.h>
 
 #include "rc/ibp_reg_data.rh"
 
@@ -355,9 +356,7 @@ bool TIBP_ComModule::THelper::Helper__HasComponent(const string_type& param_valu
   return false;
  }
 
- if(oledb_lib::DBVARIANT_CVT_UTILS::TStrToGUID(param_value.c_str(),
-                                               param_value.size(),
-                                               &clsid)!=S_OK)
+ if(!lib::com::base::string_to_guid(param_value,&clsid))
  {
   return false;
  }

@@ -59,7 +59,7 @@ class fb_v03_0_0__svc__status_vector_utils
                     DWORD                       msg_code,
                     LCID                        lcid,
                     size_t                      cArgs,
-                    const oledb_lib::DBVARIANT* rgArgs)const COMP_W000004_OVERRIDE_FINAL;
+                    const IBP_ErrorVariant*     rgArgs)const COMP_W000004_OVERRIDE_FINAL;
 
   virtual bool internal__is_useless_error_code
                    (const status_type s)const COMP_W000004_OVERRIDE_FINAL;

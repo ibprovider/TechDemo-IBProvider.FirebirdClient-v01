@@ -176,7 +176,7 @@ OLE_LIB__END_ROOT_INTERFACE(inherited)
 //IErrorInfo interface ---------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetSource(BSTR* const pbstrSource)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrSource==nullptr)
   return E_INVALIDARG;
@@ -214,7 +214,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetSource(BSTR* const pbstrSource)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetDescription(BSTR* const pbstrDescription)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrDescription==nullptr)
   return E_INVALIDARG;
@@ -252,7 +252,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetDescription(BSTR* const pbstrDescription)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetGUID(GUID* const pguid)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pguid==nullptr)
   return E_INVALIDARG;
@@ -286,7 +286,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetGUID(GUID* const pguid)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetHelpContext(DWORD* const pdwHelpContext)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pdwHelpContext==nullptr)
   return E_INVALIDARG;
@@ -324,7 +324,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetHelpContext(DWORD* const pdwHelpContext)
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetHelpFile(BSTR* const pbstrHelpFile)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pbstrHelpFile==nullptr)
   return E_INVALIDARG;
@@ -366,7 +366,7 @@ HRESULT __stdcall IBP_OLEDB__Error::AddErrorRecord(ERRORINFO*  const pErrorInfo,
                                                    IUnknown*   const punkCustomError,
                                                    DWORD       const dwDynamicErrorID)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  if(pErrorInfo==nullptr)
@@ -412,7 +412,7 @@ HRESULT __stdcall IBP_OLEDB__Error::AddErrorRecord(ERRORINFO*  const pErrorInfo,
 HRESULT __stdcall IBP_OLEDB__Error::GetBasicErrorInfo(ULONG      const ulRecordNum,
                                                       ERRORINFO* const pErrorInfo)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  if(pErrorInfo==nullptr)
@@ -448,7 +448,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetCustomErrorObject(ULONG      const ulReco
                                                          REFIID           riid,
                                                          IUnknown** const ppObject)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  if(ppObject==nullptr)
@@ -487,7 +487,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetErrorInfo(ULONG        const ulRecordNum,
                                                  LCID         const lcid,
                                                  IErrorInfo** const ppErrorInfo)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(ppErrorInfo==nullptr)
   return E_INVALIDARG;
@@ -562,7 +562,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetErrorInfo(ULONG        const ulRecordNum,
 HRESULT __stdcall IBP_OLEDB__Error::GetErrorParameters(ULONG       const ulRecordNum,
                                                        DISPPARAMS* const pdispparams)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  if(pdispparams==nullptr)
   return E_INVALIDARG;
@@ -637,7 +637,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetErrorParameters(ULONG       const ulRecor
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetRecordCount(ULONG* const pcRecords)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  if(pcRecords==nullptr)
@@ -667,7 +667,7 @@ HRESULT __stdcall IBP_OLEDB__Error::GetRecordCount(ULONG* const pcRecords)
 //IDBPrimaryError interface ----------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::SetPrimaryError(ULONG const PrimaryErrorIndex)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  OLE_LIB__DECLARE_HR(S_OK)
@@ -691,7 +691,7 @@ HRESULT __stdcall IBP_OLEDB__Error::SetPrimaryError(ULONG const PrimaryErrorInde
 //------------------------------------------------------------------------
 HRESULT __stdcall IBP_OLEDB__Error::GetPrimaryError(ULONG* const pPrimaryErrorIndex)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  //------
  if(pPrimaryErrorIndex==nullptr)

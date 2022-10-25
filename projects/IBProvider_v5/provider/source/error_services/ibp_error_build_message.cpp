@@ -13,11 +13,15 @@
 #include "rc/ibp_msg_err_ids.rh"
 
 #include <ole_lib/oledb/variant/oledb_variant.h>
+#include <ole_lib/ole_auto/ole_auto_variant.h>
+
 #include <structure/t_str_formatter.h>
+#include <structure/t_dynamic_array.h>
 #include <structure/t_function.h>
 
 #include <structure/utilities/string/trim.h>
 #include <structure/utilities/to_hex.h>
+#include <structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -125,40 +129,58 @@ bool TIBP_MessageTextBuilder::BuildSrc(std::wstring* const pResultText,
 }//BuildSrc
 
 //------------------------------------------------------------------------
-bool TIBP_MessageTextBuilder::Build(std::wstring*  const pResultText,
-                                    const VARIANT&       varSubSystemId,
-                                    DWORD          const msg_code,
-                                    LCID           const lcid,
-                                    size_t         const cArgs,
-                                    const VARIANT* const rgArgs,
-                                    HRESULT        const ErrorCode)
+bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultText,
+                                    const VARIANT&                    varSubSystemId,
+                                    DWORD                       const msg_code,
+                                    LCID                        const lcid,
+                                    size_t                      const cArgs,
+                                    const IBP_ErrorVariant*     const rgArgs,
+                                    HRESULT                     const ErrorCode)
 {
- assert(pResultText);
+ assert(pResultText!=nullptr);
 
  CHECK_READ_TYPED_PTR(rgArgs,cArgs);
 
- structure::t_stl_vector<oledb_lib::DBVARIANT,IBP_MemoryAllocator> DBVars(cArgs);
+ structure::t_dynamic_array<IBP_ERRORVARIANT,IBP_MemoryAllocator> tmp(cArgs);
 
- for(size_t iArg(0);iArg!=cArgs;++iArg)
- {
-  const HRESULT hr=oledb_lib::UnpackVariantToDBVariant(rgArgs[iArg],&DBVars[iArg]);
+ for(size_t i=0;i!=cArgs;++i)
+  tmp[i]=rgArgs[i].Data();
 
-  if(FAILED(hr))
-  {
-   DBVars[iArg].wType       =DBTYPE_WSTR;
-   DBVars[iArg].wstrVal.ptr =const_cast<wchar_t*>(L"<error>");
-   DBVars[iArg].wstrVal.len =wcslen(DBVars[iArg].wstrVal.ptr);
-  }
- }//for iArg
+ return self_type::Build
+         (pResultText,
+          varSubSystemId,
+          msg_code,
+          lcid,
+          cArgs,
+          tmp.data(),
+          ErrorCode);
+}//Build - IBP_ErrorVariant
 
- return self_type::Build(pResultText,
-                         varSubSystemId,
-                         msg_code,
-                         lcid,
-                         DBVars.size(),
-                         DBVars.data(),
-                         ErrorCode);
-}//Build - VARIANT
+//------------------------------------------------------------------------
+bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultText,
+                                    DWORD                       const msg_code,
+                                    LCID                        const lcid,
+                                    size_t                      const cArgs,
+                                    const IBP_ErrorVariant*     const rgArgs,
+                                    const TIBP_MsgTableLoader&        MsgTableLoader)
+{
+ assert(pResultText!=nullptr);
+
+ CHECK_READ_TYPED_PTR(rgArgs,cArgs);
+
+ structure::t_dynamic_array<IBP_ERRORVARIANT,IBP_MemoryAllocator> tmp(cArgs);
+
+ for(size_t i=0;i!=cArgs;++i)
+  tmp[i]=rgArgs[i].Data();
+
+ return self_type::Helper__BuildDescription
+         (pResultText,
+          msg_code,
+          lcid,
+          cArgs,
+          tmp.data(),
+          MsgTableLoader);
+}//Build - IBP_ErrorVariant
 
 //------------------------------------------------------------------------
 bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultText,
@@ -166,7 +188,7 @@ bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultTex
                                     DWORD                       const msg_code,
                                     LCID                        const lcid,
                                     size_t                      const cArgs,
-                                    const oledb_lib::DBVARIANT* const rgArgs,
+                                    const IBP_ERRORVARIANT*     const rgArgs,
                                     HRESULT                     const ErrorCode)
 {
  //Обработка стандартных ошибок OLEDB ------------------------------------
@@ -210,14 +232,14 @@ bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultTex
  }//local
 
  return true;
-}//Build - DBVARIANT
+}//Build - IBP_ERRORVARIANT
 
 //------------------------------------------------------------------------
 bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultText,
                                     DWORD                       const msg_code,
                                     LCID                        const lcid,
                                     size_t                      const cArgs,
-                                    const oledb_lib::DBVARIANT* const rgArgs,
+                                    const IBP_ERRORVARIANT*     const rgArgs,
                                     const TIBP_MsgTableLoader&        MsgTableLoader)
 {
  assert(pResultText!=nullptr);
@@ -231,7 +253,7 @@ bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultTex
           cArgs,
           rgArgs,
           MsgTableLoader);
-}//Build
+}//Build - IBP_ERRORVARIANT 
 
 //------------------------------------------------------------------------
 bool TIBP_MessageTextBuilder::Helper__BuildDescription
@@ -239,7 +261,7 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
                                        DWORD                       const msg_code,
                                        LCID                        const lcid,
                                        size_t                      const cArgs,
-                                       const oledb_lib::DBVARIANT* const rgArgs,
+                                       const IBP_ERRORVARIANT*     const rgArgs,
                                        const TIBP_MsgTableLoader&        MsgTableLoader)
 {
  assert(pResultText!=nullptr);
@@ -273,80 +295,226 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
  DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IErrorExtendedParameter);
  DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IText);
 
- for(const oledb_lib::DBVARIANT *pv=rgArgs,* const _end=rgArgs+cArgs;pv!=_end;++pv)
+ for(const IBP_ERRORVARIANT *pv=rgArgs,* const _end=rgArgs+cArgs;pv!=_end;++pv)
  {
-  if(pv->wType==VT_UNKNOWN) //вложенная ошибка
+  if(pv->vt==IBP_EVT::V_IUNKNOWN) //вложенная ошибка
   {
-   IBP_ITextPtr                   spText;
-   IBP_IErrorExtendedParameterPtr spExtendedError;
-
-   //----
-   spText=pv->unkVal.ptr;
-
-   if(!spText)
-    spExtendedError=pv->unkVal.ptr;
-
-   //---------------------------------------
-   ole_lib::TBSTR tmpMsg;
-   HRESULT        hr;
-
-   if(spText)
+   if(IBP_ITextPtr const spText=pv->value.punk)
    {
-    hr=spText->GetText(lcid,&tmpMsg.ref_bstr());
-   }
-   else
-   if(spExtendedError)
-   {
-    hr=spExtendedError->GetErrorDescription(lcid,/*pbstrSource*/NULL,&tmpMsg.ref_bstr());
-   }
-   else
-   {
-    fmsg<<L"[unk arg object]";
+    ole_lib::TBSTR bstrValue;
+
+    const HRESULT hr=spText->GetText(lcid,&bstrValue.ref_bstr());
+
+    if(FAILED(hr))
+     fmsg<<L"[bad arg object]";
+    else
+     fmsg<<ole_lib::BStrToBox(bstrValue.bstr());
 
     continue;
-   }//else
+   }//if spText
 
-   //---------------------------------------
-   if(hr!=S_OK)
+   if(IBP_IErrorExtendedParameterPtr const spExtendedError=pv->value.punk)
    {
-    assert(FAILED(hr));
+    ole_lib::TBSTR bstrValue;
 
-    fmsg<<L"[bad arg object]";
+    const HRESULT hr=spExtendedError->GetErrorDescription(lcid,/*pbstrSource*/nullptr,&bstrValue.ref_bstr());
+
+    if(FAILED(hr))
+     fmsg<<L"[bad arg object]";
+    else
+     fmsg<<ole_lib::BStrToBox(bstrValue.bstr());
 
     continue;
-   }//if
+   }
 
-   //формируем текст вложенной ошибки ------
-   fmsg<<tmpMsg.wstr();
+   fmsg<<L"[unk arg object]";
 
    continue;
-  }//вложенная ошибка
+  }//if - вложенная ошибка
 
   oledb_lib::t_oledb_value__CPP_WSTR_n wstrN;
 
-  if(pv->IsNull_Ext())
-   fmsg<<L"NULL";
-  else
-  if(pv->to_wstr(&wstrN)!=S_OK)
-   fmsg<<L"???";
-  else
-  if(wstrN.null())
-   fmsg<<L"NULL";
-  else
-   fmsg<<__STL_MOVE_VALUE(wstrN.value());
+  switch(pv->vt)
+  {
+   case IBP_EVT::V_EMPTY:
+    fmsg<<L"#EMPTY";
+    break;
+
+   case IBP_EVT::V_NULL:
+    fmsg<<L"NULL";
+    break;
+
+   case IBP_EVT::V_STR:
+    fmsg<<structure::make_str_box(pv->value.valueStr.ptr,pv->value.valueStr.len);
+    break;
+
+   case IBP_EVT::V_WSTR:
+    fmsg<<structure::make_str_box(pv->value.valueWStr.ptr,pv->value.valueWStr.len);
+    break;
+
+   case IBP_EVT::V_BOOL:
+    fmsg<<(pv->value.valueBool?L"true":L"false");
+    break;
+
+   case IBP_EVT::V_GUID:
+    fmsg<<ole_lib::guid_to_wstring(pv->value.valueGuid);
+    break;
+
+   case IBP_EVT::V_R8:
+    fmsg<<pv->value.valueR8;
+    break;
+
+   case IBP_EVT::V_I1:
+    fmsg<<pv->value.valueI1;
+    break;
+   case IBP_EVT::V_I2:
+    fmsg<<pv->value.valueI2;
+    break;
+
+   case IBP_EVT::V_I4:
+    fmsg<<pv->value.valueI4;
+    break;
+
+   case IBP_EVT::V_I8:
+    fmsg<<pv->value.valueI8;
+    break;
+
+   case IBP_EVT::V_LONG:
+    fmsg<<pv->value.valueLong;
+    break;
+
+   case IBP_EVT::V_UI1:
+    fmsg<<pv->value.valueUI1;
+    break;
+
+   case IBP_EVT::V_UI2:
+    fmsg<<pv->value.valueUI2;
+    break;
+
+   case IBP_EVT::V_UI4:
+    fmsg<<pv->value.valueUI4;
+    break;
+
+   case IBP_EVT::V_UI8:
+    fmsg<<pv->value.valueUI8;
+    break;
+
+   case IBP_EVT::V_ULONG:
+    fmsg<<pv->value.valueULong;
+    break;
+
+   case IBP_EVT::V_IBP_MSG_CODE:
+   {
+    std::wstring tmp;
+
+    const auto r
+     =self_type::Build
+       (&tmp,
+        ole_lib::TVariant::empty_variant,
+        pv->value.valueIBProviderMsgCode,
+        lcid,
+        0,
+        reinterpret_cast<const IBP_ERRORVARIANT*>(nullptr),
+        E_FAIL);
+
+    if(r)
+     fmsg<<std::move(tmp);
+    else
+     fmsg<<L"<bad ibp msg code>";
+
+    break;
+   }//case - V_IBP_MSG_CODE
+
+   case IBP_EVT::V_WIN32_ERR:
+   {
+    std::wstring tmp
+     (self_type::GetSystemErrorMsg
+       (lcid,
+        pv->value.valueWin32Err));
+
+    fmsg<<std::move(tmp);
+
+    break;
+   }//case - V_WIN32_ERR
+
+   case IBP_EVT::V_CPP_ERR_RECORD:
+   {
+    assert(pv->value.pCppErrRecord!=nullptr);
+
+    if(pv->value.pCppErrRecord==nullptr)
+    {
+     fmsg<<L"<null ptr to error record>";
+    }
+    else
+    {
+     std::wstring tmp;
+
+     if(!pv->value.pCppErrRecord->get_description(lcid,nullptr,&tmp))
+     {
+      fmsg<<L"<can't get error record description>";
+     }
+     else
+     {
+      fmsg<<std::move(tmp);
+     }
+    }//else
+
+    break;
+   }//case - V_WIN32_ERR
+
+   default:
+    assert_msg(false,"vt="<<structure::to_underlying(pv->vt));
+
+    fmsg<<L"???";
+    break;
+  }//switch
  }//for pv
 
- (*pResultText)=fmsg.str();
-
- structure::total_self_trim(*pResultText);
-
- if(pResultText->empty())
  {
-  fmsg(L"[IBP] Unknown internal error. MsgCode: %1.")
-   <<msg_code;
+  const std::wstring fmsg_str=fmsg.str();
 
-  (*pResultText)=fmsg.str();
- }//if
+  //--------------------------
+  // [2022-10-21] Simple shielding non-printable symbols.
+
+  std::wstring tmp;
+
+  const auto _bs=fmsg_str.cbegin();
+  const auto _es=fmsg_str.cend();
+
+  auto ps=_bs;
+
+  while(ps!=_es)
+  {
+   assert(ps<_es);
+
+   auto x=std::find(ps,_es,0);
+
+   tmp.append(ps,x);
+
+   if(x==_es)
+    break;
+
+   tmp+=L"[#00]";
+
+   ++x;
+
+   ps=x;
+  }//while
+
+  //--------------------------
+  structure::total_self_trim(tmp);
+
+  //--------------------------
+  if(tmp.empty())
+  {
+   fmsg(L"[IBP] Unknown internal error. MsgCode: %1.")
+    <<msg_code;
+
+   tmp=fmsg.str();
+  }//if
+
+  pResultText->swap(tmp);
+ }//local
 
  return true;
 }//Helper__BuildDescription

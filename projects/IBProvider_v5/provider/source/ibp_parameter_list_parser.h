@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename charT>
-struct IBP_ParameterListParserSelector
+struct IBP_ParameterListParserSelector LCPI_CPP_CFG__CLASS__FINAL
 {
  typedef structure::t_basic_parameter_list
          <charT,

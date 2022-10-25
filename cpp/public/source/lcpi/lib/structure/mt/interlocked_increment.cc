@@ -21,6 +21,11 @@ class interlocked_increment__impl
    return ::InterlockedIncrement(pValue);
   }//exec
 
+  static long exec(unsigned long volatile* const pValue)
+  {
+   return ::InterlockedIncrement(pValue);
+  }//exec
+
   static unsigned int exec(unsigned int volatile* const pValue)
   {
    return ::InterlockedIncrement(pValue);

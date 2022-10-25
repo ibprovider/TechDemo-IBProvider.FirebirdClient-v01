@@ -275,10 +275,10 @@ class IBP_OLEDB__Error::tag_item:public IBP_SmartMemoryObject
   virtual ~tag_item();
 
  public:
-  const ERRORINFO             m_ErrorInfo;
-  const DWORD                 m_dwLookupID;
-  const ole_lib::IUnknownPtr  m_spCustomError;
-  const DWORD                 m_dwDynamicErrorID;
+  const ERRORINFO                    m_ErrorInfo;
+  const DWORD                        m_dwLookupID;
+  const lib::com::base::IUnknownPtr  m_spCustomError;
+  const DWORD                        m_dwDynamicErrorID;
 
   const vargs_type            m_VarArgs;
   const args_ids_type         m_ArgsIDs;

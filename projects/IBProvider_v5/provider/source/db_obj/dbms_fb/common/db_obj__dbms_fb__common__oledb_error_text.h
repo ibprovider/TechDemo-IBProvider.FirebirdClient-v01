@@ -31,8 +31,9 @@ class FB_OleDbErrorText;
 //!  Исходные данные для текста ошибки хранятся в статус векторе, который
 //!  (вместе с косвенными данными) размещается непосредственно за последним
 //!  "официальным" байтом объекта.
-class FB_OleDbErrorText:public ibprovider::IBP_IText
-                       ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
+class FB_OleDbErrorText
+ :public ibprovider::IBP_IText
+ ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
 
 {
  private:

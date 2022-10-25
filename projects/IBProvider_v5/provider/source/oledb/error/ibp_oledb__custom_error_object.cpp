@@ -61,13 +61,17 @@ HRESULT IBP_OLEDB__CustomErrorObject::Init()
 
 //Root interface ---------------------------------------------------------
 OLE_LIB__DEFINE_ROOT_INTERFACE(IBP_OLEDB__CustomErrorObject)
-  if(riid!=IID_IUnknown && m_spOriginalCEO)
+  if(!this->BaseUnknown__IsSupportedInterface(riid) && m_spOriginalCEO)
   {
+   assert(riid!=IID_IUnknown);
+
    //запрашиваем интерфейс у агрегированного объекта
    const HRESULT hr=m_spOriginalCEO->QueryInterface(riid,ppv);
 
    if(hr!=E_NOINTERFACE)
     return hr;
+
+   assert(hr==E_NOINTERFACE);
 
    assert((*ppv)==nullptr);
 
@@ -87,7 +91,7 @@ HRESULT __stdcall IBP_OLEDB__CustomErrorObject::GetErrorInfo
  /// Стандартная реализация интерфейса ISQLServerErrorInfo. Возвращаем
  /// описание ошибки, которое предоставляет m_spErrRecord
 
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 
@@ -119,7 +123,7 @@ HRESULT __stdcall IBP_OLEDB__CustomErrorObject::GetErrorInfo
                                       ibp_mce_text__unavailable_0,
                                       MAKELANGID(LANG_NEUTRAL,SUBLANG_NEUTRAL),
                                       0,
-                                      reinterpret_cast<const oledb_lib::DBVARIANT*>(NULL),
+                                      reinterpret_cast<const IBP_ERRORVARIANT*>(nullptr),
                                       E_FAIL))
    {
     ole_lib::t_base_com_error::throw_error(DB_E_BADLOOKUPID);
@@ -217,6 +221,15 @@ HRESULT __stdcall IBP_OLEDB__CustomErrorObject::GetErrorInfo
 
  return hr;
 }//GetErrorInfo
+
+//------------------------------------------------------------------------
+bool IBP_OLEDB__CustomErrorObject::BaseUnknown__IsSupportedInterface(REFIID riid)const
+{
+ if(riid==sqlncli::IID_ISQLServerErrorInfo)
+  return true;
+
+ return inherited::BaseUnknown__IsSupportedInterface(riid);
+}//BaseUnknown__IsSupportedInterface
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms oledb*/}/*nms ibp*/}/*nms lcpi*/

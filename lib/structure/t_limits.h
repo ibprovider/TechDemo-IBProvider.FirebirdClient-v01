@@ -70,15 +70,14 @@ class t_numeric_limits
 ////////////////////////////////////////////////////////////////////////////////
 //Helper class t_numeric_limits_consts
 
-template<class TDummy=void*>
 class t_numeric_limits_consts
 {
  public:
-  static const signed __int64      sm_i8_min;
-  static const signed __int64      sm_i8_max;
+  static const signed __int64      sm_i8_min=_I64_MIN;
+  static const signed __int64      sm_i8_max=_I64_MAX;
 
-  static const unsigned __int64    sm_ui8_min;
-  static const unsigned __int64    sm_ui8_max;
+  static const unsigned __int64    sm_ui8_min=0;
+  static const unsigned __int64    sm_ui8_max=_UI64_MAX;
 };//class t_numeric_limits_consts
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -281,8 +280,8 @@ class t_numeric_limits<signed __int64>
   typedef signed __int64           print_numeric_type;
 
  public: //---------------------------------------------------------------
-  static inline numeric_type min_value(){return t_numeric_limits_consts<>::sm_i8_min;}
-  static inline numeric_type max_value(){return t_numeric_limits_consts<>::sm_i8_max;}
+  static inline numeric_type min_value(){return t_numeric_limits_consts::sm_i8_min;}
+  static inline numeric_type max_value(){return t_numeric_limits_consts::sm_i8_max;}
 
   static const bool is_signed      =true;
   static const bool is_integer     =true;
@@ -304,8 +303,8 @@ class t_numeric_limits<unsigned __int64>
   typedef unsigned __int64         print_numeric_type;
 
  public: //---------------------------------------------------------------
-  static inline numeric_type min_value(){return t_numeric_limits_consts<>::sm_ui8_min;}
-  static inline numeric_type max_value(){return t_numeric_limits_consts<>::sm_ui8_max;;}
+  static inline numeric_type min_value(){return t_numeric_limits_consts::sm_ui8_min;}
+  static inline numeric_type max_value(){return t_numeric_limits_consts::sm_ui8_max;}
 
   static const bool is_signed      =false;
   static const bool is_integer     =true;
@@ -372,21 +371,6 @@ class t_numeric_limits<wchar_t>
   static const bool is_signed      =false;
   static const bool is_integer     =true;
 };//t_numeric_limits<wchar_t>
-
-////////////////////////////////////////////////////////////////////////////////
-//class t_numeric_limits_consts - implementations
-
-template<class TDummy>
-const signed __int64  t_numeric_limits_consts<TDummy>::sm_i8_min=_I64_MIN;
-
-template<class TDummy>
-const signed __int64  t_numeric_limits_consts<TDummy>::sm_i8_max=_I64_MAX;
-
-template<class TDummy>
-const unsigned __int64  t_numeric_limits_consts<TDummy>::sm_ui8_min=0;
-
-template<class TDummy>
-const unsigned __int64  t_numeric_limits_consts<TDummy>::sm_ui8_max=_UI64_MAX;
 
 ////////////////////////////////////////////////////////////////////////////////
 

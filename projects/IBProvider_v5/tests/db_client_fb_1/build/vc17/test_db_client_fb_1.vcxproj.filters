@@ -20,9 +20,6 @@
     <Filter Include="lib\oledb_lib">
       <UniqueIdentifier>{a5d57316-649f-4e5c-8ac5-ff044b1f0dc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="lib\oledb_lib\variant">
-      <UniqueIdentifier>{d5851c54-b8c7-442e-93be-5899711a9b54}</UniqueIdentifier>
-    </Filter>
     <Filter Include="lib\ole_auto">
       <UniqueIdentifier>{65a63113-ecc7-4a3e-8cd2-4f27a9a9ce23}</UniqueIdentifier>
     </Filter>
@@ -922,24 +919,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib.cpp">
       <Filter>lib\ole_lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_services.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_convert.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_context_std.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_routers.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_utils.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_datetime_services.cpp">
-      <Filter>lib\oledb_lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_registry.cpp">
       <Filter>lib\win32lib</Filter>
     </ClCompile>
@@ -948,9 +927,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_build_message.cpp">
       <Filter>IBP\source\services\errors</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_guids.cpp">
-      <Filter>lib\oledb_lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\dummy\ibp_dummy.cpp">
       <Filter>IBP\source\dummy</Filter>
@@ -2659,9 +2635,6 @@
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_mp_dump_w.cpp">
       <Filter>IBP\source\external\libtommath\set01</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\sdk\ibprovider\v05\lcpi_sdk__ibprovider__v05.cpp">
       <Filter>sdk\ibprovider\v05</Filter>
     </ClCompile>
@@ -2709,9 +2682,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource_versioninfo.cpp">
       <Filter>lib\win32lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt.cpp">
-      <Filter>lib\oledb_lib\variant</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_elements.cpp">
       <Filter>IBP\source\services\errors</Filter>
@@ -3100,30 +3070,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values__get.cpp">
       <Filter>lib\oledb_lib\provider\props2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__custom_error_object.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_element_wrapper.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_info.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_lookup.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text__for_win32_error_msg.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_utils.cpp">
-      <Filter>IBP\source\oledb\error</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__sql_error_info.cpp">
       <Filter>IBP\source\oledb\error</Filter>
     </ClCompile>
@@ -3159,6 +3105,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.cpp">
       <Filter>IBP\source\os\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_variant.cpp">
+      <Filter>IBP\source\services\errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.cpp">
+      <Filter>IBP\source\services\errors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4968,6 +4920,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__path_utils.h">
       <Filter>IBP\source\os\win32\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_variant.h">
+      <Filter>IBP\source\services\errors\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.h">
+      <Filter>IBP\source\services\errors\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

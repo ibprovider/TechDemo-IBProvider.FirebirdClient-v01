@@ -11,6 +11,7 @@
 #include <ole_lib/ole_auto/ole_auto_safe_array.h>
 #include <ole_lib/ole_auto/ole_auto_variant_type_info.h>
 #include <ole_lib/ole_ptr.h>
+#include <ole_lib/ole_base.h>
 #include <structure/t_str_formatter.h>
 
 #include <vector>

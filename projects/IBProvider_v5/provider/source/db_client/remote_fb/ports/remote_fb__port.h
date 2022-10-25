@@ -366,7 +366,7 @@ class RemoteFB__Port:public db_obj::t_db_service_provider
 /// <summary>
 ///  Смарт указатель на интерфейс удаленного порта
 /// </summary>
-typedef structure::t_smart_object_ptr<RemoteFB__Port> RemoteFB__PortPtr;
+typedef lib::structure::t_smart_object_ptr<RemoteFB__Port> RemoteFB__PortPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortOperationContext

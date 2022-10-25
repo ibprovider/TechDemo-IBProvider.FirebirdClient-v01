@@ -51,7 +51,7 @@ class t_ibp_os_win32__dll_entry_point
   //! \param[in] point_name
   t_ibp_os_win32__dll_entry_point(dll_type* const pDLL,
                                   LPCSTR    const point_name)
-   :m_spDLL(structure::not_null_ptr(pDLL))
+   :m_spDLL(lib::structure::not_null_ptr(pDLL))
    ,m_point_name(point_name)
    ,m_point(nullptr)
   {

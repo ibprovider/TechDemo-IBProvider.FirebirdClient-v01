@@ -41,7 +41,7 @@ class COMP_CONF_DECLSPEC_NOVTABLE ZLIB1__ApiProvider:public IBP_SmartInterface
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef structure::t_smart_object_ptr<ZLIB1__ApiProvider> ZLIB1__ApiProviderPtr;
+typedef lib::structure::t_smart_object_ptr<ZLIB1__ApiProvider> ZLIB1__ApiProviderPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

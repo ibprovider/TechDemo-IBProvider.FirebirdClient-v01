@@ -15,7 +15,8 @@
 #include "source/error_services/ibp_error_codes.h"
 #include "source/ibp_memory.h"
 #include "source/ibp_limits.h"
-#include <ole_lib/oledb/variant/oledb_xvariant.h>
+
+#include <ole_lib/ole_lib.h>
 #include <structure/t_fix_vector.h>
 
 namespace lcpi{namespace ibp{
@@ -51,9 +52,10 @@ class TIBPBindErrorDataTraits
 /// <summary>
 ///  Класс для представления ошибки привязки данных
 /// </summary>
-class TIBPBindErrorData:public ibprovider::IBP_IText
-                       ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
-                       ,public TIBPBindErrorDataTraits::args_type
+class TIBPBindErrorData
+ :public ibprovider::IBP_IText
+ ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
+ ,public TIBPBindErrorDataTraits::args_type
 {
  private:
   typedef TIBPBindErrorData                               self_type;
@@ -73,7 +75,7 @@ class TIBPBindErrorData:public ibprovider::IBP_IText
 
   typedef structure::t_fix_vector
             <ibp_limc_MaxErrorArgsCount,
-             oledb_lib::TDBVariant>                        params_type;
+             IBP_ErrorVariant>                             params_type;
 
  public: //---------------------------------------------------------------
   /// <summary>

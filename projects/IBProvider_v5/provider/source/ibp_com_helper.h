@@ -98,7 +98,7 @@ class TIBP_ComModule::THelper
 
  private:
   typedef HRESULT (*PFNCREATEINSTANCE2)(IUnknown*                pUnkOuter,
-                                       ole_lib::TBaseUnknown2** ppObject);
+                                        ole_lib::TBaseUnknown2** ppObject);
 
   static void Helper__AddFactoryData(REFCLSID           rClassID,
                                      PFNCREATEINSTANCE2 ppObject);

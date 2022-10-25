@@ -163,7 +163,7 @@ OLE_LIB__END_ROOT_INTERFACE(inherited)
 HRESULT __stdcall FB_OleDbErrorText::GetText(LCID  const lcid,
                                                  BSTR* const pbstrText)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 

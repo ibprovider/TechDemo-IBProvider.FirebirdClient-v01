@@ -10,6 +10,8 @@
 #include "source/error_services/ibp_error_element.h"
 #include "source/error_services/ibp_error_build_message.h"
 
+#include "source/error_services/ibp_custom_error_object__sql.h"
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_error::tag_error_args
@@ -21,12 +23,12 @@ t_ibp_error_element::t_ibp_error_element(HRESULT const err_code,
 {;}
 
 //------------------------------------------------------------------------
-t_ibp_error_element::t_ibp_error_element(HRESULT                 const err_code,
-                                         mc_type                 const msg_code,
-                                         ibprovider::IBP_IClone* const pCErr)
+t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
+                                         mc_type            const msg_code,
+                                         get_cerr_obj_type* const pGetCErr)
  :m_msg_code(msg_code)
  ,m_err_code(err_code)
- ,m_spCustomError(pCErr)
+ ,m_spGetCustomError(pGetCErr)
 {;}
 
 //------------------------------------------------------------------------
@@ -39,14 +41,14 @@ t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
 {;}
 
 //------------------------------------------------------------------------
-t_ibp_error_element::t_ibp_error_element(HRESULT                 const err_code,
-                                         t_ibp_subsystem_id      const subsys_id,
-                                         mc_type                 const msg_code,
-                                         ibprovider::IBP_IClone* const pCErr)
+t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
+                                         t_ibp_subsystem_id const subsys_id,
+                                         mc_type            const msg_code,
+                                         get_cerr_obj_type* const pGetCErr)
  :m_varSubSystemID(static_cast<LONG>(subsys_id))
  ,m_msg_code      (msg_code)
  ,m_err_code      (err_code)
- ,m_spCustomError (pCErr)
+ ,m_spGetCustomError (pGetCErr)
 {;}
 
 //------------------------------------------------------------------------
@@ -64,65 +66,24 @@ void t_ibp_error_element::set_subsystem_id(t_ibp_subsystem_id const subsys_id)
 }//set_subsystem_id
 
 //------------------------------------------------------------------------
-std::wstring t_ibp_error_element::get_sqlstate()const
+std::string t_ibp_error_element::get_sqlstate()const
 {
- if(!m_spCustomError)
-  return std::wstring();
+ const auto* pSqlErr
+  =dynamic_cast<const t_ibp_custom_error_object__sql*>(m_spGetCustomError.ptr());
+ 
+ if(!pSqlErr)
+  return std::string();
 
- const oledb_lib::ISQLErrorInfoPtr
-  spSqlEI(structure::not_null_ptr(static_cast<IUnknown*>(m_spCustomError.ptr())));
-
- if(spSqlEI.m_hr==E_NOINTERFACE)
-  return std::wstring();
-
- //! \todo
- //!  [2016-07-25] ћожет имеет смысл выкидывать исключени€ с вразумительными сообщени€ми?
-
- if(FAILED(spSqlEI.m_hr))
-  ole_lib::t_base_com_error::throw_error(spSqlEI.m_hr);
-
- assert(spSqlEI.m_hr==S_OK);
-
- if(!spSqlEI)
- {
-  assert(false);
-
-  ole_lib::t_base_com_error::throw_error(E_UNEXPECTED);
- }//if !spSqlEI
-
- assert(spSqlEI);
-
- ole_lib::TBSTR bstrSqlState;
-
- LONG lNativeError=0;
-
- const HRESULT
-  hr=spSqlEI->GetSQLInfo(&bstrSqlState.ref_bstr(),&lNativeError);
-
- if(FAILED(hr))
-  ole_lib::t_base_com_error::throw_error(hr);
-
- assert(hr==S_OK);
-
- return bstrSqlState.wstr(); //throw
+ return pSqlErr->get_sqlstate();
 }//get_sqlstate
 
 //t_ibp_get_custom_error_object interface --------------------------------
 ole_lib::IUnknownPtr t_ibp_error_element::get_custom_error_object(IUnknown* const pUnkOuter)const
 {
- if(!m_spCustomError)
+ if(!m_spGetCustomError)
   return nullptr;
 
- ole_lib::IUnknownPtr spClone;
-
- const HRESULT hr=m_spCustomError->Clone(pUnkOuter,&spClone.ref_ptr());
-
- if(FAILED(hr))
-  ole_lib::t_base_com_error::throw_error(hr);
-
- assert(hr==S_OK);
-
- return spClone;
+ return m_spGetCustomError->get_custom_error_object(pUnkOuter);
 }//get_custom_error_object
 
 //t_err_record interface -------------------------------------------------
@@ -171,8 +132,6 @@ bool t_ibp_error_element::get_description(lcid_type          lcid,
 
  if(description!=nullptr)
  {
-  assert_s(sizeof(oledb_lib::TDBVariant)==sizeof(oledb_lib::DBVARIANT));
-
   res2=TIBP_MessageTextBuilder::Build(&tmp_description,
                                       m_varSubSystemID,
                                       m_msg_code,
@@ -212,7 +171,7 @@ t_ibp_error_element& t_ibp_error_element::add_arg(const base_variant_type& x)
 {
  assert(!m_params.full());
 
- m_params.push_back(x);
+ m_params.emplace_back(x);
 
  return *this;
 }//add_args

@@ -5,6 +5,11 @@
 #ifndef _ole_lib_H_
 #define _ole_lib_H_
 
+#include <lcpi/lib/com/base/com_base__base_unknown3.h>
+#include <lcpi/lib/com/base/com_base__base_unknown3__with_free_thread_marshaler.h>
+
+#include <ole_lib/ole_base.h>
+
 #ifdef OLE_LIB_NO_OLE_AUTO
 #else
 # include <ole_lib/ole_auto/ole_auto_type_info__cache.h>
@@ -20,10 +25,7 @@ namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //include files with implementations
 
-#include <ole_lib/impl/ole_lib_impl_mac_debug.hxx>
-#include <ole_lib/impl/ole_lib_impl_mac_help.hxx>
 #include <ole_lib/impl/ole_lib_impl_memory_allocator.hxx>
-#include <ole_lib/impl/ole_lib_impl_nondelegating_unknown.hxx>
 #include <ole_lib/impl/ole_lib_impl_base_unknown2.hxx>
 #include <ole_lib/impl/ole_lib_impl_base_unknown2__with_free_thread_marshaler.hxx>
 #include <ole_lib/impl/ole_lib_impl_template_unknown2.hxx>

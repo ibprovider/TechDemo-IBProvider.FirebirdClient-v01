@@ -8,9 +8,12 @@
 #define _ibp_error_args_H_
 
 #include "source/error_services/ibp_error_codes.h"
-#include <ole_lib/oledb/variant/oledb_variant.h>
+#include "source/error_services/ibp_error_variant.h"
+
 #include <structure/t_str_parameter.h>
 #include <structure/t_const_str_box.h>
+
+#include <ole_lib/oledb/variant/oledb_variant_fwrd.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +77,7 @@ class t_ibp_error_args
   typedef Traits                                        traits_type;
   typedef typename traits_type::out_return_type         out_return_type;
 
-  typedef oledb_lib::DBVARIANT                          base_variant_type;
+  typedef IBP_ERRORVARIANT                              base_variant_type;
 
   typedef ibp_msg_code_type                             mce_code_type;
 
@@ -131,6 +134,8 @@ class t_ibp_error_args
 
   out_return_type& operator << (const ole_lib::TBSTR& x);   //as WSTR
 
+  out_return_type& operator << (structure::t_err_record* pErrRec);
+
  public:
   out_return_type& operator << (ibp_err_data__symbol__tag<char>    x);
   out_return_type& operator << (ibp_err_data__symbol__tag<wchar_t> x);
@@ -139,7 +144,7 @@ class t_ibp_error_args
   out_return_type& operator << (ibp_err_data__win32_error_msg      x);
 
  public:
-  out_return_type& push_arg(const base_variant_type& x);
+  out_return_type& push_arg__as_wstr(const oledb_lib::DBVARIANT& x);
 
  public:
   virtual out_return_type& add_arg(const base_variant_type& x)=0;

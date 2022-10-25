@@ -11,6 +11,7 @@
 #include "source/oledb/error/ibp_oledb__error_param_idxs.h"
 #include "source/oledb/error/ibp_oledb__custom_error_object.h"
 #include "source/oledb/error/ibp_oledb__error_element_wrapper.h"
+#include "source/oledb/ibp_oledb__error_variant_utils.h"
 
 #include "source/error_services/ibp_error_utils.h"
 
@@ -76,7 +77,9 @@ HRESULT IBP_OLEDB__ErrorUtils::add_oledb_error
 
  assert(spElement);
 
- const oledb_lib::TDBVariant var(spElement);
+ const IBP_ErrorVariant var(spElement);
+
+ assert(var.Data().vt==IBP_EVT::V_IUNKNOWN);
 
  return self_type::helper__add_oledb_error
          (providerClassID,
@@ -102,7 +105,7 @@ HRESULT IBP_OLEDB__ErrorUtils::helper__add_oledb_error
                                      const VARIANT&                      varSubSystemID,
                                      mc_type                       const msg_code,
                                      size_t                        const cArgs,
-                                     const oledb_lib::DBVARIANT*   const rgArgs)
+                                     const IBP_ErrorVariant*       const rgArgs)
 {
  assert(providerClassID==_Module.Get_CLSID_IBProvider() ||
         providerClassID==_Module.Get_CLSID_IBProvider__private());
@@ -129,12 +132,11 @@ HRESULT IBP_OLEDB__ErrorUtils::helper__add_oledb_error
  {
   ole_lib::TVariant* const pDestArg=&VarArgs[ibp_oledb_err_param_idx__arg0+iArg];
 
-  const HRESULT cvt_hr=rgArgs[iArg].to_variant(pDestArg);
+  const bool cvt_r=IBP_OLEDB__ERRORVARIANT_UTILS::PackIntoVARIANT(rgArgs[iArg].Data(),pDestArg);
 
-  assert_msg(cvt_hr==S_OK || FAILED(cvt_hr),
-             "cvt_hr="<<structure::tstr_to_str(ole_lib::TestHResult(cvt_hr)));
+  assert(cvt_r);
 
-  if(FAILED(cvt_hr))
+  if(!cvt_r)
    (*pDestArg)=L"<error>";
  }//for iArg
 
@@ -157,8 +159,11 @@ HRESULT IBP_OLEDB__ErrorUtils::helper__add_oledb_error
 
  //-----------------------------------------
  const ole_lib::IPtr2<IBP_OLEDB__CustomErrorObject>
-  spCustomErrorObject(new IBP_OLEDB__CustomErrorObject(/*pUnkOuter*/nullptr,
-                                                       pError));
+  spCustomErrorObject
+   (lib::structure::not_null_ptr
+     (new IBP_OLEDB__CustomErrorObject
+       (/*pUnkOuter*/nullptr,
+        pError)));
 
  {
   const HRESULT init_hr=spCustomErrorObject->Init();

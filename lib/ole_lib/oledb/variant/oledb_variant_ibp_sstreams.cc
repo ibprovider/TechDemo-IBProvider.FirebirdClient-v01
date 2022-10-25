@@ -111,7 +111,7 @@ HRESULT __stdcall basic_dbvariant_ibp_sstream<IInterface,PIID,TChar,Allocator>::
                                             SIZE_T           cch,
                                             SIZE_T*    const pcchRead)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 
@@ -188,7 +188,7 @@ HRESULT __stdcall basic_dbvariant_ibp_sstream<IInterface,PIID,TChar,Allocator>::
                                             SIZE_T           const cch,
                                             SIZE_T*          const pcchWritten)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 

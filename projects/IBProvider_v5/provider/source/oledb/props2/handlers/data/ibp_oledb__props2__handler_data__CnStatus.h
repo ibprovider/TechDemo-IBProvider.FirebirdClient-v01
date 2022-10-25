@@ -22,7 +22,7 @@ class IBP_OLEDB_Props2__HandlerData__CnStatus:public IBP_SmartMemoryObject
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>              self_ptr;
+  typedef lib::structure::t_smart_object_ptr<self_type>        self_ptr;
 
  private:
   IBP_OLEDB_Props2__HandlerData__CnStatus(LONG CnStatus);

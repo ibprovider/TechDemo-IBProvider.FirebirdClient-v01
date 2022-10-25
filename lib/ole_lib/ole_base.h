@@ -12,6 +12,8 @@
 #include <structure/t_const_str_box.h>
 #include <structure/t_exception.h>
 
+#include <lcpi/lib/com/base/com_base__guid_to_string.h>
+
 #include <lcpi/infrastructure/os/windows-ole32.h>
 #include <lcpi/infrastructure/os/windows-oleaut32.h>
 

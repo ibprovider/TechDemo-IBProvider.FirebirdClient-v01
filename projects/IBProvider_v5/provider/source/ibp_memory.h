@@ -9,7 +9,8 @@
 
 #include <ole_lib/oledb/oledb_memory.h>
 
-#include <structure/t_smart_object_ptr.h>
+#include <lcpi/lib/structure/t_smart_object_ptr.h>
+#include <lcpi/lib/structure/t_smart_object.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -48,7 +49,7 @@ using IBP_SmartMemoryObject
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_MemoryWithDebugChecks
 
-class IBP_MemoryWithDebugChecks COMP_W000006_CLASS_FINAL
+class IBP_MemoryWithDebugChecks LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   typedef IBP_MemoryWithDebugChecks                    self_type;

@@ -12,10 +12,7 @@
 #include "source/error_services/ibp_error__com_module_is_shutdown.h"
 
 #include "source/error_services/ibp_sqlstate_codes.h"
-
-#include "source/oledb/error/ibp_oledb__error.h"
-#include "source/oledb/error/ibp_oledb__error_utils.h"
-#include "source/oledb/error/ibp_oledb__sql_error_info.h"
+#include "source/error_services/ibp_custom_error_object__sql.h"
 
 #include <win32lib/win32_error.h>
 
@@ -56,183 +53,6 @@ void IBP_ThrowFreeVersionCanNotWorkWithThisServer
 }//IBP_ThrowFreeVersionCanNotWorkWithThisServer
 
 #endif // IBP_EDITION_ID==IBP_EDITION_ID__FREE
-
-////////////////////////////////////////////////////////////////////////////////
-//DONE 4: Нужно определить обработчик исключений для _OLEDB_CATCHES_
-
-/// <summary>
-///  Обработчик исключений в компонентах модуля
-/// </summary>
-//! \param[in] ProviderCLSID
-//!  Идентификатор компоненты
-//! \param[in] exc_riid
-//!  Идентификатор интерфейса
-//! \param[in] exc
-//!  Указатель на перехваченное исключение. Может быть равен NULL
-//! \param[in] CreateErrInfo
-//!  true, если нужно сформировать полное описание ошибки. Иначе определяется
-//!  только код ошибки.
-//! \return
-//!  Код перехваченной ошибки
-HRESULT IBP_OLEDBErrorExceptionHandler(REFCLSID                    ProviderCLSID,
-                                       REFIID                      exc_riid,
-                                       const std::exception* const exc,
-                                       bool                  const CreateErrInfo)
-{
- const HRESULT hr=IBP_MapExceptionToHRESULT(exc);
-
- if(CreateErrInfo)
- {
-  try
-  {
-   //нас не интересуют проблемы, возникшие при создании описания ошибки
-
-   if(!exc)
-   {
-    assert(FAILED(hr));
-
-    assert(hr==E_UNEXPECTED); //[2017-11-01]
-
-    const t_ibp_error tmp(hr,ibp_mce_standart_error);
-
-    assert(tmp.com_code()==hr);
-
-    IBP_SetErrorInfo
-     (ProviderCLSID,
-      exc_riid,
-      tmp);
-   }
-   else
-   if(const t_ibp_error* const pIBPError=dynamic_cast<const t_ibp_error*>(exc))
-   {
-    assert(pIBPError->com_code()==hr);
-
-    IBP_SetErrorInfo
-     (ProviderCLSID,
-      exc_riid,
-      *pIBPError);
-   }
-   else
-   {
-    const t_ibp_error tmp(*exc);
-
-    assert(tmp.com_code()==hr);
-
-    IBP_SetErrorInfo
-     (ProviderCLSID,
-      exc_riid,
-      tmp);
-   }//else
-  }
-  catch(...)
-  {
-   //давим исключения создания описания ошибки
-  }//catch
- }//if CreateErrInfo
-
- return hr;
-}//IBP_OLEDBErrorExceptionHandler
-
-////////////////////////////////////////////////////////////////////////////////
-
-HRESULT IBP_SetErrorInfo(REFCLSID                     ProviderCLSID,
-                         REFIID                       exc_riid,
-                         const t_ibp_error_records_r& errors)
-{
- assert(ProviderCLSID==_Module.Get_CLSID_IBProvider() ||
-        ProviderCLSID==_Module.Get_CLSID_IBProvider__private());
-
- const size_t cRecs=errors.get_record_count();
-
- if(cRecs==0)
-  return S_OK;
-
- assert_hint(cRecs>0);
-
- //! \todo
- //!  По хорошему, нам здесь нужно получать и агрегировать текущую COM-ошибку
-
- const ole_lib::IPtr2<oledb::IBP_OLEDB__Error>
-  spErrorObject(structure::not_null_ptr(new oledb::IBP_OLEDB__Error(NULL))); //throw
-
- if(FAILED(spErrorObject->Init()))
-  return E_FAIL;
-
- structure::t_value_with_null<ULONG> cInitialErrors;
-
- {
-  ULONG ulTmp=0;
-
-  //мы можем не получить данные, если ошибок уже больше 4GB штук
-  if(spErrorObject->GetRecordCount(&ulTmp)==S_OK)
-   cInitialErrors=ulTmp;
- }//local
-
- //добавление OLEDB ошибок
- size_t nRecs=0;
-
- for(;nRecs!=cRecs;++nRecs)
- {
-  if(FAILED(oledb::IBP_OLEDB__ErrorUtils::add_oledb_error
-                (ProviderCLSID,
-                 spErrorObject,
-                 exc_riid,
-                 errors.get_record(nRecs))))
-  {
-   break;
-  }
- }//for nRecs
-
- //устанавливаем главную ошибку
- if(!cInitialErrors.null() && nRecs>0 && !errors.get_primary_err_idx().null())
- {
-  assert_hint(cRecs>0);
-
-  size_t idx=errors.get_primary_err_idx().value();
-
-  //сомневаюсь, чтобы количество ошибок стало больше 2^32
-  if((idx<=(structure::t_numeric_limits<ULONG>::max_value()-cInitialErrors.value())) && idx<nRecs)
-  {
-   DEBUG_CODE(HRESULT const set_hr=)
-    spErrorObject->SetPrimaryError(static_cast<ULONG>(cInitialErrors.value()+idx));
-
-   assert(set_hr==S_OK);
-  }//if
- }//if
-
- bool needSetErrorInfo=false;
-
- if(nRecs>0)
-  needSetErrorInfo=true; //мы добавили новые ошибки
- else
- if(cInitialErrors.null())
-  needSetErrorInfo=true; //мы не смогли получить предыдущее количество ошибок
- else
- if(cInitialErrors.value()>0)
-  needSetErrorInfo=true; //у нас уже были какие-то ошибки
-
- if(needSetErrorInfo)
-  return LCPI_OS__SetErrorInfo(0L,spErrorObject);
-
- //были проблемы с регистрацией ошибок
- return E_FAIL;
-}//IBP_SetErrorInfo
-
-//------------------------------------------------------------------------
-void IBP_SetErrorInfo__no_throw(REFCLSID                     ProviderCLSID,
-                                REFIID                       exc_riid,
-                                const t_ibp_error_records_r& errors)
-{
- try
- {
-  IBP_SetErrorInfo
-   (ProviderCLSID,
-    exc_riid,
-    errors);
- }
- catch(...)
- {;}
-}//IBP_SetErrorInfo__no_throw
 
 ////////////////////////////////////////////////////////////////////////////////
 //Определение максимального по страшности кода ошибки
@@ -280,27 +100,6 @@ HRESULT IBP_GetMaxByTerribleHRESULT(HRESULT const hr1,
 
  return (p1<p2)?hr1:hr2;
 }//IBP_GetMaxByTerribleHRESULT
-
-////////////////////////////////////////////////////////////////////////////////
-//генерация исключения ошибки конвертирования
-
-/// <summary>
-///  Утилита генерации исключения для ошибки конвертирования
-/// </summary>
-//! \param[in] error_code
-//! \param[in] wSourceType
-//! \param[in] wDestType
-void IBP_ThrowConvertError(HRESULT           const error_code,
-                           DBTYPE            const wSourceType,
-                           DBTYPE            const wDestType)//throw
-{
- t_ibp_error exc(error_code,ibp_mce_ibf_convert_type_2);
-
- exc<<oledb_lib::DBVARIANT::GetTypeName(wSourceType,0)
-    <<oledb_lib::DBVARIANT::GetTypeName(wDestType,0);
-
- exc.raise_me();
-}//IBP_ThrowConvertError
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -619,14 +418,14 @@ void IBP_ThrowSimpleError(HRESULT           const err_code,
 //!  Код ошибки
 //! \param[in] msg_code_0
 //!  Идентификатор шаблона сообщения
-//! \param[in] pCErr
-void IBP_ThrowSimpleError(HRESULT                 const err_code,
-                          ibp_msg_code_type       const msg_code_0,
-                          ibprovider::IBP_IClone* const pCErr)
+//! \param[in] pGetCErr
+void IBP_ThrowSimpleError(HRESULT                        const err_code,
+                          ibp_msg_code_type              const msg_code_0,
+                          t_ibp_get_custom_error_object* const pGetCErr)
 {
  t_ibp_error exc(err_code,
                  msg_code_0,
-                 pCErr);
+                 pGetCErr);
 
  exc.raise_me();
 }//IBP_ThrowSimpleError
@@ -685,9 +484,11 @@ void IBP_ThrowErrorWithDetail_safe(HRESULT           const hr,
  try
  {
   const t_ibp_error_element::self_ptr
-   spErrRec(structure::not_null_ptr
-             (new t_ibp_error_element(hr,
-                                      primaryErrMsgID_1)));
+   spErrRec
+    (structure::not_null_ptr
+      (new t_ibp_error_element
+        (hr,
+         primaryErrMsgID_1)));
 
   (*spErrRec)<<detailErrMsgID_0;
 
@@ -1127,10 +928,10 @@ void IBP_ThrowArrayBlobErr__BugCheck__incorrect_length_of_string_element
 //!  собственных ошибок IBProvider.
 //!
 //!  SQLSTATE будет содержать код 08006, lNativeError - код E_FAIL.
-ole_lib::IPtr2<ibprovider::IBP_IClone>
+lib::structure::t_smart_object_ptr<t_ibp_get_custom_error_object>
  IBP_CreateCustomErrorFor_CnFailed()
 {
- return oledb::IBP_OLEDB__SQLErrorInfo::Create
+ return t_ibp_custom_error_object__sql::create
          (IBP_SQLSTATE__08006__CONNECTION_EXCEPTION_CONNECTION_FAILURE,
           E_FAIL);
 }//IBP_CreateCustomErrorFor_CnFailed
@@ -1148,10 +949,10 @@ ole_lib::IPtr2<ibprovider::IBP_IClone>
 //!  собственных ошибок IBProvider.
 //!
 //!  SQLSTATE будет содержать код 28000, lNativeError - код DB_SEC_E_AUTH_FAILED.
-ole_lib::IPtr2<ibprovider::IBP_IClone>
+lib::structure::t_smart_object_ptr<t_ibp_get_custom_error_object>
  IBP_CreateCustomErrorFor_AuthFailed()
 {
- return oledb::IBP_OLEDB__SQLErrorInfo::Create
+ return t_ibp_custom_error_object__sql::create
          (IBP_SQLSTATE__28000__INVALID_AUTHORIZATION_SPECIFICATION_NO_SUBCLASS,
           DB_SEC_E_AUTH_FAILED);
 }//IBP_CreateCustomErrorFor_AuthFailed

@@ -51,7 +51,7 @@ void fb_v03_0_0__svc__status_vector_utils::internal__build_err_message
                                             DWORD                       const msg_code,
                                             LCID                        const lcid,
                                             size_t                      const cArgs,
-                                            const oledb_lib::DBVARIANT* const rgArgs)const
+                                            const IBP_ErrorVariant*     const rgArgs)const
 {
  DEBUG_CODE(bool const build_result=)
   TIBP_MessageTextBuilder::Build

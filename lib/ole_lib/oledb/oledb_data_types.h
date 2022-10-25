@@ -10,6 +10,7 @@
 
 #include <structure/t_value_with_null.h>
 #include <ole_lib/ole_ptr_std.h>
+#include <ole_lib/ole_base.h>
 #include <oledb.h>
 
 namespace oledb_lib{

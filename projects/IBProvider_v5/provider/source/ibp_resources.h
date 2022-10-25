@@ -35,7 +35,7 @@ inline LCID IBP_GetUserDefaultLCID()
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_ResourceLoader
 
-class TIBP_ResourceLoader
+class TIBP_ResourceLoader LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef TIBP_ResourceLoader               self_type;
@@ -80,7 +80,8 @@ class TIBP_ResourceLoader
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_MsgTableLoader
 
-class TIBP_MsgTableLoader:private win32lib::TMsgTableLoader<TIBP_ResourceLoader>
+class TIBP_MsgTableLoader LCPI_CPP_CFG__CLASS__FINAL
+ :private win32lib::TMsgTableLoader<TIBP_ResourceLoader>
 {
  private:
   typedef TIBP_MsgTableLoader                              self_type;
@@ -115,7 +116,7 @@ class TIBP_MsgTableLoader:private win32lib::TMsgTableLoader<TIBP_ResourceLoader>
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_MessageLoader
 
-class TIBP_MessageLoader
+class TIBP_MessageLoader LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef TIBP_MessageLoader                    self_type;

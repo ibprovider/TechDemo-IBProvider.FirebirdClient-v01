@@ -1,0 +1,25 @@
+////////////////////////////////////////////////////////////////////////////////
+//LCPI Instrumental Library for C++
+//                                                 Dmitry Kovalenko. 17.10.2022.
+#ifndef _cpp_public_lcpi_lib_com_base__guid_to_string_H_
+#define _cpp_public_lcpi_lib_com_base__guid_to_string_H_
+
+#include <lcpi/lib/.config.h>
+
+#include <string>
+
+#include <guiddef.h>
+
+namespace lcpi{namespace lib{namespace com{namespace base{
+////////////////////////////////////////////////////////////////////////////////
+
+std::string guid_to_string(REFGUID rguid);
+
+std::wstring guid_to_wstring(REFGUID rguid);
+
+////////////////////////////////////////////////////////////////////////////////
+}/*nms base*/}/*nms com*/}/*nms lib*/}/*nms lcpi*/
+////////////////////////////////////////////////////////////////////////////////
+#include <lcpi/lib/com/base/com_base__guid_to_string.cc>
+////////////////////////////////////////////////////////////////////////////////
+#endif

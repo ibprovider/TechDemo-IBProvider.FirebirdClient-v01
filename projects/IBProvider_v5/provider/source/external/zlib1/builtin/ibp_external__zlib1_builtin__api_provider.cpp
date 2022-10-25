@@ -27,7 +27,7 @@ ZLIB1_BUILTIN__ApiProvider::~ZLIB1_BUILTIN__ApiProvider()
 //------------------------------------------------------------------------
 ZLIB1__ApiProviderPtr ZLIB1_BUILTIN__ApiProvider::create()
 {
- return structure::not_null_ptr(&sm_Instance);
+ return lib::structure::not_null_ptr(&sm_Instance);
 }//create
 
 //ZLIB1__ApiProvider interface -------------------------------------------

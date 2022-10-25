@@ -86,6 +86,8 @@ struct t_char_traits2<char>
 
  public: //typedefs
   typedef char            char_type;
+  typedef unsigned char   unsigned_char_type;
+
   typedef unsigned char   char_comp_type;
   typedef unsigned char   byte_type;
 
@@ -232,7 +234,9 @@ struct t_char_traits2<wchar_t>
   typedef t_char_traits2<wchar_t>              self_type;
 
  public: //typedefs
-  typedef wchar_t         char_type;
+  typedef wchar_t             char_type;
+  typedef unsigned __int16    unsigned_char_type;
+
   typedef wchar_t         char_comp_type;
   typedef unsigned char   byte_type;
 

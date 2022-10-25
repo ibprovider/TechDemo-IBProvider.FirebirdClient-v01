@@ -62,7 +62,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorElementWrapper::GetErrorDescription
                                             BSTR* const pbstrSource,
                                             BSTR* const pbstrDescription)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 

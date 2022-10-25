@@ -10,10 +10,11 @@
 #include "source/db_obj/dbms_fb/common/impl/db_obj__dbms_fb__common_impl__svc__status_vector_utils__v1_set02.h"
 #include "source/db_obj/dbms_fb/common/api//errors/set02/db_obj__dbms_fb__common__api__errors__set02__scodes.h"
 #include "source/error_services/ibp_sqlstate_codes.h"
-#include "source/error_services/ibp_error_utils.h"
 #include "source/error_services/ibp_error_build_message.h"
+
 #include <structure/utilities/to_hex.h>
 #include <structure/utilities/string/string_length.h>
+#include <structure/t_str_formatter.h>
 #include <array>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{namespace impl{
@@ -1166,7 +1167,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   }
   else
   {
-   const oledb_lib::TDBVariant arg(L"arg_interpreted");
+   const IBP_ErrorVariant arg(L"arg_interpreted");
 
    TIBP_MessageTextBuilder::Build
     (msg_part,
@@ -1216,7 +1217,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  }//if
 
  //-----------------------------------------
- const oledb_lib::TDBVariant arg((*pps)[1]);
+ const IBP_ErrorVariant arg((*pps)[1]);
 
  TIBP_MessageTextBuilder::Build
     (msg_part,
@@ -1264,7 +1265,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  }//if
 
  //-----------------------------------------
- const oledb_lib::TDBVariant arg((*pps)[1]);
+ const IBP_ErrorVariant arg((*pps)[1]);
 
  TIBP_MessageTextBuilder::Build
     (msg_part,
@@ -1318,20 +1319,26 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   const int errnum=static_cast<int>((*pps)[1]);
 
   //---------
-  std::array<oledb_lib::TDBVariant,2> args;
+  std::array<IBP_ErrorVariant,2> args;
 
   args[0]=errnum;
 
   std::wstring msgtext;
 
   if(self_type::helper__get_unix_error_msg(errnum,&msgtext))
+  {
    args[1]=msgtext;
+
+   assert(args[1].Data().vt==IBP_EVT::V_WSTR);
+  }
   else
-   args[1].SetUnknown(oledb::IBP_CreateErrorText(ibp_mce_text__unknown_error1_0),ibprovider::IID_IBP_IText);
+  {
+   args[1]=ibp_mce_text__unknown_error1_0;
+
+   assert(args[1].Data().vt==IBP_EVT::V_IBP_MSG_CODE);
+  }//else
 
   //---------
-  assert_s(sizeof(oledb_lib::TDBVariant)==sizeof(oledb_lib::DBVARIANT));
-
   TIBP_MessageTextBuilder::Build
      (msg_part,
       /*varSubSystemId*/ole_lib::TVariant::empty_variant,
@@ -1385,23 +1392,33 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   const DWORD errnum=static_cast<DWORD>((*pps)[1]);
 
   //---------
-  std::array<oledb_lib::TDBVariant,2> args;
+  std::array<IBP_ErrorVariant,2> args;
 
   args[0]=std::wstring(L"0x").append(structure::to_hex::upper<wchar_t>(errnum).c_str());
 
   std::wstring msgtext;
 
   if(self_type::helper__get_win32_error_msg(errnum,&msgtext,lcid))
+  {
    args[1]=msgtext;
+
+   assert(args[1].Data().vt==IBP_EVT::V_WSTR);
+  }
   else
   if(self_type::helper__get_win32_error_msg(errnum,&msgtext,/*neutral*/0))
+  {
    args[1]=msgtext;
+
+   assert(args[1].Data().vt==IBP_EVT::V_WSTR);
+  }
   else
-   args[1].SetUnknown(oledb::IBP_CreateErrorText(ibp_mce_text__unknown_error1_0),ibprovider::IID_IBP_IText);
+  {
+   args[1]=ibp_mce_text__unknown_error1_0;
+
+   assert(args[1].Data().vt==IBP_EVT::V_IBP_MSG_CODE);
+  }//else
 
   //---------
-  assert_s(sizeof(oledb_lib::TDBVariant)==sizeof(oledb_lib::DBVARIANT));
-
   TIBP_MessageTextBuilder::Build
      (msg_part,
       /*varSubSystemId*/ole_lib::TVariant::empty_variant,
@@ -1485,11 +1502,9 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   // FB 1.5: 336068783
 
   //---------
-  const oledb_lib::TDBVariant arg(isc_error_code);
+  const IBP_ErrorVariant arg(isc_error_code);
 
   //---------
-  assert_s(sizeof(oledb_lib::TDBVariant)==sizeof(oledb_lib::DBVARIANT));
-
   TIBP_MessageTextBuilder::Build
      (msg_part,
       /*varSubSystemId*/ole_lib::TVariant::empty_variant,
@@ -1614,11 +1629,9 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   // FB 1.5: 336068783
 
   //---------
-  const oledb_lib::TDBVariant arg(isc_error_code);
+  const IBP_ErrorVariant arg(isc_error_code);
 
   //---------
-  assert_s(sizeof(oledb_lib::TDBVariant)==sizeof(oledb_lib::DBVARIANT));
-
   TIBP_MessageTextBuilder::Build
      (msg_part,
       /*varSubSystemId*/ole_lib::TVariant::empty_variant,
@@ -1784,7 +1797,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
    args.emplace_back(reinterpret_cast<const char*>((*pps)[1]));
 
-   assert(args.back().wType==DBTYPE_STR);
+   assert(args.back().Data().vt==IBP_EVT::V_STR);
 
    (*pps)+=2;
 
@@ -1801,7 +1814,8 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     return gresult_data_type::create_bad_sv(c_bug_check_src,L"#002");
    }//if
 
-   args.push_back((*pps)[1]);//throw
+   // [2022-10-20] was: push_back
+   args.emplace_back((*pps)[1]);//throw
 
    (*pps)+=2;
 
@@ -1831,7 +1845,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
    args.emplace_back(structure::make_str_box(ptr,sz));//throw
 
-   assert(args.back().wType==DBTYPE_STR);
+   assert(args.back().Data().vt==IBP_EVT::V_STR);
 
    (*pps)+=3;
 

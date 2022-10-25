@@ -12,6 +12,8 @@
 #endif
 
 #include "source/error_services/ibp_error_codes.h"
+#include "source/error_services/ibp_get_custom_error_object.h"
+
 #include "source/ibp_subsystem_ids.h"
 #include "source/ibp_char.h"
 #include "source/ibp_forward.h"
@@ -38,28 +40,6 @@ COMP_CONF_DECLSPEC_NORETURN
                    structure::str_parameter OriginalServerID); //throw
 
 #endif // IBP_EDITION_ID==IBP_EDITION_ID__FREE
-
-////////////////////////////////////////////////////////////////////////////////
-//Утилита обработки исключение модуля IBProvider'a
-
-//Создает OLEDB ошибку или ошибку автоматизации
-HRESULT IBP_OLEDBErrorExceptionHandler
-         (REFCLSID              ProviderCLSID,
-          REFIID                exc_riid,
-          const std::exception* exc,
-          bool                  CreateErrInfo);
-
-////////////////////////////////////////////////////////////////////////////////
-
-HRESULT IBP_SetErrorInfo
-         (REFCLSID                     ProviderCLSID,
-          REFIID                       exc_riid,
-          const t_ibp_error_records_r& errors);
-
-void IBP_SetErrorInfo__no_throw
-         (REFCLSID                     ProviderCLSID,
-          REFIID                       exc_riid,
-          const t_ibp_error_records_r& errors);
 
 ////////////////////////////////////////////////////////////////////////////////
 //Отображение исключения на HRESULT
@@ -251,9 +231,9 @@ COMP_CONF_DECLSPEC_NORETURN
 
 COMP_CONF_DECLSPEC_NORETURN
  void IBP_ThrowSimpleError
-       (HRESULT                 err_code,
-        ibp_msg_code_type       msg_code_0,
-        ibprovider::IBP_IClone* pCErr);
+       (HRESULT                        err_code,
+        ibp_msg_code_type              msg_code_0,
+        t_ibp_get_custom_error_object* pGetCErr);
 
 //------------------------------------------
 COMP_CONF_DECLSPEC_NORETURN
@@ -418,9 +398,11 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-ole_lib::IPtr2<ibprovider::IBP_IClone> IBP_CreateCustomErrorFor_CnFailed();
+lib::structure::t_smart_object_ptr<t_ibp_get_custom_error_object>
+ IBP_CreateCustomErrorFor_CnFailed();
 
-ole_lib::IPtr2<ibprovider::IBP_IClone> IBP_CreateCustomErrorFor_AuthFailed();
+lib::structure::t_smart_object_ptr<t_ibp_get_custom_error_object>
+ IBP_CreateCustomErrorFor_AuthFailed();
 
 ////////////////////////////////////////////////////////////////////////////////
 

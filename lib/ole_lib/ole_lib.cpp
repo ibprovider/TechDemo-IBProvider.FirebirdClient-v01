@@ -13,7 +13,6 @@ namespace ole_lib{
 
 #include <ole_lib/impl/ole_lib_impl_memory_allocator.cxx>
 #include <ole_lib/impl/ole_lib_impl_base_unknown2.cxx>
-#include <ole_lib/impl/ole_lib_impl_base_unknown2__with_free_thread_marshaler.cxx>
 #include <ole_lib/impl/ole_lib_impl_class_factory.cxx>
 
 ////////////////////////////////////////////////////////////////////////////////

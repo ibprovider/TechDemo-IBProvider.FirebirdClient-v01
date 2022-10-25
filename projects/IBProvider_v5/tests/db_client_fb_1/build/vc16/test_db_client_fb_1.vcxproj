@@ -173,8 +173,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_datetime_services.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_guids.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__descr.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__descrs.cpp" />
@@ -184,13 +182,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values__get.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__manager__values__set.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_convert.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_context_std.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_routers.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_cvt_utils.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\variant\oledb_variant_services.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_safe_array.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_utils.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant.cpp" />
@@ -545,6 +536,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\dummy\ibp_dummy.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_adapter.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_bind_data.cpp" />
@@ -555,6 +547,7 @@
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_elements.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_messages.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_variant.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bncore.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_mp_invmod.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__bn_fast_mp_montgomery_reduce.cpp" />
@@ -653,14 +646,6 @@
     <ClCompile Include="..\..\..\..\provider\source\ibp_sqlncli.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\ibp_sys_props.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\ibp_utils.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__custom_error_object.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_element_wrapper.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_info.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_lookup.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_text__for_win32_error_msg.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__error_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\error\ibp_oledb__sql_error_info.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\ibp_oledb__prop__system_ids.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\data\ibp_oledb__props2__descrs__data__dbinit__all.cpp" />
@@ -1319,6 +1304,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_bug_check.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_build_message.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_codes.h" />
@@ -1327,6 +1313,7 @@
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_messages.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_records_r.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_variant.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_class.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommatch_set01__tommath_private.h" />

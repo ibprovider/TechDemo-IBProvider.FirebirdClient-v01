@@ -10,7 +10,7 @@
 #include "source/oledb/error/ibp_oledb__error_lookup.h"
 #include "source/oledb/error/ibp_oledb__error_param_idxs.h"
 
-#include "source/error_services/ibp_error_build_message.h"
+#include "source/oledb/ibp_oledb__message_text_builder.h"
 
 namespace lcpi{namespace ibp{namespace oledb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +52,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetErrorDescription
                                             BSTR*       const pbstrSource,
                                             BSTR*       const pbstrDescription)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 
@@ -94,8 +94,9 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetErrorDescription
   {
    std::wstring source;
 
-   if(!TIBP_MessageTextBuilder::BuildSrc(&source,
-                                         pdispparams->rgvarg[ibp_oledb_err_param_idx__source_id]))
+   if(!IBP_OLEDB__MessageTextBuilder::BuildSrc
+         (&source,
+          pdispparams->rgvarg[ibp_oledb_err_param_idx__source_id]))
    {
     ole_lib::t_base_com_error::throw_error(E_FAIL);
    }
@@ -109,13 +110,14 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetErrorDescription
   {
    std::wstring description;
 
-   if(!TIBP_MessageTextBuilder::Build(&description,
-                                      pdispparams->rgvarg[ibp_oledb_err_param_idx__subsystem_id],
-                                      dwLookupID,
-                                      lcid,
-                                      pdispparams->cArgs-ibp_oledb_err_param_idx__arg0,
-                                      pdispparams->rgvarg+ibp_oledb_err_param_idx__arg0,
-                                      hrError))
+   if(!IBP_OLEDB__MessageTextBuilder::Build
+         (&description,
+          pdispparams->rgvarg[ibp_oledb_err_param_idx__subsystem_id],
+          dwLookupID,
+          lcid,
+          pdispparams->cArgs-ibp_oledb_err_param_idx__arg0,
+          pdispparams->rgvarg+ibp_oledb_err_param_idx__arg0,
+          hrError))
    {
     ole_lib::t_base_com_error::throw_error(DB_E_BADLOOKUPID);
    }
@@ -144,7 +146,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetHelpInfo
                                             BSTR*    const pbstrHelpFile,
                                             DWORD*   const pdwHelpContext)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 
@@ -164,7 +166,7 @@ HRESULT __stdcall IBP_OLEDB__ErrorLookup::GetHelpInfo
 HRESULT __stdcall IBP_OLEDB__ErrorLookup::ReleaseErrors
                                            (const DWORD /*dwDynamicErrorID*/)
 {
- OLE_LIB_IMETHOD_PROLOG
+ OLE_LIB__IMETHOD_PROLOG
 
  LCPI_OS__SetErrorInfo(0,nullptr);
 

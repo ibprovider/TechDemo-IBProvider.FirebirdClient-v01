@@ -36,10 +36,11 @@ class t_closure COMP_W000006_CLASS_FINAL
    return *this=self_type();
   }
 
-  TResult operator () (TARGS... args)const
+  template<class... TARGS2>
+  TResult operator () (TARGS2&&... args)const
   {
    assert((bool)(*this));
-   return caller(this->think,std::forward<TARGS>(args)...);
+   return caller(this->think,std::forward<TARGS2>(args)...);
   }
 
   operator bool () const
@@ -52,6 +53,33 @@ class t_closure COMP_W000006_CLASS_FINAL
    return !((bool)(*this));
   }
 };//class t_closure
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<class TResult,class...TARGS>
+inline bool operator == (const t_closure<TResult,TARGS...>& x,std::nullptr_t /*v*/)
+{
+ return !x;
+}//operator x==nullptr
+
+template<class TResult,class...TARGS>
+inline bool operator == (std::nullptr_t /*v*/,const t_closure<TResult,TARGS...>& x)
+{
+ return !x;
+}//operator nullptr==x
+
+//------------------------------------------------------------------------
+template<class TResult,class...TARGS>
+inline bool operator != (const t_closure<TResult,TARGS...>& x,std::nullptr_t /*v*/)
+{
+ return (bool)x;
+}//operator x!=nullptr
+
+template<class TResult,class...TARGS>
+inline bool operator != (std::nullptr_t /*v*/,const t_closure<TResult,TARGS...>& x)
+{
+ return (bool)x;
+}//operator nullptr!=x
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_closure_caller
