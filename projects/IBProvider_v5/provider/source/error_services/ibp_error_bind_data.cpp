@@ -25,86 +25,44 @@ TIBPBindErrorDataTraits::out_return_type&
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBPBindErrorData
 
-OLE_LIB__DEFINE_DEBUG_COM_LIVE(TIBPBindErrorData)
-
-//------------------------------------------------------------------------
 TIBPBindErrorData::TIBPBindErrorData(ordinal_type  const index,
                                      HRESULT       const err_code,
                                      msg_code_type const msg_code)
- :inherited   (nullptr)
- ,m_index     (index)
+ :m_index     (index)
  ,m_err_code  (err_code)
  ,m_msg_code  (msg_code)
- ,m_pNext     (NULL)
+ ,m_pNext     (nullptr)
+#ifndef NDEBUG
+ ,m_DEBUG__pOwnerList(nullptr)
+#endif
 {
- DEBUG_CODE(m_InList=false;)
-
- //----
- OLE_LIB__CREATE_COMPONENT()
 }//TIBPBindErrorData
 
 //------------------------------------------------------------------------
 TIBPBindErrorData::~TIBPBindErrorData()
 {
- assert(!m_InList);
- assert(m_pNext==NULL);
-
- //----
- OLE_LIB__DESTROY_COMPONENT()
+ assert(m_DEBUG__pOwnerList==nullptr);
+ assert(m_pNext==nullptr);
 }//~TIBPBindErrorData
 
-//Root interface ---------------------------------------------------------
-OLE_LIB__DEFINE_ROOT_INTERFACE(TIBPBindErrorData)
- OLE_LIB__ROOT_STATIC_INTERFACE_NS(ibprovider::,IBP_IText)
-OLE_LIB__END_ROOT_INTERFACE(inherited)
-
 //IBP_IText interface ----------------------------------------------------
-HRESULT __stdcall TIBPBindErrorData::GetText(LCID  const lcid,
-                                             BSTR* const pbstrText)
+bool TIBPBindErrorData::get_text(lcid_type    const lcid,
+                                 string_type* const text)const
 {
- OLE_LIB__IMETHOD_PROLOG
+ const lock_guard_type __lock(m_guard);
 
- LCPI_OS__SetErrorInfo(0,nullptr);
+ const auto r=
+  TIBP_MessageTextBuilder::Build
+   (text,
+    ole_lib::TVariant::empty_variant,
+    m_msg_code,
+    lcid.get_number(),
+    m_params.size(),
+    m_params.data(),
+    m_err_code);
 
- if(pbstrText==NULL)
-  return E_INVALIDARG;
-
- (*pbstrText)=NULL;
-
- HRESULT hr=S_OK;
-
- _OLE_TRY_
- {
-  const lock_guard_type __lock(m_guard);
-
-  //Для обеспечения гарантии константности объекта, осуществляем доступ к
-  //собственным данным через pConstThis
-
-  const self_type* const pConstThis=this;
-
-  std::wstring tmpWStr;
-
-  if(!TIBP_MessageTextBuilder::Build(&tmpWStr,
-                                     ole_lib::TVariant::empty_variant,
-                                     pConstThis->m_msg_code,
-                                     lcid,
-                                     pConstThis->m_params.size(),
-                                     pConstThis->m_params.data(),
-                                     pConstThis->m_err_code))
-  {
-   hr=DB_E_BADLOOKUPID;
-  }
-  else
-  {
-   (*pbstrText)=ole_lib::WStrToBStr(tmpWStr); //throw
-  }//if
- }
- _OLE_CATCHES2_CODE_
-
- assert(hr==S_OK || FAILED(hr));
-
- return hr;
-}//GetText
+ return r;
+}//get_text
 
 //------------------------------------------------------------------------
 TIBPBindErrorData& TIBPBindErrorData::add_arg(const base_variant_type& x)
@@ -122,21 +80,22 @@ TIBPBindErrorData& TIBPBindErrorData::add_arg(const base_variant_type& x)
 //class TIBPBindErrorDataSet
 
 TIBPBindErrorDataSet::TIBPBindErrorDataSet()
- :m_pHead  (NULL)
- ,m_pTail  (NULL)
+ :m_pHead  (nullptr)
+ ,m_pTail  (nullptr)
  ,m_Size   (0)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 TIBPBindErrorDataSet::~TIBPBindErrorDataSet()
 {
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 
- TIBPBindErrorData* tmp=NULL;
+ TIBPBindErrorData* tmp=nullptr;
 
- while(m_pHead!=NULL)
+ while(m_pHead!=nullptr)
  {
-  assert(m_pHead->m_InList);
+  assert(m_pHead->m_DEBUG__pOwnerList==this);
   assert(m_Size>0);
 
   tmp=m_pHead;
@@ -149,29 +108,29 @@ TIBPBindErrorDataSet::~TIBPBindErrorDataSet()
   --m_Size;
 
   //------------------- отключаем элемент от списка
-  DEBUG_CODE(tmp->m_InList=false;)
+  DEBUG_CODE(tmp->m_DEBUG__pOwnerList=nullptr;)
 
-  tmp->m_pNext=NULL;
+  tmp->m_pNext=nullptr;
 
   //------------------- освобождаем блокировку счетчика ссылок
-  tmp->Release();
- }//while m_pHead!=NULL
+  tmp->release();
+ }//while m_pHead!=nullptr
 
- //должны добраться до официального хвоста списка
+ //It must reach the known tail of our list
  assert(tmp==m_pTail);
 
  assert(m_Size==0);
 
  //---
- m_pTail=NULL;
+ m_pTail=nullptr;
 
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 }//~TIBPBindErrorDataSet
 
 //------------------------------------------------------------------------
 bool TIBPBindErrorDataSet::IsEmpty()const
 {
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 
  return m_Size==0;
 }//IsEmpty
@@ -180,32 +139,32 @@ bool TIBPBindErrorDataSet::IsEmpty()const
 void TIBPBindErrorDataSet::Add(TIBPBindErrorData* const pData)
 {
  assert(pData);
- assert(!pData->m_InList);
- assert(pData->m_pNext==NULL);
+ assert(pData->m_DEBUG__pOwnerList==nullptr);
+ assert(pData->m_pNext==nullptr);
 
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 
  //явно увеличиваем счетчик ссылок на добавляемый объект
- pData->AddRef();
+ pData->add_ref();
 
  //возводим флаг принадлежности списку
- DEBUG_CODE(pData->m_InList=true;)
+ DEBUG_CODE(pData->m_DEBUG__pOwnerList=this;)
 
  //инкремент счетчика объектов
  ++m_Size;
 
  //добавляем в хвост списка
- if(m_pHead==NULL)
+ if(m_pHead==nullptr)
  {
-  assert(m_pTail==NULL);
+  assert(m_pTail==nullptr);
 
   m_pHead=pData;
   m_pTail=pData;
  }
  else
  {
-  assert_hint(m_pHead!=NULL);
-  assert(m_pTail!=NULL);
+  assert_hint(m_pHead!=nullptr);
+  assert(m_pTail!=nullptr);
 
   m_pTail->m_pNext=pData;
 
@@ -213,14 +172,14 @@ void TIBPBindErrorDataSet::Add(TIBPBindErrorData* const pData)
  }//else
 
  //проверяем корректность проделанной работы
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 }//Add
 
 //------------------------------------------------------------------------
 void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
                                       ibp_msg_code_type const ErrMsgID_1)const
 {
- DEBUG_CODE(this->CheckState();)
+ DEBUG_CODE(this->DEBUG__CheckState();)
 
  t_ibp_error exc(ErrCode);
 
@@ -231,7 +190,7 @@ void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
  {
   assert(pCurErr);
   assert(pCurErr->m_pNext!=pCurErr);
-  assert(pCurErr->m_InList);
+  assert(pCurErr->m_DEBUG__pOwnerList==this);
 
   if(ibp_limc_MaxErrorCountInBulkOperation<exc.get_record_count())
   {
@@ -259,28 +218,28 @@ void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
 
 //------------------------------------------------------------------------
 #ifndef NDEBUG
-void TIBPBindErrorDataSet::CheckState()const
+void TIBPBindErrorDataSet::DEBUG__CheckState()const
 {
- if(m_pHead==NULL)
+ if(m_pHead==nullptr)
  {
   assert(m_Size==0);
 
-  assert(m_pTail==NULL);
+  assert(m_pTail==nullptr);
  }
  else
  {
-  assert_hint(m_pHead!=NULL);
+  assert_hint(m_pHead!=nullptr);
 
   assert(m_Size>0);
 
   assert(m_pHead->m_pNext!=m_pHead);
-  assert(m_pTail!=NULL);
-  assert(m_pTail->m_pNext==NULL);
+  assert(m_pTail!=nullptr);
+  assert(m_pTail->m_pNext==nullptr);
 
-  assert(m_pHead->m_InList);
-  assert(m_pTail->m_InList);
+  assert(m_pHead->m_DEBUG__pOwnerList==this);
+  assert(m_pTail->m_DEBUG__pOwnerList==this);
 
-  if(m_pHead->m_pNext==NULL)
+  if(m_pHead->m_pNext==nullptr)
   {
    assert(m_pHead==m_pTail);
   }
@@ -288,28 +247,28 @@ void TIBPBindErrorDataSet::CheckState()const
 
  if(m_Size==0)
  {
-  assert(m_pHead==NULL);
-  assert(m_pTail==NULL);
+  assert(m_pHead==nullptr);
+  assert(m_pTail==nullptr);
  }
  else
  if(m_Size==1)
  {
-  assert(m_pHead!=NULL);
+  assert(m_pHead!=nullptr);
   assert(m_pHead==m_pTail);
-  assert(m_pHead->m_pNext==NULL);
+  assert(m_pHead->m_pNext==nullptr);
  }
  else
  {
   assert_hint(m_Size>1);
 
-  assert(m_pHead!=NULL);
+  assert(m_pHead!=nullptr);
   assert(m_pHead!=m_pTail);
-  assert(m_pHead->m_pNext!=NULL);
+  assert(m_pHead->m_pNext!=nullptr);
 
-  assert(m_pTail!=NULL);
-  assert(m_pTail->m_pNext==NULL);
+  assert(m_pTail!=nullptr);
+  assert(m_pTail->m_pNext==nullptr);
  }//else
-}//CheckState
+}//DEBUG__CheckState
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

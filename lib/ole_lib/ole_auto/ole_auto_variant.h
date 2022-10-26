@@ -93,6 +93,9 @@ class TVariant:public TBaseVariant
 
   TVariant(const VARIANT& Variant);//throw
 
+  //[2022-10-26] Trap for unexpected pointers.
+  TVariant(const void* pv)=delete;
+
   //ANSI
   TVariant(const char* s);//throw
 
@@ -174,6 +177,9 @@ class TVariant:public TBaseVariant
 
   self_type& operator = (const self_type& Variant); //throw
   self_type& operator = (const VARIANT& Variant); //throw
+
+  //[2022-10-26] Trap for unexpected pointers.
+  self_type& operator = (const void* pv)=delete;
 
   self_type& operator = (LONG);
   self_type& operator = (short);

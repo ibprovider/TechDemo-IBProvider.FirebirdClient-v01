@@ -460,7 +460,32 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
     }//else
 
     break;
-   }//case - V_WIN32_ERR
+   }//case - V_CPP_ERR_RECORD
+
+   case IBP_EVT::V_CPP_ERR_TEXT:
+   {
+    assert(pv->value.pCppErrText!=nullptr);
+
+    if(pv->value.pCppErrText==nullptr)
+    {
+     fmsg<<L"<null ptr to error text>";
+    }
+    else
+    {
+     std::wstring tmp;
+
+     if(!pv->value.pCppErrText->get_text(lcid,&tmp))
+     {
+      fmsg<<L"<can't get error text>";
+     }
+     else
+     {
+      fmsg<<std::move(tmp);
+     }
+    }//else
+
+    break;
+   }//case - V_CPP_ERR_TEXT
 
    default:
     assert_msg(false,"vt="<<structure::to_underlying(pv->vt));

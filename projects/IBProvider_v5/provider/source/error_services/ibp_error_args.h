@@ -15,6 +15,8 @@
 
 #include <ole_lib/oledb/variant/oledb_variant_fwrd.h>
 
+#include <lcpi/lib/structure/error/t_err_text.h>
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_err
@@ -93,6 +95,9 @@ class t_ibp_error_args
   ~t_ibp_error_args();
 
  public:
+  // [2022-10-26] Trap for unexpected pointers.
+  out_return_type& operator << (const void*        pv)=delete;
+
   out_return_type& operator << (mce_code_type      mce_code_0);
 
   out_return_type& operator << (bool               x);
@@ -134,7 +139,9 @@ class t_ibp_error_args
 
   out_return_type& operator << (const ole_lib::TBSTR& x);   //as WSTR
 
-  out_return_type& operator << (structure::t_err_record* pErrRec);
+  out_return_type& operator << (lib::structure::t_err_record* pErrRec);
+
+  out_return_type& operator << (lib::structure::t_err_text* pErrText);
 
  public:
   out_return_type& operator << (ibp_err_data__symbol__tag<char>    x);

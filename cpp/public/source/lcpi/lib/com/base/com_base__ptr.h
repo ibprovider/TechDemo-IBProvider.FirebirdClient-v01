@@ -354,6 +354,8 @@ class IPtr2
 
   interface_type* &ref_ptr();
 
+  structure::t_not_null_ptr<interface_type> not_null_ptr()const;
+
   bool IsEqualObject(IUnknown* pUnk)const;
 
  private:

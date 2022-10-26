@@ -10,14 +10,14 @@
 
 #include <structure/t_common.h>
 
-#include <lcpi/infrastructure/core/structure/t_err_records_r.h>
-#include <lcpi/infrastructure/core/structure/t_err_records_w.h>
+#include <lcpi/lib/structure/error/t_err_records_r.h>
+#include <lcpi/lib/structure/error/t_err_records_w.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
-using namespace ::lcpi::infrastructure::core::structure;
+using namespace ::lcpi::lib::structure;
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/
 #endif

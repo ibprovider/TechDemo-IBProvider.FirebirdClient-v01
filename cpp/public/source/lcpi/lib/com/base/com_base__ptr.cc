@@ -992,6 +992,14 @@ inline typename IPtr2<T>::interface_type* &IPtr2<T>::ref_ptr()
 
 //------------------------------------------------------------------------
 template<class T>
+inline
+structure::t_not_null_ptr<T> IPtr2<T>::not_null_ptr()const
+{
+ return structure::not_null_ptr(m_ptr);
+}//not_null_ptr
+
+//------------------------------------------------------------------------
+template<class T>
 inline bool IPtr2<T>::IsEqualObject(IUnknown* const pUnk)const
 {
  return IsEqualComObject(static_cast<IUnknown*>(m_ptr),pUnk);

@@ -347,6 +347,10 @@ typename t_ibp_error_args<Traits>::out_return_type&
 }//operator << structure::t_const_wstr_box
 
 //------------------------------------------------------------------------
+#ifdef IBP_BUILD_TESTCODE
+
+// [2022-10-26] Tested but not used
+
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
  t_ibp_error_args<Traits>::operator << (IUnknown* const pUnk)
@@ -359,6 +363,8 @@ typename t_ibp_error_args<Traits>::out_return_type&
 
  return this->add_arg(errVar);
 }//operator << IUnknown*
+
+#endif // defined IBP_BUILD_TESTCODE
 
 // //------------------------------------------------------------------------
 // template<class Traits>
@@ -374,18 +380,18 @@ typename t_ibp_error_args<Traits>::out_return_type&
 // }//operator << IDispatch*
 
 //------------------------------------------------------------------------
-template<class Traits>
-typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (ibprovider::IBP_IText* const pText)
-{
- IBP_ERRORVARIANT errVar;
-
- IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,pText);
-
- assert(errVar.vt==IBP_EVT::V_IUNKNOWN);
-
- return this->add_arg(errVar);
-}//operator << IBP_IText*
+//template<class Traits>
+//typename t_ibp_error_args<Traits>::out_return_type&
+// t_ibp_error_args<Traits>::operator << (ibprovider::IBP_IText* const pText)
+//{
+// IBP_ERRORVARIANT errVar;
+//
+// IBP_ERRORVARIANT_UTILS::LinkWith(&errVar,pText);
+//
+// assert(errVar.vt==IBP_EVT::V_IUNKNOWN);
+//
+// return this->add_arg(errVar);
+//}//operator << IBP_IText*
 
 //------------------------------------------------------------------------
 // template<class Traits>
@@ -404,19 +410,36 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (structure::t_err_record* const pErrRec)
+ t_ibp_error_args<Traits>::operator << (lib::structure::t_err_record* const pErrRec)
 {
  assert(pErrRec);
 
  IBP_ERRORVARIANT errVar;
 
- IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD_PTR(&errVar,pErrRec);
+ IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD(&errVar,pErrRec);
 
  assert(errVar.vt==IBP_EVT::V_CPP_ERR_RECORD);
  assert(errVar.value.pCppErrRecord==pErrRec);
 
  return this->add_arg(errVar);
-}//operator << structure::t_err_record*
+}//operator << lib::structure::t_err_record*
+
+//------------------------------------------------------------------------
+template<class Traits>
+typename t_ibp_error_args<Traits>::out_return_type&
+ t_ibp_error_args<Traits>::operator << (lib::structure::t_err_text* const pErrText)
+{
+ assert(pErrText);
+
+ IBP_ERRORVARIANT errVar;
+
+ IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_TEXT(&errVar,pErrText);
+
+ assert(errVar.vt==IBP_EVT::V_CPP_ERR_TEXT);
+ assert(errVar.value.pCppErrText==pErrText);
+
+ return this->add_arg(errVar);
+}//operator << lib::structure::t_err_text*
 
 //------------------------------------------------------------------------
 template<class Traits>

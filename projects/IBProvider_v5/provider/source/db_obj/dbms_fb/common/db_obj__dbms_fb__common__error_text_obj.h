@@ -1,29 +1,31 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_obj__dbms_fb__common
-//! \file    db_obj__dbms_fb__common__oledb_error_text.h
-//! \brief   COM объект для представления теста ошибки FB/IB
+//! \file    db_obj__dbms_fb__common__error_text_obj.h
+//! \brief   Object for providing Firebird error text.
 //! \author  Kovalenko Dmitry
 //! \date    08.08.2016
-#ifndef _db_obj__dbms_fb__common__oledb_error_text_H_
-#define _db_obj__dbms_fb__common__oledb_error_text_H_
+#ifndef _db_obj__dbms_fb__common__error_text_obj_H_
+#define _db_obj__dbms_fb__common__error_text_obj_H_
 
 #include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__svc__status_vector_utils.h"
-#include <ole_lib/ole_lib.h>
+#include "source/db_obj/db_memory.h"
+
+#include <lcpi/lib/structure/error/t_err_text.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup db_obj__dbms_fb__common
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
-class FB_OleDbErrorText;
+class FB_ErrorTextObj;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class FB_OleDbErrorText
+//class FB_ErrorTextObj
 
 /// <summary>
-///  COM объект для представления теста ошибки FB/IB
+///  Object for providing Firebird error text.
 /// </summary>
 //! \attention
 //!  Класс не предназначен для наследования.
@@ -31,21 +33,17 @@ class FB_OleDbErrorText;
 //!  Исходные данные для текста ошибки хранятся в статус векторе, который
 //!  (вместе с косвенными данными) размещается непосредственно за последним
 //!  "официальным" байтом объекта.
-class FB_OleDbErrorText
- :public ibprovider::IBP_IText
- ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
+class FB_ErrorTextObj LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(lib::structure::t_err_text)
 
 {
  private:
-  typedef FB_OleDbErrorText                                       self_type;
-  typedef ole_lib::TBaseUnknown2_WithFreeThreadMarshaler          inherited;
+  typedef FB_ErrorTextObj                                         self_type;
 
-  FB_OleDbErrorText(const self_type&);
+  FB_ErrorTextObj(const self_type&);
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef OLE_LIB__BUILD_IPTR_TYPE_NS(ibprovider::,IBP_IText)     IBP_ITextPtr;
-
   typedef isc_api::t_ibp_isc_status                               status_type;
 
   typedef fb_common__svc__status_vector_utils                     sv_utils_type;
@@ -60,14 +58,14 @@ class FB_OleDbErrorText
   //!  Not null.
   //! \param[in] szStatusVector
   //! \param[in] pStatusVector
-  FB_OleDbErrorText(sv_utils_type*     pStatusVectorUtils,
-                    size_t             szStatusVector,
-                    const status_type* pStatusVector);
+  FB_ErrorTextObj(sv_utils_type*     pStatusVectorUtils,
+                  size_t             szStatusVector,
+                  const status_type* pStatusVector);
 
   /// <summary>
   ///  Деструктор
   /// </summary>
-  virtual ~FB_OleDbErrorText();
+  virtual ~FB_ErrorTextObj();
 
  public:
   /// <summary>
@@ -79,28 +77,15 @@ class FB_OleDbErrorText
   //! \param[in] sv_end
   //! \return
   //!  Not null.
-  static IBP_ITextPtr Create(sv_utils_type*     pStatusVectorUtils,
-                             const status_type* sv_beg,
-                             const status_type* sv_end);
+  static self_ptr Create(sv_utils_type*     pStatusVectorUtils,
+                         const status_type* sv_beg,
+                         const status_type* sv_end);
 
-  //Root interface -------------------------------------------------------
-  OLE_LIB__DECLARE_ROOT_INTERFACE
-
-  //IUnknown interface ---------------------------------------------------
-  OLE_LIB__DECLARE_IUNKNOWN
-
-  //IBP_IText interface --------------------------------------------------
-  /// <summary>
-  ///  Получение текста
-  /// </summary>
-  //! \param[in]  lcid
-  //! \param[out] pbstrText
-  //!  Not NULL
-  virtual HRESULT __stdcall GetText(LCID  lcid,
-                                    BSTR* pbstrText)COMP_W000004_OVERRIDE_FINAL;
+  //interface ------------------------------------------------------------
+  virtual bool get_text(lcid_type lcid,string_type* text)const COMP_W000004_OVERRIDE_FINAL;
 
  private:
-  typedef ole_lib::TComObjectMemoryAllocator      raw_allocator_type;
+  typedef db_obj::t_db_memory_allocator     raw_allocator_type;
 
   static void* operator new (size_t); //not impl
 
@@ -125,10 +110,9 @@ class FB_OleDbErrorText
   const status_type* const m_pStatusVector;
 
  private:
-  OLE_LIB__DECLARE_DEBUG_COM_LIVE(FB_OleDbErrorText);
 
   /*Далее в памяти будет размещен статус вектор и его косвенные данные*/
-};//class FB_OleDbErrorText
+};//class FB_ErrorTextObj
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

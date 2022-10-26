@@ -1,48 +1,41 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_obj__dbms_fb__common
-//! \file    db_obj__dbms_fb__common__oledb_error_text.cpp
-//! \brief   COM объект для представления теста ошибки FB/IB
+//! \file    db_obj__dbms_fb__common__error_text_obj.cpp
+//! \brief   Object for providing Firebird error text.
 //! \author  Kovalenko Dmitry
 //! \date    08.08.2016
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__oledb_error_text.h"
+#include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__error_text_obj.h"
 #include "source/error_services/ibp_error_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{
 ////////////////////////////////////////////////////////////////////////////////
-//class FB_OleDbErrorText
+//class FB_ErrorTextObj
 
-OLE_LIB__DEFINE_DEBUG_COM_LIVE(FB_OleDbErrorText)
-
-//------------------------------------------------------------------------
-FB_OleDbErrorText::FB_OleDbErrorText(sv_utils_type*     const pStatusVectorUtils,
-                                     size_t             const szStatusVector,
-                                     const status_type* const pStatusVector)
- :inherited(nullptr)
- ,m_spStatusVectorUtils(structure::not_null_ptr(pStatusVectorUtils))
+FB_ErrorTextObj::FB_ErrorTextObj(sv_utils_type*     const pStatusVectorUtils,
+                                 size_t             const szStatusVector,
+                                 const status_type* const pStatusVector)
+ :m_spStatusVectorUtils(structure::not_null_ptr(pStatusVectorUtils))
  ,m_szStatusVector(szStatusVector)
  ,m_pStatusVector(pStatusVector)
 {
  assert(m_spStatusVectorUtils);
 
  CHECK_READ_TYPED_PTR(m_pStatusVector,szStatusVector);
-
- OLE_LIB__CREATE_COMPONENT();
-}//FB_OleDbErrorText
+}//FB_ErrorTextObj
 
 //------------------------------------------------------------------------
-FB_OleDbErrorText::~FB_OleDbErrorText()
+FB_ErrorTextObj::~FB_ErrorTextObj()
 {
- OLE_LIB__DESTROY_COMPONENT();
-}//~FB_OleDbErrorText
+}//~FB_ErrorTextObj
 
 //------------------------------------------------------------------------
-FB_OleDbErrorText::IBP_ITextPtr
- FB_OleDbErrorText::Create(sv_utils_type*     const pStatusVectorUtils,
-                           const status_type* const sv_beg,
-                           const status_type* const sv_end)
+FB_ErrorTextObj::self_ptr
+ FB_ErrorTextObj::Create(sv_utils_type*     const pStatusVectorUtils,
+                         const status_type* const sv_beg,
+                         const status_type* const sv_end)
 {
  assert(pStatusVectorUtils);
  assert(sv_beg<sv_end);
@@ -55,10 +48,12 @@ FB_OleDbErrorText::IBP_ITextPtr
 
  {
   const sv_utils_type::gresult_data_type
-   gresult=pStatusVectorUtils->get_sv_info(sv_beg,
-                                           sv_end,
-                                           &sv_info__num_of_elements,
-                                           &sv_info__indirect_data_size);
+   gresult
+    =pStatusVectorUtils->get_sv_info
+      (sv_beg,
+       sv_end,
+       &sv_info__num_of_elements,
+       &sv_info__indirect_data_size);
 
   if(gresult!=sv_utils_type::gresult__ok)
   {
@@ -117,11 +112,12 @@ FB_OleDbErrorText::IBP_ITextPtr
   unsigned char* const idata_buf=reinterpret_cast<unsigned char*>(pv)+offset_of_idata;
 
   const sv_utils_type::gresult_data_type
-   gresult=pStatusVectorUtils->move_indirect_data_to_buf
-            (new_sv_beg,
-             new_sv_beg+sv_info__num_of_elements,
-             idata_buf,
-             idata_buf+sv_info__indirect_data_size);
+   gresult
+    =pStatusVectorUtils->move_indirect_data_to_buf
+      (new_sv_beg,
+       new_sv_beg+sv_info__num_of_elements,
+       idata_buf,
+       idata_buf+sv_info__indirect_data_size);
 
   if(gresult!=sv_utils_type::gresult__ok)
   {
@@ -154,66 +150,52 @@ FB_OleDbErrorText::IBP_ITextPtr
  return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
-//Root interface ---------------------------------------------------------
-OLE_LIB__DEFINE_ROOT_INTERFACE(FB_OleDbErrorText)
- OLE_LIB__ROOT_STATIC_INTERFACE_NS(ibprovider::,IBP_IText)
-OLE_LIB__END_ROOT_INTERFACE(inherited)
-
-//IBP_IText interface ----------------------------------------------------
-HRESULT __stdcall FB_OleDbErrorText::GetText(LCID  const lcid,
-                                                 BSTR* const pbstrText)
+//interface --------------------------------------------------------------
+bool FB_ErrorTextObj::get_text(lcid_type    const lcid,
+                                 string_type* const text)const
 {
- OLE_LIB__IMETHOD_PROLOG
+ assert(text);
 
- LCPI_OS__SetErrorInfo(0,nullptr);
+ text->clear();
 
- if(pbstrText==nullptr)
-  return E_INVALIDARG;
+ assert(m_spStatusVectorUtils);
 
- (*pbstrText)=nullptr;
+ std::wstring wstr;
 
- OLE_LIB__DECLARE_HR(S_OK);
+ const sv_utils_type::gresult_data_type
+  gresult
+   =m_spStatusVectorUtils->get_message
+      (m_pStatusVector,
+       m_pStatusVector+m_szStatusVector,
+       &wstr,
+       lcid.get_number());
 
- _OLE_TRY_
+ if(gresult!=sv_utils_type::gresult__ok)
  {
-  assert(m_spStatusVectorUtils);
+  //! \todo
+  //!  Формировать локализованное сообщение о проблеме?
 
-  std::wstring wstr;
+  structure::wstr_formatter fmsg(L"<Bad status vector. Check point [%1][%2]>");
 
-  const sv_utils_type::gresult_data_type
-   gresult=m_spStatusVectorUtils->get_message(m_pStatusVector,
-                                              m_pStatusVector+m_szStatusVector,
-                                              &wstr,
-                                              lcid);
+  fmsg<<gresult.check_place
+      <<gresult.check_point;
 
-  if(gresult!=sv_utils_type::gresult__ok)
-  {
-   //! \todo
-   //!  Формировать локализованное сообщение о проблеме?
+  wstr=fmsg.str();
+ }//if
 
-   structure::wstr_formatter fmsg(L"<Bad status vector. Check point [%1][%2]>");
+ text->swap(wstr);
 
-   fmsg<<gresult.check_place
-       <<gresult.check_point;
-
-   wstr=fmsg.str();
-  }//if
-
-  (*pbstrText)=ole_lib::WStrToBStr(wstr);
- }
- _OLE_CATCHES2_CODE_
-
- return hr;
-}//GetText
+ return true;
+}//get_text
 
 //------------------------------------------------------------------------
-void* FB_OleDbErrorText::operator new (size_t const /*sz*/,void* const pv)
+void* FB_ErrorTextObj::operator new (size_t const /*sz*/,void* const pv)
 {
  return pv;
 }//operator new
 
 //------------------------------------------------------------------------
-void FB_OleDbErrorText::operator delete (void* const pv)
+void FB_ErrorTextObj::operator delete (void* const pv)
 {
  raw_allocator_type::instance.deallocate(pv,0);
 }//operator delete

@@ -10,8 +10,9 @@
 #include "source/error_services/ibp_error_codes.h"
 #include "source/ibp_memory.h"
 
-#include <structure/error/t_err_record.h>
-#include <structure/t_const_str_box.h>
+#include <lcpi/lib/structure/error/t_err_record.h>
+#include <lcpi/lib/structure/error/t_err_text.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 
 #include <OleAuto.h>
 
@@ -46,6 +47,7 @@ enum class IBP_EVT
  V_IBP_MSG_CODE    =30,
  V_WIN32_ERR       =31,
  V_CPP_ERR_RECORD  =32,
+ V_CPP_ERR_TEXT    =33,
 };//enum class IBP_EVT
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +91,8 @@ struct IBP_ERRORVARIANT_TYPES LCPI_CPP_CFG__CLASS__FINAL
 
  using T_WIN32_ERR      = T_LONG;
 
- using T_CPP_ERR_RECORD_PTR = structure::t_err_record*;
+ using T_CPP_ERR_RECORD_PTR = lib::structure::t_err_record*;
+ using T_CPP_ERR_TEXT_PTR   = lib::structure::t_err_text*;
 };//struct IBP_ERRORVARIANT_TYPES
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -129,6 +132,8 @@ struct IBP_ERRORVARIANT LCPI_CPP_CFG__CLASS__FINAL
    IBP_ERRORVARIANT_TYPES::T_WIN32_ERR      valueWin32Err;
 
    IBP_ERRORVARIANT_TYPES::T_CPP_ERR_RECORD_PTR pCppErrRecord;
+
+   IBP_ERRORVARIANT_TYPES::T_CPP_ERR_TEXT_PTR   pCppErrText;
   } value;
 
  IBP_ERRORVARIANT()
@@ -146,8 +151,8 @@ class IBP_ERRORVARIANT_UTILS LCPI_CPP_CFG__CLASS__FINAL
   typedef IBP_ERRORVARIANT_UTILS            self_type;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_str_box        str_box_type;
-  typedef structure::t_const_wstr_box       wstr_box_type;
+  typedef lib::structure::t_const_str_box   str_box_type;
+  typedef lib::structure::t_const_wstr_box  wstr_box_type;
 
  public:
   static void LinkWith__EMPTY
@@ -232,11 +237,18 @@ class IBP_ERRORVARIANT_UTILS LCPI_CPP_CFG__CLASS__FINAL
                (IBP_ERRORVARIANT*                      pDest,
                 IBP_ERRORVARIANT_TYPES::T_WIN32_ERR    value);
 
-  static void LinkWith__CPP_ERR_RECORD_PTR
+  static void LinkWith__CPP_ERR_RECORD
                (IBP_ERRORVARIANT*                            pDest,
                 IBP_ERRORVARIANT_TYPES::T_CPP_ERR_RECORD_PTR value);
 
+  static void LinkWith__CPP_ERR_TEXT
+               (IBP_ERRORVARIANT*                          pDest,
+                IBP_ERRORVARIANT_TYPES::T_CPP_ERR_TEXT_PTR value);
+
  public:
+  // [2022-10-26] Trap for unexpected pointers.
+  static void LinkWith         (IBP_ERRORVARIANT* pDest,const void*   value)=delete;
+
   static void LinkWith         (IBP_ERRORVARIANT* pDest,IUnknown*     value);
 
   static void LinkWith         (IBP_ERRORVARIANT* pDest,const char*   value);
@@ -275,8 +287,8 @@ class IBP_ErrorVariant LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_str_box        str_box_type;
-  typedef structure::t_const_wstr_box       wstr_box_type;
+  typedef lib::structure::t_const_str_box   str_box_type;
+  typedef lib::structure::t_const_wstr_box  wstr_box_type;
 
  public:
   IBP_ErrorVariant();
@@ -284,6 +296,9 @@ class IBP_ErrorVariant LCPI_CPP_CFG__CLASS__FINAL
   IBP_ErrorVariant(const self_type& x);
 
   IBP_ErrorVariant(const IBP_ERRORVARIANT& data);
+
+  // [2022-10-26] Trap for unexpected pointers.
+  IBP_ErrorVariant(const void* value)=delete;
 
   IBP_ErrorVariant(IUnknown* value);
 
@@ -310,6 +325,9 @@ class IBP_ErrorVariant LCPI_CPP_CFG__CLASS__FINAL
   IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_ULONG value);
 
   IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_IBP_MSG_CODE value);
+
+  IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_CPP_ERR_RECORD_PTR value);
+  IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_CPP_ERR_TEXT_PTR   value);
 
  ~IBP_ErrorVariant();
 
@@ -344,6 +362,9 @@ class IBP_ErrorVariant LCPI_CPP_CFG__CLASS__FINAL
   self_type& SetIBProviderMsgCode(IBP_ERRORVARIANT_TYPES::T_IBP_MSG_CODE value);
 
   //----------------------------------------------------------------------
+  // [2022-10-26] Trap for unexpected pointers.
+  self_type& operator = (const void* value)=delete;
+
   self_type& operator = (IUnknown* value);
 
   self_type& operator = (const char*  value);

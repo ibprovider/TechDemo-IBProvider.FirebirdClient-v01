@@ -294,7 +294,7 @@ void IBP_ERRORVARIANT_UTILS::LinkWith__WIN32_ERR
 }//LinkWith__WIN32_ERR
 
 //------------------------------------------------------------------------
-void IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD_PTR
+void IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD
                              (IBP_ERRORVARIANT*                            const pDest,
                               IBP_ERRORVARIANT_TYPES::T_CPP_ERR_RECORD_PTR const value)
 {
@@ -304,7 +304,20 @@ void IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD_PTR
  pDest->value.pCppErrRecord=value;
 
  pDest->vt=IBP_EVT::V_CPP_ERR_RECORD;
-}//LinkWith__CPP_ERR_RECORD_PTR
+}//LinkWith__CPP_ERR_RECORD
+
+//------------------------------------------------------------------------
+void IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_TEXT
+                             (IBP_ERRORVARIANT*                          const pDest,
+                              IBP_ERRORVARIANT_TYPES::T_CPP_ERR_TEXT_PTR const value)
+{
+ assert(pDest);
+ assert(pDest->vt==IBP_EVT::V_EMPTY);
+
+ pDest->value.pCppErrText=value;
+
+ pDest->vt=IBP_EVT::V_CPP_ERR_TEXT;
+}//LinkWith__CPP_ERR_TEXT
 
 //------------------------------------------------------------------------
 void IBP_ERRORVARIANT_UTILS::LinkWith(IBP_ERRORVARIANT* const pDest,IUnknown* const value)
@@ -465,6 +478,9 @@ class IBP_ErrorVariant::tag_impl LCPI_CPP_CFG__CLASS__FINAL
   static void ERRVAR_Clear__CPP_ERR_RECORD
                 (IBP_ERRORVARIANT* pVar);
 
+  static void ERRVAR_Clear__CPP_ERR_TEXT
+                (IBP_ERRORVARIANT* pVar);
+
  private:
   static void Helper__LowLevelInit    (IBP_ERRORVARIANT* pVar);
 
@@ -497,6 +513,10 @@ class IBP_ErrorVariant::tag_impl LCPI_CPP_CFG__CLASS__FINAL
                  const IBP_ERRORVARIANT& Source);
 
   static void ERRVAR_Init__CPP_ERR_RECORD
+                (IBP_ERRORVARIANT*       pVar,
+                 const IBP_ERRORVARIANT& Source);
+
+  static void ERRVAR_Init__CPP_ERR_TEXT
                 (IBP_ERRORVARIANT*       pVar,
                  const IBP_ERRORVARIANT& Source);
 
@@ -597,7 +617,8 @@ const IBP_ErrorVariant::tag_impl::tag_type_svc
  /* 30 */ DEF_TYPE_SVC       (IBP_MSG_CODE    ,IBP_MSG_CODE    ,NONE)
  /* 31 */ DEF_TYPE_SVC       (WIN32_ERR       ,WIN32_ERR       ,NONE)
  /* 32 */ DEF_TYPE_SVC       (CPP_ERR_RECORD  ,CPP_ERR_RECORD  ,CPP_ERR_RECORD)
- /* 33 */
+ /* 33 */ DEF_TYPE_SVC       (CPP_ERR_TEXT    ,CPP_ERR_TEXT    ,CPP_ERR_TEXT)
+ /* 34 */
 };//sm_TypeServices
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -709,6 +730,22 @@ void IBP_ErrorVariant::tag_impl::ERRVAR_Clear__CPP_ERR_RECORD
  if(p)
   p->release();
 }//ERRVAR_Clear__CPP_ERR_RECORD
+
+//------------------------------------------------------------------------
+void IBP_ErrorVariant::tag_impl::ERRVAR_Clear__CPP_ERR_TEXT
+                                           (IBP_ERRORVARIANT* const pVar)
+{
+ assert(pVar);
+ assert(pVar->vt==IBP_EVT::V_CPP_ERR_TEXT);
+
+ auto const p=pVar->value.pCppErrText;
+
+ Helper__LowLevelInit(pVar);
+
+ //---------------------------
+ if(p)
+  p->release();
+}//ERRVAR_Clear__CPP_ERR_TEXT
 
 //------------------------------------------------------------------------
 void IBP_ErrorVariant::tag_impl::Helper__LowLevelInit(IBP_ERRORVARIANT* pVar)
@@ -1044,6 +1081,23 @@ void IBP_ErrorVariant::tag_impl::ERRVAR_Init__CPP_ERR_RECORD
  pVar->vt=IBP_EVT::V_CPP_ERR_RECORD;
 }//ERRVAR_Init__CPP_ERR_RECORD
 
+//------------------------------------------------------------------------
+void IBP_ErrorVariant::tag_impl::ERRVAR_Init__CPP_ERR_TEXT
+                                           (IBP_ERRORVARIANT* const pVar,
+                                            const IBP_ERRORVARIANT& Source)
+{
+ assert(pVar);
+ assert(pVar->vt==IBP_EVT::V_EMPTY);
+ assert(Source.vt==IBP_EVT::V_CPP_ERR_TEXT);
+
+ if(Source.value.pCppErrText!=nullptr)
+  Source.value.pCppErrText->add_ref();
+
+ pVar->value.pCppErrText=Source.value.pCppErrText;
+
+ pVar->vt=IBP_EVT::V_CPP_ERR_TEXT;
+}//ERRVAR_Init__CPP_ERR_TEXT
+
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_ErrorVariant
 
@@ -1318,6 +1372,21 @@ IBP_ErrorVariant::IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_IBP_MSG_CODE const 
 
  this->Helper__Init(data);
 }//IBP_ErrorVariant - ibp_msg_code
+
+//------------------------------------------------------------------------
+IBP_ErrorVariant::IBP_ErrorVariant(IBP_ERRORVARIANT_TYPES::T_CPP_ERR_RECORD_PTR const value)
+{
+ assert(value);
+
+ IBP_ERRORVARIANT data;
+
+ IBP_ERRORVARIANT_UTILS::LinkWith__CPP_ERR_RECORD(&data,value);
+
+ assert(data.vt==IBP_EVT::V_CPP_ERR_RECORD);
+ assert(data.value.pCppErrRecord==value);
+
+ this->Helper__Init(data);
+}//IBP_ErrorVariant - cpp err record
 
 //------------------------------------------------------------------------
 IBP_ErrorVariant::~IBP_ErrorVariant()

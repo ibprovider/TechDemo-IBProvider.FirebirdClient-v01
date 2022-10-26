@@ -16,15 +16,16 @@
 #include "source/ibp_memory.h"
 #include "source/ibp_limits.h"
 
-#include <ole_lib/ole_lib.h>
 #include <structure/t_fix_vector.h>
+
+#include <lcpi/lib/structure/error/t_err_text.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_err
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class TIBPBindErrorDataTraits;
 class TIBPBindErrorData;
@@ -33,7 +34,7 @@ class TIBPBindErrorDataSet;
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBPBindErrorDataTraits
 
-class TIBPBindErrorDataTraits
+class TIBPBindErrorDataTraits LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
   typedef TIBPBindErrorDataTraits                    self_type;
@@ -52,14 +53,12 @@ class TIBPBindErrorDataTraits
 /// <summary>
 ///  Класс для представления ошибки привязки данных
 /// </summary>
-class TIBPBindErrorData
- :public ibprovider::IBP_IText
- ,public ole_lib::TBaseUnknown2_WithFreeThreadMarshaler
+class TIBPBindErrorData LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(lib::structure::t_err_text)
  ,public TIBPBindErrorDataTraits::args_type
 {
  private:
   typedef TIBPBindErrorData                               self_type;
-  typedef ole_lib::TBaseUnknown2_WithFreeThreadMarshaler  inherited;
 
   TIBPBindErrorData(const self_type&);
   self_type& operator = (const self_type&);
@@ -94,18 +93,11 @@ class TIBPBindErrorData
   HRESULT ErrorCode()const
    {return m_err_code;}
 
-  //IUnknown interface ---------------------------------------------------
-  OLE_LIB__DECLARE_IUNKNOWN
-
-  //Root interface -------------------------------------------------------
-  OLE_LIB__DECLARE_ROOT_INTERFACE
-
-  //IBP_IText interface --------------------------------------------------
-  virtual HRESULT __stdcall GetText(LCID  lcid,
-                                    BSTR* pbstrText) COMP_W000004_OVERRIDE_FINAL;
+  //interface ------------------------------------------------------------
+  virtual bool get_text(lcid_type lcid,string_type* text)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual self_type& add_arg(const base_variant_type& x) COMP_W000004_OVERRIDE_FINAL;//abstract
+  virtual self_type& add_arg(const base_variant_type& x) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_multi_thread_traits       thread_traits;
@@ -113,7 +105,7 @@ class TIBPBindErrorData
   typedef thread_traits::lock_guard_type         lock_guard_type;
 
  private:
-  guard_type                   m_guard;
+  mutable guard_type           m_guard;
 
   const ordinal_type           m_index;
   const HRESULT                m_err_code;
@@ -124,19 +116,15 @@ class TIBPBindErrorData
   friend class TIBPBindErrorDataSet;
 
  #ifndef NDEBUG
-  ///Признак принадлежности списку. Объект может принадлежать только одному списку.
-  ///Используется в отладочных проверках.
-  bool       m_InList;
+  /// A debugging pointer to the parent list.
+  void* m_DEBUG__pOwnerList;
  #endif
 
   ///Указатель на следующий элемент однонаправленного списка.
   self_type* m_pNext;
-
- private:
-  OLE_LIB__DECLARE_DEBUG_COM_LIVE(TIBPBindErrorData)
 };//class TIBPBindErrorData
 
-typedef ole_lib::IPtr2<TIBPBindErrorData>   TIBPBindErrorDataPtr;
+typedef lib::structure::t_smart_object_ptr<TIBPBindErrorData> TIBPBindErrorDataPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBPBindErrorDataSet
@@ -145,7 +133,7 @@ typedef ole_lib::IPtr2<TIBPBindErrorData>   TIBPBindErrorDataPtr;
 ///  Класс для накопления объектов TIBPBindErrorData
 /// </summary>
 //!  Формирует однонаправленный список объектов
-class TIBPBindErrorDataSet
+class TIBPBindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef TIBPBindErrorDataSet              self_type;
@@ -195,7 +183,7 @@ class TIBPBindErrorDataSet
   /// <summary>
   ///  Проверка состояния списка
   /// </summary>
-  void CheckState()const;
+  void DEBUG__CheckState()const;
  #endif
 
  private:

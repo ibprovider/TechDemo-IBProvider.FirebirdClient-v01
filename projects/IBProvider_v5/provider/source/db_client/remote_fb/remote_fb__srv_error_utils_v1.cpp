@@ -10,7 +10,7 @@
 #include "source/db_client/remote_fb/remote_fb__srv_error_utils_v1.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
-#include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__oledb_error_text.h"
+#include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__error_text_obj.h"
 #include "source/db_obj/isc_base/isc_error_code_descr2.h"
 #include "source/db_obj/isc_base/isc_dbms_ids.h"
 #include "source/db_obj/db_service_utils.h"
@@ -275,12 +275,12 @@ t_ibp_error_element::self_ptr
        (_hr,
         ibp_mce_unknown_error_1)));
 
- //создаем COM-объект, который будет формировать текст на основе статус вектора
- DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IText);
-
- const IBP_ITextPtr
+ //
+ // Making an object, which will build the text is based on status vector data.
+ //
+ const lib::structure::t_err_text::self_ptr
   spErrorText
-   (db_obj::dbms_fb::common::FB_OleDbErrorText::Create
+   (db_obj::dbms_fb::common::FB_ErrorTextObj::Create
       (sv_utils,
        _status_vector.cbegin(),
        _status_vector.cend()));
