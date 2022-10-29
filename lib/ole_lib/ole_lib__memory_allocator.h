@@ -1,7 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
-//OLE Library implementation.
-//                                                Dmitry Kovalenko. 13.08.2004
+//C++ library for OLE.
+//                                                Kovalenko Dmitry. 28.10.2022.
+#ifndef _ole_lib__memory_allocator_H_
+#define _ole_lib__memory_allocator_H_
 
+#include <structure/t_memory.h>
+
+namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //Memory allocator for COM-objects
 
@@ -17,3 +22,5 @@ inline void ComObjectFreeMemory(void* const pv)
  {TComObjectMemoryAllocator::instance.deallocate(pv,0);}
 
 ////////////////////////////////////////////////////////////////////////////////
+}//namespace ole_lib
+#endif

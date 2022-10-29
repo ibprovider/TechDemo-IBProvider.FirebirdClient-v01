@@ -21,13 +21,15 @@ LONG TIBP_ComModule::TData::sm_FlushLogFilePeriod=0;
 
 TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
  :m_ModulePath(win32lib::GetModuleFileName(hInstance))
- ,m_module_lock_guard()
- ,m_module_lock_count(0)
+ ,m_active_component_count_guard()
+ ,m_active_component_count(0)
+ ,m_server_lock_count(0)
  ,m_CLSID_IBProvider(CLSID_NULL)
  ,m_CLSID_IBProviderErrors(CLSID_NULL)
  ,m_CLSID_IBProviderDataLinkPropPage(CLSID_NULL)
  ,m_CLSID_IBProviderDataLinkAdvPropPage(CLSID_NULL)
 {
+ //! \todo: It needs to use OS Utils!
  m_ModuleName=m_ModulePath.substr(m_ModulePath.rfind(_T('\\'))+1);
 
 #if(IBP_CFG_HAS_MODULE_CONFIG)

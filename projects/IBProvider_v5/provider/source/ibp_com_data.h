@@ -7,14 +7,17 @@
 #ifndef _ibp_com_data_H_
 #define _ibp_com_data_H_
 
+#ifndef IBP_BUILD_TESTCODE
+# include "source/oledb/ibp_oledb__class_factory_data.h"
+#endif
+
 #include "source/ibp_memory.h"
 
 #if(IBP_CFG_HAS_MODULE_CONFIG)
 # include "source/config/ibp_cfg.h"
 #endif
 
-#include <ole_lib/ole_lib.h>
-#include <structure/t_smart_vector.h>
+#include <structure/t_fix_vector.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,23 +40,30 @@ class TIBP_ComModule::TData
  public: //typedefs ------------------------------------------------------
   typedef IBP_MemoryAllocator                             allocator_type;
 
-  typedef structure::t_smart_vector<ole_lib::TBaseClassFactoryData,
-                                    allocator_type>       TFactoryDataVector;
+#ifndef IBP_BUILD_TESTCODE
+  typedef structure::t_fix_vector
+            <10,IBP_OLEDB__ClassFactoryData>              class_factory_datas_type;;
+#endif
 
   typedef structure::t_multi_thread_traits                thread_traits;
   typedef thread_traits::guard_type                       guard_type;
   typedef thread_traits::lock_guard_type                  lock_guard_type;
 
  public:
-  ///Синхронизация модификаций счетчика блокировок.
-  thread_traits::guard_type   m_module_lock_guard;
+  ///Синхронизация модификаций счетчика компонент.
+  thread_traits::guard_type   m_active_component_count_guard;
 
-  ///Счетчик блокировок
-  lock_count_type             m_module_lock_count;
+  ///Счетчик компонент
+  size_t volatile             m_active_component_count;
 
  public:
-  ///Данные для фабрик классов
-  TFactoryDataVector          m_FactoryData;
+  unsigned __int64            m_server_lock_count;
+
+ public:
+#ifndef IBP_BUILD_TESTCODE
+  ///Data for class factories
+  class_factory_datas_type    m_ClassFactoryDatas;
+#endif
 
   ///Параметры регистрации модуля
   string_type                 m_prog_reg_params;

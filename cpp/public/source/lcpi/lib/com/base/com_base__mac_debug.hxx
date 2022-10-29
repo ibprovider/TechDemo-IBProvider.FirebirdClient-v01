@@ -127,7 +127,7 @@ void className::SpyCreateComponent(structure::str_parameter comment)            
               "[this=0x"<<std::hex<<this<<std::dec<<"]"                          \
               "["<<COM_Name()<<"] "<<                                            \
               comment.str()<<" "                                                 \
-              "module lock count="<<_Module.GetLockCount());                     \
+              "component count="<<_Module.GetComponentCount());                  \
 }                                                                                \
                                                                                  \
 templateHeader                                                                   \
@@ -140,7 +140,7 @@ void className::SpyDestroyComponent(structure::str_parameter comment)           
               "[this=0x"<<std::hex<<this<<std::dec<<"]"                          \
               "["<<COM_Name()<<"] "<<                                            \
               comment.str()<<" "                                                 \
-              "module lock count="<<(_Module.GetLockCount()-1));                 \
+              "component count="<<(_Module.GetComponentCount()-1));              \
 }                                                                                \
                                                                                  \
 templateHeader                                                                   \

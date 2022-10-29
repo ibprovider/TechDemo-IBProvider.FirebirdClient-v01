@@ -7,7 +7,7 @@
 #ifndef _ibp_oledb__sql_error_info_H_
 #define _ibp_oledb__sql_error_info_H_
 
-#include <ole_lib/ole_lib.h>
+#include <ole_lib/ole_lib__base_unknown2_with_free_thread_marshaller.h>
 
 #include <structure/t_str_parameter.h>
 

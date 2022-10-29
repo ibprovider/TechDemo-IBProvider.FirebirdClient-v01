@@ -73,7 +73,9 @@ class TIBP_ComModule
   //!  Например, "IBProvider x.x.x.xxxxx [32-bit]"
   static string_type  GetProviderLabel();
 
-  static lock_count_type GetLockCount();
+  static lock_count_type GetComponentCount();
+
+  static bool DllCanUnloadNow();
 
 #ifndef NDEBUG
   static bool DEBUG__ModuleIsActive();
@@ -85,10 +87,15 @@ class TIBP_ComModule
   static void CheckActiveState();
 #endif
 
-  static void Lock();
-  static void Unlock();
+  static void IncrementComponentCount();
+  static void DecrementComponentCount();
 
+  static void LockServer();
+  static void UnlockServer();
+
+#ifndef IBP_BUILD_TESTCODE
   static HRESULT GetClassObject(REFCLSID rclsid,REFIID riid,void** ppv);
+#endif
 
  public: //получение параметров регистрации модуля в системе
   static const string_type& GetProgRegParams();

@@ -189,7 +189,8 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant_type_info.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\variant\comparator\ole_auto_variant__comparator_context__std.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_base.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__base_unknown2.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__memory_allocator.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

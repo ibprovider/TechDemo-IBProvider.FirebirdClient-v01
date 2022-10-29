@@ -1,9 +1,18 @@
 ////////////////////////////////////////////////////////////////////////////////
-//OLE Library implementation.
-//                                                  Dmitry Kovalenko. 13.08.2004
+//C++ library for OLE.
+//                                                Kovalenko Dmitry. 28.10.2022.
+#ifndef _ole_lib__base_unknown2_H_
+#define _ole_lib__base_unknown2_H_
 
+#include <ole_lib/ole_lib__memory_allocator.h>
+#include <ole_lib/ole_ptr.h>
+#include <ole_lib/ole_base.h>
+
+#include <lcpi/lib/com/base/com_base__base_unknown3.h>
+
+namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
-//class class TBaseUnknown2__SERVER_LINK
+//class TBaseUnknown2__SERVER_LINK
 
 class TBaseUnknown2__SERVER_LINK LCPI_CPP_CFG__CLASS__FINAL
 {
@@ -23,3 +32,5 @@ using TBaseUnknown2NPtr
  =INondelegatingPtr2<TBaseUnknown2>;
 
 ////////////////////////////////////////////////////////////////////////////////
+}//namespace ole_lib
+#endif

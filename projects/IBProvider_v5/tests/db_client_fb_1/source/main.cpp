@@ -11,7 +11,6 @@
 #include "source/ibp_global_objects_data__dlls.h"
 
 #include <ole_lib/oledb/oledb_memory.h>
-#include <ole_lib/ole_lib.h>
 
 #include <win32lib/win32_error.h>
 

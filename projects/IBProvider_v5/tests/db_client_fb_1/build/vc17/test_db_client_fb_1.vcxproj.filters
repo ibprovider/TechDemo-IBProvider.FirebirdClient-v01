@@ -916,9 +916,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_base.cpp">
       <Filter>lib\ole_lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib.cpp">
-      <Filter>lib\ole_lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_registry.cpp">
       <Filter>lib\win32lib</Filter>
     </ClCompile>
@@ -3111,6 +3108,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.cpp">
       <Filter>IBP\source\services\errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__base_unknown2.cpp">
+      <Filter>lib\ole_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__memory_allocator.cpp">
+      <Filter>lib\ole_lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -49,7 +49,7 @@ class TIBP_ComModule::THelper
   static void Helper__ProcessComponentConfig();
 
   /// <summary>
-  ///  Обрабатываем идентификатор COM-класса
+  ///  Processing a COM-class identifier
   /// </summary>
   //! \param[in]  params
   //! \param[in]  prop_id
@@ -61,18 +61,20 @@ class TIBP_ComModule::THelper
                                              REFCLSID             default_clsid,
                                              CLSID*               pclsid);
 
-  //проверка необходимости поддерживать компоненту
+  //
+  // Checking to necessary to support a component
+  // 
   // false
   //  - param_value==""
   //  - param_value==CLSID_NULL
-  //  - недействительный идентификатор
+  //  - it is an incorrect identifier
   // true
-  //  - действительный идентификатор
+  //  - it is a valid identifier
   static bool Helper__HasComponent(const string_type& param_value,
                                    CLSID&             clsid);
 
   /// <summary>
-  ///  Обрабоатываем строковый параметр регистрации
+  ///  Processing the string parameter of a registration
   /// </summary>
   //! \param[in]  params
   //! \param[in]  prop_id
@@ -93,18 +95,11 @@ class TIBP_ComModule::THelper
                                         REFCLSID                 rClassID,
                                         ole_lib::TBaseUnknown2** ppObject);
 
-  static void Helper__AddFactoryData(REFCLSID rClassID,
-                                     PFNCREATEINSTANCE1 pfnCreateInstance);
-
- private:
-  typedef HRESULT (*PFNCREATEINSTANCE2)(IUnknown*                pUnkOuter,
-                                        ole_lib::TBaseUnknown2** ppObject);
-
   static void Helper__AddFactoryData(REFCLSID           rClassID,
-                                     PFNCREATEINSTANCE2 ppObject);
+                                     PFNCREATEINSTANCE1 pfnCreateInstance);
 #endif
 
- private://чтение служебных параметров модуля
+ private: //Reading helped parameters of module
  #ifdef _PROCESS_DEBUG_MESSAGE_
   static void Helper__ReadFlushLogFilePeriod();
  #endif

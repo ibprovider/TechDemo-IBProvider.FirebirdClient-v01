@@ -30,6 +30,9 @@
 #include "source/ibp_sys_props.h"
 #include "source/ibp_guids.h"
 
+#include <ole_lib/ole_lib__memory_allocator.h>
+#include <ole_lib/ole_base.h>
+
 #include <win32lib/win32_memory_heap.h>
 #include <win32lib/win32_resource.h>
 #include <win32lib/win32_registry.h>
@@ -440,31 +443,11 @@ void TIBP_ComModule::THelper::Helper__AddFactoryData
  if(rclsid==CLSID_NULL)
   return;
 
- const ole_lib::TBaseClassFactoryData::self_ptr
-  spData(IBP_ClassFactoryData::Create(rclsid,fn));
-
- assert(spData);
-
- sm_pData->m_FactoryData.push_back(spData);
+ sm_pData->m_ClassFactoryDatas.push_back
+  (IBP_OLEDB__ClassFactoryData
+    (rclsid,
+     fn));
 }//Helper__AddFactoryData - PFNCREATEINSTANCE1
-
-//------------------------------------------------------------------------
-void TIBP_ComModule::THelper::Helper__AddFactoryData
-                                           (REFCLSID                 rclsid,
-                                            PFNCREATEINSTANCE2 const fn)
-{
- assert(sm_pData!=NULL);
-
- if(rclsid==CLSID_NULL)
-  return;
-
- const ole_lib::TBaseClassFactoryData::self_ptr
-  spData(ole_lib::TAggregationClassFactoryData::Create(rclsid,fn));
-
- assert(spData);
-
- sm_pData->m_FactoryData.push_back(spData);
-}//Helper__AddFactoryData - PFNCREATEINSTANCE2
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif // !IBP_BUILD_TESTCODE

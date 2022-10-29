@@ -1,10 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////
-//OLE Library implementation.
-//                                                Dmitry Kovalenko. 13.08.2004
+//C++ library for OLE.
+//                                                Kovalenko Dmitry. 28.10.2022.
+#include <_pch_.h>
+#pragma hdrstop
 
+#include <ole_lib/ole_lib__memory_allocator.h>
+
+namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class TComObjectMemoryAllocator
 
 DEFINE_WRAP_ALLOCATOR(TComObjectMemoryAllocator);
 
 ////////////////////////////////////////////////////////////////////////////////
+}//namespace ole_lib

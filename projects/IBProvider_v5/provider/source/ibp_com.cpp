@@ -11,6 +11,7 @@
 
 #ifndef IBP_BUILD_TESTCODE
 # include "source/oledb/ibp_oledb__exception_handler.h"
+# include "source/oledb/ibp_oledb__class_factory.h"
 # include "source/error_services/ibp_error__com_module_is_shutdown.h"
 # include "source/ibp_global_objects.h"
 #endif
@@ -86,18 +87,18 @@ void TIBP_ComModule::Term()
 
   if(sm_pData!=NULL)
   {
-   if(auto const module_lock_count=sm_pData->m_module_lock_count)
+   if(auto const active_component_count=sm_pData->m_active_component_count)
    {
-    assert_hint(module_lock_count!=0);
+    assert_hint(active_component_count!=0);
 
-    assert(module_lock_count>0); //[2018-12-24]
+    assert(active_component_count>0); //[2018-12-24]
 
     DebugMessage("COM MODULE HAS LEAKS "
-                 "["<<module_lock_count<<"]"
+                 "["<<active_component_count<<"]"
                  " "<<structure::tstr_to_str(ModuleName));
 
     assert_msg(false,
-               "module_lock_count: "<<module_lock_count);
+               "active_component_count: "<<active_component_count);
    }//if
   }//if
  }
@@ -108,14 +109,24 @@ void TIBP_ComModule::Term()
 #ifndef NDEBUG
  if(sm_pData!=NULL)
  {
-  if(auto const module_lock_count=sm_pData->m_module_lock_count)
+  if(auto const active_component_count=sm_pData->m_active_component_count)
   {
-   assert_hint(module_lock_count!=0);
+   assert_hint(active_component_count!=0);
 
-   assert(module_lock_count>0); //[2018-12-24]
+   assert(active_component_count>0); //[2018-12-24]
 
    assert_msg(false,
-              "module_lock_count: "<<module_lock_count);
+              "active_component_count: "<<active_component_count);
+  }//if
+
+  if(auto const server_lock_count=sm_pData->m_server_lock_count)
+  {
+   assert_hint(server_lock_count!=0);
+
+   assert(server_lock_count>0); //[2018-12-24]
+
+   assert_msg(false,
+              "server_lock_count: "<<server_lock_count);
   }//if
  }//if sm_pData!=0
 #endif
@@ -194,7 +205,7 @@ TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
 
 bool TIBP_ComModule::DEBUG__ModuleIsActive()
 {
- return self_type::GetLockCount()!=0;
+ return self_type::GetComponentCount()!=0;
 }//DEBUG__ModuleIsActive
 
 #endif // !NDEBUG
@@ -204,54 +215,68 @@ bool TIBP_ComModule::DEBUG__ModuleIsActive()
 
 bool TIBP_ComModule::DEBUG__ModuleIsShutdown()
 {
- return self_type::GetLockCount()==0;
+ return self_type::GetComponentCount()==0;
 }//DEBUG__ModuleIsShutdown
 
 #endif // !NDEBUG
 
 //------------------------------------------------------------------------
-TIBP_ComModule::lock_count_type TIBP_ComModule::GetLockCount()
+TIBP_ComModule::lock_count_type TIBP_ComModule::GetComponentCount()
 {
  assert(sm_pData!=NULL);
 
- return sm_pData->m_module_lock_count;
-}//GetLockCount
+ return sm_pData->m_active_component_count;
+}//GetComponentCount
+
+//------------------------------------------------------------------------
+bool TIBP_ComModule::DllCanUnloadNow()
+{
+ assert(sm_pData!=NULL);
+
+ if(sm_pData->m_active_component_count!=0)
+  return false;
+
+ if(sm_pData->m_server_lock_count!=0)
+  return false;
+
+ return true;
+}//DllCanUnloadNow
 
 //------------------------------------------------------------------------
 #ifndef IBP_BUILD_TESTCODE
 
 void TIBP_ComModule::CheckActiveState()
 {
- if(self_type::GetLockCount()==0)
+ if(self_type::GetComponentCount()==0)
  {
   t_ibp_error__com_module_is_shutdown::throw_error();
  }//if
 
- assert(self_type::GetLockCount()>0);
+ assert(self_type::GetComponentCount()>0);
 }//CheckActiveState
 
 #endif
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::Lock()
+void TIBP_ComModule::IncrementComponentCount()
 {
- assert(sm_pData!=NULL);
+ assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_guard);
+ const thread_traits::lock_guard_type lock(sm_pData->m_active_component_count_guard);
 
- structure::interlocked::increment(&sm_pData->m_module_lock_count);
-}//Lock
+ lib::structure::mt::interlocked::increment(&sm_pData->m_active_component_count);
+}//IncrementComponentCount
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::Unlock()
+void TIBP_ComModule::DecrementComponentCount()
 {
- assert(sm_pData!=NULL);
+ assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_guard);
+ const thread_traits::lock_guard_type lock(sm_pData->m_active_component_count_guard);
 
- assert(sm_pData->m_module_lock_count>0);
+ assert(sm_pData->m_active_component_count>0);
 
- if(structure::interlocked::decrement(&sm_pData->m_module_lock_count)!=0)
+ if(lib::structure::mt::interlocked::decrement(&sm_pData->m_active_component_count)!=0)
   return;
 
 #ifndef IBP_BUILD_TESTCODE
@@ -262,10 +287,29 @@ void TIBP_ComModule::Unlock()
 
  //---
  return;
-}//Unlock
+}//DecrementComponentCount
+
+//------------------------------------------------------------------------
+void TIBP_ComModule::LockServer()
+{
+ assert(sm_pData!=nullptr);
+
+ lib::structure::mt::interlocked::increment(&sm_pData->m_server_lock_count);
+}//LockServer
+
+//------------------------------------------------------------------------
+void TIBP_ComModule::UnlockServer()
+{
+ assert(sm_pData!=nullptr);
+ assert(sm_pData->m_server_lock_count>0);
+
+ lib::structure::mt::interlocked::decrement(&sm_pData->m_server_lock_count);
+}//UnlockServer
 
 ////////////////////////////////////////////////////////////////////////////////
 //Создание фабрик COM-объектов модуля
+
+#ifndef IBP_BUILD_TESTCODE
 
 HRESULT TIBP_ComModule::GetClassObject(REFCLSID     rclsid,
                                        REFIID       riid,
@@ -282,20 +326,19 @@ HRESULT TIBP_ComModule::GetClassObject(REFCLSID     rclsid,
 
  _OLE_TRY_
  {
-  typedef TData::TFactoryDataVector::const_iterator const_iterator;
+  typedef TData::class_factory_datas_type::const_iterator const_iterator;
 
-  const_iterator        i(sm_pData->m_FactoryData.begin());
-  const_iterator const _e(sm_pData->m_FactoryData.end());
+  const_iterator        i(sm_pData->m_ClassFactoryDatas.begin());
+  const_iterator const _e(sm_pData->m_ClassFactoryDatas.end());
 
   for(;i!=_e;++i)
   {
-   assert(*i);
+   if((*i).m_ClassID!=rclsid)
+    continue;
 
-   if((*i)->m_clsid==rclsid)
-   {
-    hr=(*i)->CreateClassObject(riid,ppv);
-    break;
-   }
+   hr=ole_lib::TBaseUnknown2::FullCreate(new IBP_OLEDB__ClassFactory(*i),riid,ppv);
+
+   break;
   }//for
  }
  _OLE_CATCHES2_CODE_
@@ -304,6 +347,8 @@ HRESULT TIBP_ComModule::GetClassObject(REFCLSID     rclsid,
 
  return hr;
 }//GetClassObject
+
+#endif //IBP_BUILD_TESTCODE
 
 ////////////////////////////////////////////////////////////////////////////////
 //получение параметров регистрации модуля в системе
