@@ -112,7 +112,7 @@ class t_ibp_os_win32__dll_entry_point
    if(m_point!=nullptr)
     return true;
 
-   auto const point=(func_type)m_spDLL->get_proc_address(m_point_name);
+   auto const point=(func_type)m_spDLL->try_get_proc_address(m_point_name);
 
    if(point==nullptr)
     return false;

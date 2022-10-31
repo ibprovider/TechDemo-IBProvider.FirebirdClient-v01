@@ -242,6 +242,8 @@ struct DBVARIANT:public tagDBVARIANT
   length_type GetLength2()const; //throw
 
  public: //conversion operations ------------------------------------------
+#ifndef OLEDB_LIB_NO_TYPE_CVT_CONTEXT_STD
+
   HRESULT  to_I1          (value_i1_n_type*         value) const;
   HRESULT  to_I2          (value_i2_n_type*         value) const;
   HRESULT  to_I4          (value_i4_n_type*         value) const;
@@ -335,6 +337,8 @@ struct DBVARIANT:public tagDBVARIANT
   HRESULT  to(value_ulong_n_type*     pvalue)const;
 
   HRESULT  to(value_cpp_bool_n_type*  pvalue)const;
+
+#endif
 
  public:
   std::string get_print_str()const;
