@@ -282,9 +282,9 @@ HRESULT TBaseUnknown3A<Allocator>::FinishCreate(tagComponent*    const pNewObj,
 template<class Allocator>
 HRESULT TBaseUnknown3A<Allocator>::FullCreate
                                            (TBaseUnknown3A* const pNewObj,
-                                            REFIID               riid,
-                                            void**         const ppv,
-                                            HRESULT        const errAggregation)
+                                            REFIID                riid,
+                                            void**          const ppv,
+                                            HRESULT         const errAggregation)
 {
  assert(ppv!=nullptr);
 
