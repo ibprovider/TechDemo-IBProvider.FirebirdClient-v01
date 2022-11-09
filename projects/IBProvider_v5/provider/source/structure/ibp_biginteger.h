@@ -7,7 +7,7 @@
 #ifndef _ibp_biginteger_H_
 #define _ibp_biginteger_H_
 
-#include "source/external/libtommath/set01/ibp_external__libtommatch_set01__tommath.h"
+#include "source/external/libtommath/set01/ibp_external__libtommath_set01__tommath.h"
 #include "source/ibp_memory.h"
 #include <structure/t_simple_buffer.h>
 
