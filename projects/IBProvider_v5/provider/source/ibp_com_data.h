@@ -50,11 +50,15 @@ class TIBP_ComModule::TData
   typedef thread_traits::lock_guard_type                  lock_guard_type;
 
  public:
-  ///Синхронизация модификаций счетчика компонент.
-  thread_traits::guard_type   m_active_component_count_guard;
+  ///Синхронизация модификаций счетчика блокировок модуля.
+  thread_traits::guard_type   m_module_lock_count_guard;
 
   ///Счетчик компонент
-  size_t volatile             m_active_component_count;
+  size_t volatile             m_module_lock_count;
+
+ public:
+  ///The count of components
+  size_t volatile             m_component_count;
 
  public:
   unsigned __int64            m_server_lock_count;

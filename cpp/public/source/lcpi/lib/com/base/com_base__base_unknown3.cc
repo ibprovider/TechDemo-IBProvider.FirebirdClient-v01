@@ -10,23 +10,30 @@ namespace lcpi{namespace lib{namespace com{namespace base{
 ////////////////////////////////////////////////////////////////////////////////
 //class TBaseUnknown3
 
-template<class SERVER_LINK,class Allocator>
-template<class ... TSERVER_LINK_ARGS>
-TBaseUnknown3<SERVER_LINK,Allocator>::TBaseUnknown3
-                             (IUnknown*         const pUnknownOuter,
-                              TSERVER_LINK_ARGS&& ... ServerLinkArgs)
+template<class TCOM_SERVER_LINK,class Allocator>
+template<class ... TCOM_SERVER_LINK_ARGS>
+TBaseUnknown3<TCOM_SERVER_LINK,Allocator>::TBaseUnknown3
+                             (IUnknown*             const pUnknownOuter,
+                              TCOM_SERVER_LINK_ARGS&& ... ComServerLinkArgs)
  :inherited(pUnknownOuter)
- ,m_ServerLink(std::forward<TSERVER_LINK_ARGS>(ServerLinkArgs)...)
+ ,m_ComServerLink(std::forward<TCOM_SERVER_LINK_ARGS>(ComServerLinkArgs)...)
 {
- m_ServerLink.IncrementComponentCount();
+ m_ComServerLink.IncrementComponentCount();
 }//TBaseUnknown3
 
 //------------------------------------------------------------------------
-template<class SERVER_LINK,class Allocator>
-TBaseUnknown3<SERVER_LINK,Allocator>::~TBaseUnknown3()
+template<class TCOM_SERVER_LINK,class Allocator>
+TBaseUnknown3<TCOM_SERVER_LINK,Allocator>::~TBaseUnknown3()
 {
- m_ServerLink.DecrementComponentCount();
+ m_ComServerLink.DecrementComponentCount();
 }//~TBaseUnknown3
+
+//------------------------------------------------------------------------
+template<class TCOM_SERVER_LINK,class Allocator>
+const TCOM_SERVER_LINK& TBaseUnknown3<TCOM_SERVER_LINK,Allocator>::GetComServerLink()const
+{
+ return m_ComServerLink;
+}//GetComServerLink
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms base*/}/*nms com*/}/*nms lib*/}/*nms lcpi*/

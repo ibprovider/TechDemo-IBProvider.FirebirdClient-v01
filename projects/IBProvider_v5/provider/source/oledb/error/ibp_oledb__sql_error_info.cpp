@@ -17,10 +17,11 @@ OLE_LIB__DEFINE_DEBUG_COM_LIVE(IBP_OLEDB__SQLErrorInfo)
 
 //------------------------------------------------------------------------
 IBP_OLEDB__SQLErrorInfo::IBP_OLEDB__SQLErrorInfo
-                                           (IUnknown*    const pUnkOuter,
-                                            str_arg_type const strSQLState,
-                                            LONG         const lNativeError)
- :inherited     (pUnkOuter)
+                             (IUnknown*             const pUnkOuter,
+                              const COM_SERVER_LINK_TYPE& ComServerLink,
+                              str_arg_type          const strSQLState,
+                              LONG                  const lNativeError)
+ :inherited     (pUnkOuter,ComServerLink)
  ,m_strSQLState (strSQLState.str())
  ,m_lNativeError(lNativeError)
 {
@@ -35,15 +36,17 @@ IBP_OLEDB__SQLErrorInfo::~IBP_OLEDB__SQLErrorInfo()
 
 //------------------------------------------------------------------------
 lib::com::base::IUnknownPtr
- IBP_OLEDB__SQLErrorInfo::Create(IUnknown*    const pUnkOuter,
-                                 str_arg_type const strSQLState,
-                                 LONG         const lNativeError)
+ IBP_OLEDB__SQLErrorInfo::Create(IUnknown*             const pUnkOuter,
+                                 const COM_SERVER_LINK_TYPE& ComServerLink,
+                                 str_arg_type          const strSQLState,
+                                 LONG                  const lNativeError)
 {
  const ole_lib::INondelegatingPtr2<self_type>
   spX
    (structure::not_null_ptr
      (new self_type
        (pUnkOuter,
+        ComServerLink,
         strSQLState,
         lNativeError)));
 

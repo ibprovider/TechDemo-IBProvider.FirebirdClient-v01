@@ -159,7 +159,9 @@ class t_ibp_error_element
   SLIB__DECLARE_SMART_OBJ_MANAGEMENT_METHODS__FINAL
 
   //interface ------------------------------------------------------------
-  virtual ole_lib::IUnknownPtr get_custom_error_object(IUnknown* pUnkOuter)const COMP_W000004_OVERRIDE_FINAL;
+  virtual ole_lib::IUnknownPtr get_custom_error_object
+                                (IUnknown*                   pUnkOuter,
+                                 const COM_SERVER_LINK_TYPE& ComServerLink)const COMP_W000004_OVERRIDE_FINAL;
 
   //interface ------------------------------------------------------------
   /// <summary>

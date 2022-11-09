@@ -872,6 +872,9 @@
     <Filter Include="lib\structure\debug">
       <UniqueIdentifier>{7eb9f38b-baf5-4ec1-b7c2-7373b85741bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IBP\source_lib\ole_lib">
+      <UniqueIdentifier>{02f612f7-efbc-42ff-9503-488d79cdb853}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3109,11 +3112,11 @@
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.cpp">
       <Filter>IBP\source\services\errors</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__base_unknown2.cpp">
-      <Filter>lib\ole_lib</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__memory_allocator.cpp">
       <Filter>lib\ole_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source_lib\ole_lib\ibp--ole_lib__base_unknown2.cpp">
+      <Filter>IBP\source_lib\ole_lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

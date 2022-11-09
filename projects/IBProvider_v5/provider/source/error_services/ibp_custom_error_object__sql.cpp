@@ -46,9 +46,15 @@ const std::string& t_ibp_custom_error_object__sql::get_sqlstate()const
 
 //------------------------------------------------------------------------
 lib::com::base::IUnknownPtr
- t_ibp_custom_error_object__sql::get_custom_error_object(IUnknown* const pUnkOuter)const
+ t_ibp_custom_error_object__sql::get_custom_error_object
+                             (IUnknown*             const pUnkOuter,
+                              const COM_SERVER_LINK_TYPE& ComServerLink)const
 {
- return oledb::IBP_OLEDB__SQLErrorInfo::Create(pUnkOuter,m_SQLState,m_lNativeError);
+ return oledb::IBP_OLEDB__SQLErrorInfo::Create
+         (pUnkOuter,
+          ComServerLink,
+          m_SQLState,
+          m_lNativeError);
 }//get_custom_error_object
 
 ////////////////////////////////////////////////////////////////////////////////

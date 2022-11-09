@@ -33,7 +33,6 @@ class TIBP_ComModule
 
  public:  //typedefs -----------------------------------------------------
   typedef structure::t_multi_thread_traits                thread_traits;
-  typedef unsigned __int64                                lock_count_type;
 
   typedef structure::t_string                             string_type;
   typedef structure::t_char                               char_type;
@@ -73,7 +72,9 @@ class TIBP_ComModule
   //!  Например, "IBProvider x.x.x.xxxxx [32-bit]"
   static string_type  GetProviderLabel();
 
-  static lock_count_type GetComponentCount();
+  static size_t GetModuleLockCount();
+
+  static size_t GetComponentCount();
 
   static bool DllCanUnloadNow();
 
@@ -87,8 +88,11 @@ class TIBP_ComModule
   static void CheckActiveState();
 #endif
 
-  static void IncrementComponentCount();
-  static void DecrementComponentCount();
+  static void IncrementModuleLockCount();
+  static void DecrementModuleLockCount();
+
+  static void IncrementComponentCount2();
+  static void DecrementComponentCount2();
 
   static void LockServer();
   static void UnlockServer();
@@ -122,9 +126,11 @@ class TIBP_ComModule
   static REFCLSID Get_CLSID_IBProviderDataLinkAdvPropPage__private();
 
  public:
-  static HRESULT CurrentExceptionHandler(REFCLSID ComponentID,
-                                         REFIID   InterfaceID,
-                                         bool     CreateErrInfo);
+  static HRESULT CurrentExceptionHandler
+                   (ole_lib::TBaseUnknown2* pRootInterface,
+                    REFCLSID                ComponentID,
+                    REFIID                  InterfaceID,
+                    bool                    CreateErrInfo);
 
  public:
 #ifdef IBP_BUILD_TESTCODE

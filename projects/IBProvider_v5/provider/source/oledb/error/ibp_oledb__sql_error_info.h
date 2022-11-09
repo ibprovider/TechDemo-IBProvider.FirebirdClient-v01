@@ -40,11 +40,13 @@ class IBP_OLEDB__SQLErrorInfo LCPI_CPP_CFG__CLASS__FINAL
   ///  Конструктор инициализации
   /// </summary>
   //! \param[in] pUnkOuter
+  //! \param[in] ComServerLink
   //! \param[in] strSQLState
   //! \param[in] lNativeError
-  IBP_OLEDB__SQLErrorInfo(IUnknown*    pUnkOuter,
-                          str_arg_type strSQLState,
-                          LONG         lNativeError);
+  IBP_OLEDB__SQLErrorInfo(IUnknown*                   pUnkOuter,
+                          const COM_SERVER_LINK_TYPE& ComServerLink,
+                          str_arg_type                strSQLState,
+                          LONG                        lNativeError);
 
   /// <summary>
   ///  Деструктор
@@ -56,13 +58,15 @@ class IBP_OLEDB__SQLErrorInfo LCPI_CPP_CFG__CLASS__FINAL
   ///  Конструирование COM-объекта
   /// </summary>
   //! \param[in] pUnkOuter
+  //! \param[in] ComServerLink
   //! \param[in] strSQLState
   //! \param[in] lNativeError
   //! \return
   //!  Полностью инициализированный COM-объект
-  static lib::com::base::IUnknownPtr Create(IUnknown*    pUnkOuter,
-                                            str_arg_type strSQLState,
-                                            LONG         lNativeError);
+  static lib::com::base::IUnknownPtr Create(IUnknown*                   pUnkOuter,
+                                            const COM_SERVER_LINK_TYPE& ComServerLink,
+                                            str_arg_type                strSQLState,
+                                            LONG                        lNativeError);
 
   //Root interface -------------------------------------------------------
   OLE_LIB__DECLARE_ROOT_INTERFACE

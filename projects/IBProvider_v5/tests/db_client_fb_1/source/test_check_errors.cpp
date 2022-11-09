@@ -7252,7 +7252,11 @@ bool TestCheckErrors::error_rec__check_sqlstate_and_native_code
 
  DECLARE_IPTR_TYPE(ISQLErrorInfo);
 
- const ISQLErrorInfoPtr spSQLErrorInfo(pErrElement->m_spGetCustomError->get_custom_error_object(nullptr));
+ const ISQLErrorInfoPtr
+  spSQLErrorInfo
+   (pErrElement->m_spGetCustomError->get_custom_error_object
+     (nullptr,
+      ole_lib::TBaseUnknown2__SERVER_LINK::Create_REAL()));
 
  if(!spSQLErrorInfo)
  {

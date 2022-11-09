@@ -21,8 +21,9 @@ LONG TIBP_ComModule::TData::sm_FlushLogFilePeriod=0;
 
 TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
  :m_ModulePath(win32lib::GetModuleFileName(hInstance))
- ,m_active_component_count_guard()
- ,m_active_component_count(0)
+ ,m_module_lock_count_guard()
+ ,m_module_lock_count(0)
+ ,m_component_count(0)
  ,m_server_lock_count(0)
  ,m_CLSID_IBProvider(CLSID_NULL)
  ,m_CLSID_IBProviderErrors(CLSID_NULL)
@@ -41,6 +42,17 @@ TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
 //------------------------------------------------------------------------
 TIBP_ComModule::TData::~TData()
 {
+ assert_msg
+  (m_module_lock_count==0,
+   "module_lock_count: "<<m_module_lock_count);
+
+ assert_msg
+  (m_component_count==0,
+   "component_count: "<<m_component_count);
+
+ assert_msg
+  (m_server_lock_count==0,
+   "server_lock_count: "<<m_server_lock_count);
 }//~TData
 
 //------------------------------------------------------------------------

@@ -14,6 +14,8 @@ namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class TBaseUnknown2__SERVER_LINK
 
+#ifndef OLE_LIB_NO_BASE_UNKNOWN2
+
 class TBaseUnknown2__SERVER_LINK LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
@@ -30,6 +32,8 @@ using TBaseUnknown2
 
 using TBaseUnknown2NPtr
  =INondelegatingPtr2<TBaseUnknown2>;
+
+#endif //OLE_LIB_NO_BASE_UNKNOWN2
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace ole_lib

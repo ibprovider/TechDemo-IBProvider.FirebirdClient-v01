@@ -78,12 +78,16 @@ std::string t_ibp_error_element::get_sqlstate()const
 }//get_sqlstate
 
 //t_ibp_get_custom_error_object interface --------------------------------
-ole_lib::IUnknownPtr t_ibp_error_element::get_custom_error_object(IUnknown* const pUnkOuter)const
+ole_lib::IUnknownPtr
+ t_ibp_error_element::get_custom_error_object(IUnknown*             const pUnkOuter,
+                                              const COM_SERVER_LINK_TYPE& ComServerLink)const
 {
  if(!m_spGetCustomError)
   return nullptr;
 
- return m_spGetCustomError->get_custom_error_object(pUnkOuter);
+ return m_spGetCustomError->get_custom_error_object
+          (pUnkOuter,
+           ComServerLink);
 }//get_custom_error_object
 
 //t_err_record interface -------------------------------------------------

@@ -189,7 +189,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\ole_auto_variant_type_info.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\variant\comparator\ole_auto_variant__comparator_context__std.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_base.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__base_unknown2.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__memory_allocator.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cc">
@@ -749,6 +748,7 @@
     <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha1.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha1__low_endian_4.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\structure\ibp_sha2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source_lib\ole_lib\ibp--ole_lib__base_unknown2.cpp" />
     <ClCompile Include="..\..\..\..\provider\source_lib\structure\internal\code\ibp--lcpi.lib.structure.internal.throw_error__parameter_list.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
     <ClCompile Include="..\..\source\push_test__exec_mt.cpp" />

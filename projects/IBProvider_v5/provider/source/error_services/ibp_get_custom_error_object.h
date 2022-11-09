@@ -23,14 +23,21 @@ namespace lcpi{namespace ibp{
 class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_get_custom_error_object:public lib::structure::t_smart_interface
 {
  public:
+  using COM_SERVER_LINK_TYPE
+   =ole_lib::TBaseUnknown2__SERVER_LINK;
+
+ public:
   /// <summary>
   ///  Получение CustomErrorObject
   /// </summary>
   //! \param[in] pUnkOuter
   //!  Указатель на контролирующий интерфейс. Can be null.
+  //! \param[in] ComServerLink
   //! \return
   //!  Can be null
-  virtual lib::com::base::IUnknownPtr get_custom_error_object(IUnknown* pUnkOuter)const=0;
+  virtual lib::com::base::IUnknownPtr get_custom_error_object
+                                           (IUnknown*                   pUnkOuter,
+                                            const COM_SERVER_LINK_TYPE& ComServerLink)const=0;
 };//class t_ibp_get_custom_error_object
 
 ////////////////////////////////////////////////////////////////////////////////

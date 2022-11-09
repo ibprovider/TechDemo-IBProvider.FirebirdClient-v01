@@ -14,6 +14,8 @@ namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class TBaseUnknown2__SERVER_LINK
 
+#ifndef OLE_LIB_NO_BASE_UNKNOWN2
+
 void TBaseUnknown2__SERVER_LINK::IncrementComponentCount()
 {
  _Module.IncrementComponentCount();
@@ -24,6 +26,8 @@ void TBaseUnknown2__SERVER_LINK::DecrementComponentCount()
 {
  _Module.DecrementComponentCount();
 }//DecrementComponentCount
+
+#endif //OLE_LIB_NO_BASE_UNKNOWN2
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace ole_lib

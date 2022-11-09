@@ -245,9 +245,12 @@ void t_ibp_error::add_limit_event()
 t_ibp_error& t_ibp_error::add_error(HRESULT const err_code,
                                     mc_type const msg_code)
 {
- error_record_ptr
-  x(structure::not_null_ptr(new error_record_type(err_code,
-                                                  msg_code)));
+ error_record_ptr x
+  (structure::not_null_ptr
+    (new error_record_type
+      (err_code,
+       msg_code)));
+
  assert(x);
 
  m_errors.push_back(x);

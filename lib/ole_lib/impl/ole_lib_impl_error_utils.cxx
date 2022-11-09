@@ -261,9 +261,11 @@ HRESULT OLE_MapCurrentExceptionToHRESULT()
 # error "OLE_LIB__CURRENT_EXCEPTION_HANDLER not defined!"
 #endif
 
- return OLE_LIB__CURRENT_EXCEPTION_HANDLER(CLSID_NULL,
-                                           IID_NULL,
-                                           /*CreateErrInfo*/false);
+ return OLE_LIB__CURRENT_EXCEPTION_HANDLER
+         (static_cast<IUnknown*>(nullptr),
+          CLSID_NULL,
+          IID_NULL,
+          /*CreateErrInfo*/false);
 }//OLE_MapCurrentExceptionToHRESULT
 
 ////////////////////////////////////////////////////////////////////////////////

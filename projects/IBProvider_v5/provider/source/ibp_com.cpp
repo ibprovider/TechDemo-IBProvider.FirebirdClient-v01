@@ -87,18 +87,19 @@ void TIBP_ComModule::Term()
 
   if(sm_pData!=NULL)
   {
-   if(auto const active_component_count=sm_pData->m_active_component_count)
+   if(auto const module_lock_count=sm_pData->m_module_lock_count)
    {
-    assert_hint(active_component_count!=0);
+    assert_hint(module_lock_count!=0);
 
-    assert(active_component_count>0); //[2018-12-24]
+    assert(module_lock_count>0); //[2018-12-24]
 
-    DebugMessage("COM MODULE HAS LEAKS "
-                 "["<<active_component_count<<"]"
+    DebugMessage("COM MODULE HAS ACTIVE LOCKS "
+                 "["<<module_lock_count<<"]"
                  " "<<structure::tstr_to_str(ModuleName));
 
     assert_msg(false,
-               "active_component_count: "<<active_component_count);
+               "module_lock_count: "<<module_lock_count<<". "
+               "component_count: "<<sm_pData->m_component_count);
    }//if
   }//if
  }
@@ -107,17 +108,33 @@ void TIBP_ComModule::Term()
 #endif //DebugMessage
 
 #ifndef NDEBUG
- if(sm_pData!=NULL)
+ if(sm_pData!=nullptr)
  {
-  if(auto const active_component_count=sm_pData->m_active_component_count)
+  if(auto const module_lock_count=sm_pData->m_module_lock_count)
   {
-   assert_hint(active_component_count!=0);
+   assert_hint(module_lock_count!=0);
 
-   assert(active_component_count>0); //[2018-12-24]
+   assert(module_lock_count>0); //[2018-12-24]
 
    assert_msg(false,
-              "active_component_count: "<<active_component_count);
+              "module_lock_count: "<<module_lock_count<<". "
+              "component_count: "<<sm_pData->m_component_count);
   }//if
+
+  assert(sm_pData->m_module_lock_count==0);
+
+  if(auto const component_count=sm_pData->m_component_count)
+  {
+   assert_hint(component_count!=0);
+
+   assert(component_count>0); //[2022-11-08]
+
+   assert_msg(false,
+              "module_lock_count: "<<sm_pData->m_module_lock_count<<". "
+              "component_count: "<<component_count);
+  }//if
+
+  assert(sm_pData->m_component_count==0);
 
   if(auto const server_lock_count=sm_pData->m_server_lock_count)
   {
@@ -128,7 +145,9 @@ void TIBP_ComModule::Term()
    assert_msg(false,
               "server_lock_count: "<<server_lock_count);
   }//if
- }//if sm_pData!=0
+
+  assert(sm_pData->m_server_lock_count==0);
+ }//if sm_pData!=nullptr
 #endif
 
 #ifndef IBP_BUILD_TESTCODE
@@ -205,7 +224,7 @@ TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
 
 bool TIBP_ComModule::DEBUG__ModuleIsActive()
 {
- return self_type::GetComponentCount()!=0;
+ return self_type::GetModuleLockCount()!=0;
 }//DEBUG__ModuleIsActive
 
 #endif // !NDEBUG
@@ -215,25 +234,33 @@ bool TIBP_ComModule::DEBUG__ModuleIsActive()
 
 bool TIBP_ComModule::DEBUG__ModuleIsShutdown()
 {
- return self_type::GetComponentCount()==0;
+ return self_type::GetModuleLockCount()==0;
 }//DEBUG__ModuleIsShutdown
 
 #endif // !NDEBUG
 
 //------------------------------------------------------------------------
-TIBP_ComModule::lock_count_type TIBP_ComModule::GetComponentCount()
+size_t TIBP_ComModule::GetModuleLockCount()
 {
- assert(sm_pData!=NULL);
+ assert(sm_pData!=nullptr);
 
- return sm_pData->m_active_component_count;
+ return sm_pData->m_module_lock_count;
+}//GetModuleLockCount
+
+//------------------------------------------------------------------------
+size_t TIBP_ComModule::GetComponentCount()
+{
+ assert(sm_pData!=nullptr);
+
+ return sm_pData->m_component_count;
 }//GetComponentCount
 
 //------------------------------------------------------------------------
 bool TIBP_ComModule::DllCanUnloadNow()
 {
- assert(sm_pData!=NULL);
+ assert(sm_pData!=nullptr);
 
- if(sm_pData->m_active_component_count!=0)
+ if(sm_pData->m_module_lock_count!=0)
   return false;
 
  if(sm_pData->m_server_lock_count!=0)
@@ -247,36 +274,36 @@ bool TIBP_ComModule::DllCanUnloadNow()
 
 void TIBP_ComModule::CheckActiveState()
 {
- if(self_type::GetComponentCount()==0)
+ if(self_type::GetModuleLockCount()==0)
  {
   t_ibp_error__com_module_is_shutdown::throw_error();
  }//if
 
- assert(self_type::GetComponentCount()>0);
+ assert(self_type::GetModuleLockCount()>0);
 }//CheckActiveState
 
 #endif
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::IncrementComponentCount()
+void TIBP_ComModule::IncrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_active_component_count_guard);
+ const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
 
- lib::structure::mt::interlocked::increment(&sm_pData->m_active_component_count);
-}//IncrementComponentCount
+ lib::structure::mt::interlocked::increment(&sm_pData->m_module_lock_count);
+}//IncrementModuleLockCount
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::DecrementComponentCount()
+void TIBP_ComModule::DecrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_active_component_count_guard);
+ const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
 
- assert(sm_pData->m_active_component_count>0);
+ assert(sm_pData->m_module_lock_count>0);
 
- if(lib::structure::mt::interlocked::decrement(&sm_pData->m_active_component_count)!=0)
+ if(lib::structure::mt::interlocked::decrement(&sm_pData->m_module_lock_count)!=0)
   return;
 
 #ifndef IBP_BUILD_TESTCODE
@@ -287,7 +314,25 @@ void TIBP_ComModule::DecrementComponentCount()
 
  //---
  return;
-}//DecrementComponentCount
+}//DecrementModuleLockCount
+
+//------------------------------------------------------------------------
+void TIBP_ComModule::IncrementComponentCount2()
+{
+ assert(sm_pData!=nullptr);
+
+ lib::structure::mt::interlocked::increment(&sm_pData->m_component_count);
+}//IncrementComponentCount2
+
+//------------------------------------------------------------------------
+void TIBP_ComModule::DecrementComponentCount2()
+{
+ assert(sm_pData!=nullptr);
+
+ assert(sm_pData->m_component_count>0);
+
+ lib::structure::mt::interlocked::decrement(&sm_pData->m_component_count);
+}//DecrementComponentCount2
 
 //------------------------------------------------------------------------
 void TIBP_ComModule::LockServer()
@@ -447,9 +492,10 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
 //------------------------------------------------------------------------
 #ifndef IBP_BUILD_TESTCODE
 
-HRESULT TIBP_ComModule::CurrentExceptionHandler(REFCLSID   ComponentID,
-                                                REFIID     InterfaceID,
-                                                bool const CreateErrInfo)
+HRESULT TIBP_ComModule::CurrentExceptionHandler(ole_lib::TBaseUnknown2* const pRootInterface,
+                                                REFCLSID                      ComponentID,
+                                                REFIID                        InterfaceID,
+                                                bool const                    CreateErrInfo)
 {
  try
  {
@@ -457,10 +503,11 @@ HRESULT TIBP_ComModule::CurrentExceptionHandler(REFCLSID   ComponentID,
   {
    throw;
   }
-  catch(std::exception& exc)
+  catch(const std::exception& exc)
   {
    return oledb::IBP_OLEDBErrorExceptionHandler
-           (ComponentID,
+           (pRootInterface,
+            ComponentID,
             InterfaceID,
             &exc,
             CreateErrInfo);
@@ -468,7 +515,8 @@ HRESULT TIBP_ComModule::CurrentExceptionHandler(REFCLSID   ComponentID,
   catch(...)
   {
    return oledb::IBP_OLEDBErrorExceptionHandler
-           (ComponentID,
+           (pRootInterface,
+            ComponentID,
             InterfaceID,
             nullptr,
             CreateErrInfo);

@@ -27,7 +27,13 @@
 // OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO
 //  - 0 no t_base_com_error::set_error_info method
 //  - 1 generate t_base_com_error::set_error_info method
-
+//
+// OLE_LIB_NO_BASE_UNKNOWN2
+//  - Exclude definition
+//     ole_lib::TBaseUnknown2
+//     ole_lib::TBaseUnknown2__SERVER_LINK
+//     ole_lib::TBaseUnknown2NPtr
+//
 ////////////////////////////////////////////////////////////////////////////////
 #ifdef _USE_ATL_
 # define OLE_LIB_NO_COM_MODULE

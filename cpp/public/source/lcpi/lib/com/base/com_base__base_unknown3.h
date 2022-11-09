@@ -11,12 +11,12 @@ namespace lcpi{namespace lib{namespace com{namespace base{
 //class TBaseUnknown3
 
 //
-// SERVER_LINK
+// TCOM_SERVER_LINK
 //  - void IncrementComponentCount()
 //  - void DecrementComponentCount()
 //
 
-template<class SERVER_LINK,class Allocator>
+template<class TCOM_SERVER_LINK,class Allocator>
 class TBaseUnknown3:public TBaseUnknown3A<Allocator>
 {
  private:
@@ -27,13 +27,16 @@ class TBaseUnknown3:public TBaseUnknown3A<Allocator>
   self_type& operator = (const self_type&)=delete;
 
  public:
-  template<class ... TSERVER_LINK_ARGS>
-  explicit TBaseUnknown3(IUnknown* pUnknownOuter,TSERVER_LINK_ARGS&& ... ServerLinkArgs);
+  template<class ... TCOM_SERVER_LINK_ARGS>
+  explicit TBaseUnknown3(IUnknown* pUnknownOuter,TCOM_SERVER_LINK_ARGS&& ... ComServerLinkArgs);
 
   virtual ~TBaseUnknown3();
 
+  //interface ------------------------------------------------------------
+  const TCOM_SERVER_LINK& GetComServerLink()const;
+
  private:
-  SERVER_LINK m_ServerLink;
+  TCOM_SERVER_LINK m_ComServerLink;
 };//class TBaseUnknown3
 
 ////////////////////////////////////////////////////////////////////////////////

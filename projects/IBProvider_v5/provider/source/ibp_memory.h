@@ -25,12 +25,12 @@ using IBP_SmartInterface
 
 //------------------------------------------------------------------------
 #define IBP_DEF_INTERFACE_IMPL_DYNAMIC(Interface)                         \
- lcpi::lib::structure::t_basic_smart_interface_impl__dynamic              \
-  <Interface,ibp::IBP_MemoryAllocator>
+ ::lcpi::lib::structure::t_basic_smart_interface_impl__dynamic            \
+  <Interface,::lcpi::ibp::IBP_MemoryAllocator>
 
 //------------------------------------------------------------------------
 #define IBP_DEF_INTERFACE_IMPL_STATIC(Interface)                          \
- lcpi::lib::structure::t_basic_smart_interface_impl__static_v2            \
+ ::lcpi::lib::structure::t_basic_smart_interface_impl__static_v2          \
   <Interface>
 
 ////////////////////////////////////////////////////////////////////////////////
