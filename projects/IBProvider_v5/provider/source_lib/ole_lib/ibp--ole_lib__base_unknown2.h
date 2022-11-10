@@ -8,7 +8,7 @@
 
 #include <ole_lib/ole_lib__memory_allocator.h>
 
-#include <lcpi/lib/com/base/com_base__base_unknown3.h>
+#include <lcpi/lib/com/base/com_base__base_unknown3a.h>
 
 namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////

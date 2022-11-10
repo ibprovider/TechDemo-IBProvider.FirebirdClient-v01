@@ -12,7 +12,6 @@
 
 #include "rc/ibp_msg_err_ids.rh"
 
-#include <ole_lib/oledb/variant/oledb_variant.h>
 #include <ole_lib/ole_auto/ole_auto_variant.h>
 
 #include <structure/t_str_formatter.h>
@@ -325,14 +324,12 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
      fmsg<<ole_lib::BStrToBox(bstrValue.bstr());
 
     continue;
-   }
+   }//if
 
    fmsg<<L"[unk arg object]";
 
    continue;
   }//if - вложенная ошибка
-
-  oledb_lib::t_oledb_value__CPP_WSTR_n wstrN;
 
   switch(pv->vt)
   {

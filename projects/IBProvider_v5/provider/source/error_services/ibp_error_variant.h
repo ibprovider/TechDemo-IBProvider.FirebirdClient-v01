@@ -8,7 +8,6 @@
 #define _ibp_error_variant_H_
 
 #include "source/error_services/ibp_error_codes.h"
-#include "source/ibp_memory.h"
 
 #include <lcpi/lib/structure/error/t_err_record.h>
 #include <lcpi/lib/structure/error/t_err_text.h>

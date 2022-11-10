@@ -85,7 +85,7 @@ void TIBP_ComModule::Term()
   DebugMessage("TIBP_ComModule::Term "
                "["<<structure::tstr_to_str(ModuleName)<<"]");
 
-  if(sm_pData!=NULL)
+  if(sm_pData!=nullptr)
   {
    if(auto const module_lock_count=sm_pData->m_module_lock_count)
    {
@@ -309,6 +309,7 @@ void TIBP_ComModule::DecrementModuleLockCount()
 #ifndef IBP_BUILD_TESTCODE
  ///Уведомляем пул глобальных объектов об освобождении последней блокировки
  ///COM-модуля. Будут остановлены менеджеры рабочих потоков.
+
  IBP_GlobalObjects::ReleaseLastModuleLock();
 #endif
 
