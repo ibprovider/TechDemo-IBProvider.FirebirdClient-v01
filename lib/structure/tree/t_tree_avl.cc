@@ -157,7 +157,7 @@ template<class T,class Compare,class Allocator>
  t_tree_avl<T,Compare,Allocator>::find(const U& value)const
 {
  return const_iterator(this,this->find_node(value));
-}//find
+}//find - const
 
 //------------------------------------------------------------------------
 template<class T,class Compare,class Allocator>
@@ -171,7 +171,7 @@ template<class T,class Compare,class Allocator>
  assert(top.get_current()->debug__get_tree_head()==m_head);
 
  return iterator(this,this->find_node_within(top.get_current(),value));
-}//find
+}//find_within
 
 //------------------------------------------------------------------------
 template<class T,class Compare,class Allocator>
@@ -185,7 +185,7 @@ template<class T,class Compare,class Allocator>
  assert(top.get_current()->debug__get_tree_head()==m_head);
 
  return const_iterator(this,this->find_node_within(top.get_current(),value));
-}//find
+}//find_within - const
 
 //modifictors ------------------------------------------------------------
 template<class T,class Compare,class Allocator>
