@@ -196,23 +196,64 @@ typename t_typed_simple_buffer<T,Allocator>::const_pointer
 
 //------------------------------------------------------------------------
 template<class T,class Allocator>
+typename t_typed_simple_buffer<T,Allocator>::reference
+ t_typed_simple_buffer<T,Allocator>::front()
+{
+ assert(!this->empty());
+
+ return *m_buffer;
+}//front
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+typename t_typed_simple_buffer<T,Allocator>::reference
+ t_typed_simple_buffer<T,Allocator>::back()
+{
+ assert(!this->empty());
+
+ return m_buffer[m_size-1];
+}//back
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+typename t_typed_simple_buffer<T,Allocator>::const_reference
+ t_typed_simple_buffer<T,Allocator>::front()const
+{
+ assert(!this->empty());
+
+ return *m_buffer;
+}//front - const
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+typename t_typed_simple_buffer<T,Allocator>::const_reference
+ t_typed_simple_buffer<T,Allocator>::back()const
+{
+ assert(!this->empty());
+
+ return m_buffer[m_size-1];
+}//back - const
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
 typename t_typed_simple_buffer<T,Allocator>::pointer
  t_typed_simple_buffer<T,Allocator>::alloc(size_type const sz)
 {
  assert(m_size<=m_capacity);
 
- if(sz<=m_capacity)
+ if(sz>m_capacity)
  {
-  m_size=sz;
- }
- else
- {
+  pointer const p=m_alloc.allocate(sz);
+
   this->free();
 
-  m_buffer   =m_alloc.allocate(sz);
-  m_size     =sz;
+  m_buffer   =p;
   m_capacity =sz;
- }
+ }//if
+
+ m_size=sz;
+
+ assert(m_size<=m_capacity);
 
  CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
 
@@ -226,43 +267,58 @@ typename t_typed_simple_buffer<T,Allocator>::pointer
 {
  assert(m_size<=m_capacity);
 
- if(sz<=m_capacity)
+ this->reserve(sz);
+
+ assert(sz<=m_capacity);
+
+ m_size=sz;
+
+ return this->buffer();
+}//realloc
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+typename t_typed_simple_buffer<T,Allocator>::pointer
+ t_typed_simple_buffer<T,Allocator>::reserve(size_type const new_capacity)
+{
+ assert(m_size<=m_capacity);
+
+ if(new_capacity<=m_capacity)
  {
-  m_size=sz;
+  //OK
  }
  else
  {
-  pointer new_buffer=pointer();
+  assert(m_capacity<new_capacity);
+
+  pointer new_buffer=m_alloc.allocate(new_capacity); //throw
+
+  CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
 
   try
   {
-   new_buffer=m_alloc.allocate(sz);
-
-   CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
-
    _VERIFY_EQ(structure::copy(m_buffer,
                               m_buffer+m_size,
                               new_buffer,
-                              new_buffer+sz).first,
+                              new_buffer+new_capacity).first,
               m_buffer+m_size);
   }
   catch(...)
   {
-   m_alloc.deallocate(new_buffer,sz);
+   m_alloc.deallocate(new_buffer,new_capacity);
    throw;
   }
 
   this->free();
 
   m_buffer   =new_buffer;
-  m_size     =sz;
-  m_capacity =sz;
+  m_capacity =new_capacity;
  }//if
 
  CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
 
  return this->buffer();
-}//realloc
+}//reserve
 
 //------------------------------------------------------------------------
 template<class T,class Allocator>
