@@ -5,7 +5,9 @@
 #ifndef _structure_charsets_t_cs_utf_fss_H_
 #define _structure_charsets_t_cs_utf_fss_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
+
+#include <utility> //std::pair
 
 namespace structure{namespace charsets{namespace cs_utf_fss{
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +30,8 @@ enum tag_cs_cvt_result
  cs_cvt_result__trunc_input       =2,
  cs_cvt_result__small_output      =3,
  cs_cvt_result__bad_input_packing =4,
+
+ cs_cvt_result__overflow          =5,
 };//enum tag_cs_cvt_result
 
 typedef tag_cs_cvt_result t_cs_cvt_result;
@@ -81,6 +85,20 @@ TForwardIterator fss_to_ucs2(TForwardIterator        source_beg,
                              TForwardIterator        source_end,
                              TDestIterator           dest,
                              /*out*/t_cs_cvt_result* cvt_result);
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<class TForwardIterator>
+std::pair<size_t,t_cs_cvt_result>
+ length_of_ucs2_as_fss(TForwardIterator source_beg,
+                       TForwardIterator source_end,
+                       size_t           max_fss_length);
+
+//------------------------------------------------------------------------
+template<class TForwardIterator>
+std::pair<size_t,t_cs_cvt_result>
+ length_of_ucs2_as_fss(TForwardIterator source_beg,
+                       TForwardIterator source_end);
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms cs_utf_fss*/}/*nms charsets*/}/*nms structure*/

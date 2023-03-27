@@ -4,6 +4,9 @@
 #ifndef _structure_charsets_t_cs_utf_fss_CC_
 #define _structure_charsets_t_cs_utf_fss_CC_
 
+#include <lcpi/lib/structure/debug/assert.h>
+#include <limits>
+
 namespace structure{namespace charsets{namespace cs_utf_fss{
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -502,6 +505,86 @@ TForwardIterator fss_to_ucs2(TForwardIterator       source_beg,
 
  return source_beg; 
 }//utf8_to_ucs2
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<class TForwardIterator>
+std::pair<size_t,t_cs_cvt_result>
+ length_of_ucs2_as_fss(TForwardIterator source_beg,
+                       TForwardIterator source_end,
+                       size_t     const max_fss_length)
+{
+ size_t total_sz_utf_fss=0;
+
+ for(;source_beg!=source_end;++source_beg)
+ {
+  LCPI__assert(total_sz_utf_fss<=max_fss_length);
+
+  const traits::UCS2 wc=*source_beg;
+
+  LCPI__assert(wc==0 || wc>0);
+
+  size_t sz_utf_fss=0;
+
+  if(wc<0x0080)
+  {
+   //1 byte sequence
+
+   //* Bits  Hex Min  Hex Max  Byte Sequence in Binary
+   //*   7  00000000 0000007F 0vvvvvvv
+
+   sz_utf_fss=1;
+  }
+  else
+  if(wc<0x0800)
+  {
+   //2 byte sequence
+   //* Bits  Hex Min  Hex Max  Byte Sequence in Binary
+   //*  11  00000080 000007FF 110vvvvv 10vvvvvv
+
+   sz_utf_fss=2;
+  }
+  else
+  if(wc<0x10000)
+  {
+   //3 byte sequence
+   //* Bits  Hex Min  Hex Max  Byte Sequence in Binary
+   //*  16  00000800 0000FFFF 1110vvvv 10vvvvvv 10vvvvvv
+
+   sz_utf_fss=3;
+  }
+  else
+  {
+   return std::make_pair(0,cs_cvt_result__bad_input);
+  }//else
+
+  //again
+  LCPI__assert(total_sz_utf_fss<=max_fss_length);
+
+  if((max_fss_length-total_sz_utf_fss)<sz_utf_fss)
+  {
+   return std::make_pair(0,cs_cvt_result__overflow);
+  }
+
+  total_sz_utf_fss+=sz_utf_fss;
+ }//for
+
+ LCPI__assert(source_beg==source_end);
+
+ return std::make_pair(total_sz_utf_fss,cs_cvt_result__ok);
+}//length_of_ucs2_as_fss
+
+//------------------------------------------------------------------------
+template<class TForwardIterator>
+std::pair<size_t,t_cs_cvt_result>
+ length_of_ucs2_as_fss(TForwardIterator source_beg,
+                       TForwardIterator source_end)
+{
+ return length_of_ucs2_as_fss
+         (source_beg,
+          source_end,
+          (std::numeric_limits<size_t>::max)());
+}//length_of_ucs2_as_fss
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms cs_utf_fss*/}/*nms charsets*/}/*nms structure*/
