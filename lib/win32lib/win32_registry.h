@@ -252,6 +252,8 @@ class TRegistry::TKey
 
   TKey();
 
+  TKey(self_type&& Key);
+
   TKey(HKEY hKey,bool _call_close);
 
  ~TKey();
@@ -456,6 +458,14 @@ inline TRegistry::TKey::TKey()
  :m_hKey(NULL)
  ,call_close(true)
 {;}
+
+//------------------------------------------------------------------------
+inline TRegistry::TKey::TKey(TKey&& Key)
+ :m_hKey(Key.m_hKey)
+ ,call_close(Key.call_close)
+{
+ Key.m_hKey=NULL;
+}
 
 //------------------------------------------------------------------------
 inline TRegistry::TKey::TKey(HKEY hKey,bool _call_close)
