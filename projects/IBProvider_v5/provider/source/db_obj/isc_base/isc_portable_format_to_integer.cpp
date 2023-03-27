@@ -633,10 +633,10 @@ bool isc_portable_format_to_integer::helper__to_integerN__generic__signed
 
 //------------------------------------------------------------------------
 void isc_portable_format_to_integer::helper__throw_error__bad_format
-                                           (ibp::t_ibp_subsystem_id subsystem,
-                                            const wchar_t*          value_sign,
-                                            const wchar_t*          value_type_sign,
-                                            size_t                  buf_length)
+                                           (ibp::t_ibp_subsystem_id const subsystem,
+                                            const wchar_t*          const value_sign,
+                                            const wchar_t*          const value_type_sign,
+                                            size_t                  const buf_length)
 {
  assert(value_sign);
  assert(value_type_sign);
