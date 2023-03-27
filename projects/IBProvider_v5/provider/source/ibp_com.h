@@ -65,6 +65,13 @@ class TIBP_ComModule
   ///  Можно вызывать до инициализации
   static string_type GetModuleVersion(const char_type* const prefix=NULL);
 
+ public:
+  /// <summary>
+  ///  Getting an identifier of used COM API.
+  /// </summary>
+  static REFGUID GetComApiID();
+
+ public:
   /// <summary>
   ///  Формирование строки, содержащей название, версию и разрядность провайдера
   /// </summary>
@@ -98,7 +105,7 @@ class TIBP_ComModule
   static void UnlockServer();
 
 #ifndef IBP_BUILD_TESTCODE
-  static HRESULT GetClassObject(REFCLSID rclsid,REFIID riid,void** ppv);
+  static HRESULT GetClassObject(REFGUID rComApiID,REFCLSID rclsid,REFIID riid,void** ppv);
 #endif
 
  public: //получение параметров регистрации модуля в системе

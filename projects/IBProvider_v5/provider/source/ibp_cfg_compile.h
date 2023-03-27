@@ -59,6 +59,22 @@
 //
 //IBP_ENGINE_UPDATE_ROWSET
 //  - включить поддержку обновляемых множеств
+//
+//IBP_ENGINE_META_DATA_READER
+//  - [0,1] include metadata reader
+//
+//IBP_ENGINE_PREPARE_SERVICES
+//  - [0,1] include prepare services
+//
+//IBP_ENGINE_DB_INFO_SERVICES
+//  - [0,1] include db info services
+//
+//IBP_ENGINE_BLOB_SERVICES
+//  - [0,1] include blob services
+//
+//IBP_ENGINE_GLOBAL_OBJECTS
+//  - [0,1] build a global objects manager.
+//
 
 // определение типа компилятора
 # define IBP_COMP_ID_VISUALC             0x00020000
@@ -89,26 +105,68 @@
 # error Unknown IBP_PLATFORM_ID
 #endif
 
+#ifndef IBP_ENGINE_PREPARE_SERVICES
+# define IBP_ENGINE_PREPARE_SERVICES                       1
+#endif
+
+#ifndef IBP_ENGINE_DB_INFO_SERVICES
+# define IBP_ENGINE_DB_INFO_SERVICES                       1
+#endif
+
+#ifndef IBP_ENGINE_BLOB_SERVICES
+# define IBP_ENGINE_BLOB_SERVICES                          1
+#endif
+
+#ifndef IBP_ENGINE_GLOBAL_OBJECTS
+# define IBP_ENGINE_GLOBAL_OBJECTS                         1
+#endif
+
+//------------------------------------------------------------------------
+
 #if   (IBP_EDITION_ID==IBP_EDITION_ID__PROF) //-------------------- PROF
 
 # define IBP_BINARY_EDITION_SIGN                           prof
+
+#ifndef IBP_ENGINE_UPDATE_ROWSET
 # define IBP_ENGINE_UPDATE_ROWSET                          1
+#endif
+
 # define IBP_ENGINE_BMK_SIZE                               8
 # define IBP_ENGINE_DIRECT_FB                              1
+
+#ifndef IBP_ENGINE_META_DATA_READER
+# define IBP_ENGINE_META_DATA_READER                       1
+#endif
 
 #elif (IBP_EDITION_ID==IBP_EDITION_ID__FREE) //-------------------- FREE
 
 # define IBP_BINARY_EDITION_SIGN                           free
+
+#ifndef IBP_ENGINE_UPDATE_ROWSET
 # define IBP_ENGINE_UPDATE_ROWSET                          0
+#endif
+
 # define IBP_ENGINE_BMK_SIZE                               8
 # define IBP_ENGINE_DIRECT_FB                              1
+
+#ifndef IBP_ENGINE_META_DATA_READER
+# define IBP_ENGINE_META_DATA_READER                       0
+#endif
 
 #elif (IBP_EDITION_ID==IBP_EDITION_ID__LITE) //-------------------- LITE
 
 # define IBP_BINARY_EDITION_SIGN                           lite
+
+#ifndef IBP_ENGINE_UPDATE_ROWSET
 # define IBP_ENGINE_UPDATE_ROWSET                          0
+#endif
+
 # define IBP_ENGINE_BMK_SIZE                               sizeof(HROW)
 # define IBP_ENGINE_DIRECT_FB                              1
+
+#ifndef IBP_ENGINE_META_DATA_READER
+# define IBP_ENGINE_META_DATA_READER                       1
+#endif
 
 #else //----------------------------------------------------------- UNEXTECTED
 

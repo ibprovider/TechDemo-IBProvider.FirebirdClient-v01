@@ -29,7 +29,7 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Управляющие данные COM-модуля
 /// </summary>
-class TIBP_ComModule::TData
+class TIBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef TData                                           self_type;
@@ -48,6 +48,10 @@ class TIBP_ComModule::TData
   typedef structure::t_multi_thread_traits                thread_traits;
   typedef thread_traits::guard_type                       guard_type;
   typedef thread_traits::lock_guard_type                  lock_guard_type;
+
+ public:
+  ///Identifier of used COM API.
+  GUID m_ComApiID;
 
  public:
   ///Синхронизация модификаций счетчика блокировок модуля.
@@ -94,7 +98,7 @@ class TIBP_ComModule::TData
 
  public:
   /// <summary>
-  ///  Конструктор по-умолчанию
+  ///  The initializing constructor
   /// </summary>
   //! \param[in] hInstance
   explicit TData(HINSTANCE hInstance);
@@ -110,6 +114,8 @@ class TIBP_ComModule::TData
   const string_type& GetModuleName()const;
 
   static REFCLSID Get_CLSID_IBProvider__private();
+
+  static REFCLSID Get_CLSID_IBProviderErrorLookup__private();
 
   static REFCLSID Get_CLSID_IBProviderDataLinkPropPage__private();
 

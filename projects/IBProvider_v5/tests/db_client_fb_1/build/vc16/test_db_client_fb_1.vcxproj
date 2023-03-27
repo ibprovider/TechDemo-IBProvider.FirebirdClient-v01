@@ -172,6 +172,7 @@
     <ResourceCompile />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.cpp" />

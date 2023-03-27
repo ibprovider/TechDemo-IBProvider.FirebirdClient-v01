@@ -15,12 +15,13 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_ComModule::TData
 
- #ifdef _PROCESS_DEBUG_MESSAGE_
+#ifdef _PROCESS_DEBUG_MESSAGE_
 LONG TIBP_ComModule::TData::sm_FlushLogFilePeriod=0;
 #endif
 
 TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
- :m_ModulePath(win32lib::GetModuleFileName(hInstance))
+ :m_ComApiID(GUID_NULL)
+ ,m_ModulePath(win32lib::GetModuleFileName(hInstance))
  ,m_module_lock_count_guard()
  ,m_module_lock_count(0)
  ,m_component_count(0)
@@ -74,6 +75,17 @@ return IBP__BUILD_PRIVATE_CLSID
     IBP_BINARY_EDITION_SIGN,
     IBP_BINARY_CONFIGURATION_SIGN);
 }//Get_CLSID_IBProvider__private
+
+//------------------------------------------------------------------------
+REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProviderErrorLookup__private()
+{
+return IBP__BUILD_PRIVATE_CLSID
+   (ibprovider::CLSID_IBProviderErrorLookup__private__,
+    IBP_BINARY_COMPILER_SIGN,
+    IBP_BINARY_PLATFORM_SIGN,
+    IBP_BINARY_EDITION_SIGN,
+    IBP_BINARY_CONFIGURATION_SIGN);
+}//Get_CLSID_IBProviderErrorLookup__private
 
 //------------------------------------------------------------------------
 REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProviderDataLinkPropPage__private()
