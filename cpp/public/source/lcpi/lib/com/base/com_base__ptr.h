@@ -352,7 +352,7 @@ class IPtr2
 
   interface_type* ptr() const;
 
-  interface_type* &ref_ptr();
+  interface_type*& ref_ptr();
 
   structure::t_not_null_ptr<interface_type> not_null_ptr()const;
 
