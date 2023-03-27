@@ -238,7 +238,7 @@ LONG TRegistry::DeleteKey(HKEY         const key,
   if(info.MaxSubKeyLen==structure::t_numeric_limits<max_sub_key_name_len_type>::max_value())
    throw std::overflow_error("Overflow in TRegistry::DeleteKey");
 
-  t_char_buffer name(info.MaxSubKeyLen+1);
+  char_buffer_type name(info.MaxSubKeyLen+1);
 
   for(;;)
   {
