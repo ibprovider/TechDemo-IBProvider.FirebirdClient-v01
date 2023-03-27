@@ -68,6 +68,7 @@ enum t_oledb_typeid
  /*  139*/ oledb_typeid__VARNUMERIC       = DBTYPE_VARNUMERIC,
 
  /*  145*/ oledb_typeid__DBTIME2          = 145, //introduced in MSSQL 2008
+ /*  146*/ oledb_typeid__DBTIMESTAMPOFFSET= 146, //introduced in MSSQL 2008
 
  /*x1000*/ oledb_typeid__VECTOR           = DBTYPE_VECTOR,
  /*x2000*/ oledb_typeid__ARRAY            = DBTYPE_ARRAY,
@@ -191,6 +192,28 @@ struct tag_oledb_value__DBTIME2
 };//struct tag_oledb_value__DBTIME2
 
 typedef tag_oledb_value__DBTIME2       t_oledb_value__DBTIME2;
+
+#include <structure/t_comp_pop_pack.h>      // restore original structure packing
+
+////////////////////////////////////////////////////////////////////////////////
+//DBTIMESTAMPOFFSET
+
+#include <structure/t_comp_push_pack8.h>    // 8-byte structure packing
+
+struct tag_oledb_value__DBTIMESTAMPOFFSET
+{
+ SHORT  year;
+ USHORT month;
+ USHORT day;
+ USHORT hour;
+ USHORT minute;
+ USHORT second;
+ ULONG  fraction;
+ SHORT  timezone_hour;
+ SHORT  timezone_minute;
+};//struct tag_oledb_value__DBTIMESTAMPOFFSET
+
+typedef tag_oledb_value__DBTIMESTAMPOFFSET       t_oledb_value__DBTIMESTAMPOFFSET;
 
 #include <structure/t_comp_pop_pack.h>      // restore original structure packing
 
