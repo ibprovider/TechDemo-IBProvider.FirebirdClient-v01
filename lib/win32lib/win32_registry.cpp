@@ -225,7 +225,7 @@ LONG TRegistry::DeleteKey(HKEY         const key,
  if(const LONG lResult=KeyChild.OpenKeyEx(key,key_name,KEY_READ|KEY_WRITE))
   return lResult;
 
- // Enumerate all of the decendents of this child.
+ // Enumerating all the descendents of this child.
  TRegKeyInfo info;
 
  if(const LONG lResult=GetKeyInfo(KeyChild,info))
@@ -254,14 +254,17 @@ LONG TRegistry::DeleteKey(HKEY         const key,
 
    if(const LONG lResult=DeleteKey(KeyChild,name.buffer()))
     return lResult;
-  }//while
+  }//for[ever]
  }//if NumSubKeys!=0
 
  KeyChild.close();
 
  assert(KeyChild==NULL);
 
- return ::RegDeleteKey(key,key_name.str());//Delete this child.
+ //
+ // Deleting this child.
+ //
+ return ::RegDeleteKey(key,key_name.str());
 }//DeleteKey
 
 //------------------------------------------------------------------------
@@ -370,7 +373,9 @@ bool TRegistry::WriteString(HKEY         const key,
  if(cb_value>size_t(structure::t_numeric_limits<DWORD>::max_value()))
   throw std::length_error("Length error in TRegistry::WriteString");
 
- //length included terminated symbol
+ //
+ // length includes a terminated symbol
+ //
  const LONG lResult=::RegSetValueEx(key,
                                     name.str(),
                                     0,
