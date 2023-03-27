@@ -993,6 +993,24 @@ inline typename IPtr2<T>::interface_type*& IPtr2<T>::ref_ptr()
 
 //------------------------------------------------------------------------
 template<class T>
+inline IUnknown** IPtr2<T>::ppUnk()
+{
+ this->Release();
+
+ return reinterpret_cast<IUnknown**>(&m_ptr);
+}//ppUnk
+
+//------------------------------------------------------------------------
+template<class T>
+inline void** IPtr2<T>::ppv()
+{
+ this->Release();
+
+ return reinterpret_cast<void**>(&m_ptr);
+}//ppv
+
+//------------------------------------------------------------------------
+template<class T>
 inline
 structure::t_not_null_ptr<T> IPtr2<T>::not_null_ptr()const
 {

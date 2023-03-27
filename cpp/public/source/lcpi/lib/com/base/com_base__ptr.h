@@ -6,6 +6,8 @@
 
 #include <lcpi/lib/structure/t_not_null_ptr.h>
 
+#include <lcpi/infrastructure/os/windows-ole32.h>
+
 namespace lcpi{namespace lib{namespace com{namespace base{
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -353,6 +355,10 @@ class IPtr2
   interface_type* ptr() const;
 
   interface_type*& ref_ptr();
+
+  IUnknown** ppUnk();
+
+  void** ppv();
 
   structure::t_not_null_ptr<interface_type> not_null_ptr()const;
 
