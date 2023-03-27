@@ -187,7 +187,27 @@ template<class T,class Compare,class Allocator>
  return const_iterator(this,this->find_node_within(top.get_current(),value));
 }//find_within - const
 
-//modifictors ------------------------------------------------------------
+//------------------------------------------------------------------------
+template<class T,class Compare,class Allocator>
+ template<class U>
+ inline
+ typename t_tree_avl<T,Compare,Allocator>::iterator
+ t_tree_avl<T,Compare,Allocator>::lower_bound(const U& value)
+{
+ return iterator(this,this->lower_bound_node(value));
+}//lower_bound
+
+//------------------------------------------------------------------------
+template<class T,class Compare,class Allocator>
+ template<class U>
+ inline
+ typename t_tree_avl<T,Compare,Allocator>::const_iterator
+ t_tree_avl<T,Compare,Allocator>::lower_bound(const U& value)const
+{
+ return const_iterator(this,this->lower_bound_node(value));
+}//lower_bound - const
+
+//modificators -----------------------------------------------------------
 template<class T,class Compare,class Allocator>
 #if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
 template<class U>

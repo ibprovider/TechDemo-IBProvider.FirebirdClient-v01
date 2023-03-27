@@ -111,6 +111,24 @@ typename t_tree_avl_base<T,Compare,Allocator>::node_type*
 
 //------------------------------------------------------------------------
 template<class T,class Compare,class Allocator>
+template<class U>
+const typename t_tree_avl_base<T,Compare,Allocator>::node_type*
+ t_tree_avl_base<T,Compare,Allocator>::lower_bound_node(const U& value)const
+{
+ return this->helper__lower_bound_node(this,value);
+}//lower_bound_node - const
+
+//------------------------------------------------------------------------
+template<class T,class Compare,class Allocator>
+template<class U>
+typename t_tree_avl_base<T,Compare,Allocator>::node_type*
+ t_tree_avl_base<T,Compare,Allocator>::lower_bound_node(const U& value)
+{
+ return this->helper__lower_bound_node(this,value);
+}//lower_bound_node
+
+//------------------------------------------------------------------------
+template<class T,class Compare,class Allocator>
 template<class TREE,typename NODE,class U>
 NODE*
  t_tree_avl_base<T,Compare,Allocator>::helper__find_node_within(TREE* const pThis,
@@ -138,6 +156,34 @@ NODE*
 
  return nullptr;
 }//helper__find_node_within
+
+//------------------------------------------------------------------------
+template<class T,class Compare,class Allocator>
+template<class TREE,class U>
+typename TREE::node_type*
+ t_tree_avl_base<T,Compare,Allocator>::helper__lower_bound_node(TREE* const pThis,
+                                                                const U&    value)
+{
+ assert(pThis);
+
+ typename TREE::node_type* whereNode = nullptr;
+
+ for(auto* cur_node = pThis->m_head; cur_node;)
+ {
+  if(pThis->m_cmp(cur_node->m_key,value))
+  {
+   cur_node = cur_node->m_right;
+  }
+  else
+  {
+   whereNode = cur_node;
+
+   cur_node = cur_node->m_left;
+  }
+ }//for cur_node
+
+ return whereNode;
+}//helper__lower_bound_node
 
 //modifictors ------------------------------------------------------------
 template<class T,class Compare,class Allocator>

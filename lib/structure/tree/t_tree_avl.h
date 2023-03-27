@@ -86,6 +86,12 @@ class t_tree_avl COMP_W000006_CLASS_FINAL
   template<class U>
   const_iterator find_within(const_iterator top,const U&)const;
 
+  template<class U>
+  iterator lower_bound(const U&);
+
+  template<class U>
+  const_iterator lower_bound(const U&)const;
+
   //modificators ---------------------------------------------------------
  #if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
   template<class U>
