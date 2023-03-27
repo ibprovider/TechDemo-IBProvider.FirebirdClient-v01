@@ -6,8 +6,8 @@
 
 #include <lcpi/lib/com/base/com_base__nondelegating_unknown.h>
 
-#include <lcpi/lib/com/base/com_base__mac_help.hxx>
-#include <lcpi/lib/com/base/com_base__mac_debug.hxx>
+#include <lcpi/lib/com/base/com_base__mac_help.h>
+#include <lcpi/lib/com/base/com_base__mac_debug.h>
 #include <lcpi/lib/com/.config.h>
 
 #include <lcpi/lib/structure/cnt_ref_traits.h>

@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental C++ Library
-//                                                 Dmitry Kovalenko. 02.10.2019
-#ifndef _lcpi_lib_structure_utilities__to_hex_H_
-#define _lcpi_lib_structure_utilities__to_hex_H_
+//                                                 Dmitry Kovalenko. 28.01.2020
+#ifndef _lcpi_lib_structure_utilities__string__string_copy_H_
+#define _lcpi_lib_structure_utilities__string__string_copy_H_
 
-#include <lcpi/lib/structure/utilities/to_hex.h>
+#include <lcpi/lib/structure/utilities/string/string_copy.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -12,5 +12,5 @@ namespace structure{
 using namespace ::lcpi::lib::structure;
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/
 #endif

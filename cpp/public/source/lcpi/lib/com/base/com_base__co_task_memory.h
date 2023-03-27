@@ -1,19 +1,33 @@
 ////////////////////////////////////////////////////////////////////////////////
-//OLE Library implementation. Wrappers for CoTask Memory Allocation Functions
-//                                             Kovalenko Dmitry. 22.02.2010.
+//LCPI Instrumental Library for C++
+//                                                 Dmitry Kovalenko. 16.12.2022.
+#ifndef _cpp_public_lcpi_lib_com_base__co_task_memory_H_
+#define _cpp_public_lcpi_lib_com_base__co_task_memory_H_
 
+#include <lcpi/lib/structure/t_numeric_limits.h>
+
+#include <lcpi/infrastructure/os/windows-ole32.h>
+
+#include <exception>
+
+namespace lcpi{namespace lib{namespace com{namespace base{
 ////////////////////////////////////////////////////////////////////////////////
 
 void* OLE_CoTaskMemAlloc(SIZE_T sz,bool alloc_empty=false);
 
-void OLE_CoTaskMemFree(void* pv);
+////////////////////////////////////////////////////////////////////////////////
+
+inline void OLE_CoTaskMemFree(void* pv)
+{
+ return LCPI_OS__CoTaskMemFree(pv);
+}//OLE_CoTaskMemFree
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
 void OLE_CoTaskMemFreeAndSetNULL(T* &pv)
 {
- void* tmp=pv;
+ T* tmp=pv;
 
  pv=nullptr;
 
@@ -149,7 +163,12 @@ class cotask_memory_pointer
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#define CO_MEM_POINTER3(TYPE)               \
- ole_lib::cotask_memory_pointer<TYPE>
+#define OLE_LIB__CO_MEM_POINTER3(TYPE)               \
+ ::lcpi::lib::com::base::cotask_memory_pointer<TYPE>
+
+#define CO_MEM_POINTER3(TYPE)                        \
+ OLE_LIB__CO_MEM_POINTER3(TYPE)
 
 ////////////////////////////////////////////////////////////////////////////////
+}/*nms base*/}/*nms com*/}/*nms lib*/}/*nms lcpi*/
+#endif

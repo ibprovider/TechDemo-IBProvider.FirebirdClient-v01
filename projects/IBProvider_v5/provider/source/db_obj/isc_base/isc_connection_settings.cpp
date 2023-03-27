@@ -10,7 +10,7 @@
 #include "source/db_obj/isc_base/isc_connection_settings.h"
 #include "source/ibp_utils.h"
 
-#include <structure/t_str_like.h>
+#include <lcpi/lib/structure/utilities/string/is_like_str.h>
 #include <sstream>
 
 namespace lcpi{namespace ibp{namespace isc_base{
@@ -244,10 +244,11 @@ bool t_isc_connection_settings::is_boolean_domain(const db_obj::t_db_string& dom
  if(this->boolean_domain_name.empty())
   return false;
 
- return structure::is_like_str(_SQL_T('?'),
-                               _SQL_T('*'),
-                               domain_name,
-                               this->boolean_domain_name);
+ return lib::structure::is_like_str
+         (_SQL_T('?'),
+          _SQL_T('*'),
+          domain_name,
+          this->boolean_domain_name);
 }//is_boolean_domain
 
 //------------------------------------------------------------------------
@@ -256,10 +257,11 @@ bool t_isc_connection_settings::is_guid_domain(const db_obj::t_db_string& domain
  if(this->guid_domain_name.empty())
   return false;
 
- return structure::is_like_str(_SQL_T('?'),
-                               _SQL_T('*'),
-                               domain_name,
-                               this->guid_domain_name);
+ return lib::structure::is_like_str
+         (_SQL_T('?'),
+          _SQL_T('*'),
+          domain_name,
+          this->guid_domain_name);
 }//is_guid_domain
 
 //------------------------------------------------------------------------

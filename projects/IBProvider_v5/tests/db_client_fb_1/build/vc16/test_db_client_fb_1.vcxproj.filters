@@ -3118,6 +3118,9 @@
     <ClCompile Include="..\..\..\..\provider\source_lib\ole_lib\ibp--ole_lib__base_unknown2.cpp">
       <Filter>IBP\source_lib\ole_lib</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp">
+      <Filter>cpp\infrastructure\lcpi\lib\com\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">

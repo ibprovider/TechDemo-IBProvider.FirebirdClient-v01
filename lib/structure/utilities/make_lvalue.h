@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
-//alternative for std::numeric_limits
-//                                           Dmitry Kovalenko. 12 april, 2003.
-#ifndef _t_limits_H_
-#define _t_limits_H_
+//LCPI Instrumental C++ Library
+//                                                 Dmitry Kovalenko. 02.10.2019
+#ifndef _lcpi_lib_structure_utilities__make_lvalue_H_
+#define _lcpi_lib_structure_utilities__make_lvalue_H_
 
-#include <lcpi/lib/structure/t_numeric_limits.h>
+#include <lcpi/lib/structure/utilities/make_lvalue.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

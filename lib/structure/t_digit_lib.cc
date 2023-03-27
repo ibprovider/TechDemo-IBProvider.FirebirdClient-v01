@@ -5,6 +5,8 @@
 #ifndef _t_digit_lib_CC_
 #define _t_digit_lib_CC_
 
+#include <structure/t_zero.h>
+
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //template class t_fixed_precision_digit
@@ -20,7 +22,7 @@ t_fixed_precision_digit<N>::t_fixed_precision_digit()
 {
  assert_s(sizeof(t_accessor)==sizeof(m_digits[0]));
 
- std::fill(std::begin(m_digits),std::end(m_digits),0);
+ std::fill(std::begin(m_digits),std::end(m_digits),structure::zero);
 }//t_fixed_precision_digit
 
 //------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ void t_fixed_precision_digit<N>::init()
 {
  m_size=0;
 
- std::fill(std::begin(m_digits),std::end(m_digits),0);
+ std::fill(std::begin(m_digits),std::end(m_digits),structure::zero);
 }//init
 
 //------------------------------------------------------------------------------

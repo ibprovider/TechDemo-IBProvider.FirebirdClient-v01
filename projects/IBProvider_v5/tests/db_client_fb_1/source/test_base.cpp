@@ -5,7 +5,8 @@
 #include "source/test_base.h"
 #include "source/test_utilities.h"
 #include <structure/t_parameter_list.h>
-#include <structure/t_str_like.h>
+
+#include <lcpi/lib/structure/utilities/string/is_like_str.h>
 
 namespace ibp_test{
 ////////////////////////////////////////////////////////////////////////////////
@@ -235,12 +236,6 @@ bool TSYS_CommandLine::CanExec(const char* const pTestName)const
 
  const structure::t_string testName(structure::tstr_to_tstr(pTestName));
 
- typedef structure::t_str_like
-          <structure::t_string::const_iterator,
-           TSYS_CommandLine::cmd_line_parser_type::string_type::const_iterator> str_like_type;
-
- str_like_type str_like(_T('?'),_T('*'));
-
  bool has_masks=false;
 
  for(size_t i=0,_c=this->args().size();i!=_c;++i)
@@ -250,10 +245,11 @@ bool TSYS_CommandLine::CanExec(const char* const pTestName)const
 
   has_masks=true;
 
-  if(str_like.run(testName.cbegin(),
-                  testName.cend(),
-                  this->args()[i]->m_value.cbegin(),
-                  this->args()[i]->m_value.cend()))
+  if(lcpi::lib::structure::is_like_str
+      (_T('?'),
+       _T('*'),
+       testName,
+       this->args()[i]->m_value))
   {
    return true;
   }

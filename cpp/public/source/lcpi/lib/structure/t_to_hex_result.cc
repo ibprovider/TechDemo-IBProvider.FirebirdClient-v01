@@ -1,10 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _structure__t_to_hex_result_CC_
-#define _structure__t_to_hex_result_CC_
+//LCPI Instrumental Library for C++
+//                                                 Kovalenko Dmitry. 14.11.2022
+#ifndef _cpp_public_lcpi_lib_structure__t_to_hex_result_CC_
+#define _cpp_public_lcpi_lib_structure__t_to_hex_result_CC_
 
 #include <structure/t_char_traits2.h>
 
-namespace structure{
+namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_to_hex_result
 
@@ -44,5 +46,5 @@ void t_to_hex_result<charT,T>::set_term(size_t const index)
 }//set_term
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif
