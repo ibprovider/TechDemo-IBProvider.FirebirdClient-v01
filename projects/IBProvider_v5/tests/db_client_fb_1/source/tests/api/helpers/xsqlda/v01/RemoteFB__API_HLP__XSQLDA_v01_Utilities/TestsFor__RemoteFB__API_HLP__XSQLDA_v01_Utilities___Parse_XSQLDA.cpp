@@ -166,6 +166,15 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl
   static void test_B08__bug_check__not_def_xvar_field__aliasname
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+ public:
+  static void test_C01__truncated_after_completed_XSQLVAR_block
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_C02__truncated_second_block
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -412,7 +421,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__info_buf_err__transport_data_to_integer__size_t
    (tracer,
     exc.get_record(0),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     L"isc_info_sql_describe_vars",
     /*bufferSize*/9);
 
@@ -464,7 +473,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_err__too_many_vars
    (tracer,
     exc.get_record(0),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     structure::t_numeric_limits<unsigned __int32>::max_value(),
     SHRT_MAX);
 
@@ -890,7 +899,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -951,7 +960,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1197,12 +1206,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     -1);
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1257,6 +1267,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__incompleted_def_of_xvars
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     0,
     4);
 
@@ -1383,6 +1394,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__incompleted_def_of_xvars
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     1,
     4);
 
@@ -1456,12 +1468,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqltype");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1532,12 +1545,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlsubtype");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1608,12 +1622,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlscale");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1684,12 +1699,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqllen");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1757,12 +1773,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1830,12 +1847,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"relname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1903,12 +1921,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"ownname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -1976,12 +1995,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"aliasname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2108,12 +2128,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqltype");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2239,12 +2260,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlsubtype");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2370,12 +2392,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlscale");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2501,12 +2524,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqllen");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2632,12 +2656,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"sqlname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2763,12 +2788,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"relname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -2894,12 +2920,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"ownname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -3025,12 +3052,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
   errSvc::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
    (tracer,
     exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
     L"aliasname");
 
   errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_raw_data
    (tracer,
     exc.get_record(1),
-    errSvc::sm_subsysID__remote_fb_p12,
+    errSvc::sm_subsysID__remote_fb,
     0);
 
   return;
@@ -3038,6 +3066,271 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
 
  throw std::runtime_error("We wait the exception!");
 }//test_B08__bug_check__not_def_xvar_field__aliasname
+
+////////////////////////////////////////////////////////////////////////////////
+//C01
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl::test_C01__truncated_after_completed_XSQLVAR_block
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ tracer<<L"Hello from test!"<<send;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(4);
+
+ //-----------------------------------------
+ structure::t_fix_vector<128,unsigned char> buf;
+
+ buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
+ buf.push_back(1); // length_low
+ buf.push_back(0); // length_high
+ buf.push_back(2); // the total count of XSQLVARs
+
+ buf.push_back(isc_api::ibp_isc_info_sql_sqlda_seq);
+ buf.push_back(1); // ordinalNumber_low
+ buf.push_back(0); // ordinalNumber_high
+ buf.push_back(1); //
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_type);
+  buf.push_back(2);
+  buf.push_back(0);
+
+  isc_base::isc_integer_to_portable_format::tag_buffer<2> p;
+  isc_base::isc_integer_to_portable_format::exec<2,unsigned short>(&p,isc_api::ibp_isc_sql_long);
+  std::copy(p.data,_END_(p.data),std::back_inserter(buf));
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_sub_type);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(1);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_scale);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(0xFF);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_length);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(4);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_field);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back('A');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_relation);
+  buf.push_back(2);
+  buf.push_back(0);
+  buf.push_back('B');
+  buf.push_back('C');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_owner);
+  buf.push_back(3);
+  buf.push_back(0);
+  buf.push_back('D');
+  buf.push_back('E');
+  buf.push_back('F');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_alias);
+  buf.push_back(4);
+  buf.push_back(0);
+  buf.push_back('G');
+  buf.push_back('H');
+  buf.push_back('I');
+  buf.push_back('J');
+ }
+
+ buf.push_back(isc_api::ibp_isc_info_sql_describe_end);
+ buf.push_back(isc_api::ibp_isc_info_truncated);
+
+ /*will be ignored*/
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+
+ //-----------------------------------------
+ tracer<<L"Run!"<<send;
+
+ const auto parse_r
+  =remote_fb::api::helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
+    (buf.size(),
+     buf.data(),
+     /*is_first_info_block*/true,
+     0,
+     xsqlda);//throw
+
+ _TSO_CHECK(!parse_r.second);
+ _TSO_CHECK(parse_r.first==1);
+}//test_C01__truncated_after_completed_XSQLVAR_block
+
+////////////////////////////////////////////////////////////////////////////////
+//C02
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl::test_C02__truncated_second_block
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ tracer<<L"Hello from test!"<<send;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(4);
+
+ //-----------------------------------------
+ structure::t_fix_vector<128,unsigned char> buf;
+
+ buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
+ buf.push_back(1); // length_low
+ buf.push_back(0); // length_high
+ buf.push_back(2); // the total count of XSQLVARs
+
+ //----------------------------------------- FIRST BLOCK
+ buf.push_back(isc_api::ibp_isc_info_sql_sqlda_seq);
+ buf.push_back(1); // ordinalNumber_low
+ buf.push_back(0); // ordinalNumber_high
+ buf.push_back(1); //
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_type);
+  buf.push_back(2);
+  buf.push_back(0);
+
+  isc_base::isc_integer_to_portable_format::tag_buffer<2> p;
+  isc_base::isc_integer_to_portable_format::exec<2,unsigned short>(&p,isc_api::ibp_isc_sql_long);
+  std::copy(p.data,_END_(p.data),std::back_inserter(buf));
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_sub_type);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(1);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_scale);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(0xFF);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_length);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(4);
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_field);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back('A');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_relation);
+  buf.push_back(2);
+  buf.push_back(0);
+  buf.push_back('B');
+  buf.push_back('C');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_owner);
+  buf.push_back(3);
+  buf.push_back(0);
+  buf.push_back('D');
+  buf.push_back('E');
+  buf.push_back('F');
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_alias);
+  buf.push_back(4);
+  buf.push_back(0);
+  buf.push_back('G');
+  buf.push_back('H');
+  buf.push_back('I');
+  buf.push_back('J');
+ }
+
+ buf.push_back(isc_api::ibp_isc_info_sql_describe_end);
+
+ //----------------------------------------- SECOND BLOCK
+ buf.push_back(isc_api::ibp_isc_info_sql_sqlda_seq);
+ buf.push_back(1); // ordinalNumber_low
+ buf.push_back(0); // ordinalNumber_high
+ buf.push_back(2); //
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_type);
+  buf.push_back(2);
+  buf.push_back(0);
+
+  isc_base::isc_integer_to_portable_format::tag_buffer<2> p;
+  isc_base::isc_integer_to_portable_format::exec<2,unsigned short>(&p,isc_api::ibp_isc_sql_short);
+  std::copy(p.data,_END_(p.data),std::back_inserter(buf));
+ }
+
+ {
+  buf.push_back(isc_api::ibp_isc_info_sql_sub_type);
+  buf.push_back(1);
+  buf.push_back(0);
+  buf.push_back(1);
+ }
+
+ buf.push_back(isc_api::ibp_isc_info_truncated);
+
+ /*will be ignored*/
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+
+ //-----------------------------------------
+ tracer<<L"Run!"<<send;
+
+ const auto parse_r
+  =remote_fb::api::helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
+    (buf.size(),
+     buf.data(),
+     /*is_first_info_block*/true,
+     0,
+     xsqlda);//throw
+
+ _TSO_CHECK(!parse_r.second);
+ _TSO_CHECK(parse_r.first==1);
+}//test_C02__truncated_second_block
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_descr
@@ -3134,6 +3427,11 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_desc
                  test_B07__bug_check__not_def_xvar_field__ownname)
  DEF_TEST_DESCR("B08.bug_check.not_def_xvar_field.aliasname",
                  test_B08__bug_check__not_def_xvar_field__aliasname)
+
+ DEF_TEST_DESCR("C01.truncated_after_completed_XSQLVAR_block",
+                 test_C01__truncated_after_completed_XSQLVAR_block)
+ DEF_TEST_DESCR("C02.truncated_second_block",
+                 test_C02__truncated_second_block)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -3155,9 +3453,14 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::create
   ftestID<<structure::flush
          <<d.pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc(pParams,
-                                              ftestID.c_str(),
-                                              d.Func));
+  const TTSO_TestPtr
+   spTest
+    (lcpi::lib::structure::not_null_ptr
+     (new TTSO_TestFunc
+      (pParams,
+       ftestID.c_str(),
+       d.Func)));
+
   pTestPusher->PushTest(spTest);
  }//for d
 }//create

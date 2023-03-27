@@ -322,6 +322,10 @@ const TTSO_GlobalContext::tag_named_expression
  DEF_NAMED_EXPRESSION
   ("NE__ODS_CS__IS_UNICODE_FSS",
    "SRV<=FB-3")
+
+ DEF_NAMED_EXPRESSION
+  ("NE__ODS_CS__IS_UTF8",
+   "SRV>=FB-4")
 };//sm_named_expressions
 
 #undef DEF_NAMED_EXPRESSION

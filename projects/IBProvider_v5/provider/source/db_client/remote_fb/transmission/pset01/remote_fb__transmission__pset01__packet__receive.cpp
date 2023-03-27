@@ -23,13 +23,11 @@ COMP_CONF_DECLSPEC_NORETURN
 static void Helper__RemoteFB__ReceivePacket__GetDecoder__ThrowErrow__UnkOp
                                            (int const iOp)
 {
- t_ibp_error exc(E_FAIL,
-                 ibp_subsystem__remote_fb__pset01,
-                 ibp_mce_remote__receive_pack__unk_op_id_1);
-
- exc<<iOp;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__remote_fb__pset01,
+   ibp_mce_remote__receive_pack__unk_op_id_1,
+   iOp);
 }//Helper__RemoteFB__ReceivePacket__GetDecoder__ThrowErrow__UnkOp
 
 ////////////////////////////////////////////////////////////////////////////////

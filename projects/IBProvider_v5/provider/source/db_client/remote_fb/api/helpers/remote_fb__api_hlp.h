@@ -7,7 +7,7 @@
 #ifndef _remote_fb__api_hlp_H_
 #define _remote_fb__api_hlp_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////

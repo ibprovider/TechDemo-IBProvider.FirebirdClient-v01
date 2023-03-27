@@ -381,13 +381,11 @@ void RemoteFB__Connector::Helper__FinalInitialize
  }
  else
  {
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_common__unknown_dbms_1);
-
-  exc<<cns.dbms.descr_Ex.value();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_common__unknown_dbms_1,
+    cns.dbms.descr_Ex.value());
  }//else
 }//Helper__FinalInitialize
 

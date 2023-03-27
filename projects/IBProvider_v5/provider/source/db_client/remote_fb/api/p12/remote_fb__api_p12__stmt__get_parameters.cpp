@@ -33,9 +33,9 @@ RemoteFB__API_P12__GetParameters::~RemoteFB__API_P12__GetParameters()
 
 //interface --------------------------------------------------------------
 void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCtx,
-                                            RemoteFB__ConnectorData* const pData,
-                                            stmt_handle_type*        const pStmtHandle,
-                                            isc_api::XSQLDA_V1*      const xsqlda)
+                                            RemoteFB__ConnectorData*  const pData,
+                                            stmt_handle_type*         const pStmtHandle,
+                                            isc_api::XSQLDA_V1*       const xsqlda)
 {
  assert(pData!=nullptr);
  assert(pStmtHandle!=nullptr);
@@ -103,12 +103,13 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
   if((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__CACHE_PARAMS_INFO))
   {
    helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
-    parseResult=helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
-                  ((*pStmtHandle)->m_ParametersData.size(),
-                   (*pStmtHandle)->m_ParametersData.buffer(),
-                   IsFirstInfoBlock,
-                   StartIndex,
-                   xsqlda);
+    parseResult
+     =helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
+       ((*pStmtHandle)->m_ParametersData.size(),
+        (*pStmtHandle)->m_ParametersData.buffer(),
+        IsFirstInfoBlock,
+        StartIndex,
+        xsqlda);
 
    if(parseResult.second)
     return;
@@ -126,11 +127,12 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
 
   assert(StartIndex!=structure::get_numeric_limits(StartIndex).max_value());
 
-  const size_t c_sz_info_items
-                =1          //isc_info_sql_sqlda_start
-                +1          //2 (sizeof(StartIndex))
-                +sizeof(StartIndex)
-                +sizeof(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind);
+  const size_t
+   c_sz_info_items
+    =1          //isc_info_sql_sqlda_start
+    +1          //2 (sizeof(StartIndex))
+    +sizeof(StartIndex)
+    +sizeof(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind);
 
   structure::t_fix_vector<c_sz_info_items,unsigned char> info_items;
 
@@ -138,6 +140,10 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
 
   for(;;)
   {
+   assert(info_items.empty());
+
+   assert(ResultBuffer.empty());
+
    //----------------------------------------
    info_items.push_back(isc_api::ibp_isc_info_sql_sqlda_start);
 
@@ -155,22 +161,24 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
     std::copy(data.data,_END_(data.data),std::back_inserter(info_items));
    }//local
 
-   std::copy(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind,
-             _END_(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind),
-             std::back_inserter(info_items));
+   std::copy
+    (helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind,
+     _END_(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind),
+     std::back_inserter(info_items));
 
    assert(info_items.full());
 
    //----------------------------------------
    assert(structure::can_numeric_cast<unsigned short>(info_items.size()));
 
-   pData->m_API__GetStatementInfo.get()->exec(OpCtx,
-                                              pData,
-                                              pStmtHandle,
-                                              /*Incornation*/0,
-                                              static_cast<unsigned short>(info_items.size()),
-                                              info_items.data(),
-                                              ResultBuffer);
+   pData->m_API__GetStatementInfo.get()->exec
+    (OpCtx,
+     pData,
+     pStmtHandle,
+     /*Incornation*/0,
+     static_cast<unsigned short>(info_items.size()),
+     info_items.data(),
+     ResultBuffer);
 
    const unsigned char*       pos=ResultBuffer.buffer();
    const unsigned char* const end=ResultBuffer.buffer_end();
@@ -197,12 +205,13 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
    ++pos;
 
    helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
-    parseResult=helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
-                  (static_cast<size_t>(end-pos),
-                   pos,
-                   IsFirstInfoBlock,
-                   StartIndex,
-                   xsqlda);
+    parseResult
+     =helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
+      (static_cast<size_t>(end-pos),
+       pos,
+       IsFirstInfoBlock,
+       StartIndex,
+       xsqlda);
 
    if(parseResult.second)
     return;
@@ -225,8 +234,9 @@ void RemoteFB__API_P12__GetParameters::exec(db_obj::t_db_operation_context& OpCt
      //ERROR - зацикливание или некорректная работа парсера данных XSQLDA
 
      structure::wstr_formatter
-      freason(L"detected an infinite cycle or incorrect work of XSQLDA parser. "
-              L"StartIndex: %1. parseResult.first: %2");
+      freason
+       (L"detected an infinite cycle or incorrect work of XSQLDA parser. "
+        L"StartIndex: %1. parseResult.first: %2");
 
      freason<<StartIndex<<parseResult.first;
 

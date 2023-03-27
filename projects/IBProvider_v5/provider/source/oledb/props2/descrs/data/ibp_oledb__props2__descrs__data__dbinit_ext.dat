@@ -573,7 +573,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
 
 //------------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
  (IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS,
@@ -583,7 +583,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
   ibprovider::ibp_propval__schema_ldr_cfg__check_constraints__default,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_ldr_cfg__check_constraints::GetInstancePtr()))
 
-#endif
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
 //------------------------------------------------------------------------
 #if(IBP_ENGINE_DIRECT_FB!=0)
@@ -689,7 +689,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__wchars_in_utf8_symbol::GetInstancePtr()))
 
 //------------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
  (IBP_DBPROP__INIT__SCHEMA_RESTRICTIONS,
@@ -699,7 +699,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR
   ibprovider::ibp_propval__schema_restrictions__default,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_restrictions::GetInstancePtr()))
 
-#endif
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
 //------------------------------------------------------------------------
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
@@ -711,7 +711,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__guid_rules::GetInstancePtr()))
 
 //------------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
  (IBP_DBPROP__INIT__SCHEMA_LDR_CFG__DESCRIPTIONS,
@@ -721,7 +721,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
   ibprovider::ibp_propval__schema_ldr_cfg__descriptions__default,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_ldr_cfg__descriptions::GetInstancePtr()))
 
-#endif
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
 //размер кэша парсера запросов -------------------------------------------
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
@@ -777,6 +777,15 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_wire_compression_type::GetInstancePtr()))
 
 #endif //IBP_ENGINE_DIRECT_FB!=0
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
+ (IBP_DBPROP__INIT__FORCE_NULLS, /*129*/
+  OLEDB_PDESCR2(L"force_nulls"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval__force_nulls__default,
+  /*post init calls*/)
 
 //настройки хранилища обновляемого множества -----------------------------
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)

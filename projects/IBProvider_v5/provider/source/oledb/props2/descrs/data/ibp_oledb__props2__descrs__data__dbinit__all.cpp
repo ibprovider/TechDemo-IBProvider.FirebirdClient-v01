@@ -55,7 +55,7 @@
 #include "source/oledb/props2/handlers/code/get_value/ibp_oledb__props2__handler__get_value__common__SecData.h"
 
 //------------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__schema_restrictions.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__schema_ldr_cfg__check_constraints.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__schema_ldr_cfg__descriptions.h"
@@ -252,6 +252,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
 
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__EXEC_SP_NAMED_PARAM                 ,0,"exec_sp_named_param")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__FIRST_WEEK_DAY                      ,0,"first_week_day")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__FORCE_NULLS                         ,0,"force_nulls")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__FORCE_PREPARE_STMT                  ,0,"force_prepare_stmt")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__GARBAGE_COLLECT                     ,0,"garbage_collect")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__GUID_RULES                          ,0,"guid_rules")
@@ -308,7 +309,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__ROWSET_VM_USING                     ,0,"rowset_vm_using")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SCHEMA_CACHE                        ,0,"schema_cache")
 
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS   ,0,"schema_ldr_cfg__check_constraints")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SCHEMA_LDR_CFG__DESCRIPTIONS        ,0,"schema_ldr_cfg__descriptions")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SCHEMA_RESTRICTIONS                 ,0,"schema_restrictions")

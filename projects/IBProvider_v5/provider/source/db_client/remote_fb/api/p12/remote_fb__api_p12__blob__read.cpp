@@ -372,8 +372,9 @@ void RemoteFB__API_P12__ReadBlob::helper__read_to_buffer
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 
  //----------------------------------------- 4. get response
@@ -385,8 +386,9 @@ void RemoteFB__API_P12__ReadBlob::helper__read_to_buffer
 
   protocol::set01::PACKET_V01 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set01::op_response)
   {

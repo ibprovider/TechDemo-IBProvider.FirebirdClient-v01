@@ -759,8 +759,8 @@ void IBP_ErrorVariant::tag_impl::Helper__LowLevelInit(IBP_ERRORVARIANT* pVar)
 //INIT Functions
 
 void IBP_ErrorVariant::tag_impl::ERRVAR_Init__EMPTY
-                                           (IBP_ERRORVARIANT* const pVar,
-                                            const IBP_ERRORVARIANT& Source)
+                                           (IBP_ERRORVARIANT* const DEBUG_CODE(pVar),
+                                            const IBP_ERRORVARIANT& DEBUG_CODE(Source))
 {
  assert(pVar);
  assert(pVar->vt==IBP_EVT::V_EMPTY);
@@ -772,7 +772,7 @@ void IBP_ErrorVariant::tag_impl::ERRVAR_Init__EMPTY
 //------------------------------------------------------------------------
 void IBP_ErrorVariant::tag_impl::ERRVAR_Init__NULL
                                            (IBP_ERRORVARIANT* const pVar,
-                                            const IBP_ERRORVARIANT& Source)
+                                            const IBP_ERRORVARIANT& DEBUG_CODE(Source))
 {
  assert(pVar);
  assert(pVar->vt==IBP_EVT::V_EMPTY);

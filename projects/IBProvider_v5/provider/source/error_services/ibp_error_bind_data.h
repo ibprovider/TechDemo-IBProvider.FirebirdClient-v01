@@ -27,46 +27,43 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //content
 
-class TIBPBindErrorDataTraits;
-class TIBPBindErrorData;
-class TIBPBindErrorDataSet;
+class IBP_BindErrorDataTraits;
+class IBP_BindErrorData;
+class IBP_BindErrorDataSet;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBPBindErrorDataTraits
+//class IBP_BindErrorDataTraits
 
-class TIBPBindErrorDataTraits LCPI_CPP_CFG__CLASS__FINAL
+class IBP_BindErrorDataTraits LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef TIBPBindErrorDataTraits                    self_type;
+  typedef IBP_BindErrorDataTraits                    self_type;
 
   typedef t_ibp_error_args<self_type>                args_type;
 
-  typedef TIBPBindErrorData                          out_return_type;
-
- public:
-  static out_return_type& out_ret(args_type& x);
-};//struct TIBPBindErrorDataTraits
+  typedef IBP_BindErrorData                          out_return_type;
+};//struct IBP_BindErrorDataTraits
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBPBindErrorData
+//class IBP_BindErrorData
 
 /// <summary>
 ///  Класс для представления ошибки привязки данных
 /// </summary>
-class TIBPBindErrorData LCPI_CPP_CFG__CLASS__FINAL
+class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(lib::structure::t_err_text)
- ,public TIBPBindErrorDataTraits::args_type
+ ,public IBP_BindErrorDataTraits::args_type
 {
  private:
-  typedef TIBPBindErrorData                               self_type;
+  typedef IBP_BindErrorData                               self_type;
 
-  TIBPBindErrorData(const self_type&);
+  IBP_BindErrorData(const self_type&);
   self_type& operator = (const self_type&);
 
   /// <summary>
   ///  Деструктор
   /// </summary>
-  virtual ~TIBPBindErrorData();
+  virtual ~IBP_BindErrorData();
 
  public: //typedefs ------------------------------------------------------
   typedef DBORDINAL                                        ordinal_type;
@@ -83,7 +80,7 @@ class TIBPBindErrorData LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] index
   //! \param[in] err_code
   //! \param[in] msg_code
-  TIBPBindErrorData(ordinal_type  index,
+  IBP_BindErrorData(ordinal_type  index,
                     HRESULT       err_code,
                     msg_code_type msg_code);
 
@@ -113,7 +110,7 @@ class TIBPBindErrorData LCPI_CPP_CFG__CLASS__FINAL
   params_type                  m_params;
 
  private:
-  friend class TIBPBindErrorDataSet;
+  friend class IBP_BindErrorDataSet;
 
  #ifndef NDEBUG
   /// A debugging pointer to the parent list.
@@ -122,23 +119,23 @@ class TIBPBindErrorData LCPI_CPP_CFG__CLASS__FINAL
 
   ///Указатель на следующий элемент однонаправленного списка.
   self_type* m_pNext;
-};//class TIBPBindErrorData
+};//class IBP_BindErrorData
 
-typedef lib::structure::t_smart_object_ptr<TIBPBindErrorData> TIBPBindErrorDataPtr;
+typedef lib::structure::t_smart_object_ptr<IBP_BindErrorData> IBP_BindErrorDataPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBPBindErrorDataSet
+//class IBP_BindErrorDataSet
 
 /// <summary>
-///  Класс для накопления объектов TIBPBindErrorData
+///  Класс для накопления объектов IBP_BindErrorData
 /// </summary>
 //!  Формирует однонаправленный список объектов
-class TIBPBindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
+class IBP_BindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TIBPBindErrorDataSet              self_type;
+  typedef IBP_BindErrorDataSet              self_type;
 
-  TIBPBindErrorDataSet(const self_type&);
+  IBP_BindErrorDataSet(const self_type&);
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
@@ -148,12 +145,12 @@ class TIBPBindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Конструктор по-умолчанию
   /// </summary>
-  TIBPBindErrorDataSet();
+  IBP_BindErrorDataSet();
 
   /// <summary>
   ///  Деструктор
   /// </summary>
- ~TIBPBindErrorDataSet();
+ ~IBP_BindErrorDataSet();
 
   /// <summary>
   ///  Проверка наличия элементов в списке
@@ -165,7 +162,7 @@ class TIBPBindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] pData
   //!  Not NULL.
-  void Add(TIBPBindErrorData* pData);
+  void Add(IBP_BindErrorData* pData);
 
   /// <summary>
   ///  Генерация исключения с описанием ошибки
@@ -188,14 +185,14 @@ class TIBPBindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
 
  private:
   /// Указатель на начало списка
-  TIBPBindErrorData* m_pHead;
+  IBP_BindErrorData* m_pHead;
 
   /// Указатель на последний элемент списка
-  TIBPBindErrorData* m_pTail;
+  IBP_BindErrorData* m_pTail;
 
   /// Количество элементов в списке
   size_type m_Size;
-};//class TIBPBindErrorDataSet
+};//class IBP_BindErrorDataSet
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

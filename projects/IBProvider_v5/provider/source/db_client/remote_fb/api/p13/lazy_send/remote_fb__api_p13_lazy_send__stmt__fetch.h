@@ -69,9 +69,10 @@ class RemoteFB__API_P13_LAZY_SEND__FetchStatement
   //! \param[in] pData
   //! \param[in] pStmt
   //!  Not null.
-  static void helper__fetch_next_rows(RemoteFB__P13__SrvOperation&   serverOperation,
-                                      RemoteFB__ConnectorData*       pData,
-                                      stmt_data_type*                pStmt);
+  static void helper__fetch_next_rows
+                             (RemoteFB__P13__SrvOperation&   serverOperation,
+                              RemoteFB__ConnectorData*       pData,
+                              stmt_data_type*                pStmt);
 };//class RemoteFB__API_P13_LAZY_SEND__FetchStatement
 
 ////////////////////////////////////////////////////////////////////////////////

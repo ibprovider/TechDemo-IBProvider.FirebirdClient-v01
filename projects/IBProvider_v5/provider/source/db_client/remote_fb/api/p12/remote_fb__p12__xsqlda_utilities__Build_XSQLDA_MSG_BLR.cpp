@@ -75,7 +75,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__CalcBufSiz
   {
    case isc_api::ibp_isc_sql_varying:
    case isc_api::ibp_isc_sql_text:
-   case isc_api::ibp_fb25_sql_null:
+   case isc_api::ibp_fb025_sql_null:
     szBlr+=2+3;
     break;
 
@@ -175,12 +175,11 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
     //ERROR - [BUG CHECK] incorrect xvar length;
     assert(pXVar->sqllen<0);
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_isc__bug_check__negative_sqllength_in_xsqlvar_1);
-
-    exc<<pXVar->sqllen;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_subsystem__remote_fb__p12,
+      ibp_mce_isc__bug_check__negative_sqllength_in_xsqlvar_1,
+      pXVar->sqllen);
    }//if
 
    const size_t xvar_sqllen=static_cast<size_t>(pXVar->sqllen);
@@ -223,7 +222,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
     }//ibp_isc_sql_text
 
     //-------------------------------------------------------------------
-    case isc_api::ibp_fb25_sql_null:
+    case isc_api::ibp_fb025_sql_null:
     {
      if(xvar_sqllen!=0)
      {
@@ -236,7 +235,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
      PUSH_STUFF_BYTE(isc_api::ibp_isc_blr_dtype__text)
      PUSH_STUFF_WORD(0)
      break;
-    }//ibp_fb25_sql_null
+    }//ibp_fb025_sql_null
 
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_short:
@@ -249,7 +248,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
         xvar_sqllen);
      }//if
 
-     if(pXVar->sqlscale>0 || pXVar->sqlscale<-isc_api::ibp_isc_numeric_on_smallint_precision)
+     if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_smallint)
      {
       //ERROR - incorrect sqlscale of xvar
       helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
@@ -275,7 +274,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
         xvar_sqllen);
      }//if
 
-     if(pXVar->sqlscale>0 || pXVar->sqlscale<-isc_api::ibp_isc_numeric_on_integer_precision)
+     if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_integer)
      {
       //ERROR - incorrect sqlscale of xvar
       helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
@@ -301,7 +300,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
         xvar_sqllen);
      }//if
 
-     if(pXVar->sqlscale>0 || pXVar->sqlscale<-isc_api::ibp_isc_numeric_on_int64_precision)
+     if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_int64)
      {
       //ERROR - incorrect sqlscale of xvar
       helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
@@ -430,12 +429,10 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
      // Неизвестные типы данных отлавливаются на уровне Helper__Build_XSQLDA_BLR__CalcBufSize
      assert(false);
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-     exc<<pXVar->sqltype;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+       pXVar->sqltype);
     }//default
    }//switch
 
@@ -445,15 +442,12 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_isc__failed_to_process_the_xsqlvar_1);
-
-   exc<<(pXVar-pXSQLDA->sqlvar);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__failed_to_process_the_xsqlvar_1,
+     pXVar-pXSQLDA->sqlvar);
   }//catch
  }//for pXVar
 

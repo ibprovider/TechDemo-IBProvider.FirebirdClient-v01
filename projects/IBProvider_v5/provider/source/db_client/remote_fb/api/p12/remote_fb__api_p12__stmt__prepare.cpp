@@ -148,8 +148,9 @@ void RemoteFB__API_P12__PrepareStatement::exec
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -163,8 +164,9 @@ void RemoteFB__API_P12__PrepareStatement::exec
 
   protocol::set01::PACKET_V01 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set01::op_response)
   {

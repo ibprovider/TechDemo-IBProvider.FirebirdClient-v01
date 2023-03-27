@@ -34,16 +34,18 @@ std::wstring TIBP_MessageTextBuilder::GetSystemErrorMsg(LCID  const lcid,
 
  WCHAR* Pointer=nullptr;
 
- const DWORD res=::FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                                  FORMAT_MESSAGE_IGNORE_INSERTS |
-                                  FORMAT_MESSAGE_FROM_SYSTEM |
-                                  FORMAT_MESSAGE_MAX_WIDTH_MASK,
-                                  0,
-                                  errorCode,
-                                  LANGIDFROMLCID(lcid),
-                                  (WCHAR*)&Pointer,
-                                  0,
-                                  NULL);
+ const DWORD res
+  =::FormatMessageW
+      (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+       FORMAT_MESSAGE_IGNORE_INSERTS |
+       FORMAT_MESSAGE_FROM_SYSTEM |
+       FORMAT_MESSAGE_MAX_WIDTH_MASK,
+       0,
+       errorCode,
+       LANGIDFROMLCID(lcid),
+       (WCHAR*)&Pointer,
+       0,
+       NULL);
 
  if(res==0)
  {
@@ -122,7 +124,28 @@ bool TIBP_MessageTextBuilder::BuildSrc(std::wstring* const pResultText,
   ole_lib::BStrToWStr(pResultText,varSourceID.bstrVal);
 
   return true;
- }//VT_BSTR
+ }//if VT_BSTR
+
+ if(varSourceID.vt==VT_UNKNOWN)
+ {
+  ole_lib::TBSTR bstrValue;
+
+  const auto get_r
+   =Helper__GetErrorSource
+     (varSourceID.punkVal,
+      /*lcid*/0,
+      &bstrValue);
+
+  if(get_r.first!=enumGetDataFlag::ok)
+   return false;
+
+  if(FAILED(get_r.second))
+   return false;
+
+  ole_lib::BStrToWStr(pResultText,bstrValue.bstr());
+
+  return true;
+ }//if VT_UNKNOWN
 
  return false;
 }//BuildSrc
@@ -252,7 +275,7 @@ bool TIBP_MessageTextBuilder::Build(std::wstring*               const pResultTex
           cArgs,
           rgArgs,
           MsgTableLoader);
-}//Build - IBP_ERRORVARIANT 
+}//Build - IBP_ERRORVARIANT
 
 //------------------------------------------------------------------------
 bool TIBP_MessageTextBuilder::Helper__BuildDescription
@@ -291,42 +314,20 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
  }//local
 
  //устанавливаем параметры
- DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IErrorExtendedParameter);
- DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IText);
 
  for(const IBP_ERRORVARIANT *pv=rgArgs,* const _end=rgArgs+cArgs;pv!=_end;++pv)
  {
   if(pv->vt==IBP_EVT::V_IUNKNOWN) //вложенная ошибка
   {
-   if(IBP_ITextPtr const spText=pv->value.punk)
-   {
-    ole_lib::TBSTR bstrValue;
+   ole_lib::TBSTR bstrValue;
 
-    const HRESULT hr=spText->GetText(lcid,&bstrValue.ref_bstr());
+   const auto get_r
+    =Helper__GetErrorDescription
+      (pv->value.punk,
+       lcid,
+       &bstrValue);
 
-    if(FAILED(hr))
-     fmsg<<L"[bad arg object]";
-    else
-     fmsg<<ole_lib::BStrToBox(bstrValue.bstr());
-
-    continue;
-   }//if spText
-
-   if(IBP_IErrorExtendedParameterPtr const spExtendedError=pv->value.punk)
-   {
-    ole_lib::TBSTR bstrValue;
-
-    const HRESULT hr=spExtendedError->GetErrorDescription(lcid,/*pbstrSource*/nullptr,&bstrValue.ref_bstr());
-
-    if(FAILED(hr))
-     fmsg<<L"[bad arg object]";
-    else
-     fmsg<<ole_lib::BStrToBox(bstrValue.bstr());
-
-    continue;
-   }//if
-
-   fmsg<<L"[unk arg object]";
+   fmsg<<Helper__ToText(get_r,bstrValue);
 
    continue;
   }//if - вложенная ошибка
@@ -568,9 +569,12 @@ HRESULT TIBP_MessageTextBuilder::Helper__BuildSubSystemName
   }//if
 
   const TIBP_MsgTableLoader::error_code_type
-   ldrErr=_SubSystemNameTableLoader.GetMessage((UINT)varSubSystemId.llVal,
-                                               lcid,
-                                               *pResultText);
+   ldrErr
+    =_SubSystemNameTableLoader.GetMessage
+      ((UINT)varSubSystemId.llVal,
+       lcid,
+       *pResultText);
+
   if(ldrErr==TIBP_MsgTableLoader::err_none)
   {
    return S_OK;
@@ -596,6 +600,118 @@ HRESULT TIBP_MessageTextBuilder::Helper__BuildSubSystemName
 
  return E_FAIL;
 }//Helper__BuildSubSystemName
+
+//------------------------------------------------------------------------
+TIBP_MessageTextBuilder::wstr_box_type
+ TIBP_MessageTextBuilder::Helper__ToText
+                             (const tagGetResult&   get_r,
+                              const ole_lib::TBSTR& bstrValue)
+{
+ if(get_r.first==enumGetDataFlag::no_object)
+  return L"[null arg object]";
+
+ if(get_r.first==enumGetDataFlag::unk_object)
+  return L"[unk arg object]";
+
+ assert(get_r.first==enumGetDataFlag::ok);
+
+ if(FAILED(get_r.second))
+  return L"[can't get object data]";
+
+ return ole_lib::BStrToBox(bstrValue.bstr());
+}//Helper__ToText
+
+//------------------------------------------------------------------------
+TIBP_MessageTextBuilder::tagGetResult
+ TIBP_MessageTextBuilder::Helper__GetErrorSource
+                             (IUnknown*       const pUnk,
+                              LCID            const lcid,
+                              ole_lib::TBSTR* const pbstrValue)
+{
+ assert(pbstrValue);
+
+ if(pUnk==nullptr)
+  return tagGetResult(enumGetDataFlag::no_object,E_POINTER);
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IText);
+
+ if(IBP_ITextPtr const spText=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+           (enumGetDataFlag::ok,
+            spText->GetText(lcid,&pbstrValue->ref_bstr()));
+ }//if - spText
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IErrorExtendedParameter);
+
+ if(IBP_IErrorExtendedParameterPtr const spExtendedError=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+          (enumGetDataFlag::ok,
+           spExtendedError->GetErrorDescription(lcid,&pbstrValue->ref_bstr(),/*pbstrDescr*/nullptr));
+ }//if - spExtendedError
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
+
+ if(IErrorInfoPtr const spErrorInfo=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+          (enumGetDataFlag::ok,
+           spErrorInfo->GetSource(&pbstrValue->ref_bstr()));
+ }//if - spErrorInfo
+
+ //---------------------------
+ return tagGetResult(enumGetDataFlag::unk_object,DB_E_NOTSUPPORTED);
+}//Helper__GetErrorSource
+
+//------------------------------------------------------------------------
+TIBP_MessageTextBuilder::tagGetResult
+ TIBP_MessageTextBuilder::Helper__GetErrorDescription
+                             (IUnknown*       const pUnk,
+                              LCID            const lcid,
+                              ole_lib::TBSTR* const pbstrValue)
+{
+ assert(pbstrValue);
+
+ if(pUnk==nullptr)
+  return tagGetResult(enumGetDataFlag::no_object,E_POINTER);
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IText);
+
+ if(IBP_ITextPtr const spText=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+          (enumGetDataFlag::ok,
+           spText->GetText(lcid,&pbstrValue->ref_bstr()));
+ }//if - spText
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE_NS(ibprovider::,IBP_IErrorExtendedParameter);
+
+ if(IBP_IErrorExtendedParameterPtr const spExtendedError=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+          (enumGetDataFlag::ok,
+           spExtendedError->GetErrorDescription(lcid,/*pbstrSource*/nullptr,&pbstrValue->ref_bstr()));
+ }//if - spExtendedError
+
+ //---------------------------
+ OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
+
+ if(IErrorInfoPtr const spErrorInfo=structure::not_null_ptr(pUnk))
+ {
+  return tagGetResult
+          (enumGetDataFlag::ok,
+           spErrorInfo->GetDescription(&pbstrValue->ref_bstr()));
+ }//if - spErrorInfo
+
+ //---------------------------
+ return tagGetResult(enumGetDataFlag::unk_object,DB_E_NOTSUPPORTED);
+}//Helper__GetErrorDescription
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

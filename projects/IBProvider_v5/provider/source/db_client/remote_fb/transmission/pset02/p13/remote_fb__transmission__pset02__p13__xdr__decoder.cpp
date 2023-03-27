@@ -199,12 +199,10 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
 
       //assert_msg(false,"varchar_len: "<<varchar_len);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-      exc<<varchar_len;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error
+       (E_FAIL,
+        ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+        varchar_len);
      }//if
 
      if(sqllen<size_t(varchar_len))
@@ -213,12 +211,11 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
 
       //assert_msg(false,"varchar_len: "<<varchar_len<<". buf_size: "<<sqllen);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2);
-
-      exc<<varchar_len<<sqllen;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error
+       (E_FAIL,
+        ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2,
+        varchar_len,
+        sqllen);
      }//if
 
      if(isc_api::ibp_isc_max_varchar_length<size_t(varchar_len))
@@ -227,12 +224,10 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
 
       //assert_msg(false,"varchar_len: "<<varchar_len);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-      exc<<varchar_len;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error
+       (E_FAIL,
+        ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+        varchar_len);
      }//if
 
      assert(structure::can_numeric_cast<size_t>(varchar_len));
@@ -483,57 +478,52 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
      break;
     }//ibp_isc_blr_dtype__quad
 
-    case isc_api::ibp_fb30_blr_dtype__bool:
+    case isc_api::ibp_fb030_blr_dtype__bool:
     {
-     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb30_sql_boolean);
+     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb030_sql_boolean);
 
-     assert(MsgElementDescr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb30_bool));
+     assert(MsgElementDescr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb030_bool));
 
      //----
-     const size_t c_align=isc_api::ibp_fb30_type_align__bool;
+     const size_t c_align=isc_api::ibp_fb030_type_align__bool;
 
-     assert_s(c_align==sizeof(isc_api::t_ibp_fb30_bool));
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb030_bool));
 
      assert((offset%c_align)==0);
 
-     assert(sizeof(isc_api::t_ibp_fb30_bool)<=(msg_data_size-offset));
+     assert(sizeof(isc_api::t_ibp_fb030_bool)<=(msg_data_size-offset));
 
      assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
 
      xdr::decode__opaque
       (pBuf,
        L"sql_message.boolean",
-       sizeof(isc_api::t_ibp_fb30_bool),
+       sizeof(isc_api::t_ibp_fb030_bool),
        msg_data+offset);
 
      break;
-    }//case ibp_fb30_blr_dtype__bool
+    }//case ibp_fb030_blr_dtype__bool
 
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
      assert_msg(false,"typeID"<<unsigned(MsgElementDescr.m_msg_blrtype));
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__unk_blr_data_type_1);
-
-     exc<<MsgElementDescr.m_msg_blrtype;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__unk_blr_data_type_1,
+       MsgElementDescr.m_msg_blrtype);
     }//default
    }//switch
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p13,
-                 ibp_mce_remote__decode_packet__xdr__error_in_element_of_msg_data_buffer_1);
-
-   exc<<iDescr;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_remote__decode_packet__xdr__error_in_element_of_msg_data_buffer_1,
+     iDescr);
   }//catch
  }//for iDescr
 }//decode__sql_message
@@ -741,9 +731,9 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__array_slice
      break;
     }//isc_api::ibp_isc_blr_dtype__text2
 
-    case isc_api::ibp_fb30_blr_dtype__bool:
+    case isc_api::ibp_fb030_blr_dtype__bool:
     {
-     typedef isc_api::t_ibp_fb30_bool       value_type;
+     typedef isc_api::t_ibp_fb030_bool value_type;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -756,19 +746,17 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__array_slice
        pElement);
 
      break;
-    }//case - ibp_fb30_blr_dtype__bool
+    }//case - ibp_fb030_blr_dtype__bool
 
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
      assert_msg(false,"typeID"<<int(ArrSliceDescr.m_element_blr_typeid));
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__unk_blr_data_type_1);
-
-     exc<<ArrSliceDescr.m_element_blr_typeid;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__unk_blr_data_type_1,
+       ArrSliceDescr.m_element_blr_typeid);
     }//default
    }//switch
   }//for[ever]
@@ -777,15 +765,12 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__array_slice
  {
   //Добавляем информацию о порядковом номере элемента массива
 
-  t_ibp_error exc(e);
-
-  exc.add_error(E_FAIL,
-                ibp_subsystem__remote_fb__p13,
-                ibp_mce_remote__decode_packet__xdr__error_in_element_of_slice_data_buffer_1);
-
-  exc<<size_t(pElement-pSlice);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (e,
+    E_FAIL,
+    ibp_subsystem__remote_fb__p13,
+    ibp_mce_remote__decode_packet__xdr__error_in_element_of_slice_data_buffer_1,
+    size_t(pElement-pSlice));
  }//catch
 }//decode__array_slice
 

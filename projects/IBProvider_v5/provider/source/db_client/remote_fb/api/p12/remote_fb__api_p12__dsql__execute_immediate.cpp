@@ -324,14 +324,12 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute
   {
    //ERROR - too large sql text
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p12,
-                   ibp_mce_cmd_stmt_too_long_2);
-
-   exc<<SQL_str.len
-      <<structure::get_numeric_limits(packet.p_sqlst.p_sqlst__SQL_str.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_cmd_stmt_too_long_2,
+     SQL_str.len,
+     structure::get_numeric_limits(packet.p_sqlst.p_sqlst__SQL_str.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqlst.p_sqlst__SQL_str.cstr_length,
@@ -376,8 +374,9 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -393,8 +392,9 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute
 
   protocol::set01::PACKET_V01 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set01::op_response)
   {
@@ -510,14 +510,12 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
   {
    //ERROR - too large sql text
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p12,
-                   ibp_mce_cmd_stmt_too_long_2);
-
-   exc<<SQL_str.len
-      <<structure::get_numeric_limits(packet.p_sqlst.p_sqlst__SQL_str.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_cmd_stmt_too_long_2,
+     SQL_str.len,
+     structure::get_numeric_limits(packet.p_sqlst.p_sqlst__SQL_str.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqlst.p_sqlst__SQL_str.cstr_length,
@@ -543,15 +541,13 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
   {
    //ERROR - BLR data of input parameters is too long.
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p12,
-                   ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3);
-
-   exc<<L"pInXSQLDA"
-      <<spStmt->m_InParams__MSG_BLR.size()
-      <<structure::get_numeric_limits(packet.p_sqlst.p_sqlst__blr.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pInXSQLDA",
+     spStmt->m_InParams__MSG_BLR.size(),
+     structure::get_numeric_limits(packet.p_sqlst.p_sqlst__blr.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqlst.p_sqlst__blr.cstr_length,
@@ -574,15 +570,13 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
   {
    //ERROR - BLR data of output parameters is too long.
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p12,
-                   ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3);
-
-   exc<<L"pOutXSQLDA"
-      <<spStmt->m_OutParams__MSG_BLR.size()
-      <<structure::get_numeric_limits(packet.p_sqlst.p_sqlst__blr.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pOutXSQLDA",
+     spStmt->m_OutParams__MSG_BLR.size(),
+     structure::get_numeric_limits(packet.p_sqlst.p_sqlst__blr.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqlst.p_sqlst__out_blr.cstr_length,
@@ -601,8 +595,9 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -620,8 +615,9 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
 
   protocol::set01::PACKET_V01 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set01::op_sql_response)
   {
@@ -680,8 +676,9 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
 
   protocol::set01::PACKET_V01 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set01::op_response)
   {

@@ -56,42 +56,6 @@ class RemoteFB__API_HLP__XSQLDA_SET01__Utilities
                                      const byte_type* pBuf);
 
  private:
-  struct tag_skip_result
-  {
-   public:
-    const byte_type* position;
-    const byte_type* data_beg;
-    const byte_type* data_end;
-    bool             data_is_truncated;
-
-   public:
-    tag_skip_result(const byte_type* const _position,
-                    const byte_type* const _data_beg,
-                    const byte_type* const _data_end,
-                    const bool             _data_is_truncated)
-    :position          (_position)
-    ,data_beg          (_data_beg)
-    ,data_end          (_data_end)
-    ,data_is_truncated (_data_is_truncated)
-   {;}
-  };//struct tag_skip_result
-
- private:
-  /// <summary>
-  ///  Пропуск блока с описанием колонок/параметров
-  /// </summary>
-  //! \param[in] beg
-  //! \param[in] end
-  //! \param[in] block_id
-  //! \return
-  //!  Блок с результатами работы.
-  static tag_skip_result Helper__Skip_XSQLVARS_Info(const byte_type* beg,
-                                                    const byte_type* end);
-
-  static const byte_type* Helper__SkipElementData(const byte_type* beg,
-                                                  const byte_type* end,
-                                                  long             tagID);
-
   template<class TBuffer>
   static void Helper__SaveElementData(const byte_type* data_beg,
                                       const byte_type* data_end,

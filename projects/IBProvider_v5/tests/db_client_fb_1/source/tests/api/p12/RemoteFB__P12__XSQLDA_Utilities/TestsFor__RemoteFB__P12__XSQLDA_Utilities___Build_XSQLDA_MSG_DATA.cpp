@@ -407,7 +407,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_long|1);
 
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
@@ -817,13 +816,13 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
 {
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null,
+            isc_api::ibp_fb025_sql_null,
             1,
             L"sql_null");
 
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null|1,
+            isc_api::ibp_fb025_sql_null|1,
             2,
             L"sql_null");
 }//test_t13___bug_check__incorrect_sqllen__null
@@ -1381,7 +1380,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
  xsqlda->sqlvar[0].sqldata =nullptr;
  xsqlda->sqlvar[0].sqlind  =&sqlind;
@@ -2799,17 +2798,17 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
 
  xsqlda->sqld=3;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
  xsqlda->sqlvar[0].sqldata =nullptr;
  xsqlda->sqlvar[0].sqlind  =&sqlind1;
 
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[1].sqllen  =0;
  xsqlda->sqlvar[1].sqldata =nullptr;
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
- xsqlda->sqlvar[2].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[2].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[2].sqllen  =0;
  xsqlda->sqlvar[2].sqldata =nullptr;
  xsqlda->sqlvar[2].sqlind  =&sqlind3;

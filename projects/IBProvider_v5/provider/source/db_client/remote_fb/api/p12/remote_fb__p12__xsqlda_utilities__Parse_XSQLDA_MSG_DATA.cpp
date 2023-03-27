@@ -39,13 +39,12 @@ void RemoteFB__P12__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
  {
   //ERROR - рассогласованная структура pXSQLDA и MSG-буфера. Разное количество элементов.
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p12,
-                  ibp_mce_isc__bug_check__other_count_of_xvars_2);
-
-  exc<<nXVars<<MsgDescrs.size();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p12,
+    ibp_mce_isc__bug_check__other_count_of_xvars_2,
+    nXVars,
+    MsgDescrs.size());
  }//if
 
  if(nXVars==0)
@@ -72,24 +71,22 @@ void RemoteFB__P12__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
 
   try
   {
-   Helper__Parse_XSQLDA_MSG_DATA(*pMsgDescr,
-                                 cbMsgData,
-                                 pMsgData,
-                                 pXVar);
+   Helper__Parse_XSQLDA_MSG_DATA
+    (*pMsgDescr,
+     cbMsgData,
+     pMsgData,
+     pXVar);
   }
   catch(const std::exception& e)
   {
    assert(pXVar>=pXSQLDA->sqlvar);
 
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_isc__failed_to_parse_element_of_msg_buf_with_data_1);
-
-   exc<<(pXVar-pXSQLDA->sqlvar);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__failed_to_parse_element_of_msg_buf_with_data_1,
+     (pXVar-pXSQLDA->sqlvar));
   }//catch
 
  #ifndef NDEBUG
@@ -125,12 +122,11 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Parse_XSQLDA_MSG_DATA
  {
   //ERROR - рассогласование типов в XSQLVAR и MSG-буфере
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__bug_check__other_sqltype_of_xvar_2);
-
-  exc<<xvar_sqltype<<MsgDescr.m_xvar_sqltype;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_isc__bug_check__other_sqltype_of_xvar_2,
+    xvar_sqltype,
+    MsgDescr.m_xvar_sqltype);
  }//if
 
  //----------------------------------------- Читаем индикатор состояния данных
@@ -155,29 +151,25 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Parse_XSQLDA_MSG_DATA
   {
    assert_msg(false,"xsqvarIndicator: "<<xsqvarIndicator);
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3);
-  
-   exc<<c_bugcheck_src
-      <<L"#001"
-      <<xsqvarIndicator;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3,
+     c_bugcheck_src,
+     L"#001",
+     xsqvarIndicator);
   }//default
  }//switch xsqvarIndicator
 
  if(IsNull)
  {
-  if(!pXSQLVAR->value_may_be_null())
+  if(!pXSQLVAR->get_value_may_be_null())
   {
    //ERROR - XSQLVAR не поддерживает NULL-значения
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__xvar_not_supports_the_storing_of_null_state_of_value_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__xvar_not_supports_the_storing_of_null_state_of_value_1,
+     pXSQLVAR->sqltype);
   }//if
 
   if(pXSQLVAR->sqlind==nullptr)
@@ -197,7 +189,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Parse_XSQLDA_MSG_DATA
  {
   assert(!IsNull);
 
-  if(pXSQLVAR->value_may_be_null())
+  if(pXSQLVAR->get_value_may_be_null())
   {
    if(pXSQLVAR->sqlind==nullptr)
    {
@@ -275,24 +267,21 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Parse_XSQLDA_MSG_DATA
     {
      //ERROR - incorrect varchar length
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-     exc<<varchar_length;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+       varchar_length);
     }//if
 
     if(c_expected_sqllen<static_cast<size_t>(varchar_length))
     {
      //ERROR - incorrect varchar length
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2);
-
-     exc<<varchar_length<<c_expected_sqllen;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2,
+       varchar_length,
+       c_expected_sqllen);
     }//if
 
     assert(static_cast<size_t>(varchar_length)<=xvar_sqllen);
@@ -878,12 +867,10 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Parse_XSQLDA_MSG_DATA
 
    assert_msg(false,"sqltype: "<<pXSQLVAR->sqltype);
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+     pXSQLVAR->sqltype);
   }//default
  }//switch
 }//Helper__Parse_XSQLDA_MSG_DATA

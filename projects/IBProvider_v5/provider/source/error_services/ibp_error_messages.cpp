@@ -111,6 +111,62 @@ extern const wchar_t me_bug_check__unexpected_dbvariant_compare_result_1[]
 extern const wchar_t me_bug_check__unexpected_cmd_parameter_marker_kind_id_1[]
  =L"Unexpected command parameter marker kind id [%1]";
 
+//------------------------------------------------------------------------
+//No numeric value scale
+extern const wchar_t me_bug_check__no_numeric_value_scale_0[]
+  =L"no numeric value scale";
+
+//------------------------------------------------------------------------
+//Wrong numeric value scale
+//Params: actual scale, expected scale
+extern const wchar_t me_bug_check__wrong_numeric_value_scale_2[]
+  =L"wrong numeric value scale: %1. Expected scale: %2";
+
+//------------------------------------------------------------------------
+//The unexpected internal dbtype
+//Params: type sign
+extern const wchar_t me_bug_check__unexpected_internal_dbtype_1[]
+  =L"the unexpected internal dbtype [%1]";
+
+//------------------------------------------------------------------------
+//The internal dbtype is not supported
+//Params: type sign
+extern const wchar_t me_bug_check__internal_dbtype_is_not_supported_1[]
+  =L"the internal dbtype [%1] is not supported";
+
+//------------------------------------------------------------------------
+//The unknown write mode of column values
+//Params: write mode id
+extern const wchar_t me_bug_check__unknown__row_write_mode_1[]
+ =L"the unknown write mode of column values [%1]";
+
+//------------------------------------------------------------------------
+//The unexpected write mode of column values
+//Params: write mode id
+extern const wchar_t me_bug_check__unexpected__row_write_mode_1[]
+ =L"the unexpected write mode of column values [%1]";
+
+//------------------------------------------------------------------------
+//The columns were not described after second attempt
+//Params: sqln, sqld
+extern const wchar_t
+ me_bug_check__columns_were_not_described_after_second_attempt_2[]
+  =L"columns were not described after second attempt [sqln: %1; sqld: %2]";
+
+//------------------------------------------------------------------------
+//The parameters were not described after second attempt
+//Params: sqln, sqld
+extern const wchar_t
+ me_bug_check__parameters_were_not_described_after_second_attempt_2[]
+  =L"parameters were not described after second attempt [sqln: %1; sqld: %2]";
+
+//------------------------------------------------------------------------
+//The unstable sqld of row
+//Params: sqld1, sqld2
+extern const wchar_t
+ me_bug_check__unstable_row_sqld_2[]
+  =L"an unstable sqld of row: [%1] and [%2]";
+
 ////////////////////////////////////////////////////////////////////////////////
 
 extern const wchar_t me_bug_check__prop__unexpected_value_type_2[]
@@ -119,8 +175,8 @@ extern const wchar_t me_bug_check__prop__unexpected_value_type_2[]
 extern const wchar_t me_bug_check__prop__unexpected_value_2[]
  =L"unknown value [%2] in [%1] setting";
 
-extern const wchar_t me_bug_check__prop__not_defined_1[]=
- L"value of property \"%1\" not defined";
+extern const wchar_t me_bug_check__prop__not_defined_1[]
+ =L"value of property \"%1\" not defined";
 
 ////////////////////////////////////////////////////////////////////////////////
 

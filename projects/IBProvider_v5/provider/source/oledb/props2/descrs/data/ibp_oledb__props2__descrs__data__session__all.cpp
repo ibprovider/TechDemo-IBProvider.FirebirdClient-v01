@@ -140,7 +140,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
 
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__SESSION__INNER_TRANS              ,0,"Session InnerTrans")
 
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__SESSION__SCHEMA_CACHE             ,0,"Session Schema Cache")
 #endif
 

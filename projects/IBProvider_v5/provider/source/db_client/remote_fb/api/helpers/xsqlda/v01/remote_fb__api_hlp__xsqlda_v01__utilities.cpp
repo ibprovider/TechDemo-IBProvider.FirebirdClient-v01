@@ -9,11 +9,10 @@
 
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/error_services/ibp_error_utils.h"
-#include "source/error_services/ibp_error.h"
-#include <structure/t_str_formatter.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
+//RemoteFB__API_HLP__XSQLDA_V01__Utilities
 
 void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__UnexpectedTruncation
                                            (const wchar_t* const place,
@@ -23,15 +22,11 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__Unexpected
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(L"unexpected truncation of buffer. sqld: %1");
-
- freason<<sqld;
-
- IBP_ThrowBugCheck
+ IBP_ErrorUtils::Throw__BugCheck
   (place,
    point,
-   freason.c_str());
+   L"unexpected truncation of buffer. sqld: %1",
+   sqld);
 }//Helper__ThrowBugCheck__UnexpectedTruncation
 
 //------------------------------------------------------------------------
@@ -40,12 +35,11 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__XSQLVAR__M
 {
  assert(fieldName);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__mult_def_of_xsqlvar_field_value_1);
-
- exc<<fieldName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__remote_fb,
+   ibp_mce_isc__bug_check__mult_def_of_xsqlvar_field_value_1,
+   fieldName);
 }//Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue
 
 //------------------------------------------------------------------------
@@ -54,12 +48,11 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__XSQLVAR__N
 {
  assert(fieldName);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__not_def_xsqlvar_field_value_1);
-
- exc<<fieldName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__remote_fb,
+   ibp_mce_isc__bug_check__not_def_xsqlvar_field_value_1,
+   fieldName);
 }//Helper__ThrowBugCheck__XSQLVAR__NotDefFieldValue
 
 ////////////////////////////////////////////////////////////////////////////////

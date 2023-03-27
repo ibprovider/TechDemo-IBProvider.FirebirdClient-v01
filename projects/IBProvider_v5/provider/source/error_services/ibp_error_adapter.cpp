@@ -175,16 +175,16 @@ void t_ibp_error_adapter::add(mc_type     const mc_id_2,
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            mc_id_2)));
+       (err_code,
+        mc_id_2)));
 
- const TIBPBindErrorDataPtr
+ const IBP_BindErrorDataPtr
   spBindError
    (structure::not_null_ptr
-      (new TIBPBindErrorData
-             (0,
-              err_code,
-              ibp_mce_standart_error)));
+      (new IBP_BindErrorData
+        (0,
+         err_code,
+         ibp_mce_standart_error)));
 
  //номер ошибки
  (*spError)<<num<<spBindError.ptr();
@@ -205,8 +205,8 @@ void t_ibp_error_adapter::add(mc_type      const mc_id_2,
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            mc_id_2)));
+       (err_code,
+        mc_id_2)));
 
  (*spError)<<num<<msg;
 
@@ -285,11 +285,16 @@ void t_ibp_error_adapter::add_row_error(mc_type     const mc_id_3,
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            mc_id_3)));
+       (err_code,
+        mc_id_3)));
 
- const TIBPBindErrorDataPtr
-  spBindError(structure::not_null_ptr(new TIBPBindErrorData(0,err_code,ibp_mce_standart_error)));
+ const IBP_BindErrorDataPtr
+  spBindError
+   (structure::not_null_ptr
+     (new IBP_BindErrorData
+       (0,
+        err_code,
+        ibp_mce_standart_error)));
 
  (*spError)<<num<<oledb_lib::GetDBRowStatusName(RowStatus)<<spBindError.ptr();
 
@@ -310,8 +315,8 @@ void t_ibp_error_adapter::add_row_error(mc_type      const mc_id_3,
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            mc_id_3)));
+       (err_code,
+        mc_id_3)));
 
  (*spError)<<num<<oledb_lib::GetDBRowStatusName(RowStatus)<<msg;
 
@@ -338,8 +343,8 @@ void t_ibp_error_adapter::push_ibp_error_ex(mc_type                   const mc_i
    spNewErrorRecord
     =structure::not_null_ptr
       (new t_ibp_error_element
-            (com_code,
-             mc_id_2));
+        (com_code,
+         mc_id_2));
 
   assert(spNewErrorRecord);
 
@@ -387,8 +392,8 @@ void t_ibp_error_adapter::push_row_ibp_error_ex
    spNewErrorRecord
     =structure::not_null_ptr
       (new t_ibp_error_element
-            (com_code,
-             mc_id_3));
+        (com_code,
+         mc_id_3));
 
   assert(spNewErrorRecord);
 

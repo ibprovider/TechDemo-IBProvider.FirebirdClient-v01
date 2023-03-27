@@ -45,12 +45,12 @@ class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__ExecuteStatement:public RemoteF
   //!  IN-параметры запроса. Can be null.
   //! \param[in] pOutXSQLDA
   //!  OUT-параметры запроса. Can be null.
-  virtual void exec(db_obj::t_db_operation_context&  OpCtx,
-                    RemoteFB__ConnectorData*         pData,
-                    tr_handle_type*                  pTrHandle,
-                    stmt_handle_type*                pStmtHandle,
-                    const isc_api::XSQLDA_V1*        pInXSQLDA,
-                    const isc_api::XSQLDA_V1*        pOutXSQLDA)=0;
+  virtual void exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    tr_handle_type*                 pTrHandle,
+                    stmt_handle_type*               pStmtHandle,
+                    const isc_api::XSQLDA_V1*       pInXSQLDA,
+                    const isc_api::XSQLDA_V1*       pOutXSQLDA)=0;
 };//class RemoteFB__API__ExecuteStatement
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -9,7 +9,7 @@
 
 #include "source/db_obj/isc_base/isc_param_buffer_v2_builder.h"
 #include "source/db_obj/isc_base/isc_integer_to_portable_format.h"
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 #include "source/ibp_utils.h"
 
 #include <structure/utilities/string/string_is_null_or_empty.h>
@@ -38,7 +38,8 @@ t_isc_param_buffer_v2_builder::t_isc_param_buffer_v2_builder
 
 //------------------------------------------------------------------------
 t_isc_param_buffer_v2_builder::~t_isc_param_buffer_v2_builder()
-{;}
+{
+}
 
 //Selectors --------------------------------------------------------------
 const std::wstring& t_isc_param_buffer_v2_builder::GetBufferTypeName()const
@@ -60,7 +61,7 @@ const t_isc_param_buffer_v2_builder::byte_type* t_isc_param_buffer_v2_builder::G
 
 //Append methods ---------------------------------------------------------
 t_isc_param_buffer_v2_builder&
- t_isc_param_buffer_v2_builder::AppendTag(tag_id_type    const tagID)
+ t_isc_param_buffer_v2_builder::AppendTag(tag_id_type const tagID)
 {
  assert_s(sizeof(tagID)==1);
  assert_s(sizeof(tag_size_type)==4);
@@ -143,9 +144,10 @@ t_isc_param_buffer_v2_builder&
  if(!structure::can_numeric_cast<tag_size_type>(str.len))
  {
   //ERROR - Генерируем  ошибку переполнения, а не обрезать строку
-  this->helper__throw_error__value_is_too_large(tagID,
-                                                tagSIGN,
-                                                str.len);
+  this->helper__throw_error__value_is_too_large
+   (tagID,
+    tagSIGN,
+    str.len);
  }//if
 
  //----------------------------------------- 1. TAG
@@ -183,19 +185,18 @@ t_isc_param_buffer_v2_builder&
  if(error)
  {
   //ERROR - ошибка конвертирования
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__param_buf_builder__failed_to_translate_str_to_sys_charset_3);
-
-  exc<<m_bufTypeName
-     <<int(tagID)
-     <<tagSIGN;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_isc__param_buf_builder__failed_to_translate_str_to_sys_charset_3,
+    m_bufTypeName,
+    int(tagID),
+    tagSIGN);
  }//if
 
- return this->AppendMbcString(tagID,
-                              tagSIGN,
-                              mbc_str);
+ return this->AppendMbcString
+         (tagID,
+          tagSIGN,
+          mbc_str);
 }//AppendMbcString
 
 //------------------------------------------------------------------------
@@ -214,19 +215,18 @@ t_isc_param_buffer_v2_builder&
  if(!ibp::IBP_Utils::WStrToUtf8__Fast(str,&mbc_str))
  {
   //ERROR - ошибка конвертирования
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__param_buf_builder__failed_to_translate_str_to_utf8_3);
-
-  exc<<m_bufTypeName
-     <<int(tagID)
-     <<tagSIGN;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_isc__param_buf_builder__failed_to_translate_str_to_utf8_3,
+    m_bufTypeName,
+    int(tagID),
+    tagSIGN);
  }//if
 
- return this->AppendMbcString(tagID,
-                              tagSIGN,
-                              mbc_str);
+ return this->AppendMbcString
+         (tagID,
+          tagSIGN,
+          mbc_str);
 }//AppendMbcString_AsUTF8
 
 //------------------------------------------------------------------------
@@ -246,9 +246,10 @@ t_isc_param_buffer_v2_builder&
  if(!structure::can_numeric_cast<tag_size_type>(cb))
  {
   //ERROR - Генерируем  ошибку переполнения, а не обрезать строку
-  this->helper__throw_error__value_is_too_large(tagID,
-                                                tagSIGN,
-                                                cb);
+  this->helper__throw_error__value_is_too_large
+   (tagID,
+    tagSIGN,
+    cb);
  }//if
 
  //----------------------------------------- 1. TAG
@@ -285,15 +286,16 @@ void t_isc_param_buffer_v2_builder::helper__throw_error__value_is_too_large
 {
  assert(!structure::string_is_null_or_empty(tagSIGN));
 
- t_ibp_error exc(E_FAIL,ibp_mce_isc__param_buf_builder__value_is_too_large_5);
+ assert_s(1==sizeof(tagID));
 
- exc<<m_bufTypeName
-    <<int(tagID)
-    <<tagSIGN
-    <<valueSize
-    <<structure::t_numeric_limits<tag_size_type>().max_value();
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__param_buf_builder__value_is_too_large_5,
+   m_bufTypeName,
+   int(tagID),
+   tagSIGN,
+   valueSize,
+   structure::t_numeric_limits<tag_size_type>().max_value());
 }//helper__throw_error__value_is_too_large
 
 ////////////////////////////////////////////////////////////////////////////////

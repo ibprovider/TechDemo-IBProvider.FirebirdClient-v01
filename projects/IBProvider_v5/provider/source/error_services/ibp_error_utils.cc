@@ -7,8 +7,6 @@
 #ifndef _ibp_error_utils_CC_
 #define _ibp_error_utils_CC_
 
-#include "source/error_services/ibp_error.h"
-
 #include <structure/utilities/string/position_in_str.h>
 
 #include <structure/t_str_formatter.h>
@@ -38,8 +36,65 @@ void IBP_ThrowErrorSymbolInCommandText(TextIterator beg,
 }//IBP_ThrowErrorSymbolInCommandText
 
 ////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+COMP_CONF_DECLSPEC_NORETURN
+ void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+       (const wchar_t* const sqlTypeSign,
+        T              const sqllen)
+{
+ assert(sqlTypeSign);
+
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__bad_sqllen_of_xvar_2,
+   sqlTypeSign,
+   sqllen);
+}//IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+
+//------------------------------------------------------------------------
+template<class T>
+COMP_CONF_DECLSPEC_NORETURN
+ void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+       (t_ibp_subsystem_id const subsystem_id,  
+        const wchar_t*     const sqlTypeSign,
+        T                  const sqllen)
+{
+ assert(sqlTypeSign);
+
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_isc__bug_check__bad_sqllen_of_xvar_2,
+   sqlTypeSign,
+   sqllen);
+}//IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+
+////////////////////////////////////////////////////////////////////////////////
 //class IBP_ErrorUtils
 
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::Throw__Error
+               (const std::exception&    e,
+                HRESULT            const hr,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(e);
+
+ exc.add_error(hr,msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//Throw__Error
+
+//------------------------------------------------------------------------
 template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
@@ -50,6 +105,29 @@ void IBP_ErrorUtils::Throw__Error
  assert(FAILED(hr));
 
  t_ibp_error exc(hr,msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//Throw__Error
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::Throw__Error
+               (const std::exception&    e,
+                HRESULT            const hr,
+                t_ibp_subsystem_id const subsystem_id,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(e);
+
+ exc.add_error(hr,subsystem_id,msg_code);
 
  self_type::Helper__PushArgs
   (exc,
@@ -77,6 +155,47 @@ void IBP_ErrorUtils::Throw__Error
 
  exc.raise_me();
 }//Throw__Error
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+               (HRESULT                         const hr,
+                ibp_msg_code_type               const msg_code,
+                t_ibp_error::get_cerr_obj_type* const pGetCErr,
+                Args&&...                             args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(hr,msg_code,pGetCErr);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//Throw__ErrorWithCustomErrorObject
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+               (HRESULT                         const hr,
+                t_ibp_subsystem_id              const subsystem_id,
+                ibp_msg_code_type               const msg_code,
+                t_ibp_error::get_cerr_obj_type* const pGetCErr,
+                Args&&...                             args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(hr,subsystem_id,msg_code,pGetCErr);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//Throw__ErrorWithCustomErrorObject
 
 //------------------------------------------------------------------------
 template<typename... Args>
@@ -109,6 +228,33 @@ void IBP_ErrorUtils::Throw__BugCheck__DEBUG
    point,
    freason.str());
 }//Throw__BugCheck__DEBUG
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
+void IBP_ErrorUtils::Throw__BugCheck
+             (const wchar_t* const place,
+              const wchar_t* const point,
+              const wchar_t* const reason_template,
+              Args&&...            args)
+{
+ assert(place);
+ assert(point);
+ assert(reason_template);
+
+ structure::wstr_formatter freason(reason_template);
+
+ self_type::Helper__PushArgs
+  (freason,
+   std::forward<Args>(args)...);
+
+ self_type::Throw__Error
+  (E_FAIL,
+   ibp_mce_common__bug_check_3,
+   place,
+   point,
+   freason.str());
+}//Throw__BugCheck
 
 //------------------------------------------------------------------------
 template<typename Container,typename Arg1,typename... Args>

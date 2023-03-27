@@ -105,6 +105,13 @@
 //Common errors
 
 /// \brief
+///  Unsupported COM API.<br>
+/// \b
+///  Params: Required COM API ID, Supported COM API ID
+#define IBP_MCE_COMMON__UNSUPPORTED_COM_API_2                             1008
+
+//-------------------------------------------------------------------------------
+/// \brief
 ///  Достигнут лимит на количество ошибок. Часть последующих сообщений будет проигнорирована.
 #define IBP_MCE_COMMON__ERR_COUNT_LIMIT_WAS_REACHED_0                     1009
 
@@ -2772,150 +2779,157 @@
 
 //------------------------------------------------------------------------------
 /// \brief
-///  Некорректная версия XSQLDA.<br>
+///  [BUG CHECK] Некорректная версия XSQLDA.<br>
 /// \b
 ///  Params: place, point, xsqlda_name, version
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_XSQLDA_VERSION_4                17621
 
 //------------------------------------------------------------------------------
 /// \brief
+ ///  [BUG CHECK] XVAR определяет некорректную длину sql-данных.<br>
+/// \b
+///  Params: type sign [char, varchar], sqllen
+#define IBP_MCE_ISC__BUG_CHECK__BAD_SQLLEN_OF_XVAR_2                      17622
+
+//------------------------------------------------------------------------------
+/// \brief
 ///  Некорректный SDL. Пустой буфер.<br>
 /// \b
 ///  Params: place, point.
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_2                  17622
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_2                  17632
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестная версия.<br>
 /// \b
 ///  Params: place, point, sdlVersion
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_VERSION_3              17623
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_VERSION_3              17633
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неожиданный конец буфера.<br>
 /// \b
 ///  Params: place, point.
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_END_OF_DATA_2   17624
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_END_OF_DATA_2   17634
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Длина строковых данных превышает количество байт до конца буфера.<br>
 /// \b
 ///  Params: place, point, strLen, bufferTailSize
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__STR_LEN_EXCEEED_THE_SIZE_OF_BUFFER_TAIL_4  17625
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__STR_LEN_EXCEEED_THE_SIZE_OF_BUFFER_TAIL_4  17635
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Многократное определение значения элемента.<br>
 /// \b
 ///  Params: place, point, elementTagID, offset
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_ELEMENT_4      17626
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_ELEMENT_4      17636
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимое количество полей в структуре.<br>
 /// \b
 ///  Params: place, point, fieldCount
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_STRUCT_FIELDS_3            17627
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_STRUCT_FIELDS_3            17637
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимый интекс размерности массива.<br>
 /// \b
 ///  Params: place, point, boundIndex, maxBoundNumber
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_BOUND_INDEX_4        17628
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_BOUND_INDEX_4        17638
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Многократное определение размерности.<br>
 /// \b
 ///  Params: place, point, boundIndex
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_BOUND_RANGE_3  17629
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_BOUND_RANGE_3  17639
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Некорректные границы размерности.<br>
 /// \b
 ///  Params: place, point, boundIndex, lower, upper
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__BAD_BOUND_RANGE_5          17630
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__BAD_BOUND_RANGE_5          17640
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестный идентификатор литеры.<br>
 /// \b
 ///  Params: place, point, literalKind, offset
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNKNOWN_KIND_OF_LITERAL_4  17631
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNKNOWN_KIND_OF_LITERAL_4  17641
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимое количество полей в элементе.<br>
 /// \b
 ///  Params: place, point, fieldCount
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_ELEMENT_FIELDS_3 17632
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_ELEMENT_FIELDS_3 17642
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неожиданный тэг.<br>
 /// \b
 ///  Params: place, point, literalKind, offset
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_TAG_4           17633
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_TAG_4           17643
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Некорректное значение свойства 'index' тэга 'scalar'.<br>
 /// \b
 ///  Params: place, point, index, offset
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCORRECT_INDEX_OF_SCALAR_TAG_4  17634
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCORRECT_INDEX_OF_SCALAR_TAG_4  17644
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Несогласованные размеры буфера и данных. Должны быть идентичны.<br>
 /// \b
 ///  Params: place, point, bufferSize, dataSize
-#define  IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCONSISTENT_SIZES_OF_BUFFER_AND_DATA_4 17635
+#define  IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCONSISTENT_SIZES_OF_BUFFER_AND_DATA_4 17645
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют данные для тега.<br>
 /// \b
 ///  Params: place, point, tag sign
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_TAG_3           17636
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_TAG_3           17646
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют определения размерностей.<br>
 /// \b
 ///  Params: place, point
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSIONS_2    17637
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSIONS_2    17647
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют определение размерности.<br>
 /// \b
 ///  Params: place, point, bound index
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSION_3     17638
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSION_3     17648
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестный идентификатор BLR типа.<br>
 /// \b
 ///  Params: place, point, blrTypeId, offset
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_BLR_DATA_TYPE_4        17639
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_BLR_DATA_TYPE_4        17649
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимый размер элемента массива.<br>
 /// \b
 ///  Params: place, point, length, blrTypeSign
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INVALID_ELEMENT_LENGTH_4   17640
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INVALID_ELEMENT_LENGTH_4   17650
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Ошибка конвертирование строки в UNICODE.<br>
 /// \b
 ///  Params: place, point, cs_name
-#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__FAILED_TO_TRANSLATE_STR_TO_UNICODE_3 17641
+#define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__FAILED_TO_TRANSLATE_STR_TO_UNICODE_3 17651
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -2923,42 +2937,42 @@
 ///  Нулевой размер элемента массива.<br>
 /// \b
 ///  Params: place, point, blrTypeId
-#define IBP_MCE_ISC__BUG_CHECK__ZERO_ARRAY_ELEMENT_SIZE_3                 17650
+#define IBP_MCE_ISC__BUG_CHECK__ZERO_ARRAY_ELEMENT_SIZE_3                 17670
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Несогласованные размеры буфера и элемента массива.<br>
 /// \b
 ///  Params: place, point, slice size, element size,  blrTypeId
-#define IBP_MCE_ISC__BUG_CHECK__INCONSISTENT_SIZES_OF_SLICE_AND_ELEMENT_5 17651
+#define IBP_MCE_ISC__BUG_CHECK__INCONSISTENT_SIZES_OF_SLICE_AND_ELEMENT_5 17671
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Несогласованные размеры буфера и элемента массива.<br>
 /// \b
 ///  Params: place, point, blrTypeId
-#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_BLR_DATA_TYPE_3                   17652
+#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_BLR_DATA_TYPE_3                   17672
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Неправильный размер буфера под данные массива.<br>
 /// \b
 ///  Params: place, point, relation name, field name, size, expected size
-#define IBP_MCE_ISC__BUG_CHECK__INVALID_ARRAY_BUFFER_SIZE_6               17653
+#define IBP_MCE_ISC__BUG_CHECK__INVALID_ARRAY_BUFFER_SIZE_6               17673
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Неизвестный серверный идентификатор типа запроса.<br>
 /// \b
 ///  Params: place, point, stmtTypeID, dbmsSign
-#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_STMT_TYPE_ID_4                    17654
+#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_STMT_TYPE_ID_4                    17674
 
 //------------------------------------------------------------------------------
 /// \brief
 ///  Неизвестное значение индикатора XSQVAR.<br>
 /// \b
 ///  Params: place, point, indicatorValue
-#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_VALUE_OF_XSQLVAR_INDICATOR_3      17655
+#define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_VALUE_OF_XSQLVAR_INDICATOR_3      17675
 
 ////////////////////////////////////////////////////////////////////////////////
 

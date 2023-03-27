@@ -7,7 +7,7 @@
 #ifndef _remote_fb__api_p12__stmt__get_info_H_
 #define _remote_fb__api_p12__stmt__get_info_H_
 
-#include "source/db_client/remote_fb/api/remote_fb__api__stmt__get_info.h"
+#include "source/db_client/remote_fb/api/helpers/remote_fb__api_hlp__stmt__get_info_v01.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ///  Получение сведений о запросе.
 /// </summary>
 class RemoteFB__API_P12__GetStatementInfo LCPI_CPP_CFG__CLASS__FINAL
- :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__GetStatementInfo)
+:public helpers::RemoteFB__API_HLP__GetStatementInfo
 {
  private:
   typedef RemoteFB__API_P12__GetStatementInfo            self_type;
@@ -40,28 +40,18 @@ class RemoteFB__API_P12__GetStatementInfo LCPI_CPP_CFG__CLASS__FINAL
   /// Единственный экземпляр класса
   static self_type Instance;
 
-  //Interface ------------------------------------------------------------
-
+ private:
   /// <summary>
-  ///  Получение сведений о запросе.
+  ///  Direct loading data from server
   /// </summary>
-  //! \param[in] OpCtx
-  //!  Контекст операции.
-  //! \param[in]  pData
-  //!  Not null.
-  //! \param[in]  pStmtHandle
-  //!  Действительный дескриптор запроса. Not null.
-  //! \param[in]  Incornation
-  //! \param[in]  cItems
-  //! \param[in]  pItems
-  //! \param[out] ResultBuffer
-  virtual void exec(db_obj::t_db_operation_context& OpCtx,
-                    RemoteFB__ConnectorData*        pData,
-                    stmt_handle_type*               pStmtHandle,
-                    unsigned short                  Incornation,
-                    unsigned short                  cItems,
-                    const unsigned char*            pItems,
-                    RemoteFB__InfoBuffer&           ResultBuffer)COMP_W000004_OVERRIDE_FINAL;
+  virtual void internal__exec__direct
+               (db_obj::t_db_operation_context& OpCtx,
+                RemoteFB__ConnectorData*        pData,
+                stmt_handle_type*               pStmtHandle,
+                unsigned short                  Incornation,
+                unsigned short                  cItems,
+                const unsigned char*            pItems,
+                RemoteFB__InfoBuffer&           ResultBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpMemoryBuffer;

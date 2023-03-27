@@ -17,7 +17,9 @@ namespace lcpi{namespace ibp{namespace isc_api{
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
 
-extern const t_ibp_isc_timestamp __null__isc_timestamp={};
+extern const t_ibp_isc_date      __null__isc_date=0;
+extern const t_ibp_isc_time      __null__isc_time=0;
+extern const t_ibp_isc_timestamp __null__isc_timestamp={0,0};
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -53,8 +55,8 @@ bool isc_ignore_numeric_scale(long const numeric_rules,
 XSQLVAR_V1::name_box_type
  XSQLVAR_V1::get_xsqlvar_relname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V1::get_xsqlvar_relname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V1::get_xsqlvar_relname_box";
 
  if(this->relname_length<0)
  {
@@ -86,8 +88,8 @@ XSQLVAR_V1::name_box_type
 XSQLVAR_V1::name_box_type
  XSQLVAR_V1::get_xsqlvar_sqlname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V1::get_xsqlvar_sqlname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V1::get_xsqlvar_sqlname_box";
 
  if(this->sqlname_length<0)
  {
@@ -119,8 +121,8 @@ XSQLVAR_V1::name_box_type
 XSQLVAR_V1::name_box_type
  XSQLVAR_V1::get_xsqlvar_aliasname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V1::get_xsqlvar_aliasname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V1::get_xsqlvar_aliasname_box";
 
  if(this->aliasname_length<0)
  {
@@ -149,20 +151,37 @@ XSQLVAR_V1::name_box_type
 }//get_xsqlvar_aliasname_box
 
 //------------------------------------------------------------------------
-bool XSQLVAR_V1::value_is_null__std()const
+bool XSQLVAR_V1::get_value_is_null__std()const
 {
  const wchar_t* c_bugcheck_src
-  =L"XSQLVAR_V1::value_is_null__std";
+  =L"XSQLVAR_V1::get_value_is_null__std";
  
  //-----------------------------------------
- // [2016-03-17] Указатель должен быть инициализирован!
+ //
+ // [2023-03-05]
+ //
+ if(!this->get_value_may_be_null())
+ {
+  //[2023-03-06] It is expected
+  assert(this->sqlind==nullptr);
+
+  return false;
+ }//if
+
+ //-----------------------------------------
+ //
+ // [2023-03-06] Указатель должен быть инициализирован!
+ //
  assert(this->sqlind!=nullptr);
 
  //-----------------------------------------
- //! \todo
- //!  [2016-03-17] Удалить эту проверку
- if(this->sqlind==nullptr)
-  return false;
+ //
+ // [2016-03-17] Удалить эту проверку
+ //
+ // [2023-03-05] Done
+ //
+ //if(this->sqlind==nullptr)
+ // return false;
 
  CHECK_READ_TYPED_PTR(this->sqlind,1)
 
@@ -174,29 +193,35 @@ bool XSQLVAR_V1::value_is_null__std()const
 
  assert_msg(false,"sqlind: "<<*this->sqlind);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3);
-
- exc<<c_bugcheck_src
-    <<L"#001"
-    <<*this->sqlind;
-
- exc.raise_me();
-}//value_is_null__std
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3,
+   c_bugcheck_src,
+   L"#001",
+   *this->sqlind);
+}//get_value_is_null__std
 
 //------------------------------------------------------------------------
 void XSQLVAR_V1::set_value_null_state__std(bool const nullState)
 {
+ //[2023-03-06]
  assert(this->sqlind!=nullptr);
+
+ // [2023-03-06]
+ assert(this->get_value_may_be_null());
 
  //есть, конечно, мысль добавить runtime-проверку this->sqlind!=nullptr.
  //но, формально - это у нас вспомогательный метод и вызывающая сторона обязана
  //инициализировать sqlind
 
  if(nullState)
+ {
   (*(this->sqlind))=-1;
+ }
  else
+ {
   (*(this->sqlind))=0;
+ }
 }//set_value_null_state__std
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -236,8 +261,8 @@ void XSQLVAR_V1_EXT::set_original_fields(const XSQLVAR_V1& xsqlvar)
 XSQLVAR_V2::name_box_type
  XSQLVAR_V2::get_xsqlvar_relname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V2::get_xsqlvar_relname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V2::get_xsqlvar_relname_box";
 
  if(this->relname_length<0)
  {
@@ -269,8 +294,8 @@ XSQLVAR_V2::name_box_type
 XSQLVAR_V2::name_box_type
  XSQLVAR_V2::get_xsqlvar_sqlname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V2::get_xsqlvar_sqlname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V2::get_xsqlvar_sqlname_box";
 
  if(this->sqlname_length<0)
  {
@@ -302,8 +327,8 @@ XSQLVAR_V2::name_box_type
 XSQLVAR_V2::name_box_type
  XSQLVAR_V2::get_xsqlvar_aliasname_box()const
 {
- const wchar_t c_bugcheck_src[]=
-  L"XSQLVAR_V2::get_xsqlvar_aliasname_box";
+ const wchar_t* const c_bugcheck_src
+  =L"XSQLVAR_V2::get_xsqlvar_aliasname_box";
 
  if(this->aliasname_length<0)
  {
@@ -332,20 +357,37 @@ XSQLVAR_V2::name_box_type
 }//get_xsqlvar_aliasname_box
 
 //------------------------------------------------------------------------
-bool XSQLVAR_V2::value_is_null__std()const
+bool XSQLVAR_V2::get_value_is_null__std()const
 {
  const wchar_t* c_bugcheck_src
-  =L"XSQLVAR_V2::value_is_null__std";
+  =L"XSQLVAR_V2::get_value_is_null__std";
  
  //-----------------------------------------
- // [2016-03-17] Указатель должен быть инициализирован!
+ //
+ // [2023-03-05]
+ //
+ if(!this->get_value_may_be_null())
+ {
+  //[2023-03-06] It is expected
+  assert(this->sqlind==nullptr);
+
+  return false;
+ }//if
+
+ //-----------------------------------------
+ //
+ // [2023-03-06] Указатель должен быть инициализирован!
+ //
  assert(this->sqlind!=nullptr);
 
  //-----------------------------------------
- //! \todo
- //!  [2016-03-17] Удалить эту проверку
- if(this->sqlind==nullptr)
-  return false;
+ //
+ // [2016-03-17] Удалить эту проверку
+ //
+ // [2023-03-05] Done
+ //
+ //if(this->sqlind==nullptr)
+ // return false;
 
  CHECK_READ_TYPED_PTR(this->sqlind,1)
 
@@ -357,29 +399,35 @@ bool XSQLVAR_V2::value_is_null__std()const
 
  assert_msg(false,"sqlind: "<<*this->sqlind);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3);
-
- exc<<c_bugcheck_src
-    <<L"#001"
-    <<*this->sqlind;
-
- exc.raise_me();
-}//value_is_null__std
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__unknown_value_of_xsqlvar_indicator_3,
+   c_bugcheck_src,
+   L"#001",
+   *this->sqlind);
+}//get_value_is_null__std
 
 //------------------------------------------------------------------------
 void XSQLVAR_V2::set_value_null_state__std(bool const nullState)
 {
+ //[2023-03-06]
  assert(this->sqlind!=nullptr);
+
+ //[2023-03-06]
+ assert(this->get_value_may_be_null());
 
  //есть, конечно, мысль добавить runtime-проверку this->sqlind!=nullptr.
  //но, формально - это у нас вспомогательный метод и вызывающая сторона обязана
  //инициализировать sqlind
 
  if(nullState)
+ {
   (*(this->sqlind))=-1;
+ }
  else
+ {
   (*(this->sqlind))=0;
+ }
 }//set_value_null_state__std
 
 ////////////////////////////////////////////////////////////////////////////////

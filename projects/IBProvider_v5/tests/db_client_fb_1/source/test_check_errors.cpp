@@ -3377,11 +3377,11 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor__fb3
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_partial_data(tracer,
+                                               pErrorRec,
+                                               self_type::lcid__RUS,
+                                               ucs2ErrSrc,
+                                               msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3392,11 +3392,11 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor__fb3
   const wchar_t* const c_msg
    =L"Attempt to reopen an open cursor";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       c_msg))
+  if(!self_type::error_rec__check_partial_data(tracer,
+                                               pErrorRec,
+                                               self_type::lcid__ENG,
+                                               ucs2ErrSrc,
+                                               c_msg))
   {
    resultValue=false;
   }//if
@@ -4356,7 +4356,6 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqllen
 bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
                 (TTSO_Tracer&                         tracer,
                  const structure::t_err_record* const pErrorRec,
-                 wstr_box_type                  const ucs2_SubSystemID,
                  wstr_box_type                  const sqlBaseTypeSign,
                  long                           const sqlScale)
 {
@@ -4367,12 +4366,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[Подсистема: %1] [BUG CHECK] Некорректное значение XSQLVAR::sqlscale: %3. XSQLVAR::sqltype содержит идентификатор типа [%2].";
+   ="[BUG CHECK] Некорректное значение XSQLVAR::sqlscale: %2. XSQLVAR::sqltype содержит идентификатор типа [%1].";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<ucs2_SubSystemID<<sqlBaseTypeSign<<sqlScale;
+  msgRus<<sqlBaseTypeSign<<sqlScale;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -4387,9 +4386,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[Subsystem: %1] [BUG CHECK] Incorrect value of XSQLVAR::sqlscale: %3. XSQLVAR::sqltype contains a datatype identifier [%2].");
+   (L"[BUG CHECK] Incorrect value of XSQLVAR::sqlscale: %2. XSQLVAR::sqltype contains a datatype identifier [%1].");
 
-  msgEng<<ucs2_SubSystemID<<sqlBaseTypeSign<<sqlScale;
+  msgEng<<sqlBaseTypeSign<<sqlScale;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -4460,7 +4459,6 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__unknown_sqltype
 bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
                 (TTSO_Tracer&                         tracer,
                  const structure::t_err_record* const pErrorRec,
-                 wstr_box_type                  const ucs2_SubSystemID,                 
                  long                           const sqlType)
 {
  assert(pErrorRec!=nullptr);
@@ -4470,12 +4468,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[Подсистема: %1] [BUG CHECK] Некорректный нулевой указатель в XSQLVAR::sqlind. XSQLVAR::sqltype содержит идентификатор типа [%2].";
+   ="[BUG CHECK] Некорректный нулевой указатель в XSQLVAR::sqlind. XSQLVAR::sqltype содержит идентификатор типа [%1].";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<ucs2_SubSystemID<<sqlType;
+  msgRus<<sqlType;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -4490,9 +4488,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[Subsystem: %1] [BUG CHECK] Incorrect null pointer in XSQLVAR::sqlind. XSQLVAR::sqltype contains a datatype identifier [%2].");
+   (L"[BUG CHECK] Incorrect null pointer in XSQLVAR::sqlind. XSQLVAR::sqltype contains a datatype identifier [%1].");
 
-  msgEng<<ucs2_SubSystemID<<sqlType;
+  msgEng<<sqlType;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -4930,7 +4928,6 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqltype_of_xva
 bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
                                            (TTSO_Tracer&                         tracer,
                                             const structure::t_err_record* const pErrorRec,
-                                            wstr_box_type                  const ucs2_SubSystemID,
                                             wstr_box_type                  const sqlBaseTypeSign,
                                             long                           const actualSqlScale,
                                             long                           const expectedSqlScale)
@@ -4943,12 +4940,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[Подсистема: %1] [BUG CHECK] Изменился масштаб xvar: %3. Ожидаемый масштаб: %4. XSQLVAR::sqltype содержит идентификатор типа [%2].";
+   ="[BUG CHECK] Изменился масштаб xvar: %2. Ожидаемый масштаб: %3. XSQLVAR::sqltype содержит идентификатор типа [%1].";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<ucs2_SubSystemID<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
+  msgRus<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -4963,9 +4960,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[Subsystem: %1] [BUG CHECK] A changed scale of xvar: %3. Expected scale: %4. XSQLVAR::sqltype contains a datatype identifier [%2].");
+   (L"[BUG CHECK] A changed scale of xvar: %2. Expected scale: %3. XSQLVAR::sqltype contains a datatype identifier [%1].");
 
-  msgEng<<ucs2_SubSystemID<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
+  msgEng<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6487,6 +6484,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_seq_
 bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
                                            (TTSO_Tracer&                         tracer,
                                             const structure::t_err_record* const pErrorRec,
+                                            wstr_box_type                  const ucs2_SubSystemID,
                                             wstr_box_type                  const fieldName)
 {
  assert(pErrorRec!=nullptr);
@@ -6496,12 +6494,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[BUG CHECK] Повторное определение значения поля [%1] XSQLVAR структуры.";
+   ="[Подсистема: %1] [BUG CHECK] Повторное определение значения поля [%2] XSQLVAR структуры.";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<fieldName;
+  msgRus<<ucs2_SubSystemID<<fieldName;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6516,9 +6514,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[BUG CHECK] Multiple definitions of XSQLVAR field value [%1].");
+   (L"[Subsystem: %1] [BUG CHECK] Multiple definitions of XSQLVAR field value [%2].");
 
-  msgEng<<fieldName;
+  msgEng<<ucs2_SubSystemID<<fieldName;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6538,6 +6536,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
 bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
                                            (TTSO_Tracer&                         tracer,
                                             const structure::t_err_record* const pErrorRec,
+                                            wstr_box_type                  const ucs2_SubSystemID,
                                             wstr_box_type                  const fieldName)
 {
  assert(pErrorRec!=nullptr);
@@ -6547,12 +6546,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[BUG CHECK] Не определено значение поля [%1] XSQLVAR структуры.";
+   ="[Подсистема: %1] [BUG CHECK] Не определено значение поля [%2] XSQLVAR структуры.";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<fieldName;
+  msgRus<<ucs2_SubSystemID<<fieldName;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6567,9 +6566,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[BUG CHECK] No definition of XSQLVAR field value [%1].");
+   (L"[Subsystem: %1] [BUG CHECK] No definition of XSQLVAR field value [%2].");
 
-  msgEng<<fieldName;
+  msgEng<<ucs2_SubSystemID<<fieldName;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6589,6 +6588,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
 bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
                                            (TTSO_Tracer&                         tracer,
                                             const structure::t_err_record* const pErrorRec,
+                                            wstr_box_type                  const ucs2_SubSystemID,
                                             long                           const actualLength)
 {
  assert(pErrorRec!=nullptr);
@@ -6598,12 +6598,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[BUG CHECK] XSQLVAR определяет отрицательную длину sql-данных: %1.";
+   ="[Подсистема: %1] [BUG CHECK] XSQLVAR определяет отрицательную длину sql-данных: %2.";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<actualLength;
+  msgRus<<ucs2_SubSystemID<<actualLength;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6618,9 +6618,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[BUG CHECK] XSQLVAR defines negative length of sql data: %1.");
+   (L"[Subsystem: %1] [BUG CHECK] XSQLVAR defines negative length of sql data: %2.");
 
-  msgEng<<actualLength;
+  msgEng<<ucs2_SubSystemID<<actualLength;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6640,6 +6640,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
 bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def_of_xvars
                                            (TTSO_Tracer&                   tracer,
                                             const structure::t_err_record* const pErrorRec,
+                                            wstr_box_type                  const ucs2_SubSystemID,
                                             size_t                         const actualCount,
                                             size_t                         const expectedCount)
 {
@@ -6650,12 +6651,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
  //-----------------------------------------
  {
   const char* const c_templ
-   ="[BUG CHECK] Незавершенное определение XSQLVAR структур. Определено: %1. Ожидается: %2.";
+   ="[Подсистема: %1] [BUG CHECK] Незавершенное определение XSQLVAR структур. Определено: %2. Ожидается: %3.";
 
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  msgRus<<actualCount<<expectedCount;
+  msgRus<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,
@@ -6670,9 +6671,9 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[BUG CHECK] Incompleted definition of XSQLVAR structures. Define: %1. Expected: %2.");
+   (L"[Subsystem: %1] [BUG CHECK] Incompleted definition of XSQLVAR structures. Define: %2. Expected: %3.");
 
-  msgEng<<actualCount<<expectedCount;
+  msgEng<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
   if(!self_type::error_rec__check_data(tracer,
                                        pErrorRec,

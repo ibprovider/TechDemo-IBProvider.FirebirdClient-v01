@@ -39,9 +39,7 @@ void t_isc_connection_settings::internal_init()
 
  this->tr_flags            =0;
 
- //! \todo
- //!  [2016-10-26] Устанавливать нулевое значение
- this->max_obj_name_len    =31;
+ this->max_obj_name_len    .reset();
 
  this->max_sql_len         =0;
 
@@ -49,13 +47,17 @@ void t_isc_connection_settings::internal_init()
  this->nested_trans        =ibprovider::ibp_propval__nested_trans__default;
  this->nested_trans_rules  =ibprovider::ibp_propval__nested_trans_rules__default;
 
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
  this->schema_ldr_cfg__descriptions         =ibprovider::ibp_propval__schema_ldr_cfg__descriptions__default;
  this->schema_ldr_cfg__check_constraints    =ibprovider::ibp_propval__schema_ldr_cfg__check_constraints__default;
-#endif
+
+#endif // IBP_ENGINE_META_DATA_READER!=0
+
  this->schema_cache_mode                    =ibprovider::ibp_propval_schema_cache__default;
 
  this->array_type                           =ibprovider::ibp_propval_array_type__default;
+
+ this->force_nulls                          =ibprovider::ibp_propval__force_nulls__default;
 
  this->numeric_i2_rules                     =ibprovider::ibp_propval_numeric_rules__default;
  this->numeric_i4_rules                     =ibprovider::ibp_propval_numeric_rules__default;
@@ -142,7 +144,11 @@ void t_isc_connection_settings::set_cn_params(const oledb_lib::OLEDB_Props2__Dat
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__ARRAY_TYPE);
 
  //-----------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+ this->force_nulls
+  =pDsPropValues->AUX__GetValue__bool(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__FORCE_NULLS);
+
+ //-----------------------------------------------------------------------
+#if(IBP_ENGINE_META_DATA_READER!=0)
  //загрузка описаний объектов
  this->schema_ldr_cfg__descriptions
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__SCHEMA_LDR_CFG__DESCRIPTIONS);
@@ -150,7 +156,8 @@ void t_isc_connection_settings::set_cn_params(const oledb_lib::OLEDB_Props2__Dat
  //загрузка сведений о CHECK-ограничениях
  this->schema_ldr_cfg__check_constraints
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS);
-#endif
+
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
  //режим кэширования метаданных
  this->schema_cache_mode
@@ -322,14 +329,14 @@ bool t_isc_connection_settings::svp__release_child_svps_of_recreated_svp()const
 }//svp__release_child_svps_of_recreated_svp
 
 //------------------------------------------------------------------------
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 
 bool t_isc_connection_settings::schema_ldr_cfg__can_publish_check_constraints()const
 {
  return this->schema_ldr_cfg__check_constraints==ibprovider::ibp_propval__schema_ldr_cfg__check_constraints__yes;
 }//schema_ldr_cfg__can_publish_check_constraints
 
-#endif
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
 //------------------------------------------------------------------------
 db_obj::t_db_impl_id t_isc_connection_settings::get_database_implID()const

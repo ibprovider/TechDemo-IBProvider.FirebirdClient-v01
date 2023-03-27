@@ -142,7 +142,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZE
   }//ibp_isc_sql_text
 
   //------------------------------------------------------------
-  case isc_api::ibp_fb25_sql_null:
+  case isc_api::ibp_fb025_sql_null:
   {
    if(pXSQLVAR->sqllen!=0)
    {
@@ -157,7 +157,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZE
 
    //---------------------------------------
    break;
-  }//ibp_fb25_sql_null
+  }//ibp_fb025_sql_null
 
   //------------------------------------------------------------
   case isc_api::ibp_isc_sql_short:
@@ -346,12 +346,10 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZE
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+     pXSQLVAR->sqltype);
   }//default
  }//switch
 

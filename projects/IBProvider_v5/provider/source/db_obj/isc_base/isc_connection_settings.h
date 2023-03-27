@@ -4,13 +4,14 @@
 //! \brief   Настройки подключения к базе данных
 //! \author  Kovalenko Dmitry
 //! \date    29.07.2003
-#ifndef _isc_db_info_H_
-#define _isc_db_info_H_
+#ifndef _isc_connection_settings_H_
+#define _isc_connection_settings_H_
 
-#include "source/db_obj/isc_base/isc_types.h"      //t_ibp_isc_dialect
-#include "source/db_obj/isc_base/isc_dbms_info.h"  //t_isc_dbms_info
-#include "source/db_obj/isc_base/isc_ods_id.h"     //t_isc_ods_id
-#include "source/db_obj/isc_base/isc_api.h"        //t_ibp_isc_timestamp
+#include "source/db_obj/isc_base/isc_types.h"             //t_ibp_isc_dialect
+#include "source/db_obj/isc_base/isc_dbms_info.h"         //t_isc_dbms_info
+#include "source/db_obj/isc_base/isc_max_obj_name_len.h"  //t_isc_max_obj_name_len
+#include "source/db_obj/isc_base/isc_ods_id.h"            //t_isc_ods_id
+#include "source/db_obj/isc_base/isc_api.h"               //t_ibp_isc_timestamp
 #include "source/db_obj/platform/db_platform.h"
 #include "source/db_obj/db_types.h"
 
@@ -19,6 +20,12 @@
 #include <structure/stl/t_stl_vector.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef IBP_ENGINE_META_DATA_READER
+# error IBP_ENGINE_META_DATA_READER is not defined
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup isc_base
 //! @{
@@ -207,12 +214,13 @@ class t_isc_connection_settings
   /// </summary>
   bool svp__release_child_svps_of_recreated_svp()const;
 
- #if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+ #if(IBP_ENGINE_META_DATA_READER!=0)
   /// <summary>
   ///  Публикация сведений о CHECK-ограничениях
   /// </summary>
   bool schema_ldr_cfg__can_publish_check_constraints()const;
- #endif
+
+ #endif // IBP_ENGINE_META_DATA_READER!=0
 
   /// <summary>
   ///  Получение идентификатора реализации базы данных.
@@ -280,7 +288,7 @@ class t_isc_connection_settings
   /// <summary>
   ///  Максимальная длина названия объекта базы данных
   /// </summary>
-  size_t                 max_obj_name_len;
+  t_isc_max_obj_name_len max_obj_name_len;
 
   //------------
   /// <summary>
@@ -305,13 +313,14 @@ class t_isc_connection_settings
   ///Правила управления вложенными транзакциями
   long                   nested_trans_rules;
 
- #if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+ #if(IBP_ENGINE_META_DATA_READER!=0)
   ///Копия значения свойства IBP_DBPROP__INIT__SCHEMA_LDR_CFG__DESCRIPTIONS
   long                   schema_ldr_cfg__descriptions;
 
   ///Копия значения свойства IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS
   long                   schema_ldr_cfg__check_constraints;
- #endif
+
+ #endif // IBP_ENGINE_META_DATA_READER!=0
 
   /// <summary>
   ///  Режим кэширования метаданных
@@ -324,6 +333,9 @@ class t_isc_connection_settings
   /// </summary>
   ///  Возможные значения перечислены в ibp::t_ibp_propval_column_type_rules
   long                   array_type;
+
+  ///Force nulls
+  bool                   force_nulls;
 
   ///NUMERIC_I2 Rules
   long                   numeric_i2_rules;

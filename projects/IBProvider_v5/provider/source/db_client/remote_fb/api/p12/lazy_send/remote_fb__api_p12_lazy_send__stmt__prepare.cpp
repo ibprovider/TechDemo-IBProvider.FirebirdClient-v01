@@ -250,8 +250,9 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__prepare
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local

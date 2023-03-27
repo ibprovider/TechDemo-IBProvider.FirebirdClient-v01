@@ -55,13 +55,13 @@ void RemoteFB__XDR__Decoder::decode__p_objct
  {
   // ERROR - загружены некорректные OBJCT-данные
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_remote__receive_pack__xdr__bad_data_3);
-
-  exc<<pv_sign<<L"objct"<<tmp;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_remote__receive_pack__xdr__bad_data_3,
+    pv_sign,
+    L"objct",
+    tmp);
  }//if
 
  structure::static_numeric_cast(reinterpret_cast<protocol::P_SHORT*>(pv),tmp);
@@ -85,13 +85,13 @@ void RemoteFB__XDR__Decoder::decode__p_short
  {
   // ERROR - загружено некорректное SHORT-значение
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_remote__receive_pack__xdr__bad_data_3);
-
-  exc<<pv_sign<<L"short"<<tmp;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_remote__receive_pack__xdr__bad_data_3,
+    pv_sign,
+    L"short",
+    tmp);
  }//if
 
  structure::static_numeric_cast(pv,tmp);
@@ -160,13 +160,13 @@ void RemoteFB__XDR__Decoder::decode__p_ushort
  {
   // ERROR - загружено некорректное USHORT-значение
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_remote__receive_pack__xdr__bad_data_3);
-
-  exc<<pv_sign<<L"ushort"<<tmp;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_remote__receive_pack__xdr__bad_data_3,
+    pv_sign,
+    L"ushort",
+    tmp);
  }//if
 
  structure::static_numeric_cast(pv,tmp);
@@ -342,15 +342,13 @@ void RemoteFB__XDR__Decoder::decode__string
  {
   //ERROR - Length of string is too long!
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_remote__receive_pack__xdr__str_too_long_3);
-
-  exc<<pv_sign
-     <<tmp_cchData
-     <<maxLength;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_remote__receive_pack__xdr__str_too_long_3,
+    pv_sign,
+    tmp_cchData,
+    maxLength);
  }//if
 
  //выделяем память с резервированием места под терминальный нулевой символ
@@ -362,15 +360,13 @@ void RemoteFB__XDR__Decoder::decode__string
 
  if(!(tmp_cchData<c_maxCCH))
  {
-  t_ibp_error exc(E_OUTOFMEMORY,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_remote__receive_pack__xdr__str_too_long_3);
-
-  exc<<pv_sign
-     <<tmp_cchData
-     <<(c_maxCCH-1);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_OUTOFMEMORY,
+    ibp_subsystem__remote_fb,
+    ibp_mce_remote__receive_pack__xdr__str_too_long_3,
+    pv_sign,
+    tmp_cchData,
+    (c_maxCCH-1));
  }//if
 
  assert(tmp_cchData<c_maxCCH);
@@ -519,13 +515,12 @@ void RemoteFB__XDR__Decoder::decode__status_vector__eset02
    {
     //ERROR - Unexpected status vector argID
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_subsystem__remote_fb,
-                    ibp_mce_remote__receive_pack__unexpected_arg_in_status_vector_2);
-
-    exc<<pv_sign<<s;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_subsystem__remote_fb,
+      ibp_mce_remote__receive_pack__unexpected_arg_in_status_vector_2,
+      pv_sign,
+      s);
    }//default
   }//switch
 
@@ -629,15 +624,13 @@ void RemoteFB__XDR__Decoder::helper__throw_err__status_vector_is_too_long
  assert(pv_sign);
  assert(check_point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_subsystem__remote_fb,
-                 ibp_mce_remote__receive_pack__status_vector_is_too_long_3);
-
- exc<<pv_sign
-    <<MaxLength
-    <<check_point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__remote_fb,
+   ibp_mce_remote__receive_pack__status_vector_is_too_long_3,
+   pv_sign,
+   MaxLength,
+   check_point);
 }//helper__throw_err__status_vector_is_too_long
 
 ////////////////////////////////////////////////////////////////////////////////

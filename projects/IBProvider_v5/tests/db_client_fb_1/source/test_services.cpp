@@ -861,7 +861,7 @@ void TestServices::RemoteFB_Connector__GetStatementInfo
 {
  assert(pConnector);
 
- tracer<<L"RemoteFB__Connector::GetColumns ...";
+ tracer<<L"RemoteFB__Connector::GetStatementInfo ...";
 
  TTSO_TracerAutoSend __auto_send(tracer);
 
@@ -2728,11 +2728,11 @@ bool TestServices::checkValue__TEXT(TTSO_Tracer&                        tracer,
 }//checkValue__TEXT
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__BOOLEAN(TTSO_Tracer&                    tracer,
-                                       short                     const actualSqlInd,
-                                       isc_api::t_ibp_fb30_bool  const actualSqlValue,
-                                       short                     const expectedSqlInd,
-                                       isc_api::t_ibp_fb30_bool  const expectedSqlValue)
+bool TestServices::checkValue__BOOLEAN(TTSO_Tracer&                     tracer,
+                                       short                      const actualSqlInd,
+                                       isc_api::t_ibp_fb030_bool  const actualSqlValue,
+                                       short                      const expectedSqlInd,
+                                       isc_api::t_ibp_fb030_bool  const expectedSqlValue)
 {
  for(;;)
  {

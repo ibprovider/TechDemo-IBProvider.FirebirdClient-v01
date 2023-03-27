@@ -20,7 +20,8 @@ t_ibp_error_element::t_ibp_error_element(HRESULT const err_code,
                                          mc_type const msg_code)
  :m_msg_code(msg_code)
  ,m_err_code(err_code)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
@@ -29,7 +30,8 @@ t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
  :m_msg_code(msg_code)
  ,m_err_code(err_code)
  ,m_spGetCustomError(pGetCErr)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
@@ -38,7 +40,8 @@ t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
  :m_varSubSystemID(static_cast<LONG>(subsys_id))
  ,m_msg_code      (msg_code)
  ,m_err_code      (err_code)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
@@ -49,11 +52,13 @@ t_ibp_error_element::t_ibp_error_element(HRESULT            const err_code,
  ,m_msg_code      (msg_code)
  ,m_err_code      (err_code)
  ,m_spGetCustomError (pGetCErr)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ibp_error_element::~t_ibp_error_element()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 void t_ibp_error_element::set_subsystem_id(t_ibp_subsystem_id const subsys_id)

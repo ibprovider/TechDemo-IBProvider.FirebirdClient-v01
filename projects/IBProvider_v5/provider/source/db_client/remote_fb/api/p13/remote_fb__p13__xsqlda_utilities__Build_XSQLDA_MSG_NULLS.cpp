@@ -70,7 +70,7 @@ void RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
           NullMask==0x40 ||
           NullMask==0x80);
 
-   if(pXVar->value_may_be_null())
+   if(pXVar->get_value_may_be_null())
    {
     if(pXVar->sqlind==nullptr)
     {
@@ -80,7 +80,7 @@ void RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
       (pXVar->sqltype);
     }//if
 
-    if(pXVar->value_is_null__std()) //throw
+    if(pXVar->get_value_is_null__std()) //throw
     {
      //устанавливаем флаг null-значения
      assert(NullIndex<Nulls.size());

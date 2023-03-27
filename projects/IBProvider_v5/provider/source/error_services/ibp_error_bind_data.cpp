@@ -14,18 +14,9 @@
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
-//struct TIBPBindErrorDataTraits
+//class IBP_BindErrorData
 
-TIBPBindErrorDataTraits::out_return_type&
- TIBPBindErrorDataTraits::out_ret(args_type& x)
-{
- return *static_cast<out_return_type*>(&x);
-}//out_ret
-
-////////////////////////////////////////////////////////////////////////////////
-//class TIBPBindErrorData
-
-TIBPBindErrorData::TIBPBindErrorData(ordinal_type  const index,
+IBP_BindErrorData::IBP_BindErrorData(ordinal_type  const index,
                                      HRESULT       const err_code,
                                      msg_code_type const msg_code)
  :m_index     (index)
@@ -36,17 +27,17 @@ TIBPBindErrorData::TIBPBindErrorData(ordinal_type  const index,
  ,m_DEBUG__pOwnerList(nullptr)
 #endif
 {
-}//TIBPBindErrorData
+}//IBP_BindErrorData
 
 //------------------------------------------------------------------------
-TIBPBindErrorData::~TIBPBindErrorData()
+IBP_BindErrorData::~IBP_BindErrorData()
 {
  assert(m_DEBUG__pOwnerList==nullptr);
  assert(m_pNext==nullptr);
-}//~TIBPBindErrorData
+}//~IBP_BindErrorData
 
 //IBP_IText interface ----------------------------------------------------
-bool TIBPBindErrorData::get_text(lcid_type    const lcid,
+bool IBP_BindErrorData::get_text(lcid_type    const lcid,
                                  string_type* const text)const
 {
  const lock_guard_type __lock(m_guard);
@@ -65,7 +56,7 @@ bool TIBPBindErrorData::get_text(lcid_type    const lcid,
 }//get_text
 
 //------------------------------------------------------------------------
-TIBPBindErrorData& TIBPBindErrorData::add_arg(const base_variant_type& x)
+IBP_BindErrorData& IBP_BindErrorData::add_arg(const base_variant_type& x)
 {
  const lock_guard_type __lock(m_guard);
 
@@ -77,9 +68,9 @@ TIBPBindErrorData& TIBPBindErrorData::add_arg(const base_variant_type& x)
 }//add_arg
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBPBindErrorDataSet
+//class IBP_BindErrorDataSet
 
-TIBPBindErrorDataSet::TIBPBindErrorDataSet()
+IBP_BindErrorDataSet::IBP_BindErrorDataSet()
  :m_pHead  (nullptr)
  ,m_pTail  (nullptr)
  ,m_Size   (0)
@@ -87,11 +78,11 @@ TIBPBindErrorDataSet::TIBPBindErrorDataSet()
 }
 
 //------------------------------------------------------------------------
-TIBPBindErrorDataSet::~TIBPBindErrorDataSet()
+IBP_BindErrorDataSet::~IBP_BindErrorDataSet()
 {
  DEBUG_CODE(this->DEBUG__CheckState();)
 
- TIBPBindErrorData* tmp=nullptr;
+ IBP_BindErrorData* tmp=nullptr;
 
  while(m_pHead!=nullptr)
  {
@@ -125,10 +116,10 @@ TIBPBindErrorDataSet::~TIBPBindErrorDataSet()
  m_pTail=nullptr;
 
  DEBUG_CODE(this->DEBUG__CheckState();)
-}//~TIBPBindErrorDataSet
+}//~IBP_BindErrorDataSet
 
 //------------------------------------------------------------------------
-bool TIBPBindErrorDataSet::IsEmpty()const
+bool IBP_BindErrorDataSet::IsEmpty()const
 {
  DEBUG_CODE(this->DEBUG__CheckState();)
 
@@ -136,7 +127,7 @@ bool TIBPBindErrorDataSet::IsEmpty()const
 }//IsEmpty
 
 //------------------------------------------------------------------------
-void TIBPBindErrorDataSet::Add(TIBPBindErrorData* const pData)
+void IBP_BindErrorDataSet::Add(IBP_BindErrorData* const pData)
 {
  assert(pData);
  assert(pData->m_DEBUG__pOwnerList==nullptr);
@@ -176,7 +167,7 @@ void TIBPBindErrorDataSet::Add(TIBPBindErrorData* const pData)
 }//Add
 
 //------------------------------------------------------------------------
-void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
+void IBP_BindErrorDataSet::ThrowError(HRESULT           const ErrCode,
                                       ibp_msg_code_type const ErrMsgID_1)const
 {
  DEBUG_CODE(this->DEBUG__CheckState();)
@@ -184,7 +175,7 @@ void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
  t_ibp_error exc(ErrCode);
 
  //перечисляем в первые MaxBindError ошибок
- TIBPBindErrorData* pCurErr=m_pHead;
+ IBP_BindErrorData* pCurErr=m_pHead;
 
  for(;pCurErr;pCurErr=pCurErr->m_pNext)
  {
@@ -218,7 +209,7 @@ void TIBPBindErrorDataSet::ThrowError(HRESULT           const ErrCode,
 
 //------------------------------------------------------------------------
 #ifndef NDEBUG
-void TIBPBindErrorDataSet::DEBUG__CheckState()const
+void IBP_BindErrorDataSet::DEBUG__CheckState()const
 {
  if(m_pHead==nullptr)
  {

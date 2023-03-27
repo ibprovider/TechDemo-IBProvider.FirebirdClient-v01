@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/remote_fb__array_slice_descr.h"
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -116,16 +116,14 @@ size_t RemoteFB__ArraySliceDescr::GetMemorySize()const
  {
   //ERROR - слишком большое количество элементов в массиве.
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb,
-                  ibp_mce_array__calc_memory_size__overflow_4);
-
-  exc<<m_relation_name
-     <<m_field_name
-     <<nElements
-     <<m_element_total_length;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_array__calc_memory_size__overflow_4,
+    m_relation_name,
+    m_field_name,
+    nElements,
+    m_element_total_length);
  }//if c_max_element_count<nElements
 
  return nElements*m_element_total_length;
@@ -134,13 +132,12 @@ size_t RemoteFB__ArraySliceDescr::GetMemorySize()const
 //helper methods ---------------------------------------------------------
 void RemoteFB__ArraySliceDescr::Helper__ThrowErr__CantCalcElementCount()const
 {
- t_ibp_error exc(E_FAIL,
-                 ibp_subsystem__remote_fb,
-                 ibp_mce_array__calc_total_element_count__overflow_2);
-
- exc<<m_relation_name<<m_field_name;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__remote_fb,
+   ibp_mce_array__calc_total_element_count__overflow_2,
+   m_relation_name,
+   m_field_name);
 }//Helper__ThrowErr__CantCalcElementCount
 
 ////////////////////////////////////////////////////////////////////////////////

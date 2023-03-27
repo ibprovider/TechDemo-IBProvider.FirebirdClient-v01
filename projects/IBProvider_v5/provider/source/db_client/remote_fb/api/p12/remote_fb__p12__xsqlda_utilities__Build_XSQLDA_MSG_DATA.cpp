@@ -151,7 +151,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
   }//ibp_isc_sql_text
 
   //------------------------------------------------------------
-  case isc_api::ibp_fb25_sql_null:
+  case isc_api::ibp_fb025_sql_null:
   {
    if(pXSQLVAR->sqllen!=0)
    {
@@ -162,7 +162,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
    }//if
 
    break;
-  }//ibp_fb25_sql_null
+  }//ibp_fb025_sql_null
 
   //------------------------------------------------------------
   case isc_api::ibp_isc_sql_short:
@@ -349,12 +349,10 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+     pXSQLVAR->sqltype);
   }//default
  }//switch
 
@@ -427,7 +425,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
  // - sqlind указывает на ненулевое значение
  bool IsNull=false;
 
- if(pXSQLVAR->value_may_be_null())
+ if(pXSQLVAR->get_value_may_be_null())
  {
   if(pXSQLVAR->sqlind==nullptr)
   {
@@ -437,7 +435,7 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
     (pXSQLVAR->sqltype);
   }//if
 
-  IsNull=pXSQLVAR->value_is_null__std();
+  IsNull=pXSQLVAR->get_value_is_null__std();
  }//if
 
  //-------------------------------------------------------------
@@ -496,12 +494,10 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
      //[2015-05-16] Будем тормозить отладочную сборку для разбора полёта.
      assert_msg(false,"sz: "<<varchar_size);
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-     exc<<varchar_size;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+       varchar_size);
     }//if
 
     if(xvar_sqllen<static_cast<size_t>(varchar_size))
@@ -511,12 +507,11 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
      //[2015-05-16] Будем тормозить отладочную сборку для разбора полёта.
      assert_msg(false,"sz: "<<varchar_size<<". buf_sz: "<<xvar_sqllen);
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2);
-
-     exc<<varchar_size<<xvar_sqllen;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2,
+       varchar_size,
+       xvar_sqllen);
     }//if
 
     memcpy(DataBuffer.ptr_at(offset),pXSQLVAR->sqldata,sizeof(isc_api::isc_varchar_size_type)+varchar_size);
@@ -553,12 +548,12 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
   }//ibp_isc_sql_text
 
   //------------------------------------------------------------
-  case isc_api::ibp_fb25_sql_null:
+  case isc_api::ibp_fb025_sql_null:
   {
    assert(pXSQLVAR->sqllen==0);
 
    break;
-  }//ibp_fb25_sql_null
+  }//ibp_fb025_sql_null
 
   //------------------------------------------------------------
   case isc_api::ibp_isc_sql_short:
@@ -945,12 +940,10 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
 
    //ERROR - [BUG CHECK] unexpected sqltypeID
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+     pXSQLVAR->sqltype);
   }//default
  }//switch
 

@@ -5649,7 +5649,7 @@ void TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL::tag_impl::test_512
   isc_api::ibp_isc_sdl_version1,
   isc_api::ibp_isc_sdl_struct,
   1,
-  isc_api::ibp_fb30_blr_dtype__bool,
+  isc_api::ibp_fb030_blr_dtype__bool,
   isc_api::ibp_isc_sdl_relation,
   3,'a','B','c',
   isc_api::ibp_isc_sdl_field,
@@ -5693,7 +5693,7 @@ void TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL::tag_impl::test_512
 
  _TSO_CHECK(descr.m_field_name.empty());
 
- _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb30_blr_dtype__bool);
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb030_blr_dtype__bool);
 
  _TSO_CHECK(descr.m_element_sql_scale==0);
 

@@ -12,7 +12,10 @@
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
 
+class t_isc_info_buffer_v1_builder;
+
 class t_isc_param_buffer_v1_builder;
+class t_isc_param_buffer_v2_builder;
 
 class t_isc_ods_id;
 
@@ -21,6 +24,7 @@ class t_isc_error_code_descr2;
 
 class t_isc_status_vector;
 class t_isc_dbms_info;
+class t_isc_max_obj_name_len;
 class t_isc_connection_settings;
 
 struct t_isc_ods_data__database;

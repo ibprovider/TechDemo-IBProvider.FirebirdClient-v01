@@ -102,13 +102,11 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
   {
    //ERROR - buffer is too small
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p11,
-                   ibp_mce_dbobj_fail_get_db_info__buf_is_small_1);
-
-   exc<<buffer2.size();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p11,
+     ibp_mce_dbobj_fail_get_db_info__buf_is_small_1,
+     buffer2.size());
   }//if
 
   //----------------------------------------
@@ -329,14 +327,12 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
 
   assert(not_processed_tag_count>0);
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p11,
-                  ibp_mce_dbobj_fail_get_db_info__no_data_2);
-
-  exc<<ibp::push_value(cns.dbms.descr_Ex,L"???")
-     <<tags.str();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p11,
+    ibp_mce_dbobj_fail_get_db_info__no_data_2,
+    ibp::push_value(cns.dbms.descr_Ex,L"???"),
+    tags.str());
 
   assert(false);
  }//if

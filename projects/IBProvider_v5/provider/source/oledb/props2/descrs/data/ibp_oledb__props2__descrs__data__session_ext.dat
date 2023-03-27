@@ -15,7 +15,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
   false,
   /*post init calls*/)
 
-#if(IBP_EDITION_ID!=IBP_EDITION_ID__FREE)
+#if(IBP_ENGINE_META_DATA_READER!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
  (IBP_DBPROP__SESSION__SCHEMA_CACHE,
@@ -25,7 +25,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
   ibprovider::ibp_propval_schema_cache__default,
   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__schema_cache::GetInstancePtr()))
 
-#endif
+#endif // IBP_ENGINE_META_DATA_READER!=0
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4
  (IBP_DBPROP__SESSION__AUTO_COMMIT_DDL,

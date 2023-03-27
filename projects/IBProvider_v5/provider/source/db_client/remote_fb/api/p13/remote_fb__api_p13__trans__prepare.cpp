@@ -89,14 +89,12 @@ void RemoteFB__API_P13__PrepareTransaction::exec
   {
    //ERROR - размер буфера с данными превышает максимально допустимое значение
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_ibtrans__tr_prep_data_is_too_large__2);
-
-   exc<<data_length
-      <<structure::get_numeric_limits(packet.p_prep.p_prep__data.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_ibtrans__tr_prep_data_is_too_large__2,
+     data_length,
+     structure::get_numeric_limits(packet.p_prep.p_prep__data.cstr_length).max_value());
   }//if
 
   assert(structure::can_numeric_cast(&packet.p_prep.p_prep__data.cstr_length,data_length));
@@ -112,8 +110,9 @@ void RemoteFB__API_P13__PrepareTransaction::exec
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 
  //----------------------------------------- 4. get response
@@ -125,8 +124,9 @@ void RemoteFB__API_P13__PrepareTransaction::exec
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {

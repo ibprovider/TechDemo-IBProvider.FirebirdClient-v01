@@ -145,15 +145,13 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__FinishConnect_P13__accept_dat
 
      assert(false);
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_remote__bug_check__unexpected_attempt_to_change_auth_service_4);
-
-     exc<<c_bugcheck_src
-        <<L"#003"
-        <<clientConnectBlock.GetCurrentAuthPlugin()->get_name()
-        <<serverAuthPluginName;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_remote__bug_check__unexpected_attempt_to_change_auth_service_4,
+       c_bugcheck_src,
+       L"#003",
+       clientConnectBlock.GetCurrentAuthPlugin()->get_name(),
+       serverAuthPluginName);
     }//if
    }//if
 

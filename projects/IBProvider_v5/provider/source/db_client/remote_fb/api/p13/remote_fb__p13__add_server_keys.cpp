@@ -178,15 +178,13 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
    {
     //ERROR - ошибка преобразования UTF8-строки со списком имен алгоритмов в UCS2-строку
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_remote__bug_check__cant_translate_wire_crypt_service_names_4);
-
-    exc<<c_bugcheck_src
-       <<L"#010"
-       <<L"UTF8"
-       <<L"WSTR";
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_remote__bug_check__cant_translate_wire_crypt_service_names_4,
+      c_bugcheck_src,
+      L"#010",
+      L"UTF8",
+      L"WSTR");
    }//if
 
    p+=cluster_length;

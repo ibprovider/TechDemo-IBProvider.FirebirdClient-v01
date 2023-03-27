@@ -74,14 +74,12 @@ void RemoteFB__P10__ConnectHelper::exec(RemoteFB__Port*            const pPort,
   {
    //ERROR - database name length too large
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p10,
-                   ibp_mce_common__database_name_length_is_too_large_2);
-
-   exc<<tmp__mbc_database_name.length()
-      <<structure::get_numeric_limits(packet.p_atch.p_atch__file.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p10,
+     ibp_mce_common__database_name_length_is_too_large_2,
+     tmp__mbc_database_name.length(),
+     structure::get_numeric_limits(packet.p_atch.p_atch__file.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast

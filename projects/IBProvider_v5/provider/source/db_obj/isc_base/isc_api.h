@@ -216,7 +216,7 @@ enum
  ibp_isc_bpb_type_segmented            =0x0,
  ibp_isc_bpb_type_stream               =0x1,
  ibp_isc_bpb_storage_main              =0x0,
- ibp_isc_bpb_storage_temp              =0x2, 
+ ibp_isc_bpb_storage_temp              =0x2,
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -226,7 +226,7 @@ enum
  ibp_isc_DSQL_close     =1,
  ibp_isc_DSQL_drop      =2,
 
- ibp_ib65_DSQL_cancel   =4,
+ ibp_ib065_DSQL_cancel  =4,
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -382,7 +382,7 @@ enum
 ////////////////////////////////////////////////////////////////////////////////
 //consts
 
-const long isc_time_seconds_precision=10000;
+const long isc_time_seconds_precision=db_obj::isc_time_seconds_precision;
 
 ////////////////////////////////////////////////////////////////////////////////
 //enumerate standart InterBase data types
@@ -404,11 +404,11 @@ enum
  ibp_isc_sql_type_date    =570,  //t_ibp_isc_date
  ibp_isc_sql_int64        =580,
 
- ibp_ib7_sql_boolean      =590,  //t_ibp_ib7_bool
+ ibp_ib070_sql_boolean    =590,  //t_ibp_ib070_bool
 
- ibp_fb25_sql_null        =32766,
+ ibp_fb025_sql_null       =32766,
 
- ibp_fb30_sql_boolean     =32764, //t_ibp_fb30_bool
+ ibp_fb030_sql_boolean    =32764, //t_ibp_fb030_bool
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -435,9 +435,9 @@ enum
  ibp_isc_blr_dtype__sql_date     =12  ,
  ibp_isc_blr_dtype__sql_time     =13  ,
 
- ibp_ib7_blr_dtype__bool         =17  , //t_ibp_ib7_bool
+ ibp_ib070_blr_dtype__bool       =17  , //t_ibp_ib070_bool
 
- ibp_fb30_blr_dtype__bool        =23  , //t_ibp_fb30_bool
+ ibp_fb030_blr_dtype__bool       =23  , //t_ibp_fb030_bool
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -480,84 +480,26 @@ enum
  ibp_isc_internal_dtype__int64     =19,
  //ibp_isc_internal_dtype__dbkey     =20,
 
- ibp_ib7_internal_dtype__bool      =20, //2 байта
+ ibp_ib070_internal_dtype__bool    =20, //2 bytes
 
- ibp_fb30_internal_dtype__bool     =21, //1 байт
+ ibp_fb030_internal_dtype__bool    =21, //1 byte
 };
-
-////////////////////////////////////////////////////////////////////////////////
-//ISC-boolean data type
-
-const db_obj::t_dbvalue__i2 ibp_isc_false =0;
-const db_obj::t_dbvalue__i2 ibp_isc_true  =1;
 
 ////////////////////////////////////////////////////////////////////////////////
 //IB7-boolean data type
 
-typedef db_obj::t_dbvalue__i2 t_ibp_ib7_bool;
+using t_ibp_ib070_bool=db_obj::t_dbvalue__bool_i2;
 
-const t_ibp_ib7_bool ibp_ib7_false =0;
-const t_ibp_ib7_bool ibp_ib7_true  =1;
+const t_ibp_ib070_bool ibp_ib070_false =db_obj::dbvalue__bool_i2_false;
+const t_ibp_ib070_bool ibp_ib070_true  =db_obj::dbvalue__bool_i2_true;
 
 ////////////////////////////////////////////////////////////////////////////////
 //FB30-boolean data type
 
-typedef db_obj::t_dbvalue__i1 t_ibp_fb30_bool;
+using t_ibp_fb030_bool=db_obj::t_dbvalue__bool_i1;
 
-const t_ibp_fb30_bool ibp_fb30_false =0;
-const t_ibp_fb30_bool ibp_fb30_true  =1;
-
-////////////////////////////////////////////////////////////////////////////////
-//enumerate InterBase data types precisions
-
-enum
-{
- //включая предельно допустимые значения типов
- ibp_isc_smallint_precision              =5,
- ibp_isc_integer_precision               =10,
- ibp_isc_int64_precision                 =19,
-
- ibp_isc_float_precision                 =7,
- ibp_isc_double_precision                =15,
-
- ibp_isc_numeric_on_smallint_precision   =4,
- ibp_isc_numeric_on_integer_precision    =9,
- ibp_isc_numeric_on_double_precision     =15,
- ibp_isc_numeric_on_int64_precision      =18,
-
- ibp_isc_decimal_on_smallint_precision   =4,
- ibp_isc_decimal_on_integer_precision    =9,
- ibp_isc_decimal_on_int64_precision      =18,
-
- ibp_isc_numeric_max_precision_v5        =ibp_isc_double_precision,
- ibp_isc_numeric_max_precision_v6        =ibp_isc_numeric_on_int64_precision,
-
- ibp_isc_decimal_max_precision_v5        =ibp_isc_double_precision,
- ibp_isc_decimal_max_precision_v6        =ibp_isc_decimal_on_int64_precision,
-                                              //123456789012345678901234
- ibp_isc_timestamp_precision             =24, //dd.mm.yyyy hh:mm:ss.msms
- ibp_isc_date_precision                  =10, //dd.mm.yyyy
-
- ibp_isc_time2_precision                 =13, //hh:mm:ss.msms
-
- //Для режима TIME_AS_WSTR.
- ibp_isc_time2_as_wstr_precision         =32,
-
- //Для режима DATE_AS_WSTR.
- ibp_isc_date_as_wstr_precision          =32,
-
- //Для режима TIMESTAMP_AS_WSTR
- ibp_isc_timestamp_as_wstr_precision     =ibp_isc_date_as_wstr_precision+
-                                          1+
-                                          ibp_isc_time2_as_wstr_precision,
-};//enum
-
-enum enum_ibp_data_type_scale
-{
- ibp_isc_timestamp_scale                 =4, //micro-seconds [0..9999]
- ibp_isc_date_scale                      =0,
- ibp_isc_time2_scale                     =4, //micro-seconds [0..9999]
-};//enum
+const t_ibp_fb030_bool ibp_fb030_false =db_obj::dbvalue__bool_i1_false;
+const t_ibp_fb030_bool ibp_fb030_true  =db_obj::dbvalue__bool_i1_true;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -577,31 +519,16 @@ enum enum_ibp_isc_max_datatype_length
 };//enum enum_ibp_isc_max_datatype_length
 
 ////////////////////////////////////////////////////////////////////////////////
-//struct t_ibp_isc_timestamp
 
-typedef db_obj::t_dbvalue__i4       t_ibp_isc_date;
-typedef db_obj::t_dbvalue__ui4      t_ibp_isc_time;
+typedef db_obj::t_dbvalue__isc_date         t_ibp_isc_date;
+typedef db_obj::t_dbvalue__isc_time         t_ibp_isc_time;
 
-struct t_ibp_isc_timestamp
-{
- t_ibp_isc_date  timestamp_date;
- t_ibp_isc_time  timestamp_time;
-
-#ifdef IBP_BUILD_TESTCODE
- bool operator == (const t_ibp_isc_timestamp& x)const
- {
-  return this->timestamp_date==x.timestamp_date && this->timestamp_time==x.timestamp_time;
- }
-
- bool operator != (const t_ibp_isc_timestamp& x)const
- {
-  return !((*this)==x);
- }
-#endif
-};//struct t_ibp_isc_timestamp
+typedef db_obj::t_dbvalue__isc_timestamp    t_ibp_isc_timestamp;
 
 ////////////////////////////////////////////////////////////////////////////////
 
+extern const t_ibp_isc_date      __null__isc_date;
+extern const t_ibp_isc_time      __null__isc_time;
 extern const t_ibp_isc_timestamp __null__isc_timestamp;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -733,14 +660,14 @@ const unsigned char ibp_isc_type_align__varying
 const unsigned char ibp_isc_type_align__quad
  =_MEMBER_SIZE_(db_obj::DB_IBQUAD,low);
 
-const unsigned char ibp_fb25_type_align__sql_null
+const unsigned char ibp_fb025_type_align__sql_null
  =1;
 
-const unsigned char ibp_fb30_type_align__bool
- =sizeof(t_ibp_fb30_bool);
+const unsigned char ibp_fb030_type_align__bool
+ =sizeof(t_ibp_fb030_bool);
 
-const unsigned char ibp_ib70_type_align__bool
- =sizeof(t_ibp_ib7_bool);
+const unsigned char ibp_ib070_type_align__bool
+ =sizeof(t_ibp_ib070_bool);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1084,6 +1011,11 @@ struct XSQLVAR_V1
   typedef short                   sqltype_type;
   typedef short                   sqlsubtype_type;
   typedef short                   sqlscale_type;
+  typedef short                   sqllen_type;
+
+ private:
+  static const sqltype_type c_sqltype_null_flag=1;
+  static const sqltype_type c_sqltype_id_mask  =(sqltype_type)~c_sqltype_null_flag;
 
  public: //---------------------------------------------------------------
   //! Datatype of field
@@ -1096,7 +1028,7 @@ struct XSQLVAR_V1
   sqlsubtype_type     sqlsubtype;
 
   //! Length of data area
-  short  sqllen;
+  sqllen_type         sqllen;
 
   //! Address of data
   char*  sqldata;
@@ -1146,10 +1078,13 @@ struct XSQLVAR_V1
   sqltype_type get_typeID()const;
 
   //! \brief Тестирование возможности установки NULL-значения
-  bool value_may_be_null()const;
+  bool get_value_may_be_null()const;
 
+  void set_value_may_be_null();
+
+ public:
   //! \brief Тестирование наличия NULL-значения
-  bool value_is_null__std()const;
+  bool get_value_is_null__std()const;
 
  public:
   //! \brief установка null-состояния значения. стандартная версия
@@ -1207,6 +1142,7 @@ struct XSQLVAR_V1_EXT
   typedef XSQLVAR_V1::sqltype_type       sqltype_type;
   typedef XSQLVAR_V1::sqlsubtype_type    sqlsubtype_type;
   typedef XSQLVAR_V1::sqlscale_type      sqlscale_type;
+  typedef XSQLVAR_V1::sqllen_type        sqllen_type;
 
  public:
   //! Datatype of field
@@ -1219,7 +1155,7 @@ struct XSQLVAR_V1_EXT
   sqlsubtype_type     original__sqlsubtype;
 
   //! Length of data area
-  short               original__sqllen;
+  sqllen_type         original__sqllen;
 
  public:
   ///Длина имени кодовой страницы данных
@@ -1239,7 +1175,7 @@ struct XSQLVAR_V1_EXT
   long original__get_char_codepageID()const;
 
   //! \brief Получение идентификатора кодовой страницы. Только для BLOB [Firebird 2.1+].
-  long original__get_blob_codepageID__fb21()const;
+  long original__get_blob_codepageID__fb021()const;
 
   //! \brief Получение идентификатора типа.
   sqltype_type original__get_typeID()const;
@@ -1296,6 +1232,11 @@ struct XSQLVAR_V2
   typedef short                   sqltype_type;
   typedef short                   sqlsubtype_type;
   typedef short                   sqlscale_type;
+  typedef short                   sqllen_type;
+
+ private:
+  static const sqltype_type c_sqltype_null_flag=1;
+  static const sqltype_type c_sqltype_id_mask  =(sqltype_type)~c_sqltype_null_flag;
 
  public:
   //! datatype of field
@@ -1311,7 +1252,7 @@ struct XSQLVAR_V2
   sqlsubtype_type  sqlsubtype;
 
   //! length of data area
-  short            sqllen;
+  sqllen_type      sqllen;
 
   //! address of data
   char*            sqldata;
@@ -1361,12 +1302,14 @@ struct XSQLVAR_V2
   sqltype_type get_typeID()const;
 
   //! \brief Тестирование возможности установки NULL-значения
-  bool value_may_be_null()const;
+  bool get_value_may_be_null()const;
 
-  //! \brief Тестирование наличия NULL-значения
-  bool value_is_null__std()const;
+  void set_value_may_be_null();
 
  public:
+  //! \brief Тестирование наличия NULL-значения
+  bool get_value_is_null__std()const;
+
   //! \brief установка null-состояния значения. стандартная версия
   //! \param[in] nullState
   void set_value_null_state__std(bool nullState);
@@ -1422,6 +1365,7 @@ struct XSQLVAR_V2_EXT
   typedef XSQLVAR_V2::sqltype_type          sqltype_type;
   typedef XSQLVAR_V2::sqlsubtype_type       sqlsubtype_type;
   typedef XSQLVAR_V2::sqlscale_type         sqlscale_type;
+  typedef XSQLVAR_V2::sqllen_type           sqllen_type;
 
  public:
   //! datatype of field
@@ -1437,7 +1381,7 @@ struct XSQLVAR_V2_EXT
   sqlsubtype_type  original__sqlsubtype;
 
   //! length of data area
-  short            original__sqllen;
+  sqllen_type      original__sqllen;
 
  public:
   ///Длина имени кодовой страницы данных
@@ -1553,14 +1497,20 @@ struct INTERNAL_ARRAY_DESCR_V1
 
 inline XSQLVAR_V1::sqltype_type XSQLVAR_V1::get_typeID()const
 {
- return static_cast<sqltype_type>(this->sqltype-(this->sqltype%2));
+ return this->sqltype&c_sqltype_id_mask;
 }//get_typeID
 
 //------------------------------------------------------------------------
-inline bool XSQLVAR_V1::value_may_be_null()const
+inline bool XSQLVAR_V1::get_value_may_be_null()const
 {
- return (this->sqltype%2)!=0;
-}//value_may_be_null
+ return (this->sqltype&c_sqltype_null_flag)!=0;
+}//get_value_may_be_null
+
+//------------------------------------------------------------------------
+inline void XSQLVAR_V1::set_value_may_be_null()
+{
+ this->sqltype|=c_sqltype_null_flag;
+}//set_value_may_be_null
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLDA_V1
@@ -1583,14 +1533,14 @@ inline long XSQLVAR_V1_EXT::original__get_char_codepageID()const
 }//original__get_char_codepageID
 
 //------------------------------------------------------------------------
-inline long XSQLVAR_V1_EXT::original__get_blob_codepageID__fb21()const
+inline long XSQLVAR_V1_EXT::original__get_blob_codepageID__fb021()const
 {
  ///Идентификатор кодовой страницы хранится в младшем байте sqlscale
 
  const unsigned char id=static_cast<unsigned char>(this->original__sqlscale&0xFF);
 
  return static_cast<long>(id);
-}//original__get_blob_codepageID__fb21
+}//original__get_blob_codepageID__fb021
 
 //------------------------------------------------------------------------
 inline XSQLVAR_V1_EXT::sqltype_type XSQLVAR_V1_EXT::original__get_typeID()const
@@ -1617,14 +1567,20 @@ inline size_t XSQLDA_V1_EXT::LENGTH(size_t const n)
 
 inline XSQLVAR_V2::sqltype_type XSQLVAR_V2::get_typeID()const
 {
- return static_cast<sqltype_type>(this->sqltype-(this->sqltype%2));
+ return this->sqltype&c_sqltype_id_mask;
 }//get_typeID
 
 //------------------------------------------------------------------------
-inline bool XSQLVAR_V2::value_may_be_null()const
+inline bool XSQLVAR_V2::get_value_may_be_null()const
 {
- return (this->sqltype%2)!=0;
-}//value_may_be_null
+ return (this->sqltype&c_sqltype_null_flag)!=0;
+}//get_value_may_be_null
+
+//------------------------------------------------------------------------
+inline void XSQLVAR_V2::set_value_may_be_null()
+{
+ this->sqltype|=c_sqltype_null_flag;
+}//set_value_may_be_null
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLDA_V2
