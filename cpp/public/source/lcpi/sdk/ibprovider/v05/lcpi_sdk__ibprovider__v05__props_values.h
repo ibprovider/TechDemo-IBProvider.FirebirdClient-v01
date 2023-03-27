@@ -63,6 +63,11 @@ const bool ibp_propval__nested_trans__default
 
 ////////////////////////////////////////////////////////////////////////////////
 
+const bool ibp_propval__force_nulls__default
+ =true;
+
+////////////////////////////////////////////////////////////////////////////////
+
 //‘иктивное значение свойства "Integrated Security" дл€ решени€ проблем с DataLink
 extern const IBP_CHAR g_IBP_IntegratedAuth__NONE[];
 
