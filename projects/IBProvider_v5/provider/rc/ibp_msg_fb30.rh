@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //IBProvider resources. Firebird 3.0 error message resource ID.
-//                                     Created by Dmitry Kovalenko. 14.04.2015
+//                                     Created by Dmitry Kovalenko. 14.04.2016
 #ifndef _ibp_msg_fb30_RH_
 #define _ibp_msg_fb30_RH_
 
