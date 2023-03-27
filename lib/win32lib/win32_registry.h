@@ -15,21 +15,21 @@ namespace win32lib{
 class TRegistry
 {
  private:
-  typedef TRegistry                                                 self_type;
+  typedef TRegistry                                                  self_type;
 
   TRegistry(const self_type& reg);
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_void_allocator                               allocator_type;
-  typedef structure::t_stl_vector<t_string,allocator_type>          TNameArray;
-  typedef structure::t_typed_simple_buffer<BYTE,allocator_type>     TDataBuffer;
+  typedef structure::t_void_allocator                                allocator_type;
+  typedef structure::t_stl_vector<t_string,allocator_type>           TNameArray;
+  typedef structure::t_typed_simple_buffer<BYTE,allocator_type>      TDataBuffer;
 
-  typedef structure::t_char                                         char_type;
+  typedef structure::t_char                                          char_type;
 
-  typedef structure::t_str_parameter<t_char>                        str_arg_type;
+  typedef structure::t_str_parameter<char_type>                      str_arg_type;
 
-  typedef structure::t_typed_simple_buffer<t_char,allocator_type>   t_char_buffer;
+  typedef structure::t_typed_simple_buffer<char_type,allocator_type> char_buffer_type;
 
   struct TRegKeyInfo
   {

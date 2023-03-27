@@ -134,7 +134,7 @@ void TRegistry::GetKeyNames(HKEY  const key,
 
   names.reserve((TNameArray::size_type)key_info.NumSubKeys);
     
-  t_char_buffer name(key_info.MaxSubKeyLen+1);
+  char_buffer_type name(key_info.MaxSubKeyLen+1);
 
   for(DWORD i=0;i<key_info.NumSubKeys;++i)
   {
@@ -170,7 +170,7 @@ void TRegistry::GetValueNames(HKEY  const key,
 
   names.reserve(key_info.NumValues);
 
-  t_char_buffer name(key_info.MaxValueLen+1);
+  char_buffer_type name(key_info.MaxValueLen+1);
 
   for(DWORD i=0;i<key_info.NumValues;++i)
   {
