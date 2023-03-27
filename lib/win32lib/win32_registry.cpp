@@ -228,8 +228,12 @@ LONG TRegistry::DeleteKey(HKEY         const key,
  // Enumerating all the descendents of this child.
  TRegKeyInfo info;
 
- if(const LONG lResult=GetKeyInfo(KeyChild,info))
-  return lResult;
+ {
+  const LONG lResult1=GetKeyInfo(KeyChild,info);
+
+  if(lResult1!=ERROR_SUCCESS)
+   return lResult1;
+ }//local
 
  typedef TRegKeyInfo::max_sub_key_name_len_type max_sub_key_name_len_type;
 
@@ -244,16 +248,32 @@ LONG TRegistry::DeleteKey(HKEY         const key,
   {
    DWORD dwSize=static_cast<max_sub_key_name_len_type>(name.size());
    
-   //until key has subkeys
-   if(RegEnumKeyEx(KeyChild,0,name.buffer(),&dwSize,NULL,NULL,NULL,NULL)!=S_OK)
-    break;
+   {
+    //
+    // Until key has subkeys
+    //
+    const LONG lResult2=::RegEnumKeyEx(KeyChild,0,name.buffer(),&dwSize,NULL,NULL,NULL,NULL);
 
-   assert(name.size()==(info.MaxSubKeyLen+1));
+    if(lResult2==ERROR_NO_MORE_ITEMS)
+     break;
 
-   name[min(info.MaxSubKeyLen,dwSize)]=0;
+    if(lResult2!=ERROR_SUCCESS)
+     return lResult2;
+    
+    assert(lResult2==ERROR_SUCCESS);
+   }//local
 
-   if(const LONG lResult=DeleteKey(KeyChild,name.buffer()))
-    return lResult;
+   assert(dwSize>0);
+   assert(dwSize<=info.MaxSubKeyLen);
+
+   name[dwSize]=0;
+
+   {
+    const LONG lResult3=self_type::DeleteKey(KeyChild,name.buffer());
+   
+    if(lResult3!=ERROR_SUCCESS)
+     return lResult3;
+   }//local
   }//for[ever]
  }//if NumSubKeys!=0
 
