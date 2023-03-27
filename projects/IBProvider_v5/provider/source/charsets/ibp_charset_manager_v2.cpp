@@ -612,7 +612,7 @@ t_ibp_charset_manager_v2::~t_ibp_charset_manager_v2()
 void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
                                               const cs_name_box_type& cs_name)
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"t_ibp_charset_manager_v2::reg_cs_id_name";
 
  const size_t idx=structure::to_underlying(cs_id);
@@ -751,7 +751,7 @@ db_obj::t_db_charset_const_ptr t_ibp_charset_manager_v2::get_charset
 db_obj::t_db_charset_const_ptr t_ibp_charset_manager_v2::get_charset
                                            (db_obj::db_cs_id const cs_id)
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"t_ibp_charset_manager_v2::get_charset";
 
  const size_t idx=structure::to_underlying(cs_id);
