@@ -72,7 +72,7 @@ const typename t_tree_avl_base<T,Compare,Allocator>::node_type*
  t_tree_avl_base<T,Compare,Allocator>::find_node(const U& value)const
 {
  return this->helper__find_node_within(this,m_head,value);
-}//find_node
+}//find_node - const
 
 //------------------------------------------------------------------------
 template<class T,class Compare,class Allocator>
@@ -94,7 +94,7 @@ const typename t_tree_avl_base<T,Compare,Allocator>::node_type*
  assert(m_head==top->debug__get_tree_head());
 
  return this->helper__find_node_within(this,top,value);
-}//find_node_within
+}//find_node_within - const
 
 //------------------------------------------------------------------------
 template<class T,class Compare,class Allocator>
