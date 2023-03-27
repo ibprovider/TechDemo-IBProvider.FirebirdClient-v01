@@ -19,7 +19,7 @@ struct traits
 };//struct traits
 
 ////////////////////////////////////////////////////////////////////////////////
-//Enumerate of result code
+//The enumeration of result code
 
 enum tag_cs_cvt_result
 {

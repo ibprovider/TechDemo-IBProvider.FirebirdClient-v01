@@ -13,8 +13,8 @@ template<class T>
 RELEASE_CODE(inline)
 t_built_in_array<T>::t_built_in_array(pointer not_init_first,
                                       pointer not_init_last)
- :m_first(not_init_first),
-  m_last (not_init_last)
+ :m_first(not_init_first)
+ ,m_last (not_init_last)
 {
  assert(not_init_first<=not_init_last);
 
@@ -28,8 +28,8 @@ t_built_in_array<T>::t_built_in_array(pointer       not_init_first,
                                       pointer       not_init_last,
                                       const_pointer source_first,
                                       const_pointer source_last)
- :m_first(not_init_first),
-  m_last (not_init_last)
+ :m_first(not_init_first)
+ ,m_last (not_init_last)
 {
  assert(not_init_first<=not_init_last);
 
@@ -37,10 +37,11 @@ t_built_in_array<T>::t_built_in_array(pointer       not_init_first,
 
  assert(not_init_last-not_init_first==source_last-source_first);
 
- structure::uninitialized_copy(source_first,
-                               source_last,
-                               not_init_first,
-                               not_init_last);
+ structure::uninitialized_copy
+  (source_first,
+   source_last,
+   not_init_first,
+   not_init_last);
 }//t_build_in_array
 
 //------------------------------------------------------------------------
@@ -52,8 +53,8 @@ t_built_in_array<T>::t_built_in_array(pointer        not_init_first,
                                       pointer        not_init_last,
                                       SourceIterator source_first,
                                       SourceIterator source_last)
- :m_first(not_init_first),
-  m_last (not_init_last)
+ :m_first(not_init_first)
+ ,m_last (not_init_last)
 {
  assert(not_init_first<=not_init_last);
 
@@ -61,10 +62,11 @@ t_built_in_array<T>::t_built_in_array(pointer        not_init_first,
 
  assert(not_init_last-not_init_first==source_last-source_first);
 
- structure::uninitialized_copy(source_first,
-                               source_last,
-                               not_init_first,
-                               not_init_last);
+ structure::uninitialized_copy
+  (source_first,
+   source_last,
+   not_init_first,
+   not_init_last);
 }//t_built_in_array
 #endif
 
