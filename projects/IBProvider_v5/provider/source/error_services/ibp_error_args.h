@@ -7,7 +7,6 @@
 #ifndef _ibp_error_args_H_
 #define _ibp_error_args_H_
 
-#include "source/error_services/ibp_error_codes.h"
 #include "source/error_services/ibp_error_variant.h"
 
 #include <structure/t_str_parameter.h>

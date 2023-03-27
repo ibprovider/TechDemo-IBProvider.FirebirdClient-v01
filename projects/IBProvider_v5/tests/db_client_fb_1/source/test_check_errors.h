@@ -619,7 +619,6 @@ class TestCheckErrors
   static bool check_err_rec__xsqlda_err__incorrect_sqlscale
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
-                 wstr_box_type                  ucs2_SubSystemID,
                  wstr_box_type                  sqlBaseTypeSign,
                  long                           sqlScale);
 
@@ -631,7 +630,6 @@ class TestCheckErrors
   static bool check_err_rec__xsqlda_err__incorrect_sqlind_ptr
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
-                 wstr_box_type                  ucs2_SubSystemID,                 
                  long                           sqlType);
 
   static bool check_err_rec__xsqlda_err__incorrect_sqlind_value
@@ -685,7 +683,6 @@ class TestCheckErrors
   static bool check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
-                 wstr_box_type                  ucs2_SubSystemID,
                  wstr_box_type                  sqlBaseTypeSign,
                  long                           actualSqlScale,
                  long                           expectedSqlScale);
@@ -912,21 +909,25 @@ class TestCheckErrors
   static bool check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsqvar_field_value
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2_SubSystemID,
                  wstr_box_type                  fieldName);
 
   static bool check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_field
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2_SubSystemID,
                  wstr_box_type                  fieldName);
 
   static bool check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2_SubSystemID,
                  long                           actualLength);
 
   static bool check_err_rec__xsqlda_info_data_bug_check__incompleted_def_of_xvars
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2_SubSystemID,
                  size_t                         actualCount,
                  size_t                         expectedCount);
 

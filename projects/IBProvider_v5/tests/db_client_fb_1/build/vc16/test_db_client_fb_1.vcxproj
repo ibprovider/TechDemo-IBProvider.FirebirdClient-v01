@@ -172,6 +172,8 @@
     <ResourceCompile />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\provider\props2\oledb_props2__data__descr.cpp" />
@@ -258,7 +260,7 @@
     <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_std_collations.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_sdl_reader.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__srv_operation_v1.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\remote_fb__api_hlp__xsqlda__error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_info_v01.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities__Process_PrepareInfoBuf.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities.cpp" />
@@ -521,6 +523,8 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_types.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_utility.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__processor.cpp" />
@@ -530,8 +534,11 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_ids.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_info.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_error_code_descr2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_builder.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.cpp" />
@@ -909,6 +916,8 @@
     <ClCompile Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v2_lazy_send.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_016__GetColumns.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__bind.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__select.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_018__GetParameters.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.cpp" />
@@ -1011,6 +1020,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_sdl_reader.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__srv_operation_v1.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_info_v01.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\remote_fb__api_hlp__xsqlda__error_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities.h" />
@@ -1289,8 +1299,11 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_data_types.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_api.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__installer.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_attach__processor.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base__dbparams_for_create__installer.h" />
@@ -1300,8 +1313,11 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_ids.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_dbms_info.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_error_code_descr2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_builder.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.h" />
@@ -1533,6 +1549,8 @@
     <ClInclude Include="..\..\source\tests\work\WORK_Test_015__StmtPrepare__v2_lazy_send.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_016__GetColumns.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__bind.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__select.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_018__GetParameters.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.h" />

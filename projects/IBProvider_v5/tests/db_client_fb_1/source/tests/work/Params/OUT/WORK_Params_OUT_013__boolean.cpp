@@ -48,8 +48,8 @@ struct WORK_Params_OUT_013__boolean::tag_impl::tag_data_005
   bool        nullable;
 
  public:
-  isc_api::t_ibp_fb30_bool  result_value;
-  short                     result_sqlind;
+  isc_api::t_ibp_fb030_bool  result_value;
+  short                      result_sqlind;
 };//struct WORK_Params_OUT_013__boolean::tag_impl::tag_data_005
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -190,10 +190,10 @@ void WORK_Params_OUT_013__boolean::tag_impl::test_005_generic
 
   xsqlda->sqld=1;
 
-  isc_api::t_ibp_fb30_bool  xparam0_value=37;
-  short                     xparam0_ind=c_test_005__dummy_sqlind;
+  isc_api::t_ibp_fb030_bool  xparam0_value=37;
+  short                      xparam0_ind=c_test_005__dummy_sqlind;
 
-  xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb30_sql_boolean|(Data.nullable?1:0);
+  xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb030_sql_boolean|(Data.nullable?1:0);
   xsqlda->sqlvar[0].sqllen   =sizeof(xparam0_value);
   xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(&xparam0_value);
   xsqlda->sqlvar[0].sqlind   =&xparam0_ind;

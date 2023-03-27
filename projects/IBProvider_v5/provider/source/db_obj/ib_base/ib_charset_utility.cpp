@@ -8,7 +8,15 @@
 #pragma hdrstop
 
 #include "source/db_obj/ib_base/ib_charset_utility.h"
+#include "source/db_obj/isc_base/isc_connection_settings.h"
+#include "source/db_obj/db_charset_manager_v2.h"
 #include "source/db_obj/db_service_utils.h"
+
+#include "source/error_services/ibp_error_utils.h"
+
+#include <structure/charsets/t_cs_utf_fss.h>
+
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace ib_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,6 +42,81 @@ db_obj::t_db_charset_const_ptr ib_get_metadata_charset(db_obj::t_db_charset_mana
 
  return pCsMng->get_ods_charset();
 }//ib_get_metadata_charset
+
+////////////////////////////////////////////////////////////////////////////////
+
+static bool ib_object_name_is_ok__fss_bytes
+                             (const isc_base::t_isc_connection_settings& cns,
+                              structure::t_const_wstr_box          const objectName)
+{
+ assert(cns.max_obj_name_len.is_in_fss_bytes());
+
+ assert(cns.max_obj_name_len.get_value()>0);
+
+ const wchar_t* const c_bugcheck_src
+  =L"ib_base::ib_object_name_is_ok__fss_bytes";
+
+ namespace cs_utf_fss=structure::charsets::cs_utf_fss;
+
+ const auto r
+  =cs_utf_fss::length_of_ucs2_as_fss
+    (objectName.begin(),
+     objectName.end(),
+     cns.max_obj_name_len.get_value());
+
+ switch(r.second)
+ {
+  case cs_utf_fss::cs_cvt_result__ok:
+  {
+   assert(r.first<=cns.max_obj_name_len.get_value());
+
+   return true;
+  }//ok
+
+  case cs_utf_fss::cs_cvt_result__overflow:
+  {
+   return false;
+  }//overflow
+
+  default:
+  {
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
+    (c_bugcheck_src,
+     L"#001",
+     L"unexpected cvt-result [%1]",
+     lib::structure::to_underlying(r.second));
+  }//if
+ }//switch r.second
+}//ib_object_name_is_ok__fss_bytes
+
+//-------------------------------------------------------------------
+bool ib_object_name_is_ok(const isc_base::t_isc_connection_settings& cns,
+                          structure::t_const_wstr_box          const objectName)
+{
+ assert(!cns.max_obj_name_len.is_not_defined());
+
+ const wchar_t* const c_bugcheck_src
+  =L"ib_base::ib_object_name_is_ok";
+
+ switch(const auto kind=cns.max_obj_name_len.get_kind())
+ {
+  case isc_base::tag_isc_max_obj_name_len_kind::in_fss_bytes:
+  {
+   return ib_object_name_is_ok__fss_bytes
+           (cns,
+            objectName);
+  }//in_fss_bytes
+
+  default:
+  {
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
+    (c_bugcheck_src,
+     L"#001",
+     L"unexpected max_obj_name_len.kind [%1]",
+     structure::to_underlying(kind));
+  }//default
+ }//switch
+}//ib_object_name_is_ok
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -875,6 +875,39 @@
     <Filter Include="IBP\source_lib\ole_lib">
       <UniqueIdentifier>{02f612f7-efbc-42ff-9503-488d79cdb853}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cpp">
+      <UniqueIdentifier>{9b2a2690-2d58-475a-af82-91dab8e9027f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure">
+      <UniqueIdentifier>{c6de2254-5c45-40d7-9e26-8d1fcecb0c38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure\lcpi">
+      <UniqueIdentifier>{7afe9a18-215f-418f-8363-3fa85f7c8d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure\lcpi\os">
+      <UniqueIdentifier>{c2095c90-a4a0-4585-abfe-74045548d5ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure\lcpi\lib">
+      <UniqueIdentifier>{287057bf-08d7-495d-bc5e-78d1cc682743}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure\lcpi\lib\com">
+      <UniqueIdentifier>{eba1fccf-60f3-4119-bb1c-cfe1b9eb505e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpp\infrastructure\lcpi\lib\com\base">
+      <UniqueIdentifier>{817a47f3-e0f1-47c7-8553-0b29e193e289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\isc_base\helpers">
+      <UniqueIdentifier>{077bd005-70d8-4c6b-ae7b-338bc662d46b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda">
+      <UniqueIdentifier>{d8caae45-cd69-451a-80fd-716495b84677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01">
+      <UniqueIdentifier>{0ad74d6a-38a8-4b8f-83ce-f7020e86c8ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01\_headers">
+      <UniqueIdentifier>{94b6edbb-9a17-4098-9515-dfc0bb04b3bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1974,9 +2007,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_sdl_reader.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\remote_fb__api_hlp__xsqlda__error_utils.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\set01\remote_fb__api_hlp__xsqlda_set01__utilities.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\set01</Filter>
@@ -3117,6 +3147,36 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source_lib\ole_lib\ibp--ole_lib__base_unknown2.cpp">
       <Filter>IBP\source_lib\ole_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp">
+      <Filter>cpp\infrastructure\lcpi\os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp">
+      <Filter>cpp\infrastructure\lcpi\lib\com\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__select.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__bind.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_info_v01.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_utilities.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_builder.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4932,6 +4992,31 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_custom_error_object__sql.h">
       <Filter>IBP\source\services\errors\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__select.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_017__GetStatementInfo__bind.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_info_v01.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_utilities.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_builder.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -149,7 +149,7 @@ void IBP_OLEDB_Props2__Values__DATASOURCE::CheckRequiredProps()const//throw
 //------------------------------------------------------------------------
 HWND IBP_OLEDB_Props2__Values__DATASOURCE::GetWindowHandle()const
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"IBP_OLEDB_Props2__Values__DATASOURCE::GetWindowHandle";
 
  //------------------------------------
@@ -374,7 +374,7 @@ const IBP_OLEDB_Props2__DescrData&
                                            (REFGUID        propGuid,
                                             DBPROPID const propId)const
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"IBP_OLEDB_Props2__Values__DATASOURCE::Internal__GetStaticPropData";
 
  //----------------------

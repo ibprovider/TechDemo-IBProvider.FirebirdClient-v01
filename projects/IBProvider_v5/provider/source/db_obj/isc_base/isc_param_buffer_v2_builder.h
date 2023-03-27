@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace isc_base{
 /// <summary>
 ///  Класс для формирования буфера с параметрами (v2).
 /// </summary>
-///  Структура элемента буфера: <tagID (1 byte)><length (1 byte)><data (max 255 bytes)>.
+///  Структура элемента буфера: <tagID (1 byte)><length (4 bytes)><data (max 4GB bytes)>.
 class t_isc_param_buffer_v2_builder
 {
  private:

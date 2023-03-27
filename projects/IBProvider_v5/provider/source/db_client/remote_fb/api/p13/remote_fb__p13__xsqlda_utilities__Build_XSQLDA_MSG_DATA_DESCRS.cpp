@@ -188,7 +188,7 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
   }//ibp_isc_sql_text
 
   //------------------------------------------------------------
-  case isc_api::ibp_fb25_sql_null:
+  case isc_api::ibp_fb025_sql_null:
   {
    if(pXSQLVAR->sqllen!=0)
    {
@@ -209,7 +209,7 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
 
    //---------------------------------------
    break;
-  }//ibp_fb25_sql_null
+  }//ibp_fb025_sql_null
 
   //------------------------------------------------------------
   case isc_api::ibp_isc_sql_short:
@@ -548,9 +548,9 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
   }//ibp_isc_sql_timestamp
 
   //------------------------------------------------------------
-  case isc_api::ibp_fb30_sql_boolean:
+  case isc_api::ibp_fb030_sql_boolean:
   {
-   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb30_bool))
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb030_bool))
    {
     //ERROR - [BUG CHECK] incorrect xvar length;
     helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
@@ -560,37 +560,35 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
 
    //---------------------------------------
    szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_fb30_type_align__bool,
+                                isc_api::ibp_fb030_type_align__bool,
                                 pcbResultAlign); //throw         6
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
    szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::t_ibp_fb30_bool)); //throw
+                              sizeof(isc_api::t_ibp_fb030_bool)); //throw
 
    MsgDescr.m_msg_value_block_size
-    =sizeof(isc_api::t_ibp_fb30_bool);                                    // SIZE
+    =sizeof(isc_api::t_ibp_fb030_bool);                                   // SIZE
 
    assert(MsgDescr.m_msg_value_block_size==(szMsg-MsgDescr.m_msg_value_block_offset));
 
-   MsgDescr.m_msg_blrtype=isc_api::ibp_fb30_blr_dtype__bool;
+   MsgDescr.m_msg_blrtype=isc_api::ibp_fb030_blr_dtype__bool;
 
    //---------------------------------------
    break;
-  }//ibp_fb30_sql_boolean
+  }//ibp_fb030_sql_boolean
 
   //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1);
-
-   exc<<pXSQLVAR->sqltype;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__unknown_sqltype_in_xvar_1,
+     pXSQLVAR->sqltype);
   }//default
  }//switch
 

@@ -103,15 +103,15 @@ RemoteFB__API_P13__GetStatementInfo::RemoteFB__API_P13__GetStatementInfo()
 RemoteFB__API_P13__GetStatementInfo::~RemoteFB__API_P13__GetStatementInfo()
 {;}
 
-//interface --------------------------------------------------------------
-void RemoteFB__API_P13__GetStatementInfo::exec
-                                           (db_obj::t_db_operation_context& OpCtx,
-                                            RemoteFB__ConnectorData* const pData,
-                                            stmt_handle_type*        const pStmtHandle,
-                                            unsigned short           const Incornation,
-                                            unsigned short           const cItems,
-                                            const unsigned char*     const pItems,
-                                            RemoteFB__InfoBuffer&          ResultBuffer)
+//------------------------------------------------------------------------
+void RemoteFB__API_P13__GetStatementInfo::internal__exec__direct
+               (db_obj::t_db_operation_context& OpCtx,
+                RemoteFB__ConnectorData*  const pData,
+                stmt_handle_type*         const pStmtHandle,
+                unsigned short            const Incornation,
+                unsigned short            const cItems,
+                const unsigned char*      const pItems,
+                RemoteFB__InfoBuffer&           ResultBuffer)
 {
  assert(pData!=nullptr);
  assert(pData->GetPort());
@@ -119,51 +119,19 @@ void RemoteFB__API_P13__GetStatementInfo::exec
 
  CHECK_READ_TYPED_PTR(pItems,cItems);
 
+ //
+ // It was cleared in 'exec' method.
+ //
+ assert(ResultBuffer.empty());
+
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P13__GetStatementInfo::exec";
+  =L"RemoteFB__API_P13__GetStatementInfo::internal__exec__direct";
 
  //-----------------------------------------
  RemoteFB__P13__SrvOperation serverOperation(pData);
 
  db_obj::t_db_operation_reg regServerOperation(OpCtx,&serverOperation);
-
- //-----------------------------------------
- ResultBuffer.alloc(0);
-
- //----------------------------------------- проверка дескриптора запроса
- if((*pStmtHandle)==nullptr)
- {
-  assert(false);
-
-  RemoteFB__ErrorUtils::Throw_BugCheck_BadStmtHandle
-   (c_bugcheck_src,
-    L"#001");
- }//if
-
- if(!(*pStmtHandle)->m_ID.has_value() && !(*pStmtHandle)->m_ID.is_defer())
- {
-  assert(false);
-
-  RemoteFB__ErrorUtils::Throw_BugCheck_BadStmtHandle
-   (c_bugcheck_src,
-    L"#002");
- }//if
-
- pData->BugCheck__CheckStmt
-  (*pStmtHandle,
-   c_bugcheck_src,
-   L"#003");
-
- if(!(*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED))
- {
-  IBP_ThrowSimpleError
-   (DB_E_NOTPREPARED,
-    ibp_subsystem__remote_fb__p13,
-    ibp_mce_cmd_not_prepared_0);
- }//if
-
- assert((*pStmtHandle)->m_ID.has_value());
 
  //-----------------------------------------
  const protocol::set02::P_OP c_OperationID=protocol::set02::op_info_sql;
@@ -191,8 +159,9 @@ void RemoteFB__API_P13__GetStatementInfo::exec
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -206,8 +175,9 @@ void RemoteFB__API_P13__GetStatementInfo::exec
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {
@@ -232,7 +202,7 @@ void RemoteFB__API_P13__GetStatementInfo::exec
     L"#004",
     packet.operation);
  }//for[ever]
-}//exec
+}//internal__exec__direct
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms p13*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

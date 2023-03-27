@@ -11,7 +11,8 @@
 # pragma once
 #endif
 
-#include <structure/t_threads.h>
+#include <lcpi/lib/structure/mt/interlocked.h>
+#include <utility>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +57,7 @@ class AllocatorClassName##_Adapter                                            \
   static void SetMemoryManager(AllocFunc const pfAllocMemory,                 \
                                FreeFunc  const pfFreeMemory)                  \
   {                                                                           \
-   assert(sm_used==0);                                                        \
+   assert(sm_is_used==0);                                                     \
                                                                               \
    sm_pfAllocMemory=pfAllocMemory;                                            \
    sm_pfFreeMemory =pfFreeMemory;                                             \
@@ -66,7 +67,15 @@ class AllocatorClassName##_Adapter                                            \
   {                                                                           \
    assert(sm_pfAllocMemory!=nullptr);                                         \
                                                                               \
-   DEBUG_CODE(thread_traits::exchange(&sm_used,1));                           \
+   {                                                                          \
+    DEBUG_CODE                                                                \
+    (                                                                         \
+     if(sm_is_used==0)                                                        \
+      lcpi::lib::structure::mt::interlocked::exchange(&sm_is_used,1);         \
+    )                                                                         \
+                                                                              \
+    assert(sm_is_used==1);                                                    \
+   }                                                                          \
                                                                               \
    return sm_pfAllocMemory(n);                                                \
   }                                                                           \
@@ -79,10 +88,7 @@ class AllocatorClassName##_Adapter                                            \
   }                                                                           \
                                                                               \
  private:                                                                     \
-  typedef structure::t_multi_thread_traits  thread_traits;                    \
-                                                                              \
- private:                                                                     \
-  DEBUG_CODE(static thread_traits::int_type sm_used;)                         \
+  DEBUG_CODE(static unsigned sm_is_used;)                                     \
                                                                               \
   static AllocFunc sm_pfAllocMemory;                                          \
   static FreeFunc  sm_pfFreeMemory;                                           \
@@ -96,8 +102,8 @@ typedef structure::t_raw_allocator<AllocatorClassName##_Adapter>              \
 
 #define DEFINE_WRAP_ALLOCATOR(AllocatorClassName)                             \
                                                                               \
-DEBUG_CODE(AllocatorClassName##_Adapter::thread_traits::int_type              \
-            AllocatorClassName##_Adapter::sm_used=0;)                         \
+DEBUG_CODE(unsigned                                                           \
+            AllocatorClassName##_Adapter::sm_is_used=0;)                      \
                                                                               \
 AllocatorClassName##_Adapter::AllocFunc                                       \
  AllocatorClassName##_Adapter::sm_pfAllocMemory=                              \

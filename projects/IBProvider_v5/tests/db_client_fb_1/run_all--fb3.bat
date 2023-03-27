@@ -1,6 +1,6 @@
 @SETLOCAL
 
-@SET TEST_PARAMS=/thread_count 4 /auto /log_dir "_log\fb03-0" /log_file_prefix fb03-0 /inet_host HOME4 /db d:\database\ram\ibp_test_fb30_d3.gdb /db_user GAMER /db_password vermut /new_db_dir d:\database\ram\ /isc_api_library fbclient_30.dll /cn_str "remote:protocol_arch=symmetric,generic"/dbms "FB-3" %*
+@SET TEST_PARAMS=/thread_count 4 /auto /log_dir "_log\fb03-0" /log_file_prefix fb03-0 /inet_host HOME4 /db d:\database\ram\ibp_test_fb30_d3.gdb /db_user GAMER /db_password vermut /new_db_dir d:\database\ram\ /isc_api_library fbclient_30.dll /cn_str "remote:protocol_arch=symmetric,generic" /dbms "FB-3" %*
 
 target\vs2019-Win32-Debug\test_db_client_fb_1.exe %TEST_PARAMS%
 @set ERRORLEVEL__win32debug=%ERRORLEVEL%

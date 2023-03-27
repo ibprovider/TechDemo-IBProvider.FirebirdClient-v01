@@ -75,11 +75,17 @@
 #define LCPI_OS__SafeArrayAllocDescriptor \
  ::SafeArrayAllocDescriptor
 
+#define LCPI_OS__SafeArrayAllocDescriptorEx \
+ ::SafeArrayAllocDescriptorEx
+
 #define LCPI_OS__SafeArrayDestroyDescriptor \
  ::SafeArrayDestroyDescriptor
 
 #define LCPI_OS__SafeArrayAllocData \
  ::SafeArrayAllocData
+
+#define LCPI_OS__SafeArrayDestroyData \
+ ::SafeArrayDestroyData
 
 #define LCPI_OS__SafeArrayGetVartype \
  ::SafeArrayGetVartype

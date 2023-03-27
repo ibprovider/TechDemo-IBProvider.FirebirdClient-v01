@@ -33,9 +33,9 @@ class WORK_Params_IN2_013__boolean::tag_impl
  public:
   typedef unsigned char                     byte_type;
 
-  typedef isc_api::t_ibp_fb30_bool          xvalue_type;
+  typedef isc_api::t_ibp_fb030_bool         xvalue_type;
 
-  static const short c_xvalue_typeID=isc_api::ibp_fb30_sql_boolean;
+  static const short c_xvalue_typeID=isc_api::ibp_fb030_sql_boolean;
 
   static const short c_xvalue_sqllen=sizeof(xvalue_type);
 
@@ -229,10 +229,10 @@ void WORK_Params_IN2_013__boolean::tag_impl::test_001
   //----------------------------------------
   memset(&in_data_block,c_guard_byte,sizeof(in_data_block));
 
-  in_data_block.value1 =isc_api::ibp_fb30_true;
+  in_data_block.value1 =isc_api::ibp_fb030_true;
   in_data_block.sqlind1=0;
 
-  in_data_block.value2 =isc_api::ibp_fb30_false;
+  in_data_block.value2 =isc_api::ibp_fb030_false;
   in_data_block.sqlind2=0;
 
   const tag_data_block in_data_block__copy(in_data_block);

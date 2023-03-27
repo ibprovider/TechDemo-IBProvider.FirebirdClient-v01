@@ -55,8 +55,6 @@ struct t_ibp_error_traits
  typedef t_ibp_error_args<self_type>                args_type;
 
  typedef t_ibp_error                                out_return_type;
-
- static out_return_type& out_ret(args_type& x);
 };//struct t_ibp_error_traits
 
 ////////////////////////////////////////////////////////////////////////////////

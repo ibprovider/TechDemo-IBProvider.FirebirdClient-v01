@@ -175,14 +175,12 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
    {
     //ERROR - database name length too large
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_subsystem__remote_fb__pset02,
-                    ibp_mce_common__database_name_length_is_too_large_2);
-
-    exc<<ch_file_name
-       <<structure::get_numeric_limits(packet.p_cnct.p_cnct__file.cstr_length).max_value();
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+     ibp_subsystem__remote_fb__pset02,
+     ibp_mce_common__database_name_length_is_too_large_2,
+     ch_file_name,
+     structure::get_numeric_limits(packet.p_cnct.p_cnct__file.cstr_length).max_value());
    }//if
 
    structure::static_numeric_cast(&packet.p_cnct.p_cnct__file.cstr_length,ch_file_name);
@@ -1031,7 +1029,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__Initialize__SetProtocolInfo_P
  assert(pPort->m_PortFlags.null());
 
  //-----------------------------------------
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"RemoteFB__PortInitializer_PSET02_v01::Helper__Initialize__SetProtocolInfo_P13";
 
  //-----------------------------------------

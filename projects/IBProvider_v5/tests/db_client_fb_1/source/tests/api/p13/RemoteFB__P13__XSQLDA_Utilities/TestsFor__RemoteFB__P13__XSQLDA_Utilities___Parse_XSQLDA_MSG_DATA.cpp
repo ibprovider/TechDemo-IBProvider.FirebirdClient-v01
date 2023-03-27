@@ -718,7 +718,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_short|1);
 
    errSvc::check_err_rec__isc__parse_msg_buf_data__failed_to_process_element
@@ -797,7 +796,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_short|1);
 
    errSvc::check_err_rec__isc__parse_msg_buf_data__failed_to_process_element
@@ -1753,7 +1751,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  //-----------------------------------------
  xsqlda_utils_type::msg_data_descrs_type descrs(1);
 
- descrs[0].m_xvar_sqltype           =isc_api::ibp_fb30_sql_boolean;
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb030_sql_boolean;
  descrs[0].m_xvar_sqlscale          =0;
  descrs[0].m_msg_value_block_offset =0;
  descrs[0].m_msg_value_block_size   =1;
@@ -1772,7 +1770,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb30_sql_boolean;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb030_sql_boolean;
  xsqlda->sqlvar[0].sqllen =2;
 
  for(;;)
@@ -1876,7 +1874,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_short",
      -3,
      -2);
@@ -1956,7 +1953,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_long",
      -7,
      -5);
@@ -2036,7 +2032,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_int64",
      -17,
      -15);
@@ -6931,9 +6926,9 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  assert(pCtx);
 
  //-----------------------------------------
- typedef isc_api::t_ibp_fb30_bool xvalue_type;
+ typedef isc_api::t_ibp_fb030_bool xvalue_type;
 
- const xvalue_type c_test_value =isc_api::ibp_fb30_true;
+ const xvalue_type c_test_value =isc_api::ibp_fb030_true;
 
  //-----------------------------------------
  TTSO_Tracer tracer(pCtx,L"test");
@@ -6941,7 +6936,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  //-----------------------------------------
  xsqlda_utils_type::msg_data_descrs_type descrs(1);
 
- descrs[0].m_xvar_sqltype           =isc_api::ibp_fb30_sql_boolean;
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb030_sql_boolean;
  descrs[0].m_xvar_sqlscale          =0;
  descrs[0].m_msg_value_block_offset =0;
  descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
@@ -6967,7 +6962,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
  assert_s(sizeof(xvalue)==1);
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb30_sql_boolean;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb030_sql_boolean;
  xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
  xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
 
@@ -6992,9 +6987,9 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  assert(pCtx);
 
  //-----------------------------------------
- typedef isc_api::t_ibp_fb30_bool xvalue_type;
+ typedef isc_api::t_ibp_fb030_bool xvalue_type;
 
- const xvalue_type    c_test_value =isc_api::ibp_fb30_false;
+ const xvalue_type    c_test_value =isc_api::ibp_fb030_false;
  const short          c_init_sqlind=5487;
 
  //-----------------------------------------
@@ -7003,7 +6998,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  //-----------------------------------------
  xsqlda_utils_type::msg_data_descrs_type descrs(1);
 
- descrs[0].m_xvar_sqltype           =isc_api::ibp_fb30_sql_boolean;
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb030_sql_boolean;
  descrs[0].m_xvar_sqlscale          =0;
  descrs[0].m_msg_value_block_offset =0;
  descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
@@ -7030,7 +7025,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
  assert_s(sizeof(xvalue)==1);
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb30_sql_boolean;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb030_sql_boolean;
  xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
  xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
  xsqlda->sqlvar[0].sqlind =&xsqlind;
@@ -7057,9 +7052,9 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  assert(pCtx);
 
  //-----------------------------------------
- typedef isc_api::t_ibp_fb30_bool xvalue_type;
+ typedef isc_api::t_ibp_fb030_bool xvalue_type;
 
- const xvalue_type    c_test_value =isc_api::ibp_fb30_true;
+ const xvalue_type    c_test_value =isc_api::ibp_fb030_true;
  const short          c_init_sqlind=5487;
 
  //-----------------------------------------
@@ -7068,7 +7063,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  //-----------------------------------------
  xsqlda_utils_type::msg_data_descrs_type descrs(1);
 
- descrs[0].m_xvar_sqltype           =isc_api::ibp_fb30_sql_boolean;
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb030_sql_boolean;
  descrs[0].m_xvar_sqlscale          =0;
  descrs[0].m_msg_value_block_offset =0;
  descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
@@ -7095,7 +7090,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
  assert_s(sizeof(xvalue)==1);
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb30_sql_boolean|1;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb030_sql_boolean|1;
  xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
  xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
  xsqlda->sqlvar[0].sqlind =&xsqlind;
@@ -7122,9 +7117,9 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  assert(pCtx);
 
  //-----------------------------------------
- const short c_sql_type=isc_api::ibp_fb30_sql_boolean;
+ const short c_sql_type=isc_api::ibp_fb030_sql_boolean;
 
- typedef isc_api::t_ibp_fb30_bool xvalue_type;
+ typedef isc_api::t_ibp_fb030_bool xvalue_type;
 
  const xvalue_type    c_test_value1 =12;
  const xvalue_type    c_test_value2 =32;
@@ -7235,9 +7230,9 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  assert(pCtx);
 
  //-----------------------------------------
- typedef isc_api::t_ibp_fb30_bool xvalue_type;
+ typedef isc_api::t_ibp_fb030_bool xvalue_type;
 
- const xvalue_type    c_test_value =isc_api::ibp_fb30_true;
+ const xvalue_type    c_test_value =isc_api::ibp_fb030_true;
  const short          c_init_sqlind=5487;
 
  //-----------------------------------------
@@ -7246,7 +7241,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
  //-----------------------------------------
  xsqlda_utils_type::msg_data_descrs_type descrs(1);
 
- descrs[0].m_xvar_sqltype           =isc_api::ibp_fb30_sql_boolean;
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb030_sql_boolean;
  descrs[0].m_xvar_sqlscale          =0;
  descrs[0].m_msg_value_block_offset =0;
  descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
@@ -7274,7 +7269,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
  assert_s(sizeof(xvalue)==1);
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb30_sql_boolean|1;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb030_sql_boolean|1;
  xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
  xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
  xsqlda->sqlvar[0].sqlind =&xsqlind;

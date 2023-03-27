@@ -143,6 +143,15 @@ enum ibp_msg_code_type
  ///////////////////////////////////////////////////////////////////////////////
  //Common errors
 
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  Unsupported COM API.<br>
+ /// \b
+ ///  Params: Required COM API ID, Supported COM API ID
+ ibp_mce_common__unsupported_com_api_2
+  =IBP_MCE_COMMON__UNSUPPORTED_COM_API_2,
+
+ //-----------------------------------------------------------------------
  /// \brief
  ///  ƒостигнут лимит на количество ошибок. „асть последующих сообщений будет проигнорирована.
  ibp_mce_common__err_count_limit_was_reached_0
@@ -3412,6 +3421,13 @@ enum ibp_msg_code_type
  ///  Params: place, point, xsqlda_name, version
  ibp_mce_isc__bug_check__incorrect_xsqlda_version_4
   =IBP_MCE_ISC__BUG_CHECK__INCORRECT_XSQLDA_VERSION_4,
+
+ /// \brief
+ ///  [BUG CHECK] XVAR определ€ет некорректную длину sql-данных.<br>
+ /// \b
+ ///  Params: type sign [char, varchar], sqllen
+ ibp_mce_isc__bug_check__bad_sqllen_of_xvar_2
+  =IBP_MCE_ISC__BUG_CHECK__BAD_SQLLEN_OF_XVAR_2,
 
  //-----------------------------------------------------------------------
  /// \brief

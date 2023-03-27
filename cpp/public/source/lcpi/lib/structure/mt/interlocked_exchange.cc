@@ -24,6 +24,10 @@ class interlocked_exchange__impl
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pDestination,T2* newValue);
 
+  static unsigned long exec(unsigned long volatile* pDestination,unsigned long newValue);
+
+  static unsigned __int32 exec(unsigned __int32 volatile* pDestination,unsigned __int32 newValue);
+
   static unsigned __int64 exec(unsigned __int64 volatile* pDestination,unsigned __int64 newValue);
 };//class interlocked_exchange__impl
 
@@ -48,6 +52,26 @@ T1* interlocked_exchange__impl::exec(T1* volatile *  const pDestination,
 
  return (T1*)InterlockedExchangePointer((void**)(pDestination),const_cast<T1_x*>(static_cast<T1*>(newValue)));
 }//exec - T1**, T2*
+
+//------------------------------------------------------------------------
+inline unsigned long interlocked_exchange__impl::exec
+                             (unsigned long volatile* const pDestination,
+                              unsigned long           const newValue)
+{
+ LCPI__assert(pDestination);
+
+ return InterlockedExchange(pDestination,newValue);
+}//exec - unsigned long
+
+//------------------------------------------------------------------------
+inline unsigned __int32 interlocked_exchange__impl::exec
+                             (unsigned __int32 volatile* const pDestination,
+                              unsigned __int32           const newValue)
+{
+ LCPI__assert(pDestination);
+
+ return InterlockedExchange(pDestination,newValue);
+}//exec - unsigned __int32
 
 //------------------------------------------------------------------------
 inline unsigned __int64 interlocked_exchange__impl::exec

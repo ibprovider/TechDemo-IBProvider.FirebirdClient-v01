@@ -181,14 +181,12 @@ void RemoteFB__API_P13__PutArraySlice::exec(db_obj::t_db_operation_context& opCt
   {
    //ERROR - Too large SDL data
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_isc__too_large_sdl_buffer_size_2);
-
-   exc<<szArraySDL
-      <<structure::get_numeric_limits(packet.p_put_slc.p_put_slc__sdl.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_isc__too_large_sdl_buffer_size_2,
+     szArraySDL,
+     structure::get_numeric_limits(packet.p_put_slc.p_put_slc__sdl.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_put_slc.p_put_slc__sdl.cstr_length,
@@ -211,14 +209,12 @@ void RemoteFB__API_P13__PutArraySlice::exec(db_obj::t_db_operation_context& opCt
   {
    //ERROR - Too large array data
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_isc__too_large_array_slice_buffer_size_2);
-
-   exc<<szArrayData
-      <<structure::get_numeric_limits(packet.p_put_slc.p_put_slc__slice.lstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_isc__too_large_array_slice_buffer_size_2,
+     szArrayData,
+     structure::get_numeric_limits(packet.p_put_slc.p_put_slc__slice.lstr_length).max_value());
   }//if
 
   structure::static_numeric_cast
@@ -236,8 +232,9 @@ void RemoteFB__API_P13__PutArraySlice::exec(db_obj::t_db_operation_context& opCt
 
   portOpCtx.reg_svc(&GetArraySliceDescrSvc);
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 
  //----------------------------------------- 4. get response
@@ -249,8 +246,9 @@ void RemoteFB__API_P13__PutArraySlice::exec(db_obj::t_db_operation_context& opCt
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {

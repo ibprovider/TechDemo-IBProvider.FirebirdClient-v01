@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_obj/isc_base/isc_portable_format_to_integer.h"
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 #include <limits.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
@@ -633,10 +633,10 @@ bool isc_portable_format_to_integer::helper__to_integerN__generic__signed
 
 //------------------------------------------------------------------------
 void isc_portable_format_to_integer::helper__throw_error__bad_format
-                                           (ibp::t_ibp_subsystem_id subsystem,
-                                            const wchar_t*          value_sign,
-                                            const wchar_t*          value_type_sign,
-                                            size_t                  buf_length)
+                                           (ibp::t_ibp_subsystem_id const subsystem,
+                                            const wchar_t*          const value_sign,
+                                            const wchar_t*          const value_type_sign,
+                                            size_t                  const buf_length)
 {
  assert(value_sign);
  assert(value_type_sign);
@@ -646,15 +646,13 @@ void isc_portable_format_to_integer::helper__throw_error__bad_format
 
  //ERROR - ошибка преобразование транспортного формата в число
 
- ibp::t_ibp_error exc(E_FAIL,
-                      subsystem,
-                      ibp::ibp_mce_isc__bad_transport_format_of_integer_value_3);
-
- exc<<value_sign
-    <<value_type_sign
-    <<buf_length;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem,
+   ibp::ibp_mce_isc__bad_transport_format_of_integer_value_3,
+   value_sign,
+   value_type_sign,
+   buf_length);
 }//helper__throw_error__bad_format
 
 ////////////////////////////////////////////////////////////////////////////////

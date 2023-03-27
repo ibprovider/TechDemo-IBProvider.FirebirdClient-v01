@@ -47,8 +47,8 @@ struct WORK_Params_IN_013__boolean::tag_impl::tag_data_005
   bool nullable;
 
  public:
-  isc_api::t_ibp_fb30_bool  result_value;
-  short                     result_sqlind;
+  isc_api::t_ibp_fb030_bool  result_value;
+  short                      result_sqlind;
 };//struct WORK_Params_IN_013__boolean::tag_impl::tag_data_005
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -191,7 +191,7 @@ void WORK_Params_IN_013__boolean::tag_impl::test_005_generic
 
   in_xsqlda->sqld=1;
 
-  in_xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb30_sql_boolean|(Data.nullable?1:0);
+  in_xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb030_sql_boolean|(Data.nullable?1:0);
   in_xsqlda->sqlvar[0].sqllen   =sizeof(Data.result_value);
   in_xsqlda->sqlvar[0].sqldata  =const_cast<char*>(reinterpret_cast<const char*>(&Data.result_value));
   in_xsqlda->sqlvar[0].sqlind   =const_cast<short*>(&Data.result_sqlind);
@@ -217,10 +217,10 @@ void WORK_Params_IN_013__boolean::tag_impl::test_005_generic
 
   out_xsqlda->sqld=1;
 
-  isc_api::t_ibp_fb30_bool  xparam0_value=37;
-  short                     xparam0_ind=c_test_005__dummy_sqlind;
+  isc_api::t_ibp_fb030_bool  xparam0_value=37;
+  short                      xparam0_ind=c_test_005__dummy_sqlind;
 
-  out_xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb30_sql_boolean|(Data.nullable?1:0);
+  out_xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb030_sql_boolean|(Data.nullable?1:0);
   out_xsqlda->sqlvar[0].sqllen   =sizeof(xparam0_value);
   out_xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(&xparam0_value);
   out_xsqlda->sqlvar[0].sqlind   =&xparam0_ind;

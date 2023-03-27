@@ -37,5 +37,19 @@ std::ostream& operator << (std::ostream& os,const t_ibp_debug__file_and_line& x)
 }//operator <<
 
 ////////////////////////////////////////////////////////////////////////////////
+
+void IBP_OutputDebugString(LPCTSTR const msg)
+{
+ assert(msg!=nullptr);
+
+ std::basic_string<TCHAR> msg2(_T("IBP: "));
+
+ msg2+=msg;
+ msg2+=_T('\n');
+
+ ::OutputDebugString(msg2.c_str());
+}//IBP_OutputDebugString
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/
 

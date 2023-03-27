@@ -119,8 +119,9 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__DropStmts
     packet2.p_info.p_info__buffer_length
      =structure::t_numeric_limits<protocol::P_SHORT>::max_value();
  
-    pData->GetPort()->send_packet(portOpCtx,
-                                  packet2); //throw
+    pData->GetPort()->send_packet
+     (portOpCtx,
+      packet2); //throw
    }//local
   }//local - отправка пакетов
  
@@ -346,8 +347,9 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__ReleaseBlobs(RemoteFB__
     packet2.p_info.p_info__buffer_length
      =structure::t_numeric_limits<protocol::P_SHORT>::max_value();
  
-    pData->GetPort()->send_packet(portOpCtx,
-                                  packet2); //throw
+    pData->GetPort()->send_packet
+     (portOpCtx,
+      packet2); //throw
    }//local
   }//local - отправка пакетов
  

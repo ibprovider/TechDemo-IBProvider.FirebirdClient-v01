@@ -64,11 +64,11 @@ extern const wchar_t
 
 //непонятная ситуация
 extern const wchar_t
- me_bug_check__unexpected_situation_0[]; 
+ me_bug_check__unexpected_situation_0[];
 
 //некорректное использование метода
 extern const wchar_t
- me_bug_check__incorrect_usage_of_method_0[]; 
+ me_bug_check__incorrect_usage_of_method_0[];
 
 //PStmt объект не предоставляет поддержку для IColumnsRowset
 extern const wchar_t
@@ -100,6 +100,50 @@ extern const wchar_t
 //Params: marker kind id
 extern const wchar_t
  me_bug_check__unexpected_cmd_parameter_marker_kind_id_1[];
+
+//No numeric value scale
+extern const wchar_t
+ me_bug_check__no_numeric_value_scale_0[];
+
+//Wrong numeric value scale
+//Params: actual scale, expected scale
+extern const wchar_t
+ me_bug_check__wrong_numeric_value_scale_2[];
+
+//The unexpected internal dbtype
+//Params: dbtype sign
+extern const wchar_t
+ me_bug_check__unexpected_internal_dbtype_1[];
+
+//The internal dbtype is not supported
+//Params: dbtype sign
+extern const wchar_t
+ me_bug_check__internal_dbtype_is_not_supported_1[];
+
+//The unknown write mode of column values
+//Params: write mode id
+extern const wchar_t
+ me_bug_check__unknown__row_write_mode_1[];
+
+//The unexpected write mode of column values
+//Params: write mode id
+extern const wchar_t
+ me_bug_check__unexpected__row_write_mode_1[];
+
+//The columns were not described after second attempt
+//Params: sqln, sqld
+extern const wchar_t
+ me_bug_check__columns_were_not_described_after_second_attempt_2[];
+
+//The parameters were not described after second attempt
+//Params: sqln, sqld
+extern const wchar_t
+ me_bug_check__parameters_were_not_described_after_second_attempt_2[];
+
+//The unstable sqld of row
+//Params: sqld1, sqld2
+extern const wchar_t
+ me_bug_check__unstable_row_sqld_2[];
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -213,28 +257,28 @@ extern const wchar_t
 extern const wchar_t
  me_bug_check__bad_tr_handle_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__tr_handle_not_zero_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__bad_stmt_handle_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__stmt_handle_not_zero_0[];
 
 extern const wchar_t
  me_bug_check__blob_handle_not_zero_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__bad_blob_handle_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__incorect_blob_handle_mode_1[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__empty_block_with_blob_data_0[];
 
-extern const wchar_t 
+extern const wchar_t
  me_bug_check__incorrect_blob_data_buffer_format_0[];
 
 //params: fragment length, buffer tail length

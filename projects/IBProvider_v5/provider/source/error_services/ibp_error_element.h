@@ -41,8 +41,6 @@ struct t_ibp_error_element_traits
  typedef t_ibp_error_args<self_type>                args_type;
 
  typedef t_ibp_error_element                        out_return_type;
-
- static out_return_type& out_ret(args_type& x);
 };//struct t_ibp_error_element_traits
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,8 +69,8 @@ class t_ibp_error_element
 
  public: //typedefs ------------------------------------------------------
   ///Смарт-указатель на объект
-  typedef structure::t_smart_object_ptr<const self_type>  self_cptr;
-  typedef structure::t_smart_object_ptr<self_type>        self_ptr;
+  typedef lib::structure::t_smart_object_ptr<const self_type>  self_cptr;
+  typedef lib::structure::t_smart_object_ptr<self_type>        self_ptr;
 
   typedef inherited_record::string_type             string_type;
   typedef inherited_record::system_id_type          system_id_type;
@@ -85,9 +83,6 @@ class t_ibp_error_element
 
   using get_cerr_obj_ptr
    =lib::structure::t_smart_object_ptr<get_cerr_obj_type>;
-
-  DECLARE_IPTR_TYPE(IErrorInfo);
-  DECLARE_IPTR_TYPE(IErrorRecords);
 
   typedef ibp_msg_code_type                         mc_type;
 
@@ -213,15 +208,6 @@ class t_ibp_error_element
  public: //вспомогательные утилиты --------------------------------------
   virtual self_type& add_arg(const base_variant_type& x) COMP_W000004_OVERRIDE_FINAL;//virtual
 };//class t_ibp_error_element
-
-////////////////////////////////////////////////////////////////////////////////
-//struct t_ibp_error_element_traits
-
-inline t_ibp_error_element_traits::out_return_type&
- t_ibp_error_element_traits::out_ret(args_type& x)
-{
- return *static_cast<out_return_type*>(&x);
-}//out_ret
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

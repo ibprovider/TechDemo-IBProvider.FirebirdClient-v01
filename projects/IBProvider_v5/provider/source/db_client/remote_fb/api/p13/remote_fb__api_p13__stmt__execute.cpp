@@ -362,8 +362,9 @@ protocol::P_USHORT RemoteFB__API_P13__ExecuteStatement::helper__execute
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -379,8 +380,9 @@ protocol::P_USHORT RemoteFB__API_P13__ExecuteStatement::helper__execute
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {
@@ -488,15 +490,13 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
   {
    //ERROR - BLR data of input parameters is too long.
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3);
-
-   exc<<L"pInXSQLDA"
-      <<(*pStmtHandle)->m_InParams__MSG_BLR.size()
-      <<structure::get_numeric_limits(packet.p_sqldata.p_sqldata__blr.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pInXSQLDA",
+     (*pStmtHandle)->m_InParams__MSG_BLR.size(),
+     structure::get_numeric_limits(packet.p_sqldata.p_sqldata__blr.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqldata.p_sqldata__blr.cstr_length,
@@ -516,15 +516,13 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
   {
    //ERROR - BLR data of output parameters is too long.
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3);
-
-   exc<<L"pOutXSQLDA"
-      <<(*pStmtHandle)->m_OutParams__MSG_BLR.size()
-      <<structure::get_numeric_limits(packet.p_sqldata.p_sqldata__blr.cstr_length).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pOutXSQLDA",
+     (*pStmtHandle)->m_OutParams__MSG_BLR.size(),
+     structure::get_numeric_limits(packet.p_sqldata.p_sqldata__blr.cstr_length).max_value());
   }//if
 
   structure::static_numeric_cast(&packet.p_sqldata.p_sqldata__out_blr.cstr_length,
@@ -543,8 +541,9 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
   //------ обозначаем рамки начала операции с сервером
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
 
   sendFrame.complete(); //throw
  }//local
@@ -562,8 +561,9 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_sql_response)
   {
@@ -617,8 +617,9 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {

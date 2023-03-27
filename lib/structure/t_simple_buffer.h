@@ -122,8 +122,13 @@ class t_typed_simple_buffer
   const_pointer buffer()       const {return m_buffer;}
   const_pointer buffer_end()   const {return m_buffer+m_size;}
 
+  pointer       data()               {return m_buffer;}
+  const_pointer data()         const {return m_buffer;}
+
   size_type     size()         const {return m_size;}
   size_type     memory_size()  const {return m_size*sizeof(value_type);}
+
+  size_t        capacity()     const {return m_capacity;};
 
   bool          empty()        const {return m_size==0;}
 
@@ -136,9 +141,18 @@ class t_typed_simple_buffer
 
   const_pointer ptr_at(size_type const i)const;
 
+  reference front();
+  reference back();
+
+  const_reference front()const;
+  const_reference back()const;
+
  public: //buffer managements --------------------------------------------
   pointer  alloc(size_type sz);
   pointer  realloc(size_type sz);
+
+  pointer  reserve(size_type new_capacity);
+
   void     free();
 
   void     swap(self_type& x);

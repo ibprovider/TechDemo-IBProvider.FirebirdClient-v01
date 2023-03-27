@@ -2,37 +2,13 @@
 #ifndef _structure__t_to_hex_result_H_
 #define _structure__t_to_hex_result_H_
 
-#include <structure/t_common.h>
-#include <array>
+#include <lcpi/lib/structure/t_to_hex_result.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//class t_to_hex_result
 
-template<typename charT,typename T>
-class t_to_hex_result
-{
- private:
-  typedef t_to_hex_result<charT,T> self_type;
-
- public:
-  t_to_hex_result();
-
-  const charT* c_str() const;
-
-  void set(size_t i,charT ch);
-
-  void set_term(size_t i);
-
- private:
-  static const size_t c_N=2*sizeof(T);
-
-  std::array<charT,c_N+1> m_buffer;
-};//class t_to_hex_result
+using namespace ::lcpi::lib::structure;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure
-////////////////////////////////////////////////////////////////////////////////
-#include "structure/t_to_hex_result.cc"
-////////////////////////////////////////////////////////////////////////////////
 #endif

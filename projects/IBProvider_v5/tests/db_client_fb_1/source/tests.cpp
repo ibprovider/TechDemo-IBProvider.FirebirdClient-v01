@@ -82,6 +82,8 @@
 #include "source/tests/work/WORK_Test_015__StmtPrepare__v2_lazy_send.h"
 #include "source/tests/work/WORK_Test_016__GetColumns.h"
 #include "source/tests/work/WORK_Test_017__GetStatementInfo.h"
+#include "source/tests/work/WORK_Test_017__GetStatementInfo__select.h"
+#include "source/tests/work/WORK_Test_017__GetStatementInfo__bind.h"
 #include "source/tests/work/WORK_Test_018__GetParameters.h"
 #include "source/tests/work/WORK_Test_019__StmtExecute__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_019__StmtExecute__v2_lazy_send.h"
@@ -351,6 +353,10 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_Test_016__GetColumns::create),
 
  DEF_CREATOR_DESCR(WORK_Test_017__GetStatementInfo::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_017__GetStatementInfo__select::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_017__GetStatementInfo__bind::create),
 
  DEF_CREATOR_DESCR(WORK_Test_018__GetParameters::create),
 

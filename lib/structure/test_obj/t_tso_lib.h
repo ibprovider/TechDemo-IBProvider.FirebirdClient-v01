@@ -9,6 +9,7 @@
 #include <structure/t_smart_vector.h>
 #include <structure/t_str_args.h>
 #include <structure/t_string_au.h>
+#include <structure/t_threads.h>
 
 namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////

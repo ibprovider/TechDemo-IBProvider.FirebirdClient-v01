@@ -20,6 +20,11 @@ TestOperationContext::TestOperationContext(const TestCnParams& cnParams)
   pCsName__ODS=L"UNICODE_FSS";
  }
  else
+ if(cnParams.GlobalCtx()->calc_expression("NE__ODS_CS__IS_UTF8"))
+ {
+  pCsName__ODS=L"UTF8";
+ }
+ else
  {
   throw std::runtime_error("[BUG CHECK] Can't detect ODS charset.");
  }//else

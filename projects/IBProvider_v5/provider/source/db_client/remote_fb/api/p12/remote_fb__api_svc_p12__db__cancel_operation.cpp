@@ -64,8 +64,9 @@ void RemoteFB__SVC_P12__CancelDbOperation::exec(RemoteFB__ConnectorData* const p
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 }//exec
 

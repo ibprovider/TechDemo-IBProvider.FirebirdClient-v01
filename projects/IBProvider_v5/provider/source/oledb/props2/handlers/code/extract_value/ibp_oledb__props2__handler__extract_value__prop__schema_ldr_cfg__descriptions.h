@@ -12,8 +12,8 @@
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
 
-#if(IBP_EDITION_ID==IBP_EDITION_ID__FREE)
-# error Incorrect usage of file!
+#if(IBP_ENGINE_META_DATA_READER==0)
+# error The incorrect usage of file!
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

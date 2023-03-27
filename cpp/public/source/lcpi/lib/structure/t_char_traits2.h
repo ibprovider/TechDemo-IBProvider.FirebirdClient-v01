@@ -117,6 +117,7 @@ struct t_char_traits2<char>
   static const char_type ch_lt()               {return '<';}
   static const char_type ch_gt()               {return '>';}
   static const char_type ch_div()              {return '/';}
+  static const char_type ch_mult()             {return '*';}
   static const char_type ch_question_mark()    {return '?';}
   static const char_type ch_minus()            {return '-';}
   static const char_type ch_plus()             {return '+';}
@@ -266,6 +267,7 @@ struct t_char_traits2<wchar_t>
   static const char_type ch_lt()               {return L'<';}
   static const char_type ch_gt()               {return L'>';}
   static const char_type ch_div()              {return L'/';}
+  static const char_type ch_mult()             {return L'*';}
   static const char_type ch_question_mark()    {return L'?';}
   static const char_type ch_minus()            {return L'-';}
   static const char_type ch_plus()             {return L'+';}

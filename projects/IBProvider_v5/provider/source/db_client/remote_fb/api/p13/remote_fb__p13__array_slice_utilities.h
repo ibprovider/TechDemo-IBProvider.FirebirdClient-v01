@@ -52,17 +52,18 @@ class RemoteFB__P13__ArraySlice_Utilities LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]     sdlReader
   //! \param[in,out] pDescr
   static void Helper__ParseSDL__ReadElementType
-                                           (tag_sdl_reader&            sdlReader,
-                                            RemoteFB__ArraySliceDescr* pDescr);
+                             (tag_sdl_reader&            sdlReader,
+                              RemoteFB__ArraySliceDescr* pDescr);
 
   static value_i4_type Helper__ParseSDL__ReadLiteral
-                                           (tag_sdl_reader& sdlReader);
+                             (tag_sdl_reader&            sdlReader);
 
   /// <summary>
   ///  Обработка данных тега ibp_isc_sdl_element
   /// </summary>
-  static void Helper__ParseSDL__ReadElement(tag_sdl_reader&            sdlReader,
-                                            RemoteFB__ArraySliceDescr* pDescr);
+  static void Helper__ParseSDL__ReadElement
+                             (tag_sdl_reader&            sdlReader,
+                              RemoteFB__ArraySliceDescr* pDescr);
 };//class RemoteFB__P13__ArraySlice_Utilities
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -585,13 +585,13 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 {
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null,
+            isc_api::ibp_fb025_sql_null,
             1,
             L"sql_null");
 
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null|1,
+            isc_api::ibp_fb025_sql_null|1,
             2,
             L"sql_null");
 }//test_t13___bug_check__incorrect_sqllen__null
@@ -1207,7 +1207,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  //-----------------------------------------
@@ -1229,7 +1229,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  _TSO_CHECK(sz==2);
@@ -1422,7 +1422,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_long|1;
@@ -1448,7 +1448,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1536,7 +1536,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_float|1;
@@ -1562,7 +1562,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1650,7 +1650,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_type_time|1;
@@ -1676,7 +1676,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1707,7 +1707,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_type_date|1;
@@ -1733,7 +1733,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1764,7 +1764,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_timestamp|1;
@@ -1790,7 +1790,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1821,7 +1821,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_blob|1;
@@ -1847,7 +1847,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1878,7 +1878,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
  xsqlda->sqlvar[1].sqltype =isc_api::ibp_isc_sql_array|1;
@@ -1904,7 +1904,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1935,10 +1935,10 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
 
  xsqlda->sqld=2;
 
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[0].sqllen  =0;
 
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb25_sql_null|1;
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb025_sql_null|1;
  xsqlda->sqlvar[1].sqllen  =0;
 
  //-----------------------------------------
@@ -1961,7 +1961,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[0].m_msg_sqlind_offset     ==0);
  _TSO_CHECK(descrs[0].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[0].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[0].m_xvar_sqlscale         ==-1);
 
  //-----------------------------------------
@@ -1970,7 +1970,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::t
  _TSO_CHECK(descrs[1].m_msg_sqlind_offset     ==2);
  _TSO_CHECK(descrs[1].m_msg_blrtype           ==isc_api::ibp_isc_blr_dtype__text);
 
- _TSO_CHECK(descrs[1].m_xvar_sqltype          ==isc_api::ibp_fb25_sql_null);
+ _TSO_CHECK(descrs[1].m_xvar_sqltype          ==isc_api::ibp_fb025_sql_null);
  _TSO_CHECK(descrs[1].m_xvar_sqlscale         ==-1);
 
  _TSO_CHECK(sz==4);

@@ -306,6 +306,18 @@ inline typename t_smart_object_ptr<T,traits_data>::internal_pointer&
  return m_ptr;
 }//ref_ptr
 
+//------------------------------------------------------------------------
+template<class T,class traits_data>
+inline void**
+ t_smart_object_ptr<T,traits_data>::ppv()
+{
+ this->Release();
+
+ assert(!m_ptr);
+
+ return reinterpret_cast<void**>(&m_ptr);
+}//ppv
+
 //selectors --------------------------------------------------------------
 template<class T,class traits_data>
 inline typename t_smart_object_ptr<T,traits_data>::pointer

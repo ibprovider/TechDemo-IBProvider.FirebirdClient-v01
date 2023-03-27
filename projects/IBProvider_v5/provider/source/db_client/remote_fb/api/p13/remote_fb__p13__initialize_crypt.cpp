@@ -204,15 +204,13 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
 
    assert(false);
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_remote__bug_check__cant_translate_wire_crypt_service_name_4);
-
-   exc<<c_bugcheck_src
-      <<L"#001"
-      <<L"WSTR"
-      <<L"UTF8";
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_remote__bug_check__cant_translate_wire_crypt_service_name_4,
+     c_bugcheck_src,
+     L"#001",
+     L"WSTR",
+     L"UTF8");
   }//if
 
   {
@@ -222,14 +220,12 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
    {
     //ERROR - plugin name length too large
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_subsystem__remote_fb__p13,
-                    ibp_mce_remote__wire_crypt_svc_name_is_too_long_2);
-
-    exc<<ch_pluginName
-       <<structure::get_numeric_limits(packet__p_crypt.p_crypt__plugin.cstr_length).max_value();
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_subsystem__remote_fb__p13,
+      ibp_mce_remote__wire_crypt_svc_name_is_too_long_2,
+      ch_pluginName,
+      structure::get_numeric_limits(packet__p_crypt.p_crypt__plugin.cstr_length).max_value());
    }//if
 
    structure::static_numeric_cast(&packet__p_crypt.p_crypt__plugin.cstr_length,ch_pluginName);
@@ -261,14 +257,12 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
    {
     //ERROR - key type name length too large
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_subsystem__remote_fb__p13,
-                    ibp_mce_remote__wire_crypt_key_type_name_is_too_long_2);
-
-    exc<<ch_keyName
-       <<structure::get_numeric_limits(packet__p_crypt.p_crypt__key.cstr_length).max_value();
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_subsystem__remote_fb__p13,
+      ibp_mce_remote__wire_crypt_key_type_name_is_too_long_2,
+      ch_keyName,
+      structure::get_numeric_limits(packet__p_crypt.p_crypt__key.cstr_length).max_value());
    }//if
 
    structure::static_numeric_cast(&packet__p_crypt.p_crypt__key.cstr_length,ch_keyName);

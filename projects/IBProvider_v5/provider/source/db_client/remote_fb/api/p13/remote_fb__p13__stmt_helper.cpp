@@ -49,18 +49,17 @@ void RemoteFB__P13__StmtHelper::BuildPacket__op_prepare_statement
  {
   //ERROR - too large sql text
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p13,
-                  ibp_mce_cmd_stmt_too_long_2);
-
-  exc<<SQL_str.len
-     <<structure::get_numeric_limits(pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length).max_value();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p13,
+    ibp_mce_cmd_stmt_too_long_2,
+    SQL_str.len,
+    structure::get_numeric_limits(pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length).max_value());
  }//if
 
- structure::static_numeric_cast(&pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length,
-                                SQL_str.len);
+ structure::static_numeric_cast
+  (&pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length,
+   SQL_str.len);
 
  assert_s(sizeof(*pPacket->p_sqlst.p_sqlst__SQL_str.cstr_address)==sizeof(*SQL_str.ptr));
 
@@ -108,19 +107,18 @@ void RemoteFB__P13__StmtHelper::BuildPacket__op_execute
  {
   //ERROR - BLR data of input parameters is too long.
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p13,
-                  ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3);
-
-  exc<<L"pInXSQLDA"
-     <<pStmt->m_InParams__MSG_BLR.size()
-     <<structure::get_numeric_limits(pPacket->p_sqldata.p_sqldata__blr.cstr_length).max_value();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p13,
+    ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+    L"pInXSQLDA",
+    pStmt->m_InParams__MSG_BLR.size(),
+    structure::get_numeric_limits(pPacket->p_sqldata.p_sqldata__blr.cstr_length).max_value());
  }//if
 
- structure::static_numeric_cast(&pPacket->p_sqldata.p_sqldata__blr.cstr_length,
-                                pStmt->m_InParams__MSG_BLR.size());
+ structure::static_numeric_cast
+  (&pPacket->p_sqldata.p_sqldata__blr.cstr_length,
+   pStmt->m_InParams__MSG_BLR.size());
 
  pPacket->p_sqldata.p_sqldata__blr.cstr_address=pStmt->m_InParams__MSG_BLR.buffer();
 
@@ -161,16 +159,18 @@ protocol::P_USHORT RemoteFB__P13__StmtHelper::ComputeBatchSize
 
  //-----------------------------------------
  size_t cPackets
-  =Helper__ComputePacketNumber(protocol::FB_DESIRED_ROWS_PER_BATCH,
-                               cbFetchResponsePacket,
-                               cbFetchResponsePacket0);
+  =Helper__ComputePacketNumber
+    (protocol::FB_DESIRED_ROWS_PER_BATCH,
+     cbFetchResponsePacket,
+     cbFetchResponsePacket0);
 
  if(protocol::FB_MAX_PACKETS_PER_BATCH<cPackets)
  {
   cPackets
-   =Helper__ComputePacketNumber(protocol::FB_MIN_ROWS_PER_BATCH,
-                                cbFetchResponsePacket,
-                                cbFetchResponsePacket0);
+   =Helper__ComputePacketNumber
+     (protocol::FB_MIN_ROWS_PER_BATCH,
+      cbFetchResponsePacket,
+      cbFetchResponsePacket0);
  }//if
 
  if(cPackets<protocol::FB_MIN_PACKETS_PER_BATCH)
@@ -180,7 +180,8 @@ protocol::P_USHORT RemoteFB__P13__StmtHelper::ComputeBatchSize
 
  assert(cbFetchResponsePacket0<protocol::FB_SERVER_PACKET_SIZE);
 
- size_t cResultRows=((cPackets*protocol::FB_SERVER_PACKET_SIZE)-cbFetchResponsePacket0)/cbFetchResponsePacket;
+ size_t cResultRows
+  =((cPackets*protocol::FB_SERVER_PACKET_SIZE)-cbFetchResponsePacket0)/cbFetchResponsePacket;
 
  if(cResultRows<protocol::FB_MIN_ROWS_PER_BATCH)
   cResultRows=protocol::FB_MIN_ROWS_PER_BATCH;

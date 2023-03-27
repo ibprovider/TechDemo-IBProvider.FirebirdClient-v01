@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+//LCPI Instrumental C++ Library
+//                                                 Dmitry Kovalenko. 02.10.2019
+#ifndef _lcpi_lib_structure_utilities__make_lvalue_H_
+#define _lcpi_lib_structure_utilities__make_lvalue_H_
+
+#include <lcpi/lib/structure/utilities/make_lvalue.h>
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+
+using namespace ::lcpi::lib::structure;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

@@ -101,6 +101,10 @@ IBP_DEF_FWRD_DB_INTERFACE(t_db_statement)
 //db result set ----------------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE(t_db_result_set)
 
+//db value ---------------------------------------------------------------
+struct t_db_value_data;
+struct t_db_value;
+
 //db column description --------------------------------------------------
 class t_db_column_descr;
 

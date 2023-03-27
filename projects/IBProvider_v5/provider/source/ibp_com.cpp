@@ -7,12 +7,21 @@
 #include <_pch_.h>
 #pragma hdrstop
 
+#ifndef IBP_ENGINE_GLOBAL_OBJECTS
+# error IBP_ENGINE_GLOBAL_OBJECTS is not defined
+#endif
+
+//------------------------------------------------------------------------
 #include "source/ibp_com_helper.h"
 
 #ifndef IBP_BUILD_TESTCODE
 # include "source/oledb/ibp_oledb__exception_handler.h"
 # include "source/oledb/ibp_oledb__class_factory.h"
 # include "source/error_services/ibp_error__com_module_is_shutdown.h"
+# include "source/error_services/ibp_error_utils.h"
+#endif
+
+#if(IBP_ENGINE_GLOBAL_OBJECTS!=0)
 # include "source/ibp_global_objects.h"
 #endif
 
@@ -49,11 +58,11 @@ bool TIBP_ComModule::Init(HINSTANCE const hInstance)
    if(!THelper::InitData(hInstance))
     break;
 
-#ifndef IBP_BUILD_TESTCODE
+#if(IBP_ENGINE_GLOBAL_OBJECTS!=0)
    //инициализация менеджера глобальных объектов
    if(!IBP_GlobalObjects::Init())
     break;
-#endif // !IBP_BUILD_TESTCODE
+#endif // IBP_ENGINE_GLOBAL_OBJECTS!=0
 
    bResult=true;
 
@@ -150,10 +159,10 @@ void TIBP_ComModule::Term()
  }//if sm_pData!=nullptr
 #endif
 
-#ifndef IBP_BUILD_TESTCODE
+#if(IBP_ENGINE_GLOBAL_OBJECTS!=0)
  //освобождение глобальных объектов
  IBP_GlobalObjects::Done();
-#endif
+#endif //IBP_ENGINE_GLOBAL_OBJECTS!=0
 
  //уничтожение собственных данных менеджера модуля
  THelper::TermData();
@@ -198,6 +207,14 @@ TIBP_ComModule::string_type TIBP_ComModule::GetModuleVersion(const char_type* co
 
  return result;
 }//GetModuleVersion
+
+//------------------------------------------------------------------------
+REFGUID TIBP_ComModule::GetComApiID()
+{
+ assert(sm_pData!=nullptr);
+
+ return sm_pData->m_ComApiID;
+}//GetComApiID
 
 //------------------------------------------------------------------------
 TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
@@ -357,21 +374,34 @@ void TIBP_ComModule::UnlockServer()
 
 #ifndef IBP_BUILD_TESTCODE
 
-HRESULT TIBP_ComModule::GetClassObject(REFCLSID     rclsid,
+HRESULT TIBP_ComModule::GetClassObject(REFGUID      rComApiID,
+                                       REFCLSID     rclsid,
                                        REFIID       riid,
                                        void** const ppv)
 {
- assert(sm_pData!=NULL);
+ assert(sm_pData!=nullptr);
 
- if(ppv==NULL)
+ if(ppv==nullptr)
   return E_POINTER;
 
- (*ppv)=NULL;
+ (*ppv)=nullptr;
 
  OLE_LIB__DECLARE_HR(CLASS_E_CLASSNOTAVAILABLE);
 
  _OLE_TRY_
  {
+  if(rComApiID!=self_type::GetComApiID())
+  {
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_common__unsupported_com_api_2,
+     rComApiID,
+     self_type::GetComApiID());
+  }//if
+
+  assert(rComApiID==self_type::GetComApiID());
+
+  //----------------------------------------
   typedef TData::class_factory_datas_type::const_iterator const_iterator;
 
   const_iterator        i(sm_pData->m_ClassFactoryDatas.begin());
@@ -387,7 +417,7 @@ HRESULT TIBP_ComModule::GetClassObject(REFCLSID     rclsid,
    break;
   }//for
  }
- _OLE_CATCHES2_CODE_
+ _OLE_CATCHES4_(reinterpret_cast<IUnknown*>(nullptr),CLSID_NULL,IID_NULL,true)
 
  assert(hr==S_OK || FAILED(hr));
 

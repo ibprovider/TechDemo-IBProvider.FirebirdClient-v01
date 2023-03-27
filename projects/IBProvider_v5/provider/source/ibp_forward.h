@@ -57,11 +57,11 @@ class IBP_SqlParameterName;
 ////////////////////////////////////////////////////////////////////////////////
 //column object
 
-class TIBPColumnData;
+class IBP_ColumnData;
 
-class TIBPColumnAggregatorDescr;
+class IBP_ColumnCvtData;
 
-class TIBPColumnCvtData;
+class IBP_ColumnAggregatorDescr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //field data

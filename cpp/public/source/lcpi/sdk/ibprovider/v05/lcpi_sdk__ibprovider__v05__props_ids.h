@@ -706,6 +706,13 @@ const DBPROPID IBP_DBPROP__INIT__REMOTE__WIRE_COMPRESSION_TYPE  =0x0080;
 #endif //IBP_ENGINE_DIRECT_FB
 
 //------------------------------------------------------------------------
+
+/// <summary>
+///  It allows to get null values for not null column/parameter.
+/// </summary>
+const DBPROPID IBP_DBPROP__INIT__FORCE_NULLS                    =0x0081;
+
+//------------------------------------------------------------------------
 //настройки хранилища обновляемого множества
 
 #if !defined(IBP_ENGINE_UPDATE_ROWSET) || (IBP_ENGINE_UPDATE_ROWSET!=0)

@@ -118,15 +118,13 @@ void RemoteFB__ErrorUtils::Throw__OpStatusVectorProcessingError
  assert(place);
  assert(point);
 
- ibp::t_ibp_error exc(E_FAIL,
-                      subsystem_id,
-                      ibp_mce_isc__op_status_vector_processing_error_3);
-
- exc<<int(operationID)
-    <<place
-    <<point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_isc__op_status_vector_processing_error_3,
+   operationID,
+   place,
+   point);
 }//Throw__OpStatusVectorProcessingError
 
 //------------------------------------------------------------------------
@@ -144,15 +142,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_UnexpectedPacketStructure
             "actualProtocolSetID: "<<actualProtocolSetID<<". "
             "expectedProtocolSetID: "<<expectedProtocolSetID);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__unexpected_packet_structure_4);
-
- exc<<place
-    <<point
-    <<structure::to_underlying(actualProtocolSetID)
-    <<structure::to_underlying(expectedProtocolSetID);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__unexpected_packet_structure_4,
+   place,
+   point,
+   structure::to_underlying(actualProtocolSetID),
+   structure::to_underlying(expectedProtocolSetID));
 }//Throw_BugCheck_UnexpectedPacketStructure
 
 //------------------------------------------------------------------------
@@ -166,14 +162,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_AcceptedUnexpectedProtocolVersion
 
  assert_msg(false,"protocolVersion: "<<protocolVersion);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__accepted_unexpected_protocol_version_3);
-
- exc<<place
-    <<point
-    <<protocolVersion;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__accepted_unexpected_protocol_version_3,
+   place,
+   point,
+   protocolVersion);
 }//Throw_BugCheck_AcceptedUnexpectedProtocolVersion
 
 //------------------------------------------------------------------------
@@ -187,12 +181,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_AcceptedUnexpectedProtocolArchitecture
 
  assert_msg(false,"protocolArchitecture: "<<protocolArchitecture);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__accepted_unexpected_protocol_arhitecture_3);
-
- exc<<place<<point<<protocolArchitecture;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__accepted_unexpected_protocol_arhitecture_3,
+   place,
+   point,
+   protocolArchitecture);
 }//Throw_BugCheck_AcceptedUnexpectedProtocolArchitecture
 
 //------------------------------------------------------------------------
@@ -210,14 +204,12 @@ void RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck_UnexpectedServ
 
  try // перехват исключения и перевод порта в недействительное состояние
  {
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_remote__bug_check__unexpected_answer_from_server_3);
-
-  exc<<place
-     <<point
-     <<answerID;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_remote__bug_check__unexpected_answer_from_server_3,
+    place,
+    point,
+    answerID);
  }
  catch(...)
  {
@@ -245,17 +237,19 @@ void RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck2_UnexpectedSer
 
  try // перехват исключения и перевод порта в недействительное состояние
  {
-  t_ibp_error_element::self_ptr
-   spErrRec(structure::not_null_ptr
-             (new t_ibp_error_element
-                   (E_FAIL,
-                    ibp_mce_remote__bug_check__unexpected_answer_from_server_3)));
+  const t_ibp_error_element::self_ptr
+   spErrRec
+    (structure::not_null_ptr
+      (new t_ibp_error_element
+        (E_FAIL,
+         ibp_mce_remote__bug_check__unexpected_answer_from_server_3)));
 
   assert(spErrRec);
 
-  (*spErrRec)<<place
-             <<point
-             <<answerID;
+  (*spErrRec)
+     <<place
+     <<point
+     <<answerID;
 
   Errors.add_error(spErrRec); //throw
 
@@ -282,15 +276,11 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_UnexpectedProtocolVersion
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__unexpected_protocol_version_1);
-
- freason<<protocolVersion;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__unexpected_protocol_version_1,
+   protocolVersion);
 }//Throw_BugCheck_UnexpectedProtocolVersion
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -301,7 +291,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_BadCnHandle(const wchar_t* const place
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__bad_cn_handle_0);
@@ -314,7 +304,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_BadTrHandle(const wchar_t* const place
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__bad_tr_handle_0);
@@ -327,7 +317,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_TrHandleNotZero(const wchar_t* const p
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__tr_handle_not_zero_0);
@@ -340,7 +330,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_BadStmtHandle(const wchar_t* const pla
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__bad_stmt_handle_0);
@@ -353,7 +343,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_StmtHandleNotZero(const wchar_t* const
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__stmt_handle_not_zero_0);
@@ -366,7 +356,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_BlobHandleNotZero(const wchar_t* const
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__blob_handle_not_zero_0);
@@ -379,7 +369,7 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_BadBlobHandle(const wchar_t* const pla
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__bad_blob_handle_0);
@@ -394,14 +384,11 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectBlobHandleMode
  assert(place);
  assert(point);
 
- structure::wstr_formatter freason(me_bug_check__incorect_blob_handle_mode_1);
-
- freason<<blobMode;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__incorect_blob_handle_mode_1,
+   blobMode);
 }//Throw_BugCheck_IncorrectBlobHandleMode
 
 //------------------------------------------------------------------------
@@ -415,15 +402,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_UnexpectedChangeOfTransaction
  assert(point);
  assert(oldTrID!=newTrID);
 
- structure::wstr_formatter
-  freason(L"unexpected change of transaction. oldTrID: %1. newTrID: %2");
-
- freason<<oldTrID<<newTrID;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   L"unexpected change of transaction. oldTrID: %1. newTrID: %2",
+   oldTrID,
+   newTrID);
 }//Throw_BugCheck_UnexpectedChangeOfTransaction
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -440,15 +424,13 @@ void RemoteFB__ErrorUtils::ThrowBugCheck_Incorrect_XSQLDA_Version
 
  assert_msg(false,"version: "<<version);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_xsqlda_version_4);
-
- exc<<place
-    <<point
-    <<xsqlda_name
-    <<version;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_xsqlda_version_4,
+   place,
+   point,
+   xsqlda_name,
+   version);
 }//ThrowBugCheck_Incorrect_XSQLDA_Version
 
 //------------------------------------------------------------------------
@@ -461,14 +443,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
 
  assert_msg(false,"["<<structure::tstr_to_str(pXSQLDA_Sign)<<"] sqld: "<<pXSQLDA_sqld);
 
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_isc__bug_check__incorrect_sqld_of_xsqlda_2);
-
- exc<<pXSQLDA_Sign
-    <<pXSQLDA_sqld;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_isc__bug_check__incorrect_sqld_of_xsqlda_2,
+   pXSQLDA_Sign,
+   pXSQLDA_sqld);
 }//Throw_BugCheck_Incorrect_XSQLDA_sqld
 
 //------------------------------------------------------------------------
@@ -482,15 +462,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
 
  assert_msg(false,"["<<structure::tstr_to_str(pXSQLDA_Sign)<<"] sqln: "<<pXSQLDA_sqln<<", sqld: "<<pXSQLDA_sqld);
 
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_isc__bug_check__incorrect_sqln_of_xsqlda_3);
-
- exc<<pXSQLDA_Sign
-    <<pXSQLDA_sqln
-    <<pXSQLDA_sqld;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_isc__bug_check__incorrect_sqln_of_xsqlda_3,
+   pXSQLDA_Sign,
+   pXSQLDA_sqln,
+   pXSQLDA_sqld);
 }//Throw_BugCheck_Incorrect_XSQLDA_sqln
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -503,12 +481,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__InvalidArray__ZeroSizeOfElement
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__zero_array_element_size_3);
-
- exc<<place<<point<<blrTypeID;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__zero_array_element_size_3,
+   place,
+   point,
+   blrTypeID);
 }//Throw_BugCheck__InvalidArray__ZeroSizeOfElement
 
 //------------------------------------------------------------------------
@@ -526,17 +504,15 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__InvalidArray__InvalidBufferSize
  assert(field_name);
  assert(DefinedSize!=ExpectedSize);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__invalid_array_buffer_size_6);
-
- exc<<place
-    <<point
-    <<relation_name
-    <<field_name
-    <<DefinedSize
-    <<ExpectedSize;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__invalid_array_buffer_size_6,
+   place,
+   point,
+   relation_name,
+   field_name,
+   DefinedSize,
+   ExpectedSize);
 }//Throw_BugCheck__InvalidArray__InvalidBufferSize
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -550,12 +526,11 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__no_data
 
  assert(false);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__no_data_2);
-
- exc<<place<<point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__no_data_2,
+   place,
+   point);
 }//Throw_BugCheck_IncorrectSDL__no_data
 
 //------------------------------------------------------------------------
@@ -568,12 +543,11 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unexpected_end_of_data
 
  assert(false);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__unexpected_end_of_data_2);
-
- exc<<place<<point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__unexpected_end_of_data_2,
+   place,
+   point);
 }//Throw_BugCheck_IncorrectSDL__unexpected_end_of_data
 
 //------------------------------------------------------------------------
@@ -587,12 +561,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unk_version
 
  assert(false);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__unk_version_3);
-
- exc<<place<<point<<sdlVersion;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__unk_version_3,
+   place,
+   point,
+   sdlVersion);
 }//Throw_BugCheck_IncorrectSDL__unk_version
 
 //------------------------------------------------------------------------
@@ -606,12 +580,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__len_of_str_data_exceed_t
  assert(point);
  assert(bufferTailSize<strLength);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__str_len_exceeed_the_size_of_buffer_tail_4);
-
- exc<<place<<point<<strLength<<bufferTailSize;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__str_len_exceeed_the_size_of_buffer_tail_4,
+   place,
+   point,
+   strLength,
+   bufferTailSize);
 }//Throw_BugCheck_IncorrectSDL__len_of_str_data_exceed_the_size_of_buffer_tail
 
 //------------------------------------------------------------------------
@@ -625,12 +600,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__mult_def_of_element
  assert(point);
  assert(elementTagID);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__mult_def_of_element_4);
-
- exc<<place<<point<<elementTagID<<elementTagOffset;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__mult_def_of_element_4,
+   place,
+   point,
+   elementTagID,
+   elementTagOffset);
 }//Throw_BugCheck_IncorrectSDL__mult_def_of_element
 
 //------------------------------------------------------------------------
@@ -643,12 +619,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__wrong_count_of_struct_fi
  assert(point);
  assert(fieldCount!=1);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__wrong_number_of_struct_fields_3);
-
- exc<<place<<point<<fieldCount;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__wrong_number_of_struct_fields_3,
+   place,
+   point,
+   fieldCount);
 }//Throw_BugCheck_IncorrectSDL__wrong_count_of_struct_fields
 
 //------------------------------------------------------------------------
@@ -662,12 +638,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__wrong_index_of_bound
  assert(point);
  assert(maxBoundNumber<=boundIndex);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__wrong_bound_index_4);
-
- exc<<place<<point<<boundIndex<<maxBoundNumber;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__wrong_bound_index_4,
+   place,
+   point,
+   boundIndex,
+   maxBoundNumber);
 }//Throw_BugCheck_IncorrectSDL__wrong_index_of_bound
 
 //------------------------------------------------------------------------
@@ -679,12 +656,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__mult_def_of_bound_range
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__mult_def_of_bound_range_3);
-
- exc<<place<<point<<boundIndex;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__mult_def_of_bound_range_3,
+   place,
+   point,
+   boundIndex);
 }//Throw_BugCheck_IncorrectSDL__mult_def_of_bound_range
 
 //------------------------------------------------------------------------
@@ -699,12 +676,14 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__bad_bound_range
  assert(point);
  assert(upper<lower);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__bad_bound_range_5);
-
- exc<<place<<point<<boundIndex<<lower<<upper;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__bad_bound_range_5,
+   place,
+   point,
+   boundIndex,
+   lower,
+   upper);
 }//Throw_BugCheck_IncorrectSDL__bad_bound_range
 
 //------------------------------------------------------------------------
@@ -717,12 +696,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unknown_kind_of_literal
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__unknown_kind_of_literal_4);
-
- exc<<place<<point<<literalKind<<offset;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__unknown_kind_of_literal_4,
+   place,
+   point,
+   literalKind,
+   offset);
 }//Throw_BugCheck_IncorrectSDL__unknown_kind_of_literal
 
 //------------------------------------------------------------------------
@@ -735,12 +715,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__wrong_count_of_element_f
  assert(point);
  assert(fieldCount!=1);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__wrong_number_of_element_fields_3);
-
- exc<<place<<point<<fieldCount;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__wrong_number_of_element_fields_3,
+   place,
+   point,
+   fieldCount);
 }//Throw_BugCheck_IncorrectSDL__wrong_count_of_element_fields
 
 //------------------------------------------------------------------------
@@ -753,12 +733,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unexpected_tag
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__unexpected_tag_4);
-
- exc<<place<<point<<tagID<<offset;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__unexpected_tag_4,
+   place,
+   point,
+   tagID,
+   offset);
 }//Throw_BugCheck_IncorrectSDL__unexpected_tag
 
 //------------------------------------------------------------------------
@@ -771,13 +752,14 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__incorrect_index_property
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__incorrect_index_of_scalar_tag_4);
-
- exc<<place<<point<<index<<indexOffset;
-
- exc.raise_me();
-}//Throw_BugCheck_IncorrectSDL__unexpected_tag
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__incorrect_index_of_scalar_tag_4,
+   place,
+   point,
+   index,
+   indexOffset);
+}//Throw_BugCheck_IncorrectSDL__incorrect_index_property_of_scalar_tag
 
 //------------------------------------------------------------------------
 void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__inconsistent_sizes_of_buffer_and_data
@@ -791,12 +773,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__inconsistent_sizes_of_bu
 
  assert(bufferSize!=dataSize);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__inconsistent_sizes_of_buffer_and_data_4);
-
- exc<<place<<point<<bufferSize<<dataSize;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__inconsistent_sizes_of_buffer_and_data_4,
+   place,
+   point,
+   bufferSize,
+   dataSize);
 }//Throw_BugCheck_IncorrectSDL__inconsistent_sizes_of_buffer_and_data
 
 //------------------------------------------------------------------------
@@ -809,12 +792,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__no_data_of_tag
  assert(point);
  assert(tagID);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_tag_3);
-
- exc<<place<<point<<tagID;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_tag_3,
+   place,
+   point,
+   tagID);
 }//Throw_BugCheck_IncorrectSDL__no_data_of_tag
 
 //------------------------------------------------------------------------
@@ -825,12 +808,11 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__no_data_of_dimensions
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_dimensions_2);
-
- exc<<place<<point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_dimensions_2,
+   place,
+   point);
 }//Throw_BugCheck_IncorrectSDL__no_data_of_dimensions
 
 //------------------------------------------------------------------------
@@ -842,12 +824,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__no_data_of_dimension
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_dimension_3);
-
- exc<<place<<point<<boundIndex;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__no_data_of_dimension_3,
+   place,
+   point,
+   boundIndex);
 }//Throw_BugCheck_IncorrectSDL__no_data_of_dimension
 
 //------------------------------------------------------------------------
@@ -860,12 +842,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unknown_blrtypeid
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__unk_blr_data_type_4);
-
- exc<<place<<point<<blrTypeID<<offset;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__unk_blr_data_type_4,
+   place,
+   point,
+   blrTypeID,
+   offset);
 }//Throw_BugCheck_IncorrectSDL__unknown_blrtypeid
 
 //------------------------------------------------------------------------
@@ -879,12 +862,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__invalid_element_length
  assert(point);
  assert(blrTypeSign);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__invalid_element_length_4);
-
- exc<<place<<point<<length<<blrTypeSign;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__invalid_element_length_4,
+   place,
+   point,
+   length,
+   blrTypeSign);
 }//Throw_BugCheck_IncorrectSDL__invalid_element_length
 
 //------------------------------------------------------------------------
@@ -898,12 +882,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__failed_to_translate_str_
 
  CHECK_READ_TYPED_PTR(cs_name.ptr,cs_name.len);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_isc__bug_check__incorrect_sdl__failed_to_translate_str_to_unicode_3);
-
- exc<<place<<point<<cs_name;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_isc__bug_check__incorrect_sdl__failed_to_translate_str_to_unicode_3,
+   place,
+   point,
+   cs_name);
 }//Throw_BugCheck_IncorrectSDL__failed_to_translate_str_to_unicode
 
 //------------------------------------------------------------------------
@@ -911,28 +895,24 @@ void RemoteFB__ErrorUtils::Throw__AuthServiceNotSupported
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
-  t_ibp_error exc(DB_SEC_E_AUTH_FAILED,
-                  subsystem_id,
-                  ibp_mce_remote__auth_service_not_supported_1,
-                  IBP_CreateCustomErrorFor_AuthFailed());
-
-  exc<<authServiceName;
-
-  exc.raise_me();
-}//Throw__UnknownAuthServiceName
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (DB_SEC_E_AUTH_FAILED,
+    subsystem_id,
+    ibp_mce_remote__auth_service_not_supported_1,
+    IBP_CreateCustomErrorFor_AuthFailed(),
+    authServiceName);
+}//Throw__AuthServiceNotSupported
 
 //------------------------------------------------------------------------
 void RemoteFB__ErrorUtils::Throw__UnknownAuthServiceName
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__unk_auth_service_name_1);
-
- exc<<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__unk_auth_service_name_1,
+   authServiceName);
 }//Throw__UnknownAuthServiceName
 
 //------------------------------------------------------------------------
@@ -940,13 +920,11 @@ void RemoteFB__ErrorUtils::Throw__IncorrectAuthServiceName
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__incorrect_auth_service_name_1);
-
- exc<<IBP_Utils::EscapingText(authServiceName);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__incorrect_auth_service_name_1,
+   IBP_Utils::EscapingText(authServiceName));
 }//Throw__IncorrectAuthServiceName
 
 //------------------------------------------------------------------------
@@ -957,15 +935,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__cant_convert_auth_service_name_from_u
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__cant_translate_auth_service_name_4);
-
- exc<<place
-    <<point
-    <<L"UTF8"
-    <<L"WSTR";
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__cant_translate_auth_service_name_4,
+   place,
+   point,
+   L"UTF8",
+   L"WSTR");
 }//Throw_BugCheck__cant_convert_auth_service_name_from_utf8_to_wstr
 
 //------------------------------------------------------------------------
@@ -976,15 +952,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__cant_convert_auth_service_name_from_w
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__cant_translate_auth_service_name_4);
-
- exc<<place
-    <<point
-    <<L"WSTR"
-    <<L"UTF8";
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__cant_translate_auth_service_name_4,
+   place,
+   point,
+   L"WSTR",
+   L"UTF8");
 }//Throw_BugCheck__cant_convert_auth_service_name_from_wstr_to_utf8
 
 //------------------------------------------------------------------------
@@ -995,15 +969,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__cant_convert_auth_service_names_from_
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__cant_translate_auth_service_names_4);
-
- exc<<place
-    <<point
-    <<L"WSTR"
-    <<L"UTF8";
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__cant_translate_auth_service_names_4,
+   place,
+   point,
+   L"WSTR",
+   L"UTF8");
 }//Throw_BugCheck__cant_convert_auth_service_names_from_wstr_to_utf8
 
 //------------------------------------------------------------------------
@@ -1015,14 +987,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__auth_service_already_was_used
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__auth_service_already_was_used_3);
-
- exc<<place
-    <<point
-    <<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__auth_service_already_was_used_3,
+   place,
+   point,
+   authServiceName);
 }//Throw_BugCheck__auth_service_already_was_used
 
 //------------------------------------------------------------------------
@@ -1034,14 +1004,12 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__auth_service_factory_already_was_regi
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__auth_service_factory_already_was_registered_3);
-
- exc<<place
-    <<point
-    <<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__auth_service_factory_already_was_registered_3,
+   place,
+   point,
+   authServiceName);
 }//Throw_BugCheck__auth_service_factory_already_was_registered
 
 //------------------------------------------------------------------------
@@ -1052,15 +1020,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__cant_convert_name_of_wire_crypt_key_f
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__cant_translate_wire_crypt_key_type_name_4);
-
- exc<<place
-    <<point
-    <<L"UTF8"
-    <<L"WSTR";
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error 
+  (E_FAIL,
+   ibp_mce_remote__bug_check__cant_translate_wire_crypt_key_type_name_4,
+   place,
+   point,
+   L"UTF8",
+   L"WSTR");
 }//Throw_BugCheck__cant_convert_name_of_wire_crypt_key_from_utf8_to_wstr
 
 //------------------------------------------------------------------------
@@ -1071,15 +1037,13 @@ void RemoteFB__ErrorUtils::Throw_BugCheck__cant_convert_name_of_wire_crypt_key_f
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_remote__bug_check__cant_translate_wire_crypt_key_type_name_4);
-
- exc<<place
-    <<point
-    <<L"WSTR"
-    <<L"UTF8";
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_remote__bug_check__cant_translate_wire_crypt_key_type_name_4,
+   place,
+   point,
+   L"WSTR",
+   L"UTF8");
 }//Throw_BugCheck__cant_convert_name_of_wire_crypt_key_from_wstr_to_utf8
 
 //------------------------------------------------------------------------
@@ -1120,14 +1084,12 @@ void RemoteFB__ErrorUtils::Throw__MultipleDefinitionOfServerKey
                                             wstr_box_type     const keyType,
                                             wstr_box_type     const keyPlugin)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__multiple_definition_of_known_server_key_2);
-
- exc<<keyType
-    <<keyPlugin;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__multiple_definition_of_known_server_key_2,
+   keyType,
+   keyPlugin);
 }//Throw__MultipleDefinitionOfServerKey
 
 //------------------------------------------------------------------------
@@ -1135,13 +1097,11 @@ void RemoteFB__ErrorUtils::Throw__WireCryptImpossibled_NoKnownSrvKeys
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__wire_crypt_not_possible__no_known_server_keys_1);
-
- exc<<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__wire_crypt_not_possible__no_known_server_keys_1,
+   authServiceName);
 }//Throw__WireCryptImpossibled_NoKnownSrvKeys
 
 //------------------------------------------------------------------------
@@ -1149,13 +1109,11 @@ void RemoteFB__ErrorUtils::Throw__WireCryptImpossibled_NoCryptKeys
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__wire_crypt_not_possible__no_crypt_keys_1);
-
- exc<<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__wire_crypt_not_possible__no_crypt_keys_1,
+   authServiceName);
 }//Throw__WireCryptImpossibled_NoCryptKeys
 
 //------------------------------------------------------------------------
@@ -1163,13 +1121,11 @@ void RemoteFB__ErrorUtils::Throw__WireCryptImpossibled_NoSupportForKnownServerKe
                                            (subsystem_id_type const subsystem_id,
                                             wstr_box_type     const authServiceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_remote__wire_crypt_not_possible__no_support_for_known_server_keys_1);
-
- exc<<authServiceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__wire_crypt_not_possible__no_support_for_known_server_keys_1,
+   authServiceName);
 }//Throw__WireCryptImpossibled_NoSupportForKnownServerKeys
 
 //------------------------------------------------------------------------
@@ -1229,15 +1185,11 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__auth_err__incorrect_length_of_auth_data_1);
-
- freason<<cbAuthData;
-
- IBP_ThrowBugCheck
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__auth_err__incorrect_length_of_auth_data_1,
+   cbAuthData);
 }//Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
 
 //------------------------------------------------------------------------
@@ -1252,16 +1204,12 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
 
  assert(cbAuthData!=cbExpectedLength);
 
- structure::wstr_formatter
-  freason(me_bug_check__auth_err__incorrect_length_of_auth_data_2);
-
- freason<<cbAuthData
-        <<cbExpectedLength;
-
- IBP_ThrowBugCheck
+ IBP_ErrorUtils::Throw__BugCheck
   (place,
    point,
-   freason.c_str());
+   me_bug_check__auth_err__incorrect_length_of_auth_data_2,
+   cbAuthData,
+   cbExpectedLength);
 }//Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
 
 //------------------------------------------------------------------------
@@ -1276,16 +1224,12 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcBugCheck__TooLongAuthData
 
  assert(cbMaxLength<cbAuthData);
 
- structure::wstr_formatter
-  freason(me_bug_check__auth_err__too_long_auth_data_2);
-
- freason<<cbAuthData
-        <<cbMaxLength;
-
- IBP_ThrowBugCheck
+ IBP_ErrorUtils::Throw__BugCheck
   (place,
    point,
-   freason.c_str());
+   me_bug_check__auth_err__too_long_auth_data_2,
+   cbAuthData,
+   cbMaxLength);
 }//Throw_AuthSvcBugCheck__TooLongAuthData
 
 //------------------------------------------------------------------------
@@ -1296,7 +1240,7 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcBugCheck__IncorrectServerKey
  assert(place);
  assert(point);
 
- IBP_ThrowBugCheck
+ IBP_ErrorUtils::Throw__BugCheck
   (place,
    point,
    me_bug_check__auth_err__incorrect_server_key_0);

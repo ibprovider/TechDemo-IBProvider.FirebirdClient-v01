@@ -9,6 +9,7 @@
 
 #include "source/ibp_com_helper.h"
 #include "source/ibp_com_data.h"
+#include "source/ibp_debug.h"
 
 #ifndef IBP_BUILD_TESTCODE
 
@@ -27,6 +28,8 @@
 #  include "rc/ibp_config.rh"
 # endif
 
+#include "source/os/ibp_os__registry_utils.h"
+
 #include "source/ibp_sys_props.h"
 #include "source/ibp_guids.h"
 
@@ -35,15 +38,27 @@
 
 #include <win32lib/win32_memory_heap.h>
 #include <win32lib/win32_resource.h>
-#include <win32lib/win32_registry.h>
 #include <win32lib/win32_error.h>
 #include <win32lib/win32_memory_allocator.h>
 
 #include <lcpi/lib/com/base/com_base__string_to_guid.h>
 
+#include <lcpi/infrastructure/os/.config.h>
+
 #include "rc/ibp_reg_data.rh"
 
 #include "source/Version/ibp_v05_info_data.h"
+
+//------------------------------------------------------------------------
+#ifndef LCPI_INFRASTRUCTURE_OS__BUILD_MODE
+# error LCPI_INFRASTRUCTURE_OS__BUILD_MODE is not defined
+#endif
+
+#if   (LCPI_INFRASTRUCTURE_OS__BUILD_MODE==LCPI_INFRASTRUCTURE_OS__BUILD_MODE__NONE)
+# include <lcpi/infrastructure/os/lcpi.infrastructure.os-com_api_ids.h>
+#elif (LCPI_INFRASTRUCTURE_OS__BUILD_MODE==LCPI_INFRASTRUCTURE_OS__BUILD_MODE__IMPORT)
+# include "source/GEN__ibprovider_satellite_assemblies.h"
+#endif
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -117,31 +132,41 @@ void TIBP_ComModule::THelper::Helper__DestroyHeap(THeap& UNUSED_ARG(Heap))
 
 bool TIBP_ComModule::THelper::InitData(HINSTANCE hInstance)
 {
- assert(sm_pData==NULL);
-
- bool result=true;
+ bool result=false;
 
  try
  {
-  sm_pData=new TData(hInstance);
+  for(;;)
+  {
+   assert(sm_pData==nullptr);
+
+   sm_pData=new TData(hInstance);
+
+   if(!self_type::Helper__DetectComApiID())
+    break;
 
  #if(IBP_CFG_HAS_MODULE_CONFIG)
-  //обработка служебной конфигурации модул€
-  Helper__ProcessModuleConfig();
+   //обработка служебной конфигурации модул€
+   self_type::Helper__ProcessModuleConfig();
  #endif //IBP_CFG_HAS_MODULE_CONFIG
 
-  //обработка конфигурации компонент модул€
-  Helper__ProcessComponentConfig();
+   //обработка конфигурации компонент модул€
+   self_type::Helper__ProcessComponentConfig();
 
  #ifndef IBP_BUILD_TESTCODE
-  //формируем данные дл€ фабрик классов
-  Helper__CreateFactoryData();
+   //формируем данные дл€ фабрик классов
+   self_type::Helper__CreateFactoryData();
  #endif
 
   //чтение служебных параметров модул€
  #ifdef _PROCESS_DEBUG_MESSAGE_
-  Helper__ReadFlushLogFilePeriod();
+   self_type::Helper__ReadFlushLogFilePeriod();
  #endif
+
+   result=true;
+
+   break;
+  }//for[ever]
  }
  catch(...)
  {
@@ -187,6 +212,129 @@ size_t TIBP_ComModule::THelper::TestCode__GetAllocBlockCount()
 }//TestCode__GetAllocBlockCount
 
 #endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef LCPI_INFRASTRUCTURE_OS__BUILD_MODE
+# error LCPI_INFRASTRUCTURE_OS__BUILD_MODE is not defined
+#endif
+
+#if(LCPI_INFRASTRUCTURE_OS__BUILD_MODE==LCPI_INFRASTRUCTURE_OS__BUILD_MODE__IMPORT)
+
+#ifndef IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLE32
+# error IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLE32 is not defined
+#endif
+
+#ifndef IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLEAUT32
+# error IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLEAUT32 is not defined
+#endif
+
+#ifndef IBP_BUILD_PROP__SATELLITE_ASSEMBLY__MULTITASKING
+# error IBP_BUILD_PROP__SATELLITE_ASSEMBLY__MULTITASKING is not defined
+#endif
+
+static const wchar_t* const g_COM_API_Providers[]=
+{
+ IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLE32,
+ IBP_BUILD_PROP__SATELLITE_ASSEMBLY__OS_API__OLEAUT32,
+ IBP_BUILD_PROP__SATELLITE_ASSEMBLY__MULTITASKING,
+};//g_COM_API_Providers
+
+#endif // LCPI_INFRASTRUCTURE_OS__BUILD_MODE__IMPORT
+
+////////////////////////////////////////////////////////////////////////////////
+
+bool TIBP_ComModule::THelper::Helper__DetectComApiID()
+{
+ assert(sm_pData!=nullptr);
+
+#if(LCPI_INFRASTRUCTURE_OS__BUILD_MODE==LCPI_INFRASTRUCTURE_OS__BUILD_MODE__NONE)
+
+ sm_pData->m_ComApiID=infrastructure::os::COM_API_ID__STANDARD;
+
+#elif(LCPI_INFRASTRUCTURE_OS__BUILD_MODE==LCPI_INFRASTRUCTURE_OS__BUILD_MODE__IMPORT)
+
+ GUID ComApiID=GUID_NULL;
+
+ for(size_t iComApiProvider=0;iComApiProvider!=_LCPI_DIM_(g_COM_API_Providers);++iComApiProvider)
+ {
+  const auto comApiProviderName
+   =g_COM_API_Providers[iComApiProvider];
+
+  //-------------------------------------------------- 1. Get DLL
+
+  const HINSTANCE hComApiProvider=::GetModuleHandle(comApiProviderName);
+
+  if(hComApiProvider==NULL)
+  {
+   IBP_OUTPUT_DEBUG_STRING
+    (_T("[")<<comApiProviderName<<_T("] was not found!"));
+
+   return false;
+  }//if
+
+  assert(hComApiProvider!=NULL);
+
+  //-------------------------------------------------- 2. Get LCPI_OS__GetComApiID
+
+  using TPF_GetComApiID
+   =BOOL (__stdcall *) (GUID* pComApiID);
+
+  const TPF_GetComApiID
+   pfnGetComApiID
+    =(TPF_GetComApiID)::GetProcAddress(hComApiProvider,"LCPI_OS__GetComApiID");
+
+  if(pfnGetComApiID==nullptr)
+  {
+   IBP_OUTPUT_DEBUG_STRING
+    (_T("[")<<comApiProviderName<<_T("] doesn't export LCPI_OS__GetComApiID function!"));
+
+   return false;
+  }//if
+
+  assert(pfnGetComApiID!=nullptr);
+
+  //-------------------------------------------------- 3. Call LCPI_OS__GetComApiID
+  GUID tmpID=GUID_NULL;
+
+  if(!pfnGetComApiID(&tmpID))
+  {
+   IBP_OUTPUT_DEBUG_STRING
+    (_T("[")<<comApiProviderName<<_T("].[LCPI_OS__GetComApiID] returns FALSE!"));
+
+   return false;
+  }//if
+
+  if(iComApiProvider==0)
+  {
+   ComApiID=tmpID;
+
+   continue;
+  }//if
+
+  assert(iComApiProvider>0);
+
+  if(tmpID!=ComApiID)
+  {
+   IBP_OUTPUT_DEBUG_STRING
+    (_T("[")<<comApiProviderName<<_T("] provides unexpected API: ")<<ole_lib::guid_to_tstr(tmpID)<<_T(". ")
+     _T("Expected API: ")<<ole_lib::guid_to_tstr(ComApiID));
+
+   return false;
+  }//if
+
+  assert(tmpID==ComApiID);
+ }//for iComApiProvider
+
+ //--------------------------------------------------- 4. Remember ComApiID
+
+ sm_pData->m_ComApiID=ComApiID;
+#else
+# error Unknown LCPI_INFRASTRUCTURE_OS__BUILD_MODE
+#endif
+
+ return true;
+}//Helper__DetectComApiID
 
 ////////////////////////////////////////////////////////////////////////////////
 //„тение конфигурационных данных модул€
@@ -425,6 +573,10 @@ void TIBP_ComModule::THelper::Helper__CreateFactoryData()
    oledb::IBP_OLEDB__DataSource::Create);
 
  Helper__AddFactoryData
+  (TData::Get_CLSID_IBProviderErrorLookup__private(),
+   oledb::IBP_OLEDB__ErrorLookup::Create);
+
+ Helper__AddFactoryData
   (TData::Get_CLSID_IBProviderDataLinkPropPage__private(),
    oledb::ui::TIBPDataLinkPropertyPage::Create);
 
@@ -463,14 +615,12 @@ void TIBP_ComModule::THelper::Helper__ReadFlushLogFilePeriod()
  if(sm_pData->m_CLSID_IBProvider==CLSID_NULL)
   return;
 
- win32lib::TRegistry Reg(HKEY_CLASSES_ROOT);
+ const auto get_r
+  =os::t_ibp_os__registry_utils::read_flush_period_for_log_file
+    (sm_pData->m_CLSID_IBProvider);
 
- win32lib::t_string reg_path(_T("CLSID\\"));
-
- reg_path+=ole_lib::guid_to_tstr(sm_pData->m_CLSID_IBProvider);
-
- if(Reg.OpenKeyEx(reg_path,KEY_READ,/*create*/false)==ERROR_SUCCESS)
-  TData::sm_FlushLogFilePeriod=Reg.ReadInteger(ibp_sprop_flush_log_period,NULL);
+ if(get_r.first)
+  TData::sm_FlushLogFilePeriod=get_r.second;
 }//Helper__ReadFlushLogFilePeriod
 #endif //_PROCESS_DEBUG_MESSAGE_
 

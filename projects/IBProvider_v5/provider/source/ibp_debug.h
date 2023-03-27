@@ -7,11 +7,10 @@
 #ifndef _ibp_debug_
 #define _ibp_debug_
 
-#include <structure/t_common.h>
-
 #include <lcpi/lib/structure/mt/t_lock_guard.h>
 
 #include <ostream>
+#include <sstream>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -346,6 +345,21 @@ class t_ibp_debug__mt_guard2_lock_first
 };//class t_ibp_debug__mt_guard2_lock_first
 
 #endif // ndef NDEBUG
+
+////////////////////////////////////////////////////////////////////////////////
+
+#define IBP_OUTPUT_DEBUG_STRING(msg)                                       \
+ {                                                                         \
+  std::basic_ostringstream<TCHAR> ods_buf;                                 \
+                                                                           \
+  ods_buf<<msg;                                                            \
+                                                                           \
+  ::lcpi::ibp::IBP_OutputDebugString(ods_buf.str().c_str());               \
+ }
+
+////////////////////////////////////////////////////////////////////////////////
+
+void IBP_OutputDebugString(LPCTSTR msg);
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

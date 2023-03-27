@@ -5322,7 +5322,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN011__sqlnull
 
  //short          xparam0_ind=0;
 
- xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb25_sql_null;
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb025_sql_null;
  xsqlda->sqlvar[0].sqllen =0;
  xsqlda->sqlvar[0].sqldata=nullptr;
  xsqlda->sqlvar[0].sqlind =nullptr;//&xparam0_ind;

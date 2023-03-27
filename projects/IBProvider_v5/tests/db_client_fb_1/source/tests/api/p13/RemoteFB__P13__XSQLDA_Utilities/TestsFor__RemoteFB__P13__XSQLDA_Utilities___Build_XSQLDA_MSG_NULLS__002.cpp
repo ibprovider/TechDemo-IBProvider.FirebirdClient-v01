@@ -114,7 +114,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002::ta
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_long|1);
 
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
@@ -187,7 +186,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002::ta
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_value
     (tracer,
      exc.get_record(0),
-     L"XSQLVAR_V1::value_is_null__std",
+     L"XSQLVAR_V1::get_value_is_null__std",
      L"#001",
      -1234);
 

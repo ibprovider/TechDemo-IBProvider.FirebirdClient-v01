@@ -108,7 +108,7 @@ bool IBP_ValueBox<T>::TestState__IsError()const
 template<class T>
 const typename IBP_ValueBox<T>::value_type& IBP_ValueBox<T>::Get()const
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"IBP_ValueBox<T>::Get";
 
  if(this->TestState__IsOk())

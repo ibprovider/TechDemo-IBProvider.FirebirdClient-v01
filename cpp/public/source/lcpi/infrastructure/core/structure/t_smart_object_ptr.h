@@ -106,6 +106,8 @@ class t_smart_object_ptr final
  public:
   internal_pointer& ref_ptr();
 
+  void** ppv();
+
  public: //selectors -----------------------------------------------------
   pointer ptr() const;
 

@@ -13,6 +13,7 @@
 #include <structure/t_exception.h>
 
 #include <lcpi/lib/com/base/com_base__guid_to_string.h>
+#include <lcpi/lib/com/base/com_base__co_task_memory.h>
 
 #include <lcpi/infrastructure/os/windows-ole32.h>
 #include <lcpi/infrastructure/os/windows-oleaut32.h>
@@ -38,6 +39,9 @@ class t_base_ole_error;
 class t_ole_error;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+using namespace lcpi::lib::com::base;
+
 using structure::t_char;
 using structure::t_string;
 
@@ -62,8 +66,6 @@ using structure::t_string;
 
 ////////////////////////////////////////////////////////////////////////////////
 //Include declarations files
-
-#include <ole_lib/impl/ole_lib_impl_co_task_memory.hxx>
 
 #include <ole_lib/impl/ole_lib_impl_clipboard_formats.hxx>
 

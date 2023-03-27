@@ -134,13 +134,11 @@ void RemoteFB__P11__DpbV1_ValuesInstaller::set_dbinit_param___auth__password(wst
  if(error)
  {
   //ERROR - ошибка конвертирования
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p11,
-                  ibp_mce_common__failed_to_convert_cn_param_to_system_codepage_1);
-
-  exc<<L"Password";
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p11,
+    ibp_mce_common__failed_to_convert_cn_param_to_system_codepage_1,
+    L"Password");
  }//if
 
  char pwt[64/*MAX_PASSWORD_LENGTH*/ + 2];

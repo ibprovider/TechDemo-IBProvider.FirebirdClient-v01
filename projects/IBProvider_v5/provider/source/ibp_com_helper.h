@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_ComModule::THelper
 
-class TIBP_ComModule::THelper
+class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef THelper                               self_type;
@@ -41,6 +41,8 @@ class TIBP_ComModule::THelper
 
  private:
   typedef IBP_ParameterListParserSelector<char_type>::type  param_parser_type;
+
+  static bool Helper__DetectComApiID();
 
  #if(IBP_CFG_HAS_MODULE_CONFIG)
   static void Helper__ProcessModuleConfig();

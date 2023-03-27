@@ -67,18 +67,20 @@ class RemoteFB__API_P13_LAZY_SEND__ExecuteStatement
                     const isc_api::XSQLDA_V1*       pOutXSQLDA)COMP_W000004_OVERRIDE_FINAL;
 
  private:
-  static protocol::P_OBJCT helper__execute(RemoteFB__P13__SrvOperation&  serverOperation,
-                                           RemoteFB__ConnectorData*      pData,
-                                           tr_handle_type*               pTrHandle,
-                                           stmt_handle_type*             pStmtHandle,
-                                           const isc_api::XSQLDA_V1*     pInXSQLDA);
+  static protocol::P_OBJCT helper__execute
+                             (RemoteFB__P13__SrvOperation&  serverOperation,
+                              RemoteFB__ConnectorData*      pData,
+                              tr_handle_type*               pTrHandle,
+                              stmt_handle_type*             pStmtHandle,
+                              const isc_api::XSQLDA_V1*     pInXSQLDA);
 
-  static protocol::P_OBJCT helper__execute2(RemoteFB__P13__SrvOperation&  serverOperation,
-                                            RemoteFB__ConnectorData*      pData,
-                                            tr_handle_type*               pTrHandle,
-                                            stmt_handle_type*             pStmtHandle,
-                                            const isc_api::XSQLDA_V1*     pInXSQLDA,
-                                            const isc_api::XSQLDA_V1*     pOutXSQLDA);
+  static protocol::P_OBJCT helper__execute2
+                             (RemoteFB__P13__SrvOperation&  serverOperation,
+                              RemoteFB__ConnectorData*      pData,
+                              tr_handle_type*               pTrHandle,
+                              stmt_handle_type*             pStmtHandle,
+                              const isc_api::XSQLDA_V1*     pInXSQLDA,
+                              const isc_api::XSQLDA_V1*     pOutXSQLDA);
 };//class RemoteFB__API_P13_LAZY_SEND__ExecuteStatement
 
 ////////////////////////////////////////////////////////////////////////////////

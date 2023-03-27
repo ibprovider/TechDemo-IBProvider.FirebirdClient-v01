@@ -671,11 +671,11 @@ class TestServices
                 const structure::t_const_str_box&   expectedSqlValue);
 
   static bool checkValue__BOOLEAN
-               (TTSO_Tracer&             tracer,
-                short                    actualSqlInd,
-                isc_api::t_ibp_fb30_bool actualSqlValue,
-                short                    expectedSqlInd,
-                isc_api::t_ibp_fb30_bool expectedSqlValue);
+               (TTSO_Tracer&              tracer,
+                short                     actualSqlInd,
+                isc_api::t_ibp_fb030_bool actualSqlValue,
+                short                     expectedSqlInd,
+                isc_api::t_ibp_fb030_bool expectedSqlValue);
 };//class TestServices
 
 ////////////////////////////////////////////////////////////////////////////////

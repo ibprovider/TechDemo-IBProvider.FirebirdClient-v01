@@ -135,11 +135,11 @@ void WORK_Fields__boolean_001::tag_impl::run(context_type* const pCtx)const
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/1);
 
- isc_api::t_ibp_fb30_bool columnValue=0;
- short                    columnInd=0;
+ isc_api::t_ibp_fb030_bool columnValue=0;
+ short                     columnInd=0;
 
  xsqlda->sqlvar[0].sqllen     =sizeof(columnValue);
- xsqlda->sqlvar[0].sqltype    =isc_api::ibp_fb30_sql_boolean|1;
+ xsqlda->sqlvar[0].sqltype    =isc_api::ibp_fb030_sql_boolean|1;
  xsqlda->sqlvar[0].sqlsubtype =0;
  xsqlda->sqlvar[0].sqlscale   =0;
  xsqlda->sqlvar[0].sqldata    =reinterpret_cast<char*>(&columnValue);
@@ -172,8 +172,8 @@ void WORK_Fields__boolean_001::tag_impl::run(context_type* const pCtx)const
  //-----------------------------------------
  struct tag_result
  {
-  short                     sqlInd;
-  isc_api::t_ibp_fb30_bool  sqlValue;
+  short                      sqlInd;
+  isc_api::t_ibp_fb030_bool  sqlValue;
  }
   const results[]=
  {

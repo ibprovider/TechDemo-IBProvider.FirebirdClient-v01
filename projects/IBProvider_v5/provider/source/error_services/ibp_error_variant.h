@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //enum class IBP_EVT
 
-enum class IBP_EVT
+enum class IBP_EVT:unsigned
 {
  V_EMPTY        =0,           // VT_EMPTY
  V_NULL         =1,           // VT_NULL

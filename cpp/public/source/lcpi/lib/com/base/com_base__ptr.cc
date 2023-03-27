@@ -134,7 +134,8 @@ LCPI__RELEASE_CODE(inline)
 IPtr<T,piid>::IPtr()
  :m_hr(E_POINTER)
  ,m_pI(nullptr)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class T,const IID* piid>
@@ -983,12 +984,30 @@ typename IPtr2<T>::interface_type* IPtr2<T>::ptr() const
 
 //------------------------------------------------------------------------
 template<class T>
-inline typename IPtr2<T>::interface_type* &IPtr2<T>::ref_ptr()
+inline typename IPtr2<T>::interface_type*& IPtr2<T>::ref_ptr()
 {
  this->Release();
 
  return m_ptr;
 }//ref_ptr
+
+//------------------------------------------------------------------------
+template<class T>
+inline IUnknown** IPtr2<T>::ppUnk()
+{
+ this->Release();
+
+ return reinterpret_cast<IUnknown**>(&m_ptr);
+}//ppUnk
+
+//------------------------------------------------------------------------
+template<class T>
+inline void** IPtr2<T>::ppv()
+{
+ this->Release();
+
+ return reinterpret_cast<void**>(&m_ptr);
+}//ppv
 
 //------------------------------------------------------------------------
 template<class T>
@@ -1099,9 +1118,10 @@ inline HRESULT INondelegatingPtr2<T>::get_out
                                        IUnknown** const ppUnk,
                                        HRESULT    const errAggregation)const
 {
- return this->get_out(riid,
-                      reinterpret_cast<void**>(ppUnk),
-                      errAggregation);
+ return this->get_out
+         (riid,
+          reinterpret_cast<void**>(ppUnk),
+          errAggregation);
 }//get_out
 
 //------------------------------------------------------------------------

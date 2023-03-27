@@ -325,6 +325,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
    errSvc::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
     (tracer,
      exc.get_record(0),
+     errSvc::sm_subsysID__remote_fb_p13,
      -4);
 
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
@@ -569,13 +570,13 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 {
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null,
+            isc_api::ibp_fb025_sql_null,
             1,
             L"sql_null");
 
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null|1,
+            isc_api::ibp_fb025_sql_null|1,
             2,
             L"sql_null");
 }//test_t12___bug_check__incorrect_sqllen__null
@@ -589,13 +590,13 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 {
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb30_sql_boolean,
+            isc_api::ibp_fb030_sql_boolean,
             3,
             L"sql_boolean");
 
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb30_sql_boolean|1,
+            isc_api::ibp_fb030_sql_boolean|1,
             5,
             L"sql_boolean");
 }//test_t13___bug_check__incorrect_sqllen__boolean
@@ -770,7 +771,6 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlscale
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      sqlTypeSign,
      sqlscale);
 
@@ -1548,7 +1548,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb25_sql_null;
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb025_sql_null;
  xsqlda->sqlvar[0].sqllen   =0;
  xsqlda->sqlvar[0].sqldata  =nullptr;
 
@@ -1785,7 +1785,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
  //-----------------------------------------
  struct tag_data
  {
-  isc_api::t_ibp_fb30_bool  data;
+  isc_api::t_ibp_fb030_bool  data;
 
   tag_data()
   {
@@ -1800,7 +1800,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb30_sql_boolean;
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb030_sql_boolean;
  xsqlda->sqlvar[0].sqllen   =sizeof(var->data);
  xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(var.get());
 
@@ -1818,7 +1818,7 @@ void TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
   2, //cPars.low
   0, //cPars.high
   //----
-  isc_api::ibp_fb30_blr_dtype__bool,
+  isc_api::ibp_fb030_blr_dtype__bool,
   //----
   isc_api::ibp_isc_blr_dtype__short,
   0,

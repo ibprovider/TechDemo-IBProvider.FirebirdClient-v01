@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //IBProvider SDK. Private CLSIDs. Machine generated file. Do not edit.
-//                                     Generation timestamp: 27.10.2021 12:51:15
+//                                     Generation timestamp: 02.01.2023 10:58:18
 #ifndef _lcpi_sdk__ibprovider__v05__private_clsids_H_
 #define _lcpi_sdk__ibprovider__v05__private_clsids_H_
 
@@ -5256,6 +5256,1756 @@ extern const CLSID CLSID_IBProviderDataLinkAdvPropPage__private__vc17_w64_free_t
 
 //{0FD1A966-CF08-42DB-A182-273D0F58355E}
 extern const CLSID CLSID_IBProviderDataLinkAdvPropPage__private__vc17_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{151AB1AD-AB05-4D6E-9265-DD886E073D5F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{1CB8E4CE-5A78-4584-ACBE-12D68101D107}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{8A717047-F423-4B4F-8DA6-7C440F885AA2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{65FCA834-B2D4-48F0-9D67-5E30BAE76CE9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{23101311-E460-439B-B9C7-F46CECD1B5B8}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{E215D506-3F55-42F2-8C2A-F4A077F899DF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{40106032-781E-4295-9109-32529542B507}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{56D27826-7516-418D-B16C-2E46E1C800A3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{A7F5B8A5-2831-4BFC-8395-0285FEE65A5B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{E65C0F7D-3C86-46A9-B213-B31187F61084}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{CA6805B3-2E46-427B-BF1D-24EF0CD43293}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{9F3EB2E3-E3D4-4C05-94AA-3BFE6881CEB1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{A5C0F1D8-77E3-4985-BF61-AD4DC8E959DB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{32DA0D97-2AA7-428C-9FEB-7D57F1495DE2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{78A415CD-C013-4DBE-8F14-709DA2170621}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{E58E208C-787B-45D7-AC1E-268FABCBC589}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{7972E13E-AA22-427D-AA2A-5B02FD565DB0}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{30CB5CF8-D2D2-42B0-80F6-4DB6E82104E5}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{6610E4C6-69A2-4A4F-B1EE-DF18B2C7EF4B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{17C7C7F4-5E49-4D92-BBE1-F3A2B56668B4}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{9F6E8CC6-A63A-4B8B-B7DE-63C5D7D0822C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{E3509EC8-19E0-4E01-9C82-BE2DB56359AB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{5E92C5BE-8E0C-45B1-884E-3246D77BF1A3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{D7D29321-694F-4753-A557-9B0CF0070A2C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{6E61458C-8AD4-475D-9FC8-8420AF000449}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{44FBB9AB-8AC6-4D19-B677-20E3E784706C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{5E1B4475-7330-4234-B076-B7AFF6D6BABD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{1BBB86E5-55E5-4871-A1BC-CE8A1389F395}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{DF6C5C3C-1ADC-41FA-9B7A-2689E770A49A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{C3EEAC7A-EF57-43E1-A399-2D4E5B308371}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{49EEAE10-AA47-4BD1-8ADC-B09AB2155711}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{E5DA5BF9-0525-4D6D-AC71-D1BE6883D5EF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{97A1A332-19B8-4C67-9EDB-EDDA73F7E24D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{24D1ABBF-9BC7-4641-A089-74F45F169D51}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{DC246E0E-B614-4E24-BA73-233A3B47B371}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{C23A7417-0C14-417C-88D8-F7B91AEB1AFE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{F6C16482-152E-41A2-BD3F-CBB64FACBBBB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{F490B1DC-7877-4E79-B602-A1D783667549}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{344DF3A8-8942-49B1-A5BD-BE7F7A1EC844}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{9F4FA7A6-5C7E-48F4-BE8B-2B4344436C39}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{45F8A429-67A9-4991-9D43-7443E44FBE68}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{069926CB-91F9-402B-BA0C-0BC22523A421}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{C5C99818-3C0E-4D3D-AE0E-0E603992E51B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{74152D26-E840-4424-9EE6-83CDC108B789}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{27E108BA-92A2-4C3A-92E9-7698DD416751}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{54F20D8B-1ADD-4CF8-8765-B42B89D92648}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{2343190D-A982-44C5-A032-DF669CF2C0FF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{78115D05-690F-4F63-B020-6A721C4EE6EA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{16A57491-264E-443B-9037-87CE9E2BD518}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{E1DE0B99-8408-4CA3-BCCD-B0B3070A29E2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{6F55504F-DA2D-42B9-A437-2E3A093BDEA1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{0CDBB8FB-D8E0-435B-8DF7-F5BAC4A828AD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{D6423AEC-D2CF-44C8-B059-BE031131134A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{12E8449B-6D3A-4B8A-BD9C-576E704F12FB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{34C5EB51-875A-4275-96E6-8888BCC7F9C9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{E56C3A85-4F6D-41E6-80BC-13A70EB6DF62}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{87C47FF5-A8F3-4DE5-BDEC-FAFDEBA65F54}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{6B468092-C2E2-4AB8-8197-47A9E26231AD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{58B70B81-787B-4CB2-99E9-F7391D8CA204}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{387CCE31-EC20-46CC-B85A-90C62DDB47D3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{61376529-662F-4DFE-8171-06A8E9BA7646}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{F2CE6DBF-5E00-4096-B228-3992601F22D7}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{2DF2E8CF-4787-436B-9CA6-C05EAEEE80BB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{A81F8B84-A1A0-4D39-9214-E8F0410F3C8E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{F1E49AC1-EEFD-490D-A4CC-0B2F389BCCEE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{641215F4-657E-485C-BE13-49D641DC51AB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{C96C2722-B760-49FC-978E-5D24A1317C65}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{FF7B8D1D-7566-4295-87FD-6290CCD66226}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{47F3A8DE-62A4-41FF-B592-10A1995FC0AE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{C2926071-A039-4ED5-A13E-3891A37DABAD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{9F6EB5BD-050E-4088-82EF-B06FC6F2B420}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{772573CC-7C20-4C2D-ACA4-ECB1962E043F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{84BF3465-B7B9-41F4-B3FF-F276E98E4845}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{0219A43C-D24B-43B3-A234-13F49B762A1B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{723A9F72-F51B-4086-9EAD-7A9E68413B49}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{4FBD8298-29F3-46F0-A187-7D639DF481AB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{A9E1CF8D-EF9F-4009-8716-FFCB320F809F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{008E14BF-7273-46FC-9DA2-438D82F1D498}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{7A2C7E76-0844-47DD-A6B3-77001BCC725B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{0519AF0E-18FB-4897-A2C4-9E75AD3B6C1F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{90125FEA-708A-46B5-8DD1-FDF331D3CE0A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{1100509F-24CE-4828-B814-FE434B806A7E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{6743E4B5-DC70-4D1B-B55A-2274BFEE5EC1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{BDB332B0-9058-4265-A77F-C767A1BCCD33}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{C183447F-0C56-4147-B569-662A39858AA0}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{8B25DE79-BAD1-47DB-AD0A-D8F80DB75A78}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{567EA835-1BFA-4427-A05C-ABAABADAD8FD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{2B981B50-F9F0-4C00-8E2F-A5C6372EB669}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{01A1114B-6DFB-47C0-B8AA-6A9A6F113354}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{11098CD0-D905-451E-9AC6-87D5EDC854D7}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{BCAFF4E4-EB2B-4C0C-9C64-748B8EAC1F63}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{32401C84-9CA4-48CB-94BD-2CD70A649373}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{0BEA9AE3-C184-4B09-933E-D578E2E92114}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{278FDD54-1F7D-4011-8D37-C4C177376143}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{D1864DB6-C19E-4BA3-9069-923BA8AFC265}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{0C75B05A-D227-4D4E-B5A0-8FFDF271B380}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{1DCFCAEF-2270-43F0-BF7C-9A593068157F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{9A3EA536-5F3A-424A-89E3-682EF332B64C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{735B7702-2469-4C59-93DE-A24CF2AFA0DE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{88DA8A24-E3CA-44AB-BF5F-D42F13A36F72}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc12xp_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{41B9FF98-12CB-4602-9E06-9D758FA294FE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{34F0F34F-5A1D-4AAB-8C69-D446E1004C97}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{5F9C848A-1FD8-4772-B5E3-1AA5C78B3D33}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{4F619258-7CF8-45DF-A128-BA4A7F02CFD4}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{F21C415B-7482-45EB-9F19-958280C6C9DE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{65368AE8-6402-47EF-8464-F6A77261C0AC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{B3A8781C-AE16-4791-9554-E1B082BDB841}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{FA422713-8D02-48FE-87AF-8CD66198FC66}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{D8CE0D8E-EEA1-453E-B157-4952FE8A3AB3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{09656AEE-024B-4523-B820-892FDFE37C82}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{20DB13C0-F558-4E38-B6CF-BE451F214B13}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{90966541-06FF-4895-A136-F2BFDCC0CA43}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{CC30FABE-F8B8-4F25-9BC1-AE176BD9CF1B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{46460C0E-04B9-46DB-AABD-609E367CD7BF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{D7DFC024-33BC-4D54-8D45-0C486263D3B1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{AA9395DD-A522-4439-8027-D767BF092A10}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{5D3A852C-FAD1-4248-A10F-466010CB73E3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{A656F6BC-AFB3-4989-A8B0-E3499E2DD800}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{F6B7F33B-47BB-4E1C-8301-B2FA828E0C5A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{C151E4CD-930D-4A53-9398-0E285F78C3C8}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{AB182CCC-A143-4760-B28C-9A6B3B89A253}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{8D66CB0A-C21E-48AA-A28E-A618021CAD37}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{4D13D799-7724-44E8-A91F-9C92EC8BBACE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{114DAE23-F59D-4EFE-A1A2-2886561C798A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{64B52A81-EF0D-42DF-9BED-156DDBE069CC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{8ACB8DE4-6F98-4539-AC47-B9989AA1EFC9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{B666A3E2-F9F8-4AC0-AA08-08D0C8DA56D8}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{A63AD8B1-B462-4918-BDA2-B9C2612186DD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{9B99F515-DDEF-4AF7-9918-18E061308A79}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{6133602A-4696-410D-9DF2-B824DE5CE532}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{DE61F1C2-185C-437E-A1FF-CFD76035B686}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{46287DEF-9849-4DCB-890A-9E9FF3FD4170}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{2382F431-FB42-4821-B2AA-70E27FD7E353}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{DD85FF56-F363-44C5-A208-9E6E79D50485}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{99A04AAF-9B9E-48CD-A448-2055EA667F6E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{3E1FD13C-8A65-447C-8CD7-D1F5B878C079}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{4AEFFD45-C449-494E-B25B-08AB66260DF6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{F8F99598-B7D0-44C3-B40A-A74FA18BDFAA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{5E81B553-8551-4901-9E38-93A322252EDF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{AA73DAD7-6921-46B1-90AD-A1ECFC0EE40A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{08805374-D21D-4EE6-8C2F-C989C518437F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{915C5328-67D7-46DA-97FF-5E246CBFF87C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{24F1C4A0-BB05-4BBC-9F96-D5DB5D743363}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{F12976BF-61A7-4419-8E04-C2B01F8B2A58}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{F076D633-2860-4DCA-99C4-C7E93765F4EF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{4BEF8124-D92B-481C-A51A-37BD7CC55B68}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{5F451829-6921-401F-9C80-66D1C18B72AF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{74E5EB10-CFE7-4EA0-8B06-BE2DB04A386E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{D83C3208-9230-4DF1-BFB1-E66AE6C8CB6F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{BFCF4E3C-01A9-43E4-B7D5-7DC2F72C8316}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{B3CA5B14-9F7F-4016-8D9F-60C154B8FD83}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{E29675E5-B66D-4C14-A600-91894A3D16E9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{231E8841-C9E1-4C1F-A521-2EE7EF906D63}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{2F22EAC3-F94E-4DDF-BA71-DBC90AE7B7A1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{E55A622A-9654-4B54-90C0-35D11EF49098}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{EE1EC816-4F18-4388-80A6-B73060002A8B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{3170588E-8AFC-4141-B83A-27D203F45F06}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{729FCF30-06CA-45B1-808F-AA26BE9F0014}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{379D65CB-AFE2-4B37-B220-1C5FB6C0D6BA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{D9095984-7AE5-4D2B-8F0F-2389E80EC165}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{0EA1851B-A3D9-47A3-AD0B-B0C0F2EF75BB}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{959C20B7-0C62-4F0E-972B-B95BB7B1416E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{223E0F1B-CF22-4E8F-9E29-729B51A9FECF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{C44ED0CC-4EEC-428A-BDCF-BDCBC9B450B0}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{64BC7F14-D0EB-4FC1-AE19-C21CE0C5C45A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{CC0845A9-AF8A-4540-812B-4583F2EAC4CA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{D951D37B-DDA1-4BC3-82A1-34AB34A0DDF1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{75591432-18C0-4D6B-AAD6-11287B076BC6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{AAFED2E6-E738-4F76-9387-C5067AA30689}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{45347FD6-3254-4BF8-939F-BAAB978DF04B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{3C1E6777-F640-47AE-A5D4-7C6AFDFBAFDD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{708E479D-F25B-4668-9ED2-786BAD599BF9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{D63D53B9-26E0-425B-A758-4F3EF5E49E58}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{58ED3285-7221-4561-90F7-7FC2FDA6D5D5}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{188F898F-9B56-4D90-A8AE-2301850EA069}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{249300A1-20E1-41C1-A913-2D9DB8713231}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{60EC4AC8-F1ED-4878-A53A-31A1DF3338D5}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{D98A7810-B771-429F-9947-590BCBC1E2C9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{D4E68AA1-790C-440B-AF6E-77074E25C0A4}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{C46E416A-B191-49C5-B90E-F0A9E41D5985}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{50EE3595-711E-4D7F-AB9E-CB9A693E1229}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{7798199E-80D8-485A-8BD0-B52808210D81}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{605B6998-0847-4DBD-AC1B-61769862A67B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{2315C7A0-6D66-4B32-BAE2-376BCA7829C1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{2A2310A2-57A0-423A-B50D-9653ADBE0ABF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{BF512EBE-358B-4A95-B7D2-9F176C61B159}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{5E03C6EC-D018-4055-8B7C-A1C965B3F6D3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{6D0B4E93-F137-43C6-A83D-78869B8630C0}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{6A097F71-370C-4555-BBC3-8BD100AF4A40}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{11A0543E-22B6-41C8-93A3-34246E9701F7}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{AC6BBF25-DA81-40EE-A97B-928656AC511E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{5143A7A5-41F0-4482-8EE4-E6A283954CF6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{F22D2B68-C8C8-4D89-993B-147D8B6BA469}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{EFAA9691-48CF-4F4F-9A21-C4614047D41E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{23B8F089-AA4C-4672-A64F-CD0DAEB054F6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{CDF93FA4-DC96-44D5-B071-C05F0501F4B9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{F4CF418C-4AAE-40E2-8E34-F0F1C3A39BE2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{BEB520E2-DA4A-4706-8A50-8B785B134774}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{6E91AAA5-2C9D-4E61-A5CB-497FE7DD5C25}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{E823A3C6-01AC-4556-A04C-3AC42B5A9C08}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc14xp_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{CC367608-0DB0-4803-A31F-CE66AEE0A67B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{B9DA749C-5BCB-4CE7-AA8D-E00D6DBF3D10}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{237BEF97-D8D3-4531-84AD-E5BFE8956160}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{EA905E23-E5BE-4FE9-AF2D-062F9271ED43}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{FB2EA8B1-3D2A-4964-98AF-4E10E9822201}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{92240F0A-35F6-476F-8AB8-3C3422B22E03}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{E7AAECC5-0175-470B-A5D3-121700307A46}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{613E78E7-242B-422C-949E-5C33DEE1E3F9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{9F0870B7-B3B3-4BF1-9996-35B9D6E6FF48}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{47067E60-D1F1-4DA1-9CF4-D1ED24D9A54B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{15F74854-85C3-489A-B76C-A643B493DA95}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{43A99DDE-A86E-4167-B909-92BA51B0597B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{D5F0962F-7185-427D-9F6D-E497D920900A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{501E03CE-E3FA-4782-9F9F-C372B6DB0194}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{02CA2B8E-B121-4E48-801B-FBD32EE30B3C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{1EB10A8A-86EB-4C24-A2D3-1DA89D58EA38}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{C03C10CC-0844-44AD-A343-B00FD62B7F0C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{BCB7B685-90C3-4C7C-BBBF-FAAADBC2CCF9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{1BB1A1EB-5C1D-4CFD-AEDD-3320E72582A2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{DA473A43-9433-4C49-AAD5-72C192456EF2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{C9FCC213-25C8-4E0C-B8A8-0B31ECA439C2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{36C7C072-B0E4-4FE3-8385-CBC50037E7B9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{5F417D2C-56D0-48AF-B928-330E6B1D5833}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{8F9B857D-54E4-4BBF-B6BB-380FB3BD4B8D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{9C417E11-A6AD-4166-81EF-AB42DDF22CD9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{97258690-C149-48AE-A63B-44322203AEFC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{5FD623F4-3FB1-4653-A272-BADB593FF3D9}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{C1D80E54-4685-4CCF-B5D5-4120C99D5C25}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{F0292CC9-D147-4BCF-841F-29626E524549}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{D1CCC1E1-6663-4930-B97F-713628FF16AC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{D6DACD41-5D77-4CD1-AD53-07BF33B7B249}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{827C4264-D94B-4C35-8DEB-8634891A2C2F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{5F444369-2B60-4513-A964-88F678687A86}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{8ECC9201-0D5B-480C-BC5D-FADED45FE932}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{9C8C1447-4864-4E27-B02D-A1741F158B2B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{7F8A576A-382E-4ED7-8A1D-CF5A41C17807}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{B9D970CD-7BC5-4145-ACEB-5CC3D71293D6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{0109F91C-DDF6-4DD1-8B48-5E9D0018899F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{2AB9D4FA-7B3C-4795-AA2D-E036C3A7E694}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{6A5D12DF-28AC-4274-8462-4F25411A7C77}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{B47B6E92-46F4-4BF0-B595-C318D89D76D2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{2BA5DD33-37A1-46D0-9A69-7132257092AC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{C17CB9E5-8C41-47A1-9E83-234CE3D8EE37}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{CB5ED079-7E67-4C25-A919-A0DA4B2B9B8B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{1EB6E4C8-0A68-4AE2-8964-3224748FCA9F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{357D58FB-8527-417D-B062-D96F2CD8473D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{D18242D4-6211-4EB1-B6E4-D928B6C67C82}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{4D12AB5A-D77D-491B-B6B8-3EFAC4DF4734}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{7A745B4E-ABC5-493B-ABF1-E554A1D134ED}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{8882D703-A3B9-4624-9C20-0E322611E706}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc15_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{BCEE8893-86B4-4747-9838-20F81E7CA365}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{0C534B2B-8A42-4213-8EC9-47891770EE2E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{B3EF0E6A-698F-48E6-8C78-88C4C331E7EA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{B763C850-52D3-431D-BD03-A86868B1F99F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{B99D5E8B-065F-4DA0-931A-B085853BBE80}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{C763F324-61DF-4603-B121-A17F055DDF43}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{57428A9D-81CC-43F7-8191-E34D33D737DC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{C9C20734-A311-4B0F-B3F4-CFA24F4223FC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{7AD24071-9644-4A23-8A3C-7A014E45E52E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{9292AE15-7E4B-4374-A59F-41BED3D23811}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{9DA0499F-EC0C-4712-8F4B-BF2CB86DC148}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{C4BBBDEB-185D-429B-B24E-713EBDA61E13}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{5B1CA42D-B03A-4B4D-9C3E-086ACA7BBE6E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{C12311D9-61C3-4E21-867F-5E03422B7E6E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{748E1E68-39BA-4BBA-B024-39320FD67293}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{A0DEA95F-5782-43BE-B118-0777F7E29EDD}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{F085B47E-646F-4BFA-94B7-875EDC59739C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{C5BC0FD0-C6D9-41B7-B426-E9DC66BF73EF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{1A1413F2-09AA-47DC-8AB6-25D266F3EDF8}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{23CEC536-DDEA-461C-878A-EA7BD40FA990}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{3616590C-8C82-4370-84D2-FF5F2F862877}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{985EE69F-4F0B-48CB-96B7-553FE91A87A5}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{ED441519-01D4-49AD-84A6-999F63B6388E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{4523E027-CE62-43E0-9A22-F5E04FA96C65}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{1EE1BF81-61F6-422E-B81E-6192EB6E5192}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{505B4E06-56F7-4B0A-8DEC-99855E9E7A81}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{F8BC7D27-32F2-4E75-BB42-B29E91951F29}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{08CB6E71-1689-4F8F-B029-9C56686133EF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{7A6C1344-551D-48C4-928C-2A914BCD91BE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{F6F43964-4CC0-46DC-8FBF-0BA28EFAF4BA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{B38DA45D-1735-4553-A0A9-11637AD0AB15}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{9B66D322-F182-4180-B34B-05511FAF8AA4}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{AA5EEB24-CEE6-4920-9B5A-FF8A56BFD90D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{E223EEA6-D94E-4C51-8DC0-C3F50406E482}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{8DD23C88-43F9-460E-BF99-6D8D6D81294E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{9A71B1EB-2957-47DF-A8DC-1C9C57C0AA2E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{05E21370-5EBD-469B-95B4-F3E02480987A}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{5351EEE9-9182-4E37-BF75-0EA0B3DAF547}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{B8560DE5-D9FC-494F-9390-2C9C615C0195}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{7356B92E-EA4B-4960-A3EA-A7589CFC0008}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{D92B9F05-A61D-434C-854B-1853C49941D2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{A3C58ED2-7A67-404A-98A0-E7A1ACDB0850}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{E9B07588-0D29-4F7C-B591-1AB40AC3643D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{3C41E8A7-ACDD-4CEE-B5AA-70560FC237B1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{7F4AEC26-F97D-4508-9903-6B359B487E57}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{80E48C41-BDC8-4395-802C-3481E09972DC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{2B98AC04-5908-4E78-8739-CBF774C9D3E2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{8B601090-499F-4D4C-A0AC-DB4487B5A916}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{D839DF7B-D87C-43DF-A5AF-A350F0E7379E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{E830A916-BB20-4817-8A5D-052ED0A2C0DC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc16_w64_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{550141E6-CDA8-4210-B7EB-7F7D9D9C4EF6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_i;
+
+//------------------------------------------------------------------------
+
+//{53073D4A-AF22-4FC7-B763-C7E06D8CE849}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{6B4BA676-3EE1-4C44-8EF9-A29B27890DB8}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_d;
+
+//------------------------------------------------------------------------
+
+//{7383309C-9CF5-4A3A-9BD4-77A760EF5776}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{3AEB1CF8-70F9-4E49-8939-0A7567F69A31}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{C02927B8-E8C3-45F5-9B17-D1AEEBE62505}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{CA304470-2A67-4667-A006-AEDEACFED320}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_td;
+
+//------------------------------------------------------------------------
+
+//{51940996-6DA8-40A9-BA19-697895897EF4}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{295D7657-6D1E-4164-A530-5B76FAFDC0C2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{7E85FCF9-BABF-49AB-92B1-73FFD2BCA2A6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{FD611010-385D-4DDF-91D2-E917F6EC4EFA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_i;
+
+//------------------------------------------------------------------------
+
+//{4B862DEF-0F32-45EE-8ED7-DFD13868A19B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{B3A68530-DF17-42DC-A957-B43F8843D7A3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_d;
+
+//------------------------------------------------------------------------
+
+//{0B80BCBD-BFE9-4ED7-93EB-9B82270BA5E5}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{B5426008-283E-48F9-B651-5CC2F8B13FA2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{1DD2AED0-AA61-468B-9B4C-401D625E828E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{97BA4AEE-C508-4949-922D-D1313B64534E}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_td;
+
+//------------------------------------------------------------------------
+
+//{0CEC614C-E6C5-4A0D-8A25-948CF2D03D6D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{19646A7F-015B-45D4-8146-08B018EE0E24}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{B8B37BE3-7EED-49FB-ABB4-17CFA6547A9B}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{38F694A5-EDE9-4AF4-A11D-A62A6245D919}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_free_i;
+
+//------------------------------------------------------------------------
+
+//{E47EAE17-3512-4326-97D8-622DA837E2E3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_free_d;
+
+//------------------------------------------------------------------------
+
+//{CF303650-8EAD-4A6E-A870-59E64D18B612}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_free_dc;
+
+//------------------------------------------------------------------------
+
+//{CB15E2DB-2495-400F-9396-E727E3B44A41}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_free_td;
+
+//------------------------------------------------------------------------
+
+//{DB7481BF-C7A7-41BF-8F36-980EEE8A5ECA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w32_free_tdc;
+
+//------------------------------------------------------------------------
+
+//{A8E8B9E6-F7C4-4126-B572-0C675A4BB9DE}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_i;
+
+//------------------------------------------------------------------------
+
+//{EC1206D8-0C97-4C72-B84B-B8E92406126D}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_i_trial;
+
+//------------------------------------------------------------------------
+
+//{D8741CE7-DC88-4A18-8AD5-CAE35BBF03DC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_d;
+
+//------------------------------------------------------------------------
+
+//{3F1C6D79-CE9D-4502-BEDD-C7A1248194C7}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_d_trial;
+
+//------------------------------------------------------------------------
+
+//{00EF8419-DE27-4B99-9644-FF030833B3FC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_dc;
+
+//------------------------------------------------------------------------
+
+//{09B61F0B-B68C-46C7-887A-6E9A4EDF23D3}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{AD66150B-8C87-41B2-BE5A-E5DAC09BCE68}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_td;
+
+//------------------------------------------------------------------------
+
+//{979D17E3-D19E-4018-A292-9DAE49077C24}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_td_trial;
+
+//------------------------------------------------------------------------
+
+//{51D3AFE0-5D3C-46F9-BF90-09CB724E6F50}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_tdc;
+
+//------------------------------------------------------------------------
+
+//{743D0CD2-966C-4E92-AEC0-9DFA303AD4C2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_prof_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{70581486-8BE9-41C8-AA7A-194C06553D64}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_i;
+
+//------------------------------------------------------------------------
+
+//{C23402DC-76C0-48DC-AF91-B764E408B7CF}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_i_trial;
+
+//------------------------------------------------------------------------
+
+//{36D2AF37-3FCD-4014-BA1A-180597A270BA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_d;
+
+//------------------------------------------------------------------------
+
+//{7D3C5E6A-F47E-49BD-ACE0-410B96AF46A2}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_d_trial;
+
+//------------------------------------------------------------------------
+
+//{C5EAC612-C387-494D-8433-5414A96D3FBC}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_dc;
+
+//------------------------------------------------------------------------
+
+//{92BAF845-38B8-4ADF-BCA0-809A7D992226}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_dc_trial;
+
+//------------------------------------------------------------------------
+
+//{8057D813-CA0C-4EF0-AAF1-170BA2FE4B07}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_td;
+
+//------------------------------------------------------------------------
+
+//{198B7E78-95B3-4E72-9E98-039025F2B43C}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_td_trial;
+
+//------------------------------------------------------------------------
+
+//{2A081AC4-1865-40F7-A19B-DC1EAAA035D6}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_tdc;
+
+//------------------------------------------------------------------------
+
+//{32D4A66F-BD1A-497B-B043-E3441491C9BA}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_lite_tdc_trial;
+
+//------------------------------------------------------------------------
+
+//{71599C2B-896F-4B98-9D37-380A0A96CEB7}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_free_i;
+
+//------------------------------------------------------------------------
+
+//{A072B9A0-B4C7-41C4-A95B-87F61973E7C1}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_free_d;
+
+//------------------------------------------------------------------------
+
+//{EBD6599A-654D-43CD-B01D-769F22DC7140}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_free_dc;
+
+//------------------------------------------------------------------------
+
+//{D6191A62-02A3-4230-8EF4-234EFB09A46F}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_free_td;
+
+//------------------------------------------------------------------------
+
+//{A423A3DB-765C-40EA-810F-E2DDF4A78363}
+extern const CLSID CLSID_IBProviderErrorLookup__private__vc17_w64_free_tdc;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms v05*/}/*nms ibprovider*/}/*nms sdk*/}/*nms lcpi*/

@@ -65,10 +65,11 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
 
  size_t sqld=0;
 
- pos=self_type::Helper__ReadNumber(pos,
-                                   _e_buffer,
-                                   &sqld,
-                                   L"isc_info_sql_describe_vars"); //throw
+ pos=self_type::Helper__ReadNumber
+      (pos,
+       _e_buffer,
+       &sqld,
+       L"isc_info_sql_describe_vars"); //throw
 
  if(is_first_info_block)
  {
@@ -78,13 +79,12 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
   {
    //ERROR - [BUG CHECK] sqld is too large
 
-   t_ibp_error exc(DB_E_NOTSUPPORTED,
-                   ibp_subsystem__remote_fb__p12,
-                   ibp_mce_isc__too_many_vars_for_XSQLDA_2);
-
-   exc<<sqld<<structure::get_numeric_limits(pXSQLDA->sqld).max_value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (DB_E_NOTSUPPORTED,
+     ibp_subsystem__remote_fb,
+     ibp_mce_isc__too_many_vars_for_XSQLDA_2,
+     sqld,
+     structure::get_numeric_limits(pXSQLDA->sqld).max_value());
   }//if
 
   structure::static_numeric_cast(&pXSQLDA->sqld,sqld);
@@ -108,17 +108,14 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
   {
    //ERROR - [BUG CHECK] incorrect data in secondary block
 
-   t_ibp_error
-    exc(E_FAIL,
-        ibp_mce_isc__bug_check__incorrect_sqld_in_secondary_block_with_xsqlda_data_5);
-
-   exc<<c_bugcheck_src
-      <<L"#003"
-      <<sqld
-      <<pXSQLDA->sqld
-      <<start_index;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_isc__bug_check__incorrect_sqld_in_secondary_block_with_xsqlda_data_5,
+     c_bugcheck_src,
+     L"#003",
+     sqld,
+     pXSQLDA->sqld,
+     start_index);
   }//else
  }//else !is_first_block_info
 
@@ -134,16 +131,20 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
   if((*pos)==isc_api::ibp_isc_info_end)
    break; //штатное завершение работы
 
+  /* #PT001 */
   if((*pos)==isc_api::ibp_isc_info_truncated)
   {
    if(start_index==sqld)
    {
     //ERROR - WTF? все элементы обработали, а нам говорят, что данные обрезаны.
 
-    Helper__ThrowBugCheck__UnexpectedTruncation(c_bugcheck_src,
-                                                L"#004",
-                                                sqld);
+    Helper__ThrowBugCheck__UnexpectedTruncation
+     (c_bugcheck_src,
+      L"#004",
+      sqld);
    }//if
+
+   assert(start_index<sqld);
 
    return parse_result_type(start_index,false);
   }//if
@@ -154,14 +155,12 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
    {
     //ERROR - unexpected elements for XSQLDA
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_isc__bug_check__unexpected_xvars_for_xsqlda_3);
-
-    exc<<c_bugcheck_src
-       <<L"#005"
-       <<sqld;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_isc__bug_check__unexpected_xvars_for_xsqlda_3,
+      c_bugcheck_src,
+      L"#005",
+      sqld);
    }//if start_index==sqld
 
    assert(sqld>0);
@@ -172,25 +171,24 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
 
    protocol::P_USHORT xvar_ordinal=0;
 
-   pos=self_type::Helper__ReadNumber(pos,
-                                     _e_buffer,
-                                     &xvar_ordinal,
-                                     L"isc_info_sql_sqlda_seq"); //throw
+   pos=self_type::Helper__ReadNumber
+        (pos,
+         _e_buffer,
+         &xvar_ordinal,
+         L"isc_info_sql_sqlda_seq"); //throw
 
    if(xvar_ordinal==0 || sqld<xvar_ordinal)
    {
     //ERROR - xsqlvar sequential number is out of range
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_isc__bug_check__out_of_range_of_xvar_sequential_number_5);
-
-    exc<<c_bugcheck_src
-       <<L"#006"
-       <<xvar_ordinal
-       <<sqld
-       <<start_index;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_isc__bug_check__out_of_range_of_xvar_sequential_number_5,
+      c_bugcheck_src,
+      L"#006",
+      xvar_ordinal,
+      sqld,
+      start_index);
    }//if
 
    assert(xvar_ordinal>0);
@@ -207,15 +205,13 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
    {
     //ERROR - incorrect sequential number
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_isc__bug_check__unexpected_xvar_sequential_number_4);
-
-    exc<<c_bugcheck_src
-       <<L"#007"
-       <<xvar_ordinal
-       <<(start_index+1);
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_isc__bug_check__unexpected_xvar_sequential_number_4,
+      c_bugcheck_src,
+      L"#007",
+      xvar_ordinal,
+      start_index+1);
    }//if
 
    isc_api::XSQLVAR_V1* const pCurXSQLVAR=&pXSQLDA->sqlvar[xvar_index];
@@ -246,12 +242,22 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         L"#008");
      }//if
 
+     assert(pos<_e_buffer);
+
+     //
+     // [2023-02-24]
+     //  We will stop in the 'truncated' tag.
+     // 
+     //  This is unified with above code [#PT001].
+     //
+
+     if((*pos)==isc_api::ibp_isc_info_truncated)
+      return parse_result_type(start_index,false);
+
+     //-------------------------------------------------------
      const byte_type item_id=*pos;
 
      ++pos;
-
-     if(item_id==isc_api::ibp_isc_info_truncated)
-      return parse_result_type(start_index,false);
 
      if(item_id==isc_api::ibp_isc_info_sql_describe_end)
       break; //закончили обрабатывать VAR-блок
@@ -268,10 +274,11 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"sqltype");
        }//if
 
-       pos=self_type::Helper__ReadNumber(pos,
-                                         _e_buffer,
-                                         &pCurXSQLVAR->sqltype,
-                                         L"isc_info_sql_type"); //throw
+       pos=self_type::Helper__ReadNumber
+            (pos,
+             _e_buffer,
+             &pCurXSQLVAR->sqltype,
+             L"isc_info_sql_type"); //throw
 
        XVarFlags.set(xvar_flag__sqltype);
        break;
@@ -287,10 +294,11 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"sqlsubtype");
        }//if
 
-       pos=self_type::Helper__ReadNumber(pos,
-                                         _e_buffer,
-                                         &pCurXSQLVAR->sqlsubtype,
-                                         L"isc_info_sql_sub_type"); //throw
+       pos=self_type::Helper__ReadNumber
+            (pos,
+             _e_buffer,
+             &pCurXSQLVAR->sqlsubtype,
+             L"isc_info_sql_sub_type"); //throw
 
        XVarFlags.set(xvar_flag__sqlsubtype);
        break;
@@ -306,10 +314,11 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"sqlscale");
        }//if
 
-       pos=self_type::Helper__ReadNumber(pos,
-                                         _e_buffer,
-                                         &pCurXSQLVAR->sqlscale,
-                                         L"isc_info_sql_scale"); //throw
+       pos=self_type::Helper__ReadNumber
+            (pos,
+             _e_buffer,
+             &pCurXSQLVAR->sqlscale,
+             L"isc_info_sql_scale"); //throw
 
        XVarFlags.set(xvar_flag__scale);
        break;
@@ -325,10 +334,11 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"sqllen");
        }//if
 
-       pos=self_type::Helper__ReadNumber(pos,
-                                         _e_buffer,
-                                         &pCurXSQLVAR->sqllen,
-                                         L"isc_info_sql_length"); //throw
+       pos=self_type::Helper__ReadNumber
+            (pos,
+             _e_buffer,
+             &pCurXSQLVAR->sqllen,
+             L"isc_info_sql_length"); //throw
 
        XVarFlags.set(xvar_flag__length);
        break;
@@ -344,12 +354,13 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"sqlname");
        }//if
 
-       pos=Helper__ReadString(pos,
-                              _e_buffer,
-                              _DIM_(pCurXSQLVAR->sqlname),
-                              pCurXSQLVAR->sqlname,
-                              &pCurXSQLVAR->sqlname_length,
-                              L"isc_info_sql_field"); //throw
+       pos=Helper__ReadString
+            (pos,
+             _e_buffer,
+             _DIM_(pCurXSQLVAR->sqlname),
+             pCurXSQLVAR->sqlname,
+             &pCurXSQLVAR->sqlname_length,
+             L"isc_info_sql_field"); //throw
 
        XVarFlags.set(xvar_flag__field);
        break;
@@ -365,12 +376,13 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"relname");
        }//if
 
-       pos=Helper__ReadString(pos,
-                              _e_buffer,
-                              _DIM_(pCurXSQLVAR->relname),
-                              pCurXSQLVAR->relname,
-                              &pCurXSQLVAR->relname_length,
-                              L"isc_info_sql_relation"); //throw
+       pos=Helper__ReadString
+            (pos,
+             _e_buffer,
+             _DIM_(pCurXSQLVAR->relname),
+             pCurXSQLVAR->relname,
+             &pCurXSQLVAR->relname_length,
+             L"isc_info_sql_relation"); //throw
 
        XVarFlags.set(xvar_flag__relation);
        break;
@@ -386,12 +398,13 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"ownname");
        }//if
 
-       pos=Helper__ReadString(pos,
-                              _e_buffer,
-                              _DIM_(pCurXSQLVAR->ownname),
-                              pCurXSQLVAR->ownname,
-                              &pCurXSQLVAR->ownname_length,
-                              L"isc_info_sql_owner"); //throw
+       pos=Helper__ReadString
+            (pos,
+             _e_buffer,
+             _DIM_(pCurXSQLVAR->ownname),
+             pCurXSQLVAR->ownname,
+             &pCurXSQLVAR->ownname_length,
+             L"isc_info_sql_owner"); //throw
 
        XVarFlags.set(xvar_flag__owner);
        break;
@@ -407,12 +420,13 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
         Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue(L"aliasname");
        }//if
 
-       pos=Helper__ReadString(pos,
-                              _e_buffer,
-                              _DIM_(pCurXSQLVAR->aliasname),
-                              pCurXSQLVAR->aliasname,
-                              &pCurXSQLVAR->aliasname_length,
-                              L"isc_info_sql_alias"); //throw
+       pos=Helper__ReadString
+            (pos,
+             _e_buffer,
+             _DIM_(pCurXSQLVAR->aliasname),
+             pCurXSQLVAR->aliasname,
+             &pCurXSQLVAR->aliasname_length,
+             L"isc_info_sql_alias"); //throw
 
        XVarFlags.set(xvar_flag__alias);
        break;
@@ -502,24 +516,21 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
     {
      //ERROR - incorrect length of var
 
-     t_ibp_error exc(E_FAIL,ibp_mce_isc__bug_check__negative_sqllength_in_xsqlvar_1);
-
-     exc<<pCurXSQLVAR->sqllen;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_subsystem__remote_fb,
+       ibp_mce_isc__bug_check__negative_sqllength_in_xsqlvar_1,
+       pCurXSQLVAR->sqllen);
     }//if
    }
    catch(const std::exception& e)
    {
-    t_ibp_error exc(e);
-
-    exc.add_error(E_FAIL,
-                  ibp_subsystem__remote_fb__p12,
-                  ibp_mce_isc__failed_to_process_xsqlvar_info_raw_data_1);
-
-    exc<<xvar_index;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (e,
+      E_FAIL,
+      ibp_subsystem__remote_fb,
+      ibp_mce_isc__failed_to_process_xsqlvar_info_raw_data_1,
+      xvar_index);
    }//catch
 
    //--------------------------------------- пытаемся обработать следующий блок
@@ -547,12 +558,12 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
  {
   //ERROR - Количество загруженных описаний меньше чем ожидалось.
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__bug_check__incompleted_definition_of_xvars_2);
-
-  exc<<start_index<<sqld;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb,
+    ibp_mce_isc__bug_check__incompleted_definition_of_xvars_2,
+    start_index,
+    sqld);
  }//if
 
  assert(structure::can_numeric_cast<parse_result_type::first_type>(start_index));
@@ -623,7 +634,7 @@ static const RemoteFB__API_HLP__XSQLDA_V01__Utilities::byte_type*
   (item_length,
    beg,
    pNumber,
-   ibp_subsystem__remote_fb__p12,
+   ibp_subsystem__remote_fb,
    tagSign); //throw
 
  beg+=item_length;
@@ -660,7 +671,7 @@ const RemoteFB__API_HLP__XSQLDA_V01__Utilities::byte_type*
 
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src=
-  L"RemoteFB__P12__XSQLDA_Utilities::Helper__ReadString";
+  L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ReadString";
 
  //читаем длину блока
  if(size_t(end-beg)<isc_api::ibp_isc__info_tag__data_length__byte_count)

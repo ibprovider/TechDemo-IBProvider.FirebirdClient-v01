@@ -4,7 +4,9 @@
 
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_str_formatter.h>
-#include <structure/t_str_like.h>
+
+#include <structure/utilities/string/is_like_str.h>
+
 #include <vector>
 
 namespace structure{namespace tso_obj{
@@ -113,14 +115,13 @@ static bool can_exec_test(const char* test_name,const char* test_mask)
  if(test_mask==0 || (*test_mask)==0)
   return true;
  
- typedef const char* iterator_type;
- 
- const t_str_like<iterator_type,iterator_type> str_like('?','*');
- 
- return str_like.run(test_name,
-                     test_name+strlen(test_name),
-                     test_mask,
-                     test_mask+strlen(test_mask)); 
+ return is_like_str
+         ('?',
+          '*',
+          test_name,
+          test_name+strlen(test_name),
+          test_mask,
+          test_mask+strlen(test_mask)); 
 }//can_exec_test
 
 ////////////////////////////////////////////////////////////////////////////////

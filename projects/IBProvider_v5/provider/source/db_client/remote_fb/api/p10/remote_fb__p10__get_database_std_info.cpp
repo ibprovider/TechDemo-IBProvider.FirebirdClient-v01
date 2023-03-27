@@ -59,13 +59,11 @@ void RemoteFB__P10__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
 
   if(iFB==std::string::npos)
   {
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p10,
-                   ibp_mce_common__unknown_dbms_1);
-
-   exc<<cns.dbms.descr_Ex.value();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p10,
+     ibp_mce_common__unknown_dbms_1,
+     cns.dbms.descr_Ex.value());
   }//if
 
   if(structure::cmp_str_version_prefix(cns.dbms.version.c_str(),"0.9")!=0)
@@ -165,13 +163,11 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec1
   {
    //ERROR - buffer is too small
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p10,
-                   ibp_mce_dbobj_fail_get_db_info__buf_is_small_1);
-
-   exc<<buffer2.size();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p10,
+     ibp_mce_dbobj_fail_get_db_info__buf_is_small_1,
+     buffer2.size());
   }//if
 
   //----------------------------------------
@@ -382,14 +378,12 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec1
 
   assert(not_processed_tag_count>0);
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p10,
-                  ibp_mce_dbobj_fail_get_db_info__no_data_2);
-
-  exc<<ibp::push_value(cns.dbms.descr_Ex,L"???")
-     <<tags.str();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p10,
+    ibp_mce_dbobj_fail_get_db_info__no_data_2,
+    ibp::push_value(cns.dbms.descr_Ex,L"???"),
+    tags.str());
 
   assert(false);
  }//if
@@ -515,13 +509,11 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
   {
    //ERROR - buffer is too small
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_subsystem__remote_fb__p10,
-                   ibp_mce_dbobj_fail_get_db_info__buf_is_small_1);
-
-   exc<<buffer2.size();
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__p10,
+     ibp_mce_dbobj_fail_get_db_info__buf_is_small_1,
+     buffer2.size());
   }//if
 
   //----------------------------------------
@@ -666,14 +658,12 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
 
   assert(not_processed_tag_count>0);
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_subsystem__remote_fb__p10,
-                  ibp_mce_dbobj_fail_get_db_info__no_data_2);
-
-  exc<<ibp::push_value(cns.dbms.descr_Ex,L"???")
-     <<tags.str();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_subsystem__remote_fb__p10,
+    ibp_mce_dbobj_fail_get_db_info__no_data_2,
+    ibp::push_value(cns.dbms.descr_Ex,L"???"),
+    tags.str());
 
   assert(false);
  }//if

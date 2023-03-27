@@ -639,16 +639,16 @@ void RemoteFB__P13__ArraySlice_Utilities::Helper__ParseSDL__ReadElementType
   }//case ibp_isc_blr_dtype__cstring2
 
   //----------------------------------------------------------------------
-  case isc_api::ibp_fb30_blr_dtype__bool:
+  case isc_api::ibp_fb030_blr_dtype__bool:
   {
    pDescr->m_element_sql_scale=0;
 
-   pDescr->m_element_sql_length=sizeof(isc_api::t_ibp_fb30_bool);
+   pDescr->m_element_sql_length=sizeof(isc_api::t_ibp_fb030_bool);
 
-   pDescr->m_element_total_length=sizeof(isc_api::t_ibp_fb30_bool);
+   pDescr->m_element_total_length=sizeof(isc_api::t_ibp_fb030_bool);
 
    break;
-  }//case ibp_fb30_blr_dtype__bool
+  }//case ibp_fb030_blr_dtype__bool
 
   //----------------------------------------------------------------------
   default:

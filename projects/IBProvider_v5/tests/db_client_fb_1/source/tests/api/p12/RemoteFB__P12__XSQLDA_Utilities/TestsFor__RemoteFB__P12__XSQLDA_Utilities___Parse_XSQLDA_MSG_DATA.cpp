@@ -693,7 +693,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_short|1);
 
    errSvc::check_err_rec__isc__parse_msg_buf_data__failed_to_process_element
@@ -772,7 +771,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      isc_api::ibp_isc_sql_short|1);
 
    errSvc::check_err_rec__isc__parse_msg_buf_data__failed_to_process_element
@@ -1774,7 +1772,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_short",
      -3,
      -2);
@@ -1854,7 +1851,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_long",
      -7,
      -5);
@@ -1934,7 +1930,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
    errSvc::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xvar
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      L"sql_int64",
      -17,
      -15);

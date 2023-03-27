@@ -134,7 +134,7 @@ void TRegistry::GetKeyNames(HKEY  const key,
 
   names.reserve((TNameArray::size_type)key_info.NumSubKeys);
     
-  t_char_buffer name(key_info.MaxSubKeyLen+1);
+  char_buffer_type name(key_info.MaxSubKeyLen+1);
 
   for(DWORD i=0;i<key_info.NumSubKeys;++i)
   {
@@ -170,7 +170,7 @@ void TRegistry::GetValueNames(HKEY  const key,
 
   names.reserve(key_info.NumValues);
 
-  t_char_buffer name(key_info.MaxValueLen+1);
+  char_buffer_type name(key_info.MaxValueLen+1);
 
   for(DWORD i=0;i<key_info.NumValues;++i)
   {
@@ -225,11 +225,15 @@ LONG TRegistry::DeleteKey(HKEY         const key,
  if(const LONG lResult=KeyChild.OpenKeyEx(key,key_name,KEY_READ|KEY_WRITE))
   return lResult;
 
- // Enumerate all of the decendents of this child.
+ // Enumerating all the descendents of this child.
  TRegKeyInfo info;
 
- if(const LONG lResult=GetKeyInfo(KeyChild,info))
-  return lResult;
+ {
+  const LONG lResult1=GetKeyInfo(KeyChild,info);
+
+  if(lResult1!=ERROR_SUCCESS)
+   return lResult1;
+ }//local
 
  typedef TRegKeyInfo::max_sub_key_name_len_type max_sub_key_name_len_type;
 
@@ -238,30 +242,49 @@ LONG TRegistry::DeleteKey(HKEY         const key,
   if(info.MaxSubKeyLen==structure::t_numeric_limits<max_sub_key_name_len_type>::max_value())
    throw std::overflow_error("Overflow in TRegistry::DeleteKey");
 
-  t_char_buffer name(info.MaxSubKeyLen+1);
+  char_buffer_type name(info.MaxSubKeyLen+1);
 
   for(;;)
   {
    DWORD dwSize=static_cast<max_sub_key_name_len_type>(name.size());
    
-   //until key has subkeys
-   if(RegEnumKeyEx(KeyChild,0,name.buffer(),&dwSize,NULL,NULL,NULL,NULL)!=S_OK)
-    break;
+   {
+    //
+    // Until key has subkeys
+    //
+    const LONG lResult2=::RegEnumKeyEx(KeyChild,0,name.buffer(),&dwSize,NULL,NULL,NULL,NULL);
 
-   assert(name.size()==(info.MaxSubKeyLen+1));
+    if(lResult2==ERROR_NO_MORE_ITEMS)
+     break;
 
-   name[min(info.MaxSubKeyLen,dwSize)]=0;
+    if(lResult2!=ERROR_SUCCESS)
+     return lResult2;
+    
+    assert(lResult2==ERROR_SUCCESS);
+   }//local
 
-   if(const LONG lResult=DeleteKey(KeyChild,name.buffer()))
-    return lResult;
-  }//while
+   assert(dwSize>0);
+   assert(dwSize<=info.MaxSubKeyLen);
+
+   name[dwSize]=0;
+
+   {
+    const LONG lResult3=self_type::DeleteKey(KeyChild,name.buffer());
+   
+    if(lResult3!=ERROR_SUCCESS)
+     return lResult3;
+   }//local
+  }//for[ever]
  }//if NumSubKeys!=0
 
  KeyChild.close();
 
  assert(KeyChild==NULL);
 
- return ::RegDeleteKey(key,key_name.str());//Delete this child.
+ //
+ // Deleting this child.
+ //
+ return ::RegDeleteKey(key,key_name.str());
 }//DeleteKey
 
 //------------------------------------------------------------------------
@@ -370,7 +393,9 @@ bool TRegistry::WriteString(HKEY         const key,
  if(cb_value>size_t(structure::t_numeric_limits<DWORD>::max_value()))
   throw std::length_error("Length error in TRegistry::WriteString");
 
- //length included terminated symbol
+ //
+ // length includes a terminated symbol
+ //
  const LONG lResult=::RegSetValueEx(key,
                                     name.str(),
                                     0,

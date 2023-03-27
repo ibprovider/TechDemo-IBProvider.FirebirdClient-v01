@@ -6,14 +6,14 @@
 #define _ibp_v05_info_H_
 
 #define IBP_VI_FILE_MAJOR_VER  5
-#define IBP_VI_FILE_MINOR_VER  26
+#define IBP_VI_FILE_MINOR_VER  28
 #define IBP_VI_FILE_REV_NO     0
-#define IBP_VI_FILE_BUILD_NO   37401
+#define IBP_VI_FILE_BUILD_NO   40415
 
-#define IBP_VI_FILE_VER_NUMBER     5,26,0,37401
+#define IBP_VI_FILE_VER_NUMBER     5,28,0,40415
 
-#define IBP_VI_VER_STRING1          "5.26.0.37401"
-#define IBP_VI_VER_STRING2          "5.26.0.37401\0"
+#define IBP_VI_VER_STRING1          "5.28.0.40415"
+#define IBP_VI_VER_STRING2          "5.28.0.40415\0"
 
 #define IBP_VI_PRODUCT_VER_STRING1  IBP_VI_VER_STRING1
 

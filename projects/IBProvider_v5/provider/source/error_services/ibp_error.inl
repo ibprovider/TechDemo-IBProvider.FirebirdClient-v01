@@ -9,15 +9,6 @@
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
-//struct t_ibp_error_traits
-
-inline t_ibp_error_traits::out_return_type&
-t_ibp_error_traits::out_ret(args_type& x)
-{
- return *static_cast<out_return_type*>(&x);
-}//out_ret
-
-////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_error
 
 inline t_ibp_error& t_ibp_error::set_last_error_as_primary()

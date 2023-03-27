@@ -1,7 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
-//OLE Library Implementation. Wrappers for CoTask Memory Allocation Functions
-//                                             Kovalenko Dmitry. 22.02.2010.
+//LCPI Instrumental Library for C++
+//                                                 Dmitry Kovalenko. 16.12.2022.
+#include <_pch_.h>
+#pragma hdrstop
 
+#include <lcpi/lib/com/base/com_base__co_task_memory.h>
+
+namespace lcpi{namespace lib{namespace com{namespace base{
 ////////////////////////////////////////////////////////////////////////////////
 
 void* OLE_CoTaskMemAlloc(SIZE_T const sz,bool const alloc_empty)
@@ -24,10 +29,5 @@ void* OLE_CoTaskMemAlloc(SIZE_T const sz,bool const alloc_empty)
  throw std::bad_alloc();
 }//OLE_CoTaskMemAlloc
 
-//------------------------------------------------------------------------
-void OLE_CoTaskMemFree(void* const pv)
-{
- return LCPI_OS__CoTaskMemFree(pv);
-}//OLE_CoTaskMemFree
-
 ////////////////////////////////////////////////////////////////////////////////
+}/*nms base*/}/*nms com*/}/*nms lib*/}/*nms lcpi*/

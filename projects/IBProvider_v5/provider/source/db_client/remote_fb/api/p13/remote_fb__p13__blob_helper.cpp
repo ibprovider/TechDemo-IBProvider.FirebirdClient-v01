@@ -56,8 +56,9 @@ void RemoteFB__P13__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pDat
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  pData->GetPort()->send_packet(portOpCtx,
-                                packet); //throw
+  pData->GetPort()->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 
  //----------------------------------------- 4. get response
@@ -69,8 +70,9 @@ void RemoteFB__P13__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pDat
 
   protocol::set02::PACKET_V02 packet;
 
-  pData->GetPort()->receive_packet(portOpCtx,
-                                   packet); //throw
+  pData->GetPort()->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {

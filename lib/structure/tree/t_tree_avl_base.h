@@ -69,6 +69,12 @@ class t_tree_avl_base:public t_tree_base<t_tree_avl_node<T>,Allocator>
   template<class U>
   node_type* find_node_within(node_type* top, const U&);
 
+  template<class U>
+  const node_type* lower_bound_node(const U&)const;
+
+  template<class U>
+  node_type* lower_bound_node(const U&);
+
   //modificators ---------------------------------------------------------
  #if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
   template<class U>
@@ -114,6 +120,9 @@ class t_tree_avl_base:public t_tree_base<t_tree_avl_node<T>,Allocator>
  private:
   template<class TREE,typename NODE,class U>
   static NODE* helper__find_node_within(TREE* pThis, NODE*, const U&);
+
+  template<class TREE,class U>
+  static typename TREE::node_type* helper__lower_bound_node(TREE* pThis, const U&);
 };//class t_tree_avl_base
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -317,6 +317,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
    errSvc::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
     (tracer,
      exc.get_record(0),
+     errSvc::sm_subsysID__remote_fb_p12,
      -4);
 
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
@@ -561,13 +562,13 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 {
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null,
+            isc_api::ibp_fb025_sql_null,
             1,
             L"sql_null");
 
  helper_txx(pParams,
             pCtx,
-            isc_api::ibp_fb25_sql_null|1,
+            isc_api::ibp_fb025_sql_null|1,
             2,
             L"sql_null");
 }//test_t12___bug_check__incorrect_sqllen__null
@@ -742,7 +743,6 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
    errSvc::check_err_rec__xsqlda_err__incorrect_sqlscale
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
      sqlTypeSign,
      sqlscale);
 
@@ -1520,7 +1520,7 @@ void TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR::tag_impl:
 
  xsqlda->sqld=1;
 
- xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb25_sql_null;
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb025_sql_null;
  xsqlda->sqlvar[0].sqllen   =0;
  xsqlda->sqlvar[0].sqldata  =nullptr;
 

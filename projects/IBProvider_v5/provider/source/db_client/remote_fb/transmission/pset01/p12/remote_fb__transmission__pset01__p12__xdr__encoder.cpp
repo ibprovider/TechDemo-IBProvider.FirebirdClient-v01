@@ -193,12 +193,10 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
       //[2015-05-16] В отладочной сборке будем останавливать работу для разбора полёта.
       assert_msg(false,"varchar_len: "<<varchar_len);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-      exc<<varchar_len;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error
+       (E_FAIL,
+        ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+        varchar_len);
      }//if
 
      if(sqllen<size_t(varchar_len))
@@ -208,12 +206,11 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
       //[2015-05-16] В отладочной сборке будем останавливать работу для разбора полёта.
       assert_msg(false,"varchar_len: "<<varchar_len<<". buf_size: "<<sqllen);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2);
-
-      exc<<varchar_len<<sqllen;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error
+       (E_FAIL,
+        ibp_mce_isc__bug_check__varchar_data_length_is_greater_than_buffer_size_2,
+        varchar_len,
+        sqllen);
      }//if
 
      if(isc_api::ibp_isc_max_varchar_length<size_t(varchar_len))
@@ -223,12 +220,10 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
       //[2015-05-16] В отладочной сборке будем останавливать работу для разбора полёта.
       assert_msg(false,"varchar_len: "<<varchar_len);
 
-      t_ibp_error exc(E_FAIL,
-                      ibp_mce_isc__bug_check__incorrect_varchar_data_length_1);
-
-      exc<<varchar_len;
-
-      exc.raise_me();
+      IBP_ErrorUtils::Throw__Error 
+      (E_FAIL,
+       ibp_mce_isc__bug_check__incorrect_varchar_data_length_1,
+       varchar_len);
      }//if
 
      offset+=sizeof(isc_api::isc_varchar_size_type);
@@ -491,26 +486,21 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
      //ERROR - [BUG CHECK] unexpected typeID
      assert_msg(false,"typeID"<<int(typeID));
 
-     t_ibp_error exc(E_FAIL,
-                     ibp_mce_isc__unk_blr_data_type_1);
-
-     exc<<typeID;
-
-     exc.raise_me();
+     IBP_ErrorUtils::Throw__Error
+      (E_FAIL,
+       ibp_mce_isc__unk_blr_data_type_1,
+       typeID);
     }//default
    }//switch
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_remote__encode_packet__xdr__error_in_element_of_msg_data_buffer_1);
-
-   exc<<iElement;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_remote__encode_packet__xdr__error_in_element_of_msg_data_buffer_1,
+     iElement);
   }//catch
  }//for[ever]
 
@@ -566,16 +556,14 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__array_slice
  {
   //ERROR - Несогласованные размеры буфера и элемента массива
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__bug_check__inconsistent_sizes_of_slice_and_element_5);
-
-  exc<<c_bugcheck_src
-     <<L"#002"
-     <<slice_size
-     <<ArrSliceDescr.m_element_total_length
-     <<ArrSliceDescr.m_element_blr_typeid;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_isc__bug_check__inconsistent_sizes_of_slice_and_element_5,
+    c_bugcheck_src,
+    L"#002",
+    slice_size,
+    ArrSliceDescr.m_element_total_length,
+    ArrSliceDescr.m_element_blr_typeid);
  }//if
 
  //const size_t nElements=slice_size/ArrSliceDescr.m_element_total_length;
@@ -722,14 +710,12 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__array_slice
    {
     //ERROR - unknown blr data type
 
-    t_ibp_error exc(E_FAIL,
-                    ibp_mce_isc__bug_check__unknown_blr_data_type_3);
-
-    exc<<c_bugcheck_src
-       <<L"#003"
-       <<ArrSliceDescr.m_element_blr_typeid;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_isc__bug_check__unknown_blr_data_type_3,
+      c_bugcheck_src,
+      L"#003",
+      ArrSliceDescr.m_element_blr_typeid);
    }//default
   }//switch ArrSliceDescr.m_element_blr_typeid
  }//for pElement

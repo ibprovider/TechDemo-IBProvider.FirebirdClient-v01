@@ -9,7 +9,6 @@
 
 #include "source/db_client/remote_fb/ports/streams/compressor/zlib1/remote_fb__ports__streams__compressor_zlib1.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
-#include "source/ibp_numeric_cast.h"
 
 #include <structure/t_pointer_cast.h>
 
@@ -266,7 +265,7 @@ void RemoteFB__PortStream__Compressor_ZLib1::Write
  CHECK_READ_PTR(pv,cb);
 
  //------------------------------------------
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"RemoteFB__PortStream__Compressor_ZLib1::Write";
 
  //------------------------------------------
@@ -411,7 +410,7 @@ void RemoteFB__PortStream__Compressor_ZLib1::Write
 //------------------------------------------------------------------------
 void RemoteFB__PortStream__Compressor_ZLib1::FlushWriteBuf()
 {
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"RemoteFB__PortStream__Compressor_ZLib1::FlushWriteBuf";
 
  //------------------------------------------
@@ -521,7 +520,7 @@ size_t RemoteFB__PortStream__Compressor_ZLib1::Read2(size_t const cb,
  assert(cb>0);
 
  //------------------------------------------
- const wchar_t c_bugcheck_src[]
+ const wchar_t* const c_bugcheck_src
   =L"RemoteFB__PortStream__Compressor_ZLib1::Read2";
 
  //------------------------------------------

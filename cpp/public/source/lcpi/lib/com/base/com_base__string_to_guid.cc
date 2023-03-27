@@ -39,7 +39,9 @@ bool string_to_guid(structure::t_basic_const_str_box<charT> str,GUID* const pGUI
   return false;
 
  const charT* const beg=str.data();
+#ifndef NDEBUG
  const charT* const end=beg+str.size();
+#endif
 
  LCPI__assert((end-beg)==c_GUID_STR_SIZE);
 

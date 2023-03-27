@@ -27,13 +27,13 @@ class WORK_Array_Write_Test_010__boolean::tag_impl
   typedef TTSO_Test::context_type           context_type;
 
  private:
-  typedef isc_api::t_ibp_fb30_bool          element_type;
+  typedef isc_api::t_ibp_fb030_bool         element_type;
 
   static const isc_api::XSQLVAR_V1::sqltype_type
-   c_element_sqltypeid=isc_api::ibp_fb30_sql_boolean;
+   c_element_sqltypeid=isc_api::ibp_fb030_sql_boolean;
 
   static const short
-   c_element_blrtypeid=isc_api::ibp_fb30_blr_dtype__bool;
+   c_element_blrtypeid=isc_api::ibp_fb030_blr_dtype__bool;
 
  public:
   static void test_001
@@ -148,7 +148,12 @@ void WORK_Array_Write_Test_010__boolean::tag_impl::test_001
  writer_funcs::stuff_byte_s(buf,isc_api::ibp_isc_sdl_eoc);
 
  //----------------------------------------- Build Array Slice Data
- const element_type arrayData[3]={isc_api::ibp_fb30_true,isc_api::ibp_fb30_false,isc_api::ibp_fb30_true};
+ const element_type arrayData[3]=
+  {
+   isc_api::ibp_fb030_true,
+   isc_api::ibp_fb030_false,
+   isc_api::ibp_fb030_true
+  };
 
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
@@ -411,16 +416,16 @@ void WORK_Array_Write_Test_010__boolean::tag_impl::test_002__dim2l
  structure::t_typed_simple_buffer<element_type,TTSO_MemoryAllocator>
   arrayData(nTotalCount);
 
- const isc_api::t_ibp_fb30_bool srcValues[]=
+ const isc_api::t_ibp_fb030_bool srcValues[]=
  {
-  isc_api::ibp_fb30_true,
-  isc_api::ibp_fb30_true,
-  isc_api::ibp_fb30_false,
-  isc_api::ibp_fb30_true,
-  isc_api::ibp_fb30_false,
-  isc_api::ibp_fb30_false,
-  isc_api::ibp_fb30_true,
-  isc_api::ibp_fb30_false,
+  isc_api::ibp_fb030_true,
+  isc_api::ibp_fb030_true,
+  isc_api::ibp_fb030_false,
+  isc_api::ibp_fb030_true,
+  isc_api::ibp_fb030_false,
+  isc_api::ibp_fb030_false,
+  isc_api::ibp_fb030_true,
+  isc_api::ibp_fb030_false,
  };//srcValues
 
  for(size_t i=0;i!=nTotalCount;++i)

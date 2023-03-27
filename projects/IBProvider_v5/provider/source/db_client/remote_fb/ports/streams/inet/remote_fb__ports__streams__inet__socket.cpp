@@ -435,13 +435,11 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
 
  //ERROR - can't connect to server
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_winsock__cant_detect_addr_of_host_1,
-                 IBP_CreateCustomErrorFor_CnFailed());
-
- exc<<host;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  (E_FAIL,
+   ibp_mce_winsock__cant_detect_addr_of_host_1,
+   IBP_CreateCustomErrorFor_CnFailed(),
+   host);
 
 #if(COMP_BUILD_UNUSED_CODE!=0)
  return nullptr;
@@ -492,15 +490,6 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::CloneConnection()const
 
  //Append the SQLSTATE code
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_winsock__failed_to_connect_to_srv_7,
-                 IBP_CreateCustomErrorFor_CnFailed());
-
- exc<<winsockError
-    <<m_wstrHost
-    <<m_wstrPort;
-
- //----------
  std::string strAddr;
 
  if(m_spProvider->address_to_string
@@ -510,20 +499,23 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::CloneConnection()const
  {
   //[2016-04-18] ѕо идее, сформированна€ строка с адресом не может быть пустой
   assert(!strAddr.empty());
-
-  exc<<strAddr;
  }
  else
  {
-  exc<<"???";
+  strAddr="???";
  }//else
 
- //----------
- exc<<m_SocketFamily
-    <<m_SocketType
-    <<m_SocketProtocol;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  (E_FAIL,
+   ibp_mce_winsock__failed_to_connect_to_srv_7,
+   IBP_CreateCustomErrorFor_CnFailed(),
+   winsockError,
+   m_wstrHost,
+   m_wstrPort,
+   strAddr,
+   m_SocketFamily,
+   m_SocketType,
+   m_SocketProtocol);
 }//CloneConnection
 
 //port stream interface --------------------------------------------------
@@ -711,13 +703,11 @@ void RemoteFB__INET_Socket::Helper__Socket_Send(size_t      cb,
    //!  Process interupt error?
 
    //ERROR - failed to write in INET port
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_winsock__failed_to_write_to_port_1,
-                   IBP_CreateCustomErrorFor_CnFailed());
-
-   exc<<winsockErr;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+    (E_FAIL,
+     ibp_mce_winsock__failed_to_write_to_port_1,
+     IBP_CreateCustomErrorFor_CnFailed(),
+     winsockErr);
   }//if
 
   if(n<0)
@@ -726,14 +716,12 @@ void RemoteFB__INET_Socket::Helper__Socket_Send(size_t      cb,
 
    const int winsockErr=m_spProvider->m_WSAGetLastError.point()();
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_winsock__bug_check__unexpected_result_code_from_send_operation_2,
-                   IBP_CreateCustomErrorFor_CnFailed());
-
-   exc<<n
-      <<winsockErr;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+    (E_FAIL,
+     ibp_mce_winsock__bug_check__unexpected_result_code_from_send_operation_2,
+     IBP_CreateCustomErrorFor_CnFailed(),
+     n,
+     winsockErr);
   }//if
 
   if(n==0)
@@ -744,7 +732,7 @@ void RemoteFB__INET_Socket::Helper__Socket_Send(size_t      cb,
    {
     //ERROR - [BUG CHECK] обнаружено зацикливание операции отсылки данных
 
-    IBP_ThrowSimpleError
+    IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
      (E_FAIL,
       ibp_mce_winsock__bug_check__detected_loop_of_send_0,
       IBP_CreateCustomErrorFor_CnFailed());
@@ -759,13 +747,12 @@ void RemoteFB__INET_Socket::Helper__Socket_Send(size_t      cb,
   {
    //ERROR - [BUG CHECK] send записала больше чем ожидалось
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_winsock__bug_check__send_write_more_than_expected_2,
-                   IBP_CreateCustomErrorFor_CnFailed());
-
-   exc<<n<<cb;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+    (E_FAIL,
+     ibp_mce_winsock__bug_check__send_write_more_than_expected_2,
+     IBP_CreateCustomErrorFor_CnFailed(),
+     n,
+     cb);
   }//if
 
   //сбрасываем счетчик пустых операций
@@ -810,13 +797,11 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
   //!  Process interupt error?
 
   // ERROR - failed to read from INET port
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__failed_to_read_from_port_1,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<winsockErr;
-
-  exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__failed_to_read_from_port_1,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    winsockErr);
  }//if n==SOCKET_ERROR
 
  if(n==0)
@@ -825,13 +810,11 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
 
   // ERROR - [BUG CHECK] read from closed socket?
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__bug_check__read_from_closed_port_1,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<winsockErr;
-
-  exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__bug_check__read_from_closed_port_1,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    winsockErr);
  }//if
 
  if(n<0)
@@ -840,26 +823,24 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
 
   const int winsockErr=m_spProvider->m_WSAGetLastError.point()();
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__bug_check__unexpected_result_code_from_recv_operation_2,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<n<<winsockErr;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__bug_check__unexpected_result_code_from_recv_operation_2,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    n,
+    winsockErr);
  }//if n<0
 
  if(n>icb)
  {
   // ERROR - [BUG CHECK] read incorrect number of bytes
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__bug_check__recv_read_more_than_expected_2,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<n<<icb;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__bug_check__recv_read_more_than_expected_2,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    n,
+    icb);
  }//if
 
  return static_cast<size_t>(n);
@@ -888,16 +869,14 @@ void RemoteFB__INET_Socket::Helper__Socket_Init(int const socket__family,
 
   assert(wsaError!=0);
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__failed_to_init_the_socket_4,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<wsaError
-     <<socket__family
-     <<socket__type
-     <<socket__protocol;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__failed_to_init_the_socket_4,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    wsaError,
+    socket__family,
+    socket__type,
+    socket__protocol);
  }//if ошибка инициализации
 
  assert(m_hSocket!=winsock::API::WinSock__INVALID_SOCKET);
@@ -946,13 +925,11 @@ void RemoteFB__INET_Socket::Helper__Socket_Close()
 
   assert(wsaError!=0);
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__failed_to_close_the_socket_1,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<wsaError;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__failed_to_close_the_socket_1,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    wsaError);
  }//if
 
  m_hSocket=winsock::API::WinSock__INVALID_SOCKET;

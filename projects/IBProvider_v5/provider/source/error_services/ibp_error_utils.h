@@ -11,7 +11,7 @@
 # pragma once
 #endif
 
-#include "source/error_services/ibp_error_codes.h"
+#include "source/error_services/ibp_error.h"
 #include "source/error_services/ibp_get_custom_error_object.h"
 
 #include "source/ibp_subsystem_ids.h"
@@ -339,6 +339,22 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
+template<class T>
+COMP_CONF_DECLSPEC_NORETURN
+ void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+       (const wchar_t* sqlTypeSign,
+        T              sqllen);
+
+//------------------------------------------
+template<class T>
+COMP_CONF_DECLSPEC_NORETURN
+ void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
+       (t_ibp_subsystem_id subsystem_id,
+        const wchar_t*     sqlTypeSign,
+        T                  sqllen);
+
+////////////////////////////////////////////////////////////////////////////////
+
 COMP_CONF_DECLSPEC_NORETURN
  void IBP_ThrowErr_FormedParamBufIsTooLarge
        (t_ibp_subsystem_id           subsystemID,
@@ -428,9 +444,26 @@ class IBP_ErrorUtils COMP_W000006_CLASS_FINAL
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__Error
+               (const std::exception& e,
+                HRESULT               hr,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__Error
                (HRESULT            hr,
                 ibp_msg_code_type  msg_code,
                 Args&&...          args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__Error
+               (const std::exception& e,
+                HRESULT               hr,
+                t_ibp_subsystem_id    subsystem_id,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
 
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
@@ -440,9 +473,53 @@ class IBP_ErrorUtils COMP_W000006_CLASS_FINAL
                 ibp_msg_code_type  msg_code,
                 Args&&...          args);
 
+ private:
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__Error
+               (HRESULT                         hr,
+                ibp_msg_code_type               msg_code,
+                t_ibp_error::get_cerr_obj_type* pGetCErr,
+                Args&&...                       args)=delete;
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__Error
+               (HRESULT                         hr,
+                t_ibp_subsystem_id              subsystem_id,
+                ibp_msg_code_type               msg_code,
+                t_ibp_error::get_cerr_obj_type* pGetCErr,
+                Args&&...                       args)=delete;
+
+ public:
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__ErrorWithCustomErrorObject
+               (HRESULT                         hr,
+                ibp_msg_code_type               msg_code,
+                t_ibp_error::get_cerr_obj_type* pGetCErr,
+                Args&&...                       args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__ErrorWithCustomErrorObject
+               (HRESULT                         hr,
+                t_ibp_subsystem_id              subsystem_id,
+                ibp_msg_code_type               msg_code,
+                t_ibp_error::get_cerr_obj_type* pGetCErr,
+                Args&&...                       args);
+
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__BugCheck__DEBUG
+               (const wchar_t*  place,
+                const wchar_t*  point,
+                const wchar_t*  reason_template,
+                Args&&...       args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__BugCheck
                (const wchar_t*  place,
                 const wchar_t*  point,
                 const wchar_t*  reason_template,

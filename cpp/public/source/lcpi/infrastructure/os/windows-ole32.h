@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-//LCPI C++ Infrastructure. OS API. Windows OLE Automation
+//LCPI C++ Infrastructure. OS API. Windows OLE
 //                                                 Kovalenko Dmitry. 06.09.2022.
 #ifndef _lcpi_infrastructure_os__windows_ole32_H_
 #define _lcpi_infrastructure_os__windows_ole32_H_
