@@ -203,9 +203,9 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::exec
  (*pStmtHandle)->m_PFlags.set(stmt_data_type::PFLAG__PREPARED);
 
  //-----------------------------------------
- assert(!(*pStmtHandle)->m_StmtTypeID.null());
+ assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
- (*pStmtTypeID)=(*pStmtHandle)->m_StmtTypeID.value();
+ (*pStmtTypeID)=(*pStmtHandle)->m_PData__StmtTypeID.value();
 }//exec
 
 //helper methods ---------------------------------------------------------
@@ -302,7 +302,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__prepare
      packet.p_resp.p_resp__data.cstr_length,
      packet.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
 
    break;
   }//if - protocol::op_response
@@ -433,12 +433,13 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
     assert(PortStateGuardIsActive);
 
     //-----
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-         (pData,
-          c_OperationID1,
-          packet1.p_resp,
-          E_FAIL))
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     {
      t_ibp_error exc(spErrRec);
 
@@ -512,7 +513,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
      packet2.p_resp.p_resp__data.cstr_length,
      packet2.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
   }//if - protocol::op_response
   else
   {
@@ -648,11 +649,12 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
   {
    //Проверям ошибку
    const t_ibp_error_element::self_ptr
-    spErrRec(pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-               (pData,
-                c_OperationID1__close,
-                packet1__close.p_resp,
-                E_FAIL)); //throw
+    spErrRec
+     (pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID1__close,
+        packet1__close.p_resp,
+        E_FAIL)); //throw
 
    if(spErrRec)
    {
@@ -701,11 +703,12 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
 
    //Проверям ошибку
    const t_ibp_error_element::self_ptr
-    spErrRec(pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-               (pData,
-                c_OperationID2__prepare,
-                packet2__prepare.p_resp,
-                E_FAIL)); //throw
+    spErrRec
+     (pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID2__prepare,
+        packet2__prepare.p_resp,
+        E_FAIL)); //throw
 
    if(spErrRec)
    {
@@ -766,7 +769,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
      packet2__prepare.p_resp.p_resp__data.cstr_length,
      packet2__prepare.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
   }
   else
   {

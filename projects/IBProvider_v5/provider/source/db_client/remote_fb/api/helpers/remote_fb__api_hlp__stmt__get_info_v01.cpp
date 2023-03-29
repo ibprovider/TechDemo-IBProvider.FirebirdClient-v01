@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup db_client__remote_fb__api_p13
+//! \ingroup db_client__remote_fb__api_hlp
 //! \file    remote_fb__api_hlp__stmt__get_info_v01.cpp
-//! \brief   Получение сведений о запросе.
+//! \brief   The base implementation for getting statement information (v01).
 //! \author  Kovalenko Dmitry
 //! \date    19.09.2016
 #include <_pch_.h>
@@ -32,9 +32,9 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 //! \addtogroup db_client__remote_fb__api_hlp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//struct RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
+//struct RemoteFB__API_HLP__GetStatementInfo_v01::tagTestQTagResult
 
-struct RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
+struct RemoteFB__API_HLP__GetStatementInfo_v01::tagTestQTagResult
 {
  public:
   /// <summary>
@@ -60,12 +60,12 @@ struct RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
 };//class tagTestQTagResult
 
 ////////////////////////////////////////////////////////////////////////////////
-//RemoteFB__API_HLP__GetStatementInfo::tagQItemPtrData
+//RemoteFB__API_HLP__GetStatementInfo_v01::tagQItemPtrData
 
 /// <summary>
 ///  The definition of item which value will be loaded from server.
 /// </summary>
-struct RemoteFB__API_HLP__GetStatementInfo::tagQItemPtrData
+struct RemoteFB__API_HLP__GetStatementInfo_v01::tagQItemPtrData
 {
  public:
   //! The pointer on the item from original query.
@@ -85,9 +85,9 @@ struct RemoteFB__API_HLP__GetStatementInfo::tagQItemPtrData
 };//struct tagQItemPtrData
 
 ////////////////////////////////////////////////////////////////////////////////
-//struct RemoteFB__API_HLP__GetStatementInfo::tagCopyQValueResult
+//struct RemoteFB__API_HLP__GetStatementInfo_v01::tagCopyQValueResult
 
-struct RemoteFB__API_HLP__GetStatementInfo::tagCopyQValueResult
+struct RemoteFB__API_HLP__GetStatementInfo_v01::tagCopyQValueResult
 {
  public:
   bool                 data_is_truncated;
@@ -103,19 +103,19 @@ struct RemoteFB__API_HLP__GetStatementInfo::tagCopyQValueResult
 };//struct tagCopyQValueResult
 
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__API_HLP__GetStatementInfo
+//class RemoteFB__API_HLP__GetStatementInfo_v01
 
-RemoteFB__API_HLP__GetStatementInfo::RemoteFB__API_HLP__GetStatementInfo()
+RemoteFB__API_HLP__GetStatementInfo_v01::RemoteFB__API_HLP__GetStatementInfo_v01()
 {
 }
 
 //------------------------------------------------------------------------
-RemoteFB__API_HLP__GetStatementInfo::~RemoteFB__API_HLP__GetStatementInfo()
+RemoteFB__API_HLP__GetStatementInfo_v01::~RemoteFB__API_HLP__GetStatementInfo_v01()
 {
 }
 
 //interface --------------------------------------------------------------
-void RemoteFB__API_HLP__GetStatementInfo::exec
+void RemoteFB__API_HLP__GetStatementInfo_v01::exec
                                            (db_obj::t_db_operation_context& OpCtx,
                                             RemoteFB__ConnectorData*  const pData,
                                             stmt_handle_type*         const pStmtHandle,
@@ -132,7 +132,7 @@ void RemoteFB__API_HLP__GetStatementInfo::exec
 
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_HLP__GetStatementInfo::exec";
+  =L"RemoteFB__API_HLP__GetStatementInfo_v01::exec";
 
  //-----------------------------------------
  ResultBuffer.alloc(0);
@@ -330,8 +330,8 @@ void RemoteFB__API_HLP__GetStatementInfo::exec
 }//exec
 
 //helper methods ---------------------------------------------------------
-RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
- RemoteFB__API_HLP__GetStatementInfo::helper__test_qtag
+RemoteFB__API_HLP__GetStatementInfo_v01::tagTestQTagResult
+ RemoteFB__API_HLP__GetStatementInfo_v01::helper__test_qtag
                (stmt_handle_type*    const pStmtHandle,
                 const unsigned char*       pItem,
                 const unsigned char* const eItem)
@@ -344,7 +344,7 @@ RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
  if((*pItem)==isc_api::ibp_isc_info_sql_stmt_type)
  {
   // this data must be already loaded during a prepare stage
-  assert(!(*pStmtHandle)->m_StmtTypeID.null());
+  assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
   return tagTestQTagResult(tagTestQTagResultFlag::already_loaded,1);
  }//if
@@ -353,7 +353,7 @@ RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
  if((*pItem)==isc_api::ibp_isc_info_sql_batch_fetch)
  {
   // this data must be already loaded during a prepare stage
-  assert(!(*pStmtHandle)->m_BatchFetch.null());
+  assert(!(*pStmtHandle)->m_PData__BatchFetch.null());
 
   return tagTestQTagResult(tagTestQTagResultFlag::already_loaded,1);
  }//if
@@ -381,8 +381,8 @@ RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
 }//helper__test_qtag
 
 //------------------------------------------------------------------------
-RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
- RemoteFB__API_HLP__GetStatementInfo::helper__test_qtag__select
+RemoteFB__API_HLP__GetStatementInfo_v01::tagTestQTagResult
+ RemoteFB__API_HLP__GetStatementInfo_v01::helper__test_qtag__select
                (stmt_handle_type*    const pStmtHandle,
                 const unsigned char* const pItem,
                 const unsigned char* const eItem)
@@ -408,19 +408,19 @@ RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
  if(!(*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__CACHE_COLS_INFO))
   return tagTestQTagResult(tagTestQTagResultFlag::need_to_load,sz);
 
- assert(!(*pStmtHandle)->m_ColumnsData.empty());
+ assert(!(*pStmtHandle)->m_PData__ColumnsData.empty());
 
- if((*pStmtHandle)->m_ColumnsData.back()==isc_api::ibp_isc_info_truncated)
+ if((*pStmtHandle)->m_PData__ColumnsData.back()==isc_api::ibp_isc_info_truncated)
   return tagTestQTagResult(tagTestQTagResultFlag::already_loaded_truncated,sz);
 
- assert((*pStmtHandle)->m_ColumnsData.back()==isc_api::ibp_isc_info_end);
+ assert((*pStmtHandle)->m_PData__ColumnsData.back()==isc_api::ibp_isc_info_end);
 
  return tagTestQTagResult(tagTestQTagResultFlag::already_loaded,sz);
 }//helper__test_qtag__select
 
 //------------------------------------------------------------------------
-RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
- RemoteFB__API_HLP__GetStatementInfo::helper__test_qtag__bind
+RemoteFB__API_HLP__GetStatementInfo_v01::tagTestQTagResult
+ RemoteFB__API_HLP__GetStatementInfo_v01::helper__test_qtag__bind
                (stmt_handle_type*    const pStmtHandle,
                 const unsigned char* const pItem,
                 const unsigned char* const eItem)
@@ -446,25 +446,25 @@ RemoteFB__API_HLP__GetStatementInfo::tagTestQTagResult
  if(!(*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__CACHE_PARAMS_INFO))
   return tagTestQTagResult(tagTestQTagResultFlag::need_to_load,sz);
 
- assert(!(*pStmtHandle)->m_ParametersData.empty());
+ assert(!(*pStmtHandle)->m_PData__ParametersData.empty());
 
- if((*pStmtHandle)->m_ParametersData.back()==isc_api::ibp_isc_info_truncated)
+ if((*pStmtHandle)->m_PData__ParametersData.back()==isc_api::ibp_isc_info_truncated)
   return tagTestQTagResult(tagTestQTagResultFlag::already_loaded_truncated,sz);
 
- assert((*pStmtHandle)->m_ParametersData.back()==isc_api::ibp_isc_info_end);
+ assert((*pStmtHandle)->m_PData__ParametersData.back()==isc_api::ibp_isc_info_end);
 
  return tagTestQTagResult(tagTestQTagResultFlag::already_loaded,sz);
 }//helper__test_qtag__bind
 
 //------------------------------------------------------------------------
-const unsigned char RemoteFB__API_HLP__GetStatementInfo::sm_expected_qvars[]=
+const unsigned char RemoteFB__API_HLP__GetStatementInfo_v01::sm_expected_qvars[]=
 {
  IBP_ISC_API_HLP__XSQLDA_SET01__XVAR_INFO_IDS__C11
 };//sm_expected_qvars
 
 //------------------------------------------------------------------------
 std::pair<bool,const unsigned char*>
- RemoteFB__API_HLP__GetStatementInfo::helper__test_qvars
+ RemoteFB__API_HLP__GetStatementInfo_v01::helper__test_qvars
                (const unsigned char*       pItem,
                 const unsigned char* const eItem)
 {
@@ -484,7 +484,7 @@ std::pair<bool,const unsigned char*>
 }//helper__test_qvars
 
 //------------------------------------------------------------------------
-void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
+void RemoteFB__API_HLP__GetStatementInfo_v01::helper__rebuild_ResultBuffer
                              (stmt_handle_type*      const pStmtHandle,
                               size_t                 const cItems,
                               const unsigned char*   const pItems,
@@ -501,7 +501,7 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
 
  //---------------------------------------------------
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer";
+  =L"RemoteFB__API_HLP__GetStatementInfo_v01::helper__rebuild_ResultBuffer";
 
  isc_base::t_isc_info_buffer_v1_builder resultBuilder;
 
@@ -575,11 +575,11 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
   //------------------------------------------------------- gets from cache
   if((*pItem)==isc_api::ibp_isc_info_sql_stmt_type)
   {
-   assert(!(*pStmtHandle)->m_StmtTypeID.null());
+   assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
    resultBuilder.append__Int
     (isc_api::ibp_isc_info_sql_stmt_type,
-     (*pStmtHandle)->m_StmtTypeID.value());
+     (*pStmtHandle)->m_PData__StmtTypeID.value());
 
    ++pItem;
 
@@ -589,11 +589,11 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
   //-----------------------------------------------------------------
   if((*pItem)==isc_api::ibp_isc_info_sql_batch_fetch)
   {
-   assert(!(*pStmtHandle)->m_BatchFetch.null());
+   assert(!(*pStmtHandle)->m_PData__BatchFetch.null());
 
    resultBuilder.append__Int
     (isc_api::ibp_isc_info_sql_batch_fetch,
-     (*pStmtHandle)->m_BatchFetch.value()?1L:0L);
+     (*pStmtHandle)->m_PData__BatchFetch.value()?1L:0L);
 
    ++pItem;
 
@@ -605,14 +605,14 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
   {
    assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__CACHE_COLS_INFO));
 
-   assert(!(*pStmtHandle)->m_ColumnsData.empty());
+   assert(!(*pStmtHandle)->m_PData__ColumnsData.empty());
 
    resultBuilder.buffer().push_back(isc_api::ibp_isc_info_sql_select);
 
-   resultBuilder.buffer().write((*pStmtHandle)->m_ColumnsData.data(),(*pStmtHandle)->m_ColumnsData.size()-1);
+   resultBuilder.buffer().write((*pStmtHandle)->m_PData__ColumnsData.data(),(*pStmtHandle)->m_PData__ColumnsData.size()-1);
 
    const auto lastSrcElement
-    =(*pStmtHandle)->m_ColumnsData.back();
+    =(*pStmtHandle)->m_PData__ColumnsData.back();
 
    if(lastSrcElement==isc_api::ibp_isc_info_end)
    {
@@ -644,14 +644,14 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
   {
    assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__CACHE_PARAMS_INFO));
 
-   assert(!(*pStmtHandle)->m_ParametersData.empty());
+   assert(!(*pStmtHandle)->m_PData__ParametersData.empty());
 
    resultBuilder.buffer().push_back(isc_api::ibp_isc_info_sql_bind);
 
-   resultBuilder.buffer().write((*pStmtHandle)->m_ParametersData.data(),(*pStmtHandle)->m_ParametersData.size()-1);
+   resultBuilder.buffer().write((*pStmtHandle)->m_PData__ParametersData.data(),(*pStmtHandle)->m_PData__ParametersData.size()-1);
 
    const auto lastSrcElement
-    =(*pStmtHandle)->m_ParametersData.back();
+    =(*pStmtHandle)->m_PData__ParametersData.back();
 
    if(lastSrcElement==isc_api::ibp_isc_info_end)
    {
@@ -702,15 +702,15 @@ void RemoteFB__API_HLP__GetStatementInfo::helper__rebuild_ResultBuffer
 }//helper__rebuild_ResultBuffer
 
 //------------------------------------------------------------------------
-RemoteFB__API_HLP__GetStatementInfo::tagCopyQValueResult
- RemoteFB__API_HLP__GetStatementInfo::helper__copy_qvalue
+RemoteFB__API_HLP__GetStatementInfo_v01::tagCopyQValueResult
+ RemoteFB__API_HLP__GetStatementInfo_v01::helper__copy_qvalue
   (unsigned char                     const itemTag,
    const unsigned char*              const pRBuf,
    const unsigned char*              const eRBuf,
    isc_base::t_isc_info_buffer_v1_builder& resultBuilder)
 {
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_HLP__GetStatementInfo::helper__copy_qvalue";
+  =L"RemoteFB__API_HLP__GetStatementInfo_v01::helper__copy_qvalue";
 
  if(pRBuf==eRBuf)
  {

@@ -31,13 +31,15 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_sql_response__a
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -111,13 +113,15 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_fetch_response__a
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmt(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmt
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmt);
  assert(spStmt->m_spFetchResult);
@@ -234,20 +238,23 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_slice__a
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  //-----------------------------------------
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 
  //-----------------------------------------
  const RemoteFB__OpSvc__GetArraySliceDescrPtr
-  spGetDescr(RemoteFB__GetService<RemoteFB__OpSvc__GetArraySliceDescr>(op_ctx));
+  spGetDescr
+   (RemoteFB__GetService<RemoteFB__OpSvc__GetArraySliceDescr>(op_ctx));
 
  assert(spGetDescr);
 

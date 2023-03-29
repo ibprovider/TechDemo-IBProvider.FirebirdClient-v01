@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ///  Получение сведений о запросе.
 /// </summary>
 class RemoteFB__API_P12__GetStatementInfo LCPI_CPP_CFG__CLASS__FINAL
-:public helpers::RemoteFB__API_HLP__GetStatementInfo
+:public helpers::RemoteFB__API_HLP__GetStatementInfo_v01
 {
  private:
   typedef RemoteFB__API_P12__GetStatementInfo            self_type;

@@ -121,7 +121,7 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
      (skip_result.data_beg,
       skip_result.data_end,
       skip_result.data_is_truncated,
-      pStmt->m_ColumnsData);
+      pStmt->m_PData__ColumnsData);
 
     pStmt->m_PFlags.set(stmt_data_type::PFLAG__CACHE_COLS_INFO);
    }//if
@@ -152,7 +152,7 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
      (skip_result.data_beg,
       skip_result.data_end,
       skip_result.data_is_truncated,
-      pStmt->m_ParametersData);
+      pStmt->m_PData__ParametersData);
 
     pStmt->m_PFlags.set(stmt_data_type::PFLAG__CACHE_PARAMS_INFO);
    }//if
@@ -210,12 +210,12 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
     {
      case isc_api::ibp_isc_info_sql_stmt_type:
      {
-      assert(pStmt->m_StmtTypeID.null());
+      assert(pStmt->m_PData__StmtTypeID.null());
 
       isc_base::isc_portable_format_to_integer::exec
        (cluster_length,
         cluster_data,
-        &pStmt->m_StmtTypeID,
+        &pStmt->m_PData__StmtTypeID,
         ibp_subsystem__remote_fb,
         L"isc_info_sql_stmt_type");
 
@@ -224,7 +224,7 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
 
      case isc_api::ibp_isc_info_sql_batch_fetch:
      {
-      assert(pStmt->m_BatchFetch.null());
+      assert(pStmt->m_PData__BatchFetch.null());
 
       long v=0;
 
@@ -235,7 +235,7 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
         ibp_subsystem__remote_fb,
         L"isc_info_sql_batch_fetch");
 
-       pStmt->m_BatchFetch=(v!=0);
+       pStmt->m_PData__BatchFetch=(v!=0);
        break;
      }//case ibp_isc_info_sql_batch_fetch
 
@@ -279,12 +279,12 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
  }//for p
 
  //проверка загрузки обязательных сведений о запросе ---------------------
- if(pStmt->m_StmtTypeID.null())
+ if(pStmt->m_PData__StmtTypeID.null())
  {
   Helper__ThrowError__GetStmtInfo__NoData(L"isc_info_sql_stmt_type");
  }//if
 
- if(pStmt->m_BatchFetch.null())
+ if(pStmt->m_PData__BatchFetch.null())
  {
   Helper__ThrowError__GetStmtInfo__NoData(L"isc_info_sql_batch_fetch");
  }//if

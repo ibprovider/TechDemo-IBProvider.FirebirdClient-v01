@@ -194,13 +194,13 @@ void RemoteFB__HandleData_Statement::ResetPrepareState()
  //-----------------------------------------
  m_PFlags.reset();
 
- m_StmtTypeID.reset();
+ m_PData__StmtTypeID.reset();
 
- m_BatchFetch.reset();
+ m_PData__BatchFetch.reset();
 
- m_ColumnsData.free();
+ m_PData__ColumnsData.free();
 
- m_ParametersData.free();
+ m_PData__ParametersData.free();
 
  //----------
  m_EFlags.reset();

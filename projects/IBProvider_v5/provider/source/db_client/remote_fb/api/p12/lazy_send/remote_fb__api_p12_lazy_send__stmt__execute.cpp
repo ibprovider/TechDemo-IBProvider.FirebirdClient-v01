@@ -399,7 +399,7 @@ protocol::P_USHORT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execut
   //нужно отправить команду на закрытие курсора.
 
   //[2015-11-15] Раскомментировать следующий ассерт!
-  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_StmtTypeID.value_or_default(structure::negative_one));
+  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(structure::negative_one));
 
   send_op1_close=true;
  }//if
@@ -511,11 +511,12 @@ protocol::P_USHORT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execut
     assert((*pStmtHandle)->m_pClosingTr);
 
     if(const t_ibp_error_element::self_ptr
-       spErrRec=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-        (pData,
-         c_OperationID1,
-         packet1.p_resp,
-         E_FAIL))
+        spErrRec
+         =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     { 
      // [2015-11-15] Я не знаю как протестировать данную ошибку.
 
@@ -558,11 +559,12 @@ protocol::P_USHORT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execut
   if(packet2.operation==protocol::set01::op_response)
   {
    if(const t_ibp_error_element::self_ptr
-      spErrRec=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-       (pData,
-        c_OperationID2,
-        packet2.p_resp,
-        E_FAIL))
+       spErrRec
+        =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+          (pData,
+           c_OperationID2,
+           packet2.p_resp,
+           E_FAIL))
    {
     Errors.add_error(spErrRec);
 
@@ -653,7 +655,7 @@ protocol::P_OBJCT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execute
 
   //[2015-11-15] Раскомментировать следующий ассерт!
   //[2016-10-08] Аминь
-  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_StmtTypeID.value_or_default(structure::negative_one));
+  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(structure::negative_one));
 
   //! \todo
   //!  [2016-10-10] Предлагаю выкидывать BUG-CHECK ошибку
@@ -840,11 +842,12 @@ protocol::P_OBJCT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execute
     assert((*pStmtHandle)->m_pClosingTr);
 
     if(const t_ibp_error_element::self_ptr
-       spErrRec=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-        (pData,
-         c_OperationID1,
-         packet1.p_resp,
-         E_FAIL))
+        spErrRec
+         =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     {
      // [2015-11-15] Я не знаю как протестировать данную ошибку.
 
@@ -908,12 +911,13 @@ protocol::P_OBJCT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execute
    else//Ожидается ошибка выполнения запроса
    if(packet2.operation==protocol::set01::op_response)
    {
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-          (pData,
-           c_OperationID2,
-           packet2.p_resp,
-           E_FAIL)) //throw
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID2,
+            packet2.p_resp,
+            E_FAIL)) //throw
     {
      //будем считать, что состояние порта стаблизировалось. все пакеты с ответом получены.
      PortStateGuardIsActive=false;
@@ -966,12 +970,13 @@ protocol::P_OBJCT RemoteFB__API_P12_LAZY_SEND__ExecuteStatement::helper__execute
 
    if(packet3.operation==protocol::set01::op_response)
    {
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-          (pData,
-           c_OperationID2,
-           packet3.p_resp,
-           E_FAIL)) //throw
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID2,
+            packet3.p_resp,
+            E_FAIL)) //throw
     {
      Errors.add_error(spErrRec);
 

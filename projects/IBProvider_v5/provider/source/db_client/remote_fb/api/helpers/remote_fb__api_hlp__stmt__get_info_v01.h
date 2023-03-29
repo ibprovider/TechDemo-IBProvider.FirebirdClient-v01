@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api_hlp
 //! \file    remote_fb__api_hlp__stmt__get_info_v01.h
-//! \brief   The base implementation for getting statement information (V01).
+//! \brief   The base implementation for getting statement information (v01).
 //! \author  Kovalenko Dmitry
 //! \date    25.03.2023
 #ifndef _remote_fb__api_hlp__stmt__get_info_v01_H_
@@ -15,28 +15,28 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 //! \addtogroup db_client__remote_fb__api_hlp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__API_HLP__GetStatementInfo
+//class RemoteFB__API_HLP__GetStatementInfo_v01
 
 /// <summary>
-///  The base implementation for getting statement information (V01).
+///  The base implementation for getting statement information (v01).
 /// </summary>
 ///  It provides a support for using an already loaded statement information.
-class RemoteFB__API_HLP__GetStatementInfo
+class RemoteFB__API_HLP__GetStatementInfo_v01
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__GetStatementInfo)
 {
  private:
-  typedef RemoteFB__API_HLP__GetStatementInfo            self_type;
+  typedef RemoteFB__API_HLP__GetStatementInfo_v01        self_type;
 
-  RemoteFB__API_HLP__GetStatementInfo(const self_type&);
+  RemoteFB__API_HLP__GetStatementInfo_v01(const self_type&);
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
   typedef stmt_handle_type::item_type                    stmt_data_type;
 
  protected:
-  RemoteFB__API_HLP__GetStatementInfo();
+  RemoteFB__API_HLP__GetStatementInfo_v01();
 
-  virtual ~RemoteFB__API_HLP__GetStatementInfo();
+  virtual ~RemoteFB__API_HLP__GetStatementInfo_v01();
 
  public:
   //Interface ------------------------------------------------------------
@@ -130,7 +130,7 @@ class RemoteFB__API_HLP__GetStatementInfo
              const unsigned char*                    pRBuf,
              const unsigned char*                    eRBuf,
              isc_base::t_isc_info_buffer_v1_builder& resultBuilder);
-};//class RemoteFB__API_HLP__GetStatementInfo
+};//class RemoteFB__API_HLP__GetStatementInfo_v01
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

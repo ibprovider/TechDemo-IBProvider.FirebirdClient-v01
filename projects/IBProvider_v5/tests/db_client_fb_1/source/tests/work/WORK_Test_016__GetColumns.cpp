@@ -1315,10 +1315,8 @@ const wchar_t*
   case remote_fb::protocol::FB_PROTOCOL_VERSION10:
   case remote_fb::protocol::FB_PROTOCOL_VERSION11:
   case remote_fb::protocol::FB_PROTOCOL_VERSION12:
-   return L"RemoteFB__API_P12__GetColumns::exec";
-
   case remote_fb::protocol::FB_PROTOCOL_VERSION13:
-   return L"RemoteFB__API_P13__GetColumns::exec";
+   return L"RemoteFB__API_HLP__GetColumns_v01::exec";
 
   default:
    assert(false);
@@ -1343,10 +1341,8 @@ const wchar_t*
   case remote_fb::protocol::FB_PROTOCOL_VERSION10:
   case remote_fb::protocol::FB_PROTOCOL_VERSION11:
   case remote_fb::protocol::FB_PROTOCOL_VERSION12:
-   return errSvc::sm_subsysID__remote_fb_p12;
-
   case remote_fb::protocol::FB_PROTOCOL_VERSION13:
-   return errSvc::sm_subsysID__remote_fb_p13;
+   return errSvc::sm_subsysID__remote_fb;
 
   default:
    assert(false);

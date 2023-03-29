@@ -185,9 +185,10 @@ void RemoteFB__PSET01__P12__XDR__Decoder::decode__sql_message
      //----
      isc_api::isc_varchar_size_type varchar_len;
 
-     xdr::decode__p_short(pBuf,
-                          L"sql_message.varchar.len",
-                          &varchar_len);
+     xdr::decode__p_short
+      (pBuf,
+       L"sql_message.varchar.len",
+       &varchar_len);
 
      if(varchar_len<0)
      {

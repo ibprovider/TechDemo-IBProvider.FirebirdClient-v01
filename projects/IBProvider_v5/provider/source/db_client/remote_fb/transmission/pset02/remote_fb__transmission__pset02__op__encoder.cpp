@@ -23,7 +23,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_connect
  assert(packet.operation==protocol::set02::op_connect);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -97,7 +98,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_cont_auth
  assert(packet.operation==protocol::set02::op_cont_auth);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -135,7 +137,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_crypt
  assert(packet.operation==protocol::set02::op_crypt);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -163,7 +166,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_attach
  assert(packet.operation==protocol::set02::op_attach);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -196,7 +200,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_create
  assert(packet.operation==protocol::set02::op_create);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -229,7 +234,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_detach
  assert(packet.operation==protocol::set02::op_detach);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -249,7 +255,9 @@ void RemoteFB__PSET02__OpEncoder::encode__op_drop_database
 {
  assert(packet.operation==protocol::set02::op_drop_database);
 
- const RemoteFB__PortWriterPtr spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+ const RemoteFB__PortWriterPtr
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -270,7 +278,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_database
  assert(packet.operation==protocol::set02::op_info_database);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -303,7 +312,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_transaction
  assert(packet.operation==protocol::set02::op_transaction);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -328,7 +338,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_rollback
  assert(packet.operation==protocol::set02::op_rollback);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -349,7 +360,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_rollback_retaining
  assert(packet.operation==protocol::set02::op_rollback_retaining);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -369,7 +381,9 @@ void RemoteFB__PSET02__OpEncoder::encode__op_commit
 {
  assert(packet.operation==protocol::set02::op_commit);
 
- const RemoteFB__PortWriterPtr spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+ const RemoteFB__PortWriterPtr
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -390,7 +404,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_commit_retaining
  assert(packet.operation==protocol::set02::op_commit_retaining);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -411,7 +426,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_prepare2
  assert(packet.operation==protocol::set02::op_prepare2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -436,7 +452,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_allocate_statement
  assert(packet.operation==protocol::set02::op_allocate_statement);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -457,7 +474,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_free_statement
  assert(packet.operation==protocol::set02::op_free_statement);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -485,7 +503,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_prepare_statement
  assert(packet.operation==protocol::set02::op_prepare_statement);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -535,7 +554,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_sql
  assert(packet.operation==protocol::set02::op_info_sql);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -575,13 +595,15 @@ void RemoteFB__PSET02__OpEncoder::encode__op_execute__s
  assert(packet.operation==protocol::set02::op_execute);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -644,13 +666,15 @@ void RemoteFB__PSET02__OpEncoder::encode__op_execute2__s
  assert(packet.operation==protocol::set02::op_execute2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -721,7 +745,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_fetch
  assert(packet.operation==protocol::set02::op_fetch);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -770,7 +795,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_open_blob2
  assert(packet.operation==protocol::set02::op_open_blob2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -803,7 +829,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_create_blob2
  assert(packet.operation==protocol::set02::op_create_blob2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -836,7 +863,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_close_blob
  assert(packet.operation==protocol::set02::op_close_blob);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -857,7 +885,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_cancel_blob
  assert(packet.operation==protocol::set02::op_cancel_blob);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -878,7 +907,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_blob
  assert(packet.operation==protocol::set02::op_info_blob);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -911,7 +941,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_get_segment
  assert(packet.operation==protocol::set02::op_get_segment);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -950,7 +981,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_put_segment
  assert(packet.operation==protocol::set02::op_put_segment);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -988,7 +1020,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_put_slice__s
  assert(packet.operation==protocol::set02::op_put_slice);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
@@ -1050,7 +1083,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_get_slice
  assert(packet.operation==protocol::set02::op_get_slice);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -1100,7 +1134,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_cancel
  assert(packet.operation==protocol::set02::op_cancel);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -1123,7 +1158,8 @@ void RemoteFB__PSET02__OpEncoder::encode__op_exec_immediate
  assert(packet.operation==protocol::set02::op_exec_immediate);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
 
@@ -1183,13 +1219,15 @@ void RemoteFB__PSET02__OpEncoder::encode__op_exec_immediate2__s
  assert(packet.operation==protocol::set02::op_exec_immediate2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 

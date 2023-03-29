@@ -1335,7 +1335,7 @@ const wchar_t*
   case remote_fb::protocol::FB_PROTOCOL_VERSION11:
   case remote_fb::protocol::FB_PROTOCOL_VERSION12:
   case remote_fb::protocol::FB_PROTOCOL_VERSION13:
-   return L"RemoteFB__API_HLP__GetStatementInfo::exec";
+   return L"RemoteFB__API_HLP__GetStatementInfo_v01::exec";
 
   default:
    assert(false);

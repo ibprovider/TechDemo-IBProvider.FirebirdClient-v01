@@ -155,8 +155,9 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__DropStmts
       //в случае проблем с освобождением дескриптора запроса, переводим порт
       //в "недействительное" состояние.
  
-      if(const t_ibp_error_element::self_ptr spErrRec
-          =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+      if(const t_ibp_error_element::self_ptr
+          spErrRec
+           =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
              (pData,
               protocol::set01::op_free_statement,
               packet1.p_resp,
@@ -415,8 +416,9 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__ReleaseBlobs(RemoteFB__
        assert(false);
       }//else
  
-      if(const t_ibp_error_element::self_ptr spErrRec
-          =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+      if(const t_ibp_error_element::self_ptr
+          spErrRec
+           =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
              (pData,
               operation,
               packet1.p_resp,

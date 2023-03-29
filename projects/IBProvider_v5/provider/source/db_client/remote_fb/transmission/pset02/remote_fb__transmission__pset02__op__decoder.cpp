@@ -24,12 +24,14 @@ void RemoteFB__PSET02__OpDecoder::decode__op_cond_accept
  assert(packet.operation==protocol::set02::op_cond_accept);
 
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
 
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 
@@ -98,12 +100,14 @@ void RemoteFB__PSET02__OpDecoder::decode__op_accept_data
  assert(packet.operation==protocol::set02::op_accept_data);
 
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
 
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 
@@ -180,12 +184,14 @@ void RemoteFB__PSET02__OpDecoder::decode__op_response
  assert(packet.operation==protocol::set02::op_response);
 
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
 
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 
@@ -243,12 +249,14 @@ void RemoteFB__PSET02__OpDecoder::decode__op_cont_auth
  assert(packet.operation==protocol::set02::op_cont_auth);
 
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
 
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 
@@ -308,13 +316,15 @@ void RemoteFB__PSET02__OpDecoder::decode__op_sql_response__s
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -386,13 +396,15 @@ void RemoteFB__PSET02__OpDecoder::decode__op_fetch_response__s
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmt(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmt
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmt);
  assert(spStmt->m_spFetchResult);
@@ -493,14 +505,16 @@ void RemoteFB__PSET02__OpDecoder::decode__op_slice__s
 
  //-----------------------------------------
  const RemoteFB__PortReaderPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortReader>(op_ctx)); //throw
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
  //-----------------------------------------
  const RemoteFB__PacketMemoryPtr
-  spMem(RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
+  spMem
+   (RemoteFB__GetService<RemoteFB__PacketMemory>(op_ctx)); //throw
 
  assert(spMem);
 

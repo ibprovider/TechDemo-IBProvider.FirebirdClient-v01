@@ -196,7 +196,7 @@ bool RemoteFB__API_P12__FetchStatement::exec(db_obj::t_db_operation_context& OpC
    cBatchRows=1;
   }
   else
-  if(!(*pStmtHandle)->m_BatchFetch.value_or_default(true))
+  if(!(*pStmtHandle)->m_PData__BatchFetch.value_or_default(true))
   {
    //сервер будет возвращать по одной записи.
    cBatchRows=1;
@@ -218,11 +218,12 @@ bool RemoteFB__API_P12__FetchStatement::exec(db_obj::t_db_operation_context& OpC
   assert(cBatchRows>0);
 
   //---------
-  handles::RemoteFB__FetchResult::self_ptr spFetchResult
-   (handles::RemoteFB__FetchResult::Create
-     (cBatchRows,
-      (*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
-      (*pStmtHandle)->m_OutParams__MSG_DATA_ALIGN));
+  handles::RemoteFB__FetchResult::self_ptr
+   spFetchResult
+    (handles::RemoteFB__FetchResult::Create
+      (cBatchRows,
+       (*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
+       (*pStmtHandle)->m_OutParams__MSG_DATA_ALIGN));
 
   assert(spFetchResult);
   assert(spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active);
