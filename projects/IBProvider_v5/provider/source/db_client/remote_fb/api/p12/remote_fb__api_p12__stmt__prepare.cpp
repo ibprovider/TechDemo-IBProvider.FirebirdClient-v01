@@ -195,7 +195,7 @@ void RemoteFB__API_P12__PrepareStatement::exec
      packet.p_resp.p_resp__data.cstr_length,
      packet.p_resp.p_resp__data.cstr_address);
    
-   assert(!(*pStmtHandle)->m_StmtTypeID.null());
+   assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
    break;
   }//if - protocol::op_response
@@ -213,9 +213,9 @@ void RemoteFB__API_P12__PrepareStatement::exec
  (*pStmtHandle)->m_PFlags.set(stmt_data_type::PFLAG__PREPARED);
 
  //-----------------------------------------
- assert(!(*pStmtHandle)->m_StmtTypeID.null());
+ assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
- (*pStmtTypeID)=(*pStmtHandle)->m_StmtTypeID.value();
+ (*pStmtTypeID)=(*pStmtHandle)->m_PData__StmtTypeID.value();
 }//exec
 
 ////////////////////////////////////////////////////////////////////////////////

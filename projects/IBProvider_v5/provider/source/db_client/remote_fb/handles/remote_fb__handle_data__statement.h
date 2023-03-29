@@ -24,7 +24,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace h
 //! \addtogroup db_client__remote_fb__handles
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//contains
+//the content
 
 class RemoteFB__FetchResult;
 class RemoteFB__HandleData_Statement;
@@ -296,25 +296,26 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
   /// Флаги выполнения запроса
   flags_type  m_EFlags;
 
-  /// Серверный идентификатор типа запроса
-  structure::t_value_with_null<unsigned long> m_StmtTypeID;
+ public:
+  /// PREPARE DATA: Серверный идентификатор типа запроса
+  structure::t_value_with_null<unsigned long> m_PData__StmtTypeID;
 
-  /// Флаг допустимости групповой загрузки записей
-  structure::t_value_with_null<bool> m_BatchFetch;
+  /// PREPARE DATA: Флаг допустимости групповой загрузки записей
+  structure::t_value_with_null<bool> m_PData__BatchFetch;
 
   /// <summary>
-  ///  Буфер с данными описаний колонок.
+  ///  PREPARE DATA: Буфер с данными описаний колонок.
   /// </summary>
   /// Хранятся raw-данные начиная с ibp_isc_info_sql_describe_vars тега.
   /// В конец буфера добавляется ibp_isc_info_end или ibp_isc_info_truncated.
-  xsqlvars_data_buffer_type m_ColumnsData;
+  xsqlvars_data_buffer_type m_PData__ColumnsData;
 
   /// <summary>
-  ///  Буфер с данными описаний параметров.
+  ///  PREPARE DATA: Буфер с данными описаний параметров.
   /// </summary>
   /// Хранятся raw-данные начиная с ibp_isc_info_sql_describe_vars тега.
   /// В конец буфера добавляется ibp_isc_info_end или ibp_isc_info_truncated.
-  xsqlvars_data_buffer_type m_ParametersData;
+  xsqlvars_data_buffer_type m_PData__ParametersData;
 
  public:
   msg_blr_buffer_type    m_InParams__MSG_BLR;

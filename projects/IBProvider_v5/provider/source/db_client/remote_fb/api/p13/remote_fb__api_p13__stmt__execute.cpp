@@ -323,11 +323,15 @@ protocol::P_USHORT RemoteFB__API_P13__ExecuteStatement::helper__execute
   =L"RemoteFB__API_P13__ExecuteStatement::helper__execute";
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_BLR); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_DATA); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_DATA); //throw
 
  size_t unused__InParams_MsgDataSize=0;
  size_t unused__InParams_MsgDataAlign=0;
@@ -338,7 +342,9 @@ protocol::P_USHORT RemoteFB__API_P13__ExecuteStatement::helper__execute
    &unused__InParams_MsgDataSize,
    &unused__InParams_MsgDataAlign); //throw
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_NULLS); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_NULLS); //throw
 
  //-----------------------------------------
  const protocol::set02::P_OP c_OperationID=protocol::set02::op_execute;
@@ -430,11 +436,15 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
   =L"RemoteFB__API_P13__ExecuteStatement::helper__execute2";
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_BLR); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_DATA);
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_DATA);
 
  size_t unused__InParams_MsgDataSize=0;
  size_t unused__InParams_MsgDataAlign=0;
@@ -445,10 +455,14 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
    &unused__InParams_MsgDataSize,
    &unused__InParams_MsgDataAlign); //throw
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS(pInXSQLDA,(*pStmtHandle)->m_InParams__MSG_NULLS);
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
+  (pInXSQLDA,
+   (*pStmtHandle)->m_InParams__MSG_NULLS);
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pOutXSQLDA,(*pStmtHandle)->m_OutParams__MSG_BLR); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pOutXSQLDA,
+   (*pStmtHandle)->m_OutParams__MSG_BLR); //throw
 
  assert(!(*pStmtHandle)->m_OutParams__MSG_BLR.empty());
 
@@ -461,7 +475,9 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
  (*pStmtHandle)->m_OutParams__MSG_DATA.alloc((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
 
  //резервируем место под загрузку индикаторов NULL-значений
- RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS(pOutXSQLDA,(*pStmtHandle)->m_OutParams__MSG_NULLS);
+ RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS
+  (pOutXSQLDA,
+   (*pStmtHandle)->m_OutParams__MSG_NULLS);
 
  //! \todo
  //!  ѕроверить состо€ние XVAR-элементов в pOutXSQLDA.
@@ -665,10 +681,10 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
  try
  {
   RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
-     ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
-      (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
-      (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),
-       pOutXSQLDA);
+   ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
+    (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
+    (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),
+     pOutXSQLDA);
  }
  catch(const std::exception& e)
  {

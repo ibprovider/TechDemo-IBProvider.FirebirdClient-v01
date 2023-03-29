@@ -1360,13 +1360,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__blob__get_info.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_columns.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__db__get_info.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_parameters.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__get_info.cpp">
@@ -2428,13 +2422,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__fetch.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_columns.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_info.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__get_parameters.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__prepare.cpp">
@@ -3177,6 +3165,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_info_buffer_v1_builder.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_columns_v01.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_parameters_v01.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5017,6 +5011,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base.h">
       <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_columns_v01.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_parameters_v01.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

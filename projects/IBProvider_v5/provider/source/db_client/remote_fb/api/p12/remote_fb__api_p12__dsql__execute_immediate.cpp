@@ -452,14 +452,20 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
  assert(HasInParams || HasOutParams);
 
  //-----------------------------------------
- RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pInXSQLDA,spStmt->m_InParams__MSG_BLR); //throw
+ RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pInXSQLDA,
+   spStmt->m_InParams__MSG_BLR); //throw
 
  assert(HasInParams==!spStmt->m_InParams__MSG_BLR.empty());
 
- RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA(pInXSQLDA,spStmt->m_InParams__MSG_DATA);
+ RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+  (pInXSQLDA,
+   spStmt->m_InParams__MSG_DATA);
 
  //------
- RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pOutXSQLDA,spStmt->m_OutParams__MSG_BLR); //throw
+ RemoteFB__P12__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pOutXSQLDA,
+   spStmt->m_OutParams__MSG_BLR); //throw
 
  assert(HasOutParams==!spStmt->m_OutParams__MSG_BLR.empty());
 
@@ -728,10 +734,10 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
   try
   {
    RemoteFB__P12__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
-      (spStmt->m_OutParams__MSG_DATA_DESCRS,
-       spStmt->m_OutParams__MSG_DATA.size(),
-       spStmt->m_OutParams__MSG_DATA.buffer(),
-        pOutXSQLDA);
+    (spStmt->m_OutParams__MSG_DATA_DESCRS,
+     spStmt->m_OutParams__MSG_DATA.size(),
+     spStmt->m_OutParams__MSG_DATA.buffer(),
+     pOutXSQLDA);
   }
   catch(const std::exception& e)
   {

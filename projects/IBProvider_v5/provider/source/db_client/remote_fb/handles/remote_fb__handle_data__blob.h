@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace h
 //! \addtogroup db_client__remote_fb__handles
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//contains
+//the content
 
 class RemoteFB__HandleData_Blob;
 

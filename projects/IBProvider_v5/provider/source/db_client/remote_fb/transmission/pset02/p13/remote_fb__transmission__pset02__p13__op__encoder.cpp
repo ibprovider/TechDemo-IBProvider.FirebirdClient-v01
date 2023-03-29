@@ -25,13 +25,15 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute__a
  assert(packet.operation==protocol::set02::op_execute);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -99,13 +101,15 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute2__a
  assert(packet.operation==protocol::set02::op_execute2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 
@@ -182,7 +186,8 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_put_slice__a
 
  //-----------------------------------------
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
@@ -192,7 +197,8 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_put_slice__a
  //но все таки лучше потребовать готовое описание от вызыващей стороны.
 
  const RemoteFB__OpSvc__GetArraySliceDescrPtr
-  spGetDescr(RemoteFB__GetService<RemoteFB__OpSvc__GetArraySliceDescr>(op_ctx));
+  spGetDescr
+   (RemoteFB__GetService<RemoteFB__OpSvc__GetArraySliceDescr>(op_ctx));
 
  assert(spGetDescr);
 
@@ -248,13 +254,15 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_exec_immediate2__a
  assert(packet.operation==protocol::set02::op_exec_immediate2);
 
  const RemoteFB__PortWriterPtr
-  spBuf(RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
+  spBuf
+   (RemoteFB__GetService<RemoteFB__PortWriter>(op_ctx));
 
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
  const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmtData(RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+  spStmtData
+   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
 
  assert(spStmtData);
 

@@ -651,10 +651,10 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteStatement::helper__execute2
  try
  {
   RemoteFB__P12__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
-     ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
-      (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
-      (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),
-       pOutXSQLDA);
+   ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
+    (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
+    (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),
+     pOutXSQLDA);
  }
  catch(const std::exception& e)
  {

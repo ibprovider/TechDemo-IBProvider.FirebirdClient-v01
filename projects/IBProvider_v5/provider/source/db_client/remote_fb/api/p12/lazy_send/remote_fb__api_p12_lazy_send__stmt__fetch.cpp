@@ -181,7 +181,7 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
   //---------
   protocol::P_USHORT cBatchRows DEBUG_CODE(=0);
 
-  if(!(*pStmtHandle)->m_BatchFetch.value_or_default(true))
+  if(!(*pStmtHandle)->m_PData__BatchFetch.value_or_default(true))
   {
    //сервер будет возвращать по одной записи.
    cBatchRows=1;
@@ -203,10 +203,12 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
   assert(cBatchRows>0);
 
   //---------
-  handles::RemoteFB__FetchResult::self_ptr spFetchResult
-   (handles::RemoteFB__FetchResult::Create(cBatchRows,
-                                           (*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
-                                           (*pStmtHandle)->m_OutParams__MSG_DATA_ALIGN));
+  handles::RemoteFB__FetchResult::self_ptr
+   spFetchResult
+    (handles::RemoteFB__FetchResult::Create
+      (cBatchRows,
+       (*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
+       (*pStmtHandle)->m_OutParams__MSG_DATA_ALIGN));
 
   assert(spFetchResult);
   assert(spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active);
@@ -579,11 +581,12 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    if(packet1__close.operation==protocol::set01::op_response)
    {
     //Проверям ошибку
-    spCloseSrvErr=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-                   (pData,
-                    c_OperationID1__close,
-                    packet1__close.p_resp,
-                    E_FAIL); //throw
+    spCloseSrvErr
+     =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID1__close,
+        packet1__close.p_resp,
+        E_FAIL); //throw
 
     if(spCloseSrvErr)
     {
@@ -632,11 +635,12 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    {
     //Смотрим ошибку
 
-    spExecuteSrvErr=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-                      (pData,
-                       c_OperationID2__exec,
-                       packet2__exec.p_resp,
-                       E_FAIL); //throw
+    spExecuteSrvErr
+     =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID2__exec,
+        packet2__exec.p_resp,
+        E_FAIL); //throw
 
     if(spExecuteSrvErr)
     {
@@ -712,11 +716,12 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    if(packet3__fetch.operation==protocol::set01::op_response)
    {
     const t_ibp_error_element::self_ptr
-     spFetchSrvRec=pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
-                    (pData,
-                     c_OperationID3__fetch,
-                     packet3__fetch.p_resp,
-                     E_FAIL); //throw
+     spFetchSrvRec
+      =pset01::RemoteFB__PSET01__ErrorUtilites::BuildServerErrorRecord
+        (pData,
+         c_OperationID3__fetch,
+         packet3__fetch.p_resp,
+         E_FAIL); //throw
 
     //Мы ожидаем ошибку!
     if(!spFetchSrvRec)

@@ -452,11 +452,15 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteImmediate::helper__execute2
  assert(HasInParams || HasOutParams);
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pInXSQLDA,spStmt->m_InParams__MSG_BLR); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pInXSQLDA,
+   spStmt->m_InParams__MSG_BLR); //throw
 
  assert(HasInParams==!spStmt->m_InParams__MSG_BLR.empty());
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA(pInXSQLDA,spStmt->m_InParams__MSG_DATA);
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+  (pInXSQLDA,
+   spStmt->m_InParams__MSG_DATA);
 
  size_t unused__InParams_MsgDataSize=0;
  size_t unused__InParams_MsgDataAlign=0;
@@ -467,10 +471,14 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteImmediate::helper__execute2
    &unused__InParams_MsgDataSize,
    &unused__InParams_MsgDataAlign); //throw
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS(pInXSQLDA,spStmt->m_InParams__MSG_NULLS);
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
+  (pInXSQLDA,
+   spStmt->m_InParams__MSG_NULLS);
 
  //------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR(pOutXSQLDA,spStmt->m_OutParams__MSG_BLR); //throw
+ RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  (pOutXSQLDA,
+   spStmt->m_OutParams__MSG_BLR); //throw
 
  assert(HasOutParams==!spStmt->m_OutParams__MSG_BLR.empty());
 
@@ -482,7 +490,9 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteImmediate::helper__execute2
 
  spStmt->m_OutParams__MSG_DATA.alloc(spStmt->m_OutParams__MSG_DATA_SIZE);
 
- RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS(pOutXSQLDA,spStmt->m_OutParams__MSG_NULLS);
+ RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS
+  (pOutXSQLDA,
+   spStmt->m_OutParams__MSG_NULLS);
 
  //! \todo
  //!  Проверить состояние XVAR-элементов в pOutXSQLDA.
@@ -741,10 +751,10 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteImmediate::helper__execute2
   try
   {
    RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
-      (spStmt->m_OutParams__MSG_DATA_DESCRS,
-       spStmt->m_OutParams__MSG_DATA.size(),
-       spStmt->m_OutParams__MSG_DATA.buffer(),
-        pOutXSQLDA);
+    (spStmt->m_OutParams__MSG_DATA_DESCRS,
+     spStmt->m_OutParams__MSG_DATA.size(),
+     spStmt->m_OutParams__MSG_DATA.buffer(),
+     pOutXSQLDA);
   }
   catch(const std::exception& e)
   {

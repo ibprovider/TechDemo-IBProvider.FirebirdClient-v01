@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup db_client__remote_fb__api_p13
-//! \file    remote_fb__api_p13__stmt__get_parameters.cpp
-//! \brief   Получение описаний параметров запроса.
+//! \ingroup db_client__remote_fb__api_p12
+//! \file    remote_fb__api_p12__stmt__get_parameters_v01.cpp
+//! \brief   Getting the parameter definitions of statement (v01).
 //! \author  Kovalenko Dmitry
-//! \date    20.09.2016
+//! \date    28.03.2023
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__get_parameters.h"
+#include "source/db_client/remote_fb/api/helpers/remote_fb__api_hlp__stmt__get_parameters_v01.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/set01/remote_fb__api_hlp__xsqlda_set01__utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
@@ -17,25 +17,27 @@
 #include "source/error_services/ibp_error_bug_check.h"
 #include "source/error_services/ibp_error.h"
 
-namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p13{
+namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__API_P13__GetParameters
+//class RemoteFB__API_HLP__GetParameters_v01
 
-RemoteFB__API_P13__GetParameters RemoteFB__API_P13__GetParameters::Instance;
-
-//------------------------------------------------------------------------
-RemoteFB__API_P13__GetParameters::RemoteFB__API_P13__GetParameters()
-{;}
+RemoteFB__API_HLP__GetParameters_v01 RemoteFB__API_HLP__GetParameters_v01::Instance;
 
 //------------------------------------------------------------------------
-RemoteFB__API_P13__GetParameters::~RemoteFB__API_P13__GetParameters()
-{;}
+RemoteFB__API_HLP__GetParameters_v01::RemoteFB__API_HLP__GetParameters_v01()
+{
+}
+
+//------------------------------------------------------------------------
+RemoteFB__API_HLP__GetParameters_v01::~RemoteFB__API_HLP__GetParameters_v01()
+{
+}
 
 //interface --------------------------------------------------------------
-void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCtx,
-                                            RemoteFB__ConnectorData*  const pData,
-                                            stmt_handle_type*         const pStmtHandle,
-                                            isc_api::XSQLDA_V1*       const xsqlda)
+void RemoteFB__API_HLP__GetParameters_v01::exec(db_obj::t_db_operation_context& OpCtx,
+                                                RemoteFB__ConnectorData*  const pData,
+                                                stmt_handle_type*         const pStmtHandle,
+                                                isc_api::XSQLDA_V1*       const xsqlda)
 {
  assert(pData!=nullptr);
  assert(pStmtHandle!=nullptr);
@@ -45,7 +47,7 @@ void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCt
 
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P13__GetParameters::exec";
+  =L"RemoteFB__API_HLP__GetParameters_v01::exec";
 
  //----------------------------------------- проверка версии xsqlda
  if(xsqlda->version!=xsqlda->c_version_num)
@@ -83,9 +85,9 @@ void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCt
 
  if(!(*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED))
  {
-  IBP_ThrowSimpleError
+  IBP_ErrorUtils::Throw__Error
    (DB_E_NOTPREPARED,
-    ibp_subsystem__remote_fb__p13,
+    ibp_subsystem__remote_fb,
     ibp_mce_cmd_not_prepared_0);
  }//if
 
@@ -105,8 +107,8 @@ void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCt
    helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
     parseResult
      =helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA
-       ((*pStmtHandle)->m_ParametersData.size(),
-        (*pStmtHandle)->m_ParametersData.buffer(),
+       ((*pStmtHandle)->m_PData__ParametersData.size(),
+        (*pStmtHandle)->m_PData__ParametersData.buffer(),
         IsFirstInfoBlock,
         StartIndex,
         xsqlda);
@@ -233,17 +235,13 @@ void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCt
     {
      //ERROR - зацикливание или некорректная работа парсера данных XSQLDA
 
-     structure::wstr_formatter
-      freason
-       (L"detected an infinite cycle or incorrect work of XSQLDA parser. "
-        L"StartIndex: %1. parseResult.first: %2");
-
-     freason<<StartIndex<<parseResult.first;
-
-     IBP_BUG_CHECK__DEBUG
+     IBP_ErrorUtils::Throw__BugCheck__DEBUG
       (c_bugcheck_src,
        L"#007",
-       freason.c_str());
+        L"detected an infinite cycle or incorrect work of XSQLDA parser. "
+        L"StartIndex: %1. parseResult.first: %2",
+       StartIndex,
+       parseResult.first);
     }//if
    }//else
 
@@ -261,13 +259,12 @@ void RemoteFB__API_P13__GetParameters::exec(db_obj::t_db_operation_context& OpCt
  }
  catch(const std::exception& e)
  {
-  t_ibp_error exc(e);
-
-  exc.add_error(E_FAIL,ibp_mce_cmd__describe_stmt_params_0);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (e,
+    E_FAIL,
+    ibp_mce_cmd__describe_stmt_params_0);
  }//catch
 }//exec
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms p13*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms helpers*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

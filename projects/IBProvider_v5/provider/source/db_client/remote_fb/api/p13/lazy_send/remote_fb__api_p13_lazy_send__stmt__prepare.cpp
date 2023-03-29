@@ -202,9 +202,9 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::exec
  (*pStmtHandle)->m_PFlags.set(stmt_data_type::PFLAG__PREPARED);
 
  //-----------------------------------------
- assert(!(*pStmtHandle)->m_StmtTypeID.null());
+ assert(!(*pStmtHandle)->m_PData__StmtTypeID.null());
 
- (*pStmtTypeID)=(*pStmtHandle)->m_StmtTypeID.value();
+ (*pStmtTypeID)=(*pStmtHandle)->m_PData__StmtTypeID.value();
 }//exec
 
 //helper methods ---------------------------------------------------------
@@ -301,7 +301,7 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__prepare
      packet.p_resp.p_resp__data.cstr_length,
      packet.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
 
    break;
   }//if - protocol::op_response
@@ -510,7 +510,7 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
      packet2.p_resp.p_resp__data.cstr_length,
      packet2.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
   }//if - protocol::op_response
   else
   {
@@ -764,7 +764,7 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
      packet2__prepare.p_resp.p_resp__data.cstr_length,
      packet2__prepare.p_resp.p_resp__data.cstr_address);
 
-   assert(!pStmt->m_StmtTypeID.null());
+   assert(!pStmt->m_PData__StmtTypeID.null());
   }
   else
   {

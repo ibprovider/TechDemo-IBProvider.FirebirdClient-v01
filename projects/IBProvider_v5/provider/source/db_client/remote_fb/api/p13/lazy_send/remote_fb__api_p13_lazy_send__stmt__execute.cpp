@@ -414,7 +414,7 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
   //нужно отправить команду на закрытие курсора.
 
   //[2015-11-15] Раскомментировать следующий ассерт!
-  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_StmtTypeID.value_or_default(structure::negative_one));
+  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(structure::negative_one));
 
   send_op1_close=true;
  }//if
@@ -673,14 +673,14 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
 
  if((*pStmtHandle)->m_pClosingTr!=nullptr)
  {
-  //нужно отправить команду на закрытие курсора.
+  //It needs to send a command for closing a cursor.
 
-  //[2015-11-15] Раскомментировать следующий ассерт!
-  //[2016-10-08] Аминь
-  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_StmtTypeID.value_or_default(structure::negative_one));
+  //[2015-11-15] Uncomment the following assert!
+  //[2016-10-08] Amen
+  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(structure::negative_one));
 
   //! \todo
-  //!  [2016-10-10] Предлагаю выкидывать BUG-CHECK ошибку
+  //!  [2016-10-10] I offer to throw the BUG-CHECK error
 
   send_op1_close=true;
  }//if
