@@ -178,11 +178,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_001__bug_check__zero_stmt_handle
   {
    svc::remote_fb_stmt_handle_type hStmt(nullptr);
 
-   svc::RemoteFB_Connector__GetColumns(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hStmt,
-                                       xsqlda);
+   svc::RemoteFB_Connector__GetColumns
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hStmt,
+     xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -280,11 +281,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_002__bug_check__null_stmt_id
  {
   try
   {
-   svc::RemoteFB_Connector__GetColumns(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hStmtCopy,
-                                       xsqlda);
+   svc::RemoteFB_Connector__GetColumns
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hStmtCopy,
+     xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -368,10 +370,11 @@ void WORK_Test_016__GetColumns::tag_impl::test_003__bug_check__bad_owner_cn
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(0);
@@ -380,11 +383,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_003__bug_check__bad_owner_cn
  {
   try
   {
-   svc::RemoteFB_Connector__GetColumns(tracer,
-                                       spConnector2,
-                                       OpCtx,
-                                       &hStmt,
-                                       xsqlda);
+   svc::RemoteFB_Connector__GetColumns
+    (tracer,
+     spConnector2,
+     OpCtx,
+     &hStmt,
+     xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -470,11 +474,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_004__err__not_prepared
  {
   try
   {
-   svc::RemoteFB_Connector__GetColumns(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hStmt,
-                                       xsqlda);
+   svc::RemoteFB_Connector__GetColumns
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hStmt,
+     xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -568,11 +573,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_005__err__incorrect_xsqlda_versio
   {
    xsqlda->version=bad_versions[i];
 
-   svc::RemoteFB_Connector__GetColumns(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hStmt,
-                                       xsqlda);
+   svc::RemoteFB_Connector__GetColumns
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hStmt,
+     xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -615,11 +621,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_006__ok__sqln0__column1
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
 {
- helper_006(pParams,
-            pCtx,
-            Data,
-            "select ID from DUAL;",
-            1);
+ helper_006
+  (pParams,
+   pCtx,
+   Data,
+   "select ID from DUAL;",
+   1);
 }//test_006__ok__sqln0__column1
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -630,11 +637,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_006__ok__sqln0__column2
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
 {
- helper_006(pParams,
-            pCtx,
-            Data,
-            "select ID,ID from DUAL;",
-            2);
+ helper_006
+  (pParams,
+   pCtx,
+   Data,
+   "select ID,ID from DUAL;",
+   2);
 }//test_006__ok__sqln0__column2
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -683,9 +691,10 @@ void WORK_Test_016__GetColumns::tag_impl::helper_006
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -705,22 +714,23 @@ void WORK_Test_016__GetColumns::tag_impl::helper_006
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-    (tracer,
-     spConnector,
-     OpCtx,
-     &hTr,
-     &hStmt,
-     (unsigned short)cns.db_dialect_Ex.value(),
-     str_SQL);
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   str_SQL);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(0);
 
- svc::RemoteFB_Connector__GetColumns(tracer,
-                                     spConnector,
-                                     OpCtx,
-                                     &hStmt,
-                                     xsqlda);
+ svc::RemoteFB_Connector__GetColumns
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hStmt,
+   xsqlda);
 
  svc::XSQLDA_check_sqld(tracer,xsqlda,sqld);
 }//helper_006
@@ -769,9 +779,10 @@ void WORK_Test_016__GetColumns::tag_impl::test_007__ok__column1
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -791,22 +802,23 @@ void WORK_Test_016__GetColumns::tag_impl::test_007__ok__column1
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-    (tracer,
-     spConnector,
-     OpCtx,
-     &hTr,
-     &hStmt,
-     (unsigned short)cns.db_dialect_Ex.value(),
-     "select ID from DUAL");
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "select ID from DUAL");
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(1);
 
- svc::RemoteFB_Connector__GetColumns(tracer,
-                                     spConnector,
-                                     OpCtx,
-                                     &hStmt,
-                                     xsqlda);
+ svc::RemoteFB_Connector__GetColumns
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hStmt,
+   xsqlda);
 
  svc::XSQLDA_check_sqld
   (tracer,
@@ -870,9 +882,10 @@ void WORK_Test_016__GetColumns::tag_impl::test_007__ok__column2
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -903,11 +916,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_007__ok__column2
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(2);
 
- svc::RemoteFB_Connector__GetColumns(tracer,
-                                     spConnector,
-                                     OpCtx,
-                                     &hStmt,
-                                     xsqlda);
+ svc::RemoteFB_Connector__GetColumns
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hStmt,
+   xsqlda);
 
  svc::XSQLDA_check_sqld
   (tracer,
@@ -950,10 +964,11 @@ void WORK_Test_016__GetColumns::tag_impl::test_008__ok__column2000
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_008(pParams,
-            pCtx,
-            Data,
-            2000);
+ helper_008
+  (pParams,
+   pCtx,
+   Data,
+   2000);
 }//test_008__ok__column2000
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -967,10 +982,11 @@ void WORK_Test_016__GetColumns::tag_impl::test_008__ok__column3000
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_008(pParams,
-            pCtx,
-            Data,
-            3000);
+ helper_008
+  (pParams,
+   pCtx,
+   Data,
+   3000);
 }//test_008__ok__column3000
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -984,10 +1000,11 @@ void WORK_Test_016__GetColumns::tag_impl::test_008__ok__column5000
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_008(pParams,
-            pCtx,
-            Data,
-            5000);
+ helper_008
+  (pParams,
+   pCtx,
+   Data,
+   5000);
 }//test_008__ok__column5000
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1001,10 +1018,11 @@ void WORK_Test_016__GetColumns::tag_impl::test_008__ok__column32k
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_008(pParams,
-            pCtx,
-            Data,
-            32000);
+ helper_008
+  (pParams,
+   pCtx,
+   Data,
+   32000);
 }//test_008__ok__column32k
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1053,9 +1071,10 @@ void WORK_Test_016__GetColumns::tag_impl::helper_008
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -1208,9 +1227,10 @@ void WORK_Test_016__GetColumns::tag_impl::test_009__err__drop_stmt
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -1230,13 +1250,13 @@ void WORK_Test_016__GetColumns::tag_impl::test_009__err__drop_stmt
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-    (tracer,
-     spConnector,
-     OpCtx,
-     &hTr,
-     &hStmt,
-     (unsigned short)cns.db_dialect_Ex.value(),
-     "select ID from DUAL");
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "select ID from DUAL");
 
  //-----------------------------------------
  (hStmt)->m_PFlags.clear(remote_fb::handles::RemoteFB__HandleData_Statement::PFLAG__CACHE_COLS_INFO);
@@ -1248,11 +1268,12 @@ void WORK_Test_016__GetColumns::tag_impl::test_009__err__drop_stmt
 
  try
  {
-  svc::RemoteFB_Connector__GetColumns(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hStmt,
-                                      xsqlda);
+  svc::RemoteFB_Connector__GetColumns
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hStmt,
+    xsqlda);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1459,15 +1480,21 @@ void WORK_Test_016__GetColumns::create(TTSO_PushTest*      const pTestPusher,
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<sm_Tests[it[iTest]].pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data,
-                                                 sm_Tests[it[iTest]].pExecRules));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create
