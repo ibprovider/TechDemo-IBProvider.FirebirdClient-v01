@@ -47,6 +47,7 @@ enum AdoDataTypeEnum
  adVarNumeric        = 139     ,
 
  adDBTime2           = 145     ,
+ adDBTimeStampOffset = 146     ,
 
  adVarChar           = 200     ,
  adLongVarChar       = 201     ,
@@ -94,6 +95,7 @@ const AdoDataTypeEnum adodb_typeid__adPropVariant       = adPropVariant;      //
 const AdoDataTypeEnum adodb_typeid__adVarNumeric        = adVarNumeric;       //139
 
 const AdoDataTypeEnum adodb_typeid__adDBTime2           = adDBTime2;          //145
+const AdoDataTypeEnum adodb_typeid__adDBTimeStampOffset = adDBTimeStampOffset;//146
 
 const AdoDataTypeEnum adodb_typeid__adVarChar           = adVarChar;          //200
 const AdoDataTypeEnum adodb_typeid__adLongVarChar       = adLongVarChar;      //201
