@@ -338,7 +338,7 @@ void RemoteFB__API_P13__ReadBlob::helper__read_to_buffer
 
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P13__ReadBlob::helper__exec__new_protocol__read_to_buffer";
+  =L"RemoteFB__API_P13__ReadBlob::helper__read_to_buffer";
 
  //----------------------------------------- обнуляем описатели буфера
  pBlobData->m_ReadMode__BufferActualSize=0;
