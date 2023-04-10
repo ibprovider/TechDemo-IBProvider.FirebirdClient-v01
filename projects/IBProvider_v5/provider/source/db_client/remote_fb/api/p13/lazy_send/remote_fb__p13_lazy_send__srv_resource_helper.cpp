@@ -111,6 +111,10 @@ void RemoteFB__P13_LAZY_SEND__SrvResourceHelper::Helper__DropStmts
 
     packet2.p_info.p_info__incarnation=0;
 
+    assert_s(std::is_same<decltype(packet2.p_info.p_info__items.cstr_length) _LITER_COMMA_ protocol::P_ULONG>::value);
+
+    assert_s(sizeof(empty_data)<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
+
     packet2.p_info.p_info__items.cstr_length=sizeof(empty_data);
 
     packet2.p_info.p_info__items.cstr_address=empty_data;
@@ -337,6 +341,10 @@ void RemoteFB__P13_LAZY_SEND__SrvResourceHelper::Helper__ReleaseBlobs(RemoteFB__
     packet2.p_info.p_info__object=pData->GetPort()->m_ID.get_value();
 
     packet2.p_info.p_info__incarnation=0;
+
+    assert_s(std::is_same<decltype(packet2.p_info.p_info__items.cstr_length) _LITER_COMMA_ protocol::P_ULONG>::value);
+
+    assert_s(sizeof(empty_data)<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
 
     packet2.p_info.p_info__items.cstr_length=sizeof(empty_data);
 

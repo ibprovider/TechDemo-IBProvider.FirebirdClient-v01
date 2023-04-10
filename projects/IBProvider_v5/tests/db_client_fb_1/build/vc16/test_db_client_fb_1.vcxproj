@@ -324,6 +324,12 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__connect_op_ctx.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__dpb_v1_values_installer.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_DATA.cpp" />
@@ -379,6 +385,12 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__initialize_crypt.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__process_auth_response.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__utilities.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Alloc_XSQLDA_MSG_NULLS.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp" />
@@ -388,7 +400,19 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Calc_XSQLDA_MAX_XDR_SIZE.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Parse_XSQLDA_MSG_DATA.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__error_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__utilities.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__error_utilities.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__utilities.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__blob.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__statement.cpp" />
@@ -1087,6 +1111,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__dpb_v1_values_installer.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__srv_operation.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\rpc\remote_fb__api_p12_rpc__blob__read.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__cancel.h" />
@@ -1141,9 +1166,12 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__process_auth_response.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__srv_operation.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__error_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__error_utilities.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__array__get_slice.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__array__put_slice.h" />

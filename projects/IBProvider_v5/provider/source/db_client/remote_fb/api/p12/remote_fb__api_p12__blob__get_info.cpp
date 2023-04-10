@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__api_p12__blob__get_info.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -173,6 +174,8 @@ void RemoteFB__API_P12__GetBlobInfo::exec(RemoteFB__ConnectorData* const pData,
   packet.p_info.p_info__object=(*pBlobHandle)->m_ID.get_value();
 
   packet.p_info.p_info__incarnation=0;
+
+  assert(protocol::set01::C_CSTRING_MAX_LENGTH==(std::numeric_limits<decltype(cItems)>::max)());
 
   packet.p_info.p_info__items.cstr_length=cItems;
 

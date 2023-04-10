@@ -3260,9 +3260,10 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_220__err2__fbbug4983
  _TSO_CHECK(!hStmt->m_pClosingTr);
 
  //-----------------------------------------
- svc::HACK__UnprepareStmt(tracer,
-                          spConnector,
-                          &hStmt);
+ svc::HACK__UnprepareStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -4629,12 +4630,13 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::create
 
   const TTSO_TestPtr
    spTest
-    (new TTSO_TestFunc_v2
-      (pParams,
-       ftestID.c_str(),
-       sm_Tests[it[iTest]].Func,
-       Data,
-       sm_Tests[it[iTest]].pExecRules));
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
 
   pTestPusher->PushTest(spTest);
  }//for it

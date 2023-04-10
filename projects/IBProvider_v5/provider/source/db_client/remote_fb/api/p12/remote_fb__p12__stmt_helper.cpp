@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__stmt_helper.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/set01/remote_fb__api_hlp__xsqlda_set01__utilities.h"
 #include "source/db_client/remote_fb/transmission/pset01/remote_fb__transmission__pset01__op__info.h"
 #include <structure/t_pointer_cast.h>
@@ -44,22 +45,12 @@ void RemoteFB__P12__StmtHelper::BuildPacket__op_prepare_statement
  //------------- p_sqlst_SQL_str
  CHECK_READ_TYPED_PTR(SQL_str.ptr,SQL_str.len);
 
- if(!structure::can_numeric_cast(&pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length,
-                                 SQL_str.len))
- {
-  //ERROR - too large sql text
+ RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+  (&pPacket->p_sqlst.p_sqlst__SQL_str,
+   SQL_str.len,
+   ibp_mce_cmd_stmt_too_long_2);
 
-  IBP_ErrorUtils::Throw__Error
-   (E_FAIL,
-    ibp_subsystem__remote_fb__p12,
-    ibp_mce_cmd_stmt_too_long_2,
-    SQL_str.len,
-    structure::get_numeric_limits(pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length).max_value());
- }//if
-
- structure::static_numeric_cast
-  (&pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length,
-   SQL_str.len);
+ assert(pPacket->p_sqlst.p_sqlst__SQL_str.cstr_length==SQL_str.len);
 
  assert_s(sizeof(*pPacket->p_sqlst.p_sqlst__SQL_str.cstr_address)==sizeof(*SQL_str.ptr));
 
@@ -68,8 +59,7 @@ void RemoteFB__P12__StmtHelper::BuildPacket__op_prepare_statement
    SQL_str.ptr);
 
  //------------- p_sqlst_items
- assert(structure::can_numeric_cast(&pPacket->p_sqlst.p_sqlst__items.cstr_length,
-                                    _DIM_(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__prepare)));
+ assert_s(_DIM_(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__prepare)<=protocol::set01::C_CSTRING_MAX_LENGTH);
 
  pPacket->p_sqlst.p_sqlst__items.cstr_length
   =_DIM_(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__prepare);
@@ -100,23 +90,13 @@ void RemoteFB__P12__StmtHelper::BuildPacket__op_execute
  pPacket->p_sqldata.p_sqldata__transaction=pTr?pTr->m_ID.get_value():0;
 
  //---------------------------------------- p_sqldata_blr
- if(!structure::can_numeric_cast(&pPacket->p_sqldata.p_sqldata__blr.cstr_length,
-                                 pStmt->m_InParams__MSG_BLR.size()))
- {
-  //ERROR - BLR data of input parameters is too long.
+ RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+  (&pPacket->p_sqldata.p_sqldata__blr,
+   pStmt->m_InParams__MSG_BLR.size(),
+   ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+   L"pInXSQLDA");
 
-  IBP_ErrorUtils::Throw__Error
-   (E_FAIL,
-    ibp_subsystem__remote_fb__p12,
-    ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-    L"pInXSQLDA",
-    pStmt->m_InParams__MSG_BLR.size(),
-    structure::get_numeric_limits(pPacket->p_sqldata.p_sqldata__blr.cstr_length).max_value());
- }//if
-
- structure::static_numeric_cast
-  (&pPacket->p_sqldata.p_sqldata__blr.cstr_length,
-   pStmt->m_InParams__MSG_BLR.size());
+ assert(pPacket->p_sqldata.p_sqldata__blr.cstr_length==pStmt->m_InParams__MSG_BLR.size());
 
  pPacket->p_sqldata.p_sqldata__blr.cstr_address=pStmt->m_InParams__MSG_BLR.buffer();
 

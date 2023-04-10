@@ -49,6 +49,8 @@ void RemoteFB__P12__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pDat
   packet.p_sgmt.p_sgmt__length=cbData;
 
   //---------------------------------------- p_sgmt.p_sgmt_segment
+  assert(protocol::set01::C_CSTRING_MAX_LENGTH==(std::numeric_limits<decltype(cbData)>::max)());
+
   packet.p_sgmt.p_sgmt__segment.cstr_length=cbData;
 
   packet.p_sgmt.p_sgmt__segment.cstr_address=reinterpret_cast<const protocol::P_UCHAR*>(pvData);

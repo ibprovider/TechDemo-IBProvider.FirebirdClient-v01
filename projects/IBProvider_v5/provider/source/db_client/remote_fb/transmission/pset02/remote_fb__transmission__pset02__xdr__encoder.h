@@ -33,6 +33,10 @@ class RemoteFB__PSET02__XDR__Encoder:public RemoteFB__XDR__Encoder
                (buf_type*                    pBuf,
                 const protocol::set02::P_OP* pv);
 
+  static void encode__p_ulong_length_as_p_long__pset02
+               (buf_type*                    pBuf,
+                const protocol::P_ULONG*     pv);
+
   static void encode__p_cstring_const
                (buf_type*                                  pBuf,
                 const protocol::set02::P_CSTRING_CONST_V1* pv);

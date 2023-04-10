@@ -11,6 +11,7 @@
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__stmt_helper.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -189,11 +190,13 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
   else
   if(pData->GetPort()->TestPortFlag__symmetric())
   {
-   cBatchRows=RemoteFB__P12__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
+   cBatchRows
+    =RemoteFB__P12__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
   }
   else
   {
-   const size_t szMsgData=RemoteFB__P12__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
+   const size_t szMsgData
+    =RemoteFB__P12__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
 
    assert(szMsgData>0);
 
@@ -326,9 +329,10 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
    (*pStmtHandle)->m_spFetchResult->m_FetchErr.raise();
   }//if FAILED
 
-  assert_msg((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-             (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-             "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
+  assert_msg
+   ((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+    (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+    "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
 
   //----------------------------------------
   //инициируем выборку новой партии записей
@@ -378,9 +382,10 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
  //все загруженные записи были обработаны
  assert(pStmt->m_spFetchResult->ROWS__GetCount()==0);
 
- assert_msg(pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-            pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-            "state: "<<int(pStmt->m_spFetchResult->m_State));
+ assert_msg
+  (pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+   pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+   "state: "<<int(pStmt->m_spFetchResult->m_State));
 
  //-----------------------------------------
  const protocol::set01::P_OP c_OperationID1__close =protocol::set01::op_free_statement;
@@ -452,23 +457,13 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    packet3__fetch.p_sqldata.p_sqldata__statement=pStmt->m_ID.get_value();
 
    //--------------- p_sqldata_blr
-   if(!structure::can_numeric_cast(&packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length,
-                                   pStmt->m_OutParams__MSG_BLR.size()))
-   {
-    //ERROR - BLR data of input parameters is too long.
+   RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+    (&packet3__fetch.p_sqldata.p_sqldata__blr,
+     pStmt->m_OutParams__MSG_BLR.size(),
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pOutXSQLDA");
 
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p12,
-      ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-      L"pOutXSQLDA",
-      pStmt->m_OutParams__MSG_BLR.size(),
-      structure::get_numeric_limits(packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length,
-     pStmt->m_OutParams__MSG_BLR.size());
+   assert(packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length==pStmt->m_OutParams__MSG_BLR.size());
 
    packet3__fetch.p_sqldata.p_sqldata__blr.cstr_address=pStmt->m_OutParams__MSG_BLR.buffer();
 
@@ -492,7 +487,7 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
 
   portOpCtx.reg_svc(pStmt); //no throw
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом

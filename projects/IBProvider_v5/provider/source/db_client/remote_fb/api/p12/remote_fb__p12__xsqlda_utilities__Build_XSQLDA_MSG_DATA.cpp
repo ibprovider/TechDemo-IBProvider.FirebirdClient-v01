@@ -66,15 +66,12 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_isc__failed_to_process_the_xsqlvar_1);
-
-   exc<<(pXVar-pXSQLDA->sqlvar);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__failed_to_process_the_xsqlvar_1,
+     (pXVar-pXSQLDA->sqlvar));
   }//catch - e
  }//for pXVar
 
@@ -112,13 +109,18 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                             /*data size*/sizeof(isc_api::isc_varchar_size_type),
-                             /*align*/isc_api::ibp_isc_type_align__varying,
-                             /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(isc_api::isc_varchar_size_type),
+       /*align*/isc_api::ibp_isc_type_align__varying,
+       /*pcbResultAlign*/nullptr); //throw
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/xvar_sqllen); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/xvar_sqllen); //throw
+
    break;
   }//ibp_isc_sql_varying
 
@@ -145,8 +147,11 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/xvar_sqllen); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/xvar_sqllen); //throw
+
    break;
   }//ibp_isc_sql_text
 
@@ -175,10 +180,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_SHORT),
-                              /*align*/isc_api::ibp_isc_type_align__short,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_SHORT),
+       /*align*/isc_api::ibp_isc_type_align__short,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_short
 
@@ -193,10 +201,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_LONG),
-                              /*align*/isc_api::ibp_isc_type_align__long,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_LONG),
+       /*align*/isc_api::ibp_isc_type_align__long,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_long
 
@@ -211,10 +222,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_INT64),
-                              /*align*/isc_api::ibp_isc_type_align__int64,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_INT64),
+       /*align*/isc_api::ibp_isc_type_align__int64,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_int64
 
@@ -229,10 +243,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_BID),
-                              /*align*/isc_api::ibp_isc_type_align__quad,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_BID),
+       /*align*/isc_api::ibp_isc_type_align__quad,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_blob
 
@@ -247,10 +264,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_BID),
-                              /*align*/isc_api::ibp_isc_type_align__quad,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_BID),
+       /*align*/isc_api::ibp_isc_type_align__quad,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_array
 
@@ -265,10 +285,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_FLOAT),
-                              /*align*/isc_api::ibp_isc_type_align__float,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_FLOAT),
+       /*align*/isc_api::ibp_isc_type_align__float,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_float
 
@@ -283,10 +306,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(protocol::P_DOUBLE),
-                              /*align*/isc_api::ibp_isc_type_align__double,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_DOUBLE),
+       /*align*/isc_api::ibp_isc_type_align__double,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_double
 
@@ -301,10 +327,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(isc_api::t_ibp_isc_time),
-                              /*align*/isc_api::ibp_isc_type_align__time,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(isc_api::t_ibp_isc_time),
+       /*align*/isc_api::ibp_isc_type_align__time,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_type_time
 
@@ -319,10 +348,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(isc_api::t_ibp_isc_date),
-                              /*align*/isc_api::ibp_isc_type_align__date,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(isc_api::t_ibp_isc_date),
+       /*align*/isc_api::ibp_isc_type_align__date,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_type_date
 
@@ -337,10 +369,13 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
       pXSQLVAR->sqllen);
    }//if
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              /*data size*/sizeof(isc_api::t_ibp_isc_timestamp),
-                              /*align*/isc_api::ibp_isc_type_align__timestamp,
-                              /*pcbResultAlign*/nullptr); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       /*data size*/sizeof(isc_api::t_ibp_isc_timestamp),
+       /*align*/isc_api::ibp_isc_type_align__timestamp,
+       /*pcbResultAlign*/nullptr); //throw
+
    break;
   }//ibp_isc_sql_timestamp
 
@@ -357,10 +392,12 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__CalcBufSi
  }//switch
 
  //место под SQLIND
- szMsg=Helper__AddMsgLength(szMsg,
-                            /*data size*/sizeof(db_obj::t_dbvalue__i2),
-                            /*align*/isc_api::ibp_isc_type_align__short,
-                            /*pcbResultAlign*/nullptr); //throw
+ szMsg
+  =Helper__AddMsgLength
+    (szMsg,
+     /*data size*/sizeof(db_obj::t_dbvalue__i2),
+     /*align*/isc_api::ibp_isc_type_align__short,
+     /*pcbResultAlign*/nullptr); //throw
 
  return szMsg;
 }//Helper__Build_XSQLDA_MSG_DATA__CalcBufSize
@@ -390,21 +427,20 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA__FillBuf
  {
   try
   {
-   offset=Helper__Build_XSQLDA_MSG_DATA__FillBuf(pXVar,
-                                                 DataBuffer,
-                                                 offset);
+   offset
+    =Helper__Build_XSQLDA_MSG_DATA__FillBuf
+      (pXVar,
+       DataBuffer,
+       offset);
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_isc__failed_to_process_the_xsqlvar_1);
-
-   exc<<(pXVar-pXSQLDA->sqlvar);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_isc__failed_to_process_the_xsqlvar_1,
+     (pXVar-pXSQLDA->sqlvar));
   }//catch
  }//for pXVar
 

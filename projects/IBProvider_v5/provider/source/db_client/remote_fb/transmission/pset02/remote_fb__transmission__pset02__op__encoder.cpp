@@ -299,7 +299,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_database
   (spBuf,
    &p_info->p_info__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_info->p_info__buffer_length);
 }//encode__op_info_database
@@ -541,7 +541,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_prepare_statement
   (spBuf,
    &p_sqlst->p_sqlst__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_sqlst->p_sqlst__buffer_length);
 }//encode__op_prepare_statement
@@ -582,7 +582,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_sql
   (spBuf,
    &p_info->p_info__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_info->p_info__buffer_length);
 }//encode__op_info_sql
@@ -928,7 +928,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_info_blob
   (spBuf,
    &p_info->p_info__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_info->p_info__buffer_length);
 }//encode__op_info_blob
@@ -1206,7 +1206,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_exec_immediate
   (spBuf,
    &p_sqlst->p_sqlst__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_sqlst->p_sqlst__buffer_length);
 }//encode__op_exec_immediate
@@ -1348,7 +1348,7 @@ void RemoteFB__PSET02__OpEncoder::encode__op_exec_immediate2__s
   (spBuf,
    &p_sqlst->p_sqlst__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_sqlst->p_sqlst__buffer_length);
 }//encode__op_exec_immediate2__s

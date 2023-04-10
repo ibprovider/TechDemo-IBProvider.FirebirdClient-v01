@@ -36,6 +36,12 @@ class RemoteFB__PSET01__XDR__Decoder:public RemoteFB__XDR__Decoder
                 const wchar_t*         pv_sign,
                 protocol::set01::P_OP* pv);
 
+  // It is a special variant for decoding an USHORT-value with length.
+  static void decode__p_ushort_length_as_p_short__pset01
+               (buf_type*           pBuf,
+                const wchar_t*      pv_sign,
+                protocol::P_USHORT* pv);
+
   static void decode__p_cstring_const
                (buf_type*                         pBuf,
                 mem_type*                         pMem,

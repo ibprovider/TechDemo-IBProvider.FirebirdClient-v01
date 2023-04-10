@@ -174,6 +174,13 @@ void RemoteFB__API_P13__GetBlobInfo::exec(RemoteFB__ConnectorData* const pData,
 
   packet.p_info.p_info__incarnation=0;
 
+  assert_s(std::is_same<decltype(packet.p_info.p_info__items.cstr_length) _LITER_COMMA_ protocol::P_ULONG>::value);
+
+  assert_s(std::is_same<std::remove_const<decltype(cItems)>::type _LITER_COMMA_ protocol::P_USHORT>::value);
+
+  //VS2013 does not allow to use assert_s here
+  assert((std::numeric_limits<protocol::P_USHORT>::max)()<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
+
   packet.p_info.p_info__items.cstr_length=cItems;
 
   packet.p_info.p_info__items.cstr_address=pItems;

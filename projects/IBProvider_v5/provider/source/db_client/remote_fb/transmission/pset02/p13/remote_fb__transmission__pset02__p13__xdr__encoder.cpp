@@ -52,10 +52,10 @@ void RemoteFB__PSET02__P13__XDR__Encoder::encode__sql_message
  assert(msg_data_size>0); //[2016-09-21]
  assert(msg_nulls_size>0);
 
+ assert_s(CHAR_BIT==8);
+
 #ifndef NDEBUG
  {
-  assert(CHAR_BIT==8);
-
   const size_t ExpectedNullsBufferLength
    =((msg_descrs_count/8) + (((msg_descrs_count%8)!=0)?1:0));
 
@@ -457,7 +457,7 @@ void RemoteFB__PSET02__P13__XDR__Encoder::encode__sql_message
      default:
      {
       //ERROR - [BUG CHECK] unexpected typeID
-      assert_msg(false,"typeID"<<unsigned(MsgElementDescr.m_msg_blrtype));
+      assert_msg(false,"typeID: "<<unsigned(MsgElementDescr.m_msg_blrtype));
 
       IBP_ErrorUtils::Throw__Error
        (E_FAIL,

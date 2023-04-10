@@ -26,6 +26,27 @@ void RemoteFB__PSET01__XDR__Encoder::encode__p_op
 }//encode__p_op
 
 //------------------------------------------------------------------------
+void RemoteFB__PSET01__XDR__Encoder::encode__p_ushort_length_as_p_short__pset01
+                              (buf_type*                 const pBuf,
+                               const protocol::P_USHORT* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(*pv)==sizeof(protocol::P_SHORT));
+
+ //
+ // [2023-04-08]
+ // 
+ //  We will write USHORT that more than SHRT_MAX as a negative value.
+ //
+
+ return self_type::encode__p_short
+         (pBuf,
+          reinterpret_cast<const protocol::P_SHORT*>(pv));
+}//encode__p_ushort_length_as_p_short__pset01
+
+//------------------------------------------------------------------------
 void RemoteFB__PSET01__XDR__Encoder::encode__p_cstring_const
                               (buf_type*                               const pBuf,
                                const protocol::set01::P_CSTRING_CONST* const pv)
@@ -35,7 +56,7 @@ void RemoteFB__PSET01__XDR__Encoder::encode__p_cstring_const
 
  CHECK_READ_TYPED_PTR(pv->cstr_address,pv->cstr_length);
 
- self_type::encode__p_ushort_as_p_short
+ self_type::encode__p_ushort_length_as_p_short__pset01
   (pBuf,
    &pv->cstr_length);
 
@@ -67,7 +88,7 @@ void RemoteFB__PSET01__XDR__Encoder::encode__p_longs
 
  assert(((n*sizeof(item_type))%protocol::FB_PACKET_FIELD_ALIGN)==0);
 
- self_type::encode__p_ushort_as_p_short
+ self_type::encode__p_ushort_length_as_p_short__pset01
   (pBuf,
    &pv->cstr_length);
 

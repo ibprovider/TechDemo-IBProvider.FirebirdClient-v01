@@ -36,6 +36,11 @@ class RemoteFB__PSET02__XDR__Decoder:public RemoteFB__XDR__Decoder
                 const wchar_t*         pv_sign,
                 protocol::set02::P_OP* pv);
 
+  static void decode__p_ulong_length_as_p_long__pset02
+               (buf_type*           pBuf,
+                const wchar_t*      pv_sign,
+                protocol::P_ULONG*  pv);
+
   static void decode__p_cstring_const
                (buf_type*                            pBuf,
                 mem_type*                            pMem,

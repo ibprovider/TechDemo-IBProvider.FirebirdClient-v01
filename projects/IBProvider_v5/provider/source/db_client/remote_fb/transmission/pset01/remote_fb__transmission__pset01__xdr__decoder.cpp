@@ -35,6 +35,47 @@ void RemoteFB__PSET01__XDR__Decoder::decode__p_op
 }//decode__p_op
 
 //------------------------------------------------------------------------
+void RemoteFB__PSET01__XDR__Decoder::decode__p_ushort_length_as_p_short__pset01
+                              (buf_type*           const pBuf,
+                               const wchar_t*      const pv_sign,
+                               protocol::P_USHORT* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_LONG)==sizeof(protocol::P_ULONG));
+ assert_s(sizeof(protocol::P_LONG)==4);
+
+ protocol::P_ULONG tmp DEBUG_CODE(=structure::negative_one);
+
+ pBuf->read__long(reinterpret_cast<protocol::P_LONG*>(&tmp)); //throw
+
+ // FB before v3 packs USHORT in SHORT values.
+ // FB3 uses positive values only
+
+ switch(tmp>>16) // let's check an upper half
+ {
+  case 0x0000FFFF: // It is Firebird before v3
+   break;
+
+  case 0x00000000: // If tmp>SHRT_MAX it is FB3 and later
+   break;
+
+  default: // ERROR - it was loaded an bad USHORT-value
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_subsystem__remote_fb__pset01,
+     ibp_mce_remote__receive_pack__xdr__bad_data_3,
+     pv_sign,
+     L"ushort",
+     tmp);
+ }//switch
+
+ structure::static_numeric_cast(pv,tmp);
+}//decode__p_ushort_length_as_p_short__pset01
+
+//------------------------------------------------------------------------
 void RemoteFB__PSET01__XDR__Decoder::decode__p_cstring_const
                               (buf_type*                         const pBuf,
                                mem_type*                         const pMem,
@@ -52,7 +93,7 @@ void RemoteFB__PSET01__XDR__Decoder::decode__p_cstring_const
  //-----------------------------------------
  protocol::P_USHORT cstr_length;
 
- self_type::decode__p_ushort_as_p_short
+ self_type::decode__p_ushort_length_as_p_short__pset01
   (pBuf,
    pv_sign1__cstr_length,
    &cstr_length);

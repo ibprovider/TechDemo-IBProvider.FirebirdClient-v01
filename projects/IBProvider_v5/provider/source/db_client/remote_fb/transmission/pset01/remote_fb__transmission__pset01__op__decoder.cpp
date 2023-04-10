@@ -202,7 +202,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
    {
     //ERROR - [BUG CHECK] неожиданное получение пакета op_sql_response.
 
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#001",
       L"unexpected situation");
@@ -223,15 +223,11 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
   {
    //ERROR - [BUG CHECK] У нас проблема. Мы ожидаем отсутствие или одно OUT-сообщение.
 
-   structure::wstr_formatter
-    freason(L"unexpected value of p_sqldata_messages: %1");
-
-   freason<<p_sqldata->p_sqldata__messages;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#002",
-     freason.c_str());
+     L"unexpected value of p_sqldata_messages: %1",
+     p_sqldata->p_sqldata__messages);
   }//default
  }//switch
 }//decode__op_sql_response__s
@@ -288,9 +284,9 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
   {
    if(spStmt->m_OutParams__MSG_BLR.empty())
    {
-    //ERROR - [BUG CHECK] неожиданное получение пакета op_sql_response.
+    //ERROR - [BUG CHECK] неожиданное получение пакета op_fetch_response.
 
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#001",
       me_bug_check__unexpected_situation_0);
@@ -301,15 +297,11 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
    {
     //ERROR - [BUG CHECK] У нас проблема. Мы получили больше рядов чем запрашивали.
 
-    structure::wstr_formatter
-     freason(L"exceeded the expected number of rows: %1");
-
-    freason<<spStmt->m_spFetchResult->m_RequestedFetchCount;
-
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#002",
-      freason.c_str());
+      L"exceeded the expected number of rows: %1",
+      spStmt->m_spFetchResult->m_RequestedFetchCount);
    }//if
 
    assert(spStmt->m_spFetchResult->m_ProcessedFetchCount<spStmt->m_spFetchResult->m_RequestedFetchCount);
@@ -332,15 +324,11 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
   {
    //ERROR - [BUG CHECK] У нас проблема. Мы ожидаем отсутствие или одно OUT-сообщение.
 
-   structure::wstr_formatter
-    freason(L"unexpected value of p_sqldata__messages: %1");
-
-   freason<<p_sqldata->p_sqldata__messages;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#003",
-     freason.c_str());
+     L"unexpected value of p_sqldata__messages: %1",
+     p_sqldata->p_sqldata__messages);
   }//default
  }//switch p_sqldata_messages
 }//decode__op_fetch_response__s

@@ -145,12 +145,19 @@ void RemoteFB__API_P13__GetDatabaseInfo::exec(RemoteFB__ConnectorData* const pDa
 
   packet.p_info.p_info__incarnation=Incornation;
 
+  assert_s(std::is_same<decltype(packet.p_info.p_info__items.cstr_length) _LITER_COMMA_ protocol::P_ULONG>::value);
+
+  assert_s(std::is_same<std::remove_const<decltype(cItems)>::type _LITER_COMMA_ protocol::P_USHORT>::value);
+
+  //VS2013 does not allow to use assert_s here
+  assert((std::numeric_limits<protocol::P_USHORT>::max)()<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
+
   packet.p_info.p_info__items.cstr_length=cItems;
 
   packet.p_info.p_info__items.cstr_address=pItems;
 
   packet.p_info.p_info__buffer_length
-   =structure::get_numeric_limits(packet.p_info.p_info__buffer_length).max_value();
+   =protocol::set02::C_INFO_BUF_SIZE_P13;
 
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;

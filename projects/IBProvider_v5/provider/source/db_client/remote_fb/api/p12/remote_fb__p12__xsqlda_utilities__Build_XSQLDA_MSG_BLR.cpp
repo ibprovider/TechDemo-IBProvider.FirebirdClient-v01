@@ -99,13 +99,12 @@ size_t RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__CalcBufSiz
    {
     //ERROR - unexpected sqltypeID
 
-    t_ibp_error exc(DB_E_NOTSUPPORTED,
-                    ibp_subsystem__remote_fb__p12,
-                    ibp_mce_dbobj__ie_data_with_unk_sql_type_2);
-
-    exc<<(pXVar-pXSQLDA->sqlvar)<<pXVar->sqltype;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (DB_E_NOTSUPPORTED,
+      ibp_subsystem__remote_fb__p12,
+      ibp_mce_dbobj__ie_data_with_unk_sql_type_2,
+      (pXVar-pXSQLDA->sqlvar),
+      pXVar->sqltype);
    }//default
   }//switch
  }//for pXVar
@@ -438,7 +437,7 @@ void RemoteFB__P12__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
 
    //null flag
    PUSH_STUFF_BYTE(isc_api::ibp_isc_blr_dtype__short)
-   PUSH_STUFF(0)
+   PUSH_STUFF(0) //scale
   }
   catch(const std::exception& e)
   {

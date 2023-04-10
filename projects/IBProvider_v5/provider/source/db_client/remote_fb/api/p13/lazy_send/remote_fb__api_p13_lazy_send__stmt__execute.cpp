@@ -12,6 +12,7 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__stmt_helper.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__srv_operation.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -455,7 +456,7 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
 
   portOpCtx.reg_svc((*pStmtHandle).ptr());
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом
@@ -768,23 +769,13 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
    packet2.p_sqldata.p_sqldata__transaction=(*pTrHandle)?(*pTrHandle)->m_ID.get_value():0;
 
    //---------------------------------------- p_sqldata_blr
-   if(!structure::can_numeric_cast(&packet2.p_sqldata.p_sqldata__blr.cstr_length,
-                                   (*pStmtHandle)->m_InParams__MSG_BLR.size()))
-   {
-    //ERROR - BLR data of input parameters is too long.
+   RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+    (&packet2.p_sqldata.p_sqldata__blr,
+     (*pStmtHandle)->m_InParams__MSG_BLR.size(),
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pInXSQLDA");
 
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p13,
-      ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-      L"pInXSQLDA",
-      (*pStmtHandle)->m_InParams__MSG_BLR.size(),
-      structure::get_numeric_limits(packet2.p_sqldata.p_sqldata__blr.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet2.p_sqldata.p_sqldata__blr.cstr_length,
-     (*pStmtHandle)->m_InParams__MSG_BLR.size());
+   assert(packet2.p_sqldata.p_sqldata__blr.cstr_length==(*pStmtHandle)->m_InParams__MSG_BLR.size());
 
    packet2.p_sqldata.p_sqldata__blr.cstr_address=(*pStmtHandle)->m_InParams__MSG_BLR.buffer();
 
@@ -795,23 +786,13 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
    packet2.p_sqldata.p_sqldata__messages=(*pStmtHandle)->m_InParams__MSG_BLR.empty()?0:1;
 
    //--------------------------------------- p_sqldata_out_blr [op_execute2]
-   if(!structure::can_numeric_cast(&packet2.p_sqldata.p_sqldata__out_blr.cstr_length,
-                                    (*pStmtHandle)->m_OutParams__MSG_BLR.size()))
-   {
-    //ERROR - BLR data of output parameters is too long.
+   RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+    (&packet2.p_sqldata.p_sqldata__out_blr,
+     (*pStmtHandle)->m_OutParams__MSG_BLR.size(),
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pOutXSQLDA");
 
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p13,
-      ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-      L"pOutXSQLDA",
-      (*pStmtHandle)->m_OutParams__MSG_BLR.size(),
-      structure::get_numeric_limits(packet2.p_sqldata.p_sqldata__blr.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet2.p_sqldata.p_sqldata__out_blr.cstr_length,
-     (*pStmtHandle)->m_OutParams__MSG_BLR.size());
+   assert(packet2.p_sqldata.p_sqldata__out_blr.cstr_length==(*pStmtHandle)->m_OutParams__MSG_BLR.size());
 
    packet2.p_sqldata.p_sqldata__out_blr.cstr_address=(*pStmtHandle)->m_OutParams__MSG_BLR.buffer();
 
@@ -824,7 +805,7 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
 
   portOpCtx.reg_svc((*pStmtHandle).ptr());
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом

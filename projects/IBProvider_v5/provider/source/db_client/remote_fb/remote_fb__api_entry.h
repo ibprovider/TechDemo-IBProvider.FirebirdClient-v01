@@ -1,15 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb
 //! \file    remote_fb__api_entry.h
-//! \brief   Класс управления подключением к FireBird.
+//! \brief   The class for RemoteFB API entry point.
 //! \author  Kovalenko Dmitry
-//! \date    24.02.2015.
+//! \date    24.02.2015
 #ifndef _remote_fb__api_entry_H_
 #define _remote_fb__api_entry_H_
 
 #include "source/error_services/ibp_error_utils.h"
-#include <structure/t_str_formatter.h>
-#include <structure/t_smart_object.h>
+#include <lcpi/lib/structure/t_smart_object_ptr.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,11 +33,11 @@ class RemoteFB__ApiEntry
   TApiItem* get()const;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__not_defined();
 
  private:
-  structure::t_smart_object_ptr<TApiItem> m_spApiItem;
+  lib::structure::t_smart_object_ptr<TApiItem> m_spApiItem;
 };//class RemoteFB__ApiEntry
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,24 +45,26 @@ class RemoteFB__ApiEntry
 
 template<typename TApiItem>
 RemoteFB__ApiEntry<TApiItem>::RemoteFB__ApiEntry()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<typename TApiItem>
 RemoteFB__ApiEntry<TApiItem>::~RemoteFB__ApiEntry()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<typename TApiItem>
 void RemoteFB__ApiEntry<TApiItem>::init(TApiItem* const pApiItem)
 {
- //однократная инициализация объекта
+ //one-time initialization of a object
 
  assert(!m_spApiItem);
 
  assert(pApiItem!=nullptr);
 
- m_spApiItem=structure::not_null_ptr(pApiItem);
+ m_spApiItem=lib::structure::not_null_ptr(pApiItem);
 }//init
 
 //------------------------------------------------------------------------
@@ -80,14 +81,11 @@ TApiItem* RemoteFB__ApiEntry<TApiItem>::get()const
 template<typename TApiItem>
 void RemoteFB__ApiEntry<TApiItem>::helper__throw_error__not_defined()
 {
- structure::wstr_formatter freason(L"api entry [%1] not defined");
-
- freason<<typeid(TApiItem).name();
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (L"RemoteFB__ApiEntry::get",
    L"#001",
-   freason.c_str());
+   L"the api entry [%1] is not defined",
+   typeid(TApiItem).name());
 }//helper__throw_error__not_defined
 
 ////////////////////////////////////////////////////////////////////////////////

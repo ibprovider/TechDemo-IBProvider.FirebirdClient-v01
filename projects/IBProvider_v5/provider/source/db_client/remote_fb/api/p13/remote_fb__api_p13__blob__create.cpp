@@ -10,6 +10,7 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__blob__create.h"
 #include "source/db_client/remote_fb/api/p13/lazy_send/remote_fb__p13_lazy_send__srv_resource_helper.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
@@ -124,20 +125,13 @@ void RemoteFB__API_P13__CreateBlob::exec(RemoteFB__ConnectorData* const pData,
   // ¬ коде планируетс€ единственный случай указани€ параметров: создание stream-блоб.
   // ј это буфер длиной 4 байта.
 
-  if(!structure::can_numeric_cast(&packet.p_blob.p_blob__bpb.cstr_length,szBPB))
-  {
-   //ERROR - размер буфера с параметрами блоба превышает максимально допустимый.
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet.p_blob.p_blob__bpb,
+    szBPB,
+    ibp_mce_common__formed_param_buf_is_too_large_3,
+    L"BPB");
 
-   IBP_ThrowErr_FormedParamBufIsTooLarge
-    (ibp_subsystem__remote_fb__p13,
-     L"BPB",
-     szBPB,
-     structure::get_numeric_limits(packet.p_blob.p_blob__bpb.cstr_length).max_value());
-  }//if
-
-  assert(structure::can_numeric_cast(&packet.p_blob.p_blob__bpb.cstr_length,szBPB));
-
-  structure::static_numeric_cast(&packet.p_blob.p_blob__bpb.cstr_length,szBPB);
+  assert(packet.p_blob.p_blob__bpb.cstr_length==szBPB);
 
   //---------------------------------------- p_blob__bpb.cstr_address
   packet.p_blob.p_blob__bpb.cstr_address=pBPB;

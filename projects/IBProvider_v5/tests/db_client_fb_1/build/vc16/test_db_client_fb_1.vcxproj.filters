@@ -3172,6 +3172,18 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_parameters_v01.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__utilities.cc">
+      <Filter>IBP\source\db_client\remote_fb\api\pset01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__utilities.cc">
+      <Filter>IBP\source\db_client\remote_fb\api\pset02</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__utilities.cc">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.cc">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -4660,9 +4672,6 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__client_connect_block_v2.h">
       <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key__symmetric.h">
-      <Filter>IBP\source\db_client\remote_fb</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key.h">
       <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
     </ClInclude>
@@ -5017,6 +5026,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__stmt__get_parameters_v01.h">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__internal_crypt_key__symmetric.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset01\remote_fb__pset01__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\pset01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\pset02\remote_fb__pset02__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\pset02\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

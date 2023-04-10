@@ -26,6 +26,22 @@ void RemoteFB__PSET02__XDR__Encoder::encode__p_op
 }//encode__p_op
 
 //------------------------------------------------------------------------
+void RemoteFB__PSET02__XDR__Encoder::encode__p_ulong_length_as_p_long__pset02
+                              (buf_type*                const pBuf,
+                               const protocol::P_ULONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ // [2023-04-09] Remove it when time come
+ assert((*pv)<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
+
+ return self_type::encode__p_ulong_as_p_long
+         (pBuf,
+          pv);
+}//encode__p_ulong_length_as_p_long__pset02
+
+//------------------------------------------------------------------------
 void RemoteFB__PSET02__XDR__Encoder::encode__p_cstring_const
                               (buf_type*                                  const pBuf,
                                const protocol::set02::P_CSTRING_CONST_V1* const pv)
@@ -35,7 +51,11 @@ void RemoteFB__PSET02__XDR__Encoder::encode__p_cstring_const
 
  CHECK_READ_TYPED_PTR(pv->cstr_address,pv->cstr_length);
 
- //Здесь нужно обеспечить совместимость с PSET01 и PSET02
+ //
+ // [] Здесь нужно обеспечить совместимость с PSET01 и PSET02
+ //
+ // [2023-04-08] It is not needed.
+ //
 
  self_type::encode__p_ushort_as_p_long
   (pBuf,
@@ -57,7 +77,7 @@ void RemoteFB__PSET02__XDR__Encoder::encode__p_cstring_const
 
  CHECK_READ_TYPED_PTR(pv->cstr_address,pv->cstr_length);
 
- self_type::encode__p_ulong_as_p_long
+ self_type::encode__p_ulong_length_as_p_long__pset02
   (pBuf,
    &pv->cstr_length);
 
@@ -89,7 +109,7 @@ void RemoteFB__PSET02__XDR__Encoder::encode__p_longs
 
  assert(((n*sizeof(item_type))%protocol::FB_PACKET_FIELD_ALIGN)==0);
 
- self_type::encode__p_ulong_as_p_long
+ self_type::encode__p_ulong_length_as_p_long__pset02
   (pBuf,
    &pv->cstr_length);
 

@@ -33,6 +33,11 @@ class RemoteFB__PSET01__XDR__Encoder:public RemoteFB__XDR__Encoder
                (buf_type*                    pBuf,
                 const protocol::set01::P_OP* pv);
 
+  // It is a special variant for encoding an USHORT-value with length.
+  static void encode__p_ushort_length_as_p_short__pset01
+               (buf_type*                    pBuf,
+                const protocol::P_USHORT*    pv);
+
   static void encode__p_cstring_const
                (buf_type*                               pBuf,
                 const protocol::set01::P_CSTRING_CONST* pv);

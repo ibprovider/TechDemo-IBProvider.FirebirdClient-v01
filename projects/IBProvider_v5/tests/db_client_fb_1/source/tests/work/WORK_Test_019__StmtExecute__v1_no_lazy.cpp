@@ -312,13 +312,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_001__bug_check__zero
    svc::remote_fb_tr_handle_type hTr(nullptr);
    svc::remote_fb_stmt_handle_type hStmt(nullptr);
 
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -417,13 +418,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_002__bug_check__null
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmtCopy,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmtCopy,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -510,23 +512,25 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_003__bug_check__bad_
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  for(;;)
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector2,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector2,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -598,9 +602,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -610,17 +615,19 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  remote_fb::handles::RemoteFB__StmtHandle hStmt2(nullptr);
 
- svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                       spConnector2,
-                                       &hStmt2);
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector2,
+   &hStmt2);
 
  _TSO_CHECK(hStmt2!=nullptr);
 
@@ -631,13 +638,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector2,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt2,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector2,
+     OpCtx,
+     &hTr,
+     &hStmt2,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -709,9 +717,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_005__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -720,9 +729,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_005__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr_copy(hTr);
 
- svc::RemoteFB_Connector__Commit(tracer,
-                                 spConnector,
-                                 &hTr_copy);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr_copy);
 
  _TSO_CHECK(!hTr_copy);
 
@@ -745,13 +755,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_005__bug_check__bad_
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -839,13 +850,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_006__err__not_prepar
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -919,9 +931,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_007__bug_check__inco
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -955,13 +968,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_007__bug_check__inco
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/xsqlda,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/xsqlda,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1044,9 +1058,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_008__bug_check__inco
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -1080,13 +1095,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_008__bug_check__inco
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/xsqlda,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/xsqlda,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1170,9 +1186,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_009__bug_check__inco
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -1206,13 +1223,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_009__bug_check__inco
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/xsqlda);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1295,9 +1313,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_010__bug_check__inco
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -1331,13 +1350,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_010__bug_check__inco
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/xsqlda);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/xsqlda);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2127,9 +2147,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_014__err__op_execute
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2159,9 +2181,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_014__err__op_execute
  _TSO_CHECK(hStmt->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,
-                     spConnector,
-                     &hTr);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
@@ -2171,23 +2194,26 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_014__err__op_execute
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        /*pOutXSQLDA*/nullptr);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     /*pOutXSQLDA*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
-   errSvc::print_exception_ok(tracer,
-                              exc);
+   errSvc::print_exception_ok
+    (tracer,
+     exc);
 
-   errSvc::check_err_count(exc,
-                           1);
+   errSvc::check_err_count
+    (exc,
+     1);
 
    _TSO_CHECK(exc.get_record(0));
 
@@ -2267,9 +2293,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_015__err__op_execute
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2299,9 +2327,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_015__err__op_execute
  _TSO_CHECK(hStmt->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,
-                     spConnector,
-                     &hTr);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  db_obj::t_dbvalue__i2 columnValue=0;
@@ -2326,23 +2355,26 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_015__err__op_execute
  {
   try
   {
-   svc::RemoteFB_Connector__StmtExecute(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &hStmt,
-                                        /*pInXSQLDA*/nullptr,
-                                        outXSQLDA);
+   svc::RemoteFB_Connector__StmtExecute
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &hStmt,
+     /*pInXSQLDA*/nullptr,
+     outXSQLDA);
   }
   catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
-   errSvc::print_exception_ok(tracer,
-                              exc);
+   errSvc::print_exception_ok
+    (tracer,
+     exc);
 
-   errSvc::check_err_count(exc,
-                           1);
+   errSvc::check_err_count
+    (exc,
+     1);
 
    _TSO_CHECK(exc.get_record(0));
 
@@ -2420,9 +2452,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
  //-----------------------------------------
  TestOperationContext OpCtx(params);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -2444,13 +2477,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
    static_cast<remote_fb::protocol::P_USHORT>(cns.db_dialect_Ex.value()),
    "select ID from DUAL");
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
 
  for(size_t nPass=0;nPass!=3;)
  {
@@ -2462,22 +2496,26 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
   {
    try
    {
-    svc::RemoteFB_Connector__StmtExecute(tracer,
-                                         spConnector,
-                                         OpCtx,
-                                         &hTr,
-                                         &hStmt,
-                                         /*IN*/nullptr,
-                                         /*OUT*/nullptr);
+    svc::RemoteFB_Connector__StmtExecute
+     (tracer,
+      spConnector,
+      OpCtx,
+      &hTr,
+      &hStmt,
+      /*IN*/nullptr,
+      /*OUT*/nullptr);
    }
    catch(const ibp::t_ibp_error& exc)
    {
     typedef TestCheckErrors errSvc;
 
-    errSvc::print_exception_ok(tracer,
-                               exc);
+    errSvc::print_exception_ok
+     (tracer,
+      exc);
 
-    errSvc::check_err_count(exc,1);
+    errSvc::check_err_count
+     (exc,
+      1);
 
     errSvc::check_err_rec__srv_err__attempt_to_reopen_cursor
      (tracer,
@@ -2561,9 +2599,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
  //-----------------------------------------
  TestOperationContext OpCtx(params);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -2585,13 +2624,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
    static_cast<remote_fb::protocol::P_USHORT>(cns.db_dialect_Ex.value()),
    "select ID from DUAL");
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
 
  for(size_t nPass=0;nPass!=3;)
  {
@@ -2616,10 +2656,13 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_016__attempt_to_reop
    {
     typedef TestCheckErrors errSvc;
 
-    errSvc::print_exception_ok(tracer,
-                               exc);
+    errSvc::print_exception_ok
+     (tracer,
+      exc);
 
-    errSvc::check_err_count(exc,1);
+    errSvc::check_err_count
+     (exc,
+      1);
 
     errSvc::check_err_rec__srv_err__attempt_to_reopen_cursor__fb3
      (tracer,
@@ -2705,9 +2748,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S001__insert__withou
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2740,13 +2785,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S001__insert__withou
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -2812,6 +2858,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S002__set_transactio
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
@@ -2850,13 +2897,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S002__set_transactio
  //-----------------------------------------
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -2934,9 +2982,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S003__commit
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2969,13 +3019,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S003__commit
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hStmt==hStmtCopy);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -3044,9 +3095,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S004__commit_retain
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3081,13 +3134,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S004__commit_retain
 
  const auto hTrIDCopy=hTr->m_ID.get_value();
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hStmt==hStmtCopy);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -3163,9 +3217,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S005__rollback
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3198,13 +3254,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S005__rollback
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hStmt==hStmtCopy);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -3273,9 +3330,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S006__rollback_retai
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3310,13 +3369,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S006__rollback_retai
 
  const auto hTrIDCopy=hTr->m_ID.get_value();
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hStmt==hStmtCopy);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -3328,9 +3388,10 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S006__rollback_retai
  _TSO_CHECK(hTrCopy->m_pParentPort);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__Rollback(tracer,
-                                   spConnector,
-                                   &hTr);
+ svc::RemoteFB_Connector__Rollback
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtDrop
@@ -3381,6 +3442,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S007__insert__with_p
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
@@ -3391,9 +3453,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S007__insert__with_p
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3550,9 +3614,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S007__insert__with_p
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3598,13 +3664,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S007__insert__with_p
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -3670,6 +3737,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S008__insert__with_p
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
@@ -3680,9 +3748,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S008__insert__with_p
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3744,13 +3814,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S008__insert__with_p
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -3826,9 +3897,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN001__short
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -3874,13 +3947,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN001__short
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -3956,9 +4030,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN002__long
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4004,13 +4080,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN002__long
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4076,6 +4153,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN003__int64
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
@@ -4086,9 +4164,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN003__int64
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4141,13 +4221,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN003__int64
   xsqlda->sqlvar[0].sqlind =nullptr;//&xparam0_ind;
 
   //-----------------------------------------
-  svc::RemoteFB_Connector__StmtExecute(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hTr,
-                                       &hStmt,
-                                       /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+  svc::RemoteFB_Connector__StmtExecute
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    /*pInXSQLDA*/xsqlda,
+    /*pOutXSQLDA*/nullptr);
 
   _TSO_CHECK(hTr==hTrCopy);
   _TSO_CHECK(hTr->m_ID.has_value());
@@ -4217,6 +4298,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN004__float
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
@@ -4227,9 +4309,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN004__float
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4275,13 +4359,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN004__float
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4357,9 +4442,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN005__double
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4406,13 +4493,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN005__double
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4491,9 +4579,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN006__type_time
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4543,13 +4633,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN006__type_time
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4625,9 +4716,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN007__type_date
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4673,13 +4766,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN007__type_date
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4755,9 +4849,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN008__timestamp
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4807,13 +4903,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN008__timestamp
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -4889,9 +4986,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN009__char
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -4937,13 +5036,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN009__char
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5019,9 +5119,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN009__char__len0
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -5066,13 +5168,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN009__char__len0
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5148,9 +5251,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN010__varchar
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -5202,13 +5307,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN010__varchar
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5284,9 +5390,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN011__sqlnull
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -5331,13 +5439,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_NN011__sqlnull
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5413,9 +5522,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_N001__array_null
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -5461,13 +5572,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_N001__array_null
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5543,9 +5655,11 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_N002__blob_null
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -5591,13 +5705,14 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_IN_N002__blob_null
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/xsqlda,
-                                      /*pOutXSQLDA*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/xsqlda,
+   /*pOutXSQLDA*/nullptr);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -5932,15 +6047,20 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::create
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes__no_lazy[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<sm_Tests[it[iTest]].pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data,
-                                                 sm_Tests[it[iTest]].pExecRules));
+  const TTSO_TestPtr spTest
+   (structure::not_null_ptr
+     (new TTSO_TestFunc_v2
+       (pParams,
+        ftestID.c_str(),
+        sm_Tests[it[iTest]].Func,
+        Data,
+        sm_Tests[it[iTest]].pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

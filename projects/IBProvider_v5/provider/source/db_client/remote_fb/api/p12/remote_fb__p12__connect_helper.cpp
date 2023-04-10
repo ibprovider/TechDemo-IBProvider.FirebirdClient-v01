@@ -9,6 +9,7 @@
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__connect_helper.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__connect_op_ctx.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
@@ -60,21 +61,12 @@ void RemoteFB__P12__ConnectHelper::exec(RemoteFB__Port*            const pPort,
      ibp_mce_common__failed_to_convert_db_name_to_utf8_0);
   }//if
 
-  if(!structure::can_numeric_cast(&packet.p_atch.p_atch__file.cstr_length,tmp__utf8_database_name.length()))
-  {
-   //ERROR - database name length too large
+  RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+   (&packet.p_atch.p_atch__file,
+    tmp__utf8_database_name.length(),
+    ibp_mce_common__database_name_length_is_too_large_2);
 
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__p12,
-     ibp_mce_common__database_name_length_is_too_large_2,
-     tmp__utf8_database_name.length(),
-     structure::get_numeric_limits(packet.p_atch.p_atch__file.cstr_length).max_value());
-  }//if
-
-  structure::static_numeric_cast
-   (&packet.p_atch.p_atch__file.cstr_length,
-    tmp__utf8_database_name.length());
+  assert(packet.p_atch.p_atch__file.cstr_length==tmp__utf8_database_name.length());
 
   assert_s(sizeof(*tmp__utf8_database_name.c_str())==sizeof(*packet.p_atch.p_atch__file.cstr_address));
 
@@ -83,26 +75,15 @@ void RemoteFB__P12__ConnectHelper::exec(RemoteFB__Port*            const pPort,
     tmp__utf8_database_name.c_str());
 
   //---------------------------------------- p_atch__dpb
-  {
-   const ctx_type::dpb_type::size_type
-    dpb_BufferLength=ctx.m_dpb.GetBufferLength();
+  RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+   (&packet.p_atch.p_atch__dpb,
+    ctx.m_dpb.GetBufferLength(),
+    ibp_mce_common__formed_param_buf_is_too_large_3,
+    ctx.m_dpb.GetBufferTypeName());
 
-   if(!structure::can_numeric_cast(&packet.p_atch.p_atch__dpb.cstr_length,dpb_BufferLength))
-   {
-    //ERROR - database parameter buffer is too large
+  assert(packet.p_atch.p_atch__dpb.cstr_length==ctx.m_dpb.GetBufferLength());
 
-    IBP_ThrowErr_FormedParamBufIsTooLarge
-     (ibp_subsystem__remote_fb__p12,
-      ctx.m_dpb.GetBufferTypeName(),
-      dpb_BufferLength,
-      structure::get_numeric_limits(packet.p_atch.p_atch__dpb.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast(&packet.p_atch.p_atch__dpb.cstr_length,
-                                  dpb_BufferLength);
-
-   packet.p_atch.p_atch__dpb.cstr_address=ctx.m_dpb.GetBuffer();
-  }//local
+  packet.p_atch.p_atch__dpb.cstr_address=ctx.m_dpb.GetBuffer();
 
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx__send;
@@ -194,27 +175,14 @@ void RemoteFB__P12__ConnectHelper::exec(RemoteFB__Port*            const pPort,
    memoryPool.deallocate_all();
 
    //------
-   if(!structure::can_numeric_cast(&packet.p_trau.p_trau__data.cstr_length,
-                                   auth_data.size()))
-   {
-    //ERROR - данные аутентификации имеют слишком большой размер.
-
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p12,
-      ibp_mce_common__auth_data_length_is_too_large_2,
-      auth_data.size(),
-      structure::get_numeric_limits(packet.p_trau.p_trau__data.cstr_length).max_value());
-   }//if
-
-   assert(structure::can_numeric_cast(&packet.p_trau.p_trau__data.cstr_length,
-                                      auth_data.size()));
-   //------
    packet.operation=protocol::set01::op_trusted_auth;
 
-   structure::static_numeric_cast
-    (&packet.p_trau.p_trau__data.cstr_length,
-     auth_data.size());
+   RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+    (&packet.p_trau.p_trau__data,
+     auth_data.size(),
+     ibp_mce_common__auth_data_length_is_too_large_2);
+
+   assert(packet.p_trau.p_trau__data.cstr_length==auth_data.size());
 
    structure::reinterpret_ptr_cast
     (&packet.p_trau.p_trau__data.cstr_address,
