@@ -101,290 +101,345 @@ class TestServices
 
  public: //--------------------------------- DirectFB_INET
   static remote_fb_inet_socket_ptr
-   RemoteFB_INET_Socket__Connect2(TTSO_Tracer&           tracer,
-                                  winsock_provider_type* pProvider,
-                                  int                    socketFamily,
-                                  const wchar_t*         ucs2_host,
-                                  const wchar_t*         ucs2_port);
+   RemoteFB_INET_Socket__Connect2
+            (TTSO_Tracer&           tracer,
+             winsock_provider_type* pProvider,
+             int                    socketFamily,
+             const wchar_t*         ucs2_host,
+             const wchar_t*         ucs2_port);
 
   static remote_fb_inet_port_ptr
-   RemoteFB_INET_Port__ConnectToDatabase(TTSO_Tracer&         tracer,
-                                         int                  socketFamily,
-                                         wstr_box_type        ucs2_host,
-                                         wstr_box_type        ucs2_port,
-                                         wstr_box_type        ucs2_database_name,
-                                         const dbprops_type&  params);
+   RemoteFB_INET_Port__ConnectToDatabase
+            (TTSO_Tracer&         tracer,
+             int                  socketFamily,
+             wstr_box_type        ucs2_host,
+             wstr_box_type        ucs2_port,
+             wstr_box_type        ucs2_database_name,
+             const dbprops_type&  params);
 
   static remote_fb_inet_port_ptr
-   RemoteFB_INET_Port__CreateDatabase(TTSO_Tracer&         tracer,
-                                      int                  socketFamily,
-                                      const wchar_t*       ucs2_host,
-                                      const wchar_t*       ucs2_port,
-                                      const wchar_t*       ucs2_database_name,
-                                      const dbprops_type&  params);
+   RemoteFB_INET_Port__CreateDatabase
+            (TTSO_Tracer&         tracer,
+             int                  socketFamily,
+             const wchar_t*       ucs2_host,
+             const wchar_t*       ucs2_port,
+             const wchar_t*       ucs2_database_name,
+             const dbprops_type&  params);
 
  public: //--------------------------------- RemoteFB__Connector
   static remote_fb_connector_ptr
-   RemoteFB_Connector__ConnectToDatabase(TTSO_Tracer&        tracer,
-                                         const dbprops_type& params,
-                                         cns_type&           cns);
+   RemoteFB_Connector__ConnectToDatabase
+            (TTSO_Tracer&        tracer,
+             const dbprops_type& params,
+             cns_type&           cns);
 
   static remote_fb_connector_ptr
-   RemoteFB_Connector__CreateDatabase(TTSO_Tracer&        tracer,
-                                      const dbprops_type& params,
-                                      cns_type&           cns);
+   RemoteFB_Connector__CreateDatabase
+            (TTSO_Tracer&        tracer,
+             const dbprops_type& params,
+             cns_type&           cns);
 
   static void
-   RemoteFB_Connector__DetachDatabase(TTSO_Tracer&              tracer,
-                                      remote_fb_connector_type* pConnector);
+   RemoteFB_Connector__DetachDatabase
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector);
 
   static void
-   RemoteFB_Connector__DropDatabase(TTSO_Tracer&              tracer,
-                                    remote_fb_connector_type* pConnector);
+   RemoteFB_Connector__DropDatabase
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector);
 
   static void
-   RemoteFB_Connector__GetDatabaseInfo(TTSO_Tracer&                     tracer,
-                                       remote_fb_connector_type*        pConnector,
-                                       unsigned short                   Incornation,
-                                       unsigned short                   cItems,
-                                       const unsigned char*             pItems,
-                                       remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
+   RemoteFB_Connector__GetDatabaseInfo
+            (TTSO_Tracer&                     tracer,
+             remote_fb_connector_type*        pConnector,
+             unsigned short                   Incornation,
+             unsigned short                   cItems,
+             const unsigned char*             pItems,
+             remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
 
   static void
-   RemoteFB_Connector__StartTransaction(TTSO_Tracer&              tracer,
-                                        remote_fb_connector_type* pConnector,
-                                        remote_fb_tr_handle_type* pTrHandle);
+   RemoteFB_Connector__StartTransaction
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle);
 
   static void
-   RemoteFB_Connector__StartTransaction(TTSO_Tracer&              tracer,
-                                        remote_fb_connector_type* pConnector,
-                                        remote_fb_tr_handle_type* pTrHandle,
-                                        size_t                    tpb_length,
-                                        const unsigned char*      tpb);
+   RemoteFB_Connector__StartTransaction
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle,
+             size_t                    tpb_length,
+             const unsigned char*      tpb);
 
   static void
-   RemoteFB_Connector__PrepareTransaction(TTSO_Tracer&              tracer,
-                                          remote_fb_connector_type* pConnector,
-                                          remote_fb_tr_handle_type* pTrHandle,
-                                          size_t                    data_length,
-                                          const void*               data);
+   RemoteFB_Connector__PrepareTransaction
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle,
+             size_t                    data_length,
+             const void*               data);
 
   static void
-   RemoteFB_Connector__Rollback(TTSO_Tracer&              tracer,
-                                remote_fb_connector_type* pConnector,
-                                remote_fb_tr_handle_type* pTrHandle);
+   RemoteFB_Connector__Rollback
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle);
 
   static void
-   RemoteFB_Connector__RollbackRetaining(TTSO_Tracer&              tracer,
-                                         remote_fb_connector_type* pConnector,
-                                         remote_fb_tr_handle_type* pTrHandle);
+   RemoteFB_Connector__RollbackRetaining
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle);
 
   static void
-   RemoteFB_Connector__Commit(TTSO_Tracer&              tracer,
-                              remote_fb_connector_type* pConnector,
-                              remote_fb_tr_handle_type* pTrHandle);
+   RemoteFB_Connector__Commit
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle);
 
   static void
-   RemoteFB_Connector__CommitRetaining(TTSO_Tracer&              tracer,
-                                       remote_fb_connector_type* pConnector,
-                                       remote_fb_tr_handle_type* pTrHandle);
+   RemoteFB_Connector__CommitRetaining
+            (TTSO_Tracer&              tracer,
+             remote_fb_connector_type* pConnector,
+             remote_fb_tr_handle_type* pTrHandle);
 
  public:
   static void
-   RemoteFB_Connector__ExecuteImmediate(TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type*       pConnector,
-                                        db_obj::t_db_operation_context& op_ctx,
-                                        remote_fb_tr_handle_type*       pTrHandle,
-                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
-                                        structure::t_const_str_box      SQL_str,
-                                        const isc_api::XSQLDA_V1*       pInXSQLDA,
-                                        const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__ExecuteImmediate
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             remote_fb::protocol::P_USHORT   SQL_Dialect,
+             structure::t_const_str_box      SQL_str,
+             const isc_api::XSQLDA_V1*       pInXSQLDA,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
  public:
   static void
-   RemoteFB_Connector__StmtAllocate(TTSO_Tracer&                tracer,
-                                    remote_fb_connector_type*   pConnector,
-                                    remote_fb_stmt_handle_type* pStmtHandle);
-  static void
-   RemoteFB_Connector__StmtDrop(TTSO_Tracer&                tracer,
-                                remote_fb_connector_type*   pConnector,
-                                remote_fb_stmt_handle_type* pStmtHandle,
-                                const wchar_t*              stmtSign=nullptr);
+   RemoteFB_Connector__StmtAllocate
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_stmt_handle_type* pStmtHandle);
 
   static void
-   RemoteFB_Connector__StmtClose(TTSO_Tracer&                tracer,
-                                 remote_fb_connector_type*   pConnector,
-                                 remote_fb_stmt_handle_type* pStmtHandle,
-                                 const wchar_t*              stmtSign=nullptr);
+   RemoteFB_Connector__StmtDrop
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_stmt_handle_type* pStmtHandle,
+             const wchar_t*              stmtSign=nullptr);
 
   static void
-   RemoteFB_Connector__StmtClose(remote_fb_connector_type*   pConnector,
-                                 remote_fb_stmt_handle_type* pStmtHandle);
+   RemoteFB_Connector__StmtClose
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_stmt_handle_type* pStmtHandle,
+             const wchar_t*              stmtSign=nullptr);
 
   static void
-   RemoteFB_Connector__StmtPrepare(TTSO_Tracer&                    tracer,
-                                   remote_fb_connector_type*       pConnector,
-                                   db_obj::t_db_operation_context& opCtx,
-                                   remote_fb_tr_handle_type*       pTrHandle,
-                                   remote_fb_stmt_handle_type*     pStmtHandle,
-                                   remote_fb::protocol::P_USHORT   SQL_dialect,
-                                   structure::t_const_str_box      SQL_str);
+   RemoteFB_Connector__StmtClose
+            (remote_fb_connector_type*   pConnector,
+             remote_fb_stmt_handle_type* pStmtHandle);
 
   static void
-   RemoteFB_Connector__StmtPrepare(remote_fb_connector_type*       pConnector,
-                                   db_obj::t_db_operation_context& opCtx,
-                                   remote_fb_tr_handle_type*       pTrHandle,
-                                   remote_fb_stmt_handle_type*     pStmtHandle,
-                                   remote_fb::protocol::P_USHORT   SQL_dialect,
-                                   structure::t_const_str_box      SQL_str);
+   RemoteFB_Connector__StmtPrepare
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             remote_fb::protocol::P_USHORT   SQL_dialect,
+             structure::t_const_str_box      SQL_str);
 
   static void
-   RemoteFB_Connector__GetColumns(TTSO_Tracer&                    tracer,
-                                  remote_fb_connector_type*       pConnector,
-                                  db_obj::t_db_operation_context& opCtx,
-                                  remote_fb_stmt_handle_type*     pStmtHandle,
-                                  isc_api::XSQLDA_V1*             xsqlda);
+   RemoteFB_Connector__StmtPrepare
+            (remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             remote_fb::protocol::P_USHORT   SQL_dialect,
+             structure::t_const_str_box      SQL_str);
 
   static void
-   RemoteFB_Connector__GetParameters(TTSO_Tracer&                    tracer,
-                                     remote_fb_connector_type*       pConnector,
-                                     db_obj::t_db_operation_context& opCtx,
-                                     remote_fb_stmt_handle_type*     pStmtHandle,
-                                     isc_api::XSQLDA_V1*             xsqlda);
+   RemoteFB_Connector__GetColumns
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             isc_api::XSQLDA_V1*             xsqlda);
 
   static void
-   RemoteFB_Connector__GetStatementInfo(TTSO_Tracer&                     tracer,
-                                        remote_fb_connector_type*        pConnector,
-                                        db_obj::t_db_operation_context&  opCtx,
-                                        remote_fb_stmt_handle_type*      pStmtHandle,
-                                        unsigned short                   Incornation,
-                                        unsigned short                   cItems,
-                                        const unsigned char*             pItems,
-                                        remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
+   RemoteFB_Connector__GetParameters
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             isc_api::XSQLDA_V1*             xsqlda);
 
   static void
-   RemoteFB_Connector__StmtExecute(TTSO_Tracer&                    tracer,
-                                   remote_fb_connector_type*       pConnector,
-                                   db_obj::t_db_operation_context& opCtx,
-                                   remote_fb_tr_handle_type*       pTrHandle,
-                                   remote_fb_stmt_handle_type*     pStmtHandle,
-                                   const isc_api::XSQLDA_V1*       pInXSQLDA,
-                                   const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__GetStatementInfo
+            (TTSO_Tracer&                     tracer,
+             remote_fb_connector_type*        pConnector,
+             db_obj::t_db_operation_context&  opCtx,
+             remote_fb_stmt_handle_type*      pStmtHandle,
+             unsigned short                   Incornation,
+             unsigned short                   cItems,
+             const unsigned char*             pItems,
+             remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
 
   static void
-   RemoteFB_Connector__StmtExecute(remote_fb_connector_type*       pConnector,
-                                   db_obj::t_db_operation_context& opCtx,
-                                   remote_fb_tr_handle_type*       pTrHandle,
-                                   remote_fb_stmt_handle_type*     pStmtHandle,
-                                   const isc_api::XSQLDA_V1*       pInXSQLDA,
-                                   const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtExecute
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pInXSQLDA,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
+
+  static void
+   RemoteFB_Connector__StmtExecute
+            (remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pInXSQLDA,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
   static bool
-   RemoteFB_Connector__StmtFetch(TTSO_Tracer&                    tracer,
-                                 remote_fb_connector_type*       pConnector,
-                                 db_obj::t_db_operation_context& opCtx,
-                                 remote_fb_stmt_handle_type*     pStmtHandle,
-                                 const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtFetch
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
   static void
-   RemoteFB_Connector__StmtFetch_ToRow(TTSO_Tracer&                    tracer,
-                                       remote_fb_connector_type*       pConnector,
-                                       db_obj::t_db_operation_context& opCtx,
-                                       remote_fb_stmt_handle_type*     pStmtHandle,
-                                       const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtFetch_ToRow
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
   static void
-   RemoteFB_Connector__StmtFetch_ToRow(remote_fb_connector_type*       pConnector,
-                                       db_obj::t_db_operation_context& opCtx,
-                                       remote_fb_stmt_handle_type*     pStmtHandle,
-                                       const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtFetch_ToRow
+            (remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
   static void
-   RemoteFB_Connector__StmtFetch_ToEOF(TTSO_Tracer&                    tracer,
-                                       remote_fb_connector_type*       pConnector,
-                                       db_obj::t_db_operation_context& opCtx,
-                                       remote_fb_stmt_handle_type*     pStmtHandle,
-                                       const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtFetch_ToEOF
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
   static void
-   RemoteFB_Connector__StmtFetch_ToEOF(remote_fb_connector_type*       pConnector,
-                                       db_obj::t_db_operation_context& opCtx,
-                                       remote_fb_stmt_handle_type*     pStmtHandle,
-                                       const isc_api::XSQLDA_V1*       pOutXSQLDA);
+   RemoteFB_Connector__StmtFetch_ToEOF
+            (remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& opCtx,
+             remote_fb_stmt_handle_type*     pStmtHandle,
+             const isc_api::XSQLDA_V1*       pOutXSQLDA);
 
  public:
-  static void RemoteFB_Connector__OpenBlob(TTSO_Tracer&                 tracer,
-                                           remote_fb_connector_type*    pConnector,
-                                           remote_fb_tr_handle_type*    pTrHandle,
-                                           remote_fb_blob_handle_type*  pBlobHandle,
-                                           const db_obj::DB_IBBLOBID&   blobID);
+  static void
+   RemoteFB_Connector__OpenBlob
+            (TTSO_Tracer&                 tracer,
+             remote_fb_connector_type*    pConnector,
+             remote_fb_tr_handle_type*    pTrHandle,
+             remote_fb_blob_handle_type*  pBlobHandle,
+             const db_obj::DB_IBBLOBID&   blobID);
 
-  static void RemoteFB_Connector__CreateBlob(TTSO_Tracer&                 tracer,
-                                             remote_fb_connector_type*    pConnector,
-                                             remote_fb_tr_handle_type*    pTrHandle,
-                                             remote_fb_blob_handle_type*  pBlobHandle,
-                                             db_obj::DB_IBBLOBID*         pBlobID);
+  static void
+   RemoteFB_Connector__CreateBlob
+            (TTSO_Tracer&                 tracer,
+             remote_fb_connector_type*    pConnector,
+             remote_fb_tr_handle_type*    pTrHandle,
+             remote_fb_blob_handle_type*  pBlobHandle,
+             db_obj::DB_IBBLOBID*         pBlobID);
 
-  static void RemoteFB_Connector__CreateBlob(TTSO_Tracer&                        tracer,
-                                             remote_fb_connector_type*           pConnector,
-                                             remote_fb_tr_handle_type*           pTrHandle,
-                                             remote_fb_blob_handle_type*         pBlobHandle,
-                                             db_obj::DB_IBBLOBID*                pBlobID,
-                                             size_t                              szBPB,
-                                             const remote_fb::protocol::P_UCHAR* pBPB);
+  static void
+   RemoteFB_Connector__CreateBlob
+            (TTSO_Tracer&                        tracer,
+             remote_fb_connector_type*           pConnector,
+             remote_fb_tr_handle_type*           pTrHandle,
+             remote_fb_blob_handle_type*         pBlobHandle,
+             db_obj::DB_IBBLOBID*                pBlobID,
+             size_t                              szBPB,
+             const remote_fb::protocol::P_UCHAR* pBPB);
 
-  static void RemoteFB_Connector__CloseBlob(TTSO_Tracer&                 tracer,
-                                            remote_fb_connector_type*    pConnector,
-                                            remote_fb_blob_handle_type*  pBlobHandle);
+  static void
+   RemoteFB_Connector__CloseBlob
+            (TTSO_Tracer&                 tracer,
+             remote_fb_connector_type*    pConnector,
+             remote_fb_blob_handle_type*  pBlobHandle);
 
-  static void RemoteFB_Connector__CancelBlob(TTSO_Tracer&                 tracer,
-                                             remote_fb_connector_type*    pConnector,
-                                             remote_fb_blob_handle_type*  pBlobHandle);
+  static void
+   RemoteFB_Connector__CancelBlob
+            (TTSO_Tracer&                 tracer,
+             remote_fb_connector_type*    pConnector,
+             remote_fb_blob_handle_type*  pBlobHandle);
 
-  static void RemoteFB_Connector__GetBlobInfo(TTSO_Tracer&                     tracer,
-                                              remote_fb_connector_type*        pConnector,
-                                              remote_fb_blob_handle_type*      pBlobHandle,
-                                              unsigned short                   cItems,
-                                              const unsigned char*             pItems,
-                                              remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
+  static void
+   RemoteFB_Connector__GetBlobInfo
+            (TTSO_Tracer&                     tracer,
+             remote_fb_connector_type*        pConnector,
+             remote_fb_blob_handle_type*      pBlobHandle,
+             unsigned short                   cItems,
+             const unsigned char*             pItems,
+             remote_fb::RemoteFB__InfoBuffer& ResultBuffer);
 
-  static bool RemoteFB_Connector__ReadBlob(TTSO_Tracer&                tracer,
-                                           remote_fb_connector_type*   pConnector,
-                                           remote_fb_blob_handle_type* pBlobHandle,
-                                           size_t                      cbBuffer,
-                                           void*                       pvBuffer,
-                                           size_t*                     pcbActualReaded);
+  static bool
+   RemoteFB_Connector__ReadBlob
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_blob_handle_type* pBlobHandle,
+             size_t                      cbBuffer,
+             void*                       pvBuffer,
+             size_t*                     pcbActualReaded);
 
-  static void RemoteFB_Connector__WriteBlob(TTSO_Tracer&                tracer,
-                                            remote_fb_connector_type*   pConnector,
-                                            remote_fb_blob_handle_type* pBlobHandle,
-                                            size_t                      cbBuffer,
-                                            const void*                 pvBuffer);
+  static void
+   RemoteFB_Connector__WriteBlob
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_blob_handle_type* pBlobHandle,
+             size_t                      cbBuffer,
+             const void*                 pvBuffer);
 
-  static void RemoteFB_Connector__FlushBlob(TTSO_Tracer&                tracer,
-                                            remote_fb_connector_type*   pConnector,
-                                            remote_fb_blob_handle_type* pBlobHandle);
+  static void
+   RemoteFB_Connector__FlushBlob
+            (TTSO_Tracer&                tracer,
+             remote_fb_connector_type*   pConnector,
+             remote_fb_blob_handle_type* pBlobHandle);
 
  public:
-  static void RemoteFB_Connector__PutArraySlice(TTSO_Tracer&                    tracer,
-                                                remote_fb_connector_type*       pConnector,
-                                                db_obj::t_db_operation_context& op_ctx,
-                                                remote_fb_tr_handle_type*       pTrHandle,
-                                                db_obj::DB_IBARRAYID*           pArrayID,
-                                                size_t                          szArraySDL,
-                                                const unsigned char*            pArraySDL,
-                                                size_t                          szArrayData,
-                                                const void*                     pArrayData);
+  static void
+   RemoteFB_Connector__PutArraySlice
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             db_obj::DB_IBARRAYID*           pArrayID,
+             size_t                          szArraySDL,
+             const unsigned char*            pArraySDL,
+             size_t                          szArrayData,
+             const void*                     pArrayData);
 
-  static void RemoteFB_Connector__GetArraySlice(TTSO_Tracer&                    tracer,
-                                                remote_fb_connector_type*       pConnector,
-                                                db_obj::t_db_operation_context& op_ctx,
-                                                remote_fb_tr_handle_type*       pTrHandle,
-                                                const db_obj::DB_IBARRAYID&     ArrayID,
-                                                size_t                          szArraySDL,
-                                                const unsigned char*            pArraySDL,
-                                                size_t                          szArrayData,
-                                                void*                           pArrayData);
+  static void
+   RemoteFB_Connector__GetArraySlice
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_tr_handle_type*       pTrHandle,
+             const db_obj::DB_IBARRAYID&     ArrayID,
+             size_t                          szArraySDL,
+             const unsigned char*            pArraySDL,
+             size_t                          szArrayData,
+             void*                           pArrayData);
 
  public:
   static void XSQLDA_check_sqld
