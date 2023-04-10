@@ -189,11 +189,13 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
   else
   if(pData->GetPort()->TestPortFlag__symmetric())
   {
-   cBatchRows=RemoteFB__P12__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
+   cBatchRows
+    =RemoteFB__P12__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
   }
   else
   {
-   const size_t szMsgData=RemoteFB__P12__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
+   const size_t szMsgData
+    =RemoteFB__P12__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
 
    assert(szMsgData>0);
 
@@ -326,9 +328,10 @@ bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec
    (*pStmtHandle)->m_spFetchResult->m_FetchErr.raise();
   }//if FAILED
 
-  assert_msg((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-             (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-             "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
+  assert_msg
+   ((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+    (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+    "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
 
   //----------------------------------------
   //инициируем выборку новой партии записей
@@ -378,9 +381,10 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
  //все загруженные записи были обработаны
  assert(pStmt->m_spFetchResult->ROWS__GetCount()==0);
 
- assert_msg(pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-            pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-            "state: "<<int(pStmt->m_spFetchResult->m_State));
+ assert_msg
+  (pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+   pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+   "state: "<<int(pStmt->m_spFetchResult->m_State));
 
  //-----------------------------------------
  const protocol::set01::P_OP c_OperationID1__close =protocol::set01::op_free_statement;
@@ -492,7 +496,7 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
 
   portOpCtx.reg_svc(pStmt); //no throw
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом

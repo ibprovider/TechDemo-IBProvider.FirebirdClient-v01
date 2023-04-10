@@ -207,11 +207,13 @@ bool RemoteFB__API_P13__FetchStatement::exec(db_obj::t_db_operation_context& OpC
   else
   if(pData->GetPort()->TestPortFlag__symmetric())
   {
-   cBatchRows=RemoteFB__P13__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
+   cBatchRows
+    =RemoteFB__P13__StmtHelper::ComputeBatchSize((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
   }
   else
   {
-   const size_t szMsgData=RemoteFB__P13__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
+   const size_t szMsgData
+    =RemoteFB__P13__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
 
    assert(szMsgData>0);
 
@@ -276,10 +278,10 @@ bool RemoteFB__API_P13__FetchStatement::exec(db_obj::t_db_operation_context& OpC
    try
    {
     RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
-       ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
-        (*pStmtHandle)->m_spFetchResult->ROWS__GetDataSize(),
-        (*pStmtHandle)->m_spFetchResult->ROWS__GetFirstBlock(),
-         pOutXSQLDA);
+     ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
+      (*pStmtHandle)->m_spFetchResult->ROWS__GetDataSize(),
+      (*pStmtHandle)->m_spFetchResult->ROWS__GetFirstBlock(),
+       pOutXSQLDA);
    }
    catch(const std::exception& e)
    {
@@ -326,9 +328,10 @@ bool RemoteFB__API_P13__FetchStatement::exec(db_obj::t_db_operation_context& OpC
    (*pStmtHandle)->m_spFetchResult->m_FetchErr.raise();
   }//if FAILED
 
-  assert_msg((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-             (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-             "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
+  assert_msg
+   ((*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+    (*pStmtHandle)->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+    "state: "<<int((*pStmtHandle)->m_spFetchResult->m_State));
 
   //----------------------------------------
   //инициируем выборку новой партии записей
@@ -336,9 +339,10 @@ bool RemoteFB__API_P13__FetchStatement::exec(db_obj::t_db_operation_context& OpC
   //в эту точку мы должны попадать только один раз
   assert(!OpFetchWasSended);
 
-  self_type::helper__fetch_next_rows(serverOperation,
-                                     pData,
-                                     *pStmtHandle); //throw
+  self_type::helper__fetch_next_rows
+   (serverOperation,
+    pData,
+    *pStmtHandle); //throw
 
   DEBUG_CODE(OpFetchWasSended=true;)
 
@@ -370,9 +374,10 @@ void RemoteFB__API_P13__FetchStatement::helper__fetch_next_rows
  //все загруженные записи были обработаны
  assert(pStmt->m_spFetchResult->ROWS__GetCount()==0);
 
- assert_msg(pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
-            pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
-            "state: "<<int(pStmt->m_spFetchResult->m_State));
+ assert_msg
+  (pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__active ||
+   pStmt->m_spFetchResult->m_State==handles::RemoteFB__FetchResult::state__completed,
+   "state: "<<int(pStmt->m_spFetchResult->m_State));
 
  //-----------------------------------------
  const protocol::set02::P_OP c_OperationID=protocol::set02::op_fetch;
@@ -430,13 +435,15 @@ void RemoteFB__API_P13__FetchStatement::helper__fetch_next_rows
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
-  pStmt->m_pParentPort->send_packet(portOpCtx,
-                                    packet); //throw
+  pStmt->m_pParentPort->send_packet
+   (portOpCtx,
+    packet); //throw
+
   sendFrame.complete(); //throw
- }//local - отправка пакета
+ }//local - sending a packet
 
  //----------------------------------------- загрузка пакетов ответа
  assert(pStmt->m_spFetchResult->m_ProcessedFetchCount==0);
@@ -457,8 +464,9 @@ void RemoteFB__API_P13__FetchStatement::helper__fetch_next_rows
 
   protocol::set02::PACKET_V02 packet;
 
-  pStmt->m_pParentPort->receive_packet(portOpCtx,
-                                       packet); //throw
+  pStmt->m_pParentPort->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   assert(pStmt->m_spFetchResult->m_ProcessedFetchCount<=pStmt->m_spFetchResult->m_RequestedFetchCount);
 

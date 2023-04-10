@@ -371,7 +371,7 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   pData->GetPort()->send_packet
@@ -598,7 +598,7 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteImmediate::helper__execute2
 
   portOpCtx.reg_svc(spStmt.ptr());
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   pData->GetPort()->send_packet

@@ -113,8 +113,9 @@ void RemoteFB__P13__ConnectHelper::exec(ports::base_v01::RemoteFB__Port_BASE_v01
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  pPort->send_packet(portOpCtx,
-                     packet); //throw
+  pPort->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local
 
  //----------------------------------------- 4. get response
@@ -442,8 +443,9 @@ void RemoteFB__P13__ConnectHelper::send__cont_auth
 
  RemoteFB__OperationContext portOpCtx;
 
- pPort->send_packet(portOpCtx,
-                    packet); //throw
+ pPort->send_packet
+  (portOpCtx,
+   packet); //throw
 }//send__cont_auth
 
 //helper methods ---------------------------------------------------------

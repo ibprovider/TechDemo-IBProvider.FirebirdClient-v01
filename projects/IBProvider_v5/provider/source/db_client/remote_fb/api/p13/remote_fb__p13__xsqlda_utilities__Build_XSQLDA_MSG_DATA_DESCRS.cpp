@@ -60,10 +60,12 @@ void RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA_DESCRS
 
   try
   {
-   szMsg=Helper__Build_XSQLDA_MSG_DATA_DESCRS(pXVar,
-                                              szMsg,
-                                              *pMsgDescr,
-                                              &cbResultAlign);
+   szMsg
+    =Helper__Build_XSQLDA_MSG_DATA_DESCRS
+      (pXVar,
+       szMsg,
+       *pMsgDescr,
+       &cbResultAlign);
   }
   catch(const std::exception& e)
   {
@@ -122,18 +124,24 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__varying,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__varying,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::isc_varchar_size_type)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(isc_api::isc_varchar_size_type)); //throw
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              xvar_sqllen); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       xvar_sqllen); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(isc_api::isc_varchar_size_type)+xvar_sqllen;                  // SIZE
@@ -173,8 +181,10 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              xvar_sqllen); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       xvar_sqllen); //throw
 
    MsgDescr.m_msg_value_block_size
     =xvar_sqllen;                                                         // SIZE
@@ -223,15 +233,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__short,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__short,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_SHORT)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_SHORT)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_SHORT);                                           // SIZE
@@ -258,15 +272,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__long,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__long,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_LONG)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_LONG)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_LONG);                                            // SIZE
@@ -293,15 +311,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__int64,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__int64,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_INT64)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_INT64)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_INT64);                                           // SIZE
@@ -328,15 +350,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__quad,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__quad,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_BID)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_BID)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_BID);                                             // SIZE
@@ -361,15 +387,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__quad,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__quad,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_BID)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_BID)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_BID);                                             // SIZE
@@ -394,15 +424,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__float,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__float,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_FLOAT)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_FLOAT)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_FLOAT);                                           // SIZE
@@ -427,15 +461,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__double,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__double,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(protocol::P_DOUBLE)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(protocol::P_DOUBLE)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(protocol::P_DOUBLE);                                          // SIZE
@@ -460,15 +498,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__time,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__time,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::t_ibp_isc_time)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_isc_time)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(isc_api::t_ibp_isc_time);                                     // SIZE
@@ -493,15 +535,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__date,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__date,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::t_ibp_isc_date)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_isc_date)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(isc_api::t_ibp_isc_date);                                     // SIZE
@@ -526,15 +572,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_isc_type_align__timestamp,
-                                pcbResultAlign); //throw
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_isc_type_align__timestamp,
+       pcbResultAlign); //throw
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::t_ibp_isc_timestamp)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_isc_timestamp)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(isc_api::t_ibp_isc_timestamp);                                // SIZE
@@ -559,15 +609,19 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
    }//if
 
    //---------------------------------------
-   szMsg=Helper__AlignMsgLength(szMsg,
-                                isc_api::ibp_fb030_type_align__bool,
-                                pcbResultAlign); //throw         6
+   szMsg
+    =Helper__AlignMsgLength
+      (szMsg,
+       isc_api::ibp_fb030_type_align__bool,
+       pcbResultAlign); //throw         6
 
    MsgDescr.m_msg_value_block_offset
     =szMsg;                                                               // OFFSET
 
-   szMsg=Helper__AddMsgLength(szMsg,
-                              sizeof(isc_api::t_ibp_fb030_bool)); //throw
+   szMsg
+    =Helper__AddMsgLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_fb030_bool)); //throw
 
    MsgDescr.m_msg_value_block_size
     =sizeof(isc_api::t_ibp_fb030_bool);                                   // SIZE
@@ -595,14 +649,18 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_DATA_DESCRS
  //место под SQLIND
  assert_s(sizeof(protocol::P_SHORT)==sizeof(*pXSQLVAR->sqlind));
 
- szMsg=Helper__AlignMsgLength(szMsg,
-                              /*align*/isc_api::ibp_isc_type_align__short,
-                              pcbResultAlign); //throw
+ szMsg
+  =Helper__AlignMsgLength
+    (szMsg,
+     /*align*/isc_api::ibp_isc_type_align__short,
+     pcbResultAlign); //throw
 
  MsgDescr.m_msg_sqlind_offset=szMsg;
 
- szMsg=Helper__AddMsgLength(szMsg,
-                            sizeof(protocol::P_SHORT)); //throw
+ szMsg
+  =Helper__AddMsgLength
+    (szMsg,
+     sizeof(protocol::P_SHORT)); //throw
 
  //-------------------------------------------------------------
  return szMsg;

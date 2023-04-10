@@ -247,7 +247,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__prepare
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   pData->GetPort()->send_packet
@@ -365,7 +365,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
   //---------------------------------------- 4. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try // сторож сбоев работы с портом
@@ -595,7 +595,7 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
   //---------------------------------------- 4. send packet
   RemoteFB__OperationContext portOpCtx;
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try // сторож сбоев работы с портом

@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb
 //! \file    remote_fb__api_entry.h
-//! \brief   Класс управления подключением к FireBird.
+//! \brief   The class for RemoteFB API entry point.
 //! \author  Kovalenko Dmitry
-//! \date    24.02.2015.
+//! \date    24.02.2015
 #ifndef _remote_fb__api_entry_H_
 #define _remote_fb__api_entry_H_
 
@@ -46,18 +46,20 @@ class RemoteFB__ApiEntry
 
 template<typename TApiItem>
 RemoteFB__ApiEntry<TApiItem>::RemoteFB__ApiEntry()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<typename TApiItem>
 RemoteFB__ApiEntry<TApiItem>::~RemoteFB__ApiEntry()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<typename TApiItem>
 void RemoteFB__ApiEntry<TApiItem>::init(TApiItem* const pApiItem)
 {
- //однократная инициализация объекта
+ //one-time initialization of a object
 
  assert(!m_spApiItem);
 
