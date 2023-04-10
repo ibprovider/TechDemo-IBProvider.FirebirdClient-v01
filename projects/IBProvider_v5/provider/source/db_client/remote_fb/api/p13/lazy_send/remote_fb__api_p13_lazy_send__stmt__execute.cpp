@@ -455,7 +455,7 @@ protocol::P_USHORT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execut
 
   portOpCtx.reg_svc((*pStmtHandle).ptr());
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом
@@ -824,7 +824,7 @@ protocol::P_OBJCT RemoteFB__API_P13_LAZY_SEND__ExecuteStatement::helper__execute
 
   portOpCtx.reg_svc((*pStmtHandle).ptr());
 
-  //------ обозначаем рамки начала операции с сервером
+  //------ Let's define the boundaries of work with the server
   RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
 
   try //сторож сбоев работы с портом
