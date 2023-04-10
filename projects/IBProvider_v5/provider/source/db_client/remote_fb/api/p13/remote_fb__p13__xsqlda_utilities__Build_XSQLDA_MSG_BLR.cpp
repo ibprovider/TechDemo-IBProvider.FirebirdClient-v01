@@ -100,13 +100,12 @@ size_t RemoteFB__P13__XSQLDA_Utilities::Helper__Build_XSQLDA_MSG_BLR__CalcBufSiz
    {
     //ERROR - unexpected sqltypeID
 
-    t_ibp_error exc(DB_E_NOTSUPPORTED,
-                    ibp_subsystem__remote_fb__p13,
-                    ibp_mce_dbobj__ie_data_with_unk_sql_type_2);
-
-    exc<<(pXVar-pXSQLDA->sqlvar)<<pXVar->sqltype;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (DB_E_NOTSUPPORTED,
+      ibp_subsystem__remote_fb__p13,
+      ibp_mce_dbobj__ie_data_with_unk_sql_type_2,
+      (pXVar-pXSQLDA->sqlvar),
+      pXVar->sqltype);
    }//default
   }//switch
  }//for pXVar

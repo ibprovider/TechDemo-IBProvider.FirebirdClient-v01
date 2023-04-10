@@ -153,7 +153,7 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_fetch_response__a
   {
    if(spStmt->m_OutParams__MSG_BLR.empty())
    {
-    //ERROR - [BUG CHECK] неожиданное получение пакета op_sql_response.
+    //ERROR - [BUG CHECK] неожиданное получение пакета op_fetch_response.
 
     IBP_BUG_CHECK__DEBUG
      (c_bugcheck_src,

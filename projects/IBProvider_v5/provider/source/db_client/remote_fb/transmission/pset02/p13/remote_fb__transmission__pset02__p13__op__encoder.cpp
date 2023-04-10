@@ -391,7 +391,7 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_exec_immediate2__a
   (spBuf,
    &p_sqlst->p_sqlst__items);
 
- xdr::encode__p_ulong_as_p_long
+ xdr::encode__p_ulong_length_as_p_long__pset02
   (spBuf,
    &p_sqlst->p_sqlst__buffer_length);
 }//encode__op_exec_immediate2__a

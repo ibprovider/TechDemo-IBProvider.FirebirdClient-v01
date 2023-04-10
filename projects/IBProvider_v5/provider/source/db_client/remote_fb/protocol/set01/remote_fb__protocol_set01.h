@@ -206,6 +206,13 @@ enum P_OP
 ////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
+///  It is a maximum length of CSTRING.
+/// </summary>
+static const P_USHORT C_CSTRING_MAX_LENGTH=0xFFFF;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
 ///  Максимальное количество элементов в статус векторе.
 /// </summary>
 static const size_t C_STATUS_VECTOR_MAX_SIZE=20;

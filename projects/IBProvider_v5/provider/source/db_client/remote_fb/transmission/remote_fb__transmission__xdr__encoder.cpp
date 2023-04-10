@@ -124,8 +124,9 @@ void RemoteFB__XDR__Encoder::encode__p_ushort_as_p_short
 
  assert_s(sizeof(*pv)==sizeof(protocol::P_SHORT));
 
- return self_type::encode__p_short(pBuf,
-                                   reinterpret_cast<const protocol::P_SHORT*>(pv));
+ return self_type::encode__p_short
+         (pBuf,
+          reinterpret_cast<const protocol::P_SHORT*>(pv));
 }//encode__p_ushort_as_p_short
 
 //------------------------------------------------------------------------

@@ -71,24 +71,22 @@ void RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
 
   try
   {
-   Helper__Parse_XSQLDA_MSG_DATA(*pMsgDescr,
-                                 cbMsgData,
-                                 pMsgData,
-                                 pXVar);
+   Helper__Parse_XSQLDA_MSG_DATA
+    (*pMsgDescr,
+     cbMsgData,
+     pMsgData,
+     pXVar);
   }
   catch(const std::exception& e)
   {
    assert(pXVar>=pXSQLDA->sqlvar);
 
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p13,
-                 ibp_mce_isc__failed_to_parse_element_of_msg_buf_with_data_1);
-
-   exc<<(pXVar-pXSQLDA->sqlvar);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p13,
+     ibp_mce_isc__failed_to_parse_element_of_msg_buf_with_data_1,
+     (pXVar-pXSQLDA->sqlvar));
   }//catch
 
  #ifndef NDEBUG

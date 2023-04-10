@@ -11,6 +11,7 @@
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__stmt_helper.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -456,23 +457,13 @@ void RemoteFB__API_P12_LAZY_SEND__FetchStatement::helper__fetch_next_rows
    packet3__fetch.p_sqldata.p_sqldata__statement=pStmt->m_ID.get_value();
 
    //--------------- p_sqldata_blr
-   if(!structure::can_numeric_cast(&packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length,
-                                   pStmt->m_OutParams__MSG_BLR.size()))
-   {
-    //ERROR - BLR data of input parameters is too long.
+   RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+    (&packet3__fetch.p_sqldata.p_sqldata__blr,
+     pStmt->m_OutParams__MSG_BLR.size(),
+     ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
+     L"pOutXSQLDA");
 
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p12,
-      ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-      L"pOutXSQLDA",
-      pStmt->m_OutParams__MSG_BLR.size(),
-      structure::get_numeric_limits(packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length,
-     pStmt->m_OutParams__MSG_BLR.size());
+   assert(packet3__fetch.p_sqldata.p_sqldata__blr.cstr_length==pStmt->m_OutParams__MSG_BLR.size());
 
    packet3__fetch.p_sqldata.p_sqldata__blr.cstr_address=pStmt->m_OutParams__MSG_BLR.buffer();
 

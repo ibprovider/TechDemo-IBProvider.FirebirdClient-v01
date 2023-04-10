@@ -49,6 +49,13 @@ void RemoteFB__P13__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pDat
   packet.p_sgmt.p_sgmt__length=cbData;
 
   //---------------------------------------- p_sgmt.p_sgmt_segment
+  assert_s(std::is_same<decltype(packet.p_sgmt.p_sgmt__segment.cstr_length) _LITER_COMMA_ protocol::P_ULONG>::value);
+
+  assert_s(std::is_same<std::remove_const<decltype(cbData)>::type _LITER_COMMA_ protocol::P_USHORT>::value);
+
+  //VS2013 does not allow to use assert_s here
+  assert((std::numeric_limits<protocol::P_USHORT>::max)()<=protocol::set02::C_CSTRING_V2_MAX_LENGTH_P13);
+
   packet.p_sgmt.p_sgmt__segment.cstr_length=cbData;
 
   packet.p_sgmt.p_sgmt__segment.cstr_address=reinterpret_cast<const protocol::P_UCHAR*>(pvData);

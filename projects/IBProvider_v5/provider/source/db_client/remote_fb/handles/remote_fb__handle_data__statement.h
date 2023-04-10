@@ -215,7 +215,7 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
   /// EOF was returned by fetch from this statement
   static const flag_base_type EFLAG__PAST_EOF               = 0x0001;
 
-  /// Выполнение запроса было отложено 
+  /// Выполнение запроса было отложено
   static const flag_base_type EFLAG__EXECUTION_WAS_DEFERRED = 0x0002;
 
  public:

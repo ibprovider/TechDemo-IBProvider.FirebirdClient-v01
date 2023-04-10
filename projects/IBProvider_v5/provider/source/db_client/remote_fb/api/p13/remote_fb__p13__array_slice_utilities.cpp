@@ -696,10 +696,10 @@ RemoteFB__P13__ArraySlice_Utilities::value_i4_type
   }//default
  }//switch x
 
+#if(COMP_BUILD_UNUSED_CODE!=0)
  //мы не должны попадать в эту точку.
  assert_hint(false);
 
-#if(COMP_BUILD_UNUSED_CODE!=0)
  return 0;
 #endif
 }//Helper__ParseSDL__ReadLiteral

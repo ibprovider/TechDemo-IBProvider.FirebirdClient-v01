@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__api_p12__trans__prepare.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -85,27 +86,19 @@ void RemoteFB__API_P12__PrepareTransaction::exec
   packet.p_prep.p_prep__transaction=(*pTrHandle)->m_ID.get_value();
 
   //---------------------------------------- p_prep__data.cstr_length
-  if(!structure::can_numeric_cast(&packet.p_prep.p_prep__data.cstr_length,data_length))
-  {
-   //ERROR - размер буфера с данными превышает максимально допустимое значение
+  RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
+   (&packet.p_prep.p_prep__data,
+    data_length,
+    ibp_mce_ibtrans__tr_prep_data_is_too_large__2);
 
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__p12,
-     ibp_mce_ibtrans__tr_prep_data_is_too_large__2,
-     data_length,
-     structure::get_numeric_limits(packet.p_prep.p_prep__data.cstr_length).max_value());
-  }//if
+  assert(packet.p_prep.p_prep__data.cstr_length==data_length);
 
-  assert(structure::can_numeric_cast(&packet.p_prep.p_prep__data.cstr_length,data_length));
-
-  structure::static_numeric_cast(&packet.p_prep.p_prep__data.cstr_length,data_length);
-
-  //---------------------------------------- p_prep.p_prep__data
+  //---------------------------------------- p_prep__data.cstr_address
   assert_s(sizeof(*packet.p_prep.p_prep__data.cstr_address)==1);
 
-  structure::reinterpret_ptr_cast(&packet.p_prep.p_prep__data.cstr_address,
-                                  data);
+  structure::reinterpret_ptr_cast
+   (&packet.p_prep.p_prep__data.cstr_address,
+    data);
 
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;

@@ -9,6 +9,7 @@
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__array__put_slice.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__array_slice_utilities.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -176,21 +177,12 @@ void RemoteFB__API_P13__PutArraySlice::exec(db_obj::t_db_operation_context& opCt
   packet.p_put_slc.p_put_slc__id=*pArrayID;
 
   //---------------------------------------- p_put_slc_sdl
-  if(!structure::can_numeric_cast(&packet.p_put_slc.p_put_slc__sdl.cstr_length,
-                                  szArraySDL))
-  {
-   //ERROR - Too large SDL data
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet.p_put_slc.p_put_slc__sdl,
+    szArraySDL,
+    ibp_mce_isc__too_large_sdl_buffer_size_2);
 
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__p13,
-     ibp_mce_isc__too_large_sdl_buffer_size_2,
-     szArraySDL,
-     structure::get_numeric_limits(packet.p_put_slc.p_put_slc__sdl.cstr_length).max_value());
-  }//if
-
-  structure::static_numeric_cast(&packet.p_put_slc.p_put_slc__sdl.cstr_length,
-                                 szArraySDL);
+  assert(packet.p_put_slc.p_put_slc__sdl.cstr_length==szArraySDL);
 
   assert_s(sizeof(*packet.p_put_slc.p_put_slc__sdl.cstr_address)==sizeof(*pArraySDL));
 

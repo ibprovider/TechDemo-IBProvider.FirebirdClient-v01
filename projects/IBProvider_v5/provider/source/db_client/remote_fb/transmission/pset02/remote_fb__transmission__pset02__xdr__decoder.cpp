@@ -32,6 +32,22 @@ void RemoteFB__PSET02__XDR__Decoder::decode__p_op
 }//decode__p_op
 
 //------------------------------------------------------------------------
+void RemoteFB__PSET02__XDR__Decoder::decode__p_ulong_length_as_p_long__pset02
+                              (buf_type*          const pBuf,
+                               const wchar_t*     const pv_sign,
+                               protocol::P_ULONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ return self_type::decode__p_ulong_as_p_long
+          (pBuf,
+           pv_sign,
+           pv);
+}//decode__p_ulong_length_as_p_long__pset02
+
+//------------------------------------------------------------------------
 void RemoteFB__PSET02__XDR__Decoder::decode__p_cstring_const
                               (buf_type*                            const pBuf,
                                mem_type*                            const pMem,
@@ -49,7 +65,7 @@ void RemoteFB__PSET02__XDR__Decoder::decode__p_cstring_const
  //-----------------------------------------
  protocol::P_ULONG cstr_length;
 
- self_type::decode__p_ulong_as_p_long
+ self_type::decode__p_ulong_length_as_p_long__pset02
   (pBuf,
    pv_sign1__cstr_length,
    &cstr_length);

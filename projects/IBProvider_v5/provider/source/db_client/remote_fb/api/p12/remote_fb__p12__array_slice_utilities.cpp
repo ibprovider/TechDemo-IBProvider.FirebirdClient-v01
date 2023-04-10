@@ -684,7 +684,7 @@ RemoteFB__P12__ArraySlice_Utilities::value_i4_type
   }//default
  }//switch x
 
-#if(COMP_BUILD_UNUSED_CODE)
+#if(COMP_BUILD_UNUSED_CODE!=0)
  //мы не должны попадать в эту точку.
  assert_hint(false);
 

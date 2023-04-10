@@ -103,15 +103,12 @@ void RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
  }
  catch(const std::exception& e)
  {
-  t_ibp_error exc(e);
-
-  exc.add_error(E_FAIL,
-                ibp_subsystem__remote_fb__p13,
-                ibp_mce_isc__failed_to_process_the_xsqlvar_1);
-
-  exc<<(pXVar-pXSQLDA->sqlvar);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (e,
+    E_FAIL,
+    ibp_subsystem__remote_fb__p13,
+    ibp_mce_isc__failed_to_process_the_xsqlvar_1,
+    (pXVar-pXSQLDA->sqlvar));
  }//catch
 }//Build_XSQLDA_MSG_NULLS
 

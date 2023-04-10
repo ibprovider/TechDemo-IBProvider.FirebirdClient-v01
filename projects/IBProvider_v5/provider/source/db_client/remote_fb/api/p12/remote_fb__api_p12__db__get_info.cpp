@@ -145,6 +145,8 @@ void RemoteFB__API_P12__GetDatabaseInfo::exec(RemoteFB__ConnectorData* const pDa
 
   packet.p_info.p_info__incarnation=Incornation;
 
+  assert(protocol::set01::C_CSTRING_MAX_LENGTH==(std::numeric_limits<decltype(cItems)>::max)());
+
   packet.p_info.p_info__items.cstr_length=cItems;
 
   packet.p_info.p_info__items.cstr_address=pItems;

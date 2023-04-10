@@ -231,6 +231,28 @@ enum P_OP
 ////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
+///  It is a maximum length of CSTRING_V1.
+/// </summary>
+static const P_USHORT C_CSTRING_V1_MAX_LENGTH=0xFFFF;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  It is a maximum length that can be passed through ULONG-length.
+/// </summary>
+/// 
+///  This limitation is linked with a defect in FB implementation.
+///  See fixup fixupLength in protocol.cpp of FB3 source code.
+/// 
+static const P_ULONG C_CSTRING_V2_MAX_LENGTH_P13=0xFFFF0000-1;
+
+////////////////////////////////////////////////////////////////////////////////
+
+static const P_ULONG C_INFO_BUF_SIZE_P13=USHRT_MAX;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
 ///  Максимальное количество элементов в статус векторе.
 /// </summary>
 ///  По идее, у нас здесь должен быть unlimited. Но пока мы перестрахуемся.

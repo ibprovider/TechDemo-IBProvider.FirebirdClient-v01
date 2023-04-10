@@ -11,6 +11,7 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__connect_op_ctx.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__initialize_crypt.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__process_auth_response.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__client_connect_block_v2.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -66,21 +67,12 @@ void RemoteFB__P13__ConnectHelper::exec(ports::base_v01::RemoteFB__Port_BASE_v01
      ibp_mce_common__failed_to_convert_db_name_to_utf8_0);
   }//if
 
-  if(!structure::can_numeric_cast(&packet.p_atch.p_atch__file.cstr_length,tmp__utf8_database_name.length()))
-  {
-   //ERROR - database name length too large
-
-   IBP_ErrorUtils::Throw__Error 
-   (E_FAIL,
-    ibp_subsystem__remote_fb__p13,
-    ibp_mce_common__database_name_length_is_too_large_2,
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet.p_atch.p_atch__file,
     tmp__utf8_database_name.length(),
-    structure::get_numeric_limits(packet.p_atch.p_atch__file.cstr_length).max_value());
-  }//if
+    ibp_mce_common__database_name_length_is_too_large_2);
 
-  structure::static_numeric_cast
-   (&packet.p_atch.p_atch__file.cstr_length,
-    tmp__utf8_database_name.length());
+  assert(packet.p_atch.p_atch__file.cstr_length==tmp__utf8_database_name.length());
 
   assert_s(sizeof(*tmp__utf8_database_name.c_str())==sizeof(*packet.p_atch.p_atch__file.cstr_address));
 
@@ -89,26 +81,15 @@ void RemoteFB__P13__ConnectHelper::exec(ports::base_v01::RemoteFB__Port_BASE_v01
     tmp__utf8_database_name.c_str());
 
   //---------------------------------------- p_atch__dpb
-  {
-   const auto dpb_BufferLength=ctx.m_dpb.GetBufferLength();
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet.p_atch.p_atch__dpb,
+    ctx.m_dpb.GetBufferLength(),
+    ibp_mce_common__formed_param_buf_is_too_large_3,
+    ctx.m_dpb.GetBufferTypeName());
 
-   if(!structure::can_numeric_cast(&packet.p_atch.p_atch__dpb.cstr_length,dpb_BufferLength))
-   {
-    //ERROR - database parameter buffer is too large
+  assert(packet.p_atch.p_atch__dpb.cstr_length==ctx.m_dpb.GetBufferLength());
 
-    IBP_ThrowErr_FormedParamBufIsTooLarge
-     (ibp_subsystem__remote_fb__p13,
-      ctx.m_dpb.GetBufferTypeName(),
-      dpb_BufferLength,
-      structure::get_numeric_limits(packet.p_atch.p_atch__dpb.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet.p_atch.p_atch__dpb.cstr_length,
-     dpb_BufferLength);
-
-   packet.p_atch.p_atch__dpb.cstr_address=ctx.m_dpb.GetBuffer();
-  }//local
+  packet.p_atch.p_atch__dpb.cstr_address=ctx.m_dpb.GetBuffer();
 
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
@@ -332,30 +313,18 @@ void RemoteFB__P13__ConnectHelper::send__cont_auth
 
  clientConnectBlock.GetCurrentAuthPlugin()->authenticate(clientConnectBlock); //throw
 
- {
-  const size_t cb=clientConnectBlock.m_dataFromAuthPlugin.size();
+ RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+  (&packet.p_auth_cont.p_auth_cont__data,
+   clientConnectBlock.m_dataFromAuthPlugin.size(),
+   ibp_mce_remote__auth_data_too_long_3,
+   clientConnectBlock.GetCurrentAuthPlugin()->get_name());
 
-  if(!structure::can_numeric_cast(&packet.p_auth_cont.p_auth_cont__data.cstr_length,cb))
-  {
-   //ERROR - auth data length too large
-
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__pset02,
-     ibp_mce_remote__auth_data_too_long_3,
-     clientConnectBlock.GetCurrentAuthPlugin()->get_name(),
-     cb,
-     structure::get_numeric_limits(packet.p_auth_cont.p_auth_cont__data.cstr_length).max_value());
-  }//if
-
-  assert(structure::can_numeric_cast(&packet.p_auth_cont.p_auth_cont__data.cstr_length,cb));
-
-  structure::static_numeric_cast(&packet.p_auth_cont.p_auth_cont__data.cstr_length,cb);
- }//local
+ assert(packet.p_auth_cont.p_auth_cont__data.cstr_length==clientConnectBlock.m_dataFromAuthPlugin.size());
 
  assert_s(1==sizeof(*packet.p_auth_cont.p_auth_cont__data.cstr_address));
 
- packet.p_auth_cont.p_auth_cont__data.cstr_address=reinterpret_cast<const protocol::P_UCHAR*>(clientConnectBlock.m_dataFromAuthPlugin.buffer());
+ packet.p_auth_cont.p_auth_cont__data.cstr_address
+  =reinterpret_cast<const protocol::P_UCHAR*>(clientConnectBlock.m_dataFromAuthPlugin.buffer());
 
  //---------------------- p_auth_cont__name
  std::string tmp__utf8_pluginName;
@@ -372,23 +341,12 @@ void RemoteFB__P13__ConnectHelper::send__cont_auth
 
  assert(!tmp__utf8_pluginName.empty());
 
- {
-  const size_t cch=tmp__utf8_pluginName.length();
+ RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+  (&packet.p_auth_cont.p_auth_cont__name,
+   tmp__utf8_pluginName.length(),
+   ibp_mce_remote__auth_svc_name_too_long_2);
 
-  if(!structure::can_numeric_cast(&packet.p_auth_cont.p_auth_cont__name.cstr_length,cch))
-  {
-   //ERROR - auth plugin name length too large
-
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__pset02,
-     ibp_mce_remote__auth_svc_name_too_long_2,
-     cch,
-     structure::get_numeric_limits(packet.p_auth_cont.p_auth_cont__name.cstr_length).max_value());
-  }//if
-
-  structure::static_numeric_cast(&packet.p_auth_cont.p_auth_cont__name.cstr_length,cch);
- }//local
+ assert(packet.p_auth_cont.p_auth_cont__name.cstr_length==tmp__utf8_pluginName.length());
 
  assert_s(sizeof(*tmp__utf8_pluginName.c_str())==sizeof(*packet.p_auth_cont.p_auth_cont__name.cstr_address));
 
@@ -410,23 +368,12 @@ void RemoteFB__P13__ConnectHelper::send__cont_auth
 
  assert(!tmp__utf8_clientAuthPlugins.empty());
 
- {
-  const size_t cch=tmp__utf8_clientAuthPlugins.length();
+ RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+  (&packet.p_auth_cont.p_auth_cont__list,
+   tmp__utf8_clientAuthPlugins.length(),
+   ibp_mce_remote__auth_svc_names_too_long_2);
 
-  if(!structure::can_numeric_cast(&packet.p_auth_cont.p_auth_cont__list.cstr_length,cch))
-  {
-   //ERROR - length of list with auth plugin names too large
-
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_subsystem__remote_fb__pset02,
-     ibp_mce_remote__auth_svc_names_too_long_2,
-     cch,
-     packet.p_auth_cont.p_auth_cont__list.cstr_length);
-  }//if
-
-  structure::static_numeric_cast(&packet.p_auth_cont.p_auth_cont__list.cstr_length,cch);
- }//local
+ assert(packet.p_auth_cont.p_auth_cont__list.cstr_length==tmp__utf8_clientAuthPlugins.length());
 
  assert_s(sizeof(*tmp__utf8_clientAuthPlugins.c_str())==sizeof(*packet.p_auth_cont.p_auth_cont__list.cstr_address));
 

@@ -49,10 +49,10 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
  assert(msg_data_size>0); //[2016-09-21]
  assert(msg_nulls_size>0);
 
+ assert_s(CHAR_BIT==8);
+
 #ifndef NDEBUG
  {
-  assert(CHAR_BIT==8);
-
   const size_t ExpectedNullsBufferLength
    =((msg_descrs_count/8) + (((msg_descrs_count%8)!=0)?1:0));
 
@@ -508,7 +508,7 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
-     assert_msg(false,"typeID"<<unsigned(MsgElementDescr.m_msg_blrtype));
+     assert_msg(false,"typeID: "<<unsigned(MsgElementDescr.m_msg_blrtype));
 
      IBP_ErrorUtils::Throw__Error
       (E_FAIL,
@@ -559,16 +559,14 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__array_slice
  {
   //ERROR - [BUG CHECK] несогласованные размеры буфера и элемента массива
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_isc__bug_check__inconsistent_sizes_of_slice_and_element_5);
-
-  exc<<c_bugcheck_src
-     <<L"#002"
-     <<szSlice
-     <<ArrSliceDescr.m_element_total_length
-     <<ArrSliceDescr.m_element_blr_typeid;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_isc__bug_check__inconsistent_sizes_of_slice_and_element_5,
+    c_bugcheck_src,
+    L"#002",
+    szSlice,
+    ArrSliceDescr.m_element_total_length,
+    ArrSliceDescr.m_element_blr_typeid);
  }//if
 
  //-----------------------------------------
@@ -752,7 +750,7 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__array_slice
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
-     assert_msg(false,"typeID"<<int(ArrSliceDescr.m_element_blr_typeid));
+     assert_msg(false,"typeID: "<<int(ArrSliceDescr.m_element_blr_typeid));
 
      IBP_ErrorUtils::Throw__Error
       (E_FAIL,

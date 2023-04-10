@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__trans__start.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/p13/lazy_send/remote_fb__p13_lazy_send__srv_resource_helper.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
@@ -104,20 +105,13 @@ void RemoteFB__API_P13__StartTransaction::exec(RemoteFB__ConnectorData* const pD
   packet.p_sttr.p_sttr__database=pData->GetPort()->m_ID.get_value();
 
   //---------------------------------------- p_sttr_tpb.cstr_length
-  if(!structure::can_numeric_cast(&packet.p_sttr.p_sttr__tpb.cstr_length,tpb_length))
-  {
-   //ERROR - размер буфера с параметрами транзакции превышает максимально допустимый.
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet.p_sttr.p_sttr__tpb,
+    tpb_length,
+    ibp_mce_common__formed_param_buf_is_too_large_3,
+    L"TPB");
 
-   IBP_ThrowErr_FormedParamBufIsTooLarge
-    (ibp_subsystem__remote_fb__p13,
-     L"TPB",
-     tpb_length,
-     structure::t_numeric_limits<short>::max_value());
-  }//if
-
-  assert(structure::can_numeric_cast(&packet.p_sttr.p_sttr__tpb.cstr_length,tpb_length));
-
-  structure::static_numeric_cast(&packet.p_sttr.p_sttr__tpb.cstr_length,tpb_length);
+  assert(packet.p_sttr.p_sttr__tpb.cstr_length==tpb_length);
 
   //---------------------------------------- p_sttr_tpb.cstr_address
   packet.p_sttr.p_sttr__tpb.cstr_address=tpb;

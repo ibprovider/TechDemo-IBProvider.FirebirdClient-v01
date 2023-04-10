@@ -498,7 +498,7 @@ void RemoteFB__PSET01__P12__XDR__Decoder::decode__sql_message
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
-     assert_msg(false,"typeID"<<int(typeID));
+     assert_msg(false,"typeID: "<<int(typeID));
 
      IBP_ErrorUtils::Throw__Error
       (E_FAIL,
@@ -734,7 +734,7 @@ void RemoteFB__PSET01__P12__XDR__Decoder::decode__array_slice
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID
-     assert_msg(false,"typeID"<<int(ArrSliceDescr.m_element_blr_typeid));
+     assert_msg(false,"typeID: "<<int(ArrSliceDescr.m_element_blr_typeid));
 
      IBP_ErrorUtils::Throw__Error
       (E_FAIL,

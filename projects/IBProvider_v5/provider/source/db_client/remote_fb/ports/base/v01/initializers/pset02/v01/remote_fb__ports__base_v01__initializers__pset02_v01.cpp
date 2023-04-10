@@ -15,6 +15,7 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__initialize_compressor.h"
 
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
+#include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__utilities.h"
 
 #include "source/db_client/remote_fb/plugins/auth/win_sspi/remote_fb__plugin_auth_win_sspi_factory.h"
 #include "source/db_client/remote_fb/plugins/auth/srp/remote_fb__plugin_auth_srp_factory.h"
@@ -168,23 +169,13 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
      ibp_mce_common__failed_to_convert_db_name_to_utf8_0);
   }//if
 
-  {
-   const size_t ch_file_name=tmp__utf8_database_name.length();
+  api::pset02::RemoteFB__PSET02__Utilities::CheckAndSetLength__CSTRING_CONST_V1
+   (&packet.p_cnct.p_cnct__file,
+    tmp__utf8_database_name.length(),
+    ibp_subsystem__remote_fb__pset02,
+    ibp_mce_common__database_name_length_is_too_large_2);
 
-   if(!structure::can_numeric_cast(&packet.p_cnct.p_cnct__file.cstr_length,ch_file_name))
-   {
-    //ERROR - database name length too large
-
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-     ibp_subsystem__remote_fb__pset02,
-     ibp_mce_common__database_name_length_is_too_large_2,
-     ch_file_name,
-     structure::get_numeric_limits(packet.p_cnct.p_cnct__file.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast(&packet.p_cnct.p_cnct__file.cstr_length,ch_file_name);
-  }//local
+  assert(packet.p_cnct.p_cnct__file.cstr_length==tmp__utf8_database_name.length());
 
   assert_s(sizeof(*tmp__utf8_database_name.c_str())==sizeof(*packet.p_cnct.p_cnct__file.cstr_address));
 
@@ -292,27 +283,16 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
 
   //Формирование user_id завершено
 
-  {
-   const isc_base::t_isc_param_buffer_v1_builder::size_type
-    cpb_BufferLength=clientConnectBlock.m_CPB.GetBufferLength();
+  api::pset02::RemoteFB__PSET02__Utilities::CheckAndSetLength__CSTRING_CONST_V1
+   (&packet.p_cnct.p_cnct__user_id,
+    clientConnectBlock.m_CPB.GetBufferLength(),
+    ibp_subsystem__remote_fb__pset02,
+    ibp_mce_common__formed_param_buf_is_too_large_3,
+    clientConnectBlock.m_CPB.GetBufferTypeName());
 
-   if(!structure::can_numeric_cast(&packet.p_cnct.p_cnct__user_id.cstr_length,cpb_BufferLength))
-   {
-    //ERROR - buffer with user information is too long
+  assert(packet.p_cnct.p_cnct__user_id.cstr_length==clientConnectBlock.m_CPB.GetBufferLength());
 
-    IBP_ThrowErr_FormedParamBufIsTooLarge
-     (ibp_subsystem__remote_fb__pset02,
-      clientConnectBlock.m_CPB.GetBufferTypeName(),
-      cpb_BufferLength,
-      structure::get_numeric_limits(packet.p_cnct.p_cnct__user_id.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast
-    (&packet.p_cnct.p_cnct__user_id.cstr_length,
-     cpb_BufferLength);
-
-   packet.p_cnct.p_cnct__user_id.cstr_address=clientConnectBlock.m_CPB.GetBuffer();
-  }//local
+  packet.p_cnct.p_cnct__user_id.cstr_address=clientConnectBlock.m_CPB.GetBuffer();
 
   //---------------------------------------- p_cnct_versions
   {

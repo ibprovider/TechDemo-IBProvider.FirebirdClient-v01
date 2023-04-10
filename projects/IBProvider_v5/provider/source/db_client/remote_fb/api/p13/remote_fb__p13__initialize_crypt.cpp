@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__initialize_crypt.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 
 #include "source/db_client/remote_fb/ports/streams/crypt/arc4/remote_fb__ports__streams__crypt_arc4.h"
 
@@ -213,23 +214,12 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
      L"UTF8");
   }//if
 
-  {
-   const size_t ch_pluginName=tmp__utf8_pluginName.length();
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet__p_crypt.p_crypt__plugin,
+    tmp__utf8_pluginName.length(),
+    ibp_mce_remote__wire_crypt_svc_name_is_too_long_2);
 
-   if(!structure::can_numeric_cast(&packet__p_crypt.p_crypt__plugin.cstr_length,ch_pluginName))
-   {
-    //ERROR - plugin name length too large
-
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p13,
-      ibp_mce_remote__wire_crypt_svc_name_is_too_long_2,
-      ch_pluginName,
-      structure::get_numeric_limits(packet__p_crypt.p_crypt__plugin.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast(&packet__p_crypt.p_crypt__plugin.cstr_length,ch_pluginName);
-  }//local
+  assert(packet__p_crypt.p_crypt__plugin.cstr_length==tmp__utf8_pluginName.length());
 
   assert_s(sizeof(*tmp__utf8_pluginName.c_str())==sizeof(*packet__p_crypt.p_crypt__plugin.cstr_address));
 
@@ -250,23 +240,12 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
      L"#002");
   }//if
 
-  {
-   const size_t ch_keyName=tmp__utf8_keyName.length();
+  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
+   (&packet__p_crypt.p_crypt__key,
+    tmp__utf8_keyName.length(),
+    ibp_mce_remote__wire_crypt_key_type_name_is_too_long_2);
 
-   if(!structure::can_numeric_cast(&packet__p_crypt.p_crypt__key.cstr_length,ch_keyName))
-   {
-    //ERROR - key type name length too large
-
-    IBP_ErrorUtils::Throw__Error
-     (E_FAIL,
-      ibp_subsystem__remote_fb__p13,
-      ibp_mce_remote__wire_crypt_key_type_name_is_too_long_2,
-      ch_keyName,
-      structure::get_numeric_limits(packet__p_crypt.p_crypt__key.cstr_length).max_value());
-   }//if
-
-   structure::static_numeric_cast(&packet__p_crypt.p_crypt__key.cstr_length,ch_keyName);
-  }//local
+  assert(packet__p_crypt.p_crypt__key.cstr_length==tmp__utf8_keyName.length());
 
   assert_s(sizeof(*tmp__utf8_keyName.c_str())==sizeof(*packet__p_crypt.p_crypt__key.cstr_address));
 
@@ -275,8 +254,9 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
   //----------------------------------------
   RemoteFB__OperationContext portOpCtx;
 
-  pPort->send_packet(portOpCtx,
-                     packet); //throw
+  pPort->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local - SEND
 
  //----------------------------------------------------- 3. Переключаемся на шифрованный поток
