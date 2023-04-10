@@ -429,8 +429,9 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
   //----------------------------------------
   RemoteFB__OperationContext portOpCtx;
 
-  pPort->send_packet(portOpCtx,
-                     packet); //throw
+  pPort->send_packet
+   (portOpCtx,
+    packet); //throw
  }//local - SEND
 
  //-------------------------------------------------------- 2. RECV: answer for op_connect
