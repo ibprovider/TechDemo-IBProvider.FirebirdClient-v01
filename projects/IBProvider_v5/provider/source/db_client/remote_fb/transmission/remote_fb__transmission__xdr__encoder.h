@@ -9,6 +9,7 @@
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
 #include "source/db_client/remote_fb/protocol/remote_fb__protocol.h"
+#include "source/db_client/remote_fb/remote_fb__forward.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,6 +28,8 @@ class RemoteFB__XDR__Encoder
 
  public: //typedefs ------------------------------------------------------
   typedef RemoteFB__PortWriter              buf_type;
+
+  typedef RemoteFB__ArraySliceDescr         asd_type;
 
  public:
   static void encode__p_arch
@@ -81,6 +84,21 @@ class RemoteFB__XDR__Encoder
                (buf_type*                    pBuf,
                 size_t                       sz,
                 const protocol::P_UCHAR*     pv);
+
+ public:
+  /// <summary>
+  ///  Repacking a buffer with element values in the "network" format.
+  /// </summary>
+  //! \param[in] pBuf
+  //!  Not null.
+  //! \param[in] ArrSliceDescr
+  //! \param[in] slice_size
+  //! \param[in] slice
+  static void encode__array_slice
+               (buf_type*                pBuf,
+                const asd_type&          ArrSliceDescr,
+                size_t                   slice_size,
+                const protocol::P_UCHAR* slice);
 
  private:
   static void helper__write_align_cch

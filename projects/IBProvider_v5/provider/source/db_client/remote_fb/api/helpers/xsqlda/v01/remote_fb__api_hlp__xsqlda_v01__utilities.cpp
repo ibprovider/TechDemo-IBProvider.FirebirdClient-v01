@@ -14,6 +14,59 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //RemoteFB__API_HLP__XSQLDA_V01__Utilities
 
+size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength
+                                           (size_t        cbMsg,
+                                            size_t  const cbElement,
+                                            size_t  const cbAlign,
+                                            size_t* const pcbResultAlign)
+{
+ cbMsg=Helper__AlignMsgLength(cbMsg,cbAlign,pcbResultAlign); //throw
+
+ return Helper__AddMsgLength(cbMsg,cbElement); //throw
+}//Helper__AddMsgLength
+
+//------------------------------------------------------------------------
+size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength
+                                           (size_t       cbMsg,
+                                            size_t const cbElement)
+{
+ const wchar_t* const c_bugcheck_src
+  =L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength";
+
+ if((structure::t_numeric_limits<size_t>::max_value()-cbMsg)<cbElement)
+  IBP_ThrowOverflowInMemSizeCalculation(c_bugcheck_src,L"#001");
+
+ return cbMsg+cbElement;
+}//Helper__AddMsgLength
+
+//------------------------------------------------------------------------
+size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AlignMsgLength
+                                           (size_t        cbMsg,
+                                            size_t  const cbAlign,
+                                            size_t* const pcbResultAlign)
+{
+ assert(cbAlign==1 ||
+        cbAlign==2 ||
+        cbAlign==4 ||
+        cbAlign==8 ||
+        cbAlign==16);
+
+ const wchar_t* const c_bugcheck_src
+  =L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AlignMsgLength";
+
+ if(!structure::align_memory_size(/*ref*/cbMsg,cbAlign))
+  IBP_ThrowOverflowInMemSizeCalculation(c_bugcheck_src,L"#001");
+
+ if(pcbResultAlign!=nullptr)
+ {
+  if((*pcbResultAlign)<cbAlign)
+   (*pcbResultAlign)=cbAlign;
+ }//if
+
+ return cbMsg;
+}//Helper__AlignMsgLength
+
+//------------------------------------------------------------------------
 void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__UnexpectedTruncation
                                            (const wchar_t* const place,
                                             const wchar_t* const point,

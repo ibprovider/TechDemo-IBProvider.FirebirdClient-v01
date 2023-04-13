@@ -8,7 +8,6 @@
 #define _remote_fb__transmission__pset02__p13__xdr__encoder_H_
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
-#include "source/db_client/remote_fb/remote_fb__array_slice_descr.h"
 #include "source/db_client/remote_fb/remote_fb__forward.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset02{namespace p13{
@@ -28,8 +27,6 @@ class RemoteFB__PSET02__P13__XDR__Encoder
 
  public: //typedefs ------------------------------------------------------
   typedef RemoteFB__PortWriter                       buf_type;
-
-  typedef RemoteFB__ArraySliceDescr                  asd_type;
 
   typedef RemoteFB__MsgDataElementDescr              mded_type;
 
@@ -58,20 +55,6 @@ class RemoteFB__PSET02__P13__XDR__Encoder
                 const protocol::P_UCHAR* msg_data,
                 size_t                   msg_nulls_size,
                 const protocol::P_UCHAR* msg_nulls);
-
-  /// <summary>
-  ///  Перепаковка буфера с значениями элементов массива в "сетевой" формат.
-  /// </summary>
-  //! \param[in] pBuf
-  //!  Not null.
-  //! \param[in] ArrSliceDescr
-  //! \param[in] slice_size
-  //! \param[in] slice
-  static void encode__array_slice
-               (buf_type*                pBuf,
-                const asd_type&          ArrSliceDescr,
-                size_t                   slice_size,
-                const protocol::P_UCHAR* slice);
 };//class RemoteFB__PSET02__P13__XDR__Encoder
 
 ////////////////////////////////////////////////////////////////////////////////

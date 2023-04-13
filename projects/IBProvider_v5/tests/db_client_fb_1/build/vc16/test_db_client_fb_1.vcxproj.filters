@@ -170,15 +170,6 @@
     <Filter Include="source\tests\api">
       <UniqueIdentifier>{0c817026-952d-45ad-a40d-54ad5e715f8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\api\p12">
-      <UniqueIdentifier>{bbca9e1e-6841-4dcf-a196-5d6f13acd494}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities">
-      <UniqueIdentifier>{5f27de5d-d458-4ece-9a8d-270fb588e911}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers">
-      <UniqueIdentifier>{1759ee02-dd53-4c9a-a8ff-4149bca70e91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\work\Fields\smallint">
       <UniqueIdentifier>{a94715f8-d0f1-4373-ae2d-6b503bdfc127}</UniqueIdentifier>
     </Filter>
@@ -250,12 +241,6 @@
     </Filter>
     <Filter Include="source\tests\work\Fields\varchar\headers">
       <UniqueIdentifier>{a4947e11-0a97-43f0-9708-42c4b32b4767}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities">
-      <UniqueIdentifier>{f0fac42f-580b-41f7-8b6f-44805d04cb2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\headers">
-      <UniqueIdentifier>{62e23f51-2baf-429c-83ef-02a2a2db4df8}</UniqueIdentifier>
     </Filter>
     <Filter Include="IBP\source\services\charsets">
       <UniqueIdentifier>{9a8a9888-9814-458a-bf9f-a9b56e1bb1c3}</UniqueIdentifier>
@@ -368,15 +353,6 @@
     <Filter Include="IBP\source\db_obj\dbms_fb\v02_5_0\api\_headers">
       <UniqueIdentifier>{ba8e181d-ed4a-4299-80ca-e82437185c00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\api\xsqlda">
-      <UniqueIdentifier>{52940821-d12b-4da8-8194-fb071c3ab43d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\xsqlda\v01">
-      <UniqueIdentifier>{e8a290e4-bc5b-4b68-b567-a74cb7ede594}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\xsqlda\v01\_headers">
-      <UniqueIdentifier>{a89bee22-8846-4607-913e-e74f2b0f820d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\work\Fields\_headers">
       <UniqueIdentifier>{f864dec8-035e-4b25-bff6-b742a5c4e169}</UniqueIdentifier>
     </Filter>
@@ -449,23 +425,11 @@
     <Filter Include="source\tests\api\p13\RemoteFB__P13__AddServerKeys">
       <UniqueIdentifier>{99ba29a4-b201-4d62-a1a5-970df1b1645e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities">
-      <UniqueIdentifier>{3a3feead-8f8e-4887-a2d3-63ccdf29ae5d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse">
       <UniqueIdentifier>{51dd468e-a63a-416f-9b73-9cddefb6fb80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities">
-      <UniqueIdentifier>{5e16f1f7-cb1f-4e4b-afe3-07daf851711b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers">
-      <UniqueIdentifier>{93f71989-123d-4bc3-854d-0f4408afe9aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\_headers">
       <UniqueIdentifier>{29878264-6b3a-4a2b-9c37-3cf2e0894256}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\_headers">
-      <UniqueIdentifier>{0b631665-e06d-4064-ba82-fa27c112aa77}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\tests\api\p13\RemoteFB__P13__AddServerKeys\_headers">
       <UniqueIdentifier>{0206a501-21ab-47e4-a2ee-01e168a692b2}</UniqueIdentifier>
@@ -908,6 +872,24 @@
     <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01\_headers">
       <UniqueIdentifier>{94b6edbb-9a17-4098-9515-dfc0bb04b3bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\api\helpers">
+      <UniqueIdentifier>{d584e3f5-be93-4dcd-a328-cb3b58c0f4de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\api\helpers\xsqlda">
+      <UniqueIdentifier>{52940821-d12b-4da8-8194-fb071c3ab43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\api\helpers\xsqlda\v01">
+      <UniqueIdentifier>{e8a290e4-bc5b-4b68-b567-a74cb7ede594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\api\helpers\xsqlda\v01\_headers">
+      <UniqueIdentifier>{a89bee22-8846-4607-913e-e74f2b0f820d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities">
+      <UniqueIdentifier>{13829eb1-4564-479b-91ef-36866ccdf008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\_headers">
+      <UniqueIdentifier>{936b7742-de78-47f7-ba73-6dfe566048ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1120,9 +1102,6 @@
     <ClCompile Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__unsigned_long.cpp">
       <Filter>source\tests\isc\portable_format_to_integer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\xsqlda_v1_wrapper.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -1138,29 +1117,11 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__encoder.cpp">
       <Filter>IBP\source\db_client\remote_fb\transmission\pset01\p12</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.cpp">
       <Filter>IBP\source\db_client\remote_fb</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Parse_XSQLDA_MSG_DATA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_data_element_descr.cpp">
       <Filter>IBP\source\db_client\remote_fb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.cpp">
       <Filter>source\tests\work\Params\OUT</Filter>
@@ -1198,12 +1159,6 @@
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_012__array.cpp">
       <Filter>source\tests\work\Params\OUT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__decoder.cpp">
       <Filter>IBP\source\db_client\remote_fb\transmission\pset01\p12</Filter>
     </ClCompile>
@@ -1221,12 +1176,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.cpp">
       <Filter>IBP\source\db_client\remote_fb\transmission</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities__Calc_XSQLDA_MAX_XDR_SIZE.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
@@ -1443,12 +1392,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__array_slice_descr.cpp">
       <Filter>IBP\source\db_client\remote_fb</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__array_slice_utilities.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\TestsFor__RemoteFB__P12__ArraySlice_Utilities__ParseSDL.cpp">
-      <Filter>source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__array__get_slice.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
@@ -2011,11 +1954,8 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities__Parse_XSQLDA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.cpp">
-      <Filter>source\tests\api\xsqlda\v01</Filter>
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.cpp">
       <Filter>source\tests\work\Fields</Filter>
@@ -2452,9 +2392,6 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__add_server_keys.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__array_slice_utilities.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__blob_helper.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
@@ -2468,30 +2405,6 @@
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Alloc_XSQLDA_MSG_NULLS.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Build_XSQLDA_MSG_NULLS.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Calc_XSQLDA_MAX_XDR_SIZE.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities__Parse_XSQLDA_MSG_DATA.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__cancel.cpp">
@@ -2587,35 +2500,8 @@
     <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__AddServerKeys\TestsFor__RemoteFB__P13__AddServerKeys.cpp">
       <Filter>source\tests\api\p13\RemoteFB__P13__AddServerKeys</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\TestsFor__RemoteFB__P13__ProcessAuthResponse.cpp">
       <Filter>source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Alloc_XSQLDA_MSG_NULLS.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__001.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.cpp">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.cpp">
       <Filter>source\tests\mix\RemoteFB__ClientConnectBlock_v2</Filter>
@@ -3184,6 +3070,60 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.cc">
       <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Parse_XSQLDA.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_BLR.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_DATA_DESCRS.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Calc_XSQLDA_MAX_XDR_SIZE.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Alloc_XSQLDA_MSG_NULLS.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_NULLS.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002.cpp">
+      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_slice_v01__utilities.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.cpp">
+      <Filter>source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -3381,9 +3321,6 @@
     <ClInclude Include="..\..\source\tests\isc\portable_format_to_integer\ISC_Test__portable_format_to_integer__unsigned_long.h">
       <Filter>source\tests\isc\portable_format_to_integer\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__xsqlda_utilities.h">
-      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\xsqlda_v1_wrapper.h">
       <Filter>source\_headers</Filter>
     </ClInclude>
@@ -3404,12 +3341,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__encoder.h">
       <Filter>IBP\source\db_client\remote_fb\transmission\pset01\p12\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.h">
       <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
@@ -3453,12 +3384,6 @@
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_012__array.h">
       <Filter>source\tests\work\Params\OUT\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\pset01\p12\remote_fb__transmission__pset01__p12__op__decoder.h">
       <Filter>IBP\source\db_client\remote_fb\transmission\pset01\p12\_headers</Filter>
     </ClInclude>
@@ -3479,9 +3404,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.h">
       <Filter>IBP\source\db_client\remote_fb\transmission\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\TestsFor__RemoteFB__P12__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__XSQLDA_Utilities\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
@@ -3785,12 +3707,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__array_slice_descr.h">
       <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__array_slice_utilities.h">
-      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\TestsFor__RemoteFB__P12__ArraySlice_Utilities__ParseSDL.h">
-      <Filter>source\tests\api\p12\RemoteFB__P12__ArraySlice_Utilities\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__array__get_slice.h">
       <Filter>IBP\source\db_client\remote_fb\api</Filter>
@@ -4391,7 +4307,7 @@
       <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.h">
-      <Filter>source\tests\api\xsqlda\v01\_headers</Filter>
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.h">
       <Filter>source\tests\work\Fields\_headers</Filter>
@@ -4609,9 +4525,6 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__add_server_keys.h">
       <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__array_slice_utilities.h">
-      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__blob_helper.h">
       <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
     </ClInclude>
@@ -4628,9 +4541,6 @@
       <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper.h">
-      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__xsqlda_utilities.h">
       <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__blob__cancel.h">
@@ -4726,35 +4636,8 @@
     <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__AddServerKeys\TestsFor__RemoteFB__P13__AddServerKeys.h">
       <Filter>source\tests\api\p13\RemoteFB__P13__AddServerKeys\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\TestsFor__RemoteFB__P13__ArraySlice_Utilities__ParseSDL.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__ArraySlice_Utilities\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\TestsFor__RemoteFB__P13__ProcessAuthResponse.h">
       <Filter>source\tests\api\p13\RemoteFB__P13__ProcessAuthResponse\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Alloc_XSQLDA_MSG_NULLS.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_BLR.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__001.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Build_XSQLDA_MSG_NULLS__002.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\TestsFor__RemoteFB__P13__XSQLDA_Utilities___Parse_XSQLDA_MSG_DATA.h">
-      <Filter>source\tests\api\p13\RemoteFB__P13__XSQLDA_Utilities\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.h">
       <Filter>source\tests\mix\RemoteFB__ClientConnectBlock_v2\_headers</Filter>
@@ -5041,6 +4924,36 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.h">
       <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002.h">
+      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__array_slice_v01__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.h">
+      <Filter>source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

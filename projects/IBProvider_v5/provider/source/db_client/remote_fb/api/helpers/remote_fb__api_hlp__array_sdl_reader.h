@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 //! \addtogroup db_client__remote_fb__api_hlp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__P12__ArraySlice_Utilities::tag_sdl_reader
+//class RemoteFB__API_HLP__ArraySdlReader
 
 /// <summary>
 ///  Класс для обработки буфера с SDL-описанием массива.

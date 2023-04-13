@@ -8,9 +8,9 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__api_p12__array__get_slice.h"
-#include "source/db_client/remote_fb/api/p12/remote_fb__p12__array_slice_utilities.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
+#include "source/db_client/remote_fb/api/helpers/remote_fb__api_hlp__array_slice_v01__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__op_svc__get_array_slice_descr.h"
@@ -209,7 +209,7 @@ void RemoteFB__API_P12__GetArraySlice::exec(db_obj::t_db_operation_context& opCt
  //-----------------------------------------
  tagOpGetArraySliceDescr GetArraySliceDescrSvc;
 
- RemoteFB__P12__ArraySlice_Utilities::ParseSDL
+ helpers::RemoteFB__API_HLP__ArraySlice_v01__Utilities::ParseSDL
   (opCtx,
    szArraySDL,
    pArraySDL,

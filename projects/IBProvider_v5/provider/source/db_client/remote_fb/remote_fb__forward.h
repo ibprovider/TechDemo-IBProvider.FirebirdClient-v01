@@ -25,6 +25,8 @@ class RemoteFB__Port;
 
 class RemoteFB__MsgDataElementDescr;
 
+class RemoteFB__ArraySliceDescr;
+
 namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
 

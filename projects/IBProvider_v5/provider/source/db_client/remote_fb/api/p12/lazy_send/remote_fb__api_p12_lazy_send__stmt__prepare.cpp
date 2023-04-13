@@ -9,7 +9,6 @@
 
 #include "source/db_client/remote_fb/api/p12/lazy_send/remote_fb__api_p12_lazy_send__stmt__prepare.h"
 #include "source/db_client/remote_fb/api/p12/lazy_send/remote_fb__p12_lazy_send__srv_resource_helper.h"
-#include "source/db_client/remote_fb/api/p12/remote_fb__p12__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__stmt_helper.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/set01/remote_fb__api_hlp__xsqlda_set01__utilities.h"
