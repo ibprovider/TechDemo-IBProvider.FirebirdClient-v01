@@ -9,10 +9,10 @@
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__execute.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__stmt_helper.h"
-#include "source/db_client/remote_fb/api/p13/remote_fb__p13__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__srv_operation.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
+#include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
@@ -324,26 +324,26 @@ protocol::P_USHORT RemoteFB__API_P13__ExecuteStatement::helper__execute
   =L"RemoteFB__API_P13__ExecuteStatement::helper__execute";
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA); //throw
 
  size_t unused__InParams_MsgDataSize=0;
  size_t unused__InParams_MsgDataAlign=0;
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA_DESCRS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA_DESCRS
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA_DESCRS,
    &unused__InParams_MsgDataSize,
    &unused__InParams_MsgDataAlign); //throw
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_NULLS
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_NULLS); //throw
 
@@ -437,37 +437,37 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
   =L"RemoteFB__API_P13__ExecuteStatement::helper__execute2";
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA);
 
  size_t unused__InParams_MsgDataSize=0;
  size_t unused__InParams_MsgDataAlign=0;
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA_DESCRS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA_DESCRS
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA_DESCRS,
    &unused__InParams_MsgDataSize,
    &unused__InParams_MsgDataAlign); //throw
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_NULLS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_NULLS
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_NULLS);
 
  //-----------------------------------------
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
   (pOutXSQLDA,
    (*pStmtHandle)->m_OutParams__MSG_BLR); //throw
 
  assert(!(*pStmtHandle)->m_OutParams__MSG_BLR.empty());
 
- RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA_DESCRS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA_DESCRS
   (pOutXSQLDA,
    (*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
    &(*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
@@ -476,7 +476,7 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
  (*pStmtHandle)->m_OutParams__MSG_DATA.alloc((*pStmtHandle)->m_OutParams__MSG_DATA_SIZE);
 
  //резервируем место под загрузку индикаторов NULL-значений
- RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS
+ helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
   (pOutXSQLDA,
    (*pStmtHandle)->m_OutParams__MSG_NULLS);
 
@@ -663,7 +663,7 @@ protocol::P_OBJCT RemoteFB__API_P13__ExecuteStatement::helper__execute2
 
  try
  {
-  RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA_MSG_DATA
    ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
     (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
     (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),

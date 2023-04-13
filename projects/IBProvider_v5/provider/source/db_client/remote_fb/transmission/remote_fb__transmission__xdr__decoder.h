@@ -8,6 +8,7 @@
 #define _remote_fb__transmission__xdr__decoder_H_
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
+#include "source/db_client/remote_fb/remote_fb__forward.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +29,8 @@ class RemoteFB__XDR__Decoder
   typedef RemoteFB__PortReader              buf_type;
   typedef RemoteFB__PacketMemory            mem_type;
   typedef mem_type::enumMemoryID            mem_id_type;
+
+  typedef RemoteFB__ArraySliceDescr         asd_type;
 
  public:
   static void decode__p_arch
@@ -129,6 +132,14 @@ class RemoteFB__XDR__Decoder
                 const wchar_t*                 pv_sign,
                 protocol::P_ISC_STATUS_VECTOR* pv);
 
+  /// <summary>
+  ///  Unpacking array elements from "network" format.
+  /// </summary>
+  static void decode__array_slice
+               (buf_type*               pBuf,
+                const asd_type&         ArrSliceDescr,
+                size_t                  szSlice,
+                protocol::P_UCHAR*      pSlice);
  private:
   static void helper__read_align_uchars
                (buf_type*      pBuf,

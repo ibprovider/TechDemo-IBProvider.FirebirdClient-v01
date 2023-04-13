@@ -12,7 +12,7 @@
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__P12__ArraySlice_Utilities::tag_sdl_reader
+//class RemoteFB__API_HLP__ArraySdlReader
 
 RemoteFB__API_HLP__ArraySdlReader::RemoteFB__API_HLP__ArraySdlReader
                                            (size_t           const szSDL,

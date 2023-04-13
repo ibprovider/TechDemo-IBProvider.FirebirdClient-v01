@@ -259,8 +259,7 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_slice__a
  assert(spGetDescr);
 
  //-----------------------------------------
- typedef RemoteFB__PSET02__P13__XDR__Decoder xdr13;
- typedef RemoteFB__XDR__Decoder              xdr;
+ typedef RemoteFB__XDR__Decoder xdr;
 
  protocol::set02::P_OP_SLC_DATA* const p_slc_data=&packet.p_slc_data;
 
@@ -282,7 +281,7 @@ void RemoteFB__PSET02__P13__OpDecoder::decode__op_slice__a
      RemoteFB__PacketMemory::mem_id__p_op_slice__data,
      p_slc_data->p_slc_data__slice.lstr_length); //throw
 
- xdr13::decode__array_slice
+ xdr::decode__array_slice
   (spBuf,
    spGetDescr->GetArraySliceDescr(),
    p_slc_data->p_slc_data__slice.lstr_length,

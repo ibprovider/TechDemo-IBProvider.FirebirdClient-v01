@@ -8,11 +8,11 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p13/lazy_send/remote_fb__api_p13_lazy_send__stmt__fetch.h"
-#include "source/db_client/remote_fb/api/p13/remote_fb__p13__xsqlda_utilities.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__srv_operation.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__stmt_helper.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__utilities.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
+#include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
@@ -164,14 +164,14 @@ bool RemoteFB__API_P13_LAZY_SEND__FetchStatement::exec
   assert(!(*pStmtHandle)->m_EFlags.test(stmt_data_type::EFLAG__PAST_EOF));
 
   //---------
-  RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_BLR
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
    (pOutXSQLDA,
     (*pStmtHandle)->m_OutParams__MSG_BLR); //throw
 
   assert(!(*pStmtHandle)->m_OutParams__MSG_BLR.empty());
 
   //---------
-  RemoteFB__P13__XSQLDA_Utilities::Build_XSQLDA_MSG_DATA_DESCRS
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA_DESCRS
    (pOutXSQLDA,
     (*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
     &(*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
@@ -180,7 +180,7 @@ bool RemoteFB__API_P13_LAZY_SEND__FetchStatement::exec
   assert(!(*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS.empty());
 
   //---------
-  RemoteFB__P13__XSQLDA_Utilities::Alloc_XSQLDA_MSG_NULLS
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
    (pOutXSQLDA,
     (*pStmtHandle)->m_OutParams__MSG_NULLS);
 
@@ -203,7 +203,7 @@ bool RemoteFB__API_P13_LAZY_SEND__FetchStatement::exec
   else
   {
    const size_t szMsgData
-    =RemoteFB__P13__XSQLDA_Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
+    =helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Calc_XSQLDA_MAX_XDR_SIZE(pOutXSQLDA);
 
    assert(szMsgData>0);
 
@@ -273,7 +273,7 @@ bool RemoteFB__API_P13_LAZY_SEND__FetchStatement::exec
 
    try
    {
-    RemoteFB__P13__XSQLDA_Utilities::Parse_XSQLDA_MSG_DATA
+    helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA_MSG_DATA
      ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
       (*pStmtHandle)->m_spFetchResult->ROWS__GetDataSize(),
       (*pStmtHandle)->m_spFetchResult->ROWS__GetFirstBlock(),

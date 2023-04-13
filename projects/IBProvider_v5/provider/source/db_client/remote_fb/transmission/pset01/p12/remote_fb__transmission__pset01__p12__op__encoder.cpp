@@ -195,8 +195,7 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_put_slice__a
  assert(spGetDescr);
 
  //-----------------------------------------
- typedef RemoteFB__PSET01__P12__XDR__Encoder  xdr12;
- typedef RemoteFB__PSET01__XDR__Encoder       xdr;
+ typedef RemoteFB__PSET01__XDR__Encoder xdr;
 
  const protocol::set01::P_OP_PUT_SLC* const p_put_slc=&packet.p_put_slc;
 
@@ -231,7 +230,7 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_put_slice__a
   (spBuf,
    &p_put_slc->p_put_slc__slice.lstr_length);
 
- xdr12::encode__array_slice
+ xdr::encode__array_slice
   (spBuf,
    spGetDescr->GetArraySliceDescr(),
    p_put_slc->p_put_slc__slice.lstr_length,
