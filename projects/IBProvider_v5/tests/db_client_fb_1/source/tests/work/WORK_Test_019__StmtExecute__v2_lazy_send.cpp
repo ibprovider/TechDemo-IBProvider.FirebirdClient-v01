@@ -3906,7 +3906,7 @@ void WORK_Test_019__StmtExecute__v2_lazy_send::create
  structure::t_dimension_iterator<size_t,TTSO_MemoryAllocator> it;
 
  it.add(0,_DIM_(sm_Tests)-1);                                       //0
- it.add(0,_DIM_(g_TestCfg__RemoteFB__ProtocolTypes__lazy_send)-1);    //1
+ it.add(0,_DIM_(g_TestCfg__RemoteFB__ProtocolTypes__lazy_send)-1);  //1
 
  //-----------------------------------------
  enum

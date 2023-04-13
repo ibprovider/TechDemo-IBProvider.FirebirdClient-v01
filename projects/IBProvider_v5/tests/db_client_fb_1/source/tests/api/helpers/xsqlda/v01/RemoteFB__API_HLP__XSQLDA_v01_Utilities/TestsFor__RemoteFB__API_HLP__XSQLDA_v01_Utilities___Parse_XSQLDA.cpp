@@ -3446,12 +3446,14 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::create
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
 
- structure::str_formatter ftestID("RemoteFB.API.HLP.XSQLDA_V01_Utilities.Parse_XSQLDA.%1");
+ structure::str_formatter
+  ftestID("RemoteFB.API.HLP.XSQLDA_V01_Utilities.Parse_XSQLDA.%1");
 
  for(const tag_descr& d : sm_Tests)
  {
-  ftestID<<structure::flush
-         <<d.pTestSign;
+  ftestID
+   <<structure::flush
+   <<d.pTestSign;
 
   const TTSO_TestPtr
    spTest

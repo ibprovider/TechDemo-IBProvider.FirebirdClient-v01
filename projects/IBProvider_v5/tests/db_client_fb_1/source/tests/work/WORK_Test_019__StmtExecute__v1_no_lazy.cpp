@@ -116,25 +116,25 @@ class WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl
  #endif
 
  public: //---------------------------------------------------------------
- static void test_014__err__op_execute__hack_commit_tr
-               (TTSO_GlobalContext*     pParams,
-                context_type*           pCtx,
-                const TTSO_TestData_v2& Data);
+  static void test_014__err__op_execute__hack_commit_tr
+                (TTSO_GlobalContext*     pParams,
+                 context_type*           pCtx,
+                 const TTSO_TestData_v2& Data);
 
- static void test_015__err__op_execute2__hack_commit_tr
-               (TTSO_GlobalContext*     pParams,
-                context_type*           pCtx,
-                const TTSO_TestData_v2& Data);
+  static void test_015__err__op_execute2__hack_commit_tr
+                (TTSO_GlobalContext*     pParams,
+                 context_type*           pCtx,
+                 const TTSO_TestData_v2& Data);
 
-  static void test_016__attempt_to_reopen_cursor
-               (TTSO_GlobalContext*     pParams,
-                context_type*           pCtx,
-                const TTSO_TestData_v2& Data);
+   static void test_016__attempt_to_reopen_cursor
+                (TTSO_GlobalContext*     pParams,
+                 context_type*           pCtx,
+                 const TTSO_TestData_v2& Data);
 
-  static void test_016__attempt_to_reopen_cursor__fb3
-               (TTSO_GlobalContext*     pParams,
-                context_type*           pCtx,
-                const TTSO_TestData_v2& Data);
+   static void test_016__attempt_to_reopen_cursor__fb3
+                (TTSO_GlobalContext*     pParams,
+                 context_type*           pCtx,
+                 const TTSO_TestData_v2& Data);
 
  public: //---------------------------------------------------------------
   static void test_S001__insert__without_params
@@ -3604,6 +3604,7 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_S007__insert__with_p
      (tracer,
       params,
       cns));
+
  _TSO_CHECK(!cns.db_dialect_Ex.null());
 
  _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
