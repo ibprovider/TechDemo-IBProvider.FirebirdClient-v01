@@ -1929,11 +1929,12 @@ void WORK_Test_023__CloseBlob__v2_lazy_send::create
 
   const TTSO_TestPtr
    spTest
-    (new TTSO_TestFunc_v2
-      (pParams,
-       ftestID.c_str(),
-       sm_Tests[it[iTest]].Func,
-       Data));
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data)));
 
   pTestPusher->PushTest(spTest);
  }//for it

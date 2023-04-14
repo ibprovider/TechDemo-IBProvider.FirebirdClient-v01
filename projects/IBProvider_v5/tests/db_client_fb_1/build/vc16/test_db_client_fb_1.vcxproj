@@ -929,6 +929,7 @@
     <ClCompile Include="..\..\source\tests\work\WORK_Test_018__GetParameters.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.cpp" />
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v1_no_lazy.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v2_lazy_send.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v1_no_lazy.cpp" />
@@ -1559,6 +1560,7 @@
     <ClInclude Include="..\..\source\tests\work\WORK_Test_018__GetParameters.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v1_no_lazy.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v2_lazy_send.h" />
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v1_no_lazy.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v2_lazy_send.h" />
     <ClInclude Include="..\..\source\tests\work\WORK_Test_021__StmtClose__v1_no_lazy.h" />

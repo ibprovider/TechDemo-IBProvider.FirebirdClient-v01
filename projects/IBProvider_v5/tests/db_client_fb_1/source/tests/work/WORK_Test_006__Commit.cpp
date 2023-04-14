@@ -575,12 +575,13 @@ void WORK_Test_006__Commit::create(TTSO_PushTest*      const pTestPusher,
 
   const TTSO_TestPtr
    spTest
-    (new TTSO_TestFunc_v2
-      (pParams,
-       ftestID.c_str(),
-       sm_Tests[it[iTest]].Func,
-       Data,
-       sm_Tests[it[iTest]].pExecRules));
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
 
   pTestPusher->PushTest(spTest);
  }//for it

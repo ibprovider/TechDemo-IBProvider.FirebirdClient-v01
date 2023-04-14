@@ -114,7 +114,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_001__err__too_long_bpb
  typedef structure::t_dynamic_array
   <remote_fb::protocol::P_UCHAR,TTSO_MemoryAllocator>      bpb_type;
 
- bpb_type BPB(SHRT_MAX+1);
+ bpb_type BPB(size_t(USHRT_MAX)+1);
 
  std::fill(BPB.begin(),BPB.end(),0);
 
@@ -143,8 +143,8 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_001__err__too_long_bpb
      exc.get_record(0),
      errSvc::sm_subsysID__remote_fb_p12,
      L"BPB",
-     SHRT_MAX+1,
-     SHRT_MAX);
+     size_t(USHRT_MAX)+1,
+     USHRT_MAX);
 
    _TSO_CHECK(!hBlob);
 
@@ -666,15 +666,21 @@ void WORK_Test_026__CreateBlob__v0::create
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<sm_Tests[it[iTest]].pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data,
-                                                 sm_Tests[it[iTest]].pExecRules));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

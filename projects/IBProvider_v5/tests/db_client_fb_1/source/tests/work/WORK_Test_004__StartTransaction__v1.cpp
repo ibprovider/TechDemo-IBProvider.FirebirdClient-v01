@@ -274,7 +274,7 @@ void WORK_Test_004__StartTransaction__v1::tag_impl::test_003__err__too_large_tpb
      errSvc::sm_subsysID__remote_fb_p12,
      L"TPB",
      tpb.size(),
-     structure::t_numeric_limits<short>::max_value());
+     structure::t_numeric_limits<unsigned short>::max_value());
 
    break;
   }//catch
@@ -643,12 +643,13 @@ void WORK_Test_004__StartTransaction__v1::create
 
   const TTSO_TestPtr
    spTest
-    (new TTSO_TestFunc_v2
-      (pParams,
-       ftestID.c_str(),
-       sm_Tests[it[iTest]].Func,
-       Data,
-       sm_Tests[it[iTest]].pExecRules));
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
 
   pTestPusher->PushTest(spTest);
  }//for it

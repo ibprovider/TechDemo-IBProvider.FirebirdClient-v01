@@ -146,9 +146,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_001
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -169,13 +170,14 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_001
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hTr);
@@ -183,9 +185,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_001
  _TSO_CHECK(hStmt->m_pParentTr==hTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtClose(tracer,
-                                    spConnector,
-                                    &hStmt);
+ svc::RemoteFB_Connector__StmtClose
+  (tracer,
+   spConnector,
+   &hStmt);
 
  _TSO_CHECK(hStmt);
 
@@ -260,9 +263,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_002__bug_check__zero_s
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                     spConnector,
-                                     &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -357,9 +361,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_003__bug_check__null_s
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmtCopy);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmtCopy);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -440,19 +445,21 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  for(;;)
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector2,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector2,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -534,9 +541,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_005__err__no_cn
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -557,13 +565,14 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_005__err__no_cn
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hTr);
@@ -584,9 +593,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_005__err__no_cn
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -670,9 +680,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_006__err__not_prepared
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -765,9 +776,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_007__err__not_executed
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -792,9 +804,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_007__err__not_executed
  {
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -895,9 +908,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_008__err__hack_drop_st
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -918,18 +932,20 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_008__err__hack_drop_st
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  //-----------------------------------------
- svc::HACK__DropStmt(tracer,
-                     spConnector,
-                     &hStmt);
+ svc::HACK__DropStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  for(size_t nPass=0;nPass!=3;)
  {
@@ -939,9 +955,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_008__err__hack_drop_st
 
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1033,9 +1050,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -1056,18 +1074,20 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  //-----------------------------------------
- svc::HACK__CloseStmt(tracer,
-                      spConnector,
-                      &hStmt);
+ svc::HACK__CloseStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  for(size_t nPass=0;nPass!=3;)
  {
@@ -1077,9 +1097,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
 
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1171,9 +1192,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -1194,18 +1216,20 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  //-----------------------------------------
- svc::HACK__CloseStmt(tracer,
-                      spConnector,
-                      &hStmt);
+ svc::HACK__CloseStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  for(size_t nPass=0;nPass!=3;)
  {
@@ -1215,9 +1239,10 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_009__err__hack_close_s
 
   try
   {
-   svc::RemoteFB_Connector__StmtClose(tracer,
-                                      spConnector,
-                                      &hStmt);
+   svc::RemoteFB_Connector__StmtClose
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1424,15 +1449,21 @@ void WORK_Test_021__StmtClose__v1_no_lazy::create
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes__no_lazy[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<sm_Tests[it[iTest]].pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data,
-                                                 sm_Tests[it[iTest]].pExecRules));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         sm_Tests[it[iTest]].pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

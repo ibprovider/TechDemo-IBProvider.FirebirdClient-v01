@@ -39,6 +39,8 @@ class TestCnParams
 
   void set_dbprop_init__integrated_auth(structure::t_const_wstr_box v);
 
+  void set_dbprop_init__ctype(structure::t_const_wstr_box v);
+
   void set_dbprop_init__remote__protocol(structure::t_const_wstr_box v);
 
   void set_dbprop_init__remote__protocol_type(structure::t_const_wstr_box v);

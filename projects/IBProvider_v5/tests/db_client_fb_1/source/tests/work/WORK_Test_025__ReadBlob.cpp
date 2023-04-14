@@ -1515,14 +1515,19 @@ void WORK_Test_025__ReadBlob::create(TTSO_PushTest*      const pTestPusher,
   }//if
 
   //----------------------------------------
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<TestDescr.pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<TestDescr.pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 TestDescr.Func,
-                                                 Data));
+  const TTSO_TestPtr spTest
+   (structure::not_null_ptr
+     (new TTSO_TestFunc_v2
+       (pParams,
+        ftestID.c_str(),
+        TestDescr.Func,
+        Data)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

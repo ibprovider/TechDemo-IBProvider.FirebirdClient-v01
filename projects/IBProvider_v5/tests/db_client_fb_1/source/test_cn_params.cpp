@@ -148,6 +148,19 @@ void TestCnParams::set_dbprop_init__integrated_auth
 }//set_dbprop_init__integrated_auth
 
 //------------------------------------------------------------------------------
+void TestCnParams::set_dbprop_init__ctype
+                                      (structure::t_const_wstr_box const v)
+{
+ assert(m_spDsPropValues);
+
+ m_spDsPropValues->Direct__SetValue
+  (ibprovider::IBP_DBPROPSET_INIT,
+   ibprovider::IBP_DBPROP__INIT__CTYPE,
+   DBPROPOPTIONS_REQUIRED,
+   ole_lib::TVariant(v));
+}//set_dbprop_init__ctype
+
+//------------------------------------------------------------------------------
 void TestCnParams::set_dbprop_init__remote__protocol
                                       (structure::t_const_wstr_box const v)
 {

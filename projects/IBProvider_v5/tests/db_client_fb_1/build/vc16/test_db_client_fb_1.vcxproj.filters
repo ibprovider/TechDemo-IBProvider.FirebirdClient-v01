@@ -3124,6 +3124,9 @@
     <ClCompile Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.cpp">
       <Filter>source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -4954,6 +4957,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.h">
       <Filter>source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.h">
+      <Filter>source\tests\work\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

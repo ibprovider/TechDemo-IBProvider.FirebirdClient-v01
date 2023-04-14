@@ -83,6 +83,7 @@
 #include "source/tests/work/WORK_Test_018__GetParameters.h"
 #include "source/tests/work/WORK_Test_019__StmtExecute__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_019__StmtExecute__v2_lazy_send.h"
+#include "source/tests/work/WORK_Test_019__StmtExecute__v3.h"
 #include "source/tests/work/WORK_Test_020__StmtFetch__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_020__StmtFetch__v2_lazy_send.h"
 #include "source/tests/work/WORK_Test_021__StmtClose__v1_no_lazy.h"
@@ -347,6 +348,8 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_Test_019__StmtExecute__v1_no_lazy::create),
 
  DEF_CREATOR_DESCR(WORK_Test_019__StmtExecute__v2_lazy_send::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_019__StmtExecute__v3::create),
 
  DEF_CREATOR_DESCR(WORK_Test_020__StmtFetch__v1_no_lazy::create),
 

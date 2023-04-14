@@ -646,13 +646,19 @@ void WORK_Test_003__Connector::create(TTSO_PushTest*      const pTestPusher,
 
  for(const tag_descr& d : sm_Tests)
  {
-  ftestID<<structure::flush
-         <<d.pTestSign;
+  ftestID
+   <<structure::flush
+   <<d.pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc(pParams,
-                                              ftestID.c_str(),
-                                              d.Func,
-                                              d.pExecRules));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc
+        (pParams,
+         ftestID.c_str(),
+         d.Func,
+         d.pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for d
 }//create
