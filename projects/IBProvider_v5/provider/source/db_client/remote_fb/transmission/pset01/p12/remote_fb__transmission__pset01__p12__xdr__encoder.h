@@ -47,9 +47,6 @@ class RemoteFB__PSET01__P12__XDR__Encoder
                 const protocol::P_UCHAR* msg_blr,
                 size_t                   msg_data_size,
                 const protocol::P_UCHAR* msg_data);
-
- private:
-  class tag_blr_reader;
 };//class RemoteFB__PSET01__P12__XDR__Encoder
 
 ////////////////////////////////////////////////////////////////////////////////

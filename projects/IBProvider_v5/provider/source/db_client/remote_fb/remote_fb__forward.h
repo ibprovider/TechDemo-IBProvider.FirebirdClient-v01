@@ -27,6 +27,12 @@ class RemoteFB__MsgDataElementDescr;
 
 class RemoteFB__ArraySliceDescr;
 
+class RemoteFB__InMsg_v1;
+class RemoteFB__OutMsg_v1;
+
+class RemoteFB__OpSvc__StmtExecuteData_v1;
+class RemoteFB__OpSvc__StmtExecuteData_v2;
+
 namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
 

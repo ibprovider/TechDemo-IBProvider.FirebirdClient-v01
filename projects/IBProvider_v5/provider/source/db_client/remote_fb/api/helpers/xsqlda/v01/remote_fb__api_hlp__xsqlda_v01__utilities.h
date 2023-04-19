@@ -10,6 +10,7 @@
 #include "source/db_client/remote_fb/handles/remote_fb__handle_data__statement.h"
 #include "source/db_client/remote_fb/protocol/remote_fb__protocol.h"
 #include "source/db_obj/isc_base/isc_api.h"
+#include "source/structure/ibp_buffer_view.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -42,6 +43,16 @@ class RemoteFB__API_HLP__XSQLDA_V01__Utilities
   typedef stmt_data_type::msg_data_descrs_type             msg_data_descrs_type;
 
   typedef msg_data_descrs_type::value_type                 msg_data_descr_type;
+
+  typedef IBP_BufferView<const byte_type>                  msg_data_buf_view_type;
+
+  typedef IBP_BufferView<const msg_data_descr_type>        msg_data_descrs_view_type;
+
+ public:
+  static void Check_XSQLDA(const isc_api::XSQLDA_V1* pXSQLDA,
+                           protocol::P_SHORT         minSQLD,
+                           t_ibp_subsystem_id        subsystemID,
+                           const wchar_t*            pXSQLDA_Sign);
 
  public:
   /// <summary>
@@ -141,6 +152,16 @@ class RemoteFB__API_HLP__XSQLDA_V01__Utilities
                               msg_nulls_buffer_type&    Nulls);
 
   /// <summary>
+  ///  Allocating a memory for a buffer with the flags of NULL-states.
+  /// </summary>
+  //! \param[in] DataDescrs
+  //! \param[in,out] Nulls
+  static void Alloc_XSQLDA_MSG_NULLS
+                             (const msg_data_descrs_view_type& DataDescrs,
+                              msg_nulls_buffer_type&           Nulls);
+
+ public:
+  /// <summary>
   ///  Формирование буфера с флагами NULL-состояний данных XSQLDA структуры.
   /// </summary>
   //! \param[in] pXSQLDA
@@ -149,6 +170,17 @@ class RemoteFB__API_HLP__XSQLDA_V01__Utilities
   static void Build_XSQLDA_MSG_NULLS
                              (const isc_api::XSQLDA_V1* pXSQLDA,
                               msg_nulls_buffer_type&    Nulls);
+
+  /// <summary>
+  ///  Формирование буфера с флагами NULL-состояний данных XSQLDA структуры.
+  /// </summary>
+  //! \param[in] DataDescrs
+  //! \param[in] DataBuffer
+  //! \param[in,out] Nulls
+  static void Build_XSQLDA_MSG_NULLS
+                             (const msg_data_descrs_view_type& DataDescrs,
+                              const msg_data_buf_view_type&    DataBuffer,
+                              msg_nulls_buffer_type&           Nulls);
 
  private:
   static size_t Helper__Calc_XSQLDA_MAX_XDR_SIZE
@@ -227,35 +259,6 @@ class RemoteFB__API_HLP__XSQLDA_V01__Utilities
                               char*            pBuffer,
                               short*           pActualLength,
                               const wchar_t*   tagSign);
- private:
-  /// <summary>
-  ///  Выравнивание и добавление к длине MSG-буфера
-  /// </summary>
-  //! \param[in] cbMsg
-  //!  Текущий размер буфера.
-  //! \param[in] cbElement
-  //!  Размер данных
-  //! \param[in] cbAlign
-  //!  Граница выравнивания данных
-  //! \param[in,out] pcbResultAlign
-  //!  Результирующее значение выравнивания. Can be null.
-  //! \return
-  //!  Обновленный размер буфера
-  static size_t Helper__AddMsgLength
-                             (size_t   cbMsg,
-                              size_t   cbElement,
-                              size_t   cbAlign,
-                              size_t*  pcbResultAlign);
-
-  static size_t Helper__AddMsgLength
-                             (size_t cbMsg,
-                              size_t cbElement);
-
-  static size_t Helper__AlignMsgLength
-                             (size_t   cbMsg,
-                              size_t   cbAlign,
-                              size_t*  pcbResultAlign);
-
  private:
   COMP_CONF_DECLSPEC_NORETURN
   static void Helper__ThrowBugCheck__UnexpectedTruncation

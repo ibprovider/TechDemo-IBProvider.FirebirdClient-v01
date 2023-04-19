@@ -10,6 +10,7 @@
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/remote_fb__api_hlp__xsqlda__error_utils.h"
 #include "source/db_client/remote_fb/transmission/remote_fb__transmission__xdr__info.h"
+#include "source/ibp_memory_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +47,10 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Calc_XSQLDA_MAX_XDR_SIZE
   {
    const size_t x=Helper__Calc_XSQLDA_MAX_XDR_SIZE(pXVar);
 
-   cbResult=Helper__AddMsgLength(cbResult,x);
+   cbResult
+    =IBP_Memory_Utils::AddMemLength
+      (cbResult,
+       x);
   }
   catch(const std::exception& e)
   {

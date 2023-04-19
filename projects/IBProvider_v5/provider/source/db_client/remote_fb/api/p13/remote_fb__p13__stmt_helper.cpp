@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api_p13
 //! \file    remote_fb__p13__stmt_helper.cpp
-//! \brief   Вспомогательный класс с кодом для работы с запросами.
+//! \brief   Auxiliary class for working with statements.
 //! \author  Kovalenko Dmitry
 //! \date    17.09.2016
 #include <_pch_.h>
@@ -74,9 +74,10 @@ void RemoteFB__P13__StmtHelper::BuildPacket__op_prepare_statement
 
 //------------------------------------------------------------------------
 void RemoteFB__P13__StmtHelper::BuildPacket__op_execute
-                                           (protocol::set02::PACKET_V02*  const pPacket,
-                                            tr_data_type*                 const pTr,
-                                            stmt_data_type*               const pStmt)
+                             (protocol::set02::PACKET_V02*     const pPacket,
+                              tr_data_type*                    const pTr,
+                              stmt_data_type*                  const pStmt,
+                              const IBP_BufferView<const byte_type>& InMsg_BLR)
 {
  assert(pPacket);
  assert(pStmt);
@@ -92,24 +93,24 @@ void RemoteFB__P13__StmtHelper::BuildPacket__op_execute
  //---------------------------------------- p_sqldata_blr
  RemoteFB__P13__Utilities::CheckAndSetLength__CSTRING_CONST_V2
   (&pPacket->p_sqldata.p_sqldata__blr,
-   pStmt->m_InParams__MSG_BLR.size(),
+   InMsg_BLR.size(),
    ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
    L"pInXSQLDA");
 
- assert(pPacket->p_sqldata.p_sqldata__blr.cstr_length==pStmt->m_InParams__MSG_BLR.size());
+ assert(pPacket->p_sqldata.p_sqldata__blr.cstr_length==InMsg_BLR.size());
 
- pPacket->p_sqldata.p_sqldata__blr.cstr_address=pStmt->m_InParams__MSG_BLR.buffer();
+ pPacket->p_sqldata.p_sqldata__blr.cstr_address=InMsg_BLR.data();
 
  //---------------------------------------- p_sqldata_message_number
  pPacket->p_sqldata.p_sqldata__message_number=0;
 
  //---------------------------------------- p_sqldata_messages
- pPacket->p_sqldata.p_sqldata__messages=pStmt->m_InParams__MSG_BLR.empty()?0:1;
+ pPacket->p_sqldata.p_sqldata__messages=InMsg_BLR.empty()?0:1;
 }//BuildPacket__op_execute
 
 //------------------------------------------------------------------------
 protocol::P_USHORT RemoteFB__P13__StmtHelper::ComputeBatchSize
-                                           (size_t const szMsgData)
+                             (size_t const szMsgData)
 {
  // When batches of records are returned, they are returned as
  //    follows:
@@ -172,7 +173,7 @@ protocol::P_USHORT RemoteFB__P13__StmtHelper::ComputeBatchSize
  return static_cast<protocol::P_USHORT>(cResultRows);
 }//ComputeBatchSize
 
-//------------------------------------------------------------------------
+//Helper methods ---------------------------------------------------------
 size_t RemoteFB__P13__StmtHelper::Helper__ComputePacketNumber
                                            (size_t const cRows,
                                             size_t const cbPacket,

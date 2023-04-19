@@ -410,11 +410,12 @@ void WORK_StmtFetch_Test_01__Failed::create(TTSO_PushTest*      const pTestPushe
 
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[2]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<S.cBlocks
-         <<S.cRows
-         <<P;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<S.cBlocks
+   <<S.cRows
+   <<P;
 
   const TTSO_TestPtr
    spTest

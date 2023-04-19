@@ -9,6 +9,7 @@
 
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/remote_fb__api_hlp__xsqlda__error_utils.h"
+#include "source/ibp_memory_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,14 +109,14 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(isc_api::isc_varchar_size_type),
        /*align*/isc_api::ibp_isc_type_align__varying,
        /*pcbResultAlign*/nullptr); //throw
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/xvar_sqllen); //throw
 
@@ -146,7 +147,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/xvar_sqllen); //throw
 
@@ -179,7 +180,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_SHORT),
        /*align*/isc_api::ibp_isc_type_align__short,
@@ -200,7 +201,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_LONG),
        /*align*/isc_api::ibp_isc_type_align__long,
@@ -221,7 +222,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_INT64),
        /*align*/isc_api::ibp_isc_type_align__int64,
@@ -242,7 +243,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_BID),
        /*align*/isc_api::ibp_isc_type_align__quad,
@@ -263,7 +264,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_BID),
        /*align*/isc_api::ibp_isc_type_align__quad,
@@ -284,7 +285,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_FLOAT),
        /*align*/isc_api::ibp_isc_type_align__float,
@@ -305,7 +306,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(protocol::P_DOUBLE),
        /*align*/isc_api::ibp_isc_type_align__double,
@@ -326,7 +327,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(isc_api::t_ibp_isc_time),
        /*align*/isc_api::ibp_isc_type_align__time,
@@ -347,7 +348,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(isc_api::t_ibp_isc_date),
        /*align*/isc_api::ibp_isc_type_align__date,
@@ -368,7 +369,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(isc_api::t_ibp_isc_timestamp),
        /*align*/isc_api::ibp_isc_type_align__timestamp,
@@ -389,7 +390,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    }//if
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        /*data size*/sizeof(isc_api::t_ibp_fb030_bool),
        /*align*/isc_api::ibp_fb030_type_align__bool,
@@ -412,7 +413,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
 
  //место под SQLIND
  szMsg
-  =Helper__AddMsgLength
+  =IBP_Memory_Utils::AddMemLength
     (szMsg,
      /*data size*/sizeof(db_obj::t_dbvalue__i2),
      /*align*/isc_api::ibp_isc_type_align__short,

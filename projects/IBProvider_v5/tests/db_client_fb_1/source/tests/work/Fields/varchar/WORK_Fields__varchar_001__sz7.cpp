@@ -105,6 +105,7 @@ void WORK_Fields__varchar_001__sz7::tag_impl::run(context_type* const pCtx)const
  params.set_dbprop_init__location(svc::BuildLocationString(m_spParams));
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+ params.set_dbprop_init__ctype(L"ASCII");
 
  m_Data.SetParams(params);
 

@@ -466,15 +466,19 @@ void WORK_StmtFetch_Test_03__MARS::create(TTSO_PushTest*      const pTestPusher,
   {
    ++testNum;
 
-   ftestID<<structure::flush
-          <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-          <<cCursors
-          <<testNum;
+   ftestID
+    <<structure::flush
+    <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+    <<cCursors
+    <<testNum;
 
    const tag_impl::self_ptr
-    spTest(structure::not_null_ptr(new tag_impl(pParams,
-                                                ftestID.c_str(),
-                                                Data)));
+    spTest
+     (structure::not_null_ptr
+       (new tag_impl
+         (pParams,
+          ftestID.c_str(),
+          Data)));
 
    for(size_t x=0;x!=cCursors;++x)
     spTest->m_ResultSets.push_back(dataS[it2[x]]);

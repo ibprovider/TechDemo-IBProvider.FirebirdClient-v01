@@ -10,8 +10,8 @@
 #include "source/db_client/remote_fb/transmission/pset02/p13/remote_fb__transmission__pset02__p13__op__encoder.h"
 #include "source/db_client/remote_fb/transmission/pset02/p13/remote_fb__transmission__pset02__p13__xdr__encoder.h"
 #include "source/db_client/remote_fb/transmission/pset02/remote_fb__transmission__pset02__xdr__encoder.h"
-#include "source/db_client/remote_fb/handles/remote_fb__handle_data__statement.h"
 #include "source/db_client/remote_fb/protocol/set02/remote_fb__protocol_set02.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v2.h"
 #include "source/db_client/remote_fb/remote_fb__op_svc__get_array_slice_descr.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset02{namespace p13{
@@ -31,9 +31,9 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute__a
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
+ const RemoteFB__OpSvc__StmtExecuteData_v2::self_ptr
   spStmtData
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+   (RemoteFB__GetService<RemoteFB__OpSvc__StmtExecuteData_v2>(op_ctx));
 
  assert(spStmtData);
 
@@ -72,12 +72,12 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute__a
 
   xdr13::encode__sql_message
    (spBuf,
-    spStmtData->m_InParams__MSG_DATA_DESCRS.size(),
-    spStmtData->m_InParams__MSG_DATA_DESCRS.data(),
-    spStmtData->m_InParams__MSG_DATA.size(),
-    spStmtData->m_InParams__MSG_DATA.buffer(),
-    spStmtData->m_InParams__MSG_NULLS.size(),
-    spStmtData->m_InParams__MSG_NULLS.buffer());
+    spStmtData->InMsg_DATA_DESCRS.size(),
+    spStmtData->InMsg_DATA_DESCRS.data(),
+    spStmtData->InMsg_DATA.size(),
+    spStmtData->InMsg_DATA.data(),
+    spStmtData->InMsg_NULLS.size(),
+    spStmtData->InMsg_NULLS.data());
  }//if
 #ifndef NDEBUG
  else
@@ -86,9 +86,9 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute__a
 
   assert(p_sqldata->p_sqldata__blr.cstr_length==0);
 
-  assert(spStmtData->m_InParams__MSG_DATA.empty());
+  assert(spStmtData->InMsg_DATA.empty());
 
-  assert(spStmtData->m_InParams__MSG_NULLS.empty());
+  assert(spStmtData->InMsg_NULLS.empty());
  }//else
 #endif
 }//encode__op_execute__a
@@ -107,9 +107,9 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute2__a
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
+ const RemoteFB__OpSvc__StmtExecuteData_v2::self_ptr
   spStmtData
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+   (RemoteFB__GetService<RemoteFB__OpSvc__StmtExecuteData_v2>(op_ctx));
 
  assert(spStmtData);
 
@@ -148,12 +148,12 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute2__a
 
   xdr13::encode__sql_message
    (spBuf,
-    spStmtData->m_InParams__MSG_DATA_DESCRS.size(),
-    spStmtData->m_InParams__MSG_DATA_DESCRS.data(),
-    spStmtData->m_InParams__MSG_DATA.size(),
-    spStmtData->m_InParams__MSG_DATA.buffer(),
-    spStmtData->m_InParams__MSG_NULLS.size(),
-    spStmtData->m_InParams__MSG_NULLS.buffer());
+    spStmtData->InMsg_DATA_DESCRS.size(),
+    spStmtData->InMsg_DATA_DESCRS.data(),
+    spStmtData->InMsg_DATA.size(),
+    spStmtData->InMsg_DATA.data(),
+    spStmtData->InMsg_NULLS.size(),
+    spStmtData->InMsg_NULLS.data());
  }//if
 #ifndef NDEBUG
  else
@@ -162,9 +162,9 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_execute2__a
 
   assert(p_sqldata->p_sqldata__blr.cstr_length==0);
 
-  assert(spStmtData->m_InParams__MSG_DATA.empty());
+  assert(spStmtData->InMsg_DATA.empty());
 
-  assert(spStmtData->m_InParams__MSG_NULLS.empty());
+  assert(spStmtData->InMsg_NULLS.empty());
  }//else
 #endif
 
@@ -259,9 +259,9 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_exec_immediate2__a
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
+ const RemoteFB__OpSvc__StmtExecuteData_v2::self_ptr
   spStmtData
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+   (RemoteFB__GetService<RemoteFB__OpSvc__StmtExecuteData_v2>(op_ctx));
 
  assert(spStmtData);
 
@@ -312,19 +312,19 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_exec_immediate2__a
   assert(p_sqlst->p_sqlst__blr.cstr_length>0);
 
   //m_InParams__MSG_DATA содержит как минимум один индикатор NULL
-  assert(!spStmtData->m_InParams__MSG_DATA.empty());
+  assert(!spStmtData->InMsg_DATA.empty());
 
-  assert(!spStmtData->m_InParams__MSG_DATA_DESCRS.empty());
-  assert(!spStmtData->m_InParams__MSG_NULLS.empty());
+  assert(!spStmtData->InMsg_DATA_DESCRS.empty());
+  assert(!spStmtData->InMsg_NULLS.empty());
 
   xdr13::encode__sql_message
    (spBuf,
-    spStmtData->m_InParams__MSG_DATA_DESCRS.size(),
-    spStmtData->m_InParams__MSG_DATA_DESCRS.data(),
-    spStmtData->m_InParams__MSG_DATA.size(),
-    spStmtData->m_InParams__MSG_DATA.buffer(),
-    spStmtData->m_InParams__MSG_NULLS.size(),
-    spStmtData->m_InParams__MSG_NULLS.buffer());
+    spStmtData->InMsg_DATA_DESCRS.size(),
+    spStmtData->InMsg_DATA_DESCRS.data(),
+    spStmtData->InMsg_DATA.size(),
+    spStmtData->InMsg_DATA.data(),
+    spStmtData->InMsg_NULLS.size(),
+    spStmtData->InMsg_NULLS.data());
  }//if
 #ifndef NDEBUG
  else
@@ -333,11 +333,11 @@ void RemoteFB__PSET02__P13__OpEncoder::encode__op_exec_immediate2__a
 
   assert(p_sqlst->p_sqlst__blr.cstr_length==0);
 
-  assert(spStmtData->m_InParams__MSG_DATA.empty());
+  assert(spStmtData->InMsg_DATA.empty());
 
-  assert(spStmtData->m_InParams__MSG_DATA_DESCRS.empty());
+  assert(spStmtData->InMsg_DATA_DESCRS.empty());
 
-  assert(spStmtData->m_InParams__MSG_NULLS.empty());
+  assert(spStmtData->InMsg_NULLS.empty());
  }//else
 #endif
 

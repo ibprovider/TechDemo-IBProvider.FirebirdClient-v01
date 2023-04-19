@@ -74,7 +74,11 @@ IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__GetParameters)
 
 IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__ExecuteStatement)
 
+IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__ExecuteStatement_M)
+
 IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__FetchStatement)
+
+IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__FetchStatement_M)
 
 IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__OpenBlob)
 
@@ -91,6 +95,10 @@ IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__WriteBlob)
 IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__PutArraySlice)
 
 IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__GetArraySlice)
+
+IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__ExecuteImmediate)
+
+IBP_REMOTE_FB__DEF_API_INTERFACE(RemoteFB__API__ExecuteImmediate_M)
 
 ////////////////////////////////////////////////////////////////////////////////
 //Services for API

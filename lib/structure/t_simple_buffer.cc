@@ -117,12 +117,30 @@ inline t_typed_simple_buffer<T,Allocator>::t_typed_simple_buffer()
 //------------------------------------------------------------------------
 template<class T,class Allocator>
 RELEASE_CODE(inline)
+t_typed_simple_buffer<T,Allocator>::t_typed_simple_buffer(self_type&& x)
+ :m_alloc    (std::move(x.m_alloc))
+ ,m_buffer   (std::move(x.m_buffer))
+ ,m_size     (std::move(x.m_size))
+ ,m_capacity (std::move(x.m_capacity))
+{
+ x.m_buffer   =nullptr;
+ x.m_size     =0;
+ x.m_capacity =0;
+
+ assert(m_size<=m_capacity);
+
+ CHECK_READ_WRITE_TYPED_PTR(m_buffer,m_capacity);
+}
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+RELEASE_CODE(inline)
 t_typed_simple_buffer<T,Allocator>::t_typed_simple_buffer(size_type const sz)
  :m_buffer   (m_alloc.allocate(sz))  //throw
  ,m_size     (sz)
  ,m_capacity (sz)
 {
- CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
+ CHECK_READ_WRITE_TYPED_PTR(m_buffer,m_capacity);
 }//t_typed_simple_buffer
 
 //------------------------------------------------------------------------
@@ -134,7 +152,7 @@ t_typed_simple_buffer<T,Allocator>::t_typed_simple_buffer
  ,m_size     (n)
  ,m_capacity (n)
 {
- CHECK_READ_WRITE_PTR (this->buffer(),this->memory_size());
+ CHECK_READ_WRITE_TYPED_PTR(m_buffer,m_capacity);
 
  try
  {
@@ -233,6 +251,13 @@ typename t_typed_simple_buffer<T,Allocator>::const_reference
 
  return m_buffer[m_size-1];
 }//back - const
+
+//------------------------------------------------------------------------
+template<class T,class Allocator>
+void t_typed_simple_buffer<T,Allocator>::clear()
+{
+ m_size=0;
+}//clear
 
 //------------------------------------------------------------------------
 template<class T,class Allocator>

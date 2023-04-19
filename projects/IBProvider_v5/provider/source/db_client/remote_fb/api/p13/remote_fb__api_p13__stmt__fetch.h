@@ -59,20 +59,7 @@ class RemoteFB__API_P13__FetchStatement LCPI_CPP_CFG__CLASS__FINAL
   virtual bool exec(db_obj::t_db_operation_context& OpCtx,
                     RemoteFB__ConnectorData*        pData,
                     stmt_handle_type*               pStmtHandle,
-                    const isc_api::XSQLDA_V1*       pOutXSQLDA)COMP_W000004_OVERRIDE_FINAL;
-
- private:
-  /// <summary>
-  ///  Загрузка следующего блока рядов.
-  /// </summary>
-  //! \param[in] serverOperation
-  //! \param[in] pData
-  //! \param[in] pStmt
-  //!  Not null.
-  static void helper__fetch_next_rows
-                             (RemoteFB__P13__SrvOperation& serverOperation,
-                              RemoteFB__ConnectorData*     pData,
-                              stmt_data_type*              pStmt);
+                    const isc_api::XSQLDA_V1*       pOutXSQLDA)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__FetchStatement
 
 ////////////////////////////////////////////////////////////////////////////////

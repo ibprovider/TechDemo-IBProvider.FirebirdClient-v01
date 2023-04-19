@@ -257,9 +257,10 @@ void WORK_Fields__001__nulls::tag_impl::run(context_type* const pCtx)const
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/m_nFields);
@@ -474,12 +475,16 @@ void WORK_Fields__001__nulls::create(TTSO_PushTest*      const pTestPusher,
      <<nNulls;
 
     const tag_impl::self_ptr
-     spTest(structure::not_null_ptr(new tag_impl(pParams,
-                                                 ftestID.c_str(),
-                                                 Data,
-                                                 Revert,
-                                                 nFields,
-                                                 nNulls)));
+     spTest
+      (structure::not_null_ptr
+        (new tag_impl
+          (pParams,
+           ftestID.c_str(),
+           Data,
+           Revert,
+           nFields,
+           nNulls)));
+
     pTestPusher->PushTest(spTest);
    }//nNulls
   }//for nFields

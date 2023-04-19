@@ -125,9 +125,10 @@ void WORK_Fields__decimal_001__D07_02::tag_impl::run(context_type* const pCtx)co
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/1);
@@ -292,13 +293,18 @@ void WORK_Fields__decimal_001__D07_02::create(TTSO_PushTest*      const pTestPus
  {
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[0]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
   const tag_impl::self_ptr
-   spTest(structure::not_null_ptr(new tag_impl(pParams,
-                                               ftestID.c_str(),
-                                               Data)));
+   spTest
+    (structure::not_null_ptr
+      (new tag_impl
+        (pParams,
+         ftestID.c_str(),
+         Data)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

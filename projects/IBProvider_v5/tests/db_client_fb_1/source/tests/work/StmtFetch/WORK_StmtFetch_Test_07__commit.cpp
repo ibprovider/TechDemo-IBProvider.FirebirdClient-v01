@@ -146,9 +146,10 @@ void WORK_StmtFetch_Test_07__commit::tag_impl::run(context_type* const pCtx)cons
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/1);
@@ -342,9 +343,10 @@ void WORK_StmtFetch_Test_07__commit::create(TTSO_PushTest*      const pTestPushe
 
   ++testNum;
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<testNum;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<testNum;
 
   const tag_impl::self_ptr
    spTest

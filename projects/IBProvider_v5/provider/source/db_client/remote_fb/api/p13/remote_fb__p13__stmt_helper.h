@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api_p13
 //! \file    remote_fb__p13__stmt_helper.h
-//! \brief   Вспомогательный класс с кодом для работы с запросами.
+//! \brief   Auxiliary class for working with statements.
 //! \author  Kovalenko Dmitry
 //! \date    17.09.2016
 #ifndef _remote_fb__p13__stmt_helper_H_
@@ -10,6 +10,9 @@
 #include "source/db_client/remote_fb/protocol/set02/remote_fb__protocol_set02.h"
 #include "source/db_client/remote_fb/handles/remote_fb__handle__transaction.h"
 #include "source/db_client/remote_fb/handles/remote_fb__handle__statement.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__api_p13.h"
+
+#include "source/structure/ibp_buffer_view.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p13{
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +38,8 @@ class RemoteFB__P13__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
 
   typedef structure::t_const_str_box            sql_str_box_type;
 
+  typedef unsigned char                         byte_type;
+
  public:
   /// <summary>
   ///  Подготовка пакета для op_prepare_statement
@@ -46,11 +51,11 @@ class RemoteFB__P13__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]  SQL_dialect
   //! \param[in]  SQL_str
   static void BuildPacket__op_prepare_statement
-               (protocol::set02::PACKET_V02*  pPacket,
-                tr_handle_type*               pTrHandle,
-                protocol::P_OBJCT             stmtID,
-                protocol::P_USHORT            SQL_dialect,
-                sql_str_box_type              SQL_str);
+                             (protocol::set02::PACKET_V02*  pPacket,
+                              tr_handle_type*               pTrHandle,
+                              protocol::P_OBJCT             stmtID,
+                              protocol::P_USHORT            SQL_dialect,
+                              sql_str_box_type              SQL_str);
 
   /// <summary>
   ///  Подготовка пакета для op_execute
@@ -60,10 +65,12 @@ class RemoteFB__P13__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]  pTr
   //! \param[in]  pStmt
   //!  Not null
+  //! \param[in]  InMsg_BLR
   static void BuildPacket__op_execute
-               (protocol::set02::PACKET_V02*  pPacket,
-                tr_data_type*                 pTr,
-                stmt_data_type*               pStmt);
+                             (protocol::set02::PACKET_V02*           pPacket,
+                              tr_data_type*                          pTr,
+                              stmt_data_type*                        pStmt,
+                              const IBP_BufferView<const byte_type>& InMsg_BLR);
 
   /// <summary>
   ///  Вычисляем оптимальное количество записей для групповой загрузки
@@ -71,10 +78,54 @@ class RemoteFB__P13__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] szMsgData
   static protocol::P_USHORT ComputeBatchSize(size_t szMsgData);
 
+ public:
+  static protocol::P_OBJCT Execute__no_lazy
+                             (RemoteFB__P13__SrvOperation&         serverOperation,
+                              RemoteFB__ConnectorData*             pData,
+                              tr_handle_type*                      pTrHandle,
+                              stmt_handle_type*                    pStmtHandle,
+                              RemoteFB__OpSvc__StmtExecuteData_v2* pStmtExecData);
+
+  static protocol::P_OBJCT Execute2__no_lazy
+                             (RemoteFB__P13__SrvOperation&         serverOperation,
+                              RemoteFB__ConnectorData*             pData,
+                              tr_handle_type*                      pTrHandle,
+                              stmt_handle_type*                    pStmtHandle,
+                              RemoteFB__OpSvc__StmtExecuteData_v2* pStmtExecData);
+
+ public:
+  static protocol::P_OBJCT ExecuteImmediate
+                             (RemoteFB__P13__SrvOperation&         serverOperation,
+                              RemoteFB__ConnectorData*             pData,
+                              tr_handle_type*                      pTrHandle,
+                              protocol::P_USHORT                   SQL_dialect,
+                              sql_str_box_type                     SQL_str);
+
+  static protocol::P_OBJCT ExecuteImmediate2
+                             (RemoteFB__P13__SrvOperation&         serverOperation,
+                              RemoteFB__ConnectorData*             pData,
+                              tr_handle_type*                      pTrHandle,
+                              protocol::P_USHORT                   SQL_dialect,
+                              sql_str_box_type                     SQL_str,
+                              RemoteFB__OpSvc__StmtExecuteData_v2* pStmtExecData);
+
+ public:
+  /// <summary>
+  ///  Loading the next block with rows.
+  /// </summary>
+  //! \param[in] serverOperation
+  //! \param[in] pData
+  //! \param[in] pStmt
+  //!  Not null.
+  static void FetchNextRows(RemoteFB__P13__SrvOperation& serverOperation,
+                            RemoteFB__ConnectorData*     pData,
+                            stmt_data_type*              pStmt);
+
  private:
-  static size_t Helper__ComputePacketNumber(size_t cRows,
-                                            size_t cbPacket,
-                                            size_t cbPacket0);
+  static size_t Helper__ComputePacketNumber
+                             (size_t cRows,
+                              size_t cbPacket,
+                              size_t cbPacket0);
 };//class RemoteFB__P13__StmtHelper
 
 ////////////////////////////////////////////////////////////////////////////////

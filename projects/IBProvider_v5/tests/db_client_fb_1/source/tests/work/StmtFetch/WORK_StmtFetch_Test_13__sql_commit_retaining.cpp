@@ -348,9 +348,10 @@ void WORK_StmtFetch_Test_13__sql_commit_retaining::create
 
   ++testNum;
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<testNum;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<testNum;
 
   const tag_impl::self_ptr
    spTest

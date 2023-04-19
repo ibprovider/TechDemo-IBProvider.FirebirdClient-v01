@@ -10,10 +10,10 @@
 #include "source/db_client/remote_fb/transmission/pset01/p12/remote_fb__transmission__pset01__p12__op__decoder.h"
 #include "source/db_client/remote_fb/transmission/pset01/p12/remote_fb__transmission__pset01__p12__xdr__decoder.h"
 #include "source/db_client/remote_fb/transmission/remote_fb__transmission__xdr__decoder.h"
-#include "source/db_client/remote_fb/handles/remote_fb__handle_data__statement.h"
 #include "source/db_client/remote_fb/protocol/set01/remote_fb__protocol_set01.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v1.h"
 #include "source/db_client/remote_fb/remote_fb__op_svc__get_array_slice_descr.h"
-#include "source/error_services/ibp_error_messages.h"
+#include "source/db_client/remote_fb/remote_fb__fetch_result.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset01{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,9 +37,9 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_sql_response__a
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
+ const RemoteFB__OpSvc__StmtExecuteData_v1::self_ptr
   spStmtData
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+   (RemoteFB__GetService<RemoteFB__OpSvc__StmtExecuteData_v1>(op_ctx));
 
  assert(spStmtData);
 
@@ -61,11 +61,11 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_sql_response__a
 
   case 1:
   {
-   if(spStmtData->m_OutParams__MSG_BLR.empty())
+   if(spStmtData->OutMsg_BLR.empty())
    {
     //ERROR - [BUG CHECK] неожиданное получение пакета op_sql_response.
 
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#001",
       L"unexpected situation");
@@ -73,10 +73,10 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_sql_response__a
 
    xdr12::decode__sql_message
     (spBuf,
-     spStmtData->m_OutParams__MSG_BLR.size(),
-     spStmtData->m_OutParams__MSG_BLR.buffer(),
-     spStmtData->m_OutParams__MSG_DATA.size(),
-     spStmtData->m_OutParams__MSG_DATA.buffer());
+     spStmtData->OutMsg_BLR.size(),
+     spStmtData->OutMsg_BLR.data(),
+     spStmtData->OutMsg_DATA.size(),
+     spStmtData->OutMsg_DATA.data());
 
    break;
   }//case 1
@@ -85,15 +85,11 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_sql_response__a
   {
    //ERROR - [BUG CHECK] ” нас проблема. ћы ожидаем отсутствие или одно OUT-сообщение.
 
-   structure::wstr_formatter
-    freason(L"unexpected value of p_sqldata_messages: %1");
-
-   freason<<p_sqldata->p_sqldata__messages;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#002",
-     freason.c_str());
+     L"unexpected value of p_sqldata_messages: %1",
+     p_sqldata->p_sqldata__messages);
   }//default
  }//switch p_sqldata_messages
 }//decode__op_sql_response__a
@@ -117,13 +113,12 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_fetch_response__a
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::arch_generic);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmt
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+ const RemoteFB__FetchResult::self_ptr
+  spFetchResult
+   (RemoteFB__GetService<RemoteFB__FetchResult>(op_ctx));
 
- assert(spStmt);
- assert(spStmt->m_spFetchResult);
- assert(spStmt->m_spFetchResult->m_ProcessedFetchCount<=spStmt->m_spFetchResult->m_RequestedFetchCount);
+ assert(spFetchResult);
+ assert(spFetchResult->m_ProcessedFetchCount<=spFetchResult->m_RequestedFetchCount);
 
  //-----------------------------------------
  typedef RemoteFB__PSET01__P12__XDR__Decoder xdr12;
@@ -149,51 +144,48 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_fetch_response__a
 
   case 1:
   {
-   if(spStmt->m_OutParams__MSG_BLR.empty())
+   if(spFetchResult->m_OutMSG_BLR.empty())
    {
     //ERROR - [BUG CHECK] неожиданное получение пакета op_fetch_response.
 
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#001",
       me_bug_check__unexpected_situation_0);
    }//if
 
    //---------------------------------------
-   if(spStmt->m_spFetchResult->m_ProcessedFetchCount==spStmt->m_spFetchResult->m_RequestedFetchCount)
+   if(spFetchResult->m_ProcessedFetchCount==spFetchResult->m_RequestedFetchCount)
    {
     //ERROR - [BUG CHECK] ” нас проблема. ћы получили больше р€дов чем запрашивали.
 
-    structure::wstr_formatter freason(L"exceeded the expected number of rows: %1");
-
-    freason<<spStmt->m_spFetchResult->m_RequestedFetchCount;
-
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#002",
-      freason.c_str());
+      L"exceeded the expected number of rows: %1",
+      spFetchResult->m_RequestedFetchCount);
    }//if
 
-   assert(spStmt->m_spFetchResult->m_ProcessedFetchCount<spStmt->m_spFetchResult->m_RequestedFetchCount);
+   assert(spFetchResult->m_ProcessedFetchCount<spFetchResult->m_RequestedFetchCount);
 
    //---------------------------------------
-   protocol::P_UCHAR* const pRowDataBlock=spStmt->m_spFetchResult->ROWS__AllocBlock(); //throw?
+   protocol::P_UCHAR* const pRowDataBlock=spFetchResult->ROWS__AllocBlock(); //throw?
 
-   ++spStmt->m_spFetchResult->m_ProcessedFetchCount;
+   ++spFetchResult->m_ProcessedFetchCount;
 
    try
    {
     xdr12::decode__sql_message
      (spBuf,
-      spStmt->m_OutParams__MSG_BLR.size(),
-      spStmt->m_OutParams__MSG_BLR.buffer(),
-      spStmt->m_spFetchResult->ROWS__GetDataSize(),
+      spFetchResult->m_OutMSG_BLR.size(),
+      spFetchResult->m_OutMSG_BLR.buffer(),
+      spFetchResult->ROWS__GetDataSize(),
       pRowDataBlock); //throw
    }
    catch(...)
    {
     //¬ случае проблем, освобождаем последний выделенный блок.
-    spStmt->m_spFetchResult->ROWS__FreeLastBlock();
+    spFetchResult->ROWS__FreeLastBlock();
 
     // оличество запрошенных данных (m_ProcessedFetchCount) не уменьшаем,
     //ѕотому что это общий счетчик обработанных ответов с данными р€дов.
@@ -209,14 +201,11 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_fetch_response__a
   {
    //ERROR - [BUG CHECK] ” нас проблема. ћы ожидаем отсутствие или одно OUT-сообщение.
 
-   structure::wstr_formatter freason(L"unexpected value of p_sqldata_messages: %1");
-
-   freason<<p_sqldata->p_sqldata__messages;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#003",
-     freason.c_str());
+     L"unexpected value of p_sqldata_messages: %1",
+     p_sqldata->p_sqldata__messages);
   }//default
  }//switch p_sqldata_messages
 }//decode__op_fetch_response__a

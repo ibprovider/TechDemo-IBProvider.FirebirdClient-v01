@@ -19,6 +19,7 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__trans__commit.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__trans__commit_retaining.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__dsql__execute_immediate.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__dsql__execute_immediate_m.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__allocate.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__drop.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__prepare.h"
@@ -26,7 +27,9 @@
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__get_columns.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__get_parameters.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__execute.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__execute_m.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__fetch.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__fetch_m.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__stmt__close.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__blob__open.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__blob__create.h"
@@ -94,6 +97,10 @@ void RemoteFB__Connector::Helper__FinalInitialize__P13__no_lazy()
   .init(&api::p13::RemoteFB__API_P13__ExecuteImmediate::Instance);
 
  //-----------------------------------------
+ m_spData->m_API__ExecuteImmediate_M
+  .init(&api::p13::RemoteFB__API_P13__ExecuteImmediate_M::Instance);
+
+ //-----------------------------------------
  m_spData->m_API__AllocateStatement
   .init(&api::p13::RemoteFB__API_P13__AllocateStatement::Instance);
 
@@ -122,8 +129,16 @@ void RemoteFB__Connector::Helper__FinalInitialize__P13__no_lazy()
   .init(&api::p13::RemoteFB__API_P13__ExecuteStatement::Instance);
 
  //-----------------------------------------
+ m_spData->m_API__ExecuteStatement_M
+  .init(&api::p13::RemoteFB__API_P13__ExecuteStatement_M::Instance);
+
+ //-----------------------------------------
  m_spData->m_API__FetchStatement
   .init(&api::p13::RemoteFB__API_P13__FetchStatement::Instance);
+
+ //-----------------------------------------
+ m_spData->m_API__FetchStatement_M
+  .init(&api::p13::RemoteFB__API_P13__FetchStatement_M::Instance);
 
  //-----------------------------------------
  m_spData->m_API__CloseStatement

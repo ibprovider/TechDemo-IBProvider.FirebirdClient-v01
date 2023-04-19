@@ -70,6 +70,11 @@ class RemoteFB__API_P12_LAZY_SEND__ExecuteStatement LCPI_CPP_CFG__CLASS__FINAL
   static protocol::P_OBJCT helper__execute(RemoteFB__P12__SrvOperation&  serverOperation,
                                            RemoteFB__ConnectorData*      pData,
                                            tr_handle_type*               pTrHandle,
+                                           stmt_handle_type*             pStmtHandle);
+
+  static protocol::P_OBJCT helper__execute(RemoteFB__P12__SrvOperation&  serverOperation,
+                                           RemoteFB__ConnectorData*      pData,
+                                           tr_handle_type*               pTrHandle,
                                            stmt_handle_type*             pStmtHandle,
                                            const isc_api::XSQLDA_V1*     pInXSQLDA);
 

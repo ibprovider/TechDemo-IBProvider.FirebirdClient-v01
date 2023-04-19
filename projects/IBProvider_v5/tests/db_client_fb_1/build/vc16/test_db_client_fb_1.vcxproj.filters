@@ -890,6 +890,105 @@
     <Filter Include="source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\_headers">
       <UniqueIdentifier>{936b7742-de78-47f7-ba73-6dfe566048ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M">
+      <UniqueIdentifier>{0b1b304c-d2e0-40e4-a464-1f20bfd7dcb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types">
+      <UniqueIdentifier>{4df46f97-b7b0-436f-b66f-450aa2ec365f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\bigint">
+      <UniqueIdentifier>{bfe5fff4-f8aa-4f6b-946e-5a358042e676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\bigint\_headers">
+      <UniqueIdentifier>{394c5472-aa91-4aca-b42d-8e600a2cc7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\double">
+      <UniqueIdentifier>{fa667e25-7cb2-435f-a074-6abd40e383be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\double\_headers">
+      <UniqueIdentifier>{48d06971-d808-4b84-a4f6-848a60a89035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\float">
+      <UniqueIdentifier>{c2dc4bcd-b0b0-4e60-ae20-9b32f67b7a1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\float\_header">
+      <UniqueIdentifier>{2a53d7ce-317c-40bf-b239-1fb6d48c9905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\varchar">
+      <UniqueIdentifier>{730c1afd-7a43-4a90-a42f-e0a6b5203e87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\varchar\_headers">
+      <UniqueIdentifier>{8508d6d7-3aed-46da-b7ce-cf7a17fcd33a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\char">
+      <UniqueIdentifier>{d1ff9c36-0f5c-4841-936b-13a5f3ee762a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\char\_headers">
+      <UniqueIdentifier>{a218493b-e6fd-48a4-afa3-710747856a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\boolean">
+      <UniqueIdentifier>{7c1a309b-a6ae-4d40-965a-e35f9f45d018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\boolean\_headers">
+      <UniqueIdentifier>{39005164-83b1-4060-9e59-55237cce5a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\integer">
+      <UniqueIdentifier>{0d51ac09-2c26-4c8b-9d0c-7bb7586ac8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\integer\_headers">
+      <UniqueIdentifier>{765212ee-f5a9-4de1-8829-59f70ffcd31c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\smallint">
+      <UniqueIdentifier>{74abc816-5f9e-4478-bc85-ac985453d70e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\smallint\_headers">
+      <UniqueIdentifier>{0d6296e1-29f0-470f-8405-7bd174a49d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\time">
+      <UniqueIdentifier>{0803c32f-9729-4c61-b498-7cd201ef8a74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\time\_headers">
+      <UniqueIdentifier>{29970f7f-19c7-48c8-bb01-4c74fbb37242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\date">
+      <UniqueIdentifier>{480abbfe-0baa-483f-847a-dc03f1399e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\date\_headers">
+      <UniqueIdentifier>{9072308d-30b7-4842-a52e-a2297def402b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\timestamp">
+      <UniqueIdentifier>{1f5b3293-fd2d-4167-8a59-6fc273fad4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\timestamp\_headers">
+      <UniqueIdentifier>{580e2765-7e36-4a23-b55c-6d11040147ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\numeric">
+      <UniqueIdentifier>{0ce7a6a5-b245-437c-9c8b-4e6c64a8262e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\numeric\_headers">
+      <UniqueIdentifier>{4555bb61-f67d-42cc-873e-ed8b46ea0a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decimal">
+      <UniqueIdentifier>{26cc80c9-02b4-430a-bc61-a6008babf0df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decimal\_headers">
+      <UniqueIdentifier>{73134e76-c722-4057-aa82-4fb5ff156fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\_headers">
+      <UniqueIdentifier>{9e2f95fb-b4df-4a62-9c73-e9ae78be8fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_client\remote_fb\api\helpers\blr">
+      <UniqueIdentifier>{71bbd8f2-d0d6-4fcf-a79f-827d6c32ddd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_client\remote_fb\api\helpers\blr\v05">
+      <UniqueIdentifier>{bd41698b-9fad-4984-8308-0aa2354072fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_client\remote_fb\api\helpers\blr\v05\_headers">
+      <UniqueIdentifier>{9b2e0fe0-923e-4b66-852f-6ba3a9b0fa1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda\_headers">
+      <UniqueIdentifier>{ed8290a1-3adc-4bc9-a153-e67fae7cf3b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3031,9 +3130,6 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01</Filter>
     </ClCompile>
@@ -3126,6 +3222,240 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.cpp">
       <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__stmt_execute_data_v1.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__stmt_execute_data_v2.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__fetch_result.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v1_no_lazy.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__execute_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper-Execute__no_lazy.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper-Execute2__no_lazy.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper-Execute2__no_lazy.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper-Execute__no_lazy.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__execute_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v2_lazy_send.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__execute_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__stmt_helper-Execute__lazy_send.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__stmt_helper-Execute2__lazy_send.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v3.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__stmt_helper-Execute__lazy_send.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__stmt_helper-Execute2__lazy_send.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__execute_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper-ExecuteImmediate.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper-ExecuteImmediate2.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__dsql__execute_immediate_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_035__ExecuteImmediate_M.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper-ExecuteImmediate.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper-ExecuteImmediate2.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__dsql__execute_immediate_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__blr_reader_v1.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__fetch_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__p13__stmt_helper-FetchNextRows.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v1_no_lazy.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__fetch_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__stmt_helper-FetchNextRows.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v2_lazy_send.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v0.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__stmt_helper-FetchNextRows.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__fetch_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__stmt_helper-FetchNextRows.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__fetch_m.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\bigint\WORK_StmtFetch_M__Types__bigint_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\bigint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\bigint\WORK_StmtFetch_M__Types__bigint_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\bigint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\double\WORK_StmtFetch_M__Types__double_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\double</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\float\WORK_StmtFetch_M__Types__float_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\float</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\varchar\WORK_StmtFetch_M__Types__varchar_001__sz7.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\varchar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\char\WORK_StmtFetch_M__Types__char_001__sz7.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\char</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\boolean\WORK_StmtFetch_M__Types__boolean_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\boolean</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\integer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\integer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\smallint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\smallint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\time\WORK_StmtFetch_M__Types__time_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\date\WORK_StmtFetch_M__Types__date_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\date</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp\WORK_StmtFetch_M__Types__timestamp_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\timestamp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N03_01.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N07_02.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N15_05.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D03_01.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D07_02.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D15_05.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__001__nulls.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__002__nulls.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__101__Failed.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__103__MARS.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__104__MARS_Failed.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__105__drop_stmt__v1_no_lazy.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__106__close_stmt.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__107__commit.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__108__rollback.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__109__commit_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__110__rollback_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__111__sql_commit.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__112__sql_rollback.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__113__sql_commit_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__114__sql_rollback_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch_M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\blr\v05\remote_fb__api_hlp__blr_v05__utilities-Calc_BLR_MAX_XDR_SIZE.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\blr\v05</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\ibp_memory_utils.cpp">
+      <Filter>IBP\source\_root</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__msg_v1_utilities.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\blr\v05\remote_fb__api_hlp__blr_v05__utilities-Debug__CHECK_BLR.cpp">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\blr\v05</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4885,7 +5215,6 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.h">
       <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.h">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01\_headers</Filter>
     </ClInclude>
@@ -4960,6 +5289,207 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\WORK_Test_019__StmtExecute__v3.h">
       <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__stmt_execute_data_v1.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__stmt_execute_data_v2.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__fetch_result.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_v1.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__execute_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v1_no_lazy.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__execute_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__execute_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v2_lazy_send.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__execute_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__p13_lazy_send__stmt_helper.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v3.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__p12_lazy_send__stmt_helper.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__execute_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__dsql__execute_immediate_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__dsql__execute_immediate_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_035__ExecuteImmediate_M.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__dsql__execute_immediate_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__blr_reader_v1.h">
+      <Filter>IBP\source\db_client\remote_fb\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\remote_fb__api__stmt__fetch_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__stmt__fetch_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v1_no_lazy.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\lazy_send\remote_fb__api_p13_lazy_send__stmt__fetch_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p13\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v2_lazy_send.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v0.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__api_p12__stmt__fetch_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__stmt__fetch_m.h">
+      <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\bigint\WORK_StmtFetch_M__Types__bigint_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\bigint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\bigint\WORK_StmtFetch_M__Types__bigint_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\bigint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\double\WORK_StmtFetch_M__Types__double_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\double\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\float\WORK_StmtFetch_M__Types__float_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\float\_header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\varchar\WORK_StmtFetch_M__Types__varchar_001__sz7.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\varchar\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\char\WORK_StmtFetch_M__Types__char_001__sz7.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\char\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\boolean\WORK_StmtFetch_M__Types__boolean_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\boolean\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\integer\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\integer\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\smallint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\smallint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\time\WORK_StmtFetch_M__Types__time_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\time\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\date\WORK_StmtFetch_M__Types__date_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\date\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp\WORK_StmtFetch_M__Types__timestamp_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\timestamp\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N03_01.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N07_02.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N15_05.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D03_01.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D07_02.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D15_05.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__001__nulls.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__002__nulls.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__101__Failed.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__103__MARS.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__104__MARS_Failed.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__105__drop_stmt__v1_no_lazy.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__106__close_stmt.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__107__commit.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__108__rollback.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__109__commit_retaining.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__110__rollback_retaining.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__111__sql_commit.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__112__sql_rollback.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__113__sql_commit_retaining.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__114__sql_rollback_retaining.h">
+      <Filter>source\tests\work\StmtFetch_M\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\blr\v05\remote_fb__api_hlp__blr_v05__utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\blr\v05\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\ibp_memory_utils.h">
+      <Filter>IBP\source\_root\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__msg_v1_utilities.h">
+      <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

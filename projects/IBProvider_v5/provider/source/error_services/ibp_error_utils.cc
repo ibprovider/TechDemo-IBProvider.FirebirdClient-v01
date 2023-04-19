@@ -201,6 +201,40 @@ void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
 template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck__DEBUG
+             (const std::exception& e,
+              const wchar_t* const  place,
+              const wchar_t* const  point,
+              const wchar_t* const  reason_template,
+              Args&&...             args)
+{
+ assert(place);
+ assert(point);
+ assert(reason_template);
+
+ structure::wstr_formatter freason(reason_template);
+
+ self_type::Helper__PushArgs
+  (freason,
+   std::forward<Args>(args)...);
+
+#if defined(IBP_BUILD_TESTCODE)
+#else
+ assert_msg(false,structure::tstr_to_str(freason.str()));
+#endif
+
+ self_type::Throw__Error
+  (e,
+   E_FAIL,
+   ibp_mce_common__bug_check_3,
+   place,
+   point,
+   freason.str());
+}//Throw__BugCheck__DEBUG
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
+void IBP_ErrorUtils::Throw__BugCheck__DEBUG
              (const wchar_t* const place,
               const wchar_t* const point,
               const wchar_t* const reason_template,

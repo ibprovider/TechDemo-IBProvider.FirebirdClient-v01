@@ -59,17 +59,17 @@ class WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl
  #endif
 
  #ifdef NDEBUG
-  static void test_006__bug_check__incorrect_input_sqld__0
+  static void test_006__bug_check__incorrect_output_sqld__0
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
 
-  static void test_006__bug_check__incorrect_input_sqld__neg1
+  static void test_006__bug_check__incorrect_output_sqld__neg1
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
 
-  static void test_006__bug_check__incorrect_input_sqln
+  static void test_006__bug_check__incorrect_output_sqln
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
@@ -183,7 +183,7 @@ class WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl
 
  private:
  #ifdef NDEBUG
-  static void helper_006__bug_check__incorrect_input_sqld
+  static void helper_006__bug_check__incorrect_output_sqld
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data,
@@ -713,7 +713,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_005__err__not_execut
 
 #ifdef NDEBUG
 
-void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_input_sqld__0
+void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_output_sqld__0
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -721,15 +721,15 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__inco
  assert(pParams);
  assert(pCtx);
 
- helper_006__bug_check__incorrect_input_sqld
+ helper_006__bug_check__incorrect_output_sqld
   (pParams,
    pCtx,
    Data,
    0);
-}//test_006__bug_check__incorrect_input_sqld__0
+}//test_006__bug_check__incorrect_output_sqld__0
 
 //------------------------------------------------------------------------
-void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_input_sqld__neg1
+void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_output_sqld__neg1
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -737,15 +737,15 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__inco
  assert(pParams);
  assert(pCtx);
 
- helper_006__bug_check__incorrect_input_sqld
+ helper_006__bug_check__incorrect_output_sqld
   (pParams,
    pCtx,
    Data,
    -1);
-}//test_006__bug_check__incorrect_input_sqld__neg1
+}//test_006__bug_check__incorrect_output_sqld__neg1
 
 //------------------------------------------------------------------------
-void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::helper_006__bug_check__incorrect_input_sqld
+void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::helper_006__bug_check__incorrect_output_sqld
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data,
@@ -876,7 +876,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::helper_006__bug_check__in
  svc::RemoteFB_Connector__DetachDatabase
   (tracer,
    spConnector);
-}//helper_006__bug_check__incorrect_input_sqld
+}//helper_006__bug_check__incorrect_output_sqld
 
 #endif
 
@@ -885,7 +885,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::helper_006__bug_check__in
 
 #ifdef NDEBUG
 
-void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_input_sqln
+void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__incorrect_output_sqln
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -1016,7 +1016,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_006__bug_check__inco
  svc::RemoteFB_Connector__DetachDatabase
   (tracer,
    spConnector);
-}//test_006__bug_check__incorrect_input_sqln
+}//test_006__bug_check__incorrect_output_sqln
 
 #endif
 
@@ -1141,8 +1141,8 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_007__bug_check__inco
    errSvc::check_err_rec__xsqlda_err__incorrect_version
     (tracer,
      exc.get_record(0),
-     helper__get_fetch_bugcheck_src(spConnector),
-     L"#004",
+     L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA",
+     L"#001",
      L"pOutXSQLDA",
      bad_versions[i]);
 
@@ -3131,9 +3131,10 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_211__reexecution__wi
   //-----------------------------------------
   //неявно закрываем наш отложенный курсор
 
-  svc::HACK__CloseStmt(tracer,
-                       spConnector,
-                       &hStmt);
+  svc::HACK__CloseStmt
+   (tracer,
+    spConnector,
+    &hStmt);
 
   _TSO_CHECK(hStmt->m_pClosingTr==hTr);
  }//for pass
@@ -3284,7 +3285,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_220__err2__fbbug4983
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -3474,7 +3475,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_220__err2__fbbug4983
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -3646,7 +3647,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_221__err2
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -3822,7 +3823,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_221__err2__fb3
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -4055,7 +4056,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_222__err3
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -4300,7 +4301,7 @@ void WORK_Test_020__StmtFetch__v2_lazy_send::tag_impl::test_222__err3__fb3
      &hStmt,
      /*pOutXSQLDA*/xsqlda);
   }
-  catch(ibp::t_ibp_error& exc)
+  catch(const ibp::t_ibp_error& exc)
   {
    typedef TestCheckErrors errSvc;
 
@@ -4479,16 +4480,16 @@ const WORK_Test_020__StmtFetch__v2_lazy_send::tag_descr
  //-----------------------------------------
 #ifdef NDEBUG
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqld.0",
-   test_006__bug_check__incorrect_input_sqld__0)
+  ("006.bug_check.incorrect_output_sqld.0",
+   test_006__bug_check__incorrect_output_sqld__0)
 
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqld.neg1",
-   test_006__bug_check__incorrect_input_sqld__neg1)
+  ("006.bug_check.incorrect_output_sqld.neg1",
+   test_006__bug_check__incorrect_output_sqld__neg1)
 
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqln",
-   test_006__bug_check__incorrect_input_sqln)
+  ("006.bug_check.incorrect_output_sqln",
+   test_006__bug_check__incorrect_output_sqln)
 
  DEF_TEST_DESCR
   ("007.bug_check.incorrect_xsqlda_version",

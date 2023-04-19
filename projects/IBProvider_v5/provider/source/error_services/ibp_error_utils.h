@@ -512,6 +512,15 @@ class IBP_ErrorUtils COMP_W000006_CLASS_FINAL
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__BugCheck__DEBUG
+               (const std::exception& e,
+                const wchar_t*        place,
+                const wchar_t*        point,
+                const wchar_t*        reason_template,
+                Args&&...             args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__BugCheck__DEBUG
                (const wchar_t*  place,
                 const wchar_t*  point,
                 const wchar_t*  reason_template,

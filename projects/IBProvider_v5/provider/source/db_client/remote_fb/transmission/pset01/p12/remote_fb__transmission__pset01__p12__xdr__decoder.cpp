@@ -9,78 +9,10 @@
 
 #include "source/db_client/remote_fb/transmission/pset01/p12/remote_fb__transmission__pset01__p12__xdr__decoder.h"
 #include "source/db_client/remote_fb/transmission/remote_fb__transmission__xdr__decoder.h"
+#include "source/db_client/remote_fb/remote_fb__blr_reader_v1.h"
 #include "source/db_obj/isc_base/isc_api.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset01{namespace p12{
-////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__PSET01__P12__XDR__Decoder::tag_blr_reader
-
-class RemoteFB__PSET01__P12__XDR__Decoder::tag_blr_reader
-{
- private:
-  typedef tag_blr_reader self_type;
-
-  tag_blr_reader(const self_type&);
-  self_type& operator = (const self_type&);
-
- public:
-  tag_blr_reader(size_t                   const DEBUG_CODE(msg_blr_size),
-                 const protocol::P_UCHAR* const msg_blr)
-   :m_ptr(msg_blr)
-  #ifndef NDEBUG
-   ,m_end(msg_blr+msg_blr_size)
-  #endif
-  {;}
-
-  //interface -------------------------------------------------------------
-#ifndef NDEBUG
-  bool debug__eof()const
-  {
-   return m_ptr==m_end;
-  }//debug__eof
-#endif
-
-  protocol::P_UCHAR cur()const
-  {
-   assert(m_ptr<m_end);
-
-   return *m_ptr;
-  }//cur
-
-  protocol::P_UCHAR read()
-  {
-   assert(m_ptr<m_end);
-
-   const protocol::P_UCHAR result=*m_ptr;
-
-   ++m_ptr;
-
-   return result;
-  }//read
-
-  protocol::P_USHORT read_word()
-  {
-   protocol::P_USHORT result=this->read();
-
-   result+=protocol::P_USHORT(protocol::P_USHORT(this->read())<<8);
-
-   return result;
-  }//read_word
-
-  void next()
-  {
-   assert(m_ptr<m_end);
-
-   ++m_ptr;
-  }//next
-
- private:
-  const protocol::P_UCHAR*       m_ptr;
- #ifndef NDEBUG
-  const protocol::P_UCHAR* const m_end;
- #endif
-};//class RemoteFB__PSET01__P12__XDR__Decoder::tag_blr_reader
-
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PSET01__P12__XDR__Decoder
 
@@ -108,7 +40,7 @@ void RemoteFB__PSET01__P12__XDR__Decoder::decode__sql_message
  //-----------------------------------------------------------------------
  typedef RemoteFB__XDR__Decoder xdr;
 
- tag_blr_reader blr_reader(msg_blr_size,msg_blr);
+ RemoteFB__BlrReader_v1 blr_reader(msg_blr_size,msg_blr);
 
  //-----------------------------------------------------------------------
  #define MSG_BLR__SKIP_BYTE(value)                    \

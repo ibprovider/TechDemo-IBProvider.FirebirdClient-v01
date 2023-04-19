@@ -294,8 +294,9 @@ void WORK_Fields__decimal_001__D15_05::create(TTSO_PushTest*      const pTestPus
  {
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[0]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
   const tag_impl::self_ptr
    spTest
