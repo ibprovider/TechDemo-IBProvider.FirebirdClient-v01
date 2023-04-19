@@ -79,7 +79,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS:
   std::fill(nulls.buffer(),nulls.buffer_end(),0xFF);
 
   xsqlda_utils_type::Alloc_XSQLDA_MSG_NULLS
-   (xsqlda,
+   (xsqlda.ptr(),
     nulls);
 
   _TSO_CHECK(nulls.size()==((nV/8)+((nV%8)?1:0)));

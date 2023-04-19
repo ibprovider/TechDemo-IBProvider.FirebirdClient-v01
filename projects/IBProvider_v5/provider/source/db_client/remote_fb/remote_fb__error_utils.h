@@ -287,11 +287,12 @@ class RemoteFB__ErrorUtils COMP_W000006_CLASS_FINAL
                 const wchar_t* xsqlda_name,
                 long           version);
 
+  template<typename TSQLD>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw_BugCheck_Incorrect_XSQLDA_sqld
                (subsystem_id_type subsystem_id,
                 const wchar_t*    pXSQLDA_Sign,
-                long              pXSQLDA_sqld);
+                TSQLD             pXSQLDA_sqld);
 
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw_BugCheck_Incorrect_XSQLDA_sqln
@@ -299,6 +300,14 @@ class RemoteFB__ErrorUtils COMP_W000006_CLASS_FINAL
                 const wchar_t*    pXSQLDA_Sign,
                 long              pXSQLDA_sqln,
                 long              pXSQLDA_sqld);
+
+ public:
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw_BugCheck_UnexpectedUserRowDataBufferSize
+               (const wchar_t* place,
+                const wchar_t* point,
+                size_t         actualSize,
+                size_t         expectedSize);
 
  public:
   COMP_CONF_DECLSPEC_NORETURN
@@ -617,6 +626,26 @@ void RemoteFB__ErrorUtils::Throw__Error
    msg_code,
    std::forward<Args>(args)...); //throw!
 }//Throw__Error
+
+//------------------------------------------------------------------------
+template<typename TSQLD>
+COMP_CONF_DECLSPEC_NORETURN
+void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
+                                           (subsystem_id_type const subsystem_id,
+                                            const wchar_t*    const pXSQLDA_Sign,
+                                            TSQLD             const pXSQLDA_sqld)
+{
+ assert(pXSQLDA_Sign!=nullptr);
+
+ assert_msg(false,"["<<structure::tstr_to_str(pXSQLDA_Sign)<<"] sqld: "<<pXSQLDA_sqld);
+
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_isc__bug_check__incorrect_sqld_of_xsqlda_2,
+   pXSQLDA_Sign,
+   pXSQLDA_sqld);
+}//Throw_BugCheck_Incorrect_XSQLDA_sqld
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

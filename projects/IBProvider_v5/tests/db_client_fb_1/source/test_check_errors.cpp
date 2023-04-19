@@ -2573,11 +2573,11 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tr_handle
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_partial_data(tracer,
+                                               pErrorRec,
+                                               self_type::lcid__RUS,
+                                               ucs2ErrSrc,
+                                               msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2590,11 +2590,11 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tr_handle
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_partial_data(tracer,
+                                               pErrorRec,
+                                               self_type::lcid__ENG,
+                                               ucs2ErrSrc,
+                                               msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6881,6 +6881,175 @@ bool TestCheckErrors::check_err_rec__info_buf_err__transport_data_to_integer__si
  //-----------------------------------------
  return resultValue;
 }//check_err_rec__info_buf_err__transport_data_to_integer__size_t
+
+////////////////////////////////////////////////////////////////////////////////
+
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__nullptr_to_descrs
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const cDescrs)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has a null ptr to descrs. The number of descrs is [%2]");
+
+ freason<<msgSign<<cDescrs;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__nullptr_to_descrs
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__nullptr_to_blr
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const szBlr)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has a null ptr to blr. The size of blr is [%2]");
+
+ freason<<msgSign<<szBlr;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__nullptr_to_blr
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__nullptr_to_data
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const szData)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has a null ptr to data. The size of data is [%2]");
+
+ freason<<msgSign<<szData;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__nullptr_to_data
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__unexpected_blr
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const szBlr)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has an unexpected blr [size: %2]");
+
+ freason<<msgSign<<szBlr;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__unexpected_blr
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__unexpected_data
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const szData)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has an unexpected data [size: %2]");
+
+ freason<<msgSign<<szData;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__unexpected_data
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__no_blr
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const cDescrs)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has no blr. The number of descrs is: %2");
+
+ freason<<msgSign<<cDescrs;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__no_blr
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__test_msg_bug_check__no_data
+                (TTSO_Tracer&                         tracer,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const ucs2Place,
+                 wstr_box_type                  const ucs2Point,
+                 wstr_box_type                  const msgSign,
+                 size_t                         const cDescrs)
+{
+ assert(pErrorRec!=nullptr);
+
+ structure::wstr_formatter
+  freason(L"[%1] has no data. The number of descrs is: %2");
+
+ freason<<msgSign<<cDescrs;
+
+ return self_type::helper__bug_check
+         (tracer,
+          pErrorRec,
+          ucs2Place,
+          ucs2Point,
+          freason.str());
+}//check_err_rec__test_msg_bug_check__no_data
 
 ////////////////////////////////////////////////////////////////////////////////
 

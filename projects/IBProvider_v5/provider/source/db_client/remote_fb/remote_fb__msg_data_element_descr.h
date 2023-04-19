@@ -47,6 +47,36 @@ class RemoteFB__MsgDataElementDescr
 };//class RemoteFB__MsgDataElementDescr
 
 ////////////////////////////////////////////////////////////////////////////////
+
+#ifndef NDEBUG
+
+// it is used only in debug code
+inline bool operator == (const RemoteFB__MsgDataElementDescr& x1,const RemoteFB__MsgDataElementDescr& x2)
+{
+ if(x1.m_msg_value_block_size!=x2.m_msg_value_block_size)
+  return false;
+
+ if(x1.m_msg_value_block_offset!=x2.m_msg_value_block_offset)
+  return false;
+
+ if(x1.m_msg_sqlind_offset!=x2.m_msg_sqlind_offset)
+  return false;
+
+ if(x1.m_msg_blrtype!=x2.m_msg_blrtype)
+  return false;
+
+ if(x1.m_xvar_sqltype!= x2.m_xvar_sqltype)
+  return false;
+
+ if(x1.m_xvar_sqlscale!=x2.m_xvar_sqlscale)
+  return false;
+
+ return true;
+}//operator ==
+
+#endif // NDEBUG
+
+////////////////////////////////////////////////////////////////////////////////
 //! @}
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

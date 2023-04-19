@@ -8,65 +8,61 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
-#include "source/error_services/ibp_error_utils.h"
+#include "source/db_client/remote_fb/remote_fb__error_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
 //RemoteFB__API_HLP__XSQLDA_V01__Utilities
 
-size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength
-                                           (size_t        cbMsg,
-                                            size_t  const cbElement,
-                                            size_t  const cbAlign,
-                                            size_t* const pcbResultAlign)
+void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA
+                                           (const isc_api::XSQLDA_V1* const pXSQLDA,
+                                            protocol::P_SHORT         const minSQLD,                           
+                                            t_ibp_subsystem_id        const subsystemID,
+                                            const wchar_t*            const pXSQLDA_Sign)
 {
- cbMsg=Helper__AlignMsgLength(cbMsg,cbAlign,pcbResultAlign); //throw
+ assert(pXSQLDA);
+ assert(minSQLD==0 || minSQLD==1);
+ assert(pXSQLDA_Sign);
 
- return Helper__AddMsgLength(cbMsg,cbElement); //throw
-}//Helper__AddMsgLength
+ const wchar_t* c_bugcheck_src
+  =L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA";
 
-//------------------------------------------------------------------------
-size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength
-                                           (size_t       cbMsg,
-                                            size_t const cbElement)
-{
- const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AddMsgLength";
-
- if((structure::t_numeric_limits<size_t>::max_value()-cbMsg)<cbElement)
-  IBP_ThrowOverflowInMemSizeCalculation(c_bugcheck_src,L"#001");
-
- return cbMsg+cbElement;
-}//Helper__AddMsgLength
-
-//------------------------------------------------------------------------
-size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AlignMsgLength
-                                           (size_t        cbMsg,
-                                            size_t  const cbAlign,
-                                            size_t* const pcbResultAlign)
-{
- assert(cbAlign==1 ||
-        cbAlign==2 ||
-        cbAlign==4 ||
-        cbAlign==8 ||
-        cbAlign==16);
-
- const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__AlignMsgLength";
-
- if(!structure::align_memory_size(/*ref*/cbMsg,cbAlign))
-  IBP_ThrowOverflowInMemSizeCalculation(c_bugcheck_src,L"#001");
-
- if(pcbResultAlign!=nullptr)
+ if(pXSQLDA->version!=pXSQLDA->c_version_num)
  {
-  if((*pcbResultAlign)<cbAlign)
-   (*pcbResultAlign)=cbAlign;
+  RemoteFB__ErrorUtils::ThrowBugCheck_Incorrect_XSQLDA_Version
+   (c_bugcheck_src,
+    L"#001",
+    pXSQLDA_Sign,
+    pXSQLDA->version);
  }//if
 
- return cbMsg;
-}//Helper__AlignMsgLength
+ if(pXSQLDA->sqld<minSQLD)
+ {
+  //ERROR - [BUG CHECK] incorrect XSQLDA::sqld
 
-//------------------------------------------------------------------------
+  assert_msg(false,"pXSQLDA->sqld: "<<pXSQLDA->sqld);
+
+  RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
+   (subsystemID,
+    pXSQLDA_Sign,
+    pXSQLDA->sqld);
+ }//if
+
+ if(pXSQLDA->sqln<pXSQLDA->sqld)
+ {
+  //ERROR - [BUG CHECK] incorrect XSQLDA::sqln
+
+  assert_msg(false,"pXSQLDA->sqln: "<<pXSQLDA->sqln<<". pXSQLDA->sqld: "<<pXSQLDA->sqld);
+
+  RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
+   (subsystemID,
+    pXSQLDA_Sign,
+    pXSQLDA->sqln,
+    pXSQLDA->sqld);
+ }//if
+}//Check_XSQLDA
+
+//Helper utilities -------------------------------------------------------
 void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__ThrowBugCheck__UnexpectedTruncation
                                            (const wchar_t* const place,
                                             const wchar_t* const point,

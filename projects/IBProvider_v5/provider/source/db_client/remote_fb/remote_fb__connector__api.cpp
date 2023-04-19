@@ -187,6 +187,31 @@ void RemoteFB__Connector::ExecuteImmediate(db_obj::t_db_operation_context& OpCtx
 }//ExecuteImmediate
 
 //------------------------------------------------------------------------
+void RemoteFB__Connector::ExecuteImmediate_M(db_obj::t_db_operation_context&  OpCtx,
+                                             tr_handle_type*            const pTrHandle,
+                                             protocol::P_USHORT         const SQL_dialect,
+                                             str_box_type               const SQL_str,
+                                             const RemoteFB__InMsg_v1*  const pInMsg,
+                                             const RemoteFB__OutMsg_v1* const pOutMsg)
+{
+ assert(pTrHandle!=nullptr);
+
+ assert(m_spData);
+
+ //-----------------------------------------
+ const lock_guard_type lock(m_Guard);
+
+ m_spData->m_API__ExecuteImmediate_M.get()->exec
+  (OpCtx,
+   m_spData,
+   pTrHandle,
+   SQL_dialect,
+   SQL_str,
+   pInMsg,
+   pOutMsg);
+}//ExecuteImmediate_M
+
+//------------------------------------------------------------------------
 void RemoteFB__Connector::StmtAllocate(stmt_handle_type* const pStmtHandle)
 {
  assert(pStmtHandle!=nullptr);
@@ -332,6 +357,31 @@ void RemoteFB__Connector::StmtExecute(db_obj::t_db_operation_context& OpCtx,
 }//StmtExecute
 
 //------------------------------------------------------------------------
+void RemoteFB__Connector::StmtExecute_M(db_obj::t_db_operation_context&  OpCtx,
+                                        tr_handle_type*            const pTrHandle,
+                                        stmt_handle_type*          const pStmtHandle,
+                                        const RemoteFB__InMsg_v1*  const pInMsg,
+                                        const RemoteFB__OutMsg_v1* const pOutMsg)
+
+{
+ assert(pTrHandle!=nullptr);
+ assert(pStmtHandle!=nullptr);
+
+ assert(m_spData);
+
+ //-----------------------------------------
+ const lock_guard_type lock(m_Guard);
+
+ m_spData->m_API__ExecuteStatement_M.get()->exec
+  (OpCtx,
+   m_spData,
+   pTrHandle,
+   pStmtHandle,
+   pInMsg,
+   pOutMsg);
+}//StmtExecute_M
+
+//------------------------------------------------------------------------
 bool RemoteFB__Connector::StmtFetch(db_obj::t_db_operation_context& OpCtx,
                                     stmt_handle_type*         const pStmtHandle,
                                     const isc_api::XSQLDA_V1* const pOutXSQLDA)
@@ -350,6 +400,26 @@ bool RemoteFB__Connector::StmtFetch(db_obj::t_db_operation_context& OpCtx,
           pStmtHandle,
           pOutXSQLDA);
 }//StmtFetch
+
+//------------------------------------------------------------------------
+bool RemoteFB__Connector::StmtFetch_M(db_obj::t_db_operation_context&  OpCtx,
+                                      stmt_handle_type*          const pStmtHandle,
+                                      const RemoteFB__OutMsg_v1* const pOutMsg)
+{
+ assert(pStmtHandle!=nullptr);
+ assert(pOutMsg!=nullptr);
+
+ assert(m_spData);
+
+ //-----------------------------------------
+ const lock_guard_type lock(m_Guard);
+
+ return m_spData->m_API__FetchStatement_M.get()->exec
+         (OpCtx,
+          m_spData,
+          pStmtHandle,
+          pOutMsg);
+}//StmtFetch_M
 
 //------------------------------------------------------------------------
 void RemoteFB__Connector::StmtClose(stmt_handle_type* const pStmtHandle)

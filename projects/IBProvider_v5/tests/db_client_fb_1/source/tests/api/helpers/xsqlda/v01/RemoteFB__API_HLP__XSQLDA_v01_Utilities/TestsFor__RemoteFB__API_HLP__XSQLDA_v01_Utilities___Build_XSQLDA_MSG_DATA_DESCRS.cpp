@@ -234,10 +234,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(nullptr,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (nullptr,
+   descrs,
+   &sz,
+   &align);
 
  _TSO_CHECK(descrs.empty());
 
@@ -262,10 +263,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  _TSO_CHECK(descrs.empty());
 
@@ -717,10 +719,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -761,10 +764,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -806,10 +810,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -851,10 +856,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -896,10 +902,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -940,10 +947,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -984,10 +992,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1028,10 +1037,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1072,10 +1082,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1116,10 +1127,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1160,10 +1172,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1204,10 +1217,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1248,10 +1262,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1292,10 +1307,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==1);
@@ -1339,10 +1355,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1396,10 +1413,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1453,10 +1471,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1510,10 +1529,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1567,10 +1587,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1624,10 +1645,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1681,10 +1703,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1738,10 +1761,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1795,10 +1819,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1852,10 +1877,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1909,10 +1935,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -1966,10 +1993,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -2023,10 +2051,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);
@@ -2080,10 +2109,11 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_D
  size_t sz=0;
  size_t align=0;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS(xsqlda,
-                                                 descrs,
-                                                 &sz,
-                                                 &align);
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA_DESCRS
+  (xsqlda,
+   descrs,
+   &sz,
+   &align);
 
  //-----------------------------------------
  _TSO_CHECK(descrs.size()==2);

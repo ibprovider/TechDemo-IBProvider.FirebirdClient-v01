@@ -637,6 +637,78 @@ void TestServices::RemoteFB_Connector__ExecuteImmediate
 }//RemoteFB_Connector__ExecuteImmediate
 
 //------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__ExecuteImmediate_M
+                                       (TTSO_Tracer&                    tracer,
+                                        remote_fb_connector_type*       pConnector,
+                                        db_obj::t_db_operation_context& op_ctx,
+                                        remote_fb_tr_handle_type*       pTrHandle,
+                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
+                                        structure::t_const_str_box      SQL_str)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::ExecuteImmediate_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ try
+ {
+  pConnector->ExecuteImmediate_M
+   (op_ctx,
+    pTrHandle,
+    SQL_Dialect,
+    SQL_str,
+    nullptr,
+    nullptr); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK";
+}//RemoteFB_Connector__ExecuteImmediate_M
+
+//------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__ExecuteImmediate_M
+                                       (TTSO_Tracer&                    tracer,
+                                        remote_fb_connector_type*       pConnector,
+                                        db_obj::t_db_operation_context& op_ctx,
+                                        remote_fb_tr_handle_type*       pTrHandle,
+                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
+                                        structure::t_const_str_box      SQL_str,
+                                        const remote_fb_in_msg_v1*      pInMsg,
+                                        const remote_fb_out_msg_v1*     pOutMsg)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::RemoteFB_Connector__ExecuteImmediate_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ try
+ {
+  pConnector->ExecuteImmediate_M
+   (op_ctx,
+    pTrHandle,
+    SQL_Dialect,
+    SQL_str,
+    pInMsg,
+    pOutMsg); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK";
+}//RemoteFB_Connector__ExecuteImmediate_M
+
+//------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtAllocate
                                        (TTSO_Tracer&                      tracer,
                                         remote_fb_connector_type*   const pConnector,
@@ -940,6 +1012,74 @@ void TestServices::RemoteFB_Connector__StmtExecute
 }//RemoteFB_Connector__StmtExecute
 
 //-------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__StmtExecute_M
+                             (TTSO_Tracer&                      tracer,
+                              remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   op_ctx,
+                              remote_fb_tr_handle_type*   const pTrHandle,
+                              remote_fb_stmt_handle_type* const pStmtHandle)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::StmtExecute_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ try
+ {
+  pConnector->StmtExecute_M
+   (op_ctx,
+    pTrHandle,
+    pStmtHandle,
+    nullptr,
+    nullptr); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK";
+}//RemoteFB_Connector__StmtExecute_M
+
+//-------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__StmtExecute_M
+                             (TTSO_Tracer&                      tracer,
+                              remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   op_ctx,
+                              remote_fb_tr_handle_type*   const pTrHandle,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_in_msg_v1*  const pInMsg,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::StmtExecute_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ try
+ {
+  pConnector->StmtExecute_M
+   (op_ctx,
+    pTrHandle,
+    pStmtHandle,
+    pInMsg,
+    pOutMsg); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK";
+}//RemoteFB_Connector__StmtExecute_M
+
+//-------------------------------------------------------------------------
 bool TestServices::RemoteFB_Connector__StmtFetch
                              (TTSO_Tracer&                      tracer,
                               remote_fb_connector_type*   const pConnector,
@@ -976,6 +1116,43 @@ bool TestServices::RemoteFB_Connector__StmtFetch
 }//RemoteFB_Connector__StmtFetch
 
 //-------------------------------------------------------------------------
+bool TestServices::RemoteFB_Connector__StmtFetch_M
+                             (TTSO_Tracer&                      tracer,
+                              remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   opCtx,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::StmtFetch_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ bool resultValue=false;
+
+ try
+ {
+  resultValue
+   =pConnector->StmtFetch_M
+     (opCtx,
+      pStmtHandle,
+      pOutMsg); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK ["<<resultValue<<L"]";
+
+ return resultValue;
+}//RemoteFB_Connector__StmtFetch_M
+
+////////////////////////////////////////////////////////////////////////////////
+
 void TestServices::RemoteFB_Connector__StmtFetch_ToRow
                              (TTSO_Tracer&                      tracer,
                               remote_fb_connector_type*   const pConnector,
@@ -1009,7 +1186,7 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToRow
  tracer<<L"OK ["<<fetchResult<<L"]";
 
  if(!fetchResult)
-  throw std::runtime_error("Problem with fetch from resultSet. We expected get the record!");
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected get the record!");
 }//RemoteFB_Connector__StmtFetch_ToRow
 
 //-------------------------------------------------------------------------
@@ -1028,7 +1205,7 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToRow
      pOutXSQLDA); //throw
 
  if(!fetchResult)
-  throw std::runtime_error("Problem with fetch from resultSet. We expected get the record!");
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected get the record!");
 }//RemoteFB_Connector__StmtFetch_ToRow
 
 //-------------------------------------------------------------------------
@@ -1065,7 +1242,7 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
  tracer<<L"OK ["<<fetchResult<<L"]";
 
  if(fetchResult)
-  throw std::runtime_error("Problem with fetch from resultSet. We expected get the EOF!");
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected to get the EOF!");
 }//RemoteFB_Connector__StmtFetch_ToEOF
 
 //-------------------------------------------------------------------------
@@ -1084,8 +1261,121 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
      pOutXSQLDA); //throw
 
  if(fetchResult)
-  throw std::runtime_error("Problem with fetch from resultSet. We expected get the EOF!");
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected to get the EOF!");
 }//RemoteFB_Connector__StmtFetch_ToEOF
+
+////////////////////////////////////////////////////////////////////////////////
+
+void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
+                             (TTSO_Tracer&                      tracer,
+                              remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   opCtx,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::StmtFetch_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ bool fetchResult=false;
+
+ try
+ {
+  fetchResult
+   =pConnector->StmtFetch_M
+     (opCtx,
+      pStmtHandle,
+      pOutMsg); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK ["<<fetchResult<<L"]";
+
+ if(!fetchResult)
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected get the record!");
+}//RemoteFB_Connector__StmtFetch_M_ToRow
+
+//-------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
+                             (remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   opCtx,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ const bool fetchResult
+  =pConnector->StmtFetch_M
+    (opCtx,
+     pStmtHandle,
+     pOutMsg); //throw
+
+ if(!fetchResult)
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected get the record!");
+}//RemoteFB_Connector__StmtFetch_M_ToRow
+
+//-------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
+                             (TTSO_Tracer&                      tracer,
+                              remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   opCtx,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ tracer<<L"RemoteFB__Connector::StmtFetch_M ...";
+
+ TTSO_TracerAutoSend __auto_send(tracer);
+
+ bool fetchResult=false;
+
+ try
+ {
+  fetchResult
+   =pConnector->StmtFetch_M
+     (opCtx,
+      pStmtHandle,
+      pOutMsg); //throw
+ }
+ catch(...)
+ {
+  tracer<<L" FAILED";
+
+  throw;
+ }//catch
+
+ tracer<<L"OK ["<<fetchResult<<L"]";
+
+ if(fetchResult)
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected to get the EOF!");
+}//RemoteFB_Connector__StmtFetch_M_ToEOF
+
+//-------------------------------------------------------------------------
+void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
+                             (remote_fb_connector_type*   const pConnector,
+                              db_obj::t_db_operation_context&   opCtx,
+                              remote_fb_stmt_handle_type* const pStmtHandle,
+                              const remote_fb_out_msg_v1* const pOutMsg)
+{
+ assert(pConnector);
+
+ const bool fetchResult
+  =pConnector->StmtFetch_M
+    (opCtx,
+     pStmtHandle,
+     pOutMsg); //throw
+
+ if(fetchResult)
+  throw std::runtime_error("The problem with a fetch from a resultSet. We expected to get the EOF!");
+}//RemoteFB_Connector__StmtFetch_M_ToEOF
 
 ////////////////////////////////////////////////////////////////////////////////
 

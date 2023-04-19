@@ -44,7 +44,29 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
  }//local
 
  std::fill(Nulls.buffer(),Nulls.buffer_end(),structure::zero);
-}//Alloc_XSQLDA_MSG_NULLS
+}//Alloc_XSQLDA_MSG_NULLS - XSQLDA_V1
+
+//------------------------------------------------------------------------
+void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
+                                           (const msg_data_descrs_view_type& DataDescrs,
+                                            msg_nulls_buffer_type&           Nulls)
+{
+ assert_s(sizeof(msg_nulls_buffer_type::value_type)==1);
+
+ //-----------------------------------------
+ const size_t sqld=DataDescrs.size();
+
+ assert_s(CHAR_BIT==8);
+
+ {
+  const size_t ResultBufferLength
+   =((sqld/8) + (((sqld%8)!=0)?1:0));
+
+  Nulls.alloc(ResultBufferLength); //throw
+ }//local
+
+ std::fill(Nulls.buffer(),Nulls.buffer_end(),structure::zero);
+}//Alloc_XSQLDA_MSG_NULLS - DataDescrs
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms helpers*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

@@ -15,8 +15,9 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__Connector
 
-class RemoteFB__Connector:public db_obj::t_db_service_provider
-                         ,public RemoteFB__SmartObjectBase2
+class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
+ :public db_obj::t_db_service_provider
+ ,public RemoteFB__SmartObjectBase2
 {
  private:
   typedef RemoteFB__Connector                                  self_type;
@@ -198,6 +199,27 @@ class RemoteFB__Connector:public db_obj::t_db_service_provider
 
   //----------------------------------------------------------------------
   /// <summary>
+  ///  Immediate executing a statement.
+  /// </summary>
+  //! \param[in]     OpCtx
+  //!  The context of an operation.
+  //! \param[in,out] pTrHandle
+  //!  The pointer to the handle of a transaction. Not null.
+  //! \param[in]     SQL_dialect
+  //! \param[in]     SQL_str
+  //! \param[in]     pInMsg
+  //!  IN-parameters of a statement. Can be null.
+  //! \param[in,out] pOutMsg
+  //!  OUT-parameters of a statement. Can be null.
+  void ExecuteImmediate_M(db_obj::t_db_operation_context& OpCtx,
+                          tr_handle_type*                 pTrHandle,
+                          protocol::P_USHORT              SQL_dialect,
+                          str_box_type                    SQL_str,
+                          const RemoteFB__InMsg_v1*       pInMsg,
+                          const RemoteFB__OutMsg_v1*      pOutMsg);
+
+  //----------------------------------------------------------------------
+  /// <summary>
   ///  Создание дескриптора для управления запросом.
   /// </summary>
   //! \param[in,out] pStmtHandle
@@ -300,19 +322,55 @@ class RemoteFB__Connector:public db_obj::t_db_service_provider
 
   //----------------------------------------------------------------------
   /// <summary>
-  ///  Выборка ряда.
+  ///  Выполнение запроса.
   /// </summary>
   //! \param[in] OpCtx
   //!  Контекст операции.
+  //! \param[in,out] pTrHandle
+  //!  Дескриптор транзакции. Not null.
   //! \param[in] pStmt
   //!  Действительный дескриптор запроса. Not null.
+  //! \param[in] pInMsg
+  //!  Input parameters data. Can be null.
+  //! \param[in,out] pOutMsg
+  //!  Output parameters data. Can be null.
+  void StmtExecute_M(db_obj::t_db_operation_context& OpCtx,
+                     tr_handle_type*                 pTrHandle,
+                     stmt_handle_type*               pStmtHandle,
+                     const RemoteFB__InMsg_v1*       pInMsg,
+                     const RemoteFB__OutMsg_v1*      pOutMsg);
+
+  //----------------------------------------------------------------------
+  /// <summary>
+  ///  Fetching the row of result set.
+  /// </summary>
+  //! \param[in] OpCtx
+  //!  The context of an operation.
+  //! \param[in] pStmt
+  //!  The valid handle of a statement. Not null.
   //! \param[in,out] pOutXSQLDA
   //!  Not null.
   //! \return
-  //!  false, если запись не выбрана (достигнут конец результирующего множества).
+  //!  false when a record was not fetched (the end of result set was reached).
   bool StmtFetch(db_obj::t_db_operation_context& OpCtx,
                  stmt_handle_type*               pStmtHandle,
                  const isc_api::XSQLDA_V1*       pOutXSQLDA);
+
+  //----------------------------------------------------------------------
+  /// <summary>
+  ///  Fetching the row of result set.
+  /// </summary>
+  //! \param[in] OpCtx
+  //!  The context of an operation.
+  //! \param[in] pStmt
+  //!  The valid handle of a statement. Not null.
+  //! \param[in,out] pOutMsg
+  //!  Not null.
+  //! \return
+  //!  false when a record was not fetched (the end of result set was reached).
+  bool StmtFetch_M(db_obj::t_db_operation_context& OpCtx,
+                   stmt_handle_type*               pStmtHandle,
+                   const RemoteFB__OutMsg_v1*      pOutMsg);
 
   //----------------------------------------------------------------------
   /// <summary>

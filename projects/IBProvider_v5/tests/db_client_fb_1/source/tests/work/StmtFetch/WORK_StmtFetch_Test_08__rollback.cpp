@@ -343,9 +343,10 @@ void WORK_StmtFetch_Test_08__rollback::create(TTSO_PushTest*      const pTestPus
 
   ++testNum;
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<testNum;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<testNum;
 
   const tag_impl::self_ptr
    spTest

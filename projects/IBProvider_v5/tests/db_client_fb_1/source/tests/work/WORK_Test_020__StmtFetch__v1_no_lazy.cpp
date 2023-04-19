@@ -59,17 +59,17 @@ class WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl
  #endif
 
  #ifdef NDEBUG
-  static void test_006__bug_check__incorrect_input_sqld__0
+  static void test_006__bug_check__incorrect_output_sqld__0
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
 
-  static void test_006__bug_check__incorrect_input_sqld__neg1
+  static void test_006__bug_check__incorrect_output_sqld__neg1
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
 
-  static void test_006__bug_check__incorrect_input_sqln
+  static void test_006__bug_check__incorrect_output_sqln
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
@@ -119,7 +119,7 @@ class WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl
 
  private:
  #ifdef NDEBUG
-  static void helper_006__bug_check__incorrect_input_sqld
+  static void helper_006__bug_check__incorrect_output_sqld
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data,
@@ -375,10 +375,11 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_003__bug_check__bad_ow
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  TestOperationContext OpCtx2(params);
@@ -560,9 +561,10 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_005__err__not_executed
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -644,7 +646,7 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_005__err__not_executed
 
 #ifdef NDEBUG
 
-void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_input_sqld__0
+void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_output_sqld__0
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -652,15 +654,15 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorr
  assert(pParams);
  assert(pCtx);
 
- helper_006__bug_check__incorrect_input_sqld
+ helper_006__bug_check__incorrect_output_sqld
   (pParams,
    pCtx,
    Data,
    0);
-}//test_006__bug_check__incorrect_input_sqld__0
+}//test_006__bug_check__incorrect_output_sqld__0
 
 //------------------------------------------------------------------------
-void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_input_sqld__neg1
+void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_output_sqld__neg1
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -668,15 +670,15 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorr
  assert(pParams);
  assert(pCtx);
 
- helper_006__bug_check__incorrect_input_sqld
+ helper_006__bug_check__incorrect_output_sqld
   (pParams,
    pCtx,
    Data,
    -1);
-}//test_006__bug_check__incorrect_input_sqld__neg1
+}//test_006__bug_check__incorrect_output_sqld__neg1
 
 //------------------------------------------------------------------------
-void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::helper_006__bug_check__incorrect_input_sqld
+void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::helper_006__bug_check__incorrect_output_sqld
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data,
@@ -807,7 +809,7 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::helper_006__bug_check__inco
  svc::RemoteFB_Connector__DetachDatabase
   (tracer,
    spConnector);
-}//helper_006__bug_check__incorrect_input_sqld
+}//helper_006__bug_check__incorrect_output_sqld
 
 #endif
 
@@ -816,7 +818,7 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::helper_006__bug_check__inco
 
 #ifdef NDEBUG
 
-void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_input_sqln
+void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorrect_output_sqln
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx,
                                             const TTSO_TestData_v2&   Data)
@@ -947,7 +949,7 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_006__bug_check__incorr
  svc::RemoteFB_Connector__DetachDatabase
   (tracer,
    spConnector);
-}//test_006__bug_check__incorrect_input_sqln
+}//test_006__bug_check__incorrect_output_sqln
 
 #endif
 
@@ -1072,8 +1074,8 @@ void WORK_Test_020__StmtFetch__v1_no_lazy::tag_impl::test_007__bug_check__incorr
    errSvc::check_err_rec__xsqlda_err__incorrect_version
     (tracer,
      exc.get_record(0),
-     helper__get_fetch_bugcheck_src(spConnector),
-     L"#004",
+     L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA",
+     L"#001",
      L"pOutXSQLDA",
      bad_versions[i]);
 
@@ -2163,16 +2165,16 @@ const WORK_Test_020__StmtFetch__v1_no_lazy::tag_descr
 
 #ifdef NDEBUG
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqld.0",
-   test_006__bug_check__incorrect_input_sqld__0)
+  ("006.bug_check.incorrect_output_sqld.0",
+   test_006__bug_check__incorrect_output_sqld__0)
 
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqld.net1",
-   test_006__bug_check__incorrect_input_sqld__neg1)
+  ("006.bug_check.incorrect_output_sqld.net1",
+   test_006__bug_check__incorrect_output_sqld__neg1)
 
  DEF_TEST_DESCR
-  ("006.bug_check.incorrect_input_sqln",
-   test_006__bug_check__incorrect_input_sqln)
+  ("006.bug_check.incorrect_output_sqln",
+   test_006__bug_check__incorrect_output_sqln)
 
  DEF_TEST_DESCR
   ("007.bug_check.incorrect_xsqlda_version",

@@ -9,9 +9,9 @@
 
 #include "source/db_client/remote_fb/transmission/pset01/remote_fb__transmission__pset01__op__decoder.h"
 #include "source/db_client/remote_fb/transmission/pset01/remote_fb__transmission__pset01__xdr__decoder.h"
-#include "source/db_client/remote_fb/handles/remote_fb__handle_data__statement.h"
 #include "source/db_client/remote_fb/protocol/set01/remote_fb__protocol_set01.h"
-#include "source/error_services/ibp_error_messages.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v1.h"
+#include "source/db_client/remote_fb/remote_fb__fetch_result.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset01{
 ////////////////////////////////////////////////////////////////////////////////
@@ -175,9 +175,9 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
+ const RemoteFB__OpSvc__StmtExecuteData_v1::self_ptr
   spStmtData
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+   (RemoteFB__GetService<RemoteFB__OpSvc__StmtExecuteData_v1>(op_ctx));
 
  assert(spStmtData);
 
@@ -198,7 +198,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
 
   case 1:
   {
-   if(spStmtData->m_OutParams__MSG_BLR.empty())
+   if(spStmtData->OutMsg_BLR.empty())
    {
     //ERROR - [BUG CHECK] неожиданное получение пакета op_sql_response.
 
@@ -213,8 +213,8 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
    xdr::decode__opaque
     (spBuf,
      L"protocol::set01::P_OP_SQLDATA::message_data",
-     spStmtData->m_OutParams__MSG_DATA.size(),
-     spStmtData->m_OutParams__MSG_DATA.buffer());
+     spStmtData->OutMsg_DATA.size(),
+     spStmtData->OutMsg_DATA.data());
 
    break;
   }//case 1
@@ -251,13 +251,12 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
- const handles::RemoteFB__HandleData_Statement::self_ptr
-  spStmt
-   (RemoteFB__GetService<handles::RemoteFB__HandleData_Statement>(op_ctx));
+ const RemoteFB__FetchResult::self_ptr
+  spFetchResult
+   (RemoteFB__GetService<RemoteFB__FetchResult>(op_ctx));
 
- assert(spStmt);
- assert(spStmt->m_spFetchResult);
- assert(spStmt->m_spFetchResult->m_ProcessedFetchCount<=spStmt->m_spFetchResult->m_RequestedFetchCount);
+ assert(spFetchResult);
+ assert(spFetchResult->m_ProcessedFetchCount<=spFetchResult->m_RequestedFetchCount);
 
  //-----------------------------------------
  typedef RemoteFB__XDR__Decoder xdr;
@@ -282,7 +281,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
 
   case 1:
   {
-   if(spStmt->m_OutParams__MSG_BLR.empty())
+   if(spFetchResult->m_OutMSG_BLR.empty())
    {
     //ERROR - [BUG CHECK] неожиданное получение пакета op_fetch_response.
 
@@ -293,7 +292,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
    }//if
 
    //---------------------------------------
-   if(spStmt->m_spFetchResult->m_ProcessedFetchCount==spStmt->m_spFetchResult->m_RequestedFetchCount)
+   if(spFetchResult->m_ProcessedFetchCount==spFetchResult->m_RequestedFetchCount)
    {
     //ERROR - [BUG CHECK] У нас проблема. Мы получили больше рядов чем запрашивали.
 
@@ -301,20 +300,20 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
      (c_bugcheck_src,
       L"#002",
       L"exceeded the expected number of rows: %1",
-      spStmt->m_spFetchResult->m_RequestedFetchCount);
+      spFetchResult->m_RequestedFetchCount);
    }//if
 
-   assert(spStmt->m_spFetchResult->m_ProcessedFetchCount<spStmt->m_spFetchResult->m_RequestedFetchCount);
+   assert(spFetchResult->m_ProcessedFetchCount<spFetchResult->m_RequestedFetchCount);
 
    //---------------------------------------
-   protocol::P_UCHAR* const pRowDataBlock=spStmt->m_spFetchResult->ROWS__AllocBlock(); //throw?
+   protocol::P_UCHAR* const pRowDataBlock=spFetchResult->ROWS__AllocBlock(); //throw?
 
-   ++spStmt->m_spFetchResult->m_ProcessedFetchCount;
+   ++spFetchResult->m_ProcessedFetchCount;
 
    xdr::decode__opaque
     (spBuf,
      L"protocol::set01::P_OP_SQLDATA::message_data",
-     spStmt->m_spFetchResult->ROWS__GetDataSize(),
+     spFetchResult->ROWS__GetDataSize(),
      pRowDataBlock); //throw
 
    break;

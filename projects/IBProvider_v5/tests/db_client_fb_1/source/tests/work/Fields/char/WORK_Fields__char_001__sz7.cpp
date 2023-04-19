@@ -105,6 +105,7 @@ void WORK_Fields__char_001__sz7::tag_impl::run(context_type* const pCtx)const
  params.set_dbprop_init__location(svc::BuildLocationString(m_spParams));
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+ params.set_dbprop_init__ctype(L"ASCII");
 
  m_Data.SetParams(params);
 
@@ -124,9 +125,10 @@ void WORK_Fields__char_001__sz7::tag_impl::run(context_type* const pCtx)const
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/1);
@@ -285,13 +287,18 @@ void WORK_Fields__char_001__sz7::create(TTSO_PushTest*      const pTestPusher,
  {
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[0]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
   const tag_impl::self_ptr
-   spTest(structure::not_null_ptr(new tag_impl(pParams,
-                                               ftestID.c_str(),
-                                               Data)));
+   spTest
+    (structure::not_null_ptr
+      (new tag_impl
+        (pParams,
+         ftestID.c_str(),
+         Data)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

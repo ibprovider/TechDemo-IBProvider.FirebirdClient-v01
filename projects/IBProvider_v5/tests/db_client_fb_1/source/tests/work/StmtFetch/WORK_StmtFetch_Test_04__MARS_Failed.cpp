@@ -364,7 +364,7 @@ void WORK_StmtFetch_Test_04__MARS_Failed::tag_impl::run(context_type* const pCtx
        break;
       }//catch
 
-      throw std::runtime_error("We wait the exception!");
+      svc::Throw_WeWaitTheError();
      }//for[ever]
 
      _TSO_CHECK(Cursors[iCursor].hStmt);
@@ -495,10 +495,11 @@ void WORK_StmtFetch_Test_04__MARS_Failed::create(TTSO_PushTest*      const pTest
   {
    ++testNum;
 
-   ftestID<<structure::flush
-          <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-          <<cCursors
-          <<testNum;
+   ftestID
+    <<structure::flush
+    <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+    <<cCursors
+    <<testNum;
 
    const tag_impl::self_ptr
     spTest

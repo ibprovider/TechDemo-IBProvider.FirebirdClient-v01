@@ -434,24 +434,6 @@ void RemoteFB__ErrorUtils::ThrowBugCheck_Incorrect_XSQLDA_Version
 }//ThrowBugCheck_Incorrect_XSQLDA_Version
 
 //------------------------------------------------------------------------
-void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
-                                           (subsystem_id_type const subsystem_id,
-                                            const wchar_t*    const pXSQLDA_Sign,
-                                            long              const pXSQLDA_sqld)
-{
- assert(pXSQLDA_Sign!=nullptr);
-
- assert_msg(false,"["<<structure::tstr_to_str(pXSQLDA_Sign)<<"] sqld: "<<pXSQLDA_sqld);
-
- IBP_ErrorUtils::Throw__Error
-  (E_FAIL,
-   subsystem_id,
-   ibp_mce_isc__bug_check__incorrect_sqld_of_xsqlda_2,
-   pXSQLDA_Sign,
-   pXSQLDA_sqld);
-}//Throw_BugCheck_Incorrect_XSQLDA_sqld
-
-//------------------------------------------------------------------------
 void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
                                            (subsystem_id_type const subsystem_id,
                                             const wchar_t*    const pXSQLDA_Sign,
@@ -470,6 +452,25 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
    pXSQLDA_sqln,
    pXSQLDA_sqld);
 }//Throw_BugCheck_Incorrect_XSQLDA_sqln
+
+////////////////////////////////////////////////////////////////////////////////
+
+void RemoteFB__ErrorUtils::Throw_BugCheck_UnexpectedUserRowDataBufferSize
+                                           (const wchar_t* const place,
+                                            const wchar_t* const point,
+                                            size_t         const actualSize,
+                                            size_t         const expectedSize)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
+  (place,
+   point,
+   L"the uexpected size of a buffer for the row data [%1]. The internal size of the row data is [%2]",
+   actualSize,
+   expectedSize);
+}//Throw_BugCheck_UnexpectedUserRowDataBufferSize
 
 ////////////////////////////////////////////////////////////////////////////////
 

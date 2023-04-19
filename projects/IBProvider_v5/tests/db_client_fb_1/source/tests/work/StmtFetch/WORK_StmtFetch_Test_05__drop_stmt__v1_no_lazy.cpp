@@ -149,9 +149,10 @@ void WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy::tag_impl::run(context_type* 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/1);
@@ -348,9 +349,10 @@ void WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy::create
 
   ++testNum;
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<testNum;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<testNum;
 
   const tag_impl::self_ptr
    spTest

@@ -105,6 +105,13 @@
 #include "source/tests/work/WORK_Test_031__GetArraySlice.h"
 #include "source/tests/work/WORK_Test_032__ExecuteImmediate.h"
 #include "source/tests/work/WORK_Test_033__GetDatabaseInfo.h"
+#include "source/tests/work/WORK_Test_034__StmtExecute_M__v1_no_lazy.h"
+#include "source/tests/work/WORK_Test_034__StmtExecute_M__v2_lazy_send.h"
+#include "source/tests/work/WORK_Test_034__StmtExecute_M__v3.h"
+#include "source/tests/work/WORK_Test_035__ExecuteImmediate_M.h"
+#include "source/tests/work/WORK_Test_036__StmtFetch_M__v0.h"
+#include "source/tests/work/WORK_Test_036__StmtFetch_M__v1_no_lazy.h"
+#include "source/tests/work/WORK_Test_036__StmtFetch_M__v2_lazy_send.h"
 
 #include "source/tests/work/WORK_Test_M01__WorkWithCursor.h"
 
@@ -154,6 +161,44 @@
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_12__sql_rollback.h"
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_13__sql_commit_retaining.h"
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_14__sql_rollback_retaining.h"
+
+#include "source/tests/work/StmtFetch_M/Types/smallint/WORK_StmtFetch_M__Types__smallint_001.h"
+#include "source/tests/work/StmtFetch_M/Types/smallint/WORK_StmtFetch_M__Types__smallint_002__check_align.h"
+#include "source/tests/work/StmtFetch_M/Types/integer/WORK_StmtFetch_M__Types__integer_001.h"
+#include "source/tests/work/StmtFetch_M/Types/integer/WORK_StmtFetch_M__Types__integer_002__check_align.h"
+#include "source/tests/work/StmtFetch_M/Types/bigint/WORK_StmtFetch_M__Types__bigint_001.h"
+#include "source/tests/work/StmtFetch_M/Types/bigint/WORK_StmtFetch_M__Types__bigint_002__check_align.h"
+#include "source/tests/work/StmtFetch_M/Types/double/WORK_StmtFetch_M__Types__double_001.h"
+#include "source/tests/work/StmtFetch_M/Types/float/WORK_StmtFetch_M__Types__float_001.h"
+#include "source/tests/work/StmtFetch_M/Types/varchar/WORK_StmtFetch_M__Types__varchar_001__sz7.h"
+#include "source/tests/work/StmtFetch_M/Types/char/WORK_StmtFetch_M__Types__char_001__sz7.h"
+#include "source/tests/work/StmtFetch_M/Types/boolean/WORK_StmtFetch_M__Types__boolean_001.h"
+#include "source/tests/work/StmtFetch_M/Types/time/WORK_StmtFetch_M__Types__time_001.h"
+#include "source/tests/work/StmtFetch_M/Types/date/WORK_StmtFetch_M__Types__date_001.h"
+#include "source/tests/work/StmtFetch_M/Types/timestamp/WORK_StmtFetch_M__Types__timestamp_001.h"
+#include "source/tests/work/StmtFetch_M/Types/numeric/WORK_StmtFetch_M__Types__numeric_001__N03_01.h"
+#include "source/tests/work/StmtFetch_M/Types/numeric/WORK_StmtFetch_M__Types__numeric_001__N07_02.h"
+#include "source/tests/work/StmtFetch_M/Types/numeric/WORK_StmtFetch_M__Types__numeric_001__N15_05.h"
+#include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D03_01.h"
+#include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D07_02.h"
+#include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D15_05.h"
+
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__001__nulls.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__002__nulls.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__101__Failed.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__103__MARS.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__104__MARS_Failed.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__105__drop_stmt__v1_no_lazy.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__106__close_stmt.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__107__commit.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__108__rollback.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__109__commit_retaining.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__110__rollback_retaining.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__111__sql_commit.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__112__sql_rollback.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__113__sql_commit_retaining.h"
+#include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__114__sql_rollback_retaining.h"
 
 #include "source/tests/work/Fields/smallint/WORK_Fields__smallint_001.h"
 #include "source/tests/work/Fields/smallint/WORK_Fields__smallint_002__check_align.h"
@@ -393,6 +438,20 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Test_033__GetDatabaseInfo::create),
 
+ DEF_CREATOR_DESCR(WORK_Test_034__StmtExecute_M__v1_no_lazy::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_034__StmtExecute_M__v2_lazy_send::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_034__StmtExecute_M__v3::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_035__ExecuteImmediate_M::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_036__StmtFetch_M__v0::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_036__StmtFetch_M__v1_no_lazy::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_036__StmtFetch_M__v2_lazy_send::create),
+
  DEF_CREATOR_DESCR(WORK_Test_M01__WorkWithCursor::create),
 
  DEF_CREATOR_DESCR(WORK_Params_OUT_001__short::create),
@@ -482,6 +541,45 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_StmtFetch_Test_13__sql_commit_retaining::create),
 
  DEF_CREATOR_DESCR(WORK_StmtFetch_Test_14__sql_rollback_retaining::create),
+
+ //-----------------------------------------
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__smallint_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__smallint_002__check_align::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__integer_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__integer_002__check_align::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__bigint_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__bigint_002__check_align::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__double_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__float_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__varchar_001__sz7::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__char_001__sz7::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__boolean_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__time_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__date_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__timestamp_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__numeric_001__N03_01::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__numeric_001__N07_02::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__numeric_001__N15_05::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D03_01::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D07_02::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D15_05::create),
+
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__001__nulls::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__002__nulls::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__101__Failed::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__103__MARS::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__104__MARS_Failed::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__105__drop_stmt__v1_no_lazy::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__106__close_stmt::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__107__commit::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__108__rollback::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__109__commit_retaining::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__110__rollback_retaining::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__111__sql_commit::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__112__sql_rollback::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__113__sql_commit_retaining::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__114__sql_rollback_retaining::create),
 
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Fields__smallint_001::create),

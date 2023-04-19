@@ -276,13 +276,18 @@ void WORK_Fields__boolean_001::create(TTSO_PushTest*      const pTestPusher,
  {
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[0]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
   const tag_impl::self_ptr
-   spTest(structure::not_null_ptr(new tag_impl(pParams,
-                                               ftestID.c_str(),
-                                               Data)));
+   spTest
+    (structure::not_null_ptr
+      (new tag_impl
+        (pParams,
+         ftestID.c_str(),
+         Data)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

@@ -10,18 +10,12 @@
 #include "source/db_client/remote_fb/api/p12/remote_fb__api_p12__stmt__execute.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__stmt_helper.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
-#include "source/db_client/remote_fb/api/p12/remote_fb__p12__utilities.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
-#include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
-#include "source/db_client/remote_fb/remote_fb__memory_pool.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v1.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
 #include "source/db_obj/db_operation_reg.h"
-#include "source/error_services/ibp_error_bug_check.h"
-#include "source/error_services/ibp_error.h"
-#include "source/error_services/ibp_error_messages.h"
-#include <structure/t_pointer_cast.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +98,7 @@ void RemoteFB__API_P12__ExecuteStatement::exec(db_obj::t_db_operation_context& O
 
  if(!(*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED))
  {
-  IBP_ThrowSimpleError
+  IBP_ErrorUtils::Throw__Error
    (DB_E_NOTPREPARED,
     ibp_subsystem__remote_fb__p12,
     ibp_mce_cmd_not_prepared_0);
@@ -120,37 +114,12 @@ void RemoteFB__API_P12__ExecuteStatement::exec(db_obj::t_db_operation_context& O
 
  if(pInXSQLDA!=nullptr)
  {
-  if(pInXSQLDA->version!=pInXSQLDA->c_version_num)
-  {
-   RemoteFB__ErrorUtils::ThrowBugCheck_Incorrect_XSQLDA_Version
-    (c_bugcheck_src,
-     L"#006",
-     L"pInXSQLDA",
-     pInXSQLDA->version);
-  }//if
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA
+   (pInXSQLDA,
+    0 /*minSQLD*/,
+    ibp_subsystem__remote_fb__p12,
+    L"pInXSQLDA");
 
-  if(pInXSQLDA->sqld<0)
-  {
-   //ERROR - [BUG CHECK] incorrect input XSQLDA::sqld
-
-   RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
-    (ibp_subsystem__remote_fb__p12,
-     L"pInXSQLDA",
-     pInXSQLDA->sqld);
-  }//if
-
-  if(pInXSQLDA->sqln<pInXSQLDA->sqld)
-  {
-   //ERROR - [BUG CHECK] incorrect input XSQLDA::sqln
-
-   RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
-    (ibp_subsystem__remote_fb__p12,
-     L"pInXSQLDA",
-     pInXSQLDA->sqln,
-     pInXSQLDA->sqld);
-  }//if
-
-  //----
   HasInParams=(pInXSQLDA->sqld>0);
  }//if pInXSQLDA
 
@@ -159,39 +128,11 @@ void RemoteFB__API_P12__ExecuteStatement::exec(db_obj::t_db_operation_context& O
 
  if(pOutXSQLDA!=nullptr)
  {
-  if(pOutXSQLDA->version!=pOutXSQLDA->c_version_num)
-  {
-   RemoteFB__ErrorUtils::ThrowBugCheck_Incorrect_XSQLDA_Version
-    (c_bugcheck_src,
-     L"#007",
-     L"pOutXSQLDA",
-     pOutXSQLDA->version);
-  }//if
-
-  if(pOutXSQLDA->sqld<0)
-  {
-   //ERROR - [BUG CHECK] incorrect output XSQLDA::sqld
-
-   assert_msg(false,"pOutXSQLDA->sqld: "<<pOutXSQLDA->sqld);
-
-   RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
-    (ibp_subsystem__remote_fb__p12,
-     L"pOutXSQLDA",
-     pOutXSQLDA->sqld);
-  }//if
-
-  if(pOutXSQLDA->sqln<pOutXSQLDA->sqld)
-  {
-   //ERROR - [BUG CHECK] incorrect output XSQLDA::sqln
-
-   assert_msg(false,"pOutXSQLDA->sqln: "<<pOutXSQLDA->sqln<<". pOutXSQLDA->sqld: "<<pOutXSQLDA->sqld);
-
-   RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqln
-    (ibp_subsystem__remote_fb__p12,
-     L"pOutXSQLDA",
-     pOutXSQLDA->sqln,
-     pOutXSQLDA->sqld);
-  }//if
+  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA
+   (pOutXSQLDA,
+    0 /*minSQLD*/,
+    ibp_subsystem__remote_fb__p12,
+    L"pOutXSQLDA");
 
   HasOutParams=(pOutXSQLDA->sqld>0);
  }//if pOutXSQLDA
@@ -208,22 +149,41 @@ void RemoteFB__API_P12__ExecuteStatement::exec(db_obj::t_db_operation_context& O
  //-----------------------------------------
  protocol::P_OBJCT TrID=0;
 
- if(!HasOutParams)
+ if(HasOutParams)
  {
-  TrID=helper__execute(serverOperation,
-                       pData,
-                       pTrHandle,
-                       pStmtHandle,
-                       pInXSQLDA); //throw
+  TrID
+   =self_type::helper__execute2
+     (serverOperation,
+      pData,
+      pTrHandle,
+      pStmtHandle,
+      pInXSQLDA,
+      pOutXSQLDA); //throw
+ }
+ else
+ if(HasInParams)
+ {
+  assert(!HasOutParams);
+
+  TrID
+   =self_type::helper__execute
+     (serverOperation,
+      pData,
+      pTrHandle,
+      pStmtHandle,
+      pInXSQLDA); //throw
  }
  else
  {
-  TrID=helper__execute2(serverOperation,
-                        pData,
-                        pTrHandle,
-                        pStmtHandle,
-                        pInXSQLDA,
-                        pOutXSQLDA); //throw
+  assert(!HasOutParams);
+  assert(!HasInParams);
+
+  TrID
+   =self_type::helper__execute
+     (serverOperation,
+      pData,
+      pTrHandle,
+      pStmtHandle); //throw
  }//else
 
  //----------------------------------------- EXIT
@@ -308,7 +268,48 @@ void RemoteFB__API_P12__ExecuteStatement::exec(db_obj::t_db_operation_context& O
 }//exec
 
 //------------------------------------------------------------------------
-protocol::P_USHORT RemoteFB__API_P12__ExecuteStatement::helper__execute
+protocol::P_USHORT
+ RemoteFB__API_P12__ExecuteStatement::helper__execute
+                                           (RemoteFB__P12__SrvOperation&    serverOperation,
+                                            RemoteFB__ConnectorData*  const pData,
+                                            tr_handle_type*           const pTrHandle,
+                                            stmt_handle_type*         const pStmtHandle)
+{
+ assert(pTrHandle);
+ assert(pStmtHandle);
+ assert(*pStmtHandle);
+
+ //-----------------------------------------
+ assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_NULLS.empty());
+
+ assert((*pStmtHandle)->m_OutParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_NULLS.empty());
+
+ //-----------------------------------------
+ RemoteFB__OpSvc__StmtExecuteData_v1
+  stmtExecuteData;
+
+ assert(stmtExecuteData.InMsg_BLR.empty());
+
+ assert(stmtExecuteData.InMsg_DATA.empty());
+
+ //-----------------------------------------
+ return RemoteFB__P12__StmtHelper::Execute__no_lazy
+         (serverOperation,
+          pData,
+          pTrHandle,
+          pStmtHandle,
+          &stmtExecuteData);
+}//helper__execute
+
+//------------------------------------------------------------------------
+protocol::P_USHORT
+ RemoteFB__API_P12__ExecuteStatement::helper__execute
                                            (RemoteFB__P12__SrvOperation&    serverOperation,
                                             RemoteFB__ConnectorData*  const pData,
                                             tr_handle_type*           const pTrHandle,
@@ -318,93 +319,53 @@ protocol::P_USHORT RemoteFB__API_P12__ExecuteStatement::helper__execute
  assert(pTrHandle);
  assert(pStmtHandle);
  assert(*pStmtHandle);
+ assert(pInXSQLDA);
+ assert(pInXSQLDA->sqld>=0);
 
  //-----------------------------------------
- const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P12__ExecuteStatement::helper__execute";
+ assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_NULLS.empty());
+
+ assert((*pStmtHandle)->m_OutParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_NULLS.empty());
 
  //-----------------------------------------
  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
- assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
+ assert(!(*pStmtHandle)->m_InParams__MSG_BLR.empty());
 
  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA);
 
  //-----------------------------------------
- const protocol::set01::P_OP c_OperationID=protocol::set01::op_execute;
+ RemoteFB__OpSvc__StmtExecuteData_v1
+  stmtExecuteData;
 
- {
-  //---------------------------------------- 2. build packet
-  protocol::set01::PACKET_V01 packet;
+ stmtExecuteData.InMsg_BLR
+  =(*pStmtHandle)->m_InParams__MSG_BLR;
 
-  RemoteFB__P12__StmtHelper::BuildPacket__op_execute
-   (&packet,
-    pTrHandle?*pTrHandle:nullptr,
-    *pStmtHandle);
+ stmtExecuteData.InMsg_DATA
+  =(*pStmtHandle)->m_InParams__MSG_DATA;
 
-  assert(packet.operation==c_OperationID);
-
-  //---------------------------------------- 3. send packet
-  RemoteFB__OperationContext portOpCtx;
-
-  portOpCtx.reg_svc((*pStmtHandle).ptr());
-
-  //------ Let's define the boundaries of work with the server
-  RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
-
-  pData->GetPort()->send_packet
-   (portOpCtx,
-    packet); //throw
-
-  sendFrame.complete(); //throw
- }//local
-
- //----------------------------------------- 4. get response
- protocol::P_OBJCT TrID=0;
-
- for(;;)
- {
-  RemoteFB__MemoryPool memoryPool;
-
-  RemoteFB__OperationContext portOpCtx(&memoryPool);
-
-  protocol::set01::PACKET_V01 packet;
-
-  pData->GetPort()->receive_packet
-   (portOpCtx,
-    packet); //throw
-
-  if(packet.operation==protocol::set01::op_response)
-  {
-   pset01::RemoteFB__PSET01__ErrorUtilites::ProcessServerResult
-    (pData,
-     c_OperationID,
-     packet.p_resp,
-     E_FAIL); //throw
-
-   TrID=packet.p_resp.p_resp__object;
-
-   break;
-  }//if - protocol::op_response
-
-  //ERROR - [BUG CHECK] unexpected answer from server
-
-  RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck_UnexpectedServerAnswer
-   (pData->GetPort(),
-    c_bugcheck_src,
-    L"#001",
-    packet.operation);
- }//for[ever]
-
- return TrID;
+ //-----------------------------------------
+ return RemoteFB__P12__StmtHelper::Execute__no_lazy
+         (serverOperation,
+          pData,
+          pTrHandle,
+          pStmtHandle,
+          &stmtExecuteData);
 }//helper__execute
 
 //------------------------------------------------------------------------
-protocol::P_OBJCT RemoteFB__API_P12__ExecuteStatement::helper__execute2
+protocol::P_OBJCT
+ RemoteFB__API_P12__ExecuteStatement::helper__execute2
                                            (RemoteFB__P12__SrvOperation&    serverOperation,
                                             RemoteFB__ConnectorData*  const pData,
                                             tr_handle_type*           const pTrHandle,
@@ -420,8 +381,15 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteStatement::helper__execute2
  assert(pOutXSQLDA->sqld>0);
 
  //-----------------------------------------
- const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P12__ExecuteStatement::helper__execute2";
+ assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_InParams__MSG_NULLS.empty());
+
+ assert((*pStmtHandle)->m_OutParams__MSG_BLR.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS.empty());
+ assert((*pStmtHandle)->m_OutParams__MSG_NULLS.empty());
 
  //-----------------------------------------
  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
@@ -455,178 +423,31 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteStatement::helper__execute2
  //!  - допустимость типов (нельзя запрашивать SQL_NULL)
 
  //-----------------------------------------
- const protocol::set01::P_OP c_OperationID=protocol::set01::op_execute2;
+ RemoteFB__OpSvc__StmtExecuteData_v1
+  stmtExecuteData;
 
- {
-  //---------------------------------------- 2. build packet
-  protocol::set01::PACKET_V01 packet;
+ stmtExecuteData.InMsg_BLR
+  =(*pStmtHandle)->m_InParams__MSG_BLR;
 
-  packet.operation = c_OperationID;
+ stmtExecuteData.InMsg_DATA
+  =(*pStmtHandle)->m_InParams__MSG_DATA;
 
-  //---------------------------------------- p_sqldata_statement
-  packet.p_sqldata.p_sqldata__statement=(*pStmtHandle)->m_ID.get_value();
+ stmtExecuteData.OutMsg_BLR
+  =(*pStmtHandle)->m_OutParams__MSG_BLR;
 
-  //---------------------------------------- p_sqldata_transaction
-  packet.p_sqldata.p_sqldata__transaction=(*pTrHandle)?(*pTrHandle)->m_ID.get_value():0;
-
-  //---------------------------------------- p_sqldata_blr
-  RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
-   (&packet.p_sqldata.p_sqldata__blr,
-    (*pStmtHandle)->m_InParams__MSG_BLR.size(),
-    ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-    L"pInXSQLDA");
-
-  assert(packet.p_sqldata.p_sqldata__blr.cstr_length==(*pStmtHandle)->m_InParams__MSG_BLR.size());
-
-  packet.p_sqldata.p_sqldata__blr.cstr_address=(*pStmtHandle)->m_InParams__MSG_BLR.buffer();
-
-  //---------------------------------------- p_sqldata_message_number
-  packet.p_sqldata.p_sqldata__message_number=0;
-
-  //---------------------------------------- p_sqldata_messages + p_sqldata_message_data
-  packet.p_sqldata.p_sqldata__messages=(*pStmtHandle)->m_InParams__MSG_BLR.empty()?0:1;
-
-  //--------------------------------------- p_sqldata_out_blr [op_execute2]
-  RemoteFB__P12__Utilities::CheckAndSetLength__CSTRING_CONST
-   (&packet.p_sqldata.p_sqldata__out_blr,
-    (*pStmtHandle)->m_OutParams__MSG_BLR.size(),
-    ibp_mce_isc__blr_data_for_xsqlda_is_too_long_3,
-    L"pOutXSQLDA");
-
-  assert(packet.p_sqldata.p_sqldata__out_blr.cstr_length==(*pStmtHandle)->m_OutParams__MSG_BLR.size());
-
-  packet.p_sqldata.p_sqldata__out_blr.cstr_address=(*pStmtHandle)->m_OutParams__MSG_BLR.buffer();
-
-  //--------------------------------------- p_sqldata_out_message_number [op_execute2]
-  packet.p_sqldata.p_sqldata__out_message_number=0;
-
-  //---------------------------------------- 3. send packet
-  RemoteFB__OperationContext portOpCtx;
-
-  portOpCtx.reg_svc((*pStmtHandle).ptr());
-
-  //------ Let's define the boundaries of work with the server
-  RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
-
-  pData->GetPort()->send_packet
-   (portOpCtx,
-    packet); //throw
-
-  sendFrame.complete(); //throw
- }//local
-
- //----------------------------------------- 4. get response1
- protocol::P_USHORT cOutMessages=0;
-
- for(;;)
- {
-  RemoteFB__MemoryPool memoryPool;
-
-  RemoteFB__OperationContext portOpCtx(&memoryPool);
-
-  portOpCtx.reg_svc((*pStmtHandle).ptr());
-
-  protocol::set01::PACKET_V01 packet;
-
-  pData->GetPort()->receive_packet
-   (portOpCtx,
-    packet); //throw
-
-  if(packet.operation==protocol::set01::op_sql_response)
-  {
-   //обработка ответа от сервера
-
-   cOutMessages=packet.p_sqldata.p_sqldata__messages;
-
-   //отсутствие или одно OUT-сообщение
-   assert_msg(cOutMessages<2,"cOutMessages: "<<cOutMessages);
-
-   break;
-  }//if
-
-  //Ожидается ошибка выполнения запроса
-
-  if(packet.operation==protocol::set01::op_response)
-  {
-   pset01::RemoteFB__PSET01__ErrorUtilites::ProcessServerResult
-    (pData,
-     c_OperationID,
-     packet.p_resp,
-     E_FAIL); //throw
-
-   //ERROR - [BUG CHECK] Неожиданный ответ от сервера. Ожидалась ошибка.
-
-   IBP_BUG_CHECK__DEBUG
-    (c_bugcheck_src,
-     L"#001",
-     me_bug_check__we_expected_the_error_0);
-
-   break;
-  }//if - protocol::op_response
-
-  //ERROR - [BUG CHECK] unexpected answer from server
-
-  RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck_UnexpectedServerAnswer
-   (pData->GetPort(),
-    c_bugcheck_src,
-    L"#002",
-    packet.operation);
- }//for[ever]
-
- //----------------------------------------- 4. get response2
- protocol::P_OBJCT TrID=0;
-
- for(;;)
- {
-  RemoteFB__MemoryPool memoryPool;
-
-  RemoteFB__OperationContext portOpCtx(&memoryPool);
-
-  protocol::set01::PACKET_V01 packet;
-
-  pData->GetPort()->receive_packet
-   (portOpCtx,
-    packet); //throw
-
-  if(packet.operation==protocol::set01::op_response)
-  {
-   pset01::RemoteFB__PSET01__ErrorUtilites::ProcessServerResult
-    (pData,
-     c_OperationID,
-     packet.p_resp,
-     E_FAIL); //throw
-
-   //все нормально - запрос выполнился без ошибок.
-
-   TrID=packet.p_resp.p_resp__object;
-
-   break;
-  }//if - protocol::op_response
-
-  //ERROR - [BUG CHECK] unexpected answer from server
-
-  RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck_UnexpectedServerAnswer
-   (pData->GetPort(),
-    c_bugcheck_src,
-    L"#003",
-    packet.operation);
- }//for[ever]
+ stmtExecuteData.OutMsg_DATA
+  =(*pStmtHandle)->m_OutParams__MSG_DATA;
 
  //-----------------------------------------
- if(cOutMessages!=1)
- {
-  //ERROR - [BUG CHECK] Некорректное число OUT-результатов.
+ const auto TrID
+  =RemoteFB__P12__StmtHelper::Execute2__no_lazy
+    (serverOperation,
+     pData,
+     pTrHandle,
+     pStmtHandle,
+     &stmtExecuteData);
 
-  structure::wstr_formatter freason(L"Unexpected count of OUT-results: %1");
-
-  freason<<cOutMessages;
-
-  IBP_BUG_CHECK__DEBUG
-   (c_bugcheck_src,
-    L"#004",
-    freason.c_str());
- }//if
-
+ //-----------------------------------------
  //Сохраняем полученные результаты в pOutXSQLDA
 
  try
@@ -635,24 +456,20 @@ protocol::P_OBJCT RemoteFB__API_P12__ExecuteStatement::helper__execute2
    ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
     (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
     (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),
-     pOutXSQLDA);
+    pOutXSQLDA);
  }
  catch(const std::exception& e)
  {
-  t_ibp_error exc(e);
-
   //Добавляем информацию о текущей операции (установка значений OUT-параметров)
 
   //Как протестировать этот обработчик - непонятно.
 
-  exc.add_error
-   (E_FAIL,
+  IBP_ErrorUtils::Throw__Error
+   (e,
+    E_FAIL,
     ibp_subsystem__remote_fb__p12,
-    ibp_mce_isc__failed_to_set_xsqlda_xvalues_1);
-
-  exc<<L"pOutXSQLDA";
-
-  exc.raise_me();
+    ibp_mce_isc__failed_to_set_xsqlda_xvalues_1,
+    L"pOutXSQLDA");
  }//catch
 
  //-----------------------------------------

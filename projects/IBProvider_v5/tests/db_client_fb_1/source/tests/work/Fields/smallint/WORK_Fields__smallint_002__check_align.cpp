@@ -106,6 +106,7 @@ void WORK_Fields__smallint_002__check_align::tag_impl::run(context_type* const p
  params.set_dbprop_init__location(svc::BuildLocationString(m_spParams));
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+ params.set_dbprop_init__ctype(L"ASCII");
 
  m_Data.SetParams(params);
 
@@ -318,8 +319,9 @@ void WORK_Fields__smallint_002__check_align::create(TTSO_PushTest*      const pT
  {
   Data.m_RemoteFB__ProtocolType=g_TestCfg__RemoteFB__ProtocolTypes[it[0]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
   const tag_impl::self_ptr
    spTest

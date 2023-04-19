@@ -736,8 +736,8 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_013__bug_check__inco
    errSvc::check_err_rec__xsqlda_err__incorrect_version
     (tracer,
      exc.get_record(0),
-     helper__get_StmtExec_bugcheck_src(spConnector),
-     L"#006",
+     L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA",
+     L"#001",
      L"pInXSQLDA",
      bad_versions[i]);
 
@@ -882,8 +882,8 @@ void WORK_Test_019__StmtExecute__v1_no_lazy::tag_impl::test_014__bug_check__inco
    errSvc::check_err_rec__xsqlda_err__incorrect_version
     (tracer,
      exc.get_record(0),
-     helper__get_StmtExec_bugcheck_src(spConnector),
-     L"#007",
+     L"RemoteFB__API_HLP__XSQLDA_V01__Utilities::Check_XSQLDA",
+     L"#001",
      L"pOutXSQLDA",
      bad_versions[i]);
 

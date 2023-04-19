@@ -9,141 +9,13 @@
 
 //#include "source/db_client/remote_fb/handles/remote_fb__handle_data__statement.h"
 #include "source/db_client/remote_fb/handles/remote_fb__handle_data__transaction.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v1.h"
+#include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v2.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__FetchResult
-
-RemoteFB__FetchResult::RemoteFB__FetchResult(size_type const RequestedFetchCount,
-                                             size_type const cbRowData,
-                                             size_type const cbRowDataAlign)
- :m_RequestedFetchCount(RequestedFetchCount)
- ,m_ProcessedFetchCount(0)
- ,m_State(state__active)
- ,m_FetchErr(S_OK)
- ,m_cbRowData(cbRowData)
- ,m_cbRowBlock(cbRowData)
- ,m_RowsDataBufferManager(0,RequestedFetchCount)
-{
- assert(m_RequestedFetchCount>0);
-
- if(!structure::align_memory_size(m_cbRowBlock,cbRowDataAlign))
-  throw std::bad_alloc();
-
- assert(m_cbRowData<=m_cbRowBlock);
-
- //--------------
- if(m_cbRowBlock>0)
- {
-  const size_t c_max_mem=structure::t_numeric_limits<size_t>::max_value();
-
-  const size_t maxN=c_max_mem/m_cbRowBlock;
-
-  if(maxN<RequestedFetchCount)
-   throw std::bad_alloc();
-
-  m_RowsDataBuffer.alloc(m_cbRowBlock*RequestedFetchCount);
- }//if
-}//RemoteFB__FetchResult
-
-//------------------------------------------------------------------------
-RemoteFB__FetchResult::~RemoteFB__FetchResult()
-{;}
-
-//------------------------------------------------------------------------
-RemoteFB__FetchResult::self_ptr
- RemoteFB__FetchResult::Create(size_type const RequestedFetchCount,
-                               size_type const cbRowData,
-                               size_type const cbRowDataAlign)
-{
- return structure::not_null_ptr(new self_type(RequestedFetchCount,
-                                              cbRowData,
-                                              cbRowDataAlign));
-}//Create
-
-//interface --------------------------------------------------------------
-RemoteFB__FetchResult::size_type
- RemoteFB__FetchResult::ROWS__GetCount()const
-{
- return m_RowsDataBufferManager.size();
-}//ROWS__GetCount
-
-//------------------------------------------------------------------------
-RemoteFB__FetchResult::size_type
- RemoteFB__FetchResult::ROWS__GetDataSize()const
-{
- return m_cbRowData;
-}//ROWS__GetDataSize
-
-//------------------------------------------------------------------------
-RemoteFB__FetchResult::byte_type*
- RemoteFB__FetchResult::ROWS__AllocBlock()
-{
- assert(!m_RowsDataBufferManager.full());
-
- m_RowsDataBufferManager.push_back();
-
- assert(m_RowsDataBufferManager.back()<m_RequestedFetchCount);
-
- byte_type* const p=m_RowsDataBuffer.ptr_at(m_RowsDataBufferManager.back()*m_cbRowBlock);
-
- assert(m_RowsDataBuffer.buffer()<=p);
- assert(p<m_RowsDataBuffer.buffer_end());
- assert(m_cbRowBlock<=size_t(m_RowsDataBuffer.buffer_end()-p));
-
- memset(p,0,m_cbRowBlock);
-
- return p;
-}//ROWS__AllocBlock
-
-//------------------------------------------------------------------------
-const RemoteFB__FetchResult::byte_type*
- RemoteFB__FetchResult::ROWS__GetFirstBlock()const
-{
- assert(!m_RowsDataBufferManager.empty());
-
- assert(m_RowsDataBufferManager.front()<m_RequestedFetchCount);
-
- const byte_type* const p=m_RowsDataBuffer.ptr_at(m_RowsDataBufferManager.front()*m_cbRowBlock);
-
- assert(m_RowsDataBuffer.buffer()<=p);
- assert(p<m_RowsDataBuffer.buffer_end());
- assert(m_cbRowBlock<=size_t(m_RowsDataBuffer.buffer_end()-p));
-
- return p;
-}//ROWS__GetFirstBlock
-
-//------------------------------------------------------------------------
-void RemoteFB__FetchResult::ROWS__FreeFirstBlock()
-{
- assert(!m_RowsDataBufferManager.empty());
-
- m_RowsDataBufferManager.pop_front();
-}//ROWS__FreeFirstBlock
-
-//------------------------------------------------------------------------
-void RemoteFB__FetchResult::ROWS__FreeLastBlock()
-{
- assert(!m_RowsDataBufferManager.empty());
-
- m_RowsDataBufferManager.pop_back();
-}//ROWS__FreeLastBlock
-
-//------------------------------------------------------------------------
-void RemoteFB__FetchResult::Reactivate()
-{
- m_State=state__active;
-
- m_ProcessedFetchCount=0;
-}//Reactivate
-
-////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__HandleData_Statement
 
-const GUID RemoteFB__HandleData_Statement::svcID
- ={0xF5C6BAAE,0x27BE,0x4480,{0x90,0x1C,0x18,0xC8,0xAD,0xB9,0x0F,0x3A}};
-
-//------------------------------------------------------------------------
 RemoteFB__HandleData_Statement::RemoteFB__HandleData_Statement()
  :m_pParentPort(nullptr)
 #ifndef NDEBUG
@@ -274,6 +146,42 @@ void RemoteFB__HandleData_Statement::ResetExecuteState()
 }//ResetExecuteState
 
 //------------------------------------------------------------------------
+void RemoteFB__HandleData_Statement::SaveInParams(const RemoteFB__OpSvc__StmtExecuteData_v1* const pStmtExecData)
+{
+ assert(pStmtExecData);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_BLR,
+   pStmtExecData->InMsg_BLR);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_DATA,
+   pStmtExecData->InMsg_DATA);
+}//SaveInParams - RemoteFB__OpSvc__StmtExecuteData_v1
+
+//------------------------------------------------------------------------
+void RemoteFB__HandleData_Statement::SaveInParams(const RemoteFB__OpSvc__StmtExecuteData_v2* const pStmtExecData)
+{
+ assert(pStmtExecData);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_BLR,
+   pStmtExecData->InMsg_BLR);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_DATA,
+   pStmtExecData->InMsg_DATA);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_DATA_DESCRS,
+   pStmtExecData->InMsg_DATA_DESCRS);
+
+ self_type::Helper__Save
+  (&m_InParams__MSG_NULLS,
+   pStmtExecData->InMsg_NULLS);
+}//SaveInParams - RemoteFB__OpSvc__StmtExecuteData_v2
+
+//------------------------------------------------------------------------
 void RemoteFB__HandleData_Statement::Dangerous__CloseCursorOfParentTr()
 {
  const self_ptr __selfLockInMemory(this);
@@ -340,6 +248,129 @@ void RemoteFB__HandleData_Statement::Dangerous__DropHandle()
 
  assert(m_pClosingTr==nullptr);
 }//Dangerous__DropHandle
+
+//Helper methods ---------------------------------------------------------
+template<typename T,class Allocator>
+static void RemoteFB__HandleData_Statement::Helper__Save
+              (structure::t_typed_simple_buffer<T,Allocator>* const pDest,
+               const ibp::IBP_BufferView<const T>&                  Source)
+{
+ assert(pDest);
+
+ assert_s
+  (std::is_same
+    <typename std::remove_const<typename std::remove_reference<decltype(*pDest->data())>::type>::type _LITER_COMMA_
+     typename std::remove_const<typename std::remove_reference<decltype(*Source.data())>::type>::type>::value);
+
+ if(pDest->data()==Source.data())
+ {
+  //it is the same data!
+
+  assert(pDest->size()==Source.size());
+ }
+ else
+ {
+  assert(pDest->data()!=Source.data());
+
+#ifndef NDEBUG
+  //
+  // Let's check an intersection
+  //
+  if((Source.data()+Source.size())<pDest->data())
+  {
+   //OK
+  }
+  else
+  if((pDest->data()+pDest->capacity())<Source.data())
+  {
+   //OK
+  }
+  else
+  {
+   //It is a real problem!
+
+   assert(false);
+  }
+#endif
+
+  pDest->alloc(Source.size()); //throw
+
+  assert(pDest->size()==Source.size());
+
+  std::copy
+   (Source.data(),
+    Source.data()+Source.size(),
+    pDest->data());
+ }//else
+
+ //One more time
+ assert(pDest->size()==Source.size());
+
+ //Let's tell our paranoia that all is ok.
+
+ assert(size_t(pDest->buffer_end()-pDest->buffer())==Source.size());
+
+ assert(std::equal(pDest->buffer(),pDest->buffer_end(),Source.data()));
+}//Helper__Save - structure::t_typed_simple_buffer
+
+//------------------------------------------------------------------------
+template<typename T,class Allocator>
+static void RemoteFB__HandleData_Statement::Helper__Save
+              (std::vector<T,Allocator>*     const pDest,
+               const ibp::IBP_BufferView<const T>& Source)
+{
+ assert(pDest);
+
+ assert_s
+  (std::is_same
+    <typename std::remove_const<typename std::remove_reference<decltype(*pDest->data())>::type>::type _LITER_COMMA_
+     typename std::remove_const<typename std::remove_reference<decltype(*Source.data())>::type>::type>::value);
+
+ if(pDest->data()==Source.data())
+ {
+  //it is the same data!
+
+  assert(pDest->size()==Source.size());
+ }
+ else
+ {
+  assert(pDest->data()!=Source.data());
+
+#ifndef NDEBUG
+  //
+  // Let's check an intersection
+  //
+  if((Source.data()+Source.size())<pDest->data())
+  {
+   //OK
+  }
+  else
+  if((pDest->data()+pDest->capacity())<Source.data())
+  {
+   //OK
+  }
+  else
+  {
+   //It is a real problem!
+
+   assert(false);
+  }
+#endif
+
+  pDest->assign(Source.data(),Source.data()+Source.size()); //throw
+
+  assert(pDest->size()==Source.size());
+ }//else
+
+ //One more time
+ assert(pDest->size()==Source.size());
+
+ //Let's tell our paranoia that all is ok.
+
+ assert(size_t(pDest->cend()-pDest->cbegin())==Source.size());
+
+ assert(std::equal(pDest->cbegin(),pDest->cend(),Source.data()));
+}//Helper__Save - std::vector
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__HandleData_Statement::tag_cn_list_adapter

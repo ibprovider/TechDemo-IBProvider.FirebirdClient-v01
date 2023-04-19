@@ -8,16 +8,12 @@
 #define _remote_fb__handle_data__statement_H_
 
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
-#include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
-//#include "source/db_client/remote_fb/remote_fb__srv_resource_id.h"
-//#include "source/db_client/remote_fb/remote_fb__memory.h"
+#include "source/db_client/remote_fb/remote_fb__fetch_result.h"
 #include "source/db_client/remote_fb/remote_fb__flags.h"
 #include "source/db_client/remote_fb/remote_fb__forward.h"
 #include "source/error_services/ibp_error.h"
-#include <structure/t_simple_buffer.h>
-#include <structure/t_cycle_buffer_manager.h>
+#include "source/structure/ibp_buffer_view.h"
 #include <structure/t_value_with_null.h>
-#include <structure/stl/t_stl_vector.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,142 +22,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace h
 ////////////////////////////////////////////////////////////////////////////////
 //the content
 
-class RemoteFB__FetchResult;
 class RemoteFB__HandleData_Statement;
-
-////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__FetchResult
-
-/// <summary>
-///  Объект для обслуживание результатов операции op_fetch
-/// </summary>
-//! \todo
-//!  Переделать класс для хранения всех буферов непосредственно в блоке объекта
-class RemoteFB__FetchResult:public RemoteFB__SmartMemoryObject
-{
- private:
-  typedef RemoteFB__FetchResult                               self_type;
-
-  RemoteFB__FetchResult(const self_type&);
-  self_type& operator = (const self_type&);
-
- public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>            self_ptr;
-
-  typedef unsigned char                                       byte_type;
-  typedef size_t                                              size_type;
-
-  typedef RemoteFB__MemoryAllocator                           allocator_type;
-
-  typedef structure::t_typed_simple_buffer
-            <byte_type,
-             allocator_type>                                  msg_data_buffer_type;
-
-  /// <summary>
-  ///  Перечисление состояний процесса обработки пакетов с ответами
-  /// </summary>
-  enum tag_state
-  {
-   /// Выборка незавершена
-   state__active    =0,
-
-   /// Выборка завершена. Обработаны все пакеты с ответом сервера.
-   state__completed =1,
-
-   /// Выборка завершена. Достигнут конец результирующего множества.
-   state__eof       =2,
-
-   /// Выборка завершена по ошибке.
-   state__failed    =3,
-  };//enum tag_state
-
- public:
-  /// Количество рядов, запрошенное для загрузки (op_fetch).
-  const size_type m_RequestedFetchCount;
-
-  /// Количество обработанных рядов (op_fetch_response).
-  size_type m_ProcessedFetchCount;
-
-  /// Состояние процесса
-  tag_state m_State;
-
-  /// Описание ошибки выборки данных
-  t_ibp_error m_FetchErr;
-
- private:
-  /// <summary>
-  ///  Конструктор инициализации
-  /// </summary>
-  //! \param[in] RequestedFetchCount
-  //!  Ожидаемое количество рядов. Должно быть больше нуля.
-  //! \param[in] cbRowData
-  //!  Размер данных ряда
-  //! \param[in] cbRowDataAlign
-  //!  Выравнивающая граница для блоков с данными ряда
-  RemoteFB__FetchResult(size_type RequestedFetchCount,
-                        size_type cbRowData,
-                        size_type cbRowDataAlign);
-
-  /// <summary>
-  ///  Деструктор
-  /// </summary>
-  virtual ~RemoteFB__FetchResult();
-
- public:
-  /// <summary>
-  ///  Фабрика класса
-  /// </summary>
-  static self_ptr Create(size_type RequestedFetchCount,
-                         size_type cbRowData,
-                         size_type cbRowDataAlign);
-
-  //interface ------------------------------------------------------------
-  /// <summary>
-  ///  Получение доступных (загруженных) рядов в буфере
-  /// </summary>
-  size_type ROWS__GetCount()const;
-
-  /// <summary>
-  ///  Получение размера данных ряда в байтах
-  /// </summary>
-  //! \note
-  //!  Размер \b блока под данные ряда может быть больше, потому что в блок
-  //!  включены выравнивающие байты.
-  size_type ROWS__GetDataSize()const;
-
-  byte_type* ROWS__AllocBlock();
-
-  const byte_type* ROWS__GetFirstBlock()const;
-
-  void ROWS__FreeFirstBlock();
-
-  void ROWS__FreeLastBlock();
-
-  //----------------------------------------------------------------------
-  /// <summary>
-  ///  Переинициализация для выборки следуюшей партии записей
-  /// </summary>
-  void Reactivate();
-
- private:
-  /// Размер данных ряда
-  size_type const m_cbRowData;
-
-  /// Размер блока под данные ряда (m_cbRowData + выравнивающее значение)
-  size_type m_cbRowBlock;
-
- private:
-  typedef structure::t_cycle_buffer_manager__num_traits<size_type>
-   msg_data_buf_mng_traits_type;
-
-  typedef structure::t_cycle_buffer_manager<msg_data_buf_mng_traits_type>
-   msg_data_buf_mng_type;
-
- private:
-  msg_data_buf_mng_type  m_RowsDataBufferManager;
-
-  msg_data_buffer_type   m_RowsDataBuffer;
-};//class RemoteFB__FetchResult
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__HandleData_Statement
@@ -176,12 +37,6 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
 
   RemoteFB__HandleData_Statement(const self_type&);
   self_type& operator = (const self_type&);
-
- public:
-  /// <summary>
-  ///  Идентификатор сервиса.
-  /// </summary>
-  static const GUID svcID;
 
  public: //typedefs ------------------------------------------------------
   typedef structure::t_smart_object_ptr<self_type>            self_ptr;
@@ -356,6 +211,10 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
 
   void ResetExecuteState();
 
+  void SaveInParams(const RemoteFB__OpSvc__StmtExecuteData_v1* pStmtExecData);
+
+  void SaveInParams(const RemoteFB__OpSvc__StmtExecuteData_v2* pStmtExecData);
+
   /// <summary>
   ///  Закрытие курсора, принадлежащего ParentTr.
   /// </summary>
@@ -376,6 +235,17 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
   //! \attention
   //!  Этот метод может освободить последние ссылки на объект!
   void Dangerous__DropHandle();
+
+ private:
+  template<typename T,class Allocator>
+  static void Helper__Save
+              (structure::t_typed_simple_buffer<T,Allocator>* pDest,
+               const ibp::IBP_BufferView<const T>&            Source);
+
+  template<typename T,class Allocator>
+  static void Helper__Save
+              (std::vector<T,Allocator>*           pDest,
+               const ibp::IBP_BufferView<const T>& Source);
 };//class RemoteFB__HandleData_Statement
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -976,6 +976,63 @@ class TestCheckErrors
                  size_t                         bufferSize);
 
  public:
+  static bool check_err_rec__test_msg_bug_check__nullptr_to_descrs
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         cDescrs);
+
+  static bool check_err_rec__test_msg_bug_check__nullptr_to_blr
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         szBlr);
+
+  static bool check_err_rec__test_msg_bug_check__nullptr_to_data
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         szData);
+
+  static bool check_err_rec__test_msg_bug_check__unexpected_blr
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         szBlr);
+
+  static bool check_err_rec__test_msg_bug_check__unexpected_data
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         szData);
+
+  static bool check_err_rec__test_msg_bug_check__no_blr
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         cDescrs);
+
+  static bool check_err_rec__test_msg_bug_check__no_data
+                (TTSO_Tracer&                   tracer,
+                 const structure::t_err_record* pErrorRec,
+                 wstr_box_type                  ucs2Place,
+                 wstr_box_type                  ucs2Point,
+                 wstr_box_type                  msgSign,
+                 size_t                         cDescrs);
+
+ public:
   static bool check_err_rec__common__internal_err__unk_sql_type
                 (TTSO_Tracer&                   tracer,
                  const structure::t_err_record* pErrorRec,

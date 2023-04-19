@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api
 //! \file    remote_fb__api__stmt__fetch.h
-//! \brief   Выборка результатов запроса.
+//! \brief   API for fetching the row of result set.
 //! \author  Kovalenko Dmitry
 //! \date    25.08.2015
 #ifndef _remote_fb__api__stmt__fetch_H_
@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 //class RemoteFB__API__FetchStatement
 
 /// <summary>
-///  Выполнение запроса.
+///  API for fetching the row of result set.
 /// </summary>
 class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__FetchStatement:public RemoteFB__SmartInterface
 {
@@ -29,18 +29,18 @@ class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__FetchStatement:public RemoteFB_
 
  public:
   /// <summary>
-  ///  Выполнение запроса.
+  ///  Fetching the row or result set.
   /// </summary>
   //! \param[in] OpCtx
-  //!  Контекст операции.
+  //!  The context of an operation.
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pStmtHandle
-  //!  Not null. На входе должен указывать на ненулевое значение.
+  //!  Not null. It must point on a not zero value.
   //! \param[in] pOutXSQLDA
   //!  Not null.
   //! \return
-  //!  false, если запись не выбрана (достигнут конец результирующего множества).
+  //!  false when a record was not fetched (the end of result set was reached).
   virtual bool exec(db_obj::t_db_operation_context& OpCtx,
                     RemoteFB__ConnectorData*        pData,
                     stmt_handle_type*               pStmtHandle,

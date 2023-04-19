@@ -60,19 +60,6 @@ class RemoteFB__API_P12__FetchStatement LCPI_CPP_CFG__CLASS__FINAL
                     RemoteFB__ConnectorData*        pData,
                     stmt_handle_type*               pStmtHandle,
                     const isc_api::XSQLDA_V1*       pOutXSQLDA)COMP_W000004_OVERRIDE_FINAL;
-
- private:
-  /// <summary>
-  ///  Загрузка следующего блока рядов.
-  /// </summary>
-  //! \param[in] serverOperation
-  //! \param[in] pData
-  //! \param[in] pStmt
-  //!  Not null.
-  static void helper__fetch_next_rows
-                             (RemoteFB__P12__SrvOperation& serverOperation,
-                              RemoteFB__ConnectorData*     pData,
-                              stmt_data_type*              pStmt);
 };//class RemoteFB__API_P12__FetchStatement
 
 ////////////////////////////////////////////////////////////////////////////////

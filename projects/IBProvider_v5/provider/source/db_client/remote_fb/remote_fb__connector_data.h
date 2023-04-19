@@ -17,6 +17,7 @@
 #include "source/db_client/remote_fb/api/remote_fb__api__trans__commit.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__trans__commit_retaining.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__dsql__execute_immediate.h"
+#include "source/db_client/remote_fb/api/remote_fb__api__dsql__execute_immediate_m.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__allocate.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__drop.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__prepare.h"
@@ -24,7 +25,9 @@
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__get_columns.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__get_parameters.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__execute.h"
+#include "source/db_client/remote_fb/api/remote_fb__api__stmt__execute_m.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__fetch.h"
+#include "source/db_client/remote_fb/api/remote_fb__api__stmt__fetch_m.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__stmt__close.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__blob__open.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__blob__create.h"
@@ -56,8 +59,9 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Класс контейнера данных подключения к FireBird.
 /// </summary>
-class RemoteFB__ConnectorData:public db_obj::t_db_service_provider
-                             ,public RemoteFB__SmartObjectBase2
+class RemoteFB__ConnectorData LCPI_CPP_CFG__CLASS__FINAL
+ :public db_obj::t_db_service_provider
+ ,public RemoteFB__SmartObjectBase2
 {
  private:
   typedef RemoteFB__ConnectorData                      self_type;
@@ -92,6 +96,7 @@ class RemoteFB__ConnectorData:public db_obj::t_db_service_provider
   DEF_API_ENTRY(Rollback);
   DEF_API_ENTRY(RollbackRetaining);
   DEF_API_ENTRY(ExecuteImmediate);
+  DEF_API_ENTRY(ExecuteImmediate_M);
   DEF_API_ENTRY(AllocateStatement);
   DEF_API_ENTRY(DropStatement);
   DEF_API_ENTRY(PrepareStatement);
@@ -99,7 +104,9 @@ class RemoteFB__ConnectorData:public db_obj::t_db_service_provider
   DEF_API_ENTRY(GetColumns);
   DEF_API_ENTRY(GetParameters);
   DEF_API_ENTRY(ExecuteStatement);
+  DEF_API_ENTRY(ExecuteStatement_M);
   DEF_API_ENTRY(FetchStatement);
+  DEF_API_ENTRY(FetchStatement_M);
   DEF_API_ENTRY(CloseStatement);
   DEF_API_ENTRY(OpenBlob);
   DEF_API_ENTRY(CreateBlob);

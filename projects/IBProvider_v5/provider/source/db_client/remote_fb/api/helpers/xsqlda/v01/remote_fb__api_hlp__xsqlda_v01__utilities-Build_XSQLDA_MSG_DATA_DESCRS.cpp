@@ -9,6 +9,7 @@
 
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/api/helpers/xsqlda/remote_fb__api_hlp__xsqlda__error_utils.h"
+#include "source/ibp_memory_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -121,7 +122,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__varying,
        pcbResultAlign); //throw
@@ -130,12 +131,12 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(isc_api::isc_varchar_size_type)); //throw
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        xvar_sqllen); //throw
 
@@ -178,7 +179,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        xvar_sqllen); //throw
 
@@ -230,7 +231,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__short,
        pcbResultAlign); //throw
@@ -239,7 +240,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_SHORT)); //throw
 
@@ -269,7 +270,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__long,
        pcbResultAlign); //throw
@@ -278,7 +279,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_LONG)); //throw
 
@@ -308,7 +309,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__int64,
        pcbResultAlign); //throw
@@ -317,7 +318,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_INT64)); //throw
 
@@ -347,7 +348,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__quad,
        pcbResultAlign); //throw
@@ -356,7 +357,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_BID)); //throw
 
@@ -384,7 +385,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__quad,
        pcbResultAlign); //throw
@@ -393,7 +394,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_BID)); //throw
 
@@ -421,7 +422,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__float,
        pcbResultAlign); //throw
@@ -430,7 +431,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_FLOAT)); //throw
 
@@ -458,7 +459,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__double,
        pcbResultAlign); //throw
@@ -467,7 +468,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(protocol::P_DOUBLE)); //throw
 
@@ -495,7 +496,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__time,
        pcbResultAlign); //throw
@@ -504,7 +505,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(isc_api::t_ibp_isc_time)); //throw
 
@@ -532,7 +533,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__date,
        pcbResultAlign); //throw
@@ -541,7 +542,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(isc_api::t_ibp_isc_date)); //throw
 
@@ -569,7 +570,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_isc_type_align__timestamp,
        pcbResultAlign); //throw
@@ -578,7 +579,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(isc_api::t_ibp_isc_timestamp)); //throw
 
@@ -606,7 +607,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
 
    //---------------------------------------
    szMsg
-    =Helper__AlignMsgLength
+    =IBP_Memory_Utils::AlignMemLength
       (szMsg,
        isc_api::ibp_fb030_type_align__bool,
        pcbResultAlign); //throw
@@ -615,7 +616,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
     =szMsg;                                                               // OFFSET
 
    szMsg
-    =Helper__AddMsgLength
+    =IBP_Memory_Utils::AddMemLength
       (szMsg,
        sizeof(isc_api::t_ibp_fb030_bool)); //throw
 
@@ -646,7 +647,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
  assert_s(sizeof(protocol::P_SHORT)==sizeof(*pXSQLVAR->sqlind));
 
  szMsg
-  =Helper__AlignMsgLength
+  =IBP_Memory_Utils::AlignMemLength
     (szMsg,
      /*align*/isc_api::ibp_isc_type_align__short,
      pcbResultAlign); //throw
@@ -654,7 +655,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
  MsgDescr.m_msg_sqlind_offset=szMsg;
 
  szMsg
-  =Helper__AddMsgLength
+  =IBP_Memory_Utils::AddMemLength
     (szMsg,
      sizeof(protocol::P_SHORT)); //throw
 
