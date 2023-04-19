@@ -170,78 +170,6 @@
     <Filter Include="source\tests\api">
       <UniqueIdentifier>{0c817026-952d-45ad-a40d-54ad5e715f8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\work\Fields\smallint">
-      <UniqueIdentifier>{a94715f8-d0f1-4373-ae2d-6b503bdfc127}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\smallint\headers">
-      <UniqueIdentifier>{6b950967-fe36-477c-a38f-609824ae7ed3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\integer">
-      <UniqueIdentifier>{2a3aadea-1788-4091-97a4-db64923ad1eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\bigint">
-      <UniqueIdentifier>{cfe723d6-b0e8-4725-8942-ee59bc5242b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\integer\headers">
-      <UniqueIdentifier>{3b364d01-0a4d-4ad7-a70b-f78a020996eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\bigint\headers">
-      <UniqueIdentifier>{c9e43865-94bc-4c34-8862-65d1ea09db0d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\float">
-      <UniqueIdentifier>{d1be2fa1-e375-4129-896b-8de3dcb5d6ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\float\headers">
-      <UniqueIdentifier>{fa5857d9-8792-403b-b55a-0cf993ca348b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\double">
-      <UniqueIdentifier>{a000c168-8b27-4e29-8796-66b453879ba6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\double\headers">
-      <UniqueIdentifier>{a23790dc-dd09-4fd4-b3f6-e529a0259487}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\numeric">
-      <UniqueIdentifier>{8f556911-6628-4cbe-9ae4-a11ac83d9273}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\numeric\headers">
-      <UniqueIdentifier>{c857ebc9-77b5-4180-b2a0-3eb38f5f1bf0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\decimal">
-      <UniqueIdentifier>{844ce763-0d5c-4b5f-a5d1-4645fba391e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\decimal\headers">
-      <UniqueIdentifier>{dfc43205-0213-4436-9f74-b2a3294affb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\time">
-      <UniqueIdentifier>{bced269c-7086-489b-85a5-f0375ae438c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\time\headers">
-      <UniqueIdentifier>{d77112a7-5c7d-4852-95e4-237edf021c42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\date">
-      <UniqueIdentifier>{da0c6b56-7eec-4566-898b-03b26005d370}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\date\headers">
-      <UniqueIdentifier>{9034547d-5a07-4133-bd47-059bcf4b5ba6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\timestamp">
-      <UniqueIdentifier>{5c8302dd-fbbb-46ef-8f08-f7539849c205}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\timestamp\headers">
-      <UniqueIdentifier>{612f9dfe-5fa4-4539-830a-e9d4b2a2e58b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\char">
-      <UniqueIdentifier>{0551dc3a-2922-48a4-82ac-7f8a37341045}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\char\headers">
-      <UniqueIdentifier>{3feb66a0-ea77-480d-82d6-bef44d886af9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\varchar">
-      <UniqueIdentifier>{83d51b2f-9860-4af4-a06b-59f8f8288277}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\varchar\headers">
-      <UniqueIdentifier>{a4947e11-0a97-43f0-9708-42c4b32b4767}</UniqueIdentifier>
-    </Filter>
     <Filter Include="IBP\source\services\charsets">
       <UniqueIdentifier>{9a8a9888-9814-458a-bf9f-a9b56e1bb1c3}</UniqueIdentifier>
     </Filter>
@@ -299,9 +227,6 @@
     <Filter Include="source\tests\work\StmtFetch\headers">
       <UniqueIdentifier>{9dd7ed9a-66b5-4831-bd9a-bb6aa30065bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\tests\work\Fields">
-      <UniqueIdentifier>{a8fa784e-921c-47e5-992b-b62c080586c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\work\_headers">
       <UniqueIdentifier>{c971e90f-746b-42ff-a832-16294d824c0d}</UniqueIdentifier>
     </Filter>
@@ -352,9 +277,6 @@
     </Filter>
     <Filter Include="IBP\source\db_obj\dbms_fb\v02_5_0\api\_headers">
       <UniqueIdentifier>{ba8e181d-ed4a-4299-80ca-e82437185c00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\_headers">
-      <UniqueIdentifier>{f864dec8-035e-4b25-bff6-b742a5c4e169}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\tests\work\Params\_headers">
       <UniqueIdentifier>{cfadf0b4-fd59-40e8-8756-84fba9653bc4}</UniqueIdentifier>
@@ -439,12 +361,6 @@
     </Filter>
     <Filter Include="source\tests\mix\RemoteFB__ClientConnectBlock_v2\_headers">
       <UniqueIdentifier>{ccea1ae2-c7a9-466b-92bb-bfc5ce279c2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\boolean">
-      <UniqueIdentifier>{95c876a6-0696-419d-9bf6-e5c2f00b325c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\tests\work\Fields\boolean\_headers">
-      <UniqueIdentifier>{23d862da-c08c-4d26-996b-9e3f3ad9c6fe}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\tests\work\Params\IN">
       <UniqueIdentifier>{7eb93b99-ec6f-4079-9bfa-abdc4b90daff}</UniqueIdentifier>
@@ -989,6 +905,87 @@
     <Filter Include="IBP\source\db_obj\isc\isc_base\helpers\xsqlda\_headers">
       <UniqueIdentifier>{ed8290a1-3adc-4bc9-a153-e67fae7cf3b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types">
+      <UniqueIdentifier>{24b0b901-8dd3-4088-ba5f-2337b7b8f064}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\bigint">
+      <UniqueIdentifier>{f93d3cd4-7eb2-426c-a2db-c275836a9db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\bigint\_headers">
+      <UniqueIdentifier>{9a299569-df8e-40aa-8958-42f7ef4fb796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\boolean">
+      <UniqueIdentifier>{00a4d2a2-4977-4f3b-a270-730c3ff533e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\boolean\_headers">
+      <UniqueIdentifier>{f7acc16f-22f2-47d0-8999-4a8a8dbba502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\char">
+      <UniqueIdentifier>{cf22e51c-56b5-4d20-9c91-306ee155bfcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\char\_headers">
+      <UniqueIdentifier>{bdf9e644-237e-4874-8b23-74194e4a34f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\date">
+      <UniqueIdentifier>{581135e0-3d21-4d27-ac43-f7f4add0330a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\date\_headers">
+      <UniqueIdentifier>{1ad287b3-d36c-48f8-acd0-82538387b7cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decimal">
+      <UniqueIdentifier>{d4474111-e62b-4825-bfef-76f169f92402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decimal\_headers">
+      <UniqueIdentifier>{4ebeadd2-30d8-4552-b17d-f4cfb66abd96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\double">
+      <UniqueIdentifier>{9b530382-205a-4cec-854b-444e51ca145e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\double\_headers">
+      <UniqueIdentifier>{259c0021-3ac9-47c2-8b25-054119d88c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\float">
+      <UniqueIdentifier>{fedf436f-7bf6-46a7-bb38-22d07b888335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\float\headers">
+      <UniqueIdentifier>{8c461d0b-d126-4b76-a011-25f4d01bd9dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\integer">
+      <UniqueIdentifier>{9347e22b-1285-4213-8429-28d9468f4177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\integer\_headers">
+      <UniqueIdentifier>{12d3c7df-e2a1-4bba-9242-bc8aa54f74be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\numeric">
+      <UniqueIdentifier>{62df9333-b019-4d71-aeb6-9153684b8a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\numeric\_headers">
+      <UniqueIdentifier>{0d485de2-0294-45eb-a47b-63230c8e8d53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\smallint">
+      <UniqueIdentifier>{d1818b6d-35d9-4f48-a142-044324a5386a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\smallint\_headers">
+      <UniqueIdentifier>{da860c1b-e49d-46f3-91cb-7d29f8cc6c72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\time">
+      <UniqueIdentifier>{6d2045cb-e3bd-4755-b94a-8cee8590d05b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\time\headers">
+      <UniqueIdentifier>{db8a4298-e2dc-4c13-aaf6-0638a28dc0b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\timestamp">
+      <UniqueIdentifier>{3c962e29-096d-4aba-ae66-6b29ff5f2681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\timestamp\headers">
+      <UniqueIdentifier>{e3a479aa-f0c4-4dc2-bc38-909f8b4e7508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\varchar">
+      <UniqueIdentifier>{36a7c8de-7c8e-4b87-8944-c8c7d587f17d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\varchar\_headers">
+      <UniqueIdentifier>{7b7cd298-262c-4a60-8aba-4a33305fa07c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1276,98 +1273,47 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.cpp">
       <Filter>IBP\source\db_client\remote_fb\transmission</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_101__Failed.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_03__MARS.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_103__MARS.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_04__MARS_Failed.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_104__MARS_Failed.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_06__close_stmt.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_105__drop_stmt__v2_lazy_send.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_07__commit.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_105__drop_stmt__v1_no_lazy.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_08__rollback.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_106__close_stmt.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_09__commit_retaining.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_107__commit.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_10__rollback_retaining.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_108__rollback.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_11__sql_commit.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_109__commit_retaining.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_12__sql_rollback.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_110__rollback_retaining.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_13__sql_commit_retaining.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_111__sql_commit.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_14__sql_rollback_retaining.cpp">
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_112__sql_rollback.cpp">
       <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_001.cpp">
-      <Filter>source\tests\work\Fields\smallint</Filter>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_113__sql_commit_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_001.cpp">
-      <Filter>source\tests\work\Fields\integer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_001.cpp">
-      <Filter>source\tests\work\Fields\bigint</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\float\WORK_Fields__float_001.cpp">
-      <Filter>source\tests\work\Fields\float</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\double\WORK_Fields__double_001.cpp">
-      <Filter>source\tests\work\Fields\double</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N07_02.cpp">
-      <Filter>source\tests\work\Fields\numeric</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N03_01.cpp">
-      <Filter>source\tests\work\Fields\numeric</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N15_05.cpp">
-      <Filter>source\tests\work\Fields\numeric</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D03_01.cpp">
-      <Filter>source\tests\work\Fields\decimal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D07_02.cpp">
-      <Filter>source\tests\work\Fields\decimal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D15_05.cpp">
-      <Filter>source\tests\work\Fields\decimal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\time\WORK_Fields__time_001.cpp">
-      <Filter>source\tests\work\Fields\time</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\date\WORK_Fields__date_001.cpp">
-      <Filter>source\tests\work\Fields\date</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\timestamp\WORK_Fields__timestamp_001.cpp">
-      <Filter>source\tests\work\Fields\timestamp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\char\WORK_Fields__char_001__sz7.cpp">
-      <Filter>source\tests\work\Fields\char</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\varchar\WORK_Fields__varchar_001__sz7.cpp">
-      <Filter>source\tests\work\Fields\varchar</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_002__check_align.cpp">
-      <Filter>source\tests\work\Fields\smallint</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_002__check_align.cpp">
-      <Filter>source\tests\work\Fields\integer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_002__check_align.cpp">
-      <Filter>source\tests\work\Fields\bigint</Filter>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_114__sql_rollback_retaining.cpp">
+      <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__blob.cpp">
       <Filter>IBP\source\db_client\remote_fb\handles</Filter>
@@ -1671,12 +1617,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__cancel.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v2_lazy_send.cpp">
-      <Filter>source\tests\work\StmtFetch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy.cpp">
-      <Filter>source\tests\work\StmtFetch</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send.cpp">
       <Filter>source\tests\work\Blob</Filter>
@@ -2055,12 +1995,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.cpp">
       <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.cpp">
-      <Filter>source\tests\work\Fields</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\WORK_Fields__002__nulls.cpp">
-      <Filter>source\tests\work\Fields</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.cpp">
       <Filter>source\tests\work\Params</Filter>
@@ -2604,9 +2538,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.cpp">
       <Filter>source\tests\mix\RemoteFB__ClientConnectBlock_v2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\work\Fields\boolean\WORK_Fields__boolean_001.cpp">
-      <Filter>source\tests\work\Fields\boolean</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.cpp">
       <Filter>source\tests\work\Array\Read</Filter>
@@ -3457,6 +3388,75 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v0.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_001__nulls.cpp">
+      <Filter>source\tests\work\StmtFetch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_002__nulls.cpp">
+      <Filter>source\tests\work\StmtFetch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\bigint\WORK_StmtFetch__Types__bigint_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\bigint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\bigint\WORK_StmtFetch__Types__bigint_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\bigint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\boolean\WORK_StmtFetch__Types__boolean_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\boolean</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\char\WORK_StmtFetch__Types__char_001__sz7.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\char</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\date\WORK_StmtFetch__Types__date_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\date</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D03_01.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D07_02.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D15_05.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\double\WORK_StmtFetch__Types__double_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\double</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\float\WORK_StmtFetch__Types__float_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\float</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\integer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\integer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N03_01.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N07_02.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N15_05.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\numeric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\smallint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_002__check_align.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\smallint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\time\WORK_StmtFetch__Types__time_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\timestamp\WORK_StmtFetch__Types__timestamp_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\timestamp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\varchar\WORK_StmtFetch__Types__varchar_001__sz7.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\varchar</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -3738,98 +3738,47 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\transmission\remote_fb__transmission__xdr__info.h">
       <Filter>IBP\source\db_client\remote_fb\transmission\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_01__Failed.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_101__Failed.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_03__MARS.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_103__MARS.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_04__MARS_Failed.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_104__MARS_Failed.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_06__close_stmt.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_105__drop_stmt__v1_no_lazy.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_07__commit.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_105__drop_stmt__v2_lazy_send.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_08__rollback.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_106__close_stmt.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_09__commit_retaining.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_107__commit.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_10__rollback_retaining.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_108__rollback.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_11__sql_commit.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_109__commit_retaining.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_12__sql_rollback.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_110__rollback_retaining.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_13__sql_commit_retaining.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_111__sql_commit.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_14__sql_rollback_retaining.h">
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_112__sql_rollback.h">
       <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_001.h">
-      <Filter>source\tests\work\Fields\smallint\headers</Filter>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_113__sql_commit_retaining.h">
+      <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_001.h">
-      <Filter>source\tests\work\Fields\integer\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_001.h">
-      <Filter>source\tests\work\Fields\bigint\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\float\WORK_Fields__float_001.h">
-      <Filter>source\tests\work\Fields\float\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\double\WORK_Fields__double_001.h">
-      <Filter>source\tests\work\Fields\double\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N07_02.h">
-      <Filter>source\tests\work\Fields\numeric\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N03_01.h">
-      <Filter>source\tests\work\Fields\numeric\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\numeric\WORK_Fields__numeric_001__N15_05.h">
-      <Filter>source\tests\work\Fields\numeric\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D03_01.h">
-      <Filter>source\tests\work\Fields\decimal\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D07_02.h">
-      <Filter>source\tests\work\Fields\decimal\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\decimal\WORK_Fields__decimal_001__D15_05.h">
-      <Filter>source\tests\work\Fields\decimal\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\time\WORK_Fields__time_001.h">
-      <Filter>source\tests\work\Fields\time\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\date\WORK_Fields__date_001.h">
-      <Filter>source\tests\work\Fields\date\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\timestamp\WORK_Fields__timestamp_001.h">
-      <Filter>source\tests\work\Fields\timestamp\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\char\WORK_Fields__char_001__sz7.h">
-      <Filter>source\tests\work\Fields\char\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\varchar\WORK_Fields__varchar_001__sz7.h">
-      <Filter>source\tests\work\Fields\varchar\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\smallint\WORK_Fields__smallint_002__check_align.h">
-      <Filter>source\tests\work\Fields\smallint\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\integer\WORK_Fields__integer_002__check_align.h">
-      <Filter>source\tests\work\Fields\integer\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\bigint\WORK_Fields__bigint_002__check_align.h">
-      <Filter>source\tests\work\Fields\bigint\headers</Filter>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_114__sql_rollback_retaining.h">
+      <Filter>source\tests\work\StmtFetch\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\handles\remote_fb__handle_data__blob.h">
       <Filter>IBP\source\db_client\remote_fb\handles\_headers</Filter>
@@ -4248,12 +4197,6 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\lazy_send\remote_fb__api_p12_lazy_send__blob__cancel.h">
       <Filter>IBP\source\db_client\remote_fb\api\p12\lazy_send\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v1_no_lazy.h">
-      <Filter>source\tests\work\StmtFetch\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_05__drop_stmt__v2_lazy_send.h">
-      <Filter>source\tests\work\StmtFetch\headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Blob\WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send.h">
       <Filter>source\tests\work\Blob\headers</Filter>
     </ClInclude>
@@ -4642,12 +4585,6 @@
     <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.h">
       <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\WORK_Fields__001__nulls.h">
-      <Filter>source\tests\work\Fields\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\WORK_Fields__002__nulls.h">
-      <Filter>source\tests\work\Fields\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.h">
       <Filter>source\tests\work\Params\_headers</Filter>
     </ClInclude>
@@ -4974,9 +4911,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\mix\RemoteFB__ClientConnectBlock_v2\TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory.h">
       <Filter>source\tests\mix\RemoteFB__ClientConnectBlock_v2\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\work\Fields\boolean\WORK_Fields__boolean_001.h">
-      <Filter>source\tests\work\Fields\boolean\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.h">
       <Filter>source\tests\work\Array\Read\headers</Filter>
@@ -5490,6 +5424,75 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v0.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_001__nulls.h">
+      <Filter>source\tests\work\StmtFetch\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_002__nulls.h">
+      <Filter>source\tests\work\StmtFetch\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\varchar\WORK_StmtFetch__Types__varchar_001__sz7.h">
+      <Filter>source\tests\work\StmtFetch\Types\varchar\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\timestamp\WORK_StmtFetch__Types__timestamp_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\timestamp\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\time\WORK_StmtFetch__Types__time_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\time\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch\Types\smallint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\smallint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N15_05.h">
+      <Filter>source\tests\work\StmtFetch\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N07_02.h">
+      <Filter>source\tests\work\StmtFetch\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N03_01.h">
+      <Filter>source\tests\work\StmtFetch\Types\numeric\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch\Types\integer\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\integer\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\float\WORK_StmtFetch__Types__float_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\float\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\double\WORK_StmtFetch__Types__double_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\double\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D15_05.h">
+      <Filter>source\tests\work\StmtFetch\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D07_02.h">
+      <Filter>source\tests\work\StmtFetch\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D03_01.h">
+      <Filter>source\tests\work\StmtFetch\Types\decimal\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\date\WORK_StmtFetch__Types__date_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\date\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\char\WORK_StmtFetch__Types__char_001__sz7.h">
+      <Filter>source\tests\work\StmtFetch\Types\char\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\boolean\WORK_StmtFetch__Types__boolean_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\boolean\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\bigint\WORK_StmtFetch__Types__bigint_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\bigint\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\bigint\WORK_StmtFetch__Types__bigint_002__check_align.h">
+      <Filter>source\tests\work\StmtFetch\Types\bigint\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
