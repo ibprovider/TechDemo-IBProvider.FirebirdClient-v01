@@ -109,6 +109,8 @@ class t_typed_simple_buffer
  public:
   t_typed_simple_buffer();
 
+  t_typed_simple_buffer(self_type&&);
+
   explicit t_typed_simple_buffer(size_type const sz);
 
   t_typed_simple_buffer(const value_type* s,size_type const n);
@@ -148,6 +150,8 @@ class t_typed_simple_buffer
   const_reference back()const;
 
  public: //buffer managements --------------------------------------------
+  void     clear();
+
   pointer  alloc(size_type sz);
   pointer  realloc(size_type sz);
 
