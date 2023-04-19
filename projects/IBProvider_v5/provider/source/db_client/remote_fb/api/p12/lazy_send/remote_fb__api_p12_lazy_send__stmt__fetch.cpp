@@ -30,11 +30,13 @@ RemoteFB__API_P12_LAZY_SEND__FetchStatement RemoteFB__API_P12_LAZY_SEND__FetchSt
 
 //------------------------------------------------------------------------
 RemoteFB__API_P12_LAZY_SEND__FetchStatement::RemoteFB__API_P12_LAZY_SEND__FetchStatement()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 RemoteFB__API_P12_LAZY_SEND__FetchStatement::~RemoteFB__API_P12_LAZY_SEND__FetchStatement()
-{;}
+{
+}
 
 //interface --------------------------------------------------------------
 bool RemoteFB__API_P12_LAZY_SEND__FetchStatement::exec

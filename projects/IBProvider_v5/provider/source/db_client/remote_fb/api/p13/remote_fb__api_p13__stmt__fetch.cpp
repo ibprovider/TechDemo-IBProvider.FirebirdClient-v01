@@ -30,11 +30,13 @@ RemoteFB__API_P13__FetchStatement RemoteFB__API_P13__FetchStatement::Instance;
 
 //------------------------------------------------------------------------
 RemoteFB__API_P13__FetchStatement::RemoteFB__API_P13__FetchStatement()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 RemoteFB__API_P13__FetchStatement::~RemoteFB__API_P13__FetchStatement()
-{;}
+{
+}
 
 //interface --------------------------------------------------------------
 bool RemoteFB__API_P13__FetchStatement::exec(db_obj::t_db_operation_context& OpCtx,
