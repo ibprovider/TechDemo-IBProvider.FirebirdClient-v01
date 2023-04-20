@@ -16,8 +16,6 @@
 #include "source/db_obj/fb_base/fb_api.h"
 #include "source/db_obj/db_utility.h"
 #include "source/error_services/ibp_error_bug_check.h"
-#include "source/error_services/ibp_error_utils.h"
-#include "source/error_services/ibp_error_messages.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p11{
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,11 +57,12 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
  try
  {
   //query information
-  pData->m_API__GetDatabaseInfo.get()->exec(pData,
-                                            /*Incornation*/0,
-                                            _DIM_(sm_db_info_items),
-                                            sm_db_info_items,
-                                            buffer2); //throw
+  pData->m_API__GetDatabaseInfo.get()->exec
+   (pData,
+    /*Incornation*/0,
+    _DIM_(sm_db_info_items),
+    sm_db_info_items,
+    buffer2); //throw
  }
  catch(const std::exception& e)
  {
@@ -180,122 +179,121 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
    switch(cluster_id)
    {
     case isc_api::ibp_isc_info_implementation:
-     {
-      isc_base::isc_database_info_utils::read_info__isc_implementations
-       (cluster_length,
-        cluster_data,
-        cns);
+    {
+     isc_base::isc_database_info_utils::read_info__isc_implementations
+      (cluster_length,
+       cluster_data,
+       cns);
 
-      break;
-     }//ibp_isc_info_implementation
+     break;
+    }//ibp_isc_info_implementation
 
     case isc_api::ibp_isc_info_db_id:
-     {
-      isc_base::isc_database_info_utils::read_info__db_id
-       (cluster_length,
-        cluster_data,
-        cns);
+    {
+     isc_base::isc_database_info_utils::read_info__db_id
+      (cluster_length,
+       cluster_data,
+       cns);
 
-      break;
-     }//ibp_isc_info_db_id
+     break;
+    }//ibp_isc_info_db_id
 
     case isc_api::ibp_isc_info_db_SQL_dialect:
-     {
-      isc_base::isc_portable_format_to_integer::exec
-       (cluster_length,
-        cluster_data,
-        &cns.db_dialect_Ex,
-        ibp_subsystem__remote_fb__p11,
-        L"isc_info_db_SQL_dialect");
+    {
+     isc_base::isc_portable_format_to_integer::exec
+      (cluster_length,
+       cluster_data,
+       &cns.db_dialect_Ex,
+       ibp_subsystem__remote_fb__p11,
+       L"isc_info_db_SQL_dialect");
 
-      break;
-     }//ibp_isc_info_db_SQL_dialect
+     break;
+    }//ibp_isc_info_db_SQL_dialect
 
     case isc_api::ibp_isc_info_page_size:
-     {
-      isc_base::isc_portable_format_to_integer::exec
-       (cluster_length,
-        cluster_data,
-        &cns.db_page_size_Ex,
-        ibp_subsystem__remote_fb__p11,
-        L"isc_info_page_size");
+    {
+     isc_base::isc_portable_format_to_integer::exec
+      (cluster_length,
+       cluster_data,
+       &cns.db_page_size_Ex,
+       ibp_subsystem__remote_fb__p11,
+       L"isc_info_page_size");
 
-      break;
-     }//ibp_isc_info_page_size
+     break;
+    }//ibp_isc_info_page_size
 
     case isc_api::ibp_isc_info_db_read_only:
     {
-     cns.db_read_only_Ex=!isc_base::isc_portable_integer__is_zero
-                                           (cluster_length,
-                                            cluster_data);
+     cns.db_read_only_Ex
+      =!isc_base::isc_portable_integer__is_zero
+         (cluster_length,
+          cluster_data);
+
      break;
     }//ibp_isc_info_db_read_only
 
     case isc_api::ibp_isc_info_ods_version:
-     {
-      isc_base::isc_portable_format_to_integer::exec
-       (cluster_length,
-        cluster_data,
-        &tmp__db_ods_id.major_num,
-        ibp_subsystem__remote_fb__p11,
-        L"isc_info_ods_version");
+    {
+     isc_base::isc_portable_format_to_integer::exec
+      (cluster_length,
+       cluster_data,
+       &tmp__db_ods_id.major_num,
+       ibp_subsystem__remote_fb__p11,
+       L"isc_info_ods_version");
 
-      break;
-     }//ibp_isc_info_ods_version
+     break;
+    }//ibp_isc_info_ods_version
 
     case isc_api::ibp_isc_info_ods_minor_version:
-     {
-      isc_base::isc_portable_format_to_integer::exec
-       (cluster_length,
-        cluster_data,
-        &tmp__db_ods_id.minor_num,
-        ibp_subsystem__remote_fb__p11,
-        L"isc_info_ods_minor_version");
+    {
+     isc_base::isc_portable_format_to_integer::exec
+      (cluster_length,
+       cluster_data,
+       &tmp__db_ods_id.minor_num,
+       ibp_subsystem__remote_fb__p11,
+       L"isc_info_ods_minor_version");
 
-      break;
-     }//ibp_isc_info_ods_minor_version
+     break;
+    }//ibp_isc_info_ods_minor_version
 
     case fb_api::ibp_frb_info_firebird_version:
-     {
-      isc_base::isc_database_info_utils::read_info__server_version
-       (cluster_length,
-        cluster_data,
-        cns);
+    {
+     isc_base::isc_database_info_utils::read_info__server_version
+      (cluster_length,
+       cluster_data,
+       cns);
 
-      break;
-     }//ibp_frb_info_firebird_version
+     break;
+    }//ibp_frb_info_firebird_version
 
     case fb_api::ibp_frb_info_creation_date:
-     {
-      isc_base::isc_database_info_utils::read_info__db_creation_data
-       (cluster_length,
-        cluster_data,
-        cns); //throw
+    {
+     isc_base::isc_database_info_utils::read_info__db_creation_data
+      (cluster_length,
+       cluster_data,
+       cns); //throw
 
-      break;
-     }//ibp_frb_info_creation_date
+     break;
+    }//ibp_frb_info_creation_date
 
  #ifndef NDEBUG
     default:
-     {
-      //неизвестные теги мы вы€вл€ем в начале текущего цикла
+    {
+     //неизвестные теги мы вы€вл€ем в начале текущего цикла
 
-      assert_msg(false,"cluster_id="<<cluster_id);
-     }//default
+     assert_msg(false,"cluster_id="<<cluster_id);
+    }//default
  #endif
    }//switch
   }
   catch(const std::exception& e)
   {
-   t_ibp_error exc(e);
-
-   exc.add_error(E_FAIL,
-                 ibp_subsystem__remote_fb__p11,
-                 ibp_mce_dbobj__in_db_info_processing_error_occurred_1);
-
-   exc<<cluster_id;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (e,
+     E_FAIL,
+     ibp_subsystem__remote_fb__p11,
+     ibp_mce_dbobj__in_db_info_processing_error_occurred_1,
+     cluster_id);
   }//catch
  }//for p
 
@@ -312,6 +310,8 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
 
   DEBUG_CODE(size_t not_processed_tag_count=0;)
 
+  const wchar_t* sep=L"";
+
   for(const unsigned char* i1(b1);i1!=e1;++i1)
   {
    if(std::find(processed_ids.cbegin(),processed_ids.cend(),*i1)!=processed_ids.cend())
@@ -319,10 +319,9 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
 
    DEBUG_CODE(++not_processed_tag_count;)
 
-   if(i1!=b1)
-    tags<<L", ";
+   tags<<sep<<unsigned(*i1);
 
-   tags<<unsigned(*i1);
+   sep=L", ";
   }//for i1
 
   assert(not_processed_tag_count>0);
