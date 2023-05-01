@@ -86,10 +86,12 @@ void RemoteFB__API_P12__FlushBlob::exec(RemoteFB__ConnectorData* const pData,
  //-----------------------------------------
  if((*pBlobHandle)->m_WriteMode__State==blob_data_type::WriteState__Failed)
  {
-  assert(FAILED((*pBlobHandle)->m_Err.com_code()));
+  assert((*pBlobHandle)->m_spExc);
 
-  (*pBlobHandle)->m_Err.raise();
+  std::rethrow_exception((*pBlobHandle)->m_spExc);
  }//if
+
+  assert(!(*pBlobHandle)->m_spExc);
 
  //-----------------------------------------
  assert(structure::can_numeric_cast<protocol::P_USHORT>((*pBlobHandle)->m_Buffer.size()));
@@ -109,26 +111,16 @@ void RemoteFB__API_P12__FlushBlob::exec(RemoteFB__ConnectorData* const pData,
    (*pBlobHandle)->m_WriteMode__BufferPos=0;
   }//if
  }
- catch(const std::bad_alloc&)
+ catch(...)
  {
   (*pBlobHandle)->m_WriteMode__State=blob_data_type::WriteState__Failed;
 
-  (*pBlobHandle)->m_Err.clear_state(E_OUTOFMEMORY);
+  (*pBlobHandle)->m_spExc=std::current_exception();
 
-  (*pBlobHandle)->m_Err.raise();
- }
- catch(t_ibp_error& exc)
- {
-  assert(FAILED(exc.com_code()));
+  assert((*pBlobHandle)->m_spExc);
 
-  (*pBlobHandle)->m_WriteMode__State=blob_data_type::WriteState__Failed;
-
-  (*pBlobHandle)->m_Err.swap(exc); //no throw!
-
-  assert(FAILED((*pBlobHandle)->m_Err.com_code()));
-
-  (*pBlobHandle)->m_Err.raise();
- }//catch exc
+  throw;
+ }//catch
 }//exec
 
 ////////////////////////////////////////////////////////////////////////////////

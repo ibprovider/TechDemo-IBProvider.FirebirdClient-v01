@@ -1145,9 +1145,10 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcErr__IncorrectUsage__NoCnParam
  exc<<authServiceName;
 
  //----------------
- exc.add_error(E_FAIL,
-               subsystem_id,
-               ibp_mce_no_def_req_init_prop_1);
+ exc.add_error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_no_def_req_init_prop_1);
 
  exc<<cnParamName;
 
@@ -1169,9 +1170,10 @@ void RemoteFB__ErrorUtils::Throw_AuthSvcErr__IncorrectUsage__AlreadyWasCompleted
  exc<<authServiceName;
 
  //----------------
- exc.add_error(E_FAIL,
-               subsystem_id,
-               ibp_mce_remote__auth_seq_already_completed_0);
+ exc.add_error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_remote__auth_seq_already_completed_0);
 
  //----------------
  exc.raise_me();

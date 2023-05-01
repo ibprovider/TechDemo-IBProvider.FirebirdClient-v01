@@ -334,9 +334,10 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
    {
     //Добавляем сведения об устанавливаемом алгоритме шифрования
 
-    exc.add_error(exc.com_code(),
-                  ibp_subsystem__remote_fb__p13,
-                  ibp_mce_remote__failed_to_start_wire_crypt_2);
+    exc.add_error
+     (exc.com_code(),
+      ibp_subsystem__remote_fb__p13,
+      ibp_mce_remote__failed_to_start_wire_crypt_2);
 
     exc<<pKnownServerKey->wstrType
        <<pKnownServerKey->wstrPlugin;

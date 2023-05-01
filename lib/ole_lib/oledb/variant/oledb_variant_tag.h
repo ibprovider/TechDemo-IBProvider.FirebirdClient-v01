@@ -26,47 +26,48 @@ namespace oledb_lib{
 struct tagDBVARIANT
 {
  private:
-  typedef tagDBVARIANT                   self_type;
+  typedef tagDBVARIANT                                self_type;
 
  public: //typedefs ------------------------------------------------------
-  typedef DBLENGTH                       length_type;
-  typedef DBSTATUS                       status_type;
-  typedef DBCOUNTITEM                    count_item_type;
-  typedef size_t                         size_type;
+  typedef DBLENGTH                                    length_type;
+  typedef DBSTATUS                                    status_type;
+  typedef DBCOUNTITEM                                 count_item_type;
+  typedef size_t                                      size_type;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_oledb_value__I1              value_i1_type;
-  typedef t_oledb_value__I2              value_i2_type;
-  typedef t_oledb_value__I4              value_i4_type;
-  typedef t_oledb_value__I8              value_i8_type;
-  typedef t_oledb_value__I8_s            value_i8_type_s;
+  typedef t_oledb_value__I1                           value_i1_type;
+  typedef t_oledb_value__I2                           value_i2_type;
+  typedef t_oledb_value__I4                           value_i4_type;
+  typedef t_oledb_value__I8                           value_i8_type;
+  typedef t_oledb_value__I8_s                         value_i8_type_s;
 
-  typedef t_oledb_value__UI1             value_ui1_type;
-  typedef t_oledb_value__UI2             value_ui2_type;
-  typedef t_oledb_value__UI4             value_ui4_type;
-  typedef t_oledb_value__UI8             value_ui8_type;
-  typedef t_oledb_value__UI8_s           value_ui8_type_s;
+  typedef t_oledb_value__UI1                          value_ui1_type;
+  typedef t_oledb_value__UI2                          value_ui2_type;
+  typedef t_oledb_value__UI4                          value_ui4_type;
+  typedef t_oledb_value__UI8                          value_ui8_type;
+  typedef t_oledb_value__UI8_s                        value_ui8_type_s;
 
-  typedef t_oledb_value__R4              value_r4_type;
-  typedef t_oledb_value__R8              value_r8_type;
+  typedef t_oledb_value__R4                           value_r4_type;
+  typedef t_oledb_value__R8                           value_r8_type;
 
-  typedef t_oledb_value__LONG            value_long_type;
-  typedef t_oledb_value__ULONG           value_ulong_type;
+  typedef t_oledb_value__LONG                         value_long_type;
+  typedef t_oledb_value__ULONG                        value_ulong_type;
 
-  typedef t_oledb_value__CY              value_cy_type;
-  typedef t_oledb_value__DECIMAL         value_decimal_type;
-  typedef t_oledb_value__NUMERIC         value_numeric_type;
+  typedef t_oledb_value__CY                           value_cy_type;
+  typedef t_oledb_value__DECIMAL                      value_decimal_type;
+  typedef t_oledb_value__NUMERIC                      value_numeric_type;
 
-  typedef t_oledb_value__DATE            value_date_type;
-  typedef t_oledb_value__DBDATE          value_dbdate_type;
-  typedef t_oledb_value__DBTIME          value_dbtime_type;
-  typedef t_oledb_value__DBTIME2         value_dbtime2_type;
-  typedef t_oledb_value__DBTIMESTAMP     value_dbstamp_type;
-  typedef t_oledb_value__FILETIME        value_filetime_type;
+  typedef t_oledb_value__DATE                         value_date_type;
+  typedef t_oledb_value__DBDATE                       value_dbdate_type;
+  typedef t_oledb_value__DBTIME                       value_dbtime_type;
+  typedef t_oledb_value__DBTIME2                      value_dbtime2_type;
+  typedef t_oledb_value__DBTIMESTAMP                  value_dbstamp_type;
+  typedef t_oledb_value__DBTIMESTAMPOFFSET            value_dbstampoffset_type;
+  typedef t_oledb_value__FILETIME                     value_filetime_type;
 
-  typedef t_oledb_value__SCODE           value_scode_type;
+  typedef t_oledb_value__SCODE                        value_scode_type;
 
-  typedef t_oledb_value__GUID            value_guid_type;
+  typedef t_oledb_value__GUID                         value_guid_type;
 
   struct tagUnkVal
   {
@@ -177,57 +178,58 @@ struct tagDBVARIANT
 
    union
    {
-    value_i1_type           valI1        ;//           DBTYPE_I1
-    value_ui1_type          valUI1       ;//           DBTYPE_UI1
-    value_i2_type           valI2        ;//           DBTYPE_I2
-    value_ui2_type          valUI2       ;//           DBTYPE_UI2
-    value_i4_type           valI4        ;//           DBTYPE_I4
-    value_ui4_type          valUI4       ;//           DBTYPE_UI4
-    value_r4_type           valR4        ;//           DBTYPE_R4
-    value_r8_type           valR8        ;//           DBTYPE_R8
-    value_i8_type_s         valI8        ;//           DBTYPE_I8
-    value_ui8_type_s        valUI8       ;//           DBTYPE_UI8
+    value_i1_type             valI1;           //           DBTYPE_I1
+    value_ui1_type            valUI1;          //           DBTYPE_UI1
+    value_i2_type             valI2;           //           DBTYPE_I2
+    value_ui2_type            valUI2;          //           DBTYPE_UI2
+    value_i4_type             valI4;           //           DBTYPE_I4
+    value_ui4_type            valUI4;          //           DBTYPE_UI4
+    value_r4_type             valR4;           //           DBTYPE_R4
+    value_r8_type             valR8;           //           DBTYPE_R8
+    value_i8_type_s           valI8;           //           DBTYPE_I8
+    value_ui8_type_s          valUI8;          //           DBTYPE_UI8
 
-    value_long_type         longVal      ;//           LONG equal to I4
-    value_ulong_type        ulongVal     ;//           ULONG equal to UI4
+    value_long_type           longVal;         //           LONG equal to I4
+    value_ulong_type          ulongVal;        //           ULONG equal to UI4
 
-    value_cy_type           valCY        ;//           DBTYPE_CY
-    value_numeric_type      dbnumVal     ;//           DBTYPE_NUMERIC
-    value_decimal_type      decVal       ;//           DBTYPE_DECIMAL
+    value_cy_type             valCY;           //           DBTYPE_CY
+    value_numeric_type        dbnumVal;        //           DBTYPE_NUMERIC
+    value_decimal_type        decVal;          //           DBTYPE_DECIMAL
 
-    VARIANT_BOOL            boolVal      ;//           DBTYPE_BOOL
-    value_scode_type        scodeVal     ;//           DBTYPE_ERROR
-    BSTR                    bstrVal      ;//BSTR       DBTYPE_BSTR
+    VARIANT_BOOL              boolVal;         //           DBTYPE_BOOL
+    value_scode_type          scodeVal;        //           DBTYPE_ERROR
+    BSTR                      bstrVal;         //BSTR       DBTYPE_BSTR
 
-    value_date_type         dateVal      ;//           DBTYPE_DATE
-    value_dbdate_type       dbdateVal    ;//           DBTYPE_DBDATE
-    value_dbtime_type       dbtimeVal    ;//           DBTYPE_DBTIME
-    value_dbtime2_type      dbtime2Val   ;//           oledb_typeid__DBTIME2
-    value_dbstamp_type      dbstampVal   ;//           DBTYPE_DBTIMESTAMP
-    value_filetime_type     filetimeVal  ;//           DBTYPE_FILETIME
+    value_date_type           dateVal;         //           DBTYPE_DATE
+    value_dbdate_type         dbdateVal;       //           DBTYPE_DBDATE
+    value_dbtime_type         dbtimeVal;       //           DBTYPE_DBTIME
+    value_dbtime2_type        dbtime2Val;      //           oledb_typeid__DBTIME2
+    value_dbstamp_type        dbstampVal;      //           DBTYPE_DBTIMESTAMP
+    value_dbstampoffset_type  dbstampoffsetVal;//           DBTYPE_DBTIMESTAMPOFFSET
+    value_filetime_type       filetimeVal;     //           DBTYPE_FILETIME
 
-    value_guid_type         guidVal      ;//           DBTYPE_GUID
+    value_guid_type           guidVal;         //           DBTYPE_GUID
 
-    VARIANT                 varVal       ;//           DBTYPE_VARIANT
+    VARIANT                   varVal;          //           DBTYPE_VARIANT
 
-    tagUnkVal               unkVal       ;//Release    DBTYPE_IUNKNOWN
-    tagDispVal              dispVal      ;//Release    DBTYPE_IDISPATCH
+    tagUnkVal                 unkVal;          //Release    DBTYPE_IUNKNOWN
+    tagDispVal                dispVal;         //Release    DBTYPE_IDISPATCH
 
-    tagArrayVal             arrayVal2    ;//pointer    DBTYPE_ARRAY|DBTYPE_XXX
+    tagArrayVal               arrayVal2;       //pointer    DBTYPE_ARRAY|DBTYPE_XXX
    };
 
    struct
    {
     union
     {
-     tagStrVal              strVal       ;//pointer       DBTYPE_STR
+     tagStrVal                strVal;          //pointer    DBTYPE_STR
 
-     tagWStrVal             wstrVal      ;//pointer       DBTYPE_WSTR
+     tagWStrVal               wstrVal;         //pointer    DBTYPE_WSTR
 
-     tagBytesVal            bytesVal     ;//pointer       DBBYTE_BYTES
+     tagBytesVal              bytesVal;        //pointer    DBBYTE_BYTES
     };//union
 
-    size_type               reserveMemSize;
+    size_type                 reserveMemSize;
    };//struct
   };//union
 };//struct tagDBVARIANT

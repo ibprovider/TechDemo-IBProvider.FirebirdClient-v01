@@ -1943,13 +1943,11 @@ void fb_v02_5_0__blr_printer::helper__error(context_type&        ctx,
  //[2015-11-21] Тормозим и изучаем проблему с BLR
  assert_msg(false,string);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_subsystem__isc_api__fb2_5,
-                 ibp_mce_isc__failed_to_process_blr_code_1);
-
- exc<<string;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_subsystem__isc_api__fb2_5,
+   ibp_mce_isc__failed_to_process_blr_code_1,
+   string);
 }//helper__error
 
 //------------------------------------------------------------------------

@@ -29,6 +29,8 @@ class t_isc_connection_settings;
 
 struct t_isc_ods_data__database;
 
+struct t_isc_msg_data_element_descr;
+
 //интерфейсы сервисов для работы xrow ------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__xsqlvar_v1);
 IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__xsqlvar_v2);

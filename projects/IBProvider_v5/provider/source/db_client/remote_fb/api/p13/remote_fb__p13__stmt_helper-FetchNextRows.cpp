@@ -328,26 +328,16 @@ void RemoteFB__P13__StmtHelper::FetchNextRows
      assert(false);
     }//catch
    }
-   catch(const std::bad_alloc&)
+   catch(...)
    {
     pStmt->m_spFetchResult->m_State=RemoteFB__FetchResult::state__failed;
 
-    pStmt->m_spFetchResult->m_FetchErr.clear_state(E_OUTOFMEMORY);
+    pStmt->m_spFetchResult->m_spFetchExc=std::current_exception();
+
+    assert(pStmt->m_spFetchResult->m_spFetchExc);
 
     return;
-   }
-   catch(t_ibp_error& exc)
-   {
-    assert(FAILED(exc.com_code()));
-
-    pStmt->m_spFetchResult->m_State=RemoteFB__FetchResult::state__failed;
-
-    pStmt->m_spFetchResult->m_FetchErr.swap(exc); //no throw!
-
-    assert(FAILED(pStmt->m_spFetchResult->m_FetchErr.com_code()));
-
-    return;
-   }//catch exc
+   }//catch
 
    break;
   }//if - protocol::op_response

@@ -309,10 +309,12 @@ bool RemoteFB__API_P13_LAZY_SEND__FetchStatement::exec
 
    //ERROR - генерировать ошибку выборки данных
 
-   assert(FAILED((*pStmtHandle)->m_spFetchResult->m_FetchErr.com_code()));
+   assert((*pStmtHandle)->m_spFetchResult->m_spFetchExc);
 
-   (*pStmtHandle)->m_spFetchResult->m_FetchErr.raise();
+   std::rethrow_exception((*pStmtHandle)->m_spFetchResult->m_spFetchExc);
   }//if FAILED
+
+  assert(!(*pStmtHandle)->m_spFetchResult->m_spFetchExc);
 
   assert_msg
    ((*pStmtHandle)->m_spFetchResult->m_State==RemoteFB__FetchResult::state__active ||

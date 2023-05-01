@@ -9,7 +9,7 @@
 
 #include "source/db_obj/db_utility.h"
 
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,13 +20,11 @@ void throw_cantconvertvalue(t_dbtype const src_dbtype,
 {
  //DONE 3: Обработка ошибки конвертирования. Генерация понятного сообщения
 
- t_ibp_error exc(DB_E_CANTCONVERTVALUE,
-                 ibp_mce_dbobj_cant_convert_value_between_internal_types_2);
-
- exc<<get_dbtype_name(src_dbtype)
-    <<get_dbtype_name(dest_type);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (DB_E_CANTCONVERTVALUE,
+   ibp_mce_dbobj_cant_convert_value_between_internal_types_2,
+   get_dbtype_name(src_dbtype),
+   get_dbtype_name(dest_type));
 }//throw_cantconvertvalue
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -6,6 +6,7 @@
 
 #include "source/oledb/props2/descrs/ibp_oledb__props2__descrs__factory__dbinit_std.h"
 #include "source/oledb/props2/descrs/ibp_oledb__props2__descrs__factory__dbinit_ext.h"
+#include "source/ibp_call_context.h"
 
 #include <ole_lib/oledb/provider/props2/oledb_props2__manager__values.h>
 
@@ -46,8 +47,21 @@ TestCnParams::TestCnParams(const TTSO_GlobalContext* const pParams)
   propset.cProperties    =1;
   propset.rgProperties   =&prop;
 
-  const HRESULT hr=DsPropValuesMng.SetProperties
-                     (m_spDsPropValues,
+  ole_lib::TBaseUnknown2NPtr
+   spCallObj
+    (structure::not_null_ptr
+      (new ole_lib::TBaseUnknown2
+        (nullptr,
+         ole_lib::TBaseUnknown2__SERVER_LINK::Create_DUMMY())));
+
+  ibp::IBP_CallContext
+   callCtx
+    (spCallObj.ptr());
+
+  const HRESULT hr
+   =DsPropValuesMng.SetProperties
+     (callCtx,
+      m_spDsPropValues,
                       1,
                       &propset,
                       true,

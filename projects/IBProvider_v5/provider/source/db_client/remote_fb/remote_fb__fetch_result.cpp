@@ -38,7 +38,7 @@ RemoteFB__FetchResult::RemoteFB__FetchResult
  ,m_RequestedFetchCount(RequestedFetchCount)
  ,m_ProcessedFetchCount(0)
  ,m_State(state__active)
- ,m_FetchErr(S_OK)
+ ,m_spFetchExc(nullptr)
  ,m_cbRowData(cbRowData)
  ,m_cbRowBlock(Helper__CalcRowBlock(cbRowData,cbRowDataAlign))
  ,m_RowsDataBufferManager(0,RequestedFetchCount)

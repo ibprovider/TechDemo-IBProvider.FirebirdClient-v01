@@ -210,33 +210,34 @@ class  TDBPropertySetBuffer;
 ////////////////////////////////////////////////////////////////////////////////
 //Constants of NULL values
 
-extern const t_oledb_value__DBDATE          __null_dbdate__      ;
-extern const t_oledb_value__DBTIME          __null_dbtime__      ;
-extern const t_oledb_value__DBTIME2         __null_dbtime2__     ;
-extern const t_oledb_value__DBTIMESTAMP     __null_dbtimestamp__ ;
-extern const t_oledb_value__FILETIME        __null_filetime__    ;
-extern const t_oledb_value__I1              __null_i1__          ;
-extern const t_oledb_value__I2              __null_i2__          ;
-extern const t_oledb_value__I4              __null_i4__          ;
-extern const t_oledb_value__UI1             __null_ui1__         ;
-extern const t_oledb_value__UI2             __null_ui2__         ;
-extern const t_oledb_value__UI4             __null_ui4__         ;
-extern const t_oledb_value__R4              __null_r4__          ;
-extern const t_oledb_value__R8              __null_r8__          ;
-extern const t_oledb_value__UI8_s           __null_ui8__         ;
-extern const t_oledb_value__I8_s            __null_i8__          ;
-extern const t_oledb_value__NUMERIC         __null_dbnumeric__   ;
-extern const t_oledb_value__DECIMAL         __null_decimal__     ;
-extern const t_oledb_value__CY              __null_cy__          ;
-extern const VARIANT                        __empty_variant__    ;
+extern const t_oledb_value__DBDATE              __null_dbdate__             ;
+extern const t_oledb_value__DBTIME              __null_dbtime__             ;
+extern const t_oledb_value__DBTIME2             __null_dbtime2__            ;
+extern const t_oledb_value__DBTIMESTAMP         __null_dbtimestamp__        ;
+extern const t_oledb_value__DBTIMESTAMPOFFSET   __null_dbtimestampoffset__  ;
+extern const t_oledb_value__FILETIME            __null_filetime__           ;
+extern const t_oledb_value__I1                  __null_i1__                 ;
+extern const t_oledb_value__I2                  __null_i2__                 ;
+extern const t_oledb_value__I4                  __null_i4__                 ;
+extern const t_oledb_value__UI1                 __null_ui1__                ;
+extern const t_oledb_value__UI2                 __null_ui2__                ;
+extern const t_oledb_value__UI4                 __null_ui4__                ;
+extern const t_oledb_value__R4                  __null_r4__                 ;
+extern const t_oledb_value__R8                  __null_r8__                 ;
+extern const t_oledb_value__UI8_s               __null_ui8__                ;
+extern const t_oledb_value__I8_s                __null_i8__                 ;
+extern const t_oledb_value__NUMERIC             __null_dbnumeric__          ;
+extern const t_oledb_value__DECIMAL             __null_decimal__            ;
+extern const t_oledb_value__CY                  __null_cy__                 ;
+extern const VARIANT                            __empty_variant__           ;
 
-extern const char* const                    __null_str__         ;
-extern const wchar_t* const                 __null_wstr__        ;
+extern const char* const                        __null_str__                ;
+extern const wchar_t* const                     __null_wstr__               ;
 
 ////////////////////////////////////////////////////////////////////////////////
 //Zero date for conversions from DBTIME to types with date fields.
 
-extern const t_oledb_value__DBDATE          __zero_dbdate__;
+extern const t_oledb_value__DBDATE              __zero_dbdate__;
 
 //Sunday    = 0
 //Monday    = 1
@@ -245,7 +246,7 @@ extern const t_oledb_value__DBDATE          __zero_dbdate__;
 //Thursday  = 4
 //Friday    = 5
 //Saturday  = 6
-extern const t_oledb_value__I2              __zero_dbdate_DayOfWeek__;
+extern const t_oledb_value__I2                  __zero_dbdate_DayOfWeek__;
 
 ////////////////////////////////////////////////////////////////////////////////
 //enum data types precisions
@@ -255,27 +256,29 @@ extern const structure::t_negative_one oledb_none_precision;
 extern const structure::t_negative_one oledb_filetime_precision;
 
 enum enum_oledb_data_type_precisions
-{                                    //"12345678901234567890123456789"
- oledb_i1_precision           =3   ,
- oledb_i2_precision           =5   ,
- oledb_i4_precision           =10  ,
- oledb_i8_precision           =19  ,
- oledb_ui1_precision          =3   ,
- oledb_ui2_precision          =5   ,
- oledb_ui4_precision          =10  ,
- oledb_ui8_precision          =20  ,
- oledb_r4_precision           =7   ,
- oledb_r8_precision           =15  ,
- oledb_cy_precision           =19  ,
- oledb_decimal_precision      =29  ,
- oledb_numeric_precision      =39  ,
- oledb_varnumeric_precision   =255 ,
- oledb_timestamp_precision    =29  , //"dd.mm.yyyy hh:mm:ss.123456789"
+{
+ oledb_i1_precision              =3   ,
+ oledb_i2_precision              =5   ,
+ oledb_i4_precision              =10  ,
+ oledb_i8_precision              =19  ,
+ oledb_ui1_precision             =3   ,
+ oledb_ui2_precision             =5   ,
+ oledb_ui4_precision             =10  ,
+ oledb_ui8_precision             =20  ,
+ oledb_r4_precision              =7   ,
+ oledb_r8_precision              =15  ,
+ oledb_cy_precision              =19  ,
+ oledb_decimal_precision         =29  ,
+ oledb_numeric_precision         =39  ,
+ oledb_varnumeric_precision      =255 ,
+                                        //"123456789012345678901234567890123456"
+ oledb_timestamp_precision       =29  , //"dd.mm.yyyy hh:mm:ss.123456789"
+ oledb_timestampoffset_precision =36  , //"dd.mm.yyyy hh:mm:ss.123456789 +hh:mm"
 
- oledb_dbdate_precision       =10  , //"dd.mm.yyyy"
+ oledb_dbdate_precision          =10  , //"dd.mm.yyyy"
 
- oledb_dbtime_precision       =8   , //"hh:mm:ss"
- oledb_dbtime2_precision      =18  , //"hh:mm:ss.123456789"
+ oledb_dbtime_precision          =8   , //"hh:mm:ss"
+ oledb_dbtime2_precision         =18  , //"hh:mm:ss.123456789"
 
 #ifdef _WIN64
  oledb_dblength_precision     =oledb_ui8_precision,

@@ -112,6 +112,7 @@ enum t_oledb_typeid
  oledb_typeid__ARRAY_DBTIMESTAMP          = oledb_typeid__ARRAY|oledb_typeid__DBTIMESTAMP,
 
  oledb_typeid__ARRAY_DBTIME2              = oledb_typeid__ARRAY|oledb_typeid__DBTIME2,
+ oledb_typeid__ARRAY_DBTIMESTAMPOFFSET    = oledb_typeid__ARRAY|oledb_typeid__DBTIMESTAMPOFFSET,
 };//enum t_oledb_typeid
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -301,6 +302,9 @@ typedef structure::t_value_with_null<t_oledb_value__DBTIME2>
 
 typedef structure::t_value_with_null<t_oledb_value__DBTIMESTAMP>
  t_oledb_value__DBTIMESTAMP_n;
+
+typedef structure::t_value_with_null<t_oledb_value__DBTIMESTAMPOFFSET>
+ t_oledb_value__DBTIMESTAMPOFFSET_n;
 
 typedef structure::t_value_with_null<t_oledb_value__FILETIME>
  t_oledb_value__FILETIME_n;

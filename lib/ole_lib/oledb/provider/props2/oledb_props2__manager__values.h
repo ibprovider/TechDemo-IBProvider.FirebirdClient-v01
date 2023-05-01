@@ -56,7 +56,9 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
   //! Допустимые значения pfnGetFilter:
   //!  - DBPROPSTATUS_OK
   //!  - DBPROPSTATUS_NOTSUPPORTED
-  HRESULT GetProperties(const OLEDB_Props2__Data__Values* pValues,
+  template<class TCallCtx>
+  HRESULT GetProperties(TCallCtx&                         callCtx,
+                        const OLEDB_Props2__Data__Values* pValues,
                         const ULONG                       cPropertyIDSets,
                         const DBPROPIDSET                 rgPropertyIDSets[],
                         ULONG*                            pcPropertySets,
@@ -81,7 +83,9 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
   //!  - DBPROPSTATUS_OK
   //!  - DBPROPSTATUS_NOTSETTABLE
   //!  - DBPROPSTATUS_NOTSUPPORTED
-  HRESULT SetProperties(OLEDB_Props2__Data__Values* pValues,
+  template<class TCallCtx>
+  HRESULT SetProperties(TCallCtx&                   callCtx,
+                        OLEDB_Props2__Data__Values* pValues,
                         ULONG                       cPropertySets,
                         const DBPROPSET             rgPropertySets[],
                         bool                        Captious,
@@ -123,13 +127,16 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
   /// <summary>
   ///  Получение значений свойств
   /// </summary>
+  //! \param[in,out] callCtx,
   //! \param[in]     op_ctx
   //! \param[in]     pDescrs
   //!  Not null.
   //! \param[in]     pPropIDSet
   //! \param[in,out] PropSet
+  template<class TCallCtx>
   void Helper__GetValues
-        (tag_internal_get_props_ctx&       op_ctx,
+        (TCallCtx&                         callCtx,
+         tag_internal_get_props_ctx&       op_ctx,
          const OLEDB_Props2__Data__Descrs* pDescrs,
          const DBPROPIDSET*                pPropIDSet,
          DBPROPSET&                        PropSet)const;
@@ -137,12 +144,15 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
   /// <summary>
   ///  Получение значения свойства
   /// </summary>
+  //! \param[in,out] callCtx,
   //! \param[in]     op_ctx
   //! \param[in]     propGuid,
   //! \param[in]     Descr
   //! \param[in,out] DbProp
+  template<class TCallCtx>
   void Helper__GetValue
-        (tag_internal_get_props_ctx&       op_ctx,
+        (TCallCtx&                         callCtx,
+         tag_internal_get_props_ctx&       op_ctx,
          REFGUID                           propGuid,
          const OLEDB_Props2__Data__Descr&  Descr,
          DBPROP&                           DbProp)const;
@@ -193,4 +203,8 @@ class OLEDB_Props2__Manager__Values::tag_internal_get_props_ctx COMP_W000006_CLA
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace oledb_lib
+////////////////////////////////////////////////////////////////////////////////
+#include <ole_lib/oledb/provider/props2/oledb_props2__manager__values__get.cc>
+#include <ole_lib/oledb/provider/props2/oledb_props2__manager__values__set.cc>
+////////////////////////////////////////////////////////////////////////////////
 #endif

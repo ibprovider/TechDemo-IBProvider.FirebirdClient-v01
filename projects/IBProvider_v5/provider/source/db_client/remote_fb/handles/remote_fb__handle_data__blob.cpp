@@ -29,7 +29,7 @@ RemoteFB__HandleData_Blob::RemoteFB__HandleData_Blob(enumBlobMode const BlobMode
  ,m_ReadMode__State            (ReadState__None)
  ,m_WriteMode__BufferPos       (0)
  ,m_WriteMode__State           (WriteState__None)
- ,m_Err                        (S_OK)
+ ,m_spExc                      (nullptr)
 {;}
 
 //------------------------------------------------------------------------

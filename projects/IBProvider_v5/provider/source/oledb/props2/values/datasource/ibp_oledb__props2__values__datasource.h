@@ -27,7 +27,7 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 /// <summary>
 ///   онтейнер значений свойств источника данных
 /// </summary>
-class IBP_OLEDB_Props2__Values__DATASOURCE COMP_W000006_CLASS_FINAL
+class IBP_OLEDB_Props2__Values__DATASOURCE LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_OLEDB_Props2__Values
 {
  private:

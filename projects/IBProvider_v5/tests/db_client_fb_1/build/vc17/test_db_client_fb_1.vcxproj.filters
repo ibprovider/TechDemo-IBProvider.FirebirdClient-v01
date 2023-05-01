@@ -1216,9 +1216,6 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.cpp">
       <Filter>IBP\source\db_client\remote_fb</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_data_element_descr.cpp">
-      <Filter>IBP\source\db_client\remote_fb</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.cpp">
       <Filter>source\tests\work\Params\OUT</Filter>
     </ClCompile>
@@ -3379,6 +3376,9 @@
     <ClCompile Include="..\..\..\..\provider\source\ibp_memory_utils.cpp">
       <Filter>IBP\source\_root</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\ibp_call_context.cpp">
+      <Filter>IBP\source\_root</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__msg_v1_utilities.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers</Filter>
     </ClCompile>
@@ -3387,6 +3387,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_element_descr.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v0.cpp">
       <Filter>source\tests\work</Filter>
@@ -5419,11 +5422,17 @@
     <ClInclude Include="..\..\..\..\provider\source\ibp_memory_utils.h">
       <Filter>IBP\source\_root\_headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\ibp_call_context.h">
+      <Filter>IBP\source\_root\_headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\remote_fb__api_hlp__msg_v1_utilities.h">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_element_descr.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\WORK_Test_020__StmtFetch__v0.h">
       <Filter>source\tests\work\_headers</Filter>

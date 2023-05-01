@@ -1,27 +1,27 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup db_client__remote_fb
-//! \file    remote_fb__msg_data_element_descr.cpp
-//! \brief   Описатель элемента MSG-буфера с данными.
+//! \ingroup isc_base
+//! \file    isc_msg_data_element_descr.cpp
+//! \brief   The descriptor of message data element.
 //! \author  Kovalenko Dmitry
-//! \date    18.05.2015.
+//! \date    19.04.2023
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
+#include "source/db_obj/isc_base/isc_msg_data_element_descr.h"
 #include <structure/t_negative_one.h>
 
-namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
+namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__MsgDataElementDescr
 
-RemoteFB__MsgDataElementDescr::RemoteFB__MsgDataElementDescr()
+t_isc_msg_data_element_descr::t_isc_msg_data_element_descr()
  :m_msg_value_block_size  (structure::negative_one)
  ,m_msg_value_block_offset(structure::negative_one)
  ,m_msg_sqlind_offset     (structure::negative_one)
  ,m_msg_blrtype           (structure::negative_one)
  ,m_xvar_sqltype          (0)
  ,m_xvar_sqlscale         (structure::negative_one)
-{;}
+{
+}
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms isc_base*/}/*nms ibp*/}/*nms lcpi*/

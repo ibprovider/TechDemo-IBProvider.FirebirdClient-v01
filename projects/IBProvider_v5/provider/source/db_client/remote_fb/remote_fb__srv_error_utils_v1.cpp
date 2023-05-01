@@ -119,10 +119,13 @@ void
  assert(_pData);
 
  const t_ibp_error_element::self_ptr
-  spErrRec(self_type::BuildServerErrorRecord(_pData,
-                                             _op_id,
-                                             _status_vector,
-                                             _hr));
+  spErrRec
+   (self_type::BuildServerErrorRecord
+     (_pData,
+      _op_id,
+      _status_vector,
+      _hr));
+
  if(spErrRec)
  {
   assert(FAILED(spErrRec->get_error_code()));
@@ -143,10 +146,13 @@ t_ibp_error_element::self_ptr
 
  //-----------------------------------------
  /*const*/ t_ibp_error_element::self_ptr
-  spErrRec(self_type::Helper__BuildServerErrorRecord(_pPort,
-                                                     _op_id,
-                                                     _status_vector,
-                                                     _hr));
+  spErrRec
+   (self_type::Helper__BuildServerErrorRecord
+     (_pPort,
+      _op_id,
+      _status_vector,
+      _hr));
+
  if(!spErrRec)
   return nullptr;
 
@@ -172,10 +178,13 @@ void
  assert(_pPort);
 
  const t_ibp_error_element::self_ptr
-  spErrRec(self_type::BuildServerErrorRecord(_pPort,
-                                             _op_id,
-                                             _status_vector,
-                                             _hr));
+  spErrRec
+   (self_type::BuildServerErrorRecord
+     (_pPort,
+      _op_id,
+      _status_vector,
+      _hr));
+
  if(spErrRec)
  {
   assert(FAILED(spErrRec->get_error_code()));

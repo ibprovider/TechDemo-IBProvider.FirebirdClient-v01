@@ -63,6 +63,7 @@ struct DBVARIANT:public tagDBVARIANT
   typedef t_oledb_value__DBTIME_n                             value_dbtime_n_type;
   typedef t_oledb_value__DBTIME2_n                            value_dbtime2_n_type;
   typedef t_oledb_value__DBTIMESTAMP_n                        value_dbstamp_n_type;
+  typedef t_oledb_value__DBTIMESTAMPOFFSET_n                  value_dbstampoffset_n_type;
   typedef t_oledb_value__FILETIME_n                           value_filetime_n_type;
 
   typedef t_oledb_value__GUID_n                               value_guid_n_type;
@@ -279,11 +280,12 @@ struct DBVARIANT:public tagDBVARIANT
   HRESULT  to_unknown     (value_unknown_n_type*    value) const;
   HRESULT  to_dispatch    (value_dispatch_n_type*   value) const;
 
-  HRESULT  to_date        (value_date_n_type*       value) const;
-  HRESULT  to_dbdate      (value_dbdate_n_type*     value) const;
-  HRESULT  to_dbtime      (value_dbtime_n_type*     value) const;
-  HRESULT  to_dbtimestamp (value_dbstamp_n_type*    value) const;
-  HRESULT  to_filetime    (value_filetime_n_type*   value) const;
+  HRESULT  to_date              (value_date_n_type*          value) const;
+  HRESULT  to_dbdate            (value_dbdate_n_type*        value) const;
+  HRESULT  to_dbtime            (value_dbtime_n_type*        value) const;
+  HRESULT  to_dbtimestamp       (value_dbstamp_n_type*       value) const;
+  HRESULT  to_dbtimestampoffset (value_dbstampoffset_n_type* value) const;
+  HRESULT  to_filetime          (value_filetime_n_type*      value) const;
 
   //return the S_FALSE for NULL-state
   HRESULT  to_bytes       (bytes_writer_type*       pWriter) const;

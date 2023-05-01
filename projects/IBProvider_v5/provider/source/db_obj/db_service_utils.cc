@@ -2,6 +2,8 @@
 #ifndef _db_services_utility_CC_
 #define _db_services_utility_CC_
 
+#include "source/error_services/ibp_error_utils.h"
+
 #include <structure/utilities/string/string_length.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
@@ -15,9 +17,12 @@ structure::t_smart_object_ptr<T>
 {
  assert(service_provider_obj);
 
- const t_db_object_ptr service_obj(query_db_service(service_provider_obj,
-                                                    svcDescr.guid,
-                                                    svcDescr.name)); //throw
+ const t_db_object_ptr
+  service_obj
+   (query_db_service
+     (service_provider_obj,
+      svcDescr.guid,
+      svcDescr.name)); //throw
 
  assert(service_obj);
 
@@ -28,11 +33,11 @@ structure::t_smart_object_ptr<T>
   //DONE 5:error - сервисный объект с идентификатором __db_guid<T>()
   // не поддерживает запрошенный интерфейс
 
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<svcDescr.name<<typeid(T).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+    svcDescr.name,
+    typeid(T).name());
  }//if !pSvc
 
  assert(pSvc);
@@ -47,9 +52,12 @@ structure::t_smart_object_ptr<T>
 {
  assert(service_provider_obj);
 
- const t_db_object_ptr service_obj(query_db_service(service_provider_obj,
-                                                    __db_guid<T>(),
-                                                    typeid(T).name()));
+ const t_db_object_ptr
+  service_obj
+   (query_db_service
+     (service_provider_obj,
+      __db_guid<T>(),
+      typeid(T).name()));
 
  assert(service_obj);
 
@@ -60,11 +68,11 @@ structure::t_smart_object_ptr<T>
   //DONE 5:error - сервисный объект с идентификатором __db_guid<T>()
   // не поддерживает запрошенный интерфейс
 
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<__db_guid<T>()<<typeid(T).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+    __db_guid<T>(),
+    typeid(T).name());
  }//if !pSvc
 
  assert(pSvc);
@@ -104,8 +112,9 @@ structure::t_smart_object_ptr<T>
 {
  assert(service_provider_obj);
 
- t_db_service_provider* const service_provider
-  (dynamic_cast<t_db_service_provider*>(service_provider_obj));
+ t_db_service_provider* const
+  service_provider
+   (dynamic_cast<t_db_service_provider*>(service_provider_obj));
 
  if(!service_provider)
   return nullptr;
@@ -147,8 +156,9 @@ structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_operation_context& op_ctx,
                                 REFGUID                 rguidService)
 {
- const t_db_object_ptr service_obj
-  (op_ctx.get_service(rguidService));
+ const t_db_object_ptr
+  service_obj
+   (op_ctx.get_service(rguidService));
 
  if(!service_obj)
   return nullptr;
@@ -157,11 +167,11 @@ structure::t_smart_object_ptr<T>
 
  if(!pSvc)
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<rguidService<<typeid(T).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+    rguidService,
+    typeid(T).name());
  }//if
 
  assert(pSvc);
@@ -207,8 +217,9 @@ structure::t_smart_object_ptr<T>
 {
  assert(service_provider_obj);
 
- t_db_service_provider* const service_provider
-  (dynamic_cast<t_db_service_provider*>(service_provider_obj));
+ t_db_service_provider* const
+  service_provider
+   (dynamic_cast<t_db_service_provider*>(service_provider_obj));
 
  if(!service_provider)
   return nullptr;
@@ -224,11 +235,11 @@ structure::t_smart_object_ptr<T>
 
  if(!pSvc)
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<__db_guid<T>()<<typeid(T).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+     __db_guid<T>(),
+     typeid(T).name());
  }//if
 
  assert(pSvc);
@@ -263,11 +274,10 @@ structure::t_smart_object_ptr<T>
 
  if(!spSvcObj)
  {
-  t_ibp_error exc(DB_E_NOTSUPPORTED,ibp_mce_dbobj_ie_svc_not_supported_1);
-
-  exc<<typeid(svc_type).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (DB_E_NOTSUPPORTED,
+    ibp_mce_dbobj_ie_svc_not_supported_1,
+    typeid(svc_type).name());
  }//if
 
  assert(spSvcObj);
@@ -278,11 +288,11 @@ structure::t_smart_object_ptr<T>
 
  if(!pSvc)
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<__db_guid<svc_type>()<<typeid(svc_type).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+    __db_guid<svc_type>(),
+    typeid(svc_type).name());
  }//if
 
  assert(pSvc);
@@ -318,11 +328,10 @@ structure::t_smart_object_ptr<T>
 
  if(!spSvcObj)
  {
-  t_ibp_error exc(DB_E_NOTSUPPORTED,ibp_mce_dbobj_ie_svc_not_supported_1);
-
-  exc<<svc_descr.name;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (DB_E_NOTSUPPORTED,
+    ibp_mce_dbobj_ie_svc_not_supported_1,
+    svc_descr.name);
  }//if
 
  assert(spSvcObj);
@@ -333,11 +342,11 @@ structure::t_smart_object_ptr<T>
 
  if(!pSvc)
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_dbobj_ie_svc_not_support_req_interface_2);
-
-  exc<<svc_descr.name<<typeid(svc_type).name();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_dbobj_ie_svc_not_support_req_interface_2,
+    svc_descr.name,
+    typeid(svc_type).name());
  }//if
 
  assert(pSvc);

@@ -85,9 +85,10 @@ void RemoteFB__API_P12_LAZY_SEND__CloseBlob::exec
 
    t_ibp_error exc(e);
 
-   exc.add_error(exc.com_code(),
-                 ibp_subsystem__remote_fb__p12,
-                 ibp_mce_bw__fail_write_to_db_0);
+   exc.add_error
+    (exc.com_code(),
+     ibp_subsystem__remote_fb__p12,
+     ibp_mce_bw__fail_write_to_db_0);
 
    exc.raise_me();
   }//catch

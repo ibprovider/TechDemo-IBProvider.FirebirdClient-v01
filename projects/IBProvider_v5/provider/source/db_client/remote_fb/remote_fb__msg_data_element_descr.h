@@ -7,74 +7,19 @@
 #ifndef _remote_fb__msg_data_element_descr_H_
 #define _remote_fb__msg_data_element_descr_H_
 
+#include "source/db_obj/isc_base/isc_msg_data_element_descr.h"
+
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup db_client__remote_fb
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__MsgDataElementDescr
 
 /// <summary>
 ///  Описатель элемента MSG-буфера с данными.
 /// </summary>
-class RemoteFB__MsgDataElementDescr
-{
- public:
-  /// Размер блока с данными
-  size_t m_msg_value_block_size;
-
-  /// Смещение блока с данными
-  size_t m_msg_value_block_offset;
-
-  /// Смещение индикатора состояния данных
-  size_t m_msg_sqlind_offset;
-
-  /// BLR-тип элемента данных
-  unsigned m_msg_blrtype;
-
- public:
-  /// Идентификатор SQL-типа данных, для которого рассчитан данный блок
-  short m_xvar_sqltype;
-
-  /// Масштаб значения
-  short m_xvar_sqlscale;
-
- public:
-  /// <summary>
-  ///  Конструктор по умолчанию.
-  /// </summary>
-  RemoteFB__MsgDataElementDescr();
-};//class RemoteFB__MsgDataElementDescr
-
-////////////////////////////////////////////////////////////////////////////////
-
-#ifndef NDEBUG
-
-// it is used only in debug code
-inline bool operator == (const RemoteFB__MsgDataElementDescr& x1,const RemoteFB__MsgDataElementDescr& x2)
-{
- if(x1.m_msg_value_block_size!=x2.m_msg_value_block_size)
-  return false;
-
- if(x1.m_msg_value_block_offset!=x2.m_msg_value_block_offset)
-  return false;
-
- if(x1.m_msg_sqlind_offset!=x2.m_msg_sqlind_offset)
-  return false;
-
- if(x1.m_msg_blrtype!=x2.m_msg_blrtype)
-  return false;
-
- if(x1.m_xvar_sqltype!= x2.m_xvar_sqltype)
-  return false;
-
- if(x1.m_xvar_sqlscale!=x2.m_xvar_sqlscale)
-  return false;
-
- return true;
-}//operator ==
-
-#endif // NDEBUG
+using RemoteFB__MsgDataElementDescr
+ =isc_base::t_isc_msg_data_element_descr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -165,9 +165,10 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__DropStmts
       {
        t_ibp_error exc(spErrRec);
  
-       exc.add_error(exc.com_code(),
-                     ibp_subsystem__remote_fb__p12,
-                     ibp_mce_cmd_destroy_stmt_0);
+       exc.add_error
+        (exc.com_code(),
+         ibp_subsystem__remote_fb__p12,
+         ibp_mce_cmd_destroy_stmt_0);
  
        exc.raise_me();
       }//if
@@ -426,9 +427,10 @@ void RemoteFB__P12_LAZY_SEND__SrvResourceHelper::Helper__ReleaseBlobs(RemoteFB__
       {
        t_ibp_error exc(spErrRec);
  
-       exc.add_error(exc.com_code(),
-                     ibp_subsystem__remote_fb__p12,
-                     msg_code_0);
+       exc.add_error
+        (exc.com_code(),
+         ibp_subsystem__remote_fb__p12,
+         msg_code_0);
  
        exc.raise_me();
       }//if

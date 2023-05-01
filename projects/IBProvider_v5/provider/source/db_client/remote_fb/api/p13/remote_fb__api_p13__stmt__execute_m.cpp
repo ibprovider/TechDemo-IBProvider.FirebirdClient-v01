@@ -401,10 +401,6 @@ protocol::P_OBJCT
  assert(pOutMsg->data.data()!=nullptr);
 
  //-----------------------------------------
- const wchar_t* const c_bugcheck_src
-  =L"RemoteFB__API_P13__ExecuteStatement::helper__execute2";
-
- //-----------------------------------------
  assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
  assert((*pStmtHandle)->m_InParams__MSG_DATA.empty());
  assert((*pStmtHandle)->m_InParams__MSG_DATA_DESCRS.empty());

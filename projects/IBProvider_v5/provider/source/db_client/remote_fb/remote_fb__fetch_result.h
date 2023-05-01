@@ -10,8 +10,6 @@
 #include "source/db_client/remote_fb/remote_fb__memory.h"
 #include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
 
-#include "source/error_services/ibp_error.h"
-
 #include <structure/stl/t_stl_vector.h>
 #include <structure/t_simple_buffer.h>
 #include <structure/t_cycle_buffer_manager.h>
@@ -109,8 +107,7 @@ class RemoteFB__FetchResult LCPI_CPP_CFG__CLASS__FINAL
   tag_state m_State;
 
   /// Описание ошибки выборки данных
-  //! \todo It needs to use std::exception_ptr
-  t_ibp_error m_FetchErr;
+  std::exception_ptr m_spFetchExc;
 
  private:
   /// <summary>

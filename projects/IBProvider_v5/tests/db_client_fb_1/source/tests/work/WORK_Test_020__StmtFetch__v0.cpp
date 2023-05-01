@@ -1861,7 +1861,7 @@ void WORK_Test_020__StmtFetch__v0::tag_impl::test_F00__select_empty_rowset
  _TSO_CHECK(hStmt->m_spFetchResult);
  _TSO_CHECK(hStmt->m_spFetchResult->m_State==hStmt->m_spFetchResult->state__failed);
 
- _TSO_CHECK(hStmt->m_spFetchResult->m_FetchErr.com_code()==E_FAIL);
+ _TSO_CHECK(hStmt->m_spFetchResult->m_spFetchExc); 
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtDrop
@@ -2035,7 +2035,7 @@ void WORK_Test_020__StmtFetch__v0::tag_impl::test_F01__select_one_row
  _TSO_CHECK(hStmt->m_spFetchResult);
  _TSO_CHECK(hStmt->m_spFetchResult->m_State==hStmt->m_spFetchResult->state__failed);
 
- _TSO_CHECK(hStmt->m_spFetchResult->m_FetchErr.com_code()==E_FAIL);
+ _TSO_CHECK(hStmt->m_spFetchResult->m_spFetchExc); 
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtDrop

@@ -489,7 +489,6 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__known_server_key_array.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__memory_pool.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__msg_data_element_descr.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__operation_context.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__get_array_slice_descr.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__op_svc__stmt_execute_data_v1.cpp" />
@@ -586,6 +585,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_element_descr.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.cpp" />
@@ -690,6 +690,7 @@
     <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__trees.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zutil.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\zlib1\dll\ibp_external__zlib1_dll__api_provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\ibp_call_context.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\ibp_com.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\ibp_com_data.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\ibp_com_helper.cpp" />
@@ -1430,6 +1431,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_initialize_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_integer_to_portable_format.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_element_descr.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v1_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_param_buffer_v2_builder.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_portable_format_to_integer.h" />
@@ -1462,6 +1464,7 @@
     <ClInclude Include="..\..\..\..\provider\source\external\zlib1\dll\ibp_external__zlib1_dll__api_provider.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\zlib1\ibp_external__zlib1__api.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\zlib1\ibp_external__zlib1__api_provider.h" />
+    <ClInclude Include="..\..\..\..\provider\source\ibp_call_context.h" />
     <ClInclude Include="..\..\..\..\provider\source\ibp_debug.h" />
     <ClInclude Include="..\..\..\..\provider\source\ibp_forward.h" />
     <ClInclude Include="..\..\..\..\provider\source\ibp_global_objects_data__dlls.h" />

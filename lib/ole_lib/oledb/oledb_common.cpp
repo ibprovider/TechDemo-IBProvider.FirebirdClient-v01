@@ -19,28 +19,29 @@ using namespace ole_lib;
 ////////////////////////////////////////////////////////////////////////////////
 //Constants of NULL values
 
-extern const t_oledb_value__DBDATE      __null_dbdate__          ={};
-extern const t_oledb_value__DBTIME      __null_dbtime__          ={};
-extern const t_oledb_value__DBTIME2     __null_dbtime2__         ={};
-extern const t_oledb_value__DBTIMESTAMP __null_dbtimestamp__     ={};
-extern const t_oledb_value__FILETIME    __null_filetime__        ={};
-extern const t_oledb_value__I1          __null_i1__              =0;
-extern const t_oledb_value__I2          __null_i2__              =0;
-extern const t_oledb_value__I4          __null_i4__              =0;
-extern const t_oledb_value__UI1         __null_ui1__             =0;
-extern const t_oledb_value__UI2         __null_ui2__             =0;
-extern const t_oledb_value__UI4         __null_ui4__             =0;
-extern const t_oledb_value__R4          __null_r4__              =0;
-extern const t_oledb_value__R8          __null_r8__              =0;
-extern const t_oledb_value__UI8_s       __null_ui8__             ={};
-extern const t_oledb_value__I8_s        __null_i8__              ={};
-extern const t_oledb_value__NUMERIC     __null_dbnumeric__       ={};
-extern const t_oledb_value__DECIMAL     __null_decimal__         ={};
-extern const t_oledb_value__CY          __null_cy__              ={};
-extern const VARIANT                    __empty_variant__        ={};
+extern const t_oledb_value__DBDATE            __null_dbdate__             ={};
+extern const t_oledb_value__DBTIME            __null_dbtime__             ={};
+extern const t_oledb_value__DBTIME2           __null_dbtime2__            ={};
+extern const t_oledb_value__DBTIMESTAMP       __null_dbtimestamp__        ={};
+extern const t_oledb_value__DBTIMESTAMPOFFSET __null_dbtimestampoffset__  ={};
+extern const t_oledb_value__FILETIME          __null_filetime__           ={};
+extern const t_oledb_value__I1                __null_i1__                 =0;
+extern const t_oledb_value__I2                __null_i2__                 =0;
+extern const t_oledb_value__I4                __null_i4__                 =0;
+extern const t_oledb_value__UI1               __null_ui1__                =0;
+extern const t_oledb_value__UI2               __null_ui2__                =0;
+extern const t_oledb_value__UI4               __null_ui4__                =0;
+extern const t_oledb_value__R4                __null_r4__                 =0;
+extern const t_oledb_value__R8                __null_r8__                 =0;
+extern const t_oledb_value__UI8_s             __null_ui8__                ={};
+extern const t_oledb_value__I8_s              __null_i8__                 ={};
+extern const t_oledb_value__NUMERIC           __null_dbnumeric__          ={};
+extern const t_oledb_value__DECIMAL           __null_decimal__            ={};
+extern const t_oledb_value__CY                __null_cy__                 ={};
+extern const VARIANT                          __empty_variant__           ={};
 
-extern const char*     const            __null_str__             ="";
-extern const wchar_t*  const            __null_wstr__            =L"";
+extern const char*     const                  __null_str__                ="";
+extern const wchar_t*  const                  __null_wstr__               =L"";
 
 ////////////////////////////////////////////////////////////////////////////////
 

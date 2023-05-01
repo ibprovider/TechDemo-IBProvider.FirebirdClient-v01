@@ -129,9 +129,10 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec1
   //дополнительная информация о причинах сбоя.
   t_ibp_error exc(e);
 
-  exc.add_error(exc.com_code(),
-                ibp_subsystem__remote_fb__p10,
-                ibp_mce_dbobj_fail_get_db_info_0);
+  exc.add_error
+   (exc.com_code(),
+    ibp_subsystem__remote_fb__p10,
+    ibp_mce_dbobj_fail_get_db_info_0);
 
   exc.raise_me();
  }//catch
@@ -475,9 +476,10 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
   //дополнительная информация о причинах сбоя.
   t_ibp_error exc(e);
 
-  exc.add_error(exc.com_code(),
-                ibp_subsystem__remote_fb__p10,
-                ibp_mce_dbobj_fail_get_db_info_0);
+  exc.add_error
+   (exc.com_code(),
+    ibp_subsystem__remote_fb__p10,
+    ibp_mce_dbobj_fail_get_db_info_0);
 
   exc.raise_me();
  }//catch

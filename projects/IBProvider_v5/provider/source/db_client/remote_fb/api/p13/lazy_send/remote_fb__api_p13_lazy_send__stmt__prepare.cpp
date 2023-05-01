@@ -441,9 +441,10 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
     {
      t_ibp_error exc(spErrRec);
 
-     exc.add_error(exc.com_code(),
-                   ibp_subsystem__remote_fb__p13,
-                   ibp_mce_cmd_alloc_SQL_stmt_0);
+     exc.add_error
+      (exc.com_code(),
+       ibp_subsystem__remote_fb__p13,
+       ibp_mce_cmd_alloc_SQL_stmt_0);
 
      exc.raise_me();
     }//else
@@ -646,11 +647,12 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
   {
    //Проверям ошибку
    const t_ibp_error_element::self_ptr
-    spErrRec(pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-               (pData,
-                c_OperationID1__close,
-                packet1__close.p_resp,
-                E_FAIL)); //throw
+    spErrRec
+     (pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID1__close,
+        packet1__close.p_resp,
+        E_FAIL)); //throw
 
    if(spErrRec)
    {
@@ -699,11 +701,12 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
 
    //Проверям ошибку
    const t_ibp_error_element::self_ptr
-    spErrRec(pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-               (pData,
-                c_OperationID2__prepare,
-                packet2__prepare.p_resp,
-                E_FAIL)); //throw
+    spErrRec
+     (pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+       (pData,
+        c_OperationID2__prepare,
+        packet2__prepare.p_resp,
+        E_FAIL)); //throw
 
    if(spErrRec)
    {

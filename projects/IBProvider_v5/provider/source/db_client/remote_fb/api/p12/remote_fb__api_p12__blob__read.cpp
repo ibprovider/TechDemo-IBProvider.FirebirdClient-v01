@@ -186,10 +186,12 @@ bool RemoteFB__API_P12__ReadBlob::exec(RemoteFB__ConnectorData* const pData,
  //-----------------------------------------
  if((*pBlobHandle)->m_ReadMode__State==blob_data_type::ReadState__Failed)
  {
-  assert(FAILED((*pBlobHandle)->m_Err.com_code()));
+  assert((*pBlobHandle)->m_spExc);
 
-  (*pBlobHandle)->m_Err.raise();
+  std::rethrow_exception((*pBlobHandle)->m_spExc);
  }//if
+
+ assert(!(*pBlobHandle)->m_spExc);
 
  //-----------------------------------------
  void*   pTargetBuffer  =pvBuffer;
@@ -443,26 +445,16 @@ void RemoteFB__API_P12__ReadBlob::helper__read_to_buffer
      }//default
     }//switch
    }
-   catch(const std::bad_alloc&)
+   catch(...)
    {
     pBlobData->m_ReadMode__State=blob_data_type::ReadState__Failed;
 
-    pBlobData->m_Err.clear_state(E_OUTOFMEMORY);
+    pBlobData->m_spExc=std::current_exception();
 
-    pBlobData->m_Err.raise();
-   }
-   catch(t_ibp_error& exc)
-   {
-    assert(FAILED(exc.com_code()));
+    assert(pBlobData->m_spExc);
 
-    pBlobData->m_ReadMode__State=blob_data_type::ReadState__Failed;
-
-    pBlobData->m_Err.swap(exc); //no throw!
-
-    assert(FAILED(pBlobData->m_Err.com_code()));
-
-    pBlobData->m_Err.raise();
-   }//catch exc
+    throw;
+   }//catch
 
    //обновляем описатели данных в буфере
    pBlobData->m_ReadMode__BufferActualSize=packet.p_resp.p_resp__data.cstr_length;

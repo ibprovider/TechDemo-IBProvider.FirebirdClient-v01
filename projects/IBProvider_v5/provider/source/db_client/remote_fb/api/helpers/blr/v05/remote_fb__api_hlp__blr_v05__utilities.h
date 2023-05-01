@@ -7,7 +7,7 @@
 #ifndef _remote_fb__api_hlp__blr_v05__utilities_H_
 #define _remote_fb__api_hlp__blr_v05__utilities_H_
 
-#include "source/db_client/remote_fb/remote_fb__forward.h"
+#include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
 #include "source/structure/ibp_buffer_view.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{

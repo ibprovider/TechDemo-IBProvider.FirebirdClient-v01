@@ -69,9 +69,10 @@ void RemoteFB__P11__GetDatabaseStdInfo::exec(RemoteFB__ConnectorData* const pDat
   //дополнительная информация о причинах сбоя.
   t_ibp_error exc(e);
 
-  exc.add_error(exc.com_code(),
-                ibp_subsystem__remote_fb__p11,
-                ibp_mce_dbobj_fail_get_db_info_0);
+  exc.add_error
+   (exc.com_code(),
+    ibp_subsystem__remote_fb__p11,
+    ibp_mce_dbobj_fail_get_db_info_0);
 
   exc.raise_me();
  }//catch

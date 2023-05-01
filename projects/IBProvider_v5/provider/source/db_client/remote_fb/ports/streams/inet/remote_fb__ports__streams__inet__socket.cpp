@@ -298,9 +298,10 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
    if(gai_err_code==0)
     break;
 
-   gai_err.add_error(E_FAIL,
-                     ibp_mce_winsock__getaddrinfo_failed_3,
-                     IBP_CreateCustomErrorFor_CnFailed());
+   gai_err.add_error
+    (E_FAIL,
+     ibp_mce_winsock__getaddrinfo_failed_3,
+     IBP_CreateCustomErrorFor_CnFailed());
 
    gai_err<<gai_err_code
           <<host
@@ -337,9 +338,10 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
 
    /// - Инициализация сокета.
 
-   spSocket->Helper__Socket_Init(pai->ai_family,
-                                 pai->ai_socktype,
-                                 pai->ai_protocol); //throw
+   spSocket->Helper__Socket_Init
+    (pai->ai_family,
+     pai->ai_socktype,
+     pai->ai_protocol); //throw
 
    assert(spSocket->m_hSocket!=winsock::API::WinSock__INVALID_SOCKET);
    assert(spSocket->m_SocketFamily  ==pai->ai_family);
@@ -363,10 +365,11 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
    }//if
 
    //---------------------------------------
-   const int cnErr=pProvider->m_connect.point()
-                   (spSocket->m_hSocket,
-                    pai->ai_addr,
-                    static_cast<int>(pai->ai_addrlen));
+   const int cnErr
+    =pProvider->m_connect.point()
+      (spSocket->m_hSocket,
+       pai->ai_addr,
+       static_cast<int>(pai->ai_addrlen));
 
    if(cnErr!=winsock::API::WinSock__SOCKET_ERROR)
    {
@@ -464,10 +467,11 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::CloneConnection()const
  //-----------------------------------------
  assert(structure::can_numeric_cast<int>(m_SocketAddress.size()));
 
- const int cnErr=m_spProvider->m_connect.point()
-                    (spSocket->m_hSocket,
-                     reinterpret_cast<const winsock::API::WinSock__sockaddr*>(m_SocketAddress.buffer()),
-                     static_cast<int>(m_SocketAddress.size()));
+ const int cnErr
+  =m_spProvider->m_connect.point()
+    (spSocket->m_hSocket,
+     reinterpret_cast<const winsock::API::WinSock__sockaddr*>(m_SocketAddress.buffer()),
+     static_cast<int>(m_SocketAddress.size()));
 
  if(cnErr!=winsock::API::WinSock__SOCKET_ERROR)
  {
@@ -689,11 +693,12 @@ void RemoteFB__INET_Socket::Helper__Socket_Send(size_t      cb,
 
  while(cb!=0)
  {
-  const int n=m_spProvider->m_send.point()
-               (m_hSocket,
-                reinterpret_cast<const char*>(pv),
-                static_cast<int>(cb),
-                RemoteFB__INET_StaticCfg::c_FB_SEND_FLAGS);
+  const int n
+   =m_spProvider->m_send.point()
+     (m_hSocket,
+      reinterpret_cast<const char*>(pv),
+      static_cast<int>(cb),
+      RemoteFB__INET_StaticCfg::c_FB_SEND_FLAGS);
 
   if(n==winsock::API::WinSock__SOCKET_ERROR)
   {
@@ -776,18 +781,20 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
 
  CHECK_WRITE_PTR(pv,cb);
 
- const int icb=structure::can_numeric_cast<int>(cb)
-                 ?static_cast<int>(cb)
-                 :structure::t_numeric_limits<int>::max_value();
+ const int icb
+  =structure::can_numeric_cast<int>(cb)
+    ?static_cast<int>(cb)
+    :structure::t_numeric_limits<int>::max_value();
 
  assert(icb>0);
  assert(size_t(icb)<=cb);
 
- const int n=m_spProvider->m_recv.point()
-              (m_hSocket,
-               reinterpret_cast<char*>(pv),
-               icb,
-               RemoteFB__INET_StaticCfg::c_FB_RECV_FLAGS);
+ const int n
+  =m_spProvider->m_recv.point()
+    (m_hSocket,
+     reinterpret_cast<char*>(pv),
+     icb,
+     RemoteFB__INET_StaticCfg::c_FB_RECV_FLAGS);
 
  if(n==SOCKET_ERROR)
  {
@@ -797,7 +804,7 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
   //!  Process interupt error?
 
   // ERROR - failed to read from INET port
-   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
    (E_FAIL,
     ibp_mce_winsock__failed_to_read_from_port_1,
     IBP_CreateCustomErrorFor_CnFailed(),
@@ -810,7 +817,7 @@ size_t RemoteFB__INET_Socket::Helper__Socket_Recv(size_t const cb,
 
   // ERROR - [BUG CHECK] read from closed socket?
 
-   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
    (E_FAIL,
     ibp_mce_winsock__bug_check__read_from_closed_port_1,
     IBP_CreateCustomErrorFor_CnFailed(),
@@ -856,10 +863,11 @@ void RemoteFB__INET_Socket::Helper__Socket_Init(int const socket__family,
 
  /// Инициализация сокета.
 
- m_hSocket=m_spProvider->m_socket.point()
-                       (socket__family,
-                        socket__type,
-                        socket__protocol);
+ m_hSocket
+  =m_spProvider->m_socket.point()
+    (socket__family,
+     socket__type,
+     socket__protocol);
 
  if(m_hSocket==winsock::API::WinSock__INVALID_SOCKET)
  {
@@ -892,12 +900,13 @@ void RemoteFB__INET_Socket::Helper__Socket_Init(int const socket__family,
  {
   DWORD optval = 1;
 
-  const int setErr=m_spProvider->m_setsockopt.point()
-                    (m_hSocket,
-                     SOL_SOCKET,
-                     SO_KEEPALIVE,
-                     reinterpret_cast<const char*>(&optval),
-                     sizeof(optval));
+  const int setErr
+   =m_spProvider->m_setsockopt.point()
+     (m_hSocket,
+      SOL_SOCKET,
+      SO_KEEPALIVE,
+      reinterpret_cast<const char*>(&optval),
+      sizeof(optval));
 
   if(setErr==winsock::API::WinSock__SOCKET_ERROR)
   {

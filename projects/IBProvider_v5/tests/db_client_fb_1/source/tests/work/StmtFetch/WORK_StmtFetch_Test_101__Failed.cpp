@@ -329,7 +329,7 @@ void WORK_StmtFetch_Test_101__Failed::tag_impl::run(context_type* const pCtx)con
  _TSO_CHECK(hStmt->m_spFetchResult);
  _TSO_CHECK(hStmt->m_spFetchResult->m_State==hStmt->m_spFetchResult->state__failed);
 
- _TSO_CHECK(hStmt->m_spFetchResult->m_FetchErr.com_code()==E_FAIL);
+ _TSO_CHECK(hStmt->m_spFetchResult->m_spFetchExc); 
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtDrop

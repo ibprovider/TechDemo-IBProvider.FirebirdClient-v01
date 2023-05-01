@@ -10,7 +10,6 @@
 #include "source/db_client/remote_fb/remote_fb__memory.h"
 #include "source/db_client/remote_fb/remote_fb__forward.h"
 #include "source/db_client/remote_fb/remote_fb__srv_resource_id.h"
-#include "source/error_services/ibp_error.h"
 #include <structure/t_simple_buffer.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace handles{
@@ -132,7 +131,7 @@ class RemoteFB__HandleData_Blob:public RemoteFB__SmartMemoryObject
 
  public:
   /// Текущая ошибка операции с блобоб.
-  t_ibp_error m_Err;
+  std::exception_ptr m_spExc;
 
  public:
   /// <summary>
@@ -158,11 +157,11 @@ class RemoteFB__HandleData_Blob:public RemoteFB__SmartMemoryObject
 class RemoteFB__HandleData_Blob::tag_tr_list_adapter
 {
  private:
-  typedef tag_tr_list_adapter                             self_type;
+  typedef tag_tr_list_adapter                        self_type;
 
  public:
   typedef RemoteFB__HandleData_Blob                  node_type;
-  typedef node_type*                                      node_ptr_type;
+  typedef node_type*                                 node_ptr_type;
 
  public:
   tag_tr_list_adapter();
