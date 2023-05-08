@@ -986,6 +986,18 @@
     <Filter Include="source\tests\work\StmtFetch\Types\varchar\_headers">
       <UniqueIdentifier>{7b7cd298-262c-4a60-8aba-4a33305fa07c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IBP\source\db_obj\dbms_fb\v04_0_0">
+      <UniqueIdentifier>{10d741d6-7919-4670-a0df-764e4764e133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\dbms_fb\v04_0_0\api">
+      <UniqueIdentifier>{35626de1-70f8-4c63-958d-e9460342554c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\dbms_fb\v04_0_0\api\_headers">
+      <UniqueIdentifier>{3967aa08-ecec-453b-8872-c9d6d28d8d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\dbms_fb\v04_0_0\_headers">
+      <UniqueIdentifier>{77e11fb6-9200-4f7b-93f1-78c0455b03dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -2329,6 +2341,15 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p13_no_lazy.cpp">
       <Filter>IBP\source\db_client\remote_fb</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_02_05.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_03_00.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\p13\remote_fb__api_p13__array__get_slice.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\p13</Filter>
     </ClCompile>
@@ -3058,6 +3079,18 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_max_obj_name_len.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__int128_rules.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__decfloat_rules.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtime_with_tz_rules.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_with_tz_rules.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base\helpers\xsqlda\set01</Filter>
     </ClCompile>
@@ -3459,6 +3492,15 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\varchar\WORK_StmtFetch__Types__varchar_001__sz7.cpp">
       <Filter>source\tests\work\StmtFetch\Types\varchar</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_04_00.cpp">
+      <Filter>IBP\source\db_client\remote_fb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_descrs2.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\api</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5503,6 +5545,18 @@
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\bigint\WORK_StmtFetch__Types__bigint_002__check_align.h">
       <Filter>source\tests\work\StmtFetch\Types\bigint\_headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_descrs2.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\api\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_codes.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\api\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__factories.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\provider\rc\ibp_msg.rh">
@@ -5547,6 +5601,18 @@
     <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_rus.mc">
       <Filter>IBP\resource\msg_tables</Filter>
     </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_eng.mc">
+      <Filter>IBP\resource\msg_tables</Filter>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_rus.mc">
+      <Filter>IBP\resource\msg_tables</Filter>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_ids.rh">
+      <Filter>IBP\resource\headers</Filter>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40.rh">
+      <Filter>IBP\resource\headers</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_reg_data.rc">
@@ -5559,6 +5625,9 @@
       <Filter>IBP\resource</Filter>
     </ResourceCompile>
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb30.rc">
+      <Filter>IBP\resource</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb40.rc">
       <Filter>IBP\resource</Filter>
     </ResourceCompile>
   </ItemGroup>

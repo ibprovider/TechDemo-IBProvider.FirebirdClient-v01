@@ -451,6 +451,94 @@ static const IBP_LONG ibp_propval__guid_rules__default_for_isc
 extern const IBP_LONG g_IBP_PropFlagsFor__guid_rules[2];
 
 ////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The enumeration of rules for processing DBTIMESTAMP WITH TIME ZONE
+/// </summary>
+enum t_ibp_propval_dbtimestamp_with_tz_rules
+{
+ /// \brief
+ ///  Map on DBTYPE_DBTIMESTAMPOFFSET [DBTIMESTAMPOFFSET]
+ ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset      =0,
+
+ /// \brief
+ ///  Map on DBTYPE_WSTR
+ ibp_propval_dbtimestamp_with_tz_rules__as_wstr                   =2,
+};//enum t_ibp_propval_dbtimestamp_with_tz_rules
+
+/// <summary>
+///  Default value
+/// </summary>
+static const IBP_LONG ibp_propval_dbtimestamp_with_tz_rules__default
+ =ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset;
+
+extern const IBP_LONG g_IBP_PropValuesFor__dbtimestamp_with_tz_rules[2];
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The enumeration of rules for processing TIME WITH TIME ZONE
+/// </summary>
+enum t_ibp_propval_dbtime_with_tz_rules
+{
+ /// \brief
+ ///  Map on DBTYPE_WSTR
+ ibp_propval_dbtime_with_tz_rules__as_wstr                        =2,
+};//enum t_ibp_propval_dbtime_with_tz_rules
+
+/// <summary>
+///  Default value
+/// </summary>
+static const IBP_LONG ibp_propval_dbtime_with_tz_rules__default
+ =ibp_propval_dbtime_with_tz_rules__as_wstr;
+
+extern const IBP_LONG g_IBP_PropValuesFor__dbtime_with_tz_rules[1];
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The enumeration of rules for processing INT128 datatype
+/// </summary>
+enum t_ibp_propval_int128_rules
+{
+ /// \brief
+ ///  Map on DBTYPE_NUMERIC [DBNUMERIC]
+ ibp_propval_int128_rules__as_numeric                =1,
+
+ /// \brief
+ ///  Map on DBTYPE_WSTR
+ ibp_propval_int128_rules__as_wstr                   =2,
+};//enum t_ibp_propval_int128_rules
+
+/// <summary>
+///  Default value
+/// </summary>
+static const IBP_LONG ibp_propval_int128_rules__default
+ =ibp_propval_int128_rules__as_numeric;
+
+extern const IBP_LONG g_IBP_PropValuesFor__int128_rules[2];
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The enumeration of rules for processing DECFLOAT(xxx)
+/// </summary>
+enum t_ibp_propval_decfloat_rules
+{
+ /// \brief
+ ///  Map on DBTYPE_WSTR
+ ibp_propval_decfloat_rules__as_wstr                 =2,
+};//enum t_ibp_propval_decfloat_rules
+
+/// <summary>
+///  Default value
+/// </summary>
+static const IBP_LONG ibp_propval_decfloat_rules__default
+ =ibp_propval_decfloat_rules__as_wstr;
+
+extern const IBP_LONG g_IBP_PropValuesFor__decfloat_rules[1];
+
+////////////////////////////////////////////////////////////////////////////////
 //enum t_ibp_propval_dll_lock_rule
 
 /// <summary>

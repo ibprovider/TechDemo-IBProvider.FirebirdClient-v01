@@ -229,8 +229,9 @@ class RemoteFB__PortReadGuard
 /// <summary>
 ///  Базовый класс удаленного порта
 /// </summary>
-class RemoteFB__Port:public db_obj::t_db_service_provider
-                    ,public RemoteFB__SmartObjectBase2
+class RemoteFB__Port
+ :public db_obj::t_db_service_provider
+ ,public RemoteFB__SmartObjectBase2
 {
  private:
   typedef RemoteFB__Port                    self_type;

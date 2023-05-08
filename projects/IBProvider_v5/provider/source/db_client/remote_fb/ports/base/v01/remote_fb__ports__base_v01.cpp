@@ -153,7 +153,7 @@ void RemoteFB__Port_BASE_v01::RegService(REFGUID                         svcID,
  assert(pSvc);
 
  _VERIFY(m_Services.insert(services_type::value_type(svcID,pSvc)) DEBUG_CODE(.second));
-}//Helper__RegService
+}//RegService
 
 //port interface ---------------------------------------------------------
 void RemoteFB__Port_BASE_v01::send_packet(RemoteFB__PortOperationContext& op_ctx,

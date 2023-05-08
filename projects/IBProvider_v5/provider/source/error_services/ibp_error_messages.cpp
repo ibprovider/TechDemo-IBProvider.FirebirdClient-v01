@@ -355,4 +355,10 @@ extern const wchar_t me_bug_check__win32_err__incorrect_work_of_GetTempFileName_
  =L"incorrect work of GetTempFileName";
 
 ////////////////////////////////////////////////////////////////////////////////
+
+//params: oledb type id
+extern const wchar_t me_bug_check__unknown_oledb_type_id_1[]
+ =L"unknown OLE DB type id [%1]";
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

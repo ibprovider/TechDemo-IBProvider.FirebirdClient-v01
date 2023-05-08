@@ -443,6 +443,22 @@ enum ibp_msg_code_type
   =IBP_MCE_COMMON__FAILED_TO_MAKE_LOWER_STR_3,
  
  ///////////////////////////////////////////////////////////////////////////////
+ 
+ /// \brief
+ ///  Database server version is not defined.<br>
+ ibp_mce_common__no_dbms_version_0
+  =IBP_MCE_COMMON__NO_DBMS_VERSION_0,
+ 
+ ///////////////////////////////////////////////////////////////////////////////
+
+ /// \brief
+ ///  Can't calculate object name length.<br>
+ /// \b
+ ///  Params: error code sign
+ ibp_mce_common__cant_calc_object_name_length_1
+  =IBP_MCE_COMMON__CANT_CALC_OBJECT_NAME_LENGTH_1,
+
+ ///////////////////////////////////////////////////////////////////////////////
 
  /// \brief
  ///  [BUG CHECK] Сервис не поддерживается.<br>

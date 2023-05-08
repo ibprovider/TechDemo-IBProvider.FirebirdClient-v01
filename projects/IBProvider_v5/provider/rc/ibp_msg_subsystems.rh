@@ -25,6 +25,7 @@
 #define IBP_SUBSYSTEM__ISC_API__FB2_5_1                                   1107
 #define IBP_SUBSYSTEM__ISC_API__FB3_0                                     1108
 #define IBP_SUBSYSTEM__ISC_API__FB3_0_4                                   1109
+#define IBP_SUBSYSTEM__ISC_API__FB4_0                                     1110
 
 ////////////////////////////////////////////////////////////////////////////////
 //ISC API. InterBase

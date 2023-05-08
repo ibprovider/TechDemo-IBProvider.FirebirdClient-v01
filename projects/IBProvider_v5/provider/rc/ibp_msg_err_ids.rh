@@ -373,6 +373,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /// \brief
+///  Database server version is not defined.<br>
+#define IBP_MCE_COMMON__NO_DBMS_VERSION_0                                 1045
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// \brief
+///  Can't calculate object name length.<br>
+/// \b
+///  Params: error code sign
+#define IBP_MCE_COMMON__CANT_CALC_OBJECT_NAME_LENGTH_1                    1050
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// \brief
 ///  [BUG CHECK] Сервис не поддерживается.<br>
 /// \b
 ///  Params: service_guid, interface name

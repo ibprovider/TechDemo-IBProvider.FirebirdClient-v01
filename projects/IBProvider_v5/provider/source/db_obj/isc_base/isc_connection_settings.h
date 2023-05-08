@@ -346,6 +346,18 @@ class t_isc_connection_settings
   ///NUMERIC_I8 Rules
   long                   numeric_i8_rules;
 
+  ///NUMERIC_I16 Rules
+  long                   numeric_i16_rules;
+
+  ///INT128 Rules
+  long                   int128_rules;
+
+  ///DECFLOAT16 Rules
+  long                   decfloat16_rules;
+
+  ///DECFLOAT34 Rules
+  long                   decfloat34_rules;
+
   ///Шаблон с имен домена, эмулирующего тип BOOLEAN
   ibp::t_ibp_string      boolean_domain_name;
 
@@ -370,6 +382,7 @@ class t_isc_connection_settings
   /// </summary>
   long                   stmt_cache__req_life_time;
 
+ public:
   ///Rules for datatype TIME
   long                   dbtime_rules;
 
@@ -378,6 +391,12 @@ class t_isc_connection_settings
 
   ///Rules for datatype DATE
   long                   dbdate_rules;
+
+  ///Rules for datatype TIMESTAMP WITH TZ
+  long                   dbtimestamp_with_tz_rules;
+
+  ///Rules for datatype TIME WITH TZ
+  long                   dbtime_with_tz_rules;
 
  public:
   ///DBMS Rules for datatype GUID

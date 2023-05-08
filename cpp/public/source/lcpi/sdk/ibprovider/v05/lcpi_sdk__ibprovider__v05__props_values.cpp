@@ -174,6 +174,36 @@ extern const IBP_LONG g_IBP_PropFlagsFor__guid_rules[2]=
 
 ////////////////////////////////////////////////////////////////////////////////
 
+extern const IBP_LONG g_IBP_PropValuesFor__dbtimestamp_with_tz_rules[2]=
+{
+ ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset,
+ ibp_propval_dbtimestamp_with_tz_rules__as_wstr
+};//g_IBP_PropValuesFor__dbtimestamp_with_tz_rules
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const IBP_LONG g_IBP_PropValuesFor__dbtime_with_tz_rules[1]=
+{
+ ibp_propval_dbtime_with_tz_rules__as_wstr
+};//g_IBP_PropValuesFor__dbtime_with_tz_rules
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const IBP_LONG g_IBP_PropValuesFor__int128_rules[2]=
+{
+ ibp_propval_int128_rules__as_numeric,
+ ibp_propval_int128_rules__as_wstr,
+};//g_IBP_PropValuesFor__int128_rules
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const IBP_LONG g_IBP_PropValuesFor__decfloat_rules[1]=
+{
+ ibp_propval_decfloat_rules__as_wstr
+};//g_IBP_PropValuesFor__decfloat_rules
+
+////////////////////////////////////////////////////////////////////////////////
+
 extern const IBP_LONG g_IBP_PropValuesFor__dll_lock_rules[3]=
 {
  ibp_propval_dll_lock_rule__force_unload,

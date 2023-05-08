@@ -189,8 +189,9 @@ void RemoteFB__Connector::Helper__FinalInitialize__P12__lazy_send()
  //! \note
  //!  Сервис отмены операций доступен только для INET-соединения
 
- m_spData->RegService(db_obj::__db_guid<api::RemoteFB__SVC__CancelDbOperation>(),
-                      &api::p12::RemoteFB__SVC_P12__CancelDbOperation::Instance);
+ m_spData->RegService
+  (db_obj::__db_guid<api::RemoteFB__SVC__CancelDbOperation>(),
+   &api::p12::RemoteFB__SVC_P12__CancelDbOperation::Instance);
 }//Helper__FinalInitialize__P12__lazy_send
 
 ////////////////////////////////////////////////////////////////////////////////

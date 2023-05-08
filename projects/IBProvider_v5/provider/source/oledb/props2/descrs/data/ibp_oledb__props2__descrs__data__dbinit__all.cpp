@@ -14,6 +14,7 @@
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__non_negative_i4.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__neg1_zero_positive_i4.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__tr_iso_level.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__decfloat_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__numeric_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__dll_lock_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__deferred_data_rules.h"
@@ -34,7 +35,10 @@
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__auto_commit_ddl.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dbtime_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_rules.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_with_tz_rules.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dbtime_with_tz_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dbdate_rules.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__int128_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__guid_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__asynch_fetch.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__wchars_in_utf8_symbol.h"
@@ -240,7 +244,13 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBCLIENT_TYPE                       ,0,"dbclient_type")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBDATE_RULES                        ,0,"dbdate_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBTIME_RULES                        ,0,"dbtime_rules")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBTIME_WITH_TZ_RULES                ,0,"dbtime_with_tz_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBTIMESTAMP_RULES                   ,0,"dbtimestamp_rules")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBTIMESTAMP_WITH_TZ_RULES           ,0,"dbtimestamp_with_tz_rules")
+
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DECFLOAT16_RULES                    ,0,"decfloat16_rules")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DECFLOAT34_RULES                    ,0,"decfloat34_rules")
+
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DEFERRED_DATA                       ,0,"deferred_data")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DEFERRED_OUT_PARAM                  ,0,"deferred_out_param")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SQL_DIALECT                         ,0,"dialect")
@@ -264,6 +274,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__IGNORE_ERR_PARAM                    ,0,"ignore_err_param")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__IGNORE_UNPREPARE                    ,0,"ignore_unprepare")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__INNER_TRANS                         ,0,"inner_trans")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__INT128_RULES                        ,0,"int128_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__KEYWORDS_LIST                       ,0,"keywords_list")
 
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
@@ -277,6 +288,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NESTED_TRANS                        ,0,"nested_trans")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NESTED_TRANS_RULES                  ,0,"nested_trans_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NUM_BUFFERS                         ,0,"num_buffers")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NUMERIC_I16_RULES                   ,0,"numeric_i16_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NUMERIC_I2_RULES                    ,0,"numeric_i2_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NUMERIC_I4_RULES                    ,0,"numeric_i4_rules")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__NUMERIC_I8_RULES                    ,0,"numeric_i8_rules")

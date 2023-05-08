@@ -657,6 +657,22 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   void Helper__FinalInitialize__P13__lazy_send();
 
  private:
+  /// <summary>
+  ///  The final initialization. Firebird Server.
+  /// </summary>
+  void Helper__FinalInitialize__FB
+            (const cns_type& cns);
+
+  void Helper__FinalInitialize__FB_02_05
+            (const cns_type& cns);
+
+  void Helper__FinalInitialize__FB_03_00
+            (const cns_type& cns);
+
+  void Helper__FinalInitialize__FB_04_00
+            (const cns_type& cns);
+
+ private:
   /// MT-защита объекта
   guard_type m_Guard;
 

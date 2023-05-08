@@ -202,7 +202,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__FinishConnect_P13__cond_accep
 
     case protocol::set02::op_response:
     {
-     api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult
+     api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult2
       (pPort,
        c_OperationID,
        packet.p_resp,

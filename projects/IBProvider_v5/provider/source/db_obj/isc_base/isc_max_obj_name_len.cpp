@@ -36,6 +36,14 @@ void t_isc_max_obj_name_len::set_in_fss_bytes(size_t const value)
 }//set_in_fss_bytes
 
 //------------------------------------------------------------------------
+void t_isc_max_obj_name_len::set_in_utf8_symbols(size_t const value)
+{
+ m_kind=kind_type::in_utf8_symbols;
+
+ m_value=value;
+}//set_in_utf8_symbols
+
+//------------------------------------------------------------------------
 size_t t_isc_max_obj_name_len::get_value()const
 {
  return m_value;
@@ -58,6 +66,12 @@ bool t_isc_max_obj_name_len::is_in_fss_bytes()const
 {
  return m_kind==kind_type::in_fss_bytes;
 }//is_in_fss_bytes
+
+//------------------------------------------------------------------------
+bool t_isc_max_obj_name_len::is_in_utf8_symbols()const
+{
+ return m_kind==kind_type::in_utf8_symbols;
+}//is_in_utf8_symbols
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms isc_base*/}/*nms ibp*/}/*nms lcpi*/

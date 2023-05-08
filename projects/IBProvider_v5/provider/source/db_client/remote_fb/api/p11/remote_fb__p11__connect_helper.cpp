@@ -123,7 +123,7 @@ void RemoteFB__P11__ConnectHelper::exec(RemoteFB__Port*            const pPort,
 
   if(packet.operation==protocol::set01::op_response)
   {
-   pset01::RemoteFB__PSET01__ErrorUtilites::ProcessServerResult
+   pset01::RemoteFB__PSET01__ErrorUtilites::ProcessServerResult2
     (pPort,
      operationID,
      packet.p_resp,

@@ -11,8 +11,6 @@
 #include "source/oledb/props2/descrs/ibp_oledb__props2__descr_data__helpers.h"
 #include "source/oledb/props2/ibp_oledb__props2__utils.h"
 
-#include "source/Version/ibp_v05_info_data.h"
-
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{namespace data{
 ////////////////////////////////////////////////////////////////////////////////
 

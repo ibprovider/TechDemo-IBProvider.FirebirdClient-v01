@@ -64,7 +64,7 @@ void
 
 //------------------------------------------------------------------------
 void
- RemoteFB__PSET02__ErrorUtilites::ProcessServerResult
+ RemoteFB__PSET02__ErrorUtilites::ProcessServerResult2
                                            (RemoteFB__Port*             const _pPort,
                                             protocol::set02::P_OP       const _op_id,
                                             const protocol::set02::P_OP_RESP& _p_resp,
@@ -72,7 +72,7 @@ void
 {
  assert(_pPort);
 
- return RemoteFB__SrvErrorUtils_v1::ProcessServerResult
+ return RemoteFB__SrvErrorUtils_v1::ProcessServerResult2
          (_pPort,
           _op_id,
           _p_resp.p_resp__status_vector,

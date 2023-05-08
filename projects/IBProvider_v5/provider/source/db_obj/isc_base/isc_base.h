@@ -35,6 +35,8 @@ struct t_isc_msg_data_element_descr;
 IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__xsqlvar_v1);
 IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__xsqlvar_v2);
 
+IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__sqlvalue_v1);
+
 //интерфейс дл€ транслировани€ текста SQL запроса ------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_stmt_text_translator);
 

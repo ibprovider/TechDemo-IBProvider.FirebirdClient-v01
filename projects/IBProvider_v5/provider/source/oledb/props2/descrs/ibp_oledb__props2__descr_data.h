@@ -30,6 +30,7 @@ struct IBP_OLEDB_Props2__DescrData
   typedef oledb_lib::t_oledb_value__I2                  value_i2_type;
   typedef oledb_lib::t_oledb_value__I4                  value_i4_type;
   typedef const oledb_lib::t_oledb_value__WCHAR*        value_wstr_type;
+  typedef const oledb_lib::t_oledb_value__CHAR*         value_str_type;
 
  public:
   //Описание дескриптора формируется динамически
@@ -46,8 +47,9 @@ struct IBP_OLEDB_Props2__DescrData
    DefaultValueTypeID__empty  =0,
    DefaultValueTypeID__i2     =1,
    DefaultValueTypeID__i4     =2,
-   DefaultValueTypeID__wstr   =3,
-   DefaultValueTypeID__bool   =4,
+   DefaultValueTypeID__bool   =3,
+   DefaultValueTypeID__wstr   =4,
+   DefaultValueTypeID__str    =5,
   };//enum DefaultValueTypeID
 
   struct tagDefaultValue
@@ -58,8 +60,9 @@ struct IBP_OLEDB_Props2__DescrData
    {
     value_i2_type     valI2;
     value_i4_type     valI4;
-    value_wstr_type   valWStr;
     bool              valBool;
+    value_wstr_type   valWStr;
+    value_str_type    valStr;
    } value;
   };//struct tagDefaultValue
 
@@ -77,8 +80,9 @@ struct IBP_OLEDB_Props2__DescrData
   struct tag_init__empty{};
   struct tag_init__i2{};
   struct tag_init__i4{};
-  struct tag_init__wstr{};
   struct tag_init__bool{};
+  struct tag_init__wstr{};
+  struct tag_init__str{};
 
  public:
   class tag_ref_less;
@@ -130,6 +134,15 @@ struct IBP_OLEDB_Props2__DescrData
     value_i4_type            DefaultValue);
 
   IBP_OLEDB_Props2__DescrData
+   (tag_init__bool,
+    DBPROPID                 PropId,
+    wms_type                 PropDescr,
+    DBPROPFLAGS              PropFlags,
+    rule_flags_type          RuleFlags,
+    DBPROPOPTIONS            DefaultOpt,
+    bool                     DefaultValue);
+
+  IBP_OLEDB_Props2__DescrData
    (tag_init__wstr,
     DBPROPID                 PropId,
     wms_type                 PropDescr,
@@ -139,13 +152,13 @@ struct IBP_OLEDB_Props2__DescrData
     value_wstr_type          staticDefaultValue);
 
   IBP_OLEDB_Props2__DescrData
-   (tag_init__bool,
+   (tag_init__str,
     DBPROPID                 PropId,
     wms_type                 PropDescr,
     DBPROPFLAGS              PropFlags,
     rule_flags_type          RuleFlags,
     DBPROPOPTIONS            DefaultOpt,
-    bool                     DefaultValue);
+    value_str_type           staticDefaultValue);
 
   //post init interface --------------------------------------------------
   self_type& PostInit_SetHandler_ExtractValue

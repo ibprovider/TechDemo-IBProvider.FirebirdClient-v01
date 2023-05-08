@@ -148,6 +148,8 @@ class t_str_version
   const_iterator end()   const;
 
   //selectors ------------------------------------------------------------
+  bool empty()const;
+
   size_type size()const;
 
   const_reference operator [] (size_type i)const;

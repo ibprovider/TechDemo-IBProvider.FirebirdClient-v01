@@ -8,7 +8,6 @@
 #pragma hdrstop
 
 #include "source/db_obj/isc_base/isc_api.h"
-#include "source/error_services/ibp_error.h"
 #include "source/error_services/ibp_error_bug_check.h"
 
 namespace lcpi{namespace ibp{namespace isc_api{

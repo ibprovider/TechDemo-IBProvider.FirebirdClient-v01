@@ -15,6 +15,7 @@
 #include "source/error_services/ibp_error_utils.h"
 
 #include <structure/charsets/t_cs_utf_fss.h>
+#include <structure/charsets/t_cs_utf16.h>
 
 #include <lcpi/lib/structure/utilities/to_underlying.h>
 
@@ -90,6 +91,69 @@ static bool ib_object_name_is_ok__fss_bytes
 }//ib_object_name_is_ok__fss_bytes
 
 //-------------------------------------------------------------------
+static bool ib_object_name_is_ok__utf8_symbols
+                             (const isc_base::t_isc_connection_settings& cns,
+                              structure::t_const_wstr_box          const objectName)
+{
+ assert(cns.max_obj_name_len.is_in_utf8_symbols());
+
+ assert(cns.max_obj_name_len.get_value()>0);
+
+ const wchar_t* const c_bugcheck_src
+  =L"ib_base::ib_object_name_is_ok__utf8_symbols";
+
+ namespace cs_utf16=structure::charsets::cs_utf16;
+
+ const auto r
+  =cs_utf16::calc_symbol_count
+    (objectName.begin(),
+     objectName.end(),
+     cns.max_obj_name_len.get_value());
+
+ switch(r.second)
+ {
+  case cs_utf16::cs_cvt_result__ok:
+  {
+   assert(r.first<=cns.max_obj_name_len.get_value());
+
+   return true;
+  }//ok
+
+  case cs_utf16::cs_cvt_result__overflow:
+  {
+   return false;
+  }//overflow
+
+  case cs_utf16::cs_cvt_result__trunc_input:
+  {
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_common__cant_calc_object_name_length_1,
+     L"trunc_input");
+  }//trunc_input
+
+  case cs_utf16::cs_cvt_result__bad_input:
+  {
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_common__cant_calc_object_name_length_1,
+     L"bad_input");
+  }//bad_input
+
+  default:
+  {
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
+    (c_bugcheck_src,
+     L"#001",
+     L"unexpected cvt-result [%1]",
+     lib::structure::to_underlying(r.second));
+  }//if
+ }//switch r.second
+
+ return false;
+}//ib_object_name_is_ok__utf8_symbols
+
+//-------------------------------------------------------------------
 bool ib_object_name_is_ok(const isc_base::t_isc_connection_settings& cns,
                           structure::t_const_wstr_box          const objectName)
 {
@@ -106,6 +170,13 @@ bool ib_object_name_is_ok(const isc_base::t_isc_connection_settings& cns,
            (cns,
             objectName);
   }//in_fss_bytes
+
+  case isc_base::tag_isc_max_obj_name_len_kind::in_utf8_symbols:
+  {
+   return ib_object_name_is_ok__utf8_symbols
+           (cns,
+            objectName);
+  }//in_utf8_symbols
 
   default:
   {

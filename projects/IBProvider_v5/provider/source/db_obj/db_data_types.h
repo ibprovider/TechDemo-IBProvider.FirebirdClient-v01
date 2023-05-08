@@ -218,6 +218,75 @@ extern const DB_IBARRAYID  __null_ib_array_id;
 
 ////////////////////////////////////////////////////////////////////////////////
 
+using t_dbvalue__fb040_timezone=t_dbvalue__ui2;
+
+////////////////////////////////////////////////////////////////////////////////
+//struct t_dbvalue__fb040_timestamp_with_tz
+
+/// <summary>
+///  FB4.0: Timestamp with timezone.
+/// </summary>
+struct t_dbvalue__fb040_timestamp_with_tz
+{
+ t_dbvalue__isc_timestamp utc_timestamp;
+
+ t_dbvalue__fb040_timezone  time_zone;
+};//struct t_dbvalue__fb040_timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+//struct t_dbvalue__fb040_time_with_tz
+
+/// <summary>
+///  FB4.0: Time with timezone.
+/// </summary>
+struct t_dbvalue__fb040_time_with_tz
+{
+ t_dbvalue__isc_time     utc_time;
+
+ t_dbvalue__fb040_timezone time_zone;
+};//struct t_dbvalue__fb040_time_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+//struct t_dbvalue__fb040_int128
+
+struct t_dbvalue__fb040_int128
+{
+ t_dbvalue__ui8 data[2];
+};//struct t_dbvalue__fb040_int128
+
+extern const t_dbvalue__fb040_int128 __null_dbvalue__fb040_int128;
+
+////////////////////////////////////////////////////////////////////////////////
+//FB040_NUMERIC_I8
+
+///id: dbtype__fb040_numeric_i16
+struct t_dbvalue__fb040_numeric_i16
+{
+ t_dbvalue__fb040_int128 data;
+};//struct t_dbvalue__fb040_numeric_i16
+
+assert_s(sizeof(t_dbvalue__fb040_numeric_i16)==sizeof(t_dbvalue__fb040_int128));
+
+extern const t_dbvalue__fb040_numeric_i16 __null_dbvalue__fb040_numeric_i16;
+
+////////////////////////////////////////////////////////////////////////////////
+//struct t_dbvalue__fb040_decfloat16
+
+struct t_dbvalue__fb040_decfloat16
+{
+ t_dbvalue__ui8 data[1];
+};//struct t_dbvalue__fb040_decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//struct t_dbvalue__fb040_decfloat34
+
+struct t_dbvalue__fb040_decfloat34
+{
+ t_dbvalue__ui8 data[2];
+};//struct t_dbvalue__fb040_decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
+
 /// <summary>
 ///  Перечисление идентификаторов внутренних типов данных
 /// </summary>
@@ -277,6 +346,17 @@ enum tag_enum_dbtype
  dbtype__isc_numeric_i4      =41,  //t_dbvalue__isc_numeric_i4 + scale
  dbtype__isc_numeric_i8      =42,  //t_dbvalue__isc_numeric_i8 + scale
 
+ dbtype__fb040_timestamp_with_tz =43,  //t_dbvalue__fb040_timestamp_with_tz
+ dbtype__fb040_time_with_tz      =44,  //t_dbvalue__fb040_time_with_tz
+
+ dbtype__fb040_int128            =45,  //t_dbvalue__fb040_int128
+
+ ///DB_NUMERIC on the base of INT128
+ dbtype__fb040_numeric_i16       =46,  //t_dbvalue__fb040_numeric_i16 + scale
+
+ dbtype__fb040_decfloat16        =47, // t_dbvalue__fb040_decfloat16
+ dbtype__fb040_decfloat34        =48, // t_dbvalue__fb040_decfloat34
+
  dbtype__none                =-1
 };//enum tag_enum_dbtype
 
@@ -326,6 +406,29 @@ enum
  dbprecision__isc_timestamp_as_wstr     =dbprecision__isc_date_as_wstr+
                                          1+
                                          dbprecision__isc_time2_as_wstr,
+
+ dbprecision__fb040_int128                  =39,
+ dbprecision__fb040_numeric_on_int128       =38,
+ dbprecision__fb040_decimal_on_int128       =38,
+
+ dbprecision__fb040_decfloat16              =16,
+ dbprecision__fb040_decfloat34              =34,
+
+                                                 //1234567890123456789012345678901
+ dbprecision__fb040_timestamp_with_tz       =31, //dd.mm.yyyy hh:mm:ss.msms +hh:mm
+
+ dbprecision__fb040_time2_with_tz           =20, //hh:mm:ss.msms +hh:mm
+
+ //Для режима TIME2_WITH_TZ_AS_WSTR
+ dbprecision__fb040_time2_with_tz_as_wstr   =64,
+
+ //Для режима TIMESTAMP_WITH_TZ_AS_WSTR
+ dbprecision__fb040_timestamp_with_tz_as_wstr
+  =db_obj::dbprecision__isc_date_as_wstr+1+dbprecision__fb040_time2_with_tz_as_wstr,
+
+ //For DECLFLOAT_AS_WSTR mode
+ dbprecision__fb040_decfloat16_as_wstr      =dbprecision__fb040_decfloat16+16,
+ dbprecision__fb040_decfloat34_as_wstr      =dbprecision__fb040_decfloat34+16,
 };//enum
 
 enum
@@ -333,6 +436,9 @@ enum
  dbscale__isc_timestamp                 =4, //micro-seconds [0..9999]
  dbscale__isc_date                      =0,
  dbscale__isc_time2                     =4, //micro-seconds [0..9999]
+
+ dbscale__fb040_timestamp_with_tz       =db_obj::dbscale__isc_timestamp,
+ dbscale__fb040_time2_with_tz           =db_obj::dbscale__isc_time2,
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////

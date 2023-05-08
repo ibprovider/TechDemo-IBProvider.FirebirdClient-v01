@@ -473,6 +473,10 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector_data.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__api.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_02_05.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_03_00.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_fb_04_00.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p10_lazy_send.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p10_no_lazy.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector__init_p11_lazy_send.cpp" />
@@ -554,6 +558,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__auth__srp_remote_password.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__svc__status_vector_utils.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_descrs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_base.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_blob_writer_buf.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_charset_info.cpp" />
@@ -723,6 +729,7 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\descrs\ibp_oledb__props2__descr_data__index_by_name.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__cset_collation_name.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__cset_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__decfloat_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__deferred_data_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__dll_lock_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__common__enum_i2.cpp" />
@@ -744,12 +751,15 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbclient_type.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbdate_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtimestamp_with_tz_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtime_rules.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dbtime_with_tz_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__db_page_size.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__dialect.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__first_week_day.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__guid_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__ignore_err_param.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__int128_rules.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__integ_auth.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__keywords_list.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__modify_trans_type.cpp" />
@@ -1399,6 +1409,10 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\api\db_obj__dbms_fb__v03_0_0__api__error_descrs2.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__auth__srp_remote_password.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__svc__status_vector_utils.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_codes.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\api\db_obj__dbms_fb__v04_0_0__api__error_descrs2.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__factories.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_base.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_blob_writer_buf.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_charset.h" />
@@ -1754,6 +1768,7 @@
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg.rc" />
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb25.rc" />
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb30.rc" />
+    <ResourceCompile Include="..\..\..\..\provider\rc\ibp_msg_fb40.rc" />
     <ResourceCompile Include="..\..\..\..\provider\rc\ibp_reg_data.rc" />
   </ItemGroup>
   <ItemGroup>
@@ -1800,6 +1815,20 @@
     </None>
     <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_ids.rh" />
     <None Include="..\..\..\..\provider\rc\ibp_msg_fb30_err_rus.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40.rh" />
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_eng.mc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </None>
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_ids.rh" />
+    <None Include="..\..\..\..\provider\rc\ibp_msg_fb40_err_rus.mc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

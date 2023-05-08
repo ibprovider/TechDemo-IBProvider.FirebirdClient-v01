@@ -767,6 +767,60 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
 
 //------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBTIMESTAMP_WITH_TZ_RULES,
+  OLEDB_PDESCR2(L"dbtimestamp_with_tz_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dbtimestamp_with_tz_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbtimestamp_with_tz_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DBTIME_WITH_TZ_RULES,
+  OLEDB_PDESCR2(L"dbtime_with_tz_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_dbtime_with_tz_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__dbtime_with_tz_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__INT128_RULES,
+  OLEDB_PDESCR2(L"int128_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_int128_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__int128_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__NUMERIC_I16_RULES,
+  OLEDB_PDESCR2(L"numeric_i16_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_numeric_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DECFLOAT16_RULES,
+  OLEDB_PDESCR2(L"decfloat16_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_decfloat_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__decfloat_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__I4
+ (IBP_DBPROP__INIT__DECFLOAT34_RULES,
+  OLEDB_PDESCR2(L"decfloat34_rules"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+  ibprovider::ibp_propval_decfloat_rules__default,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__decfloat_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
 #if(IBP_ENGINE_DIRECT_FB!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY

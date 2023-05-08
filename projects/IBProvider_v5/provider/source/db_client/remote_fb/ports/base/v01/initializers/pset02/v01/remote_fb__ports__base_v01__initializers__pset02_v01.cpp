@@ -470,7 +470,7 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
      (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
       db_obj::dbms_fb::v03_0_0::create_svc__status_vector_utils());
 
-    api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult
+    api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult2
      (pPort,
       c_OperationID,
       packet.p_resp,

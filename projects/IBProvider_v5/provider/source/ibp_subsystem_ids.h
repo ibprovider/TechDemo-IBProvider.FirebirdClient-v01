@@ -66,6 +66,9 @@ enum t_ibp_subsystem_id
  ibp_subsystem__isc_api__fb3_0_4
   =IBP_SUBSYSTEM__ISC_API__FB3_0_4,
 
+ ibp_subsystem__isc_api__fb4_0
+  =IBP_SUBSYSTEM__ISC_API__FB4_0,
+
  //----------------------------------------- ISC API. InterBase.
  ibp_subsystem__isc_api__init_cn_to_ib
   =IBP_SUBSYSTEM__ISC_API__INIT_CN_TO_IB,

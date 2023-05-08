@@ -136,7 +136,10 @@ RemoteFB__Connector::self_ptr
  assert(spPort);
 
  //-----------------------------------------
- self_ptr spConnector(structure::not_null_ptr(new self_type(spPort)));
+ self_ptr spConnector
+  (structure::not_null_ptr
+    (new self_type
+      (spPort)));
 
  assert(spConnector);
 
@@ -376,8 +379,8 @@ void RemoteFB__Connector::Helper__FinalInitialize
 
  if(cns.dbms.descr_Ex.value().find(isc_base::g_dbms_name_Firebird)!=std::string::npos)
  {
-  structure::tstr_to_tstr(&m_spData->m_DBMS_Name,
-                          isc_base::g_dbms_name_Firebird);
+  this->Helper__FinalInitialize__FB
+   (cns);
  }
  else
  {

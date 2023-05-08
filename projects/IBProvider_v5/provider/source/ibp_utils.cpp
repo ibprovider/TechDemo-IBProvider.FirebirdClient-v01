@@ -304,6 +304,9 @@ bool IBP_Utils::IsValidCharsetName(const structure::t_const_wstr_box& name)
   if((*p)==L'_')
    continue;
 
+  if((*p)==L'-')
+   continue;
+
   return false;
  }//for p
 

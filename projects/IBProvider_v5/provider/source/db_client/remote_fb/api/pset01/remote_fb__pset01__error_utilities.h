@@ -88,7 +88,7 @@ class RemoteFB__PSET01__ErrorUtilites
   //! \param[in] _p_resp
   //! \param[in] _hr
   static void
-   ProcessServerResult
+   ProcessServerResult2
     (RemoteFB__Port*                   _pPort,
      protocol::set01::P_OP             _op_id,
      const protocol::set01::P_OP_RESP& _p_resp,

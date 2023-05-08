@@ -24,6 +24,9 @@ enum class tag_isc_max_obj_name_len_kind
 
  /// Length in UNICODE_FSS bytes.
  in_fss_bytes     =1,
+
+ /// Length in UTF8 symbols.
+ in_utf8_symbols  =2,
 };//enum tag_isc_max_obj_name_len_kind
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +48,8 @@ class t_isc_max_obj_name_len
 
   void set_in_fss_bytes(size_t value);
 
+  void set_in_utf8_symbols(size_t value);
+
   //selectors ------------------------------------------------------------
   size_t get_value()const;
 
@@ -53,6 +58,8 @@ class t_isc_max_obj_name_len
   bool is_not_defined()const;
 
   bool is_in_fss_bytes()const;
+
+  bool is_in_utf8_symbols()const;
 
  private:
   size_t m_value;

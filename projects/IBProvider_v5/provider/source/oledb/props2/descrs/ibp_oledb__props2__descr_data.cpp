@@ -8,9 +8,8 @@
 #pragma hdrstop
 
 #include "source/oledb/props2/descrs/ibp_oledb__props2__descr_data.h"
-#include "source/error_services/ibp_error_bug_check.h"
+#include "source/error_services/ibp_error_utils.h"
 #include <ole_lib/ole_auto/ole_auto_variant.h>
-#include <structure/t_str_formatter.h>
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
@@ -152,6 +151,34 @@ IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
 
 //------------------------------------------------------------------------
 IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
+                                           (tag_init__bool,
+                                            DBPROPID          const PropId,
+                                            wms_type          const PropDescr,
+                                            DBPROPFLAGS       const PropFlags,
+                                            rule_flags_type   const RuleFlags,
+                                            DBPROPOPTIONS     const DefaultOpt,
+                                            bool              const DefaultValue)
+ :m_PropId(PropId)
+ ,m_PropDescr(PropDescr)
+ ,m_PropFlags(PropFlags)
+ ,m_RuleFlags(RuleFlags)
+ ,m_PropVarType(VT_BOOL)
+ ,m_DefaultOpt(DefaultOpt)
+ ,m_Default()
+ ,m_pHandler__ExtractValue(nullptr)
+ ,m_pHandler__PrepareSetValue(nullptr)
+ ,m_pHandler__PrepareGetValue(nullptr)
+ ,m_pHandler__GetValue(nullptr)
+ ,m_pHandler__GetDefaultValue(nullptr)
+{
+ assert(m_PropVarType!=VT_EMPTY);
+
+ m_Default.typeID        =DefaultValueTypeID__bool;
+ m_Default.value.valBool =DefaultValue;
+}//IBP_OLEDB_Props2__DescrData - bool
+
+//------------------------------------------------------------------------
+IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
                                            (tag_init__wstr,
                                             DBPROPID          const PropId,
                                             wms_type          const PropDescr,
@@ -180,18 +207,18 @@ IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
 
 //------------------------------------------------------------------------
 IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
-                                           (tag_init__bool,
+                                           (tag_init__str,
                                             DBPROPID          const PropId,
                                             wms_type          const PropDescr,
                                             DBPROPFLAGS       const PropFlags,
                                             rule_flags_type   const RuleFlags,
                                             DBPROPOPTIONS     const DefaultOpt,
-                                            bool              const DefaultValue)
+                                            value_str_type    const staticDefaultValue)
  :m_PropId(PropId)
  ,m_PropDescr(PropDescr)
  ,m_PropFlags(PropFlags)
  ,m_RuleFlags(RuleFlags)
- ,m_PropVarType(VT_BOOL)
+ ,m_PropVarType(VT_BSTR)
  ,m_DefaultOpt(DefaultOpt)
  ,m_Default()
  ,m_pHandler__ExtractValue(nullptr)
@@ -202,9 +229,9 @@ IBP_OLEDB_Props2__DescrData::IBP_OLEDB_Props2__DescrData
 {
  assert(m_PropVarType!=VT_EMPTY);
 
- m_Default.typeID        =DefaultValueTypeID__bool;
- m_Default.value.valBool =DefaultValue;
-}//IBP_OLEDB_Props2__DescrData - bool
+ m_Default.typeID        =DefaultValueTypeID__str;
+ m_Default.value.valStr  =staticDefaultValue;
+}//IBP_OLEDB_Props2__DescrData - str
 
 //Post init interface ----------------------------------------------------
 IBP_OLEDB_Props2__DescrData&
@@ -300,6 +327,12 @@ void IBP_OLEDB_Props2__DescrData::CopyDefaultValueTo(VARIANT* const pResult_Valu
    tmpValue.vt=VT_I4;
    break;
 
+  case self_type::DefaultValueTypeID__bool:
+   tmpValue=m_Default.value.valBool; //throw
+
+   assert(tmpValue.vt==VT_BOOL);
+   break;
+
   case self_type::DefaultValueTypeID__wstr:
    tmpValue=m_Default.value.valWStr; //throw
 
@@ -307,23 +340,20 @@ void IBP_OLEDB_Props2__DescrData::CopyDefaultValueTo(VARIANT* const pResult_Valu
    assert(tmpValue.bstrVal);
    break;
 
-  case self_type::DefaultValueTypeID__bool:
-   tmpValue=m_Default.value.valBool; //throw
+  case self_type::DefaultValueTypeID__str:
+   tmpValue=m_Default.value.valStr; //throw
 
-   assert(tmpValue.vt==VT_BOOL);
+   assert(tmpValue.vt==VT_BSTR);
+   assert(tmpValue.bstrVal);
    break;
 
   default:
   {
-   structure::wstr_formatter
-    fmsg(L"Unknown typeID: %1");
-
-   fmsg<<(int)m_Default.typeID;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bug_check_src,
      L"#001",
-     fmsg.c_str());
+     L"Unknown typeID: %1",
+     (int)m_Default.typeID);
   }//default
  }//switch(m_Default.typeID)
 

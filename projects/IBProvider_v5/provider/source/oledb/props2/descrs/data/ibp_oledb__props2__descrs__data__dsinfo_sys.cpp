@@ -13,8 +13,6 @@
 
 #include "source/oledb/ibp_oledb__prop__system_ids.h"
 
-#include "source/Version/ibp_v05_info_data.h"
-
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{namespace data{
 ////////////////////////////////////////////////////////////////////////////////
 

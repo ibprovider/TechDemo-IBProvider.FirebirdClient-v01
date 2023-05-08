@@ -131,6 +131,24 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 
 ////////////////////////////////////////////////////////////////////////////////
 
+#define IBP_OLEDB_PROPS2__DESCR_PARAM__STR(PropId,                        \
+                                           PropDescr,                     \
+                                           PropFlags,                     \
+                                           DefaultOpt,                    \
+                                           DefaultValue,                  \
+                                           POST_INIT_CALLS)               \
+ IBP_OLEDB_PROPS2__DESCR_DATA                                             \
+  (IBP_OLEDB_Props2__DescrData::tag_init__str(),                          \
+   PropId,                                                                \
+   PropDescr,                                                             \
+   PropFlags,                                                             \
+   0,                                                                     \
+   DefaultOpt _LITER_COMMA_                                               \
+   DefaultValue,                                                          \
+   POST_INIT_CALLS)
+
+////////////////////////////////////////////////////////////////////////////////
+
 #define IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL(PropId,                       \
                                             PropDescr,                    \
                                             PropFlags,                    \

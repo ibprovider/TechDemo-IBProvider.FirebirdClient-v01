@@ -215,6 +215,36 @@ void IBP_ThrowBugCheck_UnknownDBDateRules
        long           rules);
 
 COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_UnknownDBTimeStampWithTzRules
+      (const wchar_t* place,
+       const wchar_t* point,
+       long           rules);
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_UnknownDBTimeWithTzRules
+      (const wchar_t* place,
+       const wchar_t* point,
+       long           rules);
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_UnknownInt128Rules
+      (const wchar_t* place,
+       const wchar_t* point,
+       long           rules);
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_UnknownDecFloat16Rules
+      (const wchar_t* place,
+       const wchar_t* point,
+       long           rules);
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_UnknownDecFloat34Rules
+      (const wchar_t* place,
+       const wchar_t* point,
+       long           rules);
+
+COMP_CONF_DECLSPEC_NORETURN
 void IBP_ThrowBugCheck_UnknownSqlParserScope
       (const wchar_t*              place,
        const wchar_t*              point,

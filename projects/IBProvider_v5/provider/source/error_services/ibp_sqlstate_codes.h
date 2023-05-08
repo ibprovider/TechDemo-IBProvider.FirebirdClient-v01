@@ -2074,5 +2074,15 @@ namespace lcpi{namespace ibp{
  "XX002"
 
 ////////////////////////////////////////////////////////////////////////////////
+//Firebird
+
+#define IBP_SQLSTATE__01101__FIREBIRD__ONGOING_TRANSACTION_HAS_BEEN_COMMITTED \
+ "01101"
+
+//------------------------------------------------------------------------
+#define IBP_SQLSTATE__01102__FIREBIRD__ONGOING_TRANSACTION_HAS_BEEN_ROLLED_BACK \
+ "01102"
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/
 #endif

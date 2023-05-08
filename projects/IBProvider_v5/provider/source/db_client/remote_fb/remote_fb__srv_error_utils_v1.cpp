@@ -81,10 +81,13 @@ t_ibp_error_element::self_ptr
 
  //-----------------------------------------
  /*const*/ t_ibp_error_element::self_ptr
-  spErrRec(self_type::Helper__BuildServerErrorRecord(_pData,
-                                                     _op_id,
-                                                     _status_vector,
-                                                     _hr));
+  spErrRec
+   (self_type::Helper__BuildServerErrorRecord
+     (_pData,
+      _op_id,
+      _status_vector,
+      _hr));
+
  if(!spErrRec)
   return nullptr;
 
@@ -136,7 +139,7 @@ void
 
 //------------------------------------------------------------------------
 t_ibp_error_element::self_ptr
- RemoteFB__SrvErrorUtils_v1::BuildServerErrorRecord
+ RemoteFB__SrvErrorUtils_v1::BuildServerErrorRecord2
                                            (RemoteFB__Port*              const   _pPort,
                                             p_operation_id_type          const   _op_id,
                                             const protocol::P_ISC_STATUS_VECTOR& _status_vector,
@@ -165,11 +168,11 @@ t_ibp_error_element::self_ptr
  assert(spErrRec);
 
  return spErrRec;
-}//BuildServerErrorRecord - Port
+}//BuildServerErrorRecord2 - Port
 
 //------------------------------------------------------------------------
 void
- RemoteFB__SrvErrorUtils_v1::ProcessServerResult
+ RemoteFB__SrvErrorUtils_v1::ProcessServerResult2
                                            (RemoteFB__Port*                const _pPort,
                                             p_operation_id_type            const _op_id,
                                             const protocol::P_ISC_STATUS_VECTOR& _status_vector,
@@ -179,7 +182,7 @@ void
 
  const t_ibp_error_element::self_ptr
   spErrRec
-   (self_type::BuildServerErrorRecord
+   (self_type::BuildServerErrorRecord2
      (_pPort,
       _op_id,
       _status_vector,
@@ -191,7 +194,7 @@ void
 
   t_ibp_error(spErrRec).raise_me();
  }//if spErrRec
-}//ProcessServerResult - Port
+}//ProcessServerResult2 - Port
 
 //helper methods ---------------------------------------------------------
 t_ibp_error_element::self_ptr

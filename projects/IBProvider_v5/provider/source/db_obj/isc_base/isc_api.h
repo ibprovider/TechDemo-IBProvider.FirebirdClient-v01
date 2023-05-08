@@ -375,6 +375,9 @@ enum
  /// Кодовая страница UNICODE_FSS
  ibp_isc_cs_id__UNICODE_FSS   =3,
 
+ /// [FB4] Кодовая страница UTF8 
+ ibp_fb040_cs_id__UTF8        =4,
+
  /// Идентификатор кодовой страницы подключения
  ibp_isc_cs_id__DYNAMIC       =127,
 };//enum
@@ -409,6 +412,12 @@ enum
  ibp_fb025_sql_null       =32766,
 
  ibp_fb030_sql_boolean    =32764, //t_ibp_fb030_bool
+
+ ibp_fb040_sql_int128            =32752, //t_ibp_fb40_int128
+ ibp_fb040_sql_timestamp_with_tz =32754, //t_ibp_fb040_timestamp_with_tz
+ ibp_fb040_sql_time_with_tz      =32756, //t_ibp_fb040_time_with_tz
+ ibp_fb040_sql_decfloat16        =32760, //
+ ibp_fb040_sql_decfloat34        =32762, //
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -435,9 +444,15 @@ enum
  ibp_isc_blr_dtype__sql_date     =12  ,
  ibp_isc_blr_dtype__sql_time     =13  ,
 
- ibp_ib070_blr_dtype__bool       =17  , //t_ibp_ib070_bool
+ ibp_ib070_blr_dtype__bool                 =17  , //t_ibp_ib070_bool
 
- ibp_fb030_blr_dtype__bool       =23  , //t_ibp_fb030_bool
+ ibp_fb030_blr_dtype__bool                 =23  , //t_ibp_fb030_bool
+
+ ibp_fb040_blr_dtype__decfloat16           =24  , //
+ ibp_fb040_blr_dtype__decfloat34           =25  , //
+ ibp_fb040_blr_dtype__int128               =26  , //t_ibp_fb40_int128
+ ibp_fb040_blr_dtype__time_with_tz         =28  , //t_ibp_fb040_time_with_tz
+ ibp_fb040_blr_dtype__timestamp_with_tz    =29  , //t_ibp_fb040_timestamp_with_tz
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -530,6 +545,29 @@ typedef db_obj::t_dbvalue__isc_timestamp    t_ibp_isc_timestamp;
 extern const t_ibp_isc_date      __null__isc_date;
 extern const t_ibp_isc_time      __null__isc_time;
 extern const t_ibp_isc_timestamp __null__isc_timestamp;
+
+////////////////////////////////////////////////////////////////////////////////
+
+using t_ibp_fb040_time_with_tz
+ =db_obj::t_dbvalue__fb040_time_with_tz;
+
+using t_ibp_fb040_timestamp_with_tz
+ =db_obj::t_dbvalue__fb040_timestamp_with_tz;
+
+////////////////////////////////////////////////////////////////////////////////
+
+using t_ibp_fb040_int128
+ =db_obj::t_dbvalue__fb040_int128;
+
+////////////////////////////////////////////////////////////////////////////////
+
+using t_ibp_fb040_decfloat16
+ =db_obj::t_dbvalue__fb040_decfloat16;
+
+////////////////////////////////////////////////////////////////////////////////
+
+using t_ibp_fb040_decfloat34
+ =db_obj::t_dbvalue__fb040_decfloat34;
 
 ////////////////////////////////////////////////////////////////////////////////
 //enumerate standart InterBase blob sub-types
@@ -669,6 +707,21 @@ const unsigned char ibp_fb030_type_align__bool
 const unsigned char ibp_ib070_type_align__bool
  =sizeof(t_ibp_ib070_bool);
 
+const unsigned char ibp_fb040_type_align__timestamp_with_tz
+ =sizeof(t_ibp_isc_date);
+
+const unsigned char ibp_fb040_type_align__time_with_tz
+ =sizeof(t_ibp_isc_time);
+
+const unsigned char ibp_fb040_type_align__int128
+ =sizeof(db_obj::t_dbvalue__i8);
+
+const unsigned char ibp_fb040_type_align__decfloat16
+ =sizeof(db_obj::t_dbvalue__i8);   // FB4: sizeof(Firebird::Decimal64)
+
+const unsigned char ibp_fb040_type_align__decfloat34
+ =sizeof(db_obj::t_dbvalue__i8);   // FB4: sizeof(Firebird::Decimal64)
+
 ////////////////////////////////////////////////////////////////////////////////
 
 struct XSQLDA_V1;
@@ -805,6 +858,20 @@ typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_prepare)
   XSQLDA_V1*
  );//t_isc_dsql_prepare
 
+typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_prepare_m)
+ (
+  isc_status_20&,
+  isc_tr_handle*,
+  isc_stmt_handle *,
+  unsigned short,
+  const char*,
+  unsigned short,
+  unsigned short,
+  const unsigned char*,
+  unsigned short,
+  unsigned char*
+ );//t_isc_dsql_prepare_m
+
 typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_describe)
  (
   isc_status_20&,
@@ -840,6 +907,22 @@ typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_execute2)
   const XSQLDA_V1*,
   const XSQLDA_V1*
  );//t_isc_dsql_execute2
+
+typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_execute2_m)
+ (isc_status_20&,
+  isc_tr_handle*,
+  isc_stmt_handle*,
+  unsigned short       inBlrLength,
+  const unsigned char* inBlr,
+  unsigned short       inMsgType,
+  unsigned short       inMsgLength,
+  const unsigned char* inMsg,
+  unsigned short       outBlrLength,
+  const unsigned char* outBlr,
+  unsigned short       outMsgType,
+  unsigned short       outMsgLength,
+  unsigned char*       outMsg
+ );//t_isc_dsql_execute2_m
 
 typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_execute_immediate)
  (
@@ -879,6 +962,17 @@ typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_fetch)
   unsigned short,
   const XSQLDA_V1*
  );//t_isc_dsql_fetch
+
+typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_fetch_m)
+ (
+  isc_status_20&,
+  isc_stmt_handle*, 
+  unsigned short       blrLength, 
+  const unsigned char* blr, 
+  unsigned short       msgType, 
+  unsigned short       msgLength, 
+  unsigned char*       msg
+ );//t_isc_dsql_fetch_m
 
 typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_sql_info)
  (

@@ -58,10 +58,11 @@ class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]  default_clsid
   //! \param[out] pclsid
   //!  Not NULL.
-  static void Helper__ProcessRegParam__CLSID(param_parser_type&   params,
-                                             const char_type*     prop_id,
-                                             REFCLSID             default_clsid,
-                                             CLSID*               pclsid);
+  static void Helper__ProcessRegParam__CLSID
+               (param_parser_type&   params,
+                const char_type*     prop_id,
+                REFCLSID             default_clsid,
+                CLSID*               pclsid);
 
   //
   // Checking to necessary to support a component
@@ -72,8 +73,9 @@ class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
   //  - it is an incorrect identifier
   // true
   //  - it is a valid identifier
-  static bool Helper__HasComponent(const string_type& param_value,
-                                   CLSID&             clsid);
+  static bool Helper__HasComponent
+               (const string_type& param_value,
+                CLSID&             clsid);
 
   /// <summary>
   ///  Processing the string parameter of a registration
@@ -83,10 +85,11 @@ class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]  prop_def_value
   //! \param[out] result_value
   //!  Can be NULL.
-  static void Helper__ProcessRegParam__String(param_parser_type&   params,
-                                              const char_type*     prop_id,
-                                              const char_type*     prop_def_value,
-                                              string_type*         value);
+  static void Helper__ProcessRegParam__String
+               (param_parser_type& params,
+                const char_type*   prop_id,
+                const char*        prop_def_value,
+                string_type*       value);
 
 #ifndef IBP_BUILD_TESTCODE
  private:

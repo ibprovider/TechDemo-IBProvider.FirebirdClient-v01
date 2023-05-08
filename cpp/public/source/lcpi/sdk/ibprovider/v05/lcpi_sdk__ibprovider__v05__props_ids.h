@@ -696,6 +696,47 @@ const DBPROPID IBP_DBPROP__INIT__SQL_CACHE__SCOPE               =0x006C;
 const DBPROPID IBP_DBPROP__INIT__SQL_CACHE__INSTANCE_ID         =0x006D;
 
 //------------------------------------------------------------------------
+/// <summary>
+///  Настройка OLEDB-типа для представления TIMESTAMP_WITH_TZ-данных
+/// </summary>
+/// \sa t_ibp_propval_dbtimestamp_with_tz_rules
+const DBPROPID IBP_DBPROP__INIT__DBTIMESTAMP_WITH_TZ_RULES      =0x006E;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Настройка OLEDB-типа для представления TIME_WITH_TZ-данных
+/// </summary>
+/// \sa t_ibp_propval_dbtime_with_tz_rules
+const DBPROPID IBP_DBPROP__INIT__DBTIME_WITH_TZ_RULES           =0x006F;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Настройка OLEDB-типа для представления INT128-данных
+/// </summary>
+/// \sa t_ibp_propval_int128_rules
+const DBPROPID IBP_DBPROP__INIT__INT128_RULES                   =0x0070;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Правила обработки NUMERIC_I16
+/// </summary>
+const DBPROPID IBP_DBPROP__INIT__NUMERIC_I16_RULES              =0x0071;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Настройка OLEDB-типа для представления DECFLOAT(16)-данных
+/// </summary>
+/// \sa t_ibp_propval_decfloat_rules
+const DBPROPID IBP_DBPROP__INIT__DECFLOAT16_RULES               =0x0072;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Настройка OLEDB-типа для представления DECFLOAT(34)-данных
+/// </summary>
+/// \sa t_ibp_propval_decfloat_rules
+const DBPROPID IBP_DBPROP__INIT__DECFLOAT34_RULES               =0x0073;
+
+//------------------------------------------------------------------------
 #if !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
 
 /// <summary>

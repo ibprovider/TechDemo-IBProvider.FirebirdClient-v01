@@ -93,7 +93,7 @@ class RemoteFB__SrvErrorUtils_v1
   //! \return
   //!  Not null.
   static t_ibp_error_element::self_ptr
-   BuildServerErrorRecord
+   BuildServerErrorRecord2
     (RemoteFB__Port*                      _pPort,
      p_operation_id_type                  _op_id,
      const protocol::P_ISC_STATUS_VECTOR& _status_vector,
@@ -108,7 +108,7 @@ class RemoteFB__SrvErrorUtils_v1
   //!  Идентификатор операции. Используется в BUG-CHECK сообщениях.
   //! \param[in] _status_vector
   //! \param[in] _hr
-  static void ProcessServerResult
+  static void ProcessServerResult2
    (RemoteFB__Port*                      _pPort,
     p_operation_id_type                  _op_id,
     const protocol::P_ISC_STATUS_VECTOR& _status_vector,

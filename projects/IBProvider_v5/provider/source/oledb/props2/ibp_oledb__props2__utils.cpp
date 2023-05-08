@@ -52,17 +52,33 @@ void IBP_OLEDB_Props2__Utils::DEBUG__CheckOrder(const IBP_OLEDB_Props2__DescrDat
  //-----------------------------------------
  for(auto x=DescrDataRange.first;x!=DescrDataRange.last;++x)
  {
-  if(x->m_Default.typeID!=IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__wstr)
+  if(x->m_Default.typeID==IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__wstr)
+  {
+   assert(x->m_PropVarType==VT_BSTR);
+
+   assert_msg
+    (x->m_Default.value.valWStr!=nullptr,
+     "descr: "<<structure::tstr_to_str((*x).m_PropDescr));
+
+   //try to detect the length of string
+   assert(wcslen(x->m_Default.value.valWStr)>0);
+
    continue;
+  }//if wstr
 
-  assert(x->m_PropVarType==VT_BSTR);
+  if(x->m_Default.typeID==IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__str)
+  {
+   assert(x->m_PropVarType==VT_BSTR);
 
-  assert_msg
-   (x->m_Default.value.valWStr!=nullptr,
-    "descr: "<<structure::tstr_to_str((*x).m_PropDescr));
+   assert_msg
+    (x->m_Default.value.valStr!=nullptr,
+     "descr: "<<structure::tstr_to_str((*x).m_PropDescr));
 
-  //try to detect the length of string
-  assert(wcslen(x->m_Default.value.valWStr)>0);
+   //try to detect the length of string
+   assert(strlen(x->m_Default.value.valStr)>0);
+
+   continue;
+  }//if str
  }//for x
 }//DEBUG__CheckOrder - REF
 
@@ -112,17 +128,33 @@ void IBP_OLEDB_Props2__Utils::DEBUG__CheckOrder(const IBP_OLEDB_Props2__DescrDat
   assert(x);
   assert(*x);
 
-  if((**x).m_Default.typeID!=IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__wstr)
+  if((**x).m_Default.typeID==IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__wstr)
+  {
+   assert((**x).m_PropVarType==VT_BSTR);
+
+   assert_msg
+    ((**x).m_Default.value.valWStr!=nullptr,
+     "descr: "<<structure::tstr_to_str((**x).m_PropDescr));
+
+   //try to detect the length of string
+   assert(wcslen((**x).m_Default.value.valWStr)>0);
+
    continue;
+  }//if wstr
 
-  assert((**x).m_PropVarType==VT_BSTR);
+  if((**x).m_Default.typeID==IBP_OLEDB_Props2__DescrData::DefaultValueTypeID__str)
+  {
+   assert((**x).m_PropVarType==VT_BSTR);
 
-  assert_msg
-   ((**x).m_Default.value.valWStr!=nullptr,
-    "descr: "<<structure::tstr_to_str((**x).m_PropDescr));
+   assert_msg
+    ((**x).m_Default.value.valStr!=nullptr,
+     "descr: "<<structure::tstr_to_str((**x).m_PropDescr));
 
-  //try to detect the length of string
-  assert(wcslen((**x).m_Default.value.valWStr)>0);
+   //try to detect the length of string
+   assert(strlen((**x).m_Default.value.valStr)>0);
+
+   continue;
+  }//if wstr
  }//for x
 }//DEBUG__CheckOrder - PTR
 

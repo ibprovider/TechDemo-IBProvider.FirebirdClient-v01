@@ -233,7 +233,7 @@ TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
 
  structure::t_basic_str_formatter<char_type> flabel(flabel_tstr);
 
- return flabel<<IBP_VI_PRODUCT_NAME<<self_type::GetModuleVersion(NULL);
+ return flabel<<IBP_PROVIDER_NAME<<self_type::GetModuleVersion(NULL);
 }//GetProviderLabel
 
 //------------------------------------------------------------------------

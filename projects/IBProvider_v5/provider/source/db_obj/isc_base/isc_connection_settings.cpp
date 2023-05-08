@@ -62,6 +62,12 @@ void t_isc_connection_settings::internal_init()
  this->numeric_i2_rules                     =ibprovider::ibp_propval_numeric_rules__default;
  this->numeric_i4_rules                     =ibprovider::ibp_propval_numeric_rules__default;
  this->numeric_i8_rules                     =ibprovider::ibp_propval_numeric_rules__default;
+ this->numeric_i16_rules                    =ibprovider::ibp_propval_numeric_rules__default;
+
+ this->int128_rules                         =ibprovider::ibp_propval_int128_rules__default;
+
+ this->decfloat16_rules                     =ibprovider::ibp_propval_decfloat_rules__default;
+ this->decfloat34_rules                     =ibprovider::ibp_propval_decfloat_rules__default;
 
  this->stmt_cache__time                     =ibprovider::ibp_propval_stmt_cache_time__default;
  this->stmt_cache__size                     =ibprovider::ibp_propval_stmt_cache_size__default;
@@ -70,6 +76,9 @@ void t_isc_connection_settings::internal_init()
  this->dbtime_rules               = ibprovider::ibp_propval_dbtime_rules__default;
  this->dbtimestamp_rules          = ibprovider::ibp_propval_dbtimestamp_rules__default;
  this->dbdate_rules               = ibprovider::ibp_propval_dbdate_rules__default;
+
+ this->dbtimestamp_with_tz_rules  = ibprovider::ibp_propval_dbtimestamp_with_tz_rules__default;
+ this->dbtime_with_tz_rules       = ibprovider::ibp_propval_dbtime_with_tz_rules__default;
 
  this->dbms__guid_rules           = ibprovider::ibp_propval__guid_rules__default_for_isc;
 }//internal_init
@@ -139,6 +148,20 @@ void t_isc_connection_settings::set_cn_params(const oledb_lib::OLEDB_Props2__Dat
  this->numeric_i8_rules
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__NUMERIC_I8_RULES);
 
+ this->numeric_i16_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__NUMERIC_I16_RULES);
+
+ //-----------------------------------------------------------------------
+ this->int128_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__INT128_RULES);
+
+ //-----------------------------------------------------------------------
+ this->decfloat16_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__DECFLOAT16_RULES);
+
+ this->decfloat34_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__DECFLOAT34_RULES);
+
  //-----------------------------------------------------------------------
  this->array_type
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__ARRAY_TYPE);
@@ -190,6 +213,12 @@ void t_isc_connection_settings::set_cn_params(const oledb_lib::OLEDB_Props2__Dat
 
  this->dbdate_rules
   =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__DBDATE_RULES);
+
+ this->dbtimestamp_with_tz_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__DBTIMESTAMP_WITH_TZ_RULES);
+
+ this->dbtime_with_tz_rules
+  =pDsPropValues->AUX__GetValue__long(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__DBTIME_WITH_TZ_RULES);
 }//set_cn_params
 
 //------------------------------------------------------------------------

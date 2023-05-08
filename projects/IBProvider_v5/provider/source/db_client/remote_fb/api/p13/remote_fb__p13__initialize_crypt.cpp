@@ -317,14 +317,15 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
 
   protocol::set02::PACKET_V02 packet;
 
-  pPort->receive_packet(portOpCtx,
-                        packet); //throw
+  pPort->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   if(packet.operation==protocol::set02::op_response)
   {
    try
    {
-    api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult
+    pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult2
      (pPort,
       c_OperationID,
       packet.p_resp,

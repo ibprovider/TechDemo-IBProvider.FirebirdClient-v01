@@ -191,6 +191,83 @@ void IBP_ThrowBugCheck_UnknownDBDateRules(const wchar_t* const place,
 }//IBP_ThrowBugCheck_UnknownDBDateRules
 
 //------------------------------------------------------------------------
+void IBP_ThrowBugCheck_UnknownDBTimeStampWithTzRules
+                                         (const wchar_t* const place,
+                                          const wchar_t* const point,
+                                          long           const rules)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ThrowBugCheck__UnexpectedPropValue
+  (place,
+   point,
+   L"dbtimestamp_with_tz_rules",
+   rules);
+}//IBP_ThrowBugCheck_UnknownDBTimeStampWithTzRules
+
+//------------------------------------------------------------------------
+void IBP_ThrowBugCheck_UnknownDBTimeWithTzRules
+                                         (const wchar_t* const place,
+                                          const wchar_t* const point,
+                                          long           const rules)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ThrowBugCheck__UnexpectedPropValue
+  (place,
+   point,
+   L"dbtime_with_tz_rules",
+   rules);
+}//IBP_ThrowBugCheck_UnknownDBTimeWithTzRules
+
+//------------------------------------------------------------------------
+void IBP_ThrowBugCheck_UnknownInt128Rules(const wchar_t* const place,
+                                          const wchar_t* const point,
+                                          long           const rules)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ThrowBugCheck__UnexpectedPropValue
+  (place,
+   point,
+   L"int128_rules",
+   rules);
+}//IBP_ThrowBugCheck_UnknownInt128Rules
+
+//------------------------------------------------------------------------
+void IBP_ThrowBugCheck_UnknownDecFloat16Rules(const wchar_t* const place,
+                                              const wchar_t* const point,
+                                              long           const rules)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ThrowBugCheck__UnexpectedPropValue
+  (place,
+   point,
+   L"decfloat16_rules",
+   rules);
+}//IBP_ThrowBugCheck_UnknownDecFloat16Rules
+
+//------------------------------------------------------------------------
+void IBP_ThrowBugCheck_UnknownDecFloat34Rules(const wchar_t* const place,
+                                              const wchar_t* const point,
+                                              long           const rules)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ThrowBugCheck__UnexpectedPropValue
+  (place,
+   point,
+   L"decfloat34_rules",
+   rules);
+}//IBP_ThrowBugCheck_UnknownDecFloat34Rules
+
+//------------------------------------------------------------------------
 void IBP_ThrowBugCheck_UnknownSqlParserScope(const wchar_t*              const place,
                                              const wchar_t*              const point,
                                              structure::t_const_wstr_box const scope)

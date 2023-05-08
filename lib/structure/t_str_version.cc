@@ -14,8 +14,9 @@ bool get_str_version_parts_v2(const charT* const ver,
 {
  assert(ver_parts);
  
- return get_str_version_parts_v2(make_str_box(ver),
-                                 ver_parts);
+ return get_str_version_parts_v2
+         (make_str_box(ver),
+          ver_parts);
 }//get_str_version_parts
 
 //------------------------------------------------------------------------
@@ -239,6 +240,14 @@ inline typename t_str_version<charT,Allocator>::const_iterator
 {
  return m_parts.end();
 }//end
+
+//selectors --------------------------------------------------------------
+template<class charT,class Allocator>
+inline bool
+ t_str_version<charT,Allocator>::empty()const
+{
+ return m_parts.empty();
+}//empty
 
 //selectors --------------------------------------------------------------
 template<class charT,class Allocator>

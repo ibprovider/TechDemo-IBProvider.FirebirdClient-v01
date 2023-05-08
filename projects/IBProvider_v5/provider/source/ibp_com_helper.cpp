@@ -424,37 +424,37 @@ void TIBP_ComModule::THelper::Helper__ProcessComponentConfig()
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_provider_prog_id,
-   _T(IBP_PROVIDER_PROG_ID_VER),
+   IBP_PROVIDER_PROG_ID_VER,
    &sm_pData->m_IBProvider_ProgID);
 
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_provider_prog_id_no_ver,
-   _T(IBP_PROVIDER_PROG_ID_NO_VER),
+   IBP_PROVIDER_PROG_ID_NO_VER,
    nullptr);
 
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_provider_descr,
-   _T(IBP_PROVIDER_DESCRIPTION_STRING),
+   IBP_PROVIDER_DESCRIPTION_STRING,
    &sm_pData->m_IBProvider_Descr);
 
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_error_service_descr,
-   _T(IBP_ERRORS_DESCRIPTION_STRING),
+   IBP_ERRORS_DESCRIPTION_STRING,
    nullptr);
 
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_data_link_page_descr,
-   _T(IBP_DATA_LINK_PROP_PAGE_DESCRIPTION_STRING),
+   IBP_DATA_LINK_STD_PROP_PAGE_DESCRIPTION_STRING,
    nullptr);
 
  self_type::Helper__ProcessRegParam__String
   (params,
    ibp_sprop_adv_data_link_page_descr,
-   _T(IBP_DATA_LINK_ADV_PROP_PAGE_DESCRIPTION_STRING),
+   IBP_DATA_LINK_ADV_PROP_PAGE_DESCRIPTION_STRING,
    nullptr);
 
  //формируем строку с параметрами для регистрации сервера ----------------
@@ -519,7 +519,7 @@ bool TIBP_ComModule::THelper::Helper__HasComponent(const string_type& param_valu
 void TIBP_ComModule::THelper::Helper__ProcessRegParam__String
                                            (param_parser_type&     params,
                                             const char_type* const prop_id,
-                                            const char_type* const prop_def_value,
+                                            const char*      const prop_def_value,
                                             string_type*     const value)
 {
  assert(prop_id);
@@ -536,10 +536,12 @@ void TIBP_ComModule::THelper::Helper__ProcessRegParam__String
   }//if
  }//if
 
- params.set(prop_id,prop_def_value);
+ string_type x(structure::tstr_to_tstr(prop_def_value));
+
+ params.set(prop_id,x);
 
  if(value)
-  (*value)=prop_def_value;
+  value->swap(x);
 }//Helper__ProcessRegParam__String
 
 ////////////////////////////////////////////////////////////////////////////////
