@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //class TConnectData2
 
-class TConnectData2 COMP_W000006_CLASS_FINAL
+class TConnectData2 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef TConnectData2          self_type;

@@ -22,7 +22,7 @@ class t_tree_avl;
 //class t_tree_avl
 
 template<class T,class Compare,class Allocator>
-class t_tree_avl COMP_W000006_CLASS_FINAL
+class t_tree_avl LCPI_CPP_CFG__CLASS__FINAL
  :private t_tree_avl_base<T,Compare,Allocator>
 {
  private:

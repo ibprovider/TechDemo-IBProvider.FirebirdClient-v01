@@ -55,7 +55,7 @@ class t_list_external_base__with_size
 // - void set_prev(node_ptr_type node,node_ptr_type new_prev)const;
 // - void set_next(node_ptr_type node,node_ptr_type new_next)const;
 template<class t_traits,class t_base>
-class t_list_external COMP_W000006_CLASS_FINAL
+class t_list_external LCPI_CPP_CFG__CLASS__FINAL
  :public t_base
 {
  public: //typedefs ------------------------------------------------------
@@ -149,7 +149,7 @@ class t_list_external COMP_W000006_CLASS_FINAL
 //class t_list_external__traits_std
 
 template<class t_node>
-class t_list_external__traits_std COMP_W000006_CLASS_FINAL
+class t_list_external__traits_std LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef t_list_external__traits_std<t_node>             self_type;

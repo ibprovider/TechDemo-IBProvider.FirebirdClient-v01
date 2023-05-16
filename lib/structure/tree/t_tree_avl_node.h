@@ -17,7 +17,7 @@ class t_tree_avl_node;
 //class t_tree_avl_node
 
 template<class T>
-class t_tree_avl_node COMP_W000006_CLASS_FINAL
+class t_tree_avl_node LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef t_tree_avl_node<T>                   self_type;

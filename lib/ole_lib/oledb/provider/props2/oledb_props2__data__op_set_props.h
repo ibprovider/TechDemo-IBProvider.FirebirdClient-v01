@@ -19,7 +19,7 @@ namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Data__OpSetProps
 
-class OLEDB_Props2__Data__OpSetProps COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Data__OpSetProps LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__static_v2<structure::t_smart_interface>
 {
  private:
@@ -54,7 +54,7 @@ class OLEDB_Props2__Data__OpSetProps COMP_W000006_CLASS_FINAL
   /// <summary>
   ///  Data with new value of property
   /// </summary>
-  class tag_prop_data COMP_W000006_CLASS_FINAL
+  class tag_prop_data LCPI_CPP_CFG__CLASS__FINAL
    :public structure::t_basic_smart_interface_impl__static_v2<structure::t_smart_interface>
   {
    private:
@@ -219,7 +219,7 @@ class OLEDB_Props2__Data__OpSetProps COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Data__OpSetProps::tag_master_prop_data_setup
 
-class OLEDB_Props2__Data__OpSetProps::tag_master_prop_data_setup COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Data__OpSetProps::tag_master_prop_data_setup LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_master_prop_data_setup        self_type;

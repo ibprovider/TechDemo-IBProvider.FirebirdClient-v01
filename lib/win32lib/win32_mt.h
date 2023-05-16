@@ -121,7 +121,7 @@ class TThread:public TSynchronizeObject
 
  ~TThread();
 
-  virtual BOOL Close() COMP_W000004_OVERRIDE_FINAL;
+  virtual BOOL Close() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
   bool Create(LPSECURITY_ATTRIBUTES  Attributes,

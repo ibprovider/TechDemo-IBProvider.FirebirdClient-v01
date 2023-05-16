@@ -84,10 +84,10 @@ class t_win32_error:public t_base_win32_error
   virtual ~t_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC;
 
   //std::exception -------------------------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC COMP_W000004_OVERRIDE_FINAL;
+  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //structure::t_exception -----------------------------------------------
-  virtual void raise()const COMP_W000004_OVERRIDE_FINAL;//throw
+  virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw
 
   //selectors ------------------------------------------------------------
   const std::string& msg() const// throw()

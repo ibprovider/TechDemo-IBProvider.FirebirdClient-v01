@@ -14,7 +14,7 @@ namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values
 
-class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef OLEDB_Props2__Manager__Values     self_type;
@@ -182,7 +182,7 @@ class OLEDB_Props2__Manager__Values COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_internal_get_props_ctx
 
-class OLEDB_Props2__Manager__Values::tag_internal_get_props_ctx COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_internal_get_props_ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_internal_get_props_ctx        self_type;

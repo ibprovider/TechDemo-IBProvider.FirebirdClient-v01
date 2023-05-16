@@ -241,7 +241,7 @@ class t_ver_info_element
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__VS_VERSION_INFO
 
-class t_ver_info_element__VS_VERSION_INFO COMP_W000006_CLASS_FINAL
+class t_ver_info_element__VS_VERSION_INFO LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -265,12 +265,12 @@ class t_ver_info_element__VS_VERSION_INFO COMP_W000006_CLASS_FINAL
   const VS_FIXEDFILEINFO* fixed_info(bool must_exists=true)const;
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef TWin32MemoryAllocator                           allocator_type;
@@ -289,7 +289,7 @@ class t_ver_info_element__VS_VERSION_INFO COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__String
 
-class t_ver_info_element__String COMP_W000006_CLASS_FINAL
+class t_ver_info_element__String LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -315,12 +315,12 @@ class t_ver_info_element__String COMP_W000006_CLASS_FINAL
   const std::wstring& value()const;
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   std::wstring m_value;
@@ -329,7 +329,7 @@ class t_ver_info_element__String COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__StringTable
 
-class t_ver_info_element__StringTable COMP_W000006_CLASS_FINAL
+class t_ver_info_element__StringTable LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -352,12 +352,12 @@ class t_ver_info_element__StringTable COMP_W000006_CLASS_FINAL
   static create_result_type create(const void* pvBlock,size_t cbBlock);
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element__String* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element__String* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef TWin32MemoryAllocator                           allocator_type;
@@ -373,7 +373,7 @@ class t_ver_info_element__StringTable COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__StringFileInfo
 
-class t_ver_info_element__StringFileInfo COMP_W000006_CLASS_FINAL
+class t_ver_info_element__StringFileInfo LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -394,12 +394,12 @@ class t_ver_info_element__StringFileInfo COMP_W000006_CLASS_FINAL
   static self_ptr create(const tag_entry& entry);
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element__StringTable* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element__StringTable* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef TWin32MemoryAllocator                           allocator_type;
@@ -415,7 +415,7 @@ class t_ver_info_element__StringFileInfo COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__Var
 
-class t_ver_info_element__Var COMP_W000006_CLASS_FINAL
+class t_ver_info_element__Var LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -445,12 +445,12 @@ class t_ver_info_element__Var COMP_W000006_CLASS_FINAL
   std::wstring id_as_str(size_type i)const;
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef TWin32MemoryAllocator                           allocator_type;
@@ -466,7 +466,7 @@ class t_ver_info_element__Var COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element__VarFileInfo
 
-class t_ver_info_element__VarFileInfo COMP_W000006_CLASS_FINAL
+class t_ver_info_element__VarFileInfo LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
@@ -487,12 +487,12 @@ class t_ver_info_element__VarFileInfo COMP_W000006_CLASS_FINAL
   static self_ptr create(const tag_entry& entry);
 
   //interface ------------------------------------------------------------
-  virtual size_type child_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type child_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_ver_info_element__Var* child(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_ver_info_element__Var* child(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual const void* internal__load(const tag_entry& entry) COMP_W000004_OVERRIDE_FINAL;
+  virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef TWin32MemoryAllocator                           allocator_type;

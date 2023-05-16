@@ -82,7 +82,7 @@ class OLEDB_Props2__Manager__Values::tag_set_op_helper
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data
 
-class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_internal_set_prop_data        self_type;
@@ -110,7 +110,7 @@ class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data COMP_W000006_CLA
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_set_prop_data_less_by_id
 
-class OLEDB_Props2__Manager__Values::tag_set_prop_data_less_by_id COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_set_prop_data_less_by_id LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   typedef OLEDB_Props2__Data__OpSetProps::tag_prop_data  data_type;
@@ -147,7 +147,7 @@ class OLEDB_Props2__Manager__Values::tag_set_prop_data_less_by_id COMP_W000006_C
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data_less
 
-class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data_less_by_id COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data_less_by_id LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   typedef tag_internal_set_prop_data        data_type;
@@ -172,7 +172,7 @@ class OLEDB_Props2__Manager__Values::tag_internal_set_prop_data_less_by_id COMP_
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_internal_set_prop_result_state
  
-class OLEDB_Props2__Manager__Values::tag_internal_set_prop_result_state COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_internal_set_prop_result_state LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   DBPROPSTATUS status;
@@ -205,7 +205,7 @@ class OLEDB_Props2__Manager__Values::tag_internal_set_prop_result_state COMP_W00
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values::tag_internal_set_props_ctx
 
-class OLEDB_Props2__Manager__Values::tag_internal_set_props_ctx COMP_W000006_CLASS_FINAL
+class OLEDB_Props2__Manager__Values::tag_internal_set_props_ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_internal_set_props_ctx        self_type;
