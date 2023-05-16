@@ -504,6 +504,33 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
      break;
     }//case ibp_fb030_blr_dtype__bool
 
+    case isc_api::ibp_fb040_blr_dtype__int128:
+    {
+     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_int128);
+
+     assert(MsgElementDescr.m_msg_value_block_size==sizeof(protocol::P_INT128));
+
+     //----
+     const size_t c_align=isc_api::ibp_fb040_type_align__int128;
+
+     assert_s(c_align==sizeof(protocol::P_INT128().data.low));
+     assert_s(c_align==sizeof(protocol::P_INT128().data.high));
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(protocol::P_INT128)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__p_int128
+      (pBuf,
+       L"sql_message.int128.low",
+       L"sql_message.int128.high",
+       reinterpret_cast<protocol::P_INT128*>(msg_data+offset));
+
+     break;
+    }//ibp_fb040_blr_dtype__int128
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

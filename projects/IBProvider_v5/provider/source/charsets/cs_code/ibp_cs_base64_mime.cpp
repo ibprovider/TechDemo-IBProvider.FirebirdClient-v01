@@ -11,6 +11,7 @@
 #include "source/charsets/cs_code/ibp_cs_base64_mime__text_stream__mbc_to_ucs2.h"
 #include "source/charsets/cs_code/ibp_cs_base64_mime__text_stream__mbc_buffer_to_ucs2.h"
 #include "source/db_obj/db_blob_writer.h"
+#include "source/error_services/ibp_error_utils.h"
 #include <structure/stream/t_istream_buffer_iterator.h>
 
 namespace lcpi{namespace ibp{
@@ -197,12 +198,10 @@ bool t_ibp_cs_base64_mime::sb_len_as_unicode(ansi_streambuf_type& in_buf,
  {                                                                        \
   if(wsz==c_max_wsz)                                                      \
   {                                                                       \
-   t_ibp_error exc(DB_E_DATAOVERFLOW,                                     \
-                   ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1);    \
-                                                                          \
-   exc<<this->get_info().name;                                            \
-                                                                          \
-   exc.raise_me();                                                        \
+   IBP_ErrorUtils::Throw__Error                                           \
+    (DB_E_DATAOVERFLOW,                                                   \
+     ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1,                   \
+     this->get_info().name);                                              \
   }                                                                       \
                                                                           \
   ++wsz;                                                                  \

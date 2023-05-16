@@ -59,7 +59,7 @@ class RemoteFB__API_P12_LAZY_SEND__FetchStatement LCPI_CPP_CFG__CLASS__FINAL
   virtual bool exec(db_obj::t_db_operation_context& OpCtx,
                     RemoteFB__ConnectorData*        pData,
                     stmt_handle_type*               pStmtHandle,
-                    const isc_api::XSQLDA_V1*       pOutXSQLDA)COMP_W000004_OVERRIDE_FINAL;
+                    const isc_api::XSQLDA_V1*       pOutXSQLDA)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12_LAZY_SEND__FetchStatement
 
 ////////////////////////////////////////////////////////////////////////////////

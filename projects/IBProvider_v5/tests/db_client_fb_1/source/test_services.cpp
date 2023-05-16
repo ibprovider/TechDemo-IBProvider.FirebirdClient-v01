@@ -3053,5 +3053,46 @@ bool TestServices::checkValue__BOOLEAN(TTSO_Tracer&                     tracer,
  return false;
 }//checkValue__BOOLEAN
 
+//------------------------------------------------------------------------
+bool TestServices::checkValue__INT128
+                             (TTSO_Tracer&                tracer,
+                              short                       actualSqlInd,
+                              isc_api::t_ibp_fb040_int128 actualSqlValue,
+                              short                       expectedSqlInd,
+                              isc_api::t_ibp_fb040_int128 expectedSqlValue)
+{
+ for(;;)
+ {
+  tracer<<L"check value [int128] (ind: "<<actualSqlInd<<L", "<<actualSqlValue<<L") ...";
+
+  if(actualSqlInd==expectedSqlInd && actualSqlValue==expectedSqlValue)
+  {
+   tracer<<L"OK"<<send;
+
+   return true;
+  }
+
+  tracer<<L"FAILED"<<send;
+
+  break;
+ }//for[ever]
+
+ if(actualSqlInd!=expectedSqlInd)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect indicator: "<<actualSqlInd<<L". Expected: "<<expectedSqlInd<<L"."<<send;
+ }//if
+
+ if(actualSqlValue!=expectedSqlValue)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect value: "<<actualSqlValue  <<L".\n"
+   <<L" Expected value: "<<expectedSqlValue<<L"."
+   <<send;
+ }//if
+
+ return false;
+}//checkValue__INT128
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_test*/

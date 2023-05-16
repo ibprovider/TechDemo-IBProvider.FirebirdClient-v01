@@ -55,7 +55,7 @@ class RemoteFB__API_P13__OpenBlob LCPI_CPP_CFG__CLASS__FINAL
   virtual void exec(RemoteFB__ConnectorData*   pData,
                     tr_handle_type*            pTrHandle,
                     blob_handle_type*          pBlobHandle,
-                    const db_obj::DB_IBBLOBID& blobId) COMP_W000004_OVERRIDE_FINAL;
+                    const db_obj::DB_IBBLOBID& blobId) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__OpenBlob
 
 ////////////////////////////////////////////////////////////////////////////////

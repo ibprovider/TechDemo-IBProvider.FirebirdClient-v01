@@ -59,30 +59,30 @@ class RemoteFB__P10__DpbV1_ValuesInstaller LCPI_CPP_CFG__CLASS__FINAL
   //interface ------------------------------------------------------------
 
  public: //isc_base__dbparams_for_attach__installer interface ------------
-  virtual void set_dbinit_param___auth__integrated(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___auth__integrated(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___auth__user_id(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___auth__user_id(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___auth__password(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___auth__password(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___auth__rolename(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___auth__rolename(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___ctype(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___ctype(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___garbage_collect(bool propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___garbage_collect(bool propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___num_buffers(long propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___num_buffers(long propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___enable_db_trigger(long propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___enable_db_trigger(long propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_dbinit_param___sys_encrypt_password(wstr_box_type propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_dbinit_param___sys_encrypt_password(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //isc_base__dbparams_for_create__installer interface -----------
-  virtual void set_newdb_param___db_dialect(long propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_newdb_param___db_dialect(long propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_newdb_param___page_size(long propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_newdb_param___page_size(long propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void set_newdb_param___type_of_db_users(long propValue) COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_newdb_param___type_of_db_users(long propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   dpb_type* const m_pDPB;

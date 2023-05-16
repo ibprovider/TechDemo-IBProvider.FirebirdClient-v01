@@ -43,7 +43,7 @@ class IBP_OLEDB_Props2__Handler__GetValue__Common__SecData
                  REFGUID                                      propGuid,
                  DBPROPID                                     propId,
                  DBPROPOPTIONS*                               pResult_dwOptions,
-                 VARIANT*                                     pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+                 VARIANT*                                     pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static const IBP_OLEDB_Props2__Handler__GetValue__Common__SecData sm_Instance;

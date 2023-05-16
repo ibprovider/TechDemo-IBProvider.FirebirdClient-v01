@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace os{
 /// <summary>
 ///  The proxy of a dynamic library (DLL) loader.
 /// </summary>
-class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
+class t_ibp_os__dll_proxy LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(t_ibp_os__dll)
 {
  private:
@@ -38,19 +38,19 @@ class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
   /// <summary>
   ///  Получение дескриптора DLL
   /// </summary>
-  virtual HINSTANCE get_dll_handle()const COMP_W000004_OVERRIDE_FINAL;
+  virtual HINSTANCE get_dll_handle()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение указателя на точку входа в DLL. THROW
   /// </summary>
   //! \param[in] point_name
-  virtual FARPROC get_proc_address(LPCSTR point_name)const COMP_W000004_OVERRIDE_FINAL;//throw
+  virtual FARPROC get_proc_address(LPCSTR point_name)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw
 
   /// <summary>
   ///  Пытаемся получить указатель на точку входа в DLL.
   /// </summary>
   //! \param[in] point_name
-  virtual FARPROC try_get_proc_address(LPCSTR point_name)const COMP_W000004_OVERRIDE_FINAL;
+  virtual FARPROC try_get_proc_address(LPCSTR point_name)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Getting a DLL service object. THROW.
@@ -61,7 +61,7 @@ class t_ibp_os__dll_proxy COMP_W000006_CLASS_FINAL
   //! \return
   //!  Not NULL.
   virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rServiceObjID,
-                                             pfn_service_obj_creator pfnServiceObjCreator) COMP_W000004_OVERRIDE_FINAL;
+                                             pfn_service_obj_creator pfnServiceObjCreator) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   t_ibp_os__dlls::self_ptr const m_spDLLs;

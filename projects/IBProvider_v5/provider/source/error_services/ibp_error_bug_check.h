@@ -261,6 +261,13 @@ void IBP_ThrowBugCheck_UnexpectedOLEDBType
 ////////////////////////////////////////////////////////////////////////////////
 
 COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_FailedToTranslateDbNumericIntoWStr
+      (const wchar_t* place,
+       const wchar_t* point);
+
+////////////////////////////////////////////////////////////////////////////////
+
+COMP_CONF_DECLSPEC_NORETURN
 void IBP_ThrowBugCheck_InfoBuf__UnexpectedEnd
       (const wchar_t* place,
        const wchar_t* point);

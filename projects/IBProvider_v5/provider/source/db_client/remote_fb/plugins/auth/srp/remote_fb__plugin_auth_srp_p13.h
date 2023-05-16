@@ -71,9 +71,9 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
   static self_ptr Create();
 
   //RemoteFB__Plugin_Auth_SRP_P13_Data interface -------------------------
-  virtual name_type getPluginName()const COMP_W000004_OVERRIDE_FINAL;
+  virtual name_type getPluginName()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual std::string getClientKey()const COMP_W000004_OVERRIDE_FINAL;
+  virtual std::string getClientKey()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void calcClientSessionKeyAndProof
         (bytes_type*                pSessionKey,
@@ -81,7 +81,7 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
          structure::t_const_str_box account,
          structure::t_const_str_box salt,
          structure::t_const_str_box password,
-         const char*                serverPubKey)const COMP_W000004_OVERRIDE_FINAL;
+         const char*                serverPubKey)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //typedefs -----------------------------------------------------
   typedef SecureHashAlgorithms
@@ -141,19 +141,19 @@ class RemoteFB__Plugin_Auth_SRP_P13
   /// </summary>
   //! \return
   //!  Непустая строка.
-  virtual name_type get_name()const COMP_W000004_OVERRIDE_FINAL;
+  virtual name_type get_name()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Определение данных аутентификации в буфере с параметрами инициализации подключения.
   /// </summary>
   //! \param[in,out] clientConnectBlock
-  virtual void def_auth_params_in_cpb(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)COMP_W000004_OVERRIDE_FINAL;
+  virtual void def_auth_params_in_cpb(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Установка данных аутентификации.
   /// </summary>
   //! \param[in,out] clientConnectBlock
-  virtual void authenticate(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)COMP_W000004_OVERRIDE_FINAL;
+  virtual void authenticate(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_smart_object_ptr<data_type> data_ptr;

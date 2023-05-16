@@ -54,7 +54,7 @@ class RemoteFB__API_P13_LAZY_SEND__DropStatement
   //! В случае успешного освобожения запроса, в (*pStmtHandle) будет сброшен ID
   //! и будет произведено отключение от транзакции.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    stmt_handle_type*        pStmtHandle)COMP_W000004_OVERRIDE_FINAL;
+                    stmt_handle_type*        pStmtHandle)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13_LAZY_SEND__DropStatement
 
 ////////////////////////////////////////////////////////////////////////////////

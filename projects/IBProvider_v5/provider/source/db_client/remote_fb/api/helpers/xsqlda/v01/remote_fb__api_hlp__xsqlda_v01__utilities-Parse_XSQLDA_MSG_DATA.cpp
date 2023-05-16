@@ -397,7 +397,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -453,7 +453,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -509,7 +509,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -561,7 +561,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
     //копирование P_BID в DB_IBARRAYID
 
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -613,7 +613,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
     //копирование P_BID в DB_IBBLOBID
 
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -661,7 +661,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -709,7 +709,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -757,7 +757,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -805,7 +805,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -853,7 +853,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
@@ -901,11 +901,72 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
    else
    {
     (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
-     =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
    }//else
 
    break;
   }//ibp_fb030_sql_boolean
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_int128:
+  {
+   typedef isc_api::t_ibp_fb040_int128 value_type;
+
+#ifndef NDEBUG
+   const size_t c_align=isc_api::ibp_fb040_type_align__int128;
+#endif
+
+   //---------------------------------------
+   if(pXSQLVAR->sqllen!=sizeof(value_type))
+   {
+    //ERROR - incorrect xvar sqllength
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_int128",
+      pXSQLVAR->sqllen);
+   }//if
+
+   assert_hint(pXSQLVAR->sqllen==sizeof(value_type));
+
+   if(pXSQLVAR->sqlscale!=MsgDescr.m_xvar_sqlscale)
+   {
+    //ERROR - рассогласование масштабов в XSQLVAR и MSG-буфере
+
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__OtherSqlScale
+     (L"sql_int128",
+      pXSQLVAR->sqlscale,
+      MsgDescr.m_xvar_sqlscale);
+   }//if
+
+   assert_hint(pXSQLVAR->sqlscale==MsgDescr.m_xvar_sqlscale);
+
+   //---------------------------------------
+   assert(MsgDescr.m_msg_value_block_size==sizeof(value_type));
+
+   assert(MsgDescr.m_msg_value_block_offset<=cbMsgData);
+   assert(MsgDescr.m_msg_value_block_size<=(cbMsgData-MsgDescr.m_msg_value_block_offset));
+
+   assert((MsgDescr.m_msg_value_block_offset%c_align)==0);
+
+   assert((reinterpret_cast<size_t>(pMsgData+MsgDescr.m_msg_value_block_offset)%c_align)==0);
+
+   //---------------------------------------
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   CHECK_WRITE_PTR(pXSQLVAR->sqldata,sizeof(value_type));
+
+   if(IsNull)
+   {
+    (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
+      =isc_api::__null__fb040_int128;
+   }
+   else
+   {
+    (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+   }//else
+
+   break;
+  }//ibp_fb040_sql_int128
 
   //------------------------------------------------------------
   default:

@@ -20,6 +20,38 @@ const protocol::P_UCHAR
   ={};
 
 //------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_hyper_long
+                              (buf_type*                     const pBuf,
+                               const protocol::P_HYPER_LONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ pBuf->write__long(pv);
+}//encode__p_hyper_long
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_hyper_longlong
+                              (buf_type*                         const pBuf,
+                               const protocol::P_HYPER_LONGLONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_HYPER_LONGLONG)==2*sizeof(protocol::P_HYPER_LONG));
+
+ const protocol::P_HYPER_LONG h
+  =static_cast<protocol::P_HYPER_LONG>(((*pv)>>32)&0x00000000FFFFFFFF);
+
+ pBuf->write__long(&h);
+
+ const protocol::P_HYPER_LONG l
+  =static_cast<protocol::P_HYPER_LONG>((*pv)&0x00000000FFFFFFFF);
+
+ pBuf->write__long(&l);
+}//encode__p_int64
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Encoder::encode__p_arch
                               (buf_type*               const pBuf,
                                const protocol::P_ARCH* const pv)
@@ -29,7 +61,9 @@ void RemoteFB__XDR__Encoder::encode__p_arch
 
  const protocol::P_LONG tmp=*pv;
 
- pBuf->write__long(&tmp);
+ self_type::encode__p_long
+  (pBuf,
+   &tmp);
 }//encode__p_arch
 
 //------------------------------------------------------------------------
@@ -44,7 +78,9 @@ void RemoteFB__XDR__Encoder::encode__p_objct
 
  const protocol::P_LONG tmp=*reinterpret_cast<const protocol::P_SHORT*>(pv);
 
- pBuf->write__long(&tmp);
+ self_type::encode__p_long
+  (pBuf,
+   &tmp);
 }//encode__p_objct
 
 //------------------------------------------------------------------------
@@ -57,7 +93,9 @@ void RemoteFB__XDR__Encoder::encode__p_short
 
  const protocol::P_LONG tmp=*pv;
 
- pBuf->write__long(&tmp);
+ self_type::encode__p_long
+  (pBuf,
+   &tmp);
 }//encode__p_short
 
 //------------------------------------------------------------------------
@@ -68,7 +106,11 @@ void RemoteFB__XDR__Encoder::encode__p_long
  assert(pBuf!=nullptr);
  assert(pv!=nullptr);
 
- pBuf->write__long(pv);
+ assert_s(sizeof(protocol::P_LONG)==sizeof(protocol::P_HYPER_LONG));
+
+ self_type::encode__p_hyper_long
+  (pBuf,
+   reinterpret_cast<const protocol::P_HYPER_LONG*>(pv));
 }//encode__p_long
 
 //------------------------------------------------------------------------
@@ -79,15 +121,11 @@ void RemoteFB__XDR__Encoder::encode__p_int64
  assert(pBuf!=nullptr);
  assert(pv!=nullptr);
 
- assert_s(sizeof(protocol::P_INT64)==2*sizeof(protocol::P_LONG));
+ assert_s(sizeof(protocol::P_INT64)==sizeof(protocol::P_HYPER_LONGLONG));
 
- const protocol::P_LONG h=static_cast<protocol::P_LONG>(((*pv)>>32)&0x00000000FFFFFFFF);
-
- pBuf->write__long(&h);
-
- const protocol::P_LONG l=static_cast<protocol::P_LONG>((*pv)&0x00000000FFFFFFFF);
-
- pBuf->write__long(&l);
+ self_type::encode__p_hyper_longlong
+  (pBuf,
+   reinterpret_cast<const protocol::P_HYPER_LONGLONG*>(pv));
 }//encode__p_int64
 
 //------------------------------------------------------------------------
@@ -100,7 +138,9 @@ void RemoteFB__XDR__Encoder::encode__p_ushort
 
  const protocol::P_LONG tmp=*pv;
 
- pBuf->write__long(&tmp);
+ self_type::encode__p_long
+  (pBuf,
+   &tmp);
 }//encode__p_ushort
 
 //------------------------------------------------------------------------
@@ -113,7 +153,9 @@ void RemoteFB__XDR__Encoder::encode__p_ushort_as_p_long
 
  const protocol::P_LONG tmp=*pv;
 
- pBuf->write__long(&tmp);
+ self_type::encode__p_long
+  (pBuf,
+   &tmp);
 }//encode__p_ushort_as_p_long
 
 //------------------------------------------------------------------------
@@ -126,9 +168,9 @@ void RemoteFB__XDR__Encoder::encode__p_ushort_as_p_short
 
  assert_s(sizeof(*pv)==sizeof(protocol::P_SHORT));
 
- return self_type::encode__p_short
-         (pBuf,
-          reinterpret_cast<const protocol::P_SHORT*>(pv));
+ self_type::encode__p_short
+  (pBuf,
+   reinterpret_cast<const protocol::P_SHORT*>(pv));
 }//encode__p_ushort_as_p_short
 
 //------------------------------------------------------------------------
@@ -141,7 +183,9 @@ void RemoteFB__XDR__Encoder::encode__p_ulong_as_p_long
 
  assert_s(sizeof(protocol::P_LONG)==sizeof(*pv));
 
- pBuf->write__long(reinterpret_cast<const protocol::P_LONG*>(pv));
+ self_type::encode__p_long
+  (pBuf,
+   reinterpret_cast<const protocol::P_LONG*>(pv));
 }//encode__p_ulong_as_p_long
 
 //------------------------------------------------------------------------
@@ -154,7 +198,9 @@ void RemoteFB__XDR__Encoder::encode__p_float
 
  assert_s(sizeof(protocol::P_FLOAT)==sizeof(protocol::P_LONG));
 
- pBuf->write__long(reinterpret_cast<const protocol::P_LONG*>(pv));
+ self_type::encode__p_long
+  (pBuf,
+   reinterpret_cast<const protocol::P_LONG*>(pv));
 }//encode__p_float
 
 //------------------------------------------------------------------------
@@ -186,11 +232,13 @@ void RemoteFB__XDR__Encoder::encode__p_bid(buf_type*              const pBuf,
  assert(pBuf!=nullptr);
  assert(pv!=nullptr);
 
- self_type::encode__p_ulong_as_p_long(pBuf,
-                                      &pv->high);
+ self_type::encode__p_ulong_as_p_long
+  (pBuf,
+   &pv->high);
 
- self_type::encode__p_ulong_as_p_long(pBuf,
-                                      &pv->low);
+ self_type::encode__p_ulong_as_p_long
+  (pBuf,
+   &pv->low);
 }//encode__p_bid
 
 //------------------------------------------------------------------------
@@ -205,9 +253,58 @@ void RemoteFB__XDR__Encoder::encode__opaque(buf_type*                const pBuf,
  pBuf->write__bytes(sz,pv);
 
  //-----------------------------------------
- self_type::helper__write_align_cch(pBuf,
-                                    sz);
+ self_type::helper__write_align_cch
+  (pBuf,
+   sz);
 }//encode__opaque
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_uint64
+                              (buf_type*                 const pBuf,
+                               const protocol::P_UINT64* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_UINT64)==sizeof(protocol::P_HYPER_LONGLONG));
+
+ self_type::encode__p_hyper_longlong
+  (pBuf,
+   reinterpret_cast<const protocol::P_HYPER_LONGLONG*>(pv));
+}//encode__p_uint64
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_int128
+                              (buf_type*                 const pBuf,
+                               const protocol::P_INT128* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_INT128)==2*sizeof(protocol::P_UINT64));
+
+ // [2023-05-15] Just for point out. The encoders for big and little will be equal.
+
+#if (IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN)
+
+ self_type::encode__p_uint64
+  (pBuf,
+   &pv->data.high);
+
+ self_type::encode__p_uint64
+  (pBuf,
+   &pv->data.low);
+
+#elif (IBP_BYTE_ORDER==IBP_BYTE_ORDER__BIG_ENDIAN)
+
+# error Not implemented!
+
+#else
+
+# error Unexpected BYTE ORDER!
+
+#endif
+}//encode__p_int128
 
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Encoder::encode__array_slice
@@ -413,6 +510,21 @@ void RemoteFB__XDR__Encoder::encode__array_slice
 
     break;
    }//case - ibp_fb030_blr_dtype__bool
+
+   case isc_api::ibp_fb040_blr_dtype__int128:
+   {
+    assert(ArrSliceDescr.m_element_total_length==sizeof(protocol::P_INT128));
+
+    //проверяем выравнивание. в 32-битном бинарнике может быть 4х байтное выравнивание.
+    assert((reinterpret_cast<size_t>(pElement)%(std::min)(sizeof(protocol::P_INT128().data.low),sizeof(size_t)))==0);
+    assert((reinterpret_cast<size_t>(pElement)%(std::min)(sizeof(protocol::P_INT128().data.high),sizeof(size_t)))==0);
+
+    xdr::encode__p_int128
+     (pBuf,
+      reinterpret_cast<const protocol::P_INT128*>(pElement));
+
+    break;
+   }//case - ibp_fb040_blr_dtype__int128
 
    default:
    {

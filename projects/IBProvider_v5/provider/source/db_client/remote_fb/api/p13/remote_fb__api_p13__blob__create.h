@@ -61,7 +61,7 @@ class RemoteFB__API_P13__CreateBlob LCPI_CPP_CFG__CLASS__FINAL
                     blob_handle_type*        pBlobHandle,
                     db_obj::DB_IBBLOBID*     pBlobId,
                     size_t                   szBPB,
-                    const protocol::P_UCHAR* pBPB) COMP_W000004_OVERRIDE_FINAL;
+                    const protocol::P_UCHAR* pBPB) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__CreateBlob
 
 ////////////////////////////////////////////////////////////////////////////////

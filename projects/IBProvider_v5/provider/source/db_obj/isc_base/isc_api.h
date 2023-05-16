@@ -498,6 +498,8 @@ enum
  ibp_ib070_internal_dtype__bool    =20, //2 bytes
 
  ibp_fb030_internal_dtype__bool    =21, //1 byte
+
+ ibp_fb040_internal_dtype__int128  =24,
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -558,6 +560,8 @@ using t_ibp_fb040_timestamp_with_tz
 
 using t_ibp_fb040_int128
  =db_obj::t_dbvalue__fb040_int128;
+
+extern const t_ibp_fb040_int128 __null__fb040_int128;
 
 ////////////////////////////////////////////////////////////////////////////////
 

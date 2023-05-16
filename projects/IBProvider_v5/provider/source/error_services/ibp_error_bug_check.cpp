@@ -284,6 +284,22 @@ void IBP_ThrowBugCheck_UnknownSqlParserScope(const wchar_t*              const p
 
 ////////////////////////////////////////////////////////////////////////////////
 
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ThrowBugCheck_FailedToTranslateDbNumericIntoWStr
+            (const wchar_t* const place,
+             const wchar_t* const point)
+{
+ assert(place);
+ assert(point);
+
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
+  (place,
+   point,
+   L"failed to translate DbNumeric into WStr");
+}//IBP_ThrowBugCheck_FailedToTranslateDbNumericIntoWStr
+
+////////////////////////////////////////////////////////////////////////////////
+
 void IBP_ThrowBugCheck_InfoBuf__UnexpectedEnd(const wchar_t* const place,
                                               const wchar_t* const point)
 {

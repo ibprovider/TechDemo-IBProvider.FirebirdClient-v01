@@ -46,9 +46,9 @@ class RemoteFB__Plugin_Auth_SRP_Factory
   static name_type GetName();
 
   //factory interface ----------------------------------------------------
-  virtual name_type get_name()const COMP_W000004_OVERRIDE_FINAL;
+  virtual name_type get_name()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual RemoteFB__Plugin_AuthPtr create_plugin()const COMP_W000004_OVERRIDE_FINAL;
+  virtual RemoteFB__Plugin_AuthPtr create_plugin()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// ≈динственный экземпл€р класса

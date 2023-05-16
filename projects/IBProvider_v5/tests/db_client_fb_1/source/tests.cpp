@@ -129,6 +129,7 @@
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_011__blob.h"
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_012__array.h"
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_013__boolean.h"
+#include "source/tests/work/Params/OUT/WORK_Params_OUT_014__int128.h"
 
 #include "source/tests/work/Params/IN/WORK_Params_IN_013__boolean.h"
 
@@ -145,6 +146,7 @@
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_011__blob.h"
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_012__array.h"
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_013__boolean.h"
+#include "source/tests/work/Params/IN2/WORK_Params_IN2_014__int128.h"
 
 #include "source/tests/work/Params/WORK_Params__001__nulls.h"
 
@@ -168,6 +170,7 @@
 #include "source/tests/work/StmtFetch/Types/char/WORK_StmtFetch__Types__char_001__sz7.h"
 #include "source/tests/work/StmtFetch/Types/varchar/WORK_StmtFetch__Types__varchar_001__sz7.h"
 #include "source/tests/work/StmtFetch/Types/boolean/WORK_StmtFetch__Types__boolean_001.h"
+#include "source/tests/work/StmtFetch/Types/int128/WORK_StmtFetch__Types__int128_001.h"
 
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_001__nulls.h"
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_002__nulls.h"
@@ -206,6 +209,7 @@
 #include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D03_01.h"
 #include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D07_02.h"
 #include "source/tests/work/StmtFetch_M/Types/decimal/WORK_StmtFetch_M__Types__decimal_001__D15_05.h"
+#include "source/tests/work/StmtFetch_M/Types/int128/WORK_StmtFetch_M__Types__int128_001.h"
 
 #include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__001__nulls.h"
 #include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__002__nulls.h"
@@ -248,6 +252,7 @@
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_008__timestamp.h"
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_009__char.h"
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_010__boolean.h"
+#include "source/tests/work/Array/Read/WORK_Array_Read_Test_011__int128.h"
 
 #include "source/tests/work/Cancel/WORK_Cancel_Test_01__StmtExecute.h"
 #include "source/tests/work/Cancel/WORK_Cancel_Test_02__StmtFetch.h"
@@ -482,6 +487,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Params_OUT_013__boolean::create),
 
+ DEF_CREATOR_DESCR(WORK_Params_OUT_014__int128::create),
+
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Params_IN_013__boolean::create),
 
@@ -512,6 +519,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Params_IN2_013__boolean::create),
 
+ DEF_CREATOR_DESCR(WORK_Params_IN2_014__int128::create),
+
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Params__001__nulls::create),
 
@@ -536,6 +545,7 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__char_001__sz7::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__varchar_001__sz7::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__boolean_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch__Types__int128_001::create),
 
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_StmtFetch_Test_001__nulls::create),
@@ -576,6 +586,7 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D03_01::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D07_02::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decimal_001__D15_05::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__int128_001::create),
 
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__001__nulls::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__002__nulls::create),
@@ -638,6 +649,8 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_Array_Read_Test_009__char::create),
 
  DEF_CREATOR_DESCR(WORK_Array_Read_Test_010__boolean::create),
+
+ DEF_CREATOR_DESCR(WORK_Array_Read_Test_011__int128::create),
 
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Cancel_Test_01__StmtExecute::create),

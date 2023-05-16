@@ -429,7 +429,7 @@ void IBP_ThrowFileError(ibp_msg_code_type const     msg_1,
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_ErrorUtils
 
-class IBP_ErrorUtils COMP_W000006_CLASS_FINAL
+class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef IBP_ErrorUtils      self_type;

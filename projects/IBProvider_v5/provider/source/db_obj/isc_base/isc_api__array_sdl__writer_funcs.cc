@@ -7,6 +7,8 @@
 #ifndef _isc_api__array_sdl__writer_funcs_CC_
 #define _isc_api__array_sdl__writer_funcs_CC_
 
+#include "source/error_services/ibp_error_utils.h"
+
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_isc_api__array_sdl__writer_funcs
@@ -61,11 +63,11 @@ void t_isc_api__array_sdl__writer_funcs<TBuffer>::stuff_string
  if(!structure::can_numeric_cast<byte_type>(str.len))
  {
   //ERROR - string too long for write to SDL buffer
-  t_ibp_error exc(E_FAIL,ibp_mce_array__create_sdl__too_long_str_2);
-
-  exc<<str.len<<structure::t_numeric_limits<byte_type>::max_value();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_array__create_sdl__too_long_str_2,
+    str.len,
+    structure::t_numeric_limits<byte_type>::max_value());
  }//if
 
  self_type::stuff_byte_s(buffer,sdl);

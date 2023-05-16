@@ -251,10 +251,41 @@ struct t_dbvalue__fb040_time_with_tz
 
 struct t_dbvalue__fb040_int128
 {
- t_dbvalue__ui8 data[2];
+ struct
+ {
+#if IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN
+  t_dbvalue__ui8 low;
+  t_dbvalue__ui8 high;
+#else
+# error Is not tested!
+#endif
+ } data;
 };//struct t_dbvalue__fb040_int128
 
+//------------------------------------------------------------------------
+inline t_dbvalue__fb040_int128 make_fb040_int128(t_dbvalue__ui8 l,t_dbvalue__ui8 h)
+{
+ t_dbvalue__fb040_int128 v;
+
+ v.data.low  =l;
+ v.data.high =h;
+
+ return v;
+}//make_fb040_int128
+
+////////////////////////////////////////////////////////////////////////////////
+
 extern const t_dbvalue__fb040_int128 __null_dbvalue__fb040_int128;
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int128& v2);
+
+bool operator != (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int128& v2);
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //FB040_NUMERIC_I8

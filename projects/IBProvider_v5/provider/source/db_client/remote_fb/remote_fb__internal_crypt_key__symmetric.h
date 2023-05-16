@@ -47,11 +47,11 @@ class RemoteFB__InternalCryptKey__Symmetric
                                               const void* pKey);
 
   //interface ------------------------------------------------------------
-  virtual tname_type GetType()const COMP_W000004_OVERRIDE_FINAL;
+  virtual tname_type GetType()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual const RemoteFB__CryptKeyDataView GetEncryptKey()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const RemoteFB__CryptKeyDataView GetEncryptKey()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual const RemoteFB__CryptKeyDataView GetDecryptKey()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const RemoteFB__CryptKeyDataView GetDecryptKey()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef RemoteFB__MemoryAllocator         raw_allocator_type;

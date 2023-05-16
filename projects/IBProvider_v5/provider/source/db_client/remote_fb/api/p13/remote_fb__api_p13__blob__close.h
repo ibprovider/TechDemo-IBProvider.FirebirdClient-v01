@@ -50,7 +50,7 @@ class RemoteFB__API_P13__CloseBlob LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in,out] pBlobHandle
   //!  Not null. На входе должен указывать на ненулевое значение.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle) COMP_W000004_OVERRIDE_FINAL;
+                    blob_handle_type*        pBlobHandle) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__CloseBlob
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{
 ///  Контейнер для хранения значения или ошибки его формирования.
 /// </summary>
 template<class T>
-class IBP_ValueBox COMP_W000006_CLASS_FINAL
+class IBP_ValueBox LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef IBP_ValueBox<T>     self_type;

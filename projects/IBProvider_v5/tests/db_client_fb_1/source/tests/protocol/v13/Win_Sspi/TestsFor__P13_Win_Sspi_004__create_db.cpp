@@ -146,9 +146,10 @@ void TestsFor__P13_Win_Sspi_004__create_db::run(context_type* const pCtx)const
  //-----------------------------------------
  structure::wstr_formatter dbLocation(L"inet://[%1]/%2%3");
 
- dbLocation<<m_spParams->args().get(c_prog_arg__inet_host)->m_value
-           <<m_spParams->args().get(c_prog_arg__new_db_dir)->m_value
-           <<ibp_test::TSO_GenerateNewDatabaseFileName();
+ dbLocation
+  <<m_spParams->args().get(c_prog_arg__inet_host)->m_value
+  <<m_spParams->args().get(c_prog_arg__new_db_dir)->m_value
+  <<ibp_test::TSO_GenerateNewDatabaseFileName();
 
  //-----------------------------------------
  typedef TestServices svc;

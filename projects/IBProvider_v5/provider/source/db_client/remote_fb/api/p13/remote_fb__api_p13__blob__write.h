@@ -55,7 +55,7 @@ class RemoteFB__API_P13__WriteBlob LCPI_CPP_CFG__CLASS__FINAL
   virtual void exec(RemoteFB__ConnectorData* pData,
                     blob_handle_type*        pBlobHandle,
                     size_t                   cbBuffer,
-                    const void*              pvBuffer)COMP_W000004_OVERRIDE_FINAL;
+                    const void*              pvBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__WriteBlob
 
 ////////////////////////////////////////////////////////////////////////////////

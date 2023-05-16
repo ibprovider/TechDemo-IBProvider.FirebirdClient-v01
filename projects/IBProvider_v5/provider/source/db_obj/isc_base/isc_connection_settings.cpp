@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_obj/isc_base/isc_connection_settings.h"
+#include "source/error_services/ibp_error_utils.h"
 #include "source/ibp_utils.h"
 
 #include <lcpi/lib/structure/utilities/string/is_like_str.h>
@@ -395,14 +396,13 @@ bool t_isc_connection_settings::err_rules__explain_dbms_error()const
 void t_isc_connection_settings::helper__throw_err__not_support_database_ods
                                       (const t_isc_ods_id& req_id)const
 {
- t_ibp_error exc(E_FAIL,ibp_mce_dbobj__not_support_database_ods_4);
-
- exc<<this->db_ods_Ex.value().as_wstr()
-    <<req_id.as_wstr()
-    <<push_descr_ex(this->dbms)
-    <<_Module.GetModuleVersion();
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_dbobj__not_support_database_ods_4,
+   this->db_ods_Ex.value().as_wstr(),
+   req_id.as_wstr(),
+   push_descr_ex(this->dbms),
+   _Module.GetModuleVersion());
 }//helper__throw_err__not_support_database_ods
 
 ////////////////////////////////////////////////////////////////////////////////

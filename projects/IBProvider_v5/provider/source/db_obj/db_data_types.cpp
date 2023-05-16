@@ -54,12 +54,12 @@ extern const DB_IBARRAYID     __null_ib_array_id      ={};
 
 const t_dbvalue__fb040_int128
  __null_dbvalue__fb040_int128
-  ={0,0};
+  =make_fb040_int128(0,0);
 
 //------------------------------------------------------------------------
 const t_dbvalue__fb040_numeric_i16
  __null_dbvalue__fb040_numeric_i16
-  ={{0,0}};
+  ={make_fb040_int128(0,0)};
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct tag_dbtype_info
@@ -242,6 +242,35 @@ const wchar_t* get_dbtype_name(t_dbtype const typeID)
    L"unknown dbtype id: %1",
    structure::to_underlying(typeID));
 }//get_dbtype_name
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int128& v2)
+{
+ if(v1.data.low!=v2.data.low)
+  return false;
+
+ if(v1.data.high!=v2.data.high)
+  return false;
+
+ return true;
+}//operator ==
+
+//------------------------------------------------------------------------
+bool operator != (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int128& v2)
+{
+ if(v1.data.low!=v2.data.low)
+  return true;
+
+ if(v1.data.high!=v2.data.high)
+  return true;
+
+ return false;
+}//operator !=
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/

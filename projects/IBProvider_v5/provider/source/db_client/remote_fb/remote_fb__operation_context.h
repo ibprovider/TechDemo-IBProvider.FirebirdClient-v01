@@ -57,7 +57,7 @@ class RemoteFB__OperationContext:public RemoteFB__PortOperationContext
   void reg_svc(T* pSvc);
 
   //interface ------------------------------------------------------------
-  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)COMP_W000004_OVERRIDE_FINAL;
+  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef std::pair<GUID,RemoteFB__SmartObjectPtr> svc_data_type;

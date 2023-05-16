@@ -32,6 +32,15 @@ class RemoteFB__XDR__Encoder
   typedef RemoteFB__ArraySliceDescr         asd_type;
 
  public:
+  static void encode__p_hyper_long
+               (buf_type*                         pBuf,
+                const protocol::P_HYPER_LONG*     pv);
+
+  static void encode__p_hyper_longlong
+               (buf_type*                         pBuf,
+                const protocol::P_HYPER_LONGLONG* pv);
+
+ public:
   static void encode__p_arch
                (buf_type*                    pBuf,
                 const protocol::P_ARCH*      pv);
@@ -84,6 +93,15 @@ class RemoteFB__XDR__Encoder
                (buf_type*                    pBuf,
                 size_t                       sz,
                 const protocol::P_UCHAR*     pv);
+
+ public:
+  static void encode__p_uint64
+               (buf_type*                    pBuf,
+                const protocol::P_UINT64*    pv);
+
+  static void encode__p_int128
+               (buf_type*                    pBuf,
+                const protocol::P_INT128*    pv);
 
  public:
   /// <summary>

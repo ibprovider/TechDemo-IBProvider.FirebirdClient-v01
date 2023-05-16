@@ -51,7 +51,7 @@ class RemoteFB__API_HLP__SrvOperation_v1
   /// <summary>
   ///  Отмена операции
   /// </summary>
-  virtual void cancel()COMP_W000004_OVERRIDE_FINAL;
+  virtual void cancel()LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //----------------------------------------------------------------------
   /// <summary>

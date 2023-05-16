@@ -74,10 +74,13 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::to_unicode_v2
   //!  Добавить контроль движения вперед указателя cur_s
 
   const db_obj::t_db_cs_result
-   cvt_code=m_data->convert_single_own_to_unicode_v3(/*in-out*/cur_s,
-                                                     end_s,
-                                                     cvt_wc,
-                                                     /*in-out*/cvt_sz);
+   cvt_code
+    =m_data->convert_single_own_to_unicode_v3
+      (/*in-out*/cur_s,
+       end_s,
+       cvt_wc,
+       /*in-out*/cvt_sz);
+
   assert(cvt_code!=db_obj::db_cs_result__trunc);
 
   if(cvt_code!=db_obj::db_cs_result__ok)
@@ -192,7 +195,8 @@ db_obj::t_db_cs_result
   size_t cvt_sz=_DIM_(cvt_wc);
 
   const db_obj::t_db_cs_result
-   cvt_code=m_data->convert_single_own_to_unicode_v3(cur,end,cvt_wc,cvt_sz);
+   cvt_code
+    =m_data->convert_single_own_to_unicode_v3(cur,end,cvt_wc,cvt_sz);
 
   assert(cvt_code!=db_obj::db_cs_result__trunc);
 
@@ -240,7 +244,8 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::sb_len_as_unicode
   size_t cvt_sz=_DIM_(cvt_wc);
 
   const db_obj::t_db_cs_result
-   cvt_code=m_data->convert_single_own_to_unicode_v3(cur,end,cvt_wc,cvt_sz);
+   cvt_code
+    =m_data->convert_single_own_to_unicode_v3(cur,end,cvt_wc,cvt_sz);
 
   assert(cvt_code!=db_obj::db_cs_result__trunc);
 
@@ -256,11 +261,10 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::sb_len_as_unicode
   if(!ibp::ibp_can_numeric_add(wsz,cvt_sz))
   {
    //ERROR - переполнение при вычислении размера UNICODE-представления данных
-   t_ibp_error exc(DB_E_DATAOVERFLOW,ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1);
-
-   exc<<this->get_info().name;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (DB_E_DATAOVERFLOW,
+     ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1,
+     this->get_info().name);
   }//if
 
   //все нормально, можно увеличивать

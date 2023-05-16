@@ -56,7 +56,7 @@ class RemoteFB__API_HLP__GetParameters_v01 LCPI_CPP_CFG__CLASS__FINAL
   virtual void exec(db_obj::t_db_operation_context& OpCtx,
                     RemoteFB__ConnectorData*        pData,
                     stmt_handle_type*               pStmtHandle,
-                    isc_api::XSQLDA_V1*             xsqlda)COMP_W000004_OVERRIDE_FINAL;
+                    isc_api::XSQLDA_V1*             xsqlda)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_HLP__GetParameters_v01
 
 ////////////////////////////////////////////////////////////////////////////////

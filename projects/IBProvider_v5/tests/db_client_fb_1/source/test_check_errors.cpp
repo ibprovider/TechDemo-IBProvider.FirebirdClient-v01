@@ -242,11 +242,12 @@ bool TestCheckErrors::check_err_rec__common_err__formed_buf_is_too_large
 
   msgRus<<ucs2_SubSystemID<<ucs2_BufName<<buf_size<<max_size;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -259,11 +260,12 @@ bool TestCheckErrors::check_err_rec__common_err__formed_buf_is_too_large
 
   msgEng<<ucs2_SubSystemID<<ucs2_BufName<<buf_size<<max_size;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -318,11 +320,12 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -335,11 +338,12 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -370,11 +374,12 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
 
   msgRus<<ucs2_SubSystemID<<ucs2_host_sign;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -387,11 +392,12 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
 
   msgEng<<ucs2_SubSystemID<<ucs2_host_sign;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -474,11 +480,12 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol
 
   msgRus<<ucs2_SubSystemID<<ucs2_PName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -491,11 +498,12 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol
 
   msgEng<<ucs2_SubSystemID<<ucs2_PName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -526,11 +534,12 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol_architecture
 
   msgRus<<ucs2_SubSystemID<<ucs2_PArchName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -543,11 +552,12 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol_architecture
 
   msgEng<<ucs2_SubSystemID<<ucs2_PArchName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -838,11 +848,12 @@ bool TestCheckErrors::check_err_rec__bug_check__cant_convert_auth_service_name_f
 
   msgRus<<place<<point;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -856,11 +867,12 @@ bool TestCheckErrors::check_err_rec__bug_check__cant_convert_auth_service_name_f
 
   msgEng<<place<<point;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -893,11 +905,12 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_already_was_used
 
   msgRus<<place<<point<<authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -911,11 +924,12 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_already_was_used
 
   msgEng<<place<<point<<authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -948,11 +962,12 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_factory_already_was
 
   msgRus<<place<<point<<authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -966,11 +981,12 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_factory_already_was
 
   msgEng<<place<<point<<authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1003,11 +1019,12 @@ bool TestCheckErrors::check_err_rec__winsock__cant_detect_host_address
 
   msgRus<<ucs2_host_name<<ucs2_port_name<<winsockError;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1020,11 +1037,12 @@ bool TestCheckErrors::check_err_rec__winsock__cant_detect_host_address
 
   msgEng<<ucs2_host_name<<ucs2_port_name<<winsockError;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }
@@ -1067,11 +1085,12 @@ bool TestCheckErrors::check_err_rec__winsock__failed_to_connect_to_server
       <<socket__type
       <<socket__protocol;
 
-  if(!self_type::error_rec__check_data__utf8(tracer,
-                                             pErrorRec,
-                                             self_type::lcid__RUS,
-                                             self_type::sm_srcID__IBProvider,
-                                             fmsg.str()))
+  if(!self_type::error_rec__check_data__utf8
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID__IBProvider,
+        fmsg.str()))
   {
    resultValue=false;
   }//if
@@ -1094,11 +1113,12 @@ bool TestCheckErrors::check_err_rec__winsock__failed_to_connect_to_server
       <<socket__type
       <<socket__protocol;
 
-  if(!self_type::error_rec__check_data__utf8(tracer,
-                                             pErrorRec,
-                                             self_type::lcid__ENG,
-                                             self_type::sm_srcID__IBProvider,
-                                             fmsg.str()))
+  if(!self_type::error_rec__check_data__utf8
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID__IBProvider,
+        fmsg.str()))
   {
    resultValue=false;
   }//if
@@ -1127,11 +1147,12 @@ bool TestCheckErrors::check_err_rec__winsock__failed_to_write_into_port
 
   fmsg<<winsockErrorCode;
 
-  if(!self_type::error_rec__check_data__utf8(tracer,
-                                             pErrorRec,
-                                             self_type::lcid__RUS,
-                                             self_type::sm_srcID__IBProvider,
-                                             fmsg.str()))
+  if(!self_type::error_rec__check_data__utf8
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID__IBProvider,
+        fmsg.str()))
   {
    resultValue=false;
   }//if
@@ -1146,11 +1167,12 @@ bool TestCheckErrors::check_err_rec__winsock__failed_to_write_into_port
 
   fmsg<<winsockErrorCode;
 
-  if(!self_type::error_rec__check_data__utf8(tracer,
-                                             pErrorRec,
-                                             self_type::lcid__ENG,
-                                             self_type::sm_srcID__IBProvider,
-                                             fmsg.str()))
+  if(!self_type::error_rec__check_data__utf8
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID__IBProvider,
+        fmsg.str()))
   {
    resultValue=false;
   }//if
@@ -1182,11 +1204,12 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_auth_method
 
   msgRus<<pSubSystemID;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               ucs2ErrSrc,
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1202,11 +1225,12 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_auth_method
 
   msgEng<<pSubSystemID;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               ucs2ErrSrc,
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1237,11 +1261,12 @@ bool TestCheckErrors::check_err_rec__cn_err__unk_auth_service_name
 
   msgRus<<pSubSystemID<<ucs2_AuthServiceName;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1257,11 +1282,12 @@ bool TestCheckErrors::check_err_rec__cn_err__unk_auth_service_name
 
   msgEng<<pSubSystemID<<ucs2_AuthServiceName;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1292,11 +1318,12 @@ bool TestCheckErrors::check_err_rec__cn_err__incorrect_auth_service_name
 
   msgRus<<pSubSystemID<<IBP_EscapingText(ucs2_AuthServiceName);
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1312,11 +1339,12 @@ bool TestCheckErrors::check_err_rec__cn_err__incorrect_auth_service_name
 
   msgEng<<pSubSystemID<<IBP_EscapingText(ucs2_AuthServiceName);
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1347,11 +1375,12 @@ bool TestCheckErrors::check_err_rec__cn_err__auth_service_not_supported
 
   msgRus<<pSubSystemID<<ucs2_AuthServiceName;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1367,11 +1396,12 @@ bool TestCheckErrors::check_err_rec__cn_err__auth_service_not_supported
 
   msgEng<<pSubSystemID<<ucs2_AuthServiceName;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1403,11 +1433,12 @@ bool TestCheckErrors::check_err_rec__cn_err__incompatible_auth_settings
 
   msgRus<<pSubSystemID<<ucs2_AuthServiceName<<ucs2_IntegratedSecurityValue;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1423,11 +1454,12 @@ bool TestCheckErrors::check_err_rec__cn_err__incompatible_auth_settings
 
   msgEng<<pSubSystemID<<ucs2_AuthServiceName<<ucs2_IntegratedSecurityValue;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1457,11 +1489,12 @@ bool TestCheckErrors::check_err_rec__cn_err__integ_sec_not_supported
 
   msgRus<<pSubSystemID<<IBP_SUBSYSTEM_SIGN__REMOTE_FB<<IBP_VI_PRODUCT_VER_STRING1;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1477,11 +1510,12 @@ bool TestCheckErrors::check_err_rec__cn_err__integ_sec_not_supported
 
   msgEng<<pSubSystemID<<IBP_SUBSYSTEM_SIGN__REMOTE_FB<<IBP_VI_PRODUCT_VER_STRING1;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1517,11 +1551,12 @@ bool TestCheckErrors::check_err_rec__cn_err__bug_check__cant_translate_wire_cryp
 
   msgRus<<ucs2Place<<ucs2Point<<ucs2FromCS<<ucs2ToCS;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1537,11 +1572,12 @@ bool TestCheckErrors::check_err_rec__cn_err__bug_check__cant_translate_wire_cryp
 
   msgEng<<ucs2Place<<ucs2Point<<ucs2FromCS<<ucs2ToCS;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1577,11 +1613,12 @@ bool TestCheckErrors::check_err_rec__cn_err__bug_check__cant_translate_wire_cryp
 
   msgRus<<ucs2Place<<ucs2Point<<ucs2FromCS<<ucs2ToCS;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1597,11 +1634,12 @@ bool TestCheckErrors::check_err_rec__cn_err__bug_check__cant_translate_wire_cryp
 
   msgEng<<ucs2Place<<ucs2Point<<ucs2FromCS<<ucs2ToCS;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1634,11 +1672,12 @@ bool TestCheckErrors::check_err_rec__cn_err__mult_def_known_server_key
 
   msgRus<<pSubSystemID<<ucs2_keyType<<ucs2_keyPlugin;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1654,11 +1693,12 @@ bool TestCheckErrors::check_err_rec__cn_err__mult_def_known_server_key
 
   msgEng<<pSubSystemID<<ucs2_keyType<<ucs2_keyPlugin;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1691,11 +1731,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_possible__no_known_s
 
   msgRus<<pSubSystemID<<ucs2_authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1712,11 +1753,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_possible__no_known_s
 
   msgEng<<pSubSystemID<<ucs2_authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1748,11 +1790,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_possible__no_crypt_k
 
   msgRus<<pSubSystemID<<ucs2_authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1768,11 +1811,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_possible__no_crypt_k
 
   msgEng<<pSubSystemID<<ucs2_authServiceName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1803,11 +1847,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_supported
 
   msgRus<<pSubSystemID;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1823,11 +1868,12 @@ bool TestCheckErrors::check_err_rec__cn_err__wire_crypt_not_supported
 
   msgEng<<pSubSystemID;
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               utf8_to_wstring(sm_srcID__IBProvider),
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -1853,11 +1899,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_login
   const char* const c_templ
    ="Ваши имя пользователя и пароль не определены. Попросите администратора базы данных предоставить логин к Firebird.";
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               ucs2ErrSrc,
-                                               utf8_to_wstring(c_templ)))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        utf8_to_wstring(c_templ)))
   {
    resultValue=false;
   }//if
@@ -1868,11 +1915,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_login
   const char* const c_templ
    ="Your user name and password are not defined. Ask your database administrator to set up a Firebird login.";
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               ucs2ErrSrc,
-                                               utf8_to_wstring(c_templ)))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        utf8_to_wstring(c_templ)))
   {
    resultValue=false;
   }//if
@@ -1960,11 +2008,12 @@ bool TestCheckErrors::check_err_rec__cn_err__db_name_is_too_long
 
   msgRus<<pSubSystemID<<szDbName<<max_szDbName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -1979,11 +2028,12 @@ bool TestCheckErrors::check_err_rec__cn_err__db_name_is_too_long
 
   msgEng<<pSubSystemID<<szDbName<<max_szDbName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2012,11 +2062,12 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_db_name_to_utf8
 
   msgRus<<pSubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2031,11 +2082,12 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_db_name_to_utf8
 
   msgEng<<pSubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2065,11 +2117,12 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_cn_param_to_utf8
 
   msgRus<<pSubSystemID<<pParamName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2084,11 +2137,12 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_cn_param_to_utf8
 
   msgEng<<pSubSystemID<<pParamName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2117,11 +2171,12 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_cn_type
 
   msgRus<<pSubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2136,11 +2191,12 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_cn_type
 
   msgEng<<pSubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2170,11 +2226,12 @@ bool TestCheckErrors::check_err_rec__cn_err__not_defined_req_init_prop
 
   msgRus<<pSubSystemID<<pPropName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2189,11 +2246,12 @@ bool TestCheckErrors::check_err_rec__cn_err__not_defined_req_init_prop
 
   msgEng<<pSubSystemID<<pPropName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2220,11 +2278,12 @@ bool TestCheckErrors::check_err_rec__srv_err__incorrect_params_to_internal_func_
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2237,11 +2296,12 @@ bool TestCheckErrors::check_err_rec__srv_err__incorrect_params_to_internal_func_
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2288,11 +2348,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_detach__has_active_tr
 
   msgRus<<nTrs;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2307,11 +2368,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_detach__has_active_tr
 
   msgEng<<nTrs;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2340,11 +2402,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tpb
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2357,11 +2420,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tpb
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2389,11 +2453,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tpb_ver
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2407,11 +2472,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tpb_ver
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2438,11 +2504,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_cn_handle
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2455,11 +2522,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_cn_handle
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2525,11 +2593,12 @@ bool TestCheckErrors::check_err_rec__tr_err__prep_data_is_too_large
 
   msgRus<<ucs2_SubSystemID<<buf_size<<max_size;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2542,11 +2611,12 @@ bool TestCheckErrors::check_err_rec__tr_err__prep_data_is_too_large
 
   msgEng<<ucs2_SubSystemID<<buf_size<<max_size;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2573,11 +2643,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tr_handle
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               ucs2ErrSrc,
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2590,11 +2661,12 @@ bool TestCheckErrors::check_err_rec__srv_err__bad_tr_handle
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               ucs2ErrSrc,
-                                               msgEng.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2654,11 +2726,11 @@ bool TestCheckErrors::check_err_rec__stmt_err__failed_to_close_stmt
    ="Ошибка закрытия курсора результирующего множества.";
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       self_type::sm_srcID__IBProvider,
-                                       templ_utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID__IBProvider,
+        templ_utf8))
   {
    resultValue=false;
   }//if
@@ -2672,11 +2744,11 @@ bool TestCheckErrors::check_err_rec__stmt_err__failed_to_close_stmt
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       self_type::sm_srcID__IBProvider,
-                                       templ_utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID__IBProvider,
+        templ_utf8))
   {
    resultValue=false;
   }//if
@@ -2703,11 +2775,12 @@ bool TestCheckErrors::check_err_rec__srv_err__invalid_req_handle
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2720,11 +2793,12 @@ bool TestCheckErrors::check_err_rec__srv_err__invalid_req_handle
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2753,11 +2827,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_close_stmt__reclose
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2772,11 +2847,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_close_stmt__reclose
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2803,11 +2879,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_close_stmt__reclose__fb3
 
   structure::wstr_formatter msgRus(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -2820,11 +2897,12 @@ bool TestCheckErrors::check_err_rec__srv_err__failed_to_close_stmt__reclose__fb3
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -2849,11 +2927,11 @@ bool TestCheckErrors::check_err_rec__stmt_err__failed_to_prepare
    ="Ошибка подготовки SQL выражения.";
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       self_type::sm_srcID__IBProvider,
-                                       templ_utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID__IBProvider,
+        templ_utf8))
   {
    resultValue=false;
   }//if
@@ -2865,11 +2943,11 @@ bool TestCheckErrors::check_err_rec__stmt_err__failed_to_prepare
    ="Failed to prepare the SQL statement.";
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       self_type::sm_srcID__IBProvider,
-                                       templ_utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID__IBProvider,
+        templ_utf8))
   {
    resultValue=false;
   }//if
@@ -2896,11 +2974,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_execute_unprepared_sql_
     "SQL error code = -504\n"
     "Попытка выполнить неподготовленное динамическое SQL выражение.";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       utf8_to_wstring(templ_utf8)))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        utf8_to_wstring(templ_utf8)))
   {
    resultValue=false;
   }//if
@@ -2913,11 +2992,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_execute_unprepared_sql_
     "SQL error code = -504\n"
     "Attempt to execute an unprepared dynamic SQL statement.";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       utf8_to_wstring(templ_utf8)))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        utf8_to_wstring(templ_utf8)))
   {
    resultValue=false;
   }//if
@@ -2942,11 +3022,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_execute_unprepared_sql_
   const char* const templ_utf8
    ="Попытка выполнить неподготовленное динамическое SQL выражение.";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       utf8_to_wstring(templ_utf8)))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        utf8_to_wstring(templ_utf8)))
   {
    resultValue=false;
   }//if
@@ -2957,11 +3038,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_execute_unprepared_sql_
   const char* const templ_utf8
    ="Attempt to execute an unprepared dynamic SQL statement.";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       utf8_to_wstring(templ_utf8)))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        utf8_to_wstring(templ_utf8)))
   {
    resultValue=false;
   }//if
@@ -2991,11 +3073,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__not_prepared
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3008,11 +3091,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__not_prepared
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3039,11 +3123,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_columns_operation
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3054,11 +3139,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_columns_operation
   structure::wstr_formatter msgEng
    (L"Failed to build the definition of statement result.");
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3085,11 +3171,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_parameters_operatio
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3100,11 +3187,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_parameters_operatio
   structure::wstr_formatter msgEng
    (L"Failed to build the definitions of statement parameters.");
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3129,11 +3217,11 @@ bool TestCheckErrors::check_err_rec__stmt_srv_err__execute_fail
    ="Ошибка выполнения SQL выражения.";
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       self_type::sm_srcID__IBProvider,
-                                       c_templ__utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID__IBProvider,
+        c_templ__utf8))
   {
    resultValue=false;
   }//if
@@ -3145,11 +3233,11 @@ bool TestCheckErrors::check_err_rec__stmt_srv_err__execute_fail
    ="Failed to execute the SQL statement.";
 
   if(!self_type::error_rec__check_partial_data__utf8
-                                      (tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       self_type::sm_srcID__IBProvider,
-                                       c_templ__utf8))
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID__IBProvider,
+        c_templ__utf8))
   {
    resultValue=false;
   }//if
@@ -3177,11 +3265,12 @@ bool TestCheckErrors::check_err_rec__srv_err__op_was_cancelled
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3192,11 +3281,12 @@ bool TestCheckErrors::check_err_rec__srv_err__op_was_cancelled
   const wchar_t* const c_msg
    =L"Operation was cancelled.";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       c_msg))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        c_msg))
   {
    resultValue=false;
   }//if
@@ -3226,11 +3316,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__defer_exec_stmt_requires_tr_conte
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3243,11 +3334,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__defer_exec_stmt_requires_tr_conte
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3277,11 +3369,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_reexecute_stmt_with_op
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3294,11 +3387,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_reexecute_stmt_with_op
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3328,11 +3422,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3345,11 +3440,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor
     L"SQL error code = -502\n"
     L"Attempt to reopen an open cursor";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       c_msg))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        c_msg))
   {
    resultValue=false;
   }//if
@@ -3377,11 +3473,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor__fb3
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__RUS,
-                                               ucs2ErrSrc,
-                                               msgRus.str()))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3392,11 +3489,12 @@ bool TestCheckErrors::check_err_rec__srv_err__attempt_to_reopen_cursor__fb3
   const wchar_t* const c_msg
    =L"Attempt to reopen an open cursor";
 
-  if(!self_type::error_rec__check_partial_data(tracer,
-                                               pErrorRec,
-                                               self_type::lcid__ENG,
-                                               ucs2ErrSrc,
-                                               c_msg))
+  if(!self_type::error_rec__check_partial_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        c_msg))
   {
    resultValue=false;
   }//if
@@ -3426,11 +3524,12 @@ bool TestCheckErrors::check_err_rec__srv_err__prepare_stmt_with_open_cursor
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3443,11 +3542,12 @@ bool TestCheckErrors::check_err_rec__srv_err__prepare_stmt_with_open_cursor
     L"SQL error code = -519\n"
     L"The prepare statement identifies a prepare statement with an open cursor";
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       c_msg))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        c_msg))
   {
    resultValue=false;
   }//if
@@ -3477,11 +3577,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_prepare_stmt_with_open
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3494,11 +3595,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_prepare_stmt_with_open
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3528,11 +3630,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_close_a_closed_cursor
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3545,11 +3648,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_close_a_closed_cursor
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3579,11 +3683,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_from_closed_cursor
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3596,11 +3701,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_from_closed_cursor
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3630,11 +3736,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_after_eof
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3647,11 +3754,12 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_after_eof
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3851,11 +3959,12 @@ bool TestCheckErrors::check_err_rec__blob_err__close_closed_blob
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3868,11 +3977,12 @@ bool TestCheckErrors::check_err_rec__blob_err__close_closed_blob
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3902,11 +4012,12 @@ bool TestCheckErrors::check_err_rec__blob_err__cancel_closed_blob
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3919,11 +4030,12 @@ bool TestCheckErrors::check_err_rec__blob_err__cancel_closed_blob
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -3953,11 +4065,12 @@ bool TestCheckErrors::check_err_rec__blob_err__read_from_closed_blob
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -3970,11 +4083,12 @@ bool TestCheckErrors::check_err_rec__blob_err__read_from_closed_blob
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4004,11 +4118,12 @@ bool TestCheckErrors::check_err_rec__blob_err__write_into_closed_blob
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4021,11 +4136,12 @@ bool TestCheckErrors::check_err_rec__blob_err__write_into_closed_blob
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4055,11 +4171,12 @@ bool TestCheckErrors::check_err_rec__blob_err__work_with_closed_blob
 
   msgRus<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4072,11 +4189,12 @@ bool TestCheckErrors::check_err_rec__blob_err__work_with_closed_blob
 
   msgEng<<ucs2_SubSystemID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4104,11 +4222,12 @@ bool TestCheckErrors::check_err_rec__srv_err__invalid_blob_handle
   structure::wstr_formatter msgRus
    (utf8_to_wstring(c_templ));
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       ucs2ErrSrc,
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4119,11 +4238,12 @@ bool TestCheckErrors::check_err_rec__srv_err__invalid_blob_handle
   structure::wstr_formatter msgEng
    (L"Invalid BLOB handle.");
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       ucs2ErrSrc,
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4159,11 +4279,12 @@ bool TestCheckErrors::check_err_rec__slice_err__get_fail__invalid_array_buffer_s
 
   msgRus<<ucs2Place<<ucs2Point<<ucs2RelationName<<ucs2FieldName<<DefinedSize<<ExpectedSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4178,11 +4299,12 @@ bool TestCheckErrors::check_err_rec__slice_err__get_fail__invalid_array_buffer_s
 
   msgEng<<ucs2Place<<ucs2Point<<ucs2RelationName<<ucs2FieldName<<DefinedSize<<ExpectedSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4216,11 +4338,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_version
 
   msgRus<<ucs2Place<<ucs2Point<<ucs2xsqldaName<<version;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4233,11 +4356,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_version
 
   msgEng<<ucs2Place<<ucs2Point<<ucs2xsqldaName<<version;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4269,11 +4393,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__too_many_vars
 
   msgRus<<pSubSystemID<<actualValue<<maxValue;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4286,11 +4411,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__too_many_vars
 
   msgEng<<pSubSystemID<<actualValue<<maxValue;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4321,11 +4447,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqllen
 
   msgRus<<sqlTypeSign<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4338,11 +4465,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqllen
 
   msgEng<<sqlTypeSign<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4373,11 +4501,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
 
   msgRus<<sqlBaseTypeSign<<sqlScale;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4390,11 +4519,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
 
   msgEng<<sqlBaseTypeSign<<sqlScale;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4424,11 +4554,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__unknown_sqltype
 
   msgRus<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4441,11 +4572,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__unknown_sqltype
 
   msgEng<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4475,11 +4607,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
 
   msgRus<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4492,11 +4625,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
 
   msgEng<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4528,11 +4662,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_value
 
   msgRus<<place<<point<<sqlindValue;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4545,11 +4680,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_value
 
   msgEng<<place<<point<<sqlindValue;;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4579,11 +4715,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__xsqlvar_not_supports_null_state
 
   msgRus<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4596,11 +4733,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__xsqlvar_not_supports_null_state
 
   msgEng<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4630,11 +4768,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_varchar_data_length
 
   msgRus<<varcharLength;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4647,11 +4786,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_varchar_data_length
 
   msgEng<<varcharLength;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4682,11 +4822,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__varchar_data_length_is_greater_
 
   msgRus<<varcharLength<<bufferSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4699,11 +4840,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__varchar_data_length_is_greater_
 
   msgEng<<varcharLength<<bufferSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4734,11 +4876,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_
 
   msgRus<<pSubSystemID<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4751,11 +4894,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_
 
   msgEng<<pSubSystemID<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4786,11 +4930,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
 
   msgRus<<pSubSystemID<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4803,11 +4948,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
 
   msgEng<<pSubSystemID<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4840,11 +4986,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_count_of_xvars
 
   msgRus<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4857,11 +5004,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_count_of_xvars
 
   msgEng<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4893,11 +5041,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqltype_of_xva
 
   msgRus<<actualSqlType<<expectedSqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4910,11 +5059,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqltype_of_xva
 
   msgEng<<actualSqlType<<expectedSqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -4947,11 +5097,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
 
   msgRus<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -4964,11 +5115,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
 
   msgEng<<sqlBaseTypeSign<<actualSqlScale<<expectedSqlScale;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5001,11 +5153,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqllen_of_xvar
 
   msgRus<<sqlTypeSign<<actualSqlLen<<expectedSqlLen;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5018,11 +5171,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqllen_of_xvar
 
   msgEng<<sqlTypeSign<<actualSqlLen<<expectedSqlLen;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5054,11 +5208,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqld
 
   msgRus<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5071,11 +5226,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqld
 
   msgEng<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5108,11 +5264,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqln
 
   msgRus<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<sqln<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5125,11 +5282,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqln
 
   msgEng<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<sqln<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5162,11 +5320,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__blr_data_is_too_long
 
   msgRus<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<actualLen<<maxLen;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5179,11 +5338,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__blr_data_is_too_long
 
   msgEng<<ucs2_SubSystemID<<ucs2_XSQLDA_Sign<<actualLen<<maxLen;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5215,11 +5375,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5232,11 +5393,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5268,11 +5430,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unk_version
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<sdlVersion;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5285,11 +5448,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unk_version
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<sdlVersion;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5320,11 +5484,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_end_of_data
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5337,11 +5502,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_end_of_data
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5374,11 +5540,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__str_len_exceed_size_of_buffer_tail
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<strLen<<bufferTailSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5391,11 +5558,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__str_len_exceed_size_of_buffer_tail
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<strLen<<bufferTailSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5428,11 +5596,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_element_value
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<ucs2_ElementTagID<<ElementTagOffset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5445,11 +5614,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_element_value
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<ucs2_ElementTagID<<ElementTagOffset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5481,11 +5651,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_struct_fields
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<fieldCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5498,11 +5669,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_struct_fields
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<fieldCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5538,11 +5710,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_index_of_bound
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex<<maxBoundCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5556,11 +5729,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_index_of_bound
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex<<maxBoundCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5592,11 +5766,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_bound_range
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5609,11 +5784,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_bound_range
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5649,11 +5825,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__bad_bound_range
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex<<lower<<upper;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5666,11 +5843,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__bad_bound_range
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex<<lower<<upper;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5703,11 +5881,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_kind_of_literal
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<literalKind<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5720,11 +5899,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_kind_of_literal
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<literalKind<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5756,11 +5936,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_element_fields
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<fieldCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5773,11 +5954,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_element_fields
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<fieldCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5810,11 +5992,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_tag
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<tagID<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5827,11 +6010,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_tag
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<tagID<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5864,11 +6048,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__incorrect_index_property_of_scalar
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<index<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5881,11 +6066,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__incorrect_index_property_of_scalar
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<index<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5918,11 +6104,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__inconsistent_sizes_of_buffer_and_d
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<bufferSize<<dataSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5935,11 +6122,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__inconsistent_sizes_of_buffer_and_d
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<bufferSize<<dataSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -5971,11 +6159,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_tag
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<ucs2_TagID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -5988,11 +6177,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_tag
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<ucs2_TagID;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6023,11 +6213,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimensions
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6040,11 +6231,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimensions
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6076,11 +6268,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimension
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6093,11 +6286,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimension
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<boundIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6130,11 +6324,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_blr_type_id
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<blrTypeID<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6147,11 +6342,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_blr_type_id
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<blrTypeID<<offset;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6184,11 +6380,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__invalid_element_length
 
   msgRus<<ucs2_CheckPlace<<ucs2_CheckPoint<<length<<blrTypeSign;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6201,11 +6398,12 @@ bool TestCheckErrors::check_err_rec__sdl_err__invalid_element_length
 
   msgEng<<ucs2_CheckPlace<<ucs2_CheckPoint<<length<<blrTypeSign;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6280,11 +6478,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incorrect_xsqld
 
   msgRus<<ucs2Place<<ucs2Point<<actualSQLD<<expectedSQLD<<startIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6298,11 +6497,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incorrect_xsqld
 
   msgEng<<ucs2Place<<ucs2Point<<actualSQLD<<expectedSQLD<<startIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6337,11 +6537,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__xvar_seq_number
 
   msgRus<<ucs2Place<<ucs2Point<<seqNumber<<sqld<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6355,11 +6556,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__xvar_seq_number
 
   msgEng<<ucs2Place<<ucs2Point<<seqNumber<<sqld<<index;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6392,11 +6594,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_xvar
 
   msgRus<<ucs2Place<<ucs2Point<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6410,11 +6613,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_xvar
 
   msgEng<<ucs2Place<<ucs2Point<<sqld;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6448,11 +6652,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_seq_
 
   msgRus<<ucs2Place<<ucs2Point<<actualSeqNumber<<expectedSeqNumber;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6466,11 +6671,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_seq_
 
   msgEng<<ucs2Place<<ucs2Point<<actualSeqNumber<<expectedSeqNumber;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6501,11 +6707,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
 
   msgRus<<ucs2_SubSystemID<<fieldName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6518,11 +6725,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
 
   msgEng<<ucs2_SubSystemID<<fieldName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6553,11 +6761,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
 
   msgRus<<ucs2_SubSystemID<<fieldName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6570,11 +6779,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
 
   msgEng<<ucs2_SubSystemID<<fieldName;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6605,11 +6815,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
 
   msgRus<<ucs2_SubSystemID<<actualLength;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6622,11 +6833,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
 
   msgEng<<ucs2_SubSystemID<<actualLength;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6658,11 +6870,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
 
   msgRus<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6675,11 +6888,12 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
 
   msgEng<<ucs2_SubSystemID<<actualCount<<expectedCount;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6711,11 +6925,12 @@ bool TestCheckErrors::check_err_rec__isc__parse_msg_buf_data__failed_to_process_
 
   msgRus<<ucs2_SubSystemID<<elementIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6728,11 +6943,12 @@ bool TestCheckErrors::check_err_rec__isc__parse_msg_buf_data__failed_to_process_
 
   msgEng<<ucs2_SubSystemID<<elementIndex;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -6851,11 +7067,12 @@ bool TestCheckErrors::check_err_rec__info_buf_err__transport_data_to_integer__si
 
   msgRus<<pSubSystemID<<elementSign<<get_unsigned_int_sign<sizeof(size_t)>()<<bufferSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -6868,11 +7085,12 @@ bool TestCheckErrors::check_err_rec__info_buf_err__transport_data_to_integer__si
 
   msgEng<<pSubSystemID<<elementSign<<get_unsigned_int_sign<sizeof(size_t)>()<<bufferSize;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -7074,11 +7292,12 @@ bool TestCheckErrors::check_err_rec__common__internal_err__unk_sql_type
 
   msgRus<<pSubSystemID<<index<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -7091,11 +7310,12 @@ bool TestCheckErrors::check_err_rec__common__internal_err__unk_sql_type
 
   msgEng<<pSubSystemID<<index<<sqlType;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if
@@ -7368,28 +7588,31 @@ bool TestCheckErrors::error_rec__check_partial_data__utf8
  //-----------------------------------------
  utf8::t_cs_cvt_result cvt_result=utf8::cs_cvt_result__ok;
 
- utf8::utf8_to_ucs2(strUtf8_ErrSrc.begin(),
-                    strUtf8_ErrSrc.end(),
-                    std::back_inserter(err_src),
-                    &cvt_result);
+ utf8::utf8_to_ucs2
+  (strUtf8_ErrSrc.begin(),
+   strUtf8_ErrSrc.end(),
+   std::back_inserter(err_src),
+   &cvt_result);
 
  assert(cvt_result==utf8::cs_cvt_result__ok);
 
  //-----------------------------------------
- utf8::utf8_to_ucs2(strUtf8_pszErrDescr.begin(),
-                    strUtf8_pszErrDescr.end(),
-                    std::back_inserter(err_descr),
-                    &cvt_result);
+ utf8::utf8_to_ucs2
+  (strUtf8_pszErrDescr.begin(),
+   strUtf8_pszErrDescr.end(),
+   std::back_inserter(err_descr),
+   &cvt_result);
 
  assert(cvt_result==utf8::cs_cvt_result__ok);
 
  //-----------------------------------------
 
- return self_type::error_rec__check_partial_data(tracer,
-                                                 pErrorRec,
-                                                 lcid,
-                                                 err_src,
-                                                 err_descr);
+ return self_type::error_rec__check_partial_data
+         (tracer,
+          pErrorRec,
+          lcid,
+          err_src,
+          err_descr);
 }//error_rec__check_partial_data__utf8
 
 //------------------------------------------------------------------------
@@ -7444,8 +7667,10 @@ bool TestCheckErrors::error_rec__check_sqlstate_and_native_code
 
   LONG err_lNativeErrorCode=0;
 
-  HRESULT const hr=spSQLErrorInfo->GetSQLInfo(&err_bstrSqlState.ref_bstr(),
-                                              &err_lNativeErrorCode);
+  HRESULT const hr
+   =spSQLErrorInfo->GetSQLInfo
+     (&err_bstrSqlState.ref_bstr(),
+      &err_lNativeErrorCode);
 
   if(hr!=S_OK)
   {
@@ -7613,11 +7838,12 @@ bool TestCheckErrors::helper__bug_check(TTSO_Tracer&                         tra
 
   msgRus<<ucs2Place<<ucs2Point<<ucs2Reason;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__RUS,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgRus.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgRus.str()))
   {
    resultValue=false;
   }//if
@@ -7632,11 +7858,12 @@ bool TestCheckErrors::helper__bug_check(TTSO_Tracer&                         tra
 
   msgEng<<ucs2Place<<ucs2Point<<ucs2Reason;
 
-  if(!self_type::error_rec__check_data(tracer,
-                                       pErrorRec,
-                                       self_type::lcid__ENG,
-                                       utf8_to_wstring(self_type::sm_srcID__IBProvider),
-                                       msgEng.str()))
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        msgEng.str()))
   {
    resultValue=false;
   }//if

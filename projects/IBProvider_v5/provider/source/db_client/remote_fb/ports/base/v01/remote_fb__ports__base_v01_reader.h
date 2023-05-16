@@ -44,26 +44,26 @@ class RemoteFB__Port_BASE_v01::tag_reader
   //reader interface -----------------------------------------------------
 
  #ifndef NDEBUG
-  virtual protocol::P_ARCH debug__get_protocol_architecture()const COMP_W000004_OVERRIDE_FINAL;
+  virtual protocol::P_ARCH debug__get_protocol_architecture()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
  #endif
 
   /// <summary>
   ///  ”ведомление о начале операции чтени€.
   /// </summary>
-  virtual void begin_read() COMP_W000004_OVERRIDE_FINAL;
+  virtual void begin_read() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  ”ведомление об окончании операции чтени€.
   /// </summary>
   //! \param[in] success
   //!  true, если операци€ завершаетс€ без ошибок
-  virtual void end_read(bool success) COMP_W000004_OVERRIDE_FINAL;
+  virtual void end_read(bool success) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  „тение данных с типом P_LONG.
   /// </summary>
   //! \param[out] pv
-  virtual void read__long(protocol::P_LONG* pv) COMP_W000004_OVERRIDE_FINAL;
+  virtual void read__long(protocol::P_LONG* pv) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  „тение массива байт.
@@ -71,7 +71,7 @@ class RemoteFB__Port_BASE_v01::tag_reader
   //! \param[in]  n
   //! \param[out] pb
   virtual void read__bytes(size_type          n,
-                           protocol::P_UCHAR* pb) COMP_W000004_OVERRIDE_FINAL;
+                           protocol::P_UCHAR* pb) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// <summary>

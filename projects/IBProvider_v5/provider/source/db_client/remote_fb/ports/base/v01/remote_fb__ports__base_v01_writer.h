@@ -48,27 +48,27 @@ class RemoteFB__Port_BASE_v01::tag_writer
   //writer interface -----------------------------------------------------
 
  #ifndef NDEBUG
-  virtual protocol::P_ARCH debug__get_protocol_architecture()const COMP_W000004_OVERRIDE_FINAL;
+  virtual protocol::P_ARCH debug__get_protocol_architecture()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
  #endif
 
   /// <summary>
   ///  ”ведомление о начале операции записи.
   /// </summary>
-  virtual void begin_write() COMP_W000004_OVERRIDE_FINAL;
+  virtual void begin_write() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  ”ведомление об окончании операции записи.
   /// </summary>
   //! \param[in] success
   //!  true, если операци€ завершаетс€ без ошибок
-  virtual void end_write(bool success) COMP_W000004_OVERRIDE_FINAL;
+  virtual void end_write(bool success) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  «апись данных с типом P_LONG.
   /// </summary>
   //! \param[in] pv
   //!  Not null.
-  virtual void write__long(const protocol::P_LONG* pv) COMP_W000004_OVERRIDE_FINAL;
+  virtual void write__long(const protocol::P_LONG* pv) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  «апись массива байт
@@ -76,7 +76,7 @@ class RemoteFB__Port_BASE_v01::tag_writer
   //! \param[in] n
   //! \param[in] pb
   virtual void write__bytes(size_type                n,
-                            const protocol::P_UCHAR* pb) COMP_W000004_OVERRIDE_FINAL;
+                            const protocol::P_UCHAR* pb) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// <summary>

@@ -64,7 +64,7 @@ class RemoteFB__API_P12__ExecuteStatement LCPI_CPP_CFG__CLASS__FINAL
                     tr_handle_type*                 pTrHandle,
                     stmt_handle_type*               pStmtHandle,
                     const isc_api::XSQLDA_V1*       pInXSQLDA,
-                    const isc_api::XSQLDA_V1*       pOutXSQLDA)COMP_W000004_OVERRIDE_FINAL;
+                    const isc_api::XSQLDA_V1*       pOutXSQLDA)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static protocol::P_OBJCT helper__execute

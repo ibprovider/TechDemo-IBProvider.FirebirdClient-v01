@@ -62,8 +62,9 @@ void TestsFor__P13_Compression_01__zlib1_dll::tag_impl::test_001
  //-----------------------------------------
  structure::wstr_formatter dbLocation(L"%1:%2"); // <-------- v1
 
- dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
-           <<pParams->args().get(c_prog_arg__db)->m_value;
+ dbLocation
+  <<pParams->args().get(c_prog_arg__inet_host)->m_value
+  <<pParams->args().get(c_prog_arg__db)->m_value;
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -124,8 +125,9 @@ void TestsFor__P13_Compression_01__zlib1_dll::tag_impl::test_002
  //-----------------------------------------
  structure::wstr_formatter dbLocation(L"%1:%2"); // <-------- v1
 
- dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
-           <<pParams->args().get(c_prog_arg__db)->m_value;
+ dbLocation
+  <<pParams->args().get(c_prog_arg__inet_host)->m_value
+  <<pParams->args().get(c_prog_arg__db)->m_value;
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -188,8 +190,9 @@ void TestsFor__P13_Compression_01__zlib1_dll::tag_impl::test_003_win64
  //-----------------------------------------
  structure::wstr_formatter dbLocation(L"%1:%2"); // <-------- v1
 
- dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
-           <<pParams->args().get(c_prog_arg__db)->m_value;
+ dbLocation
+  <<pParams->args().get(c_prog_arg__inet_host)->m_value
+  <<pParams->args().get(c_prog_arg__db)->m_value;
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -255,8 +258,9 @@ void TestsFor__P13_Compression_01__zlib1_dll::tag_impl::test_004_win32
  //-----------------------------------------
  structure::wstr_formatter dbLocation(L"%1:%2"); // <-------- v1
 
- dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
-           <<pParams->args().get(c_prog_arg__db)->m_value;
+ dbLocation
+  <<pParams->args().get(c_prog_arg__inet_host)->m_value
+  <<pParams->args().get(c_prog_arg__db)->m_value;
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);

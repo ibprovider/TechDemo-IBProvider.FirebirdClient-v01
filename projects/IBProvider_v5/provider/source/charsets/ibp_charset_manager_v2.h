@@ -80,9 +80,9 @@ class t_ibp_charset_manager_v2
 
   //t_db_charset_manager_v2 interface ------------------------------------
   virtual db_obj::t_db_charset_const_ptr get_charset(const cs_name_box_type&   cs_name,
-                                                     db_obj::t_db_cs_mng_flags flags) COMP_W000004_OVERRIDE_FINAL;
+                                                     db_obj::t_db_cs_mng_flags flags) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual db_obj::t_db_charset_const_ptr get_charset(db_obj::db_cs_id cs_id) COMP_W000004_OVERRIDE_FINAL;
+  virtual db_obj::t_db_charset_const_ptr get_charset(db_obj::db_cs_id cs_id) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_multi_thread_traits               thread_traits;

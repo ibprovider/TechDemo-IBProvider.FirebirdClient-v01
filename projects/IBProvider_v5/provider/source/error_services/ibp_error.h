@@ -216,7 +216,7 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   void swap(self_type& x);
 
   //exception interface --------------------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC COMP_W000004_OVERRIDE_FINAL;//override
+  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//override
 
   //----------------------------------------------------------------------
   /// <summary>
@@ -255,20 +255,20 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   /// <summary>
   ///  Получение числа ошибок
   /// </summary>
-  virtual size_t get_record_count()const COMP_W000004_OVERRIDE_FINAL; //abstract
+  virtual size_t get_record_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //abstract
 
   /// <summary>
   ///  Получение описания одиночной ошибки
   /// </summary>
   //! \param[in] record_num
-  virtual structure::t_err_record::self_ptr get_record(size_t record_num)const COMP_W000004_OVERRIDE_FINAL; //abstract
+  virtual structure::t_err_record::self_ptr get_record(size_t record_num)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //abstract
 
   //t_ibp_error_records_r interface --------------------------------------
 
   /// <summary>
   ///  Получение индекса главной ошибки
   /// </summary>
-  virtual size_type_N get_primary_err_idx()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type_N get_primary_err_idx()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
   /// <summary>
@@ -280,7 +280,7 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   /// <summary>
   ///  Генерация исключения
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const COMP_W000004_OVERRIDE_FINAL;//throw - override
+  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw - override
 
  public:
   /// <summary>
@@ -301,11 +301,11 @@ class t_ibp_error:public  ole_lib::t_base_com_error
   COMP_CONF_DECLSPEC_NORETURN void raise_me(HRESULT new_err_code);//throw
 
  private: //вспомогательные утилиты --------------------------------------
-  virtual self_type& add_arg(const base_variant_type& x) COMP_W000004_OVERRIDE_FINAL;//abstract
+  virtual self_type& add_arg(const base_variant_type& x) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract
 
   //максимальное число ошибок, которое можно зарегистрировать через
   //методы t_ibp_error_adapter ограничивается c_max_error_count
-  virtual void push_error(base_error_record_type* pError) COMP_W000004_OVERRIDE_FINAL;//abstract (t_ibp_error_adapter)
+  virtual void push_error(base_error_record_type* pError) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract (t_ibp_error_adapter)
 
  private:
   typedef structure::t_value_with_null<size_t>    primary_err_idx_type_N;
@@ -324,7 +324,7 @@ class t_ibp_error:public  ole_lib::t_base_com_error
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_CallContext::tag_error_adapter_with_limit
 
-class t_ibp_error::tag_error_adapter_with_limit COMP_W000006_CLASS_FINAL
+class t_ibp_error::tag_error_adapter_with_limit LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_error_adapter
 {
  private:
@@ -340,7 +340,7 @@ class t_ibp_error::tag_error_adapter_with_limit COMP_W000006_CLASS_FINAL
  ~tag_error_adapter_with_limit();
 
  private:
-  virtual void push_error(structure::t_err_record* err_record)COMP_W000004_OVERRIDE_FINAL;
+  virtual void push_error(structure::t_err_record* err_record)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   t_ibp_error* m_pOwner;

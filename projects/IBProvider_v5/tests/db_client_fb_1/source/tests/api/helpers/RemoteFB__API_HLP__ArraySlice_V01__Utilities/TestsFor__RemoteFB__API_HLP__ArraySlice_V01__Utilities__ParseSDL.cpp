@@ -25,7 +25,7 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   typedef remote_fb::api::helpers::RemoteFB__API_HLP__ArraySlice_v01__Utilities  array_utils_type;
 
  public:
- #ifdef NDEBUG
+#ifdef NDEBUG
   static void test_001__err__empty_buffer
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
@@ -137,10 +137,10 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_028__err__check_point_010
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
- #endif
+#endif
 
  public:
- #ifdef NDEBUG
+#ifdef NDEBUG
   static void test_100__ReadLiteral__err__check_point_001
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
@@ -160,10 +160,10 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_104__ReadLiteral__err__check_point_005
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
- #endif
+#endif
 
  public:
- #ifdef NDEBUG
+#ifdef NDEBUG
   static void test_200__ReadElement__err__check_point_001
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
@@ -203,11 +203,11 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_209__ReadElement__err__check_point_010
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
- #endif
+#endif
 
  public:
- #ifdef NDEBUG
-  static void test_300__ReadElementType__err__check_point_E00
+#ifdef NDEBUG
+  static void test_300__ReadElementType__err__check_point_Z00
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
@@ -250,7 +250,7 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_310__ReadElementType__err__check_point_010
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
- #endif
+#endif
 
   static void test_311__ReadElementType__err__check_point_L01__len0
                (TTSO_GlobalContext* pParams,
@@ -275,6 +275,12 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_316__ReadElementType__err__check_point_L03__len32768
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+#ifdef NDEBUG
+  static void test_330__ReadElementType__err__check_point_011
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+#endif
 
  public:
   static void test_400__short_integer
@@ -343,6 +349,10 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
                 context_type*       pCtx);
 
   static void test_512__boolean
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_513__int128__scale_n12
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
@@ -427,10 +437,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -484,10 +495,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -543,10 +555,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -603,10 +616,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -664,10 +678,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -724,10 +739,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -788,10 +804,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -852,10 +869,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -913,10 +931,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -973,10 +992,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1037,10 +1057,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1099,10 +1120,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1160,10 +1182,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1227,10 +1250,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1291,10 +1315,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1354,10 +1379,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1415,10 +1441,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1484,10 +1511,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1550,10 +1578,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1624,10 +1653,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1686,10 +1716,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1749,10 +1780,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1832,10 +1864,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1914,10 +1947,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1996,10 +2030,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2078,10 +2113,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2165,10 +2201,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2228,10 +2265,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2290,10 +2328,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2356,10 +2395,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              szSDL,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     szSDL,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2424,10 +2464,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              szSDL,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     szSDL,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2486,10 +2527,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2548,10 +2590,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2609,10 +2652,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2671,10 +2715,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2733,10 +2778,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2797,10 +2843,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2860,10 +2907,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2925,10 +2973,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -2989,10 +3038,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3054,10 +3104,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3121,10 +3172,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3156,7 +3208,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
 #ifdef NDEBUG
 
-void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_300__ReadElementType__err__check_point_E00
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_300__ReadElementType__err__check_point_Z00
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -3183,10 +3235,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3202,7 +3255,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
     (tracer,
      exc.get_record(0),
      L"RemoteFB__API_HLP__ArraySlice_v01__Utilities::Helper__ParseSDL__ReadElementType",
-     L"#E00",
+     L"#Z00",
      255,
      /*offset*/3);
 
@@ -3211,7 +3264,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
   TestServices::Throw_WeWaitTheError();
  }//for[ever]
-}//test_300__ReadElementType__err__check_point_E00
+}//test_300__ReadElementType__err__check_point_Z00
 
 #endif
 
@@ -3246,10 +3299,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3308,10 +3362,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3370,10 +3425,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3432,10 +3488,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3495,10 +3552,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3560,10 +3618,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3623,10 +3682,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3688,10 +3748,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3751,10 +3812,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3816,10 +3878,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              sz,
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     sz,
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3902,10 +3965,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -3988,10 +4052,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -4074,10 +4139,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -4160,10 +4226,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -4246,10 +4313,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -4332,10 +4400,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              _DIM_(sdl),
-                              sdl,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -4361,6 +4430,69 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
   TestServices::Throw_WeWaitTheError();
  }//for[ever]
 }//test_316__ReadElementType__err__check_point_L03__len32768
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST 330
+
+#ifdef NDEBUG
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_330__ReadElementType__err__check_point_011
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ const array_utils_type::byte_type sdl[]=
+  {
+   isc_api::ibp_isc_sdl_version1, // 0
+   isc_api::ibp_isc_sdl_struct,   // 1
+   1,                             // 2
+   isc_api::ibp_fb040_blr_dtype__int128,
+  };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ for(;;)
+ {
+  try
+  {
+   array_utils_type::ParseSDL
+    (OpCtx,
+     _LCPI_DIM_(sdl),
+     sdl,
+     &descr);
+  }
+  catch(const ibp::t_ibp_error& exc)
+  {
+   typedef TestCheckErrors errSvc;
+
+   errSvc::print_exception_ok(tracer,exc);
+
+   errSvc::check_err_count(exc,1);
+
+   _TSO_CHECK(exc.get_record(0));
+
+   errSvc::check_err_rec__sdl_err__unexpected_end_of_data
+    (tracer,
+     exc.get_record(0),
+     L"RemoteFB__API_HLP__ArraySlice_v01__Utilities::Helper__ParseSDL__ReadElementType",
+     L"#011");
+
+   break;
+  }//catch
+
+  TestServices::Throw_WeWaitTheError();
+ }//for[ever]
+}//test_330__ReadElementType__err__check_point_011
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //TEST 400
@@ -4410,10 +4542,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4489,10 +4622,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4570,10 +4704,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4649,10 +4784,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4728,10 +4864,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4806,10 +4943,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4884,10 +5022,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -4962,10 +5101,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5040,10 +5180,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5118,10 +5259,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5198,10 +5340,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5278,10 +5421,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5360,10 +5504,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5440,10 +5585,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5522,10 +5668,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5602,10 +5749,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5682,10 +5830,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  remote_fb::RemoteFB__ArraySliceDescr descr;
 
- array_utils_type::ParseSDL(OpCtx,
-                            _DIM_(sdl),
-                            sdl,
-                            &descr);
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
 
  //-----------------------------------------
 
@@ -5709,6 +5858,86 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  _TSO_CHECK(descr.m_bounds[1].lower==-10);
  _TSO_CHECK(descr.m_bounds[1].upper==10);
 }//test_512__boolean
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST 513
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_513__int128__scale_n12
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ const array_utils_type::byte_type sdl[]=
+ {
+  isc_api::ibp_isc_sdl_version1,
+  isc_api::ibp_isc_sdl_struct,
+  1,
+  isc_api::ibp_fb040_blr_dtype__int128,
+  (array_utils_type::byte_type)-12,//scale
+  isc_api::ibp_isc_sdl_relation,
+  3,'a','b','c',
+  isc_api::ibp_isc_sdl_field,
+  0,
+  isc_api::ibp_isc_sdl_do1,
+  0,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  2,
+  isc_api::ibp_isc_sdl_do2,
+  1,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  (array_utils_type::byte_type)-10,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  10,
+  isc_api::ibp_isc_sdl_element,
+  1,
+  isc_api::ibp_isc_sdl_scalar,
+  0,
+  2,                                        //count of dimensions
+  isc_api::ibp_isc_sdl_variable,
+  0,
+  isc_api::ibp_isc_sdl_variable,
+  1,
+  isc_api::ibp_isc_sdl_eoc
+ };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _DIM_(sdl),
+   sdl,
+   &descr);
+
+ //-----------------------------------------
+
+ _TSO_CHECK(descr.m_relation_name==L"abc");
+
+ _TSO_CHECK(descr.m_field_name.empty());
+
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb040_blr_dtype__int128);
+
+ _TSO_CHECK(descr.m_element_sql_scale==-12);
+
+ _TSO_CHECK(descr.m_element_sql_length==16);
+
+ _TSO_CHECK(descr.m_element_total_length==16);
+
+ _TSO_CHECK(descr.m_bounds_number==2);
+
+ _TSO_CHECK(descr.m_bounds[0].lower==1);
+ _TSO_CHECK(descr.m_bounds[0].upper==2);
+
+ _TSO_CHECK(descr.m_bounds[1].lower==-10);
+ _TSO_CHECK(descr.m_bounds[1].upper==10);
+}//test_513__int128__scale_n12
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
@@ -5824,8 +6053,8 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
  DEF_TEST_DESCR("209.ReadElement.err.check_point_010",
                 test_209__ReadElement__err__check_point_010)
 
- DEF_TEST_DESCR("300.ReadElementType.err.check_point_E00",
-                test_300__ReadElementType__err__check_point_E00)
+ DEF_TEST_DESCR("300.ReadElementType.err.check_point_Z00",
+                test_300__ReadElementType__err__check_point_Z00)
  DEF_TEST_DESCR("301.ReadElementType.err.check_point_001",
                 test_301__ReadElementType__err__check_point_001)
  DEF_TEST_DESCR("302.ReadElementType.err.check_point_002",
@@ -5864,6 +6093,10 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
 
  DEF_TEST_DESCR("316.ReadElementType.err.check_point_L03.len32768",
                 test_316__ReadElementType__err__check_point_L03__len32768)
+#ifdef NDEBUG
+ DEF_TEST_DESCR("330.ReadElementType.err.check_point_011",
+                test_330__ReadElementType__err__check_point_011)
+#endif
 
  DEF_TEST_DESCR("400.short_integer",
                 test_400__short_integer)
@@ -5915,6 +6148,9 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
 
  DEF_TEST_DESCR("512.boolean",
                 test_512__boolean)
+
+ DEF_TEST_DESCR("513.int128.scale_n12",
+                test_513__int128__scale_n12)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

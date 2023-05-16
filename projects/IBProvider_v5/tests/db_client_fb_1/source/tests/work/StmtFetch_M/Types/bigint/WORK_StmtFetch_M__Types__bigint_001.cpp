@@ -166,7 +166,7 @@ void WORK_StmtFetch_M__Types__bigint_001::tag_impl::run(context_type* const pCtx
  //-----------------------------------------
  structure::t_stl_vector<unsigned char,TTSO_MemoryAllocator> OutMsg__DATA=
  {
-  //---- value [long]
+  //---- value [int64]
   0xAF,
   0xAF,
   0xAF,

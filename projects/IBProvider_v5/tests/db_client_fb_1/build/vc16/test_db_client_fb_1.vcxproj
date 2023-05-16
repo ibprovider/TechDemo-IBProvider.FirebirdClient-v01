@@ -864,6 +864,7 @@
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_008__timestamp.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_009__char.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.cpp" />
@@ -893,8 +894,10 @@
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_011__blob.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_012__array.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_013__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.cpp" />
@@ -918,6 +921,7 @@
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D15_05.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\double\WORK_StmtFetch__Types__double_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\float\WORK_StmtFetch__Types__float_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\int128\WORK_StmtFetch__Types__int128_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_002__check_align.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N03_01.cpp" />
@@ -956,6 +960,7 @@
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D15_05.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\double\WORK_StmtFetch_M__Types__double_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\float\WORK_StmtFetch_M__Types__float_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\int128\WORK_StmtFetch_M__Types__int128_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_002__check_align.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N03_01.cpp" />
@@ -1568,6 +1573,7 @@
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_008__timestamp.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_009__char.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_010__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.h" />
@@ -1597,8 +1603,10 @@
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_011__blob.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_012__array.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_013__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.h" />
@@ -1622,6 +1630,7 @@
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decimal\WORK_StmtFetch__Types__decimal_001__D15_05.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\double\WORK_StmtFetch__Types__double_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\float\WORK_StmtFetch__Types__float_001.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\int128\WORK_StmtFetch__Types__int128_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\integer\WORK_StmtFetch__Types__integer_002__check_align.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\numeric\WORK_StmtFetch__Types__numeric_001__N03_01.h" />
@@ -1660,6 +1669,7 @@
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decimal\WORK_StmtFetch_M__Types__decimal_001__D15_05.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\double\WORK_StmtFetch_M__Types__double_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\float\WORK_StmtFetch_M__Types__float_001.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\int128\WORK_StmtFetch_M__Types__int128_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\integer\WORK_StmtFetch_M__Types__integer_002__check_align.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\numeric\WORK_StmtFetch_M__Types__numeric_001__N03_01.h" />

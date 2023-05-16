@@ -632,6 +632,46 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
   }//ibp_fb030_sql_boolean
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_int128:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_int128))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_int128",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   szMsg
+    =IBP_Memory_Utils::AlignMemLength
+      (szMsg,
+       isc_api::ibp_fb040_type_align__int128,
+       pcbResultAlign); //throw
+
+   MsgDescr.m_msg_value_block_offset
+    =szMsg;                                                               // OFFSET
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_fb040_int128)); //throw
+
+   MsgDescr.m_msg_value_block_size
+    =sizeof(isc_api::t_ibp_fb040_int128);                                 // SIZE
+
+   assert(MsgDescr.m_msg_value_block_size==(szMsg-MsgDescr.m_msg_value_block_offset));
+
+   MsgDescr.m_msg_blrtype=isc_api::ibp_fb040_blr_dtype__int128;
+
+   //---------------------------------------
+   MsgDescr.m_xvar_sqlscale=pXSQLVAR->sqlscale;
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_int128
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID

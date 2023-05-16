@@ -796,11 +796,10 @@ db_obj::t_db_charset_const_ptr
  {
   if(spCS->get_info().is_octets())
   {
-   t_ibp_error exc(E_FAIL,mce_unk_cs_1);
-
-   exc<<cs_name;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     mce_unk_cs_1,
+     cs_name);
   }//if
  }//if
 
@@ -894,11 +893,10 @@ db_obj::t_db_charset_const_ptr
  }//if !cs_name.empty()
 
  //---
- t_ibp_error exc(E_FAIL,mce_unk_cs_1);
-
- exc<<cs_name;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   mce_unk_cs_1,
+   cs_name);
 
  //---
 #if(COMP_BUILD_UNUSED_CODE)
@@ -929,13 +927,11 @@ db_obj::t_db_charset_const_ptr
  catch(const std::exception& exc)
  {
   //Добавляем информацию об имени кодовой страницы
-  t_ibp_error new_exc(exc);
-
-  new_exc.add_error(E_FAIL,ibp_mce_cs__create_charset_object_1);
-
-  new_exc<<cs_name;
-
-  new_exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (exc,
+    E_FAIL,
+    ibp_mce_cs__create_charset_object_1,
+    cs_name);
  }//catch
 
  return spCS; //move
@@ -960,12 +956,10 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
  {
   //ERROR - в DLL нет ресурса VERSIONINFO
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_common__dll_not_has_versioninfo_1);
-
-  exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle());
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_common__dll_not_has_versioninfo_1,
+    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
  }//if
 
  //-----------------------------------------  read module descr
@@ -973,12 +967,10 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
  {
   //ERROR - в VERSIONINFO отсутствует описание модуля
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_common__dll_versioninfo_not_has_file_descr_1);
-
-  exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle());
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_common__dll_versioninfo_not_has_file_descr_1,
+    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
  }//if
 
  assert(!dll_ver_info.m_file_descr.empty());
@@ -988,12 +980,10 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
  {
   //ERROR - в VERSIONINFO отсутствует информация о версии модуля
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_common__dll_versioninfo_not_has_prod_version_1);
-
-  exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle());
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_common__dll_versioninfo_not_has_prod_version_1,
+    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
  }//if
 
  assert(!dll_ver_info.m_prod_version.empty());
@@ -1016,14 +1006,12 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
   {
    //ERROR - неподдерживаемая версия ICU
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_cs__unsupported_external_provider_3);
-
-   exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle())
-      <<dll_ver_info.m_file_descr
-      <<dll_ver_info.m_prod_version;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_cs__unsupported_external_provider_3,
+     win32lib::GetModuleFileName(spDLL->get_dll_handle()),
+     dll_ver_info.m_file_descr,
+     dll_ver_info.m_prod_version);
   }//else
  }
  else
@@ -1045,14 +1033,12 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
   {
    //ERROR - неподдерживаемая версия ICU
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_cs__unsupported_external_provider_3);
-
-   exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle())
-      <<dll_ver_info.m_file_descr
-      <<dll_ver_info.m_prod_version;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_cs__unsupported_external_provider_3,
+     win32lib::GetModuleFileName(spDLL->get_dll_handle()),
+     dll_ver_info.m_file_descr,
+     dll_ver_info.m_prod_version);
   }//else
 
   assert(m_icu_provider);
@@ -1061,14 +1047,12 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
  {
   //ERROR - указанная DLL не является поставщиком ICU
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_cs__unknown_external_provider_3);
-
-  exc<<win32lib::GetModuleFileName(spDLL->get_dll_handle())
-     <<dll_ver_info.m_file_descr
-     <<dll_ver_info.m_prod_version;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_cs__unknown_external_provider_3,
+    win32lib::GetModuleFileName(spDLL->get_dll_handle()),
+    dll_ver_info.m_file_descr,
+    dll_ver_info.m_prod_version);
  }//else
 
  assert(m_icu_provider);
@@ -1109,11 +1093,10 @@ t_ibp_charset_manager_v2::charset_name_type
 
  if(SysCodePageID==0)
  {
-  t_ibp_error exc(E_FAIL,mce_1);
-
-  exc<<user_cs_name.make_str();
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    mce_1,
+    user_cs_name.make_str());
  }//if
 
  structure::t_basic_str_formatter<t_ibp_char> result(IBP_T("%1-%2"));

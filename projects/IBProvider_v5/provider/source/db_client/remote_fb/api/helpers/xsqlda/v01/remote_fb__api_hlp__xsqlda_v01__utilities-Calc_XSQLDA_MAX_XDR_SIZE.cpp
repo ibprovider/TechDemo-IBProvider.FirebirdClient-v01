@@ -360,6 +360,28 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZ
   }//ibp_fb030_sql_boolean
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_int128:
+  {
+   assert_s(std::is_same<isc_api::t_ibp_fb040_int128 _LITER_COMMA_ protocol::P_INT128>::value);
+
+   if(pXSQLVAR->sqllen!=sizeof(protocol::P_INT128))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_int128",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   cbResult=xdr::get_size__p_int128();
+
+   assert(cbResult==sizeof(protocol::P_INT128));
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_int128
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
@@ -378,7 +400,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZ
 
  //-------------------------------------------------------------
  return cbResult;
-}//Helper__Calc_XSQLDA_MAX_XDR_SIZE
+}//Helper__Calc_XSQLDA_MAX_XDR_SIZE - XSQLVAR_V1
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms helpers*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

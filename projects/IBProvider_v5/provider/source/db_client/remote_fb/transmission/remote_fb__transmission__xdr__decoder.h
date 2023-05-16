@@ -33,6 +33,17 @@ class RemoteFB__XDR__Decoder
   typedef RemoteFB__ArraySliceDescr         asd_type;
 
  public:
+  static void decode__p_hyper_long
+               (buf_type*               pBuf,
+                const wchar_t*          pv_sign,
+                protocol::P_HYPER_LONG* pv);
+
+  static void decode__p_hyper_longlong
+               (buf_type*                    pBuf,
+                const wchar_t*               pv_sign,
+                protocol::P_HYPER_LONGLONG*  pv);
+
+ public:
   static void decode__p_arch
                (buf_type*           pBuf,
                 const wchar_t*      pv_sign,
@@ -114,6 +125,19 @@ class RemoteFB__XDR__Decoder
                 protocol::P_ULONG*  pcchData,
                 protocol::P_UCHAR** ppszData);
 
+ public:
+  static void decode__p_uint64
+               (buf_type*           pBuf,
+                const wchar_t*      pv_sign,
+                protocol::P_UINT64* pv);
+
+  static void decode__p_int128
+               (buf_type*           pBuf,
+                const wchar_t*      pv_sign_low,
+                const wchar_t*      pv_sign_high,
+                protocol::P_INT128* pv);
+
+ public:
   /// <summary>
   ///  Загрузка статус-вектора
   /// </summary>
@@ -140,6 +164,7 @@ class RemoteFB__XDR__Decoder
                 const asd_type&         ArrSliceDescr,
                 size_t                  szSlice,
                 protocol::P_UCHAR*      pSlice);
+
  private:
   static void helper__read_align_uchars
                (buf_type*      pBuf,

@@ -40,7 +40,7 @@ class IBP_OLEDB_Props2__Handler__GetDefaultValue__Prop__ProviderName
   virtual bool GetDefaultValue
                 (const oledb_lib::OLEDB_Props2__Data__Values* pValues,
                  DBPROPOPTIONS*                               pResult_dwOptions,
-                 VARIANT*                                     pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+                 VARIANT*                                     pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static const IBP_OLEDB_Props2__Handler__GetDefaultValue__Prop__ProviderName sm_Instance;

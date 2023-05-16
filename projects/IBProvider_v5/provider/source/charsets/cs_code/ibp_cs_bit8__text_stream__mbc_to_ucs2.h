@@ -56,7 +56,7 @@ class t_ibp_cs_bit8::tag_text_stream__mbc_to_ucs2
            read_ucs2
             (size_type  ucs2_buffer_size,
              wchar_t*   ucs2_buffer,
-             size_type* cb_readed) COMP_W000004_OVERRIDE_FINAL;
+             size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
   typedef structure::t_multi_thread_traits               thread_traits;

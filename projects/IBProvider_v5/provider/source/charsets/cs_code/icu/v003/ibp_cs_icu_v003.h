@@ -75,7 +75,7 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
                          bool                    must_be_created);
 
   //t_db_charset interface -----------------------------------------------
-  virtual const db_obj::t_db_charset_info& get_info()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const db_obj::t_db_charset_info& get_info()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  From ASCII to UCS2
@@ -89,7 +89,7 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
   //!
   //! В случае ошибки конвертирования, значение (*pws) не определено
   virtual bool to_unicode_v2(std::wstring*              pws,
-                             structure::t_const_str_box s)const COMP_W000004_OVERRIDE_FINAL;
+                             structure::t_const_str_box s)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  From UCS2 To ASCII
@@ -103,14 +103,14 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
   //!
   //! В случае ошибки конвертирования, значение (*ps) не определено
   virtual bool from_unicode_v2(std::string*                ps,
-                               structure::t_const_wstr_box ws)const COMP_W000004_OVERRIDE_FINAL;
+                               structure::t_const_wstr_box ws)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Конвертирование потока MBC-символов в поток UCS2-символов
   /// </summary>
   //! \param[in] mbc_stream
   virtual db_obj::t_db_text_stream__ucs2_ptr
-           mbc_stream_to_ucs2_stream(db_obj::t_db_text_stream__mbc* mbc_stream)const COMP_W000004_OVERRIDE_FINAL;
+           mbc_stream_to_ucs2_stream(db_obj::t_db_text_stream__mbc* mbc_stream)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Конвертирование массива MBC-символов в поток UCS2-символов
@@ -119,22 +119,22 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
   //! \param[in] mbc_buffer_size
   virtual db_obj::t_db_text_stream__ucs2_ptr
            mbc_buffer_to_ucs2_stream(const char* mbc_buffer,
-                                     size_type   mbc_buffer_size)const COMP_W000004_OVERRIDE_FINAL;
+                                     size_type   mbc_buffer_size)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Конвертирование потока UCS2-символов в поток MBC-символов
   /// </summary>
   //! \param[in] ucs2_stream
   virtual db_obj::t_db_text_stream__mbc_ptr
-           ucs2_stream_to_mbc_stream(db_obj::t_db_text_stream__ucs2* ucs2_stream)const COMP_W000004_OVERRIDE_FINAL;
+           ucs2_stream_to_mbc_stream(db_obj::t_db_text_stream__ucs2* ucs2_stream)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual db_obj::t_db_cs_result
            sb_to_unicode(ansi_streambuf_type& in_buf,
                          wchar_t*             ws,
-                         size_type&           wsz)const COMP_W000004_OVERRIDE_FINAL;
+                         size_type&           wsz)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //вычисление длины потока в другой кодовой странице
-  virtual bool sb_len_as_unicode(ansi_streambuf_type& in_buf,size_type& wsz)const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool sb_len_as_unicode(ansi_streambuf_type& in_buf,size_type& wsz)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Переконвертация UNICODE-строки с сохранением результата в BLOB
@@ -145,7 +145,7 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
   //!  Not NULL
   virtual bool unicode_to_blob(const wchar_t*                  source,
                                size_type                       source_size,
-                               db_obj::t_db_seq_stream_writer* writer)const COMP_W000004_OVERRIDE_FINAL;
+                               db_obj::t_db_seq_stream_writer* writer)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// <summary>

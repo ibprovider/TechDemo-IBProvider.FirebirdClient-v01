@@ -538,6 +538,53 @@ void RemoteFB__API_HLP__BLR_V05__Utilities::Debug__CHECK_BLR
      break;
     }//ibp_fb030_blr_dtype__bool
 
+    case isc_api::ibp_fb040_blr_dtype__int128:
+    {
+     assert_s(std::is_same<db_obj::t_dbvalue__fb040_int128 _LITER_COMMA_ isc_api::t_ibp_fb040_int128>::value);
+     assert_s(std::is_same<db_obj::t_dbvalue__fb040_int128 _LITER_COMMA_ protocol::P_INT128>::value);
+
+     assert(current_descr.m_xvar_sqltype==isc_api::ibp_fb040_sql_int128);
+
+     assert(current_descr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb040_int128));
+
+     {
+      signed __int8 const s=(signed __int8)blr_reader.cur(); //sqlscale
+
+      assert(s==0 || s<0);
+      assert(s>=-db_obj::dbprecision__fb040_numeric_on_int128);
+
+      assert(current_descr.m_xvar_sqlscale==s);
+     }//local
+
+     //----
+     blr_reader.next(); //sqlscale
+
+     //----
+     const size_t c_align=isc_api::ibp_fb040_type_align__int128;
+
+     offset
+      =IBP_Memory_Utils::AlignMemLength
+       (offset,
+        c_align,
+        &expectedAlign);
+
+     assert(current_descr.m_msg_value_block_offset==offset);
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_int128)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data_ptr+offset)%c_align)==0);
+
+     offset+=sizeof(isc_api::t_ibp_fb040_int128);
+
+     assert(offset<=msg_data_size);
+
+     break;
+    }//ibp_fb040_blr_dtype__int128
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

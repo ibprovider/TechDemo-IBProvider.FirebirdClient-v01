@@ -320,6 +320,10 @@ const TTSO_GlobalContext::tag_named_expression
    "SRV>=FB-3")
 
  DEF_NAMED_EXPRESSION
+  ("NE__INT128",
+   "SRV>=FB-4")
+
+ DEF_NAMED_EXPRESSION
   ("NE__ODS_CS__IS_UNICODE_FSS",
    "SRV<=FB-3")
 

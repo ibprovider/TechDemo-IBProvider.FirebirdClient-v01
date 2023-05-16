@@ -52,7 +52,7 @@ class RemoteFB__API_P12__GetDatabaseInfo LCPI_CPP_CFG__CLASS__FINAL
                     unsigned short           Incornation,
                     protocol::P_USHORT       cItems,
                     const protocol::P_UCHAR* pItems,
-                    RemoteFB__InfoBuffer&    ResultBuffer)COMP_W000004_OVERRIDE_FINAL;
+                    RemoteFB__InfoBuffer&    ResultBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpMemoryBuffer;

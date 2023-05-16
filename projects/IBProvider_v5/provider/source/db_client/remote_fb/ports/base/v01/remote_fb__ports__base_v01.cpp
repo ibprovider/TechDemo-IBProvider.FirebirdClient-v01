@@ -31,7 +31,7 @@ class RemoteFB__Port_BASE_v01::tag_send_ctx:public RemoteFB__PortOperationContex
  ~tag_send_ctx();
 
   //interface ------------------------------------------------------------
-  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)COMP_W000004_OVERRIDE_FINAL;
+  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   RemoteFB__PortOperationContext& m_base_ctx;
@@ -85,7 +85,7 @@ class RemoteFB__Port_BASE_v01::tag_recv_ctx:public RemoteFB__PortOperationContex
  ~tag_recv_ctx();
 
   //interface ------------------------------------------------------------
-  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)COMP_W000004_OVERRIDE_FINAL;
+  virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   RemoteFB__PortOperationContext& m_base_ctx;

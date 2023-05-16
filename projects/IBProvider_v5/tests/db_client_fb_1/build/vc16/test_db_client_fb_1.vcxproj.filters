@@ -998,6 +998,18 @@
     <Filter Include="IBP\source\db_obj\dbms_fb\v04_0_0\_headers">
       <UniqueIdentifier>{77e11fb6-9200-4f7b-93f1-78c0455b03dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\int128">
+      <UniqueIdentifier>{532db9e6-dce2-4599-bd67-419ec905b0e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\int128\_headers">
+      <UniqueIdentifier>{e2c16500-af0e-4be5-bed8-e85b69a57353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\int128">
+      <UniqueIdentifier>{67fb1581-8868-46f8-85c7-e0cd7a844b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\int128\_headers">
+      <UniqueIdentifier>{5de65707-79db-455d-820b-a69415935d6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3502,6 +3514,21 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.cpp">
       <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\int128\WORK_StmtFetch__Types__int128_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\int128</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\int128\WORK_StmtFetch_M__Types__int128_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\int128</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.cpp">
+      <Filter>source\tests\work\Params\IN2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.cpp">
+      <Filter>source\tests\work\Params\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.cpp">
+      <Filter>source\tests\work\Array\Read</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -5556,6 +5583,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__svc__status_vector_utils.h">
       <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\int128\WORK_StmtFetch__Types__int128_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\int128\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\int128\WORK_StmtFetch_M__Types__int128_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\int128\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.h">
+      <Filter>source\tests\work\Params\IN2\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.h">
+      <Filter>source\tests\work\Params\OUT\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.h">
+      <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

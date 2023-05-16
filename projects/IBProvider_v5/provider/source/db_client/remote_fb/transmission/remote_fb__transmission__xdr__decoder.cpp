@@ -18,12 +18,54 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__XDR__Decoder
 
+void RemoteFB__XDR__Decoder::decode__p_hyper_long
+                              (buf_type*               const pBuf,
+                               const wchar_t*          const DEBUG_CODE(pv_sign),
+                               protocol::P_HYPER_LONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ pBuf->read__long(pv); //throw
+}//decode__p_hyper_long
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__p_hyper_longlong
+                              (buf_type*                   const pBuf,
+                               const wchar_t*              const DEBUG_CODE(pv_sign),
+                               protocol::P_HYPER_LONGLONG* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_HYPER_LONGLONG)==2*sizeof(protocol::P_HYPER_LONG));
+
+ protocol::P_HYPER_LONG h DEBUG_CODE(=structure::negative_one);
+
+ pBuf->read__long(&h);
+
+ protocol::P_HYPER_LONG l DEBUG_CODE(=structure::negative_one);
+
+ pBuf->read__long(&l);
+
+ //-----
+ protocol::P_HYPER_LONGLONG tmp=(static_cast<protocol::P_HYPER_LONGLONG>(h)<<32);
+
+ tmp|=static_cast<protocol::P_HYPER_LONGLONG>(l)&0x00000000FFFFFFFF;
+
+ (*pv)=tmp;
+}//decode__p_hyper_longlong
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__p_arch
                               (buf_type*         const pBuf,
-                               const wchar_t*    const /*pv_sign*/,
+                               const wchar_t*    const pv_sign,
                                protocol::P_ARCH* const pv)
 {
  assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
  //проверяем идентичность типов
@@ -31,7 +73,10 @@ void RemoteFB__XDR__Decoder::decode__p_arch
 
  protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
 
- pBuf->read__long(&tmp); //throw
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   &tmp); //throw
 
  (*pv)=(protocol::P_ARCH)tmp;
 }//decode__p_arch
@@ -48,7 +93,10 @@ void RemoteFB__XDR__Decoder::decode__p_objct
 
  protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
 
- pBuf->read__long(&tmp); //throw
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   &tmp); //throw
 
  assert_s(sizeof(protocol::P_SHORT)==sizeof(*pv));
 
@@ -80,7 +128,10 @@ void RemoteFB__XDR__Decoder::decode__p_short
 
  protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
 
- pBuf->read__long(&tmp); //throw
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   &tmp); //throw
 
  if(!structure::can_numeric_cast(pv,tmp))
  {
@@ -101,46 +152,37 @@ void RemoteFB__XDR__Decoder::decode__p_short
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__p_long
                               (buf_type*         const pBuf,
-                               const wchar_t*    const DEBUG_CODE(pv_sign),
+                               const wchar_t*    const pv_sign,
                                protocol::P_LONG* const pv)
 {
  assert(pBuf!=nullptr);
  assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ assert_s(sizeof(protocol::P_LONG)==sizeof(protocol::P_HYPER_LONG));
 
- pBuf->read__long(&tmp); //throw
-
- (*pv)=tmp;
+ self_type::decode__p_hyper_long
+  (pBuf,
+   pv_sign,
+   reinterpret_cast<protocol::P_HYPER_LONG*>(pv));
 }//decode__p_long
 
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__p_int64
                               (buf_type*          const pBuf,
-                               const wchar_t*     const DEBUG_CODE(pv_sign),
+                               const wchar_t*     const pv_sign,
                                protocol::P_INT64* const pv)
 {
  assert(pBuf!=nullptr);
  assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
- assert_s(sizeof(protocol::P_INT64)==2*sizeof(protocol::P_LONG));
+ assert_s(sizeof(protocol::P_INT64)==sizeof(protocol::P_HYPER_LONGLONG));
 
- protocol::P_LONG h DEBUG_CODE(=structure::negative_one);
-
- pBuf->read__long(&h);
-
- protocol::P_LONG l DEBUG_CODE(=structure::negative_one);
-
- pBuf->read__long(&l);
-
- //-----
- protocol::P_INT64 tmp=(static_cast<protocol::P_INT64>(h)<<32);
-
- tmp|=static_cast<protocol::P_INT64>(l)&0x00000000FFFFFFFF;
-
- (*pv)=tmp;
+ self_type::decode__p_hyper_longlong
+  (pBuf,
+   pv_sign,
+   reinterpret_cast<protocol::P_HYPER_LONGLONG*>(pv));
 }//decode__p_int64
 
 //------------------------------------------------------------------------
@@ -155,7 +197,10 @@ void RemoteFB__XDR__Decoder::decode__p_ushort
 
  protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
 
- pBuf->read__long(&tmp); //throw
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   &tmp); //throw
 
  if(!structure::can_numeric_cast(pv,tmp))
  {
@@ -194,7 +239,7 @@ void RemoteFB__XDR__Decoder::decode__p_ushort_as_p_short
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__p_ulong_as_p_long
                               (buf_type*          const pBuf,
-                               const wchar_t*     const DEBUG_CODE(pv_sign),
+                               const wchar_t*     const pv_sign,
                                protocol::P_ULONG* const pv)
 {
  assert(pBuf!=nullptr);
@@ -203,17 +248,16 @@ void RemoteFB__XDR__Decoder::decode__p_ulong_as_p_long
 
  assert_s(sizeof(protocol::P_ULONG)==sizeof(protocol::P_LONG));
 
- protocol::P_ULONG tmp DEBUG_CODE(=structure::negative_one);
-
- pBuf->read__long(reinterpret_cast<protocol::P_LONG*>(&tmp)); //throw
-
- (*pv)=tmp;
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   reinterpret_cast<protocol::P_LONG*>(pv));
 }//decode__p_ulong_as_p_long
 
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__p_float
                               (buf_type*          const pBuf,
-                               const wchar_t*     const DEBUG_CODE(pv_sign),
+                               const wchar_t*     const pv_sign,
                                protocol::P_FLOAT* const pv)
 {
  assert(pBuf!=nullptr);
@@ -222,11 +266,10 @@ void RemoteFB__XDR__Decoder::decode__p_float
 
  assert_s(sizeof(*pv)==sizeof(protocol::P_LONG));
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
-
- pBuf->read__long(&tmp); //throw
-
- (*reinterpret_cast<protocol::P_LONG*>(pv))=tmp;
+ self_type::decode__p_long
+  (pBuf,
+   pv_sign,
+   reinterpret_cast<protocol::P_LONG*>(pv));
 }//decode__p_float
 
 //------------------------------------------------------------------------
@@ -394,6 +437,63 @@ void RemoteFB__XDR__Decoder::decode__string
  (*pcchData)=tmp_cchData;
  (*ppszData)=tmp_pszData;
 }//decode__string
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__p_uint64
+                              (buf_type*           const pBuf,
+                               const wchar_t*      const pv_sign,
+                               protocol::P_UINT64* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_UINT64)==sizeof(protocol::P_HYPER_LONGLONG));
+
+ self_type::decode__p_hyper_longlong
+  (pBuf,
+   pv_sign,
+   reinterpret_cast<protocol::P_HYPER_LONGLONG*>(pv));
+}//decode__p_uint64
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__p_int128
+                              (buf_type*           const pBuf,
+                               const wchar_t*      const pv_sign_low,
+                               const wchar_t*      const pv_sign_high,
+                               protocol::P_INT128* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign_low!=nullptr);
+ assert(pv_sign_high!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_INT128)==2*sizeof(protocol::P_UINT64));
+
+ // [2023-05-15] Just for point out. The decoders for big and little will be equal.
+
+#if (IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN)
+
+ self_type::decode__p_uint64
+  (pBuf,
+   pv_sign_high,
+   &pv->data.high);
+
+ self_type::decode__p_uint64
+  (pBuf,
+   pv_sign_low,
+   &pv->data.low);
+
+#elif (IBP_BYTE_ORDER==IBP_BYTE_ORDER__BIG_ENDIAN)
+
+# error Not implemented!
+
+#else
+
+# error Unexpected BYTE ORDER!
+
+#endif
+}//decode__p_int128
 
 //------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__status_vector__eset02
@@ -785,6 +885,23 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
      break;
     }//case - ibp_fb030_blr_dtype__bool
+
+    case isc_api::ibp_fb040_blr_dtype__int128:
+    {
+     typedef protocol::P_INT128 value_type;
+
+     assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
+
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type),sizeof(size_t)))==0);
+
+     xdr::decode__p_int128
+      (pBuf,
+       L"array_slice.int128.low",
+       L"array_slice.int128.high",
+       reinterpret_cast<value_type*>(pElement));
+
+     break;
+    }//case - ibp_fb040_blr_dtype__int128
 
     default:
     {

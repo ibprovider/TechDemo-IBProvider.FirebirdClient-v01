@@ -41,7 +41,7 @@ class RemoteFB__API_P13__PutArraySlice::tagOpGetArraySliceDescr
   virtual ~tagOpGetArraySliceDescr();
 
   //interface ------------------------------------------------------------
-  virtual const RemoteFB__ArraySliceDescr& GetArraySliceDescr()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const RemoteFB__ArraySliceDescr& GetArraySliceDescr()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//RemoteFB__API_P13__PutArraySlice::tagOpGetArraySliceDescr
 
 ////////////////////////////////////////////////////////////////////////////////

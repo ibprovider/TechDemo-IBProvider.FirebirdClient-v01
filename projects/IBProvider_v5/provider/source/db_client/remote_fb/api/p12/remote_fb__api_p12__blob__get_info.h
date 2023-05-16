@@ -56,7 +56,7 @@ class RemoteFB__API_P12__GetBlobInfo LCPI_CPP_CFG__CLASS__FINAL
                     blob_handle_type*        pBlobHandle,
                     protocol::P_USHORT       cItems,
                     const protocol::P_UCHAR* pItems,
-                    RemoteFB__InfoBuffer&    ResultBuffer)COMP_W000004_OVERRIDE_FINAL;
+                    RemoteFB__InfoBuffer&    ResultBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpMemoryBuffer;

@@ -49,7 +49,7 @@ class RemoteFB__API_P12__FlushBlob LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] pBlobHandle
   //!  Not null. На входе должен указывать на дескриптор создаваемого блоба.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle)COMP_W000004_OVERRIDE_FINAL;
+                    blob_handle_type*        pBlobHandle)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__FlushBlob
 
 ////////////////////////////////////////////////////////////////////////////////

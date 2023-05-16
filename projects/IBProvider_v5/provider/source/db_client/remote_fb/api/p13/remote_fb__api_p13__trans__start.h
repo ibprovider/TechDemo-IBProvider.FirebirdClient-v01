@@ -52,7 +52,7 @@ class RemoteFB__API_P13__StartTransaction LCPI_CPP_CFG__CLASS__FINAL
   virtual void exec(RemoteFB__ConnectorData* pData,
                     tr_handle_type*          pTrHandle,
                     size_t                   tpb_length,
-                    const unsigned char*     tpb)COMP_W000004_OVERRIDE_FINAL;
+                    const unsigned char*     tpb)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__StartTransaction
 
 ////////////////////////////////////////////////////////////////////////////////

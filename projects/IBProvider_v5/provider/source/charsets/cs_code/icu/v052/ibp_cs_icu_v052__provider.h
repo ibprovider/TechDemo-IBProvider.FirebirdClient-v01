@@ -89,7 +89,7 @@ class t_ibp_icu_provider
 
   //t_ibp_charset_provider interface -------------------------------------
   virtual db_obj::t_db_charset_const_ptr
-   load_cs(const cs_name_box_type& cs_name) COMP_W000004_OVERRIDE_FINAL;
+   load_cs(const cs_name_box_type& cs_name) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef os::t_ibp_os__dll_init_mutex           dll_init_mutex_type;

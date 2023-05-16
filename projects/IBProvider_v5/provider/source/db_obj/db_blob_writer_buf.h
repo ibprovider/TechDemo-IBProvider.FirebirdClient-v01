@@ -45,7 +45,7 @@ class t_db_blob_writer_buf:public structure::t_basic_ostream_buffer<char>
   virtual ~t_db_blob_writer_buf();
 
  private:
-  virtual void overflow() COMP_W000004_OVERRIDE_FINAL; //throw
+  virtual void overflow() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //throw
 
  private:
   char* const m_buffer;

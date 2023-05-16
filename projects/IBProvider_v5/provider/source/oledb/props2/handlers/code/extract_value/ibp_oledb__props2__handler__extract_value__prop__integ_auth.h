@@ -38,7 +38,7 @@ class IBP_OLEDB_Props2__Handler__ExtractValue__Prop__integ_auth
 
   //IBP_OLEDB_Props2__Handler__ExtractValue interface --------------------
   virtual bool ExtractValue(const VARIANT&  sourceValue,
-                            VARIANT*        pResultValue)const COMP_W000004_OVERRIDE_FINAL;
+                            VARIANT*        pResultValue)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static IBP_OLEDB_Props2__Handler__ExtractValue__Prop__integ_auth sm_Instance;

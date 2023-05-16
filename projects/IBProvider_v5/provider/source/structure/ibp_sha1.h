@@ -22,7 +22,7 @@ static const unsigned int SHA1_DIGESTSIZE=20;
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha1_Result
 
-class IBP_Sha1_Result COMP_W000006_CLASS_FINAL
+class IBP_Sha1_Result LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   typedef std::array<unsigned char,SHA1_DIGESTSIZE>  data_type;
@@ -49,7 +49,7 @@ class IBP_Sha1_Result COMP_W000006_CLASS_FINAL
 /// <summary>
 ///  Класс для работы с SHA1
 /// </summary>
-class IBP_Sha1 COMP_W000006_CLASS_FINAL
+class IBP_Sha1 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef IBP_Sha1                          self_type;

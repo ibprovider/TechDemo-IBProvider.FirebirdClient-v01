@@ -23,7 +23,7 @@ namespace lcpi{namespace ibp{
 
 #ifdef IBP_BUILD_TESTCODE
 
-class IBP_GlobalObjectsData__DLLs::tagTestData COMP_W000006_CLASS_FINAL
+class IBP_GlobalObjectsData__DLLs::tagTestData LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static os::t_ibp_os__dlls::self_ptr spDLLs;

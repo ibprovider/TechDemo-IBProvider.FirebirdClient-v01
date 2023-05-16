@@ -55,7 +55,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   //! \param[in] status
   //! \return
   //!  NULL, если описание не найдено.
-  virtual const descr2_type* get_err_descr2(status_type status)COMP_W000004_OVERRIDE_FINAL;
+  virtual const descr2_type* get_err_descr2(status_type status)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Отображения status_vector на SQLSTATE code.
@@ -68,7 +68,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   //!  Result code.
   virtual gresult_data_type get_sqlstate(const status_type* sv_beg,
                                          const status_type* sv_end,
-                                         std::string*       sqlstate)COMP_W000004_OVERRIDE_FINAL;
+                                         std::string*       sqlstate)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение кода основной ошибки.
@@ -81,7 +81,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   //!  Result data.
   virtual gresult_data_type get_general_error(const status_type* sv_beg,
                                               const status_type* sv_end,
-                                              status_type*       general_error_code)COMP_W000004_OVERRIDE_FINAL;
+                                              status_type*       general_error_code)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение кода ошибки.
@@ -94,7 +94,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   //!  Result data.
   virtual gresult_data_type get_error(const status_type* sv_beg,
                                       const status_type* sv_end,
-                                      status_type*       error_code)COMP_W000004_OVERRIDE_FINAL;
+                                      status_type*       error_code)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Формирование текста ошибки.
@@ -109,7 +109,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   virtual gresult_data_type get_message(const status_type* sv_beg,
                                         const status_type* sv_end,
                                         std::wstring*      message,
-                                        LCID               lcid)COMP_W000004_OVERRIDE_FINAL;
+                                        LCID               lcid)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Вычисление размера косвенных данных статус вектора
@@ -125,7 +125,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   virtual gresult_data_type get_sv_info(const status_type* sv_beg,
                                         const status_type* sv_end,
                                         size_t*            sv_info__num_of_elements,
-                                        size_t*            sv_info__indirect_data_size)COMP_W000004_OVERRIDE_FINAL;
+                                        size_t*            sv_info__indirect_data_size)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Перемещение косвенных данных в буфер.
@@ -140,7 +140,7 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
                                       (status_type*       sv_beg,
                                        const status_type* sv_end,
                                        void*              buf_beg,
-                                       const void*        buf_end)COMP_W000004_OVERRIDE_FINAL;
+                                       const void*        buf_end)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_stl_vector

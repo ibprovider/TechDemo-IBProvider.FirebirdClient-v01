@@ -661,13 +661,30 @@ void RemoteFB__API_HLP__ArraySlice_v01__Utilities::Helper__ParseSDL__ReadElement
   }//case ibp_fb030_blr_dtype__bool
 
   //----------------------------------------------------------------------
+  case isc_api::ibp_fb040_blr_dtype__int128:
+  {
+   pDescr->m_element_sql_scale
+    =sdlReader.read_i1
+      (c_bugcheck_src,
+       L"#011");
+
+   //проверять значение масштаба мы не будем. формально - это не наше дело.
+
+   pDescr->m_element_sql_length=sizeof(db_obj::t_dbvalue__fb040_int128);
+
+   pDescr->m_element_total_length=sizeof(db_obj::t_dbvalue__fb040_int128);
+
+   break;
+  }//case ibp_fb040_blr_dtype__int128
+
+  //----------------------------------------------------------------------
   default:
   {
    //ERROR - incorrect SDL - unexpected BLR data type id
 
    RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectSDL__unknown_blrtypeid
     (c_bugcheck_src,
-     L"#E00",
+     L"#Z00",
      pDescr->m_element_blr_typeid,
      blrTypeIdOffset);
   }//default

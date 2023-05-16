@@ -49,7 +49,7 @@ class RemoteFB__API_P12__Commit LCPI_CPP_CFG__CLASS__FINAL
   //!
   //! В случае успешного коммита транзакции, в (*pTrHandle) будет сброшен ID.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    tr_handle_type*          pTrHandle) COMP_W000004_OVERRIDE_FINAL;
+                    tr_handle_type*          pTrHandle) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__Commit
 
 ////////////////////////////////////////////////////////////////////////////////

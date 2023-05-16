@@ -69,7 +69,7 @@ class IBP_GlobalObjectsData__DLLs LCPI_CPP_CFG__CLASS__FINAL
 
 #ifdef IBP_BUILD_TESTCODE
 
-class IBP_GlobalObjectsData__DLLs::tagTestInitializer COMP_W000006_CLASS_FINAL
+class IBP_GlobalObjectsData__DLLs::tagTestInitializer LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tagTestInitializer                          self_type;

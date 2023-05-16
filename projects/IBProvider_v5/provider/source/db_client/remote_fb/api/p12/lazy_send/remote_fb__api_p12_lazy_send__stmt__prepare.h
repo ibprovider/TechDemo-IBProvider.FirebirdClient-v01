@@ -63,7 +63,7 @@ class RemoteFB__API_P12_LAZY_SEND__PrepareStatement LCPI_CPP_CFG__CLASS__FINAL
                     stmt_handle_type*               pStmtHandle,
                     protocol::P_USHORT              SQL_dialect,
                     sql_str_box_type                SQL_str,
-                    unsigned long*                  pStmtTypeID)COMP_W000004_OVERRIDE_FINAL;
+                    unsigned long*                  pStmtTypeID)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static void helper__exec__prepare

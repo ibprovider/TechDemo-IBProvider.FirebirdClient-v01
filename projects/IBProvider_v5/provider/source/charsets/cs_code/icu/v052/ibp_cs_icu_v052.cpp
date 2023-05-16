@@ -11,6 +11,7 @@
 #include "source/charsets/cs_code/icu/v052/ibp_cs_icu_v052__text_stream__mbc_buffer_to_ucs2.h"
 #include "source/charsets/cs_code/icu/v052/ibp_cs_icu_v052__text_stream__ucs2_to_mbc.h"
 #include "source/db_obj/db_blob_writer_buf.h"
+#include "source/error_services/ibp_error_utils.h"
 #include "source/ibp_numeric_cast.h"
 //#include "source/ibp_limits.h"
 
@@ -94,11 +95,12 @@ bool t_ibp_cs_icu::tag_conv_holder::create
   if(icu_status==api::U_FILE_ACCESS_ERROR && !must_be_created)
    return false;
 
-  t_ibp_error exc(E_FAIL,ibp_mce_icu__create_cs_conv_3);
-
-  exc<<m_spICU->id()<<icu_cs_name<<icu_status;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_icu__create_cs_conv_3,
+    m_spICU->id(),
+    icu_cs_name,
+    icu_status);
  }//if - error
 
  //! \todo ICU BUG-CHECK
@@ -120,14 +122,13 @@ bool t_ibp_cs_icu::tag_conv_holder::create
 
   if(icu_status!=api::U_ZERO_ERROR)
   {
-   t_ibp_error exc(E_FAIL,ibp_mcs_icu__call_func_4);
-
-   exc<<m_spICU->id()
-      <<icu_cs_name
-      <<m_spICU->m_ucnv_setToUCallBack.point_name()
-      <<icu_status;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mcs_icu__call_func_4,
+     m_spICU->id(),
+     icu_cs_name,
+     m_spICU->m_ucnv_setToUCallBack.point_name(),
+     icu_status);
   }//if
  }//if conv_direction__to_unicode
 
@@ -147,14 +148,13 @@ bool t_ibp_cs_icu::tag_conv_holder::create
 
   if(icu_status!=api::U_ZERO_ERROR)
   {
-   t_ibp_error exc(E_FAIL,ibp_mcs_icu__call_func_4);
-
-   exc<<m_spICU->id()
-      <<icu_cs_name
-      <<m_spICU->m_ucnv_setFromUCallBack.point_name()
-      <<icu_status;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mcs_icu__call_func_4,
+     m_spICU->id(),
+     icu_cs_name,
+     m_spICU->m_ucnv_setFromUCallBack.point_name(),
+     icu_status);
   }//if
  }//conv_direction__from_unicode
 
@@ -214,21 +214,25 @@ t_ibp_cs_icu::self_ptr
  ///Проверка полученной информации
  if((min_char_sz<=0) || (max_char_sz<=0) || (max_char_sz<min_char_sz))
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_icu__bad_min_max_char_size_4);
-
-  exc<<pICU->id()<<cs_name<<int(min_char_sz)<<int(max_char_sz);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_icu__bad_min_max_char_size_4,
+    pICU->id(),
+    cs_name,
+    int(min_char_sz),
+    int(max_char_sz));
  }//if
 
  ///Проверяем возможность работы с символьным набором
  if(ibp_limc_MaxByteOfOneMultiByteSymbol<size_t(max_char_sz))
  {
-  t_ibp_error exc(DB_E_NOTSUPPORTED,ibp_mce_icu__large_max_char_size_4);
-
-  exc<<pICU->id()<<cs_name<<int(max_char_sz)<<ibp_limc_MaxByteOfOneMultiByteSymbol;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (DB_E_NOTSUPPORTED,
+    ibp_mce_icu__large_max_char_size_4,
+    pICU->id(),
+    cs_name,
+    int(max_char_sz),
+    ibp_limc_MaxByteOfOneMultiByteSymbol);
  }//if
 
  //----
@@ -282,26 +286,32 @@ bool t_ibp_cs_icu::to_unicode_v2(std::wstring*              const pws,
  //! \todo
  //!  Добавить контроль переполнения
 
- buf_type result_buf(ibp_size_cast<api::int32_t>
-                        (2*(s.len+m_cs_info.bytes_per_char),
-                         L"v052::t_ibp_cs_icu::to_unicode_v2",
-                         L"dest_buffer_sz"));
+ buf_type
+  result_buf
+   (ibp_size_cast<api::int32_t>
+     (2*(s.len+m_cs_info.bytes_per_char),
+      L"v052::t_ibp_cs_icu::to_unicode_v2",
+      L"dest_buffer_sz"));
+
  //--------
- tag_conv_holder conv(m_spICU,
-                      m_icu_cs_name,
-                      tag_conv_holder::conv_direction__to_unicode);
+ tag_conv_holder
+  conv
+   (m_spICU,
+    m_icu_cs_name,
+    tag_conv_holder::conv_direction__to_unicode);
 
  //--------
  api::UErrorCode icu_status=api::U_ZERO_ERROR;
 
  const api::int32_t
-  actual_sz=m_spICU->m_ucnv_toUChars.point()
-                                  (conv.ptr(),
-                                   result_buf.buffer(),
-                                   static_cast<api::int32_t>(result_buf.size()),
-                                   s.ptr,
-                                   isz,
-                                   &icu_status);
+  actual_sz
+   =m_spICU->m_ucnv_toUChars.point()
+     (conv.ptr(),
+      result_buf.buffer(),
+      static_cast<api::int32_t>(result_buf.size()),
+      s.ptr,
+      isz,
+      &icu_status);
 
  if(icu_status!=api::U_ZERO_ERROR)
   return false;
@@ -340,26 +350,32 @@ bool t_ibp_cs_icu::from_unicode_v2(std::string*                const ps,
  typedef structure::t_typed_simple_buffer<char,IBP_MemoryAllocator> buf_type;
 
  //резервируем место под терминальные нули.
- buf_type result_buf(ibp_size_cast<api::int32_t>
-                                           (m_cs_info.bytes_per_char*(ws.len+1),
-                                            L"v052::t_ibp_cs_icu::to_unicode_v2",
-                                            L"dest_buffer_sz"));
+ buf_type
+  result_buf
+   (ibp_size_cast<api::int32_t>
+     (m_cs_info.bytes_per_char*(ws.len+1),
+      L"v052::t_ibp_cs_icu::to_unicode_v2",
+      L"dest_buffer_sz"));
+
  //--------
- tag_conv_holder conv(m_spICU,
-                      m_icu_cs_name,
-                      tag_conv_holder::conv_direction__from_unicode);
+ tag_conv_holder
+  conv
+   (m_spICU,
+    m_icu_cs_name,
+    tag_conv_holder::conv_direction__from_unicode);
 
  //--------
  api::UErrorCode icu_status=api::U_ZERO_ERROR;
 
  const api::int32_t
-  actual_sz=m_spICU->m_ucnv_fromUChars.point()
-                                   (conv.ptr(),
-                                    result_buf.buffer(),
-                                    static_cast<api::int32_t>(result_buf.size()),
-                                    ws.ptr,
-                                    iwsz,
-                                    &icu_status);
+  actual_sz
+   =m_spICU->m_ucnv_fromUChars.point()
+     (conv.ptr(),
+      result_buf.buffer(),
+      static_cast<api::int32_t>(result_buf.size()),
+      ws.ptr,
+      iwsz,
+      &icu_status);
 
  if(icu_status!=api::U_ZERO_ERROR)
   return false;
@@ -385,8 +401,8 @@ db_obj::t_db_text_stream__ucs2_ptr
 
  return structure::not_null_ptr
          (new tag_text_stream__mbc_to_ucs2
-                (this,
-                 mbc_stream));
+           (this,
+            mbc_stream));
 }//mbc_stream_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -398,9 +414,9 @@ db_obj::t_db_text_stream__ucs2_ptr
 
  return structure::not_null_ptr
          (new tag_text_stream__mbc_buffer_to_ucs2
-                (this,
-                 mbc_buffer,
-                 mbc_buffer_size));
+           (this,
+            mbc_buffer,
+            mbc_buffer_size));
 }//mbc_buffer_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -426,9 +442,11 @@ db_obj::t_db_cs_result
  wsz=0;
 
  //--------
- tag_conv_holder conv(m_spICU,
-                      m_icu_cs_name,
-                      tag_conv_holder::conv_direction__to_unicode);
+ tag_conv_holder
+  conv
+   (m_spICU,
+    m_icu_cs_name,
+    tag_conv_holder::conv_direction__to_unicode);
 
  //--------
  const wchar_t* const beg_ws=ws;
@@ -538,9 +556,11 @@ bool t_ibp_cs_icu::sb_len_as_unicode(ansi_streambuf_type& in_buf,
  wsz=0;
 
  //--------
- tag_conv_holder conv(m_spICU,
-                      m_icu_cs_name,
-                      tag_conv_holder::conv_direction__to_unicode);
+ tag_conv_holder
+  conv
+   (m_spICU,
+    m_icu_cs_name,
+    tag_conv_holder::conv_direction__to_unicode);
 
  //-------- перекодируем блоками по 1K
  char source_buffer[1024];
@@ -608,11 +628,10 @@ bool t_ibp_cs_icu::sb_len_as_unicode(ansi_streambuf_type& in_buf,
    if(!ibp::ibp_can_numeric_add(wsz,x))
    {
     //ERROR - переполнение при вычислении размера UNICODE-представления данных
-    t_ibp_error exc(DB_E_DATAOVERFLOW,ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1);
-
-    exc<<this->get_info().name;
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (DB_E_DATAOVERFLOW,
+      ibp_mce_cs__calc_length_in_ucs2_chars__overflow_1,
+      this->get_info().name);
    }//if
 
    wsz+=x;
@@ -649,9 +668,11 @@ bool t_ibp_cs_icu::unicode_to_blob(const wchar_t*                  const source,
   return true;
 
  //---- создаем ICU-конвертор
- tag_conv_holder conv(m_spICU,
-                      m_icu_cs_name,
-                      tag_conv_holder::conv_direction__from_unicode); //throw
+ tag_conv_holder
+  conv
+   (m_spICU,
+    m_icu_cs_name,
+    tag_conv_holder::conv_direction__from_unicode); //throw
 
  //---- подключаем объект записи к буферу потока
  char out_buf[8*1024];
@@ -831,14 +852,13 @@ void t_ibp_cs_icu::call__ucnv_fromUnicode(api::UConverter*   const conv,
 void t_ibp_cs_icu::Throw_BugCheck(const char*    const func_name,
                                   const wchar_t* const check_point)const
 {
- t_ibp_error exc(E_FAIL,ibp_mce_icu__bug_check_4);
-
- exc<<m_spICU->id()
-    <<m_icu_cs_name
-    <<func_name
-    <<check_point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_icu__bug_check_4,
+   m_spICU->id(),
+   m_icu_cs_name,
+   func_name,
+   check_point);
 }//Throw_BugCheck
 
 ////////////////////////////////////////////////////////////////////////////////

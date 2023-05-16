@@ -97,7 +97,7 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   //! \param[in] op_ctx
   //! \param[in] packet
   virtual void send_packet(RemoteFB__PortOperationContext& op_ctx,
-                           const protocol::PACKET&         packet) COMP_W000004_OVERRIDE_FINAL;
+                           const protocol::PACKET&         packet) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Отложенная отправка пакета в порт.
@@ -105,7 +105,7 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   //! \param[in] op_ctx
   //! \param[in] packet
   virtual void send_packet_with_delay(RemoteFB__PortOperationContext& op_ctx,
-                                      const protocol::PACKET&         packet) COMP_W000004_OVERRIDE_FINAL;
+                                      const protocol::PACKET&         packet) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Чтение пакета из порта.
@@ -113,7 +113,7 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   //! \param[in]  op_ctx
   //! \param[out] packet
   virtual void receive_packet(RemoteFB__PortOperationContext& op_ctx,
-                              protocol::PACKET&               packet) COMP_W000004_OVERRIDE_FINAL;
+                              protocol::PACKET&               packet) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Запрещаем порту обслуживать подключение.
@@ -123,22 +123,22 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   //! \attention
   //!  Этот метод может вызываться из за того, что порт находится в заблокированном состоянии.
   //!  Поэтому реализация ДОЛЖНА игнорировать повторные вызовы.
-  virtual void set_invalid_port_state_v2(const std::exception* pExc)COMP_W000004_OVERRIDE_FINAL;
+  virtual void set_invalid_port_state_v2(const std::exception* pExc)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Тестирование недействительного состояния порта.
   /// </summary>
-  virtual bool port_has_invalid_state()const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool port_has_invalid_state()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение версии протокола.
   /// </summary>
-  virtual protocol::P_PROTOCOL_VERSION get_protocol_version()const COMP_W000004_OVERRIDE_FINAL;
+  virtual protocol::P_PROTOCOL_VERSION get_protocol_version()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение флагов порта.
   /// </summary>
-  virtual port_flags_type get_port_flags()const COMP_W000004_OVERRIDE_FINAL;
+  virtual port_flags_type get_port_flags()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //t_db_service_provider interface --------------------------------------
   /// <summary>
@@ -149,7 +149,7 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   //! \return
   //!  Возвращает указатель на сервисный объект. Если запрашиваемый
   //!  сервис не поддерживается, то возвращается NULL
-  virtual db_obj::t_db_object_ptr query_service(REFGUID rguidService)COMP_W000004_OVERRIDE_FINAL;
+  virtual db_obj::t_db_object_ptr query_service(REFGUID rguidService)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
  #ifndef NDEBUG

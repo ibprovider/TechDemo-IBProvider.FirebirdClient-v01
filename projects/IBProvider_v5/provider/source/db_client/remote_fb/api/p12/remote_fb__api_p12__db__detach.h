@@ -44,7 +44,7 @@ class RemoteFB__API_P12__DetachDatabase LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] pData
   //!  Not null.
-  virtual void exec(RemoteFB__ConnectorData* pData)COMP_W000004_OVERRIDE_FINAL;
+  virtual void exec(RemoteFB__ConnectorData* pData)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__DetachDatabase
 
 ////////////////////////////////////////////////////////////////////////////////

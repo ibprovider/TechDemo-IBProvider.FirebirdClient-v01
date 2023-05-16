@@ -59,7 +59,7 @@ class RemoteFB__API_P13__PutArraySlice LCPI_CPP_CFG__CLASS__FINAL
                     size_t                          szArraySDL,
                     const unsigned char*            pArraySDL,
                     size_t                          szArrayData,
-                    const void*                     pArrayData)COMP_W000004_OVERRIDE_FINAL;
+                    const void*                     pArrayData)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpGetArraySliceDescr;

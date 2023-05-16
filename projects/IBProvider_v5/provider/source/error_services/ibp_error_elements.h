@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///   онтейнер дл€ хранени€ описани€ ошибок
 /// </summary>
-class t_ibp_error_elements COMP_W000006_CLASS_FINAL
+class t_ibp_error_elements LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef t_ibp_error_elements              self_type;

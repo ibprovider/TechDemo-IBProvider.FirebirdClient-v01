@@ -131,15 +131,13 @@ void IBP_ThrowIntegratedAuthIsNotSupported(t_ibp_subsystem_id         const subs
                                            structure::t_const_str_box const db_client_name,
                                            structure::t_const_str_box const db_client_version)
 {
- t_ibp_error exc(DB_SEC_E_AUTH_FAILED,
-                 subsystem_id,
-                 ibp_mce_ds__integrated_auth_not_supported_2,
-                 IBP_CreateCustomErrorFor_AuthFailed());
-
- exc<<db_client_name
-    <<db_client_version;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  (DB_SEC_E_AUTH_FAILED,
+   subsystem_id,
+   ibp_mce_ds__integrated_auth_not_supported_2,
+   IBP_CreateCustomErrorFor_AuthFailed(),
+   db_client_name,
+   db_client_version);
 }//IBP_ThrowIntegratedAuthIsNotSupported
 
 //------------------------------------------------------------------------
@@ -149,14 +147,12 @@ void IBP_ThrowIntegratedAuthIsNotSupported(t_ibp_subsystem_id         const subs
 void IBP_ThrowUnknownNameOfIntegratedAuth(t_ibp_subsystem_id const subsystem_id,
                                           t_ibp_str_box      const authName)
 {
- t_ibp_error exc(DB_SEC_E_AUTH_FAILED,
-                 subsystem_id,
-                 ibp_mce_ds__unk_integrated_auth_service_name_1,
-                 IBP_CreateCustomErrorFor_AuthFailed());
-
- exc<<authName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  (DB_SEC_E_AUTH_FAILED,
+   subsystem_id,
+   ibp_mce_ds__unk_integrated_auth_service_name_1,
+   IBP_CreateCustomErrorFor_AuthFailed(),
+   authName);
 }//IBP_ThrowUnknownNameOfIntegratedAuth
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -91,7 +91,7 @@ class IBP_Sha2_Types
 //class IBP_Sha2_Base
 
 template<class SHA_TRAITS>
-class IBP_Sha2_Base COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+class IBP_Sha2_Base LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  private:
   typedef IBP_Sha2_Base<SHA_TRAITS>      self_type;
@@ -145,7 +145,7 @@ typedef IBP_Sha2_Base<IBP_Sha512_Traits> IBP_Sha512;
 ////////////////////////////////////////////////////////////////////////////////
 //struct IBP_Sha256_Ctx
 
-struct IBP_Sha256_Ctx COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+struct IBP_Sha256_Ctx LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  public:
   typedef IBP_Sha2_Types::uint32 uint32;
@@ -166,7 +166,7 @@ struct IBP_Sha256_Ctx COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha224_Traits
 
-class IBP_Sha224_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+class IBP_Sha224_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  public:
   typedef IBP_Sha256_Ctx ctx_type;
@@ -187,7 +187,7 @@ class IBP_Sha224_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha256_Traits
 
-class IBP_Sha256_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+class IBP_Sha256_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  public:
   typedef IBP_Sha256_Ctx ctx_type;
@@ -208,7 +208,7 @@ class IBP_Sha256_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //struct IBP_Sha512_Ctx
 
-struct IBP_Sha512_Ctx COMP_W000006_CLASS_FINAL
+struct IBP_Sha512_Ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   typedef IBP_Sha2_Types::uint64 uint64;
@@ -229,7 +229,7 @@ struct IBP_Sha512_Ctx COMP_W000006_CLASS_FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha384_Traits
 
-class IBP_Sha384_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+class IBP_Sha384_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  public:
   typedef IBP_Sha512_Ctx ctx_type;
@@ -250,7 +250,7 @@ class IBP_Sha384_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha512_Traits
 
-class IBP_Sha512_Traits COMP_W000006_CLASS_FINAL:private IBP_Sha2_Types
+class IBP_Sha512_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 {
  public:
   typedef IBP_Sha512_Ctx ctx_type;

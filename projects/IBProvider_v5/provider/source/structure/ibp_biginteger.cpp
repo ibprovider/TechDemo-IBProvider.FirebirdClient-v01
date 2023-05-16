@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/structure/ibp_biginteger.h"
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 #include <sstream>
 #include <wincrypt.h>
 
@@ -48,14 +48,12 @@ static void helper__throw_error(const char*                 const op_sign,
 {
  assert(op_sign);
 
- t_ibp_error
-  exc(E_FAIL,ibp_mce_common__failed_to_call_libtommath_set01_func_3);
-
- exc<<op_sign
-    <<op_result
-    <<arguments;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_common__failed_to_call_libtommath_set01_func_3,
+   op_sign,
+   op_result,
+   arguments);
 }//helper__throw_error
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,12 +106,10 @@ IBP_BigInteger::tag_crypt_prov::tag_crypt_prov()
 
  assert(win32error!=0);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_win32__crypt__failed_to_create_crypt_context_1);
-
- exc<<win32error;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_win32__crypt__failed_to_create_crypt_context_1,
+   win32error);
 }//tag_crypt_prov
 
 //------------------------------------------------------------------------
@@ -149,13 +145,11 @@ void IBP_BigInteger::tag_crypt_prov::gen_crypt_random(size_t         const cb,
 
    assert(win32error!=0);
 
-   t_ibp_error exc(E_FAIL,
-                   ibp_mce_win32__crypt__failed_to_generate_random_bytes_2);
-
-   exc<<win32error
-      <<part;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_win32__crypt__failed_to_generate_random_bytes_2,
+     win32error,
+     part);
   }//if
 
   tail-=part;

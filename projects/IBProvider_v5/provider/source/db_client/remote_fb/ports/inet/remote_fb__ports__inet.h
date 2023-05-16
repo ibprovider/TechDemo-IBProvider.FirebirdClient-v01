@@ -72,9 +72,9 @@ class RemoteFB__Port_INET:public ports::base_v01::RemoteFB__Port_BASE_v01
   static self_ptr Create_PSET02(streams::inet::RemoteFB__INET_Socket* pSocket);
 
  private:
-  virtual protocol::P_LONG internal__htonl(const protocol::P_LONG* pv)const COMP_W000004_OVERRIDE_FINAL;
+  virtual protocol::P_LONG internal__htonl(const protocol::P_LONG* pv)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual protocol::P_LONG internal__ntohl(const protocol::P_LONG* pv)const COMP_W000004_OVERRIDE_FINAL;
+  virtual protocol::P_LONG internal__ntohl(const protocol::P_LONG* pv)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// Провайдер Windows Socket API.

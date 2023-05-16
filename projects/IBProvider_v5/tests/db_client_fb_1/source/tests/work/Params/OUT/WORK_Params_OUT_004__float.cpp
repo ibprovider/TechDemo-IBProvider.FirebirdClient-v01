@@ -133,9 +133,11 @@ void WORK_Params_OUT_004__float::tag_impl::test_005_generic
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -166,13 +168,13 @@ void WORK_Params_OUT_004__float::tag_impl::test_005_generic
   tracer<<"result_sqlind: "<<Data.result_sqlind<<send;
 
   svc::RemoteFB_Connector__StmtPrepare
-        (tracer,
-         spConnector,
-         OpCtx,
-         &hTr,
-         &hStmt,
-         (unsigned short)cns.db_dialect_Ex.value(),
-         Data.sql);
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    (unsigned short)cns.db_dialect_Ex.value(),
+    Data.sql);
 
   _TSO_CHECK(hStmt);
   _TSO_CHECK(hStmt->m_ID.has_value());
@@ -191,13 +193,14 @@ void WORK_Params_OUT_004__float::tag_impl::test_005_generic
   xsqlda->sqlvar[0].sqlind   =&xparam0_ind;
 
   //-----------------------------------------
-  svc::RemoteFB_Connector__StmtExecute(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hTr,
-                                       &hStmt,
-                                       /*pInXSQLDA*/nullptr,
-                                       /*pOutXSQLDA*/xsqlda);
+  svc::RemoteFB_Connector__StmtExecute
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    /*pInXSQLDA*/nullptr,
+    /*pOutXSQLDA*/xsqlda);
 
   _TSO_CHECK(hTr==hTrCopy);
   _TSO_CHECK(hTr->m_ID.has_value());
@@ -302,14 +305,19 @@ void WORK_Params_OUT_004__float::create(TTSO_PushTest*      const pTestPusher,
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
-         <<sm_Tests[it[iTest]].pTestSign;
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
+   <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data));
+  const TTSO_TestPtr
+   spTest
+    (new TTSO_TestFunc_v2
+      (pParams,
+       ftestID.c_str(),
+       sm_Tests[it[iTest]].Func,
+       Data));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

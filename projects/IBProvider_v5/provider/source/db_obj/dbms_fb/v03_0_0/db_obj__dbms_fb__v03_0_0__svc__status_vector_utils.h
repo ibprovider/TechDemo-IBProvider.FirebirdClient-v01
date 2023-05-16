@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v03_0_
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_v03_0_0__svc__status_vector_utils
 
-class fb_v03_0_0__svc__status_vector_utils
+class fb_v03_0_0__svc__status_vector_utils LCPI_CPP_CFG__CLASS__FINAL
  :public common::impl::fb_common_impl__svc__status_vector_utils__v1_set02
 {
  private:
@@ -59,13 +59,13 @@ class fb_v03_0_0__svc__status_vector_utils
                     DWORD                       msg_code,
                     LCID                        lcid,
                     size_t                      cArgs,
-                    const IBP_ErrorVariant*     rgArgs)const COMP_W000004_OVERRIDE_FINAL;
+                    const IBP_ErrorVariant*     rgArgs)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool internal__is_useless_error_code
-                   (const status_type s)const COMP_W000004_OVERRIDE_FINAL;
+                   (const status_type s)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
 
-  virtual status_type internal__get_unexpected_error_code()const COMP_W000004_OVERRIDE_FINAL;
+  virtual status_type internal__get_unexpected_error_code()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   TIBP_MsgTableLoader m_ErrMsgTableLoader;

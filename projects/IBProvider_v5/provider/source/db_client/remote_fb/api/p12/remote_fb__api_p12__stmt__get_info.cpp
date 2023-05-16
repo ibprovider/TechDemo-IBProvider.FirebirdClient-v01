@@ -39,7 +39,7 @@ class RemoteFB__API_P12__GetStatementInfo::tagOpMemoryBuffer:public RemoteFB__Me
 
   //interface ------------------------------------------------------------
   virtual void* allocate(enumMemoryID memID,
-                         size_t       sz) COMP_W000004_OVERRIDE_FINAL;
+                         size_t       sz) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   RemoteFB__InfoBuffer* const m_pInfoBuffer;

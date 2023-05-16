@@ -25,6 +25,11 @@ class RemoteFB__XDR__Info
   typedef RemoteFB__XDR__Info             self_type;
 
  public:
+  static size_t get_size__p_hyper_long();
+
+  static size_t get_size__p_hyper_longlong();
+
+ public:
   static size_t get_size__p_op();
 
   static size_t get_size__p_arch();
@@ -50,6 +55,11 @@ class RemoteFB__XDR__Info
   static size_t get_size__p_bid();
 
   static size_t get_size__opaque(size_t length);
+
+ public:
+  static size_t get_size__p_uint64();
+
+  static size_t get_size__p_int128();
 };//class RemoteFB__XDR__Info
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -544,7 +544,7 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   //! \return
   //!   Возвращает указатель на сервисный объект. Если запрашиваемый
   //!   сервис не поддерживается, то возвращается NULL
-  virtual db_obj::t_db_object_ptr query_service(REFGUID rguidService)COMP_W000004_OVERRIDE_FINAL;
+  virtual db_obj::t_db_object_ptr query_service(REFGUID rguidService)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   struct tag_port_factories;

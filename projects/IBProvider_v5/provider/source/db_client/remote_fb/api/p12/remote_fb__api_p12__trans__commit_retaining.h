@@ -49,7 +49,7 @@ class RemoteFB__API_P12__CommitRetaining LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] pTrHandle
   //!  Not null. На входе должен указывать на ненулевое значение.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    tr_handle_type*          pTrHandle)COMP_W000004_OVERRIDE_FINAL;
+                    tr_handle_type*          pTrHandle)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__CommitRetaining
 
 ////////////////////////////////////////////////////////////////////////////////

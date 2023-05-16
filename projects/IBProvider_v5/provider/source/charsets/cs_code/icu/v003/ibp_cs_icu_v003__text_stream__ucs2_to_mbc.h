@@ -60,7 +60,7 @@ class t_ibp_cs_icu::tag_text_stream__ucs2_to_mbc
   //! - db_cs_result__fail
   virtual db_obj::t_db_cs_result read_mbc(size_type  mbc_buffer_size,
                                           char*      mbc_buffer,
-                                          size_type* cb_readed) COMP_W000004_OVERRIDE_FINAL;
+                                          size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
   typedef structure::t_multi_thread_traits               thread_traits;

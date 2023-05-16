@@ -76,7 +76,7 @@ class IBP_OLEDB__SQLErrorInfo LCPI_CPP_CFG__CLASS__FINAL
 
   //ISQLErrorInfo interface ----------------------------------------------
   virtual HRESULT __stdcall GetSQLInfo(BSTR* pbstrSQLState,
-                                       LONG* plNativeError) COMP_W000004_OVERRIDE_FINAL;
+                                       LONG* plNativeError) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   ///Текст с кодом SQLSTATE

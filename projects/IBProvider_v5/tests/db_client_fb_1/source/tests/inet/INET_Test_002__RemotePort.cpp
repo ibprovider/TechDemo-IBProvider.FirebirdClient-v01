@@ -191,13 +191,14 @@ void INET_Test_002__RemotePort::tag_impl::test_03__connect
  params.set_dbprop_init__password(L"masterkey");
 
  const svc::remote_fb_inet_port_ptr
-  spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+  spPort
+   =svc::RemoteFB_INET_Port__ConnectToDatabase
+     (tracer,
+      ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+      hostName.c_str(),
+      nullptr,
+      dbName.c_str(),
+      params);
 }//test_03__connect
 
 //------------------------------------------------------------------------
@@ -227,13 +228,14 @@ void INET_Test_002__RemotePort::tag_impl::test_03__connect__inet4
  params.set_dbprop_init__password(L"masterkey");
 
  const svc::remote_fb_inet_port_ptr
-  spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_INET,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+  spPort
+   =svc::RemoteFB_INET_Port__ConnectToDatabase
+     (tracer,
+      ibp::os::win32::winsock::API::WinSock__AF_INET,
+      hostName.c_str(),
+      nullptr,
+      dbName.c_str(),
+      params);
 }//test_03__connect__inet4
 
 //------------------------------------------------------------------------
@@ -263,13 +265,14 @@ void INET_Test_002__RemotePort::tag_impl::test_03__connect__inet6
  params.set_dbprop_init__password(L"masterkey");
 
  const svc::remote_fb_inet_port_ptr
-  spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_INET6,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+  spPort
+   =svc::RemoteFB_INET_Port__ConnectToDatabase
+     (tracer,
+      ibp::os::win32::winsock::API::WinSock__AF_INET6,
+      hostName.c_str(),
+      nullptr,
+      dbName.c_str(),
+      params);
 }//test_03__connect__inet6
 
 //------------------------------------------------------------------------
@@ -332,21 +335,24 @@ void INET_Test_002__RemotePort::tag_impl::test_05__connect__bad_pswd__impl
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
-  errSvc::print_exception_ok(tracer,
-                             exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec__srv_err__bad_login
    (tracer,
@@ -395,13 +401,14 @@ void INET_Test_002__RemotePort::tag_impl::test_06__connect__no_pswd__pset01
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -460,13 +467,14 @@ void INET_Test_002__RemotePort::tag_impl::test_06__connect__no_pswd__pset02
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -524,13 +532,14 @@ void INET_Test_002__RemotePort::tag_impl::test_07__connect__no_params__pset01
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -587,13 +596,14 @@ void INET_Test_002__RemotePort::tag_impl::test_07__connect__no_params__pset02
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -649,13 +659,14 @@ void INET_Test_002__RemotePort::tag_impl::test_08__connect__trust_auth_SSPI
  params.set_dbprop_init__integrated_auth(L"SSPI");
 
  const svc::remote_fb_inet_port_ptr
-  spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+  spPort
+   =svc::RemoteFB_INET_Port__ConnectToDatabase
+     (tracer,
+      ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+      hostName.c_str(),
+      nullptr,
+      dbName.c_str(),
+      params);
 }//test_08__connect__trust_auth_SSPI
 
 //------------------------------------------------------------------------
@@ -690,21 +701,24 @@ void INET_Test_002__RemotePort::tag_impl::test_09__connect__unk_rus_db_name
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
-  errSvc::print_exception_ok(tracer,
-                             exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec__srv_err__unk_db_name
    (tracer,
@@ -750,13 +764,14 @@ void INET_Test_002__RemotePort::tag_impl::test_10__connect__very_long_database_n
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -813,13 +828,14 @@ void INET_Test_002__RemotePort::tag_impl::test_10__connect__very_long_database_n
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -876,13 +892,14 @@ void INET_Test_002__RemotePort::tag_impl::test_10__create__very_long_database_na
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__CreateDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__CreateDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -939,13 +956,14 @@ void INET_Test_002__RemotePort::tag_impl::test_10__create__very_long_database_na
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__CreateDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__CreateDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1004,13 +1022,14 @@ void INET_Test_002__RemotePort::tag_impl::test_11__connect__cant_convert_dbname_
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1067,13 +1086,14 @@ void INET_Test_002__RemotePort::tag_impl::test_11__connect__cant_convert_dbname_
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1133,13 +1153,14 @@ void INET_Test_002__RemotePort::tag_impl::test_12__connect__cant_convert_pswd_to
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1200,13 +1221,14 @@ void INET_Test_002__RemotePort::tag_impl::test_12__connect__cant_convert_pswd_to
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1262,21 +1284,24 @@ void INET_Test_002__RemotePort::tag_impl::test_13__connect__max_database_name_le
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
-  errSvc::print_exception_ok(tracer,
-                             exc);
+  errSvc::print_exception_ok
+   (tracer,
+    exc);
 
-  errSvc::check_err_count(exc,
-                          1);
+  errSvc::check_err_count
+   (exc,
+    1);
 
   errSvc::check_err_rec
    (tracer,

@@ -154,12 +154,11 @@ void t_ibp_icu_provider::helper__init_op()
 
  if(icu_status!=api::U_ZERO_ERROR)
  {
-  t_ibp_error exc(E_FAIL,ibp_mce_icu__failed_to_initialize_2);
-
-  exc<<this->id()
-     <<icu_status;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_icu__failed_to_initialize_2,
+    this->id(),
+    icu_status);
  }//if
 }//helper__init_op
 

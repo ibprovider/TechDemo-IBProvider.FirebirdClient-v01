@@ -671,7 +671,7 @@ struct P_OP_CANCEL
 ///  ”ниверсальна€ структура дл€ представлени€ данных пакета
 ///  дл€ группы протоколов PROTOCOL_SET_ID__01
 /// </summary>
-struct PACKET_V01 COMP_W000006_CLASS_FINAL:public PACKET
+struct PACKET_V01 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
 {
  private:
   typedef PACKET_V01                        self_type;

@@ -63,7 +63,7 @@ class RemoteFB__API_P13__ReadBlob LCPI_CPP_CFG__CLASS__FINAL
                     blob_handle_type*        pBlobHandle,
                     size_t                   cbBuffer,
                     void*                    pvBuffer,
-                    size_t*                  pcbActualReaded)COMP_W000004_OVERRIDE_FINAL;
+                    size_t*                  pcbActualReaded)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpMemoryBuffer;

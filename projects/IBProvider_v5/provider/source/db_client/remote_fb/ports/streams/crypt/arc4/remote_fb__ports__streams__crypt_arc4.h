@@ -74,26 +74,26 @@ class RemoteFB__PortStream__Crypt_Arc4
   /// <summary>
   ///  Получение идентификатора категории потока
   /// </summary>
-  virtual tag_stream_class GetStreamClass()const COMP_W000004_OVERRIDE_FINAL;
+  virtual tag_stream_class GetStreamClass()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение указателя на родительский поток.
   /// </summary>
   //! \return
   //!  Can be null.
-  virtual RemoteFB__PortStream* GetParentStream()const COMP_W000004_OVERRIDE_FINAL;
+  virtual RemoteFB__PortStream* GetParentStream()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Замена родительского потока.
   /// </summary>
   //! \param[in] pParentStream
   //!  Not null.
-  virtual void SetParentStream(RemoteFB__PortStream* pParentStream) COMP_W000004_OVERRIDE_FINAL;
+  virtual void SetParentStream(RemoteFB__PortStream* pParentStream) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение размера буфера для записи.
   /// </summary>
-  virtual size_t GetWriteBufSize()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_t GetWriteBufSize()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Буферизированная запись данных в порт. THROW.
@@ -103,12 +103,12 @@ class RemoteFB__PortStream__Crypt_Arc4
   //! \param[in] pv
   //!  Указатель на буфер с отправляемыми данными
   virtual void Write(size_t      cb,
-                     const void* pv)COMP_W000004_OVERRIDE_FINAL;
+                     const void* pv)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Сброс write-буфера
   /// </summary>
-  virtual void FlushWriteBuf()COMP_W000004_OVERRIDE_FINAL;
+  virtual void FlushWriteBuf()LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Буферизированное чтение данных из порта. THROW
@@ -120,7 +120,7 @@ class RemoteFB__PortStream__Crypt_Arc4
   //! \return
   //!  Количество загруженных данных. Больше нуля, но не больше чем cb.
   virtual size_t Read2(size_t  cb,
-                       void*   pv)COMP_W000004_OVERRIDE_FINAL;
+                       void*   pv)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef RemoteFB__MemoryAllocator         raw_allocator_type;

@@ -156,7 +156,7 @@ class IBP_CallContext::tag_error_adapter LCPI_CPP_CFG__CLASS__FINAL
                          HRESULT        err_code);
 
  private:
-  virtual void push_error(structure::t_err_record* err_record)COMP_W000004_OVERRIDE_FINAL;
+  virtual void push_error(structure::t_err_record* err_record)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   IBP_CallContext* m_pCallContext;
@@ -181,7 +181,7 @@ class IBP_CallContext::tag_error_adapter_with_limit LCPI_CPP_CFG__CLASS__FINAL
  ~tag_error_adapter_with_limit();
 
  private:
-  virtual void push_error(structure::t_err_record* err_record)COMP_W000004_OVERRIDE_FINAL;
+  virtual void push_error(structure::t_err_record* err_record)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   IBP_CallContext* m_pCallContext;

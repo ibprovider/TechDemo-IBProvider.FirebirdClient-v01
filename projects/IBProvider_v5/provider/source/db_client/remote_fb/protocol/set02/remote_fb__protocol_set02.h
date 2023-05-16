@@ -780,7 +780,7 @@ struct P_OP_CANCEL
 /// </summary>
 //! \attention
 //!  «апрещено пр€мое копирование структры. —одержит внутренние указатели на саму себ€.
-struct PACKET_V02 COMP_W000006_CLASS_FINAL:public PACKET
+struct PACKET_V02 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
 {
  private:
   typedef PACKET_V02                        self_type;

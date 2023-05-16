@@ -25,6 +25,13 @@ namespace isc_base                          =ibp::isc_base;
 namespace db_obj                            =ibp::db_obj;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_int128& v)
+{ 
+ return tracer<<L"{"<<v.data.low<<L", "<<v.data.high<<L"}";
+}//operator <<
+
+////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
 class TestServices
@@ -815,6 +822,13 @@ class TestServices
                 isc_api::t_ibp_fb030_bool actualSqlValue,
                 short                     expectedSqlInd,
                 isc_api::t_ibp_fb030_bool expectedSqlValue);
+
+  static bool checkValue__INT128
+               (TTSO_Tracer&                tracer,
+                short                       actualSqlInd,
+                isc_api::t_ibp_fb040_int128 actualSqlValue,
+                short                       expectedSqlInd,
+                isc_api::t_ibp_fb040_int128 expectedSqlValue);
 };//class TestServices
 
 ////////////////////////////////////////////////////////////////////////////////

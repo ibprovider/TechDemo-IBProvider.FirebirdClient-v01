@@ -82,7 +82,7 @@ class FB_ErrorTextObj LCPI_CPP_CFG__CLASS__FINAL
                          const status_type* sv_end);
 
   //interface ------------------------------------------------------------
-  virtual bool get_text(lcid_type lcid,string_type* text)const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool get_text(lcid_type lcid,string_type* text)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef db_obj::t_db_memory_allocator     raw_allocator_type;

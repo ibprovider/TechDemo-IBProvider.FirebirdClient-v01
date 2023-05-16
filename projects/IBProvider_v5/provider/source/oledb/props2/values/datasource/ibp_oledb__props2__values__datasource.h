@@ -136,7 +136,7 @@ class IBP_OLEDB_Props2__Values__DATASOURCE LCPI_CPP_CFG__CLASS__FINAL
  private:
   virtual const IBP_OLEDB_Props2__DescrData& Internal__GetStaticPropData
                         (REFGUID  propGuid,
-                         DBPROPID propId)const COMP_W000004_OVERRIDE_FINAL;
+                         DBPROPID propId)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_value_with_null<long> long_type_n;

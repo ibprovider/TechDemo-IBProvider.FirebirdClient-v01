@@ -41,7 +41,7 @@ class RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer:public RemoteFB__Memor
 
   //interface ------------------------------------------------------------
   virtual void* allocate(enumMemoryID memID,
-                         size_t       sz) COMP_W000004_OVERRIDE_FINAL;
+                         size_t       sz) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   size_t const m_szSliceData;
@@ -128,7 +128,7 @@ class RemoteFB__API_P13__GetArraySlice::tagOpGetArraySliceDescr
   virtual ~tagOpGetArraySliceDescr();
 
   //interface ------------------------------------------------------------
-  virtual const RemoteFB__ArraySliceDescr& GetArraySliceDescr()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const RemoteFB__ArraySliceDescr& GetArraySliceDescr()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//RemoteFB__API_P13__GetArraySlice::tagOpGetArraySliceDescr
 
 ////////////////////////////////////////////////////////////////////////////////

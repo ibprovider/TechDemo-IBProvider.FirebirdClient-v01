@@ -50,7 +50,7 @@ class RemoteFB__API_P12__CloseStatement LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] pStmtHandle
   //!  Not null. На входе должен указывать на ненулевое значение.
   virtual void exec(RemoteFB__ConnectorData* pData,
-                    stmt_handle_type*        pStmtHandle)COMP_W000004_OVERRIDE_FINAL;
+                    stmt_handle_type*        pStmtHandle)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__CloseStatement
 
 ////////////////////////////////////////////////////////////////////////////////

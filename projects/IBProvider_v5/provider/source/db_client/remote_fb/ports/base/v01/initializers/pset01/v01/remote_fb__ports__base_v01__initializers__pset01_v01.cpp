@@ -549,15 +549,13 @@ void RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect__SetAuthPlugin
    //ERROR - конфликт сервиса интегрированной аутентификации и явно указанного
    //сервиса аутентификации.
 
-   t_ibp_error exc(DB_SEC_E_AUTH_FAILED,
-                   ibp_subsystem__remote_fb__pset01,
-                   ibp_mce_remote__incompatible_auth_services_2,
-                   IBP_CreateCustomErrorFor_AuthFailed());
-
-   exc<<authPluginName
-      <<ibprovider::g_IBP_IntegratedAuth__SSPI;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+    (DB_SEC_E_AUTH_FAILED,
+     ibp_subsystem__remote_fb__pset01,
+     ibp_mce_remote__incompatible_auth_services_2,
+     IBP_CreateCustomErrorFor_AuthFailed(),
+     authPluginName,
+     ibprovider::g_IBP_IntegratedAuth__SSPI);
   }//if IsSSPI
 
   assert(!IBP_Utils::IsSSPI(strPropValue__IntegratedAuth));
@@ -632,12 +630,11 @@ void RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect__RegDefaultAuthPlu
  //ERROR - не удалось определить сервис аутентификации.
  //Укажите его явно или определите в строке подключения логин и пароль пользователя.
 
- t_ibp_error exc(DB_SEC_E_AUTH_FAILED,
-                 ibp_subsystem__remote_fb__pset01,
-                 ibp_mce_remote__cant_detect_auth_service_0,
-                 IBP_CreateCustomErrorFor_AuthFailed());
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+  (DB_SEC_E_AUTH_FAILED,
+   ibp_subsystem__remote_fb__pset01,
+   ibp_mce_remote__cant_detect_auth_service_0,
+   IBP_CreateCustomErrorFor_AuthFailed());
 }//Helper__TryConnect__RegDefaultAuthPlugin
 
 //------------------------------------------------------------------------
@@ -726,13 +723,11 @@ void RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect__GetProtocolArchit
   {
    //ERROR - unexpected name protocol architecture
 
-   t_ibp_error exc(DB_E_NOTSUPPORTED,
-                   ibp_subsystem__remote_fb__pset01,
-                   ibp_mce_remote__unsupported_protocol_architecture_1);
-
-   exc<<t_ibp_string(sName,eName);
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (DB_E_NOTSUPPORTED,
+     ibp_subsystem__remote_fb__pset01,
+     ibp_mce_remote__unsupported_protocol_architecture_1,
+     t_ibp_string(sName,eName));
   }//else
 
   if(std::find(parchs.begin(),parchs.end(),p_arch)!=parchs.end())

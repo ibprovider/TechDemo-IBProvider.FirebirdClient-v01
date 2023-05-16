@@ -83,6 +83,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
    case isc_api::ibp_isc_sql_int64:
    case isc_api::ibp_isc_sql_blob:
    case isc_api::ibp_isc_sql_array:
+   case isc_api::ibp_fb040_sql_int128:
     szBlr+=2+2;
     break;
 
@@ -433,6 +434,32 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      PUSH_STUFF_BYTE(isc_api::ibp_fb030_blr_dtype__bool)
      break;
     }//ibp_fb030_sql_boolean
+
+    //-------------------------------------------------------------------
+    case isc_api::ibp_fb040_sql_int128:
+    {
+     if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_int128))
+     {
+      //ERROR - [BUG CHECK] incorrect xvar length;
+      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+       (L"sql_int128",
+        xvar_sqllen);
+     }//if
+
+     if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__fb040_numeric_on_int128)
+     {
+      //ERROR - incorrect sqlscale of xvar
+      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
+       (L"sql_int128",
+        pXVar->sqlscale);
+     }//if
+
+     assert(structure::can_numeric_cast<signed __int8>(pXVar->sqlscale));
+
+     PUSH_STUFF_BYTE(isc_api::ibp_fb040_blr_dtype__int128)
+     PUSH_STUFF(pXVar->sqlscale)
+     break;
+    }//ibp_fb040_sql_int128
 
     //-------------------------------------------------------------------
     default:

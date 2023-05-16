@@ -11,7 +11,7 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builti
 ////////////////////////////////////////////////////////////////////////////////
 //class ZLIB1_BUILTIN__ApiProvider
 
-class ZLIB1_BUILTIN__ApiProvider COMP_W000006_CLASS_FINAL
+class ZLIB1_BUILTIN__ApiProvider LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_INTERFACE_IMPL_STATIC(ZLIB1__ApiProvider)
 {
  private:
@@ -36,25 +36,25 @@ class ZLIB1_BUILTIN__ApiProvider COMP_W000006_CLASS_FINAL
   //ZLIB1__ApiProvider interface -----------------------------------------
   virtual int zapi__deflateInit
                 (api::z_stream* strm,
-                 int            level) COMP_W000004_OVERRIDE_FINAL;
+                 int            level) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual int zapi__deflate
                 (api::z_stream* strm,
-                 int            flush) COMP_W000004_OVERRIDE_FINAL;
+                 int            flush) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual int zapi__deflateEnd
-                (api::z_stream* strm) COMP_W000004_OVERRIDE_FINAL;
+                (api::z_stream* strm) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
 
   virtual int zapi__inflateInit
-                (api::z_stream* strm) COMP_W000004_OVERRIDE_FINAL;
+                (api::z_stream* strm) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual int zapi__inflate
                 (api::z_stream* strm,
-                 int            flush) COMP_W000004_OVERRIDE_FINAL;
+                 int            flush) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual int zapi__inflateEnd
-                (api::z_stream* strm) COMP_W000004_OVERRIDE_FINAL;
+                (api::z_stream* strm) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static self_type sm_Instance;

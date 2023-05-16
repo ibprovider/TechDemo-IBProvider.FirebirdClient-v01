@@ -56,6 +56,11 @@ struct P_ISC_STATUS_VECTOR
 };//struct P_ISC_STATUS_VECTOR
 
 ////////////////////////////////////////////////////////////////////////////////
+
+typedef db_obj::t_dbvalue__i4               P_HYPER_LONG;
+typedef db_obj::t_dbvalue__ui8              P_HYPER_LONGLONG;
+
+////////////////////////////////////////////////////////////////////////////////
 //base type
 
 //! \brief Base protocol type: unsigned char
@@ -81,6 +86,12 @@ typedef db_obj::t_dbvalue__r4               P_FLOAT;
 
 //! \brief Base protocol type: double
 typedef db_obj::t_dbvalue__r8               P_DOUBLE;
+
+////////////////////////////////////////////////////////////////////////////////
+
+typedef db_obj::t_dbvalue__ui8              P_UINT64;
+
+typedef db_obj::t_dbvalue__fb040_int128     P_INT128;
 
 ////////////////////////////////////////////////////////////////////////////////
 

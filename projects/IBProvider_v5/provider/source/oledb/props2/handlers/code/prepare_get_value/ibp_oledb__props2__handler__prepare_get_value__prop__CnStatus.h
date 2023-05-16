@@ -41,7 +41,7 @@ class IBP_OLEDB_Props2__Handler__PrepareGetValue__Prop__CnStatus
                 (const oledb_lib::OLEDB_Props2__Data__Values* pValues,
                  oledb_lib::OLEDB_Props2__Data__OpCtx&        op_ctx,
                  REFGUID                                      propGuid,
-                 DBPROPID                                     propId)const COMP_W000004_OVERRIDE_FINAL;
+                 DBPROPID                                     propId)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static const IBP_OLEDB_Props2__Handler__PrepareGetValue__Prop__CnStatus sm_Instance;

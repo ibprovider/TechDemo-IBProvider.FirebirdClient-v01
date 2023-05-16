@@ -156,7 +156,7 @@ class t_ibp_error_element
   //interface ------------------------------------------------------------
   virtual ole_lib::IUnknownPtr get_custom_error_object
                                 (IUnknown*                   pUnkOuter,
-                                 const COM_SERVER_LINK_TYPE& ComServerLink)const COMP_W000004_OVERRIDE_FINAL;
+                                 const COM_SERVER_LINK_TYPE& ComServerLink)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //interface ------------------------------------------------------------
   /// <summary>
@@ -174,39 +174,39 @@ class t_ibp_error_element
   /// <summary>
   ///  Build simple error message text
   /// </summary>
-  virtual const char* what()const throw() COMP_W000004_OVERRIDE_FINAL;
+  virtual const char* what()const throw() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Get an error system ID
   /// </summary>
-  virtual system_id_type get_system_id()const COMP_W000004_OVERRIDE_FINAL;
+  virtual system_id_type get_system_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Get an error subsystem ID
   /// </summary>
-  virtual subsystem_id_type get_subsystem_id()const COMP_W000004_OVERRIDE_FINAL;
+  virtual subsystem_id_type get_subsystem_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Get an error code
   /// </summary>
-  virtual error_code_type get_error_code()const COMP_W000004_OVERRIDE_FINAL;
+  virtual error_code_type get_error_code()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Get an error description
   /// </summary>
   virtual bool get_description(lcid_type    lcid,
                                string_type* source,
-                               string_type* description)const COMP_W000004_OVERRIDE_FINAL;
+                               string_type* description)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Get an error help info
   /// </summary>
   virtual bool get_help_info(lcid_type         lcid,
                              string_type*      help_file,
-                             help_ctx_id_type* help_context_id)const COMP_W000004_OVERRIDE_FINAL;
+                             help_ctx_id_type* help_context_id)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public: //вспомогательные утилиты --------------------------------------
-  virtual self_type& add_arg(const base_variant_type& x) COMP_W000004_OVERRIDE_FINAL;//virtual
+  virtual self_type& add_arg(const base_variant_type& x) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//virtual
 };//class t_ibp_error_element
 
 ////////////////////////////////////////////////////////////////////////////////

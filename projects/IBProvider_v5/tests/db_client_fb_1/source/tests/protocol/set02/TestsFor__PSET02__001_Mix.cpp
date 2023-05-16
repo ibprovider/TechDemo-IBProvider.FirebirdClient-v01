@@ -85,13 +85,14 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_001__unsupported_auth_svc
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                            (tracer,
-                                             ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                             hostName.c_str(),
-                                             nullptr,
-                                             dbName.c_str(),
-                                             params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -164,13 +165,14 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_002__conflict_with_integrated_sec
  try
  {
   const svc::remote_fb_inet_port_ptr
-   spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                            (tracer,
-                                             ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                             hostName.c_str(),
-                                             nullptr,
-                                             dbName.c_str(),
-                                             params);
+   spPort
+    =svc::RemoteFB_INET_Port__ConnectToDatabase
+      (tracer,
+       ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+       hostName.c_str(),
+       nullptr,
+       dbName.c_str(),
+       params);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -239,13 +241,14 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_003__define_Win_SSPI_and_Integrat
  params.set_dbprop_init__integrated_auth(L"SSPI");
 
  const svc::remote_fb_inet_port_ptr
-  spPort=svc::RemoteFB_INET_Port__ConnectToDatabase
-                                           (tracer,
-                                            ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
-                                            hostName.c_str(),
-                                            nullptr,
-                                            dbName.c_str(),
-                                            params);
+  spPort
+   =svc::RemoteFB_INET_Port__ConnectToDatabase
+     (tracer,
+      ibp::os::win32::winsock::API::WinSock__AF_UNSPEC,
+      hostName.c_str(),
+      nullptr,
+      dbName.c_str(),
+      params);
 }//test_003__define_Win_SSPI_and_Integrated_Security
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -509,10 +512,15 @@ void TestsFor__PSET02__001_Mix::create(TTSO_PushTest*      const pTestPusher,
   ftestID<<structure::flush
          <<d.pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc(pParams,
-                                              ftestID.c_str(),
-                                              d.Func,
-                                              d.pExecRules));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc
+        (pParams,
+         ftestID.c_str(),
+         d.Func,
+         d.pExecRules)));
+
   pTestPusher->PushTest(spTest);
  }//for d
 }//create

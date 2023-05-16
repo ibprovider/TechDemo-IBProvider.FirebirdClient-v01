@@ -54,7 +54,7 @@ class RemoteFB__API_P12__PrepareTransaction LCPI_CPP_CFG__CLASS__FINAL
   virtual void exec(RemoteFB__ConnectorData* pData,
                     tr_handle_type*          pTrHandle,
                     size_t                   data_length,
-                    const void*              data)COMP_W000004_OVERRIDE_FINAL;
+                    const void*              data)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__PrepareTransaction
 
 ////////////////////////////////////////////////////////////////////////////////

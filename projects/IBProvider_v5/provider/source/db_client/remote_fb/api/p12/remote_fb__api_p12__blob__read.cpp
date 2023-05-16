@@ -37,7 +37,7 @@ class RemoteFB__API_P12__ReadBlob::tagOpMemoryBuffer:public RemoteFB__MemoryPool
 
   //interface ------------------------------------------------------------
   virtual void* allocate(enumMemoryID memID,
-                         size_t       sz) COMP_W000004_OVERRIDE_FINAL;
+                         size_t       sz) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   blob_data_type* const m_pBlobData;

@@ -15,7 +15,7 @@ namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os__dlls
 
-class t_ibp_os__dlls COMP_W000006_CLASS_FINAL
+class t_ibp_os__dlls LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_SmartMemoryObject
 {
  private:

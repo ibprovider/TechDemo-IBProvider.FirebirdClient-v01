@@ -400,6 +400,29 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
   }//ibp_fb030_sql_boolean
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_int128:
+  {
+   assert_s(std::is_same<isc_api::t_ibp_fb040_int128 _LITER_COMMA_ protocol::P_INT128>::value);
+
+   if(pXSQLVAR->sqllen!=sizeof(protocol::P_INT128))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_int128",
+      pXSQLVAR->sqllen);
+   }//if
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_INT128),
+       /*align*/isc_api::ibp_fb040_type_align__int128,
+       /*pcbResultAlign*/nullptr); //throw
+
+   break;
+  }//ibp_fb040_sql_int128
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
@@ -538,8 +561,9 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    //--------------------------------------
    if(!IsNull)
    {
-    const isc_api::isc_varchar_size_type varchar_size
-     =*reinterpret_cast<const isc_api::isc_varchar_size_type*>(pXSQLVAR->sqldata);
+    const isc_api::isc_varchar_size_type
+     varchar_size
+      =*reinterpret_cast<const isc_api::isc_varchar_size_type*>(pXSQLVAR->sqldata);
 
     if(!structure::can_numeric_cast<size_t>(varchar_size))
     {
@@ -645,7 +669,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -686,7 +710,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -729,7 +753,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -774,7 +798,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
     //копирование DB_IBBLOBID/DB_IBARRAYID в P_BID
 
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -815,7 +839,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -858,7 +882,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -899,7 +923,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -940,7 +964,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -979,7 +1003,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
@@ -1020,12 +1044,56 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    if(!IsNull)
    {
     (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
-     =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
    }//if
 
    offset+=sizeof(sqldata_type);
    break;
   }//ibp_fb030_sql_boolean
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_int128:
+  {
+   const size_t c_align=isc_api::ibp_fb040_type_align__int128;
+
+   typedef protocol::P_INT128 sqldata_type;
+
+   assert_s(c_align==sizeof(sqldata_type().data.low));
+   assert_s(c_align==sizeof(sqldata_type().data.high));
+
+   //-------------------------------------
+   assert(pXSQLVAR->sqllen==sizeof(sqldata_type));
+
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   //[2015-05-09] Думаю здесь будут проблемы в 32-битном коде. У нас выравнивание по size_t.
+   //[2015-05-12] Так и есть.
+   //assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%c_align)==0);
+
+   CHECK_READ_PTR(pXSQLVAR->sqldata,sizeof(sqldata_type));
+
+   //-------------------------------------
+   assert(offset<=DataBuffer.size());
+
+   _VERIFY(structure::align_memory_size(offset,c_align));
+
+   assert((offset%c_align)==0);
+   assert((reinterpret_cast<size_t>(DataBuffer.ptr_at(offset))%c_align)==0);
+
+   assert(offset<=DataBuffer.size());
+
+   assert(sizeof(sqldata_type)<=(DataBuffer.size()-offset));
+
+   //-----
+   if(!IsNull)
+   {
+    (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+   }//if
+
+   offset+=sizeof(sqldata_type);
+   break;
+  }//ibp_fb040_sql_int128
 
   //------------------------------------------------------------
   default:

@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os_win32__dll_init_mutex
 
-class t_ibp_os_win32__dll_init_mutex COMP_W000006_CLASS_FINAL
+class t_ibp_os_win32__dll_init_mutex LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_SmartMemoryObject
 {
  private:

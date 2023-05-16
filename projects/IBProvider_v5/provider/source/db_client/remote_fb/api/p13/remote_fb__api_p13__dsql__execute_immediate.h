@@ -59,7 +59,7 @@ class RemoteFB__API_P13__ExecuteImmediate LCPI_CPP_CFG__CLASS__FINAL
                     protocol::P_USHORT              SQL_dialect,
                     sql_str_box_type                SQL_str,
                     const isc_api::XSQLDA_V1*       pInXSQLDA,
-                    const isc_api::XSQLDA_V1*       pOutXSQLDA) COMP_W000004_OVERRIDE_FINAL;
+                    const isc_api::XSQLDA_V1*       pOutXSQLDA) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static protocol::P_OBJCT helper__execute

@@ -57,19 +57,19 @@ class RemoteFB__Plugin_Auth_WinSSPI
   /// </summary>
   //! \return
   //!  Непустая строка.
-  virtual name_type get_name()const COMP_W000004_OVERRIDE_FINAL;
+  virtual name_type get_name()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Определение данных аутентификации в буфере с параметрами инициализации подключения.
   /// </summary>
   //! \param[in,out] clientConnectBlock
-  virtual void def_auth_params_in_cpb(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)COMP_W000004_OVERRIDE_FINAL;
+  virtual void def_auth_params_in_cpb(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Установка данных аутентификации.
   /// </summary>
   //! \param[in,out] clientConnectBlock
-  virtual void authenticate(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)COMP_W000004_OVERRIDE_FINAL;
+  virtual void authenticate(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   /// <summary>

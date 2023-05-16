@@ -43,7 +43,7 @@ class IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ResetDS
                  DBPROPOPTIONS                                sourceOptions,
                  const VARIANT&                               sourceValue,
                  DBPROPSTATUS*                                pResult_dwStatus,
-                 VARIANT*                                     pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+                 VARIANT*                                     pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   static const IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ResetDS sm_Instance;

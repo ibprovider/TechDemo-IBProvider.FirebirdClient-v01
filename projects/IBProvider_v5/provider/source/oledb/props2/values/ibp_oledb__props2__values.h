@@ -81,26 +81,26 @@ class IBP_OLEDB_Props2__Values
  private:
   virtual bool Internal__HasValueOrDefault
         (REFGUID                               propGuid,
-         DBPROPID                              propId)const COMP_W000004_OVERRIDE_FINAL;
+         DBPROPID                              propId)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void Internal__PrepareGetValue
         (oledb_lib::OLEDB_Props2__Data__OpCtx& op_ctx,
          REFGUID                               propGuid,
-         DBPROPID                              propId)const COMP_W000004_OVERRIDE_FINAL;
+         DBPROPID                              propId)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool Internal__GetValue
         (oledb_lib::OLEDB_Props2__Data__OpCtx& op_ctx,
          REFGUID                               propGuid,
          DBPROPID                              propId,
          DBPROPOPTIONS*                        pResult_dwOptions,
-         VARIANT*                              pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+         VARIANT*                              pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool Internal__ExtractValue
         (REFGUID                               propGuid,
          DBPROPID                              propId,
          VARTYPE                               propVarType,
          const VARIANT&                        sourceValue,
-         VARIANT*                              pResultValue)const COMP_W000004_OVERRIDE_FINAL;
+         VARIANT*                              pResultValue)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void Internal__PrepareSetValue
         (oledb_lib::OLEDB_Props2__Data__OpCtx& op_ctx,
@@ -109,18 +109,18 @@ class IBP_OLEDB_Props2__Values
          DBPROPOPTIONS                         dwOptions,
          const VARIANT&                        Value,
          DBPROPSTATUS*                         pResult_dwStatus,
-         VARIANT*                              pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+         VARIANT*                              pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool Internal__Direct__GetValue
         (REFGUID                               propGuid,
          DBPROPID                              propId,
          DBPROPOPTIONS*                        pResult_dwOptions,
-         VARIANT*                              pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+         VARIANT*                              pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool Internal__Direct__GetDefaultValue
         (REFGUID                               propGuid,
          DBPROPID                              propId,
-         VARIANT*                              pResult_Value)const COMP_W000004_OVERRIDE_FINAL;
+         VARIANT*                              pResult_Value)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void Internal__Direct__SetValue
         (REFGUID                               propGuid,

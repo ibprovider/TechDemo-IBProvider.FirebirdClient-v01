@@ -33,7 +33,7 @@ class t_ibp_error_collection;
 /// <summary>
 ///  Класс для создания коллекции ошибок
 /// </summary>
-class t_ibp_error_collection COMP_W000006_CLASS_FINAL
+class t_ibp_error_collection LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_error_adapter
  ,public t_ibp_error_records_r
 {
@@ -63,23 +63,23 @@ class t_ibp_error_collection COMP_W000006_CLASS_FINAL
   /// <summary>
   ///  Получение количества ошибок
   /// </summary>
-  virtual size_t get_record_count()const COMP_W000004_OVERRIDE_FINAL; //abstract
+  virtual size_t get_record_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //abstract
 
   /// <summary>
   ///  Получение описания одиночной ошибки
   /// </summary>
   //! \param[in] record_num
-  virtual structure::t_err_record::self_ptr get_record(size_t record_num)const COMP_W000004_OVERRIDE_FINAL; //abstract
+  virtual structure::t_err_record::self_ptr get_record(size_t record_num)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //abstract
 
   //t_ibp_error_records_r interface --------------------------------------
 
   /// <summary>
   ///  Получение индекса главной ошибки
   /// </summary>
-  virtual size_type_N get_primary_err_idx()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type_N get_primary_err_idx()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual void push_error(base_error_record_type* pError) COMP_W000004_OVERRIDE_FINAL;//abstract
+  virtual void push_error(base_error_record_type* pError) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract
 
  private:
   t_ibp_error_elements m_items;

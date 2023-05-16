@@ -183,6 +183,11 @@ class WORK_Test_034__StmtExecute_M__v3::tag_impl
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
 
+  static void test_IN_NN012__int128
+               (TTSO_GlobalContext*     pParams,
+                context_type*           pCtx,
+                const TTSO_TestData_v2& Data);
+
  public:
   static void test_IN_N001__array_null
                (TTSO_GlobalContext*     pParams,
@@ -5148,6 +5153,201 @@ void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_NN011__boolean
 }//test_IN_NN011__boolean
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST NN012
+
+void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_NN012__int128
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx,
+                                            const TTSO_TestData_v2&   Data)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ tracer<<L"Hello from test!"<<send;
+
+ //-----------------------------------------
+ typedef TestServices  svc;
+
+ //-----------------------------------------
+ svc::dbprops_type params(pParams);
+
+ params.set_dbprop_init__location(svc::BuildLocationString(pParams));
+ params.set_dbprop_init__user_id(L"SYSDBA");
+ params.set_dbprop_init__password(L"masterkey");
+
+ Data.SetParams(params);
+
+ //-----------------------------------------
+ isc_base::t_isc_connection_settings cns;
+
+ const svc::remote_fb_connector_ptr
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns));
+
+ _TSO_CHECK(!cns.db_dialect_Ex.null());
+
+ _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
+
+ //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle hTr;
+
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(hTr);
+ _TSO_CHECK(hTr->m_ID.has_value());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
+
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ _TSO_CHECK(hStmt!=nullptr);
+
+ _TSO_CHECK(hStmt->m_pParentPort==spConnector->GetPort());
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtPrepare
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "insert into TEST_MODIFY_ROW (COL_INT128) values (?);");
+
+ _TSO_CHECK(hStmt);
+ _TSO_CHECK(hStmt->m_ID.has_value());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
+ remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
+
+ LONG __tmp_val_for_align=0;__tmp_val_for_align;
+
+ isc_api::t_ibp_fb040_int128 xparam0_values[]=
+  {
+   db_obj::make_fb040_int128(1,0),
+   db_obj::make_fb040_int128(0,1),
+  };
+
+ //short          xparam0_ind=0;
+
+ for(size_t i=0;i!=_DIM_(xparam0_values);++i)
+ {
+  tracer<<L"-------------------------- ["<<i<<L"]: "<<xparam0_values[i]<<send;
+
+  const std::array<unsigned char,12> InMsg__BLR=
+  {
+   /*  0 */ isc_api::ibp_isc_blr_version5,
+   /*  1 */ isc_api::ibp_isc_blr_begin,
+   /*  2 */ isc_api::ibp_isc_blr_message,
+   /*  3 */ 0, // message number
+   /*  4 */ 2, // cPars_lower
+   /*  5 */ 0, // cPars_upper
+   /*  6 */ isc_api::ibp_fb040_blr_dtype__int128,  // data type
+   /*  7 */ 0,                                     // data scale
+   /*  8 */ isc_api::ibp_isc_blr_dtype__short,     // indicator type
+   /*  9 */ 0,                                     // indicator scale
+   /* 10 */ isc_api::ibp_isc_blr_end,
+   /* 11 */ isc_api::ibp_isc_blr_eoc,
+  };//InMsg__BLR
+
+  //----------------------------------------
+  const auto v=xparam0_values[i];
+
+  structure::t_stl_vector<unsigned char,TTSO_MemoryAllocator> InMsg__DATA=
+  {
+   //---- value [int128]
+   0,0,
+   0,0,
+   0,0,
+   0,0,
+   0,0,
+   0,0,
+   0,0,
+   0,0,
+   //---- indicator [short]
+   0,
+   0,
+  };//InMsg__DATA
+
+  memcpy(&InMsg__DATA[0],&v,sizeof(v));
+
+  //----------------------------------------
+  std::array<svc::remote_fb_in_msg_v1::descr_type,1> InMsg__DATA_DESCRS;
+
+  InMsg__DATA_DESCRS[0].m_msg_blrtype            =isc_api::ibp_fb040_blr_dtype__int128;
+  InMsg__DATA_DESCRS[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_int128;
+  InMsg__DATA_DESCRS[0].m_xvar_sqlscale          =0;
+  InMsg__DATA_DESCRS[0].m_msg_value_block_size   =16;
+  InMsg__DATA_DESCRS[0].m_msg_value_block_offset =0;
+  InMsg__DATA_DESCRS[0].m_msg_sqlind_offset      =16;
+
+  //----------------------------------------
+  svc::remote_fb_in_msg_v1 InMsg;
+
+ InMsg.blr        =InMsg__BLR;
+ InMsg.data       =InMsg__DATA;
+ InMsg.descrs     =InMsg__DATA_DESCRS;
+ InMsg.data_align =8;
+
+  //----------------------------------------
+  svc::RemoteFB_Connector__StmtExecute_M
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    &InMsg,
+    /*pOutMSG*/nullptr);
+
+  _TSO_CHECK(hTr==hTrCopy);
+  _TSO_CHECK(hTr->m_ID.has_value());
+
+  _TSO_CHECK(hStmt==hStmtCopy);
+  _TSO_CHECK(hStmt->m_ID.has_value());
+ }//for[ever]
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(!hTr);
+ _TSO_CHECK(!hTrCopy->m_ID.has_value());
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtDrop
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector);
+
+ //-----------------------------------------
+ _TSO_CHECK(__tmp_val_for_align==0);
+}//test_IN_NN012__int128
+
+////////////////////////////////////////////////////////////////////////////////
 //TEST N001
 
 void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_N001__array_null
@@ -6893,6 +7093,11 @@ const WORK_Test_034__StmtExecute_M__v3::tag_descr
   ("IN.NN011.boolean",
    test_IN_NN011__boolean,
    "NE__BOOLEAN")
+
+ DEF_TEST_DESCR2
+  ("IN.NN012.int128",
+   test_IN_NN012__int128,
+   "NE__INT128")
 
  DEF_TEST_DESCR
   ("IN.N001.array.null",

@@ -251,16 +251,12 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
    }
    catch(const std::exception& e)
    {
-    t_ibp_error exc(e);
-
-    exc.add_error
-     (E_FAIL,
+    IBP_ErrorUtils::Throw__Error
+     (e,
+      E_FAIL,
       ibp_subsystem__remote_fb,
-      ibp_mce_cmd__in_stmt_info_processing_error_occurred_1);
-
-    exc<<cluster_id;
-
-    exc.raise_me();
+      ibp_mce_cmd__in_stmt_info_processing_error_occurred_1,
+      cluster_id);
    }//catch
 
    if(!known_clusterID)

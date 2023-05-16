@@ -39,7 +39,7 @@ class RemoteFB__PSET02__P13_INIT__PacketStream:public RemoteFB__PacketStream
   //! \param[in] op_ctx
   //! \param[in] packet
   virtual void SendPacket(RemoteFB__PortOperationContext& op_ctx,
-                          const protocol::PACKET&         packet)const COMP_W000004_OVERRIDE_FINAL;
+                          const protocol::PACKET&         packet)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  Получение и распаковка пакета
@@ -47,7 +47,7 @@ class RemoteFB__PSET02__P13_INIT__PacketStream:public RemoteFB__PacketStream
   //! \param[in]  op_ctx
   //! \param[out] packet
   virtual void ReceivePacket(RemoteFB__PortOperationContext& op_ctx,
-                             protocol::PACKET&               packet)const COMP_W000004_OVERRIDE_FINAL;
+                             protocol::PACKET&               packet)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
  public:
 #ifndef NDEBUG
   static void Debug__CheckEncoders();

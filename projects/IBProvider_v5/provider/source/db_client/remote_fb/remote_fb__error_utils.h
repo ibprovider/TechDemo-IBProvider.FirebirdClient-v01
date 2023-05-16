@@ -21,7 +21,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Набор утилит для обработки ошибок.
 /// </summary>
-class RemoteFB__ErrorUtils COMP_W000006_CLASS_FINAL
+class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef RemoteFB__ErrorUtils                   self_type;
