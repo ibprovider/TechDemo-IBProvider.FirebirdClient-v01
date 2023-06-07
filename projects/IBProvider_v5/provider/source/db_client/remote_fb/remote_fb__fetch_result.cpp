@@ -51,7 +51,7 @@ RemoteFB__FetchResult::RemoteFB__FetchResult
  //--------------
  if(m_cbRowBlock>0)
  {
-  const size_t c_max_mem=structure::t_numeric_limits<size_t>::max_value();
+  const size_t c_max_mem=(std::numeric_limits<size_t>::max)();
 
   const size_t maxN=c_max_mem/m_cbRowBlock;
 

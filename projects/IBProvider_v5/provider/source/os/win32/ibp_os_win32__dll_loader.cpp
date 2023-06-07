@@ -9,7 +9,7 @@
 
 #include "source/os/win32/ibp_os_win32__dll_loader.h"
 
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 
 #include <win32lib/win32_error.h>
 
@@ -34,12 +34,11 @@ t_ibp_os_win32__dll_loader::t_ibp_os_win32__dll_loader(t_ibp_str_box const DLL_N
   //Fail load library \"%1\"
   const DWORD err_code=::GetLastError();
 
-  t_ibp_error exc(HRESULT_FROM_WIN32(err_code),
-                  ibp_mce_win32__fail_load_dynamic_library_2);
-
-  exc<<m_DLL_Name<<ibp_err_data__win32_error_msg(err_code);
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (HRESULT_FROM_WIN32(err_code),
+    ibp_mce_win32__fail_load_dynamic_library_2,
+    m_DLL_Name,
+    ibp_err_data__win32_error_msg(err_code));
  }//if
 }//t_ibp_os_win32__dll_loader
 
@@ -77,14 +76,12 @@ FARPROC t_ibp_os_win32__dll_loader::get_proc_address(LPCSTR const point_name)con
 
  assert(FAILED(hr));
 
- t_ibp_error exc(hr,
-                 ibp_mce_win32__fail_get_api_func_address_2);
-
- exc<<m_DLL_Name
-    <<point_name
-    <<ibp_err_data__win32_error_msg(err_code);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (hr,
+   ibp_mce_win32__fail_get_api_func_address_2,
+   m_DLL_Name,
+   point_name,
+   ibp_err_data__win32_error_msg(err_code));
 
 #if(COMP_BUILD_UNUSED_CODE!=0)
  return nullptr;

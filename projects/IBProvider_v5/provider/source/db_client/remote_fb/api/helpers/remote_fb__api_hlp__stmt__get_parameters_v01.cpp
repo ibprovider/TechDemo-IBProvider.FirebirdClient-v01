@@ -136,7 +136,7 @@ void RemoteFB__API_HLP__GetParameters_v01::exec(db_obj::t_db_operation_context& 
     +sizeof(StartIndex)
     +sizeof(helpers::RemoteFB__API_HLP__XSQLDA_SET01__Utilities::sm_sql_info__describe_bind);
 
-  structure::t_fix_vector<c_sz_info_items,unsigned char> info_items;
+  structure::t_fix_vector<unsigned char,c_sz_info_items> info_items;
 
   RemoteFB__InfoBuffer ResultBuffer;
 

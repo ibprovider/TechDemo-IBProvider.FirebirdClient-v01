@@ -12,9 +12,10 @@
 
 #include <ole_lib/ole_auto/ole_auto_variant.h>
 
-#include <structure/utilities/string/equal_to_string.h>
-#include <structure/t_fix_vector.h>
 #include <structure/t_latin.h>
+
+#include <lcpi/lib/structure/utilities/string/equal_to_string.h>
+#include <lcpi/lib/structure/t_fix_vector.h>
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +76,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::Extrac
  assert(sPropValue!=ePropValue);
 
  //список идентификаторов обнаруженных имен
- structure::t_fix_vector<(_DIM_(ibprovider::g_IBP_PropValuesFor__remote__parch)),size_t>
+ lib::structure::t_fix_vector<size_t,_LCPI_DIM_(ibprovider::g_IBP_PropValuesFor__remote__parch)>
   detected_parchs;
 
  //---------------------------------------- проверка списка имен

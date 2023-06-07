@@ -64,10 +64,11 @@ struct t_ibp_error_traits
 ///  Класс исключений для обработки ошибок в компонентах модуля
 /// </summary>
 /// <seealso cref="t_ibp_error_element"/>
-class t_ibp_error:public  ole_lib::t_base_com_error
-                 ,public  t_ibp_error_traits::args_type
-                 ,private t_ibp_error_adapter
-                 ,public  t_ibp_error_records_r
+class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
+ :public  ole_lib::t_base_com_error
+ ,public  t_ibp_error_traits::args_type
+ ,private t_ibp_error_adapter
+ ,public  t_ibp_error_records_r
 {
  private:
   typedef t_ibp_error                               self_type;

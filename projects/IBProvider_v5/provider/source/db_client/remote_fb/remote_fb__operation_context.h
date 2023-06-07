@@ -60,9 +60,9 @@ class RemoteFB__OperationContext:public RemoteFB__PortOperationContext
   virtual RemoteFB__SmartObjectPtr query_service(REFGUID serviceID)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef std::pair<GUID,RemoteFB__SmartObjectPtr> svc_data_type;
+  using svc_data_type=std::pair<GUID,RemoteFB__SmartObjectPtr>;
 
-  typedef structure::t_fix_vector<8,svc_data_type> services_type;
+  using services_type=lib::structure::t_fix_vector<svc_data_type,8>;
 
  private:
   services_type m_services;

@@ -137,6 +137,17 @@ class RemoteFB__XDR__Decoder
                 const wchar_t*      pv_sign_high,
                 protocol::P_INT128* pv);
 
+  static void decode__p_decfloat16
+               (buf_type*               pBuf,
+                const wchar_t*          pv_sign,
+                protocol::P_DECFLOAT16* pv);
+
+  static void decode__p_decfloat34
+               (buf_type*               pBuf,
+                const wchar_t*          pv_sign_low,
+                const wchar_t*          pv_sign_high,
+                protocol::P_DECFLOAT34* pv);
+
  public:
   /// <summary>
   ///  Загрузка статус-вектора

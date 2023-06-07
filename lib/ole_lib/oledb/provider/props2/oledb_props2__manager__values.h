@@ -171,9 +171,8 @@ class OLEDB_Props2__Manager__Values LCPI_CPP_CFG__CLASS__FINAL
   class tag_set_op_helper;
 
  private: //--------------------------------------------------------------
-  typedef structure::t_fix_vector
-           <8,
-            OLEDB_Props2__Data__Descrs::self_cptr>    descrs_set_type;
+  using descrs_set_type
+   =structure::t_fix_vector<OLEDB_Props2__Data__Descrs::self_cptr,8>;
 
  private: //--------------------------------------------------------------
   descrs_set_type m_descr_sets;

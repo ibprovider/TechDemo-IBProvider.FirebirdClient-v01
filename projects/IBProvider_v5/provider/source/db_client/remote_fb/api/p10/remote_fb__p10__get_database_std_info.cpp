@@ -107,9 +107,9 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec1
   =L"RemoteFB__P10__GetDatabaseStdInfo::helper__exec1";
 
  //-----------------------------------------------------------------------
- const size_t c_query_ids=_DIM_(sm_db_info_items1);
+ const size_t c_query_ids=_LCPI_DIM_(sm_db_info_items1);
 
- typedef structure::t_fix_vector<c_query_ids,unsigned char>  query_ids_type;
+ using query_ids_type=lib::structure::t_fix_vector<unsigned char,c_query_ids>;
 
  //-----------------------------------------------------------------------
  RemoteFB__InfoBuffer buffer2;
@@ -127,14 +127,10 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec1
  catch(const std::exception& e)
  {
   //дополнительная информация о причинах сбоя.
-  t_ibp_error exc(e);
-
-  exc.add_error
-   (exc.com_code(),
+  IBP_ErrorUtils::ReThrowWithSameHResult
+   (e,
     ibp_subsystem__remote_fb__p10,
     ibp_mce_dbobj_fail_get_db_info_0);
-
-  exc.raise_me();
  }//catch
 
  //обработка элементов буфера
@@ -421,9 +417,9 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
  //-----------------------------------------------------------------------
  structure::str_version const fb_ver(cns.dbms.version);//throw
 
- const size_t c_query_ids=_DIM_(sm_db_info_items2);
+ const size_t c_query_ids=_LCPI_DIM_(sm_db_info_items2);
 
- typedef structure::t_fix_vector<c_query_ids,unsigned char>  query_ids_type;
+ using query_ids_type=lib::structure::t_fix_vector<unsigned char,c_query_ids>;
 
  query_ids_type query_ids;
 
@@ -474,14 +470,10 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
  catch(const std::exception& e)
  {
   //дополнительная информация о причинах сбоя.
-  t_ibp_error exc(e);
-
-  exc.add_error
-   (exc.com_code(),
+  IBP_ErrorUtils::ReThrowWithSameHResult
+   (e,
     ibp_subsystem__remote_fb__p10,
     ibp_mce_dbobj_fail_get_db_info_0);
-
-  exc.raise_me();
  }//catch
 
  //обработка элементов буфера

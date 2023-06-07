@@ -6778,7 +6778,7 @@ void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_OUT_004__float
   //----------------------------------------
   structure::t_stl_vector<unsigned char,TTSO_MemoryAllocator> OutMsg__DATA=
   {
-   //---- value [int64]
+   //---- value [float]
    0xFF,
    0xFF,
    0xFF,
@@ -6891,6 +6891,311 @@ void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_OUT_004__float
   (tracer,
    spConnector);
 }//test_IN_OUT_004__float
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST IN_OUT 005
+
+void WORK_Test_034__StmtExecute_M__v3::tag_impl::test_IN_OUT_005__double
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx,
+                                            const TTSO_TestData_v2&   Data)
+{
+ using value_type=double;
+
+ assert_s(sizeof(value_type)==8);
+
+ //-----------------------------------------
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ tracer<<L"Hello from test!"<<send;
+
+ //-----------------------------------------
+ typedef TestServices  svc;
+
+ //-----------------------------------------
+ svc::dbprops_type params(pParams);
+
+ params.set_dbprop_init__location(svc::BuildLocationString(pParams));
+ params.set_dbprop_init__user_id(L"SYSDBA");
+ params.set_dbprop_init__password(L"masterkey");
+
+ Data.SetParams(params);
+
+ //-----------------------------------------
+ isc_base::t_isc_connection_settings cns;
+
+ const svc::remote_fb_connector_ptr
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns));
+
+ _TSO_CHECK(!cns.db_dialect_Ex.null());
+
+ _TSO_CHECK(structure::can_numeric_cast<unsigned short>(cns.db_dialect_Ex.value()));
+
+ //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle hTr;
+
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(hTr);
+ _TSO_CHECK(hTr->m_ID.has_value());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
+
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ _TSO_CHECK(hStmt!=nullptr);
+
+ _TSO_CHECK(hStmt->m_pParentPort==spConnector->GetPort());
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtPrepare
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "insert into TEST_MODIFY_ROW (COL_DOUBLE) values (?) RETURNING COL_DOUBLE;");
+
+ _TSO_CHECK(hStmt);
+ _TSO_CHECK(hStmt->m_ID.has_value());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
+ remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
+
+ struct tag_test_value
+ {
+  value_type set_value;
+  short      set_indicator;
+
+  value_type get_value;
+  short      get_indicator;
+ };//struct tag_test_value
+
+ using limit_t=std::numeric_limits<value_type>;
+
+ const tag_test_value test_values[]=
+ {
+  { (limit_t::min)()    ,    0, (limit_t::min)()     ,    0},
+  { (limit_t::min)()+1  ,    0, (limit_t::min)()+1   ,    0},
+  { -1                  ,    0, -1                   ,    0},
+  {  0                  ,    0,  0                   ,    0},
+  { (limit_t::max)()    ,   -1, -1                   ,   -1},
+  {  1                  ,    0,  1                   ,    0},
+  { (limit_t::max)()-1  ,    0, (limit_t::max)()-1   ,    0},
+  { (limit_t::max)()    ,    0, (limit_t::max)()     ,    0},
+ };//test_values
+
+ for(size_t i=0;i!=_DIM_(test_values);++i)
+ {
+  const auto& testValue=test_values[i];
+
+  tracer<<L"-------------------------- ["<<i<<L"]: "<<testValue.set_value<<" [ind: "<<testValue.set_indicator<<"]"<<send;
+
+  //------------------------------------------------- INPUT
+  const std::array<unsigned char,11> InMsg__BLR=
+  {
+   /*  0 */ isc_api::ibp_isc_blr_version5,
+   /*  1 */ isc_api::ibp_isc_blr_begin,
+   /*  2 */ isc_api::ibp_isc_blr_message,
+   /*  3 */ 0, // message number
+   /*  4 */ 2, // cPars_lower
+   /*  5 */ 0, // cPars_upper
+   /*  6 */ isc_api::ibp_isc_blr_dtype__double, // data type
+   /*  7 */ isc_api::ibp_isc_blr_dtype__short,  // indicator type
+   /*  8 */ 0,                                  // indicator scale
+   /*  9 */ isc_api::ibp_isc_blr_end,
+   /* 10 */ isc_api::ibp_isc_blr_eoc,
+  };//InMsg__BLR
+
+  //----------------------------------------
+  const auto input_value=testValue.set_value;
+
+  structure::t_stl_vector<unsigned char,TTSO_MemoryAllocator> InMsg__DATA=
+  {
+   //---- value [double]
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   //---- indicator [short]
+   0,
+   0,
+  };//InMsg__DATA
+
+  //----------------------------------------
+  std::array<svc::remote_fb_in_msg_v1::descr_type,1> InMsg__DATA_DESCRS;
+
+  InMsg__DATA_DESCRS[0].m_msg_blrtype            =isc_api::ibp_isc_blr_dtype__double;
+  InMsg__DATA_DESCRS[0].m_xvar_sqltype           =isc_api::ibp_isc_sql_double;
+  InMsg__DATA_DESCRS[0].m_xvar_sqlscale          =0;
+  InMsg__DATA_DESCRS[0].m_msg_value_block_size   =8;
+  InMsg__DATA_DESCRS[0].m_msg_value_block_offset =0;
+  InMsg__DATA_DESCRS[0].m_msg_sqlind_offset      =8;
+
+  //----------------------------------------
+  memcpy(&InMsg__DATA[InMsg__DATA_DESCRS[0].m_msg_value_block_offset],&input_value,sizeof(input_value));
+  memcpy(&InMsg__DATA[InMsg__DATA_DESCRS[0].m_msg_sqlind_offset],&testValue.set_indicator,sizeof(testValue.set_indicator));
+
+  //------------------------------------------------- OUTPUT
+  const std::array<unsigned char,11> OutMsg__BLR=
+  {
+   /*  0 */ isc_api::ibp_isc_blr_version5,
+   /*  1 */ isc_api::ibp_isc_blr_begin,
+   /*  2 */ isc_api::ibp_isc_blr_message,
+   /*  3 */ 0, // message number
+   /*  4 */ 2, // cPars_lower
+   /*  5 */ 0, // cPars_upper
+   /*  6 */ isc_api::ibp_isc_blr_dtype__double, // data type
+   /*  7 */ isc_api::ibp_isc_blr_dtype__short,  // indicator type
+   /*  8 */ 0,                                  // indicator scale
+   /*  9 */ isc_api::ibp_isc_blr_end,
+   /* 10 */ isc_api::ibp_isc_blr_eoc,
+  };//OutMsg__BLR
+
+  //----------------------------------------
+  structure::t_stl_vector<unsigned char,TTSO_MemoryAllocator> OutMsg__DATA=
+  {
+   //---- value [float]
+   0xFF,
+   0xFF,
+   0xFF,
+   0xFF,
+   0xFF,
+   0xFF,
+   0xFF,
+   0xFF,
+   //---- indicator [short]
+   0xFE,
+   0xFE,
+  };//OutMsg__DATA
+
+  //----------------------------------------
+  std::array<svc::remote_fb_in_msg_v1::descr_type,1> OutMsg__DATA_DESCRS;
+
+  OutMsg__DATA_DESCRS[0].m_msg_blrtype            =isc_api::ibp_isc_blr_dtype__double;
+  OutMsg__DATA_DESCRS[0].m_xvar_sqltype           =isc_api::ibp_isc_sql_double;
+  OutMsg__DATA_DESCRS[0].m_xvar_sqlscale          =0;
+  OutMsg__DATA_DESCRS[0].m_msg_value_block_size   =8;
+  OutMsg__DATA_DESCRS[0].m_msg_value_block_offset =0;
+  OutMsg__DATA_DESCRS[0].m_msg_sqlind_offset      =8;
+
+  //----------------------------------------
+  {
+   value_type c_neg_one=-1;
+
+   memcpy(&OutMsg__DATA[OutMsg__DATA_DESCRS[0].m_msg_value_block_offset],&c_neg_one,sizeof(c_neg_one));
+  }
+
+  //----------------------------------------
+  svc::remote_fb_in_msg_v1 InMsg;
+
+  InMsg.blr        =InMsg__BLR;
+  InMsg.data       =InMsg__DATA;
+  InMsg.descrs     =InMsg__DATA_DESCRS;
+  InMsg.data_align =8;
+
+  svc::remote_fb_out_msg_v1 OutMsg;
+
+  OutMsg.blr        =OutMsg__BLR;
+  OutMsg.data       =OutMsg__DATA;
+  OutMsg.descrs     =OutMsg__DATA_DESCRS;
+  OutMsg.data_align =8;
+
+  //----------------------------------------
+  svc::RemoteFB_Connector__StmtExecute_M
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    &InMsg,
+    &OutMsg);
+
+  _TSO_CHECK(hTr==hTrCopy);
+  _TSO_CHECK(hTr->m_ID.has_value());
+
+  _TSO_CHECK(hStmt==hStmtCopy);
+  _TSO_CHECK(hStmt->m_ID.has_value());
+
+  //----------------------------------------
+  short out_null_indicator=123;
+
+  memcpy(&out_null_indicator,&OutMsg__DATA.data()[OutMsg__DATA_DESCRS[0].m_msg_sqlind_offset],sizeof(out_null_indicator));
+
+  if(out_null_indicator!=testValue.get_indicator)
+  {
+   tracer(tso_msg_error,-1)
+    <<L"The wrong OUT-parameter null indiciator: "<<out_null_indicator<<L". The expected value is "<<testValue.get_indicator<<"."<<send;
+  }
+  else
+  {
+   tracer
+    <<L"OK. The OUT-parameter null indiciator is correct: "<<out_null_indicator<<L"."<<send;
+  }//else
+
+  if(out_null_indicator==0)
+  {
+   auto out_value=input_value; out_value=0;
+
+   memcpy(&out_value,&OutMsg__DATA.data()[OutMsg__DATA_DESCRS[0].m_msg_value_block_offset],sizeof(out_value));
+
+   if(out_value!=testValue.get_value)
+   {
+    tracer(tso_msg_error,-1)
+     <<L"The wrong OUT-parameter value: "<<out_value<<L". The expected value is "<<testValue.get_value<<L"."<<send;
+   }
+   else
+   {
+    tracer
+     <<L"OK. The OUT-parameter value is correct: "<<out_value<<L"."<<send;
+   }//else
+  }//local
+ }//for[ever]
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(!hTr);
+ _TSO_CHECK(!hTrCopy->m_ID.has_value());
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtDrop
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector);
+}//test_IN_OUT_005__double
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -7122,6 +7427,10 @@ const WORK_Test_034__StmtExecute_M__v3::tag_descr
  DEF_TEST_DESCR
   ("IN_OUT.004.float",
    test_IN_OUT_004__float)
+
+ DEF_TEST_DESCR
+  ("IN_OUT.005.double",
+   test_IN_OUT_005__double)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

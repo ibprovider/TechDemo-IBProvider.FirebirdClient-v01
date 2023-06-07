@@ -63,15 +63,15 @@ class t_basic_message
   virtual ~t_basic_message();
 
   //t_message interface --------------------------------------------------
-  virtual error_code_type get_error_code()const COMP_W000004_OVERRIDE_FINAL;
+  virtual error_code_type get_error_code()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual msg_kind_type get_msg_kind()const COMP_W000004_OVERRIDE_FINAL;
+  virtual msg_kind_type get_msg_kind()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool get_description(lcid_type    /*lcid*/,
                                string_type* source,
-                               string_type* description)const COMP_W000004_OVERRIDE_FINAL;
+                               string_type* description)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_message_ptr clone()const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_message_ptr clone()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class t_basic_message
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -209,7 +209,7 @@ class t_basic_log_stream__console
   virtual ~t_basic_log_stream__console();
   
   //t_log_stream interface -----------------------------------------------
-  virtual void out(const char_type* s) COMP_W000004_OVERRIDE_FINAL;//abstract
+  virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract
   
  private:
   const UINT  m_ConsoleCP;
@@ -299,7 +299,7 @@ class t_basic_root_log
   void inc_unhandled_error_count();
 
   //t_log interface ------------------------------------------------------
-  virtual void trace(message_type* msg) COMP_W000004_OVERRIDE_FINAL;
+  virtual void trace(message_type* msg) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   void push_empty_line();
 

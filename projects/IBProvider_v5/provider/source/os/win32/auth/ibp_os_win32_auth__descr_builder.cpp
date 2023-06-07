@@ -220,12 +220,11 @@ void t_auth__descr_builder::request(t_auth__provider* const pProvider,
    {
     // ERROR - failed to initialize security context
 
-    t_ibp_error exc(E_FAIL,ibp_mce_win32__auth__fail_func_call_2);
-
-    exc<<pProvider->m_InitializeSecurityContext.point_name()
-       <<m_LastResultCode.value();
-
-    exc.raise_me();
+    IBP_ErrorUtils::Throw__Error
+     (E_FAIL,
+      ibp_mce_win32__auth__fail_func_call_2,
+      pProvider->m_InitializeSecurityContext.point_name(),
+      m_LastResultCode.value());
    }//default
   }//switch m_LastResultCode.value()
 
@@ -268,12 +267,11 @@ void t_auth__descr_builder::helper__free()
   if(authErr!=SEC_E_OK)
   {
    // ERROR - failed to destroy security context
-   t_ibp_error exc(E_FAIL,ibp_mce_win32__auth__fail_func_call_2);
-
-   exc<<m_spProvider->m_DeleteSecurityContext.point_name()
-      <<authErr;
-
-   exc.raise_me();
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_win32__auth__fail_func_call_2,
+     m_spProvider->m_DeleteSecurityContext.point_name(),
+     authErr);
   }//if
 
   assert(authErr==SEC_E_OK);

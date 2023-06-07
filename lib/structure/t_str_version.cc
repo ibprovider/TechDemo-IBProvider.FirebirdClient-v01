@@ -3,6 +3,7 @@
 #define _t_str_version_CC_
 
 #include <structure/t_char_traits2.h>
+#include <stdexcept>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

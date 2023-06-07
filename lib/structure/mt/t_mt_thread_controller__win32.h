@@ -32,11 +32,11 @@ class t_basic_thread_controller__win32:public t_basic_thread_controller<tag_base
   void wait_exit();
 
  private:
-  virtual void start_thread_impl() COMP_W000004_OVERRIDE_FINAL;
+  virtual void start_thread_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void stop_thread_impl() COMP_W000004_OVERRIDE_FINAL;
+  virtual void stop_thread_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool thread_is_active_impl() COMP_W000004_OVERRIDE_FINAL;
+  virtual bool thread_is_active_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   static DWORD WINAPI ThreadEntryPoint(LPVOID lpParam);
 

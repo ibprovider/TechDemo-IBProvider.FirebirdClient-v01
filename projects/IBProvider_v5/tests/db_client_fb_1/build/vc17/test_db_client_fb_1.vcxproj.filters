@@ -1010,6 +1010,30 @@
     <Filter Include="source\tests\work\StmtFetch_M\Types\int128\_headers">
       <UniqueIdentifier>{5de65707-79db-455d-820b-a69415935d6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decfloat16">
+      <UniqueIdentifier>{efb8c065-f722-405f-af38-e6a92d0c4102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decfloat16\_headers">
+      <UniqueIdentifier>{82f9d853-a73e-492d-8876-4a35a588fe8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decfloat34">
+      <UniqueIdentifier>{1cb2c470-f3e7-4be8-9ec5-53d25ef26925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\decfloat34\_headers">
+      <UniqueIdentifier>{34233188-2335-46e9-9c13-05a2b84bb104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decfloat16">
+      <UniqueIdentifier>{77cc1f16-a5e1-48c5-bbab-58693bb95d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decfloat16\_headers">
+      <UniqueIdentifier>{4787b684-4ad9-4b54-b67f-d1dd159069c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decfloat34">
+      <UniqueIdentifier>{2df10e1f-ba45-4eca-882e-cea3db89c5e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\decfloat34\_headers">
+      <UniqueIdentifier>{d0f3ae95-360d-41f1-ad1b-3f6ffe6410f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3529,6 +3553,36 @@
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.cpp">
       <Filter>source\tests\work\Array\Read</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decfloat16\WORK_StmtFetch__Types__decfloat16_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\decfloat16</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\decfloat34\WORK_StmtFetch__Types__decfloat34_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\decfloat34</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decfloat16\WORK_StmtFetch_M__Types__decfloat16_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\decfloat16</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\decfloat34\WORK_StmtFetch_M__Types__decfloat34_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\decfloat34</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_015__decfloat16.cpp">
+      <Filter>source\tests\work\Params\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_016__decfloat34.cpp">
+      <Filter>source\tests\work\Params\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_015__decfloat16.cpp">
+      <Filter>source\tests\work\Params\IN2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_016__decfloat34.cpp">
+      <Filter>source\tests\work\Params\IN2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_012__decfloat16.cpp">
+      <Filter>source\tests\work\Array\Read</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.cpp">
+      <Filter>source\tests\work\Array\Read</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -5597,6 +5651,36 @@
       <Filter>source\tests\work\Params\OUT\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.h">
+      <Filter>source\tests\work\Array\Read\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decfloat16\WORK_StmtFetch__Types__decfloat16_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\decfloat16\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\decfloat34\WORK_StmtFetch__Types__decfloat34_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\decfloat34\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decfloat16\WORK_StmtFetch_M__Types__decfloat16_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\decfloat16\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\decfloat34\WORK_StmtFetch_M__Types__decfloat34_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\decfloat34\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_015__decfloat16.h">
+      <Filter>source\tests\work\Params\OUT\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_016__decfloat34.h">
+      <Filter>source\tests\work\Params\OUT\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_015__decfloat16.h">
+      <Filter>source\tests\work\Params\IN2\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_016__decfloat34.h">
+      <Filter>source\tests\work\Params\IN2\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_012__decfloat16.h">
+      <Filter>source\tests\work\Array\Read\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.h">
       <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
   </ItemGroup>

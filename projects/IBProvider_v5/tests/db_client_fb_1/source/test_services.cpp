@@ -3094,5 +3094,87 @@ bool TestServices::checkValue__INT128
  return false;
 }//checkValue__INT128
 
+//------------------------------------------------------------------------
+bool TestServices::checkValue__DECFLOAT16
+                             (TTSO_Tracer&                    tracer,
+                              short                           actualSqlInd,
+                              isc_api::t_ibp_fb040_decfloat16 actualSqlValue,
+                              short                           expectedSqlInd,
+                              isc_api::t_ibp_fb040_decfloat16 expectedSqlValue)
+{
+ for(;;)
+ {
+  tracer<<L"check value [decfloat16] (ind: "<<actualSqlInd<<L", "<<actualSqlValue<<L") ...";
+
+  if(actualSqlInd==expectedSqlInd && actualSqlValue==expectedSqlValue)
+  {
+   tracer<<L"OK"<<send;
+
+   return true;
+  }
+
+  tracer<<L"FAILED"<<send;
+
+  break;
+ }//for[ever]
+
+ if(actualSqlInd!=expectedSqlInd)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect indicator: "<<actualSqlInd<<L". Expected: "<<expectedSqlInd<<L"."<<send;
+ }//if
+
+ if(actualSqlValue!=expectedSqlValue)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect value: "<<actualSqlValue  <<L".\n"
+   <<L" Expected value: "<<expectedSqlValue<<L"."
+   <<send;
+ }//if
+
+ return false;
+}//checkValue__DECFLOAT16
+
+//------------------------------------------------------------------------
+bool TestServices::checkValue__DECFLOAT34
+                             (TTSO_Tracer&                    tracer,
+                              short                           actualSqlInd,
+                              isc_api::t_ibp_fb040_decfloat34 actualSqlValue,
+                              short                           expectedSqlInd,
+                              isc_api::t_ibp_fb040_decfloat34 expectedSqlValue)
+{
+ for(;;)
+ {
+  tracer<<L"check value [decfloat34] (ind: "<<actualSqlInd<<L", "<<actualSqlValue<<L") ...";
+
+  if(actualSqlInd==expectedSqlInd && actualSqlValue==expectedSqlValue)
+  {
+   tracer<<L"OK"<<send;
+
+   return true;
+  }
+
+  tracer<<L"FAILED"<<send;
+
+  break;
+ }//for[ever]
+
+ if(actualSqlInd!=expectedSqlInd)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect indicator: "<<actualSqlInd<<L". Expected: "<<expectedSqlInd<<L"."<<send;
+ }//if
+
+ if(actualSqlValue!=expectedSqlValue)
+ {
+  tracer(tso_msg_error,-1)
+   <<L"Incorrect value: "<<actualSqlValue  <<L".\n"
+   <<L" Expected value: "<<expectedSqlValue<<L"."
+   <<send;
+ }//if
+
+ return false;
+}//checkValue__DECFLOAT34
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_test*/

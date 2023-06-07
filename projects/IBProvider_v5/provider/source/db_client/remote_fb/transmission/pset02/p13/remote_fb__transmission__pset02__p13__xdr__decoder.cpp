@@ -524,12 +524,64 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
 
      xdr::decode__p_int128
       (pBuf,
-       L"sql_message.int128.low",
-       L"sql_message.int128.high",
+       L"sql_message.int128.data.low",
+       L"sql_message.int128.data.high",
        reinterpret_cast<protocol::P_INT128*>(msg_data+offset));
 
      break;
     }//ibp_fb040_blr_dtype__int128
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat16:
+    {
+     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat16);
+
+     assert(MsgElementDescr.m_msg_value_block_size==sizeof(protocol::P_DECFLOAT16));
+
+     //----
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT16().value));
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(protocol::P_DECFLOAT16)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__p_decfloat16
+      (pBuf,
+       L"sql_message.decfloat16.value",
+       reinterpret_cast<protocol::P_DECFLOAT16*>(msg_data+offset));
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat16
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat34:
+    {
+     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat34);
+
+     assert(MsgElementDescr.m_msg_value_block_size==sizeof(protocol::P_DECFLOAT34));
+
+     //----
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.low));
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.high));
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(protocol::P_DECFLOAT34)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__p_decfloat34
+      (pBuf,
+       L"sql_message.decfloat34.data.low",
+       L"sql_message.decfloat34.data.high",
+       reinterpret_cast<protocol::P_DECFLOAT34*>(msg_data+offset));
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat34
 
     default:
     {

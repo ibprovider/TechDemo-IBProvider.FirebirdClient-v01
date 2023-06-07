@@ -61,7 +61,7 @@ static isc_api::isc_status
 
 const isc_base::t_isc_error_code_descr2 g_fb_v04_0_0__error_descrs2[ibp_fb_v40_err__count]=
 {
- // Machine generated code [22.03.2023 13:38:49]
+ // Machine generated code [30.05.2023 11:49:54]
 
  ADD_CODE /*1*/
    (335544321L,
@@ -4994,7 +4994,7 @@ const isc_base::t_isc_error_code_descr2 g_fb_v04_0_0__error_descrs2[ibp_fb_v40_e
     decfloat_overflow,
     IBP_MCE_FB40__DECFLOAT_OVERFLOW,
     IBP_SQLSTATE__22003__DATA_EXCEPTION_NUMERIC_VALUE_OUT_OF_RANGE,
-    NO_OLEDB_ERR_CODE)
+    DB_E_DATAOVERFLOW)
  ADD_CODE /*823*/
    (335545143L,
     decfloat_underflow,

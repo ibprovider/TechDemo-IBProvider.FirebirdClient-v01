@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
-#include <structure/t_zero.h>
+#include <lcpi/lib/structure/t_zero.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
   Nulls.alloc(ResultBufferLength); //throw
  }//local
 
- std::fill(Nulls.buffer(),Nulls.buffer_end(),structure::zero);
+ std::fill(Nulls.buffer(),Nulls.buffer_end(),lib::structure::zero);
 }//Alloc_XSQLDA_MSG_NULLS - XSQLDA_V1
 
 //------------------------------------------------------------------------
@@ -65,7 +65,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Alloc_XSQLDA_MSG_NULLS
   Nulls.alloc(ResultBufferLength); //throw
  }//local
 
- std::fill(Nulls.buffer(),Nulls.buffer_end(),structure::zero);
+ std::fill(Nulls.buffer(),Nulls.buffer_end(),lib::structure::zero);
 }//Alloc_XSQLDA_MSG_NULLS - DataDescrs
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -84,7 +84,8 @@ class RemoteFB__PortInitializer_PSET01_v01
   //! \note
   //!  У нас три версии: 10, 11, 12
   //!  Дублирование не допускается.
-  typedef structure::t_fix_vector<3,protocol::P_PROTOCOL_VERSION> pversions_type;
+  using pversions_type
+   =lib::structure::t_fix_vector<protocol::P_PROTOCOL_VERSION,3>;
 
   /// <summary>
   ///  Контейнер с идентификаторами архитектур протокола.
@@ -92,7 +93,8 @@ class RemoteFB__PortInitializer_PSET01_v01
   //! \note
   //!  У нас только две поддерживаемые архитектуры: generic и symmetric.
   //!  Дублирование не допускается.
-  typedef structure::t_fix_vector<2,protocol::P_ARCH> parchs_type;
+  using parchs_type
+   =structure::t_fix_vector<protocol::P_ARCH,2>;
 
  private:
   static bool Helper__TryConnect

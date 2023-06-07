@@ -10,7 +10,7 @@ namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //Memory allocator for COM-objects
 
-DECLARE_WRAP_ALLOCATOR(TComObjectMemoryAllocator);
+LCPI_CPP_LIB__DECLARE_WRAP_ALLOCATOR(TComObjectMemoryAllocator);
 
 ////////////////////////////////////////////////////////////////////////////////
 //Helper utility for work with TComObjectMemoryAllocator

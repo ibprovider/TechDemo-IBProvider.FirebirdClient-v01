@@ -496,6 +496,63 @@ void RemoteFB__XDR__Decoder::decode__p_int128
 }//decode__p_int128
 
 //------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__p_decfloat16
+                              (buf_type*               const pBuf,
+                               const wchar_t*          const pv_sign,
+                               protocol::P_DECFLOAT16* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_DECFLOAT16)==sizeof(protocol::P_UINT64));
+
+ self_type::decode__p_uint64
+  (pBuf,
+   pv_sign,
+   &pv->value);
+}//decode__p_decfloat16
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__p_decfloat34
+                              (buf_type*               const pBuf,
+                               const wchar_t*          const pv_sign_low,
+                               const wchar_t*          const pv_sign_high,
+                               protocol::P_DECFLOAT34* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv_sign_low!=nullptr);
+ assert(pv_sign_high!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_DECFLOAT34)==2*sizeof(protocol::P_UINT64));
+
+ // [2023-05-15] Just for point out. The decoders for big and little will be equal.
+
+#if (IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN)
+
+ self_type::decode__p_uint64
+  (pBuf,
+   pv_sign_high,
+   &pv->data.high);
+
+ self_type::decode__p_uint64
+  (pBuf,
+   pv_sign_low,
+   &pv->data.low);
+
+#elif (IBP_BYTE_ORDER==IBP_BYTE_ORDER__BIG_ENDIAN)
+
+# error Not implemented!
+
+#else
+
+# error Unexpected BYTE ORDER!
+
+#endif
+}//decode__p_decfloat34
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__status_vector__eset02
                               (buf_type*                      const pBuf,
                                mem_type*                      const pMem,
@@ -892,16 +949,51 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
-     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type),sizeof(size_t)))==0);
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type().data.low),sizeof(size_t)))==0);
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type().data.high),sizeof(size_t)))==0);
 
      xdr::decode__p_int128
       (pBuf,
-       L"array_slice.int128.low",
-       L"array_slice.int128.high",
+       L"array_slice.int128.data.low",
+       L"array_slice.int128.data.high",
        reinterpret_cast<value_type*>(pElement));
 
      break;
     }//case - ibp_fb040_blr_dtype__int128
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat16:
+    {
+     typedef protocol::P_DECFLOAT16 value_type;
+
+     assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
+
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type().value),sizeof(size_t)))==0);
+
+     xdr::decode__p_decfloat16
+      (pBuf,
+       L"array_slice.decfloat16.value",
+       reinterpret_cast<value_type*>(pElement));
+
+     break;
+    }//case - ibp_fb040_blr_dtype__decfloat16
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat34:
+    {
+     typedef protocol::P_DECFLOAT34 value_type;
+
+     assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
+
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type().data.low),sizeof(size_t)))==0);
+     assert((reinterpret_cast<size_t>(pElement)%min(sizeof(value_type().data.high),sizeof(size_t)))==0);
+
+     xdr::decode__p_decfloat34
+      (pBuf,
+       L"array_slice.decfloat34.data.low",
+       L"array_slice.decfloat34.data.high",
+       reinterpret_cast<value_type*>(pElement));
+
+     break;
+    }//case - ibp_fb040_blr_dtype__decfloat34
 
     default:
     {

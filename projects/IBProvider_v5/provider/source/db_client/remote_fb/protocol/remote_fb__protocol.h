@@ -93,6 +93,10 @@ typedef db_obj::t_dbvalue__ui8              P_UINT64;
 
 typedef db_obj::t_dbvalue__fb040_int128     P_INT128;
 
+typedef db_obj::t_dbvalue__fb040_decfloat16 P_DECFLOAT16;
+
+typedef db_obj::t_dbvalue__fb040_decfloat34 P_DECFLOAT34;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef P_USHORT                            P_CONNECT_VERSION;

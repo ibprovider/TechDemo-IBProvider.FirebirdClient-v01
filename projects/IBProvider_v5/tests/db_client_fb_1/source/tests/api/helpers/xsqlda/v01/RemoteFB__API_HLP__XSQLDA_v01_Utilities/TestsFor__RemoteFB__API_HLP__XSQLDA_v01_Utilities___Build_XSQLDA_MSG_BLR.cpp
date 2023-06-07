@@ -99,6 +99,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
   static void test_t14___bug_check__incorrect_sqllen__int128
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+  static void test_t15___bug_check__incorrect_sqllen__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_t16___bug_check__incorrect_sqllen__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -207,6 +215,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                 context_type*       pCtx);
 
   static void test_d19__int128_scale37
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d20__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d21__decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl
@@ -338,10 +354,16 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
 
    errSvc::check_err_count(exc,2);
 
-   errSvc::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
+   //errSvc::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
+   // (tracer,
+   //  exc.get_record(0),
+   //  errSvc::sm_subsysID__remote_fb,
+   //  -4);
+
+   errSvc::check_err_rec__xsqlda_err__incorrect_sqllen
     (tracer,
      exc.get_record(0),
-     errSvc::sm_subsysID__remote_fb,
+     L"sql_long",
      -4);
 
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
@@ -624,18 +646,82 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128,
-            15,
-            L"sql_int128");
+ for(short sz=-33;sz!=33;++sz)
+ {
+  if(sz==16)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128|1,
-            17,
-            L"sql_int128");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_int128,
+    sz,
+    L"sql_int128");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_int128|1,
+    sz,
+    L"sql_int128");
+ }//for sz
 }//test_t14___bug_check__incorrect_sqllen__int128
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T15
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_t15___bug_check__incorrect_sqllen__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short sz=-33;sz!=33;++sz)
+ {
+  if(sz==8)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16,
+    sz,
+    L"sql_decfloat16");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16|1,
+    sz,
+    L"sql_decfloat16");
+ }//for sz
+}//test_t15___bug_check__incorrect_sqllen__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_t16___bug_check__incorrect_sqllen__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short sz=-33;sz!=33;++sz)
+ {
+  if(sz==16)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34,
+    sz,
+    L"sql_decfloat34");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34|1,
+    sz,
+    L"sql_decfloat34");
+ }//for sz
+}//test_t16___bug_check__incorrect_sqllen__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
@@ -2017,6 +2103,128 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
 }//test_d19__int128_scale37
 
 ////////////////////////////////////////////////////////////////////////////////
+//D20
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_d20__decfloat16
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ struct tag_data
+ {
+  isc_api::t_ibp_fb040_decfloat16  data;
+
+  tag_data()
+  {
+   memset(this,0,sizeof(*this));
+  }
+ };//struct tag_data
+
+ const std::unique_ptr<tag_data> var(new tag_data());
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_decfloat16;
+ xsqlda->sqlvar[0].sqllen   =sizeof(var->data);
+ xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(var.get());
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_blr_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_BLR(xsqlda,buf);
+
+ unsigned char c_expected_blr[]=
+ {
+  isc_api::ibp_isc_blr_version5,
+  isc_api::ibp_isc_blr_begin,
+  isc_api::ibp_isc_blr_message,
+  0,
+  2, //cPars.low
+  0, //cPars.high
+  //----
+  isc_api::ibp_fb040_blr_dtype__decfloat16,
+  //----
+  isc_api::ibp_isc_blr_dtype__short,
+  0,
+  //----
+  isc_api::ibp_isc_blr_end,
+  isc_api::ibp_isc_blr_eoc,
+ };//c_expected_blr
+
+ _TSO_CHECK(structure::equal(c_expected_blr,
+                             _END_(c_expected_blr),
+                             buf.buffer(),
+                             buf.buffer_end()));
+}//test_d21__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//D21
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_d21__decfloat34
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ struct tag_data
+ {
+  isc_api::t_ibp_fb040_decfloat34  data;
+
+  tag_data()
+  {
+   memset(this,0,sizeof(*this));
+  }
+ };//struct tag_data
+
+ const std::unique_ptr<tag_data> var(new tag_data());
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_decfloat34;
+ xsqlda->sqlvar[0].sqllen   =sizeof(var->data);
+ xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(var.get());
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_blr_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_BLR(xsqlda,buf);
+
+ unsigned char c_expected_blr[]=
+ {
+  isc_api::ibp_isc_blr_version5,
+  isc_api::ibp_isc_blr_begin,
+  isc_api::ibp_isc_blr_message,
+  0,
+  2, //cPars.low
+  0, //cPars.high
+  //----
+  isc_api::ibp_fb040_blr_dtype__decfloat34,
+  //----
+  isc_api::ibp_isc_blr_dtype__short,
+  0,
+  //----
+  isc_api::ibp_isc_blr_end,
+  isc_api::ibp_isc_blr_eoc,
+ };//c_expected_blr
+
+ _TSO_CHECK(structure::equal(c_expected_blr,
+                             _END_(c_expected_blr),
+                             buf.buffer(),
+                             buf.buffer_end()));
+}//test_d21__decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_descr
@@ -2074,6 +2282,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                 test_t13___bug_check__incorrect_sqllen__boolean)
  DEF_TEST_DESCR("T14.bug_check.incorrect_sqllen.int128",
                 test_t14___bug_check__incorrect_sqllen__int128)
+ DEF_TEST_DESCR("T15.bug_check.incorrect_sqllen.decfloat16",
+                test_t15___bug_check__incorrect_sqllen__decfloat16)
+ DEF_TEST_DESCR("T16.bug_check.incorrect_sqllen.decfloat34",
+                test_t16___bug_check__incorrect_sqllen__decfloat34)
 
  DEF_TEST_DESCR("S01.bug_check.incorrect_sqlscale.short",
                 test_s01___bug_check__incorrect_sqlscale__short)
@@ -2122,6 +2334,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                  test_d18__int128)
  DEF_TEST_DESCR("D19.int128.scale37",
                  test_d19__int128_scale37)
+ DEF_TEST_DESCR("D20.decfloat16",
+                 test_d20__decfloat16)
+ DEF_TEST_DESCR("D21.decfloat34",
+                 test_d21__decfloat34)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

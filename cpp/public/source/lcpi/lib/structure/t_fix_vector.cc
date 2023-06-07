@@ -1,35 +1,36 @@
 ////////////////////////////////////////////////////////////////////////////////
-//Реализация шаблона <structure/t_fix_vector.cc>
-//                                        Коваленко Дмитрий. 14 июля 2003 года.
-#ifndef _t_fix_vector_CC_
-#define _t_fix_vector_CC_
+//LCPI Instrumental Library for C++
+//                                                 Dmitry Kovalenko. 14.07.2003.
+#ifndef _cpp_public_lcpi_lib_structure__t_fix_vector_CC_
+#define _cpp_public_lcpi_lib_structure__t_fix_vector_CC_
 
-#include <structure/t_algorithm.h>
-#include <structure/t_memory.h>
+#include <lcpi/lib/structure/debug/debug_code.h>
+#include <lcpi/lib/structure/t_algorithm.h>
+#include <lcpi/lib/structure/t_memory.h>
 #include <iterator>
 
-namespace structure{
+namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //template class t_fix_vector_base
 
-template<size_t N,class T>
-inline t_fix_vector_base<N,T>::t_fix_vector_base()
+template<class T,size_t N>
+inline t_fix_vector_base<T,N>::t_fix_vector_base()
  :m_size(0)
 {
 }
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-t_fix_vector_base<N,T>::~t_fix_vector_base()
+template<class T,size_t N>
+t_fix_vector_base<T,N>::~t_fix_vector_base()
 {
  this->clear();
 }//~t_fix_vector_base
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-void t_fix_vector_base<N,T>::clear()
+template<class T,size_t N>
+void t_fix_vector_base<T,N>::clear()
 {
- assert(m_size<=self_type::num_of_elements);
+ LCPI__assert(m_size<=self_type::num_of_elements);
 
  structure::__generic_destroyer_range(this->buffer(),this->buffer()+m_size);
 
@@ -37,15 +38,15 @@ void t_fix_vector_base<N,T>::clear()
 }//clear
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline typename t_fix_vector_base<N,T>::pointer t_fix_vector_base<N,T>::buffer()
+template<class T,size_t N>
+inline typename t_fix_vector_base<T,N>::pointer t_fix_vector_base<T,N>::buffer()
 {
  return reinterpret_cast<T*>(m_buffer);
 }//buffer
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline typename t_fix_vector_base<N,T>::const_pointer t_fix_vector_base<N,T>::buffer()const
+template<class T,size_t N>
+inline typename t_fix_vector_base<T,N>::const_pointer t_fix_vector_base<T,N>::buffer()const
 {
  return reinterpret_cast<const T*>(m_buffer);
 }//buffer - const
@@ -53,23 +54,23 @@ inline typename t_fix_vector_base<N,T>::const_pointer t_fix_vector_base<N,T>::bu
 ////////////////////////////////////////////////////////////////////////////////
 //template class t_fix_vector
 
-template<size_t N,class T>
-inline t_fix_vector<N,T>::t_fix_vector()
+template<class T,size_t N>
+inline t_fix_vector<T,N>::t_fix_vector()
 {
 }
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-t_fix_vector<N,T>::t_fix_vector(size_type const n)
+template<class T,size_t N>
+t_fix_vector<T,N>::t_fix_vector(size_type const n)
 {
  this->resize(n);
 }//t_fix_vector
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-t_fix_vector<N,T>::t_fix_vector(const self_type& x)
+template<class T,size_t N>
+t_fix_vector<T,N>::t_fix_vector(const self_type& x)
 {
- assert(x.size()<=self_type::num_of_elements);
+ LCPI__assert(x.size()<=self_type::num_of_elements);
 
  structure::uninitialized_copy
   (x.begin(),
@@ -81,37 +82,25 @@ t_fix_vector<N,T>::t_fix_vector(const self_type& x)
 }//t_fix_vector - copy
 
 //------------------------------------------------------------------------
-#if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
-
-template<size_t N,class T>
+template<class T,size_t N>
 template<typename Iterator>
-t_fix_vector<N,T>::t_fix_vector(Iterator first,Iterator last)
+t_fix_vector<T,N>::t_fix_vector(Iterator first,Iterator last)
 {
  typedef std::iterator_traits<Iterator>::iterator_category __cat;
 
  this->construct(first,last,__cat());
 }//t_fix_vector
 
-#else //!COMP_CONF_SUPPORT_MEMBER_TEMPLATE
-
-template<size_t N,class T>
-t_fix_vector<N,T>::t_fix_vector(const_iterator first,const_iterator last)
-{
- this->construct(first,last);
-}//t_fix_vector
-
-#endif //!COMP_CONF_SUPPORT_MEMBER_TEMPLATE
-
 //------------------------------------------------------------------------
-template<size_t N,class T>
-t_fix_vector<N,T>::~t_fix_vector()
+template<class T,size_t N>
+t_fix_vector<T,N>::~t_fix_vector()
 {
 }
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::self_type& t_fix_vector<N,T>::operator = (const self_type& x)
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::self_type& t_fix_vector<T,N>::operator = (const self_type& x)
 {
  this->assign(x.begin(),x.end());
 
@@ -119,9 +108,9 @@ typename t_fix_vector<N,T>::self_type& t_fix_vector<N,T>::operator = (const self
 }//operator =
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::begin()
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::iterator t_fix_vector<T,N>::begin()
 {
 #ifndef NDEBUG
  return iterator(this,this->buffer());
@@ -131,9 +120,9 @@ typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::begin()
 }//begin
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::end()
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::iterator t_fix_vector<T,N>::end()
 {
 #ifndef NDEBUG
  return iterator(this,this->buffer()+this->size());
@@ -143,9 +132,9 @@ typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::end()
 }//end
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::cbegin()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_iterator t_fix_vector<T,N>::cbegin()const
 {
 #ifndef NDEBUG
  return const_iterator(this,this->buffer());
@@ -155,9 +144,9 @@ typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::cbegin()const
 }//cbegin
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::cend()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_iterator t_fix_vector<T,N>::cend()const
 {
 #ifndef NDEBUG
  return const_iterator(this,this->buffer()+this->size());
@@ -167,9 +156,9 @@ typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::cend()const
 }//cend
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::begin()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_iterator t_fix_vector<T,N>::begin()const
 {
 #ifndef NDEBUG
  return const_iterator(this,this->buffer());
@@ -179,9 +168,9 @@ typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::begin()const
 }//begin - const
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::end()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_iterator t_fix_vector<T,N>::end()const
 {
 #ifndef NDEBUG
  return const_iterator(this,this->buffer()+this->size());
@@ -191,83 +180,83 @@ typename t_fix_vector<N,T>::const_iterator t_fix_vector<N,T>::end()const
 }//end - const
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::size_type t_fix_vector<N,T>::size()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::size_type t_fix_vector<T,N>::size()const
 {
- assert(m_size<=num_of_elements);
+ LCPI__assert(m_size<=num_of_elements);
 
  return m_size;
 }//size
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-bool t_fix_vector<N,T>::empty()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+bool t_fix_vector<T,N>::empty()const
 {
- assert(m_size<=num_of_elements);
+ LCPI__assert(m_size<=num_of_elements);
 
  return m_size==0;
 }//empty
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-bool t_fix_vector<N,T>::full()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+bool t_fix_vector<T,N>::full()const
 {
- assert(m_size<=num_of_elements);
+ LCPI__assert(m_size<=num_of_elements);
 
  return m_size==num_of_elements;
 }//full
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::size_type t_fix_vector<N,T>::capacity()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::size_type t_fix_vector<T,N>::capacity()const
 {
- assert(m_size<=num_of_elements);
+ LCPI__assert(m_size<=num_of_elements);
 
  return num_of_elements;
 }//capacity
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-typename t_fix_vector<N,T>::pointer t_fix_vector<N,T>::data()
+template<class T,size_t N>
+typename t_fix_vector<T,N>::pointer t_fix_vector<T,N>::data()
 {
  return this->buffer();
 }//data
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-typename t_fix_vector<N,T>::const_pointer t_fix_vector<N,T>::data()const
+template<class T,size_t N>
+typename t_fix_vector<T,N>::const_pointer t_fix_vector<T,N>::data()const
 {
  return this->buffer();
 }//data
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::reference t_fix_vector<N,T>::operator [] (size_type i)
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::reference t_fix_vector<T,N>::operator [] (size_type i)
 {
- assert_msg(i<this->size(),"i=="<<i<<"\nN=="<<this->size());
+ LCPI__assert_msg(i<this->size(),"i=="<<i<<"\nN=="<<this->size());
  return this->buffer()[i];
 }//operator []
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_reference t_fix_vector<N,T>::operator [] (size_type i)const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_reference t_fix_vector<T,N>::operator [] (size_type i)const
 {
- assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
+ LCPI__assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
  return this->buffer()[i];
 }//operator [] - const
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::reference t_fix_vector<N,T>::at(size_type i)
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::reference t_fix_vector<T,N>::at(size_type i)
 {
- assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
+ LCPI__assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
 
  //TODO: by standart - use exception for invalid index
 
@@ -275,11 +264,11 @@ typename t_fix_vector<N,T>::reference t_fix_vector<N,T>::at(size_type i)
 }//at
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_reference t_fix_vector<N,T>::at(size_type i)const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_reference t_fix_vector<T,N>::at(size_type i)const
 {
- assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
+ LCPI__assert_msg(i<num_of_elements,"i=="<<i<<"\nN=="<<num_of_elements);
 
  //TODO: by standart - use exception for invalid index
 
@@ -287,57 +276,58 @@ typename t_fix_vector<N,T>::const_reference t_fix_vector<N,T>::at(size_type i)co
 }//at
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::reference t_fix_vector<N,T>::front()
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::reference t_fix_vector<T,N>::front()
 {
- assert(!this->empty());
+ LCPI__assert(!this->empty());
 
  return this->buffer()[0];
 }//front
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::reference t_fix_vector<N,T>::back()
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::reference t_fix_vector<T,N>::back()
 {
- assert(!this->empty());
+ LCPI__assert(!this->empty());
 
  return this->buffer()[this->size()-1];
 }//back
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_reference t_fix_vector<N,T>::front()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_reference t_fix_vector<T,N>::front()const
 {
- assert(!this->empty());
+ LCPI__assert(!this->empty());
 
  return this->buffer()[0];
 }//front - const
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-typename t_fix_vector<N,T>::const_reference t_fix_vector<N,T>::back()const
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+typename t_fix_vector<T,N>::const_reference t_fix_vector<T,N>::back()const
 {
- assert(!this->empty());
+ LCPI__assert(!this->empty());
 
  return this->buffer()[this->size()-1];
 }//back - const
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-void t_fix_vector<N,T>::assign(const_iterator first,const_iterator last)
+template<class T,size_t N>
+template<typename Iterator>
+void t_fix_vector<T,N>::assign(Iterator first,Iterator last)
 {
- assert(this->size()<=this->capacity());
+ LCPI__assert(this->size()<=this->capacity());
 
  size_type const n(std::distance(first,last));
 
  if(this->capacity()<n)
   this->helper__throw_bad_alloc(n);
 
- std::pair<const_iterator,iterator>
+ std::pair<Iterator,iterator>
   x(structure::copy(first,last,this->begin(),this->end()));
 
  if(x.first!=last)
@@ -353,8 +343,8 @@ void t_fix_vector<N,T>::assign(const_iterator first,const_iterator last)
 }//assign
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-void t_fix_vector<N,T>::push_back(const value_type& x)
+template<class T,size_t N>
+void t_fix_vector<T,N>::push_back(const value_type& x)
 {
  if(this->size()==this->capacity())
   this->helper__throw_bad_alloc(this->size()+1);
@@ -365,11 +355,9 @@ void t_fix_vector<N,T>::push_back(const value_type& x)
 }//push_back
 
 //------------------------------------------------------------------------
-#if(COMP_CONF_SUPPORT_VARIADIC_TEMPLATES!=0)
-
-template<size_t N,class T>
+template<class T,size_t N>
 template<class... Args>
-void t_fix_vector<N,T>::emplace_back(Args&&... args)
+void t_fix_vector<T,N>::emplace_back(Args&&... args)
 {
  if(this->size()==this->capacity())
   this->helper__throw_bad_alloc(this->size()+1);
@@ -379,25 +367,23 @@ void t_fix_vector<N,T>::emplace_back(Args&&... args)
  ++m_size;
 }//emplace_back
 
-#endif //COMP_CONF_SUPPORT_VARIADIC_TEMPLATES!=0
-
 //------------------------------------------------------------------------
-template<size_t N,class T>
-RELEASE_CODE(inline)
-void t_fix_vector<N,T>::pop_back()
+template<class T,size_t N>
+LCPI__RELEASE_CODE(inline)
+void t_fix_vector<T,N>::pop_back()
 {
- assert(m_size!=0);
+ LCPI__assert(m_size!=0);
 
- __STL_DESTROYER_FUNC(this->buffer()+m_size-1);
+ structure::__generic_destroy(this->buffer()+m_size-1);
 
  --m_size;
 }//pop_back
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-void t_fix_vector<N,T>::resize(size_t const n)
+template<class T,size_t N>
+void t_fix_vector<T,N>::resize(size_t const n)
 {
- assert(this->size()<=this->capacity());
+ LCPI__assert(this->size()<=this->capacity());
 
  if(n<m_size)
  {
@@ -416,12 +402,12 @@ void t_fix_vector<N,T>::resize(size_t const n)
 }//resize
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-typename t_fix_vector<N,T>::iterator
- t_fix_vector<N,T>::insert(iterator position,const value_type& x)
+template<class T,size_t N>
+typename t_fix_vector<T,N>::iterator
+ t_fix_vector<T,N>::insert(iterator position,const value_type& x)
 {
- assert(this->begin()<=position);
- assert(position<=this->end());
+ LCPI__assert(this->begin()<=position);
+ LCPI__assert(position<=this->end());
 
  if(this->size()==this->capacity())
   this->helper__throw_bad_alloc(this->size()+1);
@@ -434,7 +420,7 @@ typename t_fix_vector<N,T>::iterator
  }
  else
  {
-  assert(m_size!=0);
+  LCPI__assert(m_size!=0);
 
   pointer        dest(this->buffer()+m_size);
   const_iterator src(this->end()-1);
@@ -452,8 +438,8 @@ typename t_fix_vector<N,T>::iterator
    (*dest)=*src;
   }//while
 
-  assert(src==position);
-  assert(src!=this->end());
+  LCPI__assert(src==position);
+  LCPI__assert(src!=this->end());
 
   (*position)=x;
  }//else
@@ -462,15 +448,15 @@ typename t_fix_vector<N,T>::iterator
 }//insert
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-typename t_fix_vector<N,T>::iterator
- t_fix_vector<N,T>::erase(iterator first,iterator last)
+template<class T,size_t N>
+typename t_fix_vector<T,N>::iterator
+ t_fix_vector<T,N>::erase(iterator first,iterator last)
 {
- assert(first<=last);
- assert(this->begin()<=first);
- assert(last<=this->end());
+ LCPI__assert(first<=last);
+ LCPI__assert(this->begin()<=first);
+ LCPI__assert(last<=this->end());
 
- assert(this->size()<=this->capacity());
+ LCPI__assert(this->size()<=this->capacity());
 
  if(first==last)
   return last;
@@ -479,26 +465,26 @@ typename t_fix_vector<N,T>::iterator
  std::pair<iterator,iterator>
   const x(structure::copy(last,this->end(),first,this->end()));
 
- assert(x.first==this->end());
- assert(x.second!=this->end());
+ LCPI__assert(x.first==this->end());
+ LCPI__assert(x.second!=this->end());
 
  //removing a tail
  structure::__generic_destroyer_range(x.second,this->end());
 
  m_size=static_cast<size_type>(x.second-this->begin());
 
- assert(this->begin()<=first);
- assert(first<=this->end());
+ LCPI__assert(this->begin()<=first);
+ LCPI__assert(first<=this->end());
 
  return first;
 }//erase
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::erase(iterator x)
+template<class T,size_t N>
+typename t_fix_vector<T,N>::iterator t_fix_vector<T,N>::erase(iterator x)
 {
- assert(this->begin()<=x);
- assert(x<=this->end());
+ LCPI__assert(this->begin()<=x);
+ LCPI__assert(x<=this->end());
 
  if(x==this->end())
   return x;
@@ -507,36 +493,23 @@ typename t_fix_vector<N,T>::iterator t_fix_vector<N,T>::erase(iterator x)
 }//erase
 
 //------------------------------------------------------------------------
-#if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
-
-template<size_t N,class T>
+template<class T,size_t N>
 template<typename Iterator>
-void t_fix_vector<N,T>::construct(Iterator first,Iterator last,std::input_iterator_tag)
+void t_fix_vector<T,N>::construct(Iterator first,Iterator last,std::input_iterator_tag)
 {
- assert(this->empty());
+ LCPI__assert(this->empty());
 
  for(;first!=last;++first)
   this->push_back(*first); //throw
 }//construct - input_iterator_tag
 
-#endif //COMP_CONF_SUPPORT_MEMBER_TEMPLATE
-
 //------------------------------------------------------------------------
-#if(COMP_CONF_SUPPORT_MEMBER_TEMPLATE)
-
-template<size_t N,class T>
+template<class T,size_t N>
 template<typename Iterator>
-void t_fix_vector<N,T>::construct(Iterator first,Iterator last,std::random_access_iterator_tag)
-
-#else
-
-template<size_t N,class T>
-void t_fix_vector<N,T>::construct(const_iterator first,const_iterator last)
-
-#endif //!COMP_CONF_SUPPORT_MEMBER_TEMPLATE
+void t_fix_vector<T,N>::construct(Iterator first,Iterator last,std::random_access_iterator_tag)
 {
- assert(first<=last);
- assert(this->empty());
+ LCPI__assert(first<=last);
+ LCPI__assert(this->empty());
 
  const size_type n=static_cast<size_type>(last-first);
 
@@ -545,22 +518,22 @@ void t_fix_vector<N,T>::construct(const_iterator first,const_iterator last)
 
  typedef std::pair<Iterator,pointer>    copy_res_type;
 
- DEBUG_CODE(const copy_res_type copy_res=)
+ LCPI__DEBUG_CODE(const copy_res_type copy_res=)
   structure::uninitialized_copy
    (first,
     last,
     this->buffer(),
     this->buffer()+this->capacity());
 
- assert(copy_res.first==last);
- assert(copy_res.second==this->buffer()+n);
+ LCPI__assert(copy_res.first==last);
+ LCPI__assert(copy_res.second==this->buffer()+n);
 
  m_size=n;
 }//construct - random_access_iterator_tag
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-void t_fix_vector<N,T>::helper__throw_bad_alloc(size_type /*n*/)
+template<class T,size_t N>
+void t_fix_vector<T,N>::helper__throw_bad_alloc(size_type /*n*/)
 {
  throw std::bad_alloc();
 }//helper__throw_bad_alloc
@@ -568,8 +541,8 @@ void t_fix_vector<N,T>::helper__throw_bad_alloc(size_type /*n*/)
 ////////////////////////////////////////////////////////////////////////////////
 //non-member operators
 
-template<size_t N,class T>
-inline bool operator == (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+inline bool operator == (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
  return (a.size()==b.size())
          ?structure::equal(a.begin(),a.end(),b.begin(),b.end())
@@ -577,42 +550,43 @@ inline bool operator == (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
 }//operator ==
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline bool operator != (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+inline bool operator != (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
  return !(a==b);
 }//operator !=
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-bool operator < (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+bool operator < (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
- return std::lexicographical_compare(a.begin(),a.end(),
-                                     b.begin(),b.end(),
-                                     std::less<T>());
+ return std::lexicographical_compare
+         (a.begin(),a.end(),
+          b.begin(),b.end(),
+          std::less<T>());
 }//operator <
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline bool operator <= (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+inline bool operator <= (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
  return !(b<a);
 }//operator <=
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline bool operator >  (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+inline bool operator >  (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
  return b<a;
 }//operator >
 
 //------------------------------------------------------------------------
-template<size_t N,class T>
-inline bool operator >= (const t_fix_vector<N,T>& a,const t_fix_vector<N,T>& b)
+template<class T,size_t N>
+inline bool operator >= (const t_fix_vector<T,N>& a,const t_fix_vector<T,N>& b)
 {
  return !(a<b);
 }//operator >=
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif

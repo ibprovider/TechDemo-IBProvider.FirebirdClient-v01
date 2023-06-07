@@ -264,7 +264,7 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
  assert(pPort->m_spSocket);
 
  {
-  structure::t_fix_vector<1,RemoteFB__PortStreamPtr> stack;
+  lib::structure::t_fix_vector<RemoteFB__PortStreamPtr,1> stack;
 
   RemoteFB__PortStreamPtr spStream(pPort->m_spSocket);
 

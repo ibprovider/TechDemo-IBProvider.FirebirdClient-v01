@@ -111,6 +111,22 @@ enum ibp_msg_code_type
  ibp_mce_text__unknown_error1_0
   =IBP_MCE_TEXT__UNKNOWN_ERROR1_0,
 
+ //-----------------------------------------
+ ibp_mce_text__addition_0
+  =IBP_MCE_TEXT__ADDITION_0,
+
+ //-----------------------------------------
+ ibp_mce_text__subtraction_0
+  =IBP_MCE_TEXT__SUBTRACTION_0,
+
+ //-----------------------------------------
+ ibp_mce_text__multiplication_0
+  =IBP_MCE_TEXT__MULTIPLICATION_0,
+
+ //-----------------------------------------
+ ibp_mce_text__division_0
+  =IBP_MCE_TEXT__DIVISION_0,
+
  //features errors -------------------------------------------------------
  ibp_mce_fe_features_not_available_in_free_edition_1
   =IBP_MCE_FE_FEATURES_NOT_AVAILABLE_IN_FREE_EDITION_1,
@@ -2022,23 +2038,53 @@ enum ibp_msg_code_type
   =IBP_MCE_RS_STG__TASK_FOR_RUN_ASYNCH_EVENTS_PUSHER_WAS_STOPPED_0,
 
  /////////////////////////////////////////////////////////////////////////
- //TIBField
+ //DataType Operations
 
- //GetIBData
- ibp_mce_ibf_convert_type_2
-  =IBP_MCE_IBF_CONVERT_TYPE_2,
+ /// \brief
+ ///  Failed too convert between datatypes.<br/>
+ /// \b
+ ///  Params: source datatype, target datatype
+ ibp_mce_datatype__failed_to_convert_between_types_2
+  =IBP_MCE_DATATYPE__FAILED_TO_CONVERT_BETWEEN_TYPES_2,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  An arithmetic overflow occurred in binary operation.<br/>
+ /// \b
+ ///  Params: operation sign, target result type, left argument, right argument
+ ibp_mce_datatype__arithmetic_overflow_in_op2_4
+  =IBP_MCE_DATATYPE__ARITHMETIC_OVERFLOW_IN_OP2_4,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  Translation of text into datatype failed.<br/>
+ /// \b
+ ///  Params: target datatype
+ ibp_mce_datatype__translation_of_text_into_datatype_1
+  =IBP_MCE_DATATYPE__TRANSLATION_OF_TEXT_INTO_DATATYPE_1,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  Translation of exponent value failed. The arithmetic overflow occurred.<br/>
+ /// \b
+ ///  Params: the signature of exponent value, max value
+ ibp_mce_datatype__translation_of_exponent__overflow_2
+  =IBP_MCE_DATATYPE__TRANSLATION_OF_EXPONENT__OVERFLOW_2,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  Exponent is not in a valid range.<br/>
+ /// \b
+ ///  Params: exponent value, min value, max value
+ ibp_mce_datatype__exponent_is_not_in_valid_range_3
+  =IBP_MCE_DATATYPE__EXPONENT_IS_NOT_IN_VALID_RANGE_3,
+
+ /////////////////////////////////////////////////////////////////////////
 
  //! \brief
  //!  «апрещена установка DEFAULT-значени€ в параметр с типом ISNULL.
  ibp_mce_ibf_cant_set_default_value_into_isnull_parameter_0
   =IBP_MCE_IBF_CANT_SET_DEFAULT_VALUE_INTO_ISNULL_PARAMETER_0,
-
- //NumericToSqlVar_xxx
- ibp_mce_ibf_set_dbnum_unpack_digit_0
-  =IBP_MCE_IBF_SET_DBNUM_UNPACK_DIGIT_0,
-
- ibp_mce_ibf_set_dbnum_convert_to_r8_0
-  =IBP_MCE_IBF_SET_DBNUM_CONVERT_TO_R8_0,
 
  //WriteBLOB
  ibp_mce_ibf_fail_create_blob_0

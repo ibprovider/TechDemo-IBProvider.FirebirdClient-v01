@@ -12,7 +12,7 @@
 #include "source/db_obj/isc_base/isc_portable_format_to_integer.h"
 #include "source/error_services/ibp_error_bug_check.h"
 
-#include <structure/t_zero.h>
+#include <lcpi/lib/structure/t_zero.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
 ////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +89,7 @@ RemoteFB__API_HLP__XSQLDA_V01__Utilities::parse_result_type
   structure::static_numeric_cast(&pXSQLDA->sqld,sqld);
 
   if(pXSQLDA->sqln<pXSQLDA->sqld)
-   return parse_result_type(structure::zero,true); //обработка завершена
+   return parse_result_type(lib::structure::zero,true); //обработка завершена
  }
  else
  {

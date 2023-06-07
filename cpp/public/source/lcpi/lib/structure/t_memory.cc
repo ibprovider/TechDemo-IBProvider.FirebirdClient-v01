@@ -1,17 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup lib_structure
-//! \file    t_memory.cc
-//! \brief   Structures for work with memory
-//! \author  Kovalenko Dmitry
-//! \date    13.08.2002
-#ifndef _t_memory_CC_
-#define _t_memory_CC_
+//LCPI C++ Library.
+//                                                 Dmitry Kovalenko. 13.08.2002.
+#ifndef _cpp_public_lcpi_lib_structure__t_memory_CC_
+#define _cpp_public_lcpi_lib_structure__t_memory_CC_
 
-#include <structure/t_limits.h>
-#include <structure/t_numeric_cast.h>
-#include <structure/t_negative_one.h>
+#include <lcpi/lib/structure/t_negative_one.h>
+#include <limits>
+#include <new> // std::bad_alloc
 
-namespace structure{
+namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_raw_allocator
 
@@ -61,9 +58,9 @@ inline bool t_raw_allocator<RawMemManager>::operator != (const self_type& x)cons
 template<class RawMemManager>
 inline typename t_raw_allocator<RawMemManager>::pointer
  t_raw_allocator<RawMemManager>::allocate(size_type const n,
-                                          pointer   const DEBUG_CODE(ptr))
+                                          pointer   const LCPI__DEBUG_CODE(ptr))
 {
- assert(ptr==nullptr);
+ LCPI__assert(ptr==nullptr);
 
  return adapter::raw_allocate(n);
 }//allocate
@@ -89,7 +86,7 @@ template<class RawMemManager>
 inline typename t_raw_allocator<RawMemManager>::size_type
  t_raw_allocator<RawMemManager>::max_size(size_type const size)const
 {
- assert(size>0);
+ LCPI__assert(size>0);
 
  const size_type n(this->max_size()/size);
 
@@ -172,7 +169,7 @@ template <class Allocator,class T>
 inline void t_allocator_interface<Allocator,T>::deallocate(pointer   const p,
                                                            size_type const n)
 {
- assert(n<=this->max_size());
+ LCPI__assert(n<=this->max_size());
 
  raw_allocator_type::instance.deallocate(p,n*sizeof(value_type));
 }//deallocate
@@ -196,7 +193,7 @@ inline void t_allocator_interface<Allocator,T>::destroy(pointer const p)
 
 //------------------------------------------------------------------------
 template<class Allocator,class T>
-inline void t_allocator_interface<Allocator,T>::swap(self_type& UNUSED_ARG(x))
+inline void t_allocator_interface<Allocator,T>::swap(self_type& LCPI__UNUSED_ARG(x))
 {
  /*nop*/
 }//swap
@@ -229,7 +226,7 @@ inline void t_void_allocator_adapter::raw_deallocate(void* const p)
 template<class T,class... Args>
 inline void __generic_construct(T* const p,Args&&... args)
 {
- ::new(reinterpret_cast<void*>(p)) T(__STL_FORWARD_VALUE(Args,args)...);
+ ::new(reinterpret_cast<void*>(p)) T(std::forward<Args>(args)...);
 }//__generic_construct
 
 //------------------------------------------------------------------------
@@ -299,7 +296,11 @@ std::pair<InputIterator,ForwardIterator>
 
 inline bool append_memory_size(size_t& s,size_t const delta)
 {
- if((structure::t_numeric_limits<size_t>::max_value()-s)<delta)
+ const size_t c_max_sz=(::std::numeric_limits<size_t>::max)();
+
+ LCPI__assert(s<=c_max_sz);
+
+ if((c_max_sz-s)<delta)
   return false;
 
  s+=delta;
@@ -313,15 +314,15 @@ inline bool append_array_memory_size(size_t&      s,
                                      size_t const element_size,
                                      size_t const element_count)
 {
- assert(element_size>0);
+ LCPI__assert(element_size>0);
 
- const size_t c_max=structure::t_numeric_limits<size_t>::max_value();
+ const size_t c_max_sz=(::std::numeric_limits<size_t>::max)();
 
- assert(s<=c_max);
- assert(element_size<=c_max);
- assert(element_count<=c_max);
+ LCPI__assert(s<=c_max_sz);
+ LCPI__assert(element_size<=c_max_sz);
+ LCPI__assert(element_count<=c_max_sz);
 
- if(((c_max-s)/element_size)<element_count)
+ if(((c_max_sz-s)/element_size)<element_count)
   return false;
 
  const size_t array_mem_size=element_size*element_count;
@@ -335,19 +336,19 @@ inline bool append_array_memory_size(size_t&      s,
 
 inline bool align_memory_size(size_t& s,size_t const a)
 {
- assert(a>0);
+ LCPI__assert(a>0);
 
  const size_t mod=size_t(s%a);
 
  if(mod==0)
   return true;
 
- assert(mod<=s);
- assert(mod<a);
+ LCPI__assert(mod<=s);
+ LCPI__assert(mod<a);
 
  return append_memory_size(s, (a-mod));
 }//align_memory_size
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif

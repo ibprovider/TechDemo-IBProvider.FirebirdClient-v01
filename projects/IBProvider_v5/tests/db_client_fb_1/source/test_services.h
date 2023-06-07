@@ -32,6 +32,20 @@ inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t
 }//operator <<
 
 ////////////////////////////////////////////////////////////////////////////////
+
+inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_decfloat16& v)
+{ 
+ return tracer<<L"{"<<v.value<<L"}";
+}//operator <<
+
+////////////////////////////////////////////////////////////////////////////////
+
+inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_decfloat34& v)
+{ 
+ return tracer<<L"{"<<v.data.low<<L", "<<v.data.high<<L"}";
+}//operator <<
+
+////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
 class TestServices
@@ -829,6 +843,20 @@ class TestServices
                 isc_api::t_ibp_fb040_int128 actualSqlValue,
                 short                       expectedSqlInd,
                 isc_api::t_ibp_fb040_int128 expectedSqlValue);
+
+  static bool checkValue__DECFLOAT16
+               (TTSO_Tracer&                    tracer,
+                short                           actualSqlInd,
+                isc_api::t_ibp_fb040_decfloat16 actualSqlValue,
+                short                           expectedSqlInd,
+                isc_api::t_ibp_fb040_decfloat16 expectedSqlValue);
+
+  static bool checkValue__DECFLOAT34
+               (TTSO_Tracer&                    tracer,
+                short                           actualSqlInd,
+                isc_api::t_ibp_fb040_decfloat34 actualSqlValue,
+                short                           expectedSqlInd,
+                isc_api::t_ibp_fb040_decfloat34 expectedSqlValue);
 };//class TestServices
 
 ////////////////////////////////////////////////////////////////////////////////

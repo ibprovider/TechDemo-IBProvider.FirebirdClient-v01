@@ -26,12 +26,12 @@ void IBP_ThrowBugCheck_WrongCmdParamCount(const wchar_t* const place,
                                           size_t         const param_count,
                                           size_t         const req_count)
 {
- structure::wstr_formatter
-  freason(L"Described a wrong number of command parameters [%1]. Requred [%2]");
-
- freason<<param_count<<req_count;
-
- IBP_ThrowBugCheck(place,point,freason.c_str());
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   L"Described a wrong number of command parameters [%1]. Requred [%2]",
+   param_count,
+   req_count);
 }//IBP_ThrowBugCheck_WrongCmdParamCount
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,12 +41,12 @@ void IBP_ThrowBugCheck_WrongResultSetColumnCount(const wchar_t* const place,
                                                  size_t         const column_count,
                                                  size_t         const req_count)
 {
- structure::wstr_formatter
-  freason(L"Received wrong number of resultset columns [%1]. Requred [%2]");
-
- freason<<column_count<<req_count;
-
- IBP_ThrowBugCheck(place,point,freason.c_str());
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   L"Received wrong number of resultset columns [%1]. Requred [%2]",
+   column_count,
+   req_count);
 }//IBP_ThrowBugCheck_WrongResultSetColumnCount
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,11 +59,11 @@ void IBP_ThrowBugCheck_BadObject(const wchar_t* const place,
  assert(point);
  assert(object_name);
 
- structure::wstr_formatter freason(L"bad object [%1]");
-
- freason<<object_name;
-
- IBP_ThrowBugCheck(place,point,freason.c_str());
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   L"bad object [%1]",
+   object_name);
 }//IBP_ThrowBugCheck_BadObject
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -77,11 +77,13 @@ void IBP_ThrowBugCheck_Bad_SQLD_SQLN(const wchar_t* const place,
  assert(place);
  assert(point);
 
- structure::wstr_formatter freason(L"Bad state of %1. SQLD: %2. SQLN: %3");
-
- freason<<fields_name<<sqld<<sqln;
-
- IBP_ThrowBugCheck(place,point,freason.c_str());
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   L"Bad state of %1. SQLD: %2. SQLN: %3",
+   fields_name,
+   sqld,
+   sqln);
 }//IBP_ThrowBugCheck_Bad_SQLD_SQLN
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -92,9 +94,10 @@ void IBP_ThrowBugCheck__OpCtxHasWrongTransaction(const wchar_t* const place,
  assert(place);
  assert(point);
 
- IBP_ThrowBugCheck(place,
-                   point,
-                   L"wrong transaction in operation context");
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   L"wrong transaction in operation context");
 }//IBP_ThrowBugCheck__OpCtxHasWrongTransaction
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -107,14 +110,11 @@ void IBP_ThrowBugCheck__CnPropNotDefined(const wchar_t* const place,
  assert(point);
  assert(cnPropName);
 
- structure::wstr_formatter freason(me_bug_check__prop__not_defined_1);
-
- freason<<cnPropName;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__prop__not_defined_1,
+   cnPropName);
 }//IBP_ThrowBugCheck__CnPropNotDefined
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -419,13 +419,12 @@ void IBP_ThrowBugCheck_SvcNotSupported(t_ibp_subsystem_id subsystemID,
                                        REFGUID            serviceID,
                                        const char* const  serviceTypeName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystemID,
-                 ibp_mce_common__bug_check__svc_not_supported_2);
-
- exc<<serviceID<<serviceTypeName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystemID,
+   ibp_mce_common__bug_check__svc_not_supported_2,
+   serviceID,
+   serviceTypeName);
 }//Throw_BugCheck_SvcNotSupported
 
 //------------------------------------------------------------------------
@@ -433,13 +432,12 @@ void IBP_ThrowBugCheck_SvcNotImplReqInterface(t_ibp_subsystem_id subsystemID,
                                               REFGUID            serviceID,
                                               const char* const  interfaceName)
 {
- t_ibp_error exc(E_FAIL,
-                 subsystemID,
-                 ibp_mce_common__bug_check__svc_not_support_req_interface_2);
-
- exc<<serviceID<<interfaceName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystemID,
+   ibp_mce_common__bug_check__svc_not_support_req_interface_2,
+   serviceID,
+   interfaceName);
 }//Throw_BugCheck_SvcNotImplReqInterface
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -456,17 +454,15 @@ void IBP_ThrowBugCheck__IncorrectArrayElementSize
  assert(point);
  assert(elementTypeName);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_array__bug_check__incorrect_array_element_size_6);
-
- exc<<place
-    <<point
-    <<tableName
-    <<columnName
-    <<elementTypeName
-    <<elementSize;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_array__bug_check__incorrect_array_element_size_6,
+   place,
+   point,
+   tableName,
+   columnName,
+   elementTypeName,
+   elementSize);
 }//IBP_ThrowBugCheck__IncorrectArrayElementSize
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -478,14 +474,12 @@ void IBP_ThrowBugCheck__StmtIsNotSelectable(const wchar_t*              const pl
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_cmd__bug_check__stmt_is_not_selectable_3);
-
- exc<<place
-    <<point
-    <<IBP_Utils::GetStmtSign(stmtText);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_cmd__bug_check__stmt_is_not_selectable_3,
+   place,
+   point,
+   IBP_Utils::GetStmtSign(stmtText));
 }//IBP_ThrowBugCheck__StmtIsNotSelectable
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -495,14 +489,11 @@ void IBP_ThrowBugCheck__IncorrectWorkOfGetTempFileName
        const wchar_t*                         const   point,
        const structure::t_basic_const_str_box<TCHAR>& tempPath)
 {
- structure::wstr_formatter
-  freason(me_bug_check__win32_err__incorrect_work_of_GetTempFileName_1);
-
- freason<<tempPath;
-
- IBP_BUG_CHECK__DEBUG(place,
-                      point,
-                      freason.c_str());
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
+  (place,
+   point,
+   me_bug_check__win32_err__incorrect_work_of_GetTempFileName_1,
+   tempPath);
 }//IBP_ThrowBugCheck__IncorrectWorkOfGetTempFileName
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -515,15 +506,11 @@ void IBP_ThrowBugCheck__UnexpectedDBVariantCompareResult
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__unexpected_dbvariant_compare_result_1);
-
- freason<<compare_result;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__unexpected_dbvariant_compare_result_1,
+   compare_result);
 }//IBP_ThrowBugCheck__UnexpectedDBVariantCompareResult
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -536,15 +523,11 @@ void IBP_ThrowBugCheck__UnexpectedDbStatus
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(L"unexpected dbstatus [%1]");
-
- freason<<dbstatus;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   L"unexpected dbstatus [%1]",
+   dbstatus);
 }//IBP_ThrowBugCheck__UnexpectedDbStatus
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -565,16 +548,14 @@ void IBP_ThrowBugCheck__CantReadValueOfFieldWithUnexpectedStatus
    "field_name: "<<structure::tstr_to_str(field_name)<<". "
    "dbstatus: "<<int(dbstatus));
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_common__bug_check__cant_read_field_value_with_unexpected_status_5);
-
- exc<<place
-    <<point
-    <<field_name
-    <<field_index
-    <<db_obj::get_dbstatus2_name(dbstatus);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_common__bug_check__cant_read_field_value_with_unexpected_status_5,
+   place,
+   point,
+   field_name,
+   field_index,
+   db_obj::get_dbstatus2_name(dbstatus));
 }//IBP_ThrowBugCheck__CantReadValueOfFieldWithUnexpectedStatus
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -595,16 +576,14 @@ void IBP_ThrowBugCheck__CantTestNullStateOdFieldValueWithUnexpectedStatus
    "field_name: "<<structure::tstr_to_str(field_name)<<". "
    "dbstatus: "<<int(dbstatus));
 
- t_ibp_error exc(E_FAIL,
-                 ibp_mce_common__bug_check__cant_test_null_state_of_field_value_with_unexpected_status_5);
-
- exc<<place
-    <<point
-    <<field_name
-    <<field_index
-    <<db_obj::get_dbstatus2_name(dbstatus);
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_common__bug_check__cant_test_null_state_of_field_value_with_unexpected_status_5,
+   place,
+   point,
+   field_name,
+   field_index,
+   db_obj::get_dbstatus2_name(dbstatus));
 }//IBP_ThrowBugCheck__CantTestNullStateOdFieldValueWithUnexpectedStatus
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -617,15 +596,11 @@ void IBP_ThrowBugCheck__UnexpectedConnectionDialect
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__unexpected_connection_dialect_1);
-
- freason<<dialect;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__unexpected_connection_dialect_1,
+   dialect);
 }//IBP_ThrowBugCheck__UnexpectedConnectionDialect
 
 //------------------------------------------------------------------------
@@ -637,15 +612,11 @@ void IBP_ThrowBugCheck__UnexpectedDatabaseDialect
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__unexpected_database_dialect_1);
-
- freason<<dialect;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__unexpected_database_dialect_1,
+   dialect);
 }//IBP_ThrowBugCheck__UnexpectedDatabaseDialect
 
 //------------------------------------------------------------------------
@@ -656,7 +627,7 @@ void IBP_ThrowBugCheck__DatabaseDialectNotDefined
  assert(place);
  assert(point);
 
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
    me_bug_check__database_dialect_not_defined_0);

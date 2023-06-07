@@ -509,6 +509,23 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 t_ibp_error::get_cerr_obj_type* pGetCErr,
                 Args&&...                       args);
 
+ public:
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void ReThrowWithSameHResult
+               (const std::exception& e,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void ReThrowWithSameHResult
+               (const std::exception& e,
+                t_ibp_subsystem_id    subsystem_id,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
+
+ public:
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__BugCheck__DEBUG

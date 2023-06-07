@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
-//                                                 Kovalenko Dmitry. 16.11.2008
+//                                                 Kovalenko Dmitry. 16.11.2008.
 #ifndef _cpp_public_lcpi_lib_structure__t_const_str_box_H_
 #define _cpp_public_lcpi_lib_structure__t_const_str_box_H_
 
@@ -160,6 +160,35 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
 typedef t_basic_const_str_box<char>    t_const_str_box;
 
 typedef t_basic_const_str_box<wchar_t> t_const_wstr_box;
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<typename charT,typename charTraits,typename Allocator>
+inline bool operator == (const t_basic_const_str_box<charT> box,const std::basic_string<charT,charTraits,Allocator>& s)
+{
+ return box.equal(s.c_str(),s.size());
+}//operator ==
+
+//------------------------------------------------------------------------
+template<typename charT,typename charTraits,typename Allocator>
+inline bool operator == (const std::basic_string<charT,charTraits,Allocator>& s,const t_basic_const_str_box<charT> box)
+{
+ return box.equal(s.c_str(),s.size());
+}//operator ==
+
+//------------------------------------------------------------------------
+template<typename charT,typename charTraits,typename Allocator>
+inline bool operator != (const t_basic_const_str_box<charT> box,const std::basic_string<charT,charTraits,Allocator>& s)
+{
+ return !box.equal(s.c_str(),s.size());
+}//operator !=
+
+//------------------------------------------------------------------------
+template<typename charT,typename charTraits,typename Allocator>
+inline bool operator != (const std::basic_string<charT,charTraits,Allocator>& s,const t_basic_const_str_box<charT> box)
+{
+ return !box.equal(s.c_str(),s.size());
+}//operator !=
 
 ////////////////////////////////////////////////////////////////////////////////
 //factory

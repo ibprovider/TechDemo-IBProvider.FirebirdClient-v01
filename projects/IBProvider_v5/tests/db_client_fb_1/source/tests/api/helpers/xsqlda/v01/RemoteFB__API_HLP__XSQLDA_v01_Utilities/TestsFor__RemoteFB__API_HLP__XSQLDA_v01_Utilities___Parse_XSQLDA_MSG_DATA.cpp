@@ -441,6 +441,48 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA:
   static void test_D15__int128_04__null
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+ public:
+  static void test_D16__decfloat16_01
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D16__decfloat16_02
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D16__decfloat16_03
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D16__decfloat16_03_2
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D16__decfloat16_04__null
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+ public:
+  static void test_D17__decfloat34_01
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D17__decfloat34_02
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D17__decfloat34_03
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D17__decfloat34_03_2
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_D17__decfloat34_04__null
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -7903,6 +7945,762 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::
 }//test_D15__int128_04__null
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST D16-01
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D16__decfloat16_01
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat16 xvalue_type;
+
+ const xvalue_type c_test_value =db_obj::make_fb040_decfloat16(43210432101234567i64);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat16;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==8);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat16(1234);
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==8);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat16;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+}//test_D16__decfloat16_01
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D16-02
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D16__decfloat16_02
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat16 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat16(43210432101234567i64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat16;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==8);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat16(1234);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==8);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat16;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+ _TSO_CHECK(xsqlind==c_init_sqlind);
+}//test_D16__decfloat16_02
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D16-03
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D16__decfloat16_03
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat16 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat16(43210432101234567i64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat16;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==8);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat16(1234);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==8);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+ _TSO_CHECK(xsqlind==0);
+}//test_D16__decfloat16_03
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D16-03-2
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D16__decfloat16_03_2
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ const short c_sql_type=isc_api::ibp_fb040_sql_decfloat16;
+
+ typedef db_obj::t_dbvalue__fb040_decfloat16 xvalue_type;
+
+ const xvalue_type    c_test_value1 =db_obj::make_fb040_decfloat16(43210432101234567i64);
+ const xvalue_type    c_test_value2 =db_obj::make_fb040_decfloat16(11111111111111111i64);
+
+ const short          c_test_sqlind=0;
+
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(2);
+
+ size_t offset=0;
+
+ descrs[0].m_xvar_sqltype           =c_sql_type;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =offset;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =(offset+=sizeof(xvalue_type));
+
+ offset+=sizeof(c_test_sqlind);
+ offset+=6;//align
+
+ descrs[1].m_xvar_sqltype           =c_sql_type;
+ descrs[1].m_xvar_sqlscale          =0;
+ descrs[1].m_msg_value_block_offset =offset;
+ descrs[1].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[1].m_msg_sqlind_offset      =(offset+=sizeof(xvalue_type));
+
+ offset+=sizeof(c_test_sqlind);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==8);
+
+ //-----------------------------------------
+ std::vector<unsigned char> buf;
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_value1),
+           reinterpret_cast<const unsigned char*>(&c_test_value1)+sizeof(c_test_value1),
+           std::back_inserter(buf));
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_sqlind),
+           reinterpret_cast<const unsigned char*>(&c_test_sqlind)+sizeof(c_test_sqlind),
+           std::back_inserter(buf));
+
+ //---- align
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+
+ //----
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_value2),
+           reinterpret_cast<const unsigned char*>(&c_test_value2)+sizeof(c_test_value2),
+           std::back_inserter(buf));
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_sqlind),
+           reinterpret_cast<const unsigned char*>(&c_test_sqlind)+sizeof(c_test_sqlind),
+           std::back_inserter(buf));
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xvalue_type xvalue1=db_obj::make_fb040_decfloat16(1234);
+ short       xsqlind1=c_init_sqlind;
+
+ xvalue_type xvalue2=db_obj::make_fb040_decfloat16(10234);
+ short       xsqlind2=c_init_sqlind;
+
+ xsqlda->sqld=2;
+
+ assert_s(sizeof(xvalue1)==8);
+
+ xsqlda->sqlvar[0].sqltype=c_sql_type|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue1);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue1);
+ xsqlda->sqlvar[0].sqlind =&xsqlind1;
+
+ xsqlda->sqlvar[1].sqltype=c_sql_type|1;
+ xsqlda->sqlvar[1].sqllen =sizeof(xvalue2);
+ xsqlda->sqlvar[1].sqldata=reinterpret_cast<char*>(&xvalue2);
+ xsqlda->sqlvar[1].sqlind =&xsqlind2;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.data(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue1 ==c_test_value1);
+ _TSO_CHECK(xsqlind1==0);
+
+ _TSO_CHECK(xvalue2 ==c_test_value2);
+ _TSO_CHECK(xsqlind2==0);
+}//test_D16__decfloat16_03_2
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D16-04
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D16__decfloat16_04__null
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat16 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat16(43210432101234567i64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat16;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==8);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())                =c_test_value;
+ *reinterpret_cast<short*>(buf.buffer()+sizeof(xvalue_type))  =-1;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat16(1234);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==8);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==db_obj::__null_dbvalue__fb040_decfloat16);
+ _TSO_CHECK(xsqlind==-1);
+}//test_D16__decfloat16_04__null
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17-01
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D17__decfloat34_01
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat34 xvalue_type;
+
+ const xvalue_type c_test_value =db_obj::make_fb040_decfloat34(43210432101234567i64,987654321098765ui64);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat34;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==16);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat34(1234,4321);
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==16);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat34;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+}//test_D17__decfloat34_01
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17-02
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D17__decfloat34_02
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat34 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat34(43210432101234567i64,987654321098765ui64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat34;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==16);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat34(1234,4321);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==16);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat34;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+ _TSO_CHECK(xsqlind==c_init_sqlind);
+}//test_D17__decfloat34_02
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17-03
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D17__decfloat34_03
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat34 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat34(43210432101234567i64,987654321098765ui64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat34;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==16);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())=c_test_value;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat34(1234,4321);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==16);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==c_test_value);
+ _TSO_CHECK(xsqlind==0);
+}//test_D17__decfloat34_03
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17-03-2
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D17__decfloat34_03_2
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ const short c_sql_type=isc_api::ibp_fb040_sql_decfloat34;
+
+ typedef db_obj::t_dbvalue__fb040_decfloat34 xvalue_type;
+
+ const xvalue_type    c_test_value1 =db_obj::make_fb040_decfloat34(43210432101234567i64,987654321098765ui64);
+ const xvalue_type    c_test_value2 =db_obj::make_fb040_decfloat34(11111111111111111i64,333333333333333ui64);
+
+ const short          c_test_sqlind=0;
+
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(2);
+
+ size_t offset=0;
+
+ descrs[0].m_xvar_sqltype           =c_sql_type;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =offset;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =(offset+=sizeof(xvalue_type));
+
+ offset+=sizeof(c_test_sqlind);
+ offset+=6;//align
+
+ descrs[1].m_xvar_sqltype           =c_sql_type;
+ descrs[1].m_xvar_sqlscale          =0;
+ descrs[1].m_msg_value_block_offset =offset;
+ descrs[1].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[1].m_msg_sqlind_offset      =(offset+=sizeof(xvalue_type));
+
+ offset+=sizeof(c_test_sqlind);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==16);
+
+ //-----------------------------------------
+ std::vector<unsigned char> buf;
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_value1),
+           reinterpret_cast<const unsigned char*>(&c_test_value1)+sizeof(c_test_value1),
+           std::back_inserter(buf));
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_sqlind),
+           reinterpret_cast<const unsigned char*>(&c_test_sqlind)+sizeof(c_test_sqlind),
+           std::back_inserter(buf));
+
+ //---- align
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+ buf.push_back(0);
+
+ //----
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_value2),
+           reinterpret_cast<const unsigned char*>(&c_test_value2)+sizeof(c_test_value2),
+           std::back_inserter(buf));
+
+ std::copy(reinterpret_cast<const unsigned char*>(&c_test_sqlind),
+           reinterpret_cast<const unsigned char*>(&c_test_sqlind)+sizeof(c_test_sqlind),
+           std::back_inserter(buf));
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xvalue_type xvalue1=db_obj::make_fb040_decfloat34(1234,4321);
+ short       xsqlind1=c_init_sqlind;
+
+ xvalue_type xvalue2=db_obj::make_fb040_decfloat34(10234,43210);
+ short       xsqlind2=c_init_sqlind;
+
+ xsqlda->sqld=2;
+
+ assert_s(sizeof(xvalue1)==16);
+
+ xsqlda->sqlvar[0].sqltype=c_sql_type|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue1);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue1);
+ xsqlda->sqlvar[0].sqlind =&xsqlind1;
+
+ xsqlda->sqlvar[1].sqltype=c_sql_type|1;
+ xsqlda->sqlvar[1].sqllen =sizeof(xvalue2);
+ xsqlda->sqlvar[1].sqldata=reinterpret_cast<char*>(&xvalue2);
+ xsqlda->sqlvar[1].sqlind =&xsqlind2;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.data(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue1 ==c_test_value1);
+ _TSO_CHECK(xsqlind1==0);
+
+ _TSO_CHECK(xvalue2 ==c_test_value2);
+ _TSO_CHECK(xsqlind2==0);
+}//test_D17__decfloat34_03_2
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17-04
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_impl::test_D17__decfloat34_04__null
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ typedef db_obj::t_dbvalue__fb040_decfloat34 xvalue_type;
+
+ const xvalue_type    c_test_value =db_obj::make_fb040_decfloat34(43210432101234567i64,987654321098765ui64);
+ const short          c_init_sqlind=5487;
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_descrs_type descrs(1);
+
+ descrs[0].m_xvar_sqltype           =isc_api::ibp_fb040_sql_decfloat34;
+ descrs[0].m_xvar_sqlscale          =0;
+ descrs[0].m_msg_value_block_offset =0;
+ descrs[0].m_msg_value_block_size   =sizeof(xvalue_type);
+ descrs[0].m_msg_sqlind_offset      =sizeof(xvalue_type);
+
+ //-----------------------------------------
+ assert_s(sizeof(short)==2);
+ assert_s(sizeof(xvalue_type)==16);
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf(sizeof(xvalue_type)+sizeof(short));
+
+ std::fill(buf.buffer(),buf.buffer_end(),0);
+
+ *reinterpret_cast<xvalue_type*>(buf.buffer())                =c_test_value;
+ *reinterpret_cast<short*>(buf.buffer()+sizeof(xvalue_type))  =-1;
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xvalue_type xvalue=db_obj::make_fb040_decfloat34(1234,4321);
+ short       xsqlind=c_init_sqlind;
+
+ xsqlda->sqld=1;
+
+ assert_s(sizeof(xvalue)==16);
+
+ xsqlda->sqlvar[0].sqltype=isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[0].sqllen =sizeof(xvalue);
+ xsqlda->sqlvar[0].sqldata=reinterpret_cast<char*>(&xvalue);
+ xsqlda->sqlvar[0].sqlind =&xsqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::Parse_XSQLDA_MSG_DATA
+  (descrs,
+   /*cbMsgData*/buf.size(),
+   /*pMsgData*/buf.buffer(),
+   xsqlda); //throw!
+
+ //-----------------------------------------
+ _TSO_CHECK(xvalue==db_obj::__null_dbvalue__fb040_decfloat34);
+ _TSO_CHECK(xsqlind==-1);
+}//test_D17__decfloat34_04__null
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::tag_descr
@@ -8140,6 +8938,28 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA:
                 test_D15__int128_03_2)
  DEF_TEST_DESCR("D15.int128.04.null",
                 test_D15__int128_04__null)
+
+ DEF_TEST_DESCR("D16.decfloat16.01",
+                test_D16__decfloat16_01)
+ DEF_TEST_DESCR("D16.decfloat16.02",
+                test_D16__decfloat16_02)
+ DEF_TEST_DESCR("D16.decfloat16.03",
+                test_D16__decfloat16_03)
+ DEF_TEST_DESCR("D16.decfloat16.03.2",
+                test_D16__decfloat16_03_2)
+ DEF_TEST_DESCR("D16.decfloat16.04.null",
+                test_D16__decfloat16_04__null)
+
+ DEF_TEST_DESCR("D17.decfloat34.01",
+                test_D17__decfloat34_01)
+ DEF_TEST_DESCR("D17.decfloat34.02",
+                test_D17__decfloat34_02)
+ DEF_TEST_DESCR("D17.decfloat34.03",
+                test_D17__decfloat34_03)
+ DEF_TEST_DESCR("D17.decfloat34.03.2",
+                test_D17__decfloat34_03_2)
+ DEF_TEST_DESCR("D17.decfloat34.04.null",
+                test_D17__decfloat34_04__null)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

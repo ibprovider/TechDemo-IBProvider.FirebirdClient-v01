@@ -91,7 +91,7 @@ ISC_API_HLP__XSQLDA_SET01__MsgUtilities::tag_skip_result
          end,
          isc_api::ibp_isc_info_sql_sqlda_seq); //throw
 
-   structure::t_fix_vector<8,byte_type> processedIDs;
+   structure::t_fix_vector<byte_type,8> processedIDs;
 
    for(bool stop=false;;)
    {

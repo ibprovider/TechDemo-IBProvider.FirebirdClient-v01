@@ -359,7 +359,7 @@ class OLEDB_Props2__Data__Values:public t_oledb_smart_memory_object
     typedef structure::t_smart_object_ptr<self_type>    self_ptr;
 
    public:
-    structure::t_fix_vector<6,tag_prop_set> m_items;
+    structure::t_fix_vector<tag_prop_set,6> m_items;
 
     tag_prop_sets();
 
@@ -370,7 +370,8 @@ class OLEDB_Props2__Data__Values:public t_oledb_smart_memory_object
   // [data source init property values, data source initialized]
   // [command default props, command props, rowset props]
   // [session default props, session props]
-  typedef structure::t_fix_vector<3,tag_prop_sets::self_ptr> stack_type;
+  using stack_type
+   =structure::t_fix_vector<tag_prop_sets::self_ptr,3> ;
 
  private:
   stack_type m_stack;

@@ -664,7 +664,8 @@ void WORK_Array_Read_Test_011__int128::create(TTSO_PushTest*      const pTestPus
         (pParams,
          ftestID.c_str(),
          sm_Tests[it[iTest]].Func,
-         Data)));
+         Data,
+         "NE__INT128")));
 
   pTestPusher->PushTest(spTest);
  }//for it

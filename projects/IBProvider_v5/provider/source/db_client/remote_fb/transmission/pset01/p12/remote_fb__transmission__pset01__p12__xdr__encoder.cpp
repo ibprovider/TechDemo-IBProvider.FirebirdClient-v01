@@ -469,6 +469,61 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
      break;
     }//ibp_fb040_blr_dtype__int128
 
+    case isc_api::ibp_fb040_blr_dtype__decfloat16:
+    {
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat16)==8);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat16));
+
+     _VERIFY(structure::align_memory_size(offset,c_align));
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_decfloat16)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+      xdr::encode__p_decfloat16
+       (pBuf,
+       reinterpret_cast<const protocol::P_DECFLOAT16*>(msg_data+offset));
+
+     offset+=sizeof(isc_api::t_ibp_fb040_decfloat16);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat16
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat34:
+    {
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat34)==16);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.low));
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.high));
+
+     _VERIFY(structure::align_memory_size(offset,c_align));
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_decfloat34)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+      xdr::encode__p_decfloat34
+       (pBuf,
+       reinterpret_cast<const protocol::P_DECFLOAT34*>(msg_data+offset));
+
+     offset+=sizeof(isc_api::t_ibp_fb040_decfloat34);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat34
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

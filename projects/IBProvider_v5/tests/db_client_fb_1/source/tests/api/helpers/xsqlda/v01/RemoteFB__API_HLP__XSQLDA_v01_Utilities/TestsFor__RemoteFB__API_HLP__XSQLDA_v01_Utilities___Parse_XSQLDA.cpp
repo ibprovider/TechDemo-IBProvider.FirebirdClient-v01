@@ -986,7 +986,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1106,7 +1106,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1238,7 +1238,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1294,7 +1294,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1425,7 +1425,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1502,7 +1502,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1579,7 +1579,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1656,7 +1656,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1733,7 +1733,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1807,7 +1807,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1881,7 +1881,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -1955,7 +1955,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  xsqlda->sqld=4;
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2028,7 +2028,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2160,7 +2160,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2292,7 +2292,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2424,7 +2424,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2556,7 +2556,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2688,7 +2688,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2820,7 +2820,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -2952,7 +2952,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1);
@@ -3086,7 +3086,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1); // length_low
@@ -3206,7 +3206,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl:
  XSQLDA_V1_Wrapper xsqlda(4);
 
  //-----------------------------------------
- structure::t_fix_vector<128,unsigned char> buf;
+ structure::t_fix_vector<unsigned char,128> buf;
 
  buf.push_back(isc_api::ibp_isc_info_sql_describe_vars);
  buf.push_back(1); // length_low

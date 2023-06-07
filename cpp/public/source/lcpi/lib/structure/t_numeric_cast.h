@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
-//                                                 Dmitry Kovalenko. 29.03.2007
+//                                                 Dmitry Kovalenko. 29.03.2007.
 #ifndef _cpp_public_lcpi_lib_structure__t_numeric_cast_H_
 #define _cpp_public_lcpi_lib_structure__t_numeric_cast_H_
 

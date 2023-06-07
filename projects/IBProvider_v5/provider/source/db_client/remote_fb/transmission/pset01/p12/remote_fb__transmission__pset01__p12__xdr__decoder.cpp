@@ -477,14 +477,76 @@ void RemoteFB__PSET01__P12__XDR__Decoder::decode__sql_message
 
      xdr::decode__p_int128
       (pBuf,
-       L"sql_message.int128.low",
-       L"sql_message.int128.high",
+       L"sql_message.int128.data.low",
+       L"sql_message.int128.data.high",
        reinterpret_cast<protocol::P_INT128*>(msg_data+offset));
 
      offset+=sizeof(protocol::P_INT128);
 
      break;
     }//ibp_fb040_blr_dtype__int128
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat16:
+    {
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat16)==8);
+
+     assert_s(std::is_same<protocol::P_DECFLOAT16 _LITER_COMMA_ isc_api::t_ibp_fb040_decfloat16>::value);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT16().value));
+
+     _VERIFY(structure::align_memory_size(offset,c_align));
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(protocol::P_DECFLOAT16)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__p_decfloat16
+      (pBuf,
+       L"sql_message.decfloat16.value",
+       reinterpret_cast<protocol::P_DECFLOAT16*>(msg_data+offset));
+
+     offset+=sizeof(protocol::P_DECFLOAT16);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat16
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat34:
+    {
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat34)==16);
+
+     assert_s(std::is_same<protocol::P_DECFLOAT34 _LITER_COMMA_ isc_api::t_ibp_fb040_decfloat34>::value);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.high));
+     assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.low));
+
+     _VERIFY(structure::align_memory_size(offset,c_align));
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(protocol::P_DECFLOAT34)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__p_decfloat34
+      (pBuf,
+       L"sql_message.decfloat34.data.low",
+       L"sql_message.decfloat34.data.high",
+       reinterpret_cast<protocol::P_DECFLOAT34*>(msg_data+offset));
+
+     offset+=sizeof(protocol::P_DECFLOAT34);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat34
 
     default:
     {

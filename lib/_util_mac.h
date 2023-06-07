@@ -24,7 +24,7 @@
 #define _ARRAY_DIM_(__ArrayType__) (sizeof(__ArrayType__)/sizeof((**reinterpret_cast<__ArrayType__*>(0))))
 
 //------------------------------------------------------------------------
-#if 0 // 208-06-06
+#if 0 // 2018-06-06
 
 #define _ZERO_MEMORY(ptr)\
         {if((ptr)!=NULL)memset(ptr,0,sizeof(*(ptr)));}
