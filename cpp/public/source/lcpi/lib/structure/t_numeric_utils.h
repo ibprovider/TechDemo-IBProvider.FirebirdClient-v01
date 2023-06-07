@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
-//                                                 Dmitry Kovalenko. 14.11.2022
+//                                                 Dmitry Kovalenko. 14.11.2022.
 #ifndef _cpp_public_lcpi_lib_structure__t_numeric_utils_H_
 #define _cpp_public_lcpi_lib_structure__t_numeric_utils_H_
 

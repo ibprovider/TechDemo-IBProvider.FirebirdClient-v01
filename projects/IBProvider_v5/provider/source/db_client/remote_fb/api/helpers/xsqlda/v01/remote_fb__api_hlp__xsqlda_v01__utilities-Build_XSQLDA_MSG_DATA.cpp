@@ -423,6 +423,52 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
   }//ibp_fb040_sql_int128
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat16:
+  {
+   assert_s(std::is_same<isc_api::t_ibp_fb040_decfloat16 _LITER_COMMA_ protocol::P_DECFLOAT16>::value);
+
+   if(pXSQLVAR->sqllen!=sizeof(protocol::P_DECFLOAT16))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat16",
+      pXSQLVAR->sqllen);
+   }//if
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_DECFLOAT16),
+       /*align*/isc_api::ibp_fb040_type_align__decfloat16,
+       /*pcbResultAlign*/nullptr); //throw
+
+   break;
+  }//ibp_fb040_sql_decfloat16
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat34:
+  {
+   assert_s(std::is_same<isc_api::t_ibp_fb040_decfloat34 _LITER_COMMA_ protocol::P_DECFLOAT34>::value);
+
+   if(pXSQLVAR->sqllen!=sizeof(protocol::P_DECFLOAT34))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat34",
+      pXSQLVAR->sqllen);
+   }//if
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       /*data size*/sizeof(protocol::P_DECFLOAT34),
+       /*align*/isc_api::ibp_fb040_type_align__decfloat34,
+       /*pcbResultAlign*/nullptr); //throw
+
+   break;
+  }//ibp_fb040_sql_decfloat34
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
@@ -1094,6 +1140,93 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    offset+=sizeof(sqldata_type);
    break;
   }//ibp_fb040_sql_int128
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat16:
+  {
+   const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+   typedef protocol::P_DECFLOAT16 sqldata_type;
+
+   assert_s(c_align==sizeof(sqldata_type().value));
+
+   //-------------------------------------
+   assert(pXSQLVAR->sqllen==sizeof(sqldata_type));
+
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   //[2015-05-09] Думаю здесь будут проблемы в 32-битном коде. У нас выравнивание по size_t.
+   //[2015-05-12] Так и есть.
+   //assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%c_align)==0);
+
+   CHECK_READ_PTR(pXSQLVAR->sqldata,sizeof(sqldata_type));
+
+   //-------------------------------------
+   assert(offset<=DataBuffer.size());
+
+   _VERIFY(structure::align_memory_size(offset,c_align));
+
+   assert((offset%c_align)==0);
+   assert((reinterpret_cast<size_t>(DataBuffer.ptr_at(offset))%c_align)==0);
+
+   assert(offset<=DataBuffer.size());
+
+   assert(sizeof(sqldata_type)<=(DataBuffer.size()-offset));
+
+   //-----
+   if(!IsNull)
+   {
+    (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+   }//if
+
+   offset+=sizeof(sqldata_type);
+   break;
+  }//ibp_fb040_sql_decfloat16
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat34:
+  {
+   const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+   typedef protocol::P_DECFLOAT34 sqldata_type;
+
+   assert_s(c_align==sizeof(sqldata_type().data.low));
+   assert_s(c_align==sizeof(sqldata_type().data.high));
+
+   //-------------------------------------
+   assert(pXSQLVAR->sqllen==sizeof(sqldata_type));
+
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   //[2015-05-09] Думаю здесь будут проблемы в 32-битном коде. У нас выравнивание по size_t.
+   //[2015-05-12] Так и есть.
+   //assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%c_align)==0);
+
+   CHECK_READ_PTR(pXSQLVAR->sqldata,sizeof(sqldata_type));
+
+   //-------------------------------------
+   assert(offset<=DataBuffer.size());
+
+   _VERIFY(structure::align_memory_size(offset,c_align));
+
+   assert((offset%c_align)==0);
+   assert((reinterpret_cast<size_t>(DataBuffer.ptr_at(offset))%c_align)==0);
+
+   assert(offset<=DataBuffer.size());
+
+   assert(sizeof(sqldata_type)<=(DataBuffer.size()-offset));
+
+   //-----
+   if(!IsNull)
+   {
+    (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+   }//if
+
+   offset+=sizeof(sqldata_type);
+   break;
+  }//ibp_fb040_sql_decfloat34
 
   //------------------------------------------------------------
   default:

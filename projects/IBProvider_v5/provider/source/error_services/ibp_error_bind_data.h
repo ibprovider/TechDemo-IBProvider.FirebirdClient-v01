@@ -16,7 +16,7 @@
 #include "source/ibp_memory.h"
 #include "source/ibp_limits.h"
 
-#include <structure/t_fix_vector.h>
+#include <lcpi/lib/structure/t_fix_vector.h>
 
 #include <lcpi/lib/structure/error/t_err_text.h>
 
@@ -69,9 +69,8 @@ class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
   typedef DBORDINAL                                        ordinal_type;
   typedef ibp_msg_code_type                                msg_code_type;
 
-  typedef structure::t_fix_vector
-            <ibp_limc_MaxErrorArgsCount,
-             IBP_ErrorVariant>                             params_type;
+  using params_type
+   =structure::t_fix_vector<IBP_ErrorVariant,ibp_limc_MaxErrorArgsCount>;
 
  public: //---------------------------------------------------------------
   /// <summary>

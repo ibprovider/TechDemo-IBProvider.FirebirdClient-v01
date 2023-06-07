@@ -499,7 +499,9 @@ enum
 
  ibp_fb030_internal_dtype__bool    =21, //1 byte
 
- ibp_fb040_internal_dtype__int128  =24,
+ ibp_fb040_internal_dtype__decfloat16   =22, //dec64
+ ibp_fb040_internal_dtype__decfloat34   =23, //dec128
+ ibp_fb040_internal_dtype__int128       =24,
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -568,10 +570,14 @@ extern const t_ibp_fb040_int128 __null__fb040_int128;
 using t_ibp_fb040_decfloat16
  =db_obj::t_dbvalue__fb040_decfloat16;
 
+extern const t_ibp_fb040_decfloat16 __null__fb040_decfloat16;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 using t_ibp_fb040_decfloat34
  =db_obj::t_dbvalue__fb040_decfloat34;
+
+extern const t_ibp_fb040_decfloat34 __null__fb040_decfloat34;
 
 ////////////////////////////////////////////////////////////////////////////////
 //enumerate standart InterBase blob sub-types

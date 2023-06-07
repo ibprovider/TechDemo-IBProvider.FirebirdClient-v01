@@ -114,12 +114,10 @@ void IBP_ThrowErr__save_numeric_as_native_type
 {
  assert(FAILED(hr));
 
- t_ibp_error exc(hr,
-                 ibp_mce_dbobj_fail_save_numeric_as_native_type_1);
-
- exc<<baseTypeName;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (hr,
+   ibp_mce_dbobj_fail_save_numeric_as_native_type_1,
+   baseTypeName);
 }//IBP_ThrowErr__save_numeric_as_native_type
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -166,15 +164,13 @@ void IBP_ThrowInitPropCantPassIntoDBClient(t_ibp_subsystem_id         const subs
                                            structure::t_const_str_box const db_client_name,
                                            structure::t_const_str_box const db_client_version)
 {
- t_ibp_error exc(DB_E_NOTSUPPORTED,
-                 subsystem_id,
-                 ibp_mce_ds__db_client_not_supports_init_prop_3);
-
- exc<<prop_name
-    <<db_client_name
-    <<db_client_version;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (DB_E_NOTSUPPORTED,
+   subsystem_id,
+   ibp_mce_ds__db_client_not_supports_init_prop_3,
+   prop_name,
+   db_client_name,
+   db_client_version);
 }//IBP_ThrowInitParamCantPassIntoDBClient
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -190,16 +186,14 @@ void IBP_ThrowInitPropCantProcessCurrentDBClient_I4
                                            structure::t_const_str_box const db_client_version,
                                            LONG                       const prop_value)
 {
- t_ibp_error exc(DB_E_NOTSUPPORTED,
-                 subsystem_id,
-                 ibp_mce_ds__db_client_cant_process_init_prop_value_4);
-
- exc<<prop_name
-    <<db_client_name
-    <<db_client_version
-    <<prop_value;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (DB_E_NOTSUPPORTED,
+   subsystem_id,
+   ibp_mce_ds__db_client_cant_process_init_prop_value_4,
+   prop_name,
+   db_client_name,
+   db_client_version,
+   prop_value);
 }//IBP_ThrowInitPropCantProcessCurrentDBClient_I4
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -209,13 +203,11 @@ void IBP_ThrowCantConvertCnPropToUTF8(t_ibp_subsystem_id const subsystem_id,
 {
  assert(!structure::string_is_null_or_empty(prop_name));
 
- t_ibp_error exc(E_FAIL,
-                 subsystem_id,
-                 ibp_mce_common__failed_to_convert_cn_param_to_utf8_1);
-
- exc<<prop_name;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   subsystem_id,
+   ibp_mce_common__failed_to_convert_cn_param_to_utf8_1,
+   prop_name);
 }//IBP_ThrowCantConvertCnPropToUTF8
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -241,13 +233,12 @@ void IBP_ThrowBugCheck(const wchar_t* const place,
  assert(reason);
  assert(FAILED(hr));
 
- t_ibp_error exc(hr,ibp_mce_common__bug_check_3);
-
- exc<<place
-    <<point
-    <<reason;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (hr,
+   ibp_mce_common__bug_check_3,
+   place,
+   point,
+   reason);
 }//IBP_ThrowBugCheck
 
 ////////////////////////////////////////////////////////////////////////////////

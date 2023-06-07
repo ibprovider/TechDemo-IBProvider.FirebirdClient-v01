@@ -100,6 +100,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_t16___bug_check__incorrect_sqllen__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_t17___bug_check__incorrect_sqllen__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -169,6 +177,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_d16__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d17__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  public:
   static void test_a01__varchar
                (TTSO_GlobalContext* pParams,
@@ -229,6 +245,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
   static void test_a15__int128
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+  static void test_a16__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_a17__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -241,7 +265,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  assert(pParams);
  assert(pCtx);
 
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(nullptr);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(nullptr);
 
  _TSO_CHECK(sz==0);
 }//test_001___null_ptr
@@ -258,7 +282,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 
  XSQLDA_V1_Wrapper xsqlda(0);
 
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  _TSO_CHECK(sz==0);
 }//test_002___empty
@@ -630,6 +654,46 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 }//test_t15___bug_check__incorrect_sqllen__int128
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST T16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_t16___bug_check__incorrect_sqllen__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_decfloat16,
+            7,
+            L"sql_decfloat16");
+
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_decfloat16|1,
+            9,
+            L"sql_decfloat16");
+}//test_t16___bug_check__incorrect_sqllen__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_t17___bug_check__incorrect_sqllen__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_decfloat34,
+            15,
+            L"sql_decfloat34");
+
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_decfloat34|1,
+            17,
+            L"sql_decfloat34");
+}//test_t17___bug_check__incorrect_sqllen__decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
 
 void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::helper_txx
@@ -705,7 +769,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =11;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+12);
@@ -730,7 +794,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =11;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+12);
@@ -756,7 +820,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen   =2;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4);
@@ -782,7 +846,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen   =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4);
@@ -808,7 +872,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen   =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+8);
@@ -833,7 +897,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4);
@@ -858,7 +922,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+8);
@@ -883,7 +947,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4);
@@ -908,7 +972,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4);
@@ -933,7 +997,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+8);
@@ -958,7 +1022,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+8);
@@ -983,7 +1047,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+8);
@@ -1008,7 +1072,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =0;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0);
@@ -1033,7 +1097,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen  =1;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK_MSG(sz==4+4,"sz="<<sz);
@@ -1059,11 +1123,63 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[0].sqllen   =16;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+16);
 }//test_d15__int128
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_d16__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[0].sqlscale =0;
+ xsqlda->sqlvar[0].sqllen   =8;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK_MSG(sz==4+8,"sz="<<sz);
+}//test_d16__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST D17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_d17__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[0].sqlscale =0;
+ xsqlda->sqlvar[0].sqllen   =16;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK_MSG(sz==4+16,"sz="<<sz);
+}//test_d17__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //TEST A01
@@ -1087,7 +1203,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =11;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+4+12);
@@ -1115,7 +1231,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =11;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+12);
@@ -1143,7 +1259,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =2;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+4);
@@ -1171,7 +1287,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+4);
@@ -1199,7 +1315,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+8);
@@ -1227,7 +1343,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+4);
@@ -1255,7 +1371,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+8);
@@ -1283,7 +1399,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+4);
@@ -1311,7 +1427,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =4;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+4);
@@ -1339,7 +1455,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+8);
@@ -1367,7 +1483,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+8);
@@ -1395,7 +1511,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =8;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+8);
@@ -1423,7 +1539,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =0;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+0);
@@ -1451,7 +1567,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =1;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+0+4+4);
@@ -1479,11 +1595,67 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
  xsqlda->sqlvar[1].sqllen  =16;
 
  //-----------------------------------------
- size_t sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
 
  //-----------------------------------------
  _TSO_CHECK(sz==4+4+4+16);
 }//test_a15__int128
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST A16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a16__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_isc_sql_text|1;
+ xsqlda->sqlvar[0].sqllen  =1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[1].sqllen  =8;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK(sz==4+4+4+8);
+}//test_a16__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST A17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a17__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_isc_sql_text|1;
+ xsqlda->sqlvar[0].sqllen  =1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[1].sqllen  =16;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK(sz==4+4+4+16);
+}//test_a17__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_descr
@@ -1543,6 +1715,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_t14___bug_check__incorrect_sqllen__boolean)
  DEF_TEST_DESCR("T15.bug_check.incorrect_sqllen.int128",
                 test_t15___bug_check__incorrect_sqllen__int128)
+ DEF_TEST_DESCR("T16.bug_check.incorrect_sqllen.decfloat16",
+                test_t16___bug_check__incorrect_sqllen__decfloat16)
+ DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.decfloat34",
+                test_t17___bug_check__incorrect_sqllen__decfloat34)
 
  DEF_TEST_DESCR("D01.varchar",
                 test_d01__varchar)
@@ -1574,6 +1750,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_d14__boolean)
  DEF_TEST_DESCR("D15.int128",
                 test_d15__int128)
+ DEF_TEST_DESCR("D16.decfloat16",
+                test_d16__decfloat16)
+ DEF_TEST_DESCR("D17.decfloat34",
+                test_d17__decfloat34)
 
  DEF_TEST_DESCR("A01.varchar",
                 test_a01__varchar)
@@ -1605,6 +1785,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_a14__boolean)
  DEF_TEST_DESCR("A15.int128",
                 test_a15__int128)
+ DEF_TEST_DESCR("A16.decfloat16",
+                test_a16__decfloat16)
+ DEF_TEST_DESCR("A17.decfloat34",
+                test_a17__decfloat34)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

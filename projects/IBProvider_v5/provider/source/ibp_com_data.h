@@ -17,7 +17,9 @@
 # include "source/config/ibp_cfg.h"
 #endif
 
-#include <structure/t_fix_vector.h>
+#ifndef IBP_BUILD_TESTCODE
+# include <lcpi/lib/structure/t_fix_vector.h>
+#endif
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,8 +43,8 @@ class TIBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
   typedef IBP_MemoryAllocator                             allocator_type;
 
 #ifndef IBP_BUILD_TESTCODE
-  typedef structure::t_fix_vector
-            <10,IBP_OLEDB__ClassFactoryData>              class_factory_datas_type;;
+  using class_factory_datas_type
+   =lib::structure::t_fix_vector<IBP_OLEDB__ClassFactoryData,10>;
 #endif
 
   typedef structure::t_multi_thread_traits                thread_traits;

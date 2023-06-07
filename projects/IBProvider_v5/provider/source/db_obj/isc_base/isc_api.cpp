@@ -24,6 +24,10 @@ extern const t_ibp_isc_timestamp __null__isc_timestamp={0,0};
 
 extern const t_ibp_fb040_int128 __null__fb040_int128=db_obj::make_fb040_int128(0,0);
 
+extern const t_ibp_fb040_decfloat16 __null__fb040_decfloat16=db_obj::make_fb040_decfloat16(0);
+
+extern const t_ibp_fb040_decfloat34 __null__fb040_decfloat34=db_obj::make_fb040_decfloat34(0,0);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>

@@ -146,5 +146,21 @@ size_t RemoteFB__XDR__Info::get_size__p_int128()
  return 2*self_type::get_size__p_uint64();
 }//get_size__p_int64
 
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__p_decfloat16()
+{
+ assert_s(sizeof(protocol::P_DECFLOAT16)==sizeof(protocol::P_UINT64));
+
+ return self_type::get_size__p_uint64();
+}//get_size__p_decfloat16
+
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__p_decfloat34()
+{
+ assert_s(sizeof(protocol::P_DECFLOAT34)==2*sizeof(protocol::P_UINT64));
+
+ return 2*self_type::get_size__p_uint64();
+}//get_size__p_decfloat34
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms transmission*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

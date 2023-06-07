@@ -6,6 +6,7 @@
 
 #include <structure/utilities/string/string_builder.h>
 #include <structure/t_simple_buffer.h>
+#include <structure/t_numeric_cast.h>
 #include <structure/t_limits.h>
 
 namespace structure{

@@ -60,6 +60,10 @@ class RemoteFB__XDR__Info
   static size_t get_size__p_uint64();
 
   static size_t get_size__p_int128();
+
+  static size_t get_size__p_decfloat16();
+
+  static size_t get_size__p_decfloat34();
 };//class RemoteFB__XDR__Info
 
 ////////////////////////////////////////////////////////////////////////////////

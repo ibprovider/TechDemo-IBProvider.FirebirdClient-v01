@@ -257,7 +257,7 @@ struct t_dbvalue__fb040_int128
   t_dbvalue__ui8 low;
   t_dbvalue__ui8 high;
 #else
-# error Is not tested!
+# error Is not implemented!
 #endif
  } data;
 };//struct t_dbvalue__fb040_int128
@@ -305,16 +305,69 @@ extern const t_dbvalue__fb040_numeric_i16 __null_dbvalue__fb040_numeric_i16;
 
 struct t_dbvalue__fb040_decfloat16
 {
- t_dbvalue__ui8 data[1];
+ t_dbvalue__ui8 value;
 };//struct t_dbvalue__fb040_decfloat16
+
+extern const t_dbvalue__fb040_decfloat16 __null_dbvalue__fb040_decfloat16;
+
+//------------------------------------------------------------------------
+inline t_dbvalue__fb040_decfloat16 make_fb040_decfloat16(t_dbvalue__ui8 const value)
+{
+ t_dbvalue__fb040_decfloat16 v;
+
+ v.value =value;
+
+ return v;
+}//make_fb040_decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_decfloat16& v1,const t_dbvalue__fb040_decfloat16& v2);
+
+bool operator != (const t_dbvalue__fb040_decfloat16& v1,const t_dbvalue__fb040_decfloat16& v2);
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_dbvalue__fb040_decfloat34
 
 struct t_dbvalue__fb040_decfloat34
 {
- t_dbvalue__ui8 data[2];
+ struct
+ {
+#if IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN
+  t_dbvalue__ui8 low;
+  t_dbvalue__ui8 high;
+#else
+# error Is not implemented!
+#endif
+ } data;
 };//struct t_dbvalue__fb040_decfloat34
+
+extern const t_dbvalue__fb040_decfloat34 __null_dbvalue__fb040_decfloat34;
+
+//------------------------------------------------------------------------
+inline t_dbvalue__fb040_decfloat34 make_fb040_decfloat34(t_dbvalue__ui8 l,t_dbvalue__ui8 h)
+{
+ t_dbvalue__fb040_decfloat34 v;
+
+ v.data.low  =l;
+ v.data.high =h;
+
+ return v;
+}//make_fb040_decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_decfloat34& v1,const t_dbvalue__fb040_decfloat34& v2);
+
+bool operator != (const t_dbvalue__fb040_decfloat34& v1,const t_dbvalue__fb040_decfloat34& v2);
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -458,8 +511,12 @@ enum
   =db_obj::dbprecision__isc_date_as_wstr+1+dbprecision__fb040_time2_with_tz_as_wstr,
 
  //For DECLFLOAT_AS_WSTR mode
- dbprecision__fb040_decfloat16_as_wstr      =dbprecision__fb040_decfloat16+16,
- dbprecision__fb040_decfloat34_as_wstr      =dbprecision__fb040_decfloat34+16,
+ dbprecision__fb040_decfloat16_as_wstr      =24, // see DECDOUBLE_String
+ dbprecision__fb040_decfloat34_as_wstr      =42, // see DECQUAD_String
+
+ //For INT128_AS_WSTR mode
+ dbprecision__fb040_int128_as_wstr
+  =dbprecision__fb040_int128+1,                  // +INT128 | -INT128
 };//enum
 
 enum

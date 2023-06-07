@@ -585,6 +585,79 @@ void RemoteFB__API_HLP__BLR_V05__Utilities::Debug__CHECK_BLR
      break;
     }//ibp_fb040_blr_dtype__int128
 
+    case isc_api::ibp_fb040_blr_dtype__decfloat16:
+    {
+     assert(current_descr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat16);
+
+     assert(current_descr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb040_decfloat16));
+
+     //----
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat16)==8);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat16));
+
+     offset
+      =IBP_Memory_Utils::AlignMemLength
+       (offset,
+        c_align,
+        &expectedAlign);
+
+     assert(current_descr.m_msg_value_block_offset==offset);
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_decfloat16)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data_ptr+offset)%c_align)==0);
+
+     offset+=sizeof(isc_api::t_ibp_fb040_decfloat16);
+
+     assert(offset<=msg_data_size);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat16
+
+    case isc_api::ibp_fb040_blr_dtype__decfloat34:
+    {
+     assert(current_descr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat34);
+
+     assert(current_descr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb040_decfloat34));
+
+     //----
+     assert_s(sizeof(isc_api::t_ibp_fb040_decfloat34)==16);
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.low));
+     assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.high));
+
+     offset
+      =IBP_Memory_Utils::AlignMemLength
+       (offset,
+        c_align,
+        &expectedAlign);
+
+     assert(current_descr.m_msg_value_block_offset==offset);
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_decfloat34)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data_ptr+offset)%c_align)==0);
+
+     offset+=sizeof(isc_api::t_ibp_fb040_decfloat34);
+
+     assert(offset<=msg_data_size);
+
+     break;
+    }//ibp_fb040_blr_dtype__decfloat34
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

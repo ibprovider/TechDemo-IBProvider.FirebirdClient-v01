@@ -51,7 +51,7 @@ const size_t ibp_limc_MaxUnicodeSymbolsForOneUTF8Symbol=
 /// <summary>
 ///  Максимальное количество параметров в описании ошибок
 /// </summary>
-//! Используется для настройки structure::t_fix_vector
+//! Используется для настройки lib::structure::t_fix_vector
 const size_t ibp_limc_MaxErrorArgsCount=12;
 
 ////////////////////////////////////////////////////////////////////////////////

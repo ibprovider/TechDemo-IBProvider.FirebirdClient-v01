@@ -277,7 +277,7 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
                 context_type*       pCtx);
 
 #ifdef NDEBUG
-  static void test_330__ReadElementType__err__check_point_011
+  static void test_330__ReadElementType__err__check_point_011___int128
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 #endif
@@ -353,6 +353,14 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
                 context_type*       pCtx);
 
   static void test_513__int128__scale_n12
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_514__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_515__decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
@@ -4436,7 +4444,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
 #ifdef NDEBUG
 
-void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_330__ReadElementType__err__check_point_011
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_330__ReadElementType__err__check_point_011___int128
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -4490,7 +4498,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
   TestServices::Throw_WeWaitTheError();
  }//for[ever]
-}//test_330__ReadElementType__err__check_point_011
+}//test_330__ReadElementType__err__check_point_011___int128
 
 #endif
 
@@ -5940,6 +5948,164 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 }//test_513__int128__scale_n12
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST 514
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_514__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ const array_utils_type::byte_type sdl[]=
+ {
+  isc_api::ibp_isc_sdl_version1,
+  isc_api::ibp_isc_sdl_struct,
+  1,
+  isc_api::ibp_fb040_blr_dtype__decfloat16,
+  isc_api::ibp_isc_sdl_relation,
+  3,'a','b','c',
+  isc_api::ibp_isc_sdl_field,
+  0,
+  isc_api::ibp_isc_sdl_do1,
+  0,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  2,
+  isc_api::ibp_isc_sdl_do2,
+  1,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  (array_utils_type::byte_type)-10,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  10,
+  isc_api::ibp_isc_sdl_element,
+  1,
+  isc_api::ibp_isc_sdl_scalar,
+  0,
+  2,                                        //count of dimensions
+  isc_api::ibp_isc_sdl_variable,
+  0,
+  isc_api::ibp_isc_sdl_variable,
+  1,
+  isc_api::ibp_isc_sdl_eoc
+ };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _DIM_(sdl),
+   sdl,
+   &descr);
+
+ //-----------------------------------------
+
+ _TSO_CHECK(descr.m_relation_name==L"abc");
+
+ _TSO_CHECK(descr.m_field_name.empty());
+
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb040_blr_dtype__decfloat16);
+
+ _TSO_CHECK(descr.m_element_sql_scale==0);
+
+ _TSO_CHECK(descr.m_element_sql_length==8);
+
+ _TSO_CHECK(descr.m_element_total_length==8);
+
+ _TSO_CHECK(descr.m_bounds_number==2);
+
+ _TSO_CHECK(descr.m_bounds[0].lower==1);
+ _TSO_CHECK(descr.m_bounds[0].upper==2);
+
+ _TSO_CHECK(descr.m_bounds[1].lower==-10);
+ _TSO_CHECK(descr.m_bounds[1].upper==10);
+}//test_514__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST 515
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_515__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ const array_utils_type::byte_type sdl[]=
+ {
+  isc_api::ibp_isc_sdl_version1,
+  isc_api::ibp_isc_sdl_struct,
+  1,
+  isc_api::ibp_fb040_blr_dtype__decfloat34,
+  isc_api::ibp_isc_sdl_relation,
+  3,'a','b','c',
+  isc_api::ibp_isc_sdl_field,
+  0,
+  isc_api::ibp_isc_sdl_do1,
+  0,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  2,
+  isc_api::ibp_isc_sdl_do2,
+  1,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  (array_utils_type::byte_type)-10,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  10,
+  isc_api::ibp_isc_sdl_element,
+  1,
+  isc_api::ibp_isc_sdl_scalar,
+  0,
+  2,                                        //count of dimensions
+  isc_api::ibp_isc_sdl_variable,
+  0,
+  isc_api::ibp_isc_sdl_variable,
+  1,
+  isc_api::ibp_isc_sdl_eoc
+ };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _DIM_(sdl),
+   sdl,
+   &descr);
+
+ //-----------------------------------------
+
+ _TSO_CHECK(descr.m_relation_name==L"abc");
+
+ _TSO_CHECK(descr.m_field_name.empty());
+
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb040_blr_dtype__decfloat34);
+
+ _TSO_CHECK(descr.m_element_sql_scale==0);
+
+ _TSO_CHECK(descr.m_element_sql_length==16);
+
+ _TSO_CHECK(descr.m_element_total_length==16);
+
+ _TSO_CHECK(descr.m_bounds_number==2);
+
+ _TSO_CHECK(descr.m_bounds[0].lower==1);
+ _TSO_CHECK(descr.m_bounds[0].upper==2);
+
+ _TSO_CHECK(descr.m_bounds[1].lower==-10);
+ _TSO_CHECK(descr.m_bounds[1].upper==10);
+}//test_515__decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
@@ -6094,8 +6260,8 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
  DEF_TEST_DESCR("316.ReadElementType.err.check_point_L03.len32768",
                 test_316__ReadElementType__err__check_point_L03__len32768)
 #ifdef NDEBUG
- DEF_TEST_DESCR("330.ReadElementType.err.check_point_011",
-                test_330__ReadElementType__err__check_point_011)
+ DEF_TEST_DESCR("330.ReadElementType.err.check_point_011.int128",
+                test_330__ReadElementType__err__check_point_011___int128)
 #endif
 
  DEF_TEST_DESCR("400.short_integer",
@@ -6151,6 +6317,12 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
 
  DEF_TEST_DESCR("513.int128.scale_n12",
                 test_513__int128__scale_n12)
+
+ DEF_TEST_DESCR("514.decfloat16",
+                test_514__decfloat16)
+
+ DEF_TEST_DESCR("515.decfloat34",
+                test_515__decfloat34)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

@@ -672,6 +672,80 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
   }//ibp_fb040_sql_int128
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat16:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat16))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat16",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   szMsg
+    =IBP_Memory_Utils::AlignMemLength
+      (szMsg,
+       isc_api::ibp_fb040_type_align__decfloat16,
+       pcbResultAlign); //throw
+
+   MsgDescr.m_msg_value_block_offset
+    =szMsg;                                                               // OFFSET
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_fb040_decfloat16)); //throw
+
+   MsgDescr.m_msg_value_block_size
+    =sizeof(isc_api::t_ibp_fb040_decfloat16);                             // SIZE
+
+   assert(MsgDescr.m_msg_value_block_size==(szMsg-MsgDescr.m_msg_value_block_offset));
+
+   MsgDescr.m_msg_blrtype=isc_api::ibp_fb040_blr_dtype__decfloat16;
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_decfloat16
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat34:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat34))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat34",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   szMsg
+    =IBP_Memory_Utils::AlignMemLength
+      (szMsg,
+       isc_api::ibp_fb040_type_align__decfloat34,
+       pcbResultAlign); //throw
+
+   MsgDescr.m_msg_value_block_offset
+    =szMsg;                                                               // OFFSET
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_fb040_decfloat34)); //throw
+
+   MsgDescr.m_msg_value_block_size
+    =sizeof(isc_api::t_ibp_fb040_decfloat34);                             // SIZE
+
+   assert(MsgDescr.m_msg_value_block_size==(szMsg-MsgDescr.m_msg_value_block_offset));
+
+   MsgDescr.m_msg_blrtype=isc_api::ibp_fb040_blr_dtype__decfloat34;
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_decfloat34
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID

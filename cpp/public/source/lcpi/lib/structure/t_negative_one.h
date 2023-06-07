@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
-//                                                 Kovalenko Dmitry. 15.04.2009
+//                                                 Kovalenko Dmitry. 15.04.2009.
 #ifndef _cpp_public_lcpi_lib_structure__t_negative_one_H_
 #define _cpp_public_lcpi_lib_structure__t_negative_one_H_
 

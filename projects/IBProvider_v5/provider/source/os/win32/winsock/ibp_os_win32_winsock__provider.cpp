@@ -53,13 +53,11 @@ t_winsock__provider::t_winsock__provider(dll_type* const pDLL)
  {
   //ERROR - WSAStartup failed;
 
-  t_ibp_error exc(E_FAIL,
-                  ibp_mce_winsock__failed_to_initialize_1,
-                  IBP_CreateCustomErrorFor_CnFailed());
-
-  exc<<wsaError;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
+   (E_FAIL,
+    ibp_mce_winsock__failed_to_initialize_1,
+    IBP_CreateCustomErrorFor_CnFailed(),
+    wsaError);
  }//if
 }//t_winsock__provider
 

@@ -461,8 +461,8 @@ void RemoteFB__PSET02__P13__XDR__Encoder::encode__sql_message
 
       const size_t c_align=isc_api::ibp_fb040_type_align__int128;
 
-     assert_s(c_align==sizeof(protocol::P_INT128().data.low));
-     assert_s(c_align==sizeof(protocol::P_INT128().data.high));
+      assert_s(c_align==sizeof(protocol::P_INT128().data.low));
+      assert_s(c_align==sizeof(protocol::P_INT128().data.high));
 
       assert(offset<=msg_data_size);
 
@@ -478,6 +478,57 @@ void RemoteFB__PSET02__P13__XDR__Encoder::encode__sql_message
 
       break;
      }//ibp_fb040_blr_dtype__int128
+
+     case isc_api::ibp_fb040_blr_dtype__decfloat16:
+     {
+      assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat16);
+
+      assert(MsgElementDescr.m_msg_value_block_size==sizeof(protocol::P_DECFLOAT16));
+
+      const size_t c_align=isc_api::ibp_fb040_type_align__decfloat16;
+
+      assert_s(c_align==sizeof(protocol::P_DECFLOAT16().value));
+
+      assert(offset<=msg_data_size);
+
+      assert((offset%c_align)==0);
+
+      assert(sizeof(protocol::P_DECFLOAT16)<=(msg_data_size-offset));
+
+      assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+      xdr::encode__p_decfloat16
+       (pBuf,
+        reinterpret_cast<const protocol::P_DECFLOAT16*>(msg_data+offset));
+
+      break;
+     }//ibp_fb040_blr_dtype__decfloat16
+
+     case isc_api::ibp_fb040_blr_dtype__decfloat34:
+     {
+      assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_decfloat34);
+
+      assert(MsgElementDescr.m_msg_value_block_size==sizeof(protocol::P_DECFLOAT34));
+
+      const size_t c_align=isc_api::ibp_fb040_type_align__decfloat34;
+
+      assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.low));
+      assert_s(c_align==sizeof(protocol::P_DECFLOAT34().data.high));
+
+      assert(offset<=msg_data_size);
+
+      assert((offset%c_align)==0);
+
+      assert(sizeof(protocol::P_DECFLOAT34)<=(msg_data_size-offset));
+
+      assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+      xdr::encode__p_decfloat34
+       (pBuf,
+        reinterpret_cast<const protocol::P_DECFLOAT34*>(msg_data+offset));
+
+      break;
+     }//ibp_fb040_blr_dtype__decfloat34
 
      default:
      {

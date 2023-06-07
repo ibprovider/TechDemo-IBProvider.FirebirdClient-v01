@@ -35,10 +35,10 @@ class t_base_com_error:virtual public structure::t_exception
   HRESULT com_code()const;
 
   //std::exception interface ----------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC COMP_W000004_OVERRIDE;//override
+  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //structure::t_exception interface --------------------------------
-  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const COMP_W000004_OVERRIDE;//override
+  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //interface -------------------------------------------------------
 

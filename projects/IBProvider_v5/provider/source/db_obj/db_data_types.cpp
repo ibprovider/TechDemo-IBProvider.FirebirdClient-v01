@@ -61,6 +61,16 @@ const t_dbvalue__fb040_numeric_i16
  __null_dbvalue__fb040_numeric_i16
   ={make_fb040_int128(0,0)};
 
+//------------------------------------------------------------------------
+const t_dbvalue__fb040_decfloat16
+ __null_dbvalue__fb040_decfloat16
+  ={{0}};
+
+//------------------------------------------------------------------------
+const t_dbvalue__fb040_decfloat34
+ __null_dbvalue__fb040_decfloat34
+  ={{0,0}};
+
 ////////////////////////////////////////////////////////////////////////////////
 //struct tag_dbtype_info
 
@@ -260,6 +270,58 @@ bool operator == (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int12
 
 //------------------------------------------------------------------------
 bool operator != (const t_dbvalue__fb040_int128& v1,const t_dbvalue__fb040_int128& v2)
+{
+ if(v1.data.low!=v2.data.low)
+  return true;
+
+ if(v1.data.high!=v2.data.high)
+  return true;
+
+ return false;
+}//operator !=
+
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_decfloat16& v1,const t_dbvalue__fb040_decfloat16& v2)
+{
+ if(v1.value!=v2.value)
+  return false;
+
+ return true;
+}//operator ==
+
+//------------------------------------------------------------------------
+bool operator != (const t_dbvalue__fb040_decfloat16& v1,const t_dbvalue__fb040_decfloat16& v2)
+{
+ if(v1.value!=v2.value)
+  return true;
+
+ return false;
+}//operator !=
+
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_decfloat34& v1,const t_dbvalue__fb040_decfloat34& v2)
+{
+ if(v1.data.low!=v2.data.low)
+  return false;
+
+ if(v1.data.high!=v2.data.high)
+  return false;
+
+ return true;
+}//operator ==
+
+//------------------------------------------------------------------------
+bool operator != (const t_dbvalue__fb040_decfloat34& v1,const t_dbvalue__fb040_decfloat34& v2)
 {
  if(v1.data.low!=v2.data.low)
   return true;

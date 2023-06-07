@@ -199,6 +199,54 @@ void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
 
 //------------------------------------------------------------------------
 template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::ReThrowWithSameHResult
+               (const std::exception&    e,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ t_ibp_error exc(e);
+
+ assert(FAILED(exc.com_code()));
+
+ exc.add_error
+  (exc.com_code(),
+   msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//ReThrowWithSameHResult
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::ReThrowWithSameHResult
+               (const std::exception&    e,
+                t_ibp_subsystem_id       subsystem_id,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ t_ibp_error exc(e);
+
+ assert(FAILED(exc.com_code()));
+
+ exc.add_error
+  (exc.com_code(),
+   subsystem_id,
+   msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me();
+}//ReThrowWithSameHResult
+
+//------------------------------------------------------------------------
+template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck__DEBUG
              (const std::exception& e,

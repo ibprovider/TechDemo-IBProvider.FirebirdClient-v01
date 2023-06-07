@@ -382,6 +382,46 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZ
   }//ibp_fb040_sql_int128
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat16:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat16))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat16",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   cbResult=xdr::get_size__p_decfloat16();
+
+   assert(cbResult==sizeof(protocol::P_DECFLOAT16));
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_decfloat16
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_decfloat34:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat34))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_decfloat34",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   cbResult=xdr::get_size__p_decfloat34();
+
+   assert(cbResult==sizeof(protocol::P_DECFLOAT34));
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_decfloat34
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID

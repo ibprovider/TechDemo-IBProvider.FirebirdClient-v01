@@ -84,21 +84,18 @@ void RemoteFB__API_P12__CloseBlob::exec(RemoteFB__ConnectorData* const pData,
   try
   {
    //выгрузка буферизированных данных
-   pData->m_API__FlushBlob.get()->exec(pData,
-                                       pBlobHandle);
+   pData->m_API__FlushBlob.get()->exec
+    (pData,
+     pBlobHandle);
   }
   catch(const std::exception& e)
   {
    //добавляем дополнительную информацию о причинах сбоя.
 
-   t_ibp_error exc(e);
-
-   exc.add_error
-    (exc.com_code(),
+   IBP_ErrorUtils::ReThrowWithSameHResult
+    (e,
      ibp_subsystem__remote_fb__p12,
      ibp_mce_bw__fail_write_to_db_0);
-
-   exc.raise_me();
   }//catch
  }//if
 #ifndef NDEBUG

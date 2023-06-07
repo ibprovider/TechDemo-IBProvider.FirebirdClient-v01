@@ -671,7 +671,8 @@ void WORK_Array_Read_Test_010__boolean::create(TTSO_PushTest*      const pTestPu
         (pParams,
          ftestID.c_str(),
          sm_Tests[it[iTest]].Func,
-         Data)));
+         Data,
+         "NE__BOOLEAN")));
 
   pTestPusher->PushTest(spTest);
  }//for it

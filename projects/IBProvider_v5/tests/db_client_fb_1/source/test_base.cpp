@@ -324,6 +324,14 @@ const TTSO_GlobalContext::tag_named_expression
    "SRV>=FB-4")
 
  DEF_NAMED_EXPRESSION
+  ("NE__DECFLOAT16",
+   "SRV>=FB-4")
+
+ DEF_NAMED_EXPRESSION
+  ("NE__DECFLOAT34",
+   "SRV>=FB-4")
+
+ DEF_NAMED_EXPRESSION
   ("NE__ODS_CS__IS_UNICODE_FSS",
    "SRV<=FB-3")
 

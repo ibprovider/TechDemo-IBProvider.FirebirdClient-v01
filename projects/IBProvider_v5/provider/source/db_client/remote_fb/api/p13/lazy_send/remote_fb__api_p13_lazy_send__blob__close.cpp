@@ -84,14 +84,10 @@ void RemoteFB__API_P13_LAZY_SEND__CloseBlob::exec
   {
    //добавляем дополнительную информацию о причинах сбоя.
 
-   t_ibp_error exc(e);
-
-   exc.add_error
-    (exc.com_code(),
+   IBP_ErrorUtils::ReThrowWithSameHResult
+    (e,
      ibp_subsystem__remote_fb__p13,
      ibp_mce_bw__fail_write_to_db_0);
-
-   exc.raise_me();
   }//catch
  }//if
 #ifndef NDEBUG

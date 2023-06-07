@@ -113,6 +113,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_t16___bug_check__incorrect_sqllen__decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_t17___bug_check__incorrect_sqllen__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -179,6 +187,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 context_type*       pCtx);
 
   static void test_d15___int128
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d16___decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d17___decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
@@ -297,6 +313,14 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 context_type*       pCtx);
 
   static void test_a15___int128
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_a16___decfloat16
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_a17___decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA
@@ -889,15 +913,71 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  helper_txx(pParams,
             pCtx,
             isc_api::ibp_fb040_sql_int128,
-            7,
+            15,
             L"sql_int128");
 
  helper_txx(pParams,
             pCtx,
             isc_api::ibp_fb040_sql_int128|1,
-            9,
+            17,
             L"sql_int128");
 }//test_t15___bug_check__incorrect_sqllen__int128
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t16___bug_check__incorrect_sqllen__decfloat16
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short sz=-32;sz!=33;++sz)
+ {
+  if(sz==8)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16,
+    sz,
+    L"sql_decfloat16");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16|1,
+    sz,
+    L"sql_decfloat16");
+ }//for sz
+}//test_t16___bug_check__incorrect_sqllen__decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t17___bug_check__incorrect_sqllen__decfloat34
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short sz=-32;sz!=33;++sz)
+ {
+  if(sz==16)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34,
+    sz,
+    L"sql_decfloat34");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34|1,
+    sz,
+    L"sql_decfloat34");
+ }//for sz
+}//test_t17___bug_check__incorrect_sqllen__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
@@ -987,7 +1067,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1033,7 +1113,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1079,7 +1159,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1125,7 +1205,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1171,7 +1251,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1217,7 +1297,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1263,7 +1343,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1309,7 +1389,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1355,7 +1435,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1409,7 +1489,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value.len),
            reinterpret_cast<unsigned char*>(&value.len)+sizeof(value.len),
@@ -1463,7 +1543,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&sqlind),
            reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
@@ -1505,7 +1585,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1551,7 +1631,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1597,7 +1677,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1645,7 +1725,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value),
            reinterpret_cast<unsigned char*>(&value)+sizeof(value),
@@ -1661,6 +1741,98 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
                              expected_buf.cbegin(),
                              expected_buf.cend()));
 }//test_d15___int128
+
+////////////////////////////////////////////////////////////////////////////////
+//D16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d16___decfloat16
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ db_obj::t_dbvalue__fb040_decfloat16 value=db_obj::make_fb040_decfloat16(12345678901234567);
+ short                               sqlind=0;
+
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[0].sqllen  =sizeof(value);
+ xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
+ xsqlda->sqlvar[0].sqlind  =&sqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+
+ //-----------------------------------------
+ structure::t_fix_vector<unsigned char,100> expected_buf;
+
+ std::copy(reinterpret_cast<unsigned char*>(&value),
+           reinterpret_cast<unsigned char*>(&value)+sizeof(value),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind),
+           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
+           std::back_inserter(expected_buf));
+
+ //-----------------------------------------
+ _TSO_CHECK(structure::equal(buf.buffer(),
+                             buf.buffer_end(),
+                             expected_buf.cbegin(),
+                             expected_buf.cend()));
+}//test_d16___decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//D17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d17___decfloat34
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ db_obj::t_dbvalue__fb040_decfloat34 value=db_obj::make_fb040_decfloat34(5792501206129316193, 5824638083864100507);
+ short                               sqlind=0;
+
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[0].sqllen  =sizeof(value);
+ xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
+ xsqlda->sqlvar[0].sqlind  =&sqlind;
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+
+ //-----------------------------------------
+ structure::t_fix_vector<unsigned char,100> expected_buf;
+
+ std::copy(reinterpret_cast<unsigned char*>(&value),
+           reinterpret_cast<unsigned char*>(&value)+sizeof(value),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind),
+           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
+           std::back_inserter(expected_buf));
+
+ //-----------------------------------------
+ _TSO_CHECK(structure::equal(buf.buffer(),
+                             buf.buffer_end(),
+                             expected_buf.cbegin(),
+                             expected_buf.cend()));
+}//test_d17___decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //N01
@@ -1692,7 +1864,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1739,7 +1911,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1786,7 +1958,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1833,7 +2005,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1880,7 +2052,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1927,7 +2099,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -1974,7 +2146,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2021,7 +2193,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2068,7 +2240,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2123,7 +2295,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null.len),
            reinterpret_cast<unsigned char*>(&value__null.len)+sizeof(value__null.len),
@@ -2176,7 +2348,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2223,7 +2395,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2270,7 +2442,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2319,7 +2491,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&value__null),
            reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
@@ -2373,7 +2545,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2439,7 +2611,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2507,7 +2679,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2579,7 +2751,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2647,7 +2819,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2719,7 +2891,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2787,7 +2959,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2855,7 +3027,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -2923,7 +3095,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -3000,7 +3172,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1.len),
@@ -3081,7 +3253,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
            reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
@@ -3139,7 +3311,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -3207,7 +3379,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -3283,7 +3455,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -3362,7 +3534,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
- structure::t_fix_vector<100,unsigned char> expected_buf;
+ structure::t_fix_vector<unsigned char,100> expected_buf;
 
  //-----
  std::copy(reinterpret_cast<unsigned char*>(&value1),
@@ -3396,6 +3568,150 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
                              expected_buf.cbegin(),
                              expected_buf.cend()));
 }//test_a15___int128
+
+////////////////////////////////////////////////////////////////////////////////
+//A16
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a16___decfloat16
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ db_obj::t_dbvalue__fb040_decfloat16 value1=db_obj::make_fb040_decfloat16(123456789012345ui64);
+ short                               sqlind1=0;
+
+ db_obj::t_dbvalue__fb040_decfloat16 value2=db_obj::make_fb040_decfloat16(444444444444444ui64);
+ short                               sqlind2=0;
+
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[0].sqllen  =sizeof(value1);
+ xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
+ xsqlda->sqlvar[0].sqlind  =&sqlind1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
+ xsqlda->sqlvar[1].sqllen  =sizeof(value2);
+ xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
+ xsqlda->sqlvar[1].sqlind  =&sqlind2;
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+
+ //-----------------------------------------
+ structure::t_fix_vector<unsigned char,100> expected_buf;
+
+ //-----
+ std::copy(reinterpret_cast<unsigned char*>(&value1),
+           reinterpret_cast<unsigned char*>(&value1)+sizeof(value1),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
+           reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
+           std::back_inserter(expected_buf));
+
+ //----- align
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+
+ //-----
+ std::copy(reinterpret_cast<unsigned char*>(&value2),
+           reinterpret_cast<unsigned char*>(&value2)+sizeof(value2),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind2),
+           reinterpret_cast<unsigned char*>(&sqlind2)+sizeof(sqlind2),
+           std::back_inserter(expected_buf));
+
+ //-----------------------------------------
+ _TSO_CHECK(structure::equal(buf.buffer(),
+                             buf.buffer_end(),
+                             expected_buf.cbegin(),
+                             expected_buf.cend()));
+}//test_a16___decfloat16
+
+////////////////////////////////////////////////////////////////////////////////
+//A17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a17___decfloat34
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ db_obj::t_dbvalue__fb040_decfloat34 value1=db_obj::make_fb040_decfloat34(123456789012345ui64,543210987654321ui64);
+ short                               sqlind1=0;
+
+ db_obj::t_dbvalue__fb040_decfloat34 value2=db_obj::make_fb040_decfloat34(444444444444444ui64,555555555555555ui64);
+ short                               sqlind2=0;
+
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[0].sqllen  =sizeof(value1);
+ xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
+ xsqlda->sqlvar[0].sqlind  =&sqlind1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
+ xsqlda->sqlvar[1].sqllen  =sizeof(value2);
+ xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
+ xsqlda->sqlvar[1].sqlind  =&sqlind2;
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_data_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+
+ //-----------------------------------------
+ structure::t_fix_vector<unsigned char,100> expected_buf;
+
+ //-----
+ std::copy(reinterpret_cast<unsigned char*>(&value1),
+           reinterpret_cast<unsigned char*>(&value1)+sizeof(value1),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
+           reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
+           std::back_inserter(expected_buf));
+
+ //----- align
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+ expected_buf.push_back(0);
+
+ //-----
+ std::copy(reinterpret_cast<unsigned char*>(&value2),
+           reinterpret_cast<unsigned char*>(&value2)+sizeof(value2),
+           std::back_inserter(expected_buf));
+
+ std::copy(reinterpret_cast<unsigned char*>(&sqlind2),
+           reinterpret_cast<unsigned char*>(&sqlind2)+sizeof(sqlind2),
+           std::back_inserter(expected_buf));
+
+ //-----------------------------------------
+ _TSO_CHECK(structure::equal(buf.buffer(),
+                             buf.buffer_end(),
+                             expected_buf.cbegin(),
+                             expected_buf.cend()));
+}//test_a17___decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_descr
@@ -3463,6 +3779,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_t14___bug_check__incorrect_sqllen__boolean)
  DEF_TEST_DESCR("T15.bug_check.incorrect_sqllen.int128",
                 test_t15___bug_check__incorrect_sqllen__int128)
+ DEF_TEST_DESCR("T16.bug_check.incorrect_sqllen.decfloat16",
+                test_t16___bug_check__incorrect_sqllen__decfloat16)
+ DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.decfloat34",
+                test_t17___bug_check__incorrect_sqllen__decfloat34)
 
  DEF_TEST_DESCR("D01.short",
                 test_d01___short)
@@ -3494,6 +3814,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_d14___boolean)
  DEF_TEST_DESCR("D15.int128",
                 test_d15___int128)
+ DEF_TEST_DESCR("D16.decfloat16",
+                test_d16___decfloat16)
+ DEF_TEST_DESCR("D17.decfloat34",
+                test_d17___decfloat34)
 
  //-----
  DEF_TEST_DESCR("N01.short",
@@ -3556,6 +3880,10 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_a14___boolean)
  DEF_TEST_DESCR("A15.int128",
                 test_a15___int128)
+ DEF_TEST_DESCR("A16.decfloat16",
+                test_a16___decfloat16)
+ DEF_TEST_DESCR("A17.decfloat34",
+                test_a17___decfloat34)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

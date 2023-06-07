@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/os/win32/auth/ibp_os_win32_auth__provider.h"
-#include "source/error_services/ibp_error.h"
+#include "source/error_services/ibp_error_utils.h"
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
 ////////////////////////////////////////////////////////////////////////////////
@@ -56,12 +56,11 @@ t_auth__provider::t_auth__provider(dll_type* const pDLL)
  {
   //ERROR - ошибка инициализации AUTH
 
-  t_ibp_error exc(E_FAIL,ibp_mce_win32__auth__fail_func_call_2);
-
-  exc<<m_AcquireCredentialsHandle.point_name()
-     <<authErr;
-
-  exc.raise_me();
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_win32__auth__fail_func_call_2,
+    m_AcquireCredentialsHandle.point_name(),
+    authErr);
  }//if
 }//t_auth__provider
 

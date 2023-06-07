@@ -9,7 +9,7 @@
 
 #include "source/db_client/remote_fb/protocol/remote_fb__protocol.h"
 #include <structure/t_const_str_box.h>
-#include <structure/t_zero.h>
+#include <lcpi/lib/structure/t_zero.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace protocol{namespace set02{
 ////////////////////////////////////////////////////////////////////////////////
@@ -833,7 +833,7 @@ struct PACKET_V02 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
   {
    std::fill(reinterpret_cast<char*>(&this->operation),
              reinterpret_cast<char*>(this+1),
-             structure::zero);
+             lib::structure::zero);
 
    return *this;
   }//init

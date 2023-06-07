@@ -4,15 +4,14 @@
 #ifndef _oledb_memory_H_
 #define _oledb_memory_H_
 
-#include <structure/t_memory.h>
-
 #include <lcpi/lib/structure/t_smart_object.h>
+#include <lcpi/lib/structure/t_memory.h>
 
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class TOLEDBMemoryAllocator
 
-DECLARE_WRAP_ALLOCATOR(TOLEDBMemoryAllocator)
+LCPI_CPP_LIB__DECLARE_WRAP_ALLOCATOR(TOLEDBMemoryAllocator)
 
 ////////////////////////////////////////////////////////////////////////////////
 

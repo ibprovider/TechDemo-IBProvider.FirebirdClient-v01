@@ -307,6 +307,54 @@ void RemoteFB__XDR__Encoder::encode__p_int128
 }//encode__p_int128
 
 //------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_decfloat16
+                              (buf_type*                     const pBuf,
+                               const protocol::P_DECFLOAT16* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_DECFLOAT16)==sizeof(protocol::P_UINT64));
+
+ self_type::encode__p_uint64
+  (pBuf,
+   &pv->value);
+}//encode__p_decfloat16
+
+//------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__p_decfloat34
+                              (buf_type*                     const pBuf,
+                               const protocol::P_DECFLOAT34* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ assert_s(sizeof(protocol::P_DECFLOAT34)==2*sizeof(protocol::P_UINT64));
+
+ // [2023-05-15] Just for point out. The encoders for big and little will be equal.
+
+#if (IBP_BYTE_ORDER==IBP_BYTE_ORDER__LOW_ENDIAN)
+
+ self_type::encode__p_uint64
+  (pBuf,
+   &pv->data.high);
+
+ self_type::encode__p_uint64
+  (pBuf,
+   &pv->data.low);
+
+#elif (IBP_BYTE_ORDER==IBP_BYTE_ORDER__BIG_ENDIAN)
+
+# error Not implemented!
+
+#else
+
+# error Unexpected BYTE ORDER!
+
+#endif
+}//encode__p_decfloat34
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Encoder::encode__array_slice
                                            (buf_type*                const pBuf,
                                             const asd_type&                ArrSliceDescr,
@@ -526,9 +574,41 @@ void RemoteFB__XDR__Encoder::encode__array_slice
     break;
    }//case - ibp_fb040_blr_dtype__int128
 
+   case isc_api::ibp_fb040_blr_dtype__decfloat16:
+   {
+    assert(ArrSliceDescr.m_element_total_length==sizeof(protocol::P_DECFLOAT16));
+
+    //проверяем выравнивание. в 32-битном бинарнике может быть 4х байтное выравнивание.
+    assert((reinterpret_cast<size_t>(pElement)%(std::min)(sizeof(protocol::P_DECFLOAT16().value),sizeof(size_t)))==0);
+
+    xdr::encode__p_decfloat16
+     (pBuf,
+      reinterpret_cast<const protocol::P_DECFLOAT16*>(pElement));
+
+    break;
+   }//case - ibp_fb040_blr_dtype__decfloat16
+
+   case isc_api::ibp_fb040_blr_dtype__decfloat34:
+   {
+    assert(ArrSliceDescr.m_element_total_length==sizeof(protocol::P_DECFLOAT34));
+
+    //проверяем выравнивание. в 32-битном бинарнике может быть 4х байтное выравнивание.
+    assert((reinterpret_cast<size_t>(pElement)%(std::min)(sizeof(protocol::P_DECFLOAT34().data.low),sizeof(size_t)))==0);
+    assert((reinterpret_cast<size_t>(pElement)%(std::min)(sizeof(protocol::P_DECFLOAT34().data.high),sizeof(size_t)))==0);
+
+    xdr::encode__p_decfloat34
+     (pBuf,
+      reinterpret_cast<const protocol::P_DECFLOAT34*>(pElement));
+
+    break;
+   }//case - ibp_fb040_blr_dtype__decfloat34
+
    default:
    {
     //ERROR - unknown blr data type
+
+    //ERROR - [BUG CHECK] unexpected typeID
+    assert_msg(false,"typeID: "<<int(ArrSliceDescr.m_element_blr_typeid));
 
     IBP_ErrorUtils::Throw__Error
      (E_FAIL,

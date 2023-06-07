@@ -43,15 +43,15 @@ class t_base_ole_error:public t_base_com_error
 
  public:
   //std::exception interface -------------------------------------------
-  virtual const char* what() const __STL_EXCEPTION_WHAT_THROW_SPEC COMP_W000004_OVERRIDE;
+  virtual const char* what() const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //structure::t_exception interface -----------------------------------
   COMP_CONF_DECLSPEC_NORETURN
-  virtual void raise()const COMP_W000004_OVERRIDE;//throw
+  virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;//throw
 
   //t_base_com_error interface -----------------------------------------
  #if(OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO!=0)
-  virtual HRESULT set_error_info(REFIID exc_riid)const COMP_W000004_OVERRIDE;
+  virtual HRESULT set_error_info(REFIID exc_riid)const LCPI_CPP_CFG__METHOD__OVERRIDE;
  #endif
 
  private:

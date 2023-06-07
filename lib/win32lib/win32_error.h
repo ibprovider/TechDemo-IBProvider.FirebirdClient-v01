@@ -49,7 +49,7 @@ class t_base_win32_error:virtual public structure::t_exception
   virtual ~t_base_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC;
 
   //t_exception interface ------------------------------------------------
-  virtual void raise()const COMP_W000004_OVERRIDE;
+  virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //selectors ------------------------------------------------------------
   win32_code_type win32_code()const

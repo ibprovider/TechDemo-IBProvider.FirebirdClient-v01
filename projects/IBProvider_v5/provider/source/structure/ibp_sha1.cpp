@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/structure/ibp_sha1.h"
-#include <structure/t_zero.h>
+#include <lcpi/lib/structure/t_zero.h>
 
 namespace lcpi{namespace ibp{namespace sha1{
 ////////////////////////////////////////////////////////////////////////////////
@@ -211,7 +211,7 @@ void IBP_Sha1::helper__sha_clear()
 
  m_handle.local       = 0;
 
- std::fill(m_handle.data, _END_(m_handle.data), structure::zero);
+ std::fill(m_handle.data, _END_(m_handle.data), lib::structure::zero);
 }//helper__sha_clear
 
 //------------------------------------------------------------------------
@@ -394,13 +394,13 @@ void IBP_Sha1::helper__sha_final()
 
   std::fill(m_handle.data+m_handle.local,
             _END_(m_handle.data),
-            structure::zero);
+            lib::structure::zero);
 
   this->helper__sha_transform();
 
   std::fill(m_handle.data,
             _END_(m_handle.data)-8,
-            structure::zero);
+            lib::structure::zero);
  }
  else
  {
@@ -410,7 +410,7 @@ void IBP_Sha1::helper__sha_final()
 
   std::fill(m_handle.data+m_handle.local,
             _END_(m_handle.data)-8,
-            structure::zero);
+            lib::structure::zero);
  }//else
 
  assert_s(63<SHA_BLOCKSIZE);

@@ -19,8 +19,9 @@
 #include "source/ibp_subsystem_ids.h"
 #include "source/ibp_limits.h"
 #include <ole_lib/ole_auto/ole_auto_variant.h>
-#include <structure/error/t_err_record.h>
-#include <structure/t_fix_vector.h>
+
+#include <lcpi/lib/structure/error/t_err_record.h>
+#include <lcpi/lib/structure/t_fix_vector.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -49,15 +50,15 @@ struct t_ibp_error_element_traits
 /// <summary>
 ///  Элемент коллекции ошибок
 /// </summary>
-class t_ibp_error_element
+class t_ibp_error_element LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_get_custom_error_object
- ,public structure::t_err_record
+ ,public lib::structure::t_err_record
  ,public t_ibp_error_element_traits::args_type
  ,public db_obj::t_db_smart_object_base2
 {
  private:
   typedef t_ibp_error_element                       self_type;
-  typedef structure::t_err_record                   inherited_record;
+  typedef lib::structure::t_err_record              inherited_record;
 
   t_ibp_error_element(const self_type&);
   self_type& operator = (const self_type&);
@@ -86,9 +87,8 @@ class t_ibp_error_element
 
   typedef ibp_msg_code_type                         mc_type;
 
-  typedef structure::t_fix_vector
-           <ibp_limc_MaxErrorArgsCount,
-            IBP_ErrorVariant>                       params_type;
+  using params_type
+   =lib::structure::t_fix_vector<IBP_ErrorVariant,ibp_limc_MaxErrorArgsCount>;
 
  public:
   ///Идентификатор источника ошибки

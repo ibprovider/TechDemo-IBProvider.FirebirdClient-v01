@@ -103,6 +103,14 @@ class RemoteFB__XDR__Encoder
                (buf_type*                    pBuf,
                 const protocol::P_INT128*    pv);
 
+  static void encode__p_decfloat16
+               (buf_type*                     pBuf,
+                const protocol::P_DECFLOAT16* pv);
+
+  static void encode__p_decfloat34
+               (buf_type*                     pBuf,
+                const protocol::P_DECFLOAT34* pv);
+
  public:
   /// <summary>
   ///  Repacking a buffer with element values in the "network" format.

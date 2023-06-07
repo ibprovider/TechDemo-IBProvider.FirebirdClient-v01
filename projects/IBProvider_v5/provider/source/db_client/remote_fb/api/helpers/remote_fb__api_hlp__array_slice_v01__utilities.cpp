@@ -678,6 +678,30 @@ void RemoteFB__API_HLP__ArraySlice_v01__Utilities::Helper__ParseSDL__ReadElement
   }//case ibp_fb040_blr_dtype__int128
 
   //----------------------------------------------------------------------
+  case isc_api::ibp_fb040_blr_dtype__decfloat16:
+  {
+   pDescr->m_element_sql_scale=0;
+
+   pDescr->m_element_sql_length=sizeof(isc_api::t_ibp_fb040_decfloat16);
+
+   pDescr->m_element_total_length=sizeof(isc_api::t_ibp_fb040_decfloat16);
+
+   break;
+  }//case ibp_fb040_blr_dtype__decfloat16
+
+  //----------------------------------------------------------------------
+  case isc_api::ibp_fb040_blr_dtype__decfloat34:
+  {
+   pDescr->m_element_sql_scale=0;
+
+   pDescr->m_element_sql_length=sizeof(isc_api::t_ibp_fb040_decfloat34);
+
+   pDescr->m_element_total_length=sizeof(isc_api::t_ibp_fb040_decfloat34);
+
+   break;
+  }//case ibp_fb040_blr_dtype__decfloat34
+
+  //----------------------------------------------------------------------
   default:
   {
    //ERROR - incorrect SDL - unexpected BLR data type id

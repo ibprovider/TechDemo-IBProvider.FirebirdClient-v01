@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
-//                                                 Kovalenko Dmitry. 17.08.2015
+//                                                 Kovalenko Dmitry. 17.08.2015.
 #ifndef _cpp_public_lcpi_lib_structure__t_numeric_initializator_H_
 #define _cpp_public_lcpi_lib_structure__t_numeric_initializator_H_
 

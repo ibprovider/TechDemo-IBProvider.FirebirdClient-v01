@@ -32,7 +32,7 @@ class t_basic_thread_controller:virtual public tag_base_smem_obj
  protected:
   virtual ~t_basic_thread_controller();
 
-  virtual void final_release() COMP_W000004_OVERRIDE;
+  virtual void final_release() LCPI_CPP_CFG__METHOD__OVERRIDE;
 
  public:
   //interface ------------------------------------------------------------
