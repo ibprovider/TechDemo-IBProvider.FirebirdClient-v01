@@ -104,6 +104,44 @@ HRESULT IBP_GetMaxByTerribleHRESULT(HRESULT const hr1,
 ////////////////////////////////////////////////////////////////////////////////
 
 /// <summary>
+///  Throwing an conversion error with the corrected (adjusted) HRESULT
+/// </summary>
+//! \param[in] innerExeption
+//! \param[in] sourceTypeSign
+//! \param[in] destTypeSign
+void IBP_ReThrowConvertErrorWithCorrectedHResult
+       (const std::exception&                  innerException,
+        lib::structure::t_const_wstr_box const sourceTypeSign,
+        lib::structure::t_const_wstr_box const destTypeSign)
+{
+ HRESULT hr
+  =IBP_MapExceptionToHRESULT
+    (&innerException);
+
+ switch(hr)
+ {
+  case E_UNEXPECTED:
+  case E_OUTOFMEMORY:
+  case DB_E_UNSUPPORTEDCONVERSION:
+  case DB_E_DATAOVERFLOW:
+  case DB_E_CANTCONVERTVALUE:
+   break; // save this error code
+
+  default:
+   hr=DB_E_CANTCONVERTVALUE;
+ }//switch
+
+ IBP_ErrorUtils::ReThrowWithNewHResult
+  (innerException,
+   hr,
+   ibp_mce_datatype__failed_to_convert_between_types_2,
+   sourceTypeSign,
+   destTypeSign);
+}//IBP_ReThrowConvertErrorWithCorrectedHResult
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
 ///  Конвертирование NUMERIC в базовый тип колонки.
 /// </summary>
 //! \param[in] hr

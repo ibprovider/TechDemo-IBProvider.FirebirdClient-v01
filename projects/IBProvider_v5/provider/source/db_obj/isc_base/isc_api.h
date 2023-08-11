@@ -7,7 +7,7 @@
 #ifndef _isc_api_H_
 #define _isc_api_H_
 
-#include "source/db_obj/db_data_types.h"
+#include "source/db_obj/db_datatypes.h"
 
 namespace lcpi{namespace ibp{namespace isc_api{
 ////////////////////////////////////////////////////////////////////////////////
@@ -502,6 +502,8 @@ enum
  ibp_fb040_internal_dtype__decfloat16   =22, //dec64
  ibp_fb040_internal_dtype__decfloat34   =23, //dec128
  ibp_fb040_internal_dtype__int128       =24,
+
+ ibp_fb040_internal_dtype__timestamp_with_tz =26, //timestamp_tz
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -555,8 +557,12 @@ extern const t_ibp_isc_timestamp __null__isc_timestamp;
 using t_ibp_fb040_time_with_tz
  =db_obj::t_dbvalue__fb040_time_with_tz;
 
+////////////////////////////////////////////////////////////////////////////////
+
 using t_ibp_fb040_timestamp_with_tz
  =db_obj::t_dbvalue__fb040_timestamp_with_tz;
+
+extern const t_ibp_fb040_timestamp_with_tz __null__fb040_timestamp_with_tz;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -940,7 +946,7 @@ typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_execute_immediate)
   isc_db_handle*   db_handle,
   isc_tr_handle*   tra_handle,
   unsigned short   length,
-  char*            string,
+  const char*      string,
   unsigned short   dialect,
   const XSQLDA_V1* xsqlda
  );//t_isc_dsql_execute_immediate

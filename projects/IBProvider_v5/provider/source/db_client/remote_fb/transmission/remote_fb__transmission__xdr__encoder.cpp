@@ -355,6 +355,27 @@ void RemoteFB__XDR__Encoder::encode__p_decfloat34
 }//encode__p_decfloat34
 
 //------------------------------------------------------------------------
+void RemoteFB__XDR__Encoder::encode__fb040_timestamp_with_tz
+                              (buf_type*                                         const pBuf,
+                               const db_obj::t_dbvalue__fb040_timestamp_with_tz* const pv)
+{
+ assert(pBuf!=nullptr);
+ assert(pv!=nullptr);
+
+ self_type::encode__p_long
+  (pBuf,
+   &pv->utc_timestamp.timestamp_date);
+
+ self_type::encode__p_ulong_as_p_long
+  (pBuf,
+   &pv->utc_timestamp.timestamp_time);
+
+ self_type::encode__p_ushort_as_p_short
+  (pBuf,
+   &pv->time_zone);
+}//encode__fb040_timestamp_with_tz
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Encoder::encode__array_slice
                                            (buf_type*                const pBuf,
                                             const asd_type&                ArrSliceDescr,
@@ -602,6 +623,24 @@ void RemoteFB__XDR__Encoder::encode__array_slice
 
     break;
    }//case - ibp_fb040_blr_dtype__decfloat34
+
+   case isc_api::ibp_fb040_blr_dtype__timestamp_with_tz:
+   {
+    using value_type=isc_api::t_ibp_fb040_timestamp_with_tz;
+
+    assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
+
+    //Let's check an alignment
+    assert_s(isc_api::ibp_fb040_type_align__timestamp_with_tz==4);
+
+    assert((reinterpret_cast<size_t>(pElement)%isc_api::ibp_fb040_type_align__timestamp_with_tz)==0);
+
+    xdr::encode__fb040_timestamp_with_tz
+     (pBuf,
+      reinterpret_cast<const value_type*>(pElement));
+
+    break;
+   }//case - ibp_fb040_blr_dtype__timestamp_with_tz
 
    default:
    {

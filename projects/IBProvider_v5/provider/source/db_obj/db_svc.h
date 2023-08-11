@@ -7,7 +7,8 @@
 #ifndef _db_svc_H_
 #define _db_svc_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
+#include <guiddef.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////

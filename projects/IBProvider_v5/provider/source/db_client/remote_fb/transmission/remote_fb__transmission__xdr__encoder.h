@@ -112,6 +112,11 @@ class RemoteFB__XDR__Encoder
                 const protocol::P_DECFLOAT34* pv);
 
  public:
+  static void encode__fb040_timestamp_with_tz
+               (buf_type*                                         pBuf,
+                const db_obj::t_dbvalue__fb040_timestamp_with_tz* pv);
+
+ public:
   /// <summary>
   ///  Repacking a buffer with element values in the "network" format.
   /// </summary>

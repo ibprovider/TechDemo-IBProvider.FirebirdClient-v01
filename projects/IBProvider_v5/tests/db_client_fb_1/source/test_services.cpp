@@ -2693,11 +2693,12 @@ void TestServices::HACK__CloseBlob(TTSO_Tracer&                              tra
 
 ////////////////////////////////////////////////////////////////////////////////
 
-bool TestServices::checkValue__I2(TTSO_Tracer&                 tracer,
-                                  short                  const actualSqlInd,
-                                  db_obj::t_dbvalue__i2  const actualSqlValue,
-                                  short                  const expectedSqlInd,
-                                  db_obj::t_dbvalue__i2  const expectedSqlValue)
+bool TestServices::checkValue__I2
+                             (TTSO_Tracer&                 tracer,
+                              short                  const actualSqlInd,
+                              db_obj::t_dbvalue__i2  const actualSqlValue,
+                              short                  const expectedSqlInd,
+                              db_obj::t_dbvalue__i2  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2729,11 +2730,12 @@ bool TestServices::checkValue__I2(TTSO_Tracer&                 tracer,
 }//checkValue__I2
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__I4(TTSO_Tracer&                 tracer,
-                                  short                  const actualSqlInd,
-                                  db_obj::t_dbvalue__i4  const actualSqlValue,
-                                  short                  const expectedSqlInd,
-                                  db_obj::t_dbvalue__i4  const expectedSqlValue)
+bool TestServices::checkValue__I4
+                             (TTSO_Tracer&                 tracer,
+                              short                  const actualSqlInd,
+                              db_obj::t_dbvalue__i4  const actualSqlValue,
+                              short                  const expectedSqlInd,
+                              db_obj::t_dbvalue__i4  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2765,11 +2767,12 @@ bool TestServices::checkValue__I4(TTSO_Tracer&                 tracer,
 }//checkValue__I4
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__I8(TTSO_Tracer&                 tracer,
-                                  short                  const actualSqlInd,
-                                  db_obj::t_dbvalue__i8  const actualSqlValue,
-                                  short                  const expectedSqlInd,
-                                  db_obj::t_dbvalue__i8  const expectedSqlValue)
+bool TestServices::checkValue__I8
+                             (TTSO_Tracer&                 tracer,
+                              short                  const actualSqlInd,
+                              db_obj::t_dbvalue__i8  const actualSqlValue,
+                              short                  const expectedSqlInd,
+                              db_obj::t_dbvalue__i8  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2801,11 +2804,12 @@ bool TestServices::checkValue__I8(TTSO_Tracer&                 tracer,
 }//checkValue__I8
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__R4(TTSO_Tracer&                 tracer,
-                                  short                  const actualSqlInd,
-                                  db_obj::t_dbvalue__r4  const actualSqlValue,
-                                  short                  const expectedSqlInd,
-                                  db_obj::t_dbvalue__r4  const expectedSqlValue)
+bool TestServices::checkValue__R4
+                             (TTSO_Tracer&                 tracer,
+                              short                  const actualSqlInd,
+                              db_obj::t_dbvalue__r4  const actualSqlValue,
+                              short                  const expectedSqlInd,
+                              db_obj::t_dbvalue__r4  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2837,11 +2841,12 @@ bool TestServices::checkValue__R4(TTSO_Tracer&                 tracer,
 }//checkValue__R4
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__R8(TTSO_Tracer&                 tracer,
-                                  short                  const actualSqlInd,
-                                  db_obj::t_dbvalue__r8  const actualSqlValue,
-                                  short                  const expectedSqlInd,
-                                  db_obj::t_dbvalue__r8  const expectedSqlValue)
+bool TestServices::checkValue__R8
+                             (TTSO_Tracer&                 tracer,
+                              short                  const actualSqlInd,
+                              db_obj::t_dbvalue__r8  const actualSqlValue,
+                              short                  const expectedSqlInd,
+                              db_obj::t_dbvalue__r8  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2873,11 +2878,12 @@ bool TestServices::checkValue__R8(TTSO_Tracer&                 tracer,
 }//checkValue__R8
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__TIME(TTSO_Tracer&                   tracer,
-                                    short                    const actualSqlInd,
-                                    isc_api::t_ibp_isc_time  const actualSqlValue,
-                                    short                    const expectedSqlInd,
-                                    isc_api::t_ibp_isc_time  const expectedSqlValue)
+bool TestServices::checkValue__TIME
+                             (TTSO_Tracer&                   tracer,
+                              short                    const actualSqlInd,
+                              isc_api::t_ibp_isc_time  const actualSqlValue,
+                              short                    const expectedSqlInd,
+                              isc_api::t_ibp_isc_time  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2909,11 +2915,12 @@ bool TestServices::checkValue__TIME(TTSO_Tracer&                   tracer,
 }//checkValue__TIME
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__DATE(TTSO_Tracer&                   tracer,
-                                    short                    const actualSqlInd,
-                                    isc_api::t_ibp_isc_date  const actualSqlValue,
-                                    short                    const expectedSqlInd,
-                                    isc_api::t_ibp_isc_date  const expectedSqlValue)
+bool TestServices::checkValue__DATE
+                             (TTSO_Tracer&                   tracer,
+                              short                    const actualSqlInd,
+                              isc_api::t_ibp_isc_date  const actualSqlValue,
+                              short                    const expectedSqlInd,
+                              isc_api::t_ibp_isc_date  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2945,11 +2952,12 @@ bool TestServices::checkValue__DATE(TTSO_Tracer&                   tracer,
 }//checkValue__DATE
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__TIMESTAMP(TTSO_Tracer&                        tracer,
-                                         short                               actualSqlInd,
-                                         const isc_api::t_ibp_isc_timestamp& actualSqlValue,
-                                         short                               expectedSqlInd,
-                                         const isc_api::t_ibp_isc_timestamp& expectedSqlValue)
+bool TestServices::checkValue__TIMESTAMP
+                             (TTSO_Tracer&                        tracer,
+                              short                               actualSqlInd,
+                              const isc_api::t_ibp_isc_timestamp& actualSqlValue,
+                              short                               expectedSqlInd,
+                              const isc_api::t_ibp_isc_timestamp& expectedSqlValue)
 {
  for(;;)
  {
@@ -2979,6 +2987,43 @@ bool TestServices::checkValue__TIMESTAMP(TTSO_Tracer&                        tra
 
  return false;
 }//checkValue__TIMESTAMP
+
+//------------------------------------------------------------------------
+bool TestServices::checkValue__TIMESTAMP_WITH_TZ
+                             (TTSO_Tracer&                                  tracer,
+                              short                                         actualSqlInd,
+                              const isc_api::t_ibp_fb040_timestamp_with_tz& actualSqlValue,
+                              short                                         expectedSqlInd,
+                              const isc_api::t_ibp_fb040_timestamp_with_tz& expectedSqlValue)
+{
+ for(;;)
+ {
+  tracer<<L"check value [timestamp_with_tz] (ind: "<<actualSqlInd<<L", "<<actualSqlValue<<L") ...";
+
+  if(actualSqlInd==expectedSqlInd && actualSqlValue==expectedSqlValue)
+  {
+   tracer<<L"OK"<<send;
+
+   return true;
+  }
+
+  tracer<<L"FAILED"<<send;
+
+  break;
+ }//for[ever]
+
+ if(actualSqlInd!=expectedSqlInd)
+ {
+  tracer(tso_msg_error,-1)<<L"Incorrect indicator: "<<actualSqlInd<<L". Expected: "<<expectedSqlInd<<L"."<<send;
+ }//if
+
+ if(actualSqlValue!=expectedSqlValue)
+ {
+  tracer(tso_msg_error,-1)<<L"Incorrect value: "<<actualSqlValue<<L". Expected: "<<expectedSqlValue<<L"."<<send;
+ }//if
+
+ return false;
+}//checkValue__TIMESTAMP_WITH_TZ
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__TEXT(TTSO_Tracer&                        tracer,

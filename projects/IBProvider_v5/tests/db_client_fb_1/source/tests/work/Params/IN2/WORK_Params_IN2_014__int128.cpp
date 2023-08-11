@@ -355,8 +355,9 @@ const WORK_Params_IN2_014__int128::tag_descr
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_IN2_014__int128
 
-void WORK_Params_IN2_014__int128::create(TTSO_PushTest*      const pTestPusher,
-                                         TTSO_GlobalContext* const pParams)
+void WORK_Params_IN2_014__int128::create
+                             (TTSO_PushTest*      const pTestPusher,
+                              TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);

@@ -256,6 +256,9 @@ extern const wchar_t me_bug_check__bad_tr_handle_0[]
 extern const wchar_t me_bug_check__tr_handle_not_zero_0[]
  =L"transaction handle not zero";
 
+extern const wchar_t me_bug_check__server_return_an_unexpected_transaction_0[]
+ =L"server returned an unexpected transaction";
+
 extern const wchar_t me_bug_check__bad_stmt_handle_0[]
  =L"bad statement handle";
 
@@ -359,6 +362,44 @@ extern const wchar_t me_bug_check__win32_err__incorrect_work_of_GetTempFileName_
 //params: oledb type id
 extern const wchar_t me_bug_check__unknown_oledb_type_id_1[]
  =L"unknown OLE DB type id [%1]";
+
+//params: column, oledb type id
+extern const wchar_t me_bug_check__precision_is_not_defined_2[]
+ =L"column [%1][%2] does not have a precision";
+
+//params: column, oledb type id
+extern const wchar_t me_bug_check__scale_is_not_defined_2[]
+ =L"column [%1][%2] does not have a scale";
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t me_bug_check__empty_timezone_name_0[]
+ =L"empty timezone name";
+
+//params: truncated name ..., name length
+extern const wchar_t me_bug_check__timezone_name_is_too_long_2[]
+ =L"timezone name [%1...] is too long (len: %2)";
+
+//params: timezone name
+extern const wchar_t me_bug_check__too_many_timezone_transition_records_1[]
+ =L"too many timezone [%1] transition records";
+
+//params: timezone name, start ts, end ts
+extern const wchar_t me_bug_check__bad_timezone_transition_record_range_3[]
+ =L"bad timezone [%1] transition range [%2 .. %3]";
+
+//params: timezone name, start ts1, end ts1, start ts2, end ts2
+extern const wchar_t me_bug_check__confict_of_timezone_local_transition_records_5[]
+ =L"conflict of timezone [%1] local transition records [%2 .. %3], [%4 .. %5]";
+
+//params: timezone name, start ts1, end ts1, start ts2, end ts2
+extern const wchar_t me_bug_check__intersection_of_timezone_utc_transition_records_5[]
+ =L"intersection of timezone [%1] UTC transition records [%2 .. %3], [%4 .. %5]";
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t me_bug_check__unexpected_problem_with_the_building_of_string_was_occurred_0[]
+ =L"an unexpected problem with the building of string was occurred";
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

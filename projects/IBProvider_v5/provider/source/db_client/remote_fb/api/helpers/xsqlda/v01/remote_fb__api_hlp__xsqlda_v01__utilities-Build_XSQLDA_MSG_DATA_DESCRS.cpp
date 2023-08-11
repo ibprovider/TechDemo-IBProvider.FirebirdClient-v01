@@ -746,6 +746,43 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA_D
   }//ibp_fb040_sql_decfloat34
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_timestamp_with_tz:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_timestamp_with_tz",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   szMsg
+    =IBP_Memory_Utils::AlignMemLength
+      (szMsg,
+       isc_api::ibp_fb040_type_align__timestamp_with_tz,
+       pcbResultAlign); //throw
+
+   MsgDescr.m_msg_value_block_offset
+    =szMsg;                                                               // OFFSET
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       sizeof(isc_api::t_ibp_fb040_timestamp_with_tz)); //throw
+
+   MsgDescr.m_msg_value_block_size
+    =sizeof(isc_api::t_ibp_fb040_timestamp_with_tz);                      // SIZE
+
+   assert(MsgDescr.m_msg_value_block_size==(szMsg-MsgDescr.m_msg_value_block_offset));
+
+   MsgDescr.m_msg_blrtype=isc_api::ibp_fb040_blr_dtype__timestamp_with_tz;
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_timestamp_with_tz
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID

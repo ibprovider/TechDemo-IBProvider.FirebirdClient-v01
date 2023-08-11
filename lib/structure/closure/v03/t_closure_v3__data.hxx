@@ -13,12 +13,21 @@ struct __closure_data
   void* buffer[4]; //SIZE IS FIXED !!!
 
   __closure_data()
-   :object_ptr(0)
+   :object_ptr(nullptr)
   {
-   this->buffer[0] =0;
-   this->buffer[1] =0;
-   this->buffer[2] =0;
-   this->buffer[3] =0;
+   this->buffer[0] =nullptr;
+   this->buffer[1] =nullptr;
+   this->buffer[2] =nullptr;
+   this->buffer[3] =nullptr;
+  }//constructor
+
+  explicit __closure_data(void* const func)
+   :object_ptr(nullptr)
+  {
+   this->buffer[0]=func;
+   this->buffer[1]=nullptr;
+   this->buffer[2]=nullptr;
+   this->buffer[3]=nullptr;
   }//constructor
 
   __closure_data(void*       const ptr,
@@ -26,10 +35,10 @@ struct __closure_data
                  size_t      const sz)
    :object_ptr(ptr)
   {
-   this->buffer[0]=0;
-   this->buffer[1]=0;
-   this->buffer[2]=0;
-   this->buffer[3]=0;
+   this->buffer[0]=nullptr;
+   this->buffer[1]=nullptr;
+   this->buffer[2]=nullptr;
+   this->buffer[3]=nullptr;
 
    assert(sz<=sizeof(this->buffer));
 
@@ -38,8 +47,11 @@ struct __closure_data
 
   bool valid () const
   {
-   return(this->object_ptr) &&
-         (this->buffer[0] || this->buffer[1] || this->buffer[2] || this->buffer[3]);
+   return (this->object_ptr ||
+           this->buffer[0]  ||
+           this->buffer[1]  ||
+           this->buffer[2]  ||
+           this->buffer[3]);
   }//valid
 };//__closure_data
 

@@ -1067,6 +1067,55 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Parse_XSQLDA_MSG_DATA
   }//ibp_fb040_sql_decfloat34
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_timestamp_with_tz:
+  {
+   using value_type=isc_api::t_ibp_fb040_timestamp_with_tz;
+
+#ifndef NDEBUG
+   const size_t c_align=isc_api::ibp_fb040_type_align__timestamp_with_tz;
+#endif
+
+   //---------------------------------------
+   if(pXSQLVAR->sqllen!=sizeof(value_type))
+   {
+    //ERROR - incorrect xvar sqllength
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_timestamp_with_tz",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //the change of scale does not matter
+
+   //---------------------------------------
+   assert(MsgDescr.m_msg_value_block_size==sizeof(value_type));
+
+   assert(MsgDescr.m_msg_value_block_offset<=cbMsgData);
+   assert(MsgDescr.m_msg_value_block_size<=(cbMsgData-MsgDescr.m_msg_value_block_offset));
+
+   assert((MsgDescr.m_msg_value_block_offset%c_align)==0);
+
+   assert((reinterpret_cast<size_t>(pMsgData+MsgDescr.m_msg_value_block_offset)%c_align)==0);
+
+   //---------------------------------------
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   CHECK_WRITE_PTR(pXSQLVAR->sqldata,sizeof(value_type));
+
+   if(IsNull)
+   {
+    (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
+      =isc_api::__null__fb040_timestamp_with_tz;
+   }
+   else
+   {
+    (*reinterpret_cast<value_type*>(pXSQLVAR->sqldata))
+      =(*reinterpret_cast<const value_type*>(pMsgData+MsgDescr.m_msg_value_block_offset));
+   }//else
+
+   break;
+  }//ibp_fb040_sql_timestamp_with_tz
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID

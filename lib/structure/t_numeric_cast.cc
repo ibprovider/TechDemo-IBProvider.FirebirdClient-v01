@@ -10,6 +10,7 @@ namespace structure{
 # error "Compiler not support template members!"
 #endif
 
+namespace detail{
 ////////////////////////////////////////////////////////////////////////////////
 
 template<bool ToTypeIsSigned,bool FromTypeIsSigned>
@@ -108,12 +109,17 @@ class tag_can_numeric_cast<true,true>
 };//tag_can_numeric_cast
 
 ////////////////////////////////////////////////////////////////////////////////
+}//namespace detail
+
+////////////////////////////////////////////////////////////////////////////////
 
 template<typename ToType,typename FromType>
 inline bool can_numeric_cast(FromType x)
 {
- typedef tag_can_numeric_cast<t_numeric_limits<ToType>::is_signed,
-                              t_numeric_limits<FromType>::is_signed> tag;
+ using tag
+  =detail::tag_can_numeric_cast
+    <t_numeric_limits<ToType>::is_signed,
+     t_numeric_limits<FromType>::is_signed>;
 
  return tag::template test<ToType>(x);
 }//can_numeric_cast
@@ -122,8 +128,10 @@ inline bool can_numeric_cast(FromType x)
 template<typename ToType,typename FromType>
 inline bool can_numeric_cast(ToType*,FromType x)
 {
- typedef tag_can_numeric_cast<t_numeric_limits<ToType>::is_signed,
-                              t_numeric_limits<FromType>::is_signed> tag;
+ using tag
+  =detail::tag_can_numeric_cast
+    <t_numeric_limits<ToType>::is_signed,
+     t_numeric_limits<FromType>::is_signed>;
 
  return tag::template test<ToType>(x);
 }//can_numeric_cast

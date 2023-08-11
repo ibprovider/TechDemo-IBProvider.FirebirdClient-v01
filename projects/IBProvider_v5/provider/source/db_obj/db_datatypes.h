@@ -1,17 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_obj
-//! \file    db_data_types.h
+//! \file    db_datatypes.h
 //! \brief   Определение типов данных
 //! \author  Kovalenko Dmitry
 //! \date    26.09.2015
-#ifndef _db_data_types_H_
-#define _db_data_types_H_
+#ifndef _db_datatypes_H_
+#define _db_datatypes_H_
 
 #if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
 # pragma once
 #endif
 
-#include <ole_lib/oledb/oledb_data_types.h>
+#include <ole_lib/oledb/oledb_datatypes.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -94,6 +94,11 @@ const long isc_time_seconds_precision=10000;
 typedef db_obj::t_dbvalue__i4               t_dbvalue__isc_date;
 
 typedef db_obj::t_dbvalue__ui4              t_dbvalue__isc_time;
+
+typedef db_obj::t_dbvalue__ui8              t_dbvalue__isc_timestamp_ticks;
+
+typedef db_obj::t_dbvalue__i8               t_dbvalue__isc_timestamp_offset_in_ticks;
+
 
 struct t_dbvalue__isc_timestamp
 {
@@ -228,10 +233,37 @@ using t_dbvalue__fb040_timezone=t_dbvalue__ui2;
 /// </summary>
 struct t_dbvalue__fb040_timestamp_with_tz
 {
- t_dbvalue__isc_timestamp utc_timestamp;
+ t_dbvalue__isc_timestamp  utc_timestamp;
 
- t_dbvalue__fb040_timezone  time_zone;
+ t_dbvalue__fb040_timezone time_zone;
 };//struct t_dbvalue__fb040_timestamp_with_tz
+
+extern const t_dbvalue__fb040_timestamp_with_tz __null_dbvalue__fb040_timestamp_with_tz;
+
+//------------------------------------------------------------------------
+inline t_dbvalue__fb040_timestamp_with_tz make_fb040_timestamp_with_tz
+                                           (t_dbvalue__isc_date       utc_timestamp_date,
+                                            t_dbvalue__isc_time       utc_timestamp_time,
+                                            t_dbvalue__fb040_timezone time_zone)
+{
+ t_dbvalue__fb040_timestamp_with_tz v;
+
+ v.utc_timestamp.timestamp_date =utc_timestamp_date;
+ v.utc_timestamp.timestamp_time =utc_timestamp_time;
+ v.time_zone                    =time_zone;
+
+ return v;
+}//make_fb040_timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__fb040_timestamp_with_tz& v2);
+
+bool operator != (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__fb040_timestamp_with_tz& v2);
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_dbvalue__fb040_time_with_tz
@@ -241,7 +273,7 @@ struct t_dbvalue__fb040_timestamp_with_tz
 /// </summary>
 struct t_dbvalue__fb040_time_with_tz
 {
- t_dbvalue__isc_time     utc_time;
+ t_dbvalue__isc_time       utc_time;
 
  t_dbvalue__fb040_timezone time_zone;
 };//struct t_dbvalue__fb040_time_with_tz
@@ -481,10 +513,10 @@ enum
  dbprecision__isc_time2                 =13, //hh:mm:ss.msms
 
  //Для режима TIME_AS_WSTR.
- dbprecision__isc_time2_as_wstr         =32,
+ dbprecision__isc_time2_as_wstr         =dbprecision__isc_time2,
 
  //Для режима DATE_AS_WSTR.
- dbprecision__isc_date_as_wstr          =32,
+ dbprecision__isc_date_as_wstr          =dbprecision__isc_date,
 
  //Для режима TIMESTAMP_AS_WSTR
  dbprecision__isc_timestamp_as_wstr     =dbprecision__isc_date_as_wstr+
@@ -503,12 +535,13 @@ enum
 
  dbprecision__fb040_time2_with_tz           =20, //hh:mm:ss.msms +hh:mm
 
- //Для режима TIME2_WITH_TZ_AS_WSTR
- dbprecision__fb040_time2_with_tz_as_wstr   =64,
+ //TIME_WITH_TZ_AS_WSTR [FB4 timezone name can be up to 63 UTF8 symbols]
+ dbprecision__fb040_time2_with_tz_as_wstr
+  =dbprecision__isc_time2_as_wstr+1+63,
 
- //Для режима TIMESTAMP_WITH_TZ_AS_WSTR
+ //TIMESTAMP_WITH_TZ_AS_WSTR
  dbprecision__fb040_timestamp_with_tz_as_wstr
-  =db_obj::dbprecision__isc_date_as_wstr+1+dbprecision__fb040_time2_with_tz_as_wstr,
+  =dbprecision__isc_date_as_wstr+1+dbprecision__fb040_time2_with_tz_as_wstr,
 
  //For DECLFLOAT_AS_WSTR mode
  dbprecision__fb040_decfloat16_as_wstr      =24, // see DECDOUBLE_String
@@ -517,7 +550,52 @@ enum
  //For INT128_AS_WSTR mode
  dbprecision__fb040_int128_as_wstr
   =dbprecision__fb040_int128+1,                  // +INT128 | -INT128
+
+ //-----------------------------------------
+
+ // 12345678901234567890123456789012345678901234567890
+ //    123456789
+ // +0.0000
+
+ dbprecision__isc_numeric_on_smallint_as_wstr
+  =1+1+1+dbprecision__isc_numeric_on_smallint,   // sign+zero+point+mantissa
+
+ //-----------------------------------------
+
+ // 12345678901234567890123456789012345678901234567890
+ //    123456789
+ // +0.000000000000000000
+
+ dbprecision__isc_numeric_on_integer_as_wstr
+  =1+1+1+dbprecision__isc_numeric_on_integer,    // sign+zero+point+mantissa
+
+ //-----------------------------------------
+
+ // 12345678901234567890123456789012345678901234567890
+ //    123456789012345678
+ // +0.000000000000000000
+
+ dbprecision__isc_numeric_on_int64_as_wstr
+  =1+1+1+dbprecision__isc_numeric_on_int64,      // sign+zero+point+mantissa
+
+ //-----------------------------------------
+
+ // 12345678901234567890123456789012345678901234567890
+ //    12345678901234567890123456789012345678
+ // +0.00000000000000000000000000000000000000
+ // +170141183460469231731687303715884105728
+ // +17014118346046923173168730371588410572.8
+ // +0.17014118346046923173168730371588410573
+
+ dbprecision__fb040_numeric_on_int128_as_wstr
+  =1+1+1+dbprecision__fb040_numeric_on_int128,   // sign+zero+point+mantissa
 };//enum
+
+assert_s(dbprecision__fb040_int128==39);
+assert_s(dbprecision__isc_numeric_on_smallint_as_wstr==7);
+assert_s(dbprecision__isc_numeric_on_integer_as_wstr==12);
+assert_s(dbprecision__isc_numeric_on_int64_as_wstr==21);
+assert_s(dbprecision__fb040_numeric_on_int128_as_wstr==41);
 
 enum
 {

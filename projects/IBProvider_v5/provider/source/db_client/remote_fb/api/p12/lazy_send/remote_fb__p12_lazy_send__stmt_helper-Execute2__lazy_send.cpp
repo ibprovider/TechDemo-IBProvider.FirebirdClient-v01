@@ -304,6 +304,8 @@ protocol::P_OBJCT
             packet2.p_resp,
             E_FAIL)) //throw
     {
+     assert(FAILED(spErrRec->m_err_code));
+
      //будем считать, что состояние порта стаблизировалось. все пакеты с ответом получены.
      PortStateGuardIsActive=false;
 
@@ -312,10 +314,7 @@ protocol::P_OBJCT
      //делаем ошибку выполнения запроса основной
      Errors.set_last_error_as_primary();
 
-     Errors=spErrRec->m_err_code;
-
-     //----
-     Errors.raise_me();
+     Errors.raise_me(spErrRec->m_err_code);
     }//if spErrRec
 
     //ERROR - [BUG CHECK] Неожиданный ответ от сервера. Ожидалась ошибка.
@@ -363,15 +362,14 @@ protocol::P_OBJCT
             packet3.p_resp,
             E_FAIL)) //throw
     {
+     assert(FAILED(spErrRec->m_err_code));
+
      Errors.add_error(spErrRec);
 
      //делаем ошибку выполнения запроса основной
      Errors.set_last_error_as_primary();
 
-     Errors=spErrRec->m_err_code;
-
-     //----
-     Errors.raise_me();
+     Errors.raise_me(spErrRec->m_err_code);
     }//if spErrRec
 
     //все нормально - запрос выполнился без ошибок.

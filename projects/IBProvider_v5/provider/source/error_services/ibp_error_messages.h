@@ -261,6 +261,9 @@ extern const wchar_t
  me_bug_check__tr_handle_not_zero_0[];
 
 extern const wchar_t
+ me_bug_check__server_return_an_unexpected_transaction_0[];
+
+extern const wchar_t
  me_bug_check__bad_stmt_handle_0[];
 
 extern const wchar_t
@@ -372,6 +375,44 @@ extern const wchar_t
 //params: oledb type id
 extern const wchar_t
  me_bug_check__unknown_oledb_type_id_1[];
+
+//params: column, oledb type id
+extern const wchar_t
+ me_bug_check__precision_is_not_defined_2[];
+
+//params: column, oledb type id
+extern const wchar_t
+ me_bug_check__scale_is_not_defined_2[];
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t
+ me_bug_check__empty_timezone_name_0[];
+
+//params: truncated name ..., name length
+extern const wchar_t
+ me_bug_check__timezone_name_is_too_long_2[];
+
+//params: timezone name
+extern const wchar_t
+ me_bug_check__too_many_timezone_transition_records_1[];
+
+//params: timezone name, start ts, end ts
+extern const wchar_t
+ me_bug_check__bad_timezone_transition_record_range_3[];
+
+//params: timezone name, start ts1, end ts1, start ts2, end ts2
+extern const wchar_t
+ me_bug_check__confict_of_timezone_local_transition_records_5[];
+
+//params: timezone name, start ts1, end ts1, start ts2, end ts2
+extern const wchar_t
+ me_bug_check__intersection_of_timezone_utc_transition_records_5[];
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t
+ me_bug_check__unexpected_problem_with_the_building_of_string_was_occurred_0[];
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

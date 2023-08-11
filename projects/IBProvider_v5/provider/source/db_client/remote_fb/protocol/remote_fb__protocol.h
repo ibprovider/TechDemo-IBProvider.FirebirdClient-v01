@@ -7,7 +7,7 @@
 #ifndef _remote_fb__protocol_H_
 #define _remote_fb__protocol_H_
 
-#include "source/db_obj/db_data_types.h"
+#include "source/db_obj/db_datatypes.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace protocol{
 ////////////////////////////////////////////////////////////////////////////////

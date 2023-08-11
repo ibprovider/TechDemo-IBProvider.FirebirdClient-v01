@@ -76,6 +76,19 @@ COMP_CONF_DECLSPEC_NORETURN
 template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
+               (HRESULT const hr)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(hr);
+
+ exc.raise_me();
+}//Throw__Error
+
+//------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::Throw__Error
                (const std::exception&    e,
                 HRESULT            const hr,
                 ibp_msg_code_type  const msg_code,
@@ -197,7 +210,9 @@ void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
  exc.raise_me();
 }//Throw__ErrorWithCustomErrorObject
 
-//------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
+//IBP_ErrorUtils::ReThrowWithSameHResult
+
 template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithSameHResult
@@ -225,7 +240,7 @@ template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithSameHResult
                (const std::exception&    e,
-                t_ibp_subsystem_id       subsystem_id,
+                t_ibp_subsystem_id const subsystem_id,
                 ibp_msg_code_type  const msg_code,
                 Args&&...                args)
 {
@@ -245,7 +260,65 @@ void IBP_ErrorUtils::ReThrowWithSameHResult
  exc.raise_me();
 }//ReThrowWithSameHResult
 
+////////////////////////////////////////////////////////////////////////////////
+//IBP_ErrorUtils::ReThrowWithNewHResult
+
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::ReThrowWithNewHResult
+               (const std::exception&    e,
+                HRESULT            const hr,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(e);
+
+ assert(FAILED(exc.com_code()));
+
+ exc.add_error
+  (hr,
+   msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me(hr);
+}//ReThrowWithNewHResult
+
 //------------------------------------------------------------------------
+template<typename... Args>
+COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+void IBP_ErrorUtils::ReThrowWithNewHResult
+               (const std::exception&    e,
+                HRESULT            const hr,
+                t_ibp_subsystem_id const subsystem_id,
+                ibp_msg_code_type  const msg_code,
+                Args&&...                args)
+{
+ assert(FAILED(hr));
+
+ t_ibp_error exc(e);
+
+ assert(FAILED(exc.com_code()));
+
+ exc.add_error
+  (hr,
+   subsystem_id,
+   msg_code);
+
+ self_type::Helper__PushArgs
+  (exc,
+   std::forward<Args>(args)...);
+
+ exc.raise_me(hr);
+}//ReThrowWithNewHResult
+
+////////////////////////////////////////////////////////////////////////////////
+//class IBP_ErrorUtils
+
 template<typename... Args>
 COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck__DEBUG

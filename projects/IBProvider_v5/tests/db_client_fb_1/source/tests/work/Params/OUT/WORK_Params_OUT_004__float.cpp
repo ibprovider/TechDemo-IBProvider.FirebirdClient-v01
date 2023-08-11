@@ -273,8 +273,9 @@ const WORK_Params_OUT_004__float::tag_descr
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_OUT_004__float
 
-void WORK_Params_OUT_004__float::create(TTSO_PushTest*      const pTestPusher,
-                                        TTSO_GlobalContext* const pParams)
+void WORK_Params_OUT_004__float::create
+                             (TTSO_PushTest*      const pTestPusher,
+                              TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
@@ -312,11 +313,12 @@ void WORK_Params_OUT_004__float::create(TTSO_PushTest*      const pTestPusher,
 
   const TTSO_TestPtr
    spTest
-    (new TTSO_TestFunc_v2
-      (pParams,
-       ftestID.c_str(),
-       sm_Tests[it[iTest]].Func,
-       Data));
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data)));
 
   pTestPusher->PushTest(spTest);
  }//for it

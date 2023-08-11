@@ -28,15 +28,31 @@ t_ibp_error_adapter::~t_ibp_error_adapter()
 //------------------------------------------------------------------------
 void t_ibp_error_adapter::add(const std::exception& exc)
 {
- using structure::t_err_records_r;
-
- if(const t_err_records_r* const x=dynamic_cast<const t_err_records_r*>(&exc))
+ if(auto const x=dynamic_cast<const lib::structure::t_err_records_r*>(&exc))
  {
-  //добавляем список ошибок
-  for(size_t i(0),_count(x->get_record_count());i!=_count;++i)
-   this->add(x->get_record(i));
+  const auto cRecs=x->get_record_count();
 
-  return;
+  if(cRecs>0)
+  {
+   //добавляем список ошибок
+   for(size_t i(0);i!=cRecs;++i)
+    this->add(x->get_record(i));
+
+   return;
+  }//if
+
+  assert(cRecs==0);
+
+#ifndef NDEBUG
+  if(auto const x2=dynamic_cast<const t_ibp_error_records_r*>(&exc))
+  {
+   assert(x2->get_primary_err_idx().null());
+  }
+#endif
+
+  const HRESULT hr=IBP_MapExceptionToHRESULT(&exc);
+
+  return this->add(hr);
  }//if t_err_records_r
 
  //--------------------------------------------------------
@@ -80,8 +96,8 @@ void t_ibp_error_adapter::add(HRESULT const err_code)
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            ibp_mce_standart_error)));
+       (err_code,
+        ibp_mce_standart_error)));
 
  this->push_error(spError);
 }//add - err_code
@@ -97,8 +113,8 @@ void t_ibp_error_adapter::add(HRESULT      const err_code,
   spError
    (structure::not_null_ptr
      (new t_ibp_error_element
-           (err_code,
-            ibp_mce_unknown_error_1)));
+       (err_code,
+        ibp_mce_unknown_error_1)));
 
  (*spError)<<msg;
 
@@ -129,8 +145,27 @@ void t_ibp_error_adapter::add(mc_type     const     mc_id_2,
                               uint64_type const     num,
                               const std::exception& exc)
 {
- if(base_error_records_r_cptr const x=dynamic_cast<base_error_records_r_cptr>(&exc))
-  return this->push_ibp_error_ex(mc_id_2,num,x);
+ if(auto const x=dynamic_cast<const lib::structure::t_err_records_r*>(&exc))
+ {
+  const auto cRecs=x->get_record_count();
+
+  if(cRecs>0)
+   return this->helper__push_ibp_error_ex(mc_id_2,num,x);
+
+  //It is a collection without records. Let's register only the error code.
+  assert(cRecs==0);
+
+#ifndef NDEBUG
+  if(auto const x2=dynamic_cast<const t_ibp_error_records_r*>(&exc))
+  {
+   assert(x2->get_primary_err_idx().null());
+  }
+#endif
+
+  const HRESULT hr=IBP_MapExceptionToHRESULT(&exc);
+
+  return this->add(mc_id_2,num,hr);
+ }//if
 
  //--------------------------------------------------------
  if(const ole_lib::t_base_ole_error* const x=dynamic_cast<const ole_lib::t_base_ole_error*>(&exc))
@@ -238,8 +273,27 @@ void t_ibp_error_adapter::add_row_error(mc_type          const mc_id_3,
                                         DBROWSTATUS      const RowStatus,
                                         const std::exception&  exc)
 {
- if(base_error_records_r_cptr const x=dynamic_cast<base_error_records_r_cptr>(&exc))
-  return this->push_row_ibp_error_ex(mc_id_3,num,RowStatus,x);
+ if(auto const x=dynamic_cast<const lib::structure::t_err_records_r*>(&exc))
+ {
+  const auto cRecs=x->get_record_count();
+
+  if(cRecs>0)
+   return this->helper__push_row_ibp_error_ex(mc_id_3,num,RowStatus,x);
+
+  //It is a collection without records. Let's register only the error code.
+  assert(cRecs==0);
+
+#ifndef NDEBUG
+  if(auto const x2=dynamic_cast<const t_ibp_error_records_r*>(&exc))
+  {
+   assert(x2->get_primary_err_idx().null());
+  }
+#endif
+
+  const HRESULT hr=IBP_MapExceptionToHRESULT(&exc);
+
+  return this->add_row_error(mc_id_3,num,RowStatus,hr);
+ }//if
 
  //--------------------------------------------------------
  if(const ole_lib::t_base_ole_error* const x=dynamic_cast<const ole_lib::t_base_ole_error*>(&exc))
@@ -324,9 +378,10 @@ void t_ibp_error_adapter::add_row_error(mc_type      const mc_id_3,
 }//add_row_error
 
 //вспомогательные методы -------------------------------------------------
-void t_ibp_error_adapter::push_ibp_error_ex(mc_type                   const mc_id_2,
-                                            uint64_type               const num,
-                                            base_error_records_r_cptr const recs)
+void t_ibp_error_adapter::helper__push_ibp_error_ex
+                             (mc_type                                const mc_id_2,
+                              uint64_type                            const num,
+                              const lib::structure::t_err_records_r* const recs)
 {
  assert(recs);
 
@@ -368,14 +423,14 @@ void t_ibp_error_adapter::push_ibp_error_ex(mc_type                   const mc_i
   this->push_error(spNewErrorRecord);
  }//for i
 
-}//push_ibp_error_ex - mc_id_2,num,recs
+}//helper__push_ibp_error_ex - mc_id_2, num, recs
 
 //вспомогательные методы -------------------------------------------------
-void t_ibp_error_adapter::push_row_ibp_error_ex
-                                           (mc_type                   const mc_id_3,
-                                            uint64_type               const num,
-                                            DBROWSTATUS               const RowStatus,
-                                            base_error_records_r_cptr const recs)
+void t_ibp_error_adapter::helper__push_row_ibp_error_ex
+                             (mc_type                                const mc_id_3,
+                              uint64_type                            const num,
+                              DBROWSTATUS                            const RowStatus,
+                              const lib::structure::t_err_records_r* const recs)
 {
  assert(recs);
 
@@ -416,7 +471,7 @@ void t_ibp_error_adapter::push_row_ibp_error_ex
   //------
   this->push_error(spNewErrorRecord);
  }//for i
-}//push_row_ibp_error_ex - mc_id_3,num,RowStatus,recs
+}//helper__push_row_ibp_error_ex - mc_id_3, num, RowStatus, recs
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

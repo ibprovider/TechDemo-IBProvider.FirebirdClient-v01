@@ -64,6 +64,17 @@ class RemoteFB__XDR__Info
   static size_t get_size__p_decfloat16();
 
   static size_t get_size__p_decfloat34();
+
+ public:
+  static size_t get_size__isc_time();
+
+  static size_t get_size__isc_date();
+
+  static size_t get_size__isc_timestamp();
+
+  static size_t get_size__fb040_timezone();
+
+  static size_t get_size__fb040_timestamp_with_tz();
 };//class RemoteFB__XDR__Info
 
 ////////////////////////////////////////////////////////////////////////////////

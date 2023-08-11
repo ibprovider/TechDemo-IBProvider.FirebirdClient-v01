@@ -42,6 +42,32 @@ t_ibp_str_box t_ibp_os_win32__path_utils::GetParentDir(const t_ibp_str_box& path
  return path2.substr(0,0);
 }//GetParentDir
 
+//------------------------------------------------------------------------
+t_ibp_string t_ibp_os_win32__path_utils::Concat
+                             (const t_ibp_str_box& path1,
+                              const t_ibp_str_box& path2)
+{
+ const t_ibp_str_box path1n
+  =self_type::Helper__NormalizationPath
+    (path1);
+
+ if(path1n.empty())
+  return path2.make_str();
+
+ if(path2.empty())
+  return path1n.make_str();
+
+ t_ibp_string r;
+
+ r.reserve(path1.size()+1+path2.size());
+
+ r.append(path1n.begin(),path1n.end());
+ r+=IBP_T('\\');
+ r.append(path2.begin(),path2.end());
+
+ return r;
+}//Concat
+
 //Helper members ---------------------------------------------------------
 t_ibp_str_box t_ibp_os_win32__path_utils::Helper__NormalizationPath(const t_ibp_str_box& path)
 {

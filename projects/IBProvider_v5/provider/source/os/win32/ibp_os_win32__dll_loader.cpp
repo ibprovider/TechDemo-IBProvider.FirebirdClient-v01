@@ -98,10 +98,10 @@ FARPROC t_ibp_os_win32__dll_loader::try_get_proc_address(LPCSTR const point_name
 
 //------------------------------------------------------------------------
 IBP_SmartObjectPtr t_ibp_os_win32__dll_loader::get_service_obj
-                             (REFGUID                 rServiceObjID,
-                              pfn_service_obj_creator pfnServiceObjCreator)
+                             (REFGUID                        rServiceObjID,
+                              service_obj_creator_type const fnServiceObjCreator)
 {
- assert(pfnServiceObjCreator);
+ assert(fnServiceObjCreator);
 
  const lock_guard_type __lock(m_ServiceObjs_Guard);
 
@@ -119,7 +119,7 @@ IBP_SmartObjectPtr t_ibp_os_win32__dll_loader::get_service_obj
 
  IBP_SmartObjectPtr
   spNewServiceObj
-   =pfnServiceObjCreator();
+   =fnServiceObjCreator();
 
  assert(spNewServiceObj);
 

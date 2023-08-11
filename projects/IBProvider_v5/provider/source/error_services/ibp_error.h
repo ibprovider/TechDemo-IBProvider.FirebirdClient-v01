@@ -203,15 +203,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] err_code
   //!  Новый основной код ошибки
-  self_type& operator = (HRESULT err_code);
-
-  //----------------------------------------------------------------------
-  /// <summary>
-  ///  Инициализация состояния объекта
-  /// </summary>
-  //! \param[in] err_code
-  //!  Основной код ошибки, который нужно установить
-  self_type& clear_state(HRESULT err_code);
+  self_type& set_error_code (HRESULT err_code);
 
   //----------------------------------------------------------------------
   void swap(self_type& x);
@@ -307,6 +299,9 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   //максимальное число ошибок, которое можно зарегистрировать через
   //методы t_ibp_error_adapter ограничивается c_max_error_count
   virtual void push_error(base_error_record_type* pError) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract (t_ibp_error_adapter)
+
+ private:
+  void helper__copy_descrs(const std::exception& exc);
 
  private:
   typedef structure::t_value_with_null<size_t>    primary_err_idx_type_N;

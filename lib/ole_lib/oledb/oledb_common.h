@@ -11,7 +11,7 @@
 //#include <ole_lib/oledb/oledb_guids.h>
 //#include <ole_lib/oledb/oledb_std.h>
 #include <ole_lib/oledb/oledb_char.h>
-#include <ole_lib/oledb/oledb_data_types.h>
+#include <ole_lib/oledb/oledb_datatypes.h>
 #include <ole_lib/oledb/oledb_ado_datatype_ids.h>
 #include <ole_lib/oledb/oledb_memory.h>
 //#include <ole_lib/ole_lib.h>
@@ -197,7 +197,7 @@ DECLARE_OLEDB_INAME(ISQLErrorInfo)          ;
 #undef DECLARE_OLEDB_INAME
 
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 struct TBindingData;
 class  TBindingArray;
@@ -247,73 +247,6 @@ extern const t_oledb_value__DBDATE              __zero_dbdate__;
 //Friday    = 5
 //Saturday  = 6
 extern const t_oledb_value__I2                  __zero_dbdate_DayOfWeek__;
-
-////////////////////////////////////////////////////////////////////////////////
-//enum data types precisions
-
-extern const structure::t_negative_one oledb_none_precision;
-
-extern const structure::t_negative_one oledb_filetime_precision;
-
-enum enum_oledb_data_type_precisions
-{
- oledb_i1_precision              =3   ,
- oledb_i2_precision              =5   ,
- oledb_i4_precision              =10  ,
- oledb_i8_precision              =19  ,
- oledb_ui1_precision             =3   ,
- oledb_ui2_precision             =5   ,
- oledb_ui4_precision             =10  ,
- oledb_ui8_precision             =20  ,
- oledb_r4_precision              =7   ,
- oledb_r8_precision              =15  ,
- oledb_cy_precision              =19  ,
- oledb_decimal_precision         =29  ,
- oledb_numeric_precision         =39  ,
- oledb_varnumeric_precision      =255 ,
-                                        //"123456789012345678901234567890123456"
- oledb_timestamp_precision       =29  , //"dd.mm.yyyy hh:mm:ss.123456789"
- oledb_timestampoffset_precision =36  , //"dd.mm.yyyy hh:mm:ss.123456789 +hh:mm"
-
- oledb_dbdate_precision          =10  , //"dd.mm.yyyy"
-
- oledb_dbtime_precision          =8   , //"hh:mm:ss"
- oledb_dbtime2_precision         =18  , //"hh:mm:ss.123456789"
-
-#ifdef _WIN64
- oledb_dblength_precision     =oledb_ui8_precision,
- oledb_dbrowcount_precision   =oledb_i8_precision,
- oledb_dbordinal_precision    =oledb_ui8_precision,
-#else
- oledb_dblength_precision     =oledb_ui4_precision,
- oledb_dbrowcount_precision   =oledb_i4_precision,
- oledb_dbordinal_precision    =oledb_ui4_precision,
-#endif
-};//enum_oledb_data_type_precisions
-
-//------------------------------------------------------------------------
-
-const int oledb_cy_fraction_part_mult  = 10000;
-const int oledb_cy_fraction_part_scale = 4;
-
-//------------------------------------------------------------------------
-extern const structure::t_negative_one oledb_none_scale;
-
-enum enum_oledb_data_type_scale
-{
- oledb_timestamp_scale        =9   , //.123456789 [max scale]
- oledb_dbdate_scale           =0   ,
- oledb_dbtime_scale           =0   ,
- oledb_dbtime2_scale          =9   , //.123456789 [max scale]
-
- oledb_numeric_max_scale      =255 ,
-
- //
- // [2021-03-02]
- //  By standard. See, for example, DEC_SCALE_MAX in .NET
- //
- oledb_decimal_max_scale      =28 ,
-};//enum enum_oledb_data_type_scale
 
 ////////////////////////////////////////////////////////////////////////////////
 

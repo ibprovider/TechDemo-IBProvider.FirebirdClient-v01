@@ -37,11 +37,12 @@ void P_OP_CNCT::add_cntr_version(P_USHORT const version,
 {
  assert(this->p_cnct__count<_DIM_(this->p_cnct__versions));
 
- this->p_cnct__versions[this->p_cnct__count].set(version,
-                                                 architecture,
-                                                 min_type,
-                                                 max_type,
-                                                 weight);
+ this->p_cnct__versions[this->p_cnct__count].set
+  (version,
+   architecture,
+   min_type,
+   max_type,
+   weight);
 
  ++this->p_cnct__count;
 };//add_cntr_version

@@ -271,15 +271,14 @@ protocol::P_OBJCT
         packet2.p_resp,
         E_FAIL))
    {
+     assert(FAILED(spErrRec->m_err_code));
+
     Errors.add_error(spErrRec);
 
     //делаем ошибку выполнения запроса основной
     Errors.set_last_error_as_primary();
 
-    Errors=spErrRec->m_err_code;
-
-    //----
-    Errors.raise_me();
+    Errors.raise_me(spErrRec->m_err_code);
    }//if
 
    if(close_was_failed)

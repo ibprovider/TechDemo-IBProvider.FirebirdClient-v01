@@ -31,7 +31,7 @@ t_ibp_cs_icu::tag_conv_holder::tag_conv_holder
 t_ibp_cs_icu::tag_conv_holder::tag_conv_holder
                                 (const t_ibp_cs_icu*       const charset,
                                  conv_direction_flags_type const direction_flags)
- :m_spICU (charset->m_spICU)
+ :m_spICU (charset->m_spICU.not_null_ptr())
  ,m_ptr   (NULL)
 {
  assert(m_spICU);
@@ -268,14 +268,21 @@ bool t_ibp_cs_icu::to_unicode_v2(std::wstring*              const pws,
  CHECK_READ_TYPED_PTR(s.ptr,s.len)
 
  //--------
+ const wchar_t* const c_bugcheck_src
+  =L"v052::t_ibp_cs_icu::to_unicode_v2";
+
+ //--------
  pws->clear();
 
  if(s.empty())
   return true;
 
  //--------
- const api::int32_t
-  isz=ibp_size_cast<api::int32_t>(s.len,L"v052::t_ibp_cs_icu::to_unicode_v2",L"sz");
+ const api::int32_t isz
+  =ibp_size_cast<api::int32_t>
+    (s.len,
+     c_bugcheck_src,
+     L"isz");
 
  //--------
  typedef structure::t_typed_simple_buffer<api::UChar,IBP_MemoryAllocator> buf_type;
@@ -290,8 +297,8 @@ bool t_ibp_cs_icu::to_unicode_v2(std::wstring*              const pws,
   result_buf
    (ibp_size_cast<api::int32_t>
      (2*(s.len+m_cs_info.bytes_per_char),
-      L"v052::t_ibp_cs_icu::to_unicode_v2",
-      L"dest_buffer_sz"));
+      c_bugcheck_src,
+      L"result_buf_sz"));
 
  //--------
  tag_conv_holder
@@ -337,14 +344,21 @@ bool t_ibp_cs_icu::from_unicode_v2(std::string*                const ps,
  CHECK_READ_TYPED_PTR(ws.ptr,ws.len);
 
  //--------
+ const wchar_t* const c_bugcheck_src
+  =L"v052::t_ibp_cs_icu::from_unicode_v2";
+
+ //--------
  ps->clear();
 
  if(ws.empty())
   return true;
 
  //--------
- const api::int32_t
-  iwsz=ibp_size_cast<api::int32_t>(ws.len,L"v052::t_ibp_cs_icu::from_unicode_v2",L"wsz");
+ const api::int32_t iwsz
+  =ibp_size_cast<api::int32_t>
+    (ws.len,
+     c_bugcheck_src,
+     L"iwsz");
 
  //--------
  typedef structure::t_typed_simple_buffer<char,IBP_MemoryAllocator> buf_type;
@@ -354,8 +368,8 @@ bool t_ibp_cs_icu::from_unicode_v2(std::string*                const ps,
   result_buf
    (ibp_size_cast<api::int32_t>
      (m_cs_info.bytes_per_char*(ws.len+1),
-      L"v052::t_ibp_cs_icu::to_unicode_v2",
-      L"dest_buffer_sz"));
+      c_bugcheck_src,
+      L"result_buf_sz"));
 
  //--------
  tag_conv_holder

@@ -43,8 +43,8 @@ const size_t ibp_limc_MaxUnicodeSymbolsForOneMultiByteSymbol=8;
 ///  используетс€ в по-символьной конвертации текстовых данных.
 /// </summary>
 //! \note ћожно определить с огромным запасом
-const size_t ibp_limc_MaxUnicodeSymbolsForOneUTF8Symbol=
-              ibp_limc_MaxUnicodeSymbolsForOneMultiByteSymbol;
+const size_t ibp_limc_MaxUnicodeSymbolsForOneUTF8Symbol
+ =ibp_limc_MaxUnicodeSymbolsForOneMultiByteSymbol;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -61,6 +61,14 @@ const size_t ibp_limc_MaxErrorArgsCount=12;
 ///  прогнозирование размера после переконвертации
 /// </summary>
 const DBLENGTH ibp_limc_MaxRawBlobSizeForSizePrediction=4*1024;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The maximum count of FB040 timezone transition records.
+/// </summary>
+const size_t ibp_limc_MaxCountOfFb040TimeZoneTransitionRecords
+ =10000*4;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

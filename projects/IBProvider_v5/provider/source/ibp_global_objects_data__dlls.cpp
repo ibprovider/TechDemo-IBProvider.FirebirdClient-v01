@@ -83,6 +83,29 @@ void IBP_GlobalObjectsData__DLLs::ReleaseDLL(os::t_ibp_os__dll_loader::self_ptr*
 }//ReleaseDLL
 
 //------------------------------------------------------------------------
+void IBP_GlobalObjectsData__DLLs::DefUnloadOrder(os::t_ibp_os__dll* pFirst,
+                                                 os::t_ibp_os__dll* pSecond)
+{
+ assert(pFirst);
+ assert(pSecond);
+
+#ifndef IBP_BUILD_TESTCODE
+ IBP_GlobalObjects::TDataAccessor dataAccessor;
+
+ return dataAccessor.GetData()->m_spDLLs->DefUnloadOrder(pFirst,pSecond);
+#else
+
+#ifndef NDEBUG
+ structure::t_debug__mt_guard_rw_lock_r __lock_r(sm_TEST_CODE__GUARD_RW);
+#endif
+
+ assert(tagTestData::spDLLs);
+
+ return tagTestData::spDLLs->DefUnloadOrder(pFirst,pSecond);
+#endif
+}//DefUnloadOrder
+
+//------------------------------------------------------------------------
 #ifdef IBP_BUILD_TESTCODE
 
 void IBP_GlobalObjectsData__DLLs::TEST_CODE__Initialize()

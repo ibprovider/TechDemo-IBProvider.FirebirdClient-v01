@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{
 //! \addtogroup ibp_os_win32
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ibp_os_win32__dll_loader;
 
@@ -74,12 +74,12 @@ class t_ibp_os_win32__dll_loader LCPI_CPP_CFG__CLASS__FINAL
   ///  Getting a DLL service object. THROW.
   /// </summary>
   //! \param[in] rSvcObjID
-  //! \param[in] pfnServiceObjCreator
-  //!  Pointer to the creator of a service object.
+  //! \param[in] fnServiceObjCreator
+  //!  The creator of a service object.
   //! \return
   //!  Not NULL.
-  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rSvcObjID,
-                                             pfn_service_obj_creator pfnServiceObjCreator) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                  rSvcObjID,
+                                             service_obj_creator_type fnServiceObjCreator) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
   /// <summary>

@@ -115,31 +115,31 @@
 ///  Params: Required COM API ID, Supported COM API ID
 #define IBP_MCE_COMMON__UNSUPPORTED_COM_API_2                             1008
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Достигнут лимит на количество ошибок. Часть последующих сообщений будет проигнорирована.
 #define IBP_MCE_COMMON__ERR_COUNT_LIMIT_WAS_REACHED_0                     1009
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Универсальное сообщение о BUG-CHECK сбое.<br>
 /// \b
 ///  Params: place, point, reason
 #define IBP_MCE_COMMON__BUG_CHECK_3                                       1010
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_COMMON__FAIL_SIZE_CAST_4                                  1011
 #define IBP_MCE_COMMON__INVALID_ARG_2                                     1012
 #define IBP_MCE_COMMON__FAIL_NUMERIC_CAST_5                               1013
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Переполнение в процессе расчета размера памяти под данные.<br>
 /// \b
 ///  Params: method, point
 #define IBP_MCE_COMMON__OVERFLOW_IN_MEM_SIZE_CALCULATION_2                1014
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестный сервер базы данных.<br>
 /// \b
@@ -148,7 +148,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__UNKNOWN_DBMS_1                                    1015
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестный клиент сервера базы данных.<br>
 /// \b
@@ -157,7 +157,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__UNKNOWN_DBMS_CLIENT_2                             1016
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Невозможно определить тип серверного клиента. Отсутствует ресурс VERSIONINFO.<br>
 /// \b
@@ -166,7 +166,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__CANT_DETECT_DBMS_CLIENT_TYPE__NO_VERSIONINFO_1    1017
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Невозможно определить тип серверного клиента. В VERSIONINFO отсутствует описание продукта.<br>
 /// \b
@@ -175,7 +175,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__CANT_DETECT_DBMS_CLIENT_TYPE__NO_PRODUCT_DESCR_1  1018
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Невозможно определить тип серверного клиента. В VERSIONINFO отсутствует версия продукта.<br>
 /// \b
@@ -184,7 +184,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__CANT_DETECT_DBMS_CLIENT_TYPE__NO_PRODUCT_VERSION_1  1019
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Formed buffer with parameters is too large.<br>
 /// \b
@@ -193,14 +193,14 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__FORMED_PARAM_BUF_IS_TOO_LARGE_3                   1020
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертации системных данных в UNICODE.<br>
 /// \b
 ///  Params: data sign.
 #define IBP_MCE_COMMON__TRANSLATE_SYS_DATA_TO_UNICODE_1                   1021
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Database name length is too large.<br>
 /// \b
@@ -209,35 +209,35 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__DATABASE_NAME_LENGTH_IS_TOO_LARGE_2               1022
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования имени базы данных в кодовую страницу UTF8.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_DB_NAME_TO_UTF8_0               1023
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования параметра подключения в кодовую страницу UTF8.<br>
 /// \b
 ///  Params: paramName
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_CN_PARAM_TO_UTF8_1              1024
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования имени хоста в системную кодовую страницу.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_DBMS_HOST_NAME_TO_SYSTEM_CODEPAGE_0       1025
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования имени порта хоста в системную кодовую страницу.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_DBMS_HOST_PORT_NAME_TO_SYSTEM_CODEPAGE_0  1026
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемая версия сервера базы данных.<br>
 /// \b
@@ -246,35 +246,35 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__UNSUPPORTED_DBMS_VERSION_1                        1027
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования имени базы данных в системную кодовую страницу.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_DB_NAME_TO_SYSTEM_CODEPAGE_0    1028
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования параметра подключения в системную кодовую страницу.<br>
 /// \b
 ///  Params: paramName
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_CN_PARAM_TO_SYSTEM_CODEPAGE_1   1029
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования из UNICODE в кодовую страницу.<br>
 /// \b
 ///  Params: charset name
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_FROM_UNICODE_TO_CHARSET_1       1030
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертирования из кодовой страницы в UNICODE.<br>
 /// \b
 ///  Params: charset name
 #define IBP_MCE_COMMON__FAILED_TO_CONVERT_FROM_CHARSET_TO_UNICODE_1       1031
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый режим чтения/записи массивов базы данных.<br>
 /// \b
@@ -283,7 +283,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__UNSUPPORTED_ARRAY_RW_MODE_2                       1032
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Чтения/записи массивов базы данных собственными средствами провайдера
 ///  не поддерживается для подключенного сервера.<br>
@@ -293,7 +293,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__DIRECT_ARRAY_RW_NOT_SUPPORTED_3                   1033
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемая конфигурация подключения.<br>
 /// \b
@@ -302,7 +302,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__UNSUPPORTED_CN_CONFIGURATION_3                    1034
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Auth data length is too large.<br>
 /// \b
@@ -311,14 +311,14 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_COMMON__AUTH_DATA_LENGTH_IS_TOO_LARGE_2                   1035
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка вызова функции библиотеки libtommath [set01].<br>
 /// \b
 ///  Params: function name, error code, arguments
 #define IBP_MCE_COMMON__FAILED_TO_CALL_LIBTOMMATH_SET01_FUNC_3            1036
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка конвертации системных данных из UNICODE.<br>
 /// \b
@@ -384,6 +384,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /// \brief
+///  Unsupported type of timezones source.<br>
+/// \b
+///  Params: type name.
+#define IBP_MCE_COMMON__UNSUPPORTED_TIMEZONES_SOURCE_1                    1046
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// \brief
 ///  Can't calculate object name length.<br>
 /// \b
 ///  Params: error code sign
@@ -436,6 +444,7 @@
 
 //Reserved
 
+//------------------------------------------------------------------------
 #define IBP_MCE_DBOBJ_UNK_DBCLIENT_TYPE_1                                 2011
 
 //------------------------------------------------------------------------
@@ -515,7 +524,7 @@
 #define IBP_MCE_DBOBJ_FAIL_SAVE_NUMERIC_AS_NATIVE_TYPE_1                  2023
 #define IBP_MCE_DBOBJ_INVALID_NUMERIC_COLUMN_SCALE_2                      2024
 #define IBP_MCE_DBOBJ_INVALID_NUMERIC_ARRAY_SCALE_4                       2025
-#define IBP_MCE_DBOBJ_BAD_ISC_TIME_VALUE_4                                2026
+//Reserved
 #define IBP_MCE_DBOBJ_UNSUPPORT_ARRAY_DIMENSIONS_3                        2027
 #define IBP_MCE_DBOBJ_BAD_ARRAY_BOUNDS_5                                  2028
 #define IBP_MCE_DBOBJ_IBF_RA_BAD_ARRAY_CB_READED_4                        2029
@@ -566,91 +575,115 @@
 
 #define IBP_MCE_DBOBJ__CANT_ASSIGN_STR__LARGE_LEN_4                       2048
 
-/// \b Params: date-type, year, month, day, bad_part_name, min_valid_value, max_valid_value
-#define IBP_MCE_DBOBJ__CANT_CONVERT_DATE__PART_OUT_OF_RANGE_7             2049
+//Reserved
+//Reserved
+//Reserved
+//Reserved
 
-#define IBP_MCE_DBOBJ__CANT_ENCODE_ISC_DATE_OUT_OF_RANGE_5                2050
-
-#define IBP_MCE_DBOBJ__CANT_DECODE_ISC_TIME_OUT_OF_RANGE_3                2051
-
-#define IBP_MCE_DBOBJ__CANT_DECODE_ISC_DATE_OUT_OF_RANGE_5                2052
-
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Неизвестная кодовая страница.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__UNKNOWN_CHARSET_NAME_1                             2053
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Неподдерживаемая ODS базы данных.<br>
 /// \b Params: cur_ods_as_str, req_ods_as_str, dbms descr, provider descr.
 #define IBP_MCE_DBOBJ__NOT_SUPPORT_DATABASE_ODS_4                         2054
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Недопускается сохранение NULL-значений в элементах массивов.
 #define IBP_MCE_DBOBJ__CANT_WRITE_NULL_INTO_ARRAY_ELEMENT_0               2055
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Неизвестная кодовая страница подключения.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__UNKNOWN_CONNECTION_CHARSET_1                       2056
- 
-//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
 
 /// \brief Неизвестная кодовая страница пользователя.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__UNKNOWN_USER_CHARSET_1                             2057
 
-//------------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 /// \brief Ошибка при транслировании имени пользовательской кодовой страницы.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__CANT_TRANSLATE_USER_CHARSET_NAME_1                 2058
 
-//------------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 /// \brief Неизвестная кодовая страница для обработки NONE.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__UNKNOWN_NONE_CHARSET_1                             2059
- 
-//------------------------------------------------------------------------------ 
+
+//------------------------------------------------------------------------
 
 /// \brief Ошибка при транслировании имени кодовой страницы для обработки NONE.<br>
 /// \b Params: charset_name
 #define IBP_MCE_DBOBJ__CANT_TRANSLATE_NONE_CHARSET_NAME_1                 2060
- 
-//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
 
 /// \brief Не найдено описание домена для объекта базы данных.<br>
-/// \b Params: relation, field 
+/// \b Params: relation, field
 #define IBP_MCE_DBOBJ__CANT_FIND_DOMAIN_INFO_FOR_DB_OBJECT_2              2061
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Загрузка сведений о домене для объекта базы данных.<br>
-/// \b Params: relation, field 
+/// \b Params: relation, field
 #define IBP_MCE_DBOBJ__LOAD_DOMAIN_INFO_FOR_DB_OBJECT_2                   2062
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Недопускается сохранение DEFAULT-значений в элементах массивов.
 #define IBP_MCE_DBOBJ__CANT_WRITE_DEFAULT_INTO_ARRAY_ELEMENT_0            2063
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief
 ///  Загрузка списка identity-колонок.
 #define IBP_MCE_DBOBJ__LOAD_LIST_OF_IDENTITY_COLUMNS_0                    2064
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
-/// \brief Неизвестная кодовая страница ODS.<br>
-/// \b Params: charset_name
+/// \brief
+///  Неизвестная кодовая страница ODS.<br>
+/// \b
+///  Params: charset_name
 #define IBP_MCE_DBOBJ__UNKNOWN_ODS_CHARSET_1                              2065
- 
+
+//------------------------------------------------------------------------
+/// \brief
+///  The reset of connection server state was failed.
+#define IBP_MCE_DBOBJ__FAILED_TO_RESET_CN_SERVER_STATE_0                  2066
+
+//------------------------------------------------------------------------
+/// \brief
+///  Bad FB040 timezone id.
+/// \b
+///  Params: place, point, id, name, min id, max id
+#define IBP_MCE_DBOBJ__BUG_CHECK__BAD_FB040_TZ_ID__6                      2067
+
+//------------------------------------------------------------------------
+/// \brief
+///  Duplication of timezone id.
+/// \b
+///  Params: place, point, id, name1, name2
+#define IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_ID__5           2068
+
+//------------------------------------------------------------------------
+/// \brief
+///  Duplication of timezone name.
+/// \b
+///  Params: place, point, name, id1, id2
+#define IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_NAME__5         2069
+
 ////////////////////////////////////////////////////////////////////////////////
 //Working with COM objects
 
@@ -756,10 +789,10 @@
 /// \b Params: provider version, dbclient name, dbclient version, dbms name, dbms version, server sign, req dialect, db dialect.
 #define IBP_MCE_DS__INCOMPATIBLE_REQ_AND_DB_DIALECT_8                     11024
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //Reserved
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //! \brief
 //!  Ошибка обработки параметров подключения из свойства "Extended Properties".
 #define IBP_MCE_DS__FAILED_PARSE_CN_PARAMS_FROM_EXT_PROP_0                11026
@@ -784,7 +817,7 @@
 /// \b Params: DBMS Name, DBMS Version, ID of TypeOfDatabaseUsers
 #define IBP_MCE_NEWDS__REQ_TYPE_OF_DB_USERS_NOT_SUPPORTED_BY_DBMS_3       11032
 
-/////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //Идентификаторы общих ошибок работы с буфером обмена данными
 
 #define IBP_MCE_BIND_ERROR_2                                              11100
@@ -839,7 +872,7 @@
 #define IBP_MCE_IBTRANS__GET_ZERO_TR_NODE_0                               11322
 #define IBP_MCE_IBTRANS__INCORRECT_NAME_OF_USER_SAVEPOINT_1               11323
 
-//dbms name 
+//dbms name
 #define IBP_MCE_IBTRANS__NOT_SUPPORT_NESTED_TRANS_1                       11324
 
 #define IBP_MCE_IBTRANS__DISABLE_EXPLICIT_PREPARE_DTC_TR_0                11325
@@ -1162,13 +1195,13 @@
 ///  Params: index name, table name, column name
 #define IBP_MCE_SCHEMA__FAILED_TO_LOAD_INDEX_INFO_3                       11560
 
- //Table open ------------------------------------------------------------
+//Table open -------------------------------------------------------------------
 #define IBP_MCE_EMPTY_TABLE_NAME_0                                        11600
 #define IBP_MCE_INCORRECT_TABLE_NAME_1                                    11601
 #define IBP_MCE_UNKNOWN_TABLE_1                                           11602
 #define IBP_MCE_INVALID_TABLE_ID_0                                        11603
 
- //Внутренний объект запроса ---------------------------------------------
+//Внутренний объект запроса ----------------------------------------------------
 #define IBP_MCE_CMD_PREPARE_SQL_STMT_0                                    11700
 #define IBP_MCE_CMD_EXECUTE_SQL_STMT_0                                    11701
 
@@ -1191,7 +1224,7 @@
 #define IBP_MCE_CMD_ALLOC_SQL_STMT_0                                      11712
 #define IBP_MCE_CMD_DESCRIBE_COLUMNS_0                                    11713
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки информационного свойства со сведениями о запросе.<br>
 /// \b
@@ -1200,22 +1233,22 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_CMD__IN_STMT_INFO_PROCESSING_ERROR_OCCURRED_1             11714
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка получения сведений о запросе.
 #define IBP_MCE_CMD__FAIL_GET_STMT_INFO_0                                 11715
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка формирования описаний колонок запроса.
 #define IBP_MCE_CMD__DESCRIBE_STMT_COLUMNS_0                              11716
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка формирования описаний параметров запроса.
 #define IBP_MCE_CMD__DESCRIBE_STMT_PARAMS_0                               11717
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Не получено значение информационного свойства запроса.<br>
 /// \b
@@ -1224,7 +1257,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_CMD__GET_STMT_INFO__NO_DATA_1                             11718
 
- //Команда ---------------------------------------------------------------
+//Команда ----------------------------------------------------------------------
 #define IBP_MCE_CMD_INCORRECT_TEXT_0                                      11800
 #define IBP_MCE_CMD_INCORRECT_USE_OF_PARAMS_0                             11801
 
@@ -1274,7 +1307,7 @@
 /// \brief Ошибка обработки OUT-значения параметра.<br>
 /// \b Params: iOrdinal, ParamName, DataStatus
 #define IBP_MCE_CMD__CANT_PROCESS_PARAM_OUT_VALUE_3                       11822
- 
+
 /// \brief Ошибка установки OUT-значения параметра в буфер обмена.<br>
 /// \b Params: iBind, iOrdinal, ParamName, DataStatus
 #define IBP_MCE_CMD__CANT_SET_PARAM_OUT_VALUE_TO_DATA_BUFFER_4            11823
@@ -1322,13 +1355,17 @@
 ///  Params: stmt sign
 #define IBP_MCE_CMD__COMMAND_TEXT_CONTAINS_UNSUPPORTED_STATEMENT_1        11834
 
-//------------------------------------------------------------------------
-
-/// \brief [BUG CHECK] Запрос не возвращает результирующее множество.<br>
-/// \b Params: check place, check point, stmt signature
+/// \brief
+///  [BUG CHECK] Запрос не возвращает результирующее множество.<br>
+/// \b
+///  Params: check place, check point, stmt signature
 #define IBP_MCE_CMD__BUG_CHECK__STMT_IS_NOT_SELECTABLE_3                  11835
 
-//command with multiple statements ---------------------------------------
+/// \brief
+///  Resetting the connection state via SQL is not supported.
+#define IBP_MCE_CMD__RESETTING_A_CN_STATE_THROUGH_SQL_IS_NOT_SUPPORTED_0  11836
+
+//command with multiple statements ---------------------------------------------
 /// \brief В скрипте нельзя использовать неименованные параметры
 #define IBP_MCE_SCRIPT__NOT_SUPPORT_UNNAMED_PARAMS_0                      11840
 
@@ -1340,7 +1377,7 @@
 /// \b Params: Parameter Name
 #define IBP_MCE_SCRIPT__AMBIGUOUS_MAP_OF_STMT_PARAM_TO_USER_PARAM_1       11842
 
-//Ошибки преобразования ODBC запросов ------------------------------------
+//Ошибки преобразования ODBC запросов ------------------------------------------
 #define IBP_MCE_ODBC_DATE_PARSER_NO_END_TAG_2                             11900
 #define IBP_MCE_ODBC_DATE_PARSER_BAD_VALUE_OF_DATE_PART_2                 11901
 #define IBP_MCE_ODBC_DATE_PARSER_BAD_VALUE_OF_TIME_PART_2                 11902
@@ -1359,7 +1396,7 @@
 #define IBP_MCE_ODBC_OPTIONAL_PARAMETER_IS_NOT_SUPPORTED_2                11911
 #define IBP_MCE_ODBC_NOT_SUPPORT_CONVERT_DATA_TYPE_1                      11912
 
- //Обработка параметров команды ------------------------------------------
+//Обработка параметров команды -------------------------------------------------
 #define IBP_MCE_BIND_PARAMETERS_ERROR_1                                   12001
 
 #define IBP_MCE_IN_PARAM_CANNOT_MIXING_TYPE_OF_NAME_0                     12002
@@ -1435,7 +1472,7 @@
 /// \b Params: param oridnal, param name
 #define IBP_MCE_MULTIPLE_DEF_PARAM_IN_VALUE_2                             12039
 
- //Rowset message --------------------------------------------------------
+//Rowset message ---------------------------------------------------------------
 #define IBP_MCE_RS_GET_ROWS_BY_BOOKMARK_2                                 12201
 #define IBP_MCE_RS_BMK_NUM_ERROR_2                                        12202
 #define IBP_MCE_RS_ROW_NUM_ERROR_2                                        12203
@@ -1444,7 +1481,7 @@
 #define IBP_MCE_RS_DELETE_ROWS_2                                          12205
 #define IBP_MCE_RS_GET_ROWS_STATUS_2                                      12206
 
- //Rowset Storage --------------------------------------------------------
+//Rowset Storage ---------------------------------------------------------------
 #define IBP_MCE_RS_STG___FILE_STORAGE_IS_FULL_0                           12250
 
 /// \brief Пустой набор рядов.
@@ -1453,9 +1490,11 @@
 /// \brief Слишком большое количество рядов в результирующем множестве.
 #define IBP_MCE_RS_STG__LARGE_NUMBER_OF_ROWS_IN_RESULTSET_0               12252
 
-/// \brief Проблемы при установке данных колонки в буфер обмена.<br>
-/// \b Params: iOrdinal, Name, DBSTATUS
-#define IBP_MCE_RS_STG__CANT_GET_COLUMN_DATA_3                            12253
+/// \brief
+///  The problem with setting data in the exchange (transfer) buffer.<br>
+/// \b
+///  Params: iOrdinal, Name, BindDbType, DBSTATUS
+#define IBP_MCE_RS_STG__CANT_GET_COLUMN_DATA_4                            12253
 
 /// \brief
 ///  После сбоя предыдущей операции с курсором, его корректная работа невозможна.
@@ -1486,35 +1525,248 @@
 ///  Failed too convert between datatypes.<br/>
 /// \b
 ///  Params: source datatype, target datatype
-#define IBP_MCE_DATATYPE__FAILED_TO_CONVERT_BETWEEN_TYPES_2               12401
+#define IBP_MCE_DATATYPE__FAILED_TO_CONVERT_BETWEEN_TYPES_2               12301
 
 //------------------------------------------------------------------------
 /// \brief
 ///  An arithmetic overflow occurred in binary operation.<br/>
 /// \b
 ///  Params: operation sign, target result type, left argument, right argument
-#define IBP_MCE_DATATYPE__ARITHMETIC_OVERFLOW_IN_OP2_4                    12402
+#define IBP_MCE_DATATYPE__ARITHMETIC_OVERFLOW_IN_OP2_4                    12302
 
 //------------------------------------------------------------------------
 /// \brief
 ///  Translation of text into datatype failed.<br/>
 /// \b
 ///  Params: target datatype
-#define IBP_MCE_DATATYPE__TRANSLATION_OF_TEXT_INTO_DATATYPE_1             12403
+#define IBP_MCE_DATATYPE__TRANSLATION_OF_TEXT_INTO_DATATYPE_1             12303
 
 //------------------------------------------------------------------------
 /// \brief
 ///  Translation of exponent value failed. The arithmetic overflow occurred.<br/>
 /// \b
 ///  Params: the signature of exponent value, max value
-#define IBP_MCE_DATATYPE__TRANSLATION_OF_EXPONENT__OVERFLOW_2             12404
+#define IBP_MCE_DATATYPE__TRANSLATION_OF_EXPONENT__OVERFLOW_2             12304
 
 //------------------------------------------------------------------------
 /// \brief
 ///  Exponent is not in a valid range.<br/>
 /// \b
 ///  Params: exponent value, min value, max value
-#define IBP_MCE_DATATYPE__EXPONENT_IS_NOT_IN_VALID_RANGE_3                12405
+#define IBP_MCE_DATATYPE__EXPONENT_IS_NOT_IN_VALID_RANGE_3                12305
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid OLEDB time.<br>
+/// \b
+///  Params: hour, minutes, seconds, fractions, bad part sign, min, max
+#define IBP_MCE_DATATYPE__BAD_OLEDB_TIME_7                                12306
+
+//------------------------------------------------------------------------
+/// \brief
+///  Can't convert date value.<br>
+/// \b
+///  Params: date-type, year, month, day, bad_part_name, min_valid_value, max_valid_value
+#define IBP_MCE_DATATYPE__CANT_CONVERT_DATE__PART_OUT_OF_RANGE_7          12307
+
+#define IBP_MCE_DATATYPE__CANT_ENCODE_ISC_DATE_OUT_OF_RANGE_5             12308
+
+#define IBP_MCE_DATATYPE__CANT_DECODE_ISC_TIME_OUT_OF_RANGE_3             12309
+
+#define IBP_MCE_DATATYPE__CANT_DECODE_ISC_DATE_OUT_OF_RANGE_5             12310
+
+//------------------------------------------------------------------------
+/// \brief
+///  The work with timezones requires an ICUIN library.
+#define IBP_MCE_DATATYPE__WORK_WITH_TIMEZONES_REQUIRES_ICUIN_LIBRARY_0    12311
+
+//------------------------------------------------------------------------
+/// \brief
+///  The unknown external provider of datetime operations.<br/>
+/// \b
+///  Params: DLL path, DLL description, DLL version
+#define IBP_MCE_DATATYPE__UNKNOWN_EXTERNAL_PROVIDER_OF_DATETIME_OPERATIONS_3  12312
+
+//------------------------------------------------------------------------
+/// \brief
+///  The unsupported external provider of datetime operations.<br/>
+/// \b
+///  Params: DLL path, DLL description, DLL version
+#define IBP_MCE_DATATYPE__UNSUPPORTED_EXTERNAL_PROVIDER_OF_DATETIME_OPERATIONS_3  12313
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid ISC_TIME.<br>
+/// \b
+///  Params: value, min value, max value
+#define IBP_MCE_DATATYPE__INVALID_ISC_TIME_3                              12314
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid ISC_DATE.<br>
+/// \b
+///  Params: value, min value, max value, min date, max date
+#define IBP_MCE_DATATYPE__INVALID_ISC_DATE_5                              12315
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid ISC_TS_TICKS.<br>
+/// \b
+///  Params: value, min value, max value
+#define IBP_MCE_DATATYPE__INVALID_ISC_TS_TICKS_3                          12316
+
+//------------------------------------------------------------------------
+/// \brief
+///  [FB040] Can't translate UTC imestamp into local timestamp. Out of range.<br>
+/// \b
+///  Params: utc_ts, fb040_timezone, offset_in_ticks (microseconds)
+#define IBP_MCE_DATATYPE__FB040__CANT_TRANSLATE_UTC_TS_INTO_LOCAL_TS__OUT_OF_RANGE_3 12317
+
+//------------------------------------------------------------------------
+/// \brief
+///  [FB040] Can't translate local timestamp into UTC timestamp. Out of range.<br>
+/// \b
+///  Params: local_ts, fb040_timezone, offset_in_ticks (microseconds)
+#define IBP_MCE_DATATYPE__FB040__CANT_TRANSLATE_LOCAL_TS_INTO_UTC_TS__OUT_OF_RANGE_3 12318
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid timezone offset.<br>
+/// \b
+///  Params: value, min value, max value
+#define IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_3                             12319
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid timezone offset in minutes.<br>
+/// \b
+///  Params: value, min value, max value
+#define IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_IN_MIN_3                      12320
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid time zone offset in microseconds (isc-ticks).<br>
+/// \b
+///  Params: value, min value, max value
+#define IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_IN_MICROSECONDS_3             12321
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid OLEDB timezone.<br>
+/// \b
+///  Params: hour, minute
+#define IBP_MCE_DATATYPE__INVALID_OLEDB_TIMEZONE_2                        12322
+
+//------------------------------------------------------------------------
+/// \brief
+///  Can't convert DBTIMESTAMPOFFSET into FB040_TS_WITH_TZ. Out of range.<br>
+/// \b
+///  Params: oledb tso
+#define IBP_MCE_DATATYPE__CANT_CONVERT_DBTIMESTAMPOFFSET_INTO_FB040_TS_WITH_TZ__OUT_OF_RANGE__1 12323
+
+//------------------------------------------------------------------------
+/// \brief
+///  The unknown timezone id.<br>
+/// \b
+///  Params: timezone id
+#define IBP_MCE_DATATYPE__UNKNOWN_TIMEZONE_ID_1                           12324
+
+//------------------------------------------------------------------------
+/// \brief
+///  The unknown timezone name.<br>
+/// \b
+///  Params: timezone name
+#define IBP_MCE_DATATYPE__UNKNOWN_TIMEZONE_NAME_1                         12325
+
+//------------------------------------------------------------------------
+/// \brief
+///  The timezone is not defined.
+#define IBP_MCE_DATATYPE__TIMEZONE_IS_NOT_DEFINED_0                       12326
+
+//------------------------------------------------------------------------
+/// \brief
+///  The date is not defined.
+#define IBP_MCE_DATATYPE__DATE_IS_NOT_DEFINED_0                           12327
+
+//------------------------------------------------------------------------
+/// \brief
+///  The time is not defined.
+#define IBP_MCE_DATATYPE__TIME_IS_NOT_DEFINED_0                           12328
+
+//------------------------------------------------------------------------
+/// \brief
+///  The invalid format of a timezone.
+#define IBP_MCE_DATATYPE__INVALID_FORMAT_OF_TIMEZONE_0                    12329
+
+//------------------------------------------------------------------------
+/// \brief
+///  The invalid format of a date.
+#define IBP_MCE_DATATYPE__INVALID_FORMAT_OF_DATE_0                        12330
+
+//------------------------------------------------------------------------
+/// \brief
+///  The invalid format of a time.
+#define IBP_MCE_DATATYPE__INVALID_FORMAT_OF_TIME_0                        12331
+
+//------------------------------------------------------------------------
+/// \brief
+///  The invalid timezone hour.<br>
+/// \b
+///  Params: hour info
+#define IBP_MCE_DATATYPE__INVALID_TIMEZONE_HOUR_1                         12332
+
+//------------------------------------------------------------------------
+/// \brief
+///  The invalid timezone minute.<br>
+/// \b
+///  Params: minute info
+#define IBP_MCE_DATATYPE__INVALID_TIMEZONE_MINUTE_1                       12333
+
+//------------------------------------------------------------------------
+/// \brief
+///  An unexpected data after value.
+#define IBP_MCE_DATATYPE__UNEXPECTED_DATA_AFTER_VALUE_0                   12334
+
+//------------------------------------------------------------------------
+/// \brief
+///  An invalid UTF-16 text.
+/// \b
+///  Params: offset
+#define IBP_MCE_DATATYPE__INVALID_UTF16_TEXT_1                            12335
+
+//------------------------------------------------------------------------
+/// \brief
+///  No timezone transition data for UTC time.
+/// \b
+///  Params: timezone name, UTC-time
+#define IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_UTC_TIME_2      12336
+
+//------------------------------------------------------------------------
+/// \brief
+///  No timezone transition data for LOCAL time.
+/// \b
+///  Params: timezone name, LOCAL-time
+#define IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_LOCAL_TIME_2    12337
+
+//------------------------------------------------------------------------
+/// \brief
+///  A problem with loading the transition data of timezone.
+/// \b
+///  Params: timezone name
+#define IBP_MCE_DATATYPE__PROBLEM_WITH_LOADING_TRANSITION_DATA_OF_TIMEZONE_1 12338
+
+//------------------------------------------------------------------------
+/// \brief
+///  Can't translate local timestamp into UTC timestamp. Out of range.<br>
+/// \b
+///  Params: local ts, timezone name, offset_in_ticks (microseconds)
+#define IBP_MCE_DATATYPE__CANT_TRANSLATE_LOCAL_TS_INTO_UTC_TS__OUT_OF_RANGE_3 12339
+
+/// \brief
+///  Can't translate utc timestamp into local timestamp. Out of range.<br>
+/// \b
+///  Params: utc ts, timezone name, offset_in_ticks (microseconds)
+#define IBP_MCE_DATATYPE__CANT_TRANSLATE_UTC_TS_INTO_LOCAL_TS__OUT_OF_RANGE_3 12340
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1528,7 +1780,7 @@
 #define IBP_MCE_IBF_FAIL_CLOSE_BLOB_0                                     12442
 #define IBP_MCE_IBF_FAIL_CANCEL_BLOB_0                                    12443
 
- //WriteArray
+//WriteArray
 #define IBP_MCE_IBF_WA_CANT_WRITE_TYPE_AS_ARRAY_1                         12460
 #define IBP_MCE_IBF_WA_UNK_ELEMENT_TYPE_1                                 12461
 #define IBP_MCE_IBF_WA_IBDIM_SADIM_2                                      12462
@@ -1539,35 +1791,29 @@
 //Reserved
 #define IBP_MCE_IBF_WA_FAIL_GET_ELEMENT_1                                 12468
 #define IBP_MCE_IBF_WA_FAIL_ASSIGN_ELEMENT_1                              12469
-//Reserved
-
-//address,from_type,to_type
-#define IBP_MCE_IBF_WA_FAIL_CONVERT_ELEMENT_3                             12471
-
-//Reserved
 
 //---------
 #define IBP_MCE_CANT_CREATE_SAFEARRAY_2                                   12481
 #define IBP_MCE_CANT_ACCESS_SAFEARRAY_DATA_0                              12482
 
- /////////////////////////////////////////////////////////////////////////
- //Запись BLOB полей
+////////////////////////////////////////////////////////////////////////////////
+//Запись BLOB полей
 
 #define IBP_MCE_BW__FAIL_WRITE_TO_DB_0                                    12501
 
- //не поддерживаемая кодировка BLOB поля
+//не поддерживаемая кодировка BLOB поля
 #define IBP_MCE_BW__CS_NOT_SUPPORT_1                                      12502
 
- //некорректная работа пользовательского storage-объекта
+//некорректная работа пользовательского storage-объекта
 //reserved
 #define IBP_MCE_BW__USER_STORAGE_BAD_WORK_0                               12504
 #define IBP_MCE_BW__USER_STORAGE_FAIL_READ_0                              12505
 
- //ошибка транслирования кодовых страниц
+//ошибка транслирования кодовых страниц
 #define IBP_MCE_BW__FAIL_TRANSLATE_FROM_UNICODE_TO_CS_1                   12506
 #define IBP_MCE_BW__FAIL_TRANSLATE_BETWEEN_CS_2                           12507
 
- //текстовое HEX-представление бинарных данных
+//текстовое HEX-представление бинарных данных
 #define IBP_MCE_BW__BAD_CHAR_IN_HEX_STR_1                                 12508
 #define IBP_MCE_BW__WRONG_HEX_STR_0                                       12509
 
@@ -1585,13 +1831,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Чтение BLOB полей
 
- //ошибка открытия BLOB поля
+//ошибка открытия BLOB поля
 #define IBP_MCE_BR__FAIL_OPEN_BLOB_0                                      12550
 
- //ошибка чтения сегмента BLOB поля
+//ошибка чтения сегмента BLOB поля
 #define IBP_MCE_BR__FAIL_GET_SEGMENT_0                                    12551
 
- //ошибка получения информации о длине BLOB
+//ошибка получения информации о длине BLOB
 #define IBP_MCE_BR__FAIL_GET_BLOB_LENGTH_0                                12552
 
 //get size, max size
@@ -1726,47 +1972,182 @@
 ///  Params: Charset Name
 #define IBP_MCE_CS__CALC_LENGTH_IN_MBC_CHARS__OVERFLOW_1                  12704
 
-//ICU -------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////
+//ICU
 
-/// \brief ICU: Ошибка создания конвертора кодовой страницы.<br>
-/// \b Params: ICU Provider, Charset Name, ICU Error Code
-#define IBP_MCE_ICU__CREATE_CS_CONV_3                                     12720
+/// \brief
+///  ICU: Unknown ICUUC/ICUIN library.<br>
+/// \b
+///  Params: Module sign (ICUUC/ICUIN), DLL name, description, version
+#define IBP_MCE_ICU__UNKNOWN_MODULE_VERSION_4                             12800
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Unsupported ICUUC/ICUIN library.<br>
+/// \b
+///  Params: Module sign (ICUUC/ICUIN), DLL name, description, version
+#define IBP_MCE_ICU__UNSUPPORTED_MODULE_VERSION_4                         12801
 
-/// \brief ICU: Ошибка вызова функции.<br>
-/// \b Params: ICU Provider, Charset Name, Func Name, ICU Error Code
-#define IBP_MCS_ICU__CALL_FUNC_4                                          12721
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Ошибка создания конвертора кодовой страницы.<br>
+/// \b
+///  Params: ICU Provider, Charset Name, ICU Error Code
+#define IBP_MCE_ICU__CREATE_CS_CONV_3                                     12802
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Ошибка вызова функции.<br>
+/// \b
+///  Params: ICU Provider, Charset Name, Func Name, ICU Error Code
+#define IBP_MCS_ICU__CALL_FUNC_4                                          12803
 
-/// \brief ICU: Некорректный min-max размер символа.<br>
-/// \b Params: ICU Provider, Charset Name, MinCharSize, MaxCharSize
-#define IBP_MCE_ICU__BAD_MIN_MAX_CHAR_SIZE_4                              12722
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Некорректный min-max размер символа.<br>
+/// \b
+///  Params: ICU Provider, Charset Name, MinCharSize, MaxCharSize
+#define IBP_MCE_ICU__BAD_MIN_MAX_CHAR_SIZE_4                              12804
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Неподдерживаемый максимальный размер символов.<br>
+/// \b
+///  Params: ICU Provider, Charset Name, MaxCharSize, LimitMaxCharSize
+#define IBP_MCE_ICU__LARGE_MAX_CHAR_SIZE_4                                12805
 
-/// \brief ICU: Неподдерживаемый максимальный размер символов.<br>
-/// \b Params: ICU Provider, Charset Name, MaxCharSize, LimitMaxCharSize
-#define IBP_MCE_ICU__LARGE_MAX_CHAR_SIZE_4                                12723
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Bug Check.<br>
+/// \b
+///  Params: ICU Provider, Charset Name, Function Name, CheckPoint
+#define IBP_MCE_ICU__BUG_CHECK_4                                          12806
 
-//------------------------------------------------------------------------------
-  
-/// \brief ICU: Bug Check.<br>
-/// \b Params: ICU Provider, Charset Name, Function Name, CheckPoint
-#define IBP_MCE_ICU__BUG_CHECK_4                                          12724
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Can't convert one ascii char to unicode.<br>
+/// \b
+///  Params: ICU Provider, Charset Name
+#define IBP_MCE_ICU__CANT_CONV_ONE_ASCII_TO_UNICODE_2                     12807
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Failed to initialize.<br>
+/// \b
+///  Params: ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_INITIALIZE_1                               12808
 
-/// \brief ICU: Can't convert one ascii char to unicode.<br>
-/// \b Params: ICU Provider, Charset Name
-#define IBP_MCE_ICU__CANT_CONV_ONE_ASCII_TO_UNICODE_2                     12725
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: ICUIN library is requiring the explicit initialization of ICUUC library.
+/// \b
+///  Params: ICUIN DLL path, ICUIN DLL version
+#define IBP_MCE_ICU__ICUIN_IS_REQUIRING_EXPLICIT_INITIALIZATION_OF_ICUUC_2 12809
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: ICUIN and ICUUC have different versions.
+/// \b
+///  Params: ICUIN module, ICUIN version, ICUUC module, ICUUC version
+#define IBP_MCE_ICU__ICUIN_AND_ICUUC_HAVE_DIFFERENT_VERSIONS_4            12810
 
-/// \brief ICU: Failed to initialize.<br>
-/// \b Params: ICU Provider, ICU Error Code
-#define IBP_MCE_ICU__FAILED_TO_INITIALIZE_2                               12726
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with opening of the calendar.
+/// \b
+///  Params: Time Zone Name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_OPEN_CALENDAR_2                            12811
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: [BUG CHECK] The function of an opening a calendar returned a NULL pointer.
+/// \b
+///  Params: Func Name, Time Zone Name
+#define IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_OPEN_CALENDAR_RETURNED_NULL_PTR_2 12812
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with setting of the calendar date (millis).
+/// \b
+///  Params: ICU Date, Time Zone Name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_SET_CALENDAR_MILLIS_3                      12813
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with setting of the calendar datetime.
+/// \b
+///  Params: Year, Month, Day, Hour, Minute, Second, Time Zone Name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_SET_CALENDAR_DATETIME_8                    12814
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with getting of the calendar date offset.
+/// \b
+///  Params: Time Zone Name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_DATE_OFFSET_2                 12815
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with getting of the calendar dst offset.
+/// \b
+///  Params: Time Zone Name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_DST_OFFSET_2                  12816
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: There is a problem with getting (for verification) of the calendar timezone name.<br>
+/// \b
+///  Params: checked timezone name, ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_TIMEZONE_NAME_2               12817
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: [BUG CHECK] GetTimeZoneID returned an negative value.<br>
+/// \b
+///  Params: FUNC NAME, RESULT VALUE, TZ NAME
+#define IBP_MCE_ICU__BUG_CHECK__GETTIMEZONEID_RETURN_NEGATIVE_VALUE_3     12818
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: [BUG CHECK] Calendar is linked with another timezone.<br>
+/// \b
+///  Params: expected timezone, actual timezone
+#define IBP_MCE_ICU__BUG_CHECK_CALENDAR_IS_LINKED_WITH_ANOTHER_TIMEZONE_2 12819
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Enumerating of the time zone names was failed.<br>
+/// \b
+///  Params: ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_ENUMERATE_TIMEZONE_NAMES_1                 12820
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: [BUG CHECK] The function of enumerating timezones returned a NULL pointer.
+/// \b
+///  Params: Func Name
+#define IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_ENUM_TIMEZONES_RETURNED_NULL_PTR_1 12821
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Fetching a name from timezone enumeration was failed.<br>
+/// \b
+///  Params: ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_FETCH_NAME_FROM_TIMEZONE_ENUM_1            12822
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: [BUG CHECK] uenum_unext returned a negative length.<br>
+/// \b
+///  Params: func name, length
+#define IBP_MCE_ICU__BUG_CHECK_UENUM_UNEXT_RETURNED_NEGATIVE_LENGTH_2     12823
+
+//------------------------------------------------------------------------
+/// \brief
+///  ICU: Failed to set timezone files directory.<br>
+/// \b
+///  Params: ICU Error Code
+#define IBP_MCE_ICU__FAILED_TO_TZDATA_FILES_DIR_1                         12824
 
 ////////////////////////////////////////////////////////////////////////////////
 //Messages for Generators of Database Object Scripts
@@ -1774,74 +2155,74 @@
 /// \b Params: Domain Name, Numeric Base Type, Scale.
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_NUMERIC_DOMAIN_SCALE_3                13000
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name, Numeric Base Type, Precision.
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_NUMERIC_DOMAIN_PRECISION_3            13001
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name, Domain Type, Length, Min Length, Max Length.
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_TEXT_DOMAIN_LENGTH_5                  13002
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: SP Name, Param Name, Param Type (IN/OUT), BadNumber, ReqNumber
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_SP_PARAM_NUMBER_5                     13003
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: SP Name, Param Name, UnkDirection
 #define IBP_MCE_DBOBJ__SQL_GEN__UNK_SP_PARAM_DIRECTION_3                  13004
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name, UnkSubType
 #define IBP_MCE_DBOBJ__SQL_GEN__UNK_NUMERIC_DOMAIN_SUBTYPE_2              13005
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name
 #define IBP_MCE_DBOBJ__SQL_GEN__BLOB_DOMAIN_WITHOUT_SUBTYPE_1             13006
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name, BLR Type ID
 #define IBP_MCE_DBOBJ__SQL_GEN__UNK_DOMAIN_BLR_DATA_TYPE_2                13007
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name
 #define IBP_MCE_DBOBJ__SQL_GEN__DOMAIN_WITHOUT_CSET_1                     13008
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: SP Name
 #define IBP_MCE_DBOBJ__SQL_GEN__BUILD_SP_HEADER_SOURCE_1                  13009
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Domain Name, Precision, Scale, Base Domain Type
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_NUMERIC_DOMAIN_PRECISION_SCALE_4      13010
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \b Params: Stored Procedure Name, Parameter Name
 #define IBP_MCE_DBOBJ__SQL_GEN__BAD_SP_PARAM_STATE_2                      13011
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Некорректная длина текстовых данных в байтах.<br>
 /// \b Params: domain name, type name, length, charset name, bytes_per_char
 #define IBP_MCE_DBOBJ__SQL_GEN__WRONG_TEXT_DATATYPE_LENGTH_IN_BYTES_5     13012
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief Ошибка генерации определения UDF.<br>
 /// \b Params: UDF Name
 #define IBP_MCE_DBOBJ__SQL_GEN__BUILD_UDF_SOURCE_1                        13013
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 
 /// \brief BLOB-аргумент UDF имеет неподдерживаемый субтип.<br>
 /// \b Params: domain name, sub_type_id
@@ -1854,45 +2235,52 @@
 /// \b Params: table name, column name
 #define IBP_MCE_ARRAY__CREATE_SDL__FAILED_2                               13100
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Генерация SDL. Слишком длинная строка.<br>
 /// \b Params: string length, max length
 #define IBP_MCE_ARRAY__CREATE_SDL__TOO_LONG_STR_2                         13101
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Запись массива в БД.<br>
 /// \b Params: table name, column name
 #define IBP_MCE_ARRAY__WRITE_ARRAY_TO_DB_2                                13110
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Загрузка массива из БД.<br>
 /// \b Params: table name, column name
 #define IBP_MCE_ARRAY__READ_ARRAY_FROM_DB_2                               13111
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Ошибка формирования дескриптора массива.<br>
 /// \b Params: table name, column name
 #define IBP_MCE_ARRAY__BUILD_DESCR__FAILED_2                              13112
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Переполнение при вычислении количества элементов в массиве.<br>
 /// \b Params: RelationName, FieldName
 #define IBP_MCE_ARRAY__CALC_TOTAL_ELEMENT_COUNT__OVERFLOW_2               13113
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Переполнение при вычислении размера памяти под данные массива.<br>
 /// \b Params: RelationName, FieldName, Total Element Count, Element Size
 #define IBP_MCE_ARRAY__CALC_MEMORY_SIZE__OVERFLOW_4                       13114
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка загрузки и декодирования низкоуровневого дескриптора массива.
 #define IBP_MCE_ARRAY__FAILED_TO_READ_AND_DECODE_INTERNAL_ARRAY_DESC_0    13115
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка кодирования и сохранения низкоуровневого дескриптора массива.
 #define IBP_MCE_ARRAY__FAILED_TO_ENCODE_AND_WRITE_INTERNAL_ARRAY_DESC_0   13116
+
+//------------------------------------------------------------------------
+/// \brief
+///  The value with this type cannot be used to save as an array.<br>
+/// \b
+///  Params: source value type
+#define IBP_MCE_ARRAY__UNSUPPORTED_SOURCE_VALUE_TYPE_1                    13117
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1940,7 +2328,7 @@
 
 //------------------------------------------------------------------------
 /// \brief
-///  [BUG CHECK] Неизвестный внутренний тип элемента в данных массива.<br> 
+///  [BUG CHECK] Неизвестный внутренний тип элемента в данных массива.<br>
 /// \b
 ///  Params: place, point, dtypeID
 #define IBP_MCE_ARRAY_BLOB__BUG_CHECK__UNKNOWN_INTERNAL_DTYPE_3           13215
@@ -2013,91 +2401,91 @@
 ///  Params: param_idx, full marker sign, column_idx
 #define IBP_MCE_SS_STMT__CANT_BUILD_IN_PARAM_VALUE_FROM_COLUMN_VALUE_3    16060
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка подготовки служебного запроса.<br>
 /// \b
 ///  Params: stmt index
 #define IBP_MCE_SS_STMT__CANT_PREPARE_SERVICE_STMT_1                      16061
- 
-//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка формирования IN-параметров для служебного запроса.<br>
 /// \b
 ///  Params: stmt index
 #define IBP_MCE_SS_STMT__CANT_BUILD_IN_PARAMS_FOR_SERVICE_STMT_1          16062
- 
-//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка выполнения служебного запроса.<br>
 /// \b
 ///  Params: stmt index
 #define IBP_MCE_SS_STMT__CANT_EXECUTE_SERVICE_STMT_1                      16063
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка генерации уникального идентификатора для колонки.<br>
 /// \b
 ///  Params: param_idx, full marker sign, column_idx
 #define IBP_MCE_SS_STMT__CANT_GENERATE_UNIQUE_ID_FOR_IN_PARAM_3           16064
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый тип сервисного запроса.<br>
 /// \b
 ///  Params: stmt signature
 #define IBP_MCE_SS_STMT__UNSUPPORTED_STMT_TYPE_1                          16065
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервисные запросы, возвращающие множества, не поддерживаются.<br>
 /// \b
 ///  Params: stmt signature
 #define IBP_MCE_SS_STMT__CANT_USE_SELECT_STMT_1                           16066
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервисный запрос должен возвращать множество.<br>
 /// \b
 ///  Params: stmt signature
 #define IBP_MCE_SS_STMT__CANT_USE_STMT_WITHOUT_RS_1                       16067
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервисные запросы многократно модифицируют колонку перед выполнением.<br>
 /// \b
 ///  Params: markers count, column index, column name
 #define IBP_MCE_SS_STMT__SQLS_CONTAINS_MULT_CHANGES_OF_COL_BEFORE_EXECS_3 16068
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервисные запросы многократно модифицируют колонку после выполнения.<br>
 /// \b
 ///  Params: markers count, column index, column name
 #define IBP_MCE_SS_STMT__SQLS_CONTAINS_MULT_CHANGES_OF_COL_AFTER_EXECS_3  16069
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Выполнение служебного запроса.<br>
 /// \b
 ///  Params: stmt index, message
 #define IBP_MCE_SS_STMT__EXECUTION_SERVICE_STMT_2                        16070
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Выполнение служебного запроса завершилось с некоторыми проблемами.<br>
 /// \b
 ///  Params: stmt index
 #define IBP_MCE_SS_STMT__EXECUTION_SERVICE_STMT_FINISHED_WITH_SOME_PROBLEMS_1   16071
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка чтения значения OUT-параметра.<br>
 /// \b
 ///  Params: linked column index, linked column name
 #define IBP_MCE_SS_STMT__FAILED_TO_READ_OUT_PARAM_VALUE_2                 16072
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка установки значения OUT-параметра.<br>
 /// \b
@@ -2110,7 +2498,7 @@
 /// \brief  В процессе удаления страницы списка с заголовками рядов произошли ошибки.
 #define IBP_MCE_SS__PROBLEM_AT_ROW_PAGE_DELETE_0                          16090
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief  В процессе удаления страницы списка отложенных изменений произошли ошибки.
 #define IBP_MCE_SS__PROBLEM_AT_PENDING_LIST_PAGE_DELETE_0                 16091
 
@@ -2118,64 +2506,64 @@
 
 #define IBP_MCE_SS_DBCHANGE_DELETE_ROW_FAILED_0                           16201
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_DBCHANGE_INSERT_ROW_FAILED_0                           16202
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_DBCHANGE_UPDATE_ROW_FAILED_0                           16203
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //запрос колонок первичного ключа
 #define IBP_MCE_SS_PROVIDER_CANT_OBTAIN_PK_OF_OPENED_QUERY_0              16210
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_QUERY_TABLE_PRIMARY_KEY_2                              16211
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_UNKNOWN_PK_COLUMN_OF_TABLE_2                           16212
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_TABLE_HAS_NO_PRIMARY_KEY_1                             16213
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Колонка первичного ключа содержит NULL.<br>
 /// \b
 ///  Params: Column Name, Table Name
 #define IBP_MCE_SS_PRIMARY_KEY_COLUMN_OF_TABLE_HAS_NULL_2                 16214
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Колонка первичного ключа содержит пустое (DEFAULT) значение.<br>
 /// \b
 ///  Params: Column Name, Table Name
 #define IBP_MCE_SS_PRIMARY_KEY_COLUMN_OF_TABLE_HAS_EMPTY_VALUE_2          16215
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //запрос списка обновляемых колонок набора
 #define IBP_MCE_SS_PROVIDER_CANT_OBTAIN_UPDATED_COLUMN_OF_OPENED_QUERY_0  16220
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_QUERY_UPDATED_COLUMNS_OF_TABLE_2                       16221
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_UNKNOWN_COLUMN_OF_TABLE_2                              16222
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief (Автоматическое) обновление набора рядов невозможно.
 #define IBP_MCE_SS_UPDATE_OF_CURRENT_RESULT_SET_NOT_SUPPORTED_0           16223
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Нет колонок, определяющих первичный ключ записи.
 #define IBP_MCE_SS_NO_COLUMNS_FROM_PRIMARY_KEY_0                          16224
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //вставка нового ряда
 
 #define IBP_MCE_SS_CANT_INSERT_ROW_WITHOUT_VALUES_OF_COLUMNS_0            16250
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //ошибки генерации нового значения колонки
 
 #define IBP_MCE_SS_FAIL_GEN_ID_2                                          16261
@@ -2184,12 +2572,12 @@
 
 #define IBP_MCE_SS_FAIL_GEN_ID_UNK_TYPE_2                                 16263
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //ошибка обработки отложенных рядов
 //errors,total count
 #define IBP_MCE_SS_FAIL_COMMIT_PENDINGS_ROWS_2                            16280
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_FAIL_ROLLBACK_PENDINGS_ROWS_2                          16281
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2198,50 +2586,50 @@
 //парсер пользовательских запросов управления данными --------------------------
 #define IBP_MCE_SS_PARAM_CANT_USE_UNNAMED_PARAMS_0                        16401
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //некорректный формат списка параметров
 #define IBP_MCE_SS_BAD_FORMAT_OF_PARAM_LIST_0                             16402
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запрещение использования маркера параметра с определенным типом.<br>
 /// \b
 ///  Params: Сигнатура маркера параметра
 #define IBP_MCE_SS_PARAM_INVALID_CAT_OF_PARAMETER_2                       16403
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_PARAM_BAD_FORMAT_NO_GEN_NAME_0                         16404
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_PARAM_BAD_FORMAT_NO_COL_NAME_1                         16405
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 #define IBP_MCE_SS_PARAM_BAD_FORMAT_NO_BASE_COL_NAME_2                    16406
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief К маркеру параметра привязана неизвестная колонка.<br>
 /// \b Params: marker idx, full marker sign.
 #define IBP_MCE_SS_PARAM__UNK_COL_IN_MARKER_2                             16407
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Неоднозначный выбор колонки для маркера параметра.<br>
 /// \b Params: marker idx, full marker sign.
 #define IBP_MCE_SS_PARAM__AMBIGUOUS_COL_SELECTION_FOR_MARKER_2            16408
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Нарушен формат маркера параметра.<br>
 /// \b Params: MarkerPrefix
 #define IBP_MCE_SS_PARAM_BAD_FORMAT_1                                     16409
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Не определен префикс именованных параметров
 #define IBP_MCE_SS_NAMED_PARAM_PREFIX_NOT_DEF_0                           16410
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Запросы с генерируемым списком параметров не поддерживаются
 #define IBP_MCE_SS_PARAM__STMT_WITH_AUTO_GEN_PARAM_LIST_NOT_SUPPORTED_0   16411
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запрос содержит неявный параметра.<br>
 /// \b
@@ -2250,31 +2638,31 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //парсер правил генерации ключей
- 
+
 /// \brief Неподдерживаемый тип маркера в списке правил авто генерации ключей множества.<br>
 /// \b Params: MarkerIdx, MarkerPrefix
 #define IBP_MCE_SS__AUTO_GEN_KEY_RULE__UNSUPPORTED_MARKER_TYPE_2          16420
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Ошибка в формате списка с правилами генерации ключей
 #define IBP_MCE_SS_AUTO_GEN_KEY_RULE__BAD_FORMAT_0                        16421
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Неоднозначный выбор колонки для правила авто-генерации ключа.<br>
 /// \b Params: MarkerIdx, FullMarkerSign
 #define IBP_MCE_SS_AUTO_GEN_KEY_RULE__AMBIGUOUS_COL_SELECTION_FOR_MARKER_2 16422
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Неизвестная колонка в правиле авто-генерации ключа.<br>
 /// \b Params: MarkerNum, FullMarkerSign
 #define IBP_MCE_SS_AUTO_GEN_KEY_RULE__UNK_COL_IN_MARKER_2                 16423
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Повторное определение правила генерации значения для колонки.<br>
 /// \b Params: MarkerNum, FullMarkerSign
 #define IBP_MCE_SS_AUTO_GEN_KEY_RULE__RULE_FOR_COL_ALREADY_DEFINED_2      16424
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Произошли ошибки при обработке списка правил генерации ключей.<br>
 #define IBP_MCE_SS_AUTO_GEN_KEY_RULE__LIST_PROCESS_WAS_FAILED_0           16425
 
@@ -2284,53 +2672,53 @@
 /// \brief Перечитывание записей для текущего набора рядов не поддерживается.
 #define IBP_MCE_SS_REFRESH_OF_CURRENT_RESULT_SET_NOT_SUPPORTED_0          16430
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Запись не зайдена. Она либо удалена, либо недоступна из текущей транзакции.
 #define IBP_MCE_SS_REFRESH__RECORD_WAS_DELETED_OR_NOT_VISIBLE_0           16431
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Перечитывающий запрос вернул больше одной записи.
 #define IBP_MCE_SS_REFRESH__GET_MULTIPLE_ROWS_0                           16432
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Определено больше одного запроса для чтения текущего состояния записи в БД.<br>
 /// \b Params: stmt count.
 #define IBP_MCE_SS_REFRESH__MULTIPLE_REFRESH_STMTS_1                      16433
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Некорректный пользовательский запрос для перечитывания данных.<br>
 /// \b Params: rowset column count, user stmt column count
 #define IBP_MCE_SS_REFRESH__USER_REFRESH_STMT__WRONG_COLUMN_COUNT_2       16434
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  В пользовательском запросе для перечитывания данных обнаружена колонка,
 ///  несовместимая с базовым набором рядов.<br>
 /// \b Params: stmt column name, base column number, base column name, reason
 #define IBP_MCE_SS_REFRESH__WRONG_COLUMN_IN_REFRESH_STMT_4                16435
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Ошибка перезагрузки данных ряда.<br>
 /// \b Params: row number (from zero), error message
 #define IBP_MCE_SS_REFRESH__CANT_REFRESH_ROW_DATA_2                       16436
 
 ////////////////////////////////////////////////////////////////////////////////
 //process of pending row
- 
+
 /// \brief
 ///  Insert ожидающей записи.<br>
 /// \b
 ///  Params: row number, message
 #define IBP_MCE_SS__COMMIT_PENDING_ROW__INSERT_2                          16480
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Update ожидающей записи.<br>
 /// \b
 ///  Params: row number, message
 #define IBP_MCE_SS__COMMIT_PENDING_ROW__UPDATE_2                          16481
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Delete ожидающей записи.<br>
 /// \b
@@ -2344,7 +2732,7 @@
 /// \b Params: Thread Name, CRT error code, WIN32 error Code
 #define IBP_MCE_CRT__CANT_CREATE_THREAD_3                                 16900
 
-//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //ZLIB1 Errors
 
 //! \brief
@@ -2400,12 +2788,12 @@
 /// \b Params: Event Name
 #define IBP_MCE_WIN32__CANT_RESET_EVENT_1                                 17004
 
-//-----------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Failed to get user name.
 #define IBP_MCE_WIN32__CANT_GET_CURRENT_SYSTEM_USER_NAME_0                17005
 
-//-----------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Failed to get local computer name.
 #define IBP_MCE_WIN32__CANT_GET_LOCAL_COMPUTER_NAME_0                     17006
@@ -2438,10 +2826,17 @@
 
 //------------------------------------------------------------------------
 /// \brief
-///  Ошибка вызова системной auth-функции
+///  Ошибка вызова системной auth-функции.<br>
 /// \b
 ///  Params: func name, sec error code
 #define IBP_MCE_WIN32__AUTH__FAIL_FUNC_CALL_2                             17020
+
+//------------------------------------------------------------------------
+/// \brief
+///  The call of win32-function failed.<br>
+/// \b
+///  Params: func name, error code
+#define IBP_MCE_WIN32__FAIL_CALL_FUNCTION_2                               17021
 
 ////////////////////////////////////////////////////////////////////////////////
 //Thread Errors
@@ -2471,41 +2866,41 @@
 /// \b Params: File Name
 #define IBP_MCE_FILE__CANT_OPEN_1                                         17150
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Can't create file.<br>
 /// \b Params: File Name
 #define IBP_MCE_FILE__CANT_CREATE_1                                       17151
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Can't close file.<br>
 /// \b Params: File Name
 #define IBP_MCE_FILE__CANT_CLOSE_1                                        17152
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Can't write to file.<br>
 /// \b Params: File Name
 #define IBP_MCE_FILE__CANT_WRITE_1                                        17153
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Can't read from file.<br>
 /// \b Params: File Name
 #define IBP_MCE_FILE__CANT_READ_1                                         17154
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Too large buffer size for write to file.<br>
 /// \b Params: File Name, Buffer Size.
 #define IBP_MCE_FILE__TOO_LARGE_BUF_FOR_WRITE_2                           17155
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Too large buffer size for read from file.<br>
 /// \b Params: File Name, Buffer Size.
 #define IBP_MCE_FILE__TOO_LARGE_BUF_FOR_READ_2                            17156
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Cant generate name for temporary file.
 #define IBP_MCE_FILE__CANT_GENERATE_NAME_FOR_TEMP_FILE_0                  17157
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief Can't set position in file.<br>
 /// \b Params: File Name, Position.
 #define IBP_MCE_FILE__CANT_SET_POSITION_IN_FILE_2                         17158
@@ -2519,14 +2914,14 @@
 ///  Params: bufTypeName, paramID, paramName
 #define IBP_MCE_ISC__PARAM_BUF_BUILDER__FAILED_TO_TRANSLATE_STR_TO_SYS_CHARSET_3  17500
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Уcтановка параметра. Превышение максимальной длины.<br>
 /// \b
 ///  Params: bufTypeName, paramID, paramName, paramLen, max paramLen
 #define IBP_MCE_ISC__PARAM_BUF_BUILDER__VALUE_IS_TOO_LARGE_5              17501
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка преобразования транспортных данных в число.<br>
 /// \b
@@ -2535,7 +2930,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_ISC__BAD_TRANSPORT_FORMAT_OF_INTEGER_VALUE_3              17502
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Слишком большое число элементов для XSQLDA структуры.<br>
 /// \b
@@ -2544,28 +2939,28 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__TOO_MANY_VARS_FOR_XSQLDA_2                           17503
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестный BLR тип данных.<br>
 /// \b
 ///  Params: blr_dtype_id
 #define IBP_MCE_ISC__UNK_BLR_DATA_TYPE_1                                  17504
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Уcтановка строкового параметра. Ошибка конвертирования в кодовую страницу UTF8.<br>
 /// \b
 ///  Params: bufTypeName, paramID, paramName
 #define IBP_MCE_ISC__PARAM_BUF_BUILDER__FAILED_TO_TRANSLATE_STR_TO_UTF8_3 17505
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки статус вектора.<br>
 /// \b
 ///  Params: check_place, check point.
 #define IBP_MCE_ISC__STATUS_VECTOR_PROCESSING_ERROR_2                     17506
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки статус вектора операции.<br>
 /// \b
@@ -2574,7 +2969,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_ISC__OP_STATUS_VECTOR_PROCESSING_ERROR_3                  17507
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки информационных raw-данных XSQLVAR-структуры.<br>
 /// \b
@@ -2583,7 +2978,7 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__FAILED_TO_PROCESS_XSQLVAR_INFO_RAW_DATA_1            17508
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки данных XSQLVAR-структуры.<br>
 /// \b
@@ -2592,7 +2987,7 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__FAILED_TO_PROCESS_THE_XSQLVAR_1                      17509
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки элемента MSG-буфера с данными.<br>
 /// \b
@@ -2601,7 +2996,7 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__FAILED_TO_PARSE_ELEMENT_OF_MSG_BUF_WITH_DATA_1       17510
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Размер буфера с BLR-описанием XSQLDA структуры превышает максимально допустимое значение.<br>
 /// \b
@@ -2610,21 +3005,21 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__BLR_DATA_FOR_XSQLDA_IS_TOO_LONG_3                    17511
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка установки значений в XSQLDA.<br>
 /// \b
 ///  Params: xsqlda sign.
 #define IBP_MCE_ISC__FAILED_TO_SET_XVAR_VALUES_1                          17512
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка записи ARRAY SLICE.<br>
 /// \b
 ///  Params: server error msg.
 #define IBP_MCE_ISC__FAILED_TO_PUT_ARRAY_SLICE_1                          17513
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Размер буфера с SDL превышает максимально допустимый размер.<br>
 /// \b
@@ -2633,7 +3028,7 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__TOO_LARGE_SDL_BUFFER_SIZE_2                          17514
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Размер буфера с данными массива превышает максимально допустимый размер.<br>
 /// \b
@@ -2642,21 +3037,21 @@
 ///  Желательно указывать подсистему ошибки.
 #define IBP_MCE_ISC__TOO_LARGE_ARRAY_SLICE_BUFFER_SIZE_2                  17515
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка чтения ARRAY SLICE.<br>
 /// \b
 ///  Params: server error msg.
 #define IBP_MCE_ISC__FAILED_TO_GET_ARRAY_SLICE_1                          17516
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка обработки BLR кода.<br>
 /// \b
 ///  Params: internal error message
 #define IBP_MCE_ISC__FAILED_TO_PROCESS_BLR_CODE_1                         17517
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Чтение-запись VARYING массивов средствами сервера не поддерживается.<br>
 /// \b
@@ -2665,7 +3060,7 @@
 ///  Желательно указать подсистему ошибки.
 #define IBP_MCE_ISC__READ_WRITE_OF_VARYING_ARRAY_NOT_SUPPORTED_4          17518
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Идентификатор кодовой страницы нельзя представить в виде BYTE.<br>
 /// \b
@@ -2673,104 +3068,106 @@
 #define IBP_MCE_ISC__CS_ID_CANT_BE_STORED_IN_BYTE_VALUE_1                 17519
 
 ////////////////////////////////////////////////////////////////////////////////
+//ISC Errors [BUG CHECK]
+
 /// \brief
 ///  [BUG CHECK] Некорректное значение sqld во вторичном блоке с данными XSQLDA структуры.<br>
 /// \b
 ///  Params: place, point, sqld, expected sqld, start index
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SQLD_IN_SECONDARY_BLOCK_WITH_XSQLDA_DATA_5 17600
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Неожиданные описания xvars для XSQLDA структуры.<br>
 /// \b
 ///  Params: place, point, sqld
 #define IBP_MCE_ISC__BUG_CHECK__UNEXPECTED_XVARS_FOR_XSQLDA_3             17601
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Порядковый номер описания xvar выходит за пределы допустимого диапазона.<br>
 /// \b
 ///  Params: place, point, number, sqld, xvar index
 #define IBP_MCE_ISC__BUG_CHECK__OUT_OF_RANGE_OF_XVAR_SEQUENTIAL_NUMBER_5  17602
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Неожиданный порядковый номер xvar в описании XSQLDA структуры.<br>
 /// \b
 ///  Params: place, point, actualSeqNumber, expectedSeqNumber
 #define IBP_MCE_ISC__BUG_CHECK__UNEXPECTED_XVAR_SEQUENTIAL_NUMBER_4       17603
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Повторное определение значения поля XSQLVAR структуры.<br>
 /// \b
 ///  Params: fieldName
 #define IBP_MCE_ISC__BUG_CHECK__MULT_DEF_OF_XSQLVAR_FIELD_VALUE_1         17604
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Не определено значение поля XSQLVAR структуры.<br>
 /// \b
 ///  Params: fieldName
 #define IBP_MCE_ISC__BUG_CHECK__NOT_DEF_XSQLVAR_FIELD_VALUE_1             17605
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] XSQLVAR определяет отрицательную длину sql-данных.<br>
 /// \b
 ///  Params: sqllen
 #define IBP_MCE_ISC__BUG_CHECK__NEGATIVE_SQLLENGTH_IN_XSQLVAR_1           17606
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Незавершенное определение XSQLVAR структур.<br>
 /// \b
 ///  Params: actual count, expected count.
 #define IBP_MCE_ISC__BUG_CHECK__INCOMPLETED_DEFINITION_OF_XVARS_2         17607
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректная длина данных XSQLVAR структуры.<br>
 /// \b
 ///  Params: sqltype (можно символьная сигнатура), sqllen
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SQLLEN_IN_XVAR_2                17608
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректный масштаб NUMERIC-данных.<br>
 /// \b
 ///  Params: base type [short, long, int64], scale
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SQLSCALE_IN_XVAR_2              17609
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] XSQLVAR::sqltype содержит Неизвестный идентификатор sql-типа.<br>
 /// \b
 ///  Params: sqltype
 #define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_SQLTYPE_IN_XVAR_1                 17610
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] XSQLVAR::sqlind содержит нулевой указатель.<br>
 /// \b
 ///  Params: sqltype (можно символьная сигнатура)
 #define IBP_MCE_ISC__BUG_CHECK__NULL_PTR_TO_SQLIND_IN_XVAR_1              17611
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректная длина VARCHAR-значения.<br>
 /// \b
 ///  Params: size
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_VARCHAR_DATA_LENGTH_1           17612
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Длина VARCHAR-значения превышает максимально допустимое значение.<br>
 /// \b
 ///  Params: data size, buffer size
 #define IBP_MCE_ISC__BUG_CHECK__VARCHAR_DATA_LENGTH_IS_GREATER_THAN_BUFFER_SIZE_2 17613
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Рассогласованное количество xvar-элементов.<br>
 /// \b
@@ -2779,35 +3176,35 @@
 ///  Имеет смысл указывать подсистему ошибки.
 #define IBP_MCE_ISC__BUG_CHECK__OTHER_COUNT_OF_XVARS_2                    17614
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Рассогласованние SQL-типов.<br>
 /// \b
 ///  Params: actualSqlType, expectedSqlType
 #define IBP_MCE_ISC__BUG_CHECK__OTHER_SQLTYPE_OF_XVAR_2                   17615
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] XSQLVAR не поддерживает хранение NULL-значения.<br>
 /// \b
 ///  SQL-type indicator
 #define IBP_MCE_ISC__BUG_CHECK__XVAR_NOT_SUPPORTS_THE_STORING_OF_NULL_STATE_OF_VALUE_1 17616
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Рассогласование масштабов.<br>
 /// \b
 ///  Params: baseSqlType, actualSqlScale, expectedSqlScale
 #define IBP_MCE_ISC__BUG_CHECK__OTHER_SQLSCALE_OF_XVAR_3                  17617
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Рассогласование размера.<br>
 /// \b
 ///  Params: sqlType, actualSqlLen, expectedSqlLen
 #define IBP_MCE_ISC__BUG_CHECK__OTHER_SQLLEN_OF_XVAR_3                    17618
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректное значение XSQLDA::sqld.<br>
 /// \b
@@ -2816,7 +3213,7 @@
 ///  Имеет смысл указывать подсистему ошибки.
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SQLD_OF_XSQLDA_2                17619
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректное значение XSQLDA::sqln.<br>
 /// \b
@@ -2825,154 +3222,154 @@
 ///  Имеет смысл указывать подсистему ошибки.
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SQLN_OF_XSQLDA_3                17620
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Некорректная версия XSQLDA.<br>
 /// \b
 ///  Params: place, point, xsqlda_name, version
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_XSQLDA_VERSION_4                17621
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
  ///  [BUG CHECK] XVAR определяет некорректную длину sql-данных.<br>
 /// \b
 ///  Params: type sign [char, varchar], sqllen
 #define IBP_MCE_ISC__BUG_CHECK__BAD_SQLLEN_OF_XVAR_2                      17622
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Пустой буфер.<br>
 /// \b
 ///  Params: place, point.
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_2                  17632
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестная версия.<br>
 /// \b
 ///  Params: place, point, sdlVersion
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_VERSION_3              17633
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неожиданный конец буфера.<br>
 /// \b
 ///  Params: place, point.
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_END_OF_DATA_2   17634
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Длина строковых данных превышает количество байт до конца буфера.<br>
 /// \b
 ///  Params: place, point, strLen, bufferTailSize
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__STR_LEN_EXCEEED_THE_SIZE_OF_BUFFER_TAIL_4  17635
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Многократное определение значения элемента.<br>
 /// \b
 ///  Params: place, point, elementTagID, offset
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_ELEMENT_4      17636
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимое количество полей в структуре.<br>
 /// \b
 ///  Params: place, point, fieldCount
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_STRUCT_FIELDS_3            17637
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимый интекс размерности массива.<br>
 /// \b
 ///  Params: place, point, boundIndex, maxBoundNumber
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_BOUND_INDEX_4        17638
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Многократное определение размерности.<br>
 /// \b
 ///  Params: place, point, boundIndex
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__MULT_DEF_OF_BOUND_RANGE_3  17639
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Некорректные границы размерности.<br>
 /// \b
 ///  Params: place, point, boundIndex, lower, upper
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__BAD_BOUND_RANGE_5          17640
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестный идентификатор литеры.<br>
 /// \b
 ///  Params: place, point, literalKind, offset
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNKNOWN_KIND_OF_LITERAL_4  17641
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимое количество полей в элементе.<br>
 /// \b
 ///  Params: place, point, fieldCount
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__WRONG_NUMBER_OF_ELEMENT_FIELDS_3 17642
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неожиданный тэг.<br>
 /// \b
 ///  Params: place, point, literalKind, offset
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNEXPECTED_TAG_4           17643
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Некорректное значение свойства 'index' тэга 'scalar'.<br>
 /// \b
 ///  Params: place, point, index, offset
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCORRECT_INDEX_OF_SCALAR_TAG_4  17644
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Несогласованные размеры буфера и данных. Должны быть идентичны.<br>
 /// \b
 ///  Params: place, point, bufferSize, dataSize
 #define  IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INCONSISTENT_SIZES_OF_BUFFER_AND_DATA_4 17645
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют данные для тега.<br>
 /// \b
 ///  Params: place, point, tag sign
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_TAG_3           17646
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют определения размерностей.<br>
 /// \b
 ///  Params: place, point
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSIONS_2    17647
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Отсутствуют определение размерности.<br>
 /// \b
 ///  Params: place, point, bound index
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__NO_DATA_OF_DIMENSION_3     17648
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Неизвестный идентификатор BLR типа.<br>
 /// \b
 ///  Params: place, point, blrTypeId, offset
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__UNK_BLR_DATA_TYPE_4        17649
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Недопустимый размер элемента массива.<br>
 /// \b
 ///  Params: place, point, length, blrTypeSign
 #define IBP_MCE_ISC__BUG_CHECK__INCORRECT_SDL__INVALID_ELEMENT_LENGTH_4   17650
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный SDL. Ошибка конвертирование строки в UNICODE.<br>
 /// \b
@@ -2987,35 +3384,35 @@
 ///  Params: place, point, blrTypeId
 #define IBP_MCE_ISC__BUG_CHECK__ZERO_ARRAY_ELEMENT_SIZE_3                 17670
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Несогласованные размеры буфера и элемента массива.<br>
 /// \b
 ///  Params: place, point, slice size, element size,  blrTypeId
 #define IBP_MCE_ISC__BUG_CHECK__INCONSISTENT_SIZES_OF_SLICE_AND_ELEMENT_5 17671
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Несогласованные размеры буфера и элемента массива.<br>
 /// \b
 ///  Params: place, point, blrTypeId
 #define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_BLR_DATA_TYPE_3                   17672
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неправильный размер буфера под данные массива.<br>
 /// \b
 ///  Params: place, point, relation name, field name, size, expected size
 #define IBP_MCE_ISC__BUG_CHECK__INVALID_ARRAY_BUFFER_SIZE_6               17673
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестный серверный идентификатор типа запроса.<br>
 /// \b
 ///  Params: place, point, stmtTypeID, dbmsSign
 #define IBP_MCE_ISC__BUG_CHECK__UNKNOWN_STMT_TYPE_ID_4                    17674
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестное значение индикатора XSQVAR.<br>
 /// \b
@@ -3027,101 +3424,101 @@
 /// \brief
 ///  IA DESC ERR. Ошибка загрузки сведений о размерности.<br>
 /// \b
-///  Params: dim index 
+///  Params: dim index
 #define IBP_MCE_ISC__IA_DESC_ERR__FAILED_TO_LOAD_DIM_INFO__1                        17700
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  IA DESC ERR. Ошибка загрузки и декодирования значения поля.<br>
 /// \b
 ///  Params: field sign
 #define IBP_MCE_ISC__IA_DESC_ERR__FAILED_TO_LOAD_FIELD_VALUE__1                     17701
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Неизвестная версия структуры дескриптора.<br>
 /// \b
 ///  Params: place, point, actual version, expected version
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__UNEXPECTED_FORMAT_VERSION__4           17730
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Некорректное число размерностей.<br>
 /// \b
 ///  Params: place, point, dimensions number
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__INCORRECT_DIMENSIONS_NUMBER__3         17731
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Некорректное количество описаний типов.<br>
 /// \b
 ///  Params: place, point, struct count
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__STRUCT_COUNT__3                        17732
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Incorrect length of descriptor.<br>
 /// \b
 ///  Params: place, point, length
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__INCORRECT_LENGTH_OF_DESCRIPTOR__3      17733
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Несогласованное количество размерностей и длина дескриптора.<br>
 /// \b
 ///  Params: place, point, dimensions number, desc length
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__INCONSISTENT_DIMS_AND_DESC_LENGTH__4   17734
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Несогласованные размеры элемента.<br>
 /// \b
 ///  Params: place, point, element length1, element length2
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__INCONSISTENT_ELEMENT_LENGTHS__4        17735
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Некорректный размер вложенных размерностей.<br>
 /// \b
 ///  Params: place, point, dimension index, actualLength, expectedLength
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__WRONG_SUBDIMENSIONS_SIZE__5            17736
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Некорректные границы размерности.<br>
 /// \b
 ///  Params: place, point, dimension index, lower, upper
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__INCORRECT_RANGE_OF_DIMENSION__5        17737
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Дескриптор описывает слишком большое число элементов .<br>
 /// \b
 ///  Params: place, point
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__TOO_BIG_ELEMENTS_NUMBER__2             17738
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Указано некорректное общее количество элементов.<br>
 /// \b
 ///  Params: place, point, actualCount, expectedCount
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__WRONG_TOTAL_COUNT_OF_ELEMENTS__4       17739
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Некорректный общий размер элементов массива.<br>
 /// \b
 ///  Params: place, point, total count, total length, element length
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__WRONG_TOTAL_LENGTH__5                  17740
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Неожиданное значение поля.<br>
 /// \b
 ///  Params: place, point, fieldSign, fieldValue, expectedValue
 #define IBP_MCE_ISC__IA_DESC_ERR__BUG_CHECK__UNEXPECTED_FIELD_VALUE__5              17741
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный IA DESC. Неожиданное значение поля.<br>
 /// \b
@@ -3133,123 +3530,123 @@
 
 //Reserved
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка определения сетевого адреса хоста.<br>
 /// \b
 ///  Params: hostName
 #define IBP_MCE_WINSOCK__CANT_DETECT_ADDR_OF_HOST_1                       17901
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый тип сетевого адреса хоста.<br>
 /// \b
 ///  Params: hostName, detectedAddrType
 #define IBP_MCE_WINSOCK__UNK_ADDR_TYPE_OF_HOST_2                          17902
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка подключения к серверу.<br>
 /// \b
 ///  Params: hostName, port number, last winsock error code
 #define IBP_MCE_WINSOCK__FAILED_TO_CONNECT_TO_SRV_3                       17903
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка инициализации сокета.<br>
 /// \b
 ///  Params: winsock error code, socket_family, socket_type, socket_protocol
 #define IBP_MCE_WINSOCK__FAILED_TO_INIT_THE_SOCKET_4                      17904
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //Reserved
 
 //Reserved
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка закрытия сокета.<br>
 /// \b
 ///  Params: winsock error code
 #define IBP_MCE_WINSOCK__FAILED_TO_CLOSE_THE_SOCKET_1                     17907
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //Reserved
 
 //Reserved
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка записи в порт.<br>
 /// \b
 ///  Params: winsock error code
 #define IBP_MCE_WINSOCK__FAILED_TO_WRITE_TO_PORT_1                        17910
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка чтения из порта.<br>
 /// \b
 ///  Params: winsock error code
 #define IBP_MCE_WINSOCK__FAILED_TO_READ_FROM_PORT_1                       17911
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка инициализации WinSock.<br>
 /// \b
 ///  Params: winsock error code.
 #define IBP_MCE_WINSOCK__FAILED_TO_INITIALIZE_1                           17912
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка определения адреса хоста. Сбой вызова функции getaddrinfo.<br>
 /// \b
 ///  Params: winsock error code, host name, port name.
 #define IBP_MCE_WINSOCK__GETADDRINFO_FAILED_3                             17913
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Ошибка подключения к серверу.<br>
 /// \b
 ///  Params: winsock error code, host name, port name, address, socket_family, socket_type, socket_protocol.
 #define IBP_MCE_WINSOCK__FAILED_TO_CONNECT_TO_SRV_7                       17914
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 //Reserved
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неожиданный код завершения операции send.<br>
 /// \b
 ///  Params: result code, winsock error code.
 #define IBP_MCE_WINSOCK__BUG_CHECK__UNEXPECTED_RESULT_CODE_FROM_SEND_OPERATION_2  17961
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Обнаружено зацикливание операции send.<br>
 #define IBP_MCE_WINSOCK__BUG_CHECK__DETECTED_LOOP_OF_SEND_0               17962
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Операция send записала больше чем ожидалось.<br>
 /// \b
 ///  Params: actual count, expected count
 #define IBP_MCE_WINSOCK__BUG_CHECK__SEND_WRITE_MORE_THAN_EXPECTED_2       17963
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Чтение из закрытого порта подключения.<br>
 /// \b
 ///  Params: winsock error code
 #define IBP_MCE_WINSOCK__BUG_CHECK__READ_FROM_CLOSED_PORT_1               17964
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неожиданный код завершения операции send.<br>
 /// \b
 ///  Params: result code, winsock error code.
 #define IBP_MCE_WINSOCK__BUG_CHECK__UNEXPECTED_RESULT_CODE_FROM_RECV_OPERATION_2  17965
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Операция recv прочитала больше чем ожидалось.<br>
 /// \b
@@ -3265,21 +3662,21 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CANT_DETECT_TYPE_OF_CN_0                          18000
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Не удалось определить тип подключения к серверу базы данных.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CONNECT_WAS_REJECTED_0                            18001
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный формат строки INET-подключения к базе данных.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__BAD_INET_CN_TO_DB_STR_FORMAT_0                    18002
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректный формат строки INET-подключения к базе данных. Не определен порт подключения.<br>
 /// \b
@@ -3288,45 +3685,45 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__BAD_INET_CN_TO_DB_STR_FORMAT__PORT_NOT_DEFINED_1  18003
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректное использование сервиса аутентификации.<br>
 /// \b
 ///  Rarams: auth service name
 #define IBP_MCE_REMOTE__INCORRECT_USAGE_OF_AUTH_SERVICE_1                 18004
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неудалось определить сервис аутентификации.
 #define IBP_MCE_REMOTE__CANT_DETECT_AUTH_SERVICE_0                        18005
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неизвестное имя сервиса аутентификации.<br>
 /// \b
 ///  Params: auth plugin name.
 #define IBP_MCE_REMOTE__UNK_AUTH_SERVICE_NAME_1                           18006
-  
-//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------
 /// \brief
 ///  Некорректное имя сервиса аутентификации.<br>
 /// \b
 ///  Params: auth plugin name.
 #define IBP_MCE_REMOTE__INCORRECT_AUTH_SERVICE_NAME_1                     18007
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Многократное определение серверного ключа.<br>
 /// \b
 ///  Params: keyType, keyPlugin.
 #define IBP_MCE_REMOTE__MULTIPLE_DEFINITION_OF_KNOWN_SERVER_KEY_2         18008
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Процесс аутентификации уже был завершен.
 #define IBP_MCE_REMOTE__AUTH_SEQ_ALREADY_COMPLETED_0                      18009
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Получены некорректные данные.<br>
 /// \b
@@ -3335,7 +3732,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__RECEIVE_PACK__XDR__BAD_DATA_3                     18010
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Длина полученной строки превышает максимально допустимое значение.<br>
 /// \b
@@ -3344,7 +3741,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__RECEIVE_PACK__XDR__STR_TOO_LONG_3                 18011
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Получен пакет с неизвестным идентификатором операции.<br>
 /// \b
@@ -3353,7 +3750,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__RECEIVE_PACK__UNK_OP_ID_1                         18012
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Длина статус вектора превышает максимально допустимую.<br>
 /// \b
@@ -3362,7 +3759,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__RECEIVE_PACK__STATUS_VECTOR_IS_TOO_LONG_3         18013
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Неизвестный аргумент в статус векторе.<br>
 /// \b
@@ -3371,21 +3768,21 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__RECEIVE_PACK__UNEXPECTED_ARG_IN_STATUS_VECTOR_2   18014
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запись в порт не возможна. Предыдущая операция записи завершилась с ошибками.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CANT_WRITE_TO_PORT__PREV_WRITE_OP_WAS_FAILED_0    18015
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Чтение из порта не возможно. Предыдущая операция чтения завершилась с ошибками.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CANT_READ_FROM_PORT__PREV_READ_OP_WAS_FAILED_0    18016
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Отправка пакета. Ошибка обработки данных MSG-буфера.<br>
 /// \b
@@ -3394,7 +3791,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__ENCODE_PACKET__XDR__ERROR_IN_ELEMENT_OF_MSG_DATA_BUFFER_1 18017
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Ошибка загрузки данных MSG-буфера.<br>
 /// \b
@@ -3403,7 +3800,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__DECODE_PACKET__XDR__ERROR_IN_ELEMENT_OF_MSG_DATA_BUFFER_1 18018
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Загрузка пакета. Ошибка загрузки данных SLICE-буфера.<br>
 /// \b
@@ -3412,21 +3809,21 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__DECODE_PACKET__XDR__ERROR_IN_ELEMENT_OF_SLICE_DATA_BUFFER_1 18019
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запись в порт не возможна. Порт переведен в заблокированное состояние.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CANT_WRITE_TO_PORT__PORT_HAS_FAILED_STATE_0       18020
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Чтение из порта не возможно. Порт переведен в заблокированное состояние.
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__CANT_READ_FROM_PORT__PORT_HAS_FAILED_STATE_0      18021
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемая архитектура протокола подключения.<br>
 /// \b
@@ -3435,7 +3832,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__UNSUPPORTED_PROTOCOL_ARCHITECTURE_1               18022
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый тип протокола подключения.<br>
 /// \b
@@ -3444,7 +3841,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__UNSUPPORTED_PROTOCOL_TYPE_2                       18023
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запрашиваемый тип протокола не поддерживается.<br>
 /// \b
@@ -3453,7 +3850,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__REQUESTED_PROTOCOL_TYPE_NOT_SUPPORTED_2           18024
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Запрашиваемый протокол соединения не поддерживается.<br>
 /// \b
@@ -3462,7 +3859,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__REQUESTED_PROTOCOL_NOT_SUPPORTED_1                18025
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Шифрование соединения не возможно. Сервер не предоставил ключи для шифрования соединения.<br>
 /// \b
@@ -3471,7 +3868,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_NOT_POSSIBLE__NO_KNOWN_SERVER_KEYS_1   18026
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Шифрование соединения не возможно. Сервис аутентификации не предоставил ключи для шифрования соединения.<br>
 /// \b
@@ -3480,7 +3877,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_NOT_POSSIBLE__NO_CRYPT_KEYS_1          18027
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Шифрование соединения не возможно. Провайдер не поддерживает предложенные типы шифрования.<br>
 /// \b
@@ -3489,7 +3886,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_NOT_POSSIBLE__NO_SUPPORT_FOR_KNOWN_SERVER_KEYS_1 18028
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Длина имени сервиса шифрования превышает максимально допустимое значение.<br>
 /// \b
@@ -3498,7 +3895,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_SVC_NAME_IS_TOO_LONG_2                 18029
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Длина названия типа ключа шифрования подключения превышает максимально допустимое значение.<br>
 /// \b
@@ -3507,7 +3904,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_KEY_TYPE_NAME_IS_TOO_LONG_2            18030
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Не удалось начать шифрование подключения.<br>
 /// \b
@@ -3516,14 +3913,14 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__FAILED_TO_START_WIRE_CRYPT_2                      18031
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый сервис аутентификации.<br>
 /// \b
 ///  Params: auth service name.
 #define IBP_MCE_REMOTE__AUTH_SERVICE_NOT_SUPPORTED_1                      18032
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Несовместимые сервисы аутентификации в "remote:auth" и "Integrated Security".<br>
 /// \b
@@ -3532,7 +3929,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__INCOMPATIBLE_AUTH_SERVICES_2                      18033
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Размер данных, полученных от сервиса аутентификации, превышает макимально допустимое значение.<br>
 /// \b
@@ -3541,7 +3938,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__AUTH_DATA_TOO_LONG_3                              18034
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Длина имени сервиса аутентификации превышает максимально допустимое значение.<br>
 /// \b
@@ -3550,7 +3947,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__AUTH_SVC_NAME_TOO_LONG_2                          18035
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Длина списка имен сервисов аутентификации превышает максимально допустимое значение.<br>
 /// \b
@@ -3559,14 +3956,14 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__AUTH_SVC_NAMES_TOO_LONG_2                         18036
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Шифрование подключения не поддерживается.<br>
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__WIRE_CRYPT_NOT_SUPPORTED_0                        18037
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемые флаги протокола подключения.<br>
 /// \b
@@ -3575,21 +3972,21 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__UNSUPPORTED_PROTOCOL_FLAGS_2                      18038
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервер отклонил компрессию подключения.<br>
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__SERVER_REJECTED_CN_COMPRESSION_0                  18039
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сервер требует компрессию подключения.<br>
 /// \note
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__SERVER_REQUIRED_CN_COMPRESSION_0                  18040
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Неподдерживаемый тип сжатия данных подключения.<br>
 /// \b
@@ -3598,7 +3995,7 @@
 ///  Нужно указывать подсистему ошибки.
 #define IBP_MCE_REMOTE__UNSUPPORTED_WIRE_COMPRESSION_TYPE_1               18041
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  Сжатие данных подключения не поддерживается.<br>
 /// \note
@@ -3613,77 +4010,77 @@
 ///  Params: check place, check point, answerID (operationID)
 #define IBP_MCE_REMOTE__BUG_CHECK__UNEXPECTED_ANSWER_FROM_SERVER_3              18300
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Принята неожиданная версия протокола взаимодействия.<br>
 /// \b
 ///  Params: check place, check point, protocol version id
 #define IBP_MCE_REMOTE__BUG_CHECK__ACCEPTED_UNEXPECTED_PROTOCOL_VERSION_3       18301
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Принята неожиданная архитектура протокола взаимодействия.<br>
 /// \b
 ///  Params: check place, check point, architectureID
 #define IBP_MCE_REMOTE__BUG_CHECK__ACCEPTED_UNEXPECTED_PROTOCOL_ARHITECTURE_3   18302
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Неожиданная версия структуры пакета.<br>
 /// \b
 ///  Params: check place, check point, actualProtocolSetID, expectedProtocolSetID
 #define IBP_MCE_REMOTE__BUG_CHECK__UNEXPECTED_PACKET_STRUCTURE_4                18303
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Ошибка транслирования имени сервиса аутентификации между кодовыми страницами.<br>
 /// \b
 ///  Params: check place, check point, from_cs, to_cs
 #define IBP_MCE_REMOTE__BUG_CHECK__CANT_TRANSLATE_AUTH_SERVICE_NAME_4           18304
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Ошибка транслирования списка имен сервисов аутентификации между кодовыми страницами.<br>
 /// \b
 ///  Params: check place, check point, from_cs, to_cs
 #define IBP_MCE_REMOTE__BUG_CHECK__CANT_TRANSLATE_AUTH_SERVICE_NAMES_4          18305
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Повторная установка сервиса аутентификации. Возможно зацикливание.<br>
 /// \b
 ///  Params: check place, check point, auth service name
 #define IBP_MCE_REMOTE__BUG_CHECK__AUTH_SERVICE_ALREADY_WAS_USED_3              18306
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Повторная регистрация фабрики сервиса аутентификации.<br>
 /// \b
 ///  Params: check place, check point, auth service name
 #define IBP_MCE_REMOTE__BUG_CHECK__AUTH_SERVICE_FACTORY_ALREADY_WAS_REGISTERED_3 18307
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Ошибка транслирования имени сервиса шифрования соединения между кодовыми страницами.<br>
 /// \b
 ///  Params: check place, check point, from_cs, to_cs
 #define IBP_MCE_REMOTE__BUG_CHECK__CANT_TRANSLATE_WIRE_CRYPT_SERVICE_NAME_4     18308
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Ошибка транслирования списка имен сервисов шифрования соединения между кодовыми страницами.<br>
 /// \b
 ///  Params: check place, check point, from_cs, to_cs
 #define IBP_MCE_REMOTE__BUG_CHECK__CANT_TRANSLATE_WIRE_CRYPT_SERVICE_NAMES_4    18309
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Ошибка транслирования имени типа ключа шифрования соединения между кодовыми страницами.<br>
 /// \b
 ///  Params: check place, check point, from_cs, to_cs
 #define IBP_MCE_REMOTE__BUG_CHECK__CANT_TRANSLATE_WIRE_CRYPT_KEY_TYPE_NAME_4    18310
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 /// \brief
 ///  [BUG CHECK] Внезапная попытка замены сервиса аутентификации.<br>
 /// \b

@@ -9,8 +9,6 @@
 
 #include "source/os/ibp_os__dll_loader_descr.h"
 
-#include <structure/tree/t_tree_avl.h>
-
 namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os__dlls
@@ -55,6 +53,15 @@ class t_ibp_os__dlls LCPI_CPP_CFG__CLASS__FINAL
   //!  (*pspDllLoader) will be released.
   void ReleaseDLL(t_ibp_os__dll_loader::self_ptr* pspDllLoader);
 
+  /// <summary>
+  ///  Definition an unloading order.
+  /// </summary>
+  //! \param[in] pFirst
+  //!  The first unloaded DLL.
+  //! \param[in] pSecond
+  //!  The second unloaded DLL.
+  void DefUnloadOrder(t_ibp_os__dll* pFirst,t_ibp_os__dll* pSecond);
+
  private:
   typedef structure::t_multi_thread_traits         thread_traits;
 
@@ -65,6 +72,9 @@ class t_ibp_os__dlls LCPI_CPP_CFG__CLASS__FINAL
            <t_ibp_os__dll_loader_descr,
             t_ibp_os__dll_loader_descr_less_operator,
             IBP_MemoryAllocator>                   items_type;
+
+ private:
+  void Helper__ReleaseDLL(os::t_ibp_os__dll_loader::self_ptr* pspDllLoader);
 
  private:
   guard_type m_guard;

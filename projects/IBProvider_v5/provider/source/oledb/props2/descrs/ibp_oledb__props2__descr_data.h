@@ -10,7 +10,7 @@
 #include "source/oledb/props2/ibp_oledb__props2__forward.h"
 
 #include <ole_lib/oledb/provider/props2/oledb_props2__data__descr.h>
-#include <ole_lib/oledb/oledb_data_types.h>
+#include <ole_lib/oledb/oledb_datatypes.h>
 #include <structure/t_first_last.h>
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api_hlp
-//! \file    remote_fb__p12__xsqlda_utilities.cpp
+//! \file    remote_fb__api_hlp__xsqlda_set01__utilities.cpp
 //! \brief   Утилиты для обработки XSQLDA / XSQLVAR.
 //! \author  Kovalenko Dmitry
 //! \date    19.09.2016

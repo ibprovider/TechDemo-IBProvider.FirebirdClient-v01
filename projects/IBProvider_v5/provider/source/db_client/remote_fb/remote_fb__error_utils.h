@@ -83,7 +83,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] subsystem_id
   //! \param[in] protocolVersionNum
   //!  Protocol version number.
-  //! \param[in] protocolTypeID
+  //! \param[in] protocolTypeSign
   //!  Protocol type identifier.
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__ReqProtocolTypeIdDoesNotSupported
@@ -95,7 +95,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   ///  Генерация исключения - неизвестные флаги протокола подключения.
   /// </summary>
   //! \param[in] subsystem_id
-  //! \param[in] protocolVersionNum
+  //! \param[in] protocolVerNum
   //!  Protocol version number.
   //! \param[in] protocolFlags
   COMP_CONF_DECLSPEC_NORETURN

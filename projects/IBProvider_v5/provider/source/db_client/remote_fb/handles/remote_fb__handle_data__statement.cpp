@@ -310,7 +310,7 @@ static void RemoteFB__HandleData_Statement::Helper__Save
 
  assert(size_t(pDest->buffer_end()-pDest->buffer())==Source.size());
 
- assert(std::equal(pDest->buffer(),pDest->buffer_end(),Source.data()));
+ assert(lib::structure::equal(pDest->buffer(),pDest->buffer_end(),Source.data(),Source.data()+Source.size()));
 }//Helper__Save - structure::t_typed_simple_buffer
 
 //------------------------------------------------------------------------
@@ -369,7 +369,7 @@ static void RemoteFB__HandleData_Statement::Helper__Save
 
  assert(size_t(pDest->cend()-pDest->cbegin())==Source.size());
 
- assert(std::equal(pDest->cbegin(),pDest->cend(),Source.data()));
+ assert(lib::structure::equal(pDest->cbegin(),pDest->cend(),Source.data(),Source.data()+Source.size()));
 }//Helper__Save - std::vector
 
 ////////////////////////////////////////////////////////////////////////////////

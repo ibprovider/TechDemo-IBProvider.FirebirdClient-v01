@@ -9,7 +9,9 @@
 
 #include "source/error_services/ibp_error.h"
 #include "source/error_services/ibp_error_utils.h"
-#include "structure/t_numeric_cast.h"
+
+#include <win32lib/win32_error.h>
+#include <structure/t_numeric_cast.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -156,12 +158,10 @@ t_ibp_error::t_ibp_error(HRESULT                const err_code,
 t_ibp_error::t_ibp_error(const std::exception& exc)
  :base_error_type(IBP_MapExceptionToHRESULT(&exc))
 {
- this->add(exc);
+ this->helper__copy_descrs(exc);
 
  if(const self_type* const x=dynamic_cast<const self_type*>(&exc))
- {
   m_primary_err_idx=x->m_primary_err_idx;
- }
 }//t_ibp_error - exc
 
 //------------------------------------------------------------------------
@@ -196,20 +196,12 @@ t_ibp_error& t_ibp_error::operator = (const std::exception& exc)
 }//operator =
 
 //------------------------------------------------------------------------
-t_ibp_error& t_ibp_error::operator = (HRESULT const err_code)
+t_ibp_error& t_ibp_error::set_error_code(HRESULT const err_code)
 {
  m_code=err_code;
 
  return *this;
-}//operator = HRESULT
-
-//------------------------------------------------------------------------
-t_ibp_error& t_ibp_error::clear_state(HRESULT const err_code)
-{
- self_type(err_code).swap(*this);
-
- return *this;
-}//clear_state
+}//set_error_code
 
 //swap -------------------------------------------------------------------
 void t_ibp_error::swap(self_type& x)
@@ -416,6 +408,55 @@ void t_ibp_error::push_error(base_error_record_type* const pError)
 
  m_errors.push_back(pError);
 }//push_error
+
+//------------------------------------------------------------------------
+void t_ibp_error::helper__copy_descrs(const std::exception& exc)
+{
+ if(const auto x=dynamic_cast<const self_type*>(&exc))
+ {
+  m_errors=x->m_errors;
+  return;
+ }//if
+
+ //--------------------------------------------------------
+ if(auto const x=dynamic_cast<const lib::structure::t_err_records_r*>(&exc))
+ {
+  const auto cRecs=x->get_record_count();
+
+  for(size_t i(0);i!=cRecs;++i)
+   this->add(x->get_record(i));
+
+  return;
+ }//if t_err_records_r
+
+ //--------------------------------------------------------
+ if(const ole_lib::t_base_ole_error* const x=dynamic_cast<const ole_lib::t_base_ole_error*>(&exc))
+  return this->add(x->com_code(),x->text());
+
+ //--------------------------------------------------------
+ if(const ole_lib::t_base_com_error* const x=dynamic_cast<const ole_lib::t_base_com_error*>(&exc))
+  return;
+
+ //--------------------------------------------------------
+ if(const win32lib::t_win32_error* const x=dynamic_cast<const win32lib::t_win32_error*>(&exc))
+ {
+  assert(x->win32_code()!=0);
+  assert(FAILED(HRESULT_FROM_WIN32(x->win32_code())));
+
+  return this->add(HRESULT_FROM_WIN32(x->win32_code()),x->msg());
+ }//if - t_win32_error
+
+ //--------------------------------------------------------
+ if(const win32lib::t_base_win32_error* const x=dynamic_cast<const win32lib::t_base_win32_error*>(&exc))
+  return;
+
+ //--------------------------------------------------------
+ if(dynamic_cast<const std::bad_alloc*>(&exc)!=nullptr)
+  return;
+
+ //--------------------------------------------------------
+ return this->add(E_FAIL,exc.what());
+}//helper__copy_descrs
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

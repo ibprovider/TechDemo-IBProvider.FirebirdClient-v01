@@ -1,32 +1,35 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup ibp_cs_icu_v052
-//! \file    ibp_cs_icu_v052__api.h
-//! \brief   Подмножество ICU API v52
-//! \author  Kovalenko Dmitry
-//! \date    19.07.2017
-#ifndef _ibp_cs_icu_v052__api_H_
-#define _ibp_cs_icu_v052__api_H_
+//ICU API [V063].
+//                                                 Kovalenko Dmitry. 26.06.2023.
+#ifndef _ibp_cs_icu_v063__api_H_
+#define _ibp_cs_icu_v063__api_H_
 
-namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{namespace v052{namespace api{
+#include <lcpi/lib/.config.h>
+#include <stdint.h>
+
+namespace lcpi{namespace ibp{namespace external{namespace icu{namespace v063{namespace api{
 ////////////////////////////////////////////////////////////////////////////////
 //Исключаем из зоны видимости doxygen-а
 //! \cond DOXYGEN_PROCESS_ALL
 ////////////////////////////////////////////////////////////////////////////////
 //ICU typedefs
 
-typedef signed __int8      int8_t;     // original: signed char
-typedef signed __int16     int16_t;    // original: short
-typedef signed __int32     int32_t;    // original: int
-typedef signed __int64     int64_t;    // original: long long
+using ::int8_t;
+using ::int16_t;
+using ::int32_t;
+using ::int64_t;
 
-typedef unsigned __int8    uint8_t;    // original: unsigned char
-typedef unsigned __int16   uint16_t;   // original: unsigned short
-typedef unsigned __int32   uint32_t;   // original: unsigned int
-typedef unsigned __int64   uint64_t;   // original: unsigned long long
+using ::uint8_t;
+using ::uint16_t;
+using ::uint32_t;
+using ::uint64_t;
 
-typedef int8_t             UBool;
+typedef int8_t UBool;
 
-typedef wchar_t            UChar;
+//original: typedef char16_t UChar;
+typedef wchar_t UChar;
+
+static_assert(sizeof(wchar_t)==sizeof(char16_t),"Bad wchar_t!");
 
 //------------------------------------------------------------------------
 
@@ -53,7 +56,11 @@ typedef int32_t UChar32;
 typedef struct UConverter UConverter;
 
 ////////////////////////////////////////////////////////////////////////////////
-//enum UErrorCode;
+
+typedef struct UEnumeration UEnumeration;
+
+////////////////////////////////////////////////////////////////////////////////
+//enum UErrorCode
 
 /**
  * Error code to replace exception handling, so that the code is compatible with all C++ compilers,
@@ -96,8 +103,13 @@ typedef enum UErrorCode
 
     U_PLUGIN_CHANGED_LEVEL_WARNING = -120, /**< A plugin caused a level change. May not be an error, but later plugins may not load. */
 
-    U_ERROR_WARNING_LIMIT,              /**< This must always be the last warning value to indicate the limit for UErrorCode warnings (last warning code +1) */
-
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal UErrorCode warning value.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_ERROR_WARNING_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
 
     U_ZERO_ERROR              =  0,     /**< No error, no warning. */
 
@@ -118,14 +130,14 @@ typedef enum UErrorCode
     U_BUFFER_OVERFLOW_ERROR   = 15,     /**< A result would not fit in the supplied buffer */
     U_UNSUPPORTED_ERROR       = 16,     /**< Requested operation not supported in current context */
     U_RESOURCE_TYPE_MISMATCH  = 17,     /**< an operation is requested over a resource that does not support it */
-    U_ILLEGAL_ESCAPE_SEQUENCE = 18,     /**< ISO-2022 illlegal escape sequence */
+    U_ILLEGAL_ESCAPE_SEQUENCE = 18,     /**< ISO-2022 illegal escape sequence */
     U_UNSUPPORTED_ESCAPE_SEQUENCE = 19, /**< ISO-2022 unsupported escape sequence */
     U_NO_SPACE_AVAILABLE      = 20,     /**< No space available for in-buffer expansion for Arabic shaping */
     U_CE_NOT_FOUND_ERROR      = 21,     /**< Currently used only while setting variable top, but can be used generally */
     U_PRIMARY_TOO_LONG_ERROR  = 22,     /**< User tried to set variable top to a primary that is longer than two bytes */
     U_STATE_TOO_OLD_ERROR     = 23,     /**< ICU cannot construct a service from this state, as it is no longer supported */
     U_TOO_MANY_ALIASES_ERROR  = 24,     /**< There are too many aliases in the path to the requested resource.
-                                             It is very possible that a circular alias definition has occured */
+                                             It is very possible that a circular alias definition has occurred */
     U_ENUM_OUT_OF_SYNC_ERROR  = 25,     /**< UEnumeration out of sync with underlying collection */
     U_INVARIANT_CONVERSION_ERROR = 26,  /**< Unable to convert a UChar* string to char* with the invariant converter. */
     U_INVALID_STATE_ERROR     = 27,     /**< Requested operation can not be completed with ICU in its current state */
@@ -133,9 +145,16 @@ typedef enum UErrorCode
     U_USELESS_COLLATOR_ERROR  = 29,     /**< Collator is options only and no base is specified */
     U_NO_WRITE_PERMISSION     = 30,     /**< Attempt to modify read-only or constant data. */
 
-    U_STANDARD_ERROR_LIMIT,             /**< This must always be the last value to indicate the limit for standard errors */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest standard error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_STANDARD_ERROR_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
+
     /*
-     * the error code range 0x10000 0x10100 are reserved for Transliterator
+     * Error codes in the range 0x10000 0x10100 are reserved for Transliterator.
      */
     U_BAD_VARIABLE_DEFINITION=0x10000,/**< Missing '$' or duplicate variable name */
     U_PARSE_ERROR_START = 0x10000,    /**< Start of Transliterator errors */
@@ -164,7 +183,7 @@ typedef enum UErrorCode
     U_MULTIPLE_COMPOUND_FILTERS,      /**< More than one compound filter */
     U_INVALID_RBT_SYNTAX,             /**< A "::id" rule was passed to the RuleBasedTransliterator parser */
     U_INVALID_PROPERTY_PATTERN,       /**< UNUSED as of ICU 2.4 */
-    U_MALFORMED_PRAGMA,               /**< A 'use' pragma is invlalid */
+    U_MALFORMED_PRAGMA,               /**< A 'use' pragma is invalid */
     U_UNCLOSED_SEGMENT,               /**< A closing ')' is missing */
     U_ILLEGAL_CHAR_IN_SEGMENT,        /**< UNUSED as of ICU 2.4 */
     U_VARIABLE_RANGE_EXHAUSTED,       /**< Too many stand-ins generated for the given variable range */
@@ -173,10 +192,16 @@ typedef enum UErrorCode
     U_INTERNAL_TRANSLITERATOR_ERROR,  /**< Internal transliterator system error */
     U_INVALID_ID,                     /**< A "::id" rule specifies an unknown transliterator */
     U_INVALID_FUNCTION,               /**< A "&fn()" rule specifies an unknown transliterator */
-    U_PARSE_ERROR_LIMIT,              /**< The limit for Transliterator errors */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal Transliterator error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_PARSE_ERROR_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
 
     /*
-     * the error code range 0x10100 0x10200 are reserved for formatting API parsing error
+     * Error codes in the range 0x10100 0x10200 are reserved for the formatting API.
      */
     U_UNEXPECTED_TOKEN=0x10100,       /**< Syntax error in format pattern */
     U_FMT_PARSE_ERROR_START=0x10100,  /**< Start of format library errors */
@@ -198,17 +223,29 @@ typedef enum UErrorCode
     U_DEFAULT_KEYWORD_MISSING,        /**< Missing DEFAULT rule in plural rules */
     U_DECIMAL_NUMBER_SYNTAX_ERROR,    /**< Decimal number syntax error */
     U_FORMAT_INEXACT_ERROR,           /**< Cannot format a number exactly and rounding mode is ROUND_UNNECESSARY @stable ICU 4.8 */
-    U_FMT_PARSE_ERROR_LIMIT,          /**< The limit for format library errors */
+#ifndef U_HIDE_DRAFT_API
+    U_NUMBER_ARG_OUTOFBOUNDS_ERROR,   /**< The argument to a NumberFormatter helper method was out of bounds; the bounds are usually 0 to 999. @draft ICU 61 */
+#endif  // U_HIDE_DRAFT_API
+#ifndef U_HIDE_DRAFT_API
+    U_NUMBER_SKELETON_SYNTAX_ERROR,   /**< The number skeleton passed to C++ NumberFormatter or C UNumberFormatter was invalid or contained a syntax error. @draft ICU 62 */
+#endif  // U_HIDE_DRAFT_API
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal formatting API error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_FMT_PARSE_ERROR_LIMIT = 0x10114,
+#endif  // U_HIDE_DEPRECATED_API
 
     /*
-     * the error code range 0x10200 0x102ff are reserved for Break Iterator related error
+     * Error codes in the range 0x10200 0x102ff are reserved for BreakIterator.
      */
     U_BRK_INTERNAL_ERROR=0x10200,          /**< An internal error (bug) was detected.             */
     U_BRK_ERROR_START=0x10200,             /**< Start of codes indicating Break Iterator failures */
     U_BRK_HEX_DIGITS_EXPECTED,             /**< Hex digits expected as part of a escaped char in a rule. */
     U_BRK_SEMICOLON_EXPECTED,              /**< Missing ';' at the end of a RBBI rule.            */
     U_BRK_RULE_SYNTAX,                     /**< Syntax error in RBBI rule.                        */
-    U_BRK_UNCLOSED_SET,                    /**< UnicodeSet witing an RBBI rule missing a closing ']'.  */
+    U_BRK_UNCLOSED_SET,                    /**< UnicodeSet writing an RBBI rule missing a closing ']'. */
     U_BRK_ASSIGN_ERROR,                    /**< Syntax error in RBBI rule assignment statement.   */
     U_BRK_VARIABLE_REDFINITION,            /**< RBBI rule $Variable redefined.                    */
     U_BRK_MISMATCHED_PAREN,                /**< Mis-matched parentheses in an RBBI rule.          */
@@ -217,11 +254,17 @@ typedef enum UErrorCode
     U_BRK_INIT_ERROR,                      /**< Initialization failure.  Probable missing ICU Data. */
     U_BRK_RULE_EMPTY_SET,                  /**< Rule contains an empty Unicode Set.               */
     U_BRK_UNRECOGNIZED_OPTION,             /**< !!option in RBBI rules not recognized.            */
-    U_BRK_MALFORMED_RULE_TAG,              /**< The {nnn} tag on a rule is mal formed             */
-    U_BRK_ERROR_LIMIT,                     /**< This must always be the last value to indicate the limit for Break Iterator failures */
+    U_BRK_MALFORMED_RULE_TAG,              /**< The {nnn} tag on a rule is malformed              */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal BreakIterator error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_BRK_ERROR_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
 
     /*
-     * The error codes in the range 0x10300-0x103ff are reserved for regular expression related errrs
+     * Error codes in the range 0x10300-0x103ff are reserved for regular expression related errors.
      */
     U_REGEX_INTERNAL_ERROR=0x10300,       /**< An internal error (bug) was detected.              */
     U_REGEX_ERROR_START=0x10300,          /**< Start of codes indicating Regexp failures          */
@@ -238,16 +281,26 @@ typedef enum UErrorCode
     U_REGEX_INVALID_FLAG,                 /**< Invalid value for match mode flags.                */
     U_REGEX_LOOK_BEHIND_LIMIT,            /**< Look-Behind pattern matches must have a bounded maximum length.    */
     U_REGEX_SET_CONTAINS_STRING,          /**< Regexps cannot have UnicodeSets containing strings.*/
-    U_REGEX_OCTAL_TOO_BIG,                /**< Octal character constants must be <= 0377.         */
-    U_REGEX_MISSING_CLOSE_BRACKET,        /**< Missing closing bracket on a bracket expression.   */
+#ifndef U_HIDE_DEPRECATED_API
+    U_REGEX_OCTAL_TOO_BIG,                /**< Octal character constants must be <= 0377. @deprecated ICU 54. This error cannot occur. */
+#endif  /* U_HIDE_DEPRECATED_API */
+    U_REGEX_MISSING_CLOSE_BRACKET=U_REGEX_SET_CONTAINS_STRING+2, /**< Missing closing bracket on a bracket expression. */
     U_REGEX_INVALID_RANGE,                /**< In a character range [x-y], x is greater than y.   */
     U_REGEX_STACK_OVERFLOW,               /**< Regular expression backtrack stack overflow.       */
     U_REGEX_TIME_OUT,                     /**< Maximum allowed match time exceeded                */
     U_REGEX_STOPPED_BY_CALLER,            /**< Matching operation aborted by user callback fn.    */
-    U_REGEX_ERROR_LIMIT,                  /**< This must always be the last value to indicate the limit for regexp errors */
+    U_REGEX_PATTERN_TOO_BIG,              /**< Pattern exceeds limits on size or complexity. @stable ICU 55 */
+    U_REGEX_INVALID_CAPTURE_GROUP_NAME,   /**< Invalid capture group name. @stable ICU 55 */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal regular expression error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_REGEX_ERROR_LIMIT=U_REGEX_STOPPED_BY_CALLER+3,
+#endif  // U_HIDE_DEPRECATED_API
 
     /*
-     * The error code in the range 0x10400-0x104ff are reserved for IDNA related error codes
+     * Error codes in the range 0x10400-0x104ff are reserved for IDNA related error codes.
      */
     U_IDNA_PROHIBITED_ERROR=0x10400,
     U_IDNA_ERROR_START=0x10400,
@@ -259,7 +312,13 @@ typedef enum UErrorCode
     U_IDNA_LABEL_TOO_LONG_ERROR,
     U_IDNA_ZERO_LENGTH_LABEL_ERROR,
     U_IDNA_DOMAIN_NAME_TOO_LONG_ERROR,
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal IDNA error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
     U_IDNA_ERROR_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
     /*
      * Aliases for StringPrep
      */
@@ -268,27 +327,32 @@ typedef enum UErrorCode
     U_STRINGPREP_CHECK_BIDI_ERROR = U_IDNA_CHECK_BIDI_ERROR,
 
     /*
-     * The error code in the range 0x10500-0x105ff are reserved for Plugin related error codes
+     * Error codes in the range 0x10500-0x105ff are reserved for Plugin related error codes.
      */
     U_PLUGIN_ERROR_START=0x10500,         /**< Start of codes indicating plugin failures */
     U_PLUGIN_TOO_HIGH=0x10500,            /**< The plugin's level is too high to be loaded right now. */
     U_PLUGIN_DIDNT_SET_LEVEL,             /**< The plugin didn't call uplug_setPlugLevel in response to a QUERY */
-    U_PLUGIN_ERROR_LIMIT,                 /**< This must always be the last value to indicate the limit for plugin errors */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal plug-in error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_PLUGIN_ERROR_LIMIT,
+#endif  // U_HIDE_DEPRECATED_API
 
-    U_ERROR_LIMIT=U_PLUGIN_ERROR_LIMIT      /**< This must always be the last value to indicate the limit for UErrorCode (last error code +1) */
+#ifndef U_HIDE_DEPRECATED_API
+    /**
+     * One more than the highest normal error code.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+    U_ERROR_LIMIT=U_PLUGIN_ERROR_LIMIT
+#endif  // U_HIDE_DEPRECATED_API
 } UErrorCode;
 
 ////////////////////////////////////////////////////////////////////////////////
 //enum UConverterCallbackReason
 
-/**
- * The process condition code to be used with the callbacks.
- * Codes which are greater than UCNV_IRREGULAR should be
- * passed on to any chained callbacks.
- * @stable ICU 2.0
- */
-typedef enum
-{
+typedef enum {
     UCNV_UNASSIGNED = 0,  /**< The code point is unassigned.
                              The error code U_INVALID_CHAR_FOUND will be set. */
     UCNV_ILLEGAL = 1,     /**< The code point is illegal. For example,
@@ -305,7 +369,7 @@ typedef enum
                              code points.
                              The error code U_INVALID_CHAR_FOUND will be set. */
     UCNV_RESET = 3,       /**< The callback is called with this reason when a
-                             'reset' has occured. Callback should reset all
+                             'reset' has occurred. Callback should reset all
                              state. */
     UCNV_CLOSE = 4,        /**< Called when the converter is closed. The
                              callback should release any allocated memory.*/
@@ -417,14 +481,14 @@ typedef enum
  */
 typedef struct
 {
-    uint16_t size;              /**< The size of this struct   @stable ICU 2.0 */
-    UBool flush;                /**< The internal state of converter will be reset and data flushed if set to TRUE. @stable ICU 2.0   */
-    UConverter *converter;      /**< Pointer to the converter that is opened and to which this struct is passed as an argument. @stable ICU 2.0 */
-    const char *source;         /**< Pointer to the source source buffer. @stable ICU 2.0    */
-    const char *sourceLimit;    /**< Pointer to the limit (end + 1) of source buffer. @stable ICU 2.0    */
-    UChar *target;              /**< Pointer to the target buffer. @stable ICU 2.0    */
-    const UChar *targetLimit;   /**< Pointer to the limit (end + 1) of target buffer. @stable ICU 2.0     */
-    int32_t *offsets;           /**< Pointer to the buffer that recieves the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
+    uint16_t     size;          /**< The size of this struct   @stable ICU 2.0 */
+    UBool        flush;         /**< The internal state of converter will be reset and data flushed if set to TRUE. @stable ICU 2.0   */
+    UConverter*  converter;     /**< Pointer to the converter that is opened and to which this struct is passed as an argument. @stable ICU 2.0 */
+    const char*  source;        /**< Pointer to the source source buffer. @stable ICU 2.0    */
+    const char*  sourceLimit;   /**< Pointer to the limit (end + 1) of source buffer. @stable ICU 2.0    */
+    UChar*       target;        /**< Pointer to the target buffer. @stable ICU 2.0    */
+    const UChar* targetLimit;   /**< Pointer to the limit (end + 1) of target buffer. @stable ICU 2.0     */
+    int32_t*     offsets;       /**< Pointer to the buffer that receives the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
 } UConverterToUnicodeArgs;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -443,7 +507,7 @@ typedef struct
     const UChar*   sourceLimit;    /**< Pointer to the limit (end + 1) of source buffer. @stable ICU 2.0    */
     char*          target;         /**< Pointer to the target buffer. @stable ICU 2.0    */
     const char*    targetLimit;    /**< Pointer to the limit (end + 1) of target buffer. @stable ICU 2.0     */
-    int32_t*       offsets;        /**< Pointer to the buffer that recieves the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
+    int32_t*       offsets;        /**< Pointer to the buffer that receives the offsets. *offset = blah ; offset++;. @stable ICU 2.0  */
 } UConverterFromUnicodeArgs;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -470,7 +534,7 @@ typedef UConverterType (ICU_EXPORT2 ICU_FN(ucnv_getType))
 
 /**
  * Function pointer for error callback in the codepage to unicode direction.
- * Called when an error has occured in conversion to unicode, or on open/close of the callback (see reason).
+ * Called when an error has occurred in conversion to unicode, or on open/close of the callback (see reason).
  * @param context Pointer to the callback's private data
  * @param args Information about the conversion in progress
  * @param codeUnits Points to 'length' bytes of the concerned codepage sequence
@@ -495,7 +559,7 @@ typedef void (ICU_EXPORT2* UConverterToUCallback)
 
 /**
  * Function pointer for error callback in the unicode to codepage direction.
- * Called when an error has occured in conversion from unicode, or on open/close of the callback (see reason).
+ * Called when an error has occurred in conversion from unicode, or on open/close of the callback (see reason).
  * @param context Pointer to the callback's private data
  * @param args Information about the conversion in progress
  * @param codeUnits Points to 'length' UChars of the concerned Unicode sequence
@@ -519,7 +583,6 @@ typedef void (ICU_EXPORT2 *UConverterFromUCallback)
   UErrorCode*                pErrorCode);
 
 ////////////////////////////////////////////////////////////////////////////////
-
 /**
  * Creates a UConverter object with the name of a coded character set specified as a C string.
  * The actual name will be resolved with the alias file
@@ -560,7 +623,7 @@ typedef void (ICU_EXPORT2 *UConverterFromUCallback)
  *          ucnv_getAlias for a complete list that is available.
  *          If this parameter is NULL, the default converter will be used.
  * @param err outgoing error status <TT>U_MEMORY_ALLOCATION_ERROR, U_FILE_ACCESS_ERROR</TT>
- * @return the created Unicode converter object, or <TT>NULL</TT> if an error occured
+ * @return the created Unicode converter object, or <TT>NULL</TT> if an error occurred
  * @see ucnv_openU
  * @see ucnv_openCCSID
  * @see ucnv_getAvailableName
@@ -572,7 +635,8 @@ typedef void (ICU_EXPORT2 *UConverterFromUCallback)
  */
 
 typedef UConverter* (ICU_EXPORT2 ICU_FN(ucnv_open))
- (const char *converterName, UErrorCode *err);
+ (const char* converterName,
+  UErrorCode* err);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -914,16 +978,16 @@ typedef int32_t (ICU_EXPORT2 ICU_FN(ucnv_toUChars))
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Returns the minimum byte length for characters in this codepage.
+ * Returns the minimum byte length (per codepoint) for characters in this codepage.
  * This is usually either 1 or 2.
  * @param converter the Unicode converter
- * @return the minimum number of bytes allowed by this particular converter
+ * @return the minimum number of bytes per codepoint allowed by this particular converter
  * @see ucnv_getMaxCharSize
  * @stable ICU 2.0
  */
 
 typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMinCharSize))
- (const UConverter *converter);
+ (const UConverter* converter);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -968,8 +1032,10 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMinCharSize))
  * - ISO-2022-CN: 8 (4-byte designator sequences + 2-byte SS2/SS3 + DBCS)
  *
  * @param converter The Unicode converter.
- * @return The maximum number of bytes per UChar that are output by ucnv_fromUnicode(),
- *         to be used together with UCNV_GET_MAX_BYTES_FOR_STRING for buffer allocation.
+ * @return The maximum number of bytes per UChar (16 bit code unit)
+ *    that are output by ucnv_fromUnicode(),
+ *    to be used together with UCNV_GET_MAX_BYTES_FOR_STRING
+ *    for buffer allocation.
  *
  * @see UCNV_GET_MAX_BYTES_FOR_STRING
  * @see ucnv_getMinCharSize
@@ -1007,8 +1073,9 @@ typedef int8_t (ICU_EXPORT2 ICU_FN(ucnv_getMaxCharSize))
  *
  * @stable ICU 2.6
  */
+
 typedef void (ICU_EXPORT2 ICU_FN(u_init))
- (UErrorCode *status);
+ (UErrorCode* status);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1029,7 +1096,7 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
  * This has the effect of restoring ICU to its initial condition, before
  * any of these override functions were installed.  Refer to
  * u_setMemoryFunctions(), u_setMutexFunctions and
- * utrace_setFunctions().  If ICU is to be reinitialized after after
+ * utrace_setFunctions().  If ICU is to be reinitialized after
  * calling u_cleanup(), these runtime override functions will need to
  * be set up again if they are still required.
  * <p>
@@ -1088,11 +1155,769 @@ typedef void (ICU_EXPORT2 ICU_FN(u_setDataDirectory))
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Disposes of resources in use by the iterator.  If en is NULL,
+ * does nothing.  After this call, any char* or UChar* pointer
+ * returned by uenum_unext() or uenum_next() is invalid.
+ * @param en UEnumeration structure pointer
+ * @stable ICU 2.2
+ */
+typedef void (ICU_EXPORT2 ICU_FN(uenum_close))
+ (UEnumeration* en);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Returns the next element in the iterator's list.  If there are
+ * no more elements, returns NULL.  If the iterator is out-of-sync
+ * with its service, status is set to U_ENUM_OUT_OF_SYNC_ERROR and
+ * NULL is returned.  If the native service string is a char* string,
+ * it is converted to UChar* with the invariant converter.
+ * The result is terminated by (UChar)0.
+ * @param en the iterator object
+ * @param resultLength pointer to receive the length of the result
+ *                     (not including the terminating \\0).
+ *                     If the pointer is NULL it is ignored.
+ * @param status the error code, set to U_ENUM_OUT_OF_SYNC_ERROR if
+ *               the iterator is out of sync with its service.
+ * @return a pointer to the string.  The string will be
+ *         zero-terminated.  The return pointer is owned by this iterator
+ *         and must not be deleted by the caller.  The pointer is valid
+ *         until the next call to any uenum_... method, including
+ *         uenum_next() or uenum_unext().  When all strings have been
+ *         traversed, returns NULL.
+ * @stable ICU 2.2
+ */
+typedef const UChar* (ICU_EXPORT2 ICU_FN(uenum_unext))
+ (UEnumeration* en,
+  int32_t*      resultLength,
+  UErrorCode*   status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * The time zone ID reserved for unknown time zone.
+ * @stable ICU 4.8
+ */
+extern const UChar* const UCAL_UNKNOWN_ZONE_ID; // L"Etc/Unknown"
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Date and Time data type.
+ * This is a primitive data type that holds the date and time
+ * as the number of milliseconds since 1970-jan-01, 00:00 UTC.
+ * UTC leap seconds are ignored.
+ * @stable ICU 2.0
+ */
+typedef double UDate;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * \file
+ * \brief C API: Calendar
+ *
+ * <h2>Calendar C API</h2>
+ *
+ * UCalendar C API is used  for converting between a <code>UDate</code> object
+ * and a set of integer fields such as <code>UCAL_YEAR</code>, <code>UCAL_MONTH</code>,
+ * <code>UCAL_DAY</code>, <code>UCAL_HOUR</code>, and so on.
+ * (A <code>UDate</code> object represents a specific instant in
+ * time with millisecond precision. See UDate
+ * for information about the <code>UDate</code> .)
+ *
+ * <p>
+ * Types of <code>UCalendar</code> interpret a <code>UDate</code>
+ * according to the rules of a specific calendar system. The U_STABLE
+ * provides the enum UCalendarType with UCAL_TRADITIONAL and
+ * UCAL_GREGORIAN.
+ * <p>
+ * Like other locale-sensitive C API, calendar API  provides a
+ * function, <code>ucal_open()</code>, which returns a pointer to
+ * <code>UCalendar</code> whose time fields have been initialized
+ * with the current date and time. We need to specify the type of
+ * calendar to be opened and the  timezoneId.
+ * \htmlonly<blockquote>\endhtmlonly
+ * <pre>
+ * \code
+ * UCalendar *caldef;
+ * UChar *tzId;
+ * UErrorCode status;
+ * tzId=(UChar*)malloc(sizeof(UChar) * (strlen("PST") +1) );
+ * u_uastrcpy(tzId, "PST");
+ * caldef=ucal_open(tzID, u_strlen(tzID), NULL, UCAL_TRADITIONAL, &status);
+ * \endcode
+ * </pre>
+ * \htmlonly</blockquote>\endhtmlonly
+ *
+ * <p>
+ * A <code>UCalendar</code> object can produce all the time field values
+ * needed to implement the date-time formatting for a particular language
+ * and calendar style (for example, Japanese-Gregorian, Japanese-Traditional).
+ *
+ * <p>
+ * When computing a <code>UDate</code> from time fields, two special circumstances
+ * may arise: there may be insufficient information to compute the
+ * <code>UDate</code> (such as only year and month but no day in the month),
+ * or there may be inconsistent information (such as "Tuesday, July 15, 1996"
+ * -- July 15, 1996 is actually a Monday).
+ *
+ * <p>
+ * <strong>Insufficient information.</strong> The calendar will use default
+ * information to specify the missing fields. This may vary by calendar; for
+ * the Gregorian calendar, the default for a field is the same as that of the
+ * start of the epoch: i.e., UCAL_YEAR = 1970, UCAL_MONTH = JANUARY, UCAL_DATE = 1, etc.
+ *
+ * <p>
+ * <strong>Inconsistent information.</strong> If fields conflict, the calendar
+ * will give preference to fields set more recently. For example, when
+ * determining the day, the calendar will look for one of the following
+ * combinations of fields.  The most recent combination, as determined by the
+ * most recently set single field, will be used.
+ *
+ * \htmlonly<blockquote>\endhtmlonly
+ * <pre>
+ * \code
+ * UCAL_MONTH + UCAL_DAY_OF_MONTH
+ * UCAL_MONTH + UCAL_WEEK_OF_MONTH + UCAL_DAY_OF_WEEK
+ * UCAL_MONTH + UCAL_DAY_OF_WEEK_IN_MONTH + UCAL_DAY_OF_WEEK
+ * UCAL_DAY_OF_YEAR
+ * UCAL_DAY_OF_WEEK + UCAL_WEEK_OF_YEAR
+ * \endcode
+ * </pre>
+ * \htmlonly</blockquote>\endhtmlonly
+ *
+ * For the time of day:
+ *
+ * \htmlonly<blockquote>\endhtmlonly
+ * <pre>
+ * \code
+ * UCAL_HOUR_OF_DAY
+ * UCAL_AM_PM + UCAL_HOUR
+ * \endcode
+ * </pre>
+ * \htmlonly</blockquote>\endhtmlonly
+ *
+ * <p>
+ * <strong>Note:</strong> for some non-Gregorian calendars, different
+ * fields may be necessary for complete disambiguation. For example, a full
+ * specification of the historial Arabic astronomical calendar requires year,
+ * month, day-of-month <em>and</em> day-of-week in some cases.
+ *
+ * <p>
+ * <strong>Note:</strong> There are certain possible ambiguities in
+ * interpretation of certain singular times, which are resolved in the
+ * following ways:
+ * <ol>
+ *     <li> 24:00:00 "belongs" to the following day. That is,
+ *          23:59 on Dec 31, 1969 &lt; 24:00 on Jan 1, 1970 &lt; 24:01:00 on Jan 1, 1970
+ *
+ *     <li> Although historically not precise, midnight also belongs to "am",
+ *          and noon belongs to "pm", so on the same day,
+ *          12:00 am (midnight) &lt; 12:01 am, and 12:00 pm (noon) &lt; 12:01 pm
+ * </ol>
+ *
+ * <p>
+ * The date or time format strings are not part of the definition of a
+ * calendar, as those must be modifiable or overridable by the user at
+ * runtime. Use {@link icu::DateFormat}
+ * to format dates.
+ *
+ * <p>
+ * <code>Calendar</code> provides an API for field "rolling", where fields
+ * can be incremented or decremented, but wrap around. For example, rolling the
+ * month up in the date <code>December 12, <b>1996</b></code> results in
+ * <code>January 12, <b>1996</b></code>.
+ *
+ * <p>
+ * <code>Calendar</code> also provides a date arithmetic function for
+ * adding the specified (signed) amount of time to a particular time field.
+ * For example, subtracting 5 days from the date <code>September 12, 1996</code>
+ * results in <code>September 7, 1996</code>.
+ *
+ * <p>
+ * The Japanese calendar uses a combination of era name and year number.
+ * When an emperor of Japan abdicates and a new emperor ascends the throne,
+ * a new era is declared and year number is reset to 1. Even if the date of
+ * abdication is scheduled ahead of time, the new era name might not be
+ * announced until just before the date. In such case, ICU4C may include
+ * a start date of future era without actual era name, but not enabled
+ * by default. ICU4C users who want to test the behavior of the future era
+ * can enable the tentative era by:
+ * <ul>
+ * <li>Environment variable <code>ICU_ENABLE_TENTATIVE_ERA=true</code>.</li>
+ * </ul>
+ *
+ * @stable ICU 2.0
+ */
+
+/** A calendar.
+ *  For usage in C programs.
+ * @stable ICU 2.0
+ */
+typedef void* UCalendar;
+
+////////////////////////////////////////////////////////////////////////////////
+//enum UCalendarType
+
+/** Possible types of UCalendars
+ * @stable ICU 2.0
+ */
+enum UCalendarType
+{
+  /**
+   * Despite the name, UCAL_TRADITIONAL designates the locale's default calendar,
+   * which may be the Gregorian calendar or some other calendar.
+   * @stable ICU 2.0
+   */
+  UCAL_TRADITIONAL,
+  /**
+   * A better name for UCAL_TRADITIONAL.
+   * @stable ICU 4.2
+   */
+  UCAL_DEFAULT = UCAL_TRADITIONAL,
+  /**
+   * Unambiguously designates the Gregorian calendar for the locale.
+   * @stable ICU 2.0
+   */
+  UCAL_GREGORIAN
+};
+
+/** @stable ICU 2.0 */
+typedef enum UCalendarType UCalendarType;
+
+////////////////////////////////////////////////////////////////////////////////
+//enum UCalendarDateFields
+
+/** Possible fields in a UCalendar
+ * @stable ICU 2.0
+ */
+enum UCalendarDateFields
+{
+  /**
+   * Field number indicating the era, e.g., AD or BC in the Gregorian (Julian) calendar.
+   * This is a calendar-specific value.
+   * @stable ICU 2.6
+   */
+  UCAL_ERA,
+
+  /**
+   * Field number indicating the year. This is a calendar-specific value.
+   * @stable ICU 2.6
+   */
+  UCAL_YEAR,
+
+  /**
+   * Field number indicating the month. This is a calendar-specific value.
+   * The first month of the year is
+   * <code>JANUARY</code>; the last depends on the number of months in a year.
+   * @see #UCAL_JANUARY
+   * @see #UCAL_FEBRUARY
+   * @see #UCAL_MARCH
+   * @see #UCAL_APRIL
+   * @see #UCAL_MAY
+   * @see #UCAL_JUNE
+   * @see #UCAL_JULY
+   * @see #UCAL_AUGUST
+   * @see #UCAL_SEPTEMBER
+   * @see #UCAL_OCTOBER
+   * @see #UCAL_NOVEMBER
+   * @see #UCAL_DECEMBER
+   * @see #UCAL_UNDECIMBER
+   * @stable ICU 2.6
+   */
+  UCAL_MONTH,
+
+  /**
+   * Field number indicating the
+   * week number within the current year.  The first week of the year, as
+   * defined by <code>UCAL_FIRST_DAY_OF_WEEK</code> and <code>UCAL_MINIMAL_DAYS_IN_FIRST_WEEK</code>
+   * attributes, has value 1.  Subclasses define
+   * the value of <code>UCAL_WEEK_OF_YEAR</code> for days before the first week of
+   * the year.
+   * @see ucal_getAttribute
+   * @see ucal_setAttribute
+   * @stable ICU 2.6
+   */
+  UCAL_WEEK_OF_YEAR,
+
+ /**
+   * Field number indicating the
+   * week number within the current month.  The first week of the month, as
+   * defined by <code>UCAL_FIRST_DAY_OF_WEEK</code> and <code>UCAL_MINIMAL_DAYS_IN_FIRST_WEEK</code>
+   * attributes, has value 1.  Subclasses define
+   * the value of <code>WEEK_OF_MONTH</code> for days before the first week of
+   * the month.
+   * @see ucal_getAttribute
+   * @see ucal_setAttribute
+   * @see #UCAL_FIRST_DAY_OF_WEEK
+   * @see #UCAL_MINIMAL_DAYS_IN_FIRST_WEEK
+   * @stable ICU 2.6
+   */
+  UCAL_WEEK_OF_MONTH,
+
+ /**
+   * Field number indicating the
+   * day of the month. This is a synonym for <code>DAY_OF_MONTH</code>.
+   * The first day of the month has value 1.
+   * @see #UCAL_DAY_OF_MONTH
+   * @stable ICU 2.6
+   */
+  UCAL_DATE,
+
+ /**
+   * Field number indicating the day
+   * number within the current year.  The first day of the year has value 1.
+   * @stable ICU 2.6
+   */
+  UCAL_DAY_OF_YEAR,
+
+ /**
+   * Field number indicating the day
+   * of the week.  This field takes values <code>SUNDAY</code>,
+   * <code>MONDAY</code>, <code>TUESDAY</code>, <code>WEDNESDAY</code>,
+   * <code>THURSDAY</code>, <code>FRIDAY</code>, and <code>SATURDAY</code>.
+   * @see #UCAL_SUNDAY
+   * @see #UCAL_MONDAY
+   * @see #UCAL_TUESDAY
+   * @see #UCAL_WEDNESDAY
+   * @see #UCAL_THURSDAY
+   * @see #UCAL_FRIDAY
+   * @see #UCAL_SATURDAY
+   * @stable ICU 2.6
+   */
+  UCAL_DAY_OF_WEEK,
+
+ /**
+   * Field number indicating the
+   * ordinal number of the day of the week within the current month. Together
+   * with the <code>DAY_OF_WEEK</code> field, this uniquely specifies a day
+   * within a month.  Unlike <code>WEEK_OF_MONTH</code> and
+   * <code>WEEK_OF_YEAR</code>, this field's value does <em>not</em> depend on
+   * <code>getFirstDayOfWeek()</code> or
+   * <code>getMinimalDaysInFirstWeek()</code>.  <code>DAY_OF_MONTH 1</code>
+   * through <code>7</code> always correspond to <code>DAY_OF_WEEK_IN_MONTH
+   * 1</code>; <code>8</code> through <code>15</code> correspond to
+   * <code>DAY_OF_WEEK_IN_MONTH 2</code>, and so on.
+   * <code>DAY_OF_WEEK_IN_MONTH 0</code> indicates the week before
+   * <code>DAY_OF_WEEK_IN_MONTH 1</code>.  Negative values count back from the
+   * end of the month, so the last Sunday of a month is specified as
+   * <code>DAY_OF_WEEK = SUNDAY, DAY_OF_WEEK_IN_MONTH = -1</code>.  Because
+   * negative values count backward they will usually be aligned differently
+   * within the month than positive values.  For example, if a month has 31
+   * days, <code>DAY_OF_WEEK_IN_MONTH -1</code> will overlap
+   * <code>DAY_OF_WEEK_IN_MONTH 5</code> and the end of <code>4</code>.
+   * @see #UCAL_DAY_OF_WEEK
+   * @see #UCAL_WEEK_OF_MONTH
+   * @stable ICU 2.6
+   */
+  UCAL_DAY_OF_WEEK_IN_MONTH,
+
+ /**
+   * Field number indicating
+   * whether the <code>HOUR</code> is before or after noon.
+   * E.g., at 10:04:15.250 PM the <code>AM_PM</code> is <code>PM</code>.
+   * @see #UCAL_AM
+   * @see #UCAL_PM
+   * @see #UCAL_HOUR
+   * @stable ICU 2.6
+   */
+  UCAL_AM_PM,
+
+ /**
+   * Field number indicating the
+   * hour of the morning or afternoon. <code>HOUR</code> is used for the 12-hour
+   * clock.
+   * E.g., at 10:04:15.250 PM the <code>HOUR</code> is 10.
+   * @see #UCAL_AM_PM
+   * @see #UCAL_HOUR_OF_DAY
+   * @stable ICU 2.6
+   */
+  UCAL_HOUR,
+
+ /**
+   * Field number indicating the
+   * hour of the day. <code>HOUR_OF_DAY</code> is used for the 24-hour clock.
+   * E.g., at 10:04:15.250 PM the <code>HOUR_OF_DAY</code> is 22.
+   * @see #UCAL_HOUR
+   * @stable ICU 2.6
+   */
+  UCAL_HOUR_OF_DAY,
+
+ /**
+   * Field number indicating the
+   * minute within the hour.
+   * E.g., at 10:04:15.250 PM the <code>UCAL_MINUTE</code> is 4.
+   * @stable ICU 2.6
+   */
+  UCAL_MINUTE,
+
+ /**
+   * Field number indicating the
+   * second within the minute.
+   * E.g., at 10:04:15.250 PM the <code>UCAL_SECOND</code> is 15.
+   * @stable ICU 2.6
+   */
+  UCAL_SECOND,
+
+ /**
+   * Field number indicating the
+   * millisecond within the second.
+   * E.g., at 10:04:15.250 PM the <code>UCAL_MILLISECOND</code> is 250.
+   * @stable ICU 2.6
+   */
+  UCAL_MILLISECOND,
+
+ /**
+   * Field number indicating the
+   * raw offset from GMT in milliseconds.
+   * @stable ICU 2.6
+   */
+  UCAL_ZONE_OFFSET,
+
+ /**
+   * Field number indicating the
+   * daylight savings offset in milliseconds.
+   * @stable ICU 2.6
+   */
+  UCAL_DST_OFFSET,
+
+ /**
+   * Field number
+   * indicating the extended year corresponding to the
+   * <code>UCAL_WEEK_OF_YEAR</code> field.  This may be one greater or less
+   * than the value of <code>UCAL_EXTENDED_YEAR</code>.
+   * @stable ICU 2.6
+   */
+  UCAL_YEAR_WOY,
+
+ /**
+   * Field number
+   * indicating the localized day of week.  This will be a value from 1
+   * to 7 inclusive, with 1 being the localized first day of the week.
+   * @stable ICU 2.6
+   */
+  UCAL_DOW_LOCAL,
+
+  /**
+   * Year of this calendar system, encompassing all supra-year fields. For example,
+   * in Gregorian/Julian calendars, positive Extended Year values indicate years AD,
+   *  1 BC = 0 extended, 2 BC = -1 extended, and so on.
+   * @stable ICU 2.8
+   */
+  UCAL_EXTENDED_YEAR,
+
+ /**
+   * Field number
+   * indicating the modified Julian day number.  This is different from
+   * the conventional Julian day number in two regards.  First, it
+   * demarcates days at local zone midnight, rather than noon GMT.
+   * Second, it is a local number; that is, it depends on the local time
+   * zone.  It can be thought of as a single number that encompasses all
+   * the date-related fields.
+   * @stable ICU 2.8
+   */
+  UCAL_JULIAN_DAY,
+
+  /**
+   * Ranges from 0 to 23:59:59.999 (regardless of DST).  This field behaves <em>exactly</em>
+   * like a composite of all time-related fields, not including the zone fields.  As such,
+   * it also reflects discontinuities of those fields on DST transition days.  On a day
+   * of DST onset, it will jump forward.  On a day of DST cessation, it will jump
+   * backward.  This reflects the fact that it must be combined with the DST_OFFSET field
+   * to obtain a unique local time value.
+   * @stable ICU 2.8
+   */
+  UCAL_MILLISECONDS_IN_DAY,
+
+  /**
+   * Whether or not the current month is a leap month (0 or 1). See the Chinese calendar for
+   * an example of this.
+   */
+  UCAL_IS_LEAP_MONTH,
+
+    /* Do not conditionalize the following with #ifndef U_HIDE_DEPRECATED_API,
+     * it is needed for layout of Calendar, DateFormat, and other objects */
+    /**
+     * One more than the highest normal UCalendarDateFields value.
+     * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
+     */
+  UCAL_FIELD_COUNT,
+
+ /**
+   * Field number indicating the
+   * day of the month. This is a synonym for <code>UCAL_DATE</code>.
+   * The first day of the month has value 1.
+   * @see #UCAL_DATE
+   * Synonym for UCAL_DATE
+   * @stable ICU 2.8
+   **/
+  UCAL_DAY_OF_MONTH=UCAL_DATE
+};
+
+/** @stable ICU 2.0 */
+typedef enum UCalendarDateFields UCalendarDateFields;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Types of UCalendar attributes 
+ * @stable ICU 2.0
+ */
+enum UCalendarAttribute
+{
+  /**
+   * Lenient parsing
+   * @stable ICU 2.0
+   */
+  UCAL_LENIENT,
+  /**
+   * First day of week
+   * @stable ICU 2.0
+   */
+  UCAL_FIRST_DAY_OF_WEEK,
+  /**
+   * Minimum number of days in first week
+   * @stable ICU 2.0
+   */
+  UCAL_MINIMAL_DAYS_IN_FIRST_WEEK,
+  /**
+   * The behavior for handling wall time repeating multiple times
+   * at negative time zone offset transitions
+   * @stable ICU 49
+   */
+  UCAL_REPEATED_WALL_TIME,
+  /**
+   * The behavior for handling skipped wall time at positive time
+   * zone offset transitions.
+   * @stable ICU 49
+   */
+  UCAL_SKIPPED_WALL_TIME
+};
+
+/** @stable ICU 2.0 */
+typedef enum UCalendarAttribute UCalendarAttribute;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Options for handling ambiguous wall time at time zone
+ * offset transitions.
+ * @stable ICU 49
+ */
+enum UCalendarWallTimeOption
+{
+  /**
+   * An ambiguous wall time to be interpreted as the latest.
+   * This option is valid for UCAL_REPEATED_WALL_TIME and
+   * UCAL_SKIPPED_WALL_TIME.
+   * @stable ICU 49
+   */
+  UCAL_WALLTIME_LAST,
+  /**
+   * An ambiguous wall time to be interpreted as the earliest.
+   * This option is valid for UCAL_REPEATED_WALL_TIME and
+   * UCAL_SKIPPED_WALL_TIME.
+   * @stable ICU 49
+   */
+  UCAL_WALLTIME_FIRST,
+  /**
+   * An ambiguous wall time to be interpreted as the next valid
+   * wall time. This option is valid for UCAL_SKIPPED_WALL_TIME.
+   * @stable ICU 49
+   */
+  UCAL_WALLTIME_NEXT_VALID
+};
+/** @stable ICU 49 */
+typedef enum UCalendarWallTimeOption UCalendarWallTimeOption;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Set the time zone files override directory.
+ * This function is not thread safe; it must not be called concurrently with
+ *   u_getTimeZoneFilesDirectory() or any other use of ICU time zone functions.
+ * This function should only be called before using any ICU service that
+ *   will access the time zone data.
+ * @internal
+ */
+typedef void (ICU_EXPORT2 ICU_FN(u_setTimeZoneFilesDirectory))
+ (const char* path,
+  UErrorCode* status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Open a UCalendar.
+ * A UCalendar may be used to convert a millisecond value to a year,
+ * month, and day.
+ * <p>
+ * Note: When unknown TimeZone ID is specified or if the TimeZone ID specified is "Etc/Unknown",
+ * the UCalendar returned by the function is initialized with GMT zone with TimeZone ID
+ * <code>UCAL_UNKNOWN_ZONE_ID</code> ("Etc/Unknown") without any errors/warnings.  If you want
+ * to check if a TimeZone ID is valid prior to this function, use <code>ucal_getCanonicalTimeZoneID</code>.
+ *
+ * @param zoneID The desired TimeZone ID.  If 0, use the default time zone.
+ * @param len The length of zoneID, or -1 if null-terminated.
+ * @param locale The desired locale
+ * @param type The type of UCalendar to open. This can be UCAL_GREGORIAN to open the Gregorian
+ * calendar for the locale, or UCAL_DEFAULT to open the default calendar for the locale (the
+ * default calendar may also be Gregorian). To open a specific non-Gregorian calendar for the
+ * locale, use uloc_setKeywordValue to set the value of the calendar keyword for the locale
+ * and then pass the locale to ucal_open with UCAL_DEFAULT as the type.
+ * @param status A pointer to an UErrorCode to receive any errors
+ * @return A pointer to a UCalendar, or 0 if an error occurred.
+ * @see #UCAL_UNKNOWN_ZONE_ID
+ * @stable ICU 2.0
+ */
+typedef UCalendar* (ICU_EXPORT2  ICU_FN(ucal_open))
+ (const UChar*   zoneID,
+  int32_t        len,
+  const char*    locale,
+  UCalendarType  type,
+  UErrorCode*    status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Close a UCalendar.
+ * Once closed, a UCalendar may no longer be used.
+ * @param cal The UCalendar to close.
+ * @stable ICU 2.0
+ */
+typedef void (ICU_EXPORT2 ICU_FN(ucal_close))
+ (UCalendar* cal);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Set a numeric attribute associated with a UCalendar.
+ * Numeric attributes include the first day of the week, or the minimal numbers
+ * of days in the first week of the month.
+ * @param cal The UCalendar to set.
+ * @param attr The desired attribute; one of UCAL_LENIENT, UCAL_FIRST_DAY_OF_WEEK,
+ * UCAL_MINIMAL_DAYS_IN_FIRST_WEEK, UCAL_REPEATED_WALL_TIME or UCAL_SKIPPED_WALL_TIME
+ * @param newValue The new value of attr.
+ * @see ucal_getAttribute
+ * @stable ICU 2.0
+ */
+typedef void (ICU_EXPORT2 ICU_FN(ucal_setAttribute))
+ (UCalendar*          cal,
+  UCalendarAttribute  attr,
+  int32_t             newValue);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Set a UCalendar's current time in millis.
+ * The time is represented as UTC milliseconds from the epoch.
+ * @param cal The UCalendar to set.
+ * @param dateTime The desired date and time.
+ * @param status A pointer to an UErrorCode to receive any errors
+ * @see ucal_getMillis
+ * @see ucal_setDate
+ * @see ucal_setDateTime
+ * @stable ICU 2.0
+ */
+typedef void (ICU_EXPORT2 ICU_FN(ucal_setMillis))
+ (UCalendar*   cal,
+  UDate        dateTime,
+  UErrorCode*  status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Set a UCalendar's current date.
+ * The date is represented as a series of 32-bit integers.
+ * @param cal The UCalendar to set.
+ * @param year The desired year.
+ * @param month The desired month; one of UCAL_JANUARY, UCAL_FEBRUARY, UCAL_MARCH, UCAL_APRIL, UCAL_MAY,
+ * UCAL_JUNE, UCAL_JULY, UCAL_AUGUST, UCAL_SEPTEMBER, UCAL_OCTOBER, UCAL_NOVEMBER, UCAL_DECEMBER, UCAL_UNDECIMBER
+ * @param date The desired day of the month.
+ * @param hour The desired hour of day.
+ * @param minute The desired minute.
+ * @param second The desirec second.
+ * @param status A pointer to an UErrorCode to receive any errors
+ * @see ucal_getMillis
+ * @see ucal_setMillis
+ * @see ucal_setDate
+ * @stable ICU 2.0
+ */
+typedef void (ICU_EXPORT2 ICU_FN(ucal_setDateTime))
+ (UCalendar*   cal,
+  int32_t      year,
+  int32_t      month,
+  int32_t      date,
+  int32_t      hour,
+  int32_t      minute,
+  int32_t      second,
+  UErrorCode*  status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Get the current value of a field from a UCalendar.
+ * All fields are represented as 32-bit integers.
+ * @param cal The UCalendar to query.
+ * @param field The desired field; one of UCAL_ERA, UCAL_YEAR, UCAL_MONTH,
+ * UCAL_WEEK_OF_YEAR, UCAL_WEEK_OF_MONTH, UCAL_DATE, UCAL_DAY_OF_YEAR, UCAL_DAY_OF_WEEK,
+ * UCAL_DAY_OF_WEEK_IN_MONTH, UCAL_AM_PM, UCAL_HOUR, UCAL_HOUR_OF_DAY, UCAL_MINUTE, UCAL_SECOND,
+ * UCAL_MILLISECOND, UCAL_ZONE_OFFSET, UCAL_DST_OFFSET.
+ * @param status A pointer to an UErrorCode to receive any errors
+ * @return The value of the desired field.
+ * @see ucal_set
+ * @see ucal_isSet
+ * @see ucal_clearField
+ * @see ucal_clear
+ * @stable ICU 2.0
+ */
+typedef int32_t (ICU_EXPORT2 ICU_FN(ucal_get))
+ (const UCalendar*     cal,
+  UCalendarDateFields  field,
+  UErrorCode*          status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Get the ID of the UCalendar's time zone.
+ *
+ * @param cal           The UCalendar to query.
+ * @param result        Receives the UCalendar's time zone ID.
+ * @param resultLength  The maximum size of result.
+ * @param status        Receives the status.
+ * @return              The total buffer size needed; if greater than resultLength, the output was truncated.
+ * @stable ICU 51
+ */
+typedef int32_t (ICU_EXPORT2 ICU_FN(ucal_getTimeZoneID))
+ (const UCalendar* cal,
+  UChar*           result,
+  int32_t          resultLength,
+  UErrorCode*      status);
+
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Create an enumeration over all time zones.
+ *
+ * @param ec input/output error code
+ *
+ * @return an enumeration object that the caller must dispose of using
+ * uenum_close(), or NULL upon failure. In case of failure *ec will
+ * indicate the error.
+ *
+ * @stable ICU 2.6
+ */
+typedef UEnumeration* (ICU_EXPORT2 ICU_FN(ucal_openTimeZones))
+ (UErrorCode* ec);
+
+////////////////////////////////////////////////////////////////////////////////
+
 #undef ICU_FN
 #undef ICU_EXPORT2
 
 ////////////////////////////////////////////////////////////////////////////////
 //! \endcond
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms api*/}/*nms v052*/}/*nms icu*/}/*nms cs_code*/}/*nms charsets*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms api*/}/*nms v063*/}/*nms icu*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
 #endif

@@ -274,8 +274,9 @@ const WORK_Params_OUT_013__boolean::tag_descr
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_OUT_013__boolean
 
-void WORK_Params_OUT_013__boolean::create(TTSO_PushTest*      const pTestPusher,
-                                        TTSO_GlobalContext* const pParams)
+void WORK_Params_OUT_013__boolean::create
+                             (TTSO_PushTest*      const pTestPusher,
+                              TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
@@ -312,11 +313,16 @@ void WORK_Params_OUT_013__boolean::create(TTSO_PushTest*      const pTestPusher,
    <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value())
    <<sm_Tests[it[iTest]].pTestSign;
 
-  const TTSO_TestPtr spTest(new TTSO_TestFunc_v2(pParams,
-                                                 ftestID.c_str(),
-                                                 sm_Tests[it[iTest]].Func,
-                                                 Data,
-                                                 "NE__BOOLEAN"));
+  const TTSO_TestPtr
+   spTest
+    (structure::not_null_ptr
+      (new TTSO_TestFunc_v2
+        (pParams,
+         ftestID.c_str(),
+         sm_Tests[it[iTest]].Func,
+         Data,
+         "NE__BOOLEAN")));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

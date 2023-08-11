@@ -378,7 +378,7 @@ const DBPROPID IBP_DBPROP__INIT__NUMERIC_I8_RULES               =0x003B;
 
 //------------------------------------------------------------------------
 /// <summary>
-///  Файловый путь к внешней библиотеке ICU
+///  Файловый путь к внешней библиотеке ICU [ICUUC]
 /// </summary>
 /// \sa IBP_DBPROP__INIT__ICU_LIBRARY_64
 const DBPROPID IBP_DBPROP__INIT__ICU_LIBRARY                    =0x003C;
@@ -551,7 +551,7 @@ const DBPROPID IBP_DBPROP__INIT__DBCLIENT_LIBRARY_64            =0x0056;
 
 //------------------------------------------------------------------------
 /// <summary>
-///  Файловый путь к внешней 64-битной библиотеке ICU
+///  Файловый путь к внешней 64-битной библиотеке ICU [ICUUC]
 /// </summary>
 /// \sa IBP_DBPROP__INIT__ICU_LIBRARY
 const DBPROPID IBP_DBPROP__INIT__ICU_LIBRARY_64                 =0x0057;
@@ -735,6 +735,26 @@ const DBPROPID IBP_DBPROP__INIT__DECFLOAT16_RULES               =0x0072;
 /// </summary>
 /// \sa t_ibp_propval_decfloat_rules
 const DBPROPID IBP_DBPROP__INIT__DECFLOAT34_RULES               =0x0073;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Path to external library ICU [ICUIN]
+/// </summary>
+/// \sa IBP_DBPROP__INIT__ICUIN_LIBRARY_64
+const DBPROPID IBP_DBPROP__INIT__ICUIN_LIBRARY                  =0x0074;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Path to 64-bit external library ICU [ICUIN]
+/// </summary>
+/// \sa IBP_DBPROP__INIT__ICUIN_LIBRARY
+const DBPROPID IBP_DBPROP__INIT__ICUIN_LIBRARY_64               =0x0075;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  Source of timezones data
+/// </summary>
+const DBPROPID IBP_DBPROP__INIT__TIMEZONES_SOURCE               =0x0076;
 
 //------------------------------------------------------------------------
 #if !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)

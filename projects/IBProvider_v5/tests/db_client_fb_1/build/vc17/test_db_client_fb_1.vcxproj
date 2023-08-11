@@ -255,6 +255,11 @@
     <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__mbc_buffer_to_ucs2.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__mbc_to_ucs2.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v052\ibp_cs_icu_v052__text_stream__ucs2_to_mbc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__provider.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__mbc_buffer_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__mbc_to_ucs2.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__ucs2_to_mbc.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_manager_v2__data.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\charsets\ibp_charset_std_collations.cpp" />
@@ -563,7 +568,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_base.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_blob_writer_buf.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_charset_info.cpp" />
-    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_data_types.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_datatypes.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_operation_reg.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_service_utils.cc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -608,6 +613,14 @@
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_messages.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\error_services\ibp_error_variant.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuin.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuin_type01.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v003.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v052.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v063.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader_factory.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__bncore.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__bn_fast_mp_invmod.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__bn_fast_mp_montgomery_reduce.cpp" />
@@ -786,6 +799,7 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__server_data_back_read.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__sql_cache__scope.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__support_square_delim_name.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__timezones_source.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__tr_abort_flags.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__type_of_db_users.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__wchars_in_utf8_symbol.cpp" />
@@ -801,6 +815,7 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\values\datasource\ibp_oledb__props2__values__datasource.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\values\ibp_oledb__props2__values.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\ibp_os__dlls.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\os\ibp_os__dll_loader_descr.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\ibp_os__dll_proxy.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__descr_builder.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\os\win32\auth\ibp_os_win32_auth__provider.cpp" />
@@ -867,6 +882,7 @@
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_012__decfloat16.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_014__timestamp_with_tz.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.cpp" />
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.cpp" />
@@ -899,11 +915,13 @@
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_015__decfloat16.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_016__decfloat34.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_017__timestamp_with_tz.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_015__decfloat16.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_016__decfloat34.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_017__timestamp_with_tz.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.cpp" />
@@ -938,6 +956,7 @@
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_002__check_align.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\timestamp\WORK_StmtFetch__Types__timestamp_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\timestamp_with_tz\WORK_StmtFetch__Types__timestamp_with_tz_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\time\WORK_StmtFetch__Types__time_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\varchar\WORK_StmtFetch__Types__varchar_001__sz7.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_001__nulls.cpp" />
@@ -979,6 +998,7 @@
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_002__check_align.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp\WORK_StmtFetch_M__Types__timestamp_001.cpp" />
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp_with_tz\WORK_StmtFetch_M__Types__timestamp_with_tz_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\time\WORK_StmtFetch_M__Types__time_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\varchar\WORK_StmtFetch_M__Types__varchar_001__sz7.cpp" />
     <ClCompile Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__001__nulls.cpp" />
@@ -1438,7 +1458,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_svc.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_types.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_utility.h" />
-    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_data_types.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_datatypes.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_api.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h" />
@@ -1474,6 +1494,9 @@
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_records_r.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_variant.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v003\ibp_external__icu_v003__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v052\ibp_external__icu_v052__api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v063\ibp_external__icu_v063__api.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__tommath.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__tommath_class.h" />
     <ClInclude Include="..\..\..\..\provider\source\external\libtommath\set01\ibp_external__libtommath_set01__tommath_private.h" />
@@ -1586,6 +1609,7 @@
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_011__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_012__decfloat16.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.h" />
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_014__timestamp_with_tz.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_001__smallint.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.h" />
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_003__bigint.h" />
@@ -1618,11 +1642,13 @@
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_014__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_015__decfloat16.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_016__decfloat34.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_017__timestamp_with_tz.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN\WORK_Params_IN_013__boolean.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_013__boolean.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_014__int128.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_015__decfloat16.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_016__decfloat34.h" />
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_017__timestamp_with_tz.h" />
     <ClInclude Include="..\..\source\tests\work\Params\WORK_Params__001__nulls.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_001__short.h" />
     <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_002__long.h" />
@@ -1657,6 +1683,7 @@
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\smallint\WORK_StmtFetch__Types__smallint_002__check_align.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\timestamp\WORK_StmtFetch__Types__timestamp_001.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\timestamp_with_tz\WORK_StmtFetch__Types__timestamp_with_tz_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\time\WORK_StmtFetch__Types__time_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\varchar\WORK_StmtFetch__Types__varchar_001__sz7.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch\WORK_StmtFetch_Test_001__nulls.h" />
@@ -1698,6 +1725,7 @@
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\smallint\WORK_StmtFetch_M__Types__smallint_002__check_align.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp\WORK_StmtFetch_M__Types__timestamp_001.h" />
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp_with_tz\WORK_StmtFetch_M__Types__timestamp_with_tz_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\time\WORK_StmtFetch_M__Types__time_001.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\varchar\WORK_StmtFetch_M__Types__varchar_001__sz7.h" />
     <ClInclude Include="..\..\source\tests\work\StmtFetch_M\WORK_StmtFetch_M__001__nulls.h" />

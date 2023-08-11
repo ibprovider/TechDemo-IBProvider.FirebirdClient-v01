@@ -1,4 +1,20 @@
 ////////////////////////////////////////////////////////////////////////////////
+
+//
+// [2023-06-21]
+//  These structures help solve a problem with C++20 and parameter with type T[].
+//
+
+template<typename T>
+struct norm_closure_arg
+{
+ using type=T;
+};//struct norm_closure_arg
+
+template<typename T>
+using norm_closure_arg_t=typename norm_closure_arg<T>::type;
+
+////////////////////////////////////////////////////////////////////////////////
 //class t_closure
 
 template<class TResult,class...TARGS>
@@ -82,6 +98,24 @@ inline bool operator != (std::nullptr_t /*v*/,const t_closure<TResult,TARGS...>&
 }//operator nullptr!=x
 
 ////////////////////////////////////////////////////////////////////////////////
+//class t_closure_caller_f
+
+template<typename PFunc,class TResult,class ...TARGS>
+class t_closure_caller_f COMP_W000006_CLASS_FINAL
+{
+ public: //typedefs
+  typedef closure_v3::__closure_data think_type;
+
+ public:
+  static TResult call(const think_type& think,TARGS... args)
+  {
+   assert(think.valid());
+
+   return reinterpret_cast<const PFunc>(think.buffer[0])(std::forward<TARGS>(args)...);
+  }//call
+};//class t_closure_caller_f
+
+////////////////////////////////////////////////////////////////////////////////
 //class t_closure_caller
 
 template<class TObj,typename TMemFunc,class TResult,class ...TARGS>
@@ -107,13 +141,25 @@ class t_closure_caller COMP_W000006_CLASS_FINAL
 
 #if(COMP_CONF_SUPPORT_CDECL_MEMBER)
 
+template<class TResult,class ...TARGS>
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TResult (__cdecl *pFunc)(TARGS...))
+{
+ typedef closure_v3::__closure_data                               think_type;
+ typedef TResult (__cdecl *PFunc)(TARGS...);
+ typedef t_closure_caller_f<PFunc,TResult,TARGS...>               caller_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
+
+ return closure_type(think_type(pFunc),caller_type::call);
+}//make_closure_r
+
+//------------------------------------------------------------------------------
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*MemFunc)(TARGS...))
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*MemFunc)(TARGS...))
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__cdecl TObj::*mem_func_type)(TARGS...);
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));
@@ -123,12 +169,12 @@ t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*Mem
 
 //------------------------------------------------------------------------------
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*MemFunc)(TARGS...)const)
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*MemFunc)(TARGS...)const)
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__cdecl TObj::*mem_func_type)(TARGS...)const;
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));
@@ -142,13 +188,25 @@ t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__cdecl TObj::*Mem
 
 #if(COMP_CONF_SUPPORT_STDCALL_MEMBER)
 
+template<class TResult,class ...TARGS>
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TResult (__stdcall *pFunc)(TARGS...))
+{
+ typedef closure_v3::__closure_data                               think_type;
+ typedef TResult (__stdcall *PFunc)(TARGS...);
+ typedef t_closure_caller_f<PFunc,TResult,TARGS...>               caller_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
+
+ return closure_type(think_type(pFunc),caller_type::call);
+}//make_closure_r
+
+//------------------------------------------------------------------------------
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*MemFunc)(TARGS...))
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*MemFunc)(TARGS...))
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__stdcall TObj::*mem_func_type)(TARGS...);
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));
@@ -158,12 +216,12 @@ t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*M
 
 //------------------------------------------------------------------------
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*MemFunc)(TARGS...)const)
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*MemFunc)(TARGS...)const)
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__stdcall TObj::*mem_func_type)(TARGS...)const;
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));
@@ -177,12 +235,12 @@ t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__stdcall TObj::*M
 
 #if(COMP_CONF_SUPPORT_THISCALL_MEMBER)
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__thiscall TObj::*MemFunc)(TARGS...))
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__thiscall TObj::*MemFunc)(TARGS...))
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__thiscall TObj::*mem_func_type)(TARGS...);
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));
@@ -192,12 +250,12 @@ t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__thiscall TObj::*
 
 //------------------------------------------------------------------------------
 template<class TObj,class TResult,class ...TARGS>
-t_closure<TResult,TARGS...> make_closure_r(TObj* obj,TResult (__thiscall TObj::*MemFunc)(TARGS...)const)
+t_closure<TResult,norm_closure_arg_t<TARGS>...> make_closure_r(TObj* obj,TResult (__thiscall TObj::*MemFunc)(TARGS...)const)
 {
  typedef closure_v3::__closure_data                               think_type;
  typedef TResult (__thiscall TObj::*mem_func_type)(TARGS...)const;
  typedef t_closure_caller<TObj,mem_func_type,TResult,TARGS...>    caller_type;
- typedef t_closure<TResult,TARGS...>                              closure_type;
+ typedef t_closure<TResult,norm_closure_arg_t<TARGS>...>          closure_type;
 
  assert_msg(sizeof(MemFunc)<=sizeof(think_type().buffer),
             "s1="<<sizeof(MemFunc)<<" s2="<<sizeof(think_type().buffer));

@@ -168,15 +168,16 @@ struct COMP_CONF_DECLSPEC_NOVTABLE DBVARIANT::TTypeService
 struct DBVARIANT::TTypeInfo
 {
  public: //typedefs
-  typedef DBVARIANT::length_type    length_type;
-  typedef BYTE                      precision_type;
-  typedef unsigned int              flags_type;
+  typedef DBVARIANT::length_type                        length_type;
+  typedef BYTE                                          precision_type;
+  typedef structure::t_value_with_null<precision_type>  precision_type_N;
+  typedef unsigned int                                  flags_type;
 
  public:
   DBTYPE                 Type;
   const t_oledb_char*    Name;
   length_type            Size;
-  precision_type         Precision;
+  precision_type_N       Precision2;
   flags_type             Flags;     //EnumTypeFlags
   const TTypeService*    pTypeService;
 

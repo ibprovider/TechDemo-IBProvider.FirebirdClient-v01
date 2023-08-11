@@ -363,6 +363,10 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_515__decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+  static void test_516__timestamp_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -6106,6 +6110,85 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 }//test_515__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST 516
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_516__timestamp_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ const array_utils_type::byte_type sdl[]=
+ {
+  isc_api::ibp_isc_sdl_version1,
+  isc_api::ibp_isc_sdl_struct,
+  1,
+  isc_api::ibp_fb040_blr_dtype__timestamp_with_tz,
+  isc_api::ibp_isc_sdl_relation,
+  3,'a','b','c',
+  isc_api::ibp_isc_sdl_field,
+  0,
+  isc_api::ibp_isc_sdl_do1,
+  0,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  2,
+  isc_api::ibp_isc_sdl_do2,
+  1,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  (array_utils_type::byte_type)-10,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  10,
+  isc_api::ibp_isc_sdl_element,
+  1,
+  isc_api::ibp_isc_sdl_scalar,
+  0,
+  2,                                        //count of dimensions
+  isc_api::ibp_isc_sdl_variable,
+  0,
+  isc_api::ibp_isc_sdl_variable,
+  1,
+  isc_api::ibp_isc_sdl_eoc
+ };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _DIM_(sdl),
+   sdl,
+   &descr);
+
+ //-----------------------------------------
+
+ _TSO_CHECK(descr.m_relation_name==L"abc");
+
+ _TSO_CHECK(descr.m_field_name.empty());
+
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb040_blr_dtype__timestamp_with_tz);
+
+ _TSO_CHECK(descr.m_element_sql_scale==0);
+
+ _TSO_CHECK(descr.m_element_sql_length==12);
+
+ _TSO_CHECK(descr.m_element_total_length==12);
+
+ _TSO_CHECK(descr.m_bounds_number==2);
+
+ _TSO_CHECK(descr.m_bounds[0].lower==1);
+ _TSO_CHECK(descr.m_bounds[0].upper==2);
+
+ _TSO_CHECK(descr.m_bounds[1].lower==-10);
+ _TSO_CHECK(descr.m_bounds[1].upper==10);
+}//test_516__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
@@ -6323,6 +6406,9 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
 
  DEF_TEST_DESCR("515.decfloat34",
                 test_515__decfloat34)
+
+ DEF_TEST_DESCR("516.timestamp_with_tz",
+                test_516__timestamp_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR

@@ -21,41 +21,63 @@ t_ibp_os__dlls::t_ibp_os__dlls()
 //------------------------------------------------------------------------
 t_ibp_os__dlls::~t_ibp_os__dlls()
 {
-#ifndef NDEBUG
-
- //
- // The check of DLLs which were stayed in the global cache.
- //
- // They must be locked.
- //
- for(items_type::const_iterator x=m_items.cbegin(),_e=m_items.cend();x!=_e;++x)
+ try // suppresses exceptions
  {
-  assert((*x).GetDllLoader());
-  assert((*x).GetDllLoader()->get_cntRef()==1);
+  while(!m_items.empty())
+  {
+   const auto c=m_items.size();
 
-  if((*x).IsLockUntilUnload())
-   continue;
+   for(auto x=m_items.begin(),_e=m_items.end();x!=_e;++x)
+   {
+    assert((*x).GetDllLoader());
 
-  if((*x).GetDllLoader()->is_locked_in_memory())
-   continue;
+    if((*x).GetDllLoader()->get_cntRef()>1)
+     continue;
 
+    t_ibp_os__dll_loader_descr::children_type children;
+
+    std::swap((*x).m_children,children); //no throw
+
+    assert((*x).m_children.empty());
+
+    m_items.erase(x);
+
+    for(auto& child:children)
+     this->Helper__ReleaseDLL(&child); //no throw
+
+    break; //restart
+   }//for x
+
+   // [2023-06-29] No cycles!
+   assert(m_items.size()<c);
+
+   // This guard will prevent an infinite cycle
+   if(c==m_items.size())
+    break;
+  }//while !m_items.empty()
+
+  //
+  // [2023-06-27] Expected
+  //
+  assert(m_items.empty());
+ }
+ catch(...)
+ {
   assert(false);
- }//for x
-
-#endif
+ }//catch
 }//~t_ibp_os__dlls
 
 //interface --------------------------------------------------------------
 t_ibp_os__dll_ptr t_ibp_os__dlls::GetDLL(t_ibp_str_box const DLL_Name,
                                          long          const DLL_Lock_Rule)
 {
+ const lock_guard_type __lock(m_guard);
+
  t_ibp_os__dll_loader::self_ptr
   spDLL
    (structure::not_null_ptr
      (new t_ibp_os__dll_loader
        (DLL_Name))); //throw
-
- const lock_guard_type __lock(m_guard);
 
  auto x=m_items.insert(__STL_MOVE_VALUE(spDLL));
 
@@ -103,6 +125,48 @@ void t_ibp_os__dlls::ReleaseDLL(t_ibp_os__dll_loader::self_ptr* const pspDllLoad
 
  const lock_guard_type __lock(m_guard);
 
+ return this->Helper__ReleaseDLL(pspDllLoader);
+}//ReleaseDLL
+
+//------------------------------------------------------------------------
+void t_ibp_os__dlls::DefUnloadOrder(t_ibp_os__dll* const pFirst,
+                                    t_ibp_os__dll* const pSecond)
+{
+ assert(pFirst);
+ assert(pSecond);
+
+ const lock_guard_type __lock(m_guard);
+
+ const auto x1=m_items.find(pFirst);
+
+ assert(x1!=m_items.end());
+
+ const auto x2=m_items.find(pSecond);
+
+ assert(x2!=m_items.end());
+
+ if(x1==x2)
+ {
+  // [2023-06-26] I don't have an idea about this situation.
+  assert(false);
+
+  return;
+ }//if
+
+ assert(x1!=x2);
+
+ assert((*x1).GetDllLoader());
+ assert((*x2).GetDllLoader());
+
+ (*x1).m_children.insert((*x2).GetDllLoader()); //throw
+}//DefUnloadOrder
+
+//------------------------------------------------------------------------
+void t_ibp_os__dlls::Helper__ReleaseDLL(t_ibp_os__dll_loader::self_ptr* const pspDllLoader)
+{
+ assert(pspDllLoader);
+ assert(*pspDllLoader);
+
  auto x=m_items.find(pspDllLoader->ptr());
 
  assert(x!=m_items.end());
@@ -146,10 +210,21 @@ void t_ibp_os__dlls::ReleaseDLL(t_ibp_os__dll_loader::self_ptr* const pspDllLoad
 
  //It need to unload DLL from memory.
 
+ t_ibp_os__dll_loader_descr::children_type children;
+
+ std::swap((*x).m_children,children);
+
+ assert((*x).m_children.empty());
+
  m_items.erase(x);
 
+ for(auto& c:children)
+ {
+  this->Helper__ReleaseDLL(&c);
+ }//for c
+
  return;
-}//ReleaseDLL
+}//Helper__ReleaseDLL
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms os*/}/*nms ibp*/}/*nms lcpi*/
