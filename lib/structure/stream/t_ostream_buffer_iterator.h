@@ -9,7 +9,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<class T,class Traits=typename t_stream_buffer_traits__selector<T>::traits_type>
 class t_basic_ostream_buffer_iterator;

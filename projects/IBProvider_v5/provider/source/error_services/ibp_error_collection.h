@@ -23,7 +23,7 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp_err
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ibp_error_collection;
 

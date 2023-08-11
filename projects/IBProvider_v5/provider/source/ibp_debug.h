@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp_debug
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 struct t_ibp_debug__file_and_line;
 

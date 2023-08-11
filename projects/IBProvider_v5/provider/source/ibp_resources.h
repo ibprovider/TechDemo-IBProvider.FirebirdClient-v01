@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class TIBP_ResourceLoader;
 class TIBP_MessageLoader;

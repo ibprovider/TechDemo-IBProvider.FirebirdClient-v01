@@ -1,28 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup ibp_cs_icu_v003
-//! \file    ibp_cs_icu_v003__api.h
-//! \brief   Подмножество ICU API v3
-//! \author  Kovalenko Dmitry
-//! \date    07.10.2008
-#ifndef _ibp_cs_icu_v003__api_H_
-#define _ibp_cs_icu_v003__api_H_
+//ICU API [V003].
+//                                                 Kovalenko Dmitry. 26.06.2023.
+#ifndef _ibp_external__icu_v003__api_H_
+#define _ibp_external__icu_v003__api_H_
 
-namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{namespace v003{namespace api{
+#include <lcpi/lib/.config.h>
+#include <stdint.h>
+
+namespace lcpi{namespace ibp{namespace external{namespace icu{namespace v003{namespace api{
 ////////////////////////////////////////////////////////////////////////////////
 //Исключаем из зоны видимости doxygen-а
 //! \cond DOXYGEN_PROCESS_ALL
 ////////////////////////////////////////////////////////////////////////////////
 //ICU typedefs
 
-typedef signed __int8      int8_t;
-typedef signed __int16     int16_t;
-typedef signed __int32     int32_t;
-typedef signed __int64     int64_t;
+using ::int8_t;
+using ::int16_t;
+using ::int32_t;
+using ::int64_t;
 
-typedef unsigned __int8    uint8_t;
-typedef unsigned __int16   uint16_t;
-typedef unsigned __int32   uint32_t;
-typedef unsigned __int64   uint64_t;
+using ::uint8_t;
+using ::uint16_t;
+using ::uint32_t;
+using ::uint64_t;
 
 typedef int8_t             UBool;
 
@@ -53,7 +53,7 @@ typedef int32_t UChar32;
 typedef struct UConverter UConverter;
 
 ////////////////////////////////////////////////////////////////////////////////
-//enum UErrorCode;
+//enum UErrorCode
 
 /**
  * Error code to replace exception handling, so that the code is compatible with all C++ compilers,
@@ -69,7 +69,8 @@ typedef struct UConverter UConverter;
  * Error codes should be tested using U_FAILURE() and U_SUCCESS().
  * @stable ICU 2.0
  */
-typedef enum UErrorCode {
+typedef enum UErrorCode
+{
     /* The ordering of U_ERROR_INFO_START Vs U_USING_FALLBACK_WARNING looks weird
      * and is that way because VC++ debugger displays first encountered constant,
      * which is not the what the code is used for
@@ -294,7 +295,8 @@ typedef enum {
  * @see ucnv_getType
  * @stable ICU 2.0
  */
-typedef enum {
+typedef enum
+{
     UCNV_UNSUPPORTED_CONVERTER = -1,
     UCNV_SBCS = 0,
     UCNV_DBCS = 1,
@@ -334,7 +336,6 @@ typedef enum {
 
     /* Number of converter types for which we have conversion routines. */
     UCNV_NUMBER_OF_SUPPORTED_CONVERTER_TYPES
-
 } UConverterType;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -414,6 +415,7 @@ typedef void (ICU_EXPORT2 *UConverterToUCallback)
   UErrorCode*);
 
 //------------------------------------------------------------------------
+
 /**
  * Function pointer for error callback in the unicode to codepage direction.
  * Called when an error has occured in conversion from unicode, or on open/close of the callback (see reason).
@@ -426,6 +428,7 @@ typedef void (ICU_EXPORT2 *UConverterToUCallback)
  * @see ucnv_setFromUCallBack
  * @stable ICU 2.0
  */
+
 typedef void (ICU_EXPORT2 *UConverterFromUCallback)
  (const void*                context,
   UConverterFromUnicodeArgs* args,
@@ -473,9 +476,11 @@ typedef void (ICU_EXPORT2 *UConverterFromUCallback)
  */
 
 typedef UConverter* (ICU_EXPORT2 ICU_FN(ucnv_open))
- (const char *converterName, UErrorCode *err);
+ (const char* converterName,
+  UErrorCode* err);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Deletes the unicode converter and releases resources associated
  * with just this instance.
@@ -492,6 +497,7 @@ typedef void (ICU_EXPORT2 ICU_FN(ucnv_close))
  (UConverter* converter);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Changes the current callback function used by the converter when
  * an illegal or invalid sequence is found.
@@ -517,6 +523,7 @@ typedef void (ICU_EXPORT2 ICU_FN(ucnv_setFromUCallBack))
   UErrorCode*              err);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Changes the callback function used by the converter when
  * an illegal or invalid sequence is found.
@@ -542,6 +549,7 @@ typedef void (ICU_EXPORT2 ICU_FN(ucnv_setToUCallBack))
   UErrorCode*            err);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * DO NOT CALL THIS FUNCTION DIRECTLY!
  * This To Unicode callback STOPS at the ILLEGAL_SEQUENCE,
@@ -565,6 +573,7 @@ typedef void (ICU_EXPORT2 ICU_FN(UCNV_TO_U_CALLBACK_STOP))
   UErrorCode*              err);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * DO NOT CALL THIS FUNCTION DIRECTLY!
  * This From Unicode callback STOPS at the ILLEGAL_SEQUENCE,
@@ -590,6 +599,7 @@ typedef void (ICU_EXPORT2 ICU_FN(UCNV_FROM_U_CALLBACK_STOP))
   UErrorCode*                err);
 
 ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Converts an array of unicode characters to an array of codepage
  * characters. This function is optimized for converting a continuous
@@ -650,14 +660,14 @@ typedef void (ICU_EXPORT2 ICU_FN(UCNV_FROM_U_CALLBACK_STOP))
  */
 
 typedef void (ICU_EXPORT2 ICU_FN(ucnv_fromUnicode))
- (UConverter*    converter,
-  char**         target,
-  const char*    targetLimit,
-  const UChar**  source,
-  const UChar*   sourceLimit,
-  int32_t*       offsets,
-  UBool          flush,
-  UErrorCode*    err);
+ (UConverter*   converter,
+  char**        target,
+  const char*   targetLimit,
+  const UChar** source,
+  const UChar*  sourceLimit,
+  int32_t*      offsets,
+  UBool         flush,
+  UErrorCode*   err);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -951,6 +961,8 @@ typedef void (ICU_EXPORT2 ICU_FN(u_init))
 typedef void (ICU_EXPORT2 ICU_FN(u_cleanup))
  (void);
 
+////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Set the ICU data directory.
  * The data directory is where common format ICU data files (.dat files)
@@ -982,5 +994,5 @@ typedef void (ICU_EXPORT2 ICU_FN(u_setDataDirectory))
 ////////////////////////////////////////////////////////////////////////////////
 //! \endcond
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms api*/}/*nms v003*/}/*nms icu*/}/*nms cs_code*/}/*nms charsets*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms api*/}/*nms v003*/}/*nms icu*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
 #endif

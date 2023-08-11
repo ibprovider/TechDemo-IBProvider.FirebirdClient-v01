@@ -15,7 +15,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //! \addtogroup db_client__remote_fb__protocol_set01
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 struct P_CSTRING_CONST;
 struct P_LSTRING_CONST;

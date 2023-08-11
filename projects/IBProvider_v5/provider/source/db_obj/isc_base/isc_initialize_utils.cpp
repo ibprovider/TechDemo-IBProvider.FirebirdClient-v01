@@ -60,12 +60,15 @@ static t_ibp_string Helper__GetCharsetName
 ///  —оздание сервиса дл€ работы с кодовыми страницами
 /// </summary>
 //! \param[in] pDsPropValues
+//! \param[in] pIcuLoader
 //! \param[in] pCsName__ODS
 db_obj::t_db_charset_manager_v2_ptr
  isc_create_charset_manager_v2(const oledb_lib::OLEDB_Props2__Data__Values* const pDsPropValues,
+                               external::icu::ICU__Loader*                  const pIcuLoader,
                                const wchar_t*                               const pCsName__ODS)
 {
  assert(pDsPropValues);
+ assert(pIcuLoader);
  assert(pCsName__ODS);
 
  const t_ibp_string ctype_cn
@@ -76,44 +79,6 @@ db_obj::t_db_charset_manager_v2_ptr
 
  const t_ibp_string ctype_none
   =Helper__GetCharsetName(pDsPropValues,ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__CTYPE_NONE);
-
- //--------------
- t_ibp_string icu_library;
-
- for(;;)
- {
-  ole_lib::TVariant varPropValue__IcuLibrary;
-
-#if(IBP_PLATFORM_ID==IBP_PLATFORM_ID__WINNT_AMD64)
-  /// ¬ случае 64-битной сборки, значение свойства "icu_library_64" €вл€етс€ приоритетным.
-  if(pDsPropValues->Direct__GetValue(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__ICU_LIBRARY_64,nullptr,&varPropValue__IcuLibrary))
-  {
-   /*OK*/
-
-   assert(varPropValue__IcuLibrary.vt==VT_BSTR);
-  }
-  else
-#elif(IBP_PLATFORM_ID==IBP_PLATFORM_ID__WINNT_X86)
-#else
-# error Unknown IBP_PLATFORM_ID!
-#endif
-  if(pDsPropValues->Direct__GetValue(ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__ICU_LIBRARY,nullptr,&varPropValue__IcuLibrary))
-  {
-   /*OK*/
-
-   assert(varPropValue__IcuLibrary.vt==VT_BSTR);
-  }//if
-  else
-  {
-   //icu library not defined
-   break;
-  }//else
-
-  assert(varPropValue__IcuLibrary.vt==VT_BSTR);
- 
-  icu_library=ole_lib::BStrToUnkStr<t_ibp_char>(varPropValue__IcuLibrary.bstrVal);
-  break;
- }//for[ever]
 
  //--------------
  const auto wchars_in_utf8_symbol
@@ -129,7 +94,7 @@ db_obj::t_db_charset_manager_v2_ptr
   spCsMng
    (structure::not_null_ptr
      (new ibp::t_ibp_charset_manager_v2
-       (icu_library,
+       (pIcuLoader,
         static_cast<BYTE>(wchars_in_utf8_symbol))));
 
  //--------------

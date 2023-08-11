@@ -583,6 +583,35 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
      break;
     }//ibp_fb040_blr_dtype__decfloat34
 
+    case isc_api::ibp_fb040_blr_dtype__timestamp_with_tz:
+    {
+     using value_type=isc_api::t_ibp_fb040_timestamp_with_tz;
+
+     assert(MsgElementDescr.m_xvar_sqltype==isc_api::ibp_fb040_sql_timestamp_with_tz);
+
+     assert(MsgElementDescr.m_msg_value_block_size==sizeof(value_type));
+
+     //----
+#ifndef NDEBUG
+     const size_t c_align=isc_api::ibp_fb040_type_align__timestamp_with_tz;
+#endif
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(value_type)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::decode__fb040_timestamp_with_tz
+      (pBuf,
+       L"sql_message.timestamp_with_tz.utc_date",
+       L"sql_message.timestamp_with_tz.utc_time",
+       L"sql_message.timestamp_with_tz.time_zone",
+       reinterpret_cast<value_type*>(msg_data+offset));
+
+     break;
+    }//ibp_fb040_blr_dtype__timestamp_with_tz
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

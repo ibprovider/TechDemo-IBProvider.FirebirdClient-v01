@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp_charset
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ibp_cs_jis_0208_traits_base;
 

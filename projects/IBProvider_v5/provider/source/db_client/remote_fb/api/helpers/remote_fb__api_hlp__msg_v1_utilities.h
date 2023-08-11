@@ -41,7 +41,7 @@ class RemoteFB__API_HLP__Msg_v1__Utilities
   /// <summary>
   ///  Testing a OUT-message object.
   /// </summary>
-  /// <param name="pInMsg">
+  /// <param name="pOutMsg">
   ///  A pointer to the message object. Can be null.
   /// </param>
   ///  The number of values in pOutMsg.
@@ -51,7 +51,7 @@ class RemoteFB__API_HLP__Msg_v1__Utilities
   /// <summary>
   ///  Testing a OUT-message object.
   /// </summary>
-  /// <param name="pInMsg">
+  /// <param name="pOutMsg">
   ///  A pointer to the message object. Can be null.
   /// </param>
   /// <param name="minSQLD">

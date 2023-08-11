@@ -17,14 +17,14 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_cs_icu::tag_text_stream__mbc_to_ucs2
 
-class t_ibp_cs_icu::tag_text_stream__mbc_to_ucs2
+class t_ibp_cs_icu::tag_text_stream__mbc_to_ucs2 LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_text_stream__ucs2)
 {
  private:
   typedef tag_text_stream__mbc_to_ucs2              self_type;
 
-  tag_text_stream__mbc_to_ucs2(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_text_stream__mbc_to_ucs2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор

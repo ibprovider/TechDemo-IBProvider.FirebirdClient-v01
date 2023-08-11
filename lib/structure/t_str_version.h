@@ -11,7 +11,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<class charT,class Allocator=t_void_allocator>
 class t_str_version;

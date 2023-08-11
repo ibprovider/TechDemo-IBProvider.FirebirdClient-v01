@@ -11,12 +11,11 @@
 
 #include "source/charsets/cs_code/icu/v003/ibp_cs_icu_v003__provider.h"
 #include "source/charsets/cs_code/icu/v052/ibp_cs_icu_v052__provider.h"
+#include "source/charsets/cs_code/icu/v063/ibp_cs_icu_v063__provider.h"
 
 #include "source/os/ibp_os__dll_version_info.h"
 
 #include "source/error_services/ibp_error_utils.h"
-
-#include "source/ibp_global_objects_data__dlls.h"
 
 #include <win32lib/win32lib.h>
 
@@ -588,16 +587,17 @@ const t_ibp_char* const* ibp_get_charset_std_collations(const t_ibp_str_box& cse
 //class t_ibp_charset_manager_v2
 
 t_ibp_charset_manager_v2::t_ibp_charset_manager_v2
-                                           (const string_type&       icu_library,
-                                            const BYTE               wchars_in_utf8_symbol)
+                                           (icu_loader_type* const pIcuLoader,
+                                            const BYTE             wchars_in_utf8_symbol)
  :m_spStdLocaleC
-    (IBP_GetStdLocaleC())
- ,m_icu_library
-   (icu_library)
+   (IBP_GetStdLocaleC())
+ ,m_spIcuLoader
+   (lib::structure::not_null_ptr(pIcuLoader))
  ,m_wchars_in_utf8_symbol
    (wchars_in_utf8_symbol)
 {
  assert(m_spStdLocaleC);
+ assert(m_spIcuLoader);
 
  assert(m_wchars_in_utf8_symbol==1 ||
         m_wchars_in_utf8_symbol==2);
@@ -910,19 +910,36 @@ db_obj::t_db_charset_const_ptr
 {
  DEBUG_CODE(m_guard.debug__CheckCurrentThreadIsOwner();)
 
- if(m_icu_library.empty())
-  return nullptr;
+ assert(m_spIcuLoader);
 
  db_obj::t_db_charset_const_ptr spCS;
 
  try
  {
-  if(!m_icu_provider)
-   this->helper__create_icu_provider(); //throw
+  for(;;)
+  {
+   if(!m_icu_provider)
+   {
+    const icu_dll_ptr
+     spIcuDll
+      =m_spIcuLoader->get_dll__icuuc();
 
-  assert(m_icu_provider);
+    if(!spIcuDll)
+     break; // icu library was not defined
 
-  spCS=m_icu_provider->load_cs(cs_name); //can throw
+    m_icu_provider
+     =self_type::helper__create_icu_provider
+       (spIcuDll); //throw
+
+    assert(m_icu_provider);
+   }//if
+
+   assert(m_icu_provider);
+
+   spCS=m_icu_provider->load_cs(cs_name); //can throw
+
+   break;
+  }//for[ever]
  }
  catch(const std::exception& exc)
  {
@@ -938,28 +955,24 @@ db_obj::t_db_charset_const_ptr
 }//helper__create_icu_charset
 
 //------------------------------------------------------------------------
-void t_ibp_charset_manager_v2::helper__create_icu_provider()
+charsets::t_ibp_charset_provider_ptr
+ t_ibp_charset_manager_v2::helper__create_icu_provider(icu_dll_type* const pIcuDll)
 {
- typedef os::t_ibp_os__dll_ptr dll_ptr;
+ assert(pIcuDll);
 
- ///Загрузка DLL
- const dll_ptr
-  spDLL
-   (IBP_GlobalObjectsData__DLLs::GetDLL
-     (m_icu_library,
-      ibprovider::ibp_propval_dll_lock_rule__force_unload));
+ typedef os::t_ibp_os__dll_ptr dll_ptr;
 
  ///Загрузка сведений о версии DLL
  os::t_ibp_os__dll_version_info dll_ver_info;
 
- if(!dll_ver_info.load(spDLL->get_dll_handle()))
+ if(!dll_ver_info.load(pIcuDll->get_dll_handle()))
  {
   //ERROR - в DLL нет ресурса VERSIONINFO
 
   IBP_ErrorUtils::Throw__Error
    (E_FAIL,
     ibp_mce_common__dll_not_has_versioninfo_1,
-    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
+    win32lib::GetModuleFileName(pIcuDll->get_dll_handle()));
  }//if
 
  //-----------------------------------------  read module descr
@@ -970,7 +983,7 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
   IBP_ErrorUtils::Throw__Error
    (E_FAIL,
     ibp_mce_common__dll_versioninfo_not_has_file_descr_1,
-    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
+    win32lib::GetModuleFileName(pIcuDll->get_dll_handle()));
  }//if
 
  assert(!dll_ver_info.m_file_descr.empty());
@@ -983,7 +996,7 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
   IBP_ErrorUtils::Throw__Error
    (E_FAIL,
     ibp_mce_common__dll_versioninfo_not_has_prod_version_1,
-    win32lib::GetModuleFileName(spDLL->get_dll_handle()));
+    win32lib::GetModuleFileName(pIcuDll->get_dll_handle()));
  }//if
 
  assert(!dll_ver_info.m_prod_version.empty());
@@ -998,64 +1011,61 @@ void t_ibp_charset_manager_v2::helper__create_icu_provider()
    ///Создание провайдера ICU API v3
    namespace icu_ns=ibp::charsets::cs_code::icu::v003;
 
-   m_icu_provider
-    =structure::not_null_ptr
-      (new icu_ns::t_ibp_icu_provider(spDLL));
+   return structure::not_null_ptr
+           (new icu_ns::t_ibp_icu_provider(pIcuDll));
   }//if
-  else
-  {
-   //ERROR - неподдерживаемая версия ICU
 
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_mce_cs__unsupported_external_provider_3,
-     win32lib::GetModuleFileName(spDLL->get_dll_handle()),
-     dll_ver_info.m_file_descr,
-     dll_ver_info.m_prod_version);
-  }//else
- }
- else
+  //ERROR - неподдерживаемая версия ICU
+
+  IBP_ErrorUtils::Throw__Error
+   (E_FAIL,
+    ibp_mce_cs__unsupported_external_provider_3,
+    win32lib::GetModuleFileName(pIcuDll->get_dll_handle()),
+    dll_ver_info.m_file_descr,
+    dll_ver_info.m_prod_version);
+ }//if
+
  if(dll_ver_info.m_file_descr==L"ICU Common DLL")
  {
-  //Это ICU из FB3
+  //Это ICU из FB3+
   const structure::wstr_version ver(dll_ver_info.m_prod_version);
+
+  if(structure::eq_str_version_prefix(ver,L"63.1"))
+  {
+   ///Создание провайдера ICU API v63
+   namespace icu_ns=ibp::charsets::cs_code::icu::v063;
+
+   return structure::not_null_ptr
+           (new icu_ns::t_ibp_icu_provider(pIcuDll));
+  }//if
 
   if(structure::eq_str_version_prefix(ver,L"52.1"))
   {
    ///Создание провайдера ICU API v52
    namespace icu_ns=ibp::charsets::cs_code::icu::v052;
 
-   m_icu_provider
-    =structure::not_null_ptr
-      (new icu_ns::t_ibp_icu_provider(spDLL));
-  }
-  else
-  {
-   //ERROR - неподдерживаемая версия ICU
+   return structure::not_null_ptr
+           (new icu_ns::t_ibp_icu_provider(pIcuDll));
+  }//if
 
-   IBP_ErrorUtils::Throw__Error
-    (E_FAIL,
-     ibp_mce_cs__unsupported_external_provider_3,
-     win32lib::GetModuleFileName(spDLL->get_dll_handle()),
-     dll_ver_info.m_file_descr,
-     dll_ver_info.m_prod_version);
-  }//else
-
-  assert(m_icu_provider);
- }
- else
- {
-  //ERROR - указанная DLL не является поставщиком ICU
+  //ERROR - неподдерживаемая версия ICU
 
   IBP_ErrorUtils::Throw__Error
    (E_FAIL,
-    ibp_mce_cs__unknown_external_provider_3,
-    win32lib::GetModuleFileName(spDLL->get_dll_handle()),
+    ibp_mce_cs__unsupported_external_provider_3,
+    win32lib::GetModuleFileName(pIcuDll->get_dll_handle()),
     dll_ver_info.m_file_descr,
     dll_ver_info.m_prod_version);
- }//else
+ }//if
 
- assert(m_icu_provider);
+ //ERROR - указанная DLL не является поставщиком ICU
+
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_cs__unknown_external_provider_3,
+   win32lib::GetModuleFileName(pIcuDll->get_dll_handle()),
+   dll_ver_info.m_file_descr,
+   dll_ver_info.m_prod_version);
 }//helper__create_icu_provider
 
 //------------------------------------------------------------------------

@@ -133,14 +133,6 @@ extern const IBP_LONG g_IBP_PropFlagsFor__rowset_file_sys_flags[2]=
 
 ////////////////////////////////////////////////////////////////////////////////
 
-extern const IBP_LONG g_IBP_PropFlagsFor__numeric_rules[2]=
-{
- ibp_propval_numeric_rules__ignore_zero_scale,
- ibp_propval_numeric_rules__use_base_type_precision,
-};//g_IBP_PropFlagsFor__numeric_rules
-
-////////////////////////////////////////////////////////////////////////////////
-
 extern const IBP_LONG g_IBP_PropValuesFor__dbtime_rules[3]=
 {
  ibp_propval_dbtime_rules__as_dbtime,
@@ -600,6 +592,22 @@ extern const IBP_CHAR* const g_IBP_PropValuesFor__dbclient_type[4]=
 
 extern const IBP_CHAR* const ibp_propval__dbclient_type__default
  =ibp_propval__dbclient_type__ib;
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Configuration of timezones source
+
+extern const IBP_CHAR ibp_propval__timezones_source__icu[]
+ =L"icu";
+
+extern const IBP_CHAR ibp_propval__timezones_source__server[]
+ =L"server";
+
+extern const IBP_CHAR* const g_IBP_PropValuesFor__timezones_source[2]=
+{
+ ibp_propval__timezones_source__icu,
+ ibp_propval__timezones_source__server,
+};//g_IBP_PropValuesFor__timezones_source
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms v05*/}/*nms ibprovider*/}/*nms sdk*/}/*nms lcpi*/

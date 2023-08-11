@@ -173,9 +173,11 @@ db_obj::t_db_cs_result
    size_type cb_readed_ucs2=0;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_source__ucs2->read_ucs2(_DIM_(m_source_buffer)-m_source_buffer_size,
-                                         m_source_buffer+m_source_buffer_size,
-                                         &cb_readed_ucs2);
+    cvt_result
+     =m_source__ucs2->read_ucs2
+       (_DIM_(m_source_buffer)-m_source_buffer_size,
+        m_source_buffer+m_source_buffer_size,
+        &cb_readed_ucs2);
 
    assert(cb_readed_ucs2<=_DIM_(m_source_buffer)-m_source_buffer_size);
 

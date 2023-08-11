@@ -245,6 +245,13 @@ size_t RemoteFB__API_HLP__BLR_V05__Utilities::Calc_BLR_MAX_XDR_SIZE
      break;
     }//ibp_fb040_blr_dtype__decfloat34
 
+    case isc_api::ibp_fb040_blr_dtype__timestamp_with_tz:
+    {
+     currentElementSize=xdr::get_size__fb040_timestamp_with_tz();
+
+     break;
+    }//ibp_fb040_blr_dtype__timestamp_with_tz
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

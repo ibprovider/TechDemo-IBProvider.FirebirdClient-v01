@@ -6,7 +6,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<class T,class BaseAllocator>
 class t_mem_cluster_allocator;

@@ -72,12 +72,14 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
  {
   switch(pXVar->get_typeID())
   {
+   // {byte_with_data_type,word_with_data_size}+{byte_with_ind_type,byte_with_ind_scale}
    case isc_api::ibp_isc_sql_varying:
    case isc_api::ibp_isc_sql_text:
    case isc_api::ibp_fb025_sql_null:
     szBlr+=2+3;
     break;
 
+   // {byte_with_data_type,byte_with_data_scale}+{byte_with_ind_type,byte_with_ind_scale}
    case isc_api::ibp_isc_sql_short:
    case isc_api::ibp_isc_sql_long:
    case isc_api::ibp_isc_sql_int64:
@@ -87,6 +89,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
     szBlr+=2+2;
     break;
 
+   // {byte_with_data_type}+{byte_with_ind_type,byte_with_ind_scale}
    case isc_api::ibp_isc_sql_float:
    case isc_api::ibp_isc_sql_double:
    case isc_api::ibp_isc_sql_type_time:
@@ -95,6 +98,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
    case isc_api::ibp_fb030_sql_boolean:
    case isc_api::ibp_fb040_sql_decfloat16:
    case isc_api::ibp_fb040_sql_decfloat34:
+   case isc_api::ibp_fb040_sql_timestamp_with_tz:
     szBlr+=2+1;
     break;
 
@@ -502,6 +506,21 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      PUSH_STUFF_BYTE(isc_api::ibp_fb040_blr_dtype__decfloat34)
      break;
     }//ibp_fb040_sql_decfloat34
+
+    //-------------------------------------------------------------------
+    case isc_api::ibp_fb040_sql_timestamp_with_tz:
+    {
+     if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz))
+     {
+      //ERROR - [BUG CHECK] incorrect xvar length;
+      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+       (L"sql_timestamp_with_tz",
+        xvar_sqllen);
+     }//if
+
+     PUSH_STUFF_BYTE(isc_api::ibp_fb040_blr_dtype__timestamp_with_tz)
+     break;
+    }//ibp_fb040_sql_timestamp_with_tz
 
     //-------------------------------------------------------------------
     default:

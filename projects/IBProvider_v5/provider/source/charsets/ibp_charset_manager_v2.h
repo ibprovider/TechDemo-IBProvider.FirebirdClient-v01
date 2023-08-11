@@ -9,7 +9,11 @@
 
 #include "source/charsets/ibp_charset_provider.h"
 #include "source/db_obj/db_charset_manager_v2.h"
+
+#include "source/external/icu/ibp_external__icu__loader.h"
+
 #include "source/ibp_locale_services.h"
+
 #include <structure/tree/t_tree_avl.h>
 
 #include <array>
@@ -58,6 +62,12 @@ class t_ibp_charset_manager_v2
 
   typedef std::basic_string<cs_name_box_type::value_type> charset_name_type;
 
+  typedef ibp::external::icu::ICU__Loader                 icu_loader_type;
+  typedef icu_loader_type::self_ptr                       icu_loader_ptr;
+
+  typedef ibp::external::icu::ICU__Dll                    icu_dll_type;
+  typedef ibp::external::icu::ICU__Dll_Ptr                icu_dll_ptr;
+
  public:
   const BYTE m_wchars_in_utf8_symbol;
 
@@ -65,10 +75,11 @@ class t_ibp_charset_manager_v2
   /// <summary>
   ///  Конструктор инициализации
   /// </summary>
-  //! \param[in] icu_library
+  //! \param[in] pIcuLoader
+  //!  Not null.
   //! \param[in] wchars_in_utf8_symbol
-  t_ibp_charset_manager_v2(const string_type&       icu_library,
-                           BYTE                     wchars_in_utf8_symbol);
+  t_ibp_charset_manager_v2(icu_loader_type* pIcuLoader,
+                           BYTE             wchars_in_utf8_symbol);
 
   /// <summary>
   ///  Регистрация идентификатора кодовой страницы
@@ -124,7 +135,9 @@ class t_ibp_charset_manager_v2
   /// <summary>
   ///  Создание ICU провайдера
   /// </summary>
-  void helper__create_icu_provider();
+  //! \param[in] pICUUC_DLL
+  static charsets::t_ibp_charset_provider_ptr
+   helper__create_icu_provider(icu_dll_type* pICUUC_DLL);
 
   /// <summary>
   ///  Транслирование имени кодовой страницы пользователя
@@ -153,13 +166,13 @@ class t_ibp_charset_manager_v2
 
  private:
   ///Внешняя ICU библиотека
-  const string_type       m_icu_library;
+  const icu_loader_ptr     m_spIcuLoader;
 
   ///Объект синхронизации доступа к собственным данным менеджера
-  guard_type              m_guard;
+  guard_type               m_guard;
 
   ///Созданные объекты кодовых страниц
-  cs_map_type             m_cache;
+  cs_map_type              m_cache;
 
   ///Указатель на провайдер ICU
   charsets::t_ibp_charset_provider_ptr m_icu_provider;

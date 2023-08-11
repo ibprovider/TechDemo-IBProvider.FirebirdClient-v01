@@ -9,6 +9,8 @@
 
 #include "source/ibp_memory.h"
 
+#include <structure/t_closure.h>
+
 namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os__dll
@@ -16,8 +18,8 @@ namespace lcpi{namespace ibp{namespace os{
 class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
 {
  public:
-  using pfn_service_obj_creator
-   =IBP_SmartObjectPtr (*)();
+  using service_obj_creator_type
+   =structure::t_closure<IBP_SmartObjectPtr>;
 
  public:
   /// <summary>
@@ -41,12 +43,12 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
   ///  Getting a DLL service object. THROW.
   /// </summary>
   //! \param[in] rServiceObjID
-  //! \param[in] pfnServiceObjCreator
+  //! \param[in] fnServiceObjCreator
   //!  Pointer to the creator of a service object.
   //! \return
   //!  Not NULL.
-  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                 rServiceObjID,
-                                             pfn_service_obj_creator pfnServiceObjCreator)=0;
+  virtual IBP_SmartObjectPtr get_service_obj(REFGUID                  rServiceObjID,
+                                             service_obj_creator_type fnServiceObjCreator)=0;
 };//class t_ibp_os__dll
 
 ////////////////////////////////////////////////////////////////////////////////

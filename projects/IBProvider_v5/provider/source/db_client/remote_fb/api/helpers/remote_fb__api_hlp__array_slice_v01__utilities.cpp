@@ -702,6 +702,18 @@ void RemoteFB__API_HLP__ArraySlice_v01__Utilities::Helper__ParseSDL__ReadElement
   }//case ibp_fb040_blr_dtype__decfloat34
 
   //----------------------------------------------------------------------
+  case isc_api::ibp_fb040_blr_dtype__timestamp_with_tz:
+  {
+   pDescr->m_element_sql_scale=0;
+
+   pDescr->m_element_sql_length=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz);
+
+   pDescr->m_element_total_length=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz);
+
+   break;
+  }//case ibp_fb040_blr_dtype__timestamp_with_tz
+
+  //----------------------------------------------------------------------
   default:
   {
    //ERROR - incorrect SDL - unexpected BLR data type id

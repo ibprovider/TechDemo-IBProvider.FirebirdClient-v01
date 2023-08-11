@@ -10,7 +10,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<class TNode,class Allocator>
 class t_tree_base;

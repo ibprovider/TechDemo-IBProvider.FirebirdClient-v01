@@ -24,6 +24,9 @@ class t_ibp_os_win32__path_utils LCPI_CPP_CFG__CLASS__FINAL
  public:
   static t_ibp_str_box GetParentDir(const t_ibp_str_box& path);
 
+  static t_ibp_string Concat(const t_ibp_str_box& path1,
+                             const t_ibp_str_box& path2);
+
  private:
   static t_ibp_str_box Helper__NormalizationPath(const t_ibp_str_box& path);
 };//class t_ibp_os_win32__path_utils

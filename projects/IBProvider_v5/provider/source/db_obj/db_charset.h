@@ -35,8 +35,8 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_db_charset:public t_db_smart_interface
 
  public:
   /// <summary>
-  ///  Получение описания кодовой страницы
-  /// <summary>
+  ///  Getting the description of codepage
+  /// </summary>
   virtual const t_db_charset_info& get_info()const=0;
 
   /// <summary>

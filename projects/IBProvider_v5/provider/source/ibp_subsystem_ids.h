@@ -21,6 +21,16 @@ namespace lcpi{namespace ibp{
 /// </summary>
 enum t_ibp_subsystem_id
 {
+ //----------------------------------------- ICU.
+ ibp_subsystem__icu_api_v003
+  =IBP_SUBSYSTEM__ICU_API_V003,
+
+ ibp_subsystem__icu_api_v052
+  =IBP_SUBSYSTEM__ICU_API_V052,
+
+ ibp_subsystem__icu_api_v063
+  =IBP_SUBSYSTEM__ICU_API_V063,
+
  //----------------------------------------- ISC API.
  ibp_subsystem__isc_api
   =IBP_SUBSYSTEM__ISC_API,

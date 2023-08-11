@@ -716,20 +716,15 @@ void RemoteFB__API_P12_LAZY_SEND__PrepareStatement::helper__exec__close_and_prep
     //! \todo
     //!  ќбъ€вить текущую ошибку в качестве основной
 
-    //указываем код первой ошибки
-    DEBUG_CODE(size_t const debug_curErrCount=Errors.get_record_count());
+    //detecting the code of the first error
+    assert(Errors.get_record(0));
 
-    assert(debug_curErrCount>0);
+    const HRESULT finalErrCode=IBP_MapErrorRecordToHRESULT(Errors.get_record(0));
 
-    Errors=IBP_MapErrorRecordToHRESULT(Errors.get_record(0));
+    assert(FAILED(finalErrCode));
 
-    assert(FAILED(Errors.com_code()));
-
-    //количество описаний ошибки не должно изменитьс€
-    assert(Errors.get_record_count()==debug_curErrCount);
-
-    //и выкидываем исключение
-    Errors.raise_me();
+    //throwing an exception with this code
+    Errors.raise_me(finalErrCode);
    }//if spErrRec
 
    //запрос был подготовлен без ошибок

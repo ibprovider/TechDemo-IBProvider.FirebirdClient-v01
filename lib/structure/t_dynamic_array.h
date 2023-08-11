@@ -12,7 +12,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<class T,class Allocator=std::allocator<T> >
 class t_dynamic_array;

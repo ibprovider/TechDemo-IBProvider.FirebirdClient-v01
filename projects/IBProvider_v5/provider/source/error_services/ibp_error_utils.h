@@ -78,10 +78,22 @@ HRESULT IBP_GetMaxByTerribleHRESULT(HRESULT hr1,HRESULT hr2);
 //генерация исключения ошибки конвертирования
 
 COMP_CONF_DECLSPEC_NORETURN
- void IBP_ThrowConvertError
+void IBP_ThrowConvertError
        (HRESULT           error_code,
         DBTYPE            wSourceType,
         DBTYPE            wDestType);//throw
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ReThrowConvertErrorWithCorrectedHResult
+       (const std::exception& innerException,
+        DBTYPE                wSourceType,
+        DBTYPE                wDestType);//throw
+
+COMP_CONF_DECLSPEC_NORETURN
+void IBP_ReThrowConvertErrorWithCorrectedHResult
+       (const std::exception&            innerException,
+        lib::structure::t_const_wstr_box sourceTypeSign,
+        lib::structure::t_const_wstr_box destTypeSign);//throw
 
 COMP_CONF_DECLSPEC_NORETURN
 void IBP_ThrowErr__save_numeric_as_native_type
@@ -444,6 +456,11 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   template<typename... Args>
   COMP_CONF_DECLSPEC_NORETURN
   static void Throw__Error
+               (HRESULT hr);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void Throw__Error
                (const std::exception& e,
                 HRESULT               hr,
                 ibp_msg_code_type     msg_code,
@@ -521,6 +538,24 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   COMP_CONF_DECLSPEC_NORETURN
   static void ReThrowWithSameHResult
                (const std::exception& e,
+                t_ibp_subsystem_id    subsystem_id,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
+
+ public:
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void ReThrowWithNewHResult
+               (const std::exception& e,
+                HRESULT               hr,
+                ibp_msg_code_type     msg_code,
+                Args&&...             args);
+
+  template<typename... Args>
+  COMP_CONF_DECLSPEC_NORETURN
+  static void ReThrowWithNewHResult
+               (const std::exception& e,
+                HRESULT               hr,
                 t_ibp_subsystem_id    subsystem_id,
                 ibp_msg_code_type     msg_code,
                 Args&&...             args);

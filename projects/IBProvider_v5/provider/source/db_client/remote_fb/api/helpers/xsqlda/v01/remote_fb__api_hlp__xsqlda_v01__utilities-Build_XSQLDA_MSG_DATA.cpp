@@ -469,6 +469,27 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
   }//ibp_fb040_sql_decfloat34
 
   //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_timestamp_with_tz:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_timestamp_with_tz",
+      pXSQLVAR->sqllen);
+   }//if
+
+   szMsg
+    =IBP_Memory_Utils::AddMemLength
+      (szMsg,
+       /*data size*/sizeof(isc_api::t_ibp_fb040_timestamp_with_tz),
+       /*align*/isc_api::ibp_fb040_type_align__timestamp_with_tz,
+       /*pcbResultAlign*/nullptr); //throw
+
+   break;
+  }//ibp_fb040_sql_timestamp_with_tz
+
+  //------------------------------------------------------------
   default:
   {
    //ERROR - [BUG CHECK] unexpected sqltypeID
@@ -1227,6 +1248,45 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_DATA__
    offset+=sizeof(sqldata_type);
    break;
   }//ibp_fb040_sql_decfloat34
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_timestamp_with_tz:
+  {
+   const size_t c_align=isc_api::ibp_isc_type_align__timestamp;
+
+   using sqldata_type=isc_api::t_ibp_fb040_timestamp_with_tz;
+
+   //-------------------------------------
+   assert(pXSQLVAR->sqllen==sizeof(sqldata_type));
+
+   assert(pXSQLVAR->sqldata!=nullptr);
+
+   assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%c_align)==0);
+
+   CHECK_READ_PTR(pXSQLVAR->sqldata,sizeof(sqldata_type));
+
+   //-------------------------------------
+   assert(offset<=DataBuffer.size());
+
+   _VERIFY(structure::align_memory_size(offset,c_align));
+
+   assert((offset%c_align)==0);
+   assert((reinterpret_cast<size_t>(DataBuffer.ptr_at(offset))%c_align)==0);
+
+   assert(offset<=DataBuffer.size());
+
+   assert(sizeof(sqldata_type)<=(DataBuffer.size()-offset));
+
+   //-----
+   if(!IsNull)
+   {
+    (*reinterpret_cast<sqldata_type*>(DataBuffer.ptr_at(offset)))
+      =(*reinterpret_cast<const sqldata_type*>(pXSQLVAR->sqldata));
+   }//if
+
+   offset+=sizeof(sqldata_type);
+   break;
+  }//ibp_fb040_sql_timestamp_with_tz
 
   //------------------------------------------------------------
   default:

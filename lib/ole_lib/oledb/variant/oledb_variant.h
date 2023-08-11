@@ -394,8 +394,9 @@ HRESULT DBVariant_MakeArrayOffset(const DBVARIANT&        Array,
 
 //------------------------------------------------------------------------
 
+// ElementLength is length of element in bytes or in chars (for CHAR/WCHAR)
 HRESULT DBVariant_CreateArray(DBTYPE                wElementType,
-                              size_t                ElementSize,
+                              size_t                ElementLength,
                               size_t                cDim,
                               const SAFEARRAYBOUND* rgsaBound,
                               SAFEARRAY**           ppArray);

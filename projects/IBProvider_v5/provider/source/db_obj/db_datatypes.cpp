@@ -1,13 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_obj
-//! \file    db_data_types.cpp
+//! \file    db_datatypes.cpp
 //! \brief   Определение типов данных
 //! \author  Kovalenko Dmitry
 //! \date    26.09.2015
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/db_obj/db_data_types.h"
+#include "source/db_obj/db_datatypes.h"
 #include "source/error_services/ibp_error_utils.h"
 
 #include <structure/utilities/to_underlying.h>
@@ -49,6 +49,12 @@ extern const t_dbvalue__bool_i2
 extern const DB_IBQUAD        __null_ib_quad          ={};
 extern const DB_IBBLOBID      __null_ib_blob_id       ={};
 extern const DB_IBARRAYID     __null_ib_array_id      ={};
+
+////////////////////////////////////////////////////////////////////////////////
+
+const t_dbvalue__fb040_timestamp_with_tz
+ __null_dbvalue__fb040_timestamp_with_tz
+  =make_fb040_timestamp_with_tz(0,0,0);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -252,6 +258,35 @@ const wchar_t* get_dbtype_name(t_dbtype const typeID)
    L"unknown dbtype id: %1",
    structure::to_underlying(typeID));
 }//get_dbtype_name
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__fb040_timestamp_with_tz& v2)
+{
+ if(v1.utc_timestamp!=v2.utc_timestamp)
+  return false;
+
+ if(v1.time_zone!=v2.time_zone)
+  return false;
+
+ return true;
+}//operator ==
+
+//------------------------------------------------------------------------
+bool operator != (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__fb040_timestamp_with_tz& v2)
+{
+ if(v1.utc_timestamp!=v2.utc_timestamp)
+  return true;
+
+ if(v1.time_zone!=v2.time_zone)
+  return true;
+
+ return false;
+}//operator !=
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 

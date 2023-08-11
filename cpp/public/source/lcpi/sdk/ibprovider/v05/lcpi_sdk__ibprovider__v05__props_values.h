@@ -328,21 +328,28 @@ static const IBP_LONG ibp_propval_rowset_file__write_block_size__default=0;
 //enum t_ibp_propval_numeric_rules
 
 /// <summary>
-///  Перечисление флагов, влияющих на обработку NUMERIC-типов данных
+///  The enumeration of flags for processing NUMERIC datatype
 /// </summary>
 enum t_ibp_propval_numeric_rules
 {
- ///Режимы по умолчанию
+ //! \brief
+ //!  Default mode
  ibp_propval_numeric_rules__default                  =0,
 
- ///Игнорировать нулевой масштаб. Данные будут представлены с использованием базового типа
+ //! \brief
+ //!  Numeric with zero scale will be published as value with underlying type (smallint, integer, bigint, int128)
  ibp_propval_numeric_rules__ignore_zero_scale        =0x01,
 
- ///Использовать точность базового типа
- ibp_propval_numeric_rules__use_base_type_precision  =0x02,
-};//t_ibp_propval_numeric_rules
+ //! \brief
+ //!  Numeric has the precision of the underlying datatype - smallint (5), integer (10), bigint (19), int128 (39).
+ ibp_propval_numeric_rules__base_precision           =0x02,
 
-extern const IBP_LONG g_IBP_PropFlagsFor__numeric_rules[2];
+ //! \brief
+ //!  Numeric is published as WSTR.
+ //! 
+ //!  It is diabled to use this flag with 'base_precision' flag
+ ibp_propval_numeric_rules__as_wstr                  =0x04,
+};//t_ibp_propval_numeric_rules
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -459,7 +466,7 @@ enum t_ibp_propval_dbtimestamp_with_tz_rules
 {
  /// \brief
  ///  Map on DBTYPE_DBTIMESTAMPOFFSET [DBTIMESTAMPOFFSET]
- ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset      =0,
+ ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset      =1,
 
  /// \brief
  ///  Map on DBTYPE_WSTR
@@ -470,7 +477,7 @@ enum t_ibp_propval_dbtimestamp_with_tz_rules
 ///  Default value
 /// </summary>
 static const IBP_LONG ibp_propval_dbtimestamp_with_tz_rules__default
- =ibp_propval_dbtimestamp_with_tz_rules__as_dbtimestampoffset;
+ =ibp_propval_dbtimestamp_with_tz_rules__as_wstr;
 
 extern const IBP_LONG g_IBP_PropValuesFor__dbtimestamp_with_tz_rules[2];
 
@@ -503,7 +510,7 @@ enum t_ibp_propval_int128_rules
 {
  /// \brief
  ///  Map on DBTYPE_NUMERIC [DBNUMERIC]
- ibp_propval_int128_rules__as_numeric                =1,
+ ibp_propval_int128_rules__as_numeric                =0,
 
  /// \brief
  ///  Map on DBTYPE_WSTR
@@ -1013,6 +1020,16 @@ extern const IBP_CHAR ibp_propval__dbclient_type__ya[];
 extern const IBP_CHAR* const g_IBP_PropValuesFor__dbclient_type[4];
 
 extern const IBP_CHAR* const ibp_propval__dbclient_type__default;
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Configuration of timezones source
+
+extern const IBP_CHAR ibp_propval__timezones_source__icu[];
+
+extern const IBP_CHAR ibp_propval__timezones_source__server[];
+
+extern const IBP_CHAR* const g_IBP_PropValuesFor__timezones_source[2];
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -227,6 +227,21 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_meta_svc__meta_data_cache)
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__gen_id)
 
 //------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__timezone_names)
+
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__ts_with_tz_services)
+
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__timezone_services)
+
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__fb040_ts_with_tz_services)
+
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__fb040_tz_names)
+
+//------------------------------------------------------------------------
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
 
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_pstmt_svc__sql_generator__for_insert)
@@ -290,6 +305,11 @@ IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__get_table_updatable_columns)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__columns_rowset)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__meta_data_cache)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__gen_id)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__timezone_names)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__ts_with_tz_services)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__timezone_services)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__fb040_ts_with_tz_services)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__fb040_tz_names)
 
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
 

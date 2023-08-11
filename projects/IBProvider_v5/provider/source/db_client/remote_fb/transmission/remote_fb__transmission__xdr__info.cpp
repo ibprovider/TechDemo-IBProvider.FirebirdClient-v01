@@ -162,5 +162,53 @@ size_t RemoteFB__XDR__Info::get_size__p_decfloat34()
  return 2*self_type::get_size__p_uint64();
 }//get_size__p_decfloat34
 
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__isc_time()
+{
+ return self_type::get_size__p_ulong_as_p_long();
+}//get_size__isc_time
+
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__isc_date()
+{
+ return self_type::get_size__p_long();
+}//get_size__isc_date
+
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__isc_timestamp()
+{
+ // case dtype_timestamp:
+ //     fb_assert(desc->dsc_length >= 2 * sizeof(SLONG));
+ //     if (!xdr_long(xdrs, &((SLONG*) p)[0]))
+ //         return FALSE;
+ //     if (!xdr_long(xdrs, &((SLONG*) p)[1]))
+ //         return FALSE;
+ //     break;
+
+ return self_type::get_size__isc_date()+self_type::get_size__isc_time();
+}//get_size__isc_timestamp
+
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__fb040_timezone()
+{
+ return self_type::get_size__p_ushort_as_p_short();
+}//get_size__fb040_timezone
+
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__fb040_timestamp_with_tz()
+{
+ // case dtype_timestamp_tz:
+ //     fb_assert(desc->dsc_length >= 2 * sizeof(SLONG) + 1);
+ //     if (!xdr_long(xdrs, &((SLONG*) p)[0]))
+ //         return FALSE;
+ //     if (!xdr_long(xdrs, &((SLONG*) p)[1]))
+ //         return FALSE;
+ //     if (!xdr_short(xdrs, reinterpret_cast<SSHORT*>(p + 2 * sizeof(SLONG))))
+ //         return FALSE;
+ //     break;
+
+ return self_type::get_size__isc_timestamp()+self_type::get_size__fb040_timezone();
+}//get_size__fb040_timestamp_with_tz
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms transmission*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

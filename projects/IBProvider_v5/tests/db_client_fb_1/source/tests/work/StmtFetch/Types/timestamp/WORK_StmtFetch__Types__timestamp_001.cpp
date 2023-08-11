@@ -170,9 +170,9 @@ void WORK_StmtFetch__Types__timestamp_001::tag_impl::run(context_type* const pCt
     "end;";
 
  //-----------------------------------------
- isc_api::t_ibp_isc_time  c_m_sec=10000;
- isc_api::t_ibp_isc_time  c_m_min=60*c_m_sec;
- isc_api::t_ibp_isc_time  c_m_hour=60*c_m_min;
+ const isc_api::t_ibp_isc_time  c_m_sec=10000;
+ const isc_api::t_ibp_isc_time  c_m_min=60*c_m_sec;
+ const isc_api::t_ibp_isc_time  c_m_hour=60*c_m_min;
 
  //-----------------------------------------
  struct tag_result

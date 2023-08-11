@@ -20,13 +20,14 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 /// <summary>
 ///  ¬нешн€€ кодова€ страница из ICU v3
 /// </summary>
-class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
+class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
 {
  private:
   typedef t_ibp_cs_icu                                   self_type;
 
-  t_ibp_cs_icu(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_cs_icu(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   ///Self smart-pointer
@@ -211,13 +212,13 @@ class t_ibp_cs_icu:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset
 /// <summary>
 ///   ласс дл€ управлени€ указателем на UConverter
 /// </summary>
-class t_ibp_cs_icu::tag_conv_holder
+class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_conv_holder                   self_type;
 
-  tag_conv_holder(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_conv_holder(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   enum enum_conv_direction

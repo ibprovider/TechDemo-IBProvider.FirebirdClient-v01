@@ -46,6 +46,19 @@ inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t
 }//operator <<
 
 ////////////////////////////////////////////////////////////////////////////////
+
+inline std::ostream& operator << (std::ostream& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_timestamp_with_tz& v)
+{ 
+ return tracer<<"{"<<v.utc_timestamp.timestamp_date<<", "<<v.utc_timestamp.timestamp_time<<", "<<v.time_zone<<"}";
+}//operator <<
+
+//------------------------------------------------------------------------
+inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_timestamp_with_tz& v)
+{ 
+ return tracer<<L"{"<<v.utc_timestamp.timestamp_date<<L", "<<v.utc_timestamp.timestamp_time<<L", "<<v.time_zone<<L"}";
+}//operator <<
+
+////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
 class TestServices
@@ -822,6 +835,13 @@ class TestServices
                 const isc_api::t_ibp_isc_timestamp& actualSqlValue,
                 short                               expectedSqlInd,
                 const isc_api::t_ibp_isc_timestamp& expectedSqlValue);
+
+  static bool checkValue__TIMESTAMP_WITH_TZ
+               (TTSO_Tracer&                                  tracer,
+                short                                         actualSqlInd,
+                const isc_api::t_ibp_fb040_timestamp_with_tz& actualSqlValue,
+                short                                         expectedSqlInd,
+                const isc_api::t_ibp_fb040_timestamp_with_tz& expectedSqlValue);
 
   static bool checkValue__TEXT
                (TTSO_Tracer&                        tracer,

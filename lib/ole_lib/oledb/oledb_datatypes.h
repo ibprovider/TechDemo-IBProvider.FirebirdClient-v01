@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //OLEDB Data Types
 //                                                Kovalenko Dmitry. 27.10.2008.
-#ifndef _oledb_data_types_H_
-#define _oledb_data_types_H_
+#ifndef _oledb_datatypes_H_
+#define _oledb_datatypes_H_
 
 #if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
 # pragma once
@@ -106,6 +106,8 @@ enum t_oledb_typeid
  oledb_typeid__ARRAY_STR                  = oledb_typeid__ARRAY|oledb_typeid__STR,
  oledb_typeid__ARRAY_WSTR                 = oledb_typeid__ARRAY|oledb_typeid__WSTR,   
  oledb_typeid__ARRAY_NUMERIC              = oledb_typeid__ARRAY|oledb_typeid__NUMERIC,
+
+ oledb_typeid__ARRAY_UDT                  = oledb_typeid__ARRAY|oledb_typeid__UDT,
 
  oledb_typeid__ARRAY_DBDATE               = oledb_typeid__ARRAY|oledb_typeid__DBDATE,
  oledb_typeid__ARRAY_DBTIME               = oledb_typeid__ARRAY|oledb_typeid__DBTIME,

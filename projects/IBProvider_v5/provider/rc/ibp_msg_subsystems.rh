@@ -5,6 +5,13 @@
 #define _ibp_msg_subsystems_RH_
 
 ////////////////////////////////////////////////////////////////////////////////
+//ICU.
+
+#define IBP_SUBSYSTEM__ICU_API_V003                                       800
+#define IBP_SUBSYSTEM__ICU_API_V052                                       801
+#define IBP_SUBSYSTEM__ICU_API_V063                                       802
+
+////////////////////////////////////////////////////////////////////////////////
 //ISC API.
 
 #define IBP_SUBSYSTEM__ISC_API__INIT_CN                                   1000

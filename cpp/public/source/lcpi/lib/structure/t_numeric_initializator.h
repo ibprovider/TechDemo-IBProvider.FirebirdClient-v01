@@ -69,5 +69,21 @@ template<int initializeValue>
 const t_numeric_initializator<initializeValue> t_numeric_initializator<initializeValue>::instance;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+template<int initializeValue>
+bool operator != (const t_numeric_initializator<initializeValue>& n,unsigned char v)
+{
+ return !n.eq(v);
+}//operator != unsigned char
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<int initializeValue>
+bool operator != (unsigned char const v,const t_numeric_initializator<initializeValue>& n)
+{
+ return !n.eq(v);
+}//operator != unsigned char
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif

@@ -49,6 +49,14 @@ class IBP_GlobalObjectsData__DLLs LCPI_CPP_CFG__CLASS__FINAL
   //!  (*pspDllLoader) will be released.
   static void ReleaseDLL(os::t_ibp_os__dll_loader::self_ptr* pspDllLoader);
 
+  /// <summary>
+  ///  Defining an unload order.
+  /// </summary>
+  //! \param[in] pFirst
+  //! \param[in] pSecond
+  static void DefUnloadOrder(os::t_ibp_os__dll* pFirst,
+                             os::t_ibp_os__dll* pSecond);
+
  private:
 #ifdef IBP_BUILD_TESTCODE
   class tagTestData;

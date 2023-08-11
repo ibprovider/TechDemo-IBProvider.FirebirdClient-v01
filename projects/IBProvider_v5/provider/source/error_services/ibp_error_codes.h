@@ -449,7 +449,7 @@ enum ibp_msg_code_type
  ///  Params: sourceSign, sourceLength, processedLength
  ibp_mce_common__failed_to_make_upper_str_3
   =IBP_MCE_COMMON__FAILED_TO_MAKE_UPPER_STR_3,
- 
+
  //-----------------------------------------------------------------------
  /// \brief
  ///  Ошибка приведения строки к нижнему регистру.<br>
@@ -457,14 +457,23 @@ enum ibp_msg_code_type
  ///  Params: sourceSign, sourceLength, processedLength
  ibp_mce_common__failed_to_make_lower_str_3
   =IBP_MCE_COMMON__FAILED_TO_MAKE_LOWER_STR_3,
- 
+
  ///////////////////////////////////////////////////////////////////////////////
- 
+
  /// \brief
  ///  Database server version is not defined.<br>
  ibp_mce_common__no_dbms_version_0
   =IBP_MCE_COMMON__NO_DBMS_VERSION_0,
- 
+
+ ///////////////////////////////////////////////////////////////////////////////
+
+ /// \brief
+ ///  Unsupported type of timezones source.<br>
+ /// \b
+ ///  Params: type name.
+ ibp_mce_common__unsupported_timezones_source_1
+  =IBP_MCE_COMMON__UNSUPPORTED_TIMEZONES_SOURCE_1,
+
  ///////////////////////////////////////////////////////////////////////////////
 
  /// \brief
@@ -623,9 +632,7 @@ enum ibp_msg_code_type
  ibp_mce_dbobj_invalid_numeric_array_scale_4 //base_type,scale,table_name,column_name
   =IBP_MCE_DBOBJ_INVALID_NUMERIC_ARRAY_SCALE_4,
 
- //ошибка в представлении времени
- ibp_mce_dbobj_bad_isc_time_value_4 //hour,minute,second,fraction
-  =IBP_MCE_DBOBJ_BAD_ISC_TIME_VALUE_4,
+ //Reserved
 
  //неподдерживаемая размерность массива
  ibp_mce_dbobj_unsupport_array_dimensions_3 //table_name,column_name,dimensions
@@ -716,18 +723,10 @@ enum ibp_msg_code_type
  ibp_mce_dbobj__cant_assign_str__large_len_4
   =IBP_MCE_DBOBJ__CANT_ASSIGN_STR__LARGE_LEN_4,
 
- //date-type, year, month, day, bad_part_name, min_valid_value, max_valid_value
- ibp_mce_dbobj__cant_convert_date__part_out_of_range_7
-  =IBP_MCE_DBOBJ__CANT_CONVERT_DATE__PART_OUT_OF_RANGE_7,
-
- ibp_mce_dbobj__cant_encode_isc_date_out_of_range_5
-  =IBP_MCE_DBOBJ__CANT_ENCODE_ISC_DATE_OUT_OF_RANGE_5,
-
- ibp_mce_dbobj__cant_decode_isc_time_out_of_range_3
-  =IBP_MCE_DBOBJ__CANT_DECODE_ISC_TIME_OUT_OF_RANGE_3,
-
- ibp_mce_dbobj__cant_decode_isc_date_out_of_range_5
-  =IBP_MCE_DBOBJ__CANT_DECODE_ISC_DATE_OUT_OF_RANGE_5,
+ //Reserved
+ //Reserved
+ //Reserved
+ //Reserved
 
  /// \brief Неизвестная кодовая страница.<br>
  /// \b Params: charset_name
@@ -781,6 +780,32 @@ enum ibp_msg_code_type
  /// \b Params: charset_name
  ibp_mce_dbobj__unknown_ods_charset_1
   =IBP_MCE_DBOBJ__UNKNOWN_ODS_CHARSET_1,
+
+ /// \brief
+ ///  The reset of connection server state was failed.
+ ibp_mce_dbobj__failed_to_reset_cn_server_state_0
+  =IBP_MCE_DBOBJ__FAILED_TO_RESET_CN_SERVER_STATE_0,
+
+ /// \brief
+ ///  Bad FB040 timezone id.
+ /// \b
+ ///  Params: place, point, id, name, min id, max id
+ ibp_mce_dbobj__bug_check__bad_fb040_tz_id__6
+  =IBP_MCE_DBOBJ__BUG_CHECK__BAD_FB040_TZ_ID__6,
+
+ /// \brief
+ ///  Duplication of timezone id.
+ /// \b
+ ///  Params: place, point, id, name1, name2
+ ibp_mce_dbobj__bug_check__duplication_of_timezone_id__5
+  =IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_ID__5,
+
+ /// \brief
+ ///  Duplication of timezone name.
+ /// \b
+ ///  Params: place, point, name, id1, id2
+ ibp_mce_dbobj__bug_check__duplication_of_timezone_name__5
+  =IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_NAME__5,
 
  //загрузка сведений о доменах -------------------------------------------
 
@@ -1777,12 +1802,17 @@ enum ibp_msg_code_type
  ibp_mce_cmd__command_text_contains_unsupported_statement_1
   =IBP_MCE_CMD__COMMAND_TEXT_CONTAINS_UNSUPPORTED_STATEMENT_1,
 
- //-----------------------------------------------------------------------
-
- /// \brief [BUG CHECK] Запрос не возвращает результирующее множество.<br>
- /// \b Params: check place, check point, stmt signature
+ /// \brief
+ ///  [BUG CHECK] Запрос не возвращает результирующее множество.<br>
+ /// \b
+ ///  Params: check place, check point, stmt signature
  ibp_mce_cmd__bug_check__stmt_is_not_selectable_3
   =IBP_MCE_CMD__BUG_CHECK__STMT_IS_NOT_SELECTABLE_3,
+
+ /// \brief
+ ///  Resetting the connection state via SQL is not supported.
+ ibp_mce_cmd__resetting_a_cn_state_through_sql_is_not_supported_0
+  =IBP_MCE_CMD__RESETTING_A_CN_STATE_THROUGH_SQL_IS_NOT_SUPPORTED_0,
 
  //команда со скриптом ---------------------------------------------------
 
@@ -2005,10 +2035,12 @@ enum ibp_msg_code_type
  ibp_mce_rs_stg__large_number_of_rows_in_resultset_0
   =IBP_MCE_RS_STG__LARGE_NUMBER_OF_ROWS_IN_RESULTSET_0,
 
- /// \brief Проблемы при установке данных колонки в буфер обмена.<br>
- /// \b Params: iOrdinal, Name, DBSTATUS
- ibp_mce_rs_stg__cant_get_column_data_3
-  =IBP_MCE_RS_STG__CANT_GET_COLUMN_DATA_3,
+ /// \brief
+ ///  The problem with setting data in the exchange (transfer) buffer.<br>
+ /// \b
+ ///  Params: iOrdinal, Name, BindDbType, DBSTATUS
+ ibp_mce_rs_stg__cant_get_column_data_4
+  =IBP_MCE_RS_STG__CANT_GET_COLUMN_DATA_4,
 
  /// \brief
  ///  После сбоя предыдущей операции с курсором, его корректная работа невозможна.
@@ -2079,7 +2111,228 @@ enum ibp_msg_code_type
  ibp_mce_datatype__exponent_is_not_in_valid_range_3
   =IBP_MCE_DATATYPE__EXPONENT_IS_NOT_IN_VALID_RANGE_3,
 
- /////////////////////////////////////////////////////////////////////////
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  A bad OLEDB time.<br>
+ /// \b
+ ///  Params: hour, minutes, seconds, fractions, bad part sign, min, max
+ ibp_mce_datatype__bad_oledb_time_7
+  =IBP_MCE_DATATYPE__BAD_OLEDB_TIME_7,
+
+ /// \brief
+ ///  Can't convert date value.<br>
+ /// \b
+ ///  Params: date-type, year, month, day, bad_part_name, min_valid_value, max_valid_value
+ ibp_mce_datatype__cant_convert_date__part_out_of_range_7
+  =IBP_MCE_DATATYPE__CANT_CONVERT_DATE__PART_OUT_OF_RANGE_7,
+
+ ibp_mce_datatype__cant_encode_isc_date_out_of_range_5
+  =IBP_MCE_DATATYPE__CANT_ENCODE_ISC_DATE_OUT_OF_RANGE_5,
+
+ ibp_mce_datatype__cant_decode_isc_time_out_of_range_3
+  =IBP_MCE_DATATYPE__CANT_DECODE_ISC_TIME_OUT_OF_RANGE_3,
+
+ ibp_mce_datatype__cant_decode_isc_date_out_of_range_5
+  =IBP_MCE_DATATYPE__CANT_DECODE_ISC_DATE_OUT_OF_RANGE_5,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  The work with timezones requires an ICUIN library.
+ ibp_mce_datatype__work_with_timezones_requires_icuin_library_0
+  =IBP_MCE_DATATYPE__WORK_WITH_TIMEZONES_REQUIRES_ICUIN_LIBRARY_0,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  The unknown external provider of datetime operations.<br/>
+ /// \b
+ ///  Params: DLL path, DLL description, DLL version
+ ibp_mce_datatype__unknown_external_provider_of_datetime_operations_3
+  =IBP_MCE_DATATYPE__UNKNOWN_EXTERNAL_PROVIDER_OF_DATETIME_OPERATIONS_3,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  The unsupported external provider of datetime operations.<br/>
+ /// \b
+ ///  Params: DLL path, DLL description, DLL version
+ ibp_mce_datatype__unsupported_external_provider_of_datetime_operations_3
+  =IBP_MCE_DATATYPE__UNSUPPORTED_EXTERNAL_PROVIDER_OF_DATETIME_OPERATIONS_3,
+
+ /// \brief
+ ///  An invalid ISC_TIME.<br>
+ /// \b
+ ///  Params: value, min value, max value
+ ibp_mce_datatype__invalid_isc_time_3
+  =IBP_MCE_DATATYPE__INVALID_ISC_TIME_3,
+
+ /// \brief
+ ///  An invalid ISC_DATE.<br>
+ /// \b
+ ///  Params: value, min value, max value, min date, max date
+ ibp_mce_datatype__invalid_isc_date_5
+  =IBP_MCE_DATATYPE__INVALID_ISC_DATE_5,
+
+ /// \brief
+ ///  An invalid ISC_TS_TICKS.<br>
+ /// \b
+ ///  Params: value, min value, max value
+ ibp_mce_datatype__invalid_isc_ts_ticks_3
+  =IBP_MCE_DATATYPE__INVALID_ISC_TS_TICKS_3,
+
+ /// \brief
+ ///  [FB040] Can't translate UTC timestamp into local timestamp. Out of range.<br>
+ /// \b
+ ///  Params: utc_ts, fb040_timezone, offset_in_ticks (microseconds)
+ ibp_mce_datatype__fb040__cant_translate_utc_ts_into_local_ts__out_of_range_3
+  =IBP_MCE_DATATYPE__FB040__CANT_TRANSLATE_UTC_TS_INTO_LOCAL_TS__OUT_OF_RANGE_3,
+
+ /// \brief
+ ///  [FB040] Can't translate local timestamp into UTC timestamp. Out of range.<br>
+ /// \b
+ ///  Params: local_ts, fb040_timezone, offset_in_ticks (microseconds)
+ ibp_mce_datatype__fb040__cant_translate_local_ts_into_utc_ts__out_of_range_3
+  =IBP_MCE_DATATYPE__FB040__CANT_TRANSLATE_LOCAL_TS_INTO_UTC_TS__OUT_OF_RANGE_3,
+
+ /// \brief
+ ///  An invalid time zone offset.<br>
+ /// \b
+ ///  Params: value, min value, max value
+ ibp_mce_datatype__invalid_tz_offset_3
+  =IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_3,
+
+ /// \brief
+ ///  An invalid time zone offset in minutes.<br>
+ /// \b
+ ///  Params: value, min value, max value
+ ibp_mce_datatype__invalid_tz_offset_in_min_3
+  =IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_IN_MIN_3,
+
+ /// \brief
+ ///  An invalid time zone offset in microseconds (isc-ticks).<br>
+ /// \b
+ ///  Params: value, min value, max value
+ ibp_mce_datatype__invalid_tz_offset_in_microseconds_3
+  =IBP_MCE_DATATYPE__INVALID_TZ_OFFSET_IN_MICROSECONDS_3,
+
+ /// \brief
+ ///  An invalid OLEDB timezone.<br>
+ /// \b
+ ///  Params: hour, minute
+ ibp_mce_datatype__invalid_oledb_timezone_2
+  =IBP_MCE_DATATYPE__INVALID_OLEDB_TIMEZONE_2,
+
+ /// \brief
+ ///  Can't convert DBTIMESTAMPOFFSET into FB040_TS_WITH_TZ. Out of range.<br>
+ /// \b
+ ///  Params: oledb tso
+ ibp_mce_datatype__cant_convert_dbtimestampoffset_into_fb040_ts_with_tz__out_of_range__1
+  =IBP_MCE_DATATYPE__CANT_CONVERT_DBTIMESTAMPOFFSET_INTO_FB040_TS_WITH_TZ__OUT_OF_RANGE__1,
+ 
+ /// \brief
+ ///  The unknown timezone id.<br>
+ /// \b
+ ///  Params: timezone id
+ ibp_mce_datatype__unknown_timezone_id_1
+  =IBP_MCE_DATATYPE__UNKNOWN_TIMEZONE_ID_1,
+
+ /// \brief
+ ///  The unknown timezone name.<br>
+ /// \b
+ ///  Params: timezone name
+ ibp_mce_datatype__unknown_timezone_name_1
+  =IBP_MCE_DATATYPE__UNKNOWN_TIMEZONE_NAME_1,
+
+ /// \brief
+ ///  The timezone is not defined.
+ ibp_mce_datatype__timezone_is_not_defined_0
+  =IBP_MCE_DATATYPE__TIMEZONE_IS_NOT_DEFINED_0,
+
+ /// \brief
+ ///  The date is not defined.
+ ibp_mce_datatype__date_is_not_defined_0
+  =IBP_MCE_DATATYPE__DATE_IS_NOT_DEFINED_0,
+
+ /// \brief
+ ///  The time is not defined.
+ ibp_mce_datatype__time_is_not_defined_0
+  =IBP_MCE_DATATYPE__TIME_IS_NOT_DEFINED_0,
+
+ /// \brief
+ ///  The invalid format of a timezone.
+ ibp_mce_datatype__invalid_format_of_timezone_0
+  =IBP_MCE_DATATYPE__INVALID_FORMAT_OF_TIMEZONE_0,
+
+ /// \brief
+ ///  The invalid format of a date.
+ ibp_mce_datatype__invalid_format_of_date_0
+  =IBP_MCE_DATATYPE__INVALID_FORMAT_OF_DATE_0,
+
+ /// \brief
+ ///  The invalid format of a time.
+ ibp_mce_datatype__invalid_format_of_time_0
+  =IBP_MCE_DATATYPE__INVALID_FORMAT_OF_TIME_0,
+
+ /// \brief
+ ///  The invalid timezone hour.<br>
+ /// \b
+ ///  Params: hour info
+ ibp_mce_datatype__invalid_timezone_hour_1
+  =IBP_MCE_DATATYPE__INVALID_TIMEZONE_HOUR_1,
+
+ /// \brief
+ ///  The invalid timezone minute.<br>
+ /// \b
+ ///  Params: minute info
+ ibp_mce_datatype__invalid_timezone_minute_1
+  =IBP_MCE_DATATYPE__INVALID_TIMEZONE_MINUTE_1,
+
+ /// \brief
+ ///  An unexpected data after value.
+ ibp_mce_datatype__unexpected_data_after_value_0
+  =IBP_MCE_DATATYPE__UNEXPECTED_DATA_AFTER_VALUE_0,
+
+ /// \brief
+ ///  An invalid UTF-16 text.
+ /// \b
+ ///  Params: offset
+ ibp_mce_datatype__invalid_utf16_text_1
+  =IBP_MCE_DATATYPE__INVALID_UTF16_TEXT_1,
+
+ /// \brief
+ ///  No timezone transition data for UTC time.
+ /// \b
+ ///  Params: timezone name, UTC-time
+ ibp_mce_datatype__no_timezone_transition_data_for_utc_time_2
+  =IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_UTC_TIME_2,
+ 
+ /// \brief
+ ///  No timezone transition data for LOCAL time.
+ /// \b
+ ///  Params: timezone name, LOCAL-time
+ ibp_mce_datatype__no_timezone_transition_data_for_local_time_2
+  =IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_LOCAL_TIME_2,
+ 
+ /// \brief
+ ///  A problem with loading the transition data of timezone.
+ /// \b
+ ///  Params: timezone name
+ ibp_mce_datatype__problem_with_loading_transition_data_of_timezone_1
+  =IBP_MCE_DATATYPE__PROBLEM_WITH_LOADING_TRANSITION_DATA_OF_TIMEZONE_1,
+ 
+ /// \brief
+ ///  Can't translate local timestamp into UTC timestamp. Out of range.<br>
+ /// \b
+ ///  Params: local ts, timezone name, offset_in_ticks (microseconds)
+ ibp_mce_datatype__cant_translate_local_ts_into_utc_ts__out_of_range_3
+  =IBP_MCE_DATATYPE__CANT_TRANSLATE_LOCAL_TS_INTO_UTC_TS__OUT_OF_RANGE_3,
+
+ /// \brief
+ ///  Can't translate utc timestamp into local timestamp. Out of range.<br>
+ /// \b
+ ///  Params: utc ts, timezone name, offset_in_ticks (microseconds)
+ ibp_mce_datatype__cant_translate_utc_ts_into_local_ts__out_of_range_3
+  =IBP_MCE_DATATYPE__CANT_TRANSLATE_UTC_TS_INTO_LOCAL_TS__OUT_OF_RANGE_3,
+
+ ///////////////////////////////////////////////////////////////////////////////
 
  //! \brief
  //!  Запрещена установка DEFAULT-значения в параметр с типом ISNULL.
@@ -2128,14 +2381,6 @@ enum ibp_msg_code_type
 
  ibp_mce_ibf_wa_fail_assign_element_1
   =IBP_MCE_IBF_WA_FAIL_ASSIGN_ELEMENT_1,
-
- //Reserved
-
- //address,from_type,to_type
- ibp_mce_ibf_wa_fail_convert_element_3
-  =IBP_MCE_IBF_WA_FAIL_CONVERT_ELEMENT_3,
-
- //Reserved
 
  //------------
 
@@ -2362,43 +2607,185 @@ enum ibp_msg_code_type
  ibp_mce_cs__calc_length_in_mbc_chars__overflow_1
   =IBP_MCE_CS__CALC_LENGTH_IN_MBC_CHARS__OVERFLOW_1,
 
- //ICU Charset -----------------------------------------------------------
- /// \brief ICU: Ошибка создания конвертора кодовой страницы.<br>
- /// \b Params: ICU Provider, Charset Name, ICU Error Code
+ ///////////////////////////////////////////////////////////////////////////////
+ //ICU Library
+
+ /// \brief
+ ///  ICU: Unknown ICUUC/ICUIN library.<br>
+ /// \b
+ ///  Params: Module sign (ICUUC/ICUIN), DLL name, description, version
+ ibp_mce_icu__unknown_module_version_4
+  =IBP_MCE_ICU__UNKNOWN_MODULE_VERSION_4,
+
+ /// \brief
+ ///  ICU: Unsupported ICUUC/ICUIN library.<br>
+ /// \b
+ ///  Params: Module sign (ICUUC/ICUIN), DLL name, description, version
+ ibp_mce_icu__unsupported_module_version_4
+  =IBP_MCE_ICU__UNSUPPORTED_MODULE_VERSION_4,
+
+ /// \brief
+ ///  ICU: Ошибка создания конвертора кодовой страницы.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name, ICU Error Code
  ibp_mce_icu__create_cs_conv_3
   =IBP_MCE_ICU__CREATE_CS_CONV_3,
 
- /// \brief ICU: Ошибка вызова функции.<br>
- /// \b Params: ICU Provider, Charset Name, Func Name, ICU Error Code
+ /// \brief
+ ///  ICU: Ошибка вызова функции.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name, Func Name, ICU Error Code
  ibp_mcs_icu__call_func_4
   =IBP_MCS_ICU__CALL_FUNC_4,
 
- /// \brief ICU: Некорректный min-max размер символа.<br>
- /// \b Params: ICU Provider, Charset Name, MinCharSize, MaxCharSize
+ /// \brief
+ ///  ICU: Некорректный min-max размер символа.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name, MinCharSize, MaxCharSize
  ibp_mce_icu__bad_min_max_char_size_4
   =IBP_MCE_ICU__BAD_MIN_MAX_CHAR_SIZE_4,
 
- /// \brief ICU: Неподдерживаемый максимальный размер символов.<br>
- /// \b Params: ICU Provider, Charset Name, MaxCharSize, LimitMaxCharSize
+ /// \brief
+ ///  ICU: Неподдерживаемый максимальный размер символов.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name, MaxCharSize, LimitMaxCharSize
  ibp_mce_icu__large_max_char_size_4
   =IBP_MCE_ICU__LARGE_MAX_CHAR_SIZE_4,
 
- /// \brief ICU: Bug Check.<br>
- /// \b Params: ICU Provider, Charset Name, Function Name, CheckPoint
+ /// \brief
+ ///  ICU: Bug Check.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name, Function Name, CheckPoint
  ibp_mce_icu__bug_check_4
   =IBP_MCE_ICU__BUG_CHECK_4,
 
- /// \brief ICU: Can't convert one ascii char to unicode.<br>
- /// \b Params: ICU Provider, Charset Name
+ /// \brief
+ ///  ICU: Can't convert one ascii char to unicode.<br>
+ /// \b
+ ///  Params: ICU Provider, Charset Name
  ibp_mce_icu__cant_conv_one_ascii_to_unicode_2
   =IBP_MCE_ICU__CANT_CONV_ONE_ASCII_TO_UNICODE_2,
 
- /// \brief ICU: Ошибка инициализации.<br>
- /// \b Params: ICU Provider, ICU Error Code
- ibp_mce_icu__failed_to_initialize_2
-  =IBP_MCE_ICU__FAILED_TO_INITIALIZE_2,
+ /// \brief
+ ///  ICU: Ошибка инициализации.<br>
+ /// \b
+ ///  Params: ICU Error Code
+ ibp_mce_icu__failed_to_initialize_1
+  =IBP_MCE_ICU__FAILED_TO_INITIALIZE_1,
 
- /////////////////////////////////////////////////////////////////////////
+ /// \brief
+ ///  ICU: ICUIN library is requiring the explicit initialization of ICUUC library.<br>
+ /// \b
+ ///  Params: ICUIN DLL path, ICUIN DLL version
+ ibp_mce_icu__icuin_is_requiring_explicit_initialization_of_icuuc_2
+  =IBP_MCE_ICU__ICUIN_IS_REQUIRING_EXPLICIT_INITIALIZATION_OF_ICUUC_2,
+
+ /// \brief
+ ///  ICU: ICUIN and ICUUC have different versions.<br>
+ /// \b
+ ///  Params: ICUIN module, ICUIN version, ICUUC module, ICUUC version
+ ibp_mce_icu__icuin_and_icuuc_have_different_versions_4
+  =IBP_MCE_ICU__ICUIN_AND_ICUUC_HAVE_DIFFERENT_VERSIONS_4,
+
+ /// \brief
+ ///  ICU: There is a problem with opening of the calendar.<br>
+ /// \b
+ ///  Params: Time Zone Name, ICU Error Code
+ ibp_mce_icu__failed_to_open_calendar_2
+  =IBP_MCE_ICU__FAILED_TO_OPEN_CALENDAR_2,
+
+ /// \brief
+ ///  ICU: [BUG CHECK] The function of an opening a calendar returned a NULL pointer.<br>
+ /// \b
+ ///  Params: Function Name, Time Zone Name
+ ibp_mce_icu__bug_check_func_for_open_calendar_returned_null_ptr_2
+  =IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_OPEN_CALENDAR_RETURNED_NULL_PTR_2,
+
+ /// \brief
+ ///  ICU: There is a problem with setting of the calendar date (millis).<br>
+ /// \b
+ ///  Params: ICU Date, Time Zone Name, ICU Error Code
+ ibp_mce_icu__failed_to_set_calendar_millis_3
+  =IBP_MCE_ICU__FAILED_TO_SET_CALENDAR_MILLIS_3,
+
+ /// \brief
+ ///  ICU: There is a problem with setting of the calendar datetime.
+ /// \b
+ ///  Params: Year, Month, Day, Hour, Minute, Second, Time Zone Name, ICU Error Code
+ ibp_mce_icu__failed_to_set_calendar_datetime_8
+ =IBP_MCE_ICU__FAILED_TO_SET_CALENDAR_DATETIME_8,
+
+ /// \brief
+ ///  ICU: There is a problem with getting of the calendar date offset.<br>
+ /// \b
+ ///  Params: Time Zone Name, ICU Error Code
+ ibp_mce_icu__failed_to_get_calendar_date_offset_2
+  =IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_DATE_OFFSET_2,
+
+ /// \brief
+ ///  ICU: There is a problem with getting of the calendar dst offset.<br>
+ /// \b
+ ///  Params: Time Zone Name, ICU Error Code
+ ibp_mce_icu__failed_to_get_calendar_dst_offset_2
+  =IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_DST_OFFSET_2,
+
+ /// \brief
+ ///  ICU: There is a problem with getting (for verification) of the calendar timezone name.<br>
+ /// \b
+ ///  Params: checked timezone name, ICU Error Code
+ ibp_mce_icu__failed_to_get_calendar_timezone_name_2
+  =IBP_MCE_ICU__FAILED_TO_GET_CALENDAR_TIMEZONE_NAME_2,
+
+ /// \brief
+ ///  ICU: [BUG CHECK] GetTimeZoneID returned an negative value.<br>
+ /// \b
+ ///  Params: FUNC NAME, RESULT VALUE, TZ NAME
+ ibp_mce_icu__bug_check__gettimezoneid_return_negative_value_3
+  =IBP_MCE_ICU__BUG_CHECK__GETTIMEZONEID_RETURN_NEGATIVE_VALUE_3,
+
+ /// \brief
+ ///  ICU: [BUG CHECK] Calendar is linked with another timezone.<br>
+ /// \b
+ ///  Params: expected timezone, actual timezone
+ ibp_mce_icu__bug_check_calendar_is_linked_with_another_timezone_2
+  =IBP_MCE_ICU__BUG_CHECK_CALENDAR_IS_LINKED_WITH_ANOTHER_TIMEZONE_2,
+
+ /// \brief
+ ///  ICU: Enumerating of the time zone names was failed.<br>
+ /// \b
+ ///  Params: ICU Error Code
+ ibp_mce_icu__failed_to_enumerate_timezone_names_1
+  =IBP_MCE_ICU__FAILED_TO_ENUMERATE_TIMEZONE_NAMES_1,
+
+ /// \brief
+ ///  ICU: [BUG CHECK] The function of enumerating timezones returned a NULL pointer.
+ /// \b
+ ///  Params: Func Name
+ ibp_mce_icu__bug_check_func_for_enum_timezones_returned_null_ptr_1
+  =IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_ENUM_TIMEZONES_RETURNED_NULL_PTR_1,
+
+ /// \brief
+ ///  ICU: Fetching a name from timezone enumeration was failed.<br>
+ /// \b
+ ///  Params: ICU Error Code
+ ibp_mce_icu__failed_to_fetch_name_from_timezone_enum_1
+  =IBP_MCE_ICU__FAILED_TO_FETCH_NAME_FROM_TIMEZONE_ENUM_1,
+
+ /// \brief
+ ///  ICU: [BUG CHECK] uenum_unext returned a negative length.<br>
+ /// \b
+ ///  Params: func name, length
+ ibp_mce_icu__bug_check_uenum_unext_returned_negative_length_2
+  =IBP_MCE_ICU__BUG_CHECK_UENUM_UNEXT_RETURNED_NEGATIVE_LENGTH_2,
+
+ /// \brief
+ ///  ICU: Failed to set timezone files directory.<br>
+ /// \b
+ ///  Params: ICU Error Code
+ ibp_mce_icu__failed_to_tzdata_files_dir_1
+  =IBP_MCE_ICU__FAILED_TO_TZDATA_FILES_DIR_1,
+
+ ///////////////////////////////////////////////////////////////////////////////
  //Messages for Generators of Database Object Scripts
 
  /// \b Params: Domain Name, Numeric Base Type, Scale.
@@ -2512,6 +2899,13 @@ enum ibp_msg_code_type
  ibp_mce_array__failed_to_encode_and_write_internal_array_desc_0
   =IBP_MCE_ARRAY__FAILED_TO_ENCODE_AND_WRITE_INTERNAL_ARRAY_DESC_0,
 
+ /// \brief
+ ///  The value with this type cannot be used to save as an array.<br>
+ /// \b
+ ///  Params: source value type
+ ibp_mce_array__unsupported_source_value_type_1
+  =IBP_MCE_ARRAY__UNSUPPORTED_SOURCE_VALUE_TYPE_1,
+
  //-----------------------------------------------------------------------
  /// \brief
  ///  [BUG CHECK] Некорректный размер элемента в описании массива.<br>
@@ -2578,7 +2972,7 @@ enum ibp_msg_code_type
   =IBP_MCE_ARRAY_BLOB__BUG_CHECK__INCORRECT_LENGTH_OF_STRING_ELEMENT_6,
 
  /////////////////////////////////////////////////////////////////////////
- 
+
  /// \brief
  ///  Несогласованные настройки глобального кэша парсера SQL-запросов.<br>
  /// \b
@@ -3007,14 +3401,14 @@ enum ibp_msg_code_type
  //!  Params: zlib1 error code, flush code
  ibp_mce_zlib1__deflate_error_2
   =IBP_MCE_ZLIB1__DEFLATE_ERROR_2,
- 
+
  //! \brief
  //!  ZLIB1 Inflate Error
  //! \b
  //!  Params: zlib1 error code, flush code
  ibp_mce_zlib1__inflate_error_2
   =IBP_MCE_ZLIB1__INFLATE_ERROR_2,
- 
+
  /////////////////////////////////////////////////////////////////////////
  //Win32 Errors
 
@@ -3093,11 +3487,19 @@ enum ibp_msg_code_type
 
  //-----------------------------------------------------------------------
  /// \brief
- ///  Ошибка вызова системной auth-функции
+ ///  Ошибка вызова системной auth-функции.<br>
  /// \b
  ///  Params: func name, sec error code
  ibp_mce_win32__auth__fail_func_call_2
   =IBP_MCE_WIN32__AUTH__FAIL_FUNC_CALL_2,
+
+ //-----------------------------------------------------------------------
+ /// \brief
+ ///  The call of win32-function failed.<br>
+ /// \b
+ ///  Params: func name, error code
+ ibp_mce_win32__fail_call_function_2
+  =IBP_MCE_WIN32__FAIL_CALL_FUNCTION_2,
 
  //Thread errors ---------------------------------------------------------
 

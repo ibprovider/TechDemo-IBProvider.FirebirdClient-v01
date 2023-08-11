@@ -50,14 +50,6 @@ extern const t_oledb_value__DBDATE      __zero_dbdate__          ={1899,12,30};
 extern const t_oledb_value__I2          __zero_dbdate_DayOfWeek__=6; //Saturday
 
 ////////////////////////////////////////////////////////////////////////////////
-
-const structure::t_negative_one oledb_none_precision;
-
-const structure::t_negative_one oledb_filetime_precision;
-
-const structure::t_negative_one oledb_none_scale;
-
-////////////////////////////////////////////////////////////////////////////////
 //class TOLEDB_ÑompatibilityTest
 
 #ifndef NDEBUG
@@ -158,8 +150,6 @@ struct TDBConstNameInfo
  bool operator != (const_type const x) const
   {return !(*this==x);}
 };//struct TDBConstNameInfo
-
-////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 //define DBSTATUS names

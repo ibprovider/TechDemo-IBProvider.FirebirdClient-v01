@@ -8,15 +8,16 @@
 #define _ibp_error_adapter_H_
 
 #include "source/error_services/ibp_error_codes.h"
-#include <structure/error/t_err_records.h>
 #include <structure/t_str_parameter.h>
+
+#include <lcpi/lib/structure/error/t_err_records_r.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_err
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ibp_error_adapter;
 
@@ -39,12 +40,9 @@ class t_ibp_error_adapter
  public: //typedefs ------------------------------------------------------
   typedef ibp_msg_code_type                            mc_type;
 
-  typedef structure::t_err_record                      base_error_record_type;
-  typedef structure::t_err_records_r                   base_error_records_r_type;
+  typedef lib::structure::t_err_record                 base_error_record_type;
 
   typedef structure::t_str_parameter<char>             str_arg_type;
-
-  typedef const base_error_records_r_type*             base_error_records_r_cptr;
 
   typedef unsigned __int64                             uint64_type;
 
@@ -116,15 +114,17 @@ class t_ibp_error_adapter
                      str_arg_type     msg);
 
  private:
-  void push_ibp_error_ex(mc_type                   mc_id_2,
-                         uint64_type               num,
-                         base_error_records_r_cptr recs);
+  void helper__push_ibp_error_ex
+        (mc_type                                mc_id_2,
+         uint64_type                            num,
+         const lib::structure::t_err_records_r* recs);
 
  private:
-  void push_row_ibp_error_ex(mc_type                   mc_id_3,
-                             uint64_type               num,
-                             DBROWSTATUS               RowStatus,
-                             base_error_records_r_cptr recs);
+  void helper__push_row_ibp_error_ex
+        (mc_type                                mc_id_3,
+         uint64_type                            num,
+         DBROWSTATUS                            RowStatus,
+         const lib::structure::t_err_records_r* recs);
 
  protected:
   virtual void push_error(base_error_record_type* pError)=0;

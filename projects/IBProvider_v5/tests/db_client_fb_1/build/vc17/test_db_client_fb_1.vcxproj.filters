@@ -1034,6 +1034,33 @@
     <Filter Include="source\tests\work\StmtFetch_M\Types\decfloat34\_headers">
       <UniqueIdentifier>{d0f3ae95-360d-41f1-ad1b-3f6ffe6410f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IBP\source\services\charsets\cs_code\cs_icu\v063">
+      <UniqueIdentifier>{397390e6-3979-4187-8215-36bcdf4ee8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\icu">
+      <UniqueIdentifier>{dadd3dbb-d49b-4893-b5d0-2bc3d6586518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\icu\v003">
+      <UniqueIdentifier>{b6ac3ca1-58c2-41c5-9672-f286c9966a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\icu\v052">
+      <UniqueIdentifier>{f80a2844-03f0-4868-8d4d-13081c1664d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\icu\v063">
+      <UniqueIdentifier>{fa79ab44-bd78-4fea-a7f8-9c8576529056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\timestamp_with_tz">
+      <UniqueIdentifier>{1d471c69-3e50-4f40-b05c-f382672fabff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\timestamp_with_tz\_headers">
+      <UniqueIdentifier>{ee353db2-aa2e-4364-899d-62ca3858d334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\timestamp_with_tz">
+      <UniqueIdentifier>{0ee25759-2c02-4af4-b034-9febcd0b9e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\timestamp_with_tz\_headers">
+      <UniqueIdentifier>{7a5cf9e5-8cec-455f-b291-a4c9e8550315}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1450,7 +1477,7 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.cpp">
       <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_data_types.cpp">
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\db_datatypes.cpp">
       <Filter>IBP\source\db_obj\_root</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.cpp">
@@ -3583,6 +3610,66 @@
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.cpp">
       <Filter>source\tests\work\Array\Read</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063.cpp">
+      <Filter>IBP\source\services\charsets\cs_code\cs_icu\v063</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__provider.cpp">
+      <Filter>IBP\source\services\charsets\cs_code\cs_icu\v063</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__mbc_buffer_to_ucs2.cpp">
+      <Filter>IBP\source\services\charsets\cs_code\cs_icu\v063</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__mbc_to_ucs2.cpp">
+      <Filter>IBP\source\services\charsets\cs_code\cs_icu\v063</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\charsets\cs_code\icu\v063\ibp_cs_icu_v063__text_stream__ucs2_to_mbc.cpp">
+      <Filter>IBP\source\services\charsets\cs_code\cs_icu\v063</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v063.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader_factory.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuin.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuin_type01.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v003.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\icu\ibp_external__icu__loader--helper__icuuc_v052.cpp">
+      <Filter>IBP\source\external\icu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\os\ibp_os__dll_loader_descr.cpp">
+      <Filter>IBP\source\os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\timestamp_with_tz\WORK_StmtFetch__Types__timestamp_with_tz_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\timestamp_with_tz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp_with_tz\WORK_StmtFetch_M__Types__timestamp_with_tz_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\timestamp_with_tz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_017__timestamp_with_tz.cpp">
+      <Filter>source\tests\work\Params\IN2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_017__timestamp_with_tz.cpp">
+      <Filter>source\tests\work\Params\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_014__timestamp_with_tz.cpp">
+      <Filter>source\tests\work\Array\Read</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__timezones_source.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -4086,7 +4173,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api__op_data__writer_buffer__external.h">
       <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_data_types.h">
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\db_datatypes.h">
       <Filter>IBP\source\db_obj\_root\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Write\WORK_Array_Write_Test_002__integer.h">
@@ -5681,6 +5768,30 @@
       <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_013__decfloat34.h">
+      <Filter>source\tests\work\Array\Read\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v063\ibp_external__icu_v063__api.h">
+      <Filter>IBP\source\external\icu\v063</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v052\ibp_external__icu_v052__api.h">
+      <Filter>IBP\source\external\icu\v052</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\icu\v003\ibp_external__icu_v003__api.h">
+      <Filter>IBP\source\external\icu\v003</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\timestamp_with_tz\WORK_StmtFetch__Types__timestamp_with_tz_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\timestamp_with_tz\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\timestamp_with_tz\WORK_StmtFetch_M__Types__timestamp_with_tz_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\timestamp_with_tz\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_017__timestamp_with_tz.h">
+      <Filter>source\tests\work\Params\IN2\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_017__timestamp_with_tz.h">
+      <Filter>source\tests\work\Params\OUT\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_014__timestamp_with_tz.h">
       <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
   </ItemGroup>

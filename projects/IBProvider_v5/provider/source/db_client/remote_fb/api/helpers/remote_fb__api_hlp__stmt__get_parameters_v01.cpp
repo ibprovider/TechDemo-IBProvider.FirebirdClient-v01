@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup db_client__remote_fb__api_p12
-//! \file    remote_fb__api_p12__stmt__get_parameters_v01.cpp
+//! \file    remote_fb__api_hlp__stmt__get_parameters_v01.cpp
 //! \brief   Getting the parameter definitions of statement (v01).
 //! \author  Kovalenko Dmitry
 //! \date    28.03.2023

@@ -30,7 +30,7 @@ namespace lcpi{namespace ibp{namespace isc_base{
 //! \addtogroup isc_base
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_isc_connection_settings;
 

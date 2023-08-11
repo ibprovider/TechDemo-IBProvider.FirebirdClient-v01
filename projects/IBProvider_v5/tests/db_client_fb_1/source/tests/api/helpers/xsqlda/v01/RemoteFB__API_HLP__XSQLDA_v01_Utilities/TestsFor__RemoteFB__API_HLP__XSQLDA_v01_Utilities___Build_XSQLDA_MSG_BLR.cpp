@@ -107,6 +107,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
   static void test_t16___bug_check__incorrect_sqllen__decfloat34
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+  static void test_t17___bug_check__incorrect_sqllen__timestamp_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -223,6 +227,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                 context_type*       pCtx);
 
   static void test_d21__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_d22__timestamp_with_tz
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl
@@ -722,6 +730,34 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
     L"sql_decfloat34");
  }//for sz
 }//test_t16___bug_check__incorrect_sqllen__decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T17
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_t17___bug_check__incorrect_sqllen__timestamp_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short sz=-33;sz!=33;++sz)
+ {
+  if(sz==12)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_timestamp_with_tz,
+    sz,
+    L"sql_timestamp_with_tz");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_timestamp_with_tz|1,
+    sz,
+    L"sql_timestamp_with_tz");
+ }//for sz
+}//test_t17___bug_check__incorrect_sqllen__timestamp_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
@@ -2161,7 +2197,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
                              _END_(c_expected_blr),
                              buf.buffer(),
                              buf.buffer_end()));
-}//test_d21__decfloat16
+}//test_d20__decfloat16
 
 ////////////////////////////////////////////////////////////////////////////////
 //D21
@@ -2225,6 +2261,67 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::t
 }//test_d21__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
+//D22
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_impl::test_d22__timestamp_with_tz
+                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
+                                            context_type*       const DEBUG_CODE(pCtx))
+{
+ assert(pParams);
+ assert(pCtx);
+
+ //-----------------------------------------
+ struct tag_data
+ {
+  isc_api::t_ibp_fb040_timestamp_with_tz data;
+
+  tag_data()
+  {
+   memset(this,0,sizeof(*this));
+  }
+ };//struct tag_data
+
+ const std::unique_ptr<tag_data> var(new tag_data());
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_timestamp_with_tz;
+ xsqlda->sqlvar[0].sqllen   =sizeof(var->data);
+ xsqlda->sqlvar[0].sqldata  =reinterpret_cast<char*>(var.get());
+
+ //-----------------------------------------
+ xsqlda_utils_type::msg_blr_buffer_type buf;
+
+ xsqlda_utils_type::Build_XSQLDA_MSG_BLR(xsqlda,buf);
+
+ unsigned char c_expected_blr[]=
+ {
+  isc_api::ibp_isc_blr_version5,
+  isc_api::ibp_isc_blr_begin,
+  isc_api::ibp_isc_blr_message,
+  0,
+  2, //cPars.low
+  0, //cPars.high
+  //----
+  isc_api::ibp_fb040_blr_dtype__timestamp_with_tz,
+  //----
+  isc_api::ibp_isc_blr_dtype__short,
+  0,
+  //----
+  isc_api::ibp_isc_blr_end,
+  isc_api::ibp_isc_blr_eoc,
+ };//c_expected_blr
+
+ _TSO_CHECK(structure::equal(c_expected_blr,
+                             _END_(c_expected_blr),
+                             buf.buffer(),
+                             buf.buffer_end()));
+}//test_d22__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::tag_descr
@@ -2286,6 +2383,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                 test_t15___bug_check__incorrect_sqllen__decfloat16)
  DEF_TEST_DESCR("T16.bug_check.incorrect_sqllen.decfloat34",
                 test_t16___bug_check__incorrect_sqllen__decfloat34)
+ DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.timestamp_with_tz",
+                test_t17___bug_check__incorrect_sqllen__timestamp_with_tz)
 
  DEF_TEST_DESCR("S01.bug_check.incorrect_sqlscale.short",
                 test_s01___bug_check__incorrect_sqlscale__short)
@@ -2338,6 +2437,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::
                  test_d20__decfloat16)
  DEF_TEST_DESCR("D21.decfloat34",
                  test_d21__decfloat34)
+ DEF_TEST_DESCR("D22.timestamp_with_tz",
+                 test_d22__timestamp_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -2364,7 +2465,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::c
   const TTSO_TestPtr
    spTest
     (lcpi::lib::structure::not_null_ptr
-      (new TTSO_TestFunc 
+      (new TTSO_TestFunc
        (pParams,
         ftestID.c_str(),
         d.Func)));

@@ -52,6 +52,7 @@
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__multi_stmts_exec_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__dialect.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__sql_cache__scope.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__timezones_source.h"
 
 #include "source/oledb/props2/handlers/code/prepare_set_value/ibp_oledb__props2__handler__prepare_set_value__prop__ExtProps.h"
 
@@ -271,6 +272,8 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__IB_TR_PARAMS__SERIALIZABLE          ,0,"ib_tr_params__serializable")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__ICU_LIBRARY                         ,0,"icu_library")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__ICU_LIBRARY_64                      ,0,"icu_library_64")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__ICUIN_LIBRARY                       ,0,"icuin_library")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__ICUIN_LIBRARY_64                    ,0,"icuin_library_64")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__IGNORE_ERR_PARAM                    ,0,"ignore_err_param")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__IGNORE_UNPREPARE                    ,0,"ignore_unprepare")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__INNER_TRANS                         ,0,"inner_trans")
@@ -346,6 +349,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__SYS_ENCRYPT_PASSWORD                ,0,"sys_encrypt_password")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__TEMP_FILE_DIR                       ,0,"temp_file_dir")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__TEMP_STG__MEMORY_USAGE              ,0,"temp_stg__memory_usage")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__TIMEZONES_SOURCE                    ,0,"timezones_source")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__TR_ABORT_FLAGS                      ,0,"tr_abort_flags")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__TRUNCATE_CHAR                       ,0,"truncate_char")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__UNICODE_MODE                        ,0,"unicode_mode")

@@ -47,6 +47,13 @@ inline bool is_surrogate_low(traits::UTF16 ch);
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class TForwardIterator>
+std::pair<TForwardIterator,t_cs_cvt_result>
+ get_next_symbol(TForwardIterator source_beg,
+                 TForwardIterator source_end);
+
+////////////////////////////////////////////////////////////////////////////////
+
+template<class TForwardIterator>
 std::pair<size_t,t_cs_cvt_result>
  calc_symbol_count(TForwardIterator source_beg,
                    TForwardIterator source_end,

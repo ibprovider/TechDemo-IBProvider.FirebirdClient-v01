@@ -6,6 +6,8 @@
 #include "source/error_services/ibp_error_utils.h"
 #include "source/db_obj/isc_base/isc_initialize_utils.h"
 
+#include "source/external/icu/ibp_external__icu__loader_factory.h"
+
 namespace ibp_test{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestOperationContext
@@ -31,9 +33,19 @@ TestOperationContext::TestOperationContext(const TestCnParams& cnParams)
 
  assert(pCsName__ODS);
 
+ //---------------------------
+ const ibp::external::icu::ICU__Loader::self_ptr
+  spIcuLoader
+   (ibp::external::icu::create_icu_loader
+     (cnParams));
+
+ assert(spIcuLoader);
+
+ //---------------------------
  m_spCsMng
   =LCPI_IBP_NMS::isc_base::isc_create_charset_manager_v2
     (cnParams,
+     spIcuLoader,
      pCsName__ODS);
 
  assert(m_spCsMng);

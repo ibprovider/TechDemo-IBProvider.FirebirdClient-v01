@@ -8,7 +8,7 @@
 # pragma once
 #endif
 
-#include <ole_lib/oledb/oledb_data_types.h>
+#include <ole_lib/oledb/oledb_datatypes.h>
 
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////

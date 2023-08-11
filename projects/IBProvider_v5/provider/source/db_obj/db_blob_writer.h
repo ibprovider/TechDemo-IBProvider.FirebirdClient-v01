@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 //! \addtogroup db_obj
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_db_blob_writer;
 

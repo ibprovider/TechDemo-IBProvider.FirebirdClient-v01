@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup ibp_os
-//! \file    ibp_os__dll.cpp
+//! \file    ibp_os__dll_proxy.cpp
 //! \brief   The proxy of a dynamic library (DLL) loader.
 //! \author  Kovalenko Dmitry
 //! \date    30.08.2022
@@ -67,14 +67,14 @@ FARPROC t_ibp_os__dll_proxy::try_get_proc_address(LPCSTR point_name)const
 
 //------------------------------------------------------------------------
 IBP_SmartObjectPtr t_ibp_os__dll_proxy::get_service_obj
-                             (REFGUID                 rServiceObjID,
-                              pfn_service_obj_creator pfnServiceObjCreator)
+                             (REFGUID                        rServiceObjID,
+                              service_obj_creator_type const fnServiceObjCreator)
 {
  assert(m_spDllLoader);
 
  return m_spDllLoader->get_service_obj
           (rServiceObjID,
-           pfnServiceObjCreator);
+           fnServiceObjCreator);
 }//get_service_obj
 
 ////////////////////////////////////////////////////////////////////////////////

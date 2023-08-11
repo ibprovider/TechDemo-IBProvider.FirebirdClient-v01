@@ -108,6 +108,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -185,6 +189,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_d18__timestamp_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  public:
   static void test_a01__varchar
                (TTSO_GlobalContext* pParams,
@@ -251,6 +259,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 context_type*       pCtx);
 
   static void test_a17__decfloat34
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_a18__timestamp_with_tz
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl
@@ -692,6 +704,26 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
             17,
             L"sql_decfloat34");
 }//test_t17___bug_check__incorrect_sqllen__decfloat34
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T18
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_timestamp_with_tz,
+            11,
+            L"sql_timestamp_with_tz");
+
+ helper_txx(pParams,
+            pCtx,
+            isc_api::ibp_fb040_sql_timestamp_with_tz|1,
+            13,
+            L"sql_timestamp_with_tz");
+}//test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
@@ -1182,6 +1214,32 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 }//test_d17__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST D18
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_d18__timestamp_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
+ xsqlda->sqlvar[0].sqlscale =0;
+ xsqlda->sqlvar[0].sqllen   =12;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK_MSG(sz==4+12,"sz="<<sz);
+}//test_d18__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //TEST A01
 
 void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a01__varchar
@@ -1658,6 +1716,34 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 }//test_a17__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST A18
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a18__timestamp_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_isc_sql_text|1;
+ xsqlda->sqlvar[0].sqllen  =1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
+ xsqlda->sqlvar[1].sqllen  =12;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK(sz==4+4+4+12);
+}//test_a18__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_descr
@@ -1719,6 +1805,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_t16___bug_check__incorrect_sqllen__decfloat16)
  DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.decfloat34",
                 test_t17___bug_check__incorrect_sqllen__decfloat34)
+ DEF_TEST_DESCR("T18.bug_check.incorrect_sqllen.timestamp_with_tz",
+                test_t17___bug_check__incorrect_sqllen__decfloat34)
 
  DEF_TEST_DESCR("D01.varchar",
                 test_d01__varchar)
@@ -1754,6 +1842,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_d16__decfloat16)
  DEF_TEST_DESCR("D17.decfloat34",
                 test_d17__decfloat34)
+ DEF_TEST_DESCR("D18.timestamp_with_tz",
+                test_d18__timestamp_with_tz)
 
  DEF_TEST_DESCR("A01.varchar",
                 test_a01__varchar)
@@ -1789,6 +1879,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_a16__decfloat16)
  DEF_TEST_DESCR("A17.decfloat34",
                 test_a17__decfloat34)
+ DEF_TEST_DESCR("A18.timestamp_with_tz",
+                test_a18__timestamp_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -1815,7 +1907,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
   const TTSO_TestPtr
    spTest
     (lcpi::lib::structure::not_null_ptr
-      (new TTSO_TestFunc 
+      (new TTSO_TestFunc
        (pParams,
         ftestID.c_str(),
         d.Func)));

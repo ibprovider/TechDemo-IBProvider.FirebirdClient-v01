@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__numeric_rules.h"
-#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__flags_i4.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__common__enum_i4.h"
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,15 +17,37 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 class IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::tag_data
 {
  public:
-  static const IBP_OLEDB_Props2__Handler__ExtractValue__Common__flags_i4
+  static const ibprovider::IBP_LONG
+   sm_ValidValues[];
+
+  static const IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i4
    sm_Instance;
 };//class IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::tag_data
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const IBP_OLEDB_Props2__Handler__ExtractValue__Common__flags_i4
+const ibprovider::IBP_LONG
+ IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::tag_data::sm_ValidValues[]=
+ {
+  ibprovider::ibp_propval_numeric_rules__default,
+
+  //---------
+  ibprovider::ibp_propval_numeric_rules__ignore_zero_scale,
+
+  ibprovider::ibp_propval_numeric_rules__ignore_zero_scale|ibprovider::ibp_propval_numeric_rules__base_precision,
+
+  ibprovider::ibp_propval_numeric_rules__ignore_zero_scale|ibprovider::ibp_propval_numeric_rules__as_wstr,
+
+  //---------
+  ibprovider::ibp_propval_numeric_rules__base_precision,
+
+  ibprovider::ibp_propval_numeric_rules__as_wstr,
+ };//sm_ValidValues
+
+//------------------------------------------------------------------------
+const IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i4
  IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::tag_data::sm_Instance
-  (_BEG_END_(ibprovider::g_IBP_PropFlagsFor__numeric_rules));
+  (_BEG_END_(sm_ValidValues));
 
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules

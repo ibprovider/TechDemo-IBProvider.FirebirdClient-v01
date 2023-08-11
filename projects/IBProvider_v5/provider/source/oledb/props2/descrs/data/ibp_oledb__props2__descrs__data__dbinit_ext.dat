@@ -324,7 +324,7 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
   ibprovider::ibp_propval_numeric_rules__default,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__numeric__rules::GetInstancePtr()))
 
-//Файловый путь к внешней ICU библиотеке ---------------------------------
+//Файловый путь к внешней ICU [ICUUC] библиотеке -------------------------
 IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
  (IBP_DBPROP__INIT__ICU_LIBRARY, /*60*/
   OLEDB_PDESCR2(L"icu_library"),
@@ -819,6 +819,30 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__I4
   DBPROPOPTIONS_OPTIONAL,
   ibprovider::ibp_propval_decfloat_rules__default,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__decfloat_rules::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ICUIN_LIBRARY,
+  OLEDB_PDESCR2(L"icuin_library"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__ICUIN_LIBRARY_64,
+  OLEDB_PDESCR2(L"icuin_library_64"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__not_empty_string::GetInstancePtr()))
+
+//------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__TIMEZONES_SOURCE, /*118 (0x76)*/
+  OLEDB_PDESCR2(L"timezones_source"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__timezones_source::GetInstancePtr()))
 
 //------------------------------------------------------------------------
 #if(IBP_ENGINE_DIRECT_FB!=0)
