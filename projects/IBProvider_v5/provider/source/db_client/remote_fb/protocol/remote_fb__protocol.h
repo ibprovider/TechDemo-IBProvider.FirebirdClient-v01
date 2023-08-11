@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //! \addtogroup db_client__remote_fb__protocol
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 //struct P_BID;
 

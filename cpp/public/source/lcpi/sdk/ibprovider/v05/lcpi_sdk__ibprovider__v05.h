@@ -8,7 +8,7 @@
 
 namespace lcpi{namespace sdk{namespace ibprovider{namespace v05{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 struct IBP_ISequentialStream_WideChar;
 struct IBP_ISequentialStream_MultiByteChar;

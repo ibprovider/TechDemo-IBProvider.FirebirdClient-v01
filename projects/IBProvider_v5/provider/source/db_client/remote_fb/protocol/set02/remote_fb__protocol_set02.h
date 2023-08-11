@@ -16,7 +16,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //! \addtogroup db_client__remote_fb__protocol_set02
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 struct PACKET_V02;
 

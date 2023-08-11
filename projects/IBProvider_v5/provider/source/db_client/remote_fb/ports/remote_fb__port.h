@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 //! \addtogroup db_client__remote_fb
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class RemoteFB__PortWriter;
 class RemoteFB__PortWriteGuard;

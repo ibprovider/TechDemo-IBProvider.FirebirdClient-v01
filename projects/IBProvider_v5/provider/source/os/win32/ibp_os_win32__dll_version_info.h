@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{
 //! \addtogroup ibp_os_win32
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ibp_os_win32__dll_version_info;
 

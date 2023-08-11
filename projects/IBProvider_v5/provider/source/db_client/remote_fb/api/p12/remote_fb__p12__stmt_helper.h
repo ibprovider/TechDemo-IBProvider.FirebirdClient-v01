@@ -65,6 +65,7 @@ class RemoteFB__P12__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]  pTr
   //! \param[in]  pStmt
   //!  Not null
+  //! \param[in   InMsg_BLR
   static void BuildPacket__op_execute
                              (protocol::set01::PACKET_V01*           pPacket,
                               tr_data_type*                          pTr,

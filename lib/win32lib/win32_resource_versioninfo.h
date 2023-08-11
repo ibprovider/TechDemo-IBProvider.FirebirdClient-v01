@@ -13,7 +13,7 @@
 
 namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 class t_ver_info_element;
 class t_ver_info_element__VS_VERSION_INFO;

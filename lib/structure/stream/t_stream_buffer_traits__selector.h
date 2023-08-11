@@ -8,7 +8,7 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
 template<typename T>
 class t_stream_buffer_traits__selector;

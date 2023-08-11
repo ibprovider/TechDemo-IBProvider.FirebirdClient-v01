@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup ibp_err
-//! \file    ibp_custom_error_object.h
+//! \file    ibp_custom_error_object__sql.h
 //! \brief   The interface of internal object with custom error data
 //! \author  Kovalenko Dmitry
 //! \date    24.10.2022
