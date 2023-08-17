@@ -256,6 +256,7 @@ void RemoteFB__P13_LAZY_SEND__StmtHelper::FetchNextRows
    if(packet1__close.operation==protocol::set02::op_response)
    {
     //Проверям ошибку
+
     spCloseSrvErr
      =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
        (pData,

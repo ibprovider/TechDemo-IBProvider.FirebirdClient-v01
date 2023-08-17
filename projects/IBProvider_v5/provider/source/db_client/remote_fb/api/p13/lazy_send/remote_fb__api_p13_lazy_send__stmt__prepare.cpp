@@ -432,12 +432,13 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::helper__exec__allocate_and_p
     assert(PortStateGuardIsActive);
 
     //-----
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-         (pData,
-          c_OperationID1,
-          packet1.p_resp,
-          E_FAIL))
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID1,
+            packet1.p_resp,
+            E_FAIL))
     {
      t_ibp_error exc(spErrRec);
 

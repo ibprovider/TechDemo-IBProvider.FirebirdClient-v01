@@ -302,12 +302,13 @@ protocol::P_OBJCT
    else//ќжидаетс€ ошибка выполнени€ запроса
    if(packet2.operation==protocol::set02::op_response)
    {
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-          (pData,
-           c_OperationID2,
-           packet2.p_resp,
-           E_FAIL)) //throw
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID2,
+            packet2.p_resp,
+            E_FAIL)) //throw
     {
      assert(FAILED(spErrRec->m_err_code));
 
@@ -361,12 +362,13 @@ protocol::P_OBJCT
 
    if(packet3.operation==protocol::set02::op_response)
    {
-    if(const t_ibp_error_element::self_ptr spErrRec
-        =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-          (pData,
-           c_OperationID2,
-           packet3.p_resp,
-           E_FAIL)) //throw
+    if(const t_ibp_error_element::self_ptr
+        spErrRec
+         =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+           (pData,
+            c_OperationID2,
+            packet3.p_resp,
+            E_FAIL)) //throw
     {
      assert(FAILED(spErrRec->m_err_code));
 

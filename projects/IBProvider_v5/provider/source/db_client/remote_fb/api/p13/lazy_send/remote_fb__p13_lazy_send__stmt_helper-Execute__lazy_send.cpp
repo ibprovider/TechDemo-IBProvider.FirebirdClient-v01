@@ -265,13 +265,14 @@ protocol::P_OBJCT
   if(packet2.operation==protocol::set02::op_response)
   {
    if(const t_ibp_error_element::self_ptr
-      spErrRec=pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
-       (pData,
-        c_OperationID2,
-        packet2.p_resp,
-        E_FAIL))
+       spErrRec
+        =pset02::RemoteFB__PSET02__ErrorUtilites::BuildServerErrorRecord
+          (pData,
+           c_OperationID2,
+           packet2.p_resp,
+           E_FAIL))
    {
-     assert(FAILED(spErrRec->m_err_code));
+    assert(FAILED(spErrRec->m_err_code));
 
     Errors.add_error(spErrRec);
 
