@@ -287,10 +287,11 @@ void WORK_Test_014__StmtDrop__v2_lazy_send::tag_impl::test_003__bug_check__bad_s
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  for(;;)
  {
@@ -335,8 +336,9 @@ void WORK_Test_014__StmtDrop__v2_lazy_send::tag_impl::test_003__bug_check__bad_s
  _TSO_CHECK(hStmt->m_pParentPort==nullptr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                         spConnector2);
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector2);
 }//test_003__bug_check__bad_stmt_cn_owner
 
 #endif

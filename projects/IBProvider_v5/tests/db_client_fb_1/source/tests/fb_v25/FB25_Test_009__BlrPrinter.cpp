@@ -154,9 +154,10 @@ void FB25_Test_009__BlrPrinter::tag_impl::helper__exec
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);

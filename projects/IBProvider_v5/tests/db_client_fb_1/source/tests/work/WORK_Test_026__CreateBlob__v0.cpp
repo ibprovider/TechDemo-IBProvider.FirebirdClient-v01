@@ -97,9 +97,10 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_001__err__too_long_bpb
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -210,9 +211,10 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_002__no_params
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -421,9 +423,10 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 

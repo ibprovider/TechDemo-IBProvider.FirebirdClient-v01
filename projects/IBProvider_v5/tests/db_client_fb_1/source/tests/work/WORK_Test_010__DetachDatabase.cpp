@@ -218,8 +218,9 @@ void WORK_Test_010__DetachDatabase::tag_impl::test_003__bug_check__bad_cn_handle
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                          spConnector);
+  svc::RemoteFB_Connector__DetachDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {

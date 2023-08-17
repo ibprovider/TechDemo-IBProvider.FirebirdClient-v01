@@ -259,9 +259,10 @@ void WORK_Params__001__nulls::tag_impl::run(context_type* const pCtx)const
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(/*n*/m_nFields);

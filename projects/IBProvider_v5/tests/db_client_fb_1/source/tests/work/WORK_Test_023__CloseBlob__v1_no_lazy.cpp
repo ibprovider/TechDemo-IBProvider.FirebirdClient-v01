@@ -105,9 +105,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_001
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -163,11 +164,12 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_001
  //-----------------------------------------
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__OpenBlob(tracer,
-                                   spConnector,
-                                   &hTr,
-                                   &hBlob,
-                                   blobID);
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -395,10 +397,11 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
@@ -416,9 +419,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -474,11 +478,12 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
  //-----------------------------------------
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__OpenBlob(tracer,
-                                   spConnector,
-                                   &hTr,
-                                   &hBlob,
-                                   blobID);
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -543,8 +548,9 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
    spConnector);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                         spConnector2);
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector2);
 }//test_004__bug_check__bad_owner_cn
 
 #endif
@@ -590,9 +596,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_005__err__bad_blob_han
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -648,11 +655,12 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_005__err__bad_blob_han
  //-----------------------------------------
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__OpenBlob(tracer,
-                                   spConnector,
-                                   &hTr,
-                                   &hBlob,
-                                   blobID);
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
 
  _TSO_CHECK(hBlob);
 

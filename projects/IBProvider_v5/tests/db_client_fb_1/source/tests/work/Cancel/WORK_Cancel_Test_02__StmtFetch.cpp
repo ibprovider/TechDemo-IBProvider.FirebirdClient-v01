@@ -261,9 +261,10 @@ void WORK_Cancel_Test_02__StmtFetch::tag_impl::run(context_type* const pCtx)cons
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);

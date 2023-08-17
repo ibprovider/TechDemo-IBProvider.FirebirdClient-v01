@@ -773,9 +773,10 @@ void WORK_Test_026__CreateBlob__v2_lazy_send::tag_impl::test_005__err__bad_trans
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -787,18 +788,21 @@ void WORK_Test_026__CreateBlob__v2_lazy_send::tag_impl::test_005__err__bad_trans
  db_obj::DB_IBBLOBID blobId={};
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,
-                     spConnector,
-                     &hTr);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &hTr);
+
  for(;;)
  {
   try
   {
-   svc::RemoteFB_Connector__CreateBlob(tracer,
-                                       spConnector,
-                                       &hTr,
-                                       &hBlob,
-                                       &blobId);
+   svc::RemoteFB_Connector__CreateBlob
+    (tracer,
+     spConnector,
+     &hTr,
+     &hBlob,
+     &blobId);
   }
   catch(const ibp::t_ibp_error& exc)
   {

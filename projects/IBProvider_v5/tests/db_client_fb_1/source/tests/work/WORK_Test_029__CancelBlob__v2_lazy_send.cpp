@@ -273,10 +273,11 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_003__bug_check__bad
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
@@ -291,9 +292,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_003__bug_check__bad
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -304,11 +306,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_003__bug_check__bad
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -324,9 +327,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_003__bug_check__bad
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                       spConnector2,
-                                       &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector2,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -371,8 +375,9 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_003__bug_check__bad
    spConnector);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                         spConnector2);
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector2);
 }//test_003__bug_check__bad_owner_cn
 
 #endif
@@ -420,9 +425,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_004__bug_check__can
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -478,11 +484,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_004__bug_check__can
  //-----------------------------------------
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__OpenBlob(tracer,
-                                   spConnector,
-                                   &hTr,
-                                   &hBlob,
-                                   blobID);
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -496,9 +503,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_004__bug_check__can
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                      spConnector,
-                                      &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -590,9 +598,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_100__release_owners
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -603,11 +612,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_100__release_owners
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -622,9 +632,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_100__release_owners
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CancelBlob(tracer,
-                                     spConnector,
-                                     &hBlob);
+ svc::RemoteFB_Connector__CancelBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -691,9 +702,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_101__commit
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -704,11 +716,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_101__commit
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -723,9 +736,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_101__commit
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CancelBlob(tracer,
-                                     spConnector,
-                                     &hBlob);
+ svc::RemoteFB_Connector__CancelBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -799,9 +813,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_102__rollback
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -812,11 +827,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_102__rollback
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -831,9 +847,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_102__rollback
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CancelBlob(tracer,
-                                     spConnector,
-                                     &hBlob);
+ svc::RemoteFB_Connector__CancelBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -847,9 +864,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_102__rollback
  //-----------------------------------------
  _TSO_CHECK(hTr);
 
- svc::RemoteFB_Connector__Rollback(tracer,
-                                   spConnector,
-                                   &hTr);
+ svc::RemoteFB_Connector__Rollback
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(!hTr);
 
@@ -909,9 +927,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_103__sql_commit
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -939,11 +958,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_103__sql_commit
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -958,9 +978,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_103__sql_commit
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CancelBlob(tracer,
-                                     spConnector,
-                                     &hBlob);
+ svc::RemoteFB_Connector__CancelBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -974,13 +995,14 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_103__sql_commit
  //-----------------------------------------
  _TSO_CHECK(hTr);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  _TSO_CHECK(!hTr);
 
@@ -1040,9 +1062,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_104__sql_rollback
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -1070,11 +1093,12 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_104__sql_rollback
 
  remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobID);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobID);
 
  _TSO_CHECK(hBlob);
 
@@ -1089,9 +1113,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_104__sql_rollback
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CancelBlob(tracer,
-                                     spConnector,
-                                     &hBlob);
+ svc::RemoteFB_Connector__CancelBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -1105,13 +1130,14 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_104__sql_rollback
  //-----------------------------------------
  _TSO_CHECK(hTr);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*in*/nullptr,
-                                      /*out*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*in*/nullptr,
+   /*out*/nullptr);
 
  _TSO_CHECK(!hTr);
 

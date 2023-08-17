@@ -240,9 +240,10 @@ void WORK_Cancel_Test_03__ExecuteImmediate::tag_impl::run(context_type* const pC
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //---------------
  const tag_thread::self_ptr

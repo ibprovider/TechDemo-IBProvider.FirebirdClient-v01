@@ -345,10 +345,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_003__bug_check__bad_
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  for(;;)
@@ -434,9 +435,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -446,10 +448,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  remote_fb::handles::RemoteFB__StmtHandle hStmt2(nullptr);
@@ -545,9 +548,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_005__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -556,9 +560,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_005__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr_copy(hTr);
 
- svc::RemoteFB_Connector__Commit(tracer,
-                                 spConnector,
-                                 &hTr_copy);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr_copy);
 
  _TSO_CHECK(!hTr_copy);
 
@@ -658,9 +663,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_006__err__bad_sql
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -849,9 +855,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::helper_007__ok
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -953,9 +960,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_008__prepare_after_e
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 

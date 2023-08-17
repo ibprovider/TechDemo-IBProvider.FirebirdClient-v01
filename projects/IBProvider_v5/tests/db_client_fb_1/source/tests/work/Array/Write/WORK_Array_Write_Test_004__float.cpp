@@ -152,15 +152,16 @@ void WORK_Array_Write_Test_004__float::tag_impl::test_001
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
 
- svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &arrayId,
-                                        buf.get_size(),
-                                        arraySDL,
-                                        sizeof(arrayData),
-                                        arrayData);
+ svc::RemoteFB_Connector__PutArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &arrayId,
+   buf.get_size(),
+   arraySDL,
+   sizeof(arrayData),
+   arrayData);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -418,15 +419,16 @@ void WORK_Array_Write_Test_004__float::tag_impl::test_002__dim2l
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
 
- svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &arrayId,
-                                        buf.get_size(),
-                                        arraySDL,
-                                        arrayData.memory_size(),
-                                        arrayData.buffer());
+ svc::RemoteFB_Connector__PutArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &arrayId,
+   buf.get_size(),
+   arraySDL,
+   arrayData.memory_size(),
+   arrayData.buffer());
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);

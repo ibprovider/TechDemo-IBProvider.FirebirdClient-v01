@@ -235,10 +235,11 @@ void WORK_Test_007__RollbackRetaining::tag_impl::test_003__bug_check__bad_tr_own
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);

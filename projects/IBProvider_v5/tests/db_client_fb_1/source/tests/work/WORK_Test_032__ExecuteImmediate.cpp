@@ -437,9 +437,10 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_007__bug_check__incorrect_i
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -653,9 +654,10 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_009__bug_check__incorrect_o
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -760,9 +762,10 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_010__bug_check__incorrect_o
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -1677,9 +1680,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S001__insert__without_param
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -1842,9 +1847,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S003__commit
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -1919,9 +1926,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S004__commit_retain
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2005,9 +2014,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S005__rollback
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2082,9 +2093,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S006__rollback_retain
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2110,9 +2123,10 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S006__rollback_retain
  _TSO_CHECK(hTrCopy->m_pParentPort);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__Rollback(tracer,
-                                   spConnector,
-                                   &hTr);
+ svc::RemoteFB_Connector__Rollback
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::RemoteFB_Connector__DetachDatabase
@@ -2167,9 +2181,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S007__insert__with_in_param
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2264,9 +2280,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S008__insert__with_in_param
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2377,9 +2395,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S009__insert__with_out_para
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2478,9 +2498,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S010__insert__with_out_para
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 
@@ -2600,9 +2622,11 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S011__insert__with_in1_out2
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 

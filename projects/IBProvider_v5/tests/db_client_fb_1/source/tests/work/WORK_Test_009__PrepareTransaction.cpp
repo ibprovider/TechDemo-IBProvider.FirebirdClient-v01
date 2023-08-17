@@ -116,18 +116,20 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_001__no_data
  _TSO_CHECK(tr_handle!=nullptr);
 
  //-----------------------------------------
-  svc::RemoteFB_Connector__PrepareTransaction(tracer,
-                                              spConnector,
-                                              &tr_handle,
-                                              0,
-                                              nullptr);
+ svc::RemoteFB_Connector__PrepareTransaction
+  (tracer,
+   spConnector,
+   &tr_handle,
+   0,
+   nullptr);
 
  _TSO_CHECK(tr_handle!=nullptr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__Commit(tracer,
-                                   spConnector,
-                                   &tr_handle);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &tr_handle);
 
  _TSO_CHECK(tr_handle==nullptr);
 }//test_001__no_data
@@ -181,18 +183,20 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_002__use_data__commit
  //-----------------------------------------
  const unsigned char prep_data[]={'1','2','3','4','5','6','C'};
 
- svc::RemoteFB_Connector__PrepareTransaction(tracer,
-                                             spConnector,
-                                             &tr_handle,
-                                             _DIM_(prep_data),
-                                             prep_data);
+ svc::RemoteFB_Connector__PrepareTransaction
+  (tracer,
+   spConnector,
+   &tr_handle,
+   _DIM_(prep_data),
+   prep_data);
 
  _TSO_CHECK(tr_handle!=nullptr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__Commit(tracer,
-                                   spConnector,
-                                   &tr_handle);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &tr_handle);
 
  _TSO_CHECK(tr_handle==nullptr);
 }//test_002__use_data__commit
@@ -380,10 +384,11 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_004__bug_check__bad_tr_ow
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
@@ -414,10 +419,11 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_004__bug_check__bad_tr_ow
                            1);
 
    errSvc::check_err_rec__tr_err__bug_check__bad_tr_handle
-                          (tracer,
-                           exc.get_record(0),
-                           helper__get_PrepareTr_bugcheck_src(spConnector1),
-                           L"#003");
+    (tracer,
+     exc.get_record(0),
+     helper__get_PrepareTr_bugcheck_src(spConnector1),
+     L"#003");
+
    break;
   }//catch
 
@@ -426,9 +432,10 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_004__bug_check__bad_tr_ow
 
  _TSO_CHECK(tr_handle1!=nullptr);
 
- svc::RemoteFB_Connector__Commit(tracer,
-                                 spConnector1,
-                                 &tr_handle1);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector1,
+   &tr_handle1);
 
  _TSO_CHECK(tr_handle1==nullptr);
 }//test_004__bug_check__bad_tr_owner
@@ -506,11 +513,12 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_005__err__prep_data_too_l
                            1);
 
    errSvc::check_err_rec__tr_err__prep_data_is_too_large
-                          (tracer,
-                           exc.get_record(0),
-                           errSvc::sm_subsysID__remote_fb_p12,
-                           prep_data.size(),
-                           65535);
+    (tracer,
+     exc.get_record(0),
+     errSvc::sm_subsysID__remote_fb_p12,
+     prep_data.size(),
+     65535);
+
    break;
   }//catch
 
@@ -520,9 +528,10 @@ void WORK_Test_009__PrepareTransaction::tag_impl::test_005__err__prep_data_too_l
  _TSO_CHECK(tr_handle!=nullptr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__Commit(tracer,
-                                   spConnector,
-                                   &tr_handle);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &tr_handle);
 
  _TSO_CHECK(tr_handle==nullptr);
 }//test_005__err__prep_data_too_large

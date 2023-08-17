@@ -287,10 +287,11 @@ void WORK_Test_023__CloseBlob__v2_lazy_send::tag_impl::test_004__bug_check__bad_
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns;

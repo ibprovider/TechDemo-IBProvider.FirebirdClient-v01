@@ -124,9 +124,11 @@ void WORK_Params_OUT_011__blob::tag_impl::test_005_generic
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr;
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
  _TSO_CHECK(hTr);
  _TSO_CHECK(hTr->m_ID.has_value());
 

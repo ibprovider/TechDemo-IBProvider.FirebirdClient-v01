@@ -100,9 +100,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_001__select
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -220,9 +221,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_002__close_by_commit
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -343,9 +345,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_003__close_by_rollback
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -392,9 +395,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_003__close_by_rollback
 
  _TSO_CHECK(copy_hTr);
 
- svc::RemoteFB_Connector__Rollback(tracer,
-                                   spConnector,
-                                   &hTr);
+ svc::RemoteFB_Connector__Rollback
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(!hTr);
 
@@ -470,9 +474,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_004__close_by_sql_commit
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 
@@ -630,9 +635,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_005__close_by_sql_rollback
 
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr);
 

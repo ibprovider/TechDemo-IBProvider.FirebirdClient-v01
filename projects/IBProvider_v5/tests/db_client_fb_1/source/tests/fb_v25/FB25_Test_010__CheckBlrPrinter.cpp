@@ -199,9 +199,10 @@ typedef INT_PTR (__stdcall t_isc_print_blr)
  //-----------------------------------------
  svc::remote_fb_tr_handle_type hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);

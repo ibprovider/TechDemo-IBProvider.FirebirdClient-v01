@@ -102,9 +102,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_001__bug_check__bad_owner_cn_o
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -114,10 +115,11 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_001__bug_check__bad_owner_cn_o
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
@@ -169,8 +171,9 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_001__bug_check__bad_owner_cn_o
   (tracer,
    spConnector);
 
- svc::RemoteFB_Connector__DetachDatabase(tracer,
-                                         spConnector2);
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector2);
 }//test_001__bug_check__bad_owner_cn_of_tr
 
 #endif
@@ -218,9 +221,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_002__bug_check__bad_tr
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  _TSO_CHECK(hTr!=nullptr);
 
@@ -229,9 +233,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_002__bug_check__bad_tr
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr_copy(hTr);
 
- svc::RemoteFB_Connector__Commit(tracer,
-                                 spConnector,
-                                 &hTr_copy);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr_copy);
 
  _TSO_CHECK(!hTr_copy);
 
@@ -247,15 +252,16 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_002__bug_check__bad_tr
  {
   try
   {
-   svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                          spConnector,
-                                          OpCtx,
-                                          &hTr,
-                                          &arrayId,
-                                          /*szArraySDL*/0,
-                                          /*pArraySDL*/nullptr,
-                                          /*szArrayData*/0,
-                                          /*pArrayData*/nullptr);
+   svc::RemoteFB_Connector__PutArraySlice
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &arrayId,
+     /*szArraySDL*/0,
+     /*pArraySDL*/nullptr,
+     /*szArrayData*/0,
+     /*pArrayData*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -338,15 +344,16 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_003__bug_check__no_tr
  {
   try
   {
-   svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                          spConnector,
-                                          OpCtx,
-                                          &hTr,
-                                          &arrayId,
-                                          /*szArraySDL*/0,
-                                          /*pArraySDL*/nullptr,
-                                          /*szArrayData*/0,
-                                          /*pArrayData*/nullptr);
+   svc::RemoteFB_Connector__PutArraySlice
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &arrayId,
+     /*szArraySDL*/0,
+     /*pArraySDL*/nullptr,
+     /*szArrayData*/0,
+     /*pArrayData*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -417,9 +424,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_004__err__bad_tr_handle
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //----------------------------------------- Build SDL
  typedef isc_base::t_isc_api__op_data__writer_buffer__external   buf_type;
@@ -476,9 +484,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_004__err__bad_tr_handle
  const db_obj::t_dbvalue__i2 arrayData[3]={SHRT_MIN,0,SHRT_MAX};
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,
-                     spConnector,
-                     &hTr);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &hTr);
 
  //-----------------------------------------
  TestOperationContext OpCtx(params);
@@ -489,15 +498,16 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_004__err__bad_tr_handle
  {
   try
   {
-   svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                          spConnector,
-                                          OpCtx,
-                                          &hTr,
-                                          &arrayId,
-                                          buf.get_size(),
-                                          arraySDL,
-                                          sizeof(arrayData),
-                                          arrayData);
+   svc::RemoteFB_Connector__PutArraySlice
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &arrayId,
+     buf.get_size(),
+     arraySDL,
+     sizeof(arrayData),
+     arrayData);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -566,9 +576,10 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_005__err__bad_buf_size
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &hTr);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
 
  //----------------------------------------- Build SDL
  typedef isc_base::t_isc_api__op_data__writer_buffer__external   buf_type;
@@ -630,15 +641,16 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_005__err__bad_buf_size
  {
   try
   {
-   svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                          spConnector,
-                                          OpCtx,
-                                          &hTr,
-                                          &arrayId,
-                                          buf.get_size(),
-                                          arraySDL,
-                                          0,
-                                          nullptr); //throw!
+   svc::RemoteFB_Connector__PutArraySlice
+    (tracer,
+     spConnector,
+     OpCtx,
+     &hTr,
+     &arrayId,
+     buf.get_size(),
+     arraySDL,
+     0,
+     nullptr); //throw!
   }
   catch(const ibp::t_ibp_error& exc)
   {

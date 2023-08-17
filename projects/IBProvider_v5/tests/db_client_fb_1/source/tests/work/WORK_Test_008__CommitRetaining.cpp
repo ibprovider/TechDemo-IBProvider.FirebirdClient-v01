@@ -104,16 +104,18 @@ void WORK_Test_008__CommitRetaining::tag_impl::test_001
  //-----------------------------------------
  for(size_t n=1;n!=3;++n)
  {
-  svc::RemoteFB_Connector__CommitRetaining(tracer,
-                                           spConnector,
-                                           &tr_handle);
+  svc::RemoteFB_Connector__CommitRetaining
+   (tracer,
+    spConnector,
+    &tr_handle);
 
   _TSO_CHECK(tr_handle!=nullptr);
  }//for n
 
- svc::RemoteFB_Connector__Commit(tracer,
-                                   spConnector,
-                                   &tr_handle);
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &tr_handle);
 
  _TSO_CHECK(tr_handle==nullptr);
 }//test_001
@@ -233,10 +235,11 @@ void WORK_Test_008__CommitRetaining::tag_impl::test_003__bug_check__bad_tr_owner
  isc_base::t_isc_connection_settings cns2;
 
  const svc::remote_fb_connector_ptr
-  spConnector2(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns2));
+  spConnector2
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns2));
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
