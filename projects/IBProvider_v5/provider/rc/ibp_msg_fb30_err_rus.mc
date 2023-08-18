@@ -4197,13 +4197,13 @@ _MC("Asynchronous call is already running for this attachment")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB30__PRIVATE_FUNCTION
 Language        =Rus
-_MC("Function %1 is private to package %2")
+_MC("Функция %1 пакета %2 определена как приватная")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB30__PRIVATE_PROCEDURE
 Language        =Rus
-_MC("Procedure %1 is private to package %2")
+_MC("Процедура %1 пакета %2 определена как приватная")
 .
 
 //------------------------------------------------------------------------
