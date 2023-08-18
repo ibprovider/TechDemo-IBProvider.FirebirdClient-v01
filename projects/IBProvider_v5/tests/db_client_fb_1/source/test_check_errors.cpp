@@ -7438,6 +7438,116 @@ bool TestCheckErrors::check_err_rec__srv_err__invalid_time_zone_ID
  return resultValue;
 }//check_err_rec__srv_err__invalid_time_zone_ID
 
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__srv_err__private_procedure
+                (TTSO_Tracer&                         tracer,
+                 wstr_box_type                  const ucs2ErrSrc,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const procName,
+                 wstr_box_type                  const packageName)
+{
+ assert(pErrorRec!=nullptr);
+
+ bool resultValue=true;
+
+ //-----------------------------------------
+ {
+  const char* const c_templ
+   ="Процедура %1 пакета %2 определена как приватная";
+
+  structure::wstr_formatter msgRus
+   (utf8_to_wstring(c_templ));
+
+  msgRus<<procName<<packageName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ {
+  structure::wstr_formatter msgEng
+   (L"Procedure %1 is private to package %2");
+
+  msgEng<<procName<<packageName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ return resultValue;
+}//check_err_rec__srv_err__private_procedure
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__srv_err__private_function
+                (TTSO_Tracer&                         tracer,
+                 wstr_box_type                  const ucs2ErrSrc,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const funcName,
+                 wstr_box_type                  const packageName)
+{
+ assert(pErrorRec!=nullptr);
+
+ bool resultValue=true;
+
+ //-----------------------------------------
+ {
+  const char* const c_templ
+   ="Функция %1 пакета %2 определена как приватная";
+
+  structure::wstr_formatter msgRus
+   (utf8_to_wstring(c_templ));
+
+  msgRus<<funcName<<packageName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ {
+  structure::wstr_formatter msgEng
+   (L"Function %1 is private to package %2");
+
+  msgEng<<funcName<<packageName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ return resultValue;
+}//check_err_rec__srv_err__private_function
+
 ////////////////////////////////////////////////////////////////////////////////
 
 bool TestCheckErrors::error_rec__check_source
@@ -8017,7 +8127,7 @@ std::wstring TestCheckErrors::IBP_EscapingText(structure::t_const_wstr_box const
    case L'\n':
     result+=L"\\n";
     break;
-  
+
    default:
     result+=*i;
     break;

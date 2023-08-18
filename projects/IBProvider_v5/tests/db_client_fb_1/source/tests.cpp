@@ -55,6 +55,7 @@
 
 #include "source/tests/protocol/v13/Compression/TestsFor__P13_Compression_01__zlib1_dll.h"
 
+#include "source/tests/work/Errors/WORK_Errors_FB03_00_00__Test_001.h"
 #include "source/tests/work/Errors/WORK_Errors_FB04_00_00__Test_001.h"
 
 #include "source/tests/work/WORK_Test_003__Connector.h"
@@ -359,6 +360,8 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(TestsFor__P13_Win_Sspi_004__create_db::create),
 
  DEF_CREATOR_DESCR(TestsFor__P13_Compression_01__zlib1_dll::create),
+
+ DEF_CREATOR_DESCR(WORK_Errors_FB03_00_00__Test_001::create),
 
  DEF_CREATOR_DESCR(WORK_Errors_FB04_00_00__Test_001::create),
 

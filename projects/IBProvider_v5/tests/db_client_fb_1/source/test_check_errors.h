@@ -1055,6 +1055,20 @@ class TestCheckErrors
                 const structure::t_err_record* pErrorRec,
                 unsigned                       timezoneID);
 
+  static bool check_err_rec__srv_err__private_procedure
+               (TTSO_Tracer&                   tracer,
+                wstr_box_type                  ucs2ErrSrc,
+                const structure::t_err_record* pErrorRec,
+                wstr_box_type                  procName,
+                wstr_box_type                  packageName);
+
+  static bool check_err_rec__srv_err__private_function
+               (TTSO_Tracer&                   tracer,
+                wstr_box_type                  ucs2ErrSrc,
+                const structure::t_err_record* pErrorRec,
+                wstr_box_type                  funcName,
+                wstr_box_type                  packageName);
+
  public:
   static bool error_rec__check_source
                 (TTSO_Tracer&                   tracer,

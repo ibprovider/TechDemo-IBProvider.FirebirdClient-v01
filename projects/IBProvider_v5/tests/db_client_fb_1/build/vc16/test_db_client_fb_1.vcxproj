@@ -899,6 +899,7 @@
     <ClCompile Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_02__StmtFetch.cpp" />
     <ClCompile Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_03__ExecuteImmediate.cpp" />
     <ClCompile Include="..\..\source\tests\inet\INET_Test_002__RemotePort.cpp" />
+    <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_001__short.cpp" />
     <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_002__long.cpp" />
@@ -1627,6 +1628,7 @@
     <ClInclude Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_02__StmtFetch.h" />
     <ClInclude Include="..\..\source\tests\work\Cancel\WORK_Cancel_Test_03__ExecuteImmediate.h" />
     <ClInclude Include="..\..\source\tests\inet\INET_Test_002__RemotePort.h" />
+    <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.h" />
     <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_001__short.h" />
     <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_002__long.h" />

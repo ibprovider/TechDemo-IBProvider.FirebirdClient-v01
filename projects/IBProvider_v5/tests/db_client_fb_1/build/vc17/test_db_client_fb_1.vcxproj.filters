@@ -3679,6 +3679,9 @@
     <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.cpp">
       <Filter>source\tests\work\Errors</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.cpp">
+      <Filter>source\tests\work\Errors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -5804,6 +5807,9 @@
       <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.h">
+      <Filter>source\tests\work\Errors\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.h">
       <Filter>source\tests\work\Errors\_headers</Filter>
     </ClInclude>
   </ItemGroup>
