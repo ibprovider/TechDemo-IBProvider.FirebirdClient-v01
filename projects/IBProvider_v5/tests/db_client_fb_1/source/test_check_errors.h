@@ -29,6 +29,8 @@ class TestCheckErrors
 
   static const char sm_srcID__UnknownDBMS[];
 
+  static const wchar_t sm_srcID_wstr__Firebird[];
+
   static const wchar_t sm_subsysID__remote_fb[];
 
   static const wchar_t sm_subsysID__remote_fb_inet[];
@@ -1039,6 +1041,19 @@ class TestCheckErrors
                  wstr_box_type                  pSubSystemID,
                  size_t                         index,
                  long                           sqlType);
+
+ public:
+  static bool check_err_rec__srv_err__invalid_time_zone_region
+               (TTSO_Tracer&                   tracer,
+                wstr_box_type                  ucs2ErrSrc,
+                const structure::t_err_record* pErrorRec,
+                wstr_box_type                  regionName);
+
+  static bool check_err_rec__srv_err__invalid_time_zone_ID
+               (TTSO_Tracer&                   tracer,
+                wstr_box_type                  ucs2ErrSrc,
+                const structure::t_err_record* pErrorRec,
+                unsigned                       timezoneID);
 
  public:
   static bool error_rec__check_source

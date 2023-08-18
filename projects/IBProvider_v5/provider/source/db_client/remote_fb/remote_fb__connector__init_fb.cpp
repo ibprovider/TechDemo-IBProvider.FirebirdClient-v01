@@ -37,7 +37,7 @@ void RemoteFB__Connector::Helper__FinalInitialize__FB(const cns_type& cns)
  }//if
 
  //--------------------------- FB v4+
- if(structure::cmp_str_version_prefix(fb_ver_cur,"4"))
+ if(structure::cmp_str_version_prefix(fb_ver_cur,"4")>=0)
  {
 #if(IBP_EDITION_ID==IBP_EDITION_ID__FREE)
 
@@ -53,7 +53,7 @@ void RemoteFB__Connector::Helper__FinalInitialize__FB(const cns_type& cns)
  }//if
 
  //--------------------------- FB v3+
- if(structure::cmp_str_version_prefix(fb_ver_cur,"3"))
+ if(structure::cmp_str_version_prefix(fb_ver_cur,"3")>=0)
  {
   return this->Helper__FinalInitialize__FB_03_00
           (cns);

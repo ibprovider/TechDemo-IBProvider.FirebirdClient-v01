@@ -1061,6 +1061,12 @@
     <Filter Include="source\tests\work\StmtFetch_M\Types\timestamp_with_tz\_headers">
       <UniqueIdentifier>{7a5cf9e5-8cec-455f-b291-a4c9e8550315}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\work\Errors">
+      <UniqueIdentifier>{ef2a31c1-e37b-434e-a174-1c2e7a82cdd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\Errors\_headers">
+      <UniqueIdentifier>{88a95323-d8d3-44f0-863f-7f5abd97d061}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3670,6 +3676,9 @@
     <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__timezones_source.cpp">
       <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.cpp">
+      <Filter>source\tests\work\Errors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -5793,6 +5802,9 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_014__timestamp_with_tz.h">
       <Filter>source\tests\work\Array\Read\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB04_00_00__Test_001.h">
+      <Filter>source\tests\work\Errors\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

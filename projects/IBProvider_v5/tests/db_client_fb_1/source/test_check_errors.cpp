@@ -21,6 +21,10 @@ const char TestCheckErrors::sm_srcID__UnknownDBMS[]
  ="Unknown DBMS";
 
 //------------------------------------------------------------------------
+const wchar_t TestCheckErrors::sm_srcID_wstr__Firebird[]
+ =L"Firebird";
+
+//------------------------------------------------------------------------
 const wchar_t TestCheckErrors::sm_subsysID__remote_fb[]
  =L"remote_fb";
 
@@ -7324,6 +7328,115 @@ bool TestCheckErrors::check_err_rec__common__internal_err__unk_sql_type
  //-----------------------------------------
  return resultValue;
 }//check_err_rec__common__internal_err__unk_sql_type
+
+////////////////////////////////////////////////////////////////////////////////
+
+bool TestCheckErrors::check_err_rec__srv_err__invalid_time_zone_region
+                (TTSO_Tracer&                         tracer,
+                 wstr_box_type                  const ucs2ErrSrc,
+                 const structure::t_err_record* const pErrorRec,
+                 wstr_box_type                  const regionName)
+{
+ assert(pErrorRec!=nullptr);
+
+ bool resultValue=true;
+
+ //-----------------------------------------
+ {
+  const char* const c_templ
+   ="Недействительный регион часового пояса: %1";
+
+  structure::wstr_formatter msgRus
+   (utf8_to_wstring(c_templ));
+
+  msgRus<<regionName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ {
+  structure::wstr_formatter msgEng
+   (L"Invalid time zone region: %1");
+
+  msgEng<<regionName;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ return resultValue;
+}//check_err_rec__srv_err__invalid_time_zone_region
+
+//------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__srv_err__invalid_time_zone_ID
+                (TTSO_Tracer&                         tracer,
+                 wstr_box_type                  const ucs2ErrSrc,
+                 const structure::t_err_record* const pErrorRec,
+                 unsigned                       const timezoneID)
+{
+ assert(pErrorRec!=nullptr);
+
+ bool resultValue=true;
+
+ //-----------------------------------------
+ {
+  const char* const c_templ
+   ="Недействительный ID часового пояса: %1";
+
+  structure::wstr_formatter msgRus
+   (utf8_to_wstring(c_templ));
+
+  msgRus<<timezoneID;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        ucs2ErrSrc,
+        msgRus.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ {
+  structure::wstr_formatter msgEng
+   (L"Invalid time zone ID: %1");
+
+  msgEng<<timezoneID;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        ucs2ErrSrc,
+        msgEng.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ return resultValue;
+}//check_err_rec__srv_err__invalid_time_zone_ID
 
 ////////////////////////////////////////////////////////////////////////////////
 
