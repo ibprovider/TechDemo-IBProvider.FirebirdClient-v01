@@ -132,20 +132,22 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_001__select
 
   tracer<<L"------------------------------ pass: "<<nPass<<send;
 
-  svc::RemoteFB_Connector__StmtExecute(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hTr,
-                                       &hStmt,
-                                       /*IN*/nullptr,
-                                       /*OUT*/nullptr);
+  svc::RemoteFB_Connector__StmtExecute
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    /*IN*/nullptr,
+    /*OUT*/nullptr);
 
   _TSO_CHECK(hStmt);
   _TSO_CHECK(hStmt->m_pParentTr==hTr);
 
-  svc::RemoteFB_Connector__StmtClose(tracer,
-                                     spConnector,
-                                     &hStmt);
+  svc::RemoteFB_Connector__StmtClose
+   (tracer,
+    spConnector,
+    &hStmt);
 
   _TSO_CHECK(hStmt);
   _TSO_CHECK(!hStmt->m_pParentTr);
@@ -253,13 +255,14 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_002__close_by_commit
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
 
  _TSO_CHECK(hTr);
 
@@ -377,13 +380,14 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_003__close_by_rollback
  _TSO_CHECK(!hStmt->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
 
  _TSO_CHECK(hTr);
 
@@ -509,9 +513,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_004__close_by_sql_commit
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt2(nullptr);
 
- svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                       spConnector,
-                                       &hStmt2);
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt2);
 
  _TSO_CHECK(hStmt2);
 
@@ -531,13 +536,15 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_004__close_by_sql_commit
  _TSO_CHECK(!hStmt2->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
+
  _TSO_CHECK(hTr);
 
  _TSO_CHECK(hStmt);
@@ -548,13 +555,15 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_004__close_by_sql_commit
 
  _TSO_CHECK(copy_hTr);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt2,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt2,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
+
  _TSO_CHECK(!hTr);
 
  _TSO_CHECK(hStmt);
@@ -670,9 +679,10 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_005__close_by_sql_rollback
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt2(nullptr);
 
- svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                       spConnector,
-                                       &hStmt2);
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt2);
 
  _TSO_CHECK(hStmt2);
 
@@ -692,13 +702,15 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_005__close_by_sql_rollback
  _TSO_CHECK(!hStmt2->m_pParentTr);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
+
  _TSO_CHECK(hTr);
 
  _TSO_CHECK(hStmt);
@@ -709,13 +721,15 @@ void WORK_Test_M01__WorkWithCursor::tag_impl::test_005__close_by_sql_rollback
 
  _TSO_CHECK(copy_hTr);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt2,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt2,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
+
  _TSO_CHECK(!hTr);
 
  _TSO_CHECK(hStmt);
