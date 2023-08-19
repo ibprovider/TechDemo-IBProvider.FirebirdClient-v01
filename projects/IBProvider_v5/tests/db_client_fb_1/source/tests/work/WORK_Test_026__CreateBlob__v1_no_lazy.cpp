@@ -136,11 +136,12 @@ void WORK_Test_026__CreateBlob__v1_no_lazy::tag_impl::test_001__bug_check__bad_o
  {
   try
   {
-   svc::RemoteFB_Connector__CreateBlob(tracer,
-                                       spConnector2,
-                                       &hTr,
-                                       &hBlob,
-                                       &blobId);
+   svc::RemoteFB_Connector__CreateBlob
+    (tracer,
+     spConnector2,
+     &hTr,
+     &hBlob,
+     &blobId);
   }
   catch(const ibp::t_ibp_error& exc)
   {

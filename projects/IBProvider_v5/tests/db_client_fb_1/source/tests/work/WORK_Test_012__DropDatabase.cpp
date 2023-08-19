@@ -85,10 +85,11 @@ void WORK_Test_012__DropDatabase::tag_impl::test_001__err__bad_cn_handle
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
-  spConnector(svc::RemoteFB_Connector__CreateDatabase
-                                           (tracer,
-                                            params,
-                                            cns));
+  spConnector
+   (svc::RemoteFB_Connector__CreateDatabase
+     (tracer,
+      params,
+      cns));
 
  //-----------------------------------------
  TestServices::HACK__DropDb
@@ -98,8 +99,9 @@ void WORK_Test_012__DropDatabase::tag_impl::test_001__err__bad_cn_handle
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DropDatabase(tracer,
-                                        spConnector);
+  svc::RemoteFB_Connector__DropDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -111,9 +113,10 @@ void WORK_Test_012__DropDatabase::tag_impl::test_001__err__bad_cn_handle
                           1);
 
   errSvc::check_err_rec__srv_err__bad_cn_handle
-                         (tracer,
-                          spConnector->GetData()->m_DBMS_Name,
-                          exc.get_record(0));
+   (tracer,
+    spConnector->GetData()->m_DBMS_Name,
+    exc.get_record(0));
+
   return;
  }//catch
 
@@ -159,20 +162,23 @@ void WORK_Test_012__DropDatabase::tag_impl::test_003__bug_check__bad_cn_handle
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
-  spConnector(svc::RemoteFB_Connector__CreateDatabase
-                                           (tracer,
-                                            params,
-                                            cns));
+  spConnector
+   (svc::RemoteFB_Connector__CreateDatabase
+     (tracer,
+      params,
+      cns));
 
  //-----------------------------------------
- svc::RemoteFB_Connector__DropDatabase(tracer,
-                                       spConnector);
+ svc::RemoteFB_Connector__DropDatabase
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__DropDatabase(tracer,
-                                        spConnector);
+  svc::RemoteFB_Connector__DropDatabase
+   (tracer,
+    spConnector);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -184,10 +190,11 @@ void WORK_Test_012__DropDatabase::tag_impl::test_003__bug_check__bad_cn_handle
                            1);
 
   errSvc::check_err_rec__cn_err__bug_check__bad_cn_handle
-                                           (tracer,
-                                            exc.get_record(0),
-                                            helper__get_DropDb_bugcheck_src(spConnector),
-                                            L"#001");
+   (tracer,
+    exc.get_record(0),
+    helper__get_DropDb_bugcheck_src(spConnector),
+    L"#001");
+
   return;
  }//catch
 }//test_003__bug_check__bad_cn_handle
@@ -231,28 +238,32 @@ void WORK_Test_012__DropDatabase::tag_impl::test_004__err__has_active_tr
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
-  spConnector(svc::RemoteFB_Connector__CreateDatabase
-                                           (tracer,
-                                            params,
-                                            cns));
+  spConnector
+   (svc::RemoteFB_Connector__CreateDatabase
+     (tracer,
+      params,
+      cns));
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &tr_handle1);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &tr_handle1);
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle2(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector,
-                                           &tr_handle2);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &tr_handle2);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__DropDatabase(tracer,
-                                       spConnector);
+ svc::RemoteFB_Connector__DropDatabase
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  //транзакция отключена

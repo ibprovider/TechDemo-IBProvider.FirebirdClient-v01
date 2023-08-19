@@ -149,15 +149,16 @@ void WORK_Array_Read_Test_006__date::tag_impl::test_001
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
 
- svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &arrayId,
-                                        bufSDL.get_size(),
-                                        arraySDL,
-                                        sizeof(arrayData),
-                                        arrayData);
+ svc::RemoteFB_Connector__PutArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &arrayId,
+   bufSDL.get_size(),
+   arraySDL,
+   sizeof(arrayData),
+   arrayData);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -271,15 +272,16 @@ void WORK_Array_Read_Test_006__date::tag_impl::test_001
  //-----------------------------------------
  element_type arrayData2[_DIM_(arrayData)]={0};
 
- svc::RemoteFB_Connector__GetArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        arrayID2,
-                                        bufSDL.get_size(),
-                                        arraySDL,
-                                        sizeof(arrayData),
-                                        arrayData2);
+ svc::RemoteFB_Connector__GetArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   arrayID2,
+   bufSDL.get_size(),
+   arraySDL,
+   sizeof(arrayData),
+   arrayData2);
 
  for(size_t iElement=0;iElement!=_DIM_(arrayData);++iElement)
  {
@@ -427,15 +429,16 @@ void WORK_Array_Read_Test_006__date::tag_impl::test_002__dim2l
  //-----------------------------------------
  db_obj::DB_IBARRAYID arrayId={};
 
- svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        &arrayId,
-                                        bufSDL.get_size(),
-                                        arraySDL,
-                                        arrayData.memory_size(),
-                                        arrayData.buffer());
+ svc::RemoteFB_Connector__PutArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &arrayId,
+   bufSDL.get_size(),
+   arraySDL,
+   arrayData.memory_size(),
+   arrayData.buffer());
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -550,15 +553,16 @@ void WORK_Array_Read_Test_006__date::tag_impl::test_002__dim2l
  structure::t_typed_simple_buffer<element_type,TTSO_MemoryAllocator>
   arrayData2(nTotalCount);
 
- svc::RemoteFB_Connector__GetArraySlice(tracer,
-                                        spConnector,
-                                        OpCtx,
-                                        &hTr,
-                                        arrayID2,
-                                        bufSDL.get_size(),
-                                        arraySDL,
-                                        arrayData2.memory_size(),
-                                        arrayData2.buffer());
+ svc::RemoteFB_Connector__GetArraySlice
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   arrayID2,
+   bufSDL.get_size(),
+   arraySDL,
+   arrayData2.memory_size(),
+   arrayData2.buffer());
 
  //-----------
  for(size_t iElement=0;iElement!=nTotalCount;++iElement)

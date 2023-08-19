@@ -123,13 +123,14 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_001__err__too_long_bpb
  {
   try
   {
-   svc::RemoteFB_Connector__CreateBlob(tracer,
-                                       spConnector,
-                                       &hTr,
-                                       &hBlob,
-                                       &blobId,
-                                       BPB.size(),
-                                       BPB.data());
+   svc::RemoteFB_Connector__CreateBlob
+    (tracer,
+     spConnector,
+     &hTr,
+     &hBlob,
+     &blobId,
+     BPB.size(),
+     BPB.data());
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -231,27 +232,30 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_002__no_params
 
  db_obj::DB_IBBLOBID blobId={};
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobId,
-                                     _DIM_(BPB),
-                                     BPB);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobId,
+   _DIM_(BPB),
+   BPB);
 
  //-----------------------------------------
  const char c_testData[]={1,2,3};
 
- svc::RemoteFB_Connector__WriteBlob(tracer,
-                                    spConnector,
-                                    &hBlob,
-                                    sizeof(c_testData),
-                                    c_testData);
+ svc::RemoteFB_Connector__WriteBlob
+  (tracer,
+   spConnector,
+   &hBlob,
+   sizeof(c_testData),
+   c_testData);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__CloseBlob(tracer,
-                                    spConnector,
-                                    &hBlob);
+ svc::RemoteFB_Connector__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -446,27 +450,30 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
 
  db_obj::DB_IBBLOBID blobId={};
 
- svc::RemoteFB_Connector__CreateBlob(tracer,
-                                     spConnector,
-                                     &hTr,
-                                     &hBlob,
-                                     &blobId,
-                                     _DIM_(BPB),
-                                     BPB);
+ svc::RemoteFB_Connector__CreateBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   &blobId,
+   _DIM_(BPB),
+   BPB);
 
  //-----------------------------------------
  const char c_testData[]={1,2,3};
 
- svc::RemoteFB_Connector__WriteBlob(tracer,
-                                    spConnector,
-                                    &hBlob,
-                                    sizeof(c_testData),
-                                    c_testData);
+ svc::RemoteFB_Connector__WriteBlob
+  (tracer,
+   spConnector,
+   &hBlob,
+   sizeof(c_testData),
+   c_testData);
 
  //-----------------------------------------
- svc::RemoteFB_Connector__CloseBlob(tracer,
-                                    spConnector,
-                                    &hBlob);
+ svc::RemoteFB_Connector__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  //-----------------------------------------
  svc::remote_fb_stmt_handle_type hStmt(nullptr);
@@ -553,13 +560,14 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
 
  size_t cbActualReaded=0;
 
- const bool readResult=svc::RemoteFB_Connector__ReadBlob
-                        (tracer,
-                         spConnector,
-                         &hBlob,
-                         sizeof(blobData),
-                         blobData,
-                         &cbActualReaded);
+ const bool readResult
+  =svc::RemoteFB_Connector__ReadBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     sizeof(blobData),
+     blobData,
+     &cbActualReaded);
 
  _TSO_CHECK(!readResult);
 

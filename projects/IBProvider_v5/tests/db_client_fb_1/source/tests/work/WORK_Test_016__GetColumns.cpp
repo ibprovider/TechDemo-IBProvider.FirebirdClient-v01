@@ -1261,7 +1261,10 @@ void WORK_Test_016__GetColumns::tag_impl::test_009__err__drop_stmt
  //-----------------------------------------
  (hStmt)->m_PFlags.clear(remote_fb::handles::RemoteFB__HandleData_Statement::PFLAG__CACHE_COLS_INFO);
 
- svc::HACK__DropStmt(tracer,spConnector,&hStmt);
+ svc::HACK__DropStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(1);
@@ -1283,10 +1286,10 @@ void WORK_Test_016__GetColumns::tag_impl::test_009__err__drop_stmt
 
   errSvc::check_err_count(exc,2);
 
-   errSvc::check_err_rec__srv_err__invalid_req_handle
-    (tracer,
-     spConnector->GetData()->m_DBMS_Name,
-     exc.get_record(0));
+  errSvc::check_err_rec__srv_err__invalid_req_handle
+   (tracer,
+    spConnector->GetData()->m_DBMS_Name,
+    exc.get_record(0));
 
   errSvc::check_err_rec__stmt_err__errors_in_get_columns_operation
    (tracer,

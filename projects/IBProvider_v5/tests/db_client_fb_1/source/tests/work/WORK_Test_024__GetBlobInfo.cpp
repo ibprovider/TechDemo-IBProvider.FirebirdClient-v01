@@ -228,9 +228,10 @@ void WORK_Test_024__GetBlobInfo::tag_impl::test_001
  }//local
 
  //-----------------------------------------
- svc::RemoteFB_Connector__CloseBlob(tracer,
-                                    spConnector,
-                                    &hBlob);
+ svc::RemoteFB_Connector__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 

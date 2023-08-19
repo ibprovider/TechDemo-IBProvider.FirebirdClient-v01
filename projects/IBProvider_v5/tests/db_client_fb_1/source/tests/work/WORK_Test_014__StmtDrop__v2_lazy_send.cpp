@@ -560,9 +560,10 @@ void WORK_Test_014__StmtDrop__v2_lazy_send::tag_impl::test_102__send_drop_op_to_
   //------
   remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
 
-  svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                        spConnector,
-                                        &hStmt);
+  svc::RemoteFB_Connector__StmtAllocate
+   (tracer,
+    spConnector,
+    &hStmt);
 
   _TSO_CHECK(hStmt);
   _TSO_CHECK(hStmt->m_ID.is_defer())

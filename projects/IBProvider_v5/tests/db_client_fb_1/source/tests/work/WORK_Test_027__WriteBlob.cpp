@@ -491,11 +491,12 @@ void WORK_Test_027__WriteBlob::tag_impl::test_004__bug_check__write_to_open_blob
  {
   try
   {
-   svc::RemoteFB_Connector__WriteBlob(tracer,
-                                      spConnector,
-                                      &hBlob,
-                                      0,
-                                      nullptr);
+   svc::RemoteFB_Connector__WriteBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     0,
+     nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -602,9 +603,10 @@ void WORK_Test_027__WriteBlob::tag_impl::test_100__err__hack_close_blob
  _TSO_CHECK(hBlob->m_BlobMode==hBlob->BlobMode__Create);
 
  //-----------------------------------------
- svc::HACK__CloseBlob(tracer,
-                      spConnector,
-                      &hBlob);
+ svc::HACK__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  {
   structure::t_typed_simple_buffer<unsigned char,TTSO_MemoryAllocator>
@@ -618,11 +620,12 @@ void WORK_Test_027__WriteBlob::tag_impl::test_100__err__hack_close_blob
 
    try
    {
-    svc::RemoteFB_Connector__WriteBlob(tracer,
-                                       spConnector,
-                                       &hBlob,
-                                       blobData.size(),
-                                       blobData.buffer());
+    svc::RemoteFB_Connector__WriteBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      blobData.size(),
+      blobData.buffer());
    }
    catch(const ibp::t_ibp_error& exc)
    {

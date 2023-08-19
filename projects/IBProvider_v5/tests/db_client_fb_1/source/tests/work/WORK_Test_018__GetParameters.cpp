@@ -458,10 +458,11 @@ void WORK_Test_018__GetParameters::tag_impl::test_004__err__not_prepared
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
-  spConnector(svc::RemoteFB_Connector__ConnectToDatabase
-   (tracer,
-    params,
-    cns));
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+    (tracer,
+     params,
+     cns));
 
  //-----------------------------------------
  TestOperationContext OpCtx(params);
@@ -1308,7 +1309,10 @@ void WORK_Test_018__GetParameters::tag_impl::test_009__err__drop_stmt
  //-----------------------------------------
  (hStmt)->m_PFlags.clear(remote_fb::handles::RemoteFB__HandleData_Statement::PFLAG__CACHE_PARAMS_INFO);
 
- svc::HACK__DropStmt(tracer,spConnector,&hStmt);
+ svc::HACK__DropStmt
+  (tracer,
+   spConnector,
+   &hStmt);
 
  //-----------------------------------------
  XSQLDA_V1_Wrapper xsqlda(1);

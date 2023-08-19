@@ -112,9 +112,10 @@ void WORK_Test_013__StmtAllocate__v2_lazy_send::tag_impl::test_001__bug_check__n
  {
   try
   {
-   svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                         spConnector,
-                                         &hStmt);
+   svc::RemoteFB_Connector__StmtAllocate
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -194,9 +195,10 @@ void WORK_Test_013__StmtAllocate__v2_lazy_send::tag_impl::test_002__bug_check__b
  {
   try
   {
-   svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                         spConnector,
-                                         &hStmt);
+   svc::RemoteFB_Connector__StmtAllocate
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -321,10 +323,11 @@ void WORK_Test_013__StmtAllocate__v2_lazy_send::tag_impl::test_011__check_releas
   isc_base::t_isc_connection_settings cns;
 
   const svc::remote_fb_connector_ptr
-   spConnector(svc::RemoteFB_Connector__ConnectToDatabase
-                                            (tracer,
-                                             params,
-                                             cns));
+   spConnector
+    (svc::RemoteFB_Connector__ConnectToDatabase
+      (tracer,
+       params,
+       cns));
 
  //-----------------------------------------
  TestOperationContext OpCtx(params);

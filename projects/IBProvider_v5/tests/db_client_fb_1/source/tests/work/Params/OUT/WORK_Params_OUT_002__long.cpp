@@ -155,13 +155,14 @@ void WORK_Params_OUT_002__long::tag_impl::test_001
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/xsqlda);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/xsqlda);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -263,13 +264,13 @@ void WORK_Params_OUT_002__long::tag_impl::test_002_null
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-       (tracer,
-        spConnector,
-        OpCtx,
-        &hTr,
-        &hStmt,
-        (unsigned short)cns.db_dialect_Ex.value(),
-        "insert into TEST_MODIFY_ROW (COL_INTEGER) values (NULL) returning COL_INTEGER;");
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "insert into TEST_MODIFY_ROW (COL_INTEGER) values (NULL) returning COL_INTEGER;");
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -291,13 +292,14 @@ void WORK_Params_OUT_002__long::tag_impl::test_002_null
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/xsqlda);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/xsqlda);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -399,13 +401,13 @@ void WORK_Params_OUT_002__long::tag_impl::test_003_scale2
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-       (tracer,
-        spConnector,
-        OpCtx,
-        &hTr,
-        &hStmt,
-        (unsigned short)cns.db_dialect_Ex.value(),
-        "insert into NUM (N_7_2) values (12345.67) returning N_7_2;");
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "insert into NUM (N_7_2) values (12345.67) returning N_7_2;");
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -428,13 +430,14 @@ void WORK_Params_OUT_002__long::tag_impl::test_003_scale2
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/xsqlda);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/xsqlda);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -536,13 +539,13 @@ void WORK_Params_OUT_002__long::tag_impl::test_004_scale3_null
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-       (tracer,
-        spConnector,
-        OpCtx,
-        &hTr,
-        &hStmt,
-        (unsigned short)cns.db_dialect_Ex.value(),
-        "insert into NUM (N_7_3) values (NULL) returning N_7_3;");
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   "insert into NUM (N_7_3) values (NULL) returning N_7_3;");
 
  _TSO_CHECK(hStmt);
  _TSO_CHECK(hStmt->m_ID.has_value());
@@ -565,13 +568,14 @@ void WORK_Params_OUT_002__long::tag_impl::test_004_scale3_null
  remote_fb::handles::RemoteFB__TrHandle   hTrCopy(hTr);
  remote_fb::handles::RemoteFB__StmtHandle hStmtCopy(hStmt);
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*pInXSQLDA*/nullptr,
-                                      /*pOutXSQLDA*/xsqlda);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*pInXSQLDA*/nullptr,
+   /*pOutXSQLDA*/xsqlda);
 
  _TSO_CHECK(hTr==hTrCopy);
  _TSO_CHECK(hTr->m_ID.has_value());
@@ -752,13 +756,13 @@ void WORK_Params_OUT_002__long::tag_impl::test_005_generic
   tracer<<"result_sqlind: "<<Data.result_sqlind<<send;
 
   svc::RemoteFB_Connector__StmtPrepare
-        (tracer,
-         spConnector,
-         OpCtx,
-         &hTr,
-         &hStmt,
-         (unsigned short)cns.db_dialect_Ex.value(),
-         Data.sql);
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    (unsigned short)cns.db_dialect_Ex.value(),
+    Data.sql);
 
   _TSO_CHECK(hStmt);
   _TSO_CHECK(hStmt->m_ID.has_value());
@@ -778,13 +782,14 @@ void WORK_Params_OUT_002__long::tag_impl::test_005_generic
   xsqlda->sqlvar[0].sqlind   =&xparam0_ind;
 
   //-----------------------------------------
-  svc::RemoteFB_Connector__StmtExecute(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hTr,
-                                       &hStmt,
-                                       /*pInXSQLDA*/nullptr,
-                                       /*pOutXSQLDA*/xsqlda);
+  svc::RemoteFB_Connector__StmtExecute
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    /*pInXSQLDA*/nullptr,
+    /*pOutXSQLDA*/xsqlda);
 
   _TSO_CHECK(hTr==hTrCopy);
   _TSO_CHECK(hTr->m_ID.has_value());

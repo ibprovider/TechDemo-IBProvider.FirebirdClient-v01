@@ -146,7 +146,9 @@ void WORK_Test_013__StmtAllocate__v1_no_lazy::tag_impl::test_002__err__no_cn
  //-----------------------------------------
  //Выполняем операцию отключения от базы данных минуя конектор
 
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
@@ -155,9 +157,10 @@ void WORK_Test_013__StmtAllocate__v1_no_lazy::tag_impl::test_002__err__no_cn
  {
   try
   {
-   svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                         spConnector,
-                                         &hStmt);
+   svc::RemoteFB_Connector__StmtAllocate
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -240,9 +243,10 @@ void WORK_Test_013__StmtAllocate__v1_no_lazy::tag_impl::test_200__bug_check__not
  {
   try
   {
-   svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                         spConnector,
-                                         &hStmt);
+   svc::RemoteFB_Connector__StmtAllocate
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -322,9 +326,10 @@ void WORK_Test_013__StmtAllocate__v1_no_lazy::tag_impl::test_201__bug_check__bad
  {
   try
   {
-   svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                         spConnector,
-                                         &hStmt);
+   svc::RemoteFB_Connector__StmtAllocate
+    (tracer,
+     spConnector,
+     &hStmt);
   }
   catch(const ibp::t_ibp_error& exc)
   {

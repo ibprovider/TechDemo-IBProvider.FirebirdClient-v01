@@ -194,13 +194,14 @@ void WORK_Params_OUT_008__timestamp::tag_impl::test_005_generic
   xsqlda->sqlvar[0].sqlind   =&xparam0_ind;
 
   //-----------------------------------------
-  svc::RemoteFB_Connector__StmtExecute(tracer,
-                                       spConnector,
-                                       OpCtx,
-                                       &hTr,
-                                       &hStmt,
-                                       /*pInXSQLDA*/nullptr,
-                                       /*pOutXSQLDA*/xsqlda);
+  svc::RemoteFB_Connector__StmtExecute
+   (tracer,
+    spConnector,
+    OpCtx,
+    &hTr,
+    &hStmt,
+    /*pInXSQLDA*/nullptr,
+    /*pOutXSQLDA*/xsqlda);
 
   _TSO_CHECK(hTr==hTrCopy);
   _TSO_CHECK(hTr->m_ID.has_value());

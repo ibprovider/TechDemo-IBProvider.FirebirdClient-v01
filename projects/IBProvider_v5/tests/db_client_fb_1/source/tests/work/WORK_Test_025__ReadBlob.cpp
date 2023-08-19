@@ -197,13 +197,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_001
 
  size_t cbReaded=0;
 
- bool readResult=svc::RemoteFB_Connector__ReadBlob
-                                           (tracer,
-                                            spConnector,
-                                            &hBlob,
-                                            sizeof(Buffer),
-                                            Buffer,
-                                            &cbReaded);
+ bool readResult
+  =svc::RemoteFB_Connector__ReadBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     sizeof(Buffer),
+     Buffer,
+     &cbReaded);
+
  _TSO_CHECK(hBlob);
 
  _TSO_CHECK(cbReaded==3);
@@ -215,13 +217,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_001
  _TSO_CHECK(!readResult);
 
  //-----------------------------------------
- readResult=svc::RemoteFB_Connector__ReadBlob
-                                      (tracer,
-                                       spConnector,
-                                       &hBlob,
-                                       sizeof(Buffer),
-                                       Buffer,
-                                       &cbReaded);
+ readResult
+  =svc::RemoteFB_Connector__ReadBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     sizeof(Buffer),
+     Buffer,
+     &cbReaded);
+
  _TSO_CHECK(hBlob);
 
  _TSO_CHECK(cbReaded==0);
@@ -374,13 +378,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_002
 
   size_t cbReaded=0;
 
-  const bool readResult=svc::RemoteFB_Connector__ReadBlob
-                                           (tracer,
-                                            spConnector,
-                                            &hBlob,
-                                            sizeof(Buffer),
-                                            Buffer,
-                                            &cbReaded);
+  const bool readResult
+   =svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      sizeof(Buffer),
+      Buffer,
+      &cbReaded);
+
   _TSO_CHECK(hBlob);
 
   _TSO_CHECK(cbReaded==1);
@@ -402,13 +408,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_002
 
  size_t cbReaded=0;
 
- const bool readResult=svc::RemoteFB_Connector__ReadBlob
-                                           (tracer,
-                                            spConnector,
-                                            &hBlob,
-                                            sizeof(Buffer),
-                                            Buffer,
-                                            &cbReaded);
+ const bool readResult
+  =svc::RemoteFB_Connector__ReadBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     sizeof(Buffer),
+     Buffer,
+     &cbReaded);
+
  _TSO_CHECK(hBlob);
 
  _TSO_CHECK(cbReaded==0);
@@ -555,13 +563,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_003__empty
 
  size_t cbReaded=0;
 
- const bool readResult=svc::RemoteFB_Connector__ReadBlob
-                                           (tracer,
-                                            spConnector,
-                                            &hBlob,
-                                            sizeof(Buffer),
-                                            Buffer,
-                                            &cbReaded);
+ const bool readResult
+  =svc::RemoteFB_Connector__ReadBlob
+    (tracer,
+     spConnector,
+     &hBlob,
+     sizeof(Buffer),
+     Buffer,
+     &cbReaded);
+
  _TSO_CHECK(hBlob);
 
  _TSO_CHECK(cbReaded==0);
@@ -711,9 +721,10 @@ void WORK_Test_025__ReadBlob::tag_impl::test_100__bug_check__closed_blob_handle
  {
   svc::remote_fb_blob_handle_type hBlobCopy(hBlob);
 
-  svc::RemoteFB_Connector__CloseBlob(tracer,
-                                     spConnector,
-                                     &hBlobCopy);
+  svc::RemoteFB_Connector__CloseBlob
+   (tracer,
+    spConnector,
+    &hBlobCopy);
  }//local
 
  _TSO_CHECK(!hBlob->m_ID.has_value());
@@ -730,12 +741,13 @@ void WORK_Test_025__ReadBlob::tag_impl::test_100__bug_check__closed_blob_handle
   {
    try
    {
-    svc::RemoteFB_Connector__ReadBlob(tracer,
-                                      spConnector,
-                                      &hBlob,
-                                      sizeof(tmp),
-                                      tmp,
-                                      &cbActualReaded);
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
    }
    catch(const ibp::t_ibp_error& exc)
    {
@@ -826,12 +838,13 @@ void WORK_Test_025__ReadBlob::tag_impl::test_101__bug_check__zero_blob_handle
   {
    try
    {
-    svc::RemoteFB_Connector__ReadBlob(tracer,
-                                      spConnector,
-                                      &hBlob,
-                                      sizeof(tmp),
-                                      tmp,
-                                      &cbActualReaded);
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
    }
    catch(const ibp::t_ibp_error& exc)
    {
@@ -1002,12 +1015,13 @@ void WORK_Test_025__ReadBlob::tag_impl::test_102__bug_check__bad_owner_cn
   {
    try
    {
-    svc::RemoteFB_Connector__ReadBlob(tracer,
-                                      spConnector2,
-                                      &hBlob,
-                                      sizeof(tmp),
-                                      tmp,
-                                      &cbActualReaded);
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector2,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
    }
    catch(const ibp::t_ibp_error& exc)
    {
@@ -1127,15 +1141,15 @@ void WORK_Test_025__ReadBlob::tag_impl::test_103__err__read_from_new_blob
 
   for(;;)
   {
-
    try
    {
-    svc::RemoteFB_Connector__ReadBlob(tracer,
-                                      spConnector,
-                                      &hBlob,
-                                      sizeof(tmp),
-                                      tmp,
-                                      &cbActualReaded);
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
    }
    catch(const ibp::t_ibp_error& exc)
    {
@@ -1292,9 +1306,10 @@ void WORK_Test_025__ReadBlob::tag_impl::test_200__err__hack_close_blob
  _TSO_CHECK(hBlob->m_BlobMode==hBlob->BlobMode__Open);
 
  //-----------------------------------------
- svc::HACK__CloseBlob(tracer,
-                      spConnector,
-                      &hBlob);
+ svc::HACK__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  {
   char tmp[100];
@@ -1309,12 +1324,13 @@ void WORK_Test_025__ReadBlob::tag_impl::test_200__err__hack_close_blob
 
    try
    {
-    svc::RemoteFB_Connector__ReadBlob(tracer,
-                                      spConnector,
-                                      &hBlob,
-                                      sizeof(tmp),
-                                      tmp,
-                                      &cbActualReaded);
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
    }
    catch(const ibp::t_ibp_error& exc)
    {

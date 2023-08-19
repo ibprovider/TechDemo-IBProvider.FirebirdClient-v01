@@ -446,7 +446,9 @@ void WORK_Test_014__StmtDrop__v1_no_lazy::tag_impl::test_005__err__no_cn
  //-----------------------------------------
  //Выполняем операцию отключения от базы данных минуя конектор
 
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  for(;;)

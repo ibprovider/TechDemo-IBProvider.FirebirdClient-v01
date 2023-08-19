@@ -313,9 +313,10 @@ void WORK_Test_003__Connector::tag_impl::test_002__err_unk_cn_type
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,
-                                             params,
-                                             cns);
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -327,9 +328,10 @@ void WORK_Test_003__Connector::tag_impl::test_002__err_unk_cn_type
                           1);
 
   errSvc::check_err_rec__cn_err__cant_detect_cn_type
-                                           (tracer,
-                                            exc.get_record(0),
-                                            errSvc::sm_subsysID__remote_fb);
+   (tracer,
+    exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb);
+
   return;
  }//catch
 
@@ -362,9 +364,10 @@ void WORK_Test_003__Connector::tag_impl::test_003__err_no_data_source
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,
-                                             params,
-                                             cns);
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -376,10 +379,11 @@ void WORK_Test_003__Connector::tag_impl::test_003__err_no_data_source
                           1);
 
   errSvc::check_err_rec__cn_err__not_defined_req_init_prop
-                                           (tracer,
-                                            exc.get_record(0),
-                                            errSvc::sm_subsysID__remote_fb,
-                                            L"Location");
+   (tracer,
+    exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb,
+    L"Location");
+
   return;
  }//catch
 

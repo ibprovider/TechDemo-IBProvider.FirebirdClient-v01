@@ -126,9 +126,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_001__bug_check__zer
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                       spConnector,
-                                       &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -207,9 +208,10 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_002__bug_check__nul
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                       spConnector,
-                                       &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -590,10 +592,11 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl::test_100__release_owners
  isc_base::t_isc_connection_settings cns;
 
  svc::remote_fb_connector_ptr
-  spConnector(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns));
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns));
 
  //-----------------------------------------
  remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);

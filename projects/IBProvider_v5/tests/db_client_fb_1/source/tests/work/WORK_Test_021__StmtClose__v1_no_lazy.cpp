@@ -580,13 +580,18 @@ void WORK_Test_021__StmtClose__v1_no_lazy::tag_impl::test_005__err__no_cn
  _TSO_CHECK(hStmt->m_pParentTr==hTr);
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,spConnector,&hTr);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &hTr);
 
  assert(hTr);
 
  //Выполняем операцию отключения от базы данных минуя конектор
 
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  for(;;)

@@ -140,7 +140,9 @@ void WORK_Test_010__DetachDatabase::tag_impl::test_002__err__bad_cn_handle
  //-----------------------------------------
  //Выполняем операцию отключения от базы данных минуя конектор
 
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  try

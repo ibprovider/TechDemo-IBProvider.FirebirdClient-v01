@@ -1352,7 +1352,10 @@ void INET_Test_002__RemotePort::tag_impl::test_E04__not_supported_parch__pset01
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1411,7 +1414,10 @@ void INET_Test_002__RemotePort::tag_impl::test_E04__not_supported_parch__pset02
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1534,7 +1540,10 @@ void INET_Test_002__RemotePort::tag_impl::test_E05__requested_protocol_type_not_
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -1609,7 +1618,10 @@ void INET_Test_002__RemotePort::tag_impl::test_E06__not_supported_protocol
   
   try
   {
-   svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+   svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
   }
   catch(const ibp::t_ibp_error& exc)
   {

@@ -480,7 +480,9 @@ void WORK_Test_004__StartTransaction__v1::tag_impl::test_006__err__no_cn
  //-----------------------------------------
  //Выполняем операцию отключения от базы данных минуя конектор
 
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle(nullptr);

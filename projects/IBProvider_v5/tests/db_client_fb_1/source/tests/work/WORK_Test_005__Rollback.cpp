@@ -160,9 +160,10 @@ void WORK_Test_005__Rollback::tag_impl::test_002__bug_check__zero_tr_handle
  {
   try
   {
-   svc::RemoteFB_Connector__Rollback(tracer,
-                                     spConnector,
-                                     &tr_handle);
+   svc::RemoteFB_Connector__Rollback
+    (tracer,
+     spConnector,
+     &tr_handle);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -174,10 +175,11 @@ void WORK_Test_005__Rollback::tag_impl::test_002__bug_check__zero_tr_handle
                            1);
 
    errSvc::check_err_rec__tr_err__bug_check__bad_tr_handle
-                          (tracer,
-                           exc.get_record(0),
-                           helper__get_Rollback_bugcheck_src(spConnector),
-                           L"#001");
+    (tracer,
+     exc.get_record(0),
+     helper__get_Rollback_bugcheck_src(spConnector),
+     L"#001");
+
    break;
   }//catch
 
@@ -221,10 +223,11 @@ void WORK_Test_005__Rollback::tag_impl::test_003__bug_check__bad_tr_owner
  isc_base::t_isc_connection_settings cns1;
 
  const svc::remote_fb_connector_ptr
-  spConnector1(svc::RemoteFB_Connector__ConnectToDatabase
-                                           (tracer,
-                                            params,
-                                            cns1));
+  spConnector1
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns1));
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns2;
@@ -239,9 +242,10 @@ void WORK_Test_005__Rollback::tag_impl::test_003__bug_check__bad_tr_owner
  //-----------------------------------------
  svc::remote_fb_tr_handle_type tr_handle1(nullptr);
 
- svc::RemoteFB_Connector__StartTransaction(tracer,
-                                           spConnector1,
-                                           &tr_handle1);
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector1,
+   &tr_handle1);
 
  _TSO_CHECK(tr_handle1!=nullptr);
 
@@ -249,9 +253,10 @@ void WORK_Test_005__Rollback::tag_impl::test_003__bug_check__bad_tr_owner
  {
   try
   {
-   svc::RemoteFB_Connector__Rollback(tracer,
-                                     spConnector2,
-                                     &tr_handle1);
+   svc::RemoteFB_Connector__Rollback
+    (tracer,
+     spConnector2,
+     &tr_handle1);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -263,10 +268,11 @@ void WORK_Test_005__Rollback::tag_impl::test_003__bug_check__bad_tr_owner
                            1);
 
    errSvc::check_err_rec__tr_err__bug_check__bad_tr_handle
-                          (tracer,
-                           exc.get_record(0),
-                           helper__get_Rollback_bugcheck_src(spConnector1),
-                           L"#003");
+    (tracer,
+     exc.get_record(0),
+     helper__get_Rollback_bugcheck_src(spConnector1),
+     L"#003");
+
    break;
   }//catch
 
@@ -275,9 +281,10 @@ void WORK_Test_005__Rollback::tag_impl::test_003__bug_check__bad_tr_owner
 
  _TSO_CHECK(tr_handle1!=nullptr);
 
- svc::RemoteFB_Connector__Rollback(tracer,
-                                   spConnector1,
-                                   &tr_handle1);
+ svc::RemoteFB_Connector__Rollback
+  (tracer,
+   spConnector1,
+   &tr_handle1);
 
  _TSO_CHECK(tr_handle1==nullptr);
 }//test_003__bug_check__bad_tr_owner
@@ -328,9 +335,10 @@ void WORK_Test_005__Rollback::tag_impl::test_004__mult_trs
  {
   svc::remote_fb_tr_handle_type tr_handle(nullptr);
 
-  svc::RemoteFB_Connector__StartTransaction(tracer,
-                                            spConnector,
-                                            &tr_handle);
+  svc::RemoteFB_Connector__StartTransaction
+   (tracer,
+    spConnector,
+    &tr_handle);
 
   _TSO_CHECK(tr_handle!=nullptr);
 
@@ -342,9 +350,10 @@ void WORK_Test_005__Rollback::tag_impl::test_004__mult_trs
  {
   const size_t i=handles.size()/2;
 
-  svc::RemoteFB_Connector__Rollback(tracer,
-                                    spConnector,
-                                    &handles[i]);
+  svc::RemoteFB_Connector__Rollback
+   (tracer,
+    spConnector,
+    &handles[i]);
 
   _TSO_CHECK(handles[i]==nullptr);
 
@@ -401,16 +410,18 @@ void WORK_Test_005__Rollback::tag_impl::test_005__err__bad_tr_handle
  _TSO_CHECK(tr_handle->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__CommitTr(tracer,
-                     spConnector,
-                     &tr_handle);
+ svc::HACK__CommitTr
+  (tracer,
+   spConnector,
+   &tr_handle);
 
  //-----------------------------------------
  try
  {
-  svc::RemoteFB_Connector__Rollback(tracer,
-                                    spConnector,
-                                    &tr_handle);
+  svc::RemoteFB_Connector__Rollback
+   (tracer,
+    spConnector,
+    &tr_handle);
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -422,9 +433,10 @@ void WORK_Test_005__Rollback::tag_impl::test_005__err__bad_tr_handle
                           1);
 
   errSvc::check_err_rec__srv_err__bad_tr_handle
-                         (tracer,
-                          spConnector->GetData()->m_DBMS_Name,
-                          exc.get_record(0));
+   (tracer,
+    spConnector->GetData()->m_DBMS_Name,
+    exc.get_record(0));
+
   return;
  }//catch
 

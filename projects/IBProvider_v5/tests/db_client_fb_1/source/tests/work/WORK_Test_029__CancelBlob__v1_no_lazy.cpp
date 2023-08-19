@@ -111,9 +111,10 @@ void WORK_Test_029__CancelBlob__v1_no_lazy::tag_impl::test_001__bug_check__zero_
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                       spConnector,
-                                       &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -192,9 +193,10 @@ void WORK_Test_029__CancelBlob__v1_no_lazy::tag_impl::test_002__bug_check__null_
  {
   try
   {
-   svc::RemoteFB_Connector__CancelBlob(tracer,
-                                       spConnector,
-                                       &hBlob);
+   svc::RemoteFB_Connector__CancelBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {

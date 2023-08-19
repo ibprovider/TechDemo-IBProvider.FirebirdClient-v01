@@ -145,11 +145,12 @@ void WORK_Test_022__OpenBlob__v2_lazy_send::tag_impl::test_001__bug_check__bad_o
  {
   try
   {
-   svc::RemoteFB_Connector__OpenBlob(tracer,
-                                     spConnector2,
-                                     &hTr,
-                                     &hBlob,
-                                      blobId);
+   svc::RemoteFB_Connector__OpenBlob
+    (tracer,
+     spConnector2,
+     &hTr,
+     &hBlob,
+     blobId);
   }
   catch(const ibp::t_ibp_error& exc)
   {

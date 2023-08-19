@@ -182,9 +182,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_001
 
  _TSO_CHECK(hCopyBlob);
 
- svc::RemoteFB_Connector__CloseBlob(tracer,
-                                    spConnector,
-                                    &hBlob);
+ svc::RemoteFB_Connector__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
 
  _TSO_CHECK(!hBlob);
 
@@ -252,9 +253,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_002__bug_check__zero_b
  {
   try
   {
-   svc::RemoteFB_Connector__CloseBlob(tracer,
-                                      spConnector,
-                                      &hBlob);
+   svc::RemoteFB_Connector__CloseBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -332,9 +334,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_003__bug_check__null_b
  {
   try
   {
-   svc::RemoteFB_Connector__CloseBlob(tracer,
-                                      spConnector,
-                                      &hBlob);
+   svc::RemoteFB_Connector__CloseBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -497,9 +500,10 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
  {
   try
   {
-   svc::RemoteFB_Connector__CloseBlob(tracer,
-                                      spConnector2,
-                                      &hBlob);
+   svc::RemoteFB_Connector__CloseBlob
+    (tracer,
+     spConnector2,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -669,16 +673,19 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_005__err__bad_blob_han
  _TSO_CHECK(hBlob->m_pParentTr==hTr);
 
  //-----------------------------------------
- svc::HACK__CloseBlob(tracer,
-                      spConnector,
-                      &hBlob);
+ svc::HACK__CloseBlob
+  (tracer,
+   spConnector,
+   &hBlob);
+
  for(;;)
  {
   try
   {
-   svc::RemoteFB_Connector__CloseBlob(tracer,
-                                      spConnector,
-                                      &hBlob);
+   svc::RemoteFB_Connector__CloseBlob
+    (tracer,
+     spConnector,
+     &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
   {

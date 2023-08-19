@@ -629,7 +629,9 @@ void WORK_Test_017__GetStatementInfo::tag_impl::test_005__err__close_cn__fb2_5
  _TSO_CHECK(hStmt->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  remote_fb::RemoteFB__InfoBuffer ResultBuffer(2);
 
@@ -732,7 +734,9 @@ void WORK_Test_017__GetStatementInfo::tag_impl::test_005__err__close_cn
  _TSO_CHECK(hStmt->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__DetachCn(tracer,spConnector);
+ svc::HACK__DetachCn
+  (tracer,
+   spConnector);
 
  remote_fb::RemoteFB__InfoBuffer ResultBuffer(2);
 
@@ -835,9 +839,11 @@ void WORK_Test_017__GetStatementInfo::tag_impl::test_006__err__drop_stmt
  _TSO_CHECK(hStmt->m_ID.has_value());
 
  //-----------------------------------------
- svc::HACK__DropStmt(tracer,
-                     spConnector,
-                     &hStmt);
+ svc::HACK__DropStmt
+  (tracer,
+   spConnector,
+   &hStmt);
+
  _TSO_CHECK(hStmt);
 
  remote_fb::RemoteFB__InfoBuffer ResultBuffer(2);

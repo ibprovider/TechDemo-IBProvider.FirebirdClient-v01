@@ -289,7 +289,10 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_E01__bug_check__bad_parch__001
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -351,7 +354,10 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_E02__bug_check__bad_parch__002
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {
@@ -414,7 +420,10 @@ void TestsFor__PSET02__001_Mix::tag_impl::test_E03__bug_check__bad_parch__003
 
  try
  {
-  svc::RemoteFB_Connector__ConnectToDatabase(tracer,params,cns); //throw
+  svc::RemoteFB_Connector__ConnectToDatabase
+   (tracer,
+    params,
+    cns); //throw
  }
  catch(const ibp::t_ibp_error& exc)
  {

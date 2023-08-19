@@ -457,9 +457,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_004__bug_check__bad_
  //-----------------------------------------
  remote_fb::handles::RemoteFB__StmtHandle hStmt2(nullptr);
 
- svc::RemoteFB_Connector__StmtAllocate(tracer,
-                                       spConnector2,
-                                       &hStmt2);
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector2,
+   &hStmt2);
 
  _TSO_CHECK(hStmt2!=nullptr);
 
@@ -716,8 +717,10 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_006__err__bad_sql
      L"42S02", //IBP_SQLSTATE__42S02__ODBC__BASE_TABLE_OR_VIEW_NOT_FOUND
      ibp::db_obj::dbms_fb::v02_5_0::api::ibp_fb_v25_err__dsql_relation_err);
 
-   errSvc::check_err_code(exc.com_code(),
-                          DB_E_NOTABLE);
+   errSvc::check_err_code
+    (exc.com_code(),
+     DB_E_NOTABLE);
+
    break;
   }//catch
 
@@ -736,10 +739,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_007__ok__insert
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_007__ok(pParams,
-                pCtx,
-                Data,
-                "insert into DUAL (id) values(1);");
+ helper_007__ok
+  (pParams,
+   pCtx,
+   Data,
+   "insert into DUAL (id) values(1);");
 }//test_007__ok__insert
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -753,10 +757,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_007__ok__update_with
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_007__ok(pParams,
-                pCtx,
-                Data,
-                "update DUAL set id=?;");
+ helper_007__ok
+  (pParams,
+  pCtx,
+  Data,
+  "update DUAL set id=?;");
 }//test_007__ok__update_with_param1
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -770,10 +775,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_007__ok__update_with
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_007__ok(pParams,
-                pCtx,
-                Data,
-                "update DUAL set id=? where ID=?;");
+ helper_007__ok
+  (pParams,
+   pCtx,
+   Data,
+   "update DUAL set id=? where ID=?;");
 }//test_007__ok__update_with_param2
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -787,10 +793,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_007__ok__select1
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_007__ok(pParams,
-                pCtx,
-                Data,
-                "select ID from DUAL;");
+ helper_007__ok
+  (pParams,
+   pCtx,
+   Data,
+   "select ID from DUAL;");
 }//test_007__ok__select1
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -804,10 +811,11 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_007__ok__select2
  assert(pParams!=nullptr);
  assert(pCtx!=nullptr);
 
- helper_007__ok(pParams,
-                pCtx,
-                Data,
-                "select ID,ID from DUAL;");
+ helper_007__ok
+  (pParams,
+   pCtx,
+   Data,
+   "select ID,ID from DUAL;");
 }//test_007__ok__select2
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -879,13 +887,13 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::helper_007__ok
 
  //-----------------------------------------
  svc::RemoteFB_Connector__StmtPrepare
-    (tracer,
-     spConnector,
-     OpCtx,
-     &hTr,
-     &hStmt,
-     (unsigned short)cns.db_dialect_Ex.value(),
-     SQL_str);
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   (unsigned short)cns.db_dialect_Ex.value(),
+   SQL_str);
 
  _TSO_CHECK(hStmt!=nullptr);
 
@@ -985,13 +993,14 @@ void WORK_Test_015__StmtPrepare__v1_no_lazy::tag_impl::test_008__prepare_after_e
    static_cast<remote_fb::protocol::P_USHORT>(cns.db_dialect_Ex.value()),
    "select ID from DUAL");
 
- svc::RemoteFB_Connector__StmtExecute(tracer,
-                                      spConnector,
-                                      OpCtx,
-                                      &hTr,
-                                      &hStmt,
-                                      /*IN*/nullptr,
-                                      /*OUT*/nullptr);
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   /*IN*/nullptr,
+   /*OUT*/nullptr);
 
  for(size_t nPass=0;nPass!=3;)
  {

@@ -131,15 +131,16 @@ void WORK_Test_030__PutArraySlice::tag_impl::test_001__bug_check__bad_owner_cn_o
  {
   try
   {
-   svc::RemoteFB_Connector__PutArraySlice(tracer,
-                                          spConnector2,
-                                          OpCtx,
-                                          &hTr,
-                                          &arrayId,
-                                          /*szArraySDL*/0,
-                                          /*pArraySDL*/nullptr,
-                                          /*szArrayData*/0,
-                                          /*pArrayData*/nullptr);
+   svc::RemoteFB_Connector__PutArraySlice
+    (tracer,
+     spConnector2,
+     OpCtx,
+     &hTr,
+     &arrayId,
+     /*szArraySDL*/0,
+     /*pArraySDL*/nullptr,
+     /*szArrayData*/0,
+     /*pArrayData*/nullptr);
   }
   catch(const ibp::t_ibp_error& exc)
   {

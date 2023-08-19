@@ -104,12 +104,13 @@ void WORK_Test_033__GetDatabaseInfo::tag_impl::test_001__bug_check__bad_cn
 
   try
   {
-   svc::RemoteFB_Connector__GetDatabaseInfo(tracer,
-                                            spConnector,
-                                            /*Incornation*/0,
-                                            _DIM_(tags),
-                                            tags,
-                                            infoBuf); //throw!
+   svc::RemoteFB_Connector__GetDatabaseInfo
+    (tracer,
+     spConnector,
+     /*Incornation*/0,
+     _DIM_(tags),
+     tags,
+     infoBuf); //throw!
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -185,12 +186,13 @@ void WORK_Test_033__GetDatabaseInfo::tag_impl::test_002__err__hack_close_cn
 
   try
   {
-   svc::RemoteFB_Connector__GetDatabaseInfo(tracer,
-                                            spConnector,
-                                            /*Incornation*/0,
-                                            _DIM_(tags),
-                                            tags,
-                                            infoBuf); //throw!
+   svc::RemoteFB_Connector__GetDatabaseInfo
+    (tracer,
+     spConnector,
+     /*Incornation*/0,
+     _DIM_(tags),
+     tags,
+     infoBuf); //throw!
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -201,9 +203,9 @@ void WORK_Test_033__GetDatabaseInfo::tag_impl::test_002__err__hack_close_cn
    errSvc::check_err_count(exc,1);
 
    errSvc::check_err_rec__srv_err__bad_cn_handle
-                          (tracer,
-                           spConnector->GetData()->m_DBMS_Name,
-                           exc.get_record(0));
+    (tracer,
+     spConnector->GetData()->m_DBMS_Name,
+     exc.get_record(0));
 
    break;
   }//catch
@@ -257,12 +259,13 @@ void WORK_Test_033__GetDatabaseInfo::tag_impl::test_003__err__no_tags
 
   try
   {
-   svc::RemoteFB_Connector__GetDatabaseInfo(tracer,
-                                            spConnector,
-                                            /*Incornation*/0,
-                                            0,
-                                            nullptr,
-                                            infoBuf); //throw!
+   svc::RemoteFB_Connector__GetDatabaseInfo
+    (tracer,
+     spConnector,
+     /*Incornation*/0,
+     0,
+     nullptr,
+     infoBuf); //throw!
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -331,12 +334,13 @@ void WORK_Test_033__GetDatabaseInfo::tag_impl::test_004__end_tag_only
 
   remote_fb::RemoteFB__InfoBuffer infoBuf;
 
-  svc::RemoteFB_Connector__GetDatabaseInfo(tracer,
-                                           spConnector,
-                                           /*Incornation*/0,
-                                           _DIM_(tags),
-                                           tags,
-                                           infoBuf); //throw!
+  svc::RemoteFB_Connector__GetDatabaseInfo
+   (tracer,
+    spConnector,
+    /*Incornation*/0,
+    _DIM_(tags),
+    tags,
+    infoBuf); //throw!
 
   _TSO_CHECK(infoBuf.size()==1);
 
