@@ -3,7 +3,7 @@
 //                                                Dmitry Kovalenko. 07.08.2004
 
 ////////////////////////////////////////////////////////////////////////////////
-//Standart clipboard formats
+//Standard clipboard formats
 
 const CLIPFORMAT CF_IDLIST                =(CLIPFORMAT)::RegisterClipboardFormat(CFSTR_SHELLIDLIST);
 const CLIPFORMAT CF_OBJECTPOSITIONS       =(CLIPFORMAT)::RegisterClipboardFormat(CFSTR_SHELLIDLISTOFFSET);
