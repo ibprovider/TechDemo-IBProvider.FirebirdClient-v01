@@ -9,7 +9,7 @@
 #include "source/db_client/remote_fb/ports/factories/inet/remote_fb__ports__factories__inet.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_PortFactory_Test_001__Analyze_v2::tag_impl
 
@@ -604,4 +604,4 @@ void INET_PortFactory_Test_001__Analyze_v2::create(TTSO_PushTest*      pTestPush
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

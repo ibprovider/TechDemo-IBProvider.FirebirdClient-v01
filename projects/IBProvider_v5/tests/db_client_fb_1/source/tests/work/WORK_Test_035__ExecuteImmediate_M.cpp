@@ -14,7 +14,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_035__ExecuteImmediate_M::tag_impl
 
@@ -2789,4 +2789,4 @@ void WORK_Test_035__ExecuteImmediate_M::create(TTSO_PushTest*      const pTestPu
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

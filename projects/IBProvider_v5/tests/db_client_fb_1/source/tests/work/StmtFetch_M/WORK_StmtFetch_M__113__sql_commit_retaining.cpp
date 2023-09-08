@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct WORK_StmtFetch_M__113__sql_commit_retaining::tag_rs_descr
 
@@ -439,4 +439,4 @@ void WORK_StmtFetch_M__113__sql_commit_retaining::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

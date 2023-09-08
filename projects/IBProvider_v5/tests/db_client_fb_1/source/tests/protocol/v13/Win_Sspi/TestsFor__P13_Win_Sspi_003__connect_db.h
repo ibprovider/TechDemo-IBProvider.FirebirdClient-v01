@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__P13_Win_Sspi_003__connect_db
 
@@ -103,5 +103,5 @@ class TestsFor__P13_Win_Sspi_003__connect_db
 };//class TestsFor__P13_Win_Sspi_003__connect_db
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

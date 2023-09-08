@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_IN2_002__long
 
@@ -24,5 +24,5 @@ class WORK_Params_IN2_002__long
 };//class WORK_Params_IN2_002__long
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

@@ -10,7 +10,7 @@
 
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__P10__001_Mix::tag_impl
 
@@ -241,4 +241,4 @@ void TestsFor__P10__001_Mix::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

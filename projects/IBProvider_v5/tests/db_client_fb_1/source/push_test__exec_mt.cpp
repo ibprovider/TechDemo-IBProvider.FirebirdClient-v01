@@ -12,7 +12,7 @@
 
 #include <structure/t_numeric_cast.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestQueueMT::tag_test_data
 
@@ -769,4 +769,4 @@ long TTSO_PushTest__ExecutorMT::build_summary()
 }//print_summary
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

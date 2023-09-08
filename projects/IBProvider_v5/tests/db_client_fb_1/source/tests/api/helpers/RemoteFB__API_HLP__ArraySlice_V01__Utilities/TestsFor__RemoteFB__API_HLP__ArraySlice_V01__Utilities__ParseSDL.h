@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL
 
@@ -24,5 +24,5 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL
 };//class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

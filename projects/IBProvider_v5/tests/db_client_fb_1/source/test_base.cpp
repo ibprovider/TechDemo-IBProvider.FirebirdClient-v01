@@ -8,7 +8,7 @@
 
 #include <lcpi/lib/structure/utilities/string/is_like_str.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 const TCHAR* const c_prog_arg__thread_count
@@ -336,6 +336,10 @@ const TTSO_GlobalContext::tag_named_expression
    "SRV>=FB-4")
 
  DEF_NAMED_EXPRESSION
+  ("NE__TIME_WITH_TZ",
+   "SRV>=FB-4")
+
+ DEF_NAMED_EXPRESSION
   ("NE__ODS_CS__IS_UNICODE_FSS",
    "SRV<=FB-3")
 
@@ -424,4 +428,4 @@ void TTSO_RunContext::trace(message_type* const message)
 }//log
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

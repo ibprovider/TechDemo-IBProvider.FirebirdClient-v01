@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_029__CancelBlob__v2_lazy_send::tag_impl
 
@@ -1328,4 +1328,4 @@ void WORK_Test_029__CancelBlob__v2_lazy_send::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

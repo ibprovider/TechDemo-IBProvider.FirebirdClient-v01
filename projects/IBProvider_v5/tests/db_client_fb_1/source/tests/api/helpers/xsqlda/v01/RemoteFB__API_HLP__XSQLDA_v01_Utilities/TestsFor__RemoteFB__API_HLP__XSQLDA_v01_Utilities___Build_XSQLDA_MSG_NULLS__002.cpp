@@ -10,7 +10,7 @@
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002::tag_impl
 
@@ -266,13 +266,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS_
    spTest
     (lcpi::lib::structure::not_null_ptr
       (new TTSO_TestFunc 
-       (pParams,
-        ftestID.c_str(),
-        d.Func)));
+        (pParams,
+         ftestID.c_str(),
+         d.Func)));
 
   pTestPusher->PushTest(spTest);
  }//for d
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

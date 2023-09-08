@@ -56,6 +56,11 @@ const t_dbvalue__fb040_timestamp_with_tz
  __null_dbvalue__fb040_timestamp_with_tz
   =make_fb040_timestamp_with_tz(0,0,0);
 
+//------------------------------------------------------------------------
+const t_dbvalue__fb040_time_with_tz
+ __null_dbvalue__fb040_time_with_tz
+  =make_fb040_time_with_tz(0,0);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 const t_dbvalue__fb040_int128
@@ -278,6 +283,35 @@ bool operator == (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__
 bool operator != (const t_dbvalue__fb040_timestamp_with_tz& v1,const t_dbvalue__fb040_timestamp_with_tz& v2)
 {
  if(v1.utc_timestamp!=v2.utc_timestamp)
+  return true;
+
+ if(v1.time_zone!=v2.time_zone)
+  return true;
+
+ return false;
+}//operator !=
+
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_time_with_tz& v1,const t_dbvalue__fb040_time_with_tz& v2)
+{
+ if(v1.utc_time!=v2.utc_time)
+  return false;
+
+ if(v1.time_zone!=v2.time_zone)
+  return false;
+
+ return true;
+}//operator ==
+
+//------------------------------------------------------------------------
+bool operator != (const t_dbvalue__fb040_time_with_tz& v1,const t_dbvalue__fb040_time_with_tz& v2)
+{
+ if(v1.utc_time!=v2.utc_time)
   return true;
 
  if(v1.time_zone!=v2.time_zone)

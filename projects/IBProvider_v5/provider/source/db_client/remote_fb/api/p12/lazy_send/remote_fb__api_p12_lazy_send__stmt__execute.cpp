@@ -14,6 +14,12 @@
 #include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
 #include "source/db_client/remote_fb/remote_fb__op_svc__stmt_execute_data_v1.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
+
+#include "source/db_obj/isc_base/isc_xsqlda_v1_svc__msg_blr01_builder.h"
+#include "source/db_obj/isc_base/isc_xsqlda_v1_svc__msg_data_descrs_builder.h"
+#include "source/db_obj/isc_base/isc_xsqlda_v1_svc__msg_data.h"
+
+#include "source/db_obj/db_service_utils.h"
 #include "source/db_obj/db_operation_reg.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
@@ -360,13 +366,28 @@ protocol::P_USHORT
  assert((*pStmtHandle)->m_OutParams__MSG_NULLS.empty());
 
  //-----------------------------------------
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
+ const isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder_ptr
+  spMsgBlrBuilder
+   (db_obj::query_db_service<isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder>
+     (pData));
+
+ assert(spMsgBlrBuilder);
+
+ const isc_base::t_isc_xsqlda_v1_svc__msg_data_ptr
+  spMsgDataSvc
+   (db_obj::query_db_service<isc_base::t_isc_xsqlda_v1_svc__msg_data>
+     (pData));
+
+ assert(spMsgDataSvc);
+
+ //-----------------------------------------
+ spMsgBlrBuilder->Build_XSQLDA_MSG_BLR
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert(!(*pStmtHandle)->m_InParams__MSG_BLR.empty());
 
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA
+ spMsgDataSvc->Build_XSQLDA_MSG_DATA
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA);
 
@@ -423,23 +444,45 @@ protocol::P_OBJCT
  assert((*pStmtHandle)->m_OutParams__MSG_NULLS.empty());
 
  //-----------------------------------------
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
+ const isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder_ptr
+  spMsgBlrBuilder
+   (db_obj::query_db_service<isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder>
+     (pData));
+
+ assert(spMsgBlrBuilder);
+
+ const isc_base::t_isc_xsqlda_v1_svc__msg_data_ptr
+  spMsgDataSvc
+   (db_obj::query_db_service<isc_base::t_isc_xsqlda_v1_svc__msg_data>
+     (pData));
+
+ assert(spMsgDataSvc);
+
+ const isc_base::t_isc_xsqlda_v1_svc__msg_data_descrs_builder_ptr
+  spMsgDataDescrsBuilder
+   (db_obj::query_db_service<isc_base::t_isc_xsqlda_v1_svc__msg_data_descrs_builder>
+     (pData));
+
+ assert(spMsgDataDescrsBuilder);
+
+ //-----------------------------------------
+ spMsgBlrBuilder->Build_XSQLDA_MSG_BLR
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_BLR); //throw
 
  assert((pInXSQLDA==nullptr || pInXSQLDA->sqld==0)==((*pStmtHandle)->m_InParams__MSG_BLR.empty()));
 
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA
+ spMsgDataSvc->Build_XSQLDA_MSG_DATA
   (pInXSQLDA,
    (*pStmtHandle)->m_InParams__MSG_DATA);
 
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
+ spMsgBlrBuilder->Build_XSQLDA_MSG_BLR
   (pOutXSQLDA,
    (*pStmtHandle)->m_OutParams__MSG_BLR); //throw
 
  assert(!(*pStmtHandle)->m_OutParams__MSG_BLR.empty());
 
- helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_DATA_DESCRS
+ spMsgDataDescrsBuilder->Build_XSQLDA_MSG_DATA_DESCRS
   (pOutXSQLDA,
    (*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
    &(*pStmtHandle)->m_OutParams__MSG_DATA_SIZE,
@@ -482,7 +525,7 @@ protocol::P_OBJCT
 
  try
  {
-  helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities::Parse_XSQLDA_MSG_DATA
+  spMsgDataSvc->Parse_XSQLDA_MSG_DATA
    ((*pStmtHandle)->m_OutParams__MSG_DATA_DESCRS,
     (*pStmtHandle)->m_OutParams__MSG_DATA.size(),
     (*pStmtHandle)->m_OutParams__MSG_DATA.buffer(),

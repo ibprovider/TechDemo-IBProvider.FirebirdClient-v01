@@ -2,29 +2,27 @@
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.h"
+#include "source/tests/units/db_obj/dbms_fb/v03_0_0/TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h"
 #include "source/test_services.h"
 #include "source/test_check_errors.h"
 #include "source/test_func.h"
 #include "source/xsqlda_v1_wrapper.h"
-#include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
+#include "source/db_obj/dbms_fb/v03_0_0/db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg_data.h"
 #include "source/db_obj/isc_base/isc_connection_settings.h"
 #include "source/db_obj/isc_base/isc_integer_to_portable_format.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
-//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
+//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl
 
-class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl
+class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl
 {
  private:
   typedef tag_impl                                              self_type;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type                               context_type;
-
-  typedef remote_fb::api::helpers::RemoteFB__API_HLP__XSQLDA_V01__Utilities  xsqlda_utils_type;
 
  public:
   static void test_001___null_ptr
@@ -109,22 +107,6 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
-  static void test_t15___bug_check__incorrect_sqllen__int128
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_t16___bug_check__incorrect_sqllen__decfloat16
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_t17___bug_check__incorrect_sqllen__decfloat34
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -190,22 +172,6 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
-  static void test_d15___int128
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_d16___decfloat16
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_d17___decfloat34
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_d18___timestamp_with_tz
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
  public:
   static void test_n01___short
                (TTSO_GlobalContext* pParams,
@@ -256,22 +222,6 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 context_type*       pCtx);
 
   static void test_n14___boolean
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_n15___int128
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_n16___decfloat16
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_n17___decfloat34
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-
-  static void test_n18___timestamp_with_tz
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
@@ -332,36 +282,49 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
-  static void test_a15___int128
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
+ private:
+  using msg_data_buffer_type
+   =isc_base::t_isc_xsqlda_v1_svc__msg_data::msg_data_buffer_type;
 
-  static void test_a16___decfloat16
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
+  static void EXEC__Build_XSQLDA_MSG_DATA
+               (const isc_api::XSQLDA_V1* pXSQLDA,
+                msg_data_buffer_type&     DataBuffer);
+};//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA
 
-  static void test_a17___decfloat34
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
+////////////////////////////////////////////////////////////////////////////////
 
-  static void test_a18___timestamp_with_tz
-               (TTSO_GlobalContext* pParams,
-                context_type*       pCtx);
-};//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::EXEC__Build_XSQLDA_MSG_DATA
+                                           (const isc_api::XSQLDA_V1* pXSQLDA,
+                                            msg_data_buffer_type&     DataBuffer)
+{
+ const db_obj::t_db_object_ptr
+  spObj
+   (ibp::db_obj::dbms_fb::v03_0_0::fb_v03_0_0__xsqlda_v1_svc__msg_data::create());
+
+ const isc_base::t_isc_xsqlda_v1_svc__msg_data_ptr
+  spMsgDataSvc
+   (dynamic_cast<isc_base::t_isc_xsqlda_v1_svc__msg_data*>(spObj.ptr()));
+
+ _TSO_CHECK(spMsgDataSvc);
+
+ spMsgDataSvc->Build_XSQLDA_MSG_DATA
+  (pXSQLDA,
+   DataBuffer);
+}//EXEC__Build_XSQLDA_MSG_DATA
 
 ////////////////////////////////////////////////////////////////////////////////
 //TEST 001
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_001___null_ptr
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_001___null_ptr
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
  assert(pParams);
  assert(pCtx);
 
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(nullptr,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(nullptr,buf);
 
  _TSO_CHECK(buf.empty());
 }//test_001___null_ptr
@@ -369,18 +332,18 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST 002
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_002___empty
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_002___empty
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
  assert(pParams);
  assert(pCtx);
 
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(0);
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  _TSO_CHECK(buf.empty());
 }//test_002___empty
@@ -388,7 +351,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST 003
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_003___err__unk_sql_type
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_003___err__unk_sql_type
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const pCtx)
 {
@@ -401,7 +364,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  tracer<<L"Hello from test!"<<send;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(1);
 
@@ -413,7 +376,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  {
   try
   {
-   xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+   self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -431,7 +394,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
     (tracer,
      exc.get_record(1),
-     errSvc::sm_subsysID__remote_fb,
+     errSvc::sm_subsysID__isc_api__fb3_0,
      0);
 
    break;
@@ -444,7 +407,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST 004
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_004___err__null_ptr_in_sqlind
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_004___err__null_ptr_in_sqlind
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const pCtx)
 {
@@ -457,7 +420,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  tracer<<L"Hello from test!"<<send;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(1);
 
@@ -474,7 +437,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  {
   try
   {
-   xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+   self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -492,7 +455,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
     (tracer,
      exc.get_record(1),
-     errSvc::sm_subsysID__remote_fb,
+     errSvc::sm_subsysID__isc_api__fb3_0,
      0);
 
    break;
@@ -507,7 +470,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 
 #ifdef NDEBUG
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_005___err__incorrect_varchar_data_length
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_005___err__incorrect_varchar_data_length
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const pCtx)
 {
@@ -529,7 +492,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  tag_varchar value={-10,{0}};
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(1);
 
@@ -544,7 +507,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  {
   try
   {
-   xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+   self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -562,7 +525,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
     (tracer,
      exc.get_record(1),
-     errSvc::sm_subsysID__remote_fb,
+     errSvc::sm_subsysID__isc_api__fb3_0,
      0);
 
    break;
@@ -579,7 +542,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 
 #ifdef NDEBUG
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_006___err__varchar_data_length_is_greater_than_buffer_size
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_006___err__varchar_data_length_is_greater_than_buffer_size
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const pCtx)
 {
@@ -601,7 +564,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  tag_varchar value={101,{0}};
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(1);
 
@@ -616,7 +579,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  {
   try
   {
-   xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+   self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -635,7 +598,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
     (tracer,
      exc.get_record(1),
-     errSvc::sm_subsysID__remote_fb,
+     errSvc::sm_subsysID__isc_api__fb3_0,
      0);
 
    break;
@@ -650,7 +613,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T01
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t01___bug_check__incorrect_sqllen__varchar
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t01___bug_check__incorrect_sqllen__varchar
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -670,7 +633,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T02
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t02___bug_check__incorrect_sqllen__char
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t02___bug_check__incorrect_sqllen__char
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -690,7 +653,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T03
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t03___bug_check__incorrect_sqllen__short
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t03___bug_check__incorrect_sqllen__short
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -710,7 +673,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T04
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t04___bug_check__incorrect_sqllen__long
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t04___bug_check__incorrect_sqllen__long
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -730,7 +693,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T05
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t05___bug_check__incorrect_sqllen__int64
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t05___bug_check__incorrect_sqllen__int64
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -750,7 +713,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T06
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t06___bug_check__incorrect_sqllen__float
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t06___bug_check__incorrect_sqllen__float
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -770,7 +733,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T07
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t07___bug_check__incorrect_sqllen__double
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t07___bug_check__incorrect_sqllen__double
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -790,7 +753,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T08
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t08___bug_check__incorrect_sqllen__time
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t08___bug_check__incorrect_sqllen__time
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -810,7 +773,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T09
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t09___bug_check__incorrect_sqllen__date
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t09___bug_check__incorrect_sqllen__date
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -830,7 +793,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T10
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t10___bug_check__incorrect_sqllen__timestamp
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t10___bug_check__incorrect_sqllen__timestamp
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -850,7 +813,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T11
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t11___bug_check__incorrect_sqllen__blob
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t11___bug_check__incorrect_sqllen__blob
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -870,7 +833,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T12
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t12___bug_check__incorrect_sqllen__array
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t12___bug_check__incorrect_sqllen__array
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -890,7 +853,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T13
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t13___bug_check__incorrect_sqllen__null
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t13___bug_check__incorrect_sqllen__null
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -910,7 +873,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //TEST T14
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t14___bug_check__incorrect_sqllen__boolean
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_t14___bug_check__incorrect_sqllen__boolean
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
@@ -928,113 +891,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 }//test_t14___bug_check__incorrect_sqllen__boolean
 
 ////////////////////////////////////////////////////////////////////////////////
-//TEST T15
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t15___bug_check__incorrect_sqllen__int128
-                                           (TTSO_GlobalContext* const pParams,
-                                            context_type*       const pCtx)
-{
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128,
-            15,
-            L"sql_int128");
-
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128|1,
-            17,
-            L"sql_int128");
-}//test_t15___bug_check__incorrect_sqllen__int128
-
-////////////////////////////////////////////////////////////////////////////////
-//TEST T16
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t16___bug_check__incorrect_sqllen__decfloat16
-                                           (TTSO_GlobalContext* const pParams,
-                                            context_type*       const pCtx)
-{
- for(short sz=-32;sz!=33;++sz)
- {
-  if(sz==8)
-   continue;
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_decfloat16,
-    sz,
-    L"sql_decfloat16");
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_decfloat16|1,
-    sz,
-    L"sql_decfloat16");
- }//for sz
-}//test_t16___bug_check__incorrect_sqllen__decfloat16
-
-////////////////////////////////////////////////////////////////////////////////
-//TEST T17
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t17___bug_check__incorrect_sqllen__decfloat34
-                                           (TTSO_GlobalContext* const pParams,
-                                            context_type*       const pCtx)
-{
- for(short sz=-32;sz!=33;++sz)
- {
-  if(sz==16)
-   continue;
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_decfloat34,
-    sz,
-    L"sql_decfloat34");
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_decfloat34|1,
-    sz,
-    L"sql_decfloat34");
- }//for sz
-}//test_t17___bug_check__incorrect_sqllen__decfloat34
-
-////////////////////////////////////////////////////////////////////////////////
-//TEST T18
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
-                                           (TTSO_GlobalContext* const pParams,
-                                            context_type*       const pCtx)
-{
- for(short sz=-32;sz!=33;++sz)
- {
-  if(sz==12)
-   continue;
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_timestamp_with_tz,
-    sz,
-    L"sql_timestamp_with_tz");
-
-  helper_txx
-   (pParams,
-    pCtx,
-    isc_api::ibp_fb040_sql_timestamp_with_tz|1,
-    sz,
-    L"sql_timestamp_with_tz");
- }//for sz
-}//test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
-
-////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::helper_txx
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::helper_txx
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const pCtx,
                                             short               const sqltype,
@@ -1048,7 +907,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  TTSO_Tracer tracer(pCtx,L"test");
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf(100);
+ msg_data_buffer_type buf(100);
 
  XSQLDA_V1_Wrapper xsqlda(1);
 
@@ -1061,7 +920,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  {
   try
   {
-   xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+   self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -1080,7 +939,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
    errSvc::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
     (tracer,
      exc.get_record(1),
-     errSvc::sm_subsysID__remote_fb,
+     errSvc::sm_subsysID__isc_api__fb3_0,
      0);
 
    break;
@@ -1093,7 +952,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D01
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d01___short
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d01___short
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1114,9 +973,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1139,7 +998,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D02
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d02___long
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d02___long
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1160,9 +1019,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1185,7 +1044,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D03
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d03___int64
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d03___int64
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1206,9 +1065,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1231,7 +1090,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D04
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d04___float
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d04___float
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1252,9 +1111,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1277,7 +1136,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D05
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d05___double
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d05___double
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1298,9 +1157,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1323,7 +1182,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D06
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d06___time
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d06___time
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1344,9 +1203,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1369,7 +1228,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D07
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d07___date
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d07___date
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1390,9 +1249,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1415,7 +1274,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D08
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d08___timestamp
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d08___timestamp
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1436,9 +1295,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1461,7 +1320,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D09
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d09___text
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d09___text
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1482,9 +1341,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1509,7 +1368,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D10
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d10___varying
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d10___varying
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1536,9 +1395,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1570,7 +1429,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D11
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d11___null
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d11___null
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1590,9 +1449,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1611,7 +1470,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D12
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d12___blob
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d12___blob
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1632,9 +1491,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1657,7 +1516,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D13
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d13___array
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d13___array
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1678,9 +1537,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1703,7 +1562,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //D14
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d14___boolean
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_d14___boolean
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1724,9 +1583,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1749,185 +1608,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 }//test_d14___boolean
 
 ////////////////////////////////////////////////////////////////////////////////
-//D15
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d15___int128
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_int128 value=db_obj::make_fb040_int128(12345678901234567,987654321098765);
- short                           sqlind=0;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_int128|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- std::copy(reinterpret_cast<unsigned char*>(&value),
-           reinterpret_cast<unsigned char*>(&value)+sizeof(value),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind),
-           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_d15___int128
-
-////////////////////////////////////////////////////////////////////////////////
-//D16
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d16___decfloat16
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_decfloat16 value=db_obj::make_fb040_decfloat16(12345678901234567);
- short                               sqlind=0;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- std::copy(reinterpret_cast<unsigned char*>(&value),
-           reinterpret_cast<unsigned char*>(&value)+sizeof(value),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind),
-           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_d16___decfloat16
-
-////////////////////////////////////////////////////////////////////////////////
-//D17
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d17___decfloat34
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_decfloat34 value=db_obj::make_fb040_decfloat34(5792501206129316193, 5824638083864100507);
- short                               sqlind=0;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- std::copy(reinterpret_cast<unsigned char*>(&value),
-           reinterpret_cast<unsigned char*>(&value)+sizeof(value),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind),
-           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_d17___decfloat34
-
-////////////////////////////////////////////////////////////////////////////////
-//D18
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_d18___timestamp_with_tz
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- using value_type=db_obj::t_dbvalue__fb040_timestamp_with_tz;
-
- value_type value=db_obj::make_fb040_timestamp_with_tz(1,2,3);
- short      sqlind=0;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- _TSO_CHECK(buf.size()==(sizeof(value)+sizeof(sqlind)));
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.data())==value);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(sizeof(value_type)))==sqlind);
-}//test_d18___timestamp_with_tz
-
-////////////////////////////////////////////////////////////////////////////////
 //N01
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n01___short
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n01___short
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1949,9 +1632,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -1974,7 +1657,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N02
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n02___long
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n02___long
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -1996,9 +1679,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2021,7 +1704,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N03
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n03___int64
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n03___int64
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2043,9 +1726,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2068,7 +1751,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N04
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n04___float
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n04___float
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2090,9 +1773,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2115,7 +1798,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N05
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n05___double
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n05___double
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2137,9 +1820,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2162,7 +1845,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N06
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n06___time
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n06___time
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2184,9 +1867,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2209,7 +1892,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N07
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n07___date
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n07___date
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2231,9 +1914,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2256,7 +1939,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N08
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n08___timestamp
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n08___timestamp
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2278,9 +1961,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2303,7 +1986,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N09
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n09___text
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n09___text
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2325,9 +2008,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2352,7 +2035,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N09
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n10___varying
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n10___varying
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2380,9 +2063,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2411,7 +2094,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N12
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n12___blob
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n12___blob
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2433,9 +2116,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2458,7 +2141,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N13
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n13___array
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n13___array
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2480,9 +2163,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2505,7 +2188,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //N14
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n14___boolean
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_n14___boolean
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2527,9 +2210,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[0].sqlind  =&sqlind;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2552,178 +2235,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 }//test_n14___boolean
 
 ////////////////////////////////////////////////////////////////////////////////
-//N15
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n15___int128
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_int128  value      =db_obj::make_fb040_int128(12345678901234567,76543210987654321);
- db_obj::t_dbvalue__fb040_int128  value__null=db_obj::make_fb040_int128(0,0);
- short                  sqlind               =-1;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_int128|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- std::copy(reinterpret_cast<unsigned char*>(&value__null),
-           reinterpret_cast<unsigned char*>(&value__null)+sizeof(value__null),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind),
-           reinterpret_cast<unsigned char*>(&sqlind)+sizeof(sqlind),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_n15___int128
-
-////////////////////////////////////////////////////////////////////////////////
-//N16
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n16___decfloat16
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- using value_type=db_obj::t_dbvalue__fb040_decfloat16;
-
- value_type value  ={12345678901234567ui64};
- short      sqlind =-1;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- assert_s(sizeof(value_type)+sizeof(short)==8+2);
- assert_s(sizeof(sqlind)==2);
-
- _TSO_CHECK(buf.size()==8+2);
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.ptr_at(0))==isc_api::__null__fb040_decfloat16);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(8))==sqlind);
-}//test_n16___decfloat16
-
-////////////////////////////////////////////////////////////////////////////////
-//N17
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n17___decfloat34
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- using value_type=db_obj::t_dbvalue__fb040_decfloat34;
-
- value_type value  ={12345678901234567ui64,76543210987654321ui64};
- short      sqlind =-1;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- assert_s(sizeof(value_type)+sizeof(short)==16+2);
- assert_s(sizeof(sqlind)==2);
-
- _TSO_CHECK(buf.size()==16+2);
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.ptr_at(0))==isc_api::__null__fb040_decfloat34);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(16))==sqlind);
-}//test_n17___decfloat34
-
-////////////////////////////////////////////////////////////////////////////////
-//N18
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_n18___timestamp_with_tz
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- using value_type=db_obj::t_dbvalue__fb040_timestamp_with_tz;
-
- value_type value  =db_obj::make_fb040_timestamp_with_tz(123456789,765432109,23456);
- short      sqlind =-1;
-
- XSQLDA_V1_Wrapper xsqlda(1);
-
- xsqlda->sqld=1;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value);
- xsqlda->sqlvar[0].sqlind  =&sqlind;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- assert_s(sizeof(value_type)+sizeof(short)==14);
-
- _TSO_CHECK(buf.size()==12+2);
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.ptr_at(0))==isc_api::__null__fb040_timestamp_with_tz);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(12))==sqlind);
-}//test_n18___timestamp_with_tz
-
-////////////////////////////////////////////////////////////////////////////////
 //A01
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a01___short
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a01___short
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2752,9 +2266,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2789,7 +2303,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A02
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a02___long
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a02___long
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2818,9 +2332,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2857,7 +2371,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A03
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a03___int64
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a03___int64
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2886,9 +2400,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2929,7 +2443,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A04
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a04___float
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a04___float
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -2958,9 +2472,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -2997,7 +2511,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A05
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a05___double
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a05___double
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3026,9 +2540,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3069,7 +2583,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A06
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a06___time
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a06___time
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3098,9 +2612,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3137,7 +2651,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A07
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a07___date
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a07___date
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3166,9 +2680,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3205,7 +2719,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A08
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a08___timestamp
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a08___timestamp
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3234,9 +2748,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3273,7 +2787,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A09
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a09___text
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a09___text
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3302,9 +2816,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3343,7 +2857,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A10
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a10___varying
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a10___varying
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3379,9 +2893,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3428,7 +2942,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A11
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a11___null
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a11___null
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3460,9 +2974,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[2].sqlind  =&sqlind3;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3489,7 +3003,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A12
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a12___blob
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a12___blob
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3518,9 +3032,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3557,7 +3071,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A13
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a13___array
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a13___array
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3586,9 +3100,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[1].sqlind  =&sqlind2;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3625,7 +3139,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 ////////////////////////////////////////////////////////////////////////////////
 //A14
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a14___boolean
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::test_a14___boolean
                                            (TTSO_GlobalContext* const DEBUG_CODE(pParams),
                                             context_type*       const DEBUG_CODE(pCtx))
 {
@@ -3662,9 +3176,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  xsqlda->sqlvar[2].sqlind  =&sqlind3;
 
  //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
+ msg_data_buffer_type buf;
 
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
+ self_type::EXEC__Build_XSQLDA_MSG_DATA(xsqlda,buf);
 
  //-----------------------------------------
  structure::t_fix_vector<unsigned char,100> expected_buf;
@@ -3710,277 +3224,9 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 }//test_a14___boolean
 
 ////////////////////////////////////////////////////////////////////////////////
-//A15
+//struct TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_descr
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a15___int128
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_int128 value1=db_obj::make_fb040_int128(123456789012345ui64,543210987654321ui64);
- short                           sqlind1=0;
-
- db_obj::t_dbvalue__fb040_int128 value2=db_obj::make_fb040_int128(444444444444444ui64,555555555555555ui64);
- short                           sqlind2=0;
-
- XSQLDA_V1_Wrapper xsqlda(2);
-
- xsqlda->sqld=2;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_int128|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value1);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
- xsqlda->sqlvar[0].sqlind  =&sqlind1;
-
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_int128|1;
- xsqlda->sqlvar[1].sqllen  =sizeof(value2);
- xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
- xsqlda->sqlvar[1].sqlind  =&sqlind2;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value1),
-           reinterpret_cast<unsigned char*>(&value1)+sizeof(value1),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
-           reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
-           std::back_inserter(expected_buf));
-
- //----- align
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value2),
-           reinterpret_cast<unsigned char*>(&value2)+sizeof(value2),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind2),
-           reinterpret_cast<unsigned char*>(&sqlind2)+sizeof(sqlind2),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_a15___int128
-
-////////////////////////////////////////////////////////////////////////////////
-//A16
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a16___decfloat16
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_decfloat16 value1=db_obj::make_fb040_decfloat16(123456789012345ui64);
- short                               sqlind1=0;
-
- db_obj::t_dbvalue__fb040_decfloat16 value2=db_obj::make_fb040_decfloat16(444444444444444ui64);
- short                               sqlind2=0;
-
- XSQLDA_V1_Wrapper xsqlda(2);
-
- xsqlda->sqld=2;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value1);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
- xsqlda->sqlvar[0].sqlind  =&sqlind1;
-
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat16|1;
- xsqlda->sqlvar[1].sqllen  =sizeof(value2);
- xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
- xsqlda->sqlvar[1].sqlind  =&sqlind2;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value1),
-           reinterpret_cast<unsigned char*>(&value1)+sizeof(value1),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
-           reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
-           std::back_inserter(expected_buf));
-
- //----- align
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value2),
-           reinterpret_cast<unsigned char*>(&value2)+sizeof(value2),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind2),
-           reinterpret_cast<unsigned char*>(&sqlind2)+sizeof(sqlind2),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_a16___decfloat16
-
-////////////////////////////////////////////////////////////////////////////////
-//A17
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a17___decfloat34
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- db_obj::t_dbvalue__fb040_decfloat34 value1=db_obj::make_fb040_decfloat34(123456789012345ui64,543210987654321ui64);
- short                               sqlind1=0;
-
- db_obj::t_dbvalue__fb040_decfloat34 value2=db_obj::make_fb040_decfloat34(444444444444444ui64,555555555555555ui64);
- short                               sqlind2=0;
-
- XSQLDA_V1_Wrapper xsqlda(2);
-
- xsqlda->sqld=2;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value1);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
- xsqlda->sqlvar[0].sqlind  =&sqlind1;
-
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_decfloat34|1;
- xsqlda->sqlvar[1].sqllen  =sizeof(value2);
- xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
- xsqlda->sqlvar[1].sqlind  =&sqlind2;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- structure::t_fix_vector<unsigned char,100> expected_buf;
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value1),
-           reinterpret_cast<unsigned char*>(&value1)+sizeof(value1),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind1),
-           reinterpret_cast<unsigned char*>(&sqlind1)+sizeof(sqlind1),
-           std::back_inserter(expected_buf));
-
- //----- align
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
- expected_buf.push_back(0);
-
- //-----
- std::copy(reinterpret_cast<unsigned char*>(&value2),
-           reinterpret_cast<unsigned char*>(&value2)+sizeof(value2),
-           std::back_inserter(expected_buf));
-
- std::copy(reinterpret_cast<unsigned char*>(&sqlind2),
-           reinterpret_cast<unsigned char*>(&sqlind2)+sizeof(sqlind2),
-           std::back_inserter(expected_buf));
-
- //-----------------------------------------
- _TSO_CHECK(structure::equal(buf.buffer(),
-                             buf.buffer_end(),
-                             expected_buf.cbegin(),
-                             expected_buf.cend()));
-}//test_a17___decfloat34
-
-////////////////////////////////////////////////////////////////////////////////
-//A18
-
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::test_a18___timestamp_with_tz
-                                           (TTSO_GlobalContext* const DEBUG_CODE(pParams),
-                                            context_type*       const DEBUG_CODE(pCtx))
-{
- assert(pParams);
- assert(pCtx);
-
- //-----------------------------------------
- using value_type=db_obj::t_dbvalue__fb040_timestamp_with_tz;
-
- value_type value1=db_obj::make_fb040_timestamp_with_tz(123456789,987654321,54321);
- short      sqlind1=0;
-
- value_type value2=db_obj::make_fb040_timestamp_with_tz(234567890,345678901,33333);
- short      sqlind2=0;
-
- XSQLDA_V1_Wrapper xsqlda(2);
-
- xsqlda->sqld=2;
-
- xsqlda->sqlvar[0].sqltype =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
- xsqlda->sqlvar[0].sqllen  =sizeof(value1);
- xsqlda->sqlvar[0].sqldata =reinterpret_cast<char*>(&value1);
- xsqlda->sqlvar[0].sqlind  =&sqlind1;
-
- xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_timestamp_with_tz|1;
- xsqlda->sqlvar[1].sqllen  =sizeof(value2);
- xsqlda->sqlvar[1].sqldata =reinterpret_cast<char*>(&value2);
- xsqlda->sqlvar[1].sqlind  =&sqlind2;
-
- //-----------------------------------------
- xsqlda_utils_type::msg_data_buffer_type buf;
-
- xsqlda_utils_type::Build_XSQLDA_MSG_DATA(xsqlda,buf);
-
- //-----------------------------------------
- assert_s(2*(sizeof(value_type)+sizeof(short))+2==30);
-
- _TSO_CHECK(buf.size()==30);
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.ptr_at(0))==value1);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(12))==sqlind1);
-
- _TSO_CHECK(*reinterpret_cast<const value_type*>(buf.ptr_at(16))==value2);
-
- _TSO_CHECK(*reinterpret_cast<const short*>(buf.ptr_at(28))==sqlind2);
-}//test_a18___timestamp_with_tz
-
-////////////////////////////////////////////////////////////////////////////////
-//struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_descr
-
-struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_descr
+struct TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_descr
 {
  public:
   typedef TTSO_TestFunc::TTestFunc          func_type;
@@ -3988,15 +3234,15 @@ struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA
  public:
   const char* pTestSign;
   func_type   Func;
-};//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_descr
+};//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_descr
 
 ////////////////////////////////////////////////////////////////////////////////
 
 #define DEF_TEST_DESCR(sign,func)                            \
- {sign,TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_impl::func},
+ {sign,TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl::func},
 
-const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::tag_descr
- TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::sm_Tests[]=
+const TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_descr
+ TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::sm_Tests[]=
 {
  DEF_TEST_DESCR("001.null_ptr",
                 test_001___null_ptr)
@@ -4041,14 +3287,6 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_t13___bug_check__incorrect_sqllen__null)
  DEF_TEST_DESCR("T14.bug_check.incorrect_sqllen.boolean",
                 test_t14___bug_check__incorrect_sqllen__boolean)
- DEF_TEST_DESCR("T15.bug_check.incorrect_sqllen.int128",
-                test_t15___bug_check__incorrect_sqllen__int128)
- DEF_TEST_DESCR("T16.bug_check.incorrect_sqllen.decfloat16",
-                test_t16___bug_check__incorrect_sqllen__decfloat16)
- DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.decfloat34",
-                test_t17___bug_check__incorrect_sqllen__decfloat34)
- DEF_TEST_DESCR("T18.bug_check.incorrect_sqllen.timestamp_with_tz",
-                test_t18___bug_check__incorrect_sqllen__timestamp_with_tz)
 
  DEF_TEST_DESCR("D01.short",
                 test_d01___short)
@@ -4078,14 +3316,6 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_d13___array)
  DEF_TEST_DESCR("D14.boolean",
                 test_d14___boolean)
- DEF_TEST_DESCR("D15.int128",
-                test_d15___int128)
- DEF_TEST_DESCR("D16.decfloat16",
-                test_d16___decfloat16)
- DEF_TEST_DESCR("D17.decfloat34",
-                test_d17___decfloat34)
- DEF_TEST_DESCR("D18.timestamp_with_tz",
-                test_d18___timestamp_with_tz)
 
  //-----
  DEF_TEST_DESCR("N01.short",
@@ -4114,14 +3344,6 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_n13___array)
  DEF_TEST_DESCR("N14.boolean",
                 test_n14___boolean)
- DEF_TEST_DESCR("N15.int128",
-                test_n15___int128)
- DEF_TEST_DESCR("N16.decfloat16",
-                test_n16___decfloat16)
- DEF_TEST_DESCR("N17.decfloat34",
-                test_n17___decfloat34)
- DEF_TEST_DESCR("N18.timestamp_with_tz",
-                test_n18___timestamp_with_tz)
 
  //-----
  DEF_TEST_DESCR("A01.short",
@@ -4152,22 +3374,14 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA:
                 test_a13___array)
  DEF_TEST_DESCR("A14.boolean",
                 test_a14___boolean)
- DEF_TEST_DESCR("A15.int128",
-                test_a15___int128)
- DEF_TEST_DESCR("A16.decfloat16",
-                test_a16___decfloat16)
- DEF_TEST_DESCR("A17.decfloat34",
-                test_a17___decfloat34)
- DEF_TEST_DESCR("A18.timestamp_with_tz",
-                test_a18___timestamp_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA
+//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA
 
-void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::create
+void TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::create
                                            (TTSO_PushTest*      const pTestPusher,
                                             TTSO_GlobalContext* const pParams)
 {
@@ -4175,7 +3389,8 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
  assert(pParams!=nullptr);
 
  structure::str_formatter
-  ftestID("RemoteFB.API.HLP.XSQLDA_V01_Utilities.Build_XSQLDA_MSG_DATA.%1");
+  ftestID
+   ("DB_OBJ.UNITS.DBMS_FB.V03_0_0.xsqlda_v1_svc__msg_data.Build_XSQLDA_MSG_DATA.%1");
 
  for(const tag_descr& d : sm_Tests)
  {
@@ -4196,4 +3411,4 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

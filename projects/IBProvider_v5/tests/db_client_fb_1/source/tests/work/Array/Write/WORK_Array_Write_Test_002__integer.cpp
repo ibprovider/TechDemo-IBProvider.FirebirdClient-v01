@@ -14,7 +14,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Write_Test_002__integer::tag_impl
 
@@ -666,4 +666,4 @@ void WORK_Array_Write_Test_002__integer::create(TTSO_PushTest*      const pTestP
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

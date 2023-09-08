@@ -6,7 +6,7 @@
 
 #include "source/test_cn_params.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //Перечисление допустимых типов протокола, используемых при тестировании.
 
@@ -85,5 +85,5 @@ class TTSO_TestFunc_v2
 };//class TTSO_TestFunc_v2
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

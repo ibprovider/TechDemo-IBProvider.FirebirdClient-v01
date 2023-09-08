@@ -2723,7 +2723,7 @@ _MC("Floating-point divide by zero.  The code attempted to divide a floating-poi
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB25__EXCEPTION_FLOAT_INEXACT_RESULT
 Language        =Rus
-_MC("Floating-point inexact result.  The result of a floating-point operation cannot be represented as a deciaml fraction.")
+_MC("Floating-point inexact result.  The result of a floating-point operation cannot be represented as a decimal fraction.")
 .
 
 //------------------------------------------------------------------------
@@ -2783,7 +2783,7 @@ _MC("Segmentation Fault. The code attempted to access memory without privileges.
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB25__EXCEPTION_SIGILL
 Language        =Rus
-_MC("Illegal Instruction. The Code attempted to perfrom an illegal operation.")
+_MC("Illegal Instruction. The Code attempted to perform an illegal operation.")
 .
 
 //------------------------------------------------------------------------

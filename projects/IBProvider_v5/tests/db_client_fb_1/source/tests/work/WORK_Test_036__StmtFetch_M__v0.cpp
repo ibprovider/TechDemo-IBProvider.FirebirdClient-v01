@@ -18,7 +18,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_036__StmtFetch_M__v0::tag_impl
 
@@ -2152,4 +2152,4 @@ void WORK_Test_036__StmtFetch_M__v0::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

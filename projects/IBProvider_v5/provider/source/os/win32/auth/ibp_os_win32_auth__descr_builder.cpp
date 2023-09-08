@@ -132,15 +132,17 @@ void t_auth__descr_builder::request(t_auth__provider* const pProvider,
 
  for(;;)
  {
-  self_type::helper__makeDesc(inputDesc,
-                              inputBuffer,
-                              cbInput,
-                              const_cast<void*>(pvInput) /*sorry*/);
+  self_type::helper__makeDesc
+   (inputDesc,
+    inputBuffer,
+    cbInput,
+    const_cast<void*>(pvInput) /*sorry*/);
 
-  self_type::helper__makeDesc(outputDesc,
-                              outputBuffer,
-                              Output.size(),
-                              Output.buffer());
+  self_type::helper__makeDesc
+   (outputDesc,
+    outputBuffer,
+    Output.size(),
+    Output.buffer());
 
   ULONG fContextAttr=0;
 
@@ -262,7 +264,8 @@ void t_auth__descr_builder::helper__free()
   assert(m_spProvider);
 
   const auth_err_code_type
-   authErr=m_spProvider->m_DeleteSecurityContext.point()(&m_hCtxt);
+   authErr
+    =m_spProvider->m_DeleteSecurityContext.point()(&m_hCtxt);
 
   if(authErr!=SEC_E_OK)
   {

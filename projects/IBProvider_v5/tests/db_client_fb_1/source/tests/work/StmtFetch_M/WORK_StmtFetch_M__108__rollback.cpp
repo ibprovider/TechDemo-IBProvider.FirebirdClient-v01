@@ -16,7 +16,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct WORK_StmtFetch_M__108__rollback::tag_rs_descr
 
@@ -424,4 +424,4 @@ void WORK_StmtFetch_M__108__rollback::create(TTSO_PushTest*      const pTestPush
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

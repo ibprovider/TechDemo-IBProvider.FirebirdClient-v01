@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest__Filter
 
@@ -62,5 +62,5 @@ class TTSO_PushTest__Filter::tag_cancel_exc:public std::exception
 };//class TTSO_PushTest__Filter::tag_cancel_exc
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_tso
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

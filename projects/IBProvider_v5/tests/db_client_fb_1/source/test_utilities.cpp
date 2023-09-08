@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iomanip>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 std::string TSO_GenerateTimeStampString()
@@ -242,4 +242,4 @@ std::string TSO_MemSizeToStrEx2_KB(bool const ok,unsigned __int64 const sz)
 }//IBP_TSO_MemSizeToStrEx2_KB
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

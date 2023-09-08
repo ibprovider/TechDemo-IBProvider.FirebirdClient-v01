@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch__Types__timestamp_with_tz_001::tag_impl
 
@@ -80,6 +80,9 @@ std::string WORK_StmtFetch__Types__timestamp_with_tz_001::tag_impl::get_id()cons
 bool WORK_StmtFetch__Types__timestamp_with_tz_001::tag_impl::can_exec()const
 {
  assert(m_spParams);
+
+ if(!m_spParams->calc_expression("NE__TIMESTAMP_WITH_TZ"))
+  return false;
 
  if(!m_Data.can_exec(m_spParams))
   return false;
@@ -297,4 +300,4 @@ void WORK_StmtFetch__Types__timestamp_with_tz_001::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

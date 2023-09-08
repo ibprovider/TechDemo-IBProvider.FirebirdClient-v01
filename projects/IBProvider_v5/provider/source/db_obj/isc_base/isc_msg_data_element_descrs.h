@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+//! \ingroup isc_base
+//! \file    isc_msg_data_element_descrs.h
+//! \brief   The container with message descriptors.
+//! \author  Kovalenko Dmitry
+//! \date    22.04.2023
+#ifndef _isc_msg_data_element_descrs_H_
+#define _isc_msg_data_element_descrs_H_
+
+#include "source/db_obj/isc_base/isc_msg_data_element_descr.h"
+#include "source/db_obj/db_memory.h"
+
+namespace lcpi{namespace ibp{namespace isc_base{
+////////////////////////////////////////////////////////////////////////////////
+//! \addtogroup isc_base
+//! @{
+////////////////////////////////////////////////////////////////////////////////
+
+using t_isc_msg_data_element_descrs
+ =structure::t_stl_vector<t_isc_msg_data_element_descr,db_obj::t_db_memory_allocator>;
+
+////////////////////////////////////////////////////////////////////////////////
+//! @}
+////////////////////////////////////////////////////////////////////////////////
+}/*nms isc_base*/}/*nms ibp*/}/*nms lcpi*/
+#endif

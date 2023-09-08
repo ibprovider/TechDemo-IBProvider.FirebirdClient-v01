@@ -4,7 +4,7 @@
 
 #include "source/test_func.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestFunc
 
@@ -51,4 +51,4 @@ void TTSO_TestFunc::run(context_type* const pCtx)const
 }//run
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

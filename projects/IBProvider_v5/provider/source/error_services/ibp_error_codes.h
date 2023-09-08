@@ -1814,6 +1814,11 @@ enum ibp_msg_code_type
  ibp_mce_cmd__resetting_a_cn_state_through_sql_is_not_supported_0
   =IBP_MCE_CMD__RESETTING_A_CN_STATE_THROUGH_SQL_IS_NOT_SUPPORTED_0,
 
+ /// \brief
+ ///  Command text contains invalid UTF16 command text.
+ ibp_mce_cmd__invalid_utf16_command_text_0
+  =IBP_MCE_CMD__INVALID_UTF16_COMMAND_TEXT_0,
+
  //команда со скриптом ---------------------------------------------------
 
  /// \brief В скрипте нельзя использовать неименованные параметры
@@ -4762,7 +4767,7 @@ enum ibp_msg_code_type
  lcpi_lib_structure__err_mc__parameter_list___bad_fmt_of_quoted_item_value__0
   =LCPI_LIB_STRUCTURE__ERR_MC__PARAMETER_LIST___BAD_FMT_OF_QUOTED_ITEM_VALUE__0,
 
- //Standart error --------------------------------------------------------
+ //Standard error --------------------------------------------------------
  /// \brief Идентификатор стандартной ошибки, описание которой можно получить по HRESULT.
  ibp_mce_standart_error
   =IDENTIFIER_SDK_ERROR

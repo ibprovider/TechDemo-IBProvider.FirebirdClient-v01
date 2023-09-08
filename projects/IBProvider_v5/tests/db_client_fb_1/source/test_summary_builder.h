@@ -7,7 +7,7 @@
 #include "source/test_base.h"
 #include "source/test_state2.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_SummaryBuilder
 
@@ -148,5 +148,5 @@ void TTSO_SummaryBuilder::print_total_ex(TTracer&              tracer,
 }//print_total_ex
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

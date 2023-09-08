@@ -2,7 +2,7 @@
 #ifndef _test_base_CC_
 #define _test_base_CC_
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_Basic_TracerAutoSend
 
@@ -19,5 +19,5 @@ TTSO_Basic_TracerAutoSend<TTracer>::~TTSO_Basic_TracerAutoSend()
 }//~TTSO_Basic_TracerAutoSend
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

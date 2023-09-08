@@ -14,7 +14,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Read_Test_013__decfloat34::tag_impl
 
@@ -621,8 +621,9 @@ const WORK_Array_Read_Test_013__decfloat34::tag_descr
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Read_Test_013__decfloat34
 
-void WORK_Array_Read_Test_013__decfloat34::create(TTSO_PushTest*      const pTestPusher,
-                                              TTSO_GlobalContext* const pParams)
+void WORK_Array_Read_Test_013__decfloat34::create
+                             (TTSO_PushTest*      const pTestPusher,
+                              TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
@@ -640,7 +641,7 @@ void WORK_Array_Read_Test_013__decfloat34::create(TTSO_PushTest*      const pTes
  };//enum
 
  //-----------------------------------------
- structure::str_formatter ftestID("RemoteFB.WORK.Array.Read.011.decfloat34.ptype__%1.%2");
+ structure::str_formatter ftestID("RemoteFB.WORK.Array.Read.013.decfloat34.ptype__%1.%2");
 
  TTSO_TestData_v2 Data;
 
@@ -673,4 +674,4 @@ void WORK_Array_Read_Test_013__decfloat34::create(TTSO_PushTest*      const pTes
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

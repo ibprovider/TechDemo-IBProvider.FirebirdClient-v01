@@ -553,6 +553,31 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
      break;
     }//ibp_fb040_blr_dtype__timestamp_with_tz
 
+    case isc_api::ibp_fb040_blr_dtype__time_with_tz:
+    {
+     using value_type=isc_api::t_ibp_fb040_time_with_tz;
+
+     const size_t c_align=isc_api::ibp_fb040_type_align__time_with_tz;
+
+     _VERIFY(structure::align_memory_size(offset,c_align));
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(value_type)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data+offset)%c_align)==0);
+
+     xdr::encode__fb040_time_with_tz
+      (pBuf,
+       reinterpret_cast<const value_type*>(msg_data+offset));
+
+     offset+=sizeof(value_type);
+
+     break;
+    }//ibp_fb040_blr_dtype__time_with_tz
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

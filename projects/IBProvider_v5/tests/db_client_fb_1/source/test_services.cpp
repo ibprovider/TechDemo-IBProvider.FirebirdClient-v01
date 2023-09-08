@@ -11,7 +11,7 @@
 
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
@@ -3026,6 +3026,43 @@ bool TestServices::checkValue__TIMESTAMP_WITH_TZ
 }//checkValue__TIMESTAMP_WITH_TZ
 
 //------------------------------------------------------------------------
+bool TestServices::checkValue__TIME_WITH_TZ
+                             (TTSO_Tracer&                             tracer,
+                              short                                    actualSqlInd,
+                              const isc_api::t_ibp_fb040_time_with_tz& actualSqlValue,
+                              short                                    expectedSqlInd,
+                              const isc_api::t_ibp_fb040_time_with_tz& expectedSqlValue)
+{
+ for(;;)
+ {
+  tracer<<L"check value [time_with_tz] (ind: "<<actualSqlInd<<L", "<<actualSqlValue<<L") ...";
+
+  if(actualSqlInd==expectedSqlInd && actualSqlValue==expectedSqlValue)
+  {
+   tracer<<L"OK"<<send;
+
+   return true;
+  }
+
+  tracer<<L"FAILED"<<send;
+
+  break;
+ }//for[ever]
+
+ if(actualSqlInd!=expectedSqlInd)
+ {
+  tracer(tso_msg_error,-1)<<L"Incorrect indicator: "<<actualSqlInd<<L". Expected: "<<expectedSqlInd<<L"."<<send;
+ }//if
+
+ if(actualSqlValue!=expectedSqlValue)
+ {
+  tracer(tso_msg_error,-1)<<L"Incorrect value: "<<actualSqlValue<<L". Expected: "<<expectedSqlValue<<L"."<<send;
+ }//if
+
+ return false;
+}//checkValue__TIME_WITH_TZ
+
+//------------------------------------------------------------------------
 bool TestServices::checkValue__TEXT(TTSO_Tracer&                        tracer,
                                     short                               actualSqlInd,
                                     const structure::t_const_str_box&   actualSqlValue,
@@ -3222,4 +3259,4 @@ bool TestServices::checkValue__DECFLOAT34
 }//checkValue__DECFLOAT34
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

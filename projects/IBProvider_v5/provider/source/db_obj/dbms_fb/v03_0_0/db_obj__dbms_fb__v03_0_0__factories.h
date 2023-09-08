@@ -15,6 +15,21 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v03_0_
 db_obj::t_db_object_ptr
  create_svc__status_vector_utils();
 
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg01_blr01_builder();
+
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg01_data_descrs_builder();
+
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg_data();
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms v03_0_0*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/
 #endif

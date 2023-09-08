@@ -5,7 +5,7 @@
 #include <structure/t_negative_one.h>
 #include <iostream>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_Basic_LogStream_ToFile
 
@@ -76,5 +76,5 @@ void TTSO_Basic_LogStream<Allocator>::out(const char_type* const s)
 }//out
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

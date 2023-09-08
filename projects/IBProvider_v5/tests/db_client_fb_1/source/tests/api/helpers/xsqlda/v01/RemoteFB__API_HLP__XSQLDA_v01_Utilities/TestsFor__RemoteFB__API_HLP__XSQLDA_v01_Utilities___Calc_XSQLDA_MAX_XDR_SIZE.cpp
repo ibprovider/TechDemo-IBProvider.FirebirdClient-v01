@@ -12,7 +12,7 @@
 #include "source/db_obj/isc_base/isc_integer_to_portable_format.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl
 
@@ -112,6 +112,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_t19___bug_check__incorrect_sqllen__time_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  private:
   static void helper_txx
                (TTSO_GlobalContext* pParams,
@@ -193,6 +197,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 
+  static void test_d19__time_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
  public:
   static void test_a01__varchar
                (TTSO_GlobalContext* pParams,
@@ -263,6 +271,10 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 context_type*       pCtx);
 
   static void test_a18__timestamp_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
+
+  static void test_a19__time_with_tz
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl
@@ -360,29 +372,33 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_varying,
-            -1,
-            L"sql_varying");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_varying,
+   -1,
+   L"sql_varying");
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_varying|1,
-            -1,
-            L"sql_varying");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_varying|1,
+   -1,
+   L"sql_varying");
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_varying,
-            SHRT_MAX,
-            L"sql_varying");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_varying,
+   SHRT_MAX,
+   L"sql_varying");
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_varying|1,
-            SHRT_MAX,
-            L"sql_varying");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_varying|1,
+   SHRT_MAX,
+   L"sql_varying");
 }//test_t01___bug_check__incorrect_sqllen__varchar
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -392,17 +408,19 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_text,
-            -1,
-            L"sql_text");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_text,
+   -1,
+   L"sql_text");
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_text|1,
-            -1,
-            L"sql_text");
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_isc_sql_text|1,
+   -1,
+   L"sql_text");
 }//test_t02___bug_check__incorrect_sqllen__char
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -412,17 +430,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_short,
-            1,
-            L"sql_short");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==2)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_short|1,
-            3,
-            L"sql_short");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_short,
+    x,
+    L"sql_short");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_short|1,
+    x,
+    L"sql_short");
+ }//for x
 }//test_t03___bug_check__incorrect_sqllen__short
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -432,17 +458,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_long,
-            3,
-            L"sql_long");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==4)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_long|1,
-            5,
-            L"sql_long");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_long,
+    x,
+    L"sql_long");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_long|1,
+    x,
+    L"sql_long");
+ }//for x
 }//test_t04___bug_check__incorrect_sqllen__long
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -452,17 +486,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_int64,
-            7,
-            L"sql_int64");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_int64|1,
-            9,
-            L"sql_int64");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_int64,
+    x,
+    L"sql_int64");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_int64|1,
+    x,
+    L"sql_int64");
+ }//for x
 }//test_t05___bug_check__incorrect_sqllen__int64
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -472,17 +514,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_float,
-            3,
-            L"sql_float");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==4)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_float|1,
-            5,
-            L"sql_float");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_float,
+    x,
+    L"sql_float");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_float|1,
+    x,
+    L"sql_float");
+ }//for x
 }//test_t06___bug_check__incorrect_sqllen__float
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -492,17 +542,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_double,
-            7,
-            L"sql_double");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_double|1,
-            9,
-            L"sql_double");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_double,
+    x,
+    L"sql_double");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_double|1,
+    x,
+    L"sql_double");
+ }//for x
 }//test_t07___bug_check__incorrect_sqllen__double
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -512,17 +570,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_type_time,
-            3,
-            L"sql_type_time");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==4)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_type_time|1,
-            5,
-            L"sql_type_time");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_type_time,
+    x,
+    L"sql_type_time");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_type_time|1,
+    x,
+    L"sql_type_time");
+ }//for x
 }//test_t08___bug_check__incorrect_sqllen__time
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -532,17 +598,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_type_date,
-            3,
-            L"sql_type_date");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==4)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_type_date|1,
-            5,
-            L"sql_type_date");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_type_date,
+    x,
+    L"sql_type_date");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_type_date|1,
+    x,
+    L"sql_type_date");
+ }//for x
 }//test_t09___bug_check__incorrect_sqllen__date
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -552,17 +626,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_timestamp,
-            7,
-            L"sql_timestamp");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_timestamp|1,
-            9,
-            L"sql_timestamp");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_timestamp,
+    x,
+    L"sql_timestamp");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_timestamp|1,
+    x,
+    L"sql_timestamp");
+ }//for x
 }//test_t10___bug_check__incorrect_sqllen__timestamp
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -572,17 +654,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_blob,
-            7,
-            L"sql_blob");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_blob|1,
-            9,
-            L"sql_blob");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_blob,
+    x,
+    L"sql_blob");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_blob|1,
+    x,
+    L"sql_blob");
+ }//for x
 }//test_t11___bug_check__incorrect_sqllen__blob
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -592,17 +682,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_array,
-            7,
-            L"sql_array");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_isc_sql_array|1,
-            9,
-            L"sql_array");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_array,
+    x,
+    L"sql_array");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_isc_sql_array|1,
+    x,
+    L"sql_array");
+ }//for x
 }//test_t12___bug_check__incorrect_sqllen__array
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -612,17 +710,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb025_sql_null,
-            1,
-            L"sql_null");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==0)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb025_sql_null|1,
-            2,
-            L"sql_null");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb025_sql_null,
+    x,
+    L"sql_null");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb025_sql_null|1,
+    x,
+    L"sql_null");
+ }
 }//test_t13___bug_check__incorrect_sqllen__null
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -632,17 +738,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb030_sql_boolean,
-            3,
-            L"sql_boolean");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==1)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb030_sql_boolean|1,
-            5,
-            L"sql_boolean");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb030_sql_boolean,
+    x,
+    L"sql_boolean");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb030_sql_boolean|1,
+    x,
+    L"sql_boolean");
+ }//for x
 }//test_t14___bug_check__incorrect_sqllen__boolean
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -652,17 +766,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128,
-            15,
-            L"sql_int128");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==16)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_int128|1,
-            17,
-            L"sql_int128");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_int128,
+    x,
+    L"sql_int128");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_int128|1,
+    x,
+    L"sql_int128");
+ }//for x
 }//test_t15___bug_check__incorrect_sqllen__int128
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -672,17 +794,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_decfloat16,
-            7,
-            L"sql_decfloat16");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_decfloat16|1,
-            9,
-            L"sql_decfloat16");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16,
+    x,
+    L"sql_decfloat16");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat16|1,
+    x,
+    L"sql_decfloat16");
+ }//for x
 }//test_t16___bug_check__incorrect_sqllen__decfloat16
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -692,17 +822,25 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_decfloat34,
-            15,
-            L"sql_decfloat34");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==16)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_decfloat34|1,
-            17,
-            L"sql_decfloat34");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34,
+    x,
+    L"sql_decfloat34");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_decfloat34|1,
+    x,
+    L"sql_decfloat34");
+ }//for x
 }//test_t17___bug_check__incorrect_sqllen__decfloat34
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -712,18 +850,54 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
                                            (TTSO_GlobalContext* const pParams,
                                             context_type*       const pCtx)
 {
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_timestamp_with_tz,
-            11,
-            L"sql_timestamp_with_tz");
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==12)
+   continue;
 
- helper_txx(pParams,
-            pCtx,
-            isc_api::ibp_fb040_sql_timestamp_with_tz|1,
-            13,
-            L"sql_timestamp_with_tz");
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_timestamp_with_tz,
+    x,
+    L"sql_timestamp_with_tz");
+
+ helper_txx
+  (pParams,
+   pCtx,
+   isc_api::ibp_fb040_sql_timestamp_with_tz|1,
+   x,
+   L"sql_timestamp_with_tz");
+ }//for x
 }//test_t18___bug_check__incorrect_sqllen__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST T19
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_t19___bug_check__incorrect_sqllen__time_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ for(short x=-33;x!=32;++x)
+ {
+  if(x==8)
+   continue;
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_time_with_tz,
+    x,
+    L"sql_time_with_tz");
+
+  helper_txx
+   (pParams,
+    pCtx,
+    isc_api::ibp_fb040_sql_time_with_tz|1,
+    x,
+    L"sql_time_with_tz");
+ }//for x
+}//test_t19___bug_check__incorrect_sqllen__time_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
 //HELPER TXX
@@ -1240,6 +1414,32 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 }//test_d18__timestamp_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST D19
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_d19__time_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqld=1;
+
+ xsqlda->sqlvar[0].sqltype  =isc_api::ibp_fb040_sql_time_with_tz|1;
+ xsqlda->sqlvar[0].sqlscale =0;
+ xsqlda->sqlvar[0].sqllen   =8;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK_MSG(sz==4+8,"sz="<<sz);
+}//test_d19__time_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //TEST A01
 
 void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a01__varchar
@@ -1744,6 +1944,34 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
 }//test_a18__timestamp_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST A19
+
+void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_impl::test_a19__time_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ XSQLDA_V1_Wrapper xsqlda(2);
+
+ xsqlda->sqld=2;
+
+ xsqlda->sqlvar[0].sqltype =isc_api::ibp_isc_sql_text|1;
+ xsqlda->sqlvar[0].sqllen  =1;
+
+ xsqlda->sqlvar[1].sqltype =isc_api::ibp_fb040_sql_time_with_tz|1;
+ xsqlda->sqlvar[1].sqllen  =8;
+
+ //-----------------------------------------
+ size_t const sz=xsqlda_utils_type::Calc_XSQLDA_MAX_XDR_SIZE(xsqlda);
+
+ //-----------------------------------------
+ _TSO_CHECK(sz==4+4+4+8);
+}//test_a19__time_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_descr
 
 struct TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::tag_descr
@@ -1806,7 +2034,9 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
  DEF_TEST_DESCR("T17.bug_check.incorrect_sqllen.decfloat34",
                 test_t17___bug_check__incorrect_sqllen__decfloat34)
  DEF_TEST_DESCR("T18.bug_check.incorrect_sqllen.timestamp_with_tz",
-                test_t17___bug_check__incorrect_sqllen__decfloat34)
+                test_t18___bug_check__incorrect_sqllen__timestamp_with_tz)
+ DEF_TEST_DESCR("T19.bug_check.incorrect_sqllen.time_with_tz",
+                test_t19___bug_check__incorrect_sqllen__time_with_tz)
 
  DEF_TEST_DESCR("D01.varchar",
                 test_d01__varchar)
@@ -1844,6 +2074,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_d17__decfloat34)
  DEF_TEST_DESCR("D18.timestamp_with_tz",
                 test_d18__timestamp_with_tz)
+ DEF_TEST_DESCR("D19.time_with_tz",
+                test_d19__time_with_tz)
 
  DEF_TEST_DESCR("A01.varchar",
                 test_a01__varchar)
@@ -1881,6 +2113,8 @@ const TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SI
                 test_a17__decfloat34)
  DEF_TEST_DESCR("A18.timestamp_with_tz",
                 test_a18__timestamp_with_tz)
+ DEF_TEST_DESCR("A19.time_with_tz",
+                test_a19__time_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -1908,13 +2142,13 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZ
    spTest
     (lcpi::lib::structure::not_null_ptr
       (new TTSO_TestFunc
-       (pParams,
-        ftestID.c_str(),
-        d.Func)));
+        (pParams,
+         ftestID.c_str(),
+         d.Func)));
 
   pTestPusher->PushTest(spTest);
  }//for d
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

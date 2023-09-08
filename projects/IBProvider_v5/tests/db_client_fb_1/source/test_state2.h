@@ -7,7 +7,7 @@
 #include <structure/t_const_str_box.h>
 #include <algorithm>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct TTSO_TestState2 [POD]
 
@@ -47,5 +47,5 @@ struct TTSO_TestState2
 };//struct TTSO_TestState2
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

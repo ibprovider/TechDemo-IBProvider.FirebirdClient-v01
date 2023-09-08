@@ -13,7 +13,7 @@
 #include <win32lib/win32_library.h>
 #include <win32lib/win32_error.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class FB25_Test_010__CheckBlrPrinter::tag_impl
 
@@ -491,4 +491,4 @@ void FB25_Test_010__CheckBlrPrinter::create(TTSO_PushTest*      const pTestPushe
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -14,7 +14,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Read_Test_001__smallint::tag_impl
 
@@ -617,8 +617,9 @@ const WORK_Array_Read_Test_001__smallint::tag_descr
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Read_Test_001__smallint
 
-void WORK_Array_Read_Test_001__smallint::create(TTSO_PushTest*      const pTestPusher,
-                                              TTSO_GlobalContext* const pParams)
+void WORK_Array_Read_Test_001__smallint::create
+                             (TTSO_PushTest*      const pTestPusher,
+                              TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
@@ -667,4 +668,4 @@ void WORK_Array_Read_Test_001__smallint::create(TTSO_PushTest*      const pTestP
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

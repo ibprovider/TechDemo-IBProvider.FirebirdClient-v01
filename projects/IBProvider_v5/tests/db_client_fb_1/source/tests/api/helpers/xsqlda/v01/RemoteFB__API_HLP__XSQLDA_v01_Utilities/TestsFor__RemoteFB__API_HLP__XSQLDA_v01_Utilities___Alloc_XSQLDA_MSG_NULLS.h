@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS
 
@@ -24,5 +24,5 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS
 };//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

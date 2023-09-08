@@ -278,6 +278,31 @@ struct t_dbvalue__fb040_time_with_tz
  t_dbvalue__fb040_timezone time_zone;
 };//struct t_dbvalue__fb040_time_with_tz
 
+extern const t_dbvalue__fb040_time_with_tz __null_dbvalue__fb040_time_with_tz;
+
+//------------------------------------------------------------------------
+inline t_dbvalue__fb040_time_with_tz make_fb040_time_with_tz
+                                           (t_dbvalue__isc_time       utc_time,
+                                            t_dbvalue__fb040_timezone time_zone)
+{
+ t_dbvalue__fb040_time_with_tz v;
+
+ v.utc_time   =utc_time;
+ v.time_zone  =time_zone;
+
+ return v;
+}//make_fb040_time_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef IBP_BUILD_TESTCODE
+
+bool operator == (const t_dbvalue__fb040_time_with_tz& v1,const t_dbvalue__fb040_time_with_tz& v2);
+
+bool operator != (const t_dbvalue__fb040_time_with_tz& v1,const t_dbvalue__fb040_time_with_tz& v2);
+
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_dbvalue__fb040_int128
 
@@ -544,7 +569,11 @@ enum
   =dbprecision__isc_date_as_wstr+1+dbprecision__fb040_time2_with_tz_as_wstr,
 
  //For DECLFLOAT_AS_WSTR mode
- dbprecision__fb040_decfloat16_as_wstr      =24, // see DECDOUBLE_String
+
+ // '-'+'precision16_and_point'+'E+'+'three_digit_exp' = 1+(16+1)+2+3 = 23
+ dbprecision__fb040_decfloat16_as_wstr      =23, // see DECDOUBLE_String
+
+ // '-'+'precision34_and_point'+'E+'+'four_digit_exp' = 1+(34+1)+2+4 = 42
  dbprecision__fb040_decfloat34_as_wstr      =42, // see DECQUAD_String
 
  //For INT128_AS_WSTR mode

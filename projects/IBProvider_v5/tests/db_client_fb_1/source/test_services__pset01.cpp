@@ -8,7 +8,7 @@
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
@@ -602,4 +602,4 @@ void TestServices::Helper__PSET01__HACK__CloseBlob
 }//Helper__PSET01__HACK__CloseBlob
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

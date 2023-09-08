@@ -8,7 +8,7 @@
 #include <structure/test_obj/t_tso_log.h>
 #include <fstream>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //containings
 
@@ -95,7 +95,7 @@ typedef TTSO_Basic_LogStream<TTSO_MemoryAllocator> TTSO_LogStream;
 typedef TTSO_Basic_LogStream<TSYS_MemoryAllocator> TSYS_LogStream;
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 
 ////////////////////////////////////////////////////////////////////////////////
 #include "source/test_log_stream.cc"

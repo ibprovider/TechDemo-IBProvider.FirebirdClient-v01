@@ -11,7 +11,7 @@
 #include "source/db_obj/isc_base/isc_connection_settings.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class FB25_Test_009__BlrPrinter::tag_impl
 
@@ -378,4 +378,4 @@ void FB25_Test_009__BlrPrinter::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

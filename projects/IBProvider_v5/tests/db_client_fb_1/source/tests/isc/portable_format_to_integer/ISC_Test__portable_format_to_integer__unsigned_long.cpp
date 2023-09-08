@@ -8,7 +8,7 @@
 #include "source/db_obj/isc_base/isc_portable_format_to_integer.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class ISC_Test__portable_format_to_integer__unsigned_long::tag_impl
 
@@ -368,4 +368,4 @@ void ISC_Test__portable_format_to_integer__unsigned_long::create(TTSO_PushTest* 
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

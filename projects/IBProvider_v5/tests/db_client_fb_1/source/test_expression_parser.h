@@ -8,7 +8,7 @@
 #include <structure/t_str_version.h>
 #include <map>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //forward declarations
 
@@ -253,5 +253,5 @@ class TIBP_TSO_ExpressionParser
 };//class TIBP_TSO_ExpressionParser
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

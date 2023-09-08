@@ -1067,6 +1067,42 @@
     <Filter Include="source\tests\work\Errors\_headers">
       <UniqueIdentifier>{88a95323-d8d3-44f0-863f-7f5abd97d061}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\tests\units\db_obj">
+      <UniqueIdentifier>{2a552ff3-cd51-4184-8521-051971e517a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb">
+      <UniqueIdentifier>{cca2b614-5547-4c6b-9014-eed1fc1bbf2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v04_0_0">
+      <UniqueIdentifier>{d9e70e57-29c8-406e-8b15-5cfc256aede1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v04_0_0\_headers">
+      <UniqueIdentifier>{9c79afb8-fc7e-4d1d-addf-44f976842399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v03_0_0">
+      <UniqueIdentifier>{4c1e830a-1926-4375-8f9d-6b25237e7b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v03_0_0\_headers">
+      <UniqueIdentifier>{e8d42037-36fc-404a-aa0d-79a75b352f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v02_5_0">
+      <UniqueIdentifier>{6a2f9afa-ecd5-4085-afc9-3e43ee66963d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\units\db_obj\dbms_fb\v02_5_0\_headers">
+      <UniqueIdentifier>{ba0cf826-d900-4290-88a1-25b33b6bb887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\time_with_tz">
+      <UniqueIdentifier>{00c19f38-c839-4e9d-9919-123163d747c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch\Types\time_with_tz\_headers">
+      <UniqueIdentifier>{50dcdb58-4ab9-430b-a459-c37c56cf5ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\time_with_tz">
+      <UniqueIdentifier>{e5ba50e9-dd47-45d5-9079-adb2d779bd8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\tests\work\StmtFetch_M\Types\time_with_tz\_headers">
+      <UniqueIdentifier>{19be9847-1277-473b-b9ff-49cd9033be59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -3199,34 +3235,10 @@
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Parse_XSQLDA.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Parse_XSQLDA_MSG_DATA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Calc_XSQLDA_MAX_XDR_SIZE.cpp">
       <Filter>IBP\source\db_client\remote_fb\api\helpers\xsqlda\v01</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR.cpp">
-      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.cpp">
-      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
-      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.cpp">
-      <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA.cpp">
       <Filter>source\tests\api\helpers\xsqlda\v01</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\api\helpers\xsqlda\v01\remote_fb__api_hlp__xsqlda_v01__utilities-Alloc_XSQLDA_MSG_NULLS.cpp">
@@ -3681,6 +3693,108 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.cpp">
       <Filter>source\tests\work\Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_blr01_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_base.cpp">
+      <Filter>IBP\source\db_obj\isc\isc_base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg_data.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg_data-Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg_data-Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg01_blr01_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg_data.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg_data-Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg_data-Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.cpp">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg01_blr01_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg_data.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg_data-Build_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg_data-Parse_XSQLDA_MSG_DATA.cpp">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch\Types\time_with_tz\WORK_StmtFetch__Types__time_with_tz_001.cpp">
+      <Filter>source\tests\work\StmtFetch\Types\time_with_tz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\StmtFetch_M\Types\time_with_tz\WORK_StmtFetch_M__Types__time_with_tz_001.cpp">
+      <Filter>source\tests\work\StmtFetch_M\Types\time_with_tz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_018__time_with_tz.cpp">
+      <Filter>source\tests\work\Params\IN2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_018__time_with_tz.cpp">
+      <Filter>source\tests\work\Params\OUT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v4__IN_OUT.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_015__time_with_tz.cpp">
+      <Filter>source\tests\work\Array\Read</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5416,19 +5530,7 @@
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\api\p12\remote_fb__p12__utilities.h">
       <Filter>IBP\source\db_client\remote_fb\api\p12\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR.h">
-      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.h">
-      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h">
-      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h">
-      <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA.h">
       <Filter>source\tests\api\helpers\xsqlda\v01\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\tests\api\helpers\xsqlda\v01\RemoteFB__API_HLP__XSQLDA_v01_Utilities\TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS.h">
@@ -5811,6 +5913,108 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Errors\WORK_Errors_FB03_00_00__Test_001.h">
       <Filter>source\tests\work\Errors\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_blr01_buffer.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_blr01_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v04_0_0\db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg_data.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_buffer.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_xsqlda_v1_svc__msg_blr01_builder.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_xsqlda_v1_svc__msg_data.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_xsqlda_v1_svc__msg_data_descrs_builder.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v04_0_0\TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v04_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg_data.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__xsqlda_v1_svc__msg01_blr01_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v03_0_0\db_obj__dbms_fb__v03_0_0__factories.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v03_0_0\TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v03_0_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg01_blr01_builder.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\dbms_fb\v02_5_0\db_obj__dbms_fb__v02_5_0__xsqlda_v1_svc__msg_data.h">
+      <Filter>IBP\source\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_msg_data_element_descrs.h">
+      <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\units\db_obj\dbms_fb\v02_5_0\TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h">
+      <Filter>source\tests\units\db_obj\dbms_fb\v02_5_0\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch\Types\time_with_tz\WORK_StmtFetch__Types__time_with_tz_001.h">
+      <Filter>source\tests\work\StmtFetch\Types\time_with_tz\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\StmtFetch_M\Types\time_with_tz\WORK_StmtFetch_M__Types__time_with_tz_001.h">
+      <Filter>source\tests\work\StmtFetch_M\Types\time_with_tz\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\IN2\WORK_Params_IN2_018__time_with_tz.h">
+      <Filter>source\tests\work\Params\IN2\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Params\OUT\WORK_Params_OUT_018__time_with_tz.h">
+      <Filter>source\tests\work\Params\OUT\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_034__StmtExecute_M__v4__IN_OUT.h">
+      <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_015__time_with_tz.h">
+      <Filter>source\tests\work\Array\Read\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

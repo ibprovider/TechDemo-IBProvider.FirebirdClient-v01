@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__001__nulls::tag_null_it
 
@@ -573,4 +573,4 @@ void WORK_StmtFetch_M__001__nulls::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

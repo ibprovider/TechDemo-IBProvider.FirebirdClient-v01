@@ -210,5 +210,19 @@ size_t RemoteFB__XDR__Info::get_size__fb040_timestamp_with_tz()
  return self_type::get_size__isc_timestamp()+self_type::get_size__fb040_timezone();
 }//get_size__fb040_timestamp_with_tz
 
+//------------------------------------------------------------------------
+size_t RemoteFB__XDR__Info::get_size__fb040_time_with_tz()
+{
+ // case dtype_sql_time_tz:
+ //     fb_assert(desc->dsc_length >= sizeof(SLONG) + sizeof(SSHORT));
+ //     if (!xdr_long(xdrs, reinterpret_cast<SLONG*>(p)))
+ //         return FALSE;
+ //     if (!xdr_short(xdrs, reinterpret_cast<SSHORT*>(p + sizeof(SLONG))))
+ //         return FALSE;
+ //     break;
+
+ return self_type::get_size__isc_time()+self_type::get_size__fb040_timezone();
+}//get_size__fb040_time_with_tz
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms transmission*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

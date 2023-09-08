@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch__Types__decimal_001__D03_01::tag_impl
 
@@ -305,4 +305,4 @@ void WORK_StmtFetch__Types__decimal_001__D03_01::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

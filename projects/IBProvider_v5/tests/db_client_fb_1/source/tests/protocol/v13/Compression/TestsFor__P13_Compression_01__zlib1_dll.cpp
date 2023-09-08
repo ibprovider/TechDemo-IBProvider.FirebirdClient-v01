@@ -7,7 +7,7 @@
 #include "source/test_func.h"
 #include "source/db_obj/isc_base/isc_connection_settings.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__P13_Compression_01__zlib1_dll::tag_impl
 
@@ -386,4 +386,4 @@ void TestsFor__P13_Compression_01__zlib1_dll::create(TTSO_PushTest*      const p
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

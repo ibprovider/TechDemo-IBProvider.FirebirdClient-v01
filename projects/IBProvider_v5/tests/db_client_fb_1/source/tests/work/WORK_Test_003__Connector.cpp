@@ -8,7 +8,7 @@
 #include "source/test_func.h"
 #include "source/db_obj/isc_base/isc_connection_settings.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_003__Connector::tag_impl
 
@@ -668,4 +668,4 @@ void WORK_Test_003__Connector::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

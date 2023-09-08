@@ -692,6 +692,40 @@ void RemoteFB__API_HLP__BLR_V05__Utilities::Debug__CHECK_BLR
      break;
     }//ibp_fb040_blr_dtype__timestamp_with_tz
 
+    case isc_api::ibp_fb040_blr_dtype__time_with_tz:
+    {
+     assert(current_descr.m_xvar_sqltype==isc_api::ibp_fb040_sql_time_with_tz);
+
+     assert_s(std::is_same<db_obj::t_dbvalue__fb040_time_with_tz LCPI__LITER_COMMA isc_api::t_ibp_fb040_time_with_tz>::value);
+
+     assert(current_descr.m_msg_value_block_size==sizeof(isc_api::t_ibp_fb040_time_with_tz));
+
+     //----
+     const size_t c_align=isc_api::ibp_fb040_type_align__time_with_tz;
+
+     offset
+      =IBP_Memory_Utils::AlignMemLength
+       (offset,
+        c_align,
+        &expectedAlign);
+
+     assert(current_descr.m_msg_value_block_offset==offset);
+
+     assert(offset<=msg_data_size);
+
+     assert((offset%c_align)==0);
+
+     assert(sizeof(isc_api::t_ibp_fb040_time_with_tz)<=(msg_data_size-offset));
+
+     assert((reinterpret_cast<size_t>(msg_data_ptr+offset)%c_align)==0);
+
+     offset+=sizeof(isc_api::t_ibp_fb040_time_with_tz);
+
+     assert(offset<=msg_data_size);
+
+     break;
+    }//ibp_fb040_blr_dtype__time_with_tz
+
     default:
     {
      //ERROR - [BUG CHECK] unexpected typeID

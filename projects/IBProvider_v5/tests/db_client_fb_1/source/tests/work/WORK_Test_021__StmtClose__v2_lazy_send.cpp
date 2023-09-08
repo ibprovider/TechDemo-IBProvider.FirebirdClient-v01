@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_021__StmtClose__v2_lazy_send::tag_impl
 
@@ -1028,4 +1028,4 @@ void WORK_Test_021__StmtClose__v2_lazy_send::create(TTSO_PushTest*      const pT
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
