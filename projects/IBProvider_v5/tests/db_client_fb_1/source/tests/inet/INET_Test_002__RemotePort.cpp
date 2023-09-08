@@ -21,7 +21,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/charsets/t_cs_utf8.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_Test_002__RemotePort::tag_impl
 
@@ -398,6 +398,8 @@ void INET_Test_002__RemotePort::tag_impl::test_06__connect__no_pswd__pset01
 
  params.set_dbprop_init__user_id(L"SYSDBA");
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set01);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -420,16 +422,17 @@ void INET_Test_002__RemotePort::tag_impl::test_06__connect__no_pswd__pset01
    (exc,
     1);
 
-  errSvc::check_err_rec__srv_err__bad_login
+  errSvc::check_err_rec__cn_err__cant_detect_auth_method
    (tracer,
-    errSvc::utf8_to_wstring(errSvc::sm_srcID__UnknownDBMS),
-    exc.get_record(0));
+    errSvc::utf8_to_wstring(errSvc::sm_srcID__IBProvider),
+    exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb_pset01);
 
   errSvc::error_rec__check_sqlstate_and_native_code
    (tracer,
     exc.get_record(0),
     L"28000", //IBP_SQLSTATE__28000__INVALID_AUTHORIZATION_SPECIFICATION_NO_SUBCLASS
-    ibp::db_obj::dbms_fb::v02_5_0::api::ibp_fb_v25_err__login);
+    DB_SEC_E_AUTH_FAILED);
 
   return;
  }//catch
@@ -529,6 +532,8 @@ void INET_Test_002__RemotePort::tag_impl::test_07__connect__no_params__pset01
 
  svc::dbprops_type params(pParams);
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set01);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -551,16 +556,17 @@ void INET_Test_002__RemotePort::tag_impl::test_07__connect__no_params__pset01
    (exc,
     1);
 
-  errSvc::check_err_rec__srv_err__bad_login
+  errSvc::check_err_rec__cn_err__cant_detect_auth_method
    (tracer,
-    errSvc::utf8_to_wstring(errSvc::sm_srcID__UnknownDBMS),
-    exc.get_record(0));
+    errSvc::utf8_to_wstring(errSvc::sm_srcID__IBProvider),
+    exc.get_record(0),
+    errSvc::sm_subsysID__remote_fb_pset01);
 
   errSvc::error_rec__check_sqlstate_and_native_code
    (tracer,
     exc.get_record(0),
     L"28000", //IBP_SQLSTATE__28000__INVALID_AUTHORIZATION_SPECIFICATION_NO_SUBCLASS
-    ibp::db_obj::dbms_fb::v02_5_0::api::ibp_fb_v25_err__login);
+    DB_SEC_E_AUTH_FAILED);
 
   return;
  }//catch
@@ -592,6 +598,8 @@ void INET_Test_002__RemotePort::tag_impl::test_07__connect__no_params__pset02
  typedef TestCheckErrors errSvc;
 
  svc::dbprops_type params(pParams);
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  try
  {
@@ -761,6 +769,8 @@ void INET_Test_002__RemotePort::tag_impl::test_10__connect__very_long_database_n
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set01);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -824,6 +834,8 @@ void INET_Test_002__RemotePort::tag_impl::test_10__connect__very_long_database_n
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  try
  {
@@ -889,6 +901,8 @@ void INET_Test_002__RemotePort::tag_impl::test_10__create__very_long_database_na
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set01);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -952,6 +966,8 @@ void INET_Test_002__RemotePort::tag_impl::test_10__create__very_long_database_na
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  try
  {
@@ -1019,6 +1035,8 @@ void INET_Test_002__RemotePort::tag_impl::test_11__connect__cant_convert_dbname_
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__12);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -1082,6 +1100,8 @@ void INET_Test_002__RemotePort::tag_impl::test_11__connect__cant_convert_dbname_
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  try
  {
@@ -1150,6 +1170,8 @@ void INET_Test_002__RemotePort::tag_impl::test_12__connect__cant_convert_pswd_to
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(bad_ucs2);
 
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__12);
+
  try
  {
   const svc::remote_fb_inet_port_ptr
@@ -1175,7 +1197,7 @@ void INET_Test_002__RemotePort::tag_impl::test_12__connect__cant_convert_pswd_to
   errSvc::check_err_rec__cn_err__translate_cn_param_to_utf8
    (tracer,
     exc.get_record(0),
-    errSvc::sm_subsysID__remote_fb,
+    errSvc::sm_subsysID__remote_fb_p12,
     L"Password");
 
   return;
@@ -1217,6 +1239,8 @@ void INET_Test_002__RemotePort::tag_impl::test_12__connect__cant_convert_pswd_to
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(bad_ucs2);
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  try
  {
@@ -1342,10 +1366,14 @@ void INET_Test_002__RemotePort::tag_impl::test_E04__not_supported_parch__pset01
  dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
            <<pParams->args().get(c_prog_arg__db)->m_value;
 
-
  params.set_dbprop_init__location(dbLocation.str());
  
+ params.set_dbprop_init__user_id(L"SYSDBA");
+ params.set_dbprop_init__password(L"masterkey");
+
  params.set_dbprop_init__remote__protocol_arch(L" generic, AAA ");
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set01);
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
@@ -1408,6 +1436,8 @@ void INET_Test_002__RemotePort::tag_impl::test_E04__not_supported_parch__pset02
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+
+ params.set_dbprop_init__remote__protocol(ibprovider::ibp_propval__remote__protocol__set02);
 
  //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
@@ -1733,12 +1763,12 @@ const INET_Test_002__RemotePort::tag_descr
    "SRV>=FB-3")
 
  DEF_TEST_DESCR2
-  ("10.create.very_long_db_name",
+  ("10.create.very_long_db_name.pset01",
    test_10__create__very_long_database_name_pset01,
    "SRV<FB-3")
 
  DEF_TEST_DESCR2
-  ("10.create.very_long_db_name",
+  ("10.create.very_long_db_name.pset02",
    test_10__create__very_long_database_name_pset02,
    "SRV>=FB-3")
 
@@ -1833,4 +1863,4 @@ void INET_Test_002__RemotePort::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -10,7 +10,7 @@
 
 #include "source/test_services.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestOperationContext
 
@@ -56,5 +56,5 @@ class TestOperationContext LCPI_CPP_CFG__CLASS__FINAL:public db_obj::t_db_operat
 };//class TestOperationContext
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

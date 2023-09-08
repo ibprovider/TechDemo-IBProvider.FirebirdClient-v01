@@ -3,7 +3,7 @@
 //                                                Dmitry Kovalenko. 07.08.2004
 
 ///////////////////////////////////////////////////////////////////////////////
-//Standart clipboard formats
+//Standard clipboard formats
 
 #define CFSTR_SHELLIDLIST         TEXT("Shell IDList Array")      //CF_IDLIST
 #define CFSTR_SHELLIDLISTOFFSET   TEXT("Shell Object Offsets")    //CF_OBJECTPOSITIONS

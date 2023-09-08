@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //forward declarations
 
@@ -51,5 +51,5 @@ class WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send
 };//class WORK_Blob_Test_01__WriteAndReadBinData__v2_lazy_send
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

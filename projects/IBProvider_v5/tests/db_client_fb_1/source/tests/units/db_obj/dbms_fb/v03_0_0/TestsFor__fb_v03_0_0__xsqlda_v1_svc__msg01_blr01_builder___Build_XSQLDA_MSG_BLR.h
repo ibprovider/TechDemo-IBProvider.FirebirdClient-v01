@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 //IBProvider Tests.
 //                                                Kovalenko Dmitry. 27.09.2016
-#ifndef _TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS_H_
-#define _TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS_H_
+#ifndef _TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR_H_
+#define _TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR_H_
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
-//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS
+//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR
 
-class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS
+class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR
 {
  private:
   class  tag_impl;
@@ -21,8 +21,8 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_
                      TTSO_GlobalContext* pParams);
  private:
   static const tag_descr sm_Tests[];
-};//class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS
+};//class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

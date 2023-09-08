@@ -12,7 +12,7 @@
 #include "source/db_obj/isc_base/isc_integer_to_portable_format.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::tag_impl
 
@@ -3458,14 +3458,14 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::create
   const TTSO_TestPtr
    spTest
     (lcpi::lib::structure::not_null_ptr
-     (new TTSO_TestFunc
-      (pParams,
-       ftestID.c_str(),
-       d.Func)));
+      (new TTSO_TestFunc
+        (pParams,
+         ftestID.c_str(),
+         d.Func)));
 
   pTestPusher->PushTest(spTest);
  }//for d
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

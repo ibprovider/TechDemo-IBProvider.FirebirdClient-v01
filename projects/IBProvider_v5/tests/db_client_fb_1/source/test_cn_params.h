@@ -8,7 +8,7 @@
 
 #include "source/oledb/props2/values/datasource/ibp_oledb__props2__values__datasource.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestCnParams
 
@@ -79,5 +79,5 @@ class TestCnParams
 };//class TestServices::tag_dbprops
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

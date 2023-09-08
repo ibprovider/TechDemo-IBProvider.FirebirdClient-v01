@@ -418,6 +418,9 @@ enum
  ibp_fb040_sql_time_with_tz      =32756, //t_ibp_fb040_time_with_tz
  ibp_fb040_sql_decfloat16        =32760, //
  ibp_fb040_sql_decfloat34        =32762, //
+
+ ibp_fb040_sql_timestamp_with_tz_ex =32748,
+ ibp_fb040_sql_time_with_tz_ex      =32750,
 };//enum
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -503,7 +506,8 @@ enum
  ibp_fb040_internal_dtype__decfloat34   =23, //dec128
  ibp_fb040_internal_dtype__int128       =24,
 
- ibp_fb040_internal_dtype__timestamp_with_tz =26, //timestamp_tz
+ ibp_fb040_internal_dtype__sql_time_with_tz  =25, //dtype_sql_time_tz
+ ibp_fb040_internal_dtype__timestamp_with_tz =26, //dtype_timestamp_tz
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -563,6 +567,13 @@ using t_ibp_fb040_timestamp_with_tz
  =db_obj::t_dbvalue__fb040_timestamp_with_tz;
 
 extern const t_ibp_fb040_timestamp_with_tz __null__fb040_timestamp_with_tz;
+
+////////////////////////////////////////////////////////////////////////////////
+
+using t_ibp_fb040_time_with_tz
+ =db_obj::t_dbvalue__fb040_time_with_tz;
+
+extern const t_ibp_fb040_time_with_tz __null__fb040_time_with_tz;
 
 ////////////////////////////////////////////////////////////////////////////////
 

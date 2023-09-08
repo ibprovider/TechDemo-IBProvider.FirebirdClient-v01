@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send::tag_rs_descr
 
@@ -429,4 +429,4 @@ void WORK_StmtFetch_M__105__drop_stmt__v2_lazy_send::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class FB25_Test_010__CheckBlrPrinter
 
@@ -24,5 +24,5 @@ class FB25_Test_010__CheckBlrPrinter
 };//class FB25_Test_010__CheckBlrPrinter
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

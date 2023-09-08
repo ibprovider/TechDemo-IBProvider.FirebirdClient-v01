@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_Socket_Test_004__inet6
 
@@ -24,5 +24,5 @@ class INET_Socket_Test_004__inet6
 };//class INET_Socket_Test_004__inet6
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

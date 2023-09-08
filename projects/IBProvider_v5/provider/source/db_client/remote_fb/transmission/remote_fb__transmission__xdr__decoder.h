@@ -156,6 +156,12 @@ class RemoteFB__XDR__Decoder
                 const wchar_t*                              pv_sign_time_zone,
                 db_obj::t_dbvalue__fb040_timestamp_with_tz* pv);
 
+  static void decode__fb040_time_with_tz
+               (buf_type*                              pBuf,
+                const wchar_t*                         pv_sign_utc_time,
+                const wchar_t*                         pv_sign_time_zone,
+                db_obj::t_dbvalue__fb040_time_with_tz* pv);
+
  public:
   /// <summary>
   ///  Загрузка статус-вектора

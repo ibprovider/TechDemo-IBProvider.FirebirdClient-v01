@@ -10,7 +10,7 @@
 #include "source/db_client/remote_fb/remote_fb__client_connect_block_v2.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__P13__AddServerKeys::tag_impl
 
@@ -1278,4 +1278,4 @@ void TestsFor__RemoteFB__P13__AddServerKeys::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

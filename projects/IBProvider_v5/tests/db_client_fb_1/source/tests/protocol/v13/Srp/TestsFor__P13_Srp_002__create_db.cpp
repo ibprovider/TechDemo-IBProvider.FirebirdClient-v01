@@ -11,7 +11,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 #define DEF_DESCR2(id,propVal) {CryptMode::id,propVal}
@@ -148,7 +148,7 @@ void TestsFor__P13_Srp_002__create_db::run(context_type* const pCtx)const
  dbLocation
   <<m_spParams->args().get(c_prog_arg__inet_host)->m_value
   <<m_spParams->args().get(c_prog_arg__new_db_dir)->m_value
-  <<ibp_test::TSO_GenerateNewDatabaseFileName();
+  <<TSO_GenerateNewDatabaseFileName();
 
  //-----------------------------------------
  typedef TestServices svc;
@@ -242,4 +242,4 @@ void TestsFor__P13_Srp_002__create_db::run(context_type* const pCtx)const
 }//run
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

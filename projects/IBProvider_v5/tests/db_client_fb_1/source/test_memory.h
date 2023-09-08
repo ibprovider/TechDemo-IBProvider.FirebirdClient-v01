@@ -4,7 +4,7 @@
 
 #include <structure/t_smart_object.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //Memory Allocator
 
@@ -22,5 +22,5 @@ typedef structure::t_basic_smart_interface_impl__dynamic
           TSYS_MemoryAllocator>                               TSYS_SmartMemoryObject;
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

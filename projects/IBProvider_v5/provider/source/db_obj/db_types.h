@@ -17,6 +17,7 @@
 #include <structure/t_value_with_null.h>
 #include <structure/stl/t_stl_vector.h>
 #include <string>
+#include <cstdint>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +46,8 @@ typedef structure::t_value_with_null<t_db_string>        t_db_string_n;
 
 /// Тип для представления символа
 typedef t_db_string::value_type                          t_db_char;
+
+typedef std::uint32_t                                    t_db_utf32;
 
 /// Контейнер для хранения имен объектов БД
 typedef structure::t_stl_vector

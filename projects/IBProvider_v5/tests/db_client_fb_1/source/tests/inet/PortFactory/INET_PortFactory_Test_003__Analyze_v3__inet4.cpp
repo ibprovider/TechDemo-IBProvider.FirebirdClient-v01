@@ -9,7 +9,7 @@
 #include "source/db_client/remote_fb/ports/factories/inet/remote_fb__ports__factories__inet.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_PortFactory_Test_003__Analyze_v3__inet4::tag_impl
 
@@ -574,4 +574,4 @@ void INET_PortFactory_Test_003__Analyze_v3__inet4::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

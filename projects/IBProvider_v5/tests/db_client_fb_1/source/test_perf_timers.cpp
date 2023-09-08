@@ -5,7 +5,7 @@
 #include "source/test_perf_timers.h"
 #include "source/test_utilities.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PerfTimers
 
@@ -67,4 +67,4 @@ void TTSO_PerfTimers::Print(TTSO_Tracer& tracer)
 }//Print
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

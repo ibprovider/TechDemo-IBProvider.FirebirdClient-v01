@@ -13,7 +13,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_011__CreateDatabase::tag_impl
 
@@ -64,7 +64,7 @@ void WORK_Test_011__CreateDatabase::tag_impl::test_001
 
  dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
            <<pParams->args().get(c_prog_arg__new_db_dir)->m_value
-           <<ibp_test::TSO_GenerateNewDatabaseFileName();
+           <<TSO_GenerateNewDatabaseFileName();
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -133,7 +133,7 @@ void WORK_Test_011__CreateDatabase::tag_impl::test_002__page_size__4096
 
  dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
            <<pParams->args().get(c_prog_arg__new_db_dir)->m_value
-           <<ibp_test::TSO_GenerateNewDatabaseFileName();
+           <<TSO_GenerateNewDatabaseFileName();
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -192,7 +192,7 @@ void WORK_Test_011__CreateDatabase::tag_impl::test_003__page_size__8192
 
  dbLocation<<pParams->args().get(c_prog_arg__inet_host)->m_value
            <<pParams->args().get(c_prog_arg__new_db_dir)->m_value
-           <<ibp_test::TSO_GenerateNewDatabaseFileName();
+           <<TSO_GenerateNewDatabaseFileName();
 
  //-----------------------------------------
  svc::dbprops_type params(pParams);
@@ -322,4 +322,4 @@ void WORK_Test_011__CreateDatabase::create(TTSO_PushTest*      const pTestPusher
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

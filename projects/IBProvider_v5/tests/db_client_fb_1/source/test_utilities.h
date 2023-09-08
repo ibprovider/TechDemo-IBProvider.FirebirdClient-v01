@@ -4,7 +4,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 std::string TSO_GenerateTimeStampString();
@@ -33,5 +33,5 @@ std::string TSO_MemSizeToStrEx_KB(unsigned __int64 sz);
 std::string TSO_MemSizeToStrEx2_KB(bool ok,unsigned __int64 sz);
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

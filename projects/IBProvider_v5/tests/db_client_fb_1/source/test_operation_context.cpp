@@ -8,7 +8,7 @@
 
 #include "source/external/icu/ibp_external__icu__loader_factory.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestOperationContext
 
@@ -114,4 +114,4 @@ void TestOperationContext::pop_operation(db_obj::t_db_operation* const op)
 }//pop_operation
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

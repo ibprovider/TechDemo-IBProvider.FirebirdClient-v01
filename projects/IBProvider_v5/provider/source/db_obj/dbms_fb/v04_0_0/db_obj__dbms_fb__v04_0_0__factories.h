@@ -30,6 +30,21 @@ db_obj::t_db_object_ptr
 db_obj::t_db_object_ptr
  create_svc__timezone_services();
 
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg01_blr01_builder();
+
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg01_data_descrs_builder();
+
+//------------------------------------------------------------------------
+
+db_obj::t_db_object_ptr
+ create_xsqlda_v1_svc__msg_data();
+
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms v04_0_0*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/
 #endif

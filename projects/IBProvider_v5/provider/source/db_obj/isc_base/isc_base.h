@@ -71,6 +71,14 @@ extern const db_obj::t_db_svc_descr
  isc_meta_svc_descr__sp_suspend_detecter__src;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_xsqlda_v1_svc__msg_blr01_builder);
+
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_xsqlda_v1_svc__msg_data_descrs_builder);
+
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_xsqlda_v1_svc__msg_data);
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms isc_base*/}/*nms ibp*/}/*nms lcpi*/
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -86,6 +94,10 @@ IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_api_svc__blob_writer_factory)
 IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_api_svc__cancel_statement)
 
 IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_svc__get_connection_settings)
+
+IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder)
+IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_xsqlda_v1_svc__msg_data_descrs_builder)
+IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_xsqlda_v1_svc__msg_data)
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif

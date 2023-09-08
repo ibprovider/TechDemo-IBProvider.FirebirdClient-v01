@@ -24,6 +24,24 @@ void RemoteFB__Connector::Helper__FinalInitialize__FB_02_05(const cns_type& /*cn
  m_spData->RegService
   (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
    db_obj::dbms_fb::v02_5_0::create_svc__status_vector_utils());
+
+ // 02.00. t_isc_xsqlda_v1_svc__blr01_builder service --------------------
+
+ m_spData->RegService
+  (db_obj::__db_guid<isc_base::t_isc_xsqlda_v1_svc__msg_blr01_builder>(),
+   db_obj::dbms_fb::v02_5_0::create_xsqlda_v1_svc__msg01_blr01_builder());
+
+ // 03.00. t_isc_xsqlda_v1_svc__msg_data_descrs_builder service ----------
+
+ m_spData->RegService
+  (db_obj::__db_guid<isc_base::t_isc_xsqlda_v1_svc__msg_data_descrs_builder>(),
+   db_obj::dbms_fb::v02_5_0::create_xsqlda_v1_svc__msg01_data_descrs_builder());
+
+ // 04.00. t_isc_xsqlda_v1_svc__msg_data service -------------------------
+
+ m_spData->RegService
+  (db_obj::__db_guid<isc_base::t_isc_xsqlda_v1_svc__msg_data>(),
+   db_obj::dbms_fb::v02_5_0::create_xsqlda_v1_svc__msg_data());
 }//Helper__FinalInitialize__FB_02_05
 
 ////////////////////////////////////////////////////////////////////////////////

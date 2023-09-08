@@ -7,7 +7,7 @@
 #include "source/db_obj/isc_base/isc_api.h"
 #include "source/test_services.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class XSQLDA_V1_Wrapper
 
@@ -42,5 +42,5 @@ class XSQLDA_V1_Wrapper
 };//class XSQLDA_V1_Wrapper
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

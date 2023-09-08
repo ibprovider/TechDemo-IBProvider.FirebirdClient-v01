@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_PortFactory_Test_001__Analyze_v2
 
@@ -24,5 +24,5 @@ class INET_PortFactory_Test_001__Analyze_v2
 };//class INET_PortFactory_Test_001__Analyze_v2
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

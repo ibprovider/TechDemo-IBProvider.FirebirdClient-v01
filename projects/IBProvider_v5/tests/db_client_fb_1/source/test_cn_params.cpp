@@ -10,7 +10,7 @@
 
 #include <ole_lib/oledb/provider/props2/oledb_props2__manager__values.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestCnParams
 
@@ -62,10 +62,10 @@ TestCnParams::TestCnParams(const TTSO_GlobalContext* const pParams)
    =DsPropValuesMng.SetProperties
      (callCtx,
       m_spDsPropValues,
-                      1,
-                      &propset,
-                      true,
-                      /*pfnSetFilter*/nullptr);
+      1,
+      &propset,
+      true,
+      /*pfnSetFilter*/nullptr);
 
   if(hr!=S_OK)
   {
@@ -364,4 +364,4 @@ void TestCnParams::reset_dbprop_init__remote__wire_compression_library_64()
 }//reset_dbprop_init__remote__wire_compression_library_64
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

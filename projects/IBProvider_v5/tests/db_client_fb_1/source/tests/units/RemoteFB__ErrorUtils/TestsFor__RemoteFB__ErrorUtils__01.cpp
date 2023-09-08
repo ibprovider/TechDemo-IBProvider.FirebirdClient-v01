@@ -9,7 +9,7 @@
 
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__ErrorUtils__01::tag_impl
 
@@ -558,4 +558,4 @@ void TestsFor__RemoteFB__ErrorUtils__01::create(TTSO_PushTest*      const pTestP
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -4,7 +4,7 @@
 
 #include "source/test_func_v2.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 // Копия значений, для избежания проблем с копирование значений
 // статических переменных из других модулей.
@@ -153,4 +153,4 @@ void TTSO_TestFunc_v2::run(context_type* const pCtx)const
 }//run
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

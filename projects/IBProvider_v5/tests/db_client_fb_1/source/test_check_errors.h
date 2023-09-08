@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestCheckErrors
 
@@ -46,6 +46,12 @@ class TestCheckErrors
   static const wchar_t sm_subsysID__remote_fb_pset01[];
 
   static const wchar_t sm_subsysID__remote_fb_pset02[];
+
+  static const wchar_t sm_subsysID__isc_api__fb2_5[];
+
+  static const wchar_t sm_subsysID__isc_api__fb3_0[];
+
+  static const wchar_t sm_subsysID__isc_api__fb4_0[];
 
  public:
   static void print_exception_ok(TTSO_Tracer&          tracer,
@@ -1158,5 +1164,5 @@ class TestCheckErrors
 };//class TestCheckErrors
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

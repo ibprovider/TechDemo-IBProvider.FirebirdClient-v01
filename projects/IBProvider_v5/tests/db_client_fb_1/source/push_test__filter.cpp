@@ -5,7 +5,7 @@
 #include "source/push_test__filter.h"
 #include <conio.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest__Filter
 
@@ -72,4 +72,4 @@ const char* TTSO_PushTest__Filter::tag_cancel_exc::what()const
 }//what
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

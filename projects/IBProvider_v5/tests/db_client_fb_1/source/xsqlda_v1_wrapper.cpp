@@ -5,7 +5,7 @@
 #include "source/xsqlda_v1_wrapper.h"
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class XSQLDA_V1_Wrapper
 
@@ -76,4 +76,4 @@ void XSQLDA_V1_Wrapper::alloc(size_t const n)
 }//alloc
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

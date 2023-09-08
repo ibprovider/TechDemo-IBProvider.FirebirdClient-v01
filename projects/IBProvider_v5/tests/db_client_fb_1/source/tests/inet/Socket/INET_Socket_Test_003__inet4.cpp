@@ -9,7 +9,7 @@
 #include "source/test_func.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_Socket_Test_003__inet4::tag_impl
 
@@ -758,4 +758,4 @@ void INET_Socket_Test_003__inet4::create(TTSO_PushTest*      const pTestPusher,
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__Types__timestamp_with_tz_001::tag_impl
 
@@ -34,7 +34,7 @@ class WORK_StmtFetch_M__Types__timestamp_with_tz_001::tag_impl LCPI_CPP_CFG__CLA
   typedef structure::t_smart_object_ptr<self_type>     self_ptr;
 
  public:
-  tag_impl(TTSO_GlobalContext*  pParams,
+  tag_impl(TTSO_GlobalContext*     pParams,
            const char*             pTestID,
            const TTSO_TestData_v2& Data);
 
@@ -81,6 +81,9 @@ std::string WORK_StmtFetch_M__Types__timestamp_with_tz_001::tag_impl::get_id()co
 bool WORK_StmtFetch_M__Types__timestamp_with_tz_001::tag_impl::can_exec()const
 {
  assert(m_spParams);
+
+ if(!m_spParams->calc_expression("NE__TIMESTAMP_WITH_TZ"))
+  return false;
 
  if(!m_Data.can_exec(m_spParams))
   return false;
@@ -364,4 +367,4 @@ void WORK_StmtFetch_M__Types__timestamp_with_tz_001::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

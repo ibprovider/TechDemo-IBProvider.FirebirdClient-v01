@@ -249,8 +249,19 @@ size_t RemoteFB__API_HLP__BLR_V05__Utilities::Calc_BLR_MAX_XDR_SIZE
     {
      currentElementSize=xdr::get_size__fb040_timestamp_with_tz();
 
+     assert(currentElementSize==12);
+
      break;
     }//ibp_fb040_blr_dtype__timestamp_with_tz
+
+    case isc_api::ibp_fb040_blr_dtype__time_with_tz:
+    {
+     currentElementSize=xdr::get_size__fb040_time_with_tz();
+
+     assert(currentElementSize==8);
+
+     break;
+    }//ibp_fb040_blr_dtype__time_with_tz
 
     default:
     {

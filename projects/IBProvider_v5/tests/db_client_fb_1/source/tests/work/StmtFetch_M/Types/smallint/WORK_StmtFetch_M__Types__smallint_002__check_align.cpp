@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__Types__smallint_002__check_align::tag_impl
 
@@ -451,4 +451,4 @@ void WORK_StmtFetch_M__Types__smallint_002__check_align::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

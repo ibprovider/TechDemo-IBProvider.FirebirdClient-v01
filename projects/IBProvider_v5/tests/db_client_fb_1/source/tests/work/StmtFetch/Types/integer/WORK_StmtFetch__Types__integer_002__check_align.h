@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch__Types__integer_002__check_align
 
@@ -21,5 +21,5 @@ class WORK_StmtFetch__Types__integer_002__check_align
 };//class WORK_StmtFetch__Types__integer_002__check_align
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

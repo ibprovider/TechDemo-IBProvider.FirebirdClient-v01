@@ -75,6 +75,8 @@ class RemoteFB__XDR__Info
   static size_t get_size__fb040_timezone();
 
   static size_t get_size__fb040_timestamp_with_tz();
+
+  static size_t get_size__fb040_time_with_tz();
 };//class RemoteFB__XDR__Info
 
 ////////////////////////////////////////////////////////////////////////////////

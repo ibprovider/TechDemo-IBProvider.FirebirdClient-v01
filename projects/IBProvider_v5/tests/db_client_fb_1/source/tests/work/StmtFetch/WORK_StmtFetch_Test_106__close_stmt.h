@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_Test_106__close_stmt
 
@@ -22,5 +22,5 @@ class WORK_StmtFetch_Test_106__close_stmt
 };//class WORK_StmtFetch_Test_106__close_stmt
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

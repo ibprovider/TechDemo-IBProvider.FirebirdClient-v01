@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory
 
@@ -24,5 +24,5 @@ class TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory
 };//class TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__Types__char_001__sz7::tag_impl
 
@@ -371,4 +371,4 @@ void WORK_StmtFetch_M__Types__char_001__sz7::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

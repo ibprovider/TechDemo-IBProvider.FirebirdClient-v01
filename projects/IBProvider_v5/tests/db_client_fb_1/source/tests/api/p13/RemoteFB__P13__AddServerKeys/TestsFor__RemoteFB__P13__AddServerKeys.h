@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__P13__AddServerKeys
 
@@ -24,5 +24,5 @@ class TestsFor__RemoteFB__P13__AddServerKeys
 };//class TestsFor__RemoteFB__P13__AddServerKeys
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

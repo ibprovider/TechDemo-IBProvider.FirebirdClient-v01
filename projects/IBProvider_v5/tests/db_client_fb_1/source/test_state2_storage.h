@@ -5,7 +5,7 @@
 #include <win32lib/win32_file_lib.h>
 #include <structure/t_threads.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //containings
 
@@ -59,5 +59,5 @@ class TTSO_TestState2_Storage
 };//class TTSO_TestState2_Storage
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namspace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

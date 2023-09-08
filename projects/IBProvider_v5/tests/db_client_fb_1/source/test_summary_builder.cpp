@@ -8,7 +8,7 @@
 #include <win32lib/win32_error.h>
 #include <psapi.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_SummaryBuilder
 
@@ -267,4 +267,4 @@ void TTSO_SummaryBuilder::print_summary_process_state(TSYS_Tracer& tracer)
 }//print_summary_process_state
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

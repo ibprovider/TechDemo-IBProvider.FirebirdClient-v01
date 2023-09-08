@@ -15,11 +15,22 @@
 #include "source/tests/inet/PortFactory/INET_PortFactory_Test_003__Analyze_v3__inet4.h"
 #include "source/tests/inet/PortFactory/INET_PortFactory_Test_004__Analyze_v3__inet6.h"
 
+#include "source/tests/units/db_obj/dbms_fb/v02_5_0/TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h"
+#include "source/tests/units/db_obj/dbms_fb/v02_5_0/TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h"
+#include "source/tests/units/db_obj/dbms_fb/v02_5_0/TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h"
+#include "source/tests/units/db_obj/dbms_fb/v02_5_0/TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h"
+
+#include "source/tests/units/db_obj/dbms_fb/v03_0_0/TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h"
+#include "source/tests/units/db_obj/dbms_fb/v03_0_0/TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h"
+#include "source/tests/units/db_obj/dbms_fb/v03_0_0/TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h"
+#include "source/tests/units/db_obj/dbms_fb/v03_0_0/TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h"
+
+#include "source/tests/units/db_obj/dbms_fb/v04_0_0/TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR.h"
+#include "source/tests/units/db_obj/dbms_fb/v04_0_0/TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS.h"
+#include "source/tests/units/db_obj/dbms_fb/v04_0_0/TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA.h"
+#include "source/tests/units/db_obj/dbms_fb/v04_0_0/TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA.h"
+
 #include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA.h"
-#include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR.h"
-#include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA.h"
-#include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS.h"
-#include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA.h"
 #include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE.h"
 #include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Alloc_XSQLDA_MSG_NULLS.h"
 #include "source/tests/api/helpers/xsqlda/v01/RemoteFB__API_HLP__XSQLDA_v01_Utilities/TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001.h"
@@ -112,6 +123,7 @@
 #include "source/tests/work/WORK_Test_034__StmtExecute_M__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_034__StmtExecute_M__v2_lazy_send.h"
 #include "source/tests/work/WORK_Test_034__StmtExecute_M__v3.h"
+#include "source/tests/work/WORK_Test_034__StmtExecute_M__v4__IN_OUT.h"
 #include "source/tests/work/WORK_Test_035__ExecuteImmediate_M.h"
 #include "source/tests/work/WORK_Test_036__StmtFetch_M__v0.h"
 #include "source/tests/work/WORK_Test_036__StmtFetch_M__v1_no_lazy.h"
@@ -136,6 +148,7 @@
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_015__decfloat16.h"
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_016__decfloat34.h"
 #include "source/tests/work/Params/OUT/WORK_Params_OUT_017__timestamp_with_tz.h"
+#include "source/tests/work/Params/OUT/WORK_Params_OUT_018__time_with_tz.h"
 
 #include "source/tests/work/Params/IN/WORK_Params_IN_013__boolean.h"
 
@@ -156,6 +169,7 @@
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_015__decfloat16.h"
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_016__decfloat34.h"
 #include "source/tests/work/Params/IN2/WORK_Params_IN2_017__timestamp_with_tz.h"
+#include "source/tests/work/Params/IN2/WORK_Params_IN2_018__time_with_tz.h"
 
 #include "source/tests/work/Params/WORK_Params__001__nulls.h"
 
@@ -183,6 +197,7 @@
 #include "source/tests/work/StmtFetch/Types/decfloat16/WORK_StmtFetch__Types__decfloat16_001.h"
 #include "source/tests/work/StmtFetch/Types/decfloat34/WORK_StmtFetch__Types__decfloat34_001.h"
 #include "source/tests/work/StmtFetch/Types/timestamp_with_tz/WORK_StmtFetch__Types__timestamp_with_tz_001.h"
+#include "source/tests/work/StmtFetch/Types/time_with_tz/WORK_StmtFetch__Types__time_with_tz_001.h"
 
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_001__nulls.h"
 #include "source/tests/work/StmtFetch/WORK_StmtFetch_Test_002__nulls.h"
@@ -225,6 +240,7 @@
 #include "source/tests/work/StmtFetch_M/Types/decfloat16/WORK_StmtFetch_M__Types__decfloat16_001.h"
 #include "source/tests/work/StmtFetch_M/Types/decfloat34/WORK_StmtFetch_M__Types__decfloat34_001.h"
 #include "source/tests/work/StmtFetch_M/Types/timestamp_with_tz/WORK_StmtFetch_M__Types__timestamp_with_tz_001.h"
+#include "source/tests/work/StmtFetch_M/Types/time_with_tz/WORK_StmtFetch_M__Types__time_with_tz_001.h"
 
 #include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__001__nulls.h"
 #include "source/tests/work/StmtFetch_M/WORK_StmtFetch_M__002__nulls.h"
@@ -271,12 +287,13 @@
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_012__decfloat16.h"
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_013__decfloat34.h"
 #include "source/tests/work/Array/Read/WORK_Array_Read_Test_014__timestamp_with_tz.h"
+#include "source/tests/work/Array/Read/WORK_Array_Read_Test_015__time_with_tz.h"
 
 #include "source/tests/work/Cancel/WORK_Cancel_Test_01__StmtExecute.h"
 #include "source/tests/work/Cancel/WORK_Cancel_Test_02__StmtFetch.h"
 #include "source/tests/work/Cancel/WORK_Cancel_Test_03__ExecuteImmediate.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 #define DEF_CREATOR_DESCR(func) \
@@ -305,15 +322,22 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(INET_PortFactory_Test_004__Analyze_v3__inet6::create),
 
+ DEF_CREATOR_DESCR(TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v02_5_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA::create),
+ 
+ DEF_CREATOR_DESCR(TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA::create),
+ 
+ DEF_CREATOR_DESCR(TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder___Build_XSQLDA_MSG_BLR::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg01_data_descrs_builder___Build_XSQLDA_MSG_DATA_DESCRS::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::create),
+ DEF_CREATOR_DESCR(TestsFor__fb_v04_0_0__xsqlda_v1_svc__msg_data___Parse_XSQLDA_MSG_DATA::create),
+ 
  DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA::create),
-
- DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_BLR::create),
-
- DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA::create),
-
- DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_DATA_DESCRS::create),
-
- DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Parse_XSQLDA_MSG_DATA::create),
 
  DEF_CREATOR_DESCR(TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Calc_XSQLDA_MAX_XDR_SIZE::create),
 
@@ -473,6 +497,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Test_034__StmtExecute_M__v3::create),
 
+ DEF_CREATOR_DESCR(WORK_Test_034__StmtExecute_M__v4__IN_OUT::create),
+
  DEF_CREATOR_DESCR(WORK_Test_035__ExecuteImmediate_M::create),
 
  DEF_CREATOR_DESCR(WORK_Test_036__StmtFetch_M__v0::create),
@@ -517,6 +543,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Params_OUT_017__timestamp_with_tz::create),
 
+ DEF_CREATOR_DESCR(WORK_Params_OUT_018__time_with_tz::create),
+
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Params_IN_013__boolean::create),
 
@@ -555,6 +583,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Params_IN2_017__timestamp_with_tz::create),
 
+ DEF_CREATOR_DESCR(WORK_Params_IN2_018__time_with_tz::create),
+
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Params__001__nulls::create),
 
@@ -583,6 +613,7 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__decfloat16_001::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__decfloat34_001::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch__Types__timestamp_with_tz_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch__Types__time_with_tz_001::create),
 
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_StmtFetch_Test_001__nulls::create),
@@ -627,6 +658,7 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decfloat16_001::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__decfloat34_001::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__timestamp_with_tz_001::create),
+ DEF_CREATOR_DESCR(WORK_StmtFetch_M__Types__time_with_tz_001::create),
 
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__001__nulls::create),
  DEF_CREATOR_DESCR(WORK_StmtFetch_M__002__nulls::create),
@@ -698,6 +730,8 @@ const TTestCreatorDescr g_Tests[]=
 
  DEF_CREATOR_DESCR(WORK_Array_Read_Test_014__timestamp_with_tz::create),
 
+ DEF_CREATOR_DESCR(WORK_Array_Read_Test_015__time_with_tz::create),
+
  //-----------------------------------------
  DEF_CREATOR_DESCR(WORK_Cancel_Test_01__StmtExecute::create),
 
@@ -712,4 +746,4 @@ const TTestCreatorDescr g_Tests[]=
 #undef DEF_CREATOR_DESCR
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -12,7 +12,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 const wchar_t* const
@@ -167,4 +167,4 @@ void TestsFor__PSET01__002__unk_auth::run(context_type* const pCtx)const
 }//run
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

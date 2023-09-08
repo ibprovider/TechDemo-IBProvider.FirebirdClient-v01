@@ -4,7 +4,7 @@
 
 #include "source/test_state2.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestState2
 
@@ -32,4 +32,4 @@ void TTSO_TestState2::set_test_id(str_box_type const test_id)
 }//set_test_id
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

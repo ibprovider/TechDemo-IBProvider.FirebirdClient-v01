@@ -16,7 +16,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct WORK_StmtFetch_M__111__sql_commit::tag_rs_descr
 
@@ -453,4 +453,4 @@ void WORK_StmtFetch_M__111__sql_commit::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

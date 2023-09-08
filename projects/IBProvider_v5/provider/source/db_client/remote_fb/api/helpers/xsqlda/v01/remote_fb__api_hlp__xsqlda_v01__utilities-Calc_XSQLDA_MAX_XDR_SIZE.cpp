@@ -435,9 +435,31 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZ
    //---------------------------------------
    cbResult=xdr::get_size__fb040_timestamp_with_tz();
 
+   assert(cbResult==12);
+
    //---------------------------------------
    break;
   }//ibp_fb040_sql_timestamp_with_tz
+
+  //------------------------------------------------------------
+  case isc_api::ibp_fb040_sql_time_with_tz:
+  {
+   if(pXSQLVAR->sqllen!=sizeof(isc_api::t_ibp_fb040_time_with_tz))
+   {
+    //ERROR - [BUG CHECK] incorrect xvar length;
+    helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+     (L"sql_time_with_tz",
+      pXSQLVAR->sqllen);
+   }//if
+
+   //---------------------------------------
+   cbResult=xdr::get_size__fb040_time_with_tz();
+
+   assert(cbResult==8);
+
+   //---------------------------------------
+   break;
+  }//ibp_fb040_sql_time_with_tz
 
   //------------------------------------------------------------
   default:

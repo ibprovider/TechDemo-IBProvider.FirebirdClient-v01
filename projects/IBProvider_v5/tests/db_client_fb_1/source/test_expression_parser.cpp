@@ -5,7 +5,7 @@
 #include "source/test_base.h"
 #include <structure/t_str_formatter.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_ExpressionComparer
 
@@ -736,4 +736,4 @@ TIBP_TSO_ExpressionParser::comparer_cptr
 }//helper__createDBDialectComparer
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

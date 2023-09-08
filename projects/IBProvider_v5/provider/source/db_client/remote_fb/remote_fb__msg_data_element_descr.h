@@ -7,7 +7,7 @@
 #ifndef _remote_fb__msg_data_element_descr_H_
 #define _remote_fb__msg_data_element_descr_H_
 
-#include "source/db_obj/isc_base/isc_msg_data_element_descr.h"
+#include "source/db_obj/isc_base/isc_msg_data_element_descrs.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,6 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// </summary>
 using RemoteFB__MsgDataElementDescr
  =isc_base::t_isc_msg_data_element_descr;
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// <summary>
+///  The container of RemoteFB__MsgDataElementDescr.
+/// </summary>
+using RemoteFB__MsgDataElementDescrs
+ =isc_base::t_isc_msg_data_element_descrs;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

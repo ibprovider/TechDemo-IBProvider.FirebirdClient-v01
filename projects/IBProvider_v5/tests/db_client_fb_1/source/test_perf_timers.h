@@ -6,7 +6,7 @@
 #include <structure/test_obj/t_tso_timer.h>
 #include <win32lib/win32_time.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PerfTimers
 
@@ -46,5 +46,5 @@ class TTSO_PerfTimers
 };//class TTSO_PerfTimers
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

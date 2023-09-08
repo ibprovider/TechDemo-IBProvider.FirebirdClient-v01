@@ -1,22 +1,52 @@
 ////////////////////////////////////////////////////////////////////////////////
-//! \ingroup db_client__remote_fb__api_hlp
-//! \file    remote_fb__api_hlp__xsqlda_v01__utilities-Build_XSQLDA_MSG_BLR.cpp
-//! \brief   Utilities for processing XSQLDA / XSQLVAR.
+//! \ingroup db_obj__dbms_fb__v04_0_0
+//! \file    db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_blr01_builder.cpp
+//! \brief   XSQLDA_V1 service for building MSG BLR01 [V01].
 //! \author  Kovalenko Dmitry
-//! \date    10.04.2023
+//! \date    22.08.2023
 #include <_pch_.h>
 #pragma hdrstop
 
-#include "source/db_client/remote_fb/api/helpers/xsqlda/v01/remote_fb__api_hlp__xsqlda_v01__utilities.h"
-#include "source/db_client/remote_fb/api/helpers/xsqlda/remote_fb__api_hlp__xsqlda__error_utils.h"
+#include "source/db_obj/dbms_fb/v04_0_0/db_obj__dbms_fb__v04_0_0__xsqlda_v1_svc__msg01_blr01_builder.h"
+#include "source/db_obj/dbms_fb/v04_0_0/db_obj__dbms_fb__v04_0_0__factories.h"
+#include "source/db_obj/isc_base/helpers/xsqlda/isc_api_hlp__xsqlda__error_utils.h"
+#include "source/error_services/ibp_error_utils.h"
 
-namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace helpers{
+namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v04_0_0{
 ////////////////////////////////////////////////////////////////////////////////
-//class RemoteFB__API_HLP__XSQLDA_V01__Utilities
 
-void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
-                                           (const isc_api::XSQLDA_V1* const pXSQLDA,
-                                            msg_blr_buffer_type&            BlrBuffer)
+db_obj::t_db_object_ptr create_xsqlda_v1_svc__msg01_blr01_builder()
+{
+ return fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::create();
+}//create_xsqlda_v1_svc__msg01_blr01_builder
+
+////////////////////////////////////////////////////////////////////////////////
+//class fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder
+
+fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder
+ fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::sm_Instance;
+
+//------------------------------------------------------------------------
+fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder()
+{
+}//fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder
+
+//------------------------------------------------------------------------
+fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::~fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder()
+{
+}//~fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder
+
+//------------------------------------------------------------------------
+db_obj::t_db_object_ptr
+ fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::create()
+{
+ return lib::structure::not_null_ptr(&sm_Instance);
+}//create
+
+//t_isc_xsqlda_v1_svc__msg01_blr01_builder interface ---------------------------
+void fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::Build_XSQLDA_MSG_BLR
+                             (const isc_api::XSQLDA_V1* const pXSQLDA,
+                              msg_blr_buffer_type&            BlrBuffer)
 {
  if(pXSQLDA==nullptr)
  {
@@ -42,7 +72,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Build_XSQLDA_MSG_BLR
 }//Build_XSQLDA_MSG_BLR
 
 //------------------------------------------------------------------------
-size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__CalcBufSize
+size_t fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::Helper__Build_XSQLDA_MSG_BLR__CalcBufSize
                                            (const isc_api::XSQLDA_V1* const pXSQLDA)
 {
  assert(pXSQLDA!=nullptr);
@@ -76,7 +106,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
    case isc_api::ibp_isc_sql_varying:
    case isc_api::ibp_isc_sql_text:
    case isc_api::ibp_fb025_sql_null:
-    szBlr+=2+3;
+    szBlr+=3+2;
     break;
 
    // {byte_with_data_type,byte_with_data_scale}+{byte_with_ind_type,byte_with_ind_scale}
@@ -99,7 +129,8 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
    case isc_api::ibp_fb040_sql_decfloat16:
    case isc_api::ibp_fb040_sql_decfloat34:
    case isc_api::ibp_fb040_sql_timestamp_with_tz:
-    szBlr+=2+1;
+   case isc_api::ibp_fb040_sql_time_with_tz:
+    szBlr+=1+2;
     break;
 
    default:
@@ -108,7 +139,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
 
     IBP_ErrorUtils::Throw__Error
      (DB_E_NOTSUPPORTED,
-      ibp_subsystem__remote_fb,
+      ibp_subsystem__isc_api__fb4_0,
       ibp_mce_dbobj__ie_data_with_unk_sql_type_2,
       (pXVar-pXSQLDA->sqlvar),
       pXVar->sqltype);
@@ -120,7 +151,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__C
 }//Helper__Build_XSQLDA_MSG_BLR__CalcBufSize
 
 //------------------------------------------------------------------------
-void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__FillBuf
+void fb_v04_0_0__xsqlda_v1_svc__msg01_blr01_builder::Helper__Build_XSQLDA_MSG_BLR__FillBuf
                                            (const isc_api::XSQLDA_V1* const pXSQLDA,
                                             msg_blr_buffer_type&            BlrBuffer)
 {
@@ -129,6 +160,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
  assert(pXSQLDA->sqln==0 || pXSQLDA->sqln>0);
  assert(pXSQLDA->sqld==0 || pXSQLDA->sqld>0);
  assert(pXSQLDA->sqld<=pXSQLDA->sqln);
+
+ using byte_type=msg_blr_buffer_type::value_type;
+
+ assert_s(sizeof(byte_type)==1);
 
  const size_t cPars=2*static_cast<size_t>(pXSQLDA->sqld);
 
@@ -185,7 +220,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
       //ERROR - [BUG CHECK] incorrect xvar length;
       assert(pXVar->sqllen<0);
 
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_varying",
         xvar_sqllen);
      }//if
@@ -195,7 +230,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(isc_api::ibp_isc_max_varchar_length<xvar_sqllen)
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_varying",
         xvar_sqllen);
      }//if
@@ -213,7 +248,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
       //ERROR - [BUG CHECK] incorrect xvar length;
       assert(pXVar->sqllen<0);
 
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_text",
         xvar_sqllen);
      }//if
@@ -227,7 +262,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
       //[2015-05-13] максимальное значение XSQLVAR::sqllen совпадает с ibp_isc_max_char_length
       assert(false);
 
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_text",
         xvar_sqllen);
      }//if
@@ -243,7 +278,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=0)
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_null",
         xvar_sqllen);
      }//if
@@ -256,10 +291,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_short:
     {
-     if(xvar_sqllen!=sizeof(protocol::P_SHORT))
+     if(xvar_sqllen!=sizeof(db_obj::t_dbvalue__i2))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_short",
         xvar_sqllen);
      }//if
@@ -267,7 +302,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_smallint)
      {
       //ERROR - incorrect sqlscale of xvar
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
        (L"sql_short",
         pXVar->sqlscale);
      }//if
@@ -282,10 +317,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_long:
     {
-     if(xvar_sqllen!=sizeof(protocol::P_LONG))
+     if(xvar_sqllen!=sizeof(db_obj::t_dbvalue__i4))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_long",
         xvar_sqllen);
      }//if
@@ -293,7 +328,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_integer)
      {
       //ERROR - incorrect sqlscale of xvar
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
        (L"sql_long",
         pXVar->sqlscale);
      }//if
@@ -308,10 +343,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_int64:
     {
-     if(xvar_sqllen!=sizeof(protocol::P_INT64))
+     if(xvar_sqllen!=sizeof(db_obj::t_dbvalue__i8))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_int64",
         xvar_sqllen);
      }//if
@@ -319,7 +354,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__isc_numeric_on_int64)
      {
       //ERROR - incorrect sqlscale of xvar
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
        (L"sql_int64",
         pXVar->sqlscale);
      }//if
@@ -337,7 +372,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(db_obj::DB_IBBLOBID))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_blob",
         xvar_sqllen);
      }//if
@@ -353,7 +388,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(db_obj::DB_IBARRAYID))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_array",
         xvar_sqllen);
      }//if
@@ -366,10 +401,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_float:
     {
-     if(xvar_sqllen!=sizeof(protocol::P_FLOAT))
+     if(xvar_sqllen!=sizeof(db_obj::t_dbvalue__r4))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_float",
         xvar_sqllen);
      }//if
@@ -381,10 +416,10 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
     //-------------------------------------------------------------------
     case isc_api::ibp_isc_sql_double:
     {
-     if(xvar_sqllen!=sizeof(protocol::P_DOUBLE))
+     if(xvar_sqllen!=sizeof(db_obj::t_dbvalue__r8))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_double",
         xvar_sqllen);
      }//if
@@ -399,7 +434,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_isc_time))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_type_time",
         xvar_sqllen);
      }//if
@@ -413,7 +448,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_isc_date))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_type_date",
         xvar_sqllen);
      }//if
@@ -427,7 +462,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_isc_timestamp))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_timestamp",
         xvar_sqllen);
      }//if
@@ -442,7 +477,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb030_bool))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_boolean",
         xvar_sqllen);
      }//if
@@ -457,7 +492,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_int128))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_int128",
         xvar_sqllen);
      }//if
@@ -465,7 +500,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(pXVar->sqlscale>0 || pXVar->sqlscale<-db_obj::dbprecision__fb040_numeric_on_int128)
      {
       //ERROR - incorrect sqlscale of xvar
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlScale
        (L"sql_int128",
         pXVar->sqlscale);
      }//if
@@ -483,7 +518,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat16))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_decfloat16",
         xvar_sqllen);
      }//if
@@ -498,7 +533,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_decfloat34))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_decfloat34",
         xvar_sqllen);
      }//if
@@ -513,7 +548,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_timestamp_with_tz))
      {
       //ERROR - [BUG CHECK] incorrect xvar length;
-      helpers::RemoteFB__API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
        (L"sql_timestamp_with_tz",
         xvar_sqllen);
      }//if
@@ -521,6 +556,21 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
      PUSH_STUFF_BYTE(isc_api::ibp_fb040_blr_dtype__timestamp_with_tz)
      break;
     }//ibp_fb040_sql_timestamp_with_tz
+
+    //-------------------------------------------------------------------
+    case isc_api::ibp_fb040_sql_time_with_tz:
+    {
+     if(xvar_sqllen!=sizeof(isc_api::t_ibp_fb040_time_with_tz))
+     {
+      //ERROR - [BUG CHECK] incorrect xvar length;
+      isc_base::helpers::ISC_API_HLP__XSQLDA__ErrorUtils::ThrowBugCheck__XSQLVAR__IncorrectSqlLen
+       (L"sql_time_with_tz",
+        xvar_sqllen);
+     }//if
+
+     PUSH_STUFF_BYTE(isc_api::ibp_fb040_blr_dtype__time_with_tz)
+     break;
+    }//ibp_fb040_sql_time_with_tz
 
     //-------------------------------------------------------------------
     default:
@@ -548,7 +598,7 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
    IBP_ErrorUtils::Throw__Error
     (e,
      E_FAIL,
-     ibp_subsystem__remote_fb,
+     ibp_subsystem__isc_api__fb4_0,
      ibp_mce_isc__failed_to_process_the_xsqlvar_1,
      pXVar-pXSQLDA->sqlvar);
   }//catch
@@ -565,4 +615,4 @@ void RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Build_XSQLDA_MSG_BLR__Fil
 }//Helper__Build_XSQLDA_MSG_BLR__FillBuf
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms helpers*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v04_0_0*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/

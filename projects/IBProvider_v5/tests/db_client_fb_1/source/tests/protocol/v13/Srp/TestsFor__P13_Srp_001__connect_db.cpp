@@ -10,7 +10,7 @@
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 
 #define DEF_DESCR2(id,propVal) {CryptMode::id,propVal}
@@ -238,4 +238,4 @@ void TestsFor__P13_Srp_001__connect_db::run(context_type* const pCtx)const
 }//run
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

@@ -11,9 +11,9 @@
 #include "source/db_client/remote_fb/ports/inet/remote_fb__ports__inet.h"
 #include "source/db_client/remote_fb/remote_fb__connector.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
-//namespaces
+//aliases for namespaces
 
 namespace remote_fb                         =ibp::db_client::remote_fb;
 namespace remote_fb_inet_factory            =remote_fb::ports::factories::inet;
@@ -56,6 +56,19 @@ inline std::ostream& operator << (std::ostream& tracer,const lcpi::ibp::isc_api:
 inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_timestamp_with_tz& v)
 { 
  return tracer<<L"{"<<v.utc_timestamp.timestamp_date<<L", "<<v.utc_timestamp.timestamp_time<<L", "<<v.time_zone<<L"}";
+}//operator <<
+
+////////////////////////////////////////////////////////////////////////////////
+
+inline std::ostream& operator << (std::ostream& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_time_with_tz& v)
+{ 
+ return tracer<<"{"<<v.utc_time<<", "<<v.time_zone<<"}";
+}//operator <<
+
+//------------------------------------------------------------------------
+inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t_ibp_fb040_time_with_tz& v)
+{ 
+ return tracer<<L"{"<<v.utc_time<<L", "<<v.time_zone<<L"}";
 }//operator <<
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -843,6 +856,13 @@ class TestServices
                 short                                         expectedSqlInd,
                 const isc_api::t_ibp_fb040_timestamp_with_tz& expectedSqlValue);
 
+  static bool checkValue__TIME_WITH_TZ
+               (TTSO_Tracer&                             tracer,
+                short                                    actualSqlInd,
+                const isc_api::t_ibp_fb040_time_with_tz& actualSqlValue,
+                short                                    expectedSqlInd,
+                const isc_api::t_ibp_fb040_time_with_tz& expectedSqlValue);
+
   static bool checkValue__TEXT
                (TTSO_Tracer&                        tracer,
                 short                               actualSqlInd,
@@ -938,5 +958,5 @@ inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const isc_api::t_ibp_isc_ti
 }//operator tracer<<isc_api::t_ibp_isc_timestamp
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

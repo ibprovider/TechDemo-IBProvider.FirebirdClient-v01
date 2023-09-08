@@ -29,7 +29,7 @@ _MC("file %1 is not a valid database")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__BAD_DB_HANDLE
 Language        =Eng
-_MC("invalid database handle (no active connection)")
+_MC("Invalid database handle (no active connection).")
 .
 
 //------------------------------------------------------------------------
@@ -47,19 +47,19 @@ _MC("unrecognized database parameter block")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__BAD_REQ_HANDLE
 Language        =Eng
-_MC("invalid request handle")
+_MC("Invalid request handle.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__BAD_SEGSTR_HANDLE
 Language        =Eng
-_MC("invalid BLOB handle")
+_MC("Invalid BLOB handle.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__BAD_SEGSTR_ID
 Language        =Eng
-_MC("invalid BLOB ID")
+_MC("Invalid BLOB ID.")
 .
 
 //------------------------------------------------------------------------
@@ -77,7 +77,7 @@ _MC("invalid format for transaction parameter block")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__BAD_TRANS_HANDLE
 Language        =Eng
-_MC("invalid transaction handle (expecting explicit transaction start)")
+_MC("Invalid transaction handle (expecting explicit transaction start).")
 .
 
 //------------------------------------------------------------------------
@@ -149,7 +149,7 @@ _MC("invalid request BLR at offset %1")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_ERROR
 Language        =Eng
-_MC("I/O error during \"%1\" operation for file \"%2\"")
+_MC("I/O error during \"%1\" operation for file \"%2\".")
 .
 
 //------------------------------------------------------------------------
@@ -227,7 +227,7 @@ _MC("metadata is obsolete")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__OPEN_TRANS
 Language        =Eng
-_MC("cannot disconnect database with open transactions (%1 active)")
+_MC("Cannot disconnect database with open transactions (%1 active).")
 .
 
 //------------------------------------------------------------------------
@@ -2232,7 +2232,7 @@ _MC("Cache redefined")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__CACHE_TOO_SMALL
 Language        =Eng
-_MC("Insufficient memory to allocate page buffer cache")
+_MC("Insufficient memory to allocate page buffer cache.")
 .
 
 //------------------------------------------------------------------------
@@ -2484,43 +2484,43 @@ _MC("Access to databases on file servers is not supported.")
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_CREATE_ERR
 Language        =Eng
-_MC("Error while trying to create file")
+_MC("Error while trying to create file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_OPEN_ERR
 Language        =Eng
-_MC("Error while trying to open file")
+_MC("Error while trying to open file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_CLOSE_ERR
 Language        =Eng
-_MC("Error while trying to close file")
+_MC("Error while trying to close file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_READ_ERR
 Language        =Eng
-_MC("Error while trying to read from file")
+_MC("Error while trying to read from file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_WRITE_ERR
 Language        =Eng
-_MC("Error while trying to write to file")
+_MC("Error while trying to write to file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_DELETE_ERR
 Language        =Eng
-_MC("Error while trying to delete file")
+_MC("Error while trying to delete file.")
 .
 
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__IO_ACCESS_ERR
 Language        =Eng
-_MC("Error while trying to access file")
+_MC("Error while trying to access file.")
 .
 
 //------------------------------------------------------------------------
@@ -2850,7 +2850,7 @@ _MC("Metadata update statement is not allowed by the current database SQL dialec
 //------------------------------------------------------------------------
 MessageId       =IBP_MCE_FB40__CANCELLED
 Language        =Eng
-_MC("operation was cancelled")
+_MC("Operation was cancelled.")
 .
 
 //------------------------------------------------------------------------

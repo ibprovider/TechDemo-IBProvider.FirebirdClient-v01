@@ -9,7 +9,7 @@
 
 #include <structure/charsets/t_cs_utf8.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestCheckErrors
 
@@ -55,6 +55,18 @@ const wchar_t TestCheckErrors::sm_subsysID__remote_fb_pset01[]
 //------------------------------------------------------------------------
 const wchar_t TestCheckErrors::sm_subsysID__remote_fb_pset02[]
  =L"remote_fb.pset02";
+
+//------------------------------------------------------------------------
+const wchar_t TestCheckErrors::sm_subsysID__isc_api__fb2_5[]
+ =L"isc_api.fb2_5";
+
+//------------------------------------------------------------------------
+const wchar_t TestCheckErrors::sm_subsysID__isc_api__fb3_0[]
+ =L"isc_api.fb3_0";
+
+//------------------------------------------------------------------------
+const wchar_t TestCheckErrors::sm_subsysID__isc_api__fb4_0[]
+ =L"isc_api.fb4_0";
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -8138,4 +8150,4 @@ std::wstring TestCheckErrors::IBP_EscapingText(structure::t_const_wstr_box const
 }//IBP_EscapingText
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/

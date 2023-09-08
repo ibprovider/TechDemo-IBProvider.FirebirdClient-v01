@@ -10,7 +10,7 @@
 #include "source/db_client/remote_fb/api/helpers/remote_fb__api_hlp__array_slice_v01__utilities.h"
 #include <structure/test_obj/t_tso_user.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
 
@@ -367,6 +367,10 @@ class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
   static void test_516__timestamp_with_tz
                (TTSO_GlobalContext* pParams,
                 context_type*       pCtx);
+
+  static void test_517__time_with_tz
+               (TTSO_GlobalContext* pParams,
+                context_type*       pCtx);
 };//class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -393,10 +397,11 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  {
   try
   {
-   array_utils_type::ParseSDL(OpCtx,
-                              0,
-                              nullptr,
-                              &descr);
+   array_utils_type::ParseSDL
+    (OpCtx,
+     0,
+     nullptr,
+     &descr);
   }
   catch(const ibp::t_ibp_error& exc)
   {
@@ -5924,7 +5929,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  array_utils_type::ParseSDL
   (OpCtx,
-   _DIM_(sdl),
+   _LCPI_DIM_(sdl),
    sdl,
    &descr);
 
@@ -6003,7 +6008,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  array_utils_type::ParseSDL
   (OpCtx,
-   _DIM_(sdl),
+   _LCPI_DIM_(sdl),
    sdl,
    &descr);
 
@@ -6082,7 +6087,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  array_utils_type::ParseSDL
   (OpCtx,
-   _DIM_(sdl),
+   _LCPI_DIM_(sdl),
    sdl,
    &descr);
 
@@ -6161,7 +6166,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
 
  array_utils_type::ParseSDL
   (OpCtx,
-   _DIM_(sdl),
+   _LCPI_DIM_(sdl),
    sdl,
    &descr);
 
@@ -6187,6 +6192,85 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl:
  _TSO_CHECK(descr.m_bounds[1].lower==-10);
  _TSO_CHECK(descr.m_bounds[1].upper==10);
 }//test_516__timestamp_with_tz
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST 517
+
+void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl::test_517__time_with_tz
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx)
+{
+ assert(pParams);
+ assert(pCtx);
+
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ const array_utils_type::byte_type sdl[]=
+ {
+  isc_api::ibp_isc_sdl_version1,
+  isc_api::ibp_isc_sdl_struct,
+  1,
+  isc_api::ibp_fb040_blr_dtype__time_with_tz,
+  isc_api::ibp_isc_sdl_relation,
+  3,'a','b','c',
+  isc_api::ibp_isc_sdl_field,
+  0,
+  isc_api::ibp_isc_sdl_do1,
+  0,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  2,
+  isc_api::ibp_isc_sdl_do2,
+  1,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  (array_utils_type::byte_type)-10,
+  isc_api::ibp_isc_sdl_tiny_integer,
+  10,
+  isc_api::ibp_isc_sdl_element,
+  1,
+  isc_api::ibp_isc_sdl_scalar,
+  0,
+  2,                                        //count of dimensions
+  isc_api::ibp_isc_sdl_variable,
+  0,
+  isc_api::ibp_isc_sdl_variable,
+  1,
+  isc_api::ibp_isc_sdl_eoc
+ };
+
+ TestCnParams params(pParams);
+
+ TestOperationContext OpCtx(params);
+
+ remote_fb::RemoteFB__ArraySliceDescr descr;
+
+ array_utils_type::ParseSDL
+  (OpCtx,
+   _LCPI_DIM_(sdl),
+   sdl,
+   &descr);
+
+ //-----------------------------------------
+
+ _TSO_CHECK(descr.m_relation_name==L"abc");
+
+ _TSO_CHECK(descr.m_field_name.empty());
+
+ _TSO_CHECK(descr.m_element_blr_typeid==isc_api::ibp_fb040_blr_dtype__time_with_tz);
+
+ _TSO_CHECK(descr.m_element_sql_scale==0);
+
+ _TSO_CHECK(descr.m_element_sql_length==8);
+
+ _TSO_CHECK(descr.m_element_total_length==8);
+
+ _TSO_CHECK(descr.m_bounds_number==2);
+
+ _TSO_CHECK(descr.m_bounds[0].lower==1);
+ _TSO_CHECK(descr.m_bounds[0].upper==2);
+
+ _TSO_CHECK(descr.m_bounds[1].lower==-10);
+ _TSO_CHECK(descr.m_bounds[1].upper==10);
+}//test_517__time_with_tz
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_descr
@@ -6409,6 +6493,9 @@ const TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_desc
 
  DEF_TEST_DESCR("516.timestamp_with_tz",
                 test_516__timestamp_with_tz)
+
+ DEF_TEST_DESCR("517.time_with_tz",
+                test_517__time_with_tz)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -6445,4 +6532,4 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

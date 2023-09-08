@@ -15,7 +15,7 @@
 
 #include <array>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__Types__timestamp_001::tag_impl
 
@@ -34,7 +34,7 @@ class WORK_StmtFetch_M__Types__timestamp_001::tag_impl LCPI_CPP_CFG__CLASS__FINA
   typedef structure::t_smart_object_ptr<self_type>     self_ptr;
 
  public:
-  tag_impl(TTSO_GlobalContext*  pParams,
+  tag_impl(TTSO_GlobalContext*     pParams,
            const char*             pTestID,
            const TTSO_TestData_v2& Data);
 
@@ -364,4 +364,4 @@ void WORK_StmtFetch_M__Types__timestamp_001::create
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

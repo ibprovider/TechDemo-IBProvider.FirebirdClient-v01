@@ -12,7 +12,7 @@
 #include <structure/test_obj/t_tso_lib.h>
 #include <structure/t_cmd_line_parser.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 namespace tso_obj=structure::tso_obj;
 
@@ -336,7 +336,7 @@ class TTSO_PushTest:public TTSO_SmartInterface
 typedef structure::t_smart_object_ptr<TTSO_PushTest> TTSO_PushTestPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

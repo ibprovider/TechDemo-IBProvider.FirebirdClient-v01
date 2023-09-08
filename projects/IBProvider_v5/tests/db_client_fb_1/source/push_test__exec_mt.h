@@ -9,7 +9,7 @@
 #include <structure/mt/t_mt_thread_controller__win32.h>
 #include <structure/stl/t_stl_list.h>
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //contatinings
 
@@ -274,5 +274,5 @@ class TTSO_PushTest__ExecutorMT
 };//class TTSO_PushTest__ExecutorMT
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

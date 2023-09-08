@@ -1365,6 +1365,10 @@
 ///  Resetting the connection state via SQL is not supported.
 #define IBP_MCE_CMD__RESETTING_A_CN_STATE_THROUGH_SQL_IS_NOT_SUPPORTED_0  11836
 
+/// \brief
+///  Command text contains invalid UTF16 command text.
+#define IBP_MCE_CMD__INVALID_UTF16_COMMAND_TEXT_0                         11837
+
 //command with multiple statements ---------------------------------------------
 /// \brief В скрипте нельзя использовать неименованные параметры
 #define IBP_MCE_SCRIPT__NOT_SUPPORT_UNNAMED_PARAMS_0                      11840

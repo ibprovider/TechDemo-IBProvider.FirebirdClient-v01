@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_StmtFetch_M__113__sql_commit_retaining
 
@@ -22,5 +22,5 @@ class WORK_StmtFetch_M__113__sql_commit_retaining
 };//class WORK_StmtFetch_M__113__sql_commit_retaining
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

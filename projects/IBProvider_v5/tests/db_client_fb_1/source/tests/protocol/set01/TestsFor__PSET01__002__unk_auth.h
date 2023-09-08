@@ -6,7 +6,7 @@
 
 #include "source/test_base.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__PSET01__002__unk_auth
 
@@ -47,5 +47,5 @@ class TestsFor__PSET01__002__unk_auth
 };//class TestsFor__PSET01__002__unk_auth
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms ibp_test*/
+}/*nms ibp_tests*/}/*nms lcpi*/
 #endif

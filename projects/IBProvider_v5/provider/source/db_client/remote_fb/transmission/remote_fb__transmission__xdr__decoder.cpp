@@ -583,6 +583,29 @@ void RemoteFB__XDR__Decoder::decode__fb040_timestamp_with_tz
 }//decode__fb040_timestamp_with_tz
 
 //------------------------------------------------------------------------
+void RemoteFB__XDR__Decoder::decode__fb040_time_with_tz
+                              (buf_type*                              const pBuf,
+                               const wchar_t*                         const pv_sign_utc_time,
+                               const wchar_t*                         const pv_sign_time_zone,
+                               db_obj::t_dbvalue__fb040_time_with_tz* const pv)
+{
+ assert(pBuf);
+ assert(pv_sign_utc_time);
+ assert(pv_sign_time_zone);
+ assert(pv);
+
+ self_type::decode__p_ulong_as_p_long
+  (pBuf,
+   pv_sign_utc_time,
+   &pv->utc_time);
+
+ self_type::decode__p_ushort_as_p_short
+  (pBuf,
+   pv_sign_time_zone,
+   &pv->time_zone);
+}//decode__fb040_time_with_tz
+
+//------------------------------------------------------------------------
 void RemoteFB__XDR__Decoder::decode__status_vector__eset02
                               (buf_type*                      const pBuf,
                                mem_type*                      const pMem,
@@ -1045,6 +1068,26 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
      break;
     }//case - ibp_fb040_blr_dtype__timestamp_with_tz
+
+    case isc_api::ibp_fb040_blr_dtype__time_with_tz:
+    {
+     using value_type=isc_api::t_ibp_fb040_time_with_tz;
+
+     assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
+
+     //Let's check an alignment
+     assert_s(isc_api::ibp_fb040_type_align__time_with_tz==4);
+
+     assert((reinterpret_cast<size_t>(pElement)%isc_api::ibp_fb040_type_align__time_with_tz)==0);
+
+     xdr::decode__fb040_time_with_tz
+      (pBuf,
+       L"array_slice.time_with_tz.utc_time",
+       L"array_slice.time_with_tz.time_zone",
+       reinterpret_cast<value_type*>(pElement));
+
+     break;
+    }//case - ibp_fb040_blr_dtype__time_with_tz
 
     default:
     {

@@ -5,7 +5,7 @@
 #include "source/test_state2_storage.h"
 #include "source/test_state2.h"
 
-namespace ibp_test{
+namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestState2_Storage
 
@@ -104,4 +104,4 @@ void TTSO_TestState2_Storage::read(count_type const index,item_type* const item)
 }//read
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace ibp_test
+}/*nms ibp_tests*/}/*nms lcpi*/

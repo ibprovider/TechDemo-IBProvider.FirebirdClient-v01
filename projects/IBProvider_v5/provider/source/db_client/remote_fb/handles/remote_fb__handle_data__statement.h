@@ -10,7 +10,10 @@
 #include "source/db_client/remote_fb/ports/remote_fb__port.h"
 #include "source/db_client/remote_fb/remote_fb__fetch_result.h"
 #include "source/db_client/remote_fb/remote_fb__flags.h"
+#include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
 #include "source/db_client/remote_fb/remote_fb__forward.h"
+#include "source/db_obj/isc_base/isc_msg_blr01_buffer.h"
+#include "source/db_obj/isc_base/isc_msg_data_buffer.h"
 #include "source/error_services/ibp_error.h"
 #include "source/structure/ibp_buffer_view.h"
 #include <structure/t_value_with_null.h>
@@ -85,17 +88,11 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
             <unsigned char,
              allocator_type>                               xsqlvars_data_buffer_type;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                               msg_blr_buffer_type;
+  typedef isc_base::t_isc_msg_blr01_buffer                 msg_blr_buffer_type;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                               msg_data_buffer_type;
+  typedef isc_base::t_isc_msg_data_buffer                  msg_data_buffer_type;
 
-  typedef structure::t_stl_vector
-            <RemoteFB__MsgDataElementDescr,
-             allocator_type>                               msg_data_descrs_type;
+  typedef RemoteFB__MsgDataElementDescrs                   msg_data_descrs_type;
 
   typedef structure::t_typed_simple_buffer
             <unsigned char,

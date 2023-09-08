@@ -5,6 +5,9 @@
 #define _structure_charsets_t_cs_utf16_H_
 
 #include <lcpi/lib/.config.h>
+#include <tuple>
+#include <utility>
+#include <cstdint>
 
 namespace structure{namespace charsets{namespace cs_utf16{
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,7 +16,9 @@ namespace structure{namespace charsets{namespace cs_utf16{
 struct traits
 {
  public:
-  using UTF16=unsigned __int16;
+  using UTF16=std::uint16_t;
+
+  using UTF32=std::uint32_t;
 
   static const unsigned c_SURROGATE_HIGH_START  =0xD800; // 1101 1000|0000 0000
   static const unsigned c_SURROGATE_HIGH_END    =0xDBFF; // 1101 1011|1111 1111
@@ -44,12 +49,20 @@ inline bool is_surrogate_high(traits::UTF16 ch);
 
 inline bool is_surrogate_low(traits::UTF16 ch);
 
+inline traits::UTF32 make_utf32(traits::UTF16 hi,traits::UTF16 lo);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class TForwardIterator>
 std::pair<TForwardIterator,t_cs_cvt_result>
  get_next_symbol(TForwardIterator source_beg,
                  TForwardIterator source_end);
+
+template<class TForwardIterator>
+std::tuple<TForwardIterator,traits::UTF32,t_cs_cvt_result>
+ fetch_symbol_as_utf32
+  (TForwardIterator source_beg,
+   TForwardIterator source_end);
 
 ////////////////////////////////////////////////////////////////////////////////
 
