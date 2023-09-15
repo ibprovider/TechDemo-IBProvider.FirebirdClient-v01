@@ -13,7 +13,6 @@
 
 #include <structure/utilities/string/trim.h>
 #include <structure/utilities/string/string_length.h>
-#include <structure/t_str_formatter.h>
 #include <structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v02_5_0{
@@ -633,14 +632,12 @@ void fb_v02_5_0__blr_printer::tag_blr_reader::seekBackward(size_t const n)
  {
   //ERROR - INCORRECT offset
 
-  structure::wstr_formatter freason(L"incorrect offset: %1. max value: %2");
-
-  freason<<n<<size_t(m_pPos-m_pBeg);
-
-  IBP_BUG_CHECK__DEBUG
+  IBP_ErrorUtils::Throw__BugCheck__DEBUG
    (c_bugcheck_src,
     L"#001",
-    freason.c_str());
+    L"incorrect offset: %1. max value: %2",
+    n,
+    size_t(m_pPos-m_pBeg));
  }//if
 
  m_pPos-=n;
@@ -771,14 +768,11 @@ void fb_v02_5_0__blr_printer::tag_blr_reader::helper__throw_error__unexpected_en
  assert(place);
  assert(point);
 
- structure::wstr_formatter freason(L"unexpected end of buffer. tail size: %1");
-
- freason<<size_t(m_pEnd-m_pPos);
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   L"unexpected end of buffer. tail size: %1",
+   size_t(m_pEnd-m_pPos));
 }//helper__throw_error__unexpected_end_of_buffer
 
 ////////////////////////////////////////////////////////////////////////////////

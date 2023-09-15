@@ -184,7 +184,9 @@ COMP_CONF_DECLSPEC_NORETURN
  void IBP_ThrowCantTranslateSysDataToUnicode(const wchar_t* pSysDataName);
 
 COMP_CONF_DECLSPEC_NORETURN
- void IBP_ThrowCantTranslateSysDataFromUnicode(const wchar_t* pSysDataName);
+ void IBP_ThrowCantTranslateSysDataFromUnicode
+  (t_ibp_wstr_box sysDataName,
+   t_ibp_wstr_box targetCsName);
 
 ////////////////////////////////////////////////////////////////////////////////
 

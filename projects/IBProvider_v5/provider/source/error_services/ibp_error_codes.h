@@ -399,9 +399,9 @@ enum ibp_msg_code_type
  /// \brief
  ///  Ошибка конвертации системных данных из UNICODE.<br>
  /// \b
- ///  Params: data sign.
- ibp_mce_common__translate_sys_data_from_unicode_1
-  =IBP_MCE_COMMON__TRANSLATE_SYS_DATA_FROM_UNICODE_1,
+ ///  Params: data sign, target cs name
+ ibp_mce_common__translate_sys_data_from_unicode_2
+  =IBP_MCE_COMMON__TRANSLATE_SYS_DATA_FROM_UNICODE_2,
 
  ///////////////////////////////////////////////////////////////////////////////
 

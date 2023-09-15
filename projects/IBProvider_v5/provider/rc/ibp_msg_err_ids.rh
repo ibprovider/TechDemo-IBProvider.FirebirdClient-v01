@@ -322,8 +322,8 @@
 /// \brief
 ///  Ошибка конвертации системных данных из UNICODE.<br>
 /// \b
-///  Params: data sign.
-#define IBP_MCE_COMMON__TRANSLATE_SYS_DATA_FROM_UNICODE_1                 1037
+///  Params: data sign, target cs name
+#define IBP_MCE_COMMON__TRANSLATE_SYS_DATA_FROM_UNICODE_2                 1037
 
 ///////////////////////////////////////////////////////////////////////////////
 

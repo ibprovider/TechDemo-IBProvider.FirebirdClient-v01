@@ -337,14 +337,18 @@ void IBP_ThrowCantTranslateSysDataToUnicode(const wchar_t* const pSysDataName)
 }//IBP_ThrowCantTranslateSysDataToUnicode
 
 //------------------------------------------------------------------------
-void IBP_ThrowCantTranslateSysDataFromUnicode(const wchar_t* const pSysDataName)
+void IBP_ThrowCantTranslateSysDataFromUnicode
+            (t_ibp_wstr_box const sysDataName,
+             t_ibp_wstr_box const targetCsName)
 {
- assert(pSysDataName);
+ assert(!sysDataName.empty());
+ assert(!targetCsName.empty());
 
  IBP_ErrorUtils::Throw__Error
   (E_FAIL,
-   ibp_mce_common__translate_sys_data_from_unicode_1,
-   pSysDataName);
+   ibp_mce_common__translate_sys_data_from_unicode_2,
+   sysDataName,
+   targetCsName);
 }//IBP_ThrowCantTranslateSysDataFromUnicode
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -52,7 +52,7 @@
 
 # define IBP_VDATA_BLOCK__EDITION_SIGN2     IBP_VI_T(" [Prof]")
 
-# define IBP_VI_PRODUCT_STATE               IBP_VI_T("Beta.FB4\0")
+//# define IBP_VI_PRODUCT_STATE               IBP_VI_T("Beta\0")
 
 # define IBP_VI_PRODUCT_NAME                IBP_VI_T("LCPI.IBProvider Professional Edition\0")
 # define IBP_PROVIDER_PROG_ID_NO_VER        IBP_VI_T("LCPI.IBProvider\0")
@@ -74,7 +74,7 @@
 
 # define IBP_VDATA_BLOCK__EDITION_SIGN2     IBP_VI_T(" [Lite]")
 
-# define IBP_VI_PRODUCT_STATE               IBP_VI_T("Beta.FB4\0")
+//# define IBP_VI_PRODUCT_STATE               IBP_VI_T("Beta\0")
 
 # define IBP_VI_PRODUCT_NAME                IBP_VI_T("LCPI.IBProvider Lite Edition\0")
 # define IBP_PROVIDER_PROG_ID_NO_VER        IBP_VI_T("LCPI.IBProvider\0")

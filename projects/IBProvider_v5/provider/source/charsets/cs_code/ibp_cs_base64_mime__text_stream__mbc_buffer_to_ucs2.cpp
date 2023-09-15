@@ -98,14 +98,11 @@ db_obj::t_db_cs_result
 
    default:
    {
-    structure::wstr_formatter freason(L"unexpected state_id [%1]");
-
-    freason<<int(m_state_id);
-
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bug_check_src,
       L"#001",
-      freason.c_str());
+      L"unexpected state_id [%1]",
+      int(m_state_id));
    }//default
   }//switch m_state_id
 
@@ -153,14 +150,11 @@ db_obj::t_db_cs_result t_ibp_cs_base64_mime::tag_text_stream__mbc_buffer_to_ucs2
   }//state_id__process_terminate_space
  }//switch m_state_id
 
- structure::wstr_formatter freason(L"unexpected state_id [%1]");
-
- freason<<int(m_state_id);
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (c_bug_check_src,
    L"#001",
-   freason.c_str());
+   L"unexpected state_id [%1]",
+   int(m_state_id));
 
 #if(COMP_BUILD_UNUSED_CODE)
  return db_obj::db_cs_result__fail;
