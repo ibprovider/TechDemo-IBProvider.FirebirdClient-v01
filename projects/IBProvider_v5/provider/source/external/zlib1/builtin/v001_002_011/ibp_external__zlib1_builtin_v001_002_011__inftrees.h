@@ -8,7 +8,7 @@
    subject to change. Applications should only use zlib.h.
  */
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 /* Structure for decoding tables.  Each entry provides either the
@@ -65,4 +65,4 @@ int ZLIB_INTERNAL inflate_table OF((codetype type, unsigned short FAR *lens,
                              unsigned FAR *bits, unsigned short FAR *work));
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

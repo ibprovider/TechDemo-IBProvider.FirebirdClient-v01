@@ -27,11 +27,11 @@ void debug__check_isc_error_code_descr2_array
 
  for(size_t i(0);i!=cErrDescrs;++i)
  {
-  assert_msg(rgErrDescrs[i].sqlstate!=nullptr,
-             pArrayName<<"["<<i<<"]");
-
-  assert_msg(structure::string_length(rgErrDescrs[i].sqlstate)==5,
-             pArrayName<<"["<<i<<"]");
+  if(rgErrDescrs[i].sqlstate2!=nullptr)
+  {
+   assert_msg(lib::structure::string_length(rgErrDescrs[i].sqlstate2)==5,
+              pArrayName<<"["<<i<<"]");
+  }//if
 
   if(i==0)
    continue;

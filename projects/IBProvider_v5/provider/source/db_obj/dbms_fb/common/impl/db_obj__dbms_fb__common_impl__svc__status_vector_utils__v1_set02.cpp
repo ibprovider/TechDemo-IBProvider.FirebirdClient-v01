@@ -173,32 +173,33 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   if(const descr2_type* const x=this->helper__get_err_descr2(gdscode))
   {
    //found it [das ist fantastish] !!!
-   assert(x->sqlstate!=nullptr);
-   assert(structure::string_length(x->sqlstate)==5);
 
-   //if(x->sqlstate==nullptr)
-   // continue;
+   if(x->sqlstate2==nullptr)
+    continue;
+
+   assert(x->sqlstate2!=nullptr);
+   assert(structure::string_length(x->sqlstate2)==5);
 
    // we get 00000 for info messages like "Table %"
    // these are completely ignored
-   if(x->eq_sqlstate(IBP_SQLSTATE__00000__SUCCESSFUL_COMPLETION_NO_SUBCLASS))
+   if(x->eq_sqlstate2(IBP_SQLSTATE__00000__SUCCESSFUL_COMPLETION_NO_SUBCLASS))
     continue;
 
    if(sqlstate1==nullptr)
-    sqlstate1=x->sqlstate;
+    sqlstate1=x->sqlstate2;
 
    if(this->internal__is_useless_error_code(gdscode))
     continue;
 
    if(sqlstate2==nullptr)
-    sqlstate2=x->sqlstate;
+    sqlstate2=x->sqlstate2;
 
    // 22000, 42000 and HY000 are general errors.
    // We may be able to find something more precise if we keep scanning.
    if(!self_type::helper__is_common_error_code(x))
    {
     if(sqlstate3==nullptr)
-     sqlstate3=x->sqlstate;
+     sqlstate3=x->sqlstate2;
    }
   }//if found it
  }//for s
@@ -225,9 +226,9 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   return gresult_data_type::create_ok();
  }//if
 
- if(sqlstate3!=nullptr)
+ if(sqlstate1!=nullptr)
  {
-  (*sqlstate)=sqlstate3;
+  (*sqlstate)=sqlstate1;
 
   return gresult_data_type::create_ok();
  }//if
@@ -336,15 +337,16 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   if(const descr2_type* const x=this->helper__get_err_descr2(gdscode))
   {
    //found it [das ist fantastish] !!!
-   assert(x->sqlstate!=nullptr);
-   assert(structure::string_length(x->sqlstate)==5);
 
-   //if(x->sqlstate==nullptr)
-   // continue;
+   if(x->sqlstate2==nullptr)
+    continue;
+
+   assert(x->sqlstate2!=nullptr);
+   assert(lib::structure::string_length(x->sqlstate2)==5);
 
    // we get 00000 for info messages like "Table %"
    // these are completely ignored
-   if(x->eq_sqlstate(IBP_SQLSTATE__00000__SUCCESSFUL_COMPLETION_NO_SUBCLASS))
+   if(x->eq_sqlstate2(IBP_SQLSTATE__00000__SUCCESSFUL_COMPLETION_NO_SUBCLASS))
     continue;
 
    result1.assign_once(gdscode);
@@ -980,13 +982,13 @@ bool fb_common_impl__svc__status_vector_utils__v1_set02::helper__is_common_error
  /// 22000, 42000 and HY000 are general errors.
  /// We may be able to find something more precise if we keep scanning.
 
- if(err_descr2->eq_sqlstate(IBP_SQLSTATE__22000__DATA_EXCEPTION_NO_SUBCLASS))
+ if(err_descr2->eq_sqlstate2(IBP_SQLSTATE__22000__DATA_EXCEPTION_NO_SUBCLASS))
   return true;
 
- if(err_descr2->eq_sqlstate(IBP_SQLSTATE__42000__SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION_NO_SUBCLASS))
+ if(err_descr2->eq_sqlstate2(IBP_SQLSTATE__42000__SYNTAX_ERROR_OR_ACCESS_RULE_VIOLATION_NO_SUBCLASS))
   return true;
 
- if(err_descr2->eq_sqlstate(IBP_SQLSTATE__HY000__CLI_SPECIFIC_CONDITION_NO_SUBCLASS))
+ if(err_descr2->eq_sqlstate2(IBP_SQLSTATE__HY000__CLI_SPECIFIC_CONDITION_NO_SUBCLASS))
   return true;
 
  return false;

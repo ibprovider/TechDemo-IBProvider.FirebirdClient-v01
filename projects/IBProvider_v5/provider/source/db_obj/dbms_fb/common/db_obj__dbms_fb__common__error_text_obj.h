@@ -35,7 +35,6 @@ class FB_ErrorTextObj;
 //!  "официальным" байтом объекта.
 class FB_ErrorTextObj LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(lib::structure::t_err_text)
-
 {
  private:
   typedef FB_ErrorTextObj                                         self_type;

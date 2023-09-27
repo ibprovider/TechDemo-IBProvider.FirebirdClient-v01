@@ -8,14 +8,14 @@
    subject to change. Applications should only use zlib.h.
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__deflate.h,v 1.3 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_002_011__deflate.h,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
-#ifndef _ibp_external__zlib1_set01__deflate_H_
-#define _ibp_external__zlib1_set01__deflate_H_
+#ifndef _ibp_external__zlib1_builtin_v001_002_011__deflate_H_
+#define _ibp_external__zlib1_builtin_v001_002_011__deflate_H_
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__zutil.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__zutil.h"
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 /* define NO_GZIP when compiling if you want to disable gzip header and
@@ -350,6 +350,6 @@ void ZLIB_INTERNAL _tr_stored_block OF((deflate_state *s, charf *buf,
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
 
 #endif /* DEFLATE_H */

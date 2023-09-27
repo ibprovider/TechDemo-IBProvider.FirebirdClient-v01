@@ -1,5 +1,5 @@
 /* inflate.h -- internal inflate state definition
- * Copyright (C) 1995-2016 Mark Adler
+ * Copyright (C) 1995-2019 Mark Adler
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
@@ -8,7 +8,7 @@
    subject to change. Applications should only use zlib.h.
  */
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_003_000{
 ////////////////////////////////////////////////////////////////////////////////
 
 /* define NO_GZIP when compiling if you want to disable gzip header and
@@ -89,7 +89,8 @@ struct inflate_state {
     int wrap;                   /* bit 0 true for zlib, bit 1 true for gzip,
                                    bit 2 true to validate check value */
     int havedict;               /* true if dictionary provided */
-    int flags;                  /* gzip header method and flags (0 if zlib) */
+    int flags;                  /* gzip header method and flags, 0 if zlib, or
+                                   -1 if raw or no header yet */
     unsigned dmax;              /* zlib header max distance (INFLATE_STRICT) */
     unsigned long check;        /* protected copy of check value */
     unsigned long total;        /* protected copy of output count */
@@ -128,4 +129,4 @@ struct inflate_state {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_003_000*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

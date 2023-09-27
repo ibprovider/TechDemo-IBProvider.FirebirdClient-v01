@@ -38,10 +38,10 @@ class t_isc_error_code_descr2
   isc_api::t_ibp_isc_status isc_code;
 
   /// Текстовая сигнатура isc-ошибки
-  const char*      isc_code_sign;
+  const char*      isc_code_sign2;
 
   /// SQLSTATE
-  const char*      sqlstate;
+  const char*      sqlstate2;
 
   /// Код OLEDB ошибки. Равен c_not_def_oledb_code, если код не определен.
   HRESULT          oledb_code;
@@ -81,7 +81,7 @@ class t_isc_error_code_descr2
   /// </summary>
   //! \param[in] s
   //!  Not NULL
-  bool eq_sqlstate(const char* s)const;
+  bool eq_sqlstate2(const char* s)const;
 };//class t_isc_error_code_descr2
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -132,16 +132,14 @@ inline t_isc_error_code_descr2::t_isc_error_code_descr2
                                     HRESULT                   const _oledb_code,
                                     UINT                      const _resource_id,
                                     UINT                      const _message_id)
- :isc_code      (_isc_code)
- ,isc_code_sign (_isc_code_sign)
- ,sqlstate      (_sqlstate)
- ,oledb_code    (_oledb_code)
- ,resource_id   (_resource_id)
- ,message_id    (_message_id)
+ :isc_code       (_isc_code)
+ ,isc_code_sign2 (_isc_code_sign)
+ ,sqlstate2      (_sqlstate)
+ ,oledb_code     (_oledb_code)
+ ,resource_id    (_resource_id)
+ ,message_id     (_message_id)
 {
- assert(this->isc_code_sign!=nullptr);
- assert(this->sqlstate!=nullptr);
- assert(structure::string_length(this->sqlstate)==5);
+ assert(this->sqlstate2==nullptr || lib::structure::string_length(this->sqlstate2)==5);
 }//t_isc_error_code_descr2
 
 //------------------------------------------------------------------------
@@ -151,16 +149,18 @@ inline bool t_isc_error_code_descr2::oledb_code_is_def()const
 }//oledb_code_is_def
 
 //------------------------------------------------------------------------
-inline bool t_isc_error_code_descr2::eq_sqlstate(const char* const s)const
+inline bool t_isc_error_code_descr2::eq_sqlstate2(const char* const s)const
 {
  assert(s!=nullptr);
- assert(this->sqlstate!=nullptr);
 
- if(s==nullptr || this->sqlstate==nullptr)
+ if(this->sqlstate2==nullptr)
   return false;
 
- return structure::string_compare(s,this->sqlstate)==0;
-}//eq_sqlstate
+ if(s==nullptr)
+  return false;
+
+ return lib::structure::string_compare(s,this->sqlstate2)==0;
+}//eq_sqlstate2
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

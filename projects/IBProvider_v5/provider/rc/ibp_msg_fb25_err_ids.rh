@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-//IBProvider resources. Firebird 2.5 Error Message Identifiers.
-//Machine generated file [29.12.2014 21:56:54]
+//IBProvider resources. Firebird 2.5 Error Messages. English.
+//Machine generated file [26.09.2023 11:36:56]
 //                                                             Dmitry Kovalenko.
 #ifndef _ibp_msg_fb25_err_ids_RH_
 #define _ibp_msg_fb25_err_ids_RH_
@@ -1343,597 +1343,1305 @@
 
 #define IBP_MCE_FB25__ASYNC_ACTIVE                                          668
 
-#define IBP_MCE_FB25__GFIX_DB_NAME                                          669
+#define IBP_MCE_FB25__DSQL_DBKEY_FROM_NON_TABLE                             669
 
-#define IBP_MCE_FB25__GFIX_INVALID_SW                                       670
+#define IBP_MCE_FB25__DSQL_TRANSITIONAL_NUMERIC                             670
 
-#define IBP_MCE_FB25__GFIX_INCMP_SW                                         671
+#define IBP_MCE_FB25__DSQL_DIALECT_WARNING_EXPR                             671
 
-#define IBP_MCE_FB25__GFIX_REPLAY_REQ                                       672
+#define IBP_MCE_FB25__SQL_DB_DIALECT_DTYPE_UNSUPPORT                        672
 
-#define IBP_MCE_FB25__GFIX_PGBUF_REQ                                        673
+#define IBP_MCE_FB25__INTERNAL_MSG_336003078                                673
 
-#define IBP_MCE_FB25__GFIX_VAL_REQ                                          674
+#define IBP_MCE_FB25__SQL_DIALECT_CONFLICT_NUM                              674
 
-#define IBP_MCE_FB25__GFIX_PVAL_REQ                                         675
+#define IBP_MCE_FB25__DSQL_WARNING_NUMBER_AMBIGUOUS                         675
 
-#define IBP_MCE_FB25__GFIX_TRN_REQ                                          676
+#define IBP_MCE_FB25__DSQL_WARNING_NUMBER_AMBIGUOUS1                        676
 
-#define IBP_MCE_FB25__GFIX_FULL_REQ                                         677
+#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS                         677
 
-#define IBP_MCE_FB25__GFIX_USRNAME_REQ                                      678
+#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS1                        678
 
-#define IBP_MCE_FB25__GFIX_PASS_REQ                                         679
+#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS2                        679
 
-#define IBP_MCE_FB25__GFIX_SUBS_NAME                                        680
+#define IBP_MCE_FB25__DSQL_AMBIGUOUS_FIELD_NAME                             680
 
-#define IBP_MCE_FB25__GFIX_WAL_REQ                                          681
+#define IBP_MCE_FB25__DSQL_UDF_RETURN_POS_ERR                               681
 
-#define IBP_MCE_FB25__GFIX_SEC_REQ                                          682
+#define IBP_MCE_FB25__DSQL_INVALID_LABEL                                    682
 
-#define IBP_MCE_FB25__GFIX_NVAL_REQ                                         683
+#define IBP_MCE_FB25__DSQL_DATATYPES_NOT_COMPARABLE                         683
 
-#define IBP_MCE_FB25__GFIX_TYPE_SHUT                                        684
+#define IBP_MCE_FB25__DSQL_CURSOR_INVALID                                   684
 
-#define IBP_MCE_FB25__GFIX_RETRY                                            685
+#define IBP_MCE_FB25__DSQL_CURSOR_REDEFINED                                 685
 
-#define IBP_MCE_FB25__GFIX_RETRY_DB                                         686
+#define IBP_MCE_FB25__DSQL_CURSOR_NOT_FOUND                                 686
 
-#define IBP_MCE_FB25__GFIX_EXCEED_MAX                                       687
+#define IBP_MCE_FB25__DSQL_CURSOR_EXISTS                                    687
 
-#define IBP_MCE_FB25__GFIX_CORRUPT_POOL                                     688
+#define IBP_MCE_FB25__DSQL_CURSOR_REL_AMBIGUOUS                             688
 
-#define IBP_MCE_FB25__GFIX_MEM_EXHAUSTED                                    689
+#define IBP_MCE_FB25__DSQL_CURSOR_REL_NOT_FOUND                             689
 
-#define IBP_MCE_FB25__GFIX_BAD_POOL                                         690
+#define IBP_MCE_FB25__DSQL_CURSOR_NOT_OPEN                                  690
 
-#define IBP_MCE_FB25__GFIX_TRN_NOT_VALID                                    691
+#define IBP_MCE_FB25__DSQL_TYPE_NOT_SUPP_EXT_TAB                            691
 
-#define IBP_MCE_FB25__GFIX_UNEXP_EOI                                        692
+#define IBP_MCE_FB25__DSQL_FEATURE_NOT_SUPPORTED_ODS                        692
 
-#define IBP_MCE_FB25__GFIX_RECON_FAIL                                       693
+#define IBP_MCE_FB25__PRIMARY_KEY_REQUIRED                                  693
 
-#define IBP_MCE_FB25__GFIX_TRN_UNKNOWN                                      694
+#define IBP_MCE_FB25__UPD_INS_DOESNT_MATCH_PK                               694
 
-#define IBP_MCE_FB25__GFIX_MODE_REQ                                         695
+#define IBP_MCE_FB25__UPD_INS_DOESNT_MATCH_MATCHING                         695
 
-#define IBP_MCE_FB25__GFIX_PZVAL_REQ                                        696
+#define IBP_MCE_FB25__UPD_INS_WITH_COMPLEX_VIEW                             696
 
-#define IBP_MCE_FB25__DSQL_DBKEY_FROM_NON_TABLE                             697
+#define IBP_MCE_FB25__DSQL_INCOMPATIBLE_TRIGGER_TYPE                        697
 
-#define IBP_MCE_FB25__DSQL_TRANSITIONAL_NUMERIC                             698
+#define IBP_MCE_FB25__DSQL_DB_TRIGGER_TYPE_CANT_CHANGE                      698
 
-#define IBP_MCE_FB25__DSQL_DIALECT_WARNING_EXPR                             699
+#define IBP_MCE_FB25__INTERNAL_MSG_336068609                                699
 
-#define IBP_MCE_FB25__SQL_DB_DIALECT_DTYPE_UNSUPPORT                        700
+#define IBP_MCE_FB25__INTERNAL_MSG_336068610                                700
 
-#define IBP_MCE_FB25__SQL_DIALECT_CONFLICT_NUM                              701
+#define IBP_MCE_FB25__INTERNAL_MSG_336068611                                701
 
-#define IBP_MCE_FB25__DSQL_WARNING_NUMBER_AMBIGUOUS                         702
+#define IBP_MCE_FB25__INTERNAL_MSG_336068612                                702
 
-#define IBP_MCE_FB25__DSQL_WARNING_NUMBER_AMBIGUOUS1                        703
+#define IBP_MCE_FB25__INTERNAL_MSG_336068613                                703
 
-#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS                         704
+#define IBP_MCE_FB25__INTERNAL_MSG_336068614                                704
 
-#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS1                        705
+#define IBP_MCE_FB25__INTERNAL_MSG_336068615                                705
 
-#define IBP_MCE_FB25__DSQL_WARN_PRECISION_AMBIGUOUS2                        706
+#define IBP_MCE_FB25__INTERNAL_MSG_336068616                                706
 
-#define IBP_MCE_FB25__DSQL_AMBIGUOUS_FIELD_NAME                             707
+#define IBP_MCE_FB25__INTERNAL_MSG_336068617                                707
 
-#define IBP_MCE_FB25__DSQL_UDF_RETURN_POS_ERR                               708
+#define IBP_MCE_FB25__INTERNAL_MSG_336068618                                708
 
-#define IBP_MCE_FB25__DSQL_INVALID_LABEL                                    709
+#define IBP_MCE_FB25__INTERNAL_MSG_336068619                                709
 
-#define IBP_MCE_FB25__DSQL_DATATYPES_NOT_COMPARABLE                         710
+#define IBP_MCE_FB25__INTERNAL_MSG_336068620                                710
 
-#define IBP_MCE_FB25__DSQL_CURSOR_INVALID                                   711
+#define IBP_MCE_FB25__INTERNAL_MSG_336068621                                711
 
-#define IBP_MCE_FB25__DSQL_CURSOR_REDEFINED                                 712
+#define IBP_MCE_FB25__INTERNAL_MSG_336068622                                712
 
-#define IBP_MCE_FB25__DSQL_CURSOR_NOT_FOUND                                 713
+#define IBP_MCE_FB25__INTERNAL_MSG_336068623                                713
 
-#define IBP_MCE_FB25__DSQL_CURSOR_EXISTS                                    714
+#define IBP_MCE_FB25__INTERNAL_MSG_336068624                                714
 
-#define IBP_MCE_FB25__DSQL_CURSOR_REL_AMBIGUOUS                             715
+#define IBP_MCE_FB25__INTERNAL_MSG_336068625                                715
 
-#define IBP_MCE_FB25__DSQL_CURSOR_REL_NOT_FOUND                             716
+#define IBP_MCE_FB25__INTERNAL_MSG_336068626                                716
 
-#define IBP_MCE_FB25__DSQL_CURSOR_NOT_OPEN                                  717
+#define IBP_MCE_FB25__INTERNAL_MSG_336068627                                717
 
-#define IBP_MCE_FB25__DSQL_TYPE_NOT_SUPP_EXT_TAB                            718
+#define IBP_MCE_FB25__INTERNAL_MSG_336068628                                718
 
-#define IBP_MCE_FB25__DSQL_FEATURE_NOT_SUPPORTED_ODS                        719
+#define IBP_MCE_FB25__INTERNAL_MSG_336068629                                719
 
-#define IBP_MCE_FB25__PRIMARY_KEY_REQUIRED                                  720
+#define IBP_MCE_FB25__INTERNAL_MSG_336068630                                720
 
-#define IBP_MCE_FB25__UPD_INS_DOESNT_MATCH_PK                               721
+#define IBP_MCE_FB25__INTERNAL_MSG_336068631                                721
 
-#define IBP_MCE_FB25__UPD_INS_DOESNT_MATCH_MATCHING                         722
+#define IBP_MCE_FB25__INTERNAL_MSG_336068632                                722
 
-#define IBP_MCE_FB25__UPD_INS_WITH_COMPLEX_VIEW                             723
+#define IBP_MCE_FB25__INTERNAL_MSG_336068633                                723
 
-#define IBP_MCE_FB25__DSQL_INCOMPATIBLE_TRIGGER_TYPE                        724
+#define IBP_MCE_FB25__INTERNAL_MSG_336068634                                724
 
-#define IBP_MCE_FB25__DSQL_DB_TRIGGER_TYPE_CANT_CHANGE                      725
+#define IBP_MCE_FB25__INTERNAL_MSG_336068635                                725
 
-#define IBP_MCE_FB25__DYN_DUP_TABLE                                         726
+#define IBP_MCE_FB25__INTERNAL_MSG_336068636                                726
 
-#define IBP_MCE_FB25__DYN_COLUMN_DOES_NOT_EXIST                             727
+#define IBP_MCE_FB25__INTERNAL_MSG_336068637                                727
 
-#define IBP_MCE_FB25__DYN_ROLE_DOES_NOT_EXIST                               728
+#define IBP_MCE_FB25__INTERNAL_MSG_336068638                                728
 
-#define IBP_MCE_FB25__DYN_NO_GRANT_ADMIN_OPT                                729
+#define IBP_MCE_FB25__INTERNAL_MSG_336068639                                729
 
-#define IBP_MCE_FB25__DYN_USER_NOT_ROLE_MEMBER                              730
+#define IBP_MCE_FB25__INTERNAL_MSG_336068640                                730
 
-#define IBP_MCE_FB25__DYN_DELETE_ROLE_FAILED                                731
+#define IBP_MCE_FB25__INTERNAL_MSG_336068641                                731
 
-#define IBP_MCE_FB25__DYN_GRANT_ROLE_TO_USER                                732
+#define IBP_MCE_FB25__INTERNAL_MSG_336068642                                732
 
-#define IBP_MCE_FB25__DYN_INV_SQL_ROLE_NAME                                 733
+#define IBP_MCE_FB25__INTERNAL_MSG_336068643                                733
 
-#define IBP_MCE_FB25__DYN_DUP_SQL_ROLE                                      734
+#define IBP_MCE_FB25__INTERNAL_MSG_336068644                                734
 
-#define IBP_MCE_FB25__DYN_KYWD_SPEC_FOR_ROLE                                735
+#define IBP_MCE_FB25__INTERNAL_MSG_336068645                                735
 
-#define IBP_MCE_FB25__DYN_ROLES_NOT_SUPPORTED                               736
+#define IBP_MCE_FB25__INTERNAL_MSG_336068646                                736
 
-#define IBP_MCE_FB25__DYN_DOMAIN_NAME_EXISTS                                737
+#define IBP_MCE_FB25__INTERNAL_MSG_336068647                                737
 
-#define IBP_MCE_FB25__DYN_FIELD_NAME_EXISTS                                 738
+#define IBP_MCE_FB25__INTERNAL_MSG_336068648                                738
 
-#define IBP_MCE_FB25__DYN_DEPENDENCY_EXISTS                                 739
+#define IBP_MCE_FB25__INTERNAL_MSG_336068649                                739
 
-#define IBP_MCE_FB25__DYN_DTYPE_INVALID                                     740
+#define IBP_MCE_FB25__INTERNAL_MSG_336068650                                740
 
-#define IBP_MCE_FB25__DYN_CHAR_FLD_TOO_SMALL                                741
+#define IBP_MCE_FB25__INTERNAL_MSG_336068651                                741
 
-#define IBP_MCE_FB25__DYN_INVALID_DTYPE_CONVERSION                          742
+#define IBP_MCE_FB25__INTERNAL_MSG_336068652                                742
 
-#define IBP_MCE_FB25__DYN_DTYPE_CONV_INVALID                                743
+#define IBP_MCE_FB25__INTERNAL_MSG_336068653                                743
 
-#define IBP_MCE_FB25__DYN_ZERO_LEN_ID                                       744
+#define IBP_MCE_FB25__INTERNAL_MSG_336068654                                744
 
-#define IBP_MCE_FB25__MAX_COLL_PER_CHARSET                                  745
+#define IBP_MCE_FB25__INTERNAL_MSG_336068655                                745
 
-#define IBP_MCE_FB25__INVALID_COLL_ATTR                                     746
+#define IBP_MCE_FB25__INTERNAL_MSG_336068656                                746
 
-#define IBP_MCE_FB25__DYN_WRONG_GTT_SCOPE                                   747
+#define IBP_MCE_FB25__INTERNAL_MSG_336068657                                747
 
-#define IBP_MCE_FB25__DYN_SCALE_TOO_BIG                                     748
+#define IBP_MCE_FB25__INTERNAL_MSG_336068658                                748
 
-#define IBP_MCE_FB25__DYN_PRECISION_TOO_SMALL                               749
+#define IBP_MCE_FB25__INTERNAL_MSG_336068659                                749
 
-#define IBP_MCE_FB25__DYN_MISS_PRIV_WARNING                                 750
+#define IBP_MCE_FB25__INTERNAL_MSG_336068660                                750
 
-#define IBP_MCE_FB25__DYN_ODS_NOT_SUPP_FEATURE                              751
+#define IBP_MCE_FB25__INTERNAL_MSG_336068661                                751
 
-#define IBP_MCE_FB25__DYN_CANNOT_ADDREM_COMPUTED                            752
+#define IBP_MCE_FB25__INTERNAL_MSG_336068662                                752
 
-#define IBP_MCE_FB25__DYN_NO_EMPTY_PW                                       753
+#define IBP_MCE_FB25__INTERNAL_MSG_336068663                                753
 
-#define IBP_MCE_FB25__DYN_DUP_INDEX                                         754
+#define IBP_MCE_FB25__INTERNAL_MSG_336068664                                754
 
-#define IBP_MCE_FB25__GBAK_UNKNOWN_SWITCH                                   755
+#define IBP_MCE_FB25__INTERNAL_MSG_336068665                                755
 
-#define IBP_MCE_FB25__GBAK_PAGE_SIZE_MISSING                                756
+#define IBP_MCE_FB25__INTERNAL_MSG_336068666                                756
 
-#define IBP_MCE_FB25__GBAK_PAGE_SIZE_TOOBIG                                 757
+#define IBP_MCE_FB25__INTERNAL_MSG_336068667                                757
 
-#define IBP_MCE_FB25__GBAK_REDIR_OUPUT_MISSING                              758
+#define IBP_MCE_FB25__INTERNAL_MSG_336068668                                758
 
-#define IBP_MCE_FB25__GBAK_SWITCHES_CONFLICT                                759
+#define IBP_MCE_FB25__INTERNAL_MSG_336068669                                759
 
-#define IBP_MCE_FB25__GBAK_UNKNOWN_DEVICE                                   760
+#define IBP_MCE_FB25__INTERNAL_MSG_336068670                                760
 
-#define IBP_MCE_FB25__GBAK_NO_PROTECTION                                    761
+#define IBP_MCE_FB25__INTERNAL_MSG_336068671                                761
 
-#define IBP_MCE_FB25__GBAK_PAGE_SIZE_NOT_ALLOWED                            762
+#define IBP_MCE_FB25__INTERNAL_MSG_336068672                                762
 
-#define IBP_MCE_FB25__GBAK_MULTI_SOURCE_DEST                                763
+#define IBP_MCE_FB25__INTERNAL_MSG_336068673                                763
 
-#define IBP_MCE_FB25__GBAK_FILENAME_MISSING                                 764
+#define IBP_MCE_FB25__INTERNAL_MSG_336068674                                764
 
-#define IBP_MCE_FB25__GBAK_DUP_INOUT_NAMES                                  765
+#define IBP_MCE_FB25__INTERNAL_MSG_336068675                                765
 
-#define IBP_MCE_FB25__GBAK_INV_PAGE_SIZE                                    766
+#define IBP_MCE_FB25__INTERNAL_MSG_336068676                                766
 
-#define IBP_MCE_FB25__GBAK_DB_SPECIFIED                                     767
+#define IBP_MCE_FB25__INTERNAL_MSG_336068677                                767
 
-#define IBP_MCE_FB25__GBAK_DB_EXISTS                                        768
+#define IBP_MCE_FB25__INTERNAL_MSG_336068678                                768
 
-#define IBP_MCE_FB25__GBAK_UNK_DEVICE                                       769
+#define IBP_MCE_FB25__INTERNAL_MSG_336068679                                769
 
-#define IBP_MCE_FB25__GBAK_BLOB_INFO_FAILED                                 770
+#define IBP_MCE_FB25__INTERNAL_MSG_336068680                                770
 
-#define IBP_MCE_FB25__GBAK_UNK_BLOB_ITEM                                    771
+#define IBP_MCE_FB25__INTERNAL_MSG_336068681                                771
 
-#define IBP_MCE_FB25__GBAK_GET_SEG_FAILED                                   772
+#define IBP_MCE_FB25__INTERNAL_MSG_336068682                                772
 
-#define IBP_MCE_FB25__GBAK_CLOSE_BLOB_FAILED                                773
+#define IBP_MCE_FB25__INTERNAL_MSG_336068683                                773
 
-#define IBP_MCE_FB25__GBAK_OPEN_BLOB_FAILED                                 774
+#define IBP_MCE_FB25__INTERNAL_MSG_336068684                                774
 
-#define IBP_MCE_FB25__GBAK_PUT_BLR_GEN_ID_FAILED                            775
+#define IBP_MCE_FB25__INTERNAL_MSG_336068685                                775
 
-#define IBP_MCE_FB25__GBAK_UNK_TYPE                                         776
+#define IBP_MCE_FB25__INTERNAL_MSG_336068686                                776
 
-#define IBP_MCE_FB25__GBAK_COMP_REQ_FAILED                                  777
+#define IBP_MCE_FB25__INTERNAL_MSG_336068687                                777
 
-#define IBP_MCE_FB25__GBAK_START_REQ_FAILED                                 778
+#define IBP_MCE_FB25__INTERNAL_MSG_336068688                                778
 
-#define IBP_MCE_FB25__GBAK_REC_FAILED                                       779
+#define IBP_MCE_FB25__INTERNAL_MSG_336068689                                779
 
-#define IBP_MCE_FB25__GBAK_REL_REQ_FAILED                                   780
+#define IBP_MCE_FB25__INTERNAL_MSG_336068690                                780
 
-#define IBP_MCE_FB25__GBAK_DB_INFO_FAILED                                   781
+#define IBP_MCE_FB25__INTERNAL_MSG_336068691                                781
 
-#define IBP_MCE_FB25__GBAK_NO_DB_DESC                                       782
+#define IBP_MCE_FB25__INTERNAL_MSG_336068692                                782
 
-#define IBP_MCE_FB25__GBAK_DB_CREATE_FAILED                                 783
+#define IBP_MCE_FB25__INTERNAL_MSG_336068693                                783
 
-#define IBP_MCE_FB25__GBAK_DECOMP_LEN_ERROR                                 784
+#define IBP_MCE_FB25__INTERNAL_MSG_336068694                                784
 
-#define IBP_MCE_FB25__GBAK_TBL_MISSING                                      785
+#define IBP_MCE_FB25__INTERNAL_MSG_336068695                                785
 
-#define IBP_MCE_FB25__GBAK_BLOB_COL_MISSING                                 786
+#define IBP_MCE_FB25__INTERNAL_MSG_336068696                                786
 
-#define IBP_MCE_FB25__GBAK_CREATE_BLOB_FAILED                               787
+#define IBP_MCE_FB25__INTERNAL_MSG_336068697                                787
 
-#define IBP_MCE_FB25__GBAK_PUT_SEG_FAILED                                   788
+#define IBP_MCE_FB25__INTERNAL_MSG_336068698                                788
 
-#define IBP_MCE_FB25__GBAK_REC_LEN_EXP                                      789
+#define IBP_MCE_FB25__INTERNAL_MSG_336068699                                789
 
-#define IBP_MCE_FB25__GBAK_INV_REC_LEN                                      790
+#define IBP_MCE_FB25__INTERNAL_MSG_336068700                                790
 
-#define IBP_MCE_FB25__GBAK_EXP_DATA_TYPE                                    791
+#define IBP_MCE_FB25__INTERNAL_MSG_336068701                                791
 
-#define IBP_MCE_FB25__GBAK_GEN_ID_FAILED                                    792
+#define IBP_MCE_FB25__INTERNAL_MSG_336068702                                792
 
-#define IBP_MCE_FB25__GBAK_UNK_REC_TYPE                                     793
+#define IBP_MCE_FB25__INTERNAL_MSG_336068703                                793
 
-#define IBP_MCE_FB25__GBAK_INV_BKUP_VER                                     794
+#define IBP_MCE_FB25__INTERNAL_MSG_336068704                                794
 
-#define IBP_MCE_FB25__GBAK_MISSING_BKUP_DESC                                795
+#define IBP_MCE_FB25__INTERNAL_MSG_336068705                                795
 
-#define IBP_MCE_FB25__GBAK_STRING_TRUNC                                     796
+#define IBP_MCE_FB25__INTERNAL_MSG_336068706                                796
 
-#define IBP_MCE_FB25__GBAK_CANT_REST_RECORD                                 797
+#define IBP_MCE_FB25__INTERNAL_MSG_336068707                                797
 
-#define IBP_MCE_FB25__GBAK_SEND_FAILED                                      798
+#define IBP_MCE_FB25__INTERNAL_MSG_336068708                                798
 
-#define IBP_MCE_FB25__GBAK_NO_TBL_NAME                                      799
+#define IBP_MCE_FB25__INTERNAL_MSG_336068709                                799
 
-#define IBP_MCE_FB25__GBAK_UNEXP_EOF                                        800
+#define IBP_MCE_FB25__INTERNAL_MSG_336068710                                800
 
-#define IBP_MCE_FB25__GBAK_DB_FORMAT_TOO_OLD                                801
+#define IBP_MCE_FB25__INTERNAL_MSG_336068711                                801
 
-#define IBP_MCE_FB25__GBAK_INV_ARRAY_DIM                                    802
+#define IBP_MCE_FB25__INTERNAL_MSG_336068712                                802
 
-#define IBP_MCE_FB25__GBAK_XDR_LEN_EXPECTED                                 803
+#define IBP_MCE_FB25__INTERNAL_MSG_336068713                                803
 
-#define IBP_MCE_FB25__GBAK_OPEN_BKUP_ERROR                                  804
+#define IBP_MCE_FB25__INTERNAL_MSG_336068714                                804
 
-#define IBP_MCE_FB25__GBAK_OPEN_ERROR                                       805
+#define IBP_MCE_FB25__INTERNAL_MSG_336068715                                805
 
-#define IBP_MCE_FB25__GBAK_MISSING_BLOCK_FAC                                806
+#define IBP_MCE_FB25__INTERNAL_MSG_336068716                                806
 
-#define IBP_MCE_FB25__GBAK_INV_BLOCK_FAC                                    807
+#define IBP_MCE_FB25__INTERNAL_MSG_336068717                                807
 
-#define IBP_MCE_FB25__GBAK_BLOCK_FAC_SPECIFIED                              808
+#define IBP_MCE_FB25__INTERNAL_MSG_336068718                                808
 
-#define IBP_MCE_FB25__GBAK_MISSING_USERNAME                                 809
+#define IBP_MCE_FB25__INTERNAL_MSG_336068719                                809
 
-#define IBP_MCE_FB25__GBAK_MISSING_PASSWORD                                 810
+#define IBP_MCE_FB25__INTERNAL_MSG_336068720                                810
 
-#define IBP_MCE_FB25__GBAK_MISSING_SKIPPED_BYTES                            811
+#define IBP_MCE_FB25__INTERNAL_MSG_336068721                                811
 
-#define IBP_MCE_FB25__GBAK_INV_SKIPPED_BYTES                                812
+#define IBP_MCE_FB25__INTERNAL_MSG_336068722                                812
 
-#define IBP_MCE_FB25__GBAK_ERR_RESTORE_CHARSET                              813
+#define IBP_MCE_FB25__INTERNAL_MSG_336068723                                813
 
-#define IBP_MCE_FB25__GBAK_ERR_RESTORE_COLLATION                            814
+#define IBP_MCE_FB25__INTERNAL_MSG_336068724                                814
 
-#define IBP_MCE_FB25__GBAK_READ_ERROR                                       815
+#define IBP_MCE_FB25__INTERNAL_MSG_336068725                                815
 
-#define IBP_MCE_FB25__GBAK_WRITE_ERROR                                      816
+#define IBP_MCE_FB25__INTERNAL_MSG_336068726                                816
 
-#define IBP_MCE_FB25__GBAK_DB_IN_USE                                        817
+#define IBP_MCE_FB25__INTERNAL_MSG_336068727                                817
 
-#define IBP_MCE_FB25__GBAK_SYSMEMEX                                         818
+#define IBP_MCE_FB25__INTERNAL_MSG_336068728                                818
 
-#define IBP_MCE_FB25__GBAK_RESTORE_ROLE_FAILED                              819
+#define IBP_MCE_FB25__INTERNAL_MSG_336068729                                819
 
-#define IBP_MCE_FB25__GBAK_ROLE_OP_MISSING                                  820
+#define IBP_MCE_FB25__INTERNAL_MSG_336068730                                820
 
-#define IBP_MCE_FB25__GBAK_PAGE_BUFFERS_MISSING                             821
+#define IBP_MCE_FB25__INTERNAL_MSG_336068731                                821
 
-#define IBP_MCE_FB25__GBAK_PAGE_BUFFERS_WRONG_PARAM                         822
+#define IBP_MCE_FB25__INTERNAL_MSG_336068732                                822
 
-#define IBP_MCE_FB25__GBAK_PAGE_BUFFERS_RESTORE                             823
+#define IBP_MCE_FB25__INTERNAL_MSG_336068733                                823
 
-#define IBP_MCE_FB25__GBAK_INV_SIZE                                         824
+#define IBP_MCE_FB25__INTERNAL_MSG_336068734                                824
 
-#define IBP_MCE_FB25__GBAK_FILE_OUTOF_SEQUENCE                              825
+#define IBP_MCE_FB25__INTERNAL_MSG_336068735                                825
 
-#define IBP_MCE_FB25__GBAK_JOIN_FILE_MISSING                                826
+#define IBP_MCE_FB25__INTERNAL_MSG_336068736                                826
 
-#define IBP_MCE_FB25__GBAK_STDIN_NOT_SUPPTD                                 827
+#define IBP_MCE_FB25__INTERNAL_MSG_336068737                                827
 
-#define IBP_MCE_FB25__GBAK_STDOUT_NOT_SUPPTD                                828
+#define IBP_MCE_FB25__INTERNAL_MSG_336068738                                828
 
-#define IBP_MCE_FB25__GBAK_BKUP_CORRUPT                                     829
+#define IBP_MCE_FB25__INTERNAL_MSG_336068739                                829
 
-#define IBP_MCE_FB25__GBAK_UNK_DB_FILE_SPEC                                 830
+#define IBP_MCE_FB25__DYN_DUP_TABLE                                         830
 
-#define IBP_MCE_FB25__GBAK_HDR_WRITE_FAILED                                 831
+#define IBP_MCE_FB25__INTERNAL_MSG_336068741                                831
 
-#define IBP_MCE_FB25__GBAK_DISK_SPACE_EX                                    832
+#define IBP_MCE_FB25__INTERNAL_MSG_336068742                                832
 
-#define IBP_MCE_FB25__GBAK_SIZE_LT_MIN                                      833
+#define IBP_MCE_FB25__DYN_DUP_PROCEDURE                                     833
 
-#define IBP_MCE_FB25__GBAK_SVC_NAME_MISSING                                 834
+#define IBP_MCE_FB25__INTERNAL_MSG_336068744                                834
 
-#define IBP_MCE_FB25__GBAK_NOT_OWNR                                         835
+#define IBP_MCE_FB25__INTERNAL_MSG_336068745                                835
 
-#define IBP_MCE_FB25__GBAK_MODE_REQ                                         836
+#define IBP_MCE_FB25__INTERNAL_MSG_336068746                                836
 
-#define IBP_MCE_FB25__GBAK_JUST_DATA                                        837
+#define IBP_MCE_FB25__INTERNAL_MSG_336068747                                837
 
-#define IBP_MCE_FB25__GBAK_DATA_ONLY                                        838
+#define IBP_MCE_FB25__INTERNAL_MSG_336068748                                838
 
-#define IBP_MCE_FB25__GBAK_INVALID_METADATA                                 839
+#define IBP_MCE_FB25__INTERNAL_MSG_336068749                                839
 
-#define IBP_MCE_FB25__GBAK_INVALID_DATA                                     840
+#define IBP_MCE_FB25__INTERNAL_MSG_336068750                                840
 
-#define IBP_MCE_FB25__DSQL_TOO_OLD_ODS                                      841
+#define IBP_MCE_FB25__INTERNAL_MSG_336068751                                841
 
-#define IBP_MCE_FB25__DSQL_TABLE_NOT_FOUND                                  842
+#define IBP_MCE_FB25__INTERNAL_MSG_336068752                                842
 
-#define IBP_MCE_FB25__DSQL_VIEW_NOT_FOUND                                   843
+#define IBP_MCE_FB25__INTERNAL_MSG_336068753                                843
 
-#define IBP_MCE_FB25__DSQL_LINE_COL_ERROR                                   844
+#define IBP_MCE_FB25__INTERNAL_MSG_336068754                                844
 
-#define IBP_MCE_FB25__DSQL_UNKNOWN_POS                                      845
+#define IBP_MCE_FB25__INTERNAL_MSG_336068755                                845
 
-#define IBP_MCE_FB25__DSQL_NO_DUP_NAME                                      846
+#define IBP_MCE_FB25__INTERNAL_MSG_336068756                                846
 
-#define IBP_MCE_FB25__DSQL_TOO_MANY_VALUES                                  847
+#define IBP_MCE_FB25__INTERNAL_MSG_336068757                                847
 
-#define IBP_MCE_FB25__DSQL_NO_ARRAY_COMPUTED                                848
+#define IBP_MCE_FB25__INTERNAL_MSG_336068758                                848
 
-#define IBP_MCE_FB25__DSQL_IMPLICIT_DOMAIN_NAME                             849
+#define IBP_MCE_FB25__INTERNAL_MSG_336068759                                849
 
-#define IBP_MCE_FB25__DSQL_ONLY_CAN_SUBSCRIPT_ARRAY                         850
+#define IBP_MCE_FB25__INTERNAL_MSG_336068760                                850
 
-#define IBP_MCE_FB25__DSQL_MAX_SORT_ITEMS                                   851
+#define IBP_MCE_FB25__INTERNAL_MSG_336068761                                851
 
-#define IBP_MCE_FB25__DSQL_MAX_GROUP_ITEMS                                  852
+#define IBP_MCE_FB25__INTERNAL_MSG_336068762                                852
 
-#define IBP_MCE_FB25__DSQL_CONFLICTING_SORT_FIELD                           853
+#define IBP_MCE_FB25__INTERNAL_MSG_336068763                                853
 
-#define IBP_MCE_FB25__DSQL_DERIVED_TABLE_MORE_COLUMNS                       854
+#define IBP_MCE_FB25__INTERNAL_MSG_336068764                                854
 
-#define IBP_MCE_FB25__DSQL_DERIVED_TABLE_LESS_COLUMNS                       855
+#define IBP_MCE_FB25__INTERNAL_MSG_336068765                                855
 
-#define IBP_MCE_FB25__DSQL_DERIVED_FIELD_UNNAMED                            856
+#define IBP_MCE_FB25__INTERNAL_MSG_336068766                                856
 
-#define IBP_MCE_FB25__DSQL_DERIVED_FIELD_DUP_NAME                           857
+#define IBP_MCE_FB25__INTERNAL_MSG_336068767                                857
 
-#define IBP_MCE_FB25__DSQL_DERIVED_ALIAS_SELECT                             858
+#define IBP_MCE_FB25__INTERNAL_MSG_336068768                                858
 
-#define IBP_MCE_FB25__DSQL_DERIVED_ALIAS_FIELD                              859
+#define IBP_MCE_FB25__INTERNAL_MSG_336068770                                859
 
-#define IBP_MCE_FB25__DSQL_AUTO_FIELD_BAD_POS                               860
+#define IBP_MCE_FB25__INTERNAL_MSG_336068771                                860
 
-#define IBP_MCE_FB25__DSQL_CTE_WRONG_REFERENCE                              861
+#define IBP_MCE_FB25__INTERNAL_MSG_336068772                                861
 
-#define IBP_MCE_FB25__DSQL_CTE_CYCLE                                        862
+#define IBP_MCE_FB25__INTERNAL_MSG_336068773                                862
 
-#define IBP_MCE_FB25__DSQL_CTE_OUTER_JOIN                                   863
+#define IBP_MCE_FB25__INTERNAL_MSG_336068774                                863
 
-#define IBP_MCE_FB25__DSQL_CTE_MULT_REFERENCES                              864
+#define IBP_MCE_FB25__INTERNAL_MSG_336068775                                864
 
-#define IBP_MCE_FB25__DSQL_CTE_NOT_A_UNION                                  865
+#define IBP_MCE_FB25__INTERNAL_MSG_336068776                                865
 
-#define IBP_MCE_FB25__DSQL_CTE_NONRECURS_AFTER_RECURS                       866
+#define IBP_MCE_FB25__INTERNAL_MSG_336068777                                866
 
-#define IBP_MCE_FB25__DSQL_CTE_WRONG_CLAUSE                                 867
+#define IBP_MCE_FB25__INTERNAL_MSG_336068778                                867
 
-#define IBP_MCE_FB25__DSQL_CTE_UNION_ALL                                    868
+#define IBP_MCE_FB25__INTERNAL_MSG_336068779                                868
 
-#define IBP_MCE_FB25__DSQL_CTE_MISS_NONRECURSIVE                            869
+#define IBP_MCE_FB25__INTERNAL_MSG_336068780                                869
 
-#define IBP_MCE_FB25__DSQL_CTE_NESTED_WITH                                  870
+#define IBP_MCE_FB25__INTERNAL_MSG_336068781                                870
 
-#define IBP_MCE_FB25__DSQL_COL_MORE_THAN_ONCE_USING                         871
+#define IBP_MCE_FB25__INTERNAL_MSG_336068782                                871
 
-#define IBP_MCE_FB25__DSQL_UNSUPP_FEATURE_DIALECT                           872
+#define IBP_MCE_FB25__INTERNAL_MSG_336068783                                872
 
-#define IBP_MCE_FB25__DSQL_CTE_NOT_USED                                     873
+#define IBP_MCE_FB25__DYN_COLUMN_DOES_NOT_EXIST                             873
 
-#define IBP_MCE_FB25__DSQL_COL_MORE_THAN_ONCE_VIEW                          874
+#define IBP_MCE_FB25__INTERNAL_MSG_336068785                                874
 
-#define IBP_MCE_FB25__DSQL_UNSUPPORTED_IN_AUTO_TRANS                        875
+#define IBP_MCE_FB25__INTERNAL_MSG_336068786                                875
 
-#define IBP_MCE_FB25__DSQL_EVAL_UNKNODE                                     876
+#define IBP_MCE_FB25__INTERNAL_MSG_336068787                                876
 
-#define IBP_MCE_FB25__DSQL_AGG_WRONGARG                                     877
+#define IBP_MCE_FB25__INTERNAL_MSG_336068788                                877
 
-#define IBP_MCE_FB25__DSQL_AGG2_WRONGARG                                    878
+#define IBP_MCE_FB25__INTERNAL_MSG_336068789                                878
 
-#define IBP_MCE_FB25__DSQL_NODATEORTIME_PM_STRING                           879
+#define IBP_MCE_FB25__INTERNAL_MSG_336068790                                879
 
-#define IBP_MCE_FB25__DSQL_INVALID_DATETIME_SUBTRACT                        880
+#define IBP_MCE_FB25__INTERNAL_MSG_336068791                                880
 
-#define IBP_MCE_FB25__DSQL_INVALID_DATEORTIME_ADD                           881
+#define IBP_MCE_FB25__INTERNAL_MSG_336068792                                881
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MINUS_DATE                          882
+#define IBP_MCE_FB25__INTERNAL_MSG_336068793                                882
 
-#define IBP_MCE_FB25__DSQL_NOSTRING_ADDSUB_DIAL3                            883
+#define IBP_MCE_FB25__INTERNAL_MSG_336068794                                883
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_ADDSUB_DIAL3                        884
+#define IBP_MCE_FB25__INTERNAL_MSG_336068795                                884
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MULTIP_DIAL1                        885
+#define IBP_MCE_FB25__DYN_ROLE_DOES_NOT_EXIST                               885
 
-#define IBP_MCE_FB25__DSQL_NOSTRING_MULTIP_DIAL3                            886
+#define IBP_MCE_FB25__DYN_NO_GRANT_ADMIN_OPT                                886
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MULTIP_DIAL3                        887
+#define IBP_MCE_FB25__DYN_USER_NOT_ROLE_MEMBER                              887
 
-#define IBP_MCE_FB25__DSQL_MUSTUSE_NUMERIC_DIV_DIAL1                        888
+#define IBP_MCE_FB25__DYN_DELETE_ROLE_FAILED                                888
 
-#define IBP_MCE_FB25__DSQL_NOSTRING_DIV_DIAL3                               889
+#define IBP_MCE_FB25__DYN_GRANT_ROLE_TO_USER                                889
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_DIV_DIAL3                           890
+#define IBP_MCE_FB25__DYN_INV_SQL_ROLE_NAME                                 890
 
-#define IBP_MCE_FB25__DSQL_NOSTRING_NEG_DIAL3                               891
+#define IBP_MCE_FB25__DYN_DUP_SQL_ROLE                                      891
 
-#define IBP_MCE_FB25__DSQL_INVALID_TYPE_NEG                                 892
+#define IBP_MCE_FB25__DYN_KYWD_SPEC_FOR_ROLE                                892
 
-#define IBP_MCE_FB25__DSQL_MAX_DISTINCT_ITEMS                               893
+#define IBP_MCE_FB25__DYN_ROLES_NOT_SUPPORTED                               893
 
-#define IBP_MCE_FB25__GSEC_CANT_OPEN_DB                                     894
+#define IBP_MCE_FB25__DYN_DOMAIN_NAME_EXISTS                                894
 
-#define IBP_MCE_FB25__GSEC_SWITCHES_ERROR                                   895
+#define IBP_MCE_FB25__DYN_FIELD_NAME_EXISTS                                 895
 
-#define IBP_MCE_FB25__GSEC_NO_OP_SPEC                                       896
+#define IBP_MCE_FB25__DYN_DEPENDENCY_EXISTS                                 896
 
-#define IBP_MCE_FB25__GSEC_NO_USR_NAME                                      897
+#define IBP_MCE_FB25__DYN_DTYPE_INVALID                                     897
 
-#define IBP_MCE_FB25__GSEC_ERR_ADD                                          898
+#define IBP_MCE_FB25__DYN_CHAR_FLD_TOO_SMALL                                898
 
-#define IBP_MCE_FB25__GSEC_ERR_MODIFY                                       899
+#define IBP_MCE_FB25__DYN_INVALID_DTYPE_CONVERSION                          899
 
-#define IBP_MCE_FB25__GSEC_ERR_FIND_MOD                                     900
+#define IBP_MCE_FB25__DYN_DTYPE_CONV_INVALID                                900
 
-#define IBP_MCE_FB25__GSEC_ERR_REC_NOT_FOUND                                901
+#define IBP_MCE_FB25__DYN_VIRMEMEXH                                         901
 
-#define IBP_MCE_FB25__GSEC_ERR_DELETE                                       902
+#define IBP_MCE_FB25__DYN_ZERO_LEN_ID                                       902
 
-#define IBP_MCE_FB25__GSEC_ERR_FIND_DEL                                     903
+#define IBP_MCE_FB25__DEL_GEN_FAIL                                          903
 
-#define IBP_MCE_FB25__GSEC_ERR_FIND_DISP                                    904
+#define IBP_MCE_FB25__DYN_GEN_NOT_FOUND                                     904
 
-#define IBP_MCE_FB25__GSEC_INV_PARAM                                        905
+#define IBP_MCE_FB25__INTERNAL_MSG_336068823                                905
 
-#define IBP_MCE_FB25__GSEC_OP_SPECIFIED                                     906
+#define IBP_MCE_FB25__INTERNAL_MSG_336068824                                906
 
-#define IBP_MCE_FB25__GSEC_PW_SPECIFIED                                     907
+#define IBP_MCE_FB25__INTERNAL_MSG_336068825                                907
 
-#define IBP_MCE_FB25__GSEC_UID_SPECIFIED                                    908
+#define IBP_MCE_FB25__INTERNAL_MSG_336068826                                908
 
-#define IBP_MCE_FB25__GSEC_GID_SPECIFIED                                    909
+#define IBP_MCE_FB25__INTERNAL_MSG_336068827                                909
 
-#define IBP_MCE_FB25__GSEC_PROJ_SPECIFIED                                   910
+#define IBP_MCE_FB25__INTERNAL_MSG_336068828                                910
 
-#define IBP_MCE_FB25__GSEC_ORG_SPECIFIED                                    911
+#define IBP_MCE_FB25__MAX_COLL_PER_CHARSET                                  911
 
-#define IBP_MCE_FB25__GSEC_FNAME_SPECIFIED                                  912
+#define IBP_MCE_FB25__INVALID_COLL_ATTR                                     912
 
-#define IBP_MCE_FB25__GSEC_MNAME_SPECIFIED                                  913
+#define IBP_MCE_FB25__INTERNAL_MSG_336068831                                913
 
-#define IBP_MCE_FB25__GSEC_LNAME_SPECIFIED                                  914
+#define IBP_MCE_FB25__INTERNAL_MSG_336068832                                914
 
-#define IBP_MCE_FB25__GSEC_INV_SWITCH                                       915
+#define IBP_MCE_FB25__INTERNAL_MSG_336068833                                915
 
-#define IBP_MCE_FB25__GSEC_AMB_SWITCH                                       916
+#define IBP_MCE_FB25__INTERNAL_MSG_336068834                                916
 
-#define IBP_MCE_FB25__GSEC_NO_OP_SPECIFIED                                  917
+#define IBP_MCE_FB25__INTERNAL_MSG_336068835                                917
 
-#define IBP_MCE_FB25__GSEC_PARAMS_NOT_ALLOWED                               918
+#define IBP_MCE_FB25__INTERNAL_MSG_336068836                                918
 
-#define IBP_MCE_FB25__GSEC_INCOMPAT_SWITCH                                  919
+#define IBP_MCE_FB25__INTERNAL_MSG_336068837                                919
 
-#define IBP_MCE_FB25__GSEC_INV_USERNAME                                     920
+#define IBP_MCE_FB25__INTERNAL_MSG_336068838                                920
 
-#define IBP_MCE_FB25__GSEC_INV_PW_LENGTH                                    921
+#define IBP_MCE_FB25__INTERNAL_MSG_336068839                                921
 
-#define IBP_MCE_FB25__GSEC_DB_SPECIFIED                                     922
+#define IBP_MCE_FB25__DYN_WRONG_GTT_SCOPE                                   922
 
-#define IBP_MCE_FB25__GSEC_DB_ADMIN_SPECIFIED                               923
+#define IBP_MCE_FB25__INTERNAL_MSG_336068841                                923
 
-#define IBP_MCE_FB25__GSEC_DB_ADMIN_PW_SPECIFIED                            924
+#define IBP_MCE_FB25__DEL_COLL_FAIL                                         924
 
-#define IBP_MCE_FB25__GSEC_SQL_ROLE_SPECIFIED                               925
+#define IBP_MCE_FB25__INTERNAL_MSG_336068843                                925
 
-#define IBP_MCE_FB25__LICENSE_NO_FILE                                       926
+#define IBP_MCE_FB25__INTERNAL_MSG_336068844                                926
 
-#define IBP_MCE_FB25__LICENSE_OP_SPECIFIED                                  927
+#define IBP_MCE_FB25__INTERNAL_MSG_336068845                                927
 
-#define IBP_MCE_FB25__LICENSE_OP_MISSING                                    928
+#define IBP_MCE_FB25__INTERNAL_MSG_336068846                                928
 
-#define IBP_MCE_FB25__LICENSE_INV_SWITCH                                    929
+#define IBP_MCE_FB25__INTERNAL_MSG_336068847                                929
 
-#define IBP_MCE_FB25__LICENSE_INV_SWITCH_COMBO                              930
+#define IBP_MCE_FB25__INTERNAL_MSG_336068848                                930
 
-#define IBP_MCE_FB25__LICENSE_INV_OP_COMBO                                  931
+#define IBP_MCE_FB25__INTERNAL_MSG_336068849                                931
 
-#define IBP_MCE_FB25__LICENSE_AMB_SWITCH                                    932
+#define IBP_MCE_FB25__INTERNAL_MSG_336068850                                932
 
-#define IBP_MCE_FB25__LICENSE_INV_PARAMETER                                 933
+#define IBP_MCE_FB25__INTERNAL_MSG_336068851                                933
 
-#define IBP_MCE_FB25__LICENSE_PARAM_SPECIFIED                               934
+#define IBP_MCE_FB25__DYN_SCALE_TOO_BIG                                     934
 
-#define IBP_MCE_FB25__LICENSE_PARAM_REQ                                     935
+#define IBP_MCE_FB25__DYN_PRECISION_TOO_SMALL                               935
 
-#define IBP_MCE_FB25__LICENSE_SYNTX_ERROR                                   936
+#define IBP_MCE_FB25__INTERNAL_MSG_336068854                                936
 
-#define IBP_MCE_FB25__LICENSE_DUP_ID                                        937
+#define IBP_MCE_FB25__DYN_MISS_PRIV_WARNING                                 937
 
-#define IBP_MCE_FB25__LICENSE_INV_ID_KEY                                    938
+#define IBP_MCE_FB25__DYN_ODS_NOT_SUPP_FEATURE                              938
 
-#define IBP_MCE_FB25__LICENSE_ERR_REMOVE                                    939
+#define IBP_MCE_FB25__DYN_CANNOT_ADDREM_COMPUTED                            939
 
-#define IBP_MCE_FB25__LICENSE_ERR_UPDATE                                    940
+#define IBP_MCE_FB25__DYN_NO_EMPTY_PW                                       940
 
-#define IBP_MCE_FB25__LICENSE_ERR_CONVERT                                   941
+#define IBP_MCE_FB25__DYN_DUP_INDEX                                         941
 
-#define IBP_MCE_FB25__LICENSE_ERR_UNK                                       942
+#define IBP_MCE_FB25__DYN_LOCKSMITH_USE_GRANTED                             942
 
-#define IBP_MCE_FB25__LICENSE_SVC_ERR_ADD                                   943
+#define IBP_MCE_FB25__DYN_DUP_EXCEPTION                                     943
 
-#define IBP_MCE_FB25__LICENSE_SVC_ERR_REMOVE                                944
+#define IBP_MCE_FB25__DYN_DUP_GENERATOR                                     944
 
-#define IBP_MCE_FB25__LICENSE_EVAL_EXISTS                                   945
+#define IBP_MCE_FB25__INTERNAL_MSG_336068863                                945
 
-#define IBP_MCE_FB25__GSTAT_UNKNOWN_SWITCH                                  946
+#define IBP_MCE_FB25__INTERNAL_MSG_336068892                                946
 
-#define IBP_MCE_FB25__GSTAT_RETRY                                           947
+#define IBP_MCE_FB25__INTERNAL_MSG_336396289                                947
 
-#define IBP_MCE_FB25__GSTAT_WRONG_ODS                                       948
+#define IBP_MCE_FB25__INTERNAL_MSG_336396362                                948
 
-#define IBP_MCE_FB25__GSTAT_UNEXPECTED_EOF                                  949
+#define IBP_MCE_FB25__INTERNAL_MSG_336396364                                949
 
-#define IBP_MCE_FB25__GSTAT_OPEN_ERR                                        950
+#define IBP_MCE_FB25__INTERNAL_MSG_336396365                                950
 
-#define IBP_MCE_FB25__GSTAT_READ_ERR                                        951
+#define IBP_MCE_FB25__INTERNAL_MSG_336396366                                951
 
-#define IBP_MCE_FB25__GSTAT_SYSMEMEX                                        952
+#define IBP_MCE_FB25__INTERNAL_MSG_336396375                                952
 
-#define IBP_MCE_FB25__FBSVCMGR_BAD_AM                                       953
+#define IBP_MCE_FB25__INTERNAL_MSG_336396376                                953
 
-#define IBP_MCE_FB25__FBSVCMGR_BAD_WM                                       954
+#define IBP_MCE_FB25__INTERNAL_MSG_336396377                                954
 
-#define IBP_MCE_FB25__FBSVCMGR_BAD_RS                                       955
+#define IBP_MCE_FB25__INTERNAL_MSG_336396379                                955
 
-#define IBP_MCE_FB25__FBSVCMGR_INFO_ERR                                     956
+#define IBP_MCE_FB25__INTERNAL_MSG_336396382                                956
 
-#define IBP_MCE_FB25__FBSVCMGR_QUERY_ERR                                    957
+#define IBP_MCE_FB25__INTERNAL_MSG_336396384                                957
 
-#define IBP_MCE_FB25__FBSVCMGR_SWITCH_UNKNOWN                               958
+#define IBP_MCE_FB25__INTERNAL_MSG_336396386                                958
 
-#define IBP_MCE_FB25__FBSVCMGR_BAD_SM                                       959
+#define IBP_MCE_FB25__INTERNAL_MSG_336396387                                959
 
-#define IBP_MCE_FB25__FBSVCMGR_FP_OPEN                                      960
+#define IBP_MCE_FB25__INTERNAL_MSG_336396446                                960
 
-#define IBP_MCE_FB25__FBSVCMGR_FP_READ                                      961
+#define IBP_MCE_FB25__INTERNAL_MSG_336396447                                961
 
-#define IBP_MCE_FB25__FBSVCMGR_FP_EMPTY                                     962
+#define IBP_MCE_FB25__INTERNAL_MSG_336396448                                962
 
-#define IBP_MCE_FB25__FBSVCMGR_BAD_ARG                                      963
+#define IBP_MCE_FB25__INTERNAL_MSG_336396449                                963
 
-#define IBP_MCE_FB25__UTL_TRUSTED_SWITCH                                    964
+#define IBP_MCE_FB25__INTERNAL_MSG_336396450                                964
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396451                                965
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396452                                966
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396453                                967
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396454                                968
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396455                                969
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396456                                970
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396457                                971
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396458                                972
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396459                                973
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396460                                974
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396461                                975
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396462                                976
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396463                                977
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396464                                978
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396465                                979
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396468                                980
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396471                                981
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396472                                982
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396477                                983
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396478                                984
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396479                                985
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396480                                986
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396481                                987
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396482                                988
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396484                                989
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396485                                990
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396486                                991
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396594                                992
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396595                                993
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396596                                994
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396597                                995
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396598                                996
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396599                                997
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396603                                998
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396611                                999
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396624                                1000
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396625                                1001
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396628                                1002
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396651                                1003
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396663                                1004
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396670                                1005
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396671                                1006
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396672                                1007
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396673                                1008
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396681                                1009
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396683                                1010
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396684                                1011
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396687                                1012
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396688                                1013
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396689                                1014
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396690                                1015
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396691                                1016
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396692                                1017
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396693                                1018
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396735                                1019
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396736                                1020
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396737                                1021
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396756                                1022
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396757                                1023
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396758                                1024
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396769                                1025
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396770                                1026
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396778                                1027
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396780                                1028
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396784                                1029
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396786                                1030
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396787                                1031
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396875                                1032
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396881                                1033
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396882                                1034
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396886                                1035
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396887                                1036
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396974                                1037
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396975                                1038
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396985                                1039
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396991                                1040
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396992                                1041
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396993                                1042
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396994                                1043
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396995                                1044
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396996                                1045
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336396997                                1046
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397004                                1047
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397005                                1048
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397006                                1049
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397007                                1050
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397027                                1051
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397028                                1052
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397029                                1053
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397030                                1054
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397031                                1055
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397033                                1056
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397034                                1057
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397035                                1058
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397036                                1059
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397037                                1060
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397038                                1061
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397039                                1062
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397040                                1063
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397041                                1064
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397042                                1065
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397043                                1066
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397044                                1067
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397045                                1068
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397046                                1069
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397047                                1070
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397048                                1071
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397049                                1072
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397050                                1073
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397051                                1074
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397052                                1075
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397053                                1076
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397054                                1077
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397055                                1078
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397056                                1079
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397057                                1080
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397058                                1081
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397069                                1082
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397080                                1083
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397082                                1084
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397083                                1085
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397084                                1086
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397085                                1087
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397116                                1088
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397117                                1089
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397118                                1090
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397126                                1091
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397130                                1092
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397131                                1093
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397133                                1094
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397137                                1095
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397138                                1096
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397183                                1097
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397184                                1098
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397185                                1099
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397203                                1100
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336397204                                1101
+
+#define IBP_MCE_FB25__DSQL_TOO_OLD_ODS                                      1102
+
+#define IBP_MCE_FB25__DSQL_TABLE_NOT_FOUND                                  1103
+
+#define IBP_MCE_FB25__DSQL_VIEW_NOT_FOUND                                   1104
+
+#define IBP_MCE_FB25__DSQL_LINE_COL_ERROR                                   1105
+
+#define IBP_MCE_FB25__DSQL_UNKNOWN_POS                                      1106
+
+#define IBP_MCE_FB25__DSQL_NO_DUP_NAME                                      1107
+
+#define IBP_MCE_FB25__DSQL_TOO_MANY_VALUES                                  1108
+
+#define IBP_MCE_FB25__DSQL_NO_ARRAY_COMPUTED                                1109
+
+#define IBP_MCE_FB25__DSQL_IMPLICIT_DOMAIN_NAME                             1110
+
+#define IBP_MCE_FB25__DSQL_ONLY_CAN_SUBSCRIPT_ARRAY                         1111
+
+#define IBP_MCE_FB25__DSQL_MAX_SORT_ITEMS                                   1112
+
+#define IBP_MCE_FB25__DSQL_MAX_GROUP_ITEMS                                  1113
+
+#define IBP_MCE_FB25__DSQL_CONFLICTING_SORT_FIELD                           1114
+
+#define IBP_MCE_FB25__DSQL_DERIVED_TABLE_MORE_COLUMNS                       1115
+
+#define IBP_MCE_FB25__DSQL_DERIVED_TABLE_LESS_COLUMNS                       1116
+
+#define IBP_MCE_FB25__DSQL_DERIVED_FIELD_UNNAMED                            1117
+
+#define IBP_MCE_FB25__DSQL_DERIVED_FIELD_DUP_NAME                           1118
+
+#define IBP_MCE_FB25__DSQL_DERIVED_ALIAS_SELECT                             1119
+
+#define IBP_MCE_FB25__DSQL_DERIVED_ALIAS_FIELD                              1120
+
+#define IBP_MCE_FB25__DSQL_AUTO_FIELD_BAD_POS                               1121
+
+#define IBP_MCE_FB25__DSQL_CTE_WRONG_REFERENCE                              1122
+
+#define IBP_MCE_FB25__DSQL_CTE_CYCLE                                        1123
+
+#define IBP_MCE_FB25__DSQL_CTE_OUTER_JOIN                                   1124
+
+#define IBP_MCE_FB25__DSQL_CTE_MULT_REFERENCES                              1125
+
+#define IBP_MCE_FB25__DSQL_CTE_NOT_A_UNION                                  1126
+
+#define IBP_MCE_FB25__DSQL_CTE_NONRECURS_AFTER_RECURS                       1127
+
+#define IBP_MCE_FB25__DSQL_CTE_WRONG_CLAUSE                                 1128
+
+#define IBP_MCE_FB25__DSQL_CTE_UNION_ALL                                    1129
+
+#define IBP_MCE_FB25__DSQL_CTE_MISS_NONRECURSIVE                            1130
+
+#define IBP_MCE_FB25__DSQL_CTE_NESTED_WITH                                  1131
+
+#define IBP_MCE_FB25__DSQL_COL_MORE_THAN_ONCE_USING                         1132
+
+#define IBP_MCE_FB25__DSQL_UNSUPP_FEATURE_DIALECT                           1133
+
+#define IBP_MCE_FB25__DSQL_CTE_NOT_USED                                     1134
+
+#define IBP_MCE_FB25__DSQL_COL_MORE_THAN_ONCE_VIEW                          1135
+
+#define IBP_MCE_FB25__DSQL_UNSUPPORTED_IN_AUTO_TRANS                        1136
+
+#define IBP_MCE_FB25__DSQL_EVAL_UNKNODE                                     1137
+
+#define IBP_MCE_FB25__DSQL_AGG_WRONGARG                                     1138
+
+#define IBP_MCE_FB25__DSQL_AGG2_WRONGARG                                    1139
+
+#define IBP_MCE_FB25__DSQL_NODATEORTIME_PM_STRING                           1140
+
+#define IBP_MCE_FB25__DSQL_INVALID_DATETIME_SUBTRACT                        1141
+
+#define IBP_MCE_FB25__DSQL_INVALID_DATEORTIME_ADD                           1142
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MINUS_DATE                          1143
+
+#define IBP_MCE_FB25__DSQL_NOSTRING_ADDSUB_DIAL3                            1144
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_ADDSUB_DIAL3                        1145
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MULTIP_DIAL1                        1146
+
+#define IBP_MCE_FB25__DSQL_NOSTRING_MULTIP_DIAL3                            1147
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_MULTIP_DIAL3                        1148
+
+#define IBP_MCE_FB25__DSQL_MUSTUSE_NUMERIC_DIV_DIAL1                        1149
+
+#define IBP_MCE_FB25__DSQL_NOSTRING_DIV_DIAL3                               1150
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_DIV_DIAL3                           1151
+
+#define IBP_MCE_FB25__DSQL_NOSTRING_NEG_DIAL3                               1152
+
+#define IBP_MCE_FB25__DSQL_INVALID_TYPE_NEG                                 1153
+
+#define IBP_MCE_FB25__DSQL_MAX_DISTINCT_ITEMS                               1154
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336461924                                1155
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336461925                                1156
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336462125                                1157
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336462436                                1158
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527507                                1159
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527508                                1160
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527509                                1161
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527510                                1162
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527511                                1163
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527512                                1164
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527513                                1165
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527514                                1166
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527515                                1167
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527516                                1168
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527517                                1169
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527518                                1170
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527519                                1171
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527520                                1172
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527521                                1173
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527522                                1174
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527523                                1175
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527524                                1176
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527525                                1177
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527526                                1178
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527527                                1179
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527528                                1180
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527529                                1181
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527530                                1182
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527531                                1183
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527532                                1184
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527533                                1185
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527534                                1186
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527535                                1187
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527536                                1188
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527537                                1189
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527538                                1190
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527539                                1191
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527540                                1192
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527541                                1193
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527542                                1194
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527543                                1195
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527544                                1196
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527545                                1197
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527546                                1198
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527547                                1199
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527548                                1200
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527549                                1201
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527550                                1202
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527551                                1203
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527552                                1204
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527553                                1205
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527554                                1206
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527555                                1207
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527556                                1208
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527557                                1209
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527558                                1210
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527559                                1211
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527560                                1212
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527561                                1213
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527562                                1214
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527563                                1215
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527564                                1216
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527565                                1217
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527566                                1218
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527567                                1219
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527568                                1220
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527569                                1221
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527570                                1222
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527571                                1223
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527572                                1224
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527573                                1225
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527574                                1226
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527575                                1227
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527576                                1228
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527577                                1229
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527578                                1230
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527579                                1231
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527580                                1232
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527581                                1233
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527582                                1234
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527583                                1235
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527584                                1236
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527585                                1237
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527586                                1238
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527587                                1239
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527588                                1240
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527589                                1241
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527590                                1242
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527591                                1243
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527592                                1244
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527593                                1245
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527594                                1246
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527595                                1247
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527596                                1248
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527597                                1249
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527598                                1250
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527599                                1251
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527600                                1252
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527601                                1253
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527602                                1254
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527603                                1255
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527604                                1256
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527605                                1257
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527606                                1258
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527607                                1259
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527608                                1260
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527609                                1261
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527610                                1262
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527611                                1263
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527612                                1264
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527613                                1265
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527614                                1266
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527615                                1267
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527616                                1268
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527617                                1269
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527618                                1270
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527619                                1271
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527620                                1272
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527621                                1273
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527622                                1274
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527623                                1275
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527624                                1276
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527625                                1277
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527626                                1278
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527627                                1279
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527628                                1280
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527629                                1281
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527630                                1282
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527631                                1283
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527632                                1284
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527633                                1285
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527634                                1286
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527635                                1287
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527636                                1288
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527637                                1289
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527638                                1290
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527639                                1291
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527640                                1292
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527641                                1293
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527642                                1294
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527643                                1295
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527644                                1296
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527645                                1297
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527646                                1298
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527647                                1299
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527648                                1300
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527649                                1301
+
+#define IBP_MCE_FB25__SAVEPOINT_ERROR                                       1302
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527651                                1303
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527652                                1304
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527653                                1305
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527654                                1306
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527655                                1307
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527656                                1308
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527657                                1309
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527658                                1310
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527659                                1311
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527660                                1312
+
+#define IBP_MCE_FB25__CACHE_NON_ZERO_USE_COUNT                              1313
+
+#define IBP_MCE_FB25__UNEXPECTED_PAGE_CHANGE                                1314
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527663                                1315
+
+#define IBP_MCE_FB25__RDB_TRIGGERS_RDB_FLAGS_CORRUPT                        1316
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527665                                1317
+
+#define IBP_MCE_FB25__INTERNAL_MSG_336527666                                1318
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif

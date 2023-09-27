@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //ZLib1 API Provider for builtin implementation.
-//                                                 Dmitry Kovalenko. 19.01.2019.
+//                                                 Dmitry Kovalenko. 19.01.2020.
 #ifndef _ibp_external__zlib1_builtin__api_provider_H_
 #define _ibp_external__zlib1_builtin__api_provider_H_
 

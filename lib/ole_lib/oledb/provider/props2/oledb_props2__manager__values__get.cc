@@ -4,6 +4,10 @@
 #ifndef _oledb_props2__manager__values__get_CC_
 #define _oledb_props2__manager__values__get_CC_
 
+#ifdef _DEBUG_LEVEL_3_
+# include <ole_lib/oledb/provider/props2/oledb_props2__trace_utils.h>
+#endif
+
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Manager__Values
@@ -425,7 +429,7 @@ void OLEDB_Props2__Manager__Values::Helper__GetValues
   //возвращаем только свойства для которых были установлены значения,
   //или у которых есть значение по умолчанию.
 
- ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - return NOT EMPTY values");
+  ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - return NOT EMPTY values");
 
   auto        iSrcDescr=pDescrs->begin();
   auto const _eSrcDescr=pDescrs->end();
@@ -442,7 +446,7 @@ void OLEDB_Props2__Manager__Values::Helper__GetValues
  if(pPropIDSet->cPropertyIDs==0)
  {
   //возвращаем все доступные свойства
- ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - returns ALL values");
+  ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - returns ALL values");
 
   assert(structure::can_numeric_cast(&cProps,pDescrs->Count()));
 
@@ -451,7 +455,7 @@ void OLEDB_Props2__Manager__Values::Helper__GetValues
  else
  {
   //явно передали список свойств
- ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - returns QUERIED values");
+  ODS_LEVEL_2("OLEDB_Props2__Manager__Values::Helper__GetValues - returns QUERIED values");
 
   cProps=pPropIDSet->cPropertyIDs;
  }//else
@@ -568,7 +572,7 @@ void OLEDB_Props2__Manager__Values::Helper__GetValues
     assert(xDescr==pDescrs->cend());
 
     //свойcтво не поддерживается
-    ODS_LEVEL_3("ERROR: GetProp 0x"<<std::hex<<*pPropID<<" - not supported");
+    ODS_LEVEL_3("ERROR: GetProp "<<TRACE_DATA__DbPropID(&pPropIDSet->guidPropertySet,*pPropID)<<" - not supported");
 
     pDestProp->dwPropertyID =*pPropID;
     pDestProp->dwStatus     =DBPROPSTATUS_NOTSUPPORTED;
@@ -663,7 +667,7 @@ void OLEDB_Props2__Manager__Values::Helper__GetValue
  }
  catch(const std::exception& exc)
  {
-  ODS_LEVEL_3("ERROR: GetProp 0x"<<std::hex<<Descr.GetPropId()<<std::dec<<" - "<<exc.what());
+  ODS_LEVEL_3("ERROR: GetProp "<<TRACE_DATA__DbPropID(&propGuid,Descr.GetPropId())<<"["<<structure::tstr_to_str(Descr.GetPropDescr().ptr())<<"] - "<<exc.what());
 
   callCtx.Errors().add__no_throw(exc); // no throw!
 

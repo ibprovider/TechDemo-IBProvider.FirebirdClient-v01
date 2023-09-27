@@ -3,7 +3,7 @@
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifdef _LARGEFILE64_SOURCE
@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builti
 #endif
 
 #include <stdio.h>
-#include "ibp_external__zlib1_set01__zlib.h"
+#include "ibp_external__zlib1_builtin_v001_002_011__zlib.h"
 #ifdef STDC
 #  include <string.h>
 #  include <stdlib.h>
@@ -221,4 +221,4 @@ unsigned ZLIB_INTERNAL gz_intmax OF((void));
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

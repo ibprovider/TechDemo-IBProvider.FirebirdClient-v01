@@ -26,8 +26,6 @@ using namespace structure;
 ////////////////////////////////////////////////////////////////////////////////
 //Include implementation files
 
-#include <ole_lib/impl/ole_lib_impl_clipboard_formats.cxx>
-
 #include <ole_lib/impl/ole_lib_impl_test_utils.cxx>
 #include <ole_lib/impl/ole_lib_impl_guid_utils.cxx>
 

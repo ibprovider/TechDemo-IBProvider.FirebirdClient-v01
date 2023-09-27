@@ -67,8 +67,6 @@ using structure::t_string;
 ////////////////////////////////////////////////////////////////////////////////
 //Include declarations files
 
-#include <ole_lib/impl/ole_lib_impl_clipboard_formats.hxx>
-
 #include <ole_lib/impl/ole_lib_impl_test_utils.hxx>
 #include <ole_lib/impl/ole_lib_impl_guid_utils.hxx>
 

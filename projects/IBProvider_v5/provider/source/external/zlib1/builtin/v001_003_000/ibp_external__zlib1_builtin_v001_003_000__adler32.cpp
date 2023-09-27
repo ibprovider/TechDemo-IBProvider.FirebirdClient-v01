@@ -7,14 +7,12 @@
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__adler32.cpp,v 1.3 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_003_000__adler32.cpp,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__zutil.h"
+#include "source/external/zlib1/builtin/v001_003_000/ibp_external__zlib1_builtin_v001_003_000__zutil.h"
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_003_000{
 ////////////////////////////////////////////////////////////////////////////////
-
-local uLong adler32_combine_ OF((uLong adler1, uLong adler2, z_off64_t len2));
 
 #define BASE 65521U     /* largest prime smaller than 65536 */
 #define NMAX 5552
@@ -67,11 +65,7 @@ local uLong adler32_combine_ OF((uLong adler1, uLong adler2, z_off64_t len2));
 #endif
 
 /* ========================================================================= */
-uLong ZEXPORT adler32_z(uLong adler,const Bytef *buf,z_size_t len)
-//    uLong adler;
-//    const Bytef *buf;
-//    z_size_t len;
-{
+uLong ZEXPORT adler32_z(uLong adler, const Bytef *buf, z_size_t len) {
     unsigned long sum2;
     unsigned n;
 
@@ -138,20 +132,12 @@ uLong ZEXPORT adler32_z(uLong adler,const Bytef *buf,z_size_t len)
 }
 
 /* ========================================================================= */
-uLong ZEXPORT adler32(uLong adler,const Bytef *buf,uInt len)
-//  uLong adler;
-//  const Bytef *buf;
-//  uInt len;
-{
+uLong ZEXPORT adler32(uLong adler, const Bytef *buf, uInt len) {
     return adler32_z(adler, buf, len);
 }
 
 /* ========================================================================= */
-local uLong adler32_combine_(uLong adler1,uLong adler2,z_off64_t len2)
-//  uLong adler1;
-//  uLong adler2;
-//  z_off64_t len2;
-{
+local uLong adler32_combine_(uLong adler1, uLong adler2, z_off64_t len2) {
     unsigned long sum1;
     unsigned long sum2;
     unsigned rem;
@@ -176,21 +162,13 @@ local uLong adler32_combine_(uLong adler1,uLong adler2,z_off64_t len2)
 }
 
 /* ========================================================================= */
-uLong ZEXPORT adler32_combine(uLong adler1,uLong adler2,z_off_t len2)
-//    uLong adler1;
-//    uLong adler2;
-//    z_off_t len2;
-{
+uLong ZEXPORT adler32_combine(uLong adler1, uLong adler2, z_off_t len2) {
     return adler32_combine_(adler1, adler2, len2);
 }
 
-uLong ZEXPORT adler32_combine64(uLong adler1,uLong adler2,z_off64_t len2)
-//    uLong adler1;
-//    uLong adler2;
-//    z_off64_t len2;
-{
+uLong ZEXPORT adler32_combine64(uLong adler1, uLong adler2, z_off64_t len2) {
     return adler32_combine_(adler1, adler2, len2);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_003_000*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

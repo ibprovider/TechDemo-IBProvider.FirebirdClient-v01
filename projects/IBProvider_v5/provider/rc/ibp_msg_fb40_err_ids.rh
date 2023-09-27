@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //IBProvider resources. Firebird 4.0 Error Messages. English.
-//Machine generated file [22.03.2023 13:23:11]
+//Machine generated file [26.09.2023 11:46:41]
 //                                                             Dmitry Kovalenko.
 #ifndef _ibp_msg_fb40_err_ids_RH_
 #define _ibp_msg_fb40_err_ids_RH_
@@ -1919,999 +1919,1585 @@
 
 #define IBP_MCE_FB40__SYSF_INVALID_NULL_EMPTY                               956
 
-#define IBP_MCE_FB40__GFIX_DB_NAME                                          957
+#define IBP_MCE_FB40__DSQL_DBKEY_FROM_NON_TABLE                             957
 
-#define IBP_MCE_FB40__GFIX_INVALID_SW                                       958
+#define IBP_MCE_FB40__DSQL_TRANSITIONAL_NUMERIC                             958
 
-#define IBP_MCE_FB40__GFIX_INCMP_SW                                         959
+#define IBP_MCE_FB40__DSQL_DIALECT_WARNING_EXPR                             959
 
-#define IBP_MCE_FB40__GFIX_REPLAY_REQ                                       960
+#define IBP_MCE_FB40__SQL_DB_DIALECT_DTYPE_UNSUPPORT                        960
 
-#define IBP_MCE_FB40__GFIX_PGBUF_REQ                                        961
+#define IBP_MCE_FB40__INTERNAL_MSG_336003078                                961
 
-#define IBP_MCE_FB40__GFIX_VAL_REQ                                          962
+#define IBP_MCE_FB40__SQL_DIALECT_CONFLICT_NUM                              962
 
-#define IBP_MCE_FB40__GFIX_PVAL_REQ                                         963
+#define IBP_MCE_FB40__DSQL_WARNING_NUMBER_AMBIGUOUS                         963
 
-#define IBP_MCE_FB40__GFIX_TRN_REQ                                          964
+#define IBP_MCE_FB40__DSQL_WARNING_NUMBER_AMBIGUOUS1                        964
 
-#define IBP_MCE_FB40__GFIX_FULL_REQ                                         965
+#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS                         965
 
-#define IBP_MCE_FB40__GFIX_USRNAME_REQ                                      966
+#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS1                        966
 
-#define IBP_MCE_FB40__GFIX_PASS_REQ                                         967
+#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS2                        967
 
-#define IBP_MCE_FB40__GFIX_SUBS_NAME                                        968
+#define IBP_MCE_FB40__DSQL_AMBIGUOUS_FIELD_NAME                             968
 
-#define IBP_MCE_FB40__GFIX_WAL_REQ                                          969
+#define IBP_MCE_FB40__DSQL_UDF_RETURN_POS_ERR                               969
 
-#define IBP_MCE_FB40__GFIX_SEC_REQ                                          970
+#define IBP_MCE_FB40__DSQL_INVALID_LABEL                                    970
 
-#define IBP_MCE_FB40__GFIX_NVAL_REQ                                         971
+#define IBP_MCE_FB40__DSQL_DATATYPES_NOT_COMPARABLE                         971
 
-#define IBP_MCE_FB40__GFIX_TYPE_SHUT                                        972
+#define IBP_MCE_FB40__DSQL_CURSOR_INVALID                                   972
 
-#define IBP_MCE_FB40__GFIX_RETRY                                            973
+#define IBP_MCE_FB40__DSQL_CURSOR_REDEFINED                                 973
 
-#define IBP_MCE_FB40__GFIX_RETRY_DB                                         974
+#define IBP_MCE_FB40__DSQL_CURSOR_NOT_FOUND                                 974
 
-#define IBP_MCE_FB40__GFIX_EXCEED_MAX                                       975
+#define IBP_MCE_FB40__DSQL_CURSOR_EXISTS                                    975
 
-#define IBP_MCE_FB40__GFIX_CORRUPT_POOL                                     976
+#define IBP_MCE_FB40__DSQL_CURSOR_REL_AMBIGUOUS                             976
 
-#define IBP_MCE_FB40__GFIX_MEM_EXHAUSTED                                    977
+#define IBP_MCE_FB40__DSQL_CURSOR_REL_NOT_FOUND                             977
 
-#define IBP_MCE_FB40__GFIX_BAD_POOL                                         978
+#define IBP_MCE_FB40__DSQL_CURSOR_NOT_OPEN                                  978
 
-#define IBP_MCE_FB40__GFIX_TRN_NOT_VALID                                    979
+#define IBP_MCE_FB40__DSQL_TYPE_NOT_SUPP_EXT_TAB                            979
 
-#define IBP_MCE_FB40__GFIX_UNEXP_EOI                                        980
+#define IBP_MCE_FB40__DSQL_FEATURE_NOT_SUPPORTED_ODS                        980
 
-#define IBP_MCE_FB40__GFIX_RECON_FAIL                                       981
+#define IBP_MCE_FB40__PRIMARY_KEY_REQUIRED                                  981
 
-#define IBP_MCE_FB40__GFIX_TRN_UNKNOWN                                      982
+#define IBP_MCE_FB40__UPD_INS_DOESNT_MATCH_PK                               982
 
-#define IBP_MCE_FB40__GFIX_MODE_REQ                                         983
+#define IBP_MCE_FB40__UPD_INS_DOESNT_MATCH_MATCHING                         983
 
-#define IBP_MCE_FB40__GFIX_PZVAL_REQ                                        984
+#define IBP_MCE_FB40__UPD_INS_WITH_COMPLEX_VIEW                             984
 
-#define IBP_MCE_FB40__DSQL_DBKEY_FROM_NON_TABLE                             985
+#define IBP_MCE_FB40__DSQL_INCOMPATIBLE_TRIGGER_TYPE                        985
 
-#define IBP_MCE_FB40__DSQL_TRANSITIONAL_NUMERIC                             986
+#define IBP_MCE_FB40__DSQL_DB_TRIGGER_TYPE_CANT_CHANGE                      986
 
-#define IBP_MCE_FB40__DSQL_DIALECT_WARNING_EXPR                             987
+#define IBP_MCE_FB40__DSQL_RECORD_VERSION_TABLE                             987
 
-#define IBP_MCE_FB40__SQL_DB_DIALECT_DTYPE_UNSUPPORT                        988
+#define IBP_MCE_FB40__DSQL_INVALID_SQLDA_VERSION                            988
 
-#define IBP_MCE_FB40__SQL_DIALECT_CONFLICT_NUM                              989
+#define IBP_MCE_FB40__DSQL_SQLVAR_INDEX                                     989
 
-#define IBP_MCE_FB40__DSQL_WARNING_NUMBER_AMBIGUOUS                         990
+#define IBP_MCE_FB40__DSQL_NO_SQLIND                                        990
 
-#define IBP_MCE_FB40__DSQL_WARNING_NUMBER_AMBIGUOUS1                        991
+#define IBP_MCE_FB40__DSQL_NO_SQLDATA                                       991
 
-#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS                         992
+#define IBP_MCE_FB40__DSQL_NO_INPUT_SQLDA                                   992
 
-#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS1                        993
+#define IBP_MCE_FB40__DSQL_NO_OUTPUT_SQLDA                                  993
 
-#define IBP_MCE_FB40__DSQL_WARN_PRECISION_AMBIGUOUS2                        994
+#define IBP_MCE_FB40__DSQL_WRONG_PARAM_NUM                                  994
 
-#define IBP_MCE_FB40__DSQL_AMBIGUOUS_FIELD_NAME                             995
+#define IBP_MCE_FB40__DSQL_INVALID_DROP_SS_CLAUSE                           995
 
-#define IBP_MCE_FB40__DSQL_UDF_RETURN_POS_ERR                               996
+#define IBP_MCE_FB40__UPD_INS_CANNOT_DEFAULT                                996
 
-#define IBP_MCE_FB40__DSQL_INVALID_LABEL                                    997
+#define IBP_MCE_FB40__INTERNAL_MSG_336068609                                997
 
-#define IBP_MCE_FB40__DSQL_DATATYPES_NOT_COMPARABLE                         998
+#define IBP_MCE_FB40__INTERNAL_MSG_336068610                                998
 
-#define IBP_MCE_FB40__DSQL_CURSOR_INVALID                                   999
+#define IBP_MCE_FB40__INTERNAL_MSG_336068611                                999
 
-#define IBP_MCE_FB40__DSQL_CURSOR_REDEFINED                                 1000
+#define IBP_MCE_FB40__INTERNAL_MSG_336068612                                1000
 
-#define IBP_MCE_FB40__DSQL_CURSOR_NOT_FOUND                                 1001
+#define IBP_MCE_FB40__INTERNAL_MSG_336068613                                1001
 
-#define IBP_MCE_FB40__DSQL_CURSOR_EXISTS                                    1002
+#define IBP_MCE_FB40__INTERNAL_MSG_336068614                                1002
 
-#define IBP_MCE_FB40__DSQL_CURSOR_REL_AMBIGUOUS                             1003
+#define IBP_MCE_FB40__INTERNAL_MSG_336068615                                1003
 
-#define IBP_MCE_FB40__DSQL_CURSOR_REL_NOT_FOUND                             1004
+#define IBP_MCE_FB40__INTERNAL_MSG_336068616                                1004
 
-#define IBP_MCE_FB40__DSQL_CURSOR_NOT_OPEN                                  1005
+#define IBP_MCE_FB40__INTERNAL_MSG_336068617                                1005
 
-#define IBP_MCE_FB40__DSQL_TYPE_NOT_SUPP_EXT_TAB                            1006
+#define IBP_MCE_FB40__INTERNAL_MSG_336068618                                1006
 
-#define IBP_MCE_FB40__DSQL_FEATURE_NOT_SUPPORTED_ODS                        1007
+#define IBP_MCE_FB40__INTERNAL_MSG_336068619                                1007
 
-#define IBP_MCE_FB40__PRIMARY_KEY_REQUIRED                                  1008
+#define IBP_MCE_FB40__INTERNAL_MSG_336068620                                1008
 
-#define IBP_MCE_FB40__UPD_INS_DOESNT_MATCH_PK                               1009
+#define IBP_MCE_FB40__INTERNAL_MSG_336068621                                1009
 
-#define IBP_MCE_FB40__UPD_INS_DOESNT_MATCH_MATCHING                         1010
+#define IBP_MCE_FB40__INTERNAL_MSG_336068622                                1010
 
-#define IBP_MCE_FB40__UPD_INS_WITH_COMPLEX_VIEW                             1011
+#define IBP_MCE_FB40__INTERNAL_MSG_336068623                                1011
 
-#define IBP_MCE_FB40__DSQL_INCOMPATIBLE_TRIGGER_TYPE                        1012
+#define IBP_MCE_FB40__INTERNAL_MSG_336068624                                1012
 
-#define IBP_MCE_FB40__DSQL_DB_TRIGGER_TYPE_CANT_CHANGE                      1013
+#define IBP_MCE_FB40__INTERNAL_MSG_336068625                                1013
 
-#define IBP_MCE_FB40__DSQL_RECORD_VERSION_TABLE                             1014
+#define IBP_MCE_FB40__INTERNAL_MSG_336068626                                1014
 
-#define IBP_MCE_FB40__DSQL_INVALID_SQLDA_VERSION                            1015
+#define IBP_MCE_FB40__INTERNAL_MSG_336068627                                1015
 
-#define IBP_MCE_FB40__DSQL_SQLVAR_INDEX                                     1016
+#define IBP_MCE_FB40__INTERNAL_MSG_336068628                                1016
 
-#define IBP_MCE_FB40__DSQL_NO_SQLIND                                        1017
+#define IBP_MCE_FB40__INTERNAL_MSG_336068629                                1017
 
-#define IBP_MCE_FB40__DSQL_NO_SQLDATA                                       1018
+#define IBP_MCE_FB40__INTERNAL_MSG_336068630                                1018
 
-#define IBP_MCE_FB40__DSQL_NO_INPUT_SQLDA                                   1019
+#define IBP_MCE_FB40__INTERNAL_MSG_336068631                                1019
 
-#define IBP_MCE_FB40__DSQL_NO_OUTPUT_SQLDA                                  1020
+#define IBP_MCE_FB40__INTERNAL_MSG_336068632                                1020
 
-#define IBP_MCE_FB40__DSQL_WRONG_PARAM_NUM                                  1021
+#define IBP_MCE_FB40__INTERNAL_MSG_336068633                                1021
 
-#define IBP_MCE_FB40__DSQL_INVALID_DROP_SS_CLAUSE                           1022
+#define IBP_MCE_FB40__INTERNAL_MSG_336068634                                1022
 
-#define IBP_MCE_FB40__UPD_INS_CANNOT_DEFAULT                                1023
+#define IBP_MCE_FB40__INTERNAL_MSG_336068635                                1023
 
-#define IBP_MCE_FB40__DYN_FILTER_NOT_FOUND                                  1024
+#define IBP_MCE_FB40__INTERNAL_MSG_336068636                                1024
 
-#define IBP_MCE_FB40__DYN_FUNC_NOT_FOUND                                    1025
+#define IBP_MCE_FB40__INTERNAL_MSG_336068637                                1025
 
-#define IBP_MCE_FB40__DYN_INDEX_NOT_FOUND                                   1026
+#define IBP_MCE_FB40__INTERNAL_MSG_336068638                                1026
 
-#define IBP_MCE_FB40__DYN_VIEW_NOT_FOUND                                    1027
+#define IBP_MCE_FB40__INTERNAL_MSG_336068639                                1027
 
-#define IBP_MCE_FB40__DYN_DOMAIN_NOT_FOUND                                  1028
+#define IBP_MCE_FB40__INTERNAL_MSG_336068640                                1028
 
-#define IBP_MCE_FB40__DYN_CANT_MODIFY_AUTO_TRIG                             1029
+#define IBP_MCE_FB40__INTERNAL_MSG_336068641                                1029
 
-#define IBP_MCE_FB40__DYN_DUP_TABLE                                         1030
+#define IBP_MCE_FB40__INTERNAL_MSG_336068642                                1030
 
-#define IBP_MCE_FB40__DYN_PROC_NOT_FOUND                                    1031
+#define IBP_MCE_FB40__INTERNAL_MSG_336068643                                1031
 
-#define IBP_MCE_FB40__DYN_EXCEPTION_NOT_FOUND                               1032
+#define IBP_MCE_FB40__INTERNAL_MSG_336068644                                1032
 
-#define IBP_MCE_FB40__DYN_PROC_PARAM_NOT_FOUND                              1033
+#define IBP_MCE_FB40__DYN_FILTER_NOT_FOUND                                  1033
 
-#define IBP_MCE_FB40__DYN_TRIG_NOT_FOUND                                    1034
+#define IBP_MCE_FB40__INTERNAL_MSG_336068646                                1034
 
-#define IBP_MCE_FB40__DYN_CHARSET_NOT_FOUND                                 1035
+#define IBP_MCE_FB40__INTERNAL_MSG_336068647                                1035
 
-#define IBP_MCE_FB40__DYN_COLLATION_NOT_FOUND                               1036
+#define IBP_MCE_FB40__INTERNAL_MSG_336068648                                1036
 
-#define IBP_MCE_FB40__DYN_ROLE_NOT_FOUND                                    1037
+#define IBP_MCE_FB40__DYN_FUNC_NOT_FOUND                                    1037
 
-#define IBP_MCE_FB40__DYN_NAME_LONGER                                       1038
+#define IBP_MCE_FB40__INTERNAL_MSG_336068650                                1038
 
-#define IBP_MCE_FB40__DYN_COLUMN_DOES_NOT_EXIST                             1039
+#define IBP_MCE_FB40__INTERNAL_MSG_336068651                                1039
 
-#define IBP_MCE_FB40__DYN_ROLE_DOES_NOT_EXIST                               1040
+#define IBP_MCE_FB40__INTERNAL_MSG_336068652                                1040
 
-#define IBP_MCE_FB40__DYN_NO_GRANT_ADMIN_OPT                                1041
+#define IBP_MCE_FB40__INTERNAL_MSG_336068653                                1041
 
-#define IBP_MCE_FB40__DYN_USER_NOT_ROLE_MEMBER                              1042
+#define IBP_MCE_FB40__INTERNAL_MSG_336068654                                1042
 
-#define IBP_MCE_FB40__DYN_DELETE_ROLE_FAILED                                1043
+#define IBP_MCE_FB40__INTERNAL_MSG_336068655                                1043
 
-#define IBP_MCE_FB40__DYN_GRANT_ROLE_TO_USER                                1044
+#define IBP_MCE_FB40__DYN_INDEX_NOT_FOUND                                   1044
 
-#define IBP_MCE_FB40__DYN_INV_SQL_ROLE_NAME                                 1045
+#define IBP_MCE_FB40__INTERNAL_MSG_336068657                                1045
 
-#define IBP_MCE_FB40__DYN_DUP_SQL_ROLE                                      1046
+#define IBP_MCE_FB40__INTERNAL_MSG_336068658                                1046
 
-#define IBP_MCE_FB40__DYN_KYWD_SPEC_FOR_ROLE                                1047
+#define IBP_MCE_FB40__INTERNAL_MSG_336068659                                1047
 
-#define IBP_MCE_FB40__DYN_ROLES_NOT_SUPPORTED                               1048
+#define IBP_MCE_FB40__INTERNAL_MSG_336068660                                1048
 
-#define IBP_MCE_FB40__DYN_DOMAIN_NAME_EXISTS                                1049
+#define IBP_MCE_FB40__INTERNAL_MSG_336068661                                1049
 
-#define IBP_MCE_FB40__DYN_FIELD_NAME_EXISTS                                 1050
+#define IBP_MCE_FB40__DYN_VIEW_NOT_FOUND                                    1050
 
-#define IBP_MCE_FB40__DYN_DEPENDENCY_EXISTS                                 1051
+#define IBP_MCE_FB40__INTERNAL_MSG_336068663                                1051
 
-#define IBP_MCE_FB40__DYN_DTYPE_INVALID                                     1052
+#define IBP_MCE_FB40__INTERNAL_MSG_336068664                                1052
 
-#define IBP_MCE_FB40__DYN_CHAR_FLD_TOO_SMALL                                1053
+#define IBP_MCE_FB40__INTERNAL_MSG_336068665                                1053
 
-#define IBP_MCE_FB40__DYN_INVALID_DTYPE_CONVERSION                          1054
+#define IBP_MCE_FB40__INTERNAL_MSG_336068666                                1054
 
-#define IBP_MCE_FB40__DYN_DTYPE_CONV_INVALID                                1055
+#define IBP_MCE_FB40__INTERNAL_MSG_336068667                                1055
 
-#define IBP_MCE_FB40__DYN_ZERO_LEN_ID                                       1056
+#define IBP_MCE_FB40__INTERNAL_MSG_336068668                                1056
 
-#define IBP_MCE_FB40__DYN_GEN_NOT_FOUND                                     1057
+#define IBP_MCE_FB40__INTERNAL_MSG_336068669                                1057
 
-#define IBP_MCE_FB40__MAX_COLL_PER_CHARSET                                  1058
+#define IBP_MCE_FB40__INTERNAL_MSG_336068670                                1058
 
-#define IBP_MCE_FB40__INVALID_COLL_ATTR                                     1059
+#define IBP_MCE_FB40__INTERNAL_MSG_336068671                                1059
 
-#define IBP_MCE_FB40__DYN_WRONG_GTT_SCOPE                                   1060
+#define IBP_MCE_FB40__INTERNAL_MSG_336068672                                1060
 
-#define IBP_MCE_FB40__DYN_COLL_USED_TABLE                                   1061
+#define IBP_MCE_FB40__INTERNAL_MSG_336068673                                1061
 
-#define IBP_MCE_FB40__DYN_COLL_USED_DOMAIN                                  1062
+#define IBP_MCE_FB40__INTERNAL_MSG_336068674                                1062
 
-#define IBP_MCE_FB40__DYN_CANNOT_DEL_SYSCOLL                                1063
+#define IBP_MCE_FB40__INTERNAL_MSG_336068675                                1063
 
-#define IBP_MCE_FB40__DYN_CANNOT_DEL_DEF_COLL                               1064
+#define IBP_MCE_FB40__INTERNAL_MSG_336068676                                1064
 
-#define IBP_MCE_FB40__DYN_TABLE_NOT_FOUND                                   1065
+#define IBP_MCE_FB40__INTERNAL_MSG_336068677                                1065
 
-#define IBP_MCE_FB40__DYN_COLL_USED_PROCEDURE                               1066
+#define IBP_MCE_FB40__INTERNAL_MSG_336068678                                1066
 
-#define IBP_MCE_FB40__DYN_SCALE_TOO_BIG                                     1067
+#define IBP_MCE_FB40__INTERNAL_MSG_336068679                                1067
 
-#define IBP_MCE_FB40__DYN_PRECISION_TOO_SMALL                               1068
+#define IBP_MCE_FB40__INTERNAL_MSG_336068680                                1068
 
-#define IBP_MCE_FB40__DYN_MISS_PRIV_WARNING                                 1069
+#define IBP_MCE_FB40__INTERNAL_MSG_336068681                                1069
 
-#define IBP_MCE_FB40__DYN_ODS_NOT_SUPP_FEATURE                              1070
+#define IBP_MCE_FB40__INTERNAL_MSG_336068682                                1070
 
-#define IBP_MCE_FB40__DYN_CANNOT_ADDREM_COMPUTED                            1071
+#define IBP_MCE_FB40__INTERNAL_MSG_336068683                                1071
 
-#define IBP_MCE_FB40__DYN_NO_EMPTY_PW                                       1072
+#define IBP_MCE_FB40__INTERNAL_MSG_336068684                                1072
 
-#define IBP_MCE_FB40__DYN_DUP_INDEX                                         1073
+#define IBP_MCE_FB40__INTERNAL_MSG_336068685                                1073
 
-#define IBP_MCE_FB40__DYN_PACKAGE_NOT_FOUND                                 1074
+#define IBP_MCE_FB40__INTERNAL_MSG_336068686                                1074
 
-#define IBP_MCE_FB40__DYN_SCHEMA_NOT_FOUND                                  1075
+#define IBP_MCE_FB40__INTERNAL_MSG_336068687                                1075
 
-#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSPROC                                1076
+#define IBP_MCE_FB40__INTERNAL_MSG_336068688                                1076
 
-#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSTRIG                                1077
+#define IBP_MCE_FB40__INTERNAL_MSG_336068689                                1077
 
-#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSFUNC                                1078
+#define IBP_MCE_FB40__INTERNAL_MSG_336068690                                1078
 
-#define IBP_MCE_FB40__DYN_INVALID_DDL_PROC                                  1079
+#define IBP_MCE_FB40__INTERNAL_MSG_336068691                                1079
 
-#define IBP_MCE_FB40__DYN_INVALID_DDL_TRIG                                  1080
+#define IBP_MCE_FB40__INTERNAL_MSG_336068692                                1080
 
-#define IBP_MCE_FB40__DYN_FUNCNOTDEF_PACKAGE                                1081
+#define IBP_MCE_FB40__INTERNAL_MSG_336068693                                1081
 
-#define IBP_MCE_FB40__DYN_PROCNOTDEF_PACKAGE                                1082
+#define IBP_MCE_FB40__INTERNAL_MSG_336068694                                1082
 
-#define IBP_MCE_FB40__DYN_FUNCSIGNAT_PACKAGE                                1083
+#define IBP_MCE_FB40__INTERNAL_MSG_336068695                                1083
 
-#define IBP_MCE_FB40__DYN_PROCSIGNAT_PACKAGE                                1084
+#define IBP_MCE_FB40__INTERNAL_MSG_336068696                                1084
 
-#define IBP_MCE_FB40__DYN_DEFVALDECL_PACKAGE_PROC                           1085
+#define IBP_MCE_FB40__DYN_DOMAIN_NOT_FOUND                                  1085
 
-#define IBP_MCE_FB40__DYN_PACKAGE_BODY_EXISTS                               1086
+#define IBP_MCE_FB40__INTERNAL_MSG_336068698                                1086
 
-#define IBP_MCE_FB40__DYN_INVALID_DDL_FUNC                                  1087
+#define IBP_MCE_FB40__INTERNAL_MSG_336068699                                1087
 
-#define IBP_MCE_FB40__DYN_NEWFC_OLDSYNTAX                                   1088
+#define IBP_MCE_FB40__INTERNAL_MSG_336068700                                1088
 
-#define IBP_MCE_FB40__DYN_FUNC_PARAM_NOT_FOUND                              1089
+#define IBP_MCE_FB40__INTERNAL_MSG_336068701                                1089
 
-#define IBP_MCE_FB40__DYN_ROUTINE_PARAM_NOT_FOUND                           1090
+#define IBP_MCE_FB40__INTERNAL_MSG_336068702                                1090
 
-#define IBP_MCE_FB40__DYN_ROUTINE_PARAM_AMBIGUOUS                           1091
+#define IBP_MCE_FB40__INTERNAL_MSG_336068703                                1091
 
-#define IBP_MCE_FB40__DYN_COLL_USED_FUNCTION                                1092
+#define IBP_MCE_FB40__INTERNAL_MSG_336068704                                1092
 
-#define IBP_MCE_FB40__DYN_DOMAIN_USED_FUNCTION                              1093
+#define IBP_MCE_FB40__INTERNAL_MSG_336068705                                1093
 
-#define IBP_MCE_FB40__DYN_ALTER_USER_NO_CLAUSE                              1094
+#define IBP_MCE_FB40__INTERNAL_MSG_336068706                                1094
 
-#define IBP_MCE_FB40__DYN_DUPLICATE_PACKAGE_ITEM                            1095
+#define IBP_MCE_FB40__INTERNAL_MSG_336068707                                1095
 
-#define IBP_MCE_FB40__DYN_CANT_MODIFY_SYSOBJ                                1096
+#define IBP_MCE_FB40__INTERNAL_MSG_336068708                                1096
 
-#define IBP_MCE_FB40__DYN_CANT_USE_ZERO_INCREMENT                           1097
+#define IBP_MCE_FB40__INTERNAL_MSG_336068709                                1097
 
-#define IBP_MCE_FB40__DYN_CANT_USE_IN_FOREIGNKEY                            1098
+#define IBP_MCE_FB40__INTERNAL_MSG_336068710                                1098
 
-#define IBP_MCE_FB40__DYN_DEFVALDECL_PACKAGE_FUNC                           1099
+#define IBP_MCE_FB40__INTERNAL_MSG_336068711                                1099
 
-#define IBP_MCE_FB40__DYN_CYCLIC_ROLE                                       1100
+#define IBP_MCE_FB40__INTERNAL_MSG_336068712                                1100
 
-#define IBP_MCE_FB40__DYN_CANT_USE_ZERO_INC_IDENT                           1101
+#define IBP_MCE_FB40__INTERNAL_MSG_336068713                                1101
 
-#define IBP_MCE_FB40__DYN_NO_DDL_GRANT_OPT_PRIV                             1102
+#define IBP_MCE_FB40__INTERNAL_MSG_336068714                                1102
 
-#define IBP_MCE_FB40__DYN_NO_GRANT_OPT_PRIV                                 1103
+#define IBP_MCE_FB40__INTERNAL_MSG_336068715                                1103
 
-#define IBP_MCE_FB40__DYN_FUNC_NOT_EXIST                                    1104
+#define IBP_MCE_FB40__INTERNAL_MSG_336068716                                1104
 
-#define IBP_MCE_FB40__DYN_PROC_NOT_EXIST                                    1105
+#define IBP_MCE_FB40__DYN_CANT_MODIFY_AUTO_TRIG                             1105
 
-#define IBP_MCE_FB40__DYN_PACK_NOT_EXIST                                    1106
+#define IBP_MCE_FB40__INTERNAL_MSG_336068718                                1106
 
-#define IBP_MCE_FB40__DYN_TRIG_NOT_EXIST                                    1107
+#define IBP_MCE_FB40__INTERNAL_MSG_336068719                                1107
 
-#define IBP_MCE_FB40__DYN_VIEW_NOT_EXIST                                    1108
+#define IBP_MCE_FB40__INTERNAL_MSG_336068720                                1108
 
-#define IBP_MCE_FB40__DYN_REL_NOT_EXIST                                     1109
+#define IBP_MCE_FB40__INTERNAL_MSG_336068721                                1109
 
-#define IBP_MCE_FB40__DYN_EXC_NOT_EXIST                                     1110
+#define IBP_MCE_FB40__INTERNAL_MSG_336068722                                1110
 
-#define IBP_MCE_FB40__DYN_GEN_NOT_EXIST                                     1111
+#define IBP_MCE_FB40__INTERNAL_MSG_336068723                                1111
 
-#define IBP_MCE_FB40__DYN_FLD_NOT_EXIST                                     1112
+#define IBP_MCE_FB40__INTERNAL_MSG_336068724                                1112
 
-#define IBP_MCE_FB40__GBAK_UNKNOWN_SWITCH                                   1113
+#define IBP_MCE_FB40__INTERNAL_MSG_336068725                                1113
 
-#define IBP_MCE_FB40__GBAK_PAGE_SIZE_MISSING                                1114
+#define IBP_MCE_FB40__INTERNAL_MSG_336068726                                1114
 
-#define IBP_MCE_FB40__GBAK_PAGE_SIZE_TOOBIG                                 1115
+#define IBP_MCE_FB40__INTERNAL_MSG_336068727                                1115
 
-#define IBP_MCE_FB40__GBAK_REDIR_OUPUT_MISSING                              1116
+#define IBP_MCE_FB40__INTERNAL_MSG_336068728                                1116
 
-#define IBP_MCE_FB40__GBAK_SWITCHES_CONFLICT                                1117
+#define IBP_MCE_FB40__INTERNAL_MSG_336068729                                1117
 
-#define IBP_MCE_FB40__GBAK_UNKNOWN_DEVICE                                   1118
+#define IBP_MCE_FB40__INTERNAL_MSG_336068730                                1118
 
-#define IBP_MCE_FB40__GBAK_NO_PROTECTION                                    1119
+#define IBP_MCE_FB40__INTERNAL_MSG_336068731                                1119
 
-#define IBP_MCE_FB40__GBAK_PAGE_SIZE_NOT_ALLOWED                            1120
+#define IBP_MCE_FB40__INTERNAL_MSG_336068732                                1120
 
-#define IBP_MCE_FB40__GBAK_MULTI_SOURCE_DEST                                1121
+#define IBP_MCE_FB40__INTERNAL_MSG_336068733                                1121
 
-#define IBP_MCE_FB40__GBAK_FILENAME_MISSING                                 1122
+#define IBP_MCE_FB40__INTERNAL_MSG_336068734                                1122
 
-#define IBP_MCE_FB40__GBAK_DUP_INOUT_NAMES                                  1123
+#define IBP_MCE_FB40__INTERNAL_MSG_336068735                                1123
 
-#define IBP_MCE_FB40__GBAK_INV_PAGE_SIZE                                    1124
+#define IBP_MCE_FB40__INTERNAL_MSG_336068736                                1124
 
-#define IBP_MCE_FB40__GBAK_DB_SPECIFIED                                     1125
+#define IBP_MCE_FB40__INTERNAL_MSG_336068737                                1125
 
-#define IBP_MCE_FB40__GBAK_DB_EXISTS                                        1126
+#define IBP_MCE_FB40__INTERNAL_MSG_336068738                                1126
 
-#define IBP_MCE_FB40__GBAK_UNK_DEVICE                                       1127
+#define IBP_MCE_FB40__INTERNAL_MSG_336068739                                1127
 
-#define IBP_MCE_FB40__GBAK_BLOB_INFO_FAILED                                 1128
+#define IBP_MCE_FB40__DYN_DUP_TABLE                                         1128
 
-#define IBP_MCE_FB40__GBAK_UNK_BLOB_ITEM                                    1129
+#define IBP_MCE_FB40__INTERNAL_MSG_336068741                                1129
 
-#define IBP_MCE_FB40__GBAK_GET_SEG_FAILED                                   1130
+#define IBP_MCE_FB40__INTERNAL_MSG_336068742                                1130
 
-#define IBP_MCE_FB40__GBAK_CLOSE_BLOB_FAILED                                1131
+#define IBP_MCE_FB40__DYN_DUP_PROCEDURE                                     1131
 
-#define IBP_MCE_FB40__GBAK_OPEN_BLOB_FAILED                                 1132
+#define IBP_MCE_FB40__INTERNAL_MSG_336068744                                1132
 
-#define IBP_MCE_FB40__GBAK_PUT_BLR_GEN_ID_FAILED                            1133
+#define IBP_MCE_FB40__INTERNAL_MSG_336068745                                1133
 
-#define IBP_MCE_FB40__GBAK_UNK_TYPE                                         1134
+#define IBP_MCE_FB40__INTERNAL_MSG_336068746                                1134
 
-#define IBP_MCE_FB40__GBAK_COMP_REQ_FAILED                                  1135
+#define IBP_MCE_FB40__INTERNAL_MSG_336068747                                1135
 
-#define IBP_MCE_FB40__GBAK_START_REQ_FAILED                                 1136
+#define IBP_MCE_FB40__DYN_PROC_NOT_FOUND                                    1136
 
-#define IBP_MCE_FB40__GBAK_REC_FAILED                                       1137
+#define IBP_MCE_FB40__INTERNAL_MSG_336068749                                1137
 
-#define IBP_MCE_FB40__GBAK_REL_REQ_FAILED                                   1138
+#define IBP_MCE_FB40__INTERNAL_MSG_336068750                                1138
 
-#define IBP_MCE_FB40__GBAK_DB_INFO_FAILED                                   1139
+#define IBP_MCE_FB40__INTERNAL_MSG_336068751                                1139
 
-#define IBP_MCE_FB40__GBAK_NO_DB_DESC                                       1140
+#define IBP_MCE_FB40__DYN_EXCEPTION_NOT_FOUND                               1140
 
-#define IBP_MCE_FB40__GBAK_DB_CREATE_FAILED                                 1141
+#define IBP_MCE_FB40__INTERNAL_MSG_336068753                                1141
 
-#define IBP_MCE_FB40__GBAK_DECOMP_LEN_ERROR                                 1142
+#define IBP_MCE_FB40__DYN_PROC_PARAM_NOT_FOUND                              1142
 
-#define IBP_MCE_FB40__GBAK_TBL_MISSING                                      1143
+#define IBP_MCE_FB40__DYN_TRIG_NOT_FOUND                                    1143
 
-#define IBP_MCE_FB40__GBAK_BLOB_COL_MISSING                                 1144
+#define IBP_MCE_FB40__INTERNAL_MSG_336068756                                1144
 
-#define IBP_MCE_FB40__GBAK_CREATE_BLOB_FAILED                               1145
+#define IBP_MCE_FB40__INTERNAL_MSG_336068757                                1145
 
-#define IBP_MCE_FB40__GBAK_PUT_SEG_FAILED                                   1146
+#define IBP_MCE_FB40__INTERNAL_MSG_336068758                                1146
 
-#define IBP_MCE_FB40__GBAK_REC_LEN_EXP                                      1147
+#define IBP_MCE_FB40__DYN_CHARSET_NOT_FOUND                                 1147
 
-#define IBP_MCE_FB40__GBAK_INV_REC_LEN                                      1148
+#define IBP_MCE_FB40__DYN_COLLATION_NOT_FOUND                               1148
 
-#define IBP_MCE_FB40__GBAK_EXP_DATA_TYPE                                    1149
+#define IBP_MCE_FB40__INTERNAL_MSG_336068761                                1149
 
-#define IBP_MCE_FB40__GBAK_GEN_ID_FAILED                                    1150
+#define IBP_MCE_FB40__INTERNAL_MSG_336068762                                1150
 
-#define IBP_MCE_FB40__GBAK_UNK_REC_TYPE                                     1151
+#define IBP_MCE_FB40__DYN_ROLE_NOT_FOUND                                    1151
 
-#define IBP_MCE_FB40__GBAK_INV_BKUP_VER                                     1152
+#define IBP_MCE_FB40__INTERNAL_MSG_336068764                                1152
 
-#define IBP_MCE_FB40__GBAK_MISSING_BKUP_DESC                                1153
+#define IBP_MCE_FB40__INTERNAL_MSG_336068765                                1153
 
-#define IBP_MCE_FB40__GBAK_STRING_TRUNC                                     1154
+#define IBP_MCE_FB40__INTERNAL_MSG_336068766                                1154
 
-#define IBP_MCE_FB40__GBAK_CANT_REST_RECORD                                 1155
+#define IBP_MCE_FB40__DYN_NAME_LONGER                                       1155
 
-#define IBP_MCE_FB40__GBAK_SEND_FAILED                                      1156
+#define IBP_MCE_FB40__INTERNAL_MSG_336068768                                1156
 
-#define IBP_MCE_FB40__GBAK_NO_TBL_NAME                                      1157
+#define IBP_MCE_FB40__INTERNAL_MSG_336068770                                1157
 
-#define IBP_MCE_FB40__GBAK_UNEXP_EOF                                        1158
+#define IBP_MCE_FB40__INTERNAL_MSG_336068771                                1158
 
-#define IBP_MCE_FB40__GBAK_DB_FORMAT_TOO_OLD                                1159
+#define IBP_MCE_FB40__INTERNAL_MSG_336068772                                1159
 
-#define IBP_MCE_FB40__GBAK_INV_ARRAY_DIM                                    1160
+#define IBP_MCE_FB40__INTERNAL_MSG_336068773                                1160
 
-#define IBP_MCE_FB40__GBAK_XDR_LEN_EXPECTED                                 1161
+#define IBP_MCE_FB40__INTERNAL_MSG_336068774                                1161
 
-#define IBP_MCE_FB40__GBAK_OPEN_BKUP_ERROR                                  1162
+#define IBP_MCE_FB40__INTERNAL_MSG_336068775                                1162
 
-#define IBP_MCE_FB40__GBAK_OPEN_ERROR                                       1163
+#define IBP_MCE_FB40__INTERNAL_MSG_336068776                                1163
 
-#define IBP_MCE_FB40__GBAK_MISSING_BLOCK_FAC                                1164
+#define IBP_MCE_FB40__INTERNAL_MSG_336068777                                1164
 
-#define IBP_MCE_FB40__GBAK_INV_BLOCK_FAC                                    1165
+#define IBP_MCE_FB40__INTERNAL_MSG_336068778                                1165
 
-#define IBP_MCE_FB40__GBAK_BLOCK_FAC_SPECIFIED                              1166
+#define IBP_MCE_FB40__INTERNAL_MSG_336068779                                1166
 
-#define IBP_MCE_FB40__GBAK_MISSING_USERNAME                                 1167
+#define IBP_MCE_FB40__INTERNAL_MSG_336068780                                1167
 
-#define IBP_MCE_FB40__GBAK_MISSING_PASSWORD                                 1168
+#define IBP_MCE_FB40__INTERNAL_MSG_336068781                                1168
 
-#define IBP_MCE_FB40__GBAK_MISSING_SKIPPED_BYTES                            1169
+#define IBP_MCE_FB40__INTERNAL_MSG_336068782                                1169
 
-#define IBP_MCE_FB40__GBAK_INV_SKIPPED_BYTES                                1170
+#define IBP_MCE_FB40__INTERNAL_MSG_336068783                                1170
 
-#define IBP_MCE_FB40__GBAK_ERR_RESTORE_CHARSET                              1171
+#define IBP_MCE_FB40__DYN_COLUMN_DOES_NOT_EXIST                             1171
 
-#define IBP_MCE_FB40__GBAK_ERR_RESTORE_COLLATION                            1172
+#define IBP_MCE_FB40__INTERNAL_MSG_336068785                                1172
 
-#define IBP_MCE_FB40__GBAK_READ_ERROR                                       1173
+#define IBP_MCE_FB40__INTERNAL_MSG_336068786                                1173
 
-#define IBP_MCE_FB40__GBAK_WRITE_ERROR                                      1174
+#define IBP_MCE_FB40__INTERNAL_MSG_336068787                                1174
 
-#define IBP_MCE_FB40__GBAK_DB_IN_USE                                        1175
+#define IBP_MCE_FB40__INTERNAL_MSG_336068788                                1175
 
-#define IBP_MCE_FB40__GBAK_SYSMEMEX                                         1176
+#define IBP_MCE_FB40__INTERNAL_MSG_336068789                                1176
 
-#define IBP_MCE_FB40__GBAK_RESTORE_ROLE_FAILED                              1177
+#define IBP_MCE_FB40__INTERNAL_MSG_336068790                                1177
 
-#define IBP_MCE_FB40__GBAK_ROLE_OP_MISSING                                  1178
+#define IBP_MCE_FB40__INTERNAL_MSG_336068791                                1178
 
-#define IBP_MCE_FB40__GBAK_PAGE_BUFFERS_MISSING                             1179
+#define IBP_MCE_FB40__INTERNAL_MSG_336068792                                1179
 
-#define IBP_MCE_FB40__GBAK_PAGE_BUFFERS_WRONG_PARAM                         1180
+#define IBP_MCE_FB40__INTERNAL_MSG_336068793                                1180
 
-#define IBP_MCE_FB40__GBAK_PAGE_BUFFERS_RESTORE                             1181
+#define IBP_MCE_FB40__INTERNAL_MSG_336068794                                1181
 
-#define IBP_MCE_FB40__GBAK_INV_SIZE                                         1182
+#define IBP_MCE_FB40__INTERNAL_MSG_336068795                                1182
 
-#define IBP_MCE_FB40__GBAK_FILE_OUTOF_SEQUENCE                              1183
+#define IBP_MCE_FB40__DYN_ROLE_DOES_NOT_EXIST                               1183
 
-#define IBP_MCE_FB40__GBAK_JOIN_FILE_MISSING                                1184
+#define IBP_MCE_FB40__DYN_NO_GRANT_ADMIN_OPT                                1184
 
-#define IBP_MCE_FB40__GBAK_STDIN_NOT_SUPPTD                                 1185
+#define IBP_MCE_FB40__DYN_USER_NOT_ROLE_MEMBER                              1185
 
-#define IBP_MCE_FB40__GBAK_STDOUT_NOT_SUPPTD                                1186
+#define IBP_MCE_FB40__DYN_DELETE_ROLE_FAILED                                1186
 
-#define IBP_MCE_FB40__GBAK_BKUP_CORRUPT                                     1187
+#define IBP_MCE_FB40__DYN_GRANT_ROLE_TO_USER                                1187
 
-#define IBP_MCE_FB40__GBAK_UNK_DB_FILE_SPEC                                 1188
+#define IBP_MCE_FB40__DYN_INV_SQL_ROLE_NAME                                 1188
 
-#define IBP_MCE_FB40__GBAK_HDR_WRITE_FAILED                                 1189
+#define IBP_MCE_FB40__DYN_DUP_SQL_ROLE                                      1189
 
-#define IBP_MCE_FB40__GBAK_DISK_SPACE_EX                                    1190
+#define IBP_MCE_FB40__DYN_KYWD_SPEC_FOR_ROLE                                1190
 
-#define IBP_MCE_FB40__GBAK_SIZE_LT_MIN                                      1191
+#define IBP_MCE_FB40__DYN_ROLES_NOT_SUPPORTED                               1191
 
-#define IBP_MCE_FB40__GBAK_SVC_NAME_MISSING                                 1192
+#define IBP_MCE_FB40__DYN_DOMAIN_NAME_EXISTS                                1192
 
-#define IBP_MCE_FB40__GBAK_NOT_OWNR                                         1193
+#define IBP_MCE_FB40__DYN_FIELD_NAME_EXISTS                                 1193
 
-#define IBP_MCE_FB40__GBAK_MODE_REQ                                         1194
+#define IBP_MCE_FB40__DYN_DEPENDENCY_EXISTS                                 1194
 
-#define IBP_MCE_FB40__GBAK_JUST_DATA                                        1195
+#define IBP_MCE_FB40__DYN_DTYPE_INVALID                                     1195
 
-#define IBP_MCE_FB40__GBAK_DATA_ONLY                                        1196
+#define IBP_MCE_FB40__DYN_CHAR_FLD_TOO_SMALL                                1196
 
-#define IBP_MCE_FB40__GBAK_MISSING_INTERVAL                                 1197
+#define IBP_MCE_FB40__DYN_INVALID_DTYPE_CONVERSION                          1197
 
-#define IBP_MCE_FB40__GBAK_WRONG_INTERVAL                                   1198
+#define IBP_MCE_FB40__DYN_DTYPE_CONV_INVALID                                1198
 
-#define IBP_MCE_FB40__GBAK_VERIFY_VERBINT                                   1199
+#define IBP_MCE_FB40__DYN_VIRMEMEXH                                         1199
 
-#define IBP_MCE_FB40__GBAK_OPTION_ONLY_RESTORE                              1200
+#define IBP_MCE_FB40__DYN_ZERO_LEN_ID                                       1200
 
-#define IBP_MCE_FB40__GBAK_OPTION_ONLY_BACKUP                               1201
+#define IBP_MCE_FB40__DEL_GEN_FAIL                                          1201
 
-#define IBP_MCE_FB40__GBAK_OPTION_CONFLICT                                  1202
+#define IBP_MCE_FB40__DYN_GEN_NOT_FOUND                                     1202
 
-#define IBP_MCE_FB40__GBAK_PARAM_CONFLICT                                   1203
+#define IBP_MCE_FB40__INTERNAL_MSG_336068823                                1203
 
-#define IBP_MCE_FB40__GBAK_OPTION_REPEATED                                  1204
+#define IBP_MCE_FB40__INTERNAL_MSG_336068824                                1204
 
-#define IBP_MCE_FB40__GBAK_MAX_DBKEY_RECURSION                              1205
+#define IBP_MCE_FB40__INTERNAL_MSG_336068825                                1205
 
-#define IBP_MCE_FB40__GBAK_MAX_DBKEY_LENGTH                                 1206
+#define IBP_MCE_FB40__INTERNAL_MSG_336068826                                1206
 
-#define IBP_MCE_FB40__GBAK_INVALID_METADATA                                 1207
+#define IBP_MCE_FB40__INTERNAL_MSG_336068827                                1207
 
-#define IBP_MCE_FB40__GBAK_INVALID_DATA                                     1208
+#define IBP_MCE_FB40__INTERNAL_MSG_336068828                                1208
 
-#define IBP_MCE_FB40__GBAK_INV_BKUP_VER2                                    1209
+#define IBP_MCE_FB40__MAX_COLL_PER_CHARSET                                  1209
 
-#define IBP_MCE_FB40__GBAK_DB_FORMAT_TOO_OLD2                               1210
+#define IBP_MCE_FB40__INVALID_COLL_ATTR                                     1210
 
-#define IBP_MCE_FB40__DSQL_TOO_OLD_ODS                                      1211
+#define IBP_MCE_FB40__INTERNAL_MSG_336068831                                1211
 
-#define IBP_MCE_FB40__DSQL_TABLE_NOT_FOUND                                  1212
+#define IBP_MCE_FB40__INTERNAL_MSG_336068832                                1212
 
-#define IBP_MCE_FB40__DSQL_VIEW_NOT_FOUND                                   1213
+#define IBP_MCE_FB40__INTERNAL_MSG_336068833                                1213
 
-#define IBP_MCE_FB40__DSQL_LINE_COL_ERROR                                   1214
+#define IBP_MCE_FB40__INTERNAL_MSG_336068834                                1214
 
-#define IBP_MCE_FB40__DSQL_UNKNOWN_POS                                      1215
+#define IBP_MCE_FB40__INTERNAL_MSG_336068835                                1215
 
-#define IBP_MCE_FB40__DSQL_NO_DUP_NAME                                      1216
+#define IBP_MCE_FB40__INTERNAL_MSG_336068836                                1216
 
-#define IBP_MCE_FB40__DSQL_TOO_MANY_VALUES                                  1217
+#define IBP_MCE_FB40__INTERNAL_MSG_336068837                                1217
 
-#define IBP_MCE_FB40__DSQL_NO_ARRAY_COMPUTED                                1218
+#define IBP_MCE_FB40__INTERNAL_MSG_336068838                                1218
 
-#define IBP_MCE_FB40__DSQL_IMPLICIT_DOMAIN_NAME                             1219
+#define IBP_MCE_FB40__INTERNAL_MSG_336068839                                1219
 
-#define IBP_MCE_FB40__DSQL_ONLY_CAN_SUBSCRIPT_ARRAY                         1220
+#define IBP_MCE_FB40__DYN_WRONG_GTT_SCOPE                                   1220
 
-#define IBP_MCE_FB40__DSQL_MAX_SORT_ITEMS                                   1221
+#define IBP_MCE_FB40__INTERNAL_MSG_336068841                                1221
 
-#define IBP_MCE_FB40__DSQL_MAX_GROUP_ITEMS                                  1222
+#define IBP_MCE_FB40__DEL_COLL_FAIL                                         1222
 
-#define IBP_MCE_FB40__DSQL_CONFLICTING_SORT_FIELD                           1223
+#define IBP_MCE_FB40__DYN_COLL_USED_TABLE                                   1223
 
-#define IBP_MCE_FB40__DSQL_DERIVED_TABLE_MORE_COLUMNS                       1224
+#define IBP_MCE_FB40__DYN_COLL_USED_DOMAIN                                  1224
 
-#define IBP_MCE_FB40__DSQL_DERIVED_TABLE_LESS_COLUMNS                       1225
+#define IBP_MCE_FB40__DYN_CANNOT_DEL_SYSCOLL                                1225
 
-#define IBP_MCE_FB40__DSQL_DERIVED_FIELD_UNNAMED                            1226
+#define IBP_MCE_FB40__DYN_CANNOT_DEL_DEF_COLL                               1226
 
-#define IBP_MCE_FB40__DSQL_DERIVED_FIELD_DUP_NAME                           1227
+#define IBP_MCE_FB40__INTERNAL_MSG_336068847                                1227
 
-#define IBP_MCE_FB40__DSQL_DERIVED_ALIAS_SELECT                             1228
+#define IBP_MCE_FB40__INTERNAL_MSG_336068848                                1228
 
-#define IBP_MCE_FB40__DSQL_DERIVED_ALIAS_FIELD                              1229
+#define IBP_MCE_FB40__DYN_TABLE_NOT_FOUND                                   1229
 
-#define IBP_MCE_FB40__DSQL_AUTO_FIELD_BAD_POS                               1230
+#define IBP_MCE_FB40__INTERNAL_MSG_336068850                                1230
 
-#define IBP_MCE_FB40__DSQL_CTE_WRONG_REFERENCE                              1231
+#define IBP_MCE_FB40__DYN_COLL_USED_PROCEDURE                               1231
 
-#define IBP_MCE_FB40__DSQL_CTE_CYCLE                                        1232
+#define IBP_MCE_FB40__DYN_SCALE_TOO_BIG                                     1232
 
-#define IBP_MCE_FB40__DSQL_CTE_OUTER_JOIN                                   1233
+#define IBP_MCE_FB40__DYN_PRECISION_TOO_SMALL                               1233
 
-#define IBP_MCE_FB40__DSQL_CTE_MULT_REFERENCES                              1234
+#define IBP_MCE_FB40__INTERNAL_MSG_336068854                                1234
 
-#define IBP_MCE_FB40__DSQL_CTE_NOT_A_UNION                                  1235
+#define IBP_MCE_FB40__DYN_MISS_PRIV_WARNING                                 1235
 
-#define IBP_MCE_FB40__DSQL_CTE_NONRECURS_AFTER_RECURS                       1236
+#define IBP_MCE_FB40__DYN_ODS_NOT_SUPP_FEATURE                              1236
 
-#define IBP_MCE_FB40__DSQL_CTE_WRONG_CLAUSE                                 1237
+#define IBP_MCE_FB40__DYN_CANNOT_ADDREM_COMPUTED                            1237
 
-#define IBP_MCE_FB40__DSQL_CTE_UNION_ALL                                    1238
+#define IBP_MCE_FB40__DYN_NO_EMPTY_PW                                       1238
 
-#define IBP_MCE_FB40__DSQL_CTE_MISS_NONRECURSIVE                            1239
+#define IBP_MCE_FB40__DYN_DUP_INDEX                                         1239
 
-#define IBP_MCE_FB40__DSQL_CTE_NESTED_WITH                                  1240
+#define IBP_MCE_FB40__DYN_LOCKSMITH_USE_GRANTED                             1240
 
-#define IBP_MCE_FB40__DSQL_COL_MORE_THAN_ONCE_USING                         1241
+#define IBP_MCE_FB40__DYN_DUP_EXCEPTION                                     1241
 
-#define IBP_MCE_FB40__DSQL_UNSUPP_FEATURE_DIALECT                           1242
+#define IBP_MCE_FB40__DYN_DUP_GENERATOR                                     1242
 
-#define IBP_MCE_FB40__DSQL_CTE_NOT_USED                                     1243
+#define IBP_MCE_FB40__INTERNAL_MSG_336068863                                1243
 
-#define IBP_MCE_FB40__DSQL_COL_MORE_THAN_ONCE_VIEW                          1244
+#define IBP_MCE_FB40__DYN_PACKAGE_NOT_FOUND                                 1244
 
-#define IBP_MCE_FB40__DSQL_UNSUPPORTED_IN_AUTO_TRANS                        1245
+#define IBP_MCE_FB40__DYN_SCHEMA_NOT_FOUND                                  1245
 
-#define IBP_MCE_FB40__DSQL_EVAL_UNKNODE                                     1246
+#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSPROC                                1246
 
-#define IBP_MCE_FB40__DSQL_AGG_WRONGARG                                     1247
+#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSTRIG                                1247
 
-#define IBP_MCE_FB40__DSQL_AGG2_WRONGARG                                    1248
+#define IBP_MCE_FB40__DYN_CANNOT_MOD_SYSFUNC                                1248
 
-#define IBP_MCE_FB40__DSQL_NODATEORTIME_PM_STRING                           1249
+#define IBP_MCE_FB40__DYN_INVALID_DDL_PROC                                  1249
 
-#define IBP_MCE_FB40__DSQL_INVALID_DATETIME_SUBTRACT                        1250
+#define IBP_MCE_FB40__DYN_INVALID_DDL_TRIG                                  1250
 
-#define IBP_MCE_FB40__DSQL_INVALID_DATEORTIME_ADD                           1251
+#define IBP_MCE_FB40__DYN_FUNCNOTDEF_PACKAGE                                1251
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MINUS_DATE                          1252
+#define IBP_MCE_FB40__DYN_PROCNOTDEF_PACKAGE                                1252
 
-#define IBP_MCE_FB40__DSQL_NOSTRING_ADDSUB_DIAL3                            1253
+#define IBP_MCE_FB40__DYN_FUNCSIGNAT_PACKAGE                                1253
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_ADDSUB_DIAL3                        1254
+#define IBP_MCE_FB40__DYN_PROCSIGNAT_PACKAGE                                1254
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MULTIP_DIAL1                        1255
+#define IBP_MCE_FB40__DYN_DEFVALDECL_PACKAGE_PROC                           1255
 
-#define IBP_MCE_FB40__DSQL_NOSTRING_MULTIP_DIAL3                            1256
+#define IBP_MCE_FB40__DYN_DUP_FUNCTION                                      1256
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MULTIP_DIAL3                        1257
+#define IBP_MCE_FB40__DYN_PACKAGE_BODY_EXISTS                               1257
 
-#define IBP_MCE_FB40__DSQL_MUSTUSE_NUMERIC_DIV_DIAL1                        1258
+#define IBP_MCE_FB40__DYN_INVALID_DDL_FUNC                                  1258
 
-#define IBP_MCE_FB40__DSQL_NOSTRING_DIV_DIAL3                               1259
+#define IBP_MCE_FB40__DYN_NEWFC_OLDSYNTAX                                   1259
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_DIV_DIAL3                           1260
+#define IBP_MCE_FB40__INTERNAL_MSG_336068880                                1260
 
-#define IBP_MCE_FB40__DSQL_NOSTRING_NEG_DIAL3                               1261
+#define IBP_MCE_FB40__INTERNAL_MSG_336068881                                1261
 
-#define IBP_MCE_FB40__DSQL_INVALID_TYPE_NEG                                 1262
+#define IBP_MCE_FB40__INTERNAL_MSG_336068882                                1262
 
-#define IBP_MCE_FB40__DSQL_MAX_DISTINCT_ITEMS                               1263
+#define IBP_MCE_FB40__INTERNAL_MSG_336068883                                1263
 
-#define IBP_MCE_FB40__DSQL_ALTER_CHARSET_FAILED                             1264
+#define IBP_MCE_FB40__INTERNAL_MSG_336068884                                1264
 
-#define IBP_MCE_FB40__DSQL_COMMENT_ON_FAILED                                1265
+#define IBP_MCE_FB40__INTERNAL_MSG_336068885                                1265
 
-#define IBP_MCE_FB40__DSQL_CREATE_FUNC_FAILED                               1266
+#define IBP_MCE_FB40__DYN_FUNC_PARAM_NOT_FOUND                              1266
 
-#define IBP_MCE_FB40__DSQL_ALTER_FUNC_FAILED                                1267
+#define IBP_MCE_FB40__DYN_ROUTINE_PARAM_NOT_FOUND                           1267
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_FUNC_FAILED                         1268
+#define IBP_MCE_FB40__DYN_ROUTINE_PARAM_AMBIGUOUS                           1268
 
-#define IBP_MCE_FB40__DSQL_DROP_FUNC_FAILED                                 1269
+#define IBP_MCE_FB40__DYN_COLL_USED_FUNCTION                                1269
 
-#define IBP_MCE_FB40__DSQL_RECREATE_FUNC_FAILED                             1270
+#define IBP_MCE_FB40__DYN_DOMAIN_USED_FUNCTION                              1270
 
-#define IBP_MCE_FB40__DSQL_CREATE_PROC_FAILED                               1271
+#define IBP_MCE_FB40__DYN_ALTER_USER_NO_CLAUSE                              1271
 
-#define IBP_MCE_FB40__DSQL_ALTER_PROC_FAILED                                1272
+#define IBP_MCE_FB40__INTERNAL_MSG_336068892                                1272
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_PROC_FAILED                         1273
+#define IBP_MCE_FB40__INTERNAL_MSG_336068893                                1273
 
-#define IBP_MCE_FB40__DSQL_DROP_PROC_FAILED                                 1274
+#define IBP_MCE_FB40__DYN_DUPLICATE_PACKAGE_ITEM                            1274
 
-#define IBP_MCE_FB40__DSQL_RECREATE_PROC_FAILED                             1275
+#define IBP_MCE_FB40__DYN_CANT_MODIFY_SYSOBJ                                1275
 
-#define IBP_MCE_FB40__DSQL_CREATE_TRIGGER_FAILED                            1276
+#define IBP_MCE_FB40__DYN_CANT_USE_ZERO_INCREMENT                           1276
 
-#define IBP_MCE_FB40__DSQL_ALTER_TRIGGER_FAILED                             1277
+#define IBP_MCE_FB40__DYN_CANT_USE_IN_FOREIGNKEY                            1277
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_TRIGGER_FAILED                      1278
+#define IBP_MCE_FB40__DYN_DEFVALDECL_PACKAGE_FUNC                           1278
 
-#define IBP_MCE_FB40__DSQL_DROP_TRIGGER_FAILED                              1279
+#define IBP_MCE_FB40__DYN_CREATE_USER_NO_PASSWORD                           1279
 
-#define IBP_MCE_FB40__DSQL_RECREATE_TRIGGER_FAILED                          1280
+#define IBP_MCE_FB40__DYN_CYCLIC_ROLE                                       1280
 
-#define IBP_MCE_FB40__DSQL_CREATE_COLLATION_FAILED                          1281
+#define IBP_MCE_FB40__INTERNAL_MSG_336068901                                1281
 
-#define IBP_MCE_FB40__DSQL_DROP_COLLATION_FAILED                            1282
+#define IBP_MCE_FB40__INTERNAL_MSG_336068902                                1282
 
-#define IBP_MCE_FB40__DSQL_CREATE_DOMAIN_FAILED                             1283
+#define IBP_MCE_FB40__INTERNAL_MSG_336068903                                1283
 
-#define IBP_MCE_FB40__DSQL_ALTER_DOMAIN_FAILED                              1284
+#define IBP_MCE_FB40__DYN_CANT_USE_ZERO_INC_IDENT                           1284
 
-#define IBP_MCE_FB40__DSQL_DROP_DOMAIN_FAILED                               1285
+#define IBP_MCE_FB40__DYN_CONCUR_ALTER_DATABASE                             1285
 
-#define IBP_MCE_FB40__DSQL_CREATE_EXCEPT_FAILED                             1286
+#define IBP_MCE_FB40__DYN_INCOMPAT_ALTER_DATABASE                           1286
 
-#define IBP_MCE_FB40__DSQL_ALTER_EXCEPT_FAILED                              1287
+#define IBP_MCE_FB40__DYN_NO_DDL_GRANT_OPT_PRIV                             1287
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_EXCEPT_FAILED                       1288
+#define IBP_MCE_FB40__DYN_NO_GRANT_OPT_PRIV                                 1288
 
-#define IBP_MCE_FB40__DSQL_RECREATE_EXCEPT_FAILED                           1289
+#define IBP_MCE_FB40__DYN_FUNC_NOT_EXIST                                    1289
 
-#define IBP_MCE_FB40__DSQL_DROP_EXCEPT_FAILED                               1290
+#define IBP_MCE_FB40__DYN_PROC_NOT_EXIST                                    1290
 
-#define IBP_MCE_FB40__DSQL_CREATE_SEQUENCE_FAILED                           1291
+#define IBP_MCE_FB40__DYN_PACK_NOT_EXIST                                    1291
 
-#define IBP_MCE_FB40__DSQL_CREATE_TABLE_FAILED                              1292
+#define IBP_MCE_FB40__DYN_TRIG_NOT_EXIST                                    1292
 
-#define IBP_MCE_FB40__DSQL_ALTER_TABLE_FAILED                               1293
+#define IBP_MCE_FB40__DYN_VIEW_NOT_EXIST                                    1293
 
-#define IBP_MCE_FB40__DSQL_DROP_TABLE_FAILED                                1294
+#define IBP_MCE_FB40__DYN_REL_NOT_EXIST                                     1294
 
-#define IBP_MCE_FB40__DSQL_RECREATE_TABLE_FAILED                            1295
+#define IBP_MCE_FB40__DYN_EXC_NOT_EXIST                                     1295
 
-#define IBP_MCE_FB40__DSQL_CREATE_PACK_FAILED                               1296
+#define IBP_MCE_FB40__DYN_GEN_NOT_EXIST                                     1296
 
-#define IBP_MCE_FB40__DSQL_ALTER_PACK_FAILED                                1297
+#define IBP_MCE_FB40__DYN_FLD_NOT_EXIST                                     1297
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_PACK_FAILED                         1298
+#define IBP_MCE_FB40__INTERNAL_MSG_336396289                                1298
 
-#define IBP_MCE_FB40__DSQL_DROP_PACK_FAILED                                 1299
+#define IBP_MCE_FB40__INTERNAL_MSG_336396362                                1299
 
-#define IBP_MCE_FB40__DSQL_RECREATE_PACK_FAILED                             1300
+#define IBP_MCE_FB40__INTERNAL_MSG_336396364                                1300
 
-#define IBP_MCE_FB40__DSQL_CREATE_PACK_BODY_FAILED                          1301
+#define IBP_MCE_FB40__INTERNAL_MSG_336396365                                1301
 
-#define IBP_MCE_FB40__DSQL_DROP_PACK_BODY_FAILED                            1302
+#define IBP_MCE_FB40__INTERNAL_MSG_336396366                                1302
 
-#define IBP_MCE_FB40__DSQL_RECREATE_PACK_BODY_FAILED                        1303
+#define IBP_MCE_FB40__INTERNAL_MSG_336396375                                1303
 
-#define IBP_MCE_FB40__DSQL_CREATE_VIEW_FAILED                               1304
+#define IBP_MCE_FB40__INTERNAL_MSG_336396376                                1304
 
-#define IBP_MCE_FB40__DSQL_ALTER_VIEW_FAILED                                1305
+#define IBP_MCE_FB40__INTERNAL_MSG_336396377                                1305
 
-#define IBP_MCE_FB40__DSQL_CREATE_ALTER_VIEW_FAILED                         1306
+#define IBP_MCE_FB40__INTERNAL_MSG_336396379                                1306
 
-#define IBP_MCE_FB40__DSQL_RECREATE_VIEW_FAILED                             1307
+#define IBP_MCE_FB40__INTERNAL_MSG_336396382                                1307
 
-#define IBP_MCE_FB40__DSQL_DROP_VIEW_FAILED                                 1308
+#define IBP_MCE_FB40__INTERNAL_MSG_336396384                                1308
 
-#define IBP_MCE_FB40__DSQL_DROP_SEQUENCE_FAILED                             1309
+#define IBP_MCE_FB40__INTERNAL_MSG_336396386                                1309
 
-#define IBP_MCE_FB40__DSQL_RECREATE_SEQUENCE_FAILED                         1310
+#define IBP_MCE_FB40__INTERNAL_MSG_336396387                                1310
 
-#define IBP_MCE_FB40__DSQL_DROP_INDEX_FAILED                                1311
+#define IBP_MCE_FB40__INTERNAL_MSG_336396446                                1311
 
-#define IBP_MCE_FB40__DSQL_DROP_FILTER_FAILED                               1312
+#define IBP_MCE_FB40__INTERNAL_MSG_336396447                                1312
 
-#define IBP_MCE_FB40__DSQL_DROP_SHADOW_FAILED                               1313
+#define IBP_MCE_FB40__INTERNAL_MSG_336396448                                1313
 
-#define IBP_MCE_FB40__DSQL_DROP_ROLE_FAILED                                 1314
+#define IBP_MCE_FB40__INTERNAL_MSG_336396449                                1314
 
-#define IBP_MCE_FB40__DSQL_DROP_USER_FAILED                                 1315
+#define IBP_MCE_FB40__INTERNAL_MSG_336396450                                1315
 
-#define IBP_MCE_FB40__DSQL_CREATE_ROLE_FAILED                               1316
+#define IBP_MCE_FB40__INTERNAL_MSG_336396451                                1316
 
-#define IBP_MCE_FB40__DSQL_ALTER_ROLE_FAILED                                1317
+#define IBP_MCE_FB40__INTERNAL_MSG_336396452                                1317
 
-#define IBP_MCE_FB40__DSQL_ALTER_INDEX_FAILED                               1318
+#define IBP_MCE_FB40__INTERNAL_MSG_336396453                                1318
 
-#define IBP_MCE_FB40__DSQL_ALTER_DATABASE_FAILED                            1319
+#define IBP_MCE_FB40__INTERNAL_MSG_336396454                                1319
 
-#define IBP_MCE_FB40__DSQL_CREATE_SHADOW_FAILED                             1320
+#define IBP_MCE_FB40__INTERNAL_MSG_336396455                                1320
 
-#define IBP_MCE_FB40__DSQL_CREATE_FILTER_FAILED                             1321
+#define IBP_MCE_FB40__INTERNAL_MSG_336396456                                1321
 
-#define IBP_MCE_FB40__DSQL_CREATE_INDEX_FAILED                              1322
+#define IBP_MCE_FB40__INTERNAL_MSG_336396457                                1322
 
-#define IBP_MCE_FB40__DSQL_CREATE_USER_FAILED                               1323
+#define IBP_MCE_FB40__INTERNAL_MSG_336396458                                1323
 
-#define IBP_MCE_FB40__DSQL_ALTER_USER_FAILED                                1324
+#define IBP_MCE_FB40__INTERNAL_MSG_336396459                                1324
 
-#define IBP_MCE_FB40__DSQL_GRANT_FAILED                                     1325
+#define IBP_MCE_FB40__INTERNAL_MSG_336396460                                1325
 
-#define IBP_MCE_FB40__DSQL_REVOKE_FAILED                                    1326
+#define IBP_MCE_FB40__INTERNAL_MSG_336396461                                1326
 
-#define IBP_MCE_FB40__DSQL_CTE_RECURSIVE_AGGREGATE                          1327
+#define IBP_MCE_FB40__INTERNAL_MSG_336396462                                1327
 
-#define IBP_MCE_FB40__DSQL_MAPPING_FAILED                                   1328
+#define IBP_MCE_FB40__INTERNAL_MSG_336396463                                1328
 
-#define IBP_MCE_FB40__DSQL_ALTER_SEQUENCE_FAILED                            1329
+#define IBP_MCE_FB40__INTERNAL_MSG_336396464                                1329
 
-#define IBP_MCE_FB40__DSQL_CREATE_GENERATOR_FAILED                          1330
+#define IBP_MCE_FB40__INTERNAL_MSG_336396465                                1330
 
-#define IBP_MCE_FB40__DSQL_SET_GENERATOR_FAILED                             1331
+#define IBP_MCE_FB40__INTERNAL_MSG_336396468                                1331
 
-#define IBP_MCE_FB40__DSQL_WLOCK_SIMPLE                                     1332
+#define IBP_MCE_FB40__INTERNAL_MSG_336396471                                1332
 
-#define IBP_MCE_FB40__DSQL_FIRSTSKIP_ROWS                                   1333
+#define IBP_MCE_FB40__INTERNAL_MSG_336396472                                1333
 
-#define IBP_MCE_FB40__DSQL_WLOCK_AGGREGATES                                 1334
+#define IBP_MCE_FB40__INTERNAL_MSG_336396477                                1334
 
-#define IBP_MCE_FB40__DSQL_WLOCK_CONFLICT                                   1335
+#define IBP_MCE_FB40__INTERNAL_MSG_336396478                                1335
 
-#define IBP_MCE_FB40__DSQL_MAX_EXCEPTION_ARGUMENTS                          1336
+#define IBP_MCE_FB40__INTERNAL_MSG_336396479                                1336
 
-#define IBP_MCE_FB40__DSQL_STRING_BYTE_LENGTH                               1337
+#define IBP_MCE_FB40__INTERNAL_MSG_336396480                                1337
 
-#define IBP_MCE_FB40__DSQL_STRING_CHAR_LENGTH                               1338
+#define IBP_MCE_FB40__INTERNAL_MSG_336396481                                1338
 
-#define IBP_MCE_FB40__DSQL_MAX_NESTING                                      1339
+#define IBP_MCE_FB40__INTERNAL_MSG_336396482                                1339
 
-#define IBP_MCE_FB40__DSQL_RECREATE_USER_FAILED                             1340
+#define IBP_MCE_FB40__INTERNAL_MSG_336396484                                1340
 
-#define IBP_MCE_FB40__GSEC_CANT_OPEN_DB                                     1341
+#define IBP_MCE_FB40__INTERNAL_MSG_336396485                                1341
 
-#define IBP_MCE_FB40__GSEC_SWITCHES_ERROR                                   1342
+#define IBP_MCE_FB40__INTERNAL_MSG_336396486                                1342
 
-#define IBP_MCE_FB40__GSEC_NO_OP_SPEC                                       1343
+#define IBP_MCE_FB40__INTERNAL_MSG_336396594                                1343
 
-#define IBP_MCE_FB40__GSEC_NO_USR_NAME                                      1344
+#define IBP_MCE_FB40__INTERNAL_MSG_336396595                                1344
 
-#define IBP_MCE_FB40__GSEC_ERR_ADD                                          1345
+#define IBP_MCE_FB40__INTERNAL_MSG_336396596                                1345
 
-#define IBP_MCE_FB40__GSEC_ERR_MODIFY                                       1346
+#define IBP_MCE_FB40__INTERNAL_MSG_336396597                                1346
 
-#define IBP_MCE_FB40__GSEC_ERR_FIND_MOD                                     1347
+#define IBP_MCE_FB40__INTERNAL_MSG_336396598                                1347
 
-#define IBP_MCE_FB40__GSEC_ERR_REC_NOT_FOUND                                1348
+#define IBP_MCE_FB40__INTERNAL_MSG_336396599                                1348
 
-#define IBP_MCE_FB40__GSEC_ERR_DELETE                                       1349
+#define IBP_MCE_FB40__INTERNAL_MSG_336396603                                1349
 
-#define IBP_MCE_FB40__GSEC_ERR_FIND_DEL                                     1350
+#define IBP_MCE_FB40__INTERNAL_MSG_336396611                                1350
 
-#define IBP_MCE_FB40__GSEC_ERR_FIND_DISP                                    1351
+#define IBP_MCE_FB40__INTERNAL_MSG_336396624                                1351
 
-#define IBP_MCE_FB40__GSEC_INV_PARAM                                        1352
+#define IBP_MCE_FB40__INTERNAL_MSG_336396625                                1352
 
-#define IBP_MCE_FB40__GSEC_OP_SPECIFIED                                     1353
+#define IBP_MCE_FB40__INTERNAL_MSG_336396628                                1353
 
-#define IBP_MCE_FB40__GSEC_PW_SPECIFIED                                     1354
+#define IBP_MCE_FB40__INTERNAL_MSG_336396651                                1354
 
-#define IBP_MCE_FB40__GSEC_UID_SPECIFIED                                    1355
+#define IBP_MCE_FB40__INTERNAL_MSG_336396663                                1355
 
-#define IBP_MCE_FB40__GSEC_GID_SPECIFIED                                    1356
+#define IBP_MCE_FB40__INTERNAL_MSG_336396670                                1356
 
-#define IBP_MCE_FB40__GSEC_PROJ_SPECIFIED                                   1357
+#define IBP_MCE_FB40__INTERNAL_MSG_336396671                                1357
 
-#define IBP_MCE_FB40__GSEC_ORG_SPECIFIED                                    1358
+#define IBP_MCE_FB40__INTERNAL_MSG_336396672                                1358
 
-#define IBP_MCE_FB40__GSEC_FNAME_SPECIFIED                                  1359
+#define IBP_MCE_FB40__INTERNAL_MSG_336396673                                1359
 
-#define IBP_MCE_FB40__GSEC_MNAME_SPECIFIED                                  1360
+#define IBP_MCE_FB40__INTERNAL_MSG_336396681                                1360
 
-#define IBP_MCE_FB40__GSEC_LNAME_SPECIFIED                                  1361
+#define IBP_MCE_FB40__INTERNAL_MSG_336396683                                1361
 
-#define IBP_MCE_FB40__GSEC_INV_SWITCH                                       1362
+#define IBP_MCE_FB40__INTERNAL_MSG_336396684                                1362
 
-#define IBP_MCE_FB40__GSEC_AMB_SWITCH                                       1363
+#define IBP_MCE_FB40__INTERNAL_MSG_336396687                                1363
 
-#define IBP_MCE_FB40__GSEC_NO_OP_SPECIFIED                                  1364
+#define IBP_MCE_FB40__INTERNAL_MSG_336396688                                1364
 
-#define IBP_MCE_FB40__GSEC_PARAMS_NOT_ALLOWED                               1365
+#define IBP_MCE_FB40__INTERNAL_MSG_336396689                                1365
 
-#define IBP_MCE_FB40__GSEC_INCOMPAT_SWITCH                                  1366
+#define IBP_MCE_FB40__INTERNAL_MSG_336396690                                1366
 
-#define IBP_MCE_FB40__GSEC_INV_USERNAME                                     1367
+#define IBP_MCE_FB40__INTERNAL_MSG_336396691                                1367
 
-#define IBP_MCE_FB40__GSEC_INV_PW_LENGTH                                    1368
+#define IBP_MCE_FB40__INTERNAL_MSG_336396692                                1368
 
-#define IBP_MCE_FB40__GSEC_DB_SPECIFIED                                     1369
+#define IBP_MCE_FB40__INTERNAL_MSG_336396693                                1369
 
-#define IBP_MCE_FB40__GSEC_DB_ADMIN_SPECIFIED                               1370
+#define IBP_MCE_FB40__INTERNAL_MSG_336396735                                1370
 
-#define IBP_MCE_FB40__GSEC_DB_ADMIN_PW_SPECIFIED                            1371
+#define IBP_MCE_FB40__INTERNAL_MSG_336396736                                1371
 
-#define IBP_MCE_FB40__GSEC_SQL_ROLE_SPECIFIED                               1372
+#define IBP_MCE_FB40__INTERNAL_MSG_336396737                                1372
 
-#define IBP_MCE_FB40__GSTAT_UNKNOWN_SWITCH                                  1373
+#define IBP_MCE_FB40__INTERNAL_MSG_336396756                                1373
 
-#define IBP_MCE_FB40__GSTAT_RETRY                                           1374
+#define IBP_MCE_FB40__INTERNAL_MSG_336396757                                1374
 
-#define IBP_MCE_FB40__GSTAT_WRONG_ODS                                       1375
+#define IBP_MCE_FB40__INTERNAL_MSG_336396758                                1375
 
-#define IBP_MCE_FB40__GSTAT_UNEXPECTED_EOF                                  1376
+#define IBP_MCE_FB40__INTERNAL_MSG_336396769                                1376
 
-#define IBP_MCE_FB40__GSTAT_OPEN_ERR                                        1377
+#define IBP_MCE_FB40__INTERNAL_MSG_336396770                                1377
 
-#define IBP_MCE_FB40__GSTAT_READ_ERR                                        1378
+#define IBP_MCE_FB40__INTERNAL_MSG_336396778                                1378
 
-#define IBP_MCE_FB40__GSTAT_SYSMEMEX                                        1379
+#define IBP_MCE_FB40__INTERNAL_MSG_336396780                                1379
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_AM                                       1380
+#define IBP_MCE_FB40__INTERNAL_MSG_336396784                                1380
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_WM                                       1381
+#define IBP_MCE_FB40__INTERNAL_MSG_336396786                                1381
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_RS                                       1382
+#define IBP_MCE_FB40__INTERNAL_MSG_336396787                                1382
 
-#define IBP_MCE_FB40__FBSVCMGR_INFO_ERR                                     1383
+#define IBP_MCE_FB40__INTERNAL_MSG_336396875                                1383
 
-#define IBP_MCE_FB40__FBSVCMGR_QUERY_ERR                                    1384
+#define IBP_MCE_FB40__INTERNAL_MSG_336396881                                1384
 
-#define IBP_MCE_FB40__FBSVCMGR_SWITCH_UNKNOWN                               1385
+#define IBP_MCE_FB40__INTERNAL_MSG_336396882                                1385
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_SM                                       1386
+#define IBP_MCE_FB40__INTERNAL_MSG_336396886                                1386
 
-#define IBP_MCE_FB40__FBSVCMGR_FP_OPEN                                      1387
+#define IBP_MCE_FB40__INTERNAL_MSG_336396887                                1387
 
-#define IBP_MCE_FB40__FBSVCMGR_FP_READ                                      1388
+#define IBP_MCE_FB40__INTERNAL_MSG_336396974                                1388
 
-#define IBP_MCE_FB40__FBSVCMGR_FP_EMPTY                                     1389
+#define IBP_MCE_FB40__INTERNAL_MSG_336396975                                1389
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_ARG                                      1390
+#define IBP_MCE_FB40__INTERNAL_MSG_336396985                                1390
 
-#define IBP_MCE_FB40__FBSVCMGR_INFO_LIMBO                                   1391
+#define IBP_MCE_FB40__INTERNAL_MSG_336396991                                1391
 
-#define IBP_MCE_FB40__FBSVCMGR_LIMBO_STATE                                  1392
+#define IBP_MCE_FB40__INTERNAL_MSG_336396992                                1392
 
-#define IBP_MCE_FB40__FBSVCMGR_LIMBO_ADVISE                                 1393
+#define IBP_MCE_FB40__INTERNAL_MSG_336396993                                1393
 
-#define IBP_MCE_FB40__FBSVCMGR_BAD_RM                                       1394
+#define IBP_MCE_FB40__INTERNAL_MSG_336396994                                1394
 
-#define IBP_MCE_FB40__UTL_TRUSTED_SWITCH                                    1395
+#define IBP_MCE_FB40__INTERNAL_MSG_336396995                                1395
 
-#define IBP_MCE_FB40__NBACKUP_MISSING_PARAM                                 1396
+#define IBP_MCE_FB40__INTERNAL_MSG_336396996                                1396
 
-#define IBP_MCE_FB40__NBACKUP_ALLOWED_SWITCHES                              1397
+#define IBP_MCE_FB40__INTERNAL_MSG_336396997                                1397
 
-#define IBP_MCE_FB40__NBACKUP_UNKNOWN_PARAM                                 1398
+#define IBP_MCE_FB40__INTERNAL_MSG_336397004                                1398
 
-#define IBP_MCE_FB40__NBACKUP_UNKNOWN_SWITCH                                1399
+#define IBP_MCE_FB40__INTERNAL_MSG_336397005                                1399
 
-#define IBP_MCE_FB40__NBACKUP_NOFETCHPW_SVC                                 1400
+#define IBP_MCE_FB40__INTERNAL_MSG_336397006                                1400
 
-#define IBP_MCE_FB40__NBACKUP_PWFILE_ERROR                                  1401
+#define IBP_MCE_FB40__INTERNAL_MSG_336397007                                1401
 
-#define IBP_MCE_FB40__NBACKUP_SIZE_WITH_LOCK                                1402
+#define IBP_MCE_FB40__INTERNAL_MSG_336397027                                1402
 
-#define IBP_MCE_FB40__NBACKUP_NO_SWITCH                                     1403
+#define IBP_MCE_FB40__INTERNAL_MSG_336397028                                1403
 
-#define IBP_MCE_FB40__NBACKUP_ERR_READ                                      1404
+#define IBP_MCE_FB40__INTERNAL_MSG_336397029                                1404
 
-#define IBP_MCE_FB40__NBACKUP_ERR_WRITE                                     1405
+#define IBP_MCE_FB40__INTERNAL_MSG_336397030                                1405
 
-#define IBP_MCE_FB40__NBACKUP_ERR_SEEK                                      1406
+#define IBP_MCE_FB40__INTERNAL_MSG_336397031                                1406
 
-#define IBP_MCE_FB40__NBACKUP_ERR_OPENDB                                    1407
+#define IBP_MCE_FB40__INTERNAL_MSG_336397033                                1407
 
-#define IBP_MCE_FB40__NBACKUP_ERR_FADVICE                                   1408
+#define IBP_MCE_FB40__INTERNAL_MSG_336397034                                1408
 
-#define IBP_MCE_FB40__NBACKUP_ERR_CREATEDB                                  1409
+#define IBP_MCE_FB40__INTERNAL_MSG_336397035                                1409
 
-#define IBP_MCE_FB40__NBACKUP_ERR_OPENBK                                    1410
+#define IBP_MCE_FB40__INTERNAL_MSG_336397036                                1410
 
-#define IBP_MCE_FB40__NBACKUP_ERR_CREATEBK                                  1411
+#define IBP_MCE_FB40__INTERNAL_MSG_336397037                                1411
 
-#define IBP_MCE_FB40__NBACKUP_ERR_EOFDB                                     1412
+#define IBP_MCE_FB40__INTERNAL_MSG_336397038                                1412
 
-#define IBP_MCE_FB40__NBACKUP_FIXUP_WRONGSTATE                              1413
+#define IBP_MCE_FB40__INTERNAL_MSG_336397039                                1413
 
-#define IBP_MCE_FB40__NBACKUP_ERR_DB                                        1414
+#define IBP_MCE_FB40__INTERNAL_MSG_336397040                                1414
 
-#define IBP_MCE_FB40__NBACKUP_USERPW_TOOLONG                                1415
+#define IBP_MCE_FB40__INTERNAL_MSG_336397041                                1415
 
-#define IBP_MCE_FB40__NBACKUP_LOSTREC_DB                                    1416
+#define IBP_MCE_FB40__INTERNAL_MSG_336397042                                1416
 
-#define IBP_MCE_FB40__NBACKUP_LOSTGUID_DB                                   1417
+#define IBP_MCE_FB40__INTERNAL_MSG_336397043                                1417
 
-#define IBP_MCE_FB40__NBACKUP_ERR_EOFHDRDB                                  1418
+#define IBP_MCE_FB40__INTERNAL_MSG_336397044                                1418
 
-#define IBP_MCE_FB40__NBACKUP_DB_NOTLOCK                                    1419
+#define IBP_MCE_FB40__INTERNAL_MSG_336397045                                1419
 
-#define IBP_MCE_FB40__NBACKUP_LOSTGUID_BK                                   1420
+#define IBP_MCE_FB40__INTERNAL_MSG_336397046                                1420
 
-#define IBP_MCE_FB40__NBACKUP_PAGE_CHANGED                                  1421
+#define IBP_MCE_FB40__INTERNAL_MSG_336397047                                1421
 
-#define IBP_MCE_FB40__NBACKUP_DBSIZE_INCONSISTENT                           1422
+#define IBP_MCE_FB40__INTERNAL_MSG_336397048                                1422
 
-#define IBP_MCE_FB40__NBACKUP_FAILED_LZBK                                   1423
+#define IBP_MCE_FB40__INTERNAL_MSG_336397049                                1423
 
-#define IBP_MCE_FB40__NBACKUP_ERR_EOFHDRBK                                  1424
+#define IBP_MCE_FB40__INTERNAL_MSG_336397050                                1424
 
-#define IBP_MCE_FB40__NBACKUP_INVALID_INCBK                                 1425
+#define IBP_MCE_FB40__INTERNAL_MSG_336397051                                1425
 
-#define IBP_MCE_FB40__NBACKUP_UNSUPVERS_INCBK                               1426
+#define IBP_MCE_FB40__INTERNAL_MSG_336397052                                1426
 
-#define IBP_MCE_FB40__NBACKUP_INVLEVEL_INCBK                                1427
+#define IBP_MCE_FB40__INTERNAL_MSG_336397053                                1427
 
-#define IBP_MCE_FB40__NBACKUP_WRONG_ORDERBK                                 1428
+#define IBP_MCE_FB40__INTERNAL_MSG_336397054                                1428
 
-#define IBP_MCE_FB40__NBACKUP_ERR_EOFBK                                     1429
+#define IBP_MCE_FB40__INTERNAL_MSG_336397055                                1429
 
-#define IBP_MCE_FB40__NBACKUP_ERR_COPY                                      1430
+#define IBP_MCE_FB40__INTERNAL_MSG_336397056                                1430
 
-#define IBP_MCE_FB40__NBACKUP_ERR_EOFHDR_RESTDB                             1431
+#define IBP_MCE_FB40__INTERNAL_MSG_336397057                                1431
 
-#define IBP_MCE_FB40__NBACKUP_LOSTGUID_L0BK                                 1432
+#define IBP_MCE_FB40__INTERNAL_MSG_336397058                                1432
 
-#define IBP_MCE_FB40__NBACKUP_SWITCHD_PARAMETER                             1433
+#define IBP_MCE_FB40__INTERNAL_MSG_336397069                                1433
 
-#define IBP_MCE_FB40__NBACKUP_USER_STOP                                     1434
+#define IBP_MCE_FB40__INTERNAL_MSG_336397080                                1434
 
-#define IBP_MCE_FB40__NBACKUP_DECO_PARSE                                    1435
+#define IBP_MCE_FB40__INTERNAL_MSG_336397082                                1435
 
-#define IBP_MCE_FB40__NBACKUP_LOSTREC_GUID_DB                               1436
+#define IBP_MCE_FB40__INTERNAL_MSG_336397083                                1436
 
-#define IBP_MCE_FB40__NBACKUP_SEQ_MISUSE                                    1437
+#define IBP_MCE_FB40__INTERNAL_MSG_336397084                                1437
 
-#define IBP_MCE_FB40__NBACKUP_WRONG_PARAM                                   1438
+#define IBP_MCE_FB40__INTERNAL_MSG_336397085                                1438
 
-#define IBP_MCE_FB40__NBACKUP_CLEAN_HIST_MISUSE                             1439
+#define IBP_MCE_FB40__INTERNAL_MSG_336397116                                1439
 
-#define IBP_MCE_FB40__NBACKUP_CLEAN_HIST_MISSED                             1440
+#define IBP_MCE_FB40__INTERNAL_MSG_336397117                                1440
 
-#define IBP_MCE_FB40__NBACKUP_KEEP_HIST_MISSED                              1441
+#define IBP_MCE_FB40__INTERNAL_MSG_336397118                                1441
 
-#define IBP_MCE_FB40__NBACKUP_SECOND_KEEP_SWITCH                            1442
+#define IBP_MCE_FB40__INTERNAL_MSG_336397126                                1442
 
-#define IBP_MCE_FB40__TRACE_CONFLICT_ACTS                                   1443
+#define IBP_MCE_FB40__INTERNAL_MSG_336397130                                1443
 
-#define IBP_MCE_FB40__TRACE_ACT_NOTFOUND                                    1444
+#define IBP_MCE_FB40__INTERNAL_MSG_336397131                                1444
 
-#define IBP_MCE_FB40__TRACE_SWITCH_ONCE                                     1445
+#define IBP_MCE_FB40__INTERNAL_MSG_336397133                                1445
 
-#define IBP_MCE_FB40__TRACE_PARAM_VAL_MISS                                  1446
+#define IBP_MCE_FB40__INTERNAL_MSG_336397137                                1446
 
-#define IBP_MCE_FB40__TRACE_PARAM_INVALID                                   1447
+#define IBP_MCE_FB40__INTERNAL_MSG_336397138                                1447
 
-#define IBP_MCE_FB40__TRACE_SWITCH_UNKNOWN                                  1448
+#define IBP_MCE_FB40__INTERNAL_MSG_336397183                                1448
 
-#define IBP_MCE_FB40__TRACE_SWITCH_SVC_ONLY                                 1449
+#define IBP_MCE_FB40__INTERNAL_MSG_336397184                                1449
 
-#define IBP_MCE_FB40__TRACE_SWITCH_USER_ONLY                                1450
+#define IBP_MCE_FB40__INTERNAL_MSG_336397185                                1450
 
-#define IBP_MCE_FB40__TRACE_SWITCH_PARAM_MISS                               1451
+#define IBP_MCE_FB40__INTERNAL_MSG_336397203                                1451
 
-#define IBP_MCE_FB40__TRACE_PARAM_ACT_NOTCOMPAT                             1452
+#define IBP_MCE_FB40__INTERNAL_MSG_336397204                                1452
 
-#define IBP_MCE_FB40__TRACE_MANDATORY_SWITCH_MISS                           1453
+#define IBP_MCE_FB40__DSQL_TOO_OLD_ODS                                      1453
+
+#define IBP_MCE_FB40__DSQL_TABLE_NOT_FOUND                                  1454
+
+#define IBP_MCE_FB40__DSQL_VIEW_NOT_FOUND                                   1455
+
+#define IBP_MCE_FB40__DSQL_LINE_COL_ERROR                                   1456
+
+#define IBP_MCE_FB40__DSQL_UNKNOWN_POS                                      1457
+
+#define IBP_MCE_FB40__DSQL_NO_DUP_NAME                                      1458
+
+#define IBP_MCE_FB40__DSQL_TOO_MANY_VALUES                                  1459
+
+#define IBP_MCE_FB40__DSQL_NO_ARRAY_COMPUTED                                1460
+
+#define IBP_MCE_FB40__DSQL_IMPLICIT_DOMAIN_NAME                             1461
+
+#define IBP_MCE_FB40__DSQL_ONLY_CAN_SUBSCRIPT_ARRAY                         1462
+
+#define IBP_MCE_FB40__DSQL_MAX_SORT_ITEMS                                   1463
+
+#define IBP_MCE_FB40__DSQL_MAX_GROUP_ITEMS                                  1464
+
+#define IBP_MCE_FB40__DSQL_CONFLICTING_SORT_FIELD                           1465
+
+#define IBP_MCE_FB40__DSQL_DERIVED_TABLE_MORE_COLUMNS                       1466
+
+#define IBP_MCE_FB40__DSQL_DERIVED_TABLE_LESS_COLUMNS                       1467
+
+#define IBP_MCE_FB40__DSQL_DERIVED_FIELD_UNNAMED                            1468
+
+#define IBP_MCE_FB40__DSQL_DERIVED_FIELD_DUP_NAME                           1469
+
+#define IBP_MCE_FB40__DSQL_DERIVED_ALIAS_SELECT                             1470
+
+#define IBP_MCE_FB40__DSQL_DERIVED_ALIAS_FIELD                              1471
+
+#define IBP_MCE_FB40__DSQL_AUTO_FIELD_BAD_POS                               1472
+
+#define IBP_MCE_FB40__DSQL_CTE_WRONG_REFERENCE                              1473
+
+#define IBP_MCE_FB40__DSQL_CTE_CYCLE                                        1474
+
+#define IBP_MCE_FB40__DSQL_CTE_OUTER_JOIN                                   1475
+
+#define IBP_MCE_FB40__DSQL_CTE_MULT_REFERENCES                              1476
+
+#define IBP_MCE_FB40__DSQL_CTE_NOT_A_UNION                                  1477
+
+#define IBP_MCE_FB40__DSQL_CTE_NONRECURS_AFTER_RECURS                       1478
+
+#define IBP_MCE_FB40__DSQL_CTE_WRONG_CLAUSE                                 1479
+
+#define IBP_MCE_FB40__DSQL_CTE_UNION_ALL                                    1480
+
+#define IBP_MCE_FB40__DSQL_CTE_MISS_NONRECURSIVE                            1481
+
+#define IBP_MCE_FB40__DSQL_CTE_NESTED_WITH                                  1482
+
+#define IBP_MCE_FB40__DSQL_COL_MORE_THAN_ONCE_USING                         1483
+
+#define IBP_MCE_FB40__DSQL_UNSUPP_FEATURE_DIALECT                           1484
+
+#define IBP_MCE_FB40__DSQL_CTE_NOT_USED                                     1485
+
+#define IBP_MCE_FB40__DSQL_COL_MORE_THAN_ONCE_VIEW                          1486
+
+#define IBP_MCE_FB40__DSQL_UNSUPPORTED_IN_AUTO_TRANS                        1487
+
+#define IBP_MCE_FB40__DSQL_EVAL_UNKNODE                                     1488
+
+#define IBP_MCE_FB40__DSQL_AGG_WRONGARG                                     1489
+
+#define IBP_MCE_FB40__DSQL_AGG2_WRONGARG                                    1490
+
+#define IBP_MCE_FB40__DSQL_NODATEORTIME_PM_STRING                           1491
+
+#define IBP_MCE_FB40__DSQL_INVALID_DATETIME_SUBTRACT                        1492
+
+#define IBP_MCE_FB40__DSQL_INVALID_DATEORTIME_ADD                           1493
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MINUS_DATE                          1494
+
+#define IBP_MCE_FB40__DSQL_NOSTRING_ADDSUB_DIAL3                            1495
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_ADDSUB_DIAL3                        1496
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MULTIP_DIAL1                        1497
+
+#define IBP_MCE_FB40__DSQL_NOSTRING_MULTIP_DIAL3                            1498
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_MULTIP_DIAL3                        1499
+
+#define IBP_MCE_FB40__DSQL_MUSTUSE_NUMERIC_DIV_DIAL1                        1500
+
+#define IBP_MCE_FB40__DSQL_NOSTRING_DIV_DIAL3                               1501
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_DIV_DIAL3                           1502
+
+#define IBP_MCE_FB40__DSQL_NOSTRING_NEG_DIAL3                               1503
+
+#define IBP_MCE_FB40__DSQL_INVALID_TYPE_NEG                                 1504
+
+#define IBP_MCE_FB40__DSQL_MAX_DISTINCT_ITEMS                               1505
+
+#define IBP_MCE_FB40__DSQL_ALTER_CHARSET_FAILED                             1506
+
+#define IBP_MCE_FB40__DSQL_COMMENT_ON_FAILED                                1507
+
+#define IBP_MCE_FB40__DSQL_CREATE_FUNC_FAILED                               1508
+
+#define IBP_MCE_FB40__DSQL_ALTER_FUNC_FAILED                                1509
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_FUNC_FAILED                         1510
+
+#define IBP_MCE_FB40__DSQL_DROP_FUNC_FAILED                                 1511
+
+#define IBP_MCE_FB40__DSQL_RECREATE_FUNC_FAILED                             1512
+
+#define IBP_MCE_FB40__DSQL_CREATE_PROC_FAILED                               1513
+
+#define IBP_MCE_FB40__DSQL_ALTER_PROC_FAILED                                1514
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_PROC_FAILED                         1515
+
+#define IBP_MCE_FB40__DSQL_DROP_PROC_FAILED                                 1516
+
+#define IBP_MCE_FB40__DSQL_RECREATE_PROC_FAILED                             1517
+
+#define IBP_MCE_FB40__DSQL_CREATE_TRIGGER_FAILED                            1518
+
+#define IBP_MCE_FB40__DSQL_ALTER_TRIGGER_FAILED                             1519
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_TRIGGER_FAILED                      1520
+
+#define IBP_MCE_FB40__DSQL_DROP_TRIGGER_FAILED                              1521
+
+#define IBP_MCE_FB40__DSQL_RECREATE_TRIGGER_FAILED                          1522
+
+#define IBP_MCE_FB40__DSQL_CREATE_COLLATION_FAILED                          1523
+
+#define IBP_MCE_FB40__DSQL_DROP_COLLATION_FAILED                            1524
+
+#define IBP_MCE_FB40__DSQL_CREATE_DOMAIN_FAILED                             1525
+
+#define IBP_MCE_FB40__DSQL_ALTER_DOMAIN_FAILED                              1526
+
+#define IBP_MCE_FB40__DSQL_DROP_DOMAIN_FAILED                               1527
+
+#define IBP_MCE_FB40__DSQL_CREATE_EXCEPT_FAILED                             1528
+
+#define IBP_MCE_FB40__DSQL_ALTER_EXCEPT_FAILED                              1529
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_EXCEPT_FAILED                       1530
+
+#define IBP_MCE_FB40__DSQL_RECREATE_EXCEPT_FAILED                           1531
+
+#define IBP_MCE_FB40__DSQL_DROP_EXCEPT_FAILED                               1532
+
+#define IBP_MCE_FB40__DSQL_CREATE_SEQUENCE_FAILED                           1533
+
+#define IBP_MCE_FB40__DSQL_CREATE_TABLE_FAILED                              1534
+
+#define IBP_MCE_FB40__DSQL_ALTER_TABLE_FAILED                               1535
+
+#define IBP_MCE_FB40__DSQL_DROP_TABLE_FAILED                                1536
+
+#define IBP_MCE_FB40__DSQL_RECREATE_TABLE_FAILED                            1537
+
+#define IBP_MCE_FB40__DSQL_CREATE_PACK_FAILED                               1538
+
+#define IBP_MCE_FB40__DSQL_ALTER_PACK_FAILED                                1539
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_PACK_FAILED                         1540
+
+#define IBP_MCE_FB40__DSQL_DROP_PACK_FAILED                                 1541
+
+#define IBP_MCE_FB40__DSQL_RECREATE_PACK_FAILED                             1542
+
+#define IBP_MCE_FB40__DSQL_CREATE_PACK_BODY_FAILED                          1543
+
+#define IBP_MCE_FB40__DSQL_DROP_PACK_BODY_FAILED                            1544
+
+#define IBP_MCE_FB40__DSQL_RECREATE_PACK_BODY_FAILED                        1545
+
+#define IBP_MCE_FB40__DSQL_CREATE_VIEW_FAILED                               1546
+
+#define IBP_MCE_FB40__DSQL_ALTER_VIEW_FAILED                                1547
+
+#define IBP_MCE_FB40__DSQL_CREATE_ALTER_VIEW_FAILED                         1548
+
+#define IBP_MCE_FB40__DSQL_RECREATE_VIEW_FAILED                             1549
+
+#define IBP_MCE_FB40__DSQL_DROP_VIEW_FAILED                                 1550
+
+#define IBP_MCE_FB40__DSQL_DROP_SEQUENCE_FAILED                             1551
+
+#define IBP_MCE_FB40__DSQL_RECREATE_SEQUENCE_FAILED                         1552
+
+#define IBP_MCE_FB40__DSQL_DROP_INDEX_FAILED                                1553
+
+#define IBP_MCE_FB40__DSQL_DROP_FILTER_FAILED                               1554
+
+#define IBP_MCE_FB40__DSQL_DROP_SHADOW_FAILED                               1555
+
+#define IBP_MCE_FB40__DSQL_DROP_ROLE_FAILED                                 1556
+
+#define IBP_MCE_FB40__DSQL_DROP_USER_FAILED                                 1557
+
+#define IBP_MCE_FB40__DSQL_CREATE_ROLE_FAILED                               1558
+
+#define IBP_MCE_FB40__DSQL_ALTER_ROLE_FAILED                                1559
+
+#define IBP_MCE_FB40__DSQL_ALTER_INDEX_FAILED                               1560
+
+#define IBP_MCE_FB40__DSQL_ALTER_DATABASE_FAILED                            1561
+
+#define IBP_MCE_FB40__DSQL_CREATE_SHADOW_FAILED                             1562
+
+#define IBP_MCE_FB40__DSQL_CREATE_FILTER_FAILED                             1563
+
+#define IBP_MCE_FB40__DSQL_CREATE_INDEX_FAILED                              1564
+
+#define IBP_MCE_FB40__DSQL_CREATE_USER_FAILED                               1565
+
+#define IBP_MCE_FB40__DSQL_ALTER_USER_FAILED                                1566
+
+#define IBP_MCE_FB40__DSQL_GRANT_FAILED                                     1567
+
+#define IBP_MCE_FB40__DSQL_REVOKE_FAILED                                    1568
+
+#define IBP_MCE_FB40__DSQL_CTE_RECURSIVE_AGGREGATE                          1569
+
+#define IBP_MCE_FB40__DSQL_MAPPING_FAILED                                   1570
+
+#define IBP_MCE_FB40__DSQL_ALTER_SEQUENCE_FAILED                            1571
+
+#define IBP_MCE_FB40__DSQL_CREATE_GENERATOR_FAILED                          1572
+
+#define IBP_MCE_FB40__DSQL_SET_GENERATOR_FAILED                             1573
+
+#define IBP_MCE_FB40__DSQL_WLOCK_SIMPLE                                     1574
+
+#define IBP_MCE_FB40__DSQL_FIRSTSKIP_ROWS                                   1575
+
+#define IBP_MCE_FB40__DSQL_WLOCK_AGGREGATES                                 1576
+
+#define IBP_MCE_FB40__DSQL_WLOCK_CONFLICT                                   1577
+
+#define IBP_MCE_FB40__DSQL_MAX_EXCEPTION_ARGUMENTS                          1578
+
+#define IBP_MCE_FB40__DSQL_STRING_BYTE_LENGTH                               1579
+
+#define IBP_MCE_FB40__DSQL_STRING_CHAR_LENGTH                               1580
+
+#define IBP_MCE_FB40__DSQL_MAX_NESTING                                      1581
+
+#define IBP_MCE_FB40__DSQL_RECREATE_USER_FAILED                             1582
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336461924                                1583
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336461925                                1584
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336462125                                1585
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336462436                                1586
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527507                                1587
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527508                                1588
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527509                                1589
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527510                                1590
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527511                                1591
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527512                                1592
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527513                                1593
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527514                                1594
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527515                                1595
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527516                                1596
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527517                                1597
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527518                                1598
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527519                                1599
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527520                                1600
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527521                                1601
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527522                                1602
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527523                                1603
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527524                                1604
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527525                                1605
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527526                                1606
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527527                                1607
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527528                                1608
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527529                                1609
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527530                                1610
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527531                                1611
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527532                                1612
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527533                                1613
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527534                                1614
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527535                                1615
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527536                                1616
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527537                                1617
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527538                                1618
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527539                                1619
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527540                                1620
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527541                                1621
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527542                                1622
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527543                                1623
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527544                                1624
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527545                                1625
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527546                                1626
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527547                                1627
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527548                                1628
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527549                                1629
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527550                                1630
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527551                                1631
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527552                                1632
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527553                                1633
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527554                                1634
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527555                                1635
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527556                                1636
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527557                                1637
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527558                                1638
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527559                                1639
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527560                                1640
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527561                                1641
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527562                                1642
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527563                                1643
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527564                                1644
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527565                                1645
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527566                                1646
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527567                                1647
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527568                                1648
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527569                                1649
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527570                                1650
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527571                                1651
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527572                                1652
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527573                                1653
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527574                                1654
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527575                                1655
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527576                                1656
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527577                                1657
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527578                                1658
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527579                                1659
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527580                                1660
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527581                                1661
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527582                                1662
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527583                                1663
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527584                                1664
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527585                                1665
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527586                                1666
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527587                                1667
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527588                                1668
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527589                                1669
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527590                                1670
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527591                                1671
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527592                                1672
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527593                                1673
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527594                                1674
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527595                                1675
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527596                                1676
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527597                                1677
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527598                                1678
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527599                                1679
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527600                                1680
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527601                                1681
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527602                                1682
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527603                                1683
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527604                                1684
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527605                                1685
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527606                                1686
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527607                                1687
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527608                                1688
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527609                                1689
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527610                                1690
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527611                                1691
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527612                                1692
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527613                                1693
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527614                                1694
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527615                                1695
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527616                                1696
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527617                                1697
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527618                                1698
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527619                                1699
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527620                                1700
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527621                                1701
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527622                                1702
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527623                                1703
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527624                                1704
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527625                                1705
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527626                                1706
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527627                                1707
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527628                                1708
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527629                                1709
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527630                                1710
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527631                                1711
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527632                                1712
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527633                                1713
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527634                                1714
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527635                                1715
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527636                                1716
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527637                                1717
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527638                                1718
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527639                                1719
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527640                                1720
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527641                                1721
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527642                                1722
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527643                                1723
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527644                                1724
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527645                                1725
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527646                                1726
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527647                                1727
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527648                                1728
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527649                                1729
+
+#define IBP_MCE_FB40__SAVEPOINT_ERROR                                       1730
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527651                                1731
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527652                                1732
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527653                                1733
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527654                                1734
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527655                                1735
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527656                                1736
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527657                                1737
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527658                                1738
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527659                                1739
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527660                                1740
+
+#define IBP_MCE_FB40__CACHE_NON_ZERO_USE_COUNT                              1741
+
+#define IBP_MCE_FB40__UNEXPECTED_PAGE_CHANGE                                1742
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527663                                1743
+
+#define IBP_MCE_FB40__RDB_TRIGGERS_RDB_FLAGS_CORRUPT                        1744
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527665                                1745
+
+#define IBP_MCE_FB40__INTERNAL_MSG_336527666                                1746
 
 ////////////////////////////////////////////////////////////////////////////////
 #endif

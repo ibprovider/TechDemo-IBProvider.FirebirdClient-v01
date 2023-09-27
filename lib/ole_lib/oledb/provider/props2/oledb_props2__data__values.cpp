@@ -7,6 +7,10 @@
 #include <ole_lib/oledb/provider/props2/oledb_props2__data__values.h>
 #include <structure/t_handle.h>
 
+#ifdef _DEBUG_LEVEL_2_
+# include <ole_lib/oledb/provider/props2/oledb_props2__trace_utils.h>
+#endif
+
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class OLEDB_Props2__Data__Values::tag_prop_value
@@ -997,8 +1001,12 @@ bool OLEDB_Props2__Data__Values::Helper__GetValue
   if(pResult_dwOptions)
    (*pResult_dwOptions)=(*x2).m_dwOptions;
 
+  ODS_LEVEL_2("OLEDB_Props2__Data__Values::Helper__GetValue "<<TRACE_DATA__DbPropID(&propGuid,propId)<<" - ["<<ole_lib::print((*x2).m_varValue)<<"][option: "<<(*x2).m_dwOptions<<"]");
+
   return true;
  }//for iS
+
+ ODS_LEVEL_2("OLEDB_Props2__Data__Values::Helper__GetValue "<<TRACE_DATA__DbPropID(&propGuid,propId)<<" - NO VALUE");
 
  return false;
 }//Helper__GetValue
@@ -1040,8 +1048,12 @@ bool OLEDB_Props2__Data__Values::Helper__GetDefaultValue
 
   ole_lib::Variant_CopyInd_Throw(pResult_Value,&(*x2).m_varValue); //throw
 
+  ODS_LEVEL_2("OLEDB_Props2__Data__Values::Helper__GetDefaultValue "<<TRACE_DATA__DbPropID(&propGuid,propId)<<" - ["<<ole_lib::print((*x2).m_varValue)<<"][option: "<<(*x2).m_dwOptions<<"]");
+
   return true;
  }//for iS
+
+ ODS_LEVEL_2("OLEDB_Props2__Data__Values::Helper__GetDefaultValue "<<TRACE_DATA__DbPropID(&propGuid,propId)<<" - NO DEFAULT VALUE");
 
  return false;
 }//Helper__GetDefaultValue

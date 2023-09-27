@@ -7,12 +7,12 @@
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__zutil.h"
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__inftrees.h"
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__inflate.h"
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__inffast.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__zutil.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__inftrees.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__inflate.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__inffast.h"
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifdef ASMINF
@@ -330,4 +330,4 @@ void ZLIB_INTERNAL inflate_fast(z_streamp strm,unsigned start)
 #endif /* !ASMINF */
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

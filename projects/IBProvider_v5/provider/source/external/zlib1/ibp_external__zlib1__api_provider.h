@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //ZLib1 API.
-//                                                 Dmitry Kovalenko. 06.01.2019.
+//                                                 Dmitry Kovalenko. 06.01.2020.
 #ifndef _ibp_external__zlib1__api_provider_H_
 #define _ibp_external__zlib1__api_provider_H_
 

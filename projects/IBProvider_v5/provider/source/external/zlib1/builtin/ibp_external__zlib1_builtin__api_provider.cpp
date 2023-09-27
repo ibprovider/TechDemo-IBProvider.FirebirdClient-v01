@@ -1,13 +1,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 //ZLib1 API Provider for builtin implementation.
-//                                                 Dmitry Kovalenko. 19.01.2019.
+//                                                 Dmitry Kovalenko. 19.01.2020.
 #include <_pch_.h>
 #pragma hdrstop
 
 #include "source/external//zlib1/builtin/ibp_external__zlib1_builtin__api_provider.h"
-#include "source/external//zlib1/builtin/set01/ibp_external__zlib1_set01__zlib.h"
+#include "source/external//zlib1/builtin/v001_003_000/ibp_external__zlib1_builtin_v001_003_000__zlib.h"
 
 namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{
+////////////////////////////////////////////////////////////////////////////////
+
+namespace builtin_impl=v001_003_000;
+
 ////////////////////////////////////////////////////////////////////////////////
 //class ZLIB1_BUILTIN__ApiProvider
 
@@ -37,8 +41,10 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__deflateInit
 {
  assert(strm);
 
- return set01::deflateInit_
-          (reinterpret_cast<set01::z_stream*>(strm),
+ assert_s(sizeof(api::z_stream)==sizeof(builtin_impl::z_stream));
+
+ return builtin_impl::deflateInit_
+          (reinterpret_cast<builtin_impl::z_stream*>(strm),
            level,
            api::ZLIB_VERSION,
            sizeof(*strm));
@@ -51,8 +57,8 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__deflate
 {
  assert(strm);
 
- return set01::deflate
-          (reinterpret_cast<set01::z_stream*>(strm),
+ return builtin_impl::deflate
+          (reinterpret_cast<builtin_impl::z_stream*>(strm),
            flush);
 }//zapi__deflate
 
@@ -62,8 +68,8 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__deflateEnd
 {
  assert(strm);
 
- return set01::deflateEnd
-          (reinterpret_cast<set01::z_stream*>(strm));
+ return builtin_impl::deflateEnd
+          (reinterpret_cast<builtin_impl::z_stream*>(strm));
 }//zapi__deflateEnd
 
 //------------------------------------------------------------------------
@@ -72,8 +78,10 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__inflateInit
 {
  assert(strm);
 
- return set01::inflateInit_
-          (reinterpret_cast<set01::z_stream*>(strm),
+ assert_s(sizeof(api::z_stream)==sizeof(builtin_impl::z_stream));
+
+ return builtin_impl::inflateInit_
+          (reinterpret_cast<builtin_impl::z_stream*>(strm),
            api::ZLIB_VERSION,
            sizeof(*strm));
 }//zapi__inflateInit
@@ -85,8 +93,8 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__inflate
 {
  assert(strm);
 
- return set01::inflate
-          (reinterpret_cast<set01::z_stream*>(strm),
+ return builtin_impl::inflate
+          (reinterpret_cast<builtin_impl::z_stream*>(strm),
            flush);
 }//zapi__inflate
 
@@ -96,8 +104,8 @@ int ZLIB1_BUILTIN__ApiProvider::zapi__inflateEnd
 {
  assert(strm);
 
- return set01::inflateEnd
-          (reinterpret_cast<set01::z_stream*>(strm));
+ return builtin_impl::inflateEnd
+          (reinterpret_cast<builtin_impl::z_stream*>(strm));
 }//zapi__inflateEnd
 
 ////////////////////////////////////////////////////////////////////////////////

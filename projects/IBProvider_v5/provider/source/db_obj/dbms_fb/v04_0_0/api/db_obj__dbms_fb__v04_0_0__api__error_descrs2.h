@@ -13,7 +13,7 @@
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v04_0_0{namespace api{
 ////////////////////////////////////////////////////////////////////////////////
 
-extern const isc_base::t_isc_error_code_descr2 g_fb_v04_0_0__error_descrs2[ibp_fb_v40_err__count];
+extern const isc_base::t_isc_error_code_descr2 g_fb_v04_0_0__error_descrs2[ibp_fb_v40_err__count_of_all_errors];
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms api*/}/*nms v04_0_0*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/

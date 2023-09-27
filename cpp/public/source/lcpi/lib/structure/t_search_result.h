@@ -10,63 +10,64 @@ namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_search_result
 
-template<class TIterator>
+template<typename TIterator,typename TResult=bool>
 class t_search_result
 {
  private:
-  typedef t_search_result<TIterator>                self_type;
+  using self_type       =t_search_result<TIterator,TResult>;
+
+ public: //typedefs ------------------------------------------------------
+  using iterator        =TIterator;
+  using result_type     =TResult;
 
  public:
-  typedef TIterator  iterator;
+  iterator     position;
+  result_type  result;
 
  public:
-  iterator position;
-  bool     result;
-
   t_search_result();
 
-  t_search_result(const iterator& _p,bool _r);
+  t_search_result(const iterator& _p,result_type _r);
 
-  template<class TOtherIterator>
-  t_search_result(const t_search_result<TOtherIterator>& x);
+  template<typename TOtherIterator>
+  t_search_result(const t_search_result<TOtherIterator,TResult>& x);
 
  ~t_search_result();
 
   //operators ------------------------------------------------------------
-  operator bool    () const {return result;}
-  bool operator !  () const {return !result;}
+  operator result_type () const {return result;}
 };//class t_search_result
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_search_result
 
-template<class TIterator>
-inline t_search_result<TIterator>::t_search_result()
+template<typename TIterator,typename TResult>
+inline t_search_result<TIterator,TResult>::t_search_result()
  :position(iterator())
- ,result(false)
+ ,result()
 {
 }
 
 //------------------------------------------------------------------------
-template<class TIterator>
-inline t_search_result<TIterator>::t_search_result(const iterator& _p,bool _r)
+template<typename TIterator,typename TResult>
+inline t_search_result<TIterator,TResult>::t_search_result(const iterator& _p,result_type _r)
  :position(_p)
  ,result(_r)
 {
 }
 
 //------------------------------------------------------------------------
-template<class TIterator>
+template<typename TIterator,typename TResult>
 template<class TOtherIterator>
-inline t_search_result<TIterator>::t_search_result(const t_search_result<TOtherIterator>& x)
+inline t_search_result<TIterator,TResult>::t_search_result(const t_search_result<TOtherIterator,TResult>& x)
  :position(x.position)
  ,result(x.result)
 {
 }
 
 //------------------------------------------------------------------------
-template<class TIterator>
-inline t_search_result<TIterator>::~t_search_result()
+template<typename TIterator,typename TResult>
+inline t_search_result<TIterator,TResult>::~t_search_result()
 {
 }
 

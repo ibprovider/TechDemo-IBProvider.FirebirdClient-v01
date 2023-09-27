@@ -51,11 +51,11 @@
  *
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__deflate.cpp,v 1.7 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_002_011__deflate.cpp,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__deflate.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__deflate.h"
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 const char deflate_copyright[] =
@@ -2169,4 +2169,4 @@ local block_state deflate_huff(deflate_state *s,int flush)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

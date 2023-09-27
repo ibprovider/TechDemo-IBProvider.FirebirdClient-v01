@@ -13,7 +13,7 @@
  * factor of two increase in speed on a Power PC G4 (PPC7455) using gcc -O3.
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__crc32.cpp,v 1.7 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_002_011__crc32.cpp,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
 /*
   Note on the use of DYNAMIC_CRC_TABLE: there is no mutex or semaphore
@@ -32,9 +32,9 @@
 #  endif /* !DYNAMIC_CRC_TABLE */
 #endif /* MAKECRCH */
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__zutil.h"      /* for STDC and FAR definitions */
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__zutil.h"      /* for STDC and FAR definitions */
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 /* Definitions for doing the crc four data bytes at a time. */
@@ -186,7 +186,7 @@ local void write_table(out, table)
 /* ========================================================================
  * Tables of CRC-32s of all single-byte values, made by make_crc_table().
  */
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__crc32.h"
+#include "source/external/zlib1/builtin/v001_002_011/ibp_external__zlib1_builtin_v001_002_011__crc32.h"
 #endif /* DYNAMIC_CRC_TABLE */
 
 /* =========================================================================
@@ -452,4 +452,4 @@ uLong ZEXPORT crc32_combine64(uLong crc1,uLong crc2,z_off64_t len2)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

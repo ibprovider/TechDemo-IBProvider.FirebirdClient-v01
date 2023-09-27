@@ -563,7 +563,7 @@ const DBPROPID IBP_DBPROP__INIT__ICU_LIBRARY_64                 =0x0057;
 const DBPROPID IBP_DBPROP__INIT__SCHEMA_LDR_CFG__CHECK_CONSTRAINTS   =0x0058;
 
 //------------------------------------------------------------------------
-#if !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
+#if 1 || !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
 
 /// <summary>
 ///  RemoteConnection: имя типа протокола соединения
@@ -757,7 +757,7 @@ const DBPROPID IBP_DBPROP__INIT__ICUIN_LIBRARY_64               =0x0075;
 const DBPROPID IBP_DBPROP__INIT__TIMEZONES_SOURCE               =0x0076;
 
 //------------------------------------------------------------------------
-#if !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
+#if 1 || !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
 
 /// <summary>
 ///  RemoteConnection: тип компрессора данных подключения
@@ -776,7 +776,7 @@ const DBPROPID IBP_DBPROP__INIT__FORCE_NULLS                    =0x0081;
 //------------------------------------------------------------------------
 //настройки хранилища обновляемого множества
 
-#if !defined(IBP_ENGINE_UPDATE_ROWSET) || (IBP_ENGINE_UPDATE_ROWSET!=0)
+#if 1 || !defined(IBP_ENGINE_UPDATE_ROWSET) || (IBP_ENGINE_UPDATE_ROWSET!=0)
 
 //const DBPROPID IBP_DBPROP__INIT__QUERY_POOL_SIZE              =0x0100;
 const DBPROPID IBP_DBPROP__INIT__AUTO_INSERT_FIELD_RULE         =0x0101;
@@ -855,7 +855,7 @@ const DBPROPID IBP_DBPROP__ROWSET__ROWSET_FILE__WRITE_BLOCK_SIZE=0x0007;
 /// \sa ibp::t_ibp_propval__deferred_data_rule
 const DBPROPID IBP_DBPROP__ROWSET__DEFERRED_DATA                =0x0008;
 
-#if !defined(IBP_ENGINE_UPDATE_ROWSET) || (IBP_ENGINE_UPDATE_ROWSET!=0)
+#if 1 || !defined(IBP_ENGINE_UPDATE_ROWSET) || (IBP_ENGINE_UPDATE_ROWSET!=0)
 //свойства установки запросов для управления обновляемым множеством
 const DBPROPID IBP_DBPROP__ROWSET__DELETE_SQL                   =0x0010;
 const DBPROPID IBP_DBPROP__ROWSET__INSERT_SQL                   =0x0011;

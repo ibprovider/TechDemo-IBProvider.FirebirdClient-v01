@@ -8,10 +8,10 @@
    subject to change. Applications should only use zlib.h.
  */
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_003_000{
 ////////////////////////////////////////////////////////////////////////////////
 
-void ZLIB_INTERNAL inflate_fast OF((z_streamp strm, unsigned start));
+void ZLIB_INTERNAL inflate_fast(z_streamp strm, unsigned start);
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_003_000*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/

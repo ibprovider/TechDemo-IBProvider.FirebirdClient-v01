@@ -3,12 +3,12 @@
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__zconf.h,v 1.5 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_002_011__zconf.h,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
-#ifndef _ibp_external__zlib1_set01__zconf_H_
-#define _ibp_external__zlib1_set01__zconf_H_
+#ifndef _ibp_external__zlib1_builtin_v001_002_011__zconf_H_
+#define _ibp_external__zlib1_builtin_v001_002_011__zconf_H_
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_002_011{
 ////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -549,5 +549,5 @@ typedef uLong FAR uLongf;
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_002_011*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
 #endif /* ZCONF_H */

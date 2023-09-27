@@ -1,5 +1,5 @@
 /* zutil.h -- internal interface and configuration of the compression library
- * Copyright (C) 1995-2016 Jean-loup Gailly, Mark Adler
+ * Copyright (C) 1995-2022 Jean-loup Gailly, Mark Adler
  * For conditions of distribution and use, see copyright notice in zlib.h
  */
 
@@ -8,10 +8,10 @@
    subject to change. Applications should only use zlib.h.
  */
 
-/* @(#) $Id: ibp_external__zlib1_set01__zutil.h,v 1.3 2020/04/29 09:55:33 Dima Exp $ */
+/* @(#) $Id: ibp_external__zlib1_builtin_v001_003_000__zutil.h,v 1.1 2023/09/15 11:49:18 Dima Exp $ */
 
-#ifndef _ibp_external__zlib1_set01__zutil_H_
-#define _ibp_external__zlib1_set01__zutil_H_
+#ifndef _ibp_external__zlib1_builtin_v001_003_000__zutil_H_
+#define _ibp_external__zlib1_builtin_v001_003_000__zutil_H_
 
 #ifdef HAVE_HIDDEN
 #  define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
@@ -19,9 +19,9 @@
 #  define ZLIB_INTERNAL
 #endif
 
-#include "source/external/zlib1/builtin/set01/ibp_external__zlib1_set01__zlib.h"
+#include "source/external/zlib1/builtin/v001_003_000/ibp_external__zlib1_builtin_v001_003_000__zlib.h"
 
-namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace set01{
+namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builtin{namespace v001_003_000{
 ////////////////////////////////////////////////////////////////////////////////
 
 #if defined(STDC) && !defined(Z_SOLO)
@@ -30,10 +30,6 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{namespace builti
 #  endif
 #  include <string.h>
 #  include <stdlib.h>
-#endif
-
-#ifdef Z_SOLO
-   typedef long ptrdiff_t;  /* guess -- will be caught if guess is wrong */
 #endif
 
 #ifndef local
@@ -48,6 +44,17 @@ typedef uch FAR uchf;
 typedef unsigned short ush;
 typedef ush FAR ushf;
 typedef unsigned long  ulg;
+
+#if !defined(Z_U8) && !defined(Z_SOLO) && defined(STDC)
+#  include <limits.h>
+#  if (ULONG_MAX == 0xffffffffffffffff)
+#    define Z_U8 unsigned long
+#  elif (ULLONG_MAX == 0xffffffffffffffff)
+#    define Z_U8 unsigned long long
+#  elif (UINT_MAX == 0xffffffffffffffff)
+#    define Z_U8 unsigned
+#  endif
+#endif
 
 extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 /* (size given to avoid silly warnings with Visual C++) */
@@ -173,10 +180,6 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 #if (defined(_MSC_VER) && (_MSC_VER > 600)) && !defined __INTERIX
 #  if defined(_WIN32_WCE)
 #    define fdopen(fd,mode) NULL /* No fdopen() */
-#    ifndef _PTRDIFF_T_DEFINED
-       typedef int ptrdiff_t;
-#      define _PTRDIFF_T_DEFINED
-#    endif
 #  else
 #    define fdopen(fd,type)  _fdopen(fd,type)
 #  endif
@@ -191,8 +194,9 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 /* provide prototypes for these when building zlib without LFS */
 #if !defined(_WIN32) && \
     (!defined(_LARGEFILE64_SOURCE) || _LFS64_LARGEFILE-0 == 0)
-    ZEXTERN uLong ZEXPORT adler32_combine64 OF((uLong, uLong, z_off_t));
-    ZEXTERN uLong ZEXPORT crc32_combine64 OF((uLong, uLong, z_off_t));
+    ZEXTERN uLong ZEXPORT adler32_combine64(uLong, uLong, z_off_t);
+    ZEXTERN uLong ZEXPORT crc32_combine64(uLong, uLong, z_off_t);
+    ZEXTERN uLong ZEXPORT crc32_combine_gen64(z_off_t);
 #endif
 
         /* common defaults */
@@ -231,16 +235,16 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 #    define zmemzero(dest, len) memset(dest, 0, len)
 #  endif
 #else
-   void ZLIB_INTERNAL zmemcpy OF((Bytef* dest, const Bytef* source, uInt len));
-   int ZLIB_INTERNAL zmemcmp OF((const Bytef* s1, const Bytef* s2, uInt len));
-   void ZLIB_INTERNAL zmemzero OF((Bytef* dest, uInt len));
+   void ZLIB_INTERNAL zmemcpy(Bytef* dest, const Bytef* source, uInt len);
+   int ZLIB_INTERNAL zmemcmp(const Bytef* s1, const Bytef* s2, uInt len);
+   void ZLIB_INTERNAL zmemzero(Bytef* dest, uInt len);
 #endif
 
 /* Diagnostic functions */
 #ifdef ZLIB_DEBUG
 #  include <stdio.h>
    extern int ZLIB_INTERNAL z_verbose;
-   extern void ZLIB_INTERNAL z_error OF((char *m));
+   extern void ZLIB_INTERNAL z_error(char *m);
 #  define Assert(cond,msg) {if(!(cond)) z_error(msg);}
 #  define Trace(x) {if (z_verbose>=0) fprintf x ;}
 #  define Tracev(x) {if (z_verbose>0) fprintf x ;}
@@ -257,9 +261,9 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
 #endif
 
 #ifndef Z_SOLO
-   voidpf ZLIB_INTERNAL zcalloc OF((voidpf opaque, unsigned items,
-                                    unsigned size));
-   void ZLIB_INTERNAL zcfree  OF((voidpf opaque, voidpf ptr));
+   voidpf ZLIB_INTERNAL zcalloc(voidpf opaque, unsigned items,
+                                unsigned size);
+   void ZLIB_INTERNAL zcfree(voidpf opaque, voidpf ptr);
 #endif
 
 #define ZALLOC(strm, items, size) \
@@ -272,5 +276,5 @@ extern z_const char * const z_errmsg[10]; /* indexed by 2-zlib_error */
                     (((q) & 0xff00) << 8) + (((q) & 0xff) << 24))
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms set01*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
+}/*nms v001_003_000*/}/*nms builtin*/}/*nms zlib1*/}/*nms external*/}/*nms ibp*/}/*nms lcpi*/
 #endif /* ZUTIL_H */

@@ -737,12 +737,6 @@
     <Filter Include="IBP\source\external\zlib\builtin">
       <UniqueIdentifier>{d8b54982-015d-4ca6-afce-5492c078ff13}</UniqueIdentifier>
     </Filter>
-    <Filter Include="IBP\source\external\zlib\builtin\set01">
-      <UniqueIdentifier>{5b6afcb1-bed5-4ae9-af87-aaa7ef0b9aeb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="IBP\source\external\zlib\builtin\set01\_headers">
-      <UniqueIdentifier>{281c35ab-77a9-42ca-8aa8-e46aa73562bf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="IBP\source\oledb\error">
       <UniqueIdentifier>{32c50b75-41cd-46ad-bf1e-d96af3ae4c39}</UniqueIdentifier>
     </Filter>
@@ -1102,6 +1096,18 @@
     </Filter>
     <Filter Include="source\tests\work\StmtFetch_M\Types\time_with_tz\_headers">
       <UniqueIdentifier>{19be9847-1277-473b-b9ff-49cd9033be59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\zlib\builtin\v001_003_000">
+      <UniqueIdentifier>{3518e9a3-1c25-40b4-b429-0314dcee54b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\zlib\builtin\v001_003_000\_headers">
+      <UniqueIdentifier>{b942206d-286b-42e7-b0e1-03e2908d2a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\zlib\builtin\v001_002_011">
+      <UniqueIdentifier>{5b6afcb1-bed5-4ae9-af87-aaa7ef0b9aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\external\zlib\builtin\v001_002_011\_headers">
+      <UniqueIdentifier>{281c35ab-77a9-42ca-8aa8-e46aa73562bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3091,30 +3097,6 @@
     <ClCompile Include="..\..\source\tests\protocol\v13\Compression\TestsFor__P13_Compression_01__zlib1_dll.cpp">
       <Filter>source\tests\protocol\v13\Compression</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__adler32.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__crc32.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__deflate.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffast.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inflate.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inftrees.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__trees.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zutil.cpp">
-      <Filter>IBP\source\external\zlib\builtin\set01</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\ibp_external__zlib1_builtin__api_provider.cpp">
       <Filter>IBP\source\external\zlib\builtin</Filter>
     </ClCompile>
@@ -3795,6 +3777,54 @@
     </ClCompile>
     <ClCompile Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_015__time_with_tz.cpp">
       <Filter>source\tests\work\Array\Read</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__adler32.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__crc32.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__deflate.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inffast.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inflate.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inftrees.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__trees.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__zutil.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__adler32.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__crc32.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__deflate.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inffast.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inflate.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inftrees.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__trees.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zutil.cpp">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5386,39 +5416,6 @@
     <ClInclude Include="..\..\source\tests\protocol\v13\Compression\TestsFor__P13_Compression_01__zlib1_dll.h">
       <Filter>source\tests\protocol\v13\Compression</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__crc32.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__deflate.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffast.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inflate.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inftrees.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__trees.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zutil.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zlib.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__gzguts.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__inffixed.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\set01\ibp_external__zlib1_set01__zconf.h">
-      <Filter>IBP\source\external\zlib\builtin\set01\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\ibp_external__zlib1_builtin__api_provider.h">
       <Filter>IBP\source\external\zlib\builtin</Filter>
     </ClInclude>
@@ -6015,6 +6012,72 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\Array\Read\WORK_Array_Read_Test_015__time_with_tz.h">
       <Filter>source\tests\work\Array\Read\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__crc32.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__deflate.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__gzguts.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inffast.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inffixed.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inflate.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__inftrees.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__trees.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__zconf.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__zlib.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_003_000\ibp_external__zlib1_builtin_v001_003_000__zutil.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_003_000\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__crc32.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__deflate.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__gzguts.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inffast.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inffixed.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inflate.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__inftrees.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__trees.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zconf.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zlib.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zutil.h">
+      <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

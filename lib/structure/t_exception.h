@@ -8,14 +8,12 @@
 # pragma once
 #endif
 
-#include <structure/t_common.h>
-
-#include <lcpi/infrastructure/core/structure/t_exception.h>
+#include <lcpi/lib/structure/t_exception.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
-using namespace ::lcpi::infrastructure::core::structure;
+using ::lcpi::lib::structure::t_exception;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure
