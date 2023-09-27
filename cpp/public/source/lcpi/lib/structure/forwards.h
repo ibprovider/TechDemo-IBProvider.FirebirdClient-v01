@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Instrumental library for C++. Forward declarations.
-//                                               Kovalenko Dmitry. 06.10.2016.
+//                                                 Kovalenko Dmitry. 06.10.2016.
 #ifndef _cpp_public_lcpi_lib_structure__forwards_H_
 #define _cpp_public_lcpi_lib_structure__forwards_H_
 
