@@ -29,22 +29,23 @@ class RemoteFB__HandleData_Transaction;
 /// <summary>
 ///  Данные транзакции.
 /// </summary>
-class RemoteFB__HandleData_Transaction:public RemoteFB__SmartMemoryObject
+class RemoteFB__HandleData_Transaction LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__SmartMemoryObject
 {
  private:
-  typedef RemoteFB__HandleData_Transaction                    self_type;
+  using self_type=RemoteFB__HandleData_Transaction;
 
-  RemoteFB__HandleData_Transaction(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__HandleData_Transaction(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>            self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef RemoteFB__SrvResourceID                             id_type;
+  using id_type=RemoteFB__SrvResourceID;
 
-  typedef RemoteFB__HandleData_Statement                      stmt_data_type;
+  using stmt_data_type=RemoteFB__HandleData_Statement;
 
-  typedef RemoteFB__HandleData_Blob                           blob_data_type;
+  using blob_data_type=RemoteFB__HandleData_Blob;
 
   class tag_list_adapter;
 
@@ -135,20 +136,23 @@ class RemoteFB__HandleData_Transaction:public RemoteFB__SmartMemoryObject
   void Helper__ReleaseAllResources();
 
  private: //typedefs -----------------------------------------------------
-  typedef stmt_data_type::tag_tr_list_adapter             stmt_list_traits;
+  using stmt_list_traits
+   =stmt_data_type::tag_tr_list_adapter;
 
-  typedef structure::t_list_external
-            <stmt_list_traits>                            stmt_list_type;
+  using stmt_list_type
+   =structure::t_list_external<stmt_list_traits>;
 
-  typedef stmt_data_type::tag_nclosed_stmt_list_adapter   nclosed_stmt_list_traits;
+  using nclosed_stmt_list_traits
+   =stmt_data_type::tag_nclosed_stmt_list_adapter;
 
-  typedef structure::t_list_external
-            <nclosed_stmt_list_traits>                    nclosed_stmt_list_type;
+  using nclosed_stmt_list_type
+   =structure::t_list_external<nclosed_stmt_list_traits>;
 
-  typedef blob_data_type::tag_tr_list_adapter             blob_list_traits;
+  using blob_list_traits
+   =blob_data_type::tag_tr_list_adapter;
 
-  typedef structure::t_list_external
-            <blob_list_traits>                            blob_list_type;
+  using blob_list_type
+   =structure::t_list_external<blob_list_traits>;
 
 #ifdef IBP_BUILD_TESTCODE
  public:
@@ -185,14 +189,14 @@ class RemoteFB__HandleData_Transaction:public RemoteFB__SmartMemoryObject
 /// <summary>
 ///  Адаптер списка транзакций подключения.
 /// </summary>
-class RemoteFB__HandleData_Transaction::tag_list_adapter
+class RemoteFB__HandleData_Transaction::tag_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_list_adapter                                self_type;
+  using self_type=tag_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Transaction                node_type;
-  typedef node_type*                                      node_ptr_type;
+  using node_type    =RemoteFB__HandleData_Transaction;
+  using node_ptr_type=node_type*;
 
  public:
   tag_list_adapter();

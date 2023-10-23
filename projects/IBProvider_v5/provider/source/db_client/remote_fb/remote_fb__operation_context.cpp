@@ -38,7 +38,7 @@ RemoteFB__SmartObjectPtr RemoteFB__OperationContext::query_service(REFGUID servi
 
   assert(m_services[i].second);
 
-  return structure::not_null_ptr(m_services[i].second.ptr());
+  return lib::structure::not_null_ptr(m_services[i].second.ptr());
  }//for i
 
  return nullptr;

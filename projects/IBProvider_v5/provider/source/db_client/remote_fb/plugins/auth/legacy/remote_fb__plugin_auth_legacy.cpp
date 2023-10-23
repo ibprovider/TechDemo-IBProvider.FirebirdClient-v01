@@ -34,7 +34,7 @@ RemoteFB__Plugin_Auth_Legacy::~RemoteFB__Plugin_Auth_Legacy()
 //------------------------------------------------------------------------
 RemoteFB__Plugin_AuthPtr RemoteFB__Plugin_Auth_Legacy::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //------------------------------------------------------------------------

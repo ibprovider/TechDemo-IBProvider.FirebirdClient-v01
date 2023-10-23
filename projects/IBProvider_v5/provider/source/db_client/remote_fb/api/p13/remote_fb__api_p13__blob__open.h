@@ -23,13 +23,13 @@ class RemoteFB__API_P13__OpenBlob LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__OpenBlob)
 {
  private:
-  typedef RemoteFB__API_P13__OpenBlob       self_type;
+  using self_type=RemoteFB__API_P13__OpenBlob;
 
-  RemoteFB__API_P13__OpenBlob(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P13__OpenBlob(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
- public:
-  typedef blob_handle_type::item_type       blob_data_type;
+ public: //typedefs ------------------------------------------------------
+  using blob_data_type=blob_handle_type::item_type;
 
  private:
   RemoteFB__API_P13__OpenBlob();

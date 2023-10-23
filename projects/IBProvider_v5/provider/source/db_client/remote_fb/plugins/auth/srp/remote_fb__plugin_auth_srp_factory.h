@@ -20,14 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //class RemoteFB__Plugin_Auth_SRP_Factory
 
 template<class SecureHashAlgorithms,const wchar_t* pName>
-class RemoteFB__Plugin_Auth_SRP_Factory
+class RemoteFB__Plugin_Auth_SRP_Factory LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__Plugin_Auth_Factory)
 {
  private:
-  typedef RemoteFB__Plugin_Auth_SRP_Factory     self_type;
+  using self_type=RemoteFB__Plugin_Auth_SRP_Factory;
 
-  RemoteFB__Plugin_Auth_SRP_Factory(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Plugin_Auth_SRP_Factory(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   /// <summary>

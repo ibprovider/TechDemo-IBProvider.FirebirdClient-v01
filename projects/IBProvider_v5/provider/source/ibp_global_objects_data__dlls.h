@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{
 class IBP_GlobalObjectsData__DLLs LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_GlobalObjectsData__DLLs       self_type;
+  using self_type=IBP_GlobalObjectsData__DLLs;
 
  public: //typedefs ------------------------------------------------------
 #ifdef IBP_BUILD_TESTCODE

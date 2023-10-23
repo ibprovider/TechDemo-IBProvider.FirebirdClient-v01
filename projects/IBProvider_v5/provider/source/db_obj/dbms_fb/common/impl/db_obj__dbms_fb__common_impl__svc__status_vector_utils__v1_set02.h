@@ -24,10 +24,10 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
  :public IBP_DEF_DB_INTERFACE_IMPL_STATIC(common::fb_common__svc__status_vector_utils)
 {
  private:
-  typedef fb_common_impl__svc__status_vector_utils__v1_set02        self_type;
+  using self_type=fb_common_impl__svc__status_vector_utils__v1_set02;
 
-  fb_common_impl__svc__status_vector_utils__v1_set02(const self_type&);
-  self_type& operator = (const self_type&);
+  fb_common_impl__svc__status_vector_utils__v1_set02(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   /// Максимально ожидаемое количество аргументов сообщения об ошибке.
@@ -40,8 +40,8 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   //! \param[in] cErrDescrs
   //! \param[in] pErrDescrs
   fb_common_impl__svc__status_vector_utils__v1_set02
-                                           (size_t                                   const cErrDescrs,
-                                            const isc_base::t_isc_error_code_descr2* const pErrDescrs);
+   (size_t                                   const cErrDescrs,
+    const isc_base::t_isc_error_code_descr2* const pErrDescrs);
 
   /// <summary>
   ///  Деструктор.
@@ -143,9 +143,8 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
                                        const void*        buf_end)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_stl_vector
-           <IBP_ErrorVariant,
-            db_obj::t_db_memory_allocator> args_type;
+  using args_type
+   =structure::t_stl_vector<IBP_ErrorVariant,db_obj::t_db_memory_allocator>;
 
   /// <summary>
   ///  Формирование текста ошибки
@@ -179,8 +178,8 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
    helper__get_err_descr2(status_type status)const;
 
  private:
-  typedef std::pair<const status_type*,
-                    gresult_data_type>      find_next_result_type;
+  using find_next_result_type
+   =std::pair<const status_type*,gresult_data_type>;
 
   /// <summary>
   ///  Утилита для поиска следующего элемента статус вектора

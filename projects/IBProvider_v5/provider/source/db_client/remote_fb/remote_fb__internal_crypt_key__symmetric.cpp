@@ -44,7 +44,7 @@ RemoteFB__InternalCryptKeyPtr
 
  const size_t offset_KeyData=sz;
 
- if(!structure::append_memory_size(sz,cbKey))
+ if(!lib::structure::append_memory_size(sz,cbKey))
  {
   IBP_ThrowOverflowInMemSizeCalculation
    (c_bugcheck_src,
@@ -75,7 +75,7 @@ RemoteFB__InternalCryptKeyPtr
 
  assert(reinterpret_cast<char*>(reinterpret_cast<self_type*>(pv)+1)==(reinterpret_cast<char*>(pv)+offset_KeyData));
 
- return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
+ return lib::structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
 //interface --------------------------------------------------------------

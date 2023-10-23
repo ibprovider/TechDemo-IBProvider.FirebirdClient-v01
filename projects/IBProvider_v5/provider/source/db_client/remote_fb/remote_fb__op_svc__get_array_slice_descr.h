@@ -41,8 +41,8 @@ class RemoteFB__OpSvc__GetArraySliceDescr:public RemoteFB__SmartInterface
 /// <summary>
 ///  Смарт указатель на объекты класса RemoteFB__OpSvc__GetArraySliceDescr
 /// </summary>
-typedef structure::t_smart_object_ptr<RemoteFB__OpSvc__GetArraySliceDescr>
- RemoteFB__OpSvc__GetArraySliceDescrPtr;
+using RemoteFB__OpSvc__GetArraySliceDescrPtr
+ =lib::structure::t_smart_object_ptr<RemoteFB__OpSvc__GetArraySliceDescr>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

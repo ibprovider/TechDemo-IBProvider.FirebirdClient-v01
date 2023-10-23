@@ -90,9 +90,9 @@ db_obj::t_db_charset_manager_v2_ptr
         wchars_in_utf8_symbol==2);
 
  //--------------
- const structure::t_smart_object_ptr<ibp::t_ibp_charset_manager_v2>
+ const lib::structure::t_smart_object_ptr<ibp::t_ibp_charset_manager_v2>
   spCsMng
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new ibp::t_ibp_charset_manager_v2
        (pIcuLoader,
         static_cast<BYTE>(wchars_in_utf8_symbol))));

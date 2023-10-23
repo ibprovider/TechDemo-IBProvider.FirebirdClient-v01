@@ -123,7 +123,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__FinishConnect_P13__accept_dat
    //---------------------------------------- p_acpd__plugin
    std::wstring serverAuthPluginName;
 
-   if(!IBP_Utils::Utf8ToWStr__Fast(structure::make_str_box(p_acpd->p_acpd__plugin),
+   if(!IBP_Utils::Utf8ToWStr__Fast(lib::structure::make_str_box(p_acpd->p_acpd__plugin),
                                    &serverAuthPluginName))
    {
     //ERROR - ошибка конвертирования имени плагина из кодовой страницы UTF8

@@ -31,7 +31,7 @@ RemoteFB__Plugin_Auth_WinSSPI::~RemoteFB__Plugin_Auth_WinSSPI()
 //------------------------------------------------------------------------
 RemoteFB__Plugin_AuthPtr RemoteFB__Plugin_Auth_WinSSPI::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //------------------------------------------------------------------------
@@ -74,8 +74,9 @@ void RemoteFB__Plugin_Auth_WinSSPI::authenticate
   assert(clientConnectBlock.m_dataForAuthPlugin.empty());
 
   //----------------------------------------
-  typedef auth_provider_type                provider_type;
-  typedef os::t_ibp_os__dll_ptr             dll_ptr;
+  using provider_type=auth_provider_type;
+
+  using dll_ptr=os::t_ibp_os__dll_ptr;
 
   const dll_ptr
    spDll

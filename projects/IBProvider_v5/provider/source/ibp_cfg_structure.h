@@ -49,21 +49,21 @@ const DBLENGTH ibp_meta_external_file_path_max_len=512;
 const size_t ibp_cfg__max_stmt_sign_length=30;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class class ibp_sql_parser__common__pobj_cache
+//class ibp_sql_pobj_cache
 
-class ibp_sql_parser__common__pobj_cache LCPI_CPP_CFG__CLASS__FINAL
+class ibp_sql_pobj_cache LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   /// <summary>
   ///  Максимальное количество сбоев запуска GC_TASK из RC_TASK.
   /// </summary>
   static const unsigned max_failure_in_rc_task=10;
-};//class ibp_sql_parser__common__pobj_cache
+};//class ibp_sql_pobj_cache
 
 ////////////////////////////////////////////////////////////////////////////////
-//class ibp_sql_parser__common__pobj_cache_manager
+//class ibp_sql_pobj_cache_manager
 
-class ibp_sql_parser__common__pobj_cache_manager LCPI_CPP_CFG__CLASS__FINAL
+class ibp_sql_pobj_cache_manager LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   /// <summary>
@@ -91,7 +91,7 @@ class ibp_sql_parser__common__pobj_cache_manager LCPI_CPP_CFG__CLASS__FINAL
   ///   обнаружить мусор.
   ///
   static const size_t treshold_count_for_update_usage_history=128;
-};//class ibp_cfg__sql_parser_cache_manager
+};//class ibp_sql_pobj_cache_manager
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -24,12 +24,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 class RemoteFB__XDR__Encoder
 {
  private:
-  typedef RemoteFB__XDR__Encoder            self_type;
+  using self_type=RemoteFB__XDR__Encoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortWriter              buf_type;
+  using buf_type=RemoteFB__PortWriter;
 
-  typedef RemoteFB__ArraySliceDescr         asd_type;
+  using asd_type=RemoteFB__ArraySliceDescr;
 
  public:
   static void encode__p_hyper_long

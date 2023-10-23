@@ -32,16 +32,17 @@ class IBP_CallContext;
 class IBP_CallContext LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_CallContext                   self_type;
+  using self_type=IBP_CallContext;
 
-  IBP_CallContext(const self_type&);
-  self_type& operator = (const self_type&);
+  IBP_CallContext(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_err_record           error_record_type;
-  typedef error_record_type::self_ptr       error_record_ptr;
+  using error_record_type=lib::structure::t_err_record;
 
-  typedef t_ibp_error_adapter               errors_type;
+  using error_record_ptr=error_record_type::self_ptr;
+
+  using errors_type=t_ibp_error_adapter;
 
 #ifdef IBP_BUILD_TESTCODE
  public:
@@ -97,8 +98,7 @@ class IBP_CallContext LCPI_CPP_CFG__CLASS__FINAL
                             REFIID   exc_iid)const;
 
  private:
-  typedef structure::t_value_with_null
-           <size_t>                         size_type_N;
+  using size_type_N=structure::t_value_with_null<size_t>;
 
   class tag_errors_accessor;
 
@@ -135,12 +135,9 @@ class IBP_CallContext::tag_error_adapter LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_error_adapter
 {
  private:
-  typedef tag_error_adapter                 self_type;
+  using self_type=tag_error_adapter;
 
-  self_type& operator = (const self_type&);
-
- public: //typedefs ------------------------------------------------------
-  typedef t_ibp_data_settings               ds_type;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_error_adapter(const self_type&);
@@ -169,9 +166,9 @@ class IBP_CallContext::tag_error_adapter_with_limit LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_error_adapter
 {
  private:
-  typedef tag_error_adapter_with_limit                 self_type;
+  using self_type=tag_error_adapter_with_limit;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_error_adapter_with_limit(const self_type&);

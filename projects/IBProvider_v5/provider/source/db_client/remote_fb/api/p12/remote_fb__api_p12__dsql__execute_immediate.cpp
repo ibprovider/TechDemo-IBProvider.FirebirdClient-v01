@@ -284,7 +284,7 @@ protocol::P_OBJCT
  assert(spMsgDataSvc);
 
  //-----------------------------------------
- typedef handles::RemoteFB__HandleData_Statement stmt_data_type;
+ using stmt_data_type=handles::RemoteFB__HandleData_Statement;
 
  //-----------------------------------------
  stmt_data_type::msg_blr_buffer_type

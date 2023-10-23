@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 
 size_t RemoteFB__PSET01__OpInfo::get_size__op_fetch_response(size_t szMsg)
 {
- typedef RemoteFB__XDR__Info xdr;
+ using xdr=RemoteFB__XDR__Info;
 
  const wchar_t* const c_bugcheck_src=
   L"RemoteFB__PSET01__OpInfo::get_size__op_fetch_response";

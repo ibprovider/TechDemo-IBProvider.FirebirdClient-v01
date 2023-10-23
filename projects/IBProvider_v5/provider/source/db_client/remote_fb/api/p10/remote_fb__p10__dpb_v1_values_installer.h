@@ -32,15 +32,15 @@ class RemoteFB__P10__DpbV1_ValuesInstaller LCPI_CPP_CFG__CLASS__FINAL
  ,public isc_base::isc_base__dbparams_for_create__installer
 {
  private:
-  typedef RemoteFB__P10__DpbV1_ValuesInstaller          self_type;
+  using self_type=RemoteFB__P10__DpbV1_ValuesInstaller;
 
-  RemoteFB__P10__DpbV1_ValuesInstaller(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__P10__DpbV1_ValuesInstaller(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef isc_base::t_isc_param_buffer_v1_builder       dpb_type;
+  using dpb_type=isc_base::t_isc_param_buffer_v1_builder;
 
-  typedef structure::t_const_wstr_box                   wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
 

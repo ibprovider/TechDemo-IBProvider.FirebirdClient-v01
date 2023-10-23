@@ -22,13 +22,13 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Класс автоматизации освобождения структуры addrinfo
 /// </summary>
-class RemoteFB__INET_Socket::tag_addrinfo_sptr
+class RemoteFB__INET_Socket::tag_addrinfo_sptr LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_addrinfo_sptr                 self_type;
+  using self_type=tag_addrinfo_sptr;
 
-  tag_addrinfo_sptr(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_addrinfo_sptr(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
@@ -36,7 +36,7 @@ class RemoteFB__INET_Socket::tag_addrinfo_sptr
   /// </summary>
   //! \param[in] pProvider
   //!  Not null.
-  tag_addrinfo_sptr(winsock::t_winsock__provider* pProvider);
+  explicit tag_addrinfo_sptr(winsock::t_winsock__provider* pProvider);
 
   /// <summary>
   ///  Деструктор
@@ -68,7 +68,7 @@ class RemoteFB__INET_Socket::tag_addrinfo_sptr
 //class RemoteFB__INET_Socket::tag_addrinfo_sptr
 
 RemoteFB__INET_Socket::tag_addrinfo_sptr::tag_addrinfo_sptr(winsock::t_winsock__provider* const pProvider)
- :m_spProvider(structure::not_null_ptr(pProvider))
+ :m_spProvider(lib::structure::not_null_ptr(pProvider))
  ,m_ptr(nullptr)
 {
  assert(m_spProvider);
@@ -119,11 +119,11 @@ RemoteFB__INET_Socket::RemoteFB__INET_Socket(winsock::t_winsock__provider* const
                                              byte_type*                    const pReadBuf,
                                              void*                         const pWriteBufBeg,
                                              const void*                   const pWriteBufEnd)
- :m_spProvider(structure::not_null_ptr(pProvider))
+ :m_spProvider(lib::structure::not_null_ptr(pProvider))
  ,m_hSocket(winsock::API::WinSock__INVALID_SOCKET)
- ,m_SocketFamily(structure::negative_one)
- ,m_SocketType(structure::negative_one)
- ,m_SocketProtocol(structure::negative_one)
+ ,m_SocketFamily(lib::structure::negative_one)
+ ,m_SocketType(lib::structure::negative_one)
+ ,m_SocketProtocol(lib::structure::negative_one)
  ,m_read_buf      (pReadBuf)
  ,m_read_buf_size (cbReadBuf)
  ,m_read_avail    (0)
@@ -166,13 +166,13 @@ RemoteFB__INET_Socket::self_ptr
  //-----------------------------------------
  const size_t offset_read_buf=total_sz;
 
- if(!structure::append_memory_size(total_sz,RemoteFB__INET_StaticCfg::c_FB_PACKET_SIZE))
+ if(!lib::structure::append_memory_size(total_sz,RemoteFB__INET_StaticCfg::c_FB_PACKET_SIZE))
   throw std::bad_alloc();
 
  //-----------------------------------------
  const size_t offset_write_buf=total_sz;
 
- if(!structure::append_memory_size(total_sz,RemoteFB__INET_StaticCfg::c_FB_PACKET_SIZE))
+ if(!lib::structure::append_memory_size(total_sz,RemoteFB__INET_StaticCfg::c_FB_PACKET_SIZE))
   throw std::bad_alloc();
 
  //-----------------------------------------
@@ -200,7 +200,7 @@ RemoteFB__INET_Socket::self_ptr
 
  assert(pv);
 
- return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
+ return lib::structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
 //------------------------------------------------------------------------
@@ -943,9 +943,9 @@ void RemoteFB__INET_Socket::Helper__Socket_Close()
 
  m_hSocket=winsock::API::WinSock__INVALID_SOCKET;
 
- m_SocketFamily   =structure::negative_one;
- m_SocketType     =structure::negative_one;
- m_SocketProtocol =structure::negative_one;
+ m_SocketFamily   =lib::structure::negative_one;
+ m_SocketType     =lib::structure::negative_one;
+ m_SocketProtocol =lib::structure::negative_one;
 }//Helper__Socket_Close
 
 //------------------------------------------------------------------------

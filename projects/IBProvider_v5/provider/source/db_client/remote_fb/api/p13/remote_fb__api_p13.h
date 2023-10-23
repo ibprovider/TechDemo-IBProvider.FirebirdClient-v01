@@ -13,7 +13,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //Forward declarations
 
-typedef api::helpers::RemoteFB__API_HLP__SrvOperation_v1 RemoteFB__P13__SrvOperation;
+using RemoteFB__P13__SrvOperation=api::helpers::RemoteFB__API_HLP__SrvOperation_v1;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms p13*/}/*nms api*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

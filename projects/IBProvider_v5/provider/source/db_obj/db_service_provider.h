@@ -18,7 +18,8 @@ namespace lcpi{namespace ibp{namespace db_obj{
 ///  Интерфейс для получения сервисных объектов компоненты
 /// </summary>
 ///  Используется для расширения объектов connection, transaction.
-class COMP_CONF_DECLSPEC_NOVTABLE t_db_service_provider:public t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_service_provider
+ :public t_db_smart_interface
 {
  public:
 

@@ -28,8 +28,10 @@ RemoteFB__KnownServerKey::self_ptr
  RemoteFB__KnownServerKey::Create(const wstr_box_type&   _wstrType,
                                   const wstr_range_type& _wstrPlugin)
 {
- return structure::not_null_ptr(new self_type(_wstrType,
-                                              _wstrPlugin));
+ return lib::structure::not_null_ptr
+          (new self_type
+            (_wstrType,
+             _wstrPlugin));
 }//Create
 
 ////////////////////////////////////////////////////////////////////////////////

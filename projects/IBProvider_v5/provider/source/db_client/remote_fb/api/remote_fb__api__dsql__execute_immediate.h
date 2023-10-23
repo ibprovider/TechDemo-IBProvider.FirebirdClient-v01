@@ -22,12 +22,13 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Немедленное выполнение запроса.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__ExecuteImmediate:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__ExecuteImmediate
+ :public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__TrHandle       tr_handle_type;
+  using tr_handle_type  =handles::RemoteFB__TrHandle;
 
-  typedef structure::t_const_str_box        sql_str_box_type;
+  using sql_str_box_type=lib::structure::t_const_str_box;
 
  public:
   /// <summary>

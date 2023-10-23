@@ -19,13 +19,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Поток пакетов симметричного протокола v12.
 /// <summary>
-class RemoteFB__PSET01__P12S__PacketStream:public RemoteFB__PacketStream
+class RemoteFB__PSET01__P12S__PacketStream LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__PacketStream
 {
  private:
-  typedef RemoteFB__PSET01__P12S__PacketStream    self_type;
+  using self_type=RemoteFB__PSET01__P12S__PacketStream;
 
-  RemoteFB__PSET01__P12S__PacketStream(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__PSET01__P12S__PacketStream(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Конструктор по-умолчанию.

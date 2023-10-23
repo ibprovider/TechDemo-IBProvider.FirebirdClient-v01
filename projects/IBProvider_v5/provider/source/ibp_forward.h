@@ -22,9 +22,6 @@ namespace lcpi{namespace ibp{
 # error "IBP_ENGINE_UPDATE_ROWSET not defined"
 #endif
 ////////////////////////////////////////////////////////////////////////////////
-using structure::t_smart_object_ptr;
-
-////////////////////////////////////////////////////////////////////////////////
 //connection settings
 
 class t_ibp_data_settings;
@@ -78,7 +75,7 @@ class TIBP_FieldData;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-class TIBPParamMarkerData;
+class IBP_SqlParameterMarkerData;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -116,24 +113,24 @@ class IBP_OLEDB__ParametersData;
 ////////////////////////////////////////////////////////////////////////////////
 
 class t_ibp_transaction;
-typedef t_smart_object_ptr<t_ibp_transaction>        t_ibp_transaction_ptr;
+using t_ibp_transaction_ptr=lib::structure::t_smart_object_ptr<t_ibp_transaction>;
 
 class t_ibp_command;
-typedef t_smart_object_ptr<t_ibp_command>            t_ibp_command_ptr;
+using t_ibp_command_ptr=lib::structure::t_smart_object_ptr<t_ibp_command>;
 
 class t_ibp_command_pobj;
-typedef t_smart_object_ptr<t_ibp_command_pobj>         t_ibp_command_pobj_ptr;
-typedef t_smart_object_ptr<const t_ibp_command_pobj>   t_ibp_command_pobj_const_ptr;
+using t_ibp_command_pobj_ptr=lib::structure::t_smart_object_ptr<t_ibp_command_pobj>;
+using t_ibp_command_pobj_const_ptr=lib::structure::t_smart_object_ptr<const t_ibp_command_pobj>;
 
 class t_ibp_command_ptext;
-typedef t_smart_object_ptr<t_ibp_command_ptext>        t_ibp_command_ptext_ptr;
-typedef t_smart_object_ptr<const t_ibp_command_ptext>  t_ibp_command_ptext_const_ptr;
+using t_ibp_command_ptext_ptr=lib::structure::t_smart_object_ptr<t_ibp_command_ptext>;
+using t_ibp_command_ptext_const_ptr=lib::structure::t_smart_object_ptr<const t_ibp_command_ptext>;
 
 class t_ibp_command_pstmt;
-typedef t_smart_object_ptr<t_ibp_command_pstmt>      t_ibp_command_pstmt_ptr;
+using t_ibp_command_pstmt_ptr=lib::structure::t_smart_object_ptr<t_ibp_command_pstmt>;
 
 class t_ibp_command_pobjs;
-typedef t_smart_object_ptr<t_ibp_command_pobjs>      t_ibp_command_pobjs_ptr;
+using t_ibp_command_pobjs_ptr=lib::structure::t_smart_object_ptr<t_ibp_command_pobjs>;
 
 class t_ibp_command_pstmt_params_info__proxy;
 
@@ -142,17 +139,22 @@ class t_ibp_command_pstmt_params_data;
 ////////////////////////////////////////////////////////////////////////////////
 //SQL
 
+namespace sql{
+////////////////////////////////////////////////////////////////////////////////
+
 class t_ibp_sql_keyword;
 
 class t_ibp_sql_parser_settings_sign;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace sql
 
 ////////////////////////////////////////////////////////////////////////////////
 //Structured Storage. Data Page Manager
 
 class TIBP_SS_DataPageManagerTraits;
 
-typedef structure::t_ss_data_page_manager<TIBP_SS_DataPageManagerTraits>
- TIBP_SS_DataPageManager;
+using TIBP_SS_DataPageManager=structure::t_ss_data_page_manager<TIBP_SS_DataPageManagerTraits>;
 
 ////////////////////////////////////////////////////////////////////////////////
 

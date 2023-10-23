@@ -671,14 +671,15 @@ struct P_OP_CANCEL
 ///  ”ниверсальна€ структура дл€ представлени€ данных пакета
 ///  дл€ группы протоколов PROTOCOL_SET_ID__01
 /// </summary>
-struct PACKET_V01 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
+struct PACKET_V01 LCPI_CPP_CFG__CLASS__FINAL
+ :public PACKET
 {
  private:
-  typedef PACKET_V01                        self_type;
-  typedef PACKET                            inherited;
+  using self_type=PACKET_V01;
+  using inherited=PACKET;
 
-  PACKET_V01(const self_type&);
-  self_type& operator = (const self_type&);
+  PACKET_V01(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   //! \brief Operation/packet type

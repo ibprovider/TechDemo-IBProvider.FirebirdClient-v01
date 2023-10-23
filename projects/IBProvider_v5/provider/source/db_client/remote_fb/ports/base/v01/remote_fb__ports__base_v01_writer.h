@@ -20,14 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 ///  –еализаци€ интерфейса писател€ в стандартный порт.
 /// </summary>
 //!  Ёкземпл€ры класса создаютс€ по требованию
-class RemoteFB__Port_BASE_v01::tag_writer
+class RemoteFB__Port_BASE_v01::tag_writer LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__PortWriter)
 {
  private:
-  typedef tag_writer                        self_type;
+  using self_type=tag_writer;
 
-  tag_writer(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_writer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>

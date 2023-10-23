@@ -23,14 +23,16 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 class RemoteFB__XDR__Decoder
 {
  private:
-  typedef RemoteFB__XDR__Decoder            self_type;
+  using self_type=RemoteFB__XDR__Decoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortReader              buf_type;
-  typedef RemoteFB__PacketMemory            mem_type;
-  typedef mem_type::enumMemoryID            mem_id_type;
+  using buf_type=RemoteFB__PortReader;
 
-  typedef RemoteFB__ArraySliceDescr         asd_type;
+  using mem_type=RemoteFB__PacketMemory;
+
+  using mem_id_type=mem_type::enumMemoryID;
+
+  using asd_type=RemoteFB__ArraySliceDescr;
 
  public:
   static void decode__p_hyper_long

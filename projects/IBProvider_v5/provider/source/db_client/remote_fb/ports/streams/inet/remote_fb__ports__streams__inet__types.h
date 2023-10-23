@@ -19,12 +19,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Типы данных для работы с TCP/IP соединением.
 /// </summary>
-class RemoteFB__INET_Types
+class RemoteFB__INET_Types LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   //! \brief
   //!  Тип для представления номера порта
-  typedef unsigned short                    port_number_type;
+  using port_number_type=unsigned short;
 };//class RemoteFB__INET_Types
 
 ////////////////////////////////////////////////////////////////////////////////

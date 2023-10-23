@@ -27,24 +27,25 @@ class RemoteFB__HandleData_Blob;
 /// <summary>
 ///  Данные блоба.
 /// </summary>
-class RemoteFB__HandleData_Blob:public RemoteFB__SmartMemoryObject
+class RemoteFB__HandleData_Blob LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__SmartMemoryObject
 {
  private:
-  typedef RemoteFB__HandleData_Blob                         self_type;
+  using self_type=RemoteFB__HandleData_Blob;
 
-  RemoteFB__HandleData_Blob(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__HandleData_Blob(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>          self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef RemoteFB__SrvResourceID                           id_type;
+  using id_type=RemoteFB__SrvResourceID;
 
-  typedef handles::RemoteFB__HandleData_Transaction         tr_data_type;
+  using tr_data_type=handles::RemoteFB__HandleData_Transaction;
 
-  typedef RemoteFB__MemoryAllocator                         allocator_type;
+  using allocator_type=RemoteFB__MemoryAllocator;
 
-  typedef structure::t_void_simple_buffer<allocator_type>   buffer_type;
+  using buffer_type=structure::t_void_simple_buffer<allocator_type>;
 
   enum enumBlobMode
   {
@@ -154,14 +155,14 @@ class RemoteFB__HandleData_Blob:public RemoteFB__SmartMemoryObject
 /// <summary>
 ///  Адаптер списка блобов транзакции.
 /// </summary>
-class RemoteFB__HandleData_Blob::tag_tr_list_adapter
+class RemoteFB__HandleData_Blob::tag_tr_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_tr_list_adapter                        self_type;
+  using self_type=tag_tr_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Blob                  node_type;
-  typedef node_type*                                 node_ptr_type;
+  using node_type    =RemoteFB__HandleData_Blob;
+  using node_ptr_type=node_type*;
 
  public:
   tag_tr_list_adapter();
@@ -183,14 +184,14 @@ class RemoteFB__HandleData_Blob::tag_tr_list_adapter
 /// <summary>
 ///  Адаптер списка незакрытых блобов подключения.
 /// </summary>
-class RemoteFB__HandleData_Blob::tag_nclosed_blob_list_adapter
+class RemoteFB__HandleData_Blob::tag_nclosed_blob_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_nclosed_blob_list_adapter              self_type;
+  using self_type=tag_nclosed_blob_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Blob                  node_type;
-  typedef node_type*                                 node_ptr_type;
+  using node_type    =RemoteFB__HandleData_Blob;
+  using node_ptr_type=node_type*;
 
  public:
   tag_nclosed_blob_list_adapter();

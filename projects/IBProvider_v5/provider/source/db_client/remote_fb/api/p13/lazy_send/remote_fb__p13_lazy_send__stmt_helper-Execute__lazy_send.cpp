@@ -32,7 +32,7 @@ protocol::P_OBJCT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
  assert(pStmtExecData);
 
  assert(pData->GetPort());
@@ -98,7 +98,7 @@ protocol::P_OBJCT
   //нужно отправить команду на закрытие курсора.
 
   //[2015-11-15] Раскомментировать следующий ассерт!
-  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(structure::negative_one));
+  assert_msg(false,"stmtType="<<(*pStmtHandle)->m_PData__StmtTypeID.value_or_default(lib::structure::negative_one));
 
   send_op1_close=true;
  }//if

@@ -27,7 +27,7 @@ template<class SecureHashAlgorithms,const wchar_t* pName>
 typename RemoteFB__Plugin_Auth_SRP_P13_Data_Impl<SecureHashAlgorithms,pName>::self_ptr
  RemoteFB__Plugin_Auth_SRP_P13_Data_Impl<SecureHashAlgorithms,pName>::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //RemoteFB__Plugin_Auth_SRP_P13_Data interface ---------------------------
@@ -77,7 +77,7 @@ RemoteFB__Plugin_AuthPtr
 
  assert(spData);
 
- return structure::not_null_ptr(new self_type(spData));
+ return lib::structure::not_null_ptr(new self_type(spData));
 }//Create
 
 ////////////////////////////////////////////////////////////////////////////////

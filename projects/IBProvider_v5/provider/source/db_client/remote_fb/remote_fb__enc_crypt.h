@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// </summary>
 /// - Реализация алгоритмов позаимствована из исходников Firebird 2.5.
 /// - Используются сгенерированные таблицы шифрования.
-class RemoteFB__ENC_crypt
+class RemoteFB__ENC_crypt LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef char TEXT;
+  using TEXT=char;
 
  public:
   static const size_t c_RESULT_SIZE = (1 + 4 + 4 + 11 + 1);
@@ -33,7 +33,7 @@ class RemoteFB__ENC_crypt
                         const TEXT* key,
                         const TEXT* setting);
  private:
-  typedef long SLONG;
+  using SLONG=long;
 
   union  C_block;
   struct C_block2;

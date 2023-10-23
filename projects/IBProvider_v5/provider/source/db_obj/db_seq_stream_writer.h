@@ -19,7 +19,8 @@ namespace lcpi{namespace ibp{namespace db_obj{
 /// <summary>
 ///  Интерфейс для записи потока байт
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE t_db_seq_stream_writer:public t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_seq_stream_writer
+ :public t_db_smart_interface
 {
  public:
   /// <summary>

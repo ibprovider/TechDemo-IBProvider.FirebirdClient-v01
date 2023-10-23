@@ -11,7 +11,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 //Запрос сервиса через интерфейс t_db_service_provider
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_object*          service_provider_obj,
                   const t_db_svc_descr& svcDescr)//throw
 {
@@ -47,7 +47,7 @@ structure::t_smart_object_ptr<T>
 
 //------------------------------------------------------------------------
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_object* const service_provider_obj)//throw
 {
  assert(service_provider_obj);
@@ -83,8 +83,8 @@ structure::t_smart_object_ptr<T>
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_object*                      const service_provider_obj,
-                      structure::t_smart_object_ptr<T>* const service)
+void query_db_service(t_db_object*                           const service_provider_obj,
+                      lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service_provider_obj);
  assert(service);
@@ -95,8 +95,8 @@ void query_db_service(t_db_object*                      const service_provider_o
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_service_provider*            const service_provider_obj,
-                      structure::t_smart_object_ptr<T>* const service)
+void query_db_service(t_db_service_provider*                 const service_provider_obj,
+                      lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service_provider_obj);
  assert(service);
@@ -107,7 +107,7 @@ void query_db_service(t_db_service_provider*            const service_provider_o
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__no_throw(t_db_object* const service_provider_obj)
 {
  assert(service_provider_obj);
@@ -128,8 +128,8 @@ structure::t_smart_object_ptr<T>
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service__no_throw(t_db_object*                      const service_provider_obj,
-                                structure::t_smart_object_ptr<T>* const service)
+void query_db_service__no_throw(t_db_object*                           const service_provider_obj,
+                                lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service_provider_obj);
  assert(service);
@@ -140,8 +140,8 @@ void query_db_service__no_throw(t_db_object*                      const service_
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service__no_throw(t_db_service_provider*            const service_provider_obj,
-                                structure::t_smart_object_ptr<T>* const service)
+void query_db_service__no_throw(t_db_service_provider*                 const service_provider_obj,
+                                lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service_provider_obj);
  assert(service);
@@ -152,7 +152,7 @@ void query_db_service__no_throw(t_db_service_provider*            const service_
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_operation_context& op_ctx,
                                 REFGUID                 rguidService)
 {
@@ -181,9 +181,9 @@ structure::t_smart_object_ptr<T>
 
 //------------------------------------------------------------------------
 template<class T>
-void query_db_service__if_it_exists(t_db_operation_context&                 op_ctx,
-                                    REFGUID                                 rguidService,
-                                    structure::t_smart_object_ptr<T>* const service)
+void query_db_service__if_it_exists(t_db_operation_context&                      op_ctx,
+                                    REFGUID                                      rguidService,
+                                    lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service);
 
@@ -193,7 +193,7 @@ void query_db_service__if_it_exists(t_db_operation_context&                 op_c
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_operation_context& op_ctx)
 {
  return query_db_service__if_it_exists<T>(op_ctx,__db_guid<T>());
@@ -201,8 +201,8 @@ structure::t_smart_object_ptr<T>
 
 //------------------------------------------------------------------------
 template<class T>
-void query_db_service__if_it_exists(t_db_operation_context&                 op_ctx,
-                                    structure::t_smart_object_ptr<T>* const service)
+void query_db_service__if_it_exists(t_db_operation_context&                      op_ctx,
+                                    lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service);
 
@@ -212,7 +212,7 @@ void query_db_service__if_it_exists(t_db_operation_context&                 op_c
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_object* const service_provider_obj)
 {
  assert(service_provider_obj);
@@ -251,8 +251,8 @@ structure::t_smart_object_ptr<T>
 template<class T>
 RELEASE_CODE(inline)
 void query_db_service__if_it_exists
-               (t_db_object*                      const service_provider_obj,
-                structure::t_smart_object_ptr<T>* const service)
+               (t_db_object*                           const service_provider_obj,
+                lib::structure::t_smart_object_ptr<T>* const service)
 {
  assert(service_provider_obj);
  assert(service);
@@ -264,7 +264,7 @@ void query_db_service__if_it_exists
 //Получение сервиса через t_db_operation_context
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_operation_context& op_ctx)//throw
 {
  typedef T svc_type;
@@ -303,8 +303,8 @@ structure::t_smart_object_ptr<T>
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_operation_context&                 op_ctx,
-                      structure::t_smart_object_ptr<T>* const service)//throw
+void query_db_service(t_db_operation_context&                      op_ctx,
+                      lib::structure::t_smart_object_ptr<T>* const service)//throw
 {
  assert(service);
 
@@ -314,7 +314,7 @@ void query_db_service(t_db_operation_context&                 op_ctx,
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_operation_context& op_ctx,
                   const t_db_svc_descr&   svc_descr)
 {

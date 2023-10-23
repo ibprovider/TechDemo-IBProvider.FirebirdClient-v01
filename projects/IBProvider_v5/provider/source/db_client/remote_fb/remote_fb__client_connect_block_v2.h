@@ -28,32 +28,32 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Класс для управления данными подключения
 /// </summary>
-class RemoteFB__ClientConnectBlock_v2
+class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__ClientConnectBlock_v2       self_type;
+  using self_type=RemoteFB__ClientConnectBlock_v2;
 
-  RemoteFB__ClientConnectBlock_v2(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__ClientConnectBlock_v2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__MemoryAllocator            allocator_type;
+  using allocator_type=RemoteFB__MemoryAllocator;
 
-  typedef structure::t_void_simple_buffer
-           <allocator_type>                    data_buffer_type;
+  using data_buffer_type
+   =structure::t_void_simple_buffer<allocator_type>;
 
  public:
   /// <summary>
   ///  Описание ожидаемого типа протокола подключения.
   /// </summary>
-  struct tag_expected_ptype_descr
+  struct tag_expected_ptype_descr LCPI_CPP_CFG__CLASS__FINAL
   {
    //! \note
    //!  Конструктор и оператор копирования генерируются компилятором.
 
    public:
-    typedef unsigned                                 ptype_id_type;
-    typedef structure::t_value_with_null<unsigned>   ptype_id_type_N;
+    using ptype_id_type   =unsigned;
+    using ptype_id_type_N =structure::t_value_with_null<ptype_id_type>;
 
    public:
     /// Идентификатор ожидаемого типа (может быть не определен).
@@ -65,10 +65,12 @@ class RemoteFB__ClientConnectBlock_v2
    public:
     tag_expected_ptype_descr();
 
-    tag_expected_ptype_descr(ptype_id_type               _ptypeID,
-                             structure::t_const_wstr_box _ptypeSign);
+    tag_expected_ptype_descr
+     (ptype_id_type                    _ptypeID,
+      lib::structure::t_const_wstr_box _ptypeSign);
 
-    explicit tag_expected_ptype_descr(structure::t_const_wstr_box _ptypeSign);
+    explicit tag_expected_ptype_descr
+     (lib::structure::t_const_wstr_box _ptypeSign);
 
    ~tag_expected_ptype_descr();
 
@@ -77,15 +79,16 @@ class RemoteFB__ClientConnectBlock_v2
     bool operator != (ptype_id_type id)const;
   };//struct tag_expected_ptype_descr
 
-  typedef tag_expected_ptype_descr             expected_ptype_descr_type;
+  using expected_ptype_descr_type=tag_expected_ptype_descr;
 
-  typedef structure::t_value_with_null
-           <expected_ptype_descr_type>         expected_ptype_descr_type_N;
+  using expected_ptype_descr_type_N
+   =structure::t_value_with_null<expected_ptype_descr_type>;
 
  private:
-  typedef structure::t_smart_vector
-            <RemoteFB__InternalCryptKey,
-             RemoteFB__MemoryAllocator>        crypt_keys_type;
+  using crypt_keys_type
+   =structure::t_smart_vector
+     <RemoteFB__InternalCryptKey,
+      RemoteFB__MemoryAllocator>;
 
  public: //---------------------------------------------------------------
   const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE::self_ptr m_spDsPropValues;
@@ -166,9 +169,10 @@ class RemoteFB__ClientConnectBlock_v2
   const std::wstring& GetAuthPluginNames();
 
  private:
-  typedef structure::t_smart_vector
-           <plugins::auth::RemoteFB__Plugin_Auth_Factory,
-            allocator_type>                         auth_plugins_type;
+  using auth_plugins_type
+   =structure::t_smart_vector
+     <plugins::auth::RemoteFB__Plugin_Auth_Factory,
+      allocator_type>;
 
  private:
   /// <summary>
@@ -189,11 +193,11 @@ class RemoteFB__ClientConnectBlock_v2
   static bool Helper__CheckAuthPluginName(structure::t_const_wstr_box pluginName);
 
  private:
-  class tag_plugin_name_less
+  class tag_plugin_name_less LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
-    bool operator () (const structure::t_const_wstring& n1,
-                      const structure::t_const_wstring& n2)const
+    bool operator () (const lib::structure::t_const_wstring& n1,
+                      const lib::structure::t_const_wstring& n2)const
     {
      return n1.compare(n2)<0;
     }

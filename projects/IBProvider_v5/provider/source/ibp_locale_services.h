@@ -27,15 +27,15 @@ class t_ibp_basic_locale_services LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_SmartMemoryObject
 {
  private:
-  typedef t_ibp_basic_locale_services                        self_type;
+  using self_type=t_ibp_basic_locale_services;
 
-  t_ibp_basic_locale_services(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_basic_locale_services(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~t_ibp_basic_locale_services();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<const self_type>     self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<const self_type>;
 
   typedef charT                                              char_type;
   typedef __STL_DEF_BASIC_STRING(char_type)                  string_type;

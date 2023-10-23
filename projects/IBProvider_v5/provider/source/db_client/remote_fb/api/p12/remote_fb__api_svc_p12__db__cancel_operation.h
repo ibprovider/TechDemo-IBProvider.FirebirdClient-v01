@@ -23,10 +23,10 @@ class RemoteFB__SVC_P12__CancelDbOperation LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__SVC__CancelDbOperation)
 {
  private:
-  typedef RemoteFB__SVC_P12__CancelDbOperation                  self_type;
+  using self_type=RemoteFB__SVC_P12__CancelDbOperation;
 
-  RemoteFB__SVC_P12__CancelDbOperation(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__SVC_P12__CancelDbOperation(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   RemoteFB__SVC_P12__CancelDbOperation();

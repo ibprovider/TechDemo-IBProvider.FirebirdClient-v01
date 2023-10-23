@@ -20,20 +20,22 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Описание упаковщика пакета.
 /// </summary>
-struct RemoteFB__PSET01__PacketEncoderDescr
+struct RemoteFB__PSET01__PacketEncoderDescr LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__PSET01__PacketEncoderDescr      self_type;
+  using self_type=RemoteFB__PSET01__PacketEncoderDescr;
 
  public:
-  typedef void (*PacketEncodeFunc)(RemoteFB__PortOperationContext&    op_ctx,
-                                   const protocol::set01::PACKET_V01& packet);
+  using PacketEncodePFunc_t
+   =void (*)
+     (RemoteFB__PortOperationContext&    op_ctx,
+      const protocol::set01::PACKET_V01& packet);
 
  public:
 #ifndef NDEBUG
   protocol::set01::P_OP     OperationID;
 #endif
-  PacketEncodeFunc          PacketEncoder;
+  PacketEncodePFunc_t       PacketEncoder;
 
  public:
 #ifndef NDEBUG

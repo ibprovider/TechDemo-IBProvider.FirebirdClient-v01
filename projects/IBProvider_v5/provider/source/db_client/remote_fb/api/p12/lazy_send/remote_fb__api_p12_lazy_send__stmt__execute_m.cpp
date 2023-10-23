@@ -280,7 +280,7 @@ protocol::P_USHORT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  //-----------------------------------------
  assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
@@ -326,7 +326,7 @@ protocol::P_USHORT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  assert(pInMsg);
  assert(!pInMsg->descrs.empty());
@@ -382,7 +382,7 @@ protocol::P_OBJCT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
 #ifndef NDEBUG
  if(pInMsg==nullptr)

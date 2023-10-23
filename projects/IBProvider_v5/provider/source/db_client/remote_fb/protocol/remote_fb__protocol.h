@@ -288,10 +288,10 @@ enum PROTOCOL_SET_ID
 struct PACKET
 {
  private:
-  typedef PACKET                            self_type;
+  using self_type=PACKET;
 
-  PACKET(const self_type&);
-  self_type& operator = (const self_type&);
+  PACKET(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   const PROTOCOL_SET_ID protocolSetID;

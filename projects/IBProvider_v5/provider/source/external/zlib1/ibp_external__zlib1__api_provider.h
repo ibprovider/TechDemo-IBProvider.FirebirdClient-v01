@@ -11,7 +11,8 @@ namespace lcpi{namespace ibp{namespace external{namespace zlib1{
 ////////////////////////////////////////////////////////////////////////////////
 //class ZLIB1__ApiProvider
 
-class COMP_CONF_DECLSPEC_NOVTABLE ZLIB1__ApiProvider:public IBP_SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE ZLIB1__ApiProvider
+ :public IBP_SmartInterface
 {
  public:
   virtual int zapi__deflateInit

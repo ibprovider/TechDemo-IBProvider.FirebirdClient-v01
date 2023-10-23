@@ -20,7 +20,8 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Интерфейс для получения CustomErrorObject привязанного к описанию ошибки
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_get_custom_error_object:public lib::structure::t_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_get_custom_error_object
+ :public lib::structure::t_smart_interface
 {
  public:
   using COM_SERVER_LINK_TYPE

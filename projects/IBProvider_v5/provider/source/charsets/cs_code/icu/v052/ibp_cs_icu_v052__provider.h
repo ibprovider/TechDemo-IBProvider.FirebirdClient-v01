@@ -35,7 +35,7 @@ class t_ibp_icu_provider LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(charsets::t_ibp_charset_provider)
 {
  private:
-  typedef t_ibp_icu_provider                         self_type;
+  using self_type=t_ibp_icu_provider;
 
   t_ibp_icu_provider(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
@@ -47,10 +47,10 @@ class t_ibp_icu_provider LCPI_CPP_CFG__CLASS__FINAL
 
  public: //typedefs ------------------------------------------------------
   /// Self smart-pointer
-  typedef structure::t_smart_object_ptr<self_type>   self_ptr;
+  using self_ptr =structure::t_smart_object_ptr<self_type>;
 
-  typedef ibp::external::icu::ICU__Dll               dll_type;
-  typedef ibp::external::icu::ICU__Dll_Ptr           dll_ptr;
+  using dll_type =ibp::external::icu::ICU__Dll;
+  using dll_ptr  =ibp::external::icu::ICU__Dll_Ptr;
 
  public:
   DEF_ICU_POINT(ucnv_open);

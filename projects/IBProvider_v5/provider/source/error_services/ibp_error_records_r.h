@@ -14,7 +14,8 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_error_records_r
 
-class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_error_records_r:public structure::t_err_records_r
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_error_records_r
+ :public structure::t_err_records_r
 {
  public:
   typedef structure::t_value_with_null<size_t>    size_type_N;

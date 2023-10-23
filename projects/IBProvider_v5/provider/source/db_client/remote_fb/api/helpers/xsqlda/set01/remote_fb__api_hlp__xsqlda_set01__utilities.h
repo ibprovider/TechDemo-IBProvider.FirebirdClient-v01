@@ -17,15 +17,15 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_HLP__XSQLDA_SET01__Utilities
 
-class RemoteFB__API_HLP__XSQLDA_SET01__Utilities
+class RemoteFB__API_HLP__XSQLDA_SET01__Utilities LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__API_HLP__XSQLDA_SET01__Utilities       self_type;
+  using self_type=RemoteFB__API_HLP__XSQLDA_SET01__Utilities;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned char                                    byte_type;
+  using byte_type=unsigned char;
 
-  typedef handles::RemoteFB__HandleData_Statement          stmt_data_type;
+  using stmt_data_type=handles::RemoteFB__HandleData_Statement;
 
  public:
   /// <summary>

@@ -20,17 +20,17 @@ class t_ibp_custom_error_object__sql LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(t_ibp_get_custom_error_object)
 {
  private:
-  typedef t_ibp_custom_error_object__sql                   self_type;
+  using self_type=t_ibp_custom_error_object__sql;
 
-  t_ibp_custom_error_object__sql(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_custom_error_object__sql(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs -------------------------------------------------
-  typedef lib::structure::t_smart_object_ptr<self_type>    self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::str_parameter                         str_arg_type;
+  using str_arg_type=structure::str_parameter;
 
-  typedef LONG                                             native_error_type;
+  using native_error_type=LONG;
 
  private:
   t_ibp_custom_error_object__sql(str_arg_type      strSQLState,
@@ -46,9 +46,10 @@ class t_ibp_custom_error_object__sql LCPI_CPP_CFG__CLASS__FINAL
   const std::string& get_sqlstate()const;
 
   //interface -------------------------------------------------------
-  virtual lib::com::base::IUnknownPtr get_custom_error_object
-                                           (IUnknown*                   pUnkOuter,
-                                            const COM_SERVER_LINK_TYPE& ComServerLink)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual lib::com::base::IUnknownPtr
+           get_custom_error_object
+            (IUnknown*                   pUnkOuter,
+             const COM_SERVER_LINK_TYPE& ComServerLink)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   std::string       const m_SQLState;

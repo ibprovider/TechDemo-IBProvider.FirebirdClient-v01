@@ -24,10 +24,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P13__InitializeCrypt LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P13__InitializeCrypt              self_type;
+  using self_type=RemoteFB__P13__InitializeCrypt;
 
  public: //typedefs ------------------------------------------------------
-  typedef ports::base_v01::RemoteFB__Port_BASE_v01    port_type;
+  using port_type=ports::base_v01::RemoteFB__Port_BASE_v01;
 
  public:
   /// <summary>
@@ -66,7 +66,7 @@ class RemoteFB__P13__InitializeCrypt LCPI_CPP_CFG__CLASS__FINAL
   static RemoteFB__PortStreamPtr
    Helper__CreateNotBindedCryptStream
                (const port_type*                  pPort,
-                structure::t_const_wstr_box       cryptPluginName,
+                lib::structure::t_const_wstr_box  cryptPluginName,
                 const RemoteFB__InternalCryptKey* pCryptKey);
 };//class RemoteFB__P13__InitializeCrypt
 

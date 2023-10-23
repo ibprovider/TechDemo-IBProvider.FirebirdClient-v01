@@ -67,8 +67,9 @@ void RemoteFB__P11__ConnectOpCtx::request_auth_data
 
  if(!m_spAuthProvider)
  {
-  typedef auth_provider_type                provider_type;
-  typedef os::t_ibp_os__dll_ptr             dll_ptr;
+  using provider_type=auth_provider_type;
+
+  using dll_ptr=os::t_ibp_os__dll_ptr;
 
   const dll_ptr
    spDll

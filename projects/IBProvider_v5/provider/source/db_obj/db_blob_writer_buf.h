@@ -25,17 +25,18 @@ class t_db_blob_writer_buf;
 /// <summary>
 ///  Класс для буферизированной записи данных в BLOB
 /// </summary>
-class t_db_blob_writer_buf:public structure::t_basic_ostream_buffer<char>
+class t_db_blob_writer_buf LCPI_CPP_CFG__CLASS__FINAL
+ :public structure::t_basic_ostream_buffer<char>
 {
  private:
-  typedef t_db_blob_writer_buf                            self_type;
-  typedef structure::t_basic_ostream_buffer<char>         inherited;
+  using self_type=t_db_blob_writer_buf;
+  using inherited=structure::t_basic_ostream_buffer<char>;
 
-  t_db_blob_writer_buf(const self_type&);
-  self_type& operator = (const self_type&);
+  t_db_blob_writer_buf(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef value_type                                      char_type;
+  using char_type=value_type;
 
  public:
   t_db_blob_writer_buf(char*                   const buffer,

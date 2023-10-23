@@ -19,23 +19,23 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Класс для обработки буфера с SDL-описанием массива.
 /// </summary>
-class RemoteFB__API_HLP__ArraySdlReader
+class RemoteFB__API_HLP__ArraySdlReader LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__API_HLP__ArraySdlReader self_type;
+  using self_type=RemoteFB__API_HLP__ArraySdlReader;
 
-  RemoteFB__API_HLP__ArraySdlReader(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_HLP__ArraySdlReader(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned char                     byte_type;
+  using byte_type=unsigned char;
 
-  typedef signed __int8                     value_i1_type;
-  typedef signed __int16                    value_i2_type;
-  typedef signed __int32                    value_i4_type;
+  using value_i1_type=signed __int8;
+  using value_i2_type=signed __int16;
+  using value_i4_type=signed __int32;
 
-  typedef unsigned __int16                  value_ui2_type;
-  typedef unsigned __int32                  value_ui4_type;
+  using value_ui2_type=unsigned __int16;
+  using value_ui4_type=unsigned __int32;
 
  public:
   RemoteFB__API_HLP__ArraySdlReader(size_t           const szSDL,

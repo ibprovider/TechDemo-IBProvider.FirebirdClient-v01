@@ -26,7 +26,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //class RemoteFB__Plugin_Auth_SRP_P13
 
 RemoteFB__Plugin_Auth_SRP_P13::RemoteFB__Plugin_Auth_SRP_P13(RemoteFB__Plugin_Auth_SRP_P13_Data* pData)
- :m_spData(structure::not_null_ptr(pData))
+ :m_spData(lib::structure::not_null_ptr(pData))
  ,m_step(0)
 {
  assert(m_spData);
@@ -370,7 +370,7 @@ void RemoteFB__Plugin_Auth_SRP_P13::authenticate
      RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_crypt_permission
      (c_bugcheck_src,
       L"#006",
-      structure::to_underlying(clientConnectBlock.m_DsProp__WireCrypt));
+      lib::structure::to_underlying(clientConnectBlock.m_DsProp__WireCrypt));
     }//default
    }//switch
 

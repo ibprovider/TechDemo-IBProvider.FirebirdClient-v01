@@ -20,10 +20,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Набор утилит для упаковки операций.
 /// </summary>
-class RemoteFB__PSET01__P12__OpEncoder
+class RemoteFB__PSET01__P12__OpEncoder LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortOperationContext    op_ctx_type;
+  using op_ctx_type=RemoteFB__PortOperationContext;
 
  public:
   //асимметричная версия

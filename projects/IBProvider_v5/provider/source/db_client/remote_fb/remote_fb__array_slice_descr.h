@@ -19,25 +19,25 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Описание буфера со значениями элементов массива.
 /// </summary>
-class RemoteFB__ArraySliceDescr
+class RemoteFB__ArraySliceDescr LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__ArraySliceDescr         self_type;
+  using self_type=RemoteFB__ArraySliceDescr;
 
-  RemoteFB__ArraySliceDescr(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__ArraySliceDescr(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned __int8                   byte_type;
+  using byte_type           =unsigned __int8;
 
-  typedef unsigned __int8                   blr_typeid_type;
-  typedef signed   __int8                   sql_scale_type;
-  typedef unsigned __int16                  sql_length_type;
-  typedef unsigned __int16                  sql_text_props_type;
+  using blr_typeid_type     =unsigned __int8;
+  using sql_scale_type      =signed   __int8;
+  using sql_length_type     =unsigned __int16;
+  using sql_text_props_type =unsigned __int16;
 
-  typedef signed __int32                    range_bound_type;
+  using range_bound_type    =signed __int32;
 
-  struct tag_bound
+  struct tag_bound LCPI_CPP_CFG__CLASS__FINAL
   {
    range_bound_type  lower;
    range_bound_type  upper;

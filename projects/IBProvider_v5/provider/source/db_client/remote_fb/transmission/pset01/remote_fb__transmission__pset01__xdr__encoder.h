@@ -20,13 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Первичный трансформатор записываемых данных
 /// </summary>
-class RemoteFB__PSET01__XDR__Encoder:public RemoteFB__XDR__Encoder
+class RemoteFB__PSET01__XDR__Encoder LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__XDR__Encoder
 {
  private:
-  typedef RemoteFB__PSET01__XDR__Encoder    self_type;
+  using self_type=RemoteFB__PSET01__XDR__Encoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortWriter              buf_type;
+  using buf_type=RemoteFB__PortWriter;
 
  public:
   static void encode__p_op

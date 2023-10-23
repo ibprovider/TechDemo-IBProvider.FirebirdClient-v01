@@ -23,10 +23,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P11__GetDatabaseStdInfo LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P11__GetDatabaseStdInfo                    self_type;
+  using self_type=RemoteFB__P11__GetDatabaseStdInfo;
 
  public:
-  typedef isc_base::t_isc_connection_settings                  cns_type;
+  using cns_type=isc_base::t_isc_connection_settings;
 
  public:
   /// <summary>

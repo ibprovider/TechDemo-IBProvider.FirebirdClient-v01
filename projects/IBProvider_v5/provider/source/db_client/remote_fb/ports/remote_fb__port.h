@@ -39,7 +39,7 @@ class RemoteFB__PacketMemory;
 class RemoteFB__PortWriter:public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef size_t                            size_type;
+  using size_type=size_t;
 
  public:
   /// <summary>
@@ -83,7 +83,7 @@ class RemoteFB__PortWriter:public RemoteFB__SmartInterface
 /// <summary>
 ///  Смарт указатель на интерфейс писателя в удаленный порт
 /// </summary>
-typedef structure::t_smart_object_ptr<RemoteFB__PortWriter> RemoteFB__PortWriterPtr;
+using RemoteFB__PortWriterPtr=lib::structure::t_smart_object_ptr<RemoteFB__PortWriter>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortWriteGuard
@@ -91,20 +91,20 @@ typedef structure::t_smart_object_ptr<RemoteFB__PortWriter> RemoteFB__PortWriter
 /// <summary>
 ///  Блокировщик операции записи в RemoteFB__PortWriter
 /// </summary>
-class RemoteFB__PortWriteGuard
+class RemoteFB__PortWriteGuard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__PortWriteGuard          self_type;
+  using self_type=RemoteFB__PortWriteGuard;
 
-  RemoteFB__PortWriteGuard(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__PortWriteGuard(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
   ///  Конструктор инициализации
   /// </summary>
   //! \param[in] op_ctx
-  RemoteFB__PortWriteGuard(RemoteFB__PortOperationContext& op_ctx);
+  explicit RemoteFB__PortWriteGuard(RemoteFB__PortOperationContext& op_ctx);
 
   /// <summary>
   ///  Деструктор
@@ -136,7 +136,7 @@ class RemoteFB__PortWriteGuard
 class RemoteFB__PortReader:public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef size_t                            size_type;
+  using size_type=size_t;
 
  public:
   /// <summary>
@@ -180,7 +180,7 @@ class RemoteFB__PortReader:public RemoteFB__SmartInterface
 /// <summary>
 ///  Смарт указатель на интерфейс читателя из удаленного порта
 /// </summary>
-typedef structure::t_smart_object_ptr<RemoteFB__PortReader> RemoteFB__PortReaderPtr;
+using RemoteFB__PortReaderPtr=lib::structure::t_smart_object_ptr<RemoteFB__PortReader>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortReadGuard
@@ -188,20 +188,20 @@ typedef structure::t_smart_object_ptr<RemoteFB__PortReader> RemoteFB__PortReader
 /// <summary>
 ///  Блокировщик операции чтения из RemoteFB__PortReader
 /// </summary>
-class RemoteFB__PortReadGuard
+class RemoteFB__PortReadGuard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__PortReadGuard    self_type;
+  using self_type=RemoteFB__PortReadGuard;
 
-  RemoteFB__PortReadGuard(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__PortReadGuard(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
   ///  Конструктор инициализации
   /// </summary>
   //! \param[in] op_ctx
-  RemoteFB__PortReadGuard(RemoteFB__PortOperationContext& op_ctx);
+  explicit RemoteFB__PortReadGuard(RemoteFB__PortOperationContext& op_ctx);
 
   /// <summary>
   ///  Деструктор
@@ -234,10 +234,10 @@ class RemoteFB__Port
  ,public RemoteFB__SmartObjectBase2
 {
  private:
-  typedef RemoteFB__Port                    self_type;
+  using self_type=RemoteFB__Port;
 
-  RemoteFB__Port(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Port(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   enum EnumPortFlags
@@ -277,7 +277,7 @@ class RemoteFB__Port
   };//enum EnumPortFlags
 
   //! \brief Тип для представления флагов порта
-  typedef unsigned int                      port_flags_type;
+  using port_flags_type=unsigned int;
 
  public:
   /// Идентификатор подключения.
@@ -367,7 +367,7 @@ class RemoteFB__Port
 /// <summary>
 ///  Смарт указатель на интерфейс удаленного порта
 /// </summary>
-typedef lib::structure::t_smart_object_ptr<RemoteFB__Port> RemoteFB__PortPtr;
+using RemoteFB__PortPtr=lib::structure::t_smart_object_ptr<RemoteFB__Port>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortOperationContext
@@ -440,12 +440,12 @@ class RemoteFB__PacketMemory:public RemoteFB__SmartInterface
                          size_t       sz)=0;
 };//class RemoteFB__PacketMemory
 
-typedef structure::t_smart_object_ptr<RemoteFB__PacketMemory> RemoteFB__PacketMemoryPtr;
+using RemoteFB__PacketMemoryPtr=lib::structure::t_smart_object_ptr<RemoteFB__PacketMemory>;
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  RemoteFB__GetService(RemoteFB__PortOperationContext& op_ctx)
 {
  const RemoteFB__SmartObjectPtr spSvc(op_ctx.query_service(T::svcID));
@@ -476,7 +476,7 @@ structure::t_smart_object_ptr<T>
 
  assert(pTypedSvc);
 
- return structure::not_null_ptr(pTypedSvc);
+ return lib::structure::not_null_ptr(pTypedSvc);
 }//RemoteFB__GetService
 
 ////////////////////////////////////////////////////////////////////////////////

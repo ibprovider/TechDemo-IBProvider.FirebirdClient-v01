@@ -21,10 +21,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__API_HLP__ArraySlice_v01__Utilities LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__API_HLP__ArraySlice_v01__Utilities     self_type;
+  using self_type=RemoteFB__API_HLP__ArraySlice_v01__Utilities;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned char                                    byte_type;
+  using byte_type=unsigned char;
 
  public:
   /// <summary>
@@ -41,9 +41,9 @@ class RemoteFB__API_HLP__ArraySlice_v01__Utilities LCPI_CPP_CFG__CLASS__FINAL
                        RemoteFB__ArraySliceDescr*       pDescr);
 
  private:
-  typedef signed __int32                                 value_i4_type;
+  using value_i4_type=signed __int32;
 
-  typedef helpers::RemoteFB__API_HLP__ArraySdlReader     tag_sdl_reader;
+  using tag_sdl_reader=helpers::RemoteFB__API_HLP__ArraySdlReader;
 
  private:
   /// <summary>

@@ -20,13 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Стандартная реализация контекста операции с портом.
 /// </summary>
-class RemoteFB__OperationContext:public RemoteFB__PortOperationContext
+class RemoteFB__OperationContext LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__PortOperationContext
 {
  private:
-  typedef RemoteFB__OperationContext            self_type;
+  using self_type=RemoteFB__OperationContext;
 
-  RemoteFB__OperationContext(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__OperationContext(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>

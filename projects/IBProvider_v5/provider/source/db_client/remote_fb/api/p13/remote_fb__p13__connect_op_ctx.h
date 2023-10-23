@@ -28,13 +28,13 @@ class RemoteFB__P13__ConnectOpCtx LCPI_CPP_CFG__CLASS__FINAL
  ,private isc_base::isc_base__dbparams_for_create__installer
 {
  private:
-  typedef RemoteFB__P13__ConnectOpCtx              self_type;
+  using self_type=RemoteFB__P13__ConnectOpCtx;
 
-  RemoteFB__P13__ConnectOpCtx(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__P13__ConnectOpCtx(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef isc_base::t_isc_param_buffer_v2_builder  dpb_type;
+  using dpb_type=isc_base::t_isc_param_buffer_v2_builder;
 
  public:
   dpb_type m_dpb;
@@ -56,7 +56,7 @@ class RemoteFB__P13__ConnectOpCtx LCPI_CPP_CFG__CLASS__FINAL
                         bool                             setNewDbParams);
 
  private:
-  typedef structure::t_const_wstr_box       wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  private: //isc_base__dbparams_for_attach__installer interface -----------
   virtual void set_dbinit_param___auth__integrated(wstr_box_type propValue) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;

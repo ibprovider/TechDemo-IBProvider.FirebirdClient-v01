@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Набор утилит для упаковки операций
 /// </summary>
-class RemoteFB__PSET02__OpEncoder
+class RemoteFB__PSET02__OpEncoder LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static void encode__op_connect

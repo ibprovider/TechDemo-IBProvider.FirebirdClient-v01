@@ -21,97 +21,97 @@ t_db_object_ptr
 
 //------------------------------------------------------------------------
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_object*          service_provider_obj,
                   const t_db_svc_descr& svcDescr);//throw
 
 //------------------------------------------------------------------------
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_object* service_provider_obj);//throw
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_object*                      service_provider_obj,
-                      structure::t_smart_object_ptr<T>* service); //throw
+void query_db_service(t_db_object*                           service_provider_obj,
+                      lib::structure::t_smart_object_ptr<T>* service); //throw
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_service_provider*            service_provider_obj,
-                      structure::t_smart_object_ptr<T>* service); //throw
+void query_db_service(t_db_service_provider*                 service_provider_obj,
+                      lib::structure::t_smart_object_ptr<T>* service); //throw
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__no_throw(t_db_object* service_provider_obj);
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service__no_throw(t_db_object*                      service_provider_obj,
-                                structure::t_smart_object_ptr<T>* service);
+void query_db_service__no_throw(t_db_object*                           service_provider_obj,
+                                lib::structure::t_smart_object_ptr<T>* service);
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service__no_throw(t_db_service_provider*            service_provider_obj,
-                                structure::t_smart_object_ptr<T>* service);
+void query_db_service__no_throw(t_db_service_provider*                 service_provider_obj,
+                                lib::structure::t_smart_object_ptr<T>* service);
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_operation_context& op_ctx,
                                 REFGUID                 rguidService);
 
 //------------------------------------------------------------------------
 template<class T>
-void query_db_service__if_it_exists(t_db_operation_context&           op_ctx,
-                                    REFGUID                           rguidService,
-                                    structure::t_smart_object_ptr<T>* service);
+void query_db_service__if_it_exists(t_db_operation_context&                op_ctx,
+                                    REFGUID                                rguidService,
+                                    lib::structure::t_smart_object_ptr<T>* service);
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_operation_context& op_ctx);
 
 //------------------------------------------------------------------------
 template<class T>
-void query_db_service__if_it_exists(t_db_operation_context&           op_ctx,
-                                    structure::t_smart_object_ptr<T>* service);
+void query_db_service__if_it_exists(t_db_operation_context&                op_ctx,
+                                    lib::structure::t_smart_object_ptr<T>* service);
 
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service__if_it_exists(t_db_object* service_provider_obj);
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service__if_it_exists(t_db_object*                      service_provider_obj,
-                                    structure::t_smart_object_ptr<T>* service);
+void query_db_service__if_it_exists(t_db_object*                           service_provider_obj,
+                                    lib::structure::t_smart_object_ptr<T>* service);
 
 ////////////////////////////////////////////////////////////////////////////////
 //Получение сервиса через t_db_operation_context
 
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_operation_context& op_ctx);//throw
 
 //------------------------------------------------------------------------
 template<class T>
 RELEASE_CODE(inline)
-void query_db_service(t_db_operation_context&           op_ctx,
-                      structure::t_smart_object_ptr<T>* service);//throw
+void query_db_service(t_db_operation_context&                op_ctx,
+                      lib::structure::t_smart_object_ptr<T>* service);//throw
 
 //------------------------------------------------------------------------
 template<class T>
-structure::t_smart_object_ptr<T>
+lib::structure::t_smart_object_ptr<T>
  query_db_service(t_db_operation_context& op_ctx,
                   const t_db_svc_descr&   svc_descr);//throw
 

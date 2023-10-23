@@ -68,8 +68,8 @@ void RemoteFB__API_P12_LAZY_SEND__DropStatement::exec
  {
   //запрос НЕ БЫЛ создан на уровне сервера
 
-  assert(!(*pStmtHandle)->m_PFlags.test(structure::negative_one));
-  assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+  assert(!(*pStmtHandle)->m_PFlags.test(lib::structure::negative_one));
+  assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
   assert((*pStmtHandle)->m_pParentTr==nullptr);
 

@@ -33,11 +33,11 @@ isc_api::t_ibp_isc_status
  DEBUG_CODE(_status_vector.debug__check_state();)
 
  //-----------------------------------------
- typedef db_obj::dbms_fb::common::fb_common__svc__status_vector_utils
-  sv_utils_type;
+ using sv_utils_type
+  =db_obj::dbms_fb::common::fb_common__svc__status_vector_utils;
 
- typedef db_obj::dbms_fb::common::fb_common__svc__status_vector_utils_ptr
-  sv_utils_ptr;
+ using sv_utils_ptr
+  =db_obj::dbms_fb::common::fb_common__svc__status_vector_utils_ptr;
 
  const sv_utils_ptr
   sv_utils(db_obj::query_db_service<sv_utils_type>(_pData));
@@ -209,11 +209,11 @@ t_ibp_error_element::self_ptr
  DEBUG_CODE(_status_vector.debug__check_state();)
 
  //-----------------------------------------
- typedef db_obj::dbms_fb::common::fb_common__svc__status_vector_utils
-  sv_utils_type;
+ using sv_utils_type
+  =db_obj::dbms_fb::common::fb_common__svc__status_vector_utils;
 
- typedef db_obj::dbms_fb::common::fb_common__svc__status_vector_utils_ptr
-  sv_utils_ptr;
+ using sv_utils_ptr
+  =db_obj::dbms_fb::common::fb_common__svc__status_vector_utils_ptr;
 
  const sv_utils_ptr
   sv_utils(db_obj::query_db_service<sv_utils_type>(_pSvcProvider));

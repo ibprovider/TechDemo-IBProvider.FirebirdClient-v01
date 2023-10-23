@@ -20,7 +20,7 @@ const GUID RemoteFB__FetchResult::svcID
 RemoteFB__FetchResult::size_type
  RemoteFB__FetchResult::Helper__CalcRowBlock(size_type cbRowData,size_type cbAlign)
 {
- if(!structure::align_memory_size(cbRowData,cbAlign))
+ if(!lib::structure::align_memory_size(cbRowData,cbAlign))
   throw std::bad_alloc();
 
  return cbRowData;
@@ -75,7 +75,7 @@ RemoteFB__FetchResult::self_ptr
                                size_type        const cbRowData,
                                size_type        const cbRowDataAlign)
 {
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new self_type
            (std::move(OutMSG_BLR),
             std::move(OutMSG_DATA_DESCRS),

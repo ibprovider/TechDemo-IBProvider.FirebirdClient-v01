@@ -88,7 +88,7 @@ void RemoteFB__PSET02__ReceivePacket(RemoteFB__PortOperationContext&            
                                      size_t                                      const cDecoders,
                                      const RemoteFB__PSET02__PacketDecoderDescr* const pDecoders)
 {
- typedef RemoteFB__PSET02__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET02__XDR__Decoder;
 
  RemoteFB__PortReadGuard readGuard(op_ctx); //throw
 

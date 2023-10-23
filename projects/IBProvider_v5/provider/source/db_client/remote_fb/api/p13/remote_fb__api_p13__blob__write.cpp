@@ -106,7 +106,7 @@ void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
    c_WriteBufferSize=structure::t_numeric_limits<protocol::P_USHORT>::max_value();
 
   //-----------------------------------------
-  typedef unsigned char byte_type;
+  using byte_type=unsigned char;
 
   const byte_type* pSrc=reinterpret_cast<const byte_type*>(pvBuffer);
 

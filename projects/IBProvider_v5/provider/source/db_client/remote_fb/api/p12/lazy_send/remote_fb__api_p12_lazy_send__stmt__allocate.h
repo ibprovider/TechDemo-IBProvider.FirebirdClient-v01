@@ -23,13 +23,10 @@ class RemoteFB__API_P12_LAZY_SEND__AllocateStatement LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__AllocateStatement)
 {
  private:
-  typedef RemoteFB__API_P12_LAZY_SEND__AllocateStatement    self_type;
+  using self_type=RemoteFB__API_P12_LAZY_SEND__AllocateStatement;
 
-  RemoteFB__API_P12_LAZY_SEND__AllocateStatement(const self_type&);
-  self_type& operator = (const self_type&);
-
- public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__StmtHandle                     stmt_handle_type;
+  RemoteFB__API_P12_LAZY_SEND__AllocateStatement(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   RemoteFB__API_P12_LAZY_SEND__AllocateStatement();

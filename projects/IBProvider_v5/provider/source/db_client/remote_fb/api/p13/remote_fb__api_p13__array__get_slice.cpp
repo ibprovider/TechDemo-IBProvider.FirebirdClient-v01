@@ -24,14 +24,15 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer
 
-class RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer:public RemoteFB__MemoryPool
+class RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__MemoryPool
 {
  private:
-  typedef tagOpMemoryBuffer                 self_type;
-  typedef RemoteFB__MemoryPool              inherited;
+  using self_type=tagOpMemoryBuffer;
+  using inherited=RemoteFB__MemoryPool;
 
-  tagOpMemoryBuffer(const self_type&);
-  self_type& operator = (const self_type&);
+  tagOpMemoryBuffer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tagOpMemoryBuffer(size_t szSliceData,
@@ -110,14 +111,14 @@ void* RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer::allocate
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_P13__GetArraySlice::tagOpGetArraySliceDescr
 
-class RemoteFB__API_P13__GetArraySlice::tagOpGetArraySliceDescr
+class RemoteFB__API_P13__GetArraySlice::tagOpGetArraySliceDescr LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__OpSvc__GetArraySliceDescr)
 {
  private:
-  typedef tagOpGetArraySliceDescr           self_type;
+  using self_type=tagOpGetArraySliceDescr;
 
-  tagOpGetArraySliceDescr(const self_type&);
-  self_type& operator = (const self_type&);
+  tagOpGetArraySliceDescr(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   RemoteFB__ArraySliceDescr m_descr;

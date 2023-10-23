@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 /// <summary>
 ///  Интерфейс расширения метода ExtractValue
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE IBP_OLEDB_Props2__Handler__ExtractValue
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE IBP_OLEDB_Props2__Handler__ExtractValue
 {
  public:
   virtual bool ExtractValue(const VARIANT&  sourceValue,

@@ -25,13 +25,13 @@ class RemoteFB__API_HLP__GetStatementInfo_v01
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__GetStatementInfo)
 {
  private:
-  typedef RemoteFB__API_HLP__GetStatementInfo_v01        self_type;
+  using self_type=RemoteFB__API_HLP__GetStatementInfo_v01;
 
-  RemoteFB__API_HLP__GetStatementInfo_v01(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_HLP__GetStatementInfo_v01(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef stmt_handle_type::item_type                    stmt_data_type;
+  using stmt_data_type=stmt_handle_type::item_type;
 
  protected:
   RemoteFB__API_HLP__GetStatementInfo_v01();

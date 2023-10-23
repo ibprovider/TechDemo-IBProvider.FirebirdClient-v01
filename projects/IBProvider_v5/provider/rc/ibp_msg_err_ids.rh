@@ -1369,17 +1369,29 @@
 ///  Command text contains invalid UTF16 command text.
 #define IBP_MCE_CMD__INVALID_UTF16_COMMAND_TEXT_0                         11837
 
+/// \brief
+///  Closing quote was not found.
+#define IBP_MCE_CMD__CLOSING_QUOTE_NOT_FOUND_0                            11838
+
+/// \brief
+///  Bad format of q-text token.
+#define IBP_MCE_CMD__BAD_FORMAT_OF_QTEXT_TOKEN_0                          11839
+
+/// \brief
+///  Bad format of hex-text token.
+#define IBP_MCE_CMD__BAD_HTEXT_TOKEN_0                                    11840
+
 //command with multiple statements ---------------------------------------------
 /// \brief В скрипте нельзя использовать неименованные параметры
-#define IBP_MCE_SCRIPT__NOT_SUPPORT_UNNAMED_PARAMS_0                      11840
+#define IBP_MCE_SCRIPT__NOT_SUPPORT_UNNAMED_PARAMS_0                      11860
 
 /// \brief В случае скрипта, нельзя передавать параметры без имени.<br>
 /// \b Params: Param Ordinal
-#define IBP_MCE_SCRIPT__CANT_PASS_PARAM_WITHOUT_NAME_1                    11841
+#define IBP_MCE_SCRIPT__CANT_PASS_PARAM_WITHOUT_NAME_1                    11861
 
 /// \brief Неоднозначность отображения параметра запроса [%1] на пользовательское описание.<br>
 /// \b Params: Parameter Name
-#define IBP_MCE_SCRIPT__AMBIGUOUS_MAP_OF_STMT_PARAM_TO_USER_PARAM_1       11842
+#define IBP_MCE_SCRIPT__AMBIGUOUS_MAP_OF_STMT_PARAM_TO_USER_PARAM_1       11862
 
 //Ошибки преобразования ODBC запросов ------------------------------------------
 #define IBP_MCE_ODBC_DATE_PARSER_NO_END_TAG_2                             11900

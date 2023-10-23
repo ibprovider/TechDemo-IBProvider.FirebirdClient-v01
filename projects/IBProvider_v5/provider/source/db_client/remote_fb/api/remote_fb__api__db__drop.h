@@ -20,7 +20,8 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Отключение от базы данных.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__DropDatabase:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__DropDatabase
+ :public RemoteFB__SmartInterface
 {
  public:
   /// <summary>

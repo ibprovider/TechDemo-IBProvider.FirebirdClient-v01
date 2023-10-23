@@ -21,23 +21,24 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Type of known by server key, received from it by client
 /// </summary>
-class RemoteFB__KnownServerKey:public RemoteFB__SmartMemoryObject
+class RemoteFB__KnownServerKey LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__SmartMemoryObject
 {
  private:
-  typedef RemoteFB__KnownServerKey                        self_type;
+  using self_type=RemoteFB__KnownServerKey;
 
-  RemoteFB__KnownServerKey(const self_type& x);
-  self_type& operator = (const self_type&);
+  RemoteFB__KnownServerKey(const self_type& x)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>        self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_smart_object_ptr<const self_type>  self_cptr;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
 
-  typedef structure::t_const_wstr_box                     wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
-  typedef structure::t_first_last
-            <std::wstring::const_iterator>                wstr_range_type;
+  using wstr_range_type
+   =lib::structure::t_first_last<std::wstring::const_iterator>;
 
  public:
   const std::wstring wstrType;

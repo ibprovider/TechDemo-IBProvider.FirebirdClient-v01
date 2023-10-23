@@ -24,13 +24,13 @@ class RemoteFB__API_P12__FetchStatement_M LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__FetchStatement_M)
 {
  private:
-  typedef RemoteFB__API_P12__FetchStatement_M            self_type;
+  using self_type=RemoteFB__API_P12__FetchStatement_M;
 
-  RemoteFB__API_P12__FetchStatement_M(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P12__FetchStatement_M(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef stmt_handle_type::item_type                    stmt_data_type;
+  using stmt_data_type=stmt_handle_type::item_type;
 
  private:
   RemoteFB__API_P12__FetchStatement_M();

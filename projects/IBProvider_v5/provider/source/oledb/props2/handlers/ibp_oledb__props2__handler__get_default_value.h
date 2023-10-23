@@ -16,7 +16,7 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Handler__GetDefaultValue
 
-class COMP_CONF_DECLSPEC_NOVTABLE IBP_OLEDB_Props2__Handler__GetDefaultValue
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE IBP_OLEDB_Props2__Handler__GetDefaultValue
 {
  public:
   virtual bool GetDefaultValue

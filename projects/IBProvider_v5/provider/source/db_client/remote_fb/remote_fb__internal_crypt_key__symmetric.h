@@ -19,21 +19,21 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Реализация интерфейса для симметричного ключа шифрования.
 /// </summary>
-class RemoteFB__InternalCryptKey__Symmetric
+class RemoteFB__InternalCryptKey__Symmetric LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__InternalCryptKey)
 {
  private:
-  typedef RemoteFB__InternalCryptKey__Symmetric              self_type;
+  using self_type=RemoteFB__InternalCryptKey__Symmetric;
 
-  RemoteFB__InternalCryptKey__Symmetric(const self_type&);
-  self_type& operator  = (const self_type&);
+  RemoteFB__InternalCryptKey__Symmetric(const self_type&)=delete;
+  self_type& operator  = (const self_type&)=delete;
 
  private:
   /// <summary>
   ///  Конструктор инициализации
   /// </summary>
   //! \param[in] cbKey
-  RemoteFB__InternalCryptKey__Symmetric(size_t cbKey);
+  explicit RemoteFB__InternalCryptKey__Symmetric(size_t cbKey);
 
   virtual ~RemoteFB__InternalCryptKey__Symmetric();
 
@@ -54,7 +54,7 @@ class RemoteFB__InternalCryptKey__Symmetric
   virtual const RemoteFB__CryptKeyDataView GetDecryptKey()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef RemoteFB__MemoryAllocator         raw_allocator_type;
+  using raw_allocator_type=RemoteFB__MemoryAllocator;
 
   static void* operator new (size_t const sz); //not impl
 

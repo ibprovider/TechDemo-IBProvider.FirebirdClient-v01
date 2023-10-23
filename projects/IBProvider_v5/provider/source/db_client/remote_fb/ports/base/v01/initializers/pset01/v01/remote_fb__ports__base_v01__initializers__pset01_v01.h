@@ -24,12 +24,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 class RemoteFB__PortInitializer_PSET01_v01
 {
  private:
-  typedef RemoteFB__PortInitializer_PSET01_v01  self_type;
+  using self_type=RemoteFB__PortInitializer_PSET01_v01;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__Port_BASE_v01               port_type;
+  using port_type=RemoteFB__Port_BASE_v01;
 
-  typedef structure::t_const_wstr_box           wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   /// <summary>
@@ -63,18 +63,19 @@ class RemoteFB__PortInitializer_PSET01_v01
                 oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
 
  private:
-  struct tag_connect_finalizator
+  struct tag_connect_finalizator LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
-    typedef void (*init_func_type)
-      (RemoteFB__Port*                        pPort,
-       wstr_box_type                          ucs2_database_name,
-       RemoteFB__ClientConnectBlock_v1&       clientConnectBlock);
+    using init_pfunc_type
+     =void (*)
+       (RemoteFB__Port*                        pPort,
+        wstr_box_type                          ucs2_database_name,
+        RemoteFB__ClientConnectBlock_v1&       clientConnectBlock);
 
    public:
-    init_func_type P10;
-    init_func_type P11;
-    init_func_type P12;
+    init_pfunc_type P10;
+    init_pfunc_type P11;
+    init_pfunc_type P12;
   };//struct tag_connect_finalizator
 
  private:
@@ -140,8 +141,11 @@ class RemoteFB__PortInitializer_PSET01_v01
                 parchs_type&                                               parchs);
 
  private:
-  typedef RemoteFB__ClientConnectBlock_v1::expected_ptype_descr_type   expected_ptype_descr_type;
-  typedef RemoteFB__ClientConnectBlock_v1::expected_ptype_descr_type_N expected_ptype_descr_type_N;
+  using expected_ptype_descr_type
+   =RemoteFB__ClientConnectBlock_v1::expected_ptype_descr_type;
+
+  using expected_ptype_descr_type_N
+   =RemoteFB__ClientConnectBlock_v1::expected_ptype_descr_type_N;
 
   static void Helper__TryConnect__GetProtocolType__P10_P11_P12
                (const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues,

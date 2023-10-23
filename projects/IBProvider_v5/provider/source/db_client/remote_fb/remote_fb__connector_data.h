@@ -64,19 +64,19 @@ class RemoteFB__ConnectorData LCPI_CPP_CFG__CLASS__FINAL
  ,public RemoteFB__SmartObjectBase2
 {
  private:
-  typedef RemoteFB__ConnectorData                      self_type;
+  using self_type=RemoteFB__ConnectorData;
 
-  RemoteFB__ConnectorData(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__ConnectorData(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>     self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef handles::RemoteFB__HandleData_Transaction    tr_data_type;
+  using tr_data_type=handles::RemoteFB__HandleData_Transaction;
 
-  typedef handles::RemoteFB__HandleData_Statement      stmt_data_type;
+  using stmt_data_type=handles::RemoteFB__HandleData_Statement;
 
-  typedef handles::RemoteFB__HandleData_Blob           blob_data_type;
+  using blob_data_type=handles::RemoteFB__HandleData_Blob;
 
  public:
   ///Имя сервера базы данных
@@ -286,22 +286,25 @@ class RemoteFB__ConnectorData LCPI_CPP_CFG__CLASS__FINAL
   void ReleaseAllResources();
 
  private:
-  typedef tr_data_type::tag_list_adapter        tr_handle_list_traits;
+  using tr_handle_list_traits
+   =tr_data_type::tag_list_adapter;
 
-  typedef structure::t_list_external
-           <tr_handle_list_traits>              tr_handle_list_type;
-
- private:
-  typedef stmt_data_type::tag_cn_list_adapter   stmt_handle_list_traits;
-
-  typedef structure::t_list_external
-           <stmt_handle_list_traits>            stmt_handle_list_type;
+  using tr_handle_list_type
+   =structure::t_list_external<tr_handle_list_traits>;
 
  private:
-  typedef blob_data_type::tag_nclosed_blob_list_adapter  nclosed_blob_list_traits;
+  using stmt_handle_list_traits
+   =stmt_data_type::tag_cn_list_adapter;
 
-  typedef structure::t_list_external
-           <nclosed_blob_list_traits>            nclosed_blob_list_type;
+  using stmt_handle_list_type
+   =structure::t_list_external<stmt_handle_list_traits>;
+
+ private:
+  using nclosed_blob_list_traits
+   =blob_data_type::tag_nclosed_blob_list_adapter;
+
+  using nclosed_blob_list_type
+   =structure::t_list_external<nclosed_blob_list_traits>;
 
  private:
   /// Порт подключения
@@ -326,11 +329,12 @@ class RemoteFB__ConnectorData LCPI_CPP_CFG__CLASS__FINAL
   nclosed_blob_list_type m_DeletedBlobs;
 
  private:
-  typedef structure::t_stl_map
-           <GUID,
-            RemoteFB__SmartObjectPtr,
-            ole_lib::TGuidLess,
-            RemoteFB__MemoryAllocator>      services_type;
+  using services_type
+   =structure::t_stl_map
+     <GUID,
+      RemoteFB__SmartObjectPtr,
+      ole_lib::TGuidLess,
+      RemoteFB__MemoryAllocator>;
 
   ///Вспомогательные сервисы для работы с подключением
   services_type m_Services;

@@ -72,7 +72,7 @@ size_t RemoteFB__API_HLP__XSQLDA_V01__Utilities::Helper__Calc_XSQLDA_MAX_XDR_SIZ
 {
  assert(pXSQLVAR!=nullptr);
 
- typedef transmission::RemoteFB__XDR__Info xdr;
+ using xdr=transmission::RemoteFB__XDR__Info;
 
  const isc_api::XSQLVAR_V1::sqltype_type xvar_sqltype=pXSQLVAR->get_typeID();
 

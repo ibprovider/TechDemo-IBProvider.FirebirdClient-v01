@@ -20,15 +20,18 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Финальный трансформатор читаемых данных
 /// </summary>
-class RemoteFB__PSET01__XDR__Decoder:public RemoteFB__XDR__Decoder
+class RemoteFB__PSET01__XDR__Decoder LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__XDR__Decoder
 {
  private:
-  typedef RemoteFB__PSET01__XDR__Decoder    self_type;
+  using self_type=RemoteFB__PSET01__XDR__Decoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortReader              buf_type;
-  typedef RemoteFB__PacketMemory            mem_type;
-  typedef mem_type::enumMemoryID            mem_id_type;
+  using buf_type=RemoteFB__PortReader;
+
+  using mem_type=RemoteFB__PacketMemory;
+
+  using mem_id_type=mem_type::enumMemoryID;
 
  public:
   static void decode__p_op

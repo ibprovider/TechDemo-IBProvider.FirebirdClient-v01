@@ -425,7 +425,7 @@ void RemoteFB__P10__GetDatabaseStdInfo::helper__exec2
 
  //-----------------------------------------------------------------------
  {
-  size_t n=structure::negative_one;
+  size_t n=lib::structure::negative_one;
 
   if(fb_ver>=structure::str_version("2"))
   {

@@ -19,11 +19,12 @@ namespace lcpi{namespace ibp{namespace charsets{
 /// <summary>
 ///  Определение интерфейса внешнего провайдера кодовых страниц
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_charset_provider:public db_obj::t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_charset_provider
+ :public db_obj::t_db_smart_interface
 {
  public: //typedefs ------------------------------------------------------
   using cs_name_box_type
-   =structure::t_basic_const_str_box<db_obj::t_db_charset_info::charset_name_type::value_type>;
+   =lib::structure::t_basic_const_str_box<db_obj::t_db_charset_info::charset_name_type::value_type>;
 
  public:
   /// <summary>
@@ -35,7 +36,8 @@ class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_charset_provider:public db_obj::t_db_sma
    load_cs(const cs_name_box_type& cs_name)=0;
 };//class t_ibp_charset_provider
 
-typedef structure::t_smart_object_ptr<t_ibp_charset_provider> t_ibp_charset_provider_ptr;
+using t_ibp_charset_provider_ptr
+ =lib::structure::t_smart_object_ptr<t_ibp_charset_provider>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

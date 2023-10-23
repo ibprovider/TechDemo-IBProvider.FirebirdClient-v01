@@ -42,11 +42,11 @@ void RemoteFB__XDR__Decoder::decode__p_hyper_longlong
 
  assert_s(sizeof(protocol::P_HYPER_LONGLONG)==2*sizeof(protocol::P_HYPER_LONG));
 
- protocol::P_HYPER_LONG h DEBUG_CODE(=structure::negative_one);
+ protocol::P_HYPER_LONG h DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(&h);
 
- protocol::P_HYPER_LONG l DEBUG_CODE(=structure::negative_one);
+ protocol::P_HYPER_LONG l DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(&l);
 
@@ -71,7 +71,7 @@ void RemoteFB__XDR__Decoder::decode__p_arch
  //проверяем идентичность типов
  assert_s(sizeof(protocol::P_ARCH)==sizeof(protocol::P_LONG));
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  self_type::decode__p_long
   (pBuf,
@@ -91,7 +91,7 @@ void RemoteFB__XDR__Decoder::decode__p_objct
  assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  self_type::decode__p_long
   (pBuf,
@@ -126,7 +126,7 @@ void RemoteFB__XDR__Decoder::decode__p_short
  assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  self_type::decode__p_long
   (pBuf,
@@ -195,7 +195,7 @@ void RemoteFB__XDR__Decoder::decode__p_ushort
  assert(pv_sign!=nullptr);
  assert(pv!=nullptr);
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  self_type::decode__p_long
   (pBuf,
@@ -285,11 +285,11 @@ void RemoteFB__XDR__Decoder::decode__p_double
  assert_s(sizeof(protocol::P_INT64)==sizeof(protocol::P_DOUBLE));
  assert_s(sizeof(protocol::P_INT64)==2*sizeof(protocol::P_LONG));
 
- protocol::P_LONG h DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG h DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(&h);
 
- protocol::P_LONG l DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG l DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(&l);
 
@@ -369,7 +369,7 @@ void RemoteFB__XDR__Decoder::decode__string
  assert(pcchData!=nullptr);
  assert(ppszData!=nullptr);
 
- typedef protocol::P_UCHAR char_type;
+ using char_type=protocol::P_UCHAR;
 
  (*pcchData)=0;
  (*ppszData)=nullptr;
@@ -629,10 +629,11 @@ void RemoteFB__XDR__Decoder::decode__status_vector__eset02
  // - последний элемент будет равен нулю (tagID==0)
  // - содержит последовательности групп <tagID><tagDATA>
 
- typedef structure::t_tmp_seg_buffer
-          <protocol::P_ISC_STATUS,
-           _DIM_(pv->inplace_sv_buffer),
-           RemoteFB__MemoryAllocator>       local_buf_type;
+ using local_buf_type
+  =structure::t_tmp_seg_buffer
+    <protocol::P_ISC_STATUS,
+     _DIM_(pv->inplace_sv_buffer),
+     RemoteFB__MemoryAllocator>;
 
  local_buf_type local_buf;
 
@@ -819,7 +820,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
  }//if
 
  //-----------------------------------------
- typedef self_type xdr;
+ using xdr=self_type;
 
  //-----------------------------------------
  assert_s(sizeof(protocol::P_UCHAR)==1);
@@ -836,7 +837,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
    {
     case isc_api::ibp_isc_blr_dtype__short:
     {
-     typedef protocol::P_SHORT              value_type;
+     using value_type=protocol::P_SHORT;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -852,7 +853,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__long:
     {
-     typedef protocol::P_LONG               value_type;
+     using value_type=protocol::P_LONG;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -868,7 +869,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__int64:
     {
-     typedef protocol::P_INT64              value_type;
+     using value_type=protocol::P_INT64;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -884,7 +885,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__float:
     {
-     typedef protocol::P_FLOAT              value_type;
+     using value_type=protocol::P_FLOAT;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -900,7 +901,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__double:
     {
-     typedef protocol::P_DOUBLE             value_type;
+     using value_type=protocol::P_DOUBLE;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -916,7 +917,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__sql_date:
     {
-     typedef isc_api::t_ibp_isc_date        value_type;
+     using value_type=isc_api::t_ibp_isc_date;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -932,7 +933,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__sql_time:
     {
-     typedef isc_api::t_ibp_isc_time        value_type;
+     using value_type=isc_api::t_ibp_isc_time;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -948,7 +949,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_isc_blr_dtype__timestamp:
     {
-     typedef isc_api::t_ibp_isc_timestamp   value_type;
+     using value_type=isc_api::t_ibp_isc_timestamp;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -981,7 +982,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_fb030_blr_dtype__bool:
     {
-     typedef isc_api::t_ibp_fb030_bool value_type;
+     using value_type=isc_api::t_ibp_fb030_bool;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -998,7 +999,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_fb040_blr_dtype__int128:
     {
-     typedef protocol::P_INT128 value_type;
+     using value_type=protocol::P_INT128;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -1016,7 +1017,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_fb040_blr_dtype__decfloat16:
     {
-     typedef protocol::P_DECFLOAT16 value_type;
+     using value_type=protocol::P_DECFLOAT16;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 
@@ -1032,7 +1033,7 @@ void RemoteFB__XDR__Decoder::decode__array_slice
 
     case isc_api::ibp_fb040_blr_dtype__decfloat34:
     {
-     typedef protocol::P_DECFLOAT34 value_type;
+     using value_type=protocol::P_DECFLOAT34;
 
      assert(ArrSliceDescr.m_element_total_length==sizeof(value_type));
 

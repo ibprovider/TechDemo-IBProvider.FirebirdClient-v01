@@ -30,10 +30,10 @@ using ZLIB1__ApiProviderPtr
 class RemoteFB__P13__InitializeCompressor LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P13__InitializeCompressor         self_type;
+  using self_type=RemoteFB__P13__InitializeCompressor;
 
  public: //typedefs ------------------------------------------------------
-  typedef ports::base_v01::RemoteFB__Port_BASE_v01    port_type;
+  using port_type=ports::base_v01::RemoteFB__Port_BASE_v01;
 
  private:
   static const t_ibp_str_box c_default__ZLIB1_DLL;

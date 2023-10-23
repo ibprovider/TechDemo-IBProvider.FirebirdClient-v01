@@ -37,13 +37,13 @@ class RemoteFB__PortStream__Compressor_ZLib1 LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__PortStream)
 {
  private:
-  typedef RemoteFB__PortStream__Compressor_ZLib1  self_type;
+  using self_type=RemoteFB__PortStream__Compressor_ZLib1;
 
   RemoteFB__PortStream__Compressor_ZLib1(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
 
  private: //typedefs -----------------------------------------------------
-  typedef unsigned char                           byte_type;
+  using byte_type=unsigned char;
 
  private:
   /// <summary>
@@ -133,7 +133,7 @@ class RemoteFB__PortStream__Compressor_ZLib1 LCPI_CPP_CFG__CLASS__FINAL
                        void*   pv)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef RemoteFB__MemoryAllocator         raw_allocator_type;
+  using raw_allocator_type=RemoteFB__MemoryAllocator;
 
   static void* operator new (size_t const sz); //not impl
 
@@ -183,7 +183,7 @@ class RemoteFB__PortStream__Compressor_ZLib1 LCPI_CPP_CFG__CLASS__FINAL
   class tag_zstream_for_deflate LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef tag_zstream_for_deflate         self_type;
+    using self_type=tag_zstream_for_deflate;
 
     tag_zstream_for_deflate(const self_type&)=delete;
     self_type& operator = (const self_type&)=delete;
@@ -205,7 +205,7 @@ class RemoteFB__PortStream__Compressor_ZLib1 LCPI_CPP_CFG__CLASS__FINAL
   class tag_zstream_for_inflate LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef tag_zstream_for_inflate         self_type;
+    using self_type=tag_zstream_for_inflate;
 
     tag_zstream_for_inflate(const self_type&)=delete;
     self_type& operator = (const self_type&)=delete;

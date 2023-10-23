@@ -22,10 +22,11 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Получение сведений о запросе.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__GetStatementInfo:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__GetStatementInfo
+ :public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__StmtHandle     stmt_handle_type;
+  using stmt_handle_type=handles::RemoteFB__StmtHandle;
 
  public:
   /// <summary>

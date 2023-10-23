@@ -780,14 +780,15 @@ struct P_OP_CANCEL
 /// </summary>
 //! \attention
 //!  «апрещено пр€мое копирование структры. —одержит внутренние указатели на саму себ€.
-struct PACKET_V02 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
+struct PACKET_V02 LCPI_CPP_CFG__CLASS__FINAL
+ :public PACKET
 {
  private:
-  typedef PACKET_V02                        self_type;
-  typedef PACKET                            inherited;
+  using self_type=PACKET_V02;
+  using inherited=PACKET;
 
-  PACKET_V02(const self_type&);
-  self_type& operator = (const self_type&);
+  PACKET_V02(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   //! \brief Operation/packet type
@@ -844,19 +845,19 @@ struct PACKET_V02 LCPI_CPP_CFG__CLASS__FINAL:public PACKET
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms set02*/}/*nms protocol*/}/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/
 
-namespace structure{
+namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
-inline structure::t_const_str_box
+inline lib::structure::t_const_str_box
  make_str_box(const LCPI_IBP_NMS::db_client::remote_fb::protocol::set02::P_CSTRING_CONST_V2& cstr)
 {
  assert_s(sizeof(*cstr.cstr_address)==sizeof(char));
 
- return structure::make_str_box
+ return lib::structure::make_str_box
          (reinterpret_cast<const char*>(cstr.cstr_address),
           cstr.cstr_length);
 }//make_str_box
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*structure*/}/*lib*/}/*lcpi*/
 #endif

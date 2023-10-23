@@ -20,15 +20,15 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  ”тилиты дл€ распаковки данных сетевого пакета.
 /// </summary>
-class RemoteFB__PSET02__P13__XDR__Decoder
+class RemoteFB__PSET02__P13__XDR__Decoder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__PSET02__P13__XDR__Decoder       self_type;
+  using self_type=RemoteFB__PSET02__P13__XDR__Decoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortReader                      buf_type;
+  using buf_type=RemoteFB__PortReader;
 
-  typedef RemoteFB__MsgDataElementDescr             mded_type;
+  using mded_type=RemoteFB__MsgDataElementDescr;
 
  public:
   /// <summary>

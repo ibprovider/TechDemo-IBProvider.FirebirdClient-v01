@@ -38,7 +38,7 @@ RemoteFB__Port_INET::self_ptr RemoteFB__Port_INET::Create_PSET01
 {
  assert(pSocket!=nullptr);
 
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new self_type
            (pSocket,
             &transmission::pset01::p_init::RemoteFB__PSET01__P_INIT__PacketStream::Instance));
@@ -50,7 +50,7 @@ RemoteFB__Port_INET::self_ptr RemoteFB__Port_INET::Create_PSET02
 {
  assert(pSocket!=nullptr);
 
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new self_type
            (pSocket,
             &transmission::pset02::p13_init::RemoteFB__PSET02__P13_INIT__PacketStream::Instance));

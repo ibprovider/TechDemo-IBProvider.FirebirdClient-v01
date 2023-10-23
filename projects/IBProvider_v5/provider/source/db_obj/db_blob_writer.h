@@ -24,7 +24,8 @@ class t_db_blob_writer;
 /// <summary>
 ///  Интерфейс для записи потока байт в BLOB поле
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE t_db_blob_writer:public t_db_seq_stream_writer
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_blob_writer
+ :public t_db_seq_stream_writer
 {
  public:
   /// <summary>

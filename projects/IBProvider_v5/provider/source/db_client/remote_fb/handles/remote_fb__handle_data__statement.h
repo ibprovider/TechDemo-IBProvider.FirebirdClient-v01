@@ -33,24 +33,25 @@ class RemoteFB__HandleData_Statement;
 /// <summary>
 ///  Данные запроса.
 /// </summary>
-class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
+class RemoteFB__HandleData_Statement LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__SmartMemoryObject
 {
  private:
-  typedef RemoteFB__HandleData_Statement                      self_type;
+  using self_type=RemoteFB__HandleData_Statement;
 
-  RemoteFB__HandleData_Statement(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__HandleData_Statement(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>            self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef RemoteFB__SrvResourceID                             id_type;
+  using id_type=RemoteFB__SrvResourceID;
 
-  typedef handles::RemoteFB__HandleData_Transaction           tr_data_type;
+  using tr_data_type=handles::RemoteFB__HandleData_Transaction;
 
  public:
-  typedef unsigned short                                      flag_base_type;
-  typedef RemoteFB__Flags<flag_base_type>                     flags_type;
+  using flag_base_type=unsigned short;
+  using flags_type    =RemoteFB__Flags<flag_base_type>;
 
   //Values for m_Flags.
 
@@ -82,21 +83,22 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
   class tag_nclosed_stmt_list_adapter;
 
  public:
-  typedef RemoteFB__MemoryAllocator                        allocator_type;
+  using allocator_type=RemoteFB__MemoryAllocator;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                               xsqlvars_data_buffer_type;
+  using xsqlvars_data_buffer_type
+   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
-  typedef isc_base::t_isc_msg_blr01_buffer                 msg_blr_buffer_type;
+  using msg_blr_buffer_type
+   =isc_base::t_isc_msg_blr01_buffer;
 
-  typedef isc_base::t_isc_msg_data_buffer                  msg_data_buffer_type;
+  using msg_data_buffer_type
+   =isc_base::t_isc_msg_data_buffer;
 
-  typedef RemoteFB__MsgDataElementDescrs                   msg_data_descrs_type;
+  using msg_data_descrs_type
+   =RemoteFB__MsgDataElementDescrs;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                               msg_nulls_buffer_type;
+  using msg_nulls_buffer_type
+   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
  private:
   /// <summary>
@@ -251,14 +253,14 @@ class RemoteFB__HandleData_Statement:public RemoteFB__SmartMemoryObject
 /// <summary>
 ///  Адаптер списка запросов подключения.
 /// </summary>
-class RemoteFB__HandleData_Statement::tag_cn_list_adapter
+class RemoteFB__HandleData_Statement::tag_cn_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_cn_list_adapter                             self_type;
+  using self_type=tag_cn_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Statement                  node_type;
-  typedef node_type*                                      node_ptr_type;
+  using node_type     =RemoteFB__HandleData_Statement;
+  using node_ptr_type =node_type*;
 
  public:
   tag_cn_list_adapter();
@@ -280,14 +282,14 @@ class RemoteFB__HandleData_Statement::tag_cn_list_adapter
 /// <summary>
 ///  Адаптер списка запросов транзакции.
 /// </summary>
-class RemoteFB__HandleData_Statement::tag_tr_list_adapter
+class RemoteFB__HandleData_Statement::tag_tr_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_tr_list_adapter                             self_type;
+  using self_type=tag_tr_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Statement                  node_type;
-  typedef node_type*                                      node_ptr_type;
+  using node_type     =RemoteFB__HandleData_Statement;
+  using node_ptr_type =node_type*;
 
  public:
   tag_tr_list_adapter();
@@ -309,14 +311,14 @@ class RemoteFB__HandleData_Statement::tag_tr_list_adapter
 /// <summary>
 ///  Адаптер списка незакрытых запросов транзакции.
 /// </summary>
-class RemoteFB__HandleData_Statement::tag_nclosed_stmt_list_adapter
+class RemoteFB__HandleData_Statement::tag_nclosed_stmt_list_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_nclosed_stmt_list_adapter                   self_type;
+  using self_type=tag_nclosed_stmt_list_adapter;
 
  public:
-  typedef RemoteFB__HandleData_Statement                  node_type;
-  typedef node_type*                                      node_ptr_type;
+  using node_type     =RemoteFB__HandleData_Statement;
+  using node_ptr_type =node_type*;
 
  public:
   tag_nclosed_stmt_list_adapter();

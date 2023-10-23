@@ -41,7 +41,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
  }//if
 
  //-----------------------------------------------------------------------
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  RemoteFB__BlrReader_v1 blr_reader(msg_blr_size,msg_blr);
 
@@ -102,7 +102,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(isc_api::isc_varchar_size_type));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -182,7 +182,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(protocol::P_SHORT));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -210,7 +210,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(protocol::P_LONG));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -238,7 +238,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(protocol::P_INT64));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -263,7 +263,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(protocol::P_FLOAT));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -288,7 +288,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(protocol::P_DOUBLE));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -313,7 +313,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(isc_api::t_ibp_isc_time));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -338,7 +338,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(isc_api::t_ibp_isc_date));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -361,7 +361,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
     {
      const size_t c_align=isc_api::ibp_isc_type_align__timestamp;
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -393,7 +393,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      const size_t c_align=isc_api::ibp_isc_type_align__quad;
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -420,7 +420,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(isc_api::t_ibp_fb030_bool));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -450,7 +450,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
      assert_s(c_align==sizeof(protocol::P_INT128().data.low));
      assert_s(c_align==sizeof(protocol::P_INT128().data.high));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -477,7 +477,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat16));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -507,7 +507,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
      assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.low));
      assert_s(c_align==sizeof(isc_api::t_ibp_fb040_decfloat34().data.high));
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -534,7 +534,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      const size_t c_align=isc_api::ibp_fb040_type_align__timestamp_with_tz;
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 
@@ -559,7 +559,7 @@ void RemoteFB__PSET01__P12__XDR__Encoder::encode__sql_message
 
      const size_t c_align=isc_api::ibp_fb040_type_align__time_with_tz;
 
-     _VERIFY(structure::align_memory_size(offset,c_align));
+     _VERIFY(lib::structure::align_memory_size(offset,c_align));
 
      assert(offset<=msg_data_size);
 

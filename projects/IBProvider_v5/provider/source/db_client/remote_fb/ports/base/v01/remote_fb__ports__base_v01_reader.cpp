@@ -189,7 +189,7 @@ void RemoteFB__Port_BASE_v01::tag_reader::read__long(protocol::P_LONG* const pv)
 
  IBP__LOCAL_DEBUG_CODE__CHECK_PORT_READ_STATE(c_state__in_use)
 
- protocol::P_LONG x DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG x DEBUG_CODE(=lib::structure::negative_one);
 
  this->helper__read(sizeof(x),&x); //throw
 

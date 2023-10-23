@@ -37,17 +37,17 @@ class FB_ErrorTextObj LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(lib::structure::t_err_text)
 {
  private:
-  typedef FB_ErrorTextObj                                         self_type;
+  using self_type=FB_ErrorTextObj;
 
-  FB_ErrorTextObj(const self_type&);
-  self_type& operator = (const self_type&);
+  FB_ErrorTextObj(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef isc_api::t_ibp_isc_status                               status_type;
+  using status_type=isc_api::t_ibp_isc_status;
 
-  typedef fb_common__svc__status_vector_utils                     sv_utils_type;
+  using sv_utils_type=fb_common__svc__status_vector_utils;
 
-  typedef fb_common__svc__status_vector_utils_ptr                 sv_utils_ptr;
+  using sv_utils_ptr=fb_common__svc__status_vector_utils_ptr;
 
  private:
   /// <summary>
@@ -84,7 +84,7 @@ class FB_ErrorTextObj LCPI_CPP_CFG__CLASS__FINAL
   virtual bool get_text(lcid_type lcid,string_type* text)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef db_obj::t_db_memory_allocator     raw_allocator_type;
+  using raw_allocator_type=db_obj::t_db_memory_allocator;
 
   static void* operator new (size_t); //not impl
 

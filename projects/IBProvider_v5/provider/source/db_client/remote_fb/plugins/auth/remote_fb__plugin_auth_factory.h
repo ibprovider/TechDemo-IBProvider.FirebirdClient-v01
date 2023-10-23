@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 class RemoteFB__Plugin_Auth_Factory:public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_wstring        name_type;
+  using name_type=lib::structure::t_const_wstring;
 
  public:
   /// <summary>
@@ -40,7 +40,7 @@ class RemoteFB__Plugin_Auth_Factory:public RemoteFB__SmartInterface
   virtual RemoteFB__Plugin_AuthPtr create_plugin()const=0;
 };//class RemoteFB__Plugin_Auth_Factory
 
-typedef structure::t_smart_object_ptr<RemoteFB__Plugin_Auth_Factory> RemoteFB__Plugin_Auth_FactoryPtr;
+using RemoteFB__Plugin_Auth_FactoryPtr=lib::structure::t_smart_object_ptr<RemoteFB__Plugin_Auth_Factory>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

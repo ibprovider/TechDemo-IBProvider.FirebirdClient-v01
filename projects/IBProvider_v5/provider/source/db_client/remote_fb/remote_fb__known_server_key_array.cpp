@@ -21,7 +21,7 @@ bool RemoteFB__KnownServerKeyArray::tag_item_less::operator()
  assert(pK1);
  assert(pK2);
 
- return structure::pair_less
+ return lib::structure::pair_less
          (pK1->wstrType,pK1->wstrPlugin,
           pK2->wstrType,pK2->wstrPlugin);
 }//operator ()

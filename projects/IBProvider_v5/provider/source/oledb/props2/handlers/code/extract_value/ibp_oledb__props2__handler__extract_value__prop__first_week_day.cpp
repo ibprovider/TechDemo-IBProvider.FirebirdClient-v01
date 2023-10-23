@@ -237,7 +237,7 @@ const IBP_OLEDB_Props2__Handler__ExtractValue*
 IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day::long_type_N
  IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day::GetFirstDayNum(const VARIANT& propValue)
 {
- const wchar_t c_bug_check_src[]
+ const wchar_t* const c_bug_check_src
   =L"IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day::GetFirstDayNum";
 
  //-----------------------------------------

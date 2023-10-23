@@ -23,10 +23,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P10__ConnectHelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P10__ConnectHelper             self_type;
+  using self_type=RemoteFB__P10__ConnectHelper;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_wstr_box              wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   /// <summary>

@@ -20,10 +20,11 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Отмена создания блоба.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__CancelBlob:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__CancelBlob
+ :public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__BlobHandle     blob_handle_type;
+  using blob_handle_type=handles::RemoteFB__BlobHandle;
 
  public:
   /// <summary>

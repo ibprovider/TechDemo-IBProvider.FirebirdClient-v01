@@ -27,18 +27,20 @@ namespace winsock=ibp::os::win32::winsock;
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortFactory__INET::tag_init_funcs
 
-struct RemoteFB__PortFactory__INET::tag_init_funcs
+struct RemoteFB__PortFactory__INET::tag_init_funcs LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef ports::base_v01::RemoteFB__Port_BASE_v01         port_type;
+  using port_type=ports::base_v01::RemoteFB__Port_BASE_v01;
 
-  typedef bool (*init_func_ptr)(port_type*                                           pPort,
-                                wstr_box_type                                        ucs2_database_name,
-                                oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
+  using init_pfunc_type
+   =bool (*)
+     (port_type*                                           pPort,
+      wstr_box_type                                        ucs2_database_name,
+      oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
 
  public:
-  init_func_ptr PSET01__P10_P11_P12;
-  init_func_ptr PSET02__P13;
+  init_pfunc_type PSET01__P10_P11_P12;
+  init_pfunc_type PSET02__P13;
 };//struct RemoteFB__PortFactory__INET::tag_init_funcs
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +77,7 @@ bool RemoteFB__PortFactory__INET::Analyze_v2(wstr_box_type const ucs2DbLocation,
  assert(pUcs2PortName!=nullptr);
  assert(pUcs2DatabaseName!=nullptr);
 
- typedef structure::t_char_traits2<wstr_box_type::char_type> _ct2;
+ using _ct2=lib::structure::t_char_traits2<wstr_box_type::char_type>;
 
  pUcs2HostName->clear();
  pUcs2PortName->clear();
@@ -554,7 +556,7 @@ bool RemoteFB__PortFactory__INET::Helper__Analyze_v3
  assert(pUcs2PortName!=nullptr);
  assert(pUcs2DatabaseName!=nullptr);
 
- typedef structure::t_char_traits2<wstr_box_type::char_type> _ct2;
+ using _ct2=lib::structure::t_char_traits2<wstr_box_type::char_type>;
 
  pUcs2HostName->clear();
  pUcs2PortName->clear();

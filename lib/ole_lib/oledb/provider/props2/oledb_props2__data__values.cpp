@@ -336,7 +336,7 @@ std::wstring OLEDB_Props2__Data__Values::AUX__GetValue__wstr
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__wstr";
 
  //-----------------------------------------
@@ -378,7 +378,7 @@ std::wstring OLEDB_Props2__Data__Values::AUX__GetValue__wstr_e
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__wstr_e";
 
  //-----------------------------------------
@@ -412,7 +412,7 @@ SHORT OLEDB_Props2__Data__Values::AUX__GetValue__short
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__short";
 
  //-----------------------------------------
@@ -454,7 +454,7 @@ OLEDB_Props2__Data__Values::short_type_n OLEDB_Props2__Data__Values::AUX__GetVal
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__short_n";
 
  //-----------------------------------------
@@ -488,7 +488,7 @@ LONG OLEDB_Props2__Data__Values::AUX__GetValue__long
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__long";
 
  //-----------------------------------------
@@ -530,7 +530,7 @@ OLEDB_Props2__Data__Values::long_type_n OLEDB_Props2__Data__Values::AUX__GetValu
                         (REFGUID        propGuid,
                          DBPROPID const propId)const
 {
- const char c_bug_check_src[]
+ const char* const c_bug_check_src
   ="OLEDB_Props2__Data__Values::AUX__GetValue__long_n";
 
  //-----------------------------------------

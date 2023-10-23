@@ -154,7 +154,7 @@ void RemoteFB__API_P13_LAZY_SEND__PrepareStatement::exec
  //-----------------------------------------------------------------------
  (*pStmtHandle)->ResetPrepareState();
 
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  assert(!(*pStmtHandle)->m_pParentTr);
 

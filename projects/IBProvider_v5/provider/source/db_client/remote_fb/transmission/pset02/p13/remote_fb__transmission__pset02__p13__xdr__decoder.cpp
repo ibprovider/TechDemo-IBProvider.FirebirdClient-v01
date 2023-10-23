@@ -60,7 +60,7 @@ void RemoteFB__PSET02__P13__XDR__Decoder::decode__sql_message
 #endif
 
  //-----------------------------------------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  //-----------------------------------------------------------------------
 

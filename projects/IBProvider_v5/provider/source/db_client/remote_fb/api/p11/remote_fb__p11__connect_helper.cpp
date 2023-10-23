@@ -38,7 +38,7 @@ void RemoteFB__P11__ConnectHelper::exec(RemoteFB__Port*            const pPort,
   =L"RemoteFB__P11__ConnectHelper::exec";
 
  //-----------------------------------------
- typedef RemoteFB__P11__ConnectOpCtx ctx_type;
+ using ctx_type=RemoteFB__P11__ConnectOpCtx;
 
  ctx_type ctx(clientConnectBlock,/*setNewDbParams*/operationID==protocol::set01::op_create);
 

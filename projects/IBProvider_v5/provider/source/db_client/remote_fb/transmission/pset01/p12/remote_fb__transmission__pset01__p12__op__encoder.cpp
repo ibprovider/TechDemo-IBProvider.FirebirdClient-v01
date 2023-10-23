@@ -37,8 +37,8 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_execute__a
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__P12__XDR__Encoder  xdr12;
- typedef RemoteFB__PSET01__XDR__Encoder       xdr;
+ using xdr12=RemoteFB__PSET01__P12__XDR__Encoder;
+ using xdr  =RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -109,8 +109,8 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_execute2__a
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__P12__XDR__Encoder  xdr12;
- typedef RemoteFB__PSET01__XDR__Encoder       xdr;
+ using xdr12=RemoteFB__PSET01__P12__XDR__Encoder;
+ using xdr  =RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -195,7 +195,7 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_put_slice__a
  assert(spGetDescr);
 
  //-----------------------------------------
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_PUT_SLC* const p_put_slc=&packet.p_put_slc;
 
@@ -257,8 +257,8 @@ void RemoteFB__PSET01__P12__OpEncoder::encode__op_exec_immediate2__a
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__P12__XDR__Encoder  xdr12;
- typedef RemoteFB__PSET01__XDR__Encoder       xdr;
+ using xdr12=RemoteFB__PSET01__P12__XDR__Encoder;
+ using xdr  =RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLST* const p_sqlst=&packet.p_sqlst;
 

@@ -23,10 +23,10 @@ class RemoteFB__API_P12__DetachDatabase LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__DetachDatabase)
 {
  private:
-  typedef RemoteFB__API_P12__DetachDatabase                      self_type;
+  using self_type=RemoteFB__API_P12__DetachDatabase;
 
-  RemoteFB__API_P12__DetachDatabase(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P12__DetachDatabase(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   RemoteFB__API_P12__DetachDatabase();

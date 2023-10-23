@@ -20,17 +20,17 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Объект операции с сервером базы данных.
 /// </summary>
-class RemoteFB__API_HLP__SrvOperation_v1
+class RemoteFB__API_HLP__SrvOperation_v1 LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(db_obj::t_db_operation)
 {
  private:
-  typedef RemoteFB__API_HLP__SrvOperation_v1               self_type;
+  using self_type=RemoteFB__API_HLP__SrvOperation_v1;
 
-  RemoteFB__API_HLP__SrvOperation_v1(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_HLP__SrvOperation_v1(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>  self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
   class tag_send_frame;
 
@@ -40,7 +40,7 @@ class RemoteFB__API_HLP__SrvOperation_v1
   /// </summary>
   //! \param[in] pCnData
   //!  Not null.
-  RemoteFB__API_HLP__SrvOperation_v1(RemoteFB__ConnectorData* pCnData);
+  explicit RemoteFB__API_HLP__SrvOperation_v1(RemoteFB__ConnectorData* pCnData);
 
   /// <summary>
   ///  Деструктор.
@@ -97,16 +97,16 @@ class RemoteFB__API_HLP__SrvOperation_v1
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame
 
-class RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame
+class RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_send_frame                    self_type;
+  using self_type=tag_send_frame;
 
-  tag_send_frame(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_send_frame(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  tag_send_frame(RemoteFB__API_HLP__SrvOperation_v1* pOp);
+  explicit tag_send_frame(RemoteFB__API_HLP__SrvOperation_v1* pOp);
 
  ~tag_send_frame();
 

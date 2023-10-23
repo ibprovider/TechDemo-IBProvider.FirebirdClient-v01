@@ -26,17 +26,18 @@ namespace fb_v02_5_0__api=ibp::db_obj::dbms_fb::v02_5_0::api;
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_P12_RPC__ReadBlob::tagOpMemoryBuffer
 
-class RemoteFB__API_P12_RPC__ReadBlob::tagOpMemoryBuffer:public RemoteFB__MemoryPool
+class RemoteFB__API_P12_RPC__ReadBlob::tagOpMemoryBuffer LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__MemoryPool
 {
  private:
-  typedef tagOpMemoryBuffer                 self_type;
-  typedef RemoteFB__MemoryPool              inherited;
+  using self_type=tagOpMemoryBuffer;
+  using inherited=RemoteFB__MemoryPool;
 
-  tagOpMemoryBuffer(const self_type&);
-  self_type& operator = (const self_type&);
+  tagOpMemoryBuffer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  tagOpMemoryBuffer(blob_data_type* pBlobData);
+  explicit tagOpMemoryBuffer(blob_data_type* pBlobData);
 
   virtual ~tagOpMemoryBuffer();
 

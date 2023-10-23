@@ -43,7 +43,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //union RemoteFB__ENC_crypt::C_block
 
-union RemoteFB__ENC_crypt::C_block
+union RemoteFB__ENC_crypt::C_block LCPI_CPP_CFG__CLASS__FINAL
 {
  unsigned char b[8];
 
@@ -58,7 +58,7 @@ union RemoteFB__ENC_crypt::C_block
 ////////////////////////////////////////////////////////////////////////////////
 //struct RemoteFB__ENC_crypt::C_block2
 
-struct RemoteFB__ENC_crypt::C_block2
+struct RemoteFB__ENC_crypt::C_block2 LCPI_CPP_CFG__CLASS__FINAL
 {
  struct
  {
@@ -71,7 +71,7 @@ struct RemoteFB__ENC_crypt::C_block2
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__ENC_crypt::tag_data
 
-class RemoteFB__ENC_crypt::tag_data
+class RemoteFB__ENC_crypt::tag_data LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static const char c_PASSWORD_EFMT1='#';
@@ -113,7 +113,7 @@ class RemoteFB__ENC_crypt::tag_data
 ////////////////////////////////////////////////////////////////////////////////
 //struct RemoteFB__ENC_crypt::tag_ctx
 
-struct RemoteFB__ENC_crypt::tag_ctx
+struct RemoteFB__ENC_crypt::tag_ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static const size_t c_KS_SIZE=16;

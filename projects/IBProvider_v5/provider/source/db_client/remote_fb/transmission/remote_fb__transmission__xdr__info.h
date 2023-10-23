@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Информационные утилиты для работы с данными сетевого пакета.
 /// </summary>
-class RemoteFB__XDR__Info
+class RemoteFB__XDR__Info LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__XDR__Info             self_type;
+  using self_type=RemoteFB__XDR__Info;
 
  public:
   static size_t get_size__p_hyper_long();

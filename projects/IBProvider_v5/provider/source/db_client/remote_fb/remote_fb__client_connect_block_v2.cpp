@@ -24,15 +24,15 @@ RemoteFB__ClientConnectBlock_v2::tag_expected_ptype_descr::tag_expected_ptype_de
 
 //------------------------------------------------------------------------
 RemoteFB__ClientConnectBlock_v2::tag_expected_ptype_descr::tag_expected_ptype_descr
-                                           (ptype_id_type               const _ptypeID,
-                                            structure::t_const_wstr_box const _ptypeSign)
+    (ptype_id_type                    const _ptypeID,
+     lib::structure::t_const_wstr_box const _ptypeSign)
  :ptypeID(_ptypeID)
  ,ptypeSign(_ptypeSign.begin(),_ptypeSign.end())
 {;}
 
 //------------------------------------------------------------------------
 RemoteFB__ClientConnectBlock_v2::tag_expected_ptype_descr::tag_expected_ptype_descr
-                                           (structure::t_const_wstr_box const _ptypeSign)
+    (lib::structure::t_const_wstr_box const _ptypeSign)
  :ptypeSign(_ptypeSign.begin(),_ptypeSign.end())
 {;}
 
@@ -242,7 +242,7 @@ const std::wstring& RemoteFB__ClientConnectBlock_v2::GetAuthPluginNames()
    if(!result.empty())
     result+=L',';
 
-   structure::append(&result,m_AuthPlugins[i]->get_name());
+   lib::structure::append(&result,m_AuthPlugins[i]->get_name());
   }//for i
 
   m_AuthPluginNames=__STL_MOVE_VALUE(result);

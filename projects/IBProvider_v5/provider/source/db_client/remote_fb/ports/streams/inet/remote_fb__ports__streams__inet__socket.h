@@ -29,30 +29,30 @@ namespace winsock=ibp::os::win32::winsock;
 /// <summary>
 ///  Управляющий объект для сокета TCP/IP-соединения.
 /// </summary>
-class RemoteFB__INET_Socket
+class RemoteFB__INET_Socket LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__PortStream)
 {
  private:
-  typedef RemoteFB__INET_Socket                                self_type;
+  using self_type=RemoteFB__INET_Socket;
 
-  RemoteFB__INET_Socket(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__INET_Socket(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>             self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef RemoteFB__INET_Types                                 inet_types;
+  using inet_types=RemoteFB__INET_Types;
 
-  typedef inet_types::port_number_type                         port_number_type;
+  using port_number_type=inet_types::port_number_type;
 
-  typedef structure::t_const_wstr_box                          wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   /// Провайдер доступа к Windows Socket API. Not NULL.
   winsock::t_winsock__provider::self_ptr const m_spProvider;
 
  private:
-  typedef unsigned char                                        byte_type;
+  using byte_type=unsigned char;
 
  private:
   /// <summary>
@@ -161,7 +161,7 @@ class RemoteFB__INET_Socket
                        void*   pv) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef RemoteFB__MemoryAllocator         raw_allocator_type;
+  using raw_allocator_type=RemoteFB__MemoryAllocator;
 
   static void* operator new (size_t const sz); //not impl
 
@@ -232,8 +232,8 @@ class RemoteFB__INET_Socket
   int m_SocketProtocol;
 
  private: //данные для переподключения
-  typedef structure::t_void_simple_buffer
-   <RemoteFB__MemoryAllocator>              socket_address_type;
+  using socket_address_type
+   =structure::t_void_simple_buffer<RemoteFB__MemoryAllocator>;
 
   std::wstring m_wstrHost;
   std::wstring m_wstrPort;

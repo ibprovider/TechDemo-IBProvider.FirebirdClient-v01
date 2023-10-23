@@ -20,12 +20,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Настройки для TCP/IP соединения с сервером.
 /// </summary>
-class RemoteFB__INET_StaticCfg
+class RemoteFB__INET_StaticCfg LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__INET_Types                    inet_types;
+  using inet_types=RemoteFB__INET_Types;
 
-  typedef inet_types::port_number_type            port_number_type;
+  using port_number_type=inet_types::port_number_type;
 
  public:
   static const t_ibp_char* const c_WinSockDllName;

@@ -15,7 +15,8 @@ namespace lcpi{namespace ibp{namespace os{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_os__dll
 
-class COMP_CONF_DECLSPEC_NOVTABLE t_ibp_os__dll:public IBP_SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_os__dll
+ :public IBP_SmartInterface
 {
  public:
   using service_obj_creator_type

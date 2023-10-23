@@ -22,10 +22,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 class RemoteFB__PSET01__P12__XDR__Encoder
 {
  private:
-  typedef RemoteFB__PSET01__P12__XDR__Encoder        self_type;
+  using self_type=RemoteFB__PSET01__P12__XDR__Encoder;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__PortWriter                       buf_type;
+  using buf_type=RemoteFB__PortWriter;
 
  public:
   /// <summary>

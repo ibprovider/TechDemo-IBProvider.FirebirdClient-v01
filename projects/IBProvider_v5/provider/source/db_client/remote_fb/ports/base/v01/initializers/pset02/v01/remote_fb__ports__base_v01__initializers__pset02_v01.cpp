@@ -277,7 +277,7 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
     RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_crypt_permission
      (c_bugcheck_src,
       L"#001",
-      structure::to_underlying(clientConnectBlock.m_DsProp__WireCrypt));
+      lib::structure::to_underlying(clientConnectBlock.m_DsProp__WireCrypt));
    }//default
   }//switch
 
@@ -380,7 +380,7 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
      RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_compression_rule
       (c_bugcheck_src,
        L"#002",
-       structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
+       lib::structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
     }//default
    }//switch x
 
@@ -640,8 +640,8 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Wi
 void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Srp
                                            (RemoteFB__ClientConnectBlock_v2& clientConnectBlock)
 {
- typedef plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP
-  factory_type;
+ using factory_type
+  =plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP;
 
  clientConnectBlock.RegAuthPluginFactory
   (factory_type::Create());
@@ -654,8 +654,8 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Sr
 void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Srp224
                                            (RemoteFB__ClientConnectBlock_v2& clientConnectBlock)
 {
- typedef plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP224
-  factory_type;
+ using factory_type
+  =plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP224;
 
  clientConnectBlock.RegAuthPluginFactory
   (factory_type::Create());
@@ -668,8 +668,8 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Sr
 void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Srp256
                                            (RemoteFB__ClientConnectBlock_v2& clientConnectBlock)
 {
- typedef plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP256
-  factory_type;
+ using factory_type
+  =plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP256;
 
  clientConnectBlock.RegAuthPluginFactory
   (factory_type::Create());
@@ -682,8 +682,8 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Sr
 void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Srp384
                                            (RemoteFB__ClientConnectBlock_v2& clientConnectBlock)
 {
- typedef plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP384
-  factory_type;
+ using factory_type
+  =plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP384;
 
  clientConnectBlock.RegAuthPluginFactory
   (factory_type::Create());
@@ -696,8 +696,8 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Sr
 void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__SetAuthPlugin__Srp512
                                            (RemoteFB__ClientConnectBlock_v2& clientConnectBlock)
 {
- typedef plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP512
-  factory_type;
+ using factory_type
+  =plugins::auth::srp::RemoteFB__Plugin_Auth_SRP_Factory__SRP512;
 
  clientConnectBlock.RegAuthPluginFactory
   (factory_type::Create());
@@ -1102,7 +1102,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__Initialize__SetProtocolInfo_P
      RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_compression_rule
       (c_bugcheck_src,
        L"#001",
-       structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
+       lib::structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
     }//default
    }//switch x
   }//if
@@ -1130,7 +1130,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__Initialize__SetProtocolInfo_P
      RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_compression_rule
       (c_bugcheck_src,
        L"#002",
-       structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
+       lib::structure::to_underlying(clientConnectBlock.m_DsProp__WireCompression));
     }//default
    }//switch
 

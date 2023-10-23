@@ -126,7 +126,7 @@ bool RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect
    RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_crypt_permission
     (c_bugcheck_src,
      L"#001",
-     structure::to_underlying(x));
+     lib::structure::to_underlying(x));
   }//default
  }//switch x
 
@@ -157,7 +157,7 @@ bool RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect
    RemoteFB__ErrorUtils::Throw_BugCheck__unknown_wire_compression_rule
     (c_bugcheck_src,
      L"#002",
-     structure::to_underlying(x));
+     lib::structure::to_underlying(x));
   }//default
  }//switch x
 

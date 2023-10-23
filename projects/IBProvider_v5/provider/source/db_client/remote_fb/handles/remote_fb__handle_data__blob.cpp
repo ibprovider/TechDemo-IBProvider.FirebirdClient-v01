@@ -47,7 +47,7 @@ RemoteFB__HandleData_Blob::~RemoteFB__HandleData_Blob()
 //------------------------------------------------------------------------
 RemoteFB__HandleData_Blob::self_ptr RemoteFB__HandleData_Blob::Create(enumBlobMode const BlobMode)
 {
- return structure::not_null_ptr(new self_type(BlobMode));
+ return lib::structure::not_null_ptr(new self_type(BlobMode));
 }//Create
 
 //------------------------------------------------------------------------

@@ -44,8 +44,8 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_sql_response__a
  assert(spStmtData);
 
  //-----------------------------------------
- typedef RemoteFB__PSET01__P12__XDR__Decoder xdr12;
- typedef RemoteFB__XDR__Decoder              xdr;
+ using xdr12=RemoteFB__PSET01__P12__XDR__Decoder;
+ using xdr  =RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -121,8 +121,8 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_fetch_response__a
  assert(spFetchResult->m_ProcessedFetchCount<=spFetchResult->m_RequestedFetchCount);
 
  //-----------------------------------------
- typedef RemoteFB__PSET01__P12__XDR__Decoder xdr12;
- typedef RemoteFB__XDR__Decoder              xdr;
+ using xdr12=RemoteFB__PSET01__P12__XDR__Decoder;
+ using xdr  =RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -244,7 +244,7 @@ void RemoteFB__PSET01__P12__OpDecoder::decode__op_slice__a
  assert(spGetDescr);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SLC_DATA* const p_slc_data=&packet.p_slc_data;
 

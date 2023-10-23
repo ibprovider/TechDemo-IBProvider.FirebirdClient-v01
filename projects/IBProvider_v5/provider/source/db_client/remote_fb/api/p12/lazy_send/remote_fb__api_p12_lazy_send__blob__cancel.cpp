@@ -83,7 +83,7 @@ void RemoteFB__API_P12_LAZY_SEND__CancelBlob::exec
   RemoteFB__ErrorUtils::Throw_BugCheck_IncorrectBlobHandleMode
    (c_bugcheck_src,
     L"#005",
-    structure::to_underlying((*pBlobHandle)->m_BlobMode));
+    lib::structure::to_underlying((*pBlobHandle)->m_BlobMode));
  }//if
 
  assert((*pBlobHandle)->m_BlobMode==blob_data_type::BlobMode__Create);

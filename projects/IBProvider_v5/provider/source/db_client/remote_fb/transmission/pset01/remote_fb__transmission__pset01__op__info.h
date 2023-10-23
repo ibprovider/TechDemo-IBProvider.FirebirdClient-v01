@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Информационные утилиты для работы с сетевыми пакетами.
 /// </summary>
-class RemoteFB__PSET01__OpInfo
+class RemoteFB__PSET01__OpInfo LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static size_t  get_size__op_fetch_response(size_t szMsg);

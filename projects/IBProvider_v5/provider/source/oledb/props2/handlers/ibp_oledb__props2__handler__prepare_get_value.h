@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 /// <summary>
 ///  Интерфейс расширения метода PrepareGetValue.
 /// <summary>
-class COMP_CONF_DECLSPEC_NOVTABLE IBP_OLEDB_Props2__Handler__PrepareGetValue
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE IBP_OLEDB_Props2__Handler__PrepareGetValue
 {
  public:
   /// <summary>

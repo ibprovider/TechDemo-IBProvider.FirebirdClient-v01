@@ -24,15 +24,15 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__ErrorUtils                   self_type;
+  using self_type=RemoteFB__ErrorUtils;
 
  public: //typedefs ------------------------------------------------------
-  typedef ibp::t_ibp_subsystem_id                subsystem_id_type;
+  using subsystem_id_type=ibp::t_ibp_subsystem_id;
 
   /// Тип для представления идентификатора операции с сервером
-  typedef int                                    p_operation_id_type;
+  using p_operation_id_type=int;
 
-  typedef structure::t_const_wstr_box            wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   template<typename... Args>

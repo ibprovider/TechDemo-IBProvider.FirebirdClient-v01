@@ -24,13 +24,14 @@ namespace lcpi{namespace ibp{
 ///  - t_db_cs_result convert_single_unicode_to_own_v3(...)
 ///  - t_db_cs_result ucs2_to_own(...)
 template<class TCS_Traits>
-class t_ibp_cs_bit8_bit16:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
+class t_ibp_cs_bit8_bit16 LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
 {
  private:
-  typedef t_ibp_cs_bit8_bit16<TCS_Traits>                 self_type;
+  using self_type=t_ibp_cs_bit8_bit16<TCS_Traits>;
 
-  t_ibp_cs_bit8_bit16(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_cs_bit8_bit16(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -38,9 +39,9 @@ class t_ibp_cs_bit8_bit16:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_
   virtual ~t_ibp_cs_bit8_bit16();
 
  public:
-  typedef structure::t_smart_object_ptr<const self_type>  self_cptr;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
 
-  typedef TCS_Traits                                      data_type;
+  using data_type=TCS_Traits;
 
  public:
   /// <summary>

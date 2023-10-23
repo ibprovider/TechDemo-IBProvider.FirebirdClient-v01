@@ -24,20 +24,22 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
 {
  private:
-  typedef t_ibp_cs_icu                                   self_type;
+  using self_type=t_ibp_cs_icu;
 
   t_ibp_cs_icu(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   ///Self smart-pointer
-  typedef structure::t_smart_object_ptr<self_type>       self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
   ///Self smart-pointer
-  typedef structure::t_smart_object_ptr<const self_type> self_cptr;
+  using self_cptr
+   =lib::structure::t_smart_object_ptr<const self_type>;
 
   using cs_name_box_type
-   =structure::t_basic_const_str_box<db_obj::t_db_charset_info::charset_name_type::value_type>;
+   =lib::structure::t_basic_const_str_box<db_obj::t_db_charset_info::charset_name_type::value_type>;
 
  private:
   class tag_conv_holder;

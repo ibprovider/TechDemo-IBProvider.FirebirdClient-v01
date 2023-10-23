@@ -110,7 +110,7 @@ RemoteFB__PortStreamPtr
  //-----------------------------------------
  const size_t offset_write_buf=total_sz;
 
- if(!structure::append_memory_size(total_sz,cbBuffer))
+ if(!lib::structure::append_memory_size(total_sz,cbBuffer))
   throw std::bad_alloc();
 
  //-----------------------------------------
@@ -136,7 +136,7 @@ RemoteFB__PortStreamPtr
 
  assert(pv);
 
- return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
+ return lib::structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
 //port stream interface --------------------------------------------------

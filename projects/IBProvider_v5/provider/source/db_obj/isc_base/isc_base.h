@@ -37,9 +37,6 @@ IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__xsqlvar_v2);
 
 IBP_DEF_FWRD_DB_INTERFACE(t_isc_meta_svc__sqlvalue_v1);
 
-//интерфейс для транслирования текста SQL запроса ------------------------
-IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_stmt_text_translator);
-
 //интерфейс для загрузки массивов ----------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_api_svc__array_reader);
 
@@ -82,8 +79,6 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_isc_xsqlda_v1_svc__msg_data);
 }/*nms isc_base*/}/*nms ibp*/}/*nms lcpi*/
 
 ////////////////////////////////////////////////////////////////////////////////
-
-IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_stmt_text_translator)
 
 IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_api_svc__array_reader)
 IBP_DEF_DB_INTERFACE_ID(isc_base::t_isc_api_svc__array_writer)

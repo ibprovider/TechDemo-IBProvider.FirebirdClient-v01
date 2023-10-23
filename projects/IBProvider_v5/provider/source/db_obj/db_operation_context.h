@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 ///  Интерфейс контекста операции с базой данных.
 /// </summary>
 //! Класс не предназначен для динамических объектов
-class COMP_CONF_DECLSPEC_NOVTABLE t_db_operation_context
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_operation_context
 {
  public:
   /// <summary>

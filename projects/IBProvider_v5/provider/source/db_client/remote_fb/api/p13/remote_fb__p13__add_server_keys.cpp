@@ -248,7 +248,7 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
     const RemoteFB__KnownServerKey::self_ptr
      spSrvKey(RemoteFB__KnownServerKey::Create
                (srv_key__type,
-                structure::make_first_last(pp1,pp2)));
+                lib::structure::make_first_last(pp1,pp2)));
 
     assert(spSrvKey);
 

@@ -20,14 +20,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Реализация плагина для WIN_SSPI-аутентификации [Firebird 2.1]
 /// </summary>
-class RemoteFB__Plugin_Auth_WinSSPI
+class RemoteFB__Plugin_Auth_WinSSPI LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__Plugin_Auth)
 {
  private:
-  typedef RemoteFB__Plugin_Auth_WinSSPI     self_type;
+  using self_type=RemoteFB__Plugin_Auth_WinSSPI;
 
-  RemoteFB__Plugin_Auth_WinSSPI(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Plugin_Auth_WinSSPI(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   /// <summary>
@@ -83,8 +83,11 @@ class RemoteFB__Plugin_Auth_WinSSPI
   unsigned m_step;
 
  private:
-  typedef ibp::os::win32::auth::t_auth__provider        auth_provider_type;
-  typedef ibp::os::win32::auth::t_auth__descr_builder   auth_descr_builder_type;
+  using auth_provider_type
+   =ibp::os::win32::auth::t_auth__provider;
+
+  using auth_descr_builder_type
+   =ibp::os::win32::auth::t_auth__descr_builder;
 
  private:
   auth_provider_type::self_ptr m_spAuthProvider;

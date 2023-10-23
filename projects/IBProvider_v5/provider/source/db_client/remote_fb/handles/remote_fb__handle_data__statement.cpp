@@ -55,7 +55,7 @@ RemoteFB__HandleData_Statement::~RemoteFB__HandleData_Statement()
 RemoteFB__HandleData_Statement::self_ptr
  RemoteFB__HandleData_Statement::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //------------------------------------------------------------------------

@@ -27,7 +27,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__PSET02__ErrorUtilites
 {
  private:
-  typedef RemoteFB__PSET02__ErrorUtilites        self_type;
+  using self_type=RemoteFB__PSET02__ErrorUtilites;
 
  public:
   /// <summary>

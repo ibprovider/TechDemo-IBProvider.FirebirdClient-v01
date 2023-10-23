@@ -157,8 +157,8 @@ class fb_common__svc__status_vector_utils:public db_obj::t_db_smart_interface
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef structure::t_smart_object_ptr<fb_common__svc__status_vector_utils>
- fb_common__svc__status_vector_utils_ptr;
+using fb_common__svc__status_vector_utils_ptr
+ =lib::structure::t_smart_object_ptr<fb_common__svc__status_vector_utils>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

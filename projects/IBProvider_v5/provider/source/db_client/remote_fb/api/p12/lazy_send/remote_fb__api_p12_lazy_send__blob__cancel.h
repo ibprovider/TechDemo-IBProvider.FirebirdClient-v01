@@ -23,13 +23,13 @@ class RemoteFB__API_P12_LAZY_SEND__CancelBlob LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__CancelBlob)
 {
  private:
-  typedef RemoteFB__API_P12_LAZY_SEND__CancelBlob                      self_type;
+  using self_type=RemoteFB__API_P12_LAZY_SEND__CancelBlob;
 
-  RemoteFB__API_P12_LAZY_SEND__CancelBlob(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P12_LAZY_SEND__CancelBlob(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef blob_handle_type::item_type                       blob_data_type;
+  using blob_data_type=blob_handle_type::item_type;
 
  private:
   RemoteFB__API_P12_LAZY_SEND__CancelBlob();

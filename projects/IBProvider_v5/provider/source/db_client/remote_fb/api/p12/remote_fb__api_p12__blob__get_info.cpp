@@ -20,17 +20,18 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__API_P12__GetBlobInfo::tagOpMemoryBuffer
 
-class RemoteFB__API_P12__GetBlobInfo::tagOpMemoryBuffer:public RemoteFB__MemoryPool
+class RemoteFB__API_P12__GetBlobInfo::tagOpMemoryBuffer LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__MemoryPool
 {
  private:
-  typedef tagOpMemoryBuffer                 self_type;
-  typedef RemoteFB__MemoryPool              inherited;
+  using self_type=tagOpMemoryBuffer;
+  using inherited=RemoteFB__MemoryPool;
 
-  tagOpMemoryBuffer(const self_type&);
-  self_type& operator = (const self_type&);
+  tagOpMemoryBuffer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  tagOpMemoryBuffer(RemoteFB__InfoBuffer* pInfoBuffer);
+  explicit tagOpMemoryBuffer(RemoteFB__InfoBuffer* pInfoBuffer);
 
   virtual ~tagOpMemoryBuffer();
 

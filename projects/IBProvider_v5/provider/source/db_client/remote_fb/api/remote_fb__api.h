@@ -16,14 +16,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 #define IBP_REMOTE_FB__DEF_API_INTERFACE(name)                   \
  class name;                                                     \
                                                                  \
- typedef structure::t_smart_object_ptr<name> name##_Ptr;
+ using name##_Ptr=lib::structure::t_smart_object_ptr<name>;
 
 //------------------------------------------------------------------------
 
 #define IBP_REMOTE_FB__DEF_API_SVC_INTERFACE(name)               \
  class name;                                                     \
                                                                  \
- typedef structure::t_smart_object_ptr<name> name##_Ptr;         \
+ using name##_Ptr=lib::structure::t_smart_object_ptr<name>;      \
                                                                  \
  extern const GUID name##_Id;
 

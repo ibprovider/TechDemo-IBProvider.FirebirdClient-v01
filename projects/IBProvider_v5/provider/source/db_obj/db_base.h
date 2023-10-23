@@ -24,11 +24,11 @@ namespace lcpi{namespace ibp{namespace db_obj{
 #define IBP_DEF_FWRD_DB_INTERFACE(interface_type)                           \
  class interface_type;                                                      \
                                                                             \
- typedef structure::t_smart_object_ptr<interface_type>                      \
-  interface_type##_ptr;                                                     \
+ using interface_type##_ptr                                                 \
+  =lib::structure::t_smart_object_ptr<interface_type>;                      \
                                                                             \
- typedef structure::t_smart_object_ptr<const interface_type>                \
-  interface_type##_const_ptr;
+ using interface_type##_const_ptr                                           \
+  =lib::structure::t_smart_object_ptr<const interface_type>;
 
 #define IBP_DEF_FWRD_DB_INTERFACE_EX(interface_type)                        \
  extern const GUID interface_type##_guid;                                   \
@@ -113,6 +113,9 @@ class t_db_field_accessor;
 
 class t_db_field_accessor_rw;
 
+//------------------------------------------------------------------------
+class t_db_blob_reader_agent;
+
 //db row -----------------------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE(t_db_row)
 
@@ -164,25 +167,8 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_info__get_sql_keywords)
 //parameter info builder -------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_param_info_builder)
 
-//text services object ---------------------------------------------------
-IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_text_services)
-
-//name services object ---------------------------------------------------
-IBP_DEF_FWRD_DB_INTERFACE(t_db_name_services)
-
-//идентификатор сервиса имен для клиентских операций
-extern const db_obj::t_db_svc_descr
- db_svc_descr__name_services__for_client;
-
-//идентификатор сервиса имен для метаданных базы данных
-extern const db_obj::t_db_svc_descr
- db_svc_descr__name_services__for_database;
-
 //prepare services object ------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_prepare_services)
-
-//blob services object ---------------------------------------------------
-IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_blob_services)
 
 //------------------------------------------------------------------------
 
@@ -223,6 +209,27 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_meta_svc__columns_rowset)
 //------------------------------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_meta_svc__meta_data_cache)
 
+//blob services object ---------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__blob_services)
+
+//text services object ---------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__text_services)
+
+//name services object ---------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE(t_db_svc__name_services)
+
+//идентификатор сервиса имен для клиентских операций
+extern const db_obj::t_db_svc_descr
+ db_svc_descr__name_services__for_client;
+
+//идентификатор сервиса имен для метаданных базы данных
+extern const db_obj::t_db_svc_descr
+ db_svc_descr__name_services__for_database;
+
+//идентификатор сервиса имен с поддержкой квотирования
+extern const db_obj::t_db_svc_descr
+ db_svc_descr__qname_services;
+
 //unique identificator generator -----------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__gen_id)
 
@@ -240,6 +247,9 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__fb040_ts_with_tz_services)
 
 //------------------------------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__fb040_tz_names)
+
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__parser_of_text_token)
 
 //------------------------------------------------------------------------
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
@@ -292,9 +302,7 @@ IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_row_factory)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_info__get_literal_info)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_info__get_sql_keywords)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_param_info_builder)
-IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_text_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_prepare_services)
-IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_blob_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_data_reader)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_charset_manager_v2)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__get_sp_info)
@@ -304,12 +312,15 @@ IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__detect_autoinc_columns)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__get_table_updatable_columns)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__columns_rowset)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__meta_data_cache)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__blob_services)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__text_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__gen_id)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__timezone_names)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__ts_with_tz_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__timezone_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__fb040_ts_with_tz_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__fb040_tz_names)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__parser_of_text_token)
 
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
 

@@ -305,7 +305,7 @@ protocol::P_USHORT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  //-----------------------------------------
  assert((*pStmtHandle)->m_InParams__MSG_BLR.empty());
@@ -355,7 +355,7 @@ protocol::P_USHORT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  assert(pInXSQLDA);
  assert(pInXSQLDA->sqld>0);
@@ -459,7 +459,7 @@ protocol::P_OBJCT
  assert(pStmtHandle);
  assert(*pStmtHandle);
  assert((*pStmtHandle)->m_PFlags.test(stmt_data_type::PFLAG__PREPARED));
- assert(!(*pStmtHandle)->m_EFlags.test(structure::negative_one));
+ assert(!(*pStmtHandle)->m_EFlags.test(lib::structure::negative_one));
 
  assert(pOutXSQLDA!=nullptr);
  assert(pOutXSQLDA->sqld>0);

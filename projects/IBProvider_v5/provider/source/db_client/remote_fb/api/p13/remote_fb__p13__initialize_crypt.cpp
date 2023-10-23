@@ -364,9 +364,9 @@ bool RemoteFB__P13__InitializeCrypt::Helper__TryKey
 //------------------------------------------------------------------------
 RemoteFB__PortStreamPtr
  RemoteFB__P13__InitializeCrypt::Helper__CreateNotBindedCryptStream
-                                           (const port_type*                  const pPort,
-                                            structure::t_const_wstr_box             cryptPluginName,
-                                            const RemoteFB__InternalCryptKey* const pCryptKey)
+  (const port_type*                  const pPort,
+   lib::structure::t_const_wstr_box  const cryptPluginName,
+   const RemoteFB__InternalCryptKey* const pCryptKey)
 {
  assert(pPort);
  assert(pPort->m_spSocket);

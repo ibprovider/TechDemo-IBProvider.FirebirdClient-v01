@@ -22,13 +22,13 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  ¬спомогательный класс дл€ конструировани€ удаленного порта дл€ работы через TCP/IP.
 /// </summary>
-class RemoteFB__PortFactory__INET
+class RemoteFB__PortFactory__INET LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__PortFactory__INET       self_type;
+  using self_type=RemoteFB__PortFactory__INET;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_wstr_box       wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   /// <summary>

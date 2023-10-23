@@ -147,8 +147,8 @@ void RemoteFB__ErrorUtils::Throw_BugCheck_UnexpectedPacketStructure
    ibp_mce_remote__bug_check__unexpected_packet_structure_4,
    place,
    point,
-   structure::to_underlying(actualProtocolSetID),
-   structure::to_underlying(expectedProtocolSetID));
+   lib::structure::to_underlying(actualProtocolSetID),
+   lib::structure::to_underlying(expectedProtocolSetID));
 }//Throw_BugCheck_UnexpectedPacketStructure
 
 //------------------------------------------------------------------------

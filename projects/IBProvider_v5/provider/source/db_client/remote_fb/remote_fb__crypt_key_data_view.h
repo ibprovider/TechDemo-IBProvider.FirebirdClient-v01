@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Класс для представления данных ключа шифрования.
 /// </summary>
-class RemoteFB__CryptKeyDataView
+class RemoteFB__CryptKeyDataView LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   size_t      size;

@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 ////////////////////////////////////////////////////////////////////////////////
 //struct RemoteFB__PSET01__P10S__PacketStream::tag_data
 
-struct RemoteFB__PSET01__P10S__PacketStream::tag_data
+struct RemoteFB__PSET01__P10S__PacketStream::tag_data LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   //упаковщики

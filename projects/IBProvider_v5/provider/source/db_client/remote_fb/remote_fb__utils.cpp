@@ -43,8 +43,8 @@ t_ibp_string RemoteFB__Utils::GetSystemUserName()
     ibp_mce_win32__cant_get_current_system_user_name_0);
  }//if
 
- typedef structure::t_typed_simple_buffer<win32lib::t_char,
-                                          RemoteFB__MemoryAllocator> tmp_buf_type;
+ using tmp_buf_type
+  =structure::t_typed_simple_buffer<win32lib::t_char,RemoteFB__MemoryAllocator>;
 
  tmp_buf_type tmp_buf(tUserName.c_str(),tUserName.size());
 
@@ -89,8 +89,8 @@ t_ibp_string RemoteFB__Utils::GetComputerName()
     ibp_mce_win32__cant_get_local_computer_name_0);
  }//if
 
- typedef structure::t_typed_simple_buffer<win32lib::t_char,
-                                          RemoteFB__MemoryAllocator> tmp_buf_type;
+ using tmp_buf_type
+  =structure::t_typed_simple_buffer<win32lib::t_char,RemoteFB__MemoryAllocator>;
 
  tmp_buf_type tmp_buf(tComputerName.c_str(),tComputerName.size());
 
@@ -135,8 +135,8 @@ t_ibp_string RemoteFB__Utils::GetComputerName_U()
     ibp_mce_win32__cant_get_local_computer_name_0);
  }//if
 
- typedef structure::t_typed_simple_buffer<win32lib::t_char,
-                                          RemoteFB__MemoryAllocator> tmp_buf_type;
+ using tmp_buf_type
+  =structure::t_typed_simple_buffer<win32lib::t_char,RemoteFB__MemoryAllocator>;
 
  tmp_buf_type tmp_buf(tComputerName.c_str(),tComputerName.size());
 
@@ -183,8 +183,8 @@ t_ibp_string RemoteFB__Utils::GetCurrentProcessName()
     ibp_mce_win32__cant_get_current_process_name_0);
  }//if
 
- typedef structure::t_typed_simple_buffer<win32lib::t_char,
-                                          RemoteFB__MemoryAllocator> tmp_buf_type;
+ using tmp_buf_type
+  =structure::t_typed_simple_buffer<win32lib::t_char,RemoteFB__MemoryAllocator>;
 
  tmp_buf_type tmp_buf(tProcessName.c_str(),tProcessName.size());
 

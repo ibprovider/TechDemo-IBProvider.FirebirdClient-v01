@@ -23,11 +23,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  The service for a statement execution.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__API__ExecuteStatement_M:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__ExecuteStatement_M
+ :public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__TrHandle       tr_handle_type;
-  typedef handles::RemoteFB__StmtHandle     stmt_handle_type;
+  using tr_handle_type  =handles::RemoteFB__TrHandle;
+  using stmt_handle_type=handles::RemoteFB__StmtHandle;
 
  public:
   /// <summary>

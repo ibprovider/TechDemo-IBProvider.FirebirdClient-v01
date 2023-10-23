@@ -27,7 +27,7 @@ void RemoteFB__PSET01__XDR__Decoder::decode__p_op
  //проверяем идентичность типов
  assert_s(sizeof(protocol::set01::P_OP)==sizeof(protocol::P_LONG));
 
- protocol::P_LONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_LONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(&tmp); //throw
 
@@ -47,7 +47,7 @@ void RemoteFB__PSET01__XDR__Decoder::decode__p_ushort_length_as_p_short__pset01
  assert_s(sizeof(protocol::P_LONG)==sizeof(protocol::P_ULONG));
  assert_s(sizeof(protocol::P_LONG)==4);
 
- protocol::P_ULONG tmp DEBUG_CODE(=structure::negative_one);
+ protocol::P_ULONG tmp DEBUG_CODE(=lib::structure::negative_one);
 
  pBuf->read__long(reinterpret_cast<protocol::P_LONG*>(&tmp)); //throw
 

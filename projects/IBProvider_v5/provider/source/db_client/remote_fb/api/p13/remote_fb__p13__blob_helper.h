@@ -23,7 +23,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P13__BlobHelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P13__BlobHelper             self_type;
+  using self_type=RemoteFB__P13__BlobHelper;
 
  public:
   static void WriteSegment(RemoteFB__ConnectorData* pData,

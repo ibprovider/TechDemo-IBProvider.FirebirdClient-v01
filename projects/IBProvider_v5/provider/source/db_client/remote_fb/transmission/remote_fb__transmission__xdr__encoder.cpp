@@ -445,7 +445,7 @@ void RemoteFB__XDR__Encoder::encode__array_slice
  //const size_t nElements=slice_size/ArrSliceDescr.m_element_total_length;
 
  //-----------------------------------------
- typedef self_type xdr;
+ using xdr=self_type;
 
  assert_s(sizeof(protocol::P_UCHAR)==1);
 

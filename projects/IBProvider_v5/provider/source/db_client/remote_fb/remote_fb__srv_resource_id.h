@@ -13,16 +13,16 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__SrvResourceID
 
-class RemoteFB__SrvResourceID
+class RemoteFB__SrvResourceID LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__SrvResourceID           self_type;
+  using self_type=RemoteFB__SrvResourceID;
 
-  RemoteFB__SrvResourceID(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__SrvResourceID(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef protocol::P_OBJCT                 value_type;
+  using value_type=protocol::P_OBJCT;
 
   enum state_type
   {

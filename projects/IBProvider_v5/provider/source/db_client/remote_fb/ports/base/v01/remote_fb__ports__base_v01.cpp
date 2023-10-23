@@ -16,13 +16,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__Port_BASE_v01::tag_send_ctx
 
-class RemoteFB__Port_BASE_v01::tag_send_ctx:public RemoteFB__PortOperationContext
+class RemoteFB__Port_BASE_v01::tag_send_ctx LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__PortOperationContext
 {
  private:
-  typedef tag_send_ctx                      self_type;
+  using self_type=tag_send_ctx;
 
-  tag_send_ctx(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_send_ctx(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_send_ctx(RemoteFB__PortOperationContext& base_ctx,
@@ -46,7 +47,7 @@ RemoteFB__Port_BASE_v01::tag_send_ctx::tag_send_ctx
                                            (RemoteFB__PortOperationContext& base_ctx,
                                             RemoteFB__PortWriter*   const   pPortWriter)
  :m_base_ctx(base_ctx)
- ,m_spPortWriter(structure::not_null_ptr(pPortWriter))
+ ,m_spPortWriter(lib::structure::not_null_ptr(pPortWriter))
 {
  assert(m_spPortWriter);
 }//tag_send_ctx
@@ -62,7 +63,7 @@ RemoteFB__SmartObjectPtr RemoteFB__Port_BASE_v01::tag_send_ctx::query_service(RE
  assert(m_spPortWriter);
 
  if(serviceID==RemoteFB__PortWriter::svcID)
-  return structure::not_null_ptr(m_spPortWriter.ptr());
+  return m_spPortWriter.not_null_ptr();
 
  return m_base_ctx.query_service(serviceID);
 }//query_service
@@ -70,13 +71,14 @@ RemoteFB__SmartObjectPtr RemoteFB__Port_BASE_v01::tag_send_ctx::query_service(RE
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__Port_BASE_v01::tag_recv_ctx
 
-class RemoteFB__Port_BASE_v01::tag_recv_ctx:public RemoteFB__PortOperationContext
+class RemoteFB__Port_BASE_v01::tag_recv_ctx LCPI_CPP_CFG__CLASS__FINAL
+ :public RemoteFB__PortOperationContext
 {
  private:
-  typedef tag_recv_ctx                      self_type;
+  using self_type=tag_recv_ctx;
 
-  tag_recv_ctx(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_recv_ctx(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_recv_ctx(RemoteFB__PortOperationContext& base_ctx,
@@ -100,7 +102,7 @@ RemoteFB__Port_BASE_v01::tag_recv_ctx::tag_recv_ctx
                                            (RemoteFB__PortOperationContext& base_ctx,
                                             RemoteFB__PortReader*   const   pPortReader)
  :m_base_ctx(base_ctx)
- ,m_spPortReader(structure::not_null_ptr(pPortReader))
+ ,m_spPortReader(lib::structure::not_null_ptr(pPortReader))
 {
  assert(m_spPortReader);
 }//tag_recv_ctx
@@ -116,7 +118,7 @@ RemoteFB__SmartObjectPtr RemoteFB__Port_BASE_v01::tag_recv_ctx::query_service(RE
  assert(m_spPortReader);
 
  if(serviceID==RemoteFB__PortReader::svcID)
-  return structure::not_null_ptr(m_spPortReader.ptr());
+  return m_spPortReader.not_null_ptr();
 
  return m_base_ctx.query_service(serviceID);
 }//query_service

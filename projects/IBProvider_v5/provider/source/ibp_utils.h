@@ -20,10 +20,10 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Утилиты общего назначения
 /// </summary>
-class IBP_Utils
+class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_Utils                         self_type;
+  using self_type=IBP_Utils;
 
  public:
   static HRESULT GetAsynchRowsetOpStatus__Complete

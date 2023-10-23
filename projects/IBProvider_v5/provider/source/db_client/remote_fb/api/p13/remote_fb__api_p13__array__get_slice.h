@@ -23,10 +23,10 @@ class RemoteFB__API_P13__GetArraySlice LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__GetArraySlice)
 {
  private:
-  typedef RemoteFB__API_P13__GetArraySlice  self_type;
+  using self_type=RemoteFB__API_P13__GetArraySlice;
 
-  RemoteFB__API_P13__GetArraySlice(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P13__GetArraySlice(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   RemoteFB__API_P13__GetArraySlice();

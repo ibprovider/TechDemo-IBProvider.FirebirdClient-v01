@@ -691,7 +691,7 @@ void RemoteFB__API_HLP__GetStatementInfo_v01::helper__rebuild_ResultBuffer
  ResultBuffer.alloc(resultBuilder.buffer().size());
 
  DEBUG_CODE(auto const copy_r=)
-  structure::copy
+  lib::structure::copy
    (resultBuilder.buffer().cbegin(),
     resultBuilder.buffer().cend(),
     ResultBuffer.buffer(),

@@ -56,7 +56,8 @@ enum class db_cs_id:unsigned
 /// <summary>
 ///  Интерфейс управления кодовыми страницами [V2].
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE t_db_charset_manager_v2:public t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_charset_manager_v2
+ :public t_db_smart_interface
 {
  public: //typedefs ------------------------------------------------------
   using cs_name_box_type

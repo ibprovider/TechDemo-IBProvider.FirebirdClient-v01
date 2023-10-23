@@ -22,27 +22,27 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Утилиты для обработки XSQLDA / XSQLVAR (V1).
 /// </summary>
-class RemoteFB__API_HLP__XSQLDA_V01__Utilities
+class RemoteFB__API_HLP__XSQLDA_V01__Utilities LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__API_HLP__XSQLDA_V01__Utilities         self_type;
+  using self_type=RemoteFB__API_HLP__XSQLDA_V01__Utilities;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned char                                    byte_type;
+  using byte_type=unsigned char;
 
-  typedef std::pair<protocol::P_USHORT,bool>               parse_result_type;
+  using parse_result_type=std::pair<protocol::P_USHORT,bool>;
 
-  typedef handles::RemoteFB__HandleData_Statement          stmt_data_type;
+  using stmt_data_type=handles::RemoteFB__HandleData_Statement;
 
-  typedef stmt_data_type::msg_nulls_buffer_type            msg_nulls_buffer_type;
+  using msg_nulls_buffer_type=stmt_data_type::msg_nulls_buffer_type;
 
-  typedef stmt_data_type::msg_data_descrs_type             msg_data_descrs_type;
+  using msg_data_descrs_type=stmt_data_type::msg_data_descrs_type;
 
-  typedef msg_data_descrs_type::value_type                 msg_data_descr_type;
+  using msg_data_descr_type=msg_data_descrs_type::value_type;
 
-  typedef IBP_BufferView<const byte_type>                  msg_data_buf_view_type;
+  using msg_data_buf_view_type=IBP_BufferView<const byte_type>;
 
-  typedef IBP_BufferView<const msg_data_descr_type>        msg_data_descrs_view_type;
+  using msg_data_descrs_view_type=IBP_BufferView<const msg_data_descr_type>;
 
  public:
   static void Check_XSQLDA(const isc_api::XSQLDA_V1* pXSQLDA,

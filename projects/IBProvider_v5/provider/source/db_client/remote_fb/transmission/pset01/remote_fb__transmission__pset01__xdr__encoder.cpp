@@ -76,7 +76,7 @@ void RemoteFB__PSET01__XDR__Encoder::encode__p_longs
 
  CHECK_READ_TYPED_PTR(pv->cstr_address,pv->cstr_length);
 
- typedef protocol::P_LONG item_type;
+ using item_type=protocol::P_LONG;
 
  //проверка размера
  assert(pv->cstr_length%sizeof(item_type)==0);

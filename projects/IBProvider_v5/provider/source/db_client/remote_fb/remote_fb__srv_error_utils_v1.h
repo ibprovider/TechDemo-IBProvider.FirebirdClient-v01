@@ -23,15 +23,15 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Утилиты для обработки ошибок
 /// </summary>
-class RemoteFB__SrvErrorUtils_v1
+class RemoteFB__SrvErrorUtils_v1 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__SrvErrorUtils_v1        self_type;
+  using self_type=RemoteFB__SrvErrorUtils_v1;
 
  public: //typedefs ------------------------------------------------------
 
   /// Тип для представления идентификатора операции с сервером
-  typedef int                               p_operation_id_type;
+  using p_operation_id_type=int;
 
  public:
   /// <summary>

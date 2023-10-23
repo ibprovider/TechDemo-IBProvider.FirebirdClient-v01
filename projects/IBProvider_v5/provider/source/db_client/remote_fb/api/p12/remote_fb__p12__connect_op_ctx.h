@@ -24,17 +24,17 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P12__ConnectOpCtx LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P12__ConnectOpCtx                   self_type;
+  using self_type=RemoteFB__P12__ConnectOpCtx;
 
-  RemoteFB__P12__ConnectOpCtx(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__P12__ConnectOpCtx(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef isc_base::t_isc_param_buffer_v1_builder       dpb_type;
+  using dpb_type=isc_base::t_isc_param_buffer_v1_builder;
 
-  typedef ibp::os::win32::auth::t_auth__descr_builder   auth_descr_builder_type;
+  using auth_descr_builder_type=ibp::os::win32::auth::t_auth__descr_builder;
 
-  typedef auth_descr_builder_type::output_type          auth_output_type;
+  using auth_output_type=auth_descr_builder_type::output_type;
 
  public:
   dpb_type m_dpb;
@@ -71,7 +71,7 @@ class RemoteFB__P12__ConnectOpCtx LCPI_CPP_CFG__CLASS__FINAL
                          auth_output_type& Output);
 
  private:
-  typedef ibp::os::win32::auth::t_auth__provider        auth_provider_type;
+  using auth_provider_type=ibp::os::win32::auth::t_auth__provider;
 
  private:
   void Helper__BuildDPB(const RemoteFB__ClientConnectBlock_v1& clientConnectBlock,

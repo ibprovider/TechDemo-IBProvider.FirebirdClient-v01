@@ -24,17 +24,18 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// - Не допускаются параллельные вызовы получения пакетов.
 /// - Не допускаются параллельный вызов получения пакетов и вызов
 ///   отправки пакета с регистрацией объекта отложенного чтения ответа.
-class RemoteFB__Port_INET:public ports::base_v01::RemoteFB__Port_BASE_v01
+class RemoteFB__Port_INET LCPI_CPP_CFG__CLASS__FINAL
+ :public ports::base_v01::RemoteFB__Port_BASE_v01
 {
  private:
-  typedef RemoteFB__Port_INET                                  self_type;
-  typedef ports::base_v01::RemoteFB__Port_BASE_v01             inherited;
+  using self_type=RemoteFB__Port_INET;
+  using inherited=ports::base_v01::RemoteFB__Port_BASE_v01;
 
-  RemoteFB__Port_INET(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Port_INET(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>             self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
  private:
   /// <summary>

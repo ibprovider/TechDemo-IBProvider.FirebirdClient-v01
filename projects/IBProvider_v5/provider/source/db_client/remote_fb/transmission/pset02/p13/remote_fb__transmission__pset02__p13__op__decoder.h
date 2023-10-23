@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 /// <summary>
 ///  Ќабор утилит дл€ распаковки операций
 /// </summary>
-class RemoteFB__PSET02__P13__OpDecoder
+class RemoteFB__PSET02__P13__OpDecoder LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static void decode__op_sql_response__a

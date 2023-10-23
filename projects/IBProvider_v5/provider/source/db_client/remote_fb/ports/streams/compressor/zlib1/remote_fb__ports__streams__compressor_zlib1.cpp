@@ -175,11 +175,11 @@ RemoteFB__PortStreamPtr
  //-----------------------------------------
  const size_t offset_common_buf=total_sz;
 
- if(!structure::append_memory_size(total_sz,cbBuffer))
+ if(!lib::structure::append_memory_size(total_sz,cbBuffer))
   throw std::bad_alloc();
 
  //-----------------------------------------
- if(!structure::append_memory_size(total_sz,cbBuffer))
+ if(!lib::structure::append_memory_size(total_sz,cbBuffer))
   throw std::bad_alloc();
 
  //-----------------------------------------
@@ -206,7 +206,7 @@ RemoteFB__PortStreamPtr
 
  assert(pv);
 
- return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
+ return lib::structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
 //port stream interface --------------------------------------------------
@@ -702,7 +702,7 @@ z_api::voidpf RemoteFB__PortStream__Compressor_ZLib1::Helper__ZAlloc__NoThrow
 {
  size_t sz=0;
 
- if(!structure::append_array_memory_size(sz,size,items))
+ if(!lib::structure::append_array_memory_size(sz,size,items))
   return nullptr;
 
  try

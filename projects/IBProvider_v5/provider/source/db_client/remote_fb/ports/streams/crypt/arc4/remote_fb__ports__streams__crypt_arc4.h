@@ -21,17 +21,17 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Реализация потока с шифрованием Arc4.
 /// </summary>
-class RemoteFB__PortStream__Crypt_Arc4
+class RemoteFB__PortStream__Crypt_Arc4 LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__PortStream)
 {
  private:
-  typedef RemoteFB__PortStream__Crypt_Arc4  self_type;
+  using self_type=RemoteFB__PortStream__Crypt_Arc4;
 
-  RemoteFB__PortStream__Crypt_Arc4(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__PortStream__Crypt_Arc4(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private: //typedefs -----------------------------------------------------
-  typedef unsigned char                     byte_type;
+  using byte_type=unsigned char;
 
  private:
   /// <summary>
@@ -123,7 +123,7 @@ class RemoteFB__PortStream__Crypt_Arc4
                        void*   pv)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef RemoteFB__MemoryAllocator         raw_allocator_type;
+  using raw_allocator_type=RemoteFB__MemoryAllocator;
 
   static void* operator new (size_t const sz); //not impl
 
@@ -149,20 +149,20 @@ class RemoteFB__PortStream__Crypt_Arc4
   /// <summary>
   ///  Класс для преобразования данных
   /// </summary>
-  class tag_cypher
+  class tag_cypher LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef tag_cypher                      self_type;
+    using self_type=tag_cypher;
 
-    tag_cypher(const self_type&);
-    self_type& operator = (const self_type);
+    tag_cypher(const self_type&)=delete;
+    self_type& operator = (const self_type)=delete;
 
    public:
     /// <summary>
     ///  Конструктор инициализации
     /// </summary>
     //! \param[in] Key
-    tag_cypher(const RemoteFB__CryptKeyDataView& Key);
+    explicit tag_cypher(const RemoteFB__CryptKeyDataView& Key);
 
     /// <summary>
     ///  Деструктор

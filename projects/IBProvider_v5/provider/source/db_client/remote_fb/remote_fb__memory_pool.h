@@ -23,10 +23,10 @@ class RemoteFB__MemoryPool
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__PacketMemory)
 {
  private:
-  typedef RemoteFB__MemoryPool            self_type;
+  using self_type=RemoteFB__MemoryPool;
 
-  RemoteFB__MemoryPool(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__MemoryPool(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
@@ -56,9 +56,9 @@ class RemoteFB__MemoryPool
   void deallocate_all();
 
  private: //internal types -----------------------------------------------
-  typedef RemoteFB__MemoryAllocator::rebind<void>::other    raw_allocator_type;
+  using raw_allocator_type=RemoteFB__MemoryAllocator::rebind<void>::other;
 
-  struct tag_cluster
+  struct tag_cluster LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
     tag_cluster*  next;

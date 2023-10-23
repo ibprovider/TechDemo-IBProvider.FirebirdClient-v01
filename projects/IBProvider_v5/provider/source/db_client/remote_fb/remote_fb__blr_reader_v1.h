@@ -16,13 +16,13 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__BlrReader_v1
 
-class RemoteFB__BlrReader_v1
+class RemoteFB__BlrReader_v1 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   using self_type=RemoteFB__BlrReader_v1;
 
-  RemoteFB__BlrReader_v1(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__BlrReader_v1(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   RemoteFB__BlrReader_v1(size_t                   const msg_blr_size,

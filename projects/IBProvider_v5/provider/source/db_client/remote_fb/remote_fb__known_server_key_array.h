@@ -22,16 +22,16 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 /// <summary>
 ///  Массив объектов класса RemoteFB__KnownServerKey.
 /// </summary>
-class RemoteFB__KnownServerKeyArray
+class RemoteFB__KnownServerKeyArray LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__KnownServerKeyArray     self_type;
+  using self_type=RemoteFB__KnownServerKeyArray;
 
-  RemoteFB__KnownServerKeyArray(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__KnownServerKeyArray(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef size_t                            size_type;
+  using size_type=size_t;
 
  public:
   /// <summary>
@@ -64,12 +64,13 @@ class RemoteFB__KnownServerKeyArray
   const RemoteFB__KnownServerKey* operator [] (size_type index)const;
 
  private:
-  typedef structure::t_smart_vector
-           <const RemoteFB__KnownServerKey,
-            RemoteFB__MemoryAllocator>            items_type;
+  using items_type
+   =structure::t_smart_vector
+     <const RemoteFB__KnownServerKey,
+      RemoteFB__MemoryAllocator>;
 
  private:
-  class tag_item_less
+  class tag_item_less LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
     tag_item_less()
@@ -79,10 +80,11 @@ class RemoteFB__KnownServerKeyArray
                       const RemoteFB__KnownServerKey* pK2)const;
   };//class tag_item_less
 
-  typedef structure::t_stl_set
-           <RemoteFB__KnownServerKey::self_cptr,
-            tag_item_less,
-            RemoteFB__MemoryAllocator>      item_index_type;
+  using item_index_type
+   =structure::t_stl_set
+     <RemoteFB__KnownServerKey::self_cptr,
+      tag_item_less,
+      RemoteFB__MemoryAllocator>;
 
  private:
   /// Список ключей

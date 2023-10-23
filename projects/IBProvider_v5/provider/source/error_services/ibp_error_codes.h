@@ -1819,6 +1819,21 @@ enum ibp_msg_code_type
  ibp_mce_cmd__invalid_utf16_command_text_0
   =IBP_MCE_CMD__INVALID_UTF16_COMMAND_TEXT_0,
 
+ /// \brief
+ ///  Closing quote was not found.
+ ibp_mce_cmd__closing_quote_not_found_0
+  =IBP_MCE_CMD__CLOSING_QUOTE_NOT_FOUND_0,
+
+ /// \brief
+ ///  Bad format of q-text token.
+ ibp_mce_cmd__bad_format_of_qtext_token_0
+  =IBP_MCE_CMD__BAD_FORMAT_OF_QTEXT_TOKEN_0,
+
+ /// \brief
+ ///  Bad hex-text token.
+ ibp_mce_cmd__bad_htext_token_0
+  =IBP_MCE_CMD__BAD_HTEXT_TOKEN_0,
+
  //команда со скриптом ---------------------------------------------------
 
  /// \brief В скрипте нельзя использовать неименованные параметры

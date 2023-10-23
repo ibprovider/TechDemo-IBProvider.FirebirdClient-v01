@@ -25,7 +25,7 @@ size_t RemoteFB__API_HLP__BLR_V05__Utilities::Calc_BLR_MAX_XDR_SIZE
   return 0;
 
  //-----------------------------------------------------------------------
- typedef transmission::RemoteFB__XDR__Info xdr;
+ using xdr=transmission::RemoteFB__XDR__Info;
 
  RemoteFB__BlrReader_v1 blr_reader(blr.size(),blr.data());
 

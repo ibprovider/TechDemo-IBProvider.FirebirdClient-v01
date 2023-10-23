@@ -24,7 +24,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 class RemoteFB__InternalCryptKey:public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_wstring        tname_type;
+  using tname_type=lib::structure::t_const_wstring;
 
  public:
   /// <summary>
@@ -41,7 +41,7 @@ class RemoteFB__InternalCryptKey:public RemoteFB__SmartInterface
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef structure::t_smart_object_ptr<RemoteFB__InternalCryptKey> RemoteFB__InternalCryptKeyPtr;
+using RemoteFB__InternalCryptKeyPtr=lib::structure::t_smart_object_ptr<RemoteFB__InternalCryptKey>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

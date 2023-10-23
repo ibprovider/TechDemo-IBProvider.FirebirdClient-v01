@@ -19,14 +19,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// <summary>
 ///  Реализация плагина для Legacy-аутентификации
 /// </summary>
-class RemoteFB__Plugin_Auth_Legacy
+class RemoteFB__Plugin_Auth_Legacy LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__Plugin_Auth)
 {
  private:
-  typedef RemoteFB__Plugin_Auth_Legacy     self_type;
+  using self_type=RemoteFB__Plugin_Auth_Legacy;
 
-  RemoteFB__Plugin_Auth_Legacy(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Plugin_Auth_Legacy(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   /// <summary>

@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 
 RemoteFB__SrvResourceID::RemoteFB__SrvResourceID()
  :m_state(state__null)
- ,m_value(structure::negative_one)
+ ,m_value(lib::structure::negative_one)
 {;}
 
 //------------------------------------------------------------------------
@@ -103,7 +103,7 @@ void RemoteFB__SrvResourceID::reset()
 {
  m_state=state__null;
 
- m_value=structure::negative_one;
+ m_value=lib::structure::negative_one;
 }//reset
 
 //------------------------------------------------------------------------
@@ -111,7 +111,7 @@ void RemoteFB__SrvResourceID::set_defer()
 {
  m_state=state__defer;
 
- m_value=structure::negative_one;
+ m_value=lib::structure::negative_one;
 }//set_defer
 
 //------------------------------------------------------------------------

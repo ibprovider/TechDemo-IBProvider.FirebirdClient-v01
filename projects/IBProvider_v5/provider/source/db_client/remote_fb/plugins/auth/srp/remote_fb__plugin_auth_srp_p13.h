@@ -21,9 +21,9 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data
  :public RemoteFB__SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__Plugin_Auth::name_type                 name_type;
+  using name_type=RemoteFB__Plugin_Auth::name_type;
 
-  typedef IBP_BigInteger::bytes_type                       bytes_type;
+  using bytes_type=IBP_BigInteger::bytes_type;
 
  public:
   static const size_t c_expectedSaltAndKeySize
@@ -49,18 +49,18 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data
 //class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
 
 template<class SecureHashAlgorithms,const wchar_t* pName>
-class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
+class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__Plugin_Auth_SRP_P13_Data)
 {
  private:
-  typedef RemoteFB__Plugin_Auth_SRP_P13_Data_Impl          self_type;
+  using self_type=RemoteFB__Plugin_Auth_SRP_P13_Data_Impl;
 
-  RemoteFB__Plugin_Auth_SRP_P13_Data_Impl(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Plugin_Auth_SRP_P13_Data_Impl(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr
-           <RemoteFB__Plugin_Auth_SRP_P13_Data>            self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<RemoteFB__Plugin_Auth_SRP_P13_Data>;
 
  private:
   RemoteFB__Plugin_Auth_SRP_P13_Data_Impl();
@@ -84,11 +84,11 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
          const char*                serverPubKey)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //typedefs -----------------------------------------------------
-  typedef SecureHashAlgorithms
-   sha_type;
+  using sha_type
+   =SecureHashAlgorithms;
 
-  typedef db_obj::dbms_fb::v03_0_0::fb_v03_0_0__auth__srp_remote_password<sha_type>
-   rem_password_type;
+  using rem_password_type
+   =db_obj::dbms_fb::v03_0_0::fb_v03_0_0__auth__srp_remote_password<sha_type>;
 
  private: //--------------------------------------------------------------
   const name_type m_PluginName;
@@ -103,17 +103,17 @@ class RemoteFB__Plugin_Auth_SRP_P13_Data_Impl
 /// <summary>
 ///  Реализация плагина для SRP-аутентификации [Firebird 3.0]
 /// </summary>
-class RemoteFB__Plugin_Auth_SRP_P13
+class RemoteFB__Plugin_Auth_SRP_P13 LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_DYNAMIC(RemoteFB__Plugin_Auth)
 {
  private:
-  typedef RemoteFB__Plugin_Auth_SRP_P13         self_type;
+  using self_type=RemoteFB__Plugin_Auth_SRP_P13;
 
-  RemoteFB__Plugin_Auth_SRP_P13(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Plugin_Auth_SRP_P13(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef RemoteFB__Plugin_Auth_SRP_P13_Data    data_type;
+  using data_type=RemoteFB__Plugin_Auth_SRP_P13_Data;
 
  private:
   /// <summary>
@@ -156,7 +156,7 @@ class RemoteFB__Plugin_Auth_SRP_P13
   virtual void authenticate(RemoteFB__ClientConnectBlock_v2& clientConnectBlock)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_smart_object_ptr<data_type> data_ptr;
+  using data_ptr=lib::structure::t_smart_object_ptr<data_type>;
 
  private:
   ///Данные аутентификации.

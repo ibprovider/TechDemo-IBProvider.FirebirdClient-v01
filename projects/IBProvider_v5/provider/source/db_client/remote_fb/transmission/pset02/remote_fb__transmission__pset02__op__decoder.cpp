@@ -44,7 +44,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_cond_accept
  // MAP(xdr_u_short, accept_with_data->p_acpt_authenticated);
  // MAP(xdr_cstring, accept_with_data->p_acpt_keys);
 
- typedef RemoteFB__PSET02__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET02__XDR__Decoder;
 
  protocol::set02::P_OP_ACPD* const p_acpd=&packet.p_acpd;
 
@@ -120,7 +120,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_accept_data
  // MAP(xdr_u_short, accept_with_data->p_acpt_authenticated);
  // MAP(xdr_cstring, accept_with_data->p_acpt_keys);
 
- typedef RemoteFB__PSET02__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET02__XDR__Decoder;
 
  protocol::set02::P_OP_ACPD* const p_acpd=&packet.p_acpd;
 
@@ -202,7 +202,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_response
  //return xdr_status_vector(xdrs, response->p_resp_status_vector) ?
  //                         P_TRUE(xdrs, p) : P_FALSE(xdrs, p);
 
- typedef RemoteFB__PSET02__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET02__XDR__Decoder;
 
  protocol::set02::P_OP_RESP* const p_resp=&packet.p_resp;
 
@@ -267,7 +267,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_cont_auth
  // MAP(xdr_cstring, auth->p_list);
  // MAP(xdr_cstring, auth->p_keys);
 
- typedef RemoteFB__PSET02__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET02__XDR__Decoder;
 
  protocol::set02::P_OP_AUTH_CONT* const p_auth_cont=&packet.p_auth_cont;
 
@@ -330,7 +330,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_sql_response__s
  assert(spStmtData);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set02::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -407,7 +407,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_fetch_response__s
  assert(spFetchResult->m_ProcessedFetchCount<=spFetchResult->m_RequestedFetchCount);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set02::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -507,7 +507,7 @@ void RemoteFB__PSET02__OpDecoder::decode__op_slice__s
  assert(spMem);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set02::P_OP_SLC_DATA* const p_slc_data=&packet.p_slc_data;
 

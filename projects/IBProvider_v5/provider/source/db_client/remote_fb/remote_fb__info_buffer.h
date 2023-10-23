@@ -13,9 +13,8 @@
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef structure::t_typed_simple_buffer
-           <unsigned char,
-            RemoteFB__MemoryAllocator>      RemoteFB__InfoBuffer;
+using RemoteFB__InfoBuffer
+ =structure::t_typed_simple_buffer<unsigned char,RemoteFB__MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms remote_fb*/}/*nms db_client*/}/*nms ibp*/}/*nms lcpi*/

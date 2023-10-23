@@ -24,13 +24,13 @@ class RemoteFB__API_P13_LAZY_SEND__PrepareStatement
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__PrepareStatement)
 {
  private:
-  typedef RemoteFB__API_P13_LAZY_SEND__PrepareStatement      self_type;
+  using self_type=RemoteFB__API_P13_LAZY_SEND__PrepareStatement;
 
-  RemoteFB__API_P13_LAZY_SEND__PrepareStatement(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P13_LAZY_SEND__PrepareStatement(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef stmt_handle_type::item_type                        stmt_data_type;
+  using stmt_data_type=stmt_handle_type::item_type;
 
  private:
   RemoteFB__API_P13_LAZY_SEND__PrepareStatement();

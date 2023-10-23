@@ -27,18 +27,18 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P13__StmtHelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P13__StmtHelper             self_type;
+  using self_type=RemoteFB__P13__StmtHelper;
 
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__TrHandle           tr_handle_type;
-  typedef handles::RemoteFB__StmtHandle         stmt_handle_type;
+  using tr_handle_type   =handles::RemoteFB__TrHandle;
+  using stmt_handle_type =handles::RemoteFB__StmtHandle;
 
-  typedef tr_handle_type::item_type             tr_data_type;
-  typedef stmt_handle_type::item_type           stmt_data_type;
+  using tr_data_type     =tr_handle_type::item_type;
+  using stmt_data_type   =stmt_handle_type::item_type;
 
-  typedef structure::t_const_str_box            sql_str_box_type;
+  using sql_str_box_type =lib::structure::t_const_str_box;
 
-  typedef unsigned char                         byte_type;
+  using byte_type=unsigned char;
 
  public:
   /// <summary>

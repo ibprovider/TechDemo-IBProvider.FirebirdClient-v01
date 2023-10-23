@@ -20,25 +20,25 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
  ,public RemoteFB__SmartObjectBase2
 {
  private:
-  typedef RemoteFB__Connector                                  self_type;
+  using self_type=RemoteFB__Connector;
 
-  RemoteFB__Connector(self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Connector(self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>             self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_const_wstr_box                          wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
-  typedef structure::t_const_str_box                           str_box_type;
+  using str_box_type=lib::structure::t_const_str_box;
 
-  typedef isc_base::t_isc_connection_settings                  cns_type;
+  using cns_type=isc_base::t_isc_connection_settings;
 
-  typedef handles::RemoteFB__TrHandle                          tr_handle_type;
+  using tr_handle_type=handles::RemoteFB__TrHandle;
 
-  typedef handles::RemoteFB__StmtHandle                        stmt_handle_type;
+  using stmt_handle_type=handles::RemoteFB__StmtHandle;
 
-  typedef handles::RemoteFB__BlobHandle                        blob_handle_type;
+  using blob_handle_type=handles::RemoteFB__BlobHandle;
 
  private:
   explicit RemoteFB__Connector(RemoteFB__Port* pPort);
@@ -581,20 +581,24 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   typedef thread_traits::lock_guard_type                lock_guard_type;
 
  private:
-  typedef handles::RemoteFB__HandleData_Transaction     tr_handle_data_type;
+  using tr_handle_data_type
+   =handles::RemoteFB__HandleData_Transaction;
 
-  typedef tr_handle_data_type::tag_list_adapter         tr_handle_list_traits;
+  using tr_handle_list_traits
+   =tr_handle_data_type::tag_list_adapter;
 
-  typedef structure::t_list_external
-           <tr_handle_list_traits>                      tr_handle_list_type;
+  using tr_handle_list_type
+   =structure::t_list_external<tr_handle_list_traits>;
 
  private:
-  typedef handles::RemoteFB__HandleData_Statement       stmt_handle_data_type;
+  using stmt_handle_data_type
+   =handles::RemoteFB__HandleData_Statement;
 
-  typedef stmt_handle_data_type::tag_cn_list_adapter    stmt_handle_list_traits;
+  using stmt_handle_list_traits
+   =stmt_handle_data_type::tag_cn_list_adapter;
 
-  typedef structure::t_list_external
-           <stmt_handle_list_traits>                    stmt_handle_list_type;
+  using stmt_handle_list_type
+   =structure::t_list_external<stmt_handle_list_traits>;
 
  private:
   /// <summary>

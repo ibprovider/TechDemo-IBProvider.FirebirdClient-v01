@@ -23,13 +23,13 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P10__ConnectOpCtx LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P10__ConnectOpCtx              self_type;
+  using self_type=RemoteFB__P10__ConnectOpCtx;
 
-  RemoteFB__P10__ConnectOpCtx(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__P10__ConnectOpCtx(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef isc_base::t_isc_param_buffer_v1_builder  dpb_type;
+  using dpb_type=isc_base::t_isc_param_buffer_v1_builder;
 
  public:
   dpb_type m_dpb;

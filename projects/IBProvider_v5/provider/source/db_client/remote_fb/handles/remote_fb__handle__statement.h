@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace h
 /// <summary>
 ///  Дескриптор запроса.
 /// </summary>
-typedef RemoteFB__HandleData_Statement::self_ptr      RemoteFB__StmtHandle;
+using RemoteFB__StmtHandle=RemoteFB__HandleData_Statement::self_ptr;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

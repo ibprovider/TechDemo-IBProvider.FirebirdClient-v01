@@ -52,7 +52,7 @@ using IBP_SmartMemoryObject
 class IBP_MemoryWithDebugChecks LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  typedef IBP_MemoryWithDebugChecks                    self_type;
+  using self_type=IBP_MemoryWithDebugChecks;
 
  public:
   static void* Alloc(size_t sz); //throw

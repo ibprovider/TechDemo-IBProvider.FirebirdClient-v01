@@ -35,34 +35,31 @@ class RemoteFB__FetchResult LCPI_CPP_CFG__CLASS__FINAL
  :public RemoteFB__SmartMemoryObject
 {
  private:
-  typedef RemoteFB__FetchResult                               self_type;
+  using self_type=RemoteFB__FetchResult;
 
-  RemoteFB__FetchResult(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__FetchResult(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>            self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef unsigned char                                       byte_type;
-  typedef size_t                                              size_type;
+  using byte_type=unsigned char;
+  using size_type=size_t;
 
-  typedef RemoteFB__MemoryAllocator                           allocator_type;
+  using allocator_type
+   =RemoteFB__MemoryAllocator;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                                  msg_blr_buffer_type;
+  using msg_blr_buffer_type
+   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
-  typedef structure::t_stl_vector
-            <RemoteFB__MsgDataElementDescr,
-             allocator_type>                                  msg_data_descrs_type;
+  using msg_data_descrs_type
+   =structure::t_stl_vector<RemoteFB__MsgDataElementDescr,allocator_type>;
 
-  typedef structure::t_typed_simple_buffer
-            <byte_type,
-             allocator_type>                                  msg_data_buffer_type;
+  using msg_data_buffer_type
+   =structure::t_typed_simple_buffer<byte_type,allocator_type>;
 
-  typedef structure::t_typed_simple_buffer
-            <unsigned char,
-             allocator_type>                                  msg_nulls_buffer_type;
+  using msg_nulls_buffer_type
+   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
   /// <summary>
   ///  Перечисление состояний процесса обработки пакетов с ответами
@@ -181,11 +178,11 @@ class RemoteFB__FetchResult LCPI_CPP_CFG__CLASS__FINAL
   size_type const m_cbRowBlock;
 
  private:
-  typedef structure::t_cycle_buffer_manager__num_traits<size_type>
-   msg_data_buf_mng_traits_type;
+  using msg_data_buf_mng_traits_type
+   =structure::t_cycle_buffer_manager__num_traits<size_type>;
 
-  typedef structure::t_cycle_buffer_manager<msg_data_buf_mng_traits_type>
-   msg_data_buf_mng_type;
+  using msg_data_buf_mng_type
+   =structure::t_cycle_buffer_manager<msg_data_buf_mng_traits_type>;
 
  private:
   msg_data_buf_mng_type  m_RowsDataBufferManager;

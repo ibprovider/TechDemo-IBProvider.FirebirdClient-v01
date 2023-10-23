@@ -59,7 +59,7 @@ void IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::PrepareSetValue
  assert(pResult_Value->vt==VT_EMPTY);
 
  //-----------------------------------------
- const wchar_t c_bug_check_src[]
+ const wchar_t* const c_bug_check_src
   =L"IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::PrepareSetValue";
 
  const auto* const pxValues
@@ -170,7 +170,7 @@ IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::PFnFind
  IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::Helper__SelectFindFunc
                                            (IBP_OLEDB_Props2__Values__DATASOURCE::enumAllowedValuesKind const valuesKind)
 {
- const wchar_t c_bug_check_src[]
+ const wchar_t* const c_bug_check_src
   =L"IBP_OLEDB_Props2__Handler__PrepareSetValue__Prop__ExtProps::Helper__SelectFindFunc";
 
  switch(valuesKind)

@@ -23,15 +23,13 @@ class RemoteFB__API_P12_LAZY_SEND__DropStatement LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__DropStatement)
 {
  private:
-  typedef RemoteFB__API_P12_LAZY_SEND__DropStatement        self_type;
+  using self_type=RemoteFB__API_P12_LAZY_SEND__DropStatement;
 
-  RemoteFB__API_P12_LAZY_SEND__DropStatement(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P12_LAZY_SEND__DropStatement(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef handles::RemoteFB__StmtHandle                     stmt_handle_type;
-
-  typedef stmt_handle_type::item_type                       stmt_data_type;
+  using stmt_data_type=stmt_handle_type::item_type;
 
  private:
   RemoteFB__API_P12_LAZY_SEND__DropStatement();

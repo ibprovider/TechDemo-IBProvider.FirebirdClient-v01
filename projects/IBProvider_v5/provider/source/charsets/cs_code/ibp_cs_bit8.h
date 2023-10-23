@@ -20,13 +20,14 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  ”правл€ющий класс дл€ кодовых страниц BIT8
 /// </summary>
-class t_ibp_cs_bit8:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
+class t_ibp_cs_bit8 LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
 {
  private:
-  typedef t_ibp_cs_bit8                                    self_type;
+  using self_type=t_ibp_cs_bit8;
 
-  t_ibp_cs_bit8(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_cs_bit8(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  ƒеструктор
@@ -34,7 +35,7 @@ class t_ibp_cs_bit8:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charse
   virtual ~t_ibp_cs_bit8();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<const self_type>   self_cptr;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
 
   typedef t_ibp_cs_bit8_map                                data_type;
 

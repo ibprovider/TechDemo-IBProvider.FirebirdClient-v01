@@ -24,10 +24,10 @@ class RemoteFB__API_P13__ExecuteImmediate_M LCPI_CPP_CFG__CLASS__FINAL
  :public REMOTE_FB__DEF_INTERFACE_IMPL_STATIC(RemoteFB__API__ExecuteImmediate_M)
 {
  private:
-  typedef RemoteFB__API_P13__ExecuteImmediate_M       self_type;
+  using self_type=RemoteFB__API_P13__ExecuteImmediate_M;
 
-  RemoteFB__API_P13__ExecuteImmediate_M(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__API_P13__ExecuteImmediate_M(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   RemoteFB__API_P13__ExecuteImmediate_M();

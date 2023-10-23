@@ -82,7 +82,7 @@ void RemoteFB__PSET01__SendPacket(RemoteFB__PortOperationContext&               
  assert(descr.PacketEncoder!=nullptr);
 
  //-----------------------------------------
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  RemoteFB__PortWriteGuard writeGuard(op_ctx); //throw
 

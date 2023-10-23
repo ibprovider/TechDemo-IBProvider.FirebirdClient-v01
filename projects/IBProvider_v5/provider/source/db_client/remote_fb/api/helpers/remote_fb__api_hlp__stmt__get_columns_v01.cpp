@@ -96,7 +96,7 @@ void RemoteFB__API_HLP__GetColumns_v01::exec(db_obj::t_db_operation_context& OpC
  //-----------------------------------------
  try
  {
-  typedef protocol::P_USHORT StartIndexType;
+  using StartIndexType=protocol::P_USHORT;
 
   bool IsFirstInfoBlock=true;
 

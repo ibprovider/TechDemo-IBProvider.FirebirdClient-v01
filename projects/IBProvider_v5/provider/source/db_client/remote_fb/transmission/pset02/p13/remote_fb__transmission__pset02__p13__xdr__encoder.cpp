@@ -63,7 +63,7 @@ void RemoteFB__PSET02__P13__XDR__Encoder::encode__sql_message
 #endif
 
  //-----------------------------------------------------------------------
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  //-----------------------------------------------------------------------
  //передаем массив с флагами NULL-состо€ний значений

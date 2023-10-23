@@ -38,7 +38,7 @@ RemoteFB__HandleData_Transaction::~RemoteFB__HandleData_Transaction()
 RemoteFB__HandleData_Transaction::self_ptr
  RemoteFB__HandleData_Transaction::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //------------------------------------------------------------------------

@@ -29,7 +29,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_accept
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_ACPT* const p_acpt=&packet.p_acpt;
 
@@ -82,7 +82,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_response
  //return xdr_status_vector(xdrs, response->p_resp_status_vector) ?
  //                         P_TRUE(xdrs, p) : P_FALSE(xdrs, p);
 
- typedef RemoteFB__PSET01__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Decoder;
 
  protocol::set01::P_OP_RESP* const p_resp=&packet.p_resp;
 
@@ -143,7 +143,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_trusted_auth
 
  //MAP(xdr_cstring, trau->p_trau_data);
 
- typedef RemoteFB__PSET01__XDR__Decoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Decoder;
 
  protocol::set01::P_OP_TRAU* const p_trau=&packet.p_trau;
 
@@ -182,7 +182,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_sql_response__s
  assert(spStmtData);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -259,7 +259,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_fetch_response__s
  assert(spFetchResult->m_ProcessedFetchCount<=spFetchResult->m_RequestedFetchCount);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -359,7 +359,7 @@ void RemoteFB__PSET01__OpDecoder::decode__op_slice__s
  assert(spMem);
 
  //-----------------------------------------
- typedef RemoteFB__XDR__Decoder xdr;
+ using xdr=RemoteFB__XDR__Decoder;
 
  protocol::set01::P_OP_SLC_DATA* const p_slc_data=&packet.p_slc_data;
 

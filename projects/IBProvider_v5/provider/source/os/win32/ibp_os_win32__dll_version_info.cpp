@@ -158,7 +158,7 @@ std::wstring t_ibp_os_win32__dll_version_info::tag_loader::get_lang_and_cp_id
 
  typedef win32lib::t_ver_info_element__Var var_element_type;
 
- const structure::t_smart_object_ptr<const var_element_type>
+ const lib::structure::t_smart_object_ptr<const var_element_type>
   spVar
    =dynamic_cast<const var_element_type*>(pVerInfo->query(L"\\VarFileInfo\\Translation",true).ptr());
 

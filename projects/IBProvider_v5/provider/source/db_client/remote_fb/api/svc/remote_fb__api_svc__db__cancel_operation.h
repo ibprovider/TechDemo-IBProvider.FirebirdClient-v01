@@ -21,7 +21,8 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 /// <summary>
 ///  Сервис отмены выполнения операции.
 /// </summary>
-class COMP_CONF_DECLSPEC_NOVTABLE RemoteFB__SVC__CancelDbOperation:public RemoteFB__SmartInterface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__SVC__CancelDbOperation
+ :public RemoteFB__SmartInterface
 {
  public:
   /// <summary>

@@ -24,12 +24,12 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 class RemoteFB__PortInitializer_PSET02_v01
 {
  private:
-  typedef RemoteFB__PortInitializer_PSET02_v01  self_type;
+  using self_type=RemoteFB__PortInitializer_PSET02_v01;
 
  public: //typedefs ------------------------------------------------------
-  typedef RemoteFB__Port_BASE_v01               port_type;
+  using port_type=RemoteFB__Port_BASE_v01;
 
-  typedef structure::t_const_wstr_box           wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   /// <summary>
@@ -63,16 +63,17 @@ class RemoteFB__PortInitializer_PSET02_v01
                 oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
 
  private:
-  struct tag_connect_finalizator
+  struct tag_connect_finalizator LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
-    typedef void (*init_p13_func_type)
-      (port_type*                       pPort,
-       wstr_box_type                    ucs2_database_name,
-       RemoteFB__ClientConnectBlock_v2& clientConnectBlock);
+    using init_p13_pfunc_type
+     =void (*)
+       (port_type*                       pPort,
+        wstr_box_type                    ucs2_database_name,
+        RemoteFB__ClientConnectBlock_v2& clientConnectBlock);
 
    public:
-    init_p13_func_type P13;
+    init_p13_pfunc_type P13;
   };//struct tag_connect_finalizator
 
  private:
@@ -153,8 +154,11 @@ class RemoteFB__PortInitializer_PSET02_v01
                 parchs_type&                                               parchs);
 
  private:
-  typedef RemoteFB__ClientConnectBlock_v2::expected_ptype_descr_type   expected_ptype_descr_type;
-  typedef RemoteFB__ClientConnectBlock_v2::expected_ptype_descr_type_N expected_ptype_descr_type_N;
+  using expected_ptype_descr_type
+   =RemoteFB__ClientConnectBlock_v2::expected_ptype_descr_type;
+
+  using expected_ptype_descr_type_N
+   =RemoteFB__ClientConnectBlock_v2::expected_ptype_descr_type_N;
 
   static void Helper__TryConnect__GetProtocolType
                (const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues,
@@ -200,18 +204,19 @@ class RemoteFB__PortInitializer_PSET02_v01
                 const tag_connect_finalizator&     FinalOpFuncs);
 
  private:
-  struct tagAcceptConnectFuncs
+  struct tagAcceptConnectFuncs LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
-    typedef void (*accept_func_pointer)
-     (port_type*                         pPort,
-      const protocol::set02::PACKET_V02& acceptPacket,
-      wstr_box_type                      ucs2_database_name,
-      RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
-      const tag_connect_finalizator&     FinalOpFuncs);
+    using accept_pfunc_pointer
+     =void (*)
+       (port_type*                         pPort,
+        const protocol::set02::PACKET_V02& acceptPacket,
+        wstr_box_type                      ucs2_database_name,
+        RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
+        const tag_connect_finalizator&     FinalOpFuncs);
 
    public:
-    accept_func_pointer P13;
+    accept_pfunc_pointer P13;
   };//struct tagAcceptConnectFuncs
 
   //функции для многошагового завершения подключения

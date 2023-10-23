@@ -65,7 +65,7 @@ extern const wchar_t me_bug_check__unexpected_database_dialect_1[]
 
 //------------------------------------------------------------------------
 extern const wchar_t me_bug_check__database_dialect_not_defined_0[]
- =L"database dialect not defined";
+ =L"database dialect is not defined";
 
 //------------------------------------------------------------------------
 extern const wchar_t me_bug_check__no_data_source[]
@@ -176,7 +176,7 @@ extern const wchar_t me_bug_check__prop__unexpected_value_2[]
  =L"unknown value [%2] in [%1] setting";
 
 extern const wchar_t me_bug_check__prop__not_defined_1[]
- =L"value of property \"%1\" not defined";
+ =L"value of property \"%1\" is not defined";
 
 ////////////////////////////////////////////////////////////////////////////////
 

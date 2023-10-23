@@ -27,21 +27,22 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 /// - Не допускаются параллельные вызовы получения пакетов.
 /// - Не допускаются параллельный вызов получения пакетов и вызов
 ///   отправки пакета с регистрацией объекта отложенного чтения ответа.
-class RemoteFB__Port_BASE_v01:public RemoteFB__Port
+class RemoteFB__Port_BASE_v01
+ :public RemoteFB__Port
 {
  private:
-  typedef RemoteFB__Port_BASE_v01                              self_type;
-  typedef RemoteFB__Port                                       inherited;
+  using self_type=RemoteFB__Port_BASE_v01;
+  using inherited=RemoteFB__Port;
 
-  RemoteFB__Port_BASE_v01(const self_type&);
-  self_type& operator = (const self_type&);
+  RemoteFB__Port_BASE_v01(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>             self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_const_wstr_box                          wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
-  typedef size_t                                               size_type;
+  using size_type=size_t;
 
  public:
   //открыты для доступа из инициализаторов
@@ -188,7 +189,7 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
  #endif
 
  private:
-  typedef ULONG rw_state_type;
+  using rw_state_type=ULONG;
 
   static const rw_state_type c_state__none   =0;
   static const rw_state_type c_state__in_use =1;
@@ -212,11 +213,12 @@ class RemoteFB__Port_BASE_v01:public RemoteFB__Port
   rw_state_type m_write_state;
 
  private:
-  typedef structure::t_stl_map
-           <GUID,
-            RemoteFB__SmartObjectPtr,
-            ole_lib::TGuidLess,
-            RemoteFB__MemoryAllocator>      services_type;
+  using services_type
+   =structure::t_stl_map
+     <GUID,
+      RemoteFB__SmartObjectPtr,
+      ole_lib::TGuidLess,
+      RemoteFB__MemoryAllocator>;
 
   ///Вспомогательные сервисы для работы с подключением
   services_type m_Services;

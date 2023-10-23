@@ -37,7 +37,7 @@ RemoteFB__ConnectorData::self_ptr RemoteFB__ConnectorData::Create(RemoteFB__Port
 {
  assert(pPort!=nullptr);
 
- return structure::not_null_ptr(new self_type(pPort));
+ return lib::structure::not_null_ptr(new self_type(pPort));
 }//Create
 
 //interface --------------------------------------------------------------

@@ -28,7 +28,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_connect
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_CNCT* const p_cnct=&packet.p_cnct;
 
@@ -103,7 +103,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_attach
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_ATCH* const p_atch=&packet.p_atch;
 
@@ -137,7 +137,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_create
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_ATCH* const p_atch=&packet.p_atch;
 
@@ -171,7 +171,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_detach
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -193,7 +193,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_drop_database
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -215,7 +215,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_trusted_auth
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_TRAU* const p_trau=&packet.p_trau;
 
@@ -237,7 +237,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_info_database
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_INFO* const p_info=&packet.p_info;
 
@@ -271,7 +271,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_transaction
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_STTR* const p_sttr=&packet.p_sttr;
 
@@ -297,7 +297,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_rollback
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -319,7 +319,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_rollback_retaining
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -341,7 +341,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_commit
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -363,7 +363,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_commit_retaining
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -385,7 +385,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_prepare2
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_PREP* const p_prep=&packet.p_prep;
 
@@ -411,7 +411,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_allocate_statement
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -433,7 +433,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_free_statement
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLFREE* const p_sqlfree=&packet.p_sqlfree;
 
@@ -462,7 +462,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_prepare_statement
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLST* const p_sqlst=&packet.p_sqlst;
 
@@ -511,7 +511,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_info_sql
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_INFO* const p_info=&packet.p_info;
 
@@ -552,7 +552,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_execute__s
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -623,7 +623,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_execute2__s
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLDATA* const p_sqldata=&packet.p_sqldata;
 
@@ -695,7 +695,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_fetch
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  //sqldata = &p->p_sqldata;
  //MAP(xdr_short, reinterpret_cast<SSHORT&>(sqldata->p_sqldata_statement));
@@ -745,7 +745,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_open_blob2
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_BLOB* const p_blob=&packet.p_blob;
 
@@ -779,7 +779,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_create_blob2
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_BLOB* const p_blob=&packet.p_blob;
 
@@ -813,7 +813,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_close_blob
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -835,7 +835,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_cancel_blob
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_RLSE* const p_rlse=&packet.p_rlse;
 
@@ -857,7 +857,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_info_blob
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_INFO* const p_info=&packet.p_info;
 
@@ -891,7 +891,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_get_segment
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SGMT* const p_sgmt=&packet.p_sgmt;
 
@@ -931,7 +931,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_put_segment
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SGMT* const p_sgmt=&packet.p_sgmt;
 
@@ -971,7 +971,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_put_slice__s
  assert(spBuf);
  assert(spBuf->debug__get_protocol_architecture()==protocol::FB_CURRENT_ARCHITECTURE);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_PUT_SLC* const p_put_slc=&packet.p_put_slc;
 
@@ -1033,7 +1033,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_get_slice
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_GET_SLC* const p_get_slc=&packet.p_get_slc;
 
@@ -1084,7 +1084,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_cancel
 
  assert(spBuf);
 
- typedef RemoteFB__XDR__Encoder xdr;
+ using xdr=RemoteFB__XDR__Encoder;
 
  const protocol::set01::P_OP_CANCEL* const p_cancel=&packet.p_cancel;
 
@@ -1108,7 +1108,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_exec_immediate
 
  assert(spBuf);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLST* const p_sqlst=&packet.p_sqlst;
 
@@ -1174,7 +1174,7 @@ void RemoteFB__PSET01__OpEncoder::encode__op_exec_immediate2__s
 
  assert(spStmtData);
 
- typedef RemoteFB__PSET01__XDR__Encoder xdr;
+ using xdr=RemoteFB__PSET01__XDR__Encoder;
 
  const protocol::set01::P_OP_SQLST* const p_sqlst=&packet.p_sqlst;
 

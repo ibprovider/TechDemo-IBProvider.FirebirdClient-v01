@@ -55,7 +55,7 @@ void RemoteFB__API_HLP__XSQLDA_SET01__Utilities::Process_PrepareInfoBuf
 
  const size_t c_primary_ids=4;
 
- typedef structure::t_fix_vector<unsigned char,c_primary_ids>  primary_ids_type;
+ using primary_ids_type=lib::structure::t_fix_vector<unsigned char,c_primary_ids>;
 
  primary_ids_type processed_ids;
 

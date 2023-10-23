@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 class RemoteFB__P12_LAZY_SEND__SrvResourceHelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef RemoteFB__P12_LAZY_SEND__SrvResourceHelper   self_type;
+  using self_type=RemoteFB__P12_LAZY_SEND__SrvResourceHelper;
 
  public:
   /// <summary>

@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__InMsg_v1
 
-class RemoteFB__InMsg_v1
+class RemoteFB__InMsg_v1 LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
   using byte_type=unsigned char;
@@ -41,7 +41,7 @@ class RemoteFB__InMsg_v1
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__OutMsg_v1
 
-class RemoteFB__OutMsg_v1
+class RemoteFB__OutMsg_v1 LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
   using byte_type=unsigned char;

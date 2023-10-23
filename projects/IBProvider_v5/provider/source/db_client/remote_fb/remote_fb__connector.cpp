@@ -25,18 +25,19 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //struct RemoteFB__Connector::tag_port_factories
 
-struct RemoteFB__Connector::tag_port_factories
+struct RemoteFB__Connector::tag_port_factories LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  typedef RemoteFB__PortPtr (*PFN_Factory_INET)
-                               (int                                                  socketFamily,
-                                wstr_box_type                                        ucs2_host,
-                                wstr_box_type                                        ucs2_port,
-                                wstr_box_type                                        ucs2_database_name,
-                                oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
+  using PFN_Factory_INET_t
+   =RemoteFB__PortPtr (*)
+     (int                                                  socketFamily,
+      wstr_box_type                                        ucs2_host,
+      wstr_box_type                                        ucs2_port,
+      wstr_box_type                                        ucs2_database_name,
+      oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* pDsPropValues);
 
  public:
-  PFN_Factory_INET Factory_INET;
+  PFN_Factory_INET_t Factory_INET;
 };//class RemoteFB__Connector::tag_port_factories
 
 ////////////////////////////////////////////////////////////////////////////////
