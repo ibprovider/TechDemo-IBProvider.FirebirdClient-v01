@@ -313,6 +313,10 @@ extern const wchar_t me_bug_check__no_write_func_for_array_elements_1[]
 extern const wchar_t me_bug_check__too_large_number_of_RPT_elements_2[]
  =L"too large number of RPT elements: %1. max: %2";
 
+//params: actual size, required size
+extern const wchar_t me_bug_check__buffer_is_small_2[]
+ =L"buffer is small: %1. required size: %2";
+
 ////////////////////////////////////////////////////////////////////////////////
 
 //params: length
@@ -400,6 +404,20 @@ extern const wchar_t me_bug_check__intersection_of_timezone_utc_transition_recor
 
 extern const wchar_t me_bug_check__unexpected_problem_with_the_building_of_string_was_occurred_0[]
  =L"an unexpected problem with the building of string was occurred";
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t me_bug_check__unknown_argument_value_mechanism_1[]
+ =L"unknown argument value mechanism %1";
+
+extern const wchar_t me_bug_check__unknown_return_value_mechanism_1[]
+ =L"unknown return value mechanism %1";
+
+////////////////////////////////////////////////////////////////////////////////
+
+//params: direction id
+extern const wchar_t me_bug_check__unknown_parameter_direction_1[]
+ =L"unknown parameter direction %1";
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

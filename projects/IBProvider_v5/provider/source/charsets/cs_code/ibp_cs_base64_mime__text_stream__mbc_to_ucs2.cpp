@@ -16,7 +16,7 @@ namespace lcpi{namespace ibp{
 
 t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2::tag_text_stream__mbc_to_ucs2
                                            (db_obj::t_db_text_stream__mbc* const source__mbc)
- :m_source__mbc (structure::not_null_ptr(source__mbc))
+ :m_source__mbc (lib::structure::not_null_ptr(source__mbc))
  ,m_state_id    (state_id__process_mime_chars)
  ,m_buffer_pos  (0)
  ,m_buffer_size (0)

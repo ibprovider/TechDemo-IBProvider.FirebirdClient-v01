@@ -68,7 +68,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::Extrac
 
  auto const ePropValue(strPropValue.end());
 
- sPropValue=structure::miss_space(sPropValue,ePropValue);
+ sPropValue=lib::structure::skip_spaces(sPropValue,ePropValue);
 
  if(sPropValue==ePropValue)
   return false;
@@ -93,7 +93,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::Extrac
 
   sPropValue=std::find(sPropValue,ePropValue,L',');
 
-  auto const eName=structure::miss_space_back(sName,sPropValue);
+  auto const eName=structure::skip_spaces_back(sName,sPropValue);
 
   if(sName==eName)
   {
@@ -149,7 +149,7 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::Extrac
 
   ++sPropValue;
 
-  sPropValue=structure::miss_space(sPropValue,ePropValue);
+  sPropValue=structure::skip_spaces(sPropValue,ePropValue);
  }//for[ever]
 
  //формируем нормализованную строку со списком имен.

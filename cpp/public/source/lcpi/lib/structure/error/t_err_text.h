@@ -17,14 +17,14 @@ namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_err_text:public t_smart_interface
 {
  private:
-  typedef t_err_text                                  self_type;
+  using self_type=t_err_text;
 
  public: //typedefs -------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>               self_ptr;
-  typedef t_smart_object_ptr<const self_type>         self_cptr;
+  using self_ptr    =t_smart_object_ptr<self_type>;
+  using self_cptr   =t_smart_object_ptr<const self_type>;
 
-  typedef std::wstring                                string_type;
-  typedef t_lcid                                      lcid_type;
+  using string_type =std::wstring;
+  using lcid_type   =t_lcid;
 
  public: //error_record interface -----------------------------------------
 

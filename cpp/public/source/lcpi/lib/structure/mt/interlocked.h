@@ -24,6 +24,9 @@ class interlocked LCPI_CPP_CFG__CLASS__FINAL
 
   template<typename T1,typename T2,typename T3>
   static T1 compare_exchange(T1 volatile* pDestination,T2 newValue,T3 testValue);
+
+  template<typename T>
+  static T add(T volatile* pAddend,T value);
 };//class interlocked
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -33,5 +36,6 @@ class interlocked LCPI_CPP_CFG__CLASS__FINAL
 #include <lcpi/lib/structure/mt/interlocked_decrement.cc>
 #include <lcpi/lib/structure/mt/interlocked_exchange.cc>
 #include <lcpi/lib/structure/mt/interlocked_compare_exchange.cc>
+#include <lcpi/lib/structure/mt/interlocked_add.cc>
 ////////////////////////////////////////////////////////////////////////////////
 #endif

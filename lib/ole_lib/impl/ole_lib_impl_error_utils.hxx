@@ -16,7 +16,7 @@ HRESULT BuildExcepInfo(HRESULT hr,EXCEPINFO* pExcepInfo);
 //Utility for processing of C++ exception in implementation of COM-objects
 
 #ifndef OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER
-# error "OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER not defined!"
+# error "OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER is not defined!"
 #endif
 
 #if(OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER!=0)

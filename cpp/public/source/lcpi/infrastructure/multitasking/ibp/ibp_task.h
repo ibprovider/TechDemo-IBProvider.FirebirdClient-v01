@@ -17,12 +17,12 @@ namespace lcpi{namespace infrastructure{namespace multitasking{namespace ibp{
 /// <summary>
 ///  Идентификатор контроллера задачи
 /// </summary>
-typedef size_t      ibp_task_controller_id;
+using ibp_task_controller_id=size_t;
 
 /// <summary>
 ///  Сигнал (флаг) задачи
 /// </summary>
-typedef long        ibp_task_signal_value;
+using ibp_task_signal_value=long;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_signals
@@ -174,16 +174,19 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
 {
  public: //typedefs ------------------------------------------------------
   /// Смарт-указатель.
-  typedef core::structure::t_smart_object_ptr<ibp_task>     self_ptr;
+  using self_ptr
+   =core::structure::t_smart_object_ptr<ibp_task>;
 
   /// Интерфейс доступа к сигналам задачи [ALIASE]
-  typedef ibp_task_signals                                  task_signals_type;
+  using task_signals_type
+   =ibp_task_signals;
 
   /// <summary>
   ///  Результата завершения задания.
   /// </summary>
   //!  Содержит флаги, перечисленные в tag_ibp_task_result
-  typedef ibp_task_result                                   execute_result_type;
+  using execute_result_type
+   =ibp_task_result;
 
  public:
   /// <summary>

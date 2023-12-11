@@ -209,6 +209,9 @@ IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_meta_svc__columns_rowset)
 //------------------------------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_meta_svc__meta_data_cache)
 
+//------------------------------------------------------------------------
+IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__get_connection_info);
+
 //blob services object ---------------------------------------------------
 IBP_DEF_FWRD_DB_INTERFACE_EX(t_db_svc__blob_services)
 
@@ -312,6 +315,7 @@ IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__detect_autoinc_columns)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__get_table_updatable_columns)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__columns_rowset)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_meta_svc__meta_data_cache)
+IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__get_connection_info)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__blob_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__text_services)
 IBP_DEF_DB_INTERFACE_ID(db_obj::t_db_svc__gen_id)

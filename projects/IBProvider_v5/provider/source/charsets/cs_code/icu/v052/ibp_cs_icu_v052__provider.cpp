@@ -30,7 +30,7 @@ t_ibp_icu_provider::t_ibp_icu_provider(dll_type* const pDLL)
  ,INIT_ICU_POINT(ucnv_getMinCharSize)
  ,INIT_ICU_POINT(ucnv_getMaxCharSize)
  ,INIT_ICU_POINT(ucnv_getType)
- ,m_spDLL(structure::not_null_ptr(pDLL))
+ ,m_spDLL(lib::structure::not_null_ptr(pDLL))
 {
  assert(m_spDLL);
 }//t_ibp_icu_provider

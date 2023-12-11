@@ -21,7 +21,7 @@ t_db_blob_writer_buf::t_db_blob_writer_buf(char*                   const buffer,
  #ifndef NDEBUG
  ,m_buffer_sz  (sz)
  #endif
- ,m_blob_writer(structure::not_null_ptr(writer))
+ ,m_blob_writer(lib::structure::not_null_ptr(writer))
 {
  assert_s(sizeof(*buffer)==1);
 

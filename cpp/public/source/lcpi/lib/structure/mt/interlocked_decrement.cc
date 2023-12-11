@@ -16,22 +16,28 @@ namespace detail{
 class interlocked_decrement_impl
 {
  public:
-  static long exec(long volatile* const pValue)
+  using long_type  =long;
+  using ulong_type =unsigned long;
+  using uint32_type=unsigned __int32;
+  using uint64_type=unsigned __int64;
+
+ public:
+  static long_type exec(long_type volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
 
-  static long exec(unsigned long volatile* const pValue)
+  static ulong_type exec(ulong_type volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
 
-  static unsigned int exec(unsigned int volatile* const pValue)
+  static uint32_type exec(uint32_type volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec
 
-  static unsigned __int64 exec(unsigned __int64 volatile* const pValue)
+  static uint64_type exec(uint64_type volatile* const pValue)
   {
    return ::InterlockedDecrement(pValue);
   }//exec

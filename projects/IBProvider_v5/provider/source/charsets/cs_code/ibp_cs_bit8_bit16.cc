@@ -133,7 +133,10 @@ db_obj::t_db_text_stream__ucs2_ptr
  typedef t_ibp_text_stream__mbc_to_ucs2<self_type>
           tag_text_stream__mbc_to_ucs2;
 
- return structure::not_null_ptr(new tag_text_stream__mbc_to_ucs2(this,mbc_stream));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__mbc_to_ucs2
+           (this,
+            mbc_stream));
 }//mbc_stream_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -148,7 +151,11 @@ db_obj::t_db_text_stream__ucs2_ptr
  typedef t_ibp_text_stream__mbc_buffer_to_ucs2<self_type>
           tag_text_stream__mbc_buffer_to_ucs2;
 
- return structure::not_null_ptr(new tag_text_stream__mbc_buffer_to_ucs2(this,mbc_buffer,mbc_buffer_size));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__mbc_buffer_to_ucs2
+           (this,
+            mbc_buffer,
+            mbc_buffer_size));
 }//mbc_buffer_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -163,7 +170,10 @@ db_obj::t_db_text_stream__mbc_ptr
  typedef t_ibp_text_stream__ucs2_to_mbc<self_type>
           tag_text_stream__ucs2_to_mbc;
 
- return structure::not_null_ptr(new tag_text_stream__ucs2_to_mbc(this,ucs2_stream));
+ return lib::structure::not_null_ptr
+          (new tag_text_stream__ucs2_to_mbc
+            (this,
+             ucs2_stream));
 }//ucs2_stream_to_mbc_stream
 
 //------------------------------------------------------------------------

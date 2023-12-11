@@ -6,6 +6,8 @@
 
 #include <lcpi/lib/.config.h>
 
+#include <string>
+
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //service templates for trim operations

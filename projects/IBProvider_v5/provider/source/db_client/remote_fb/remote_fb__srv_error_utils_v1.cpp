@@ -282,7 +282,7 @@ t_ibp_error_element::self_ptr
  //--------------
  const t_ibp_error_element::self_ptr
   spErrRec
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (_hr,
         ibp_mce_unknown_error_1)));

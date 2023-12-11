@@ -5,7 +5,7 @@
 #ifndef _t_closure_v3_H_
 #define _t_closure_v3_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 //способ использования:
 // 1 определяете тип указателя на объектный обработчик

@@ -58,9 +58,9 @@ class WORK_Cancel_Test_03__ExecuteImmediate::tag_thread
   virtual ~tag_thread();
 
  private:
-  virtual const wchar_t* thread_name_impl()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const wchar_t* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void thread_worker_impl() COMP_W000004_OVERRIDE_FINAL;
+  virtual void thread_worker_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   log_ptr                                  const m_spLog;
@@ -156,11 +156,11 @@ class WORK_Cancel_Test_03__ExecuteImmediate::tag_impl
            const TTSO_TestData_v2& Data);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const COMP_W000004_OVERRIDE_FINAL;
+  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool can_exec()const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void run(context_type* pCtx)const COMP_W000004_OVERRIDE_FINAL;
+  virtual void run(context_type* pCtx)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   TTSO_GlobalContext::self_ptr const m_spParams;

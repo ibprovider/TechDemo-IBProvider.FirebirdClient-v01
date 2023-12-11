@@ -11,24 +11,27 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_SummaryBuilder
 
-class TTSO_SummaryBuilder:public TTSO_SmartMemoryObject
+class TTSO_SummaryBuilder LCPI_CPP_CFG__CLASS__FINAL
+ :public TTSO_SmartMemoryObject
 {
  private:
-  typedef TTSO_SummaryBuilder                             self_type;
+  using self_type=TTSO_SummaryBuilder;
 
-  TTSO_SummaryBuilder(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_SummaryBuilder(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>        self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_str_parameter<wchar_t>             wstr_param_type;
+  using wstr_param_type=structure::t_str_parameter<wchar_t>;
+
+  using count_type=unsigned __int64;
 
  public:
   TTSO_Tracer m_Tracer;
 
   template<class TRootLog>
-  TTSO_SummaryBuilder(TRootLog* pRootLog);
+  explicit TTSO_SummaryBuilder(TRootLog* pRootLog);
 
   virtual ~TTSO_SummaryBuilder();
 
@@ -45,8 +48,8 @@ class TTSO_SummaryBuilder:public TTSO_SmartMemoryObject
                      bool            print_total_from_log);
 
   void print_total(wstr_param_type header,
-                   size_t          nError,
-                   size_t          nWarning);
+                   count_type      nError,
+                   count_type      nWarning);
 
  public:
   void print_summary_ex(TTSO_Tracer&    tracer,
@@ -56,32 +59,32 @@ class TTSO_SummaryBuilder:public TTSO_SmartMemoryObject
   template<class TTracer>
   static void print_total_ex(TTracer&        tracer,
                              wstr_param_type header,
-                             size_t          nError,
-                             size_t          nWarning);
+                             count_type      nError,
+                             count_type      nWarning);
 
   template<class TTracer>
   static void print_total_ex(TTracer&        tracer,
                              wstr_param_type header,
-                             size_t          nError,
-                             size_t          nWarning,
-                             unsigned long   nFullPass,
-                             unsigned long   nTotalTests);
+                             count_type      nError,
+                             count_type      nWarning,
+                             count_type      nFullPass,
+                             count_type      nTotalTests);
 
  public:
   static void print_summary_process_state(TSYS_Tracer& tracer);
 
  private:
-  size_t   m_nLogErrors;
-  size_t   m_nLogWarnings;
+  count_type m_nLogErrors;
+  count_type m_nLogWarnings;
 
-  size_t   m_nTest;
+  count_type m_nTest;
 
-  size_t   m_nTestWithErrors;
-  size_t   m_nTestWithWarnings;
-  size_t   m_nTestSucceeded;
+  count_type m_nTestWithErrors;
+  count_type m_nTestWithWarnings;
+  count_type m_nTestSucceeded;
 
-  size_t   m_nTestErrors;
-  size_t   m_nTestWarnings;
+  count_type m_nTestErrors;
+  count_type m_nTestWarnings;
 
   __int64  m_Time_Real;
   __int64  m_Time_User;
@@ -98,26 +101,27 @@ class TTSO_SummaryBuilder:public TTSO_SmartMemoryObject
 
 template<class TRootLog>
 TTSO_SummaryBuilder::TTSO_SummaryBuilder(TRootLog* const pLog)
- :m_Tracer            (pLog,L"summary"),
-  m_nLogErrors        (pLog->get_error_count()),
-  m_nLogWarnings      (pLog->get_warning_count()),
-  m_nTest             (0),
-  m_nTestWithErrors   (0),
-  m_nTestWithWarnings (0),
-  m_nTestSucceeded    (0),
-  m_nTestErrors       (0),
-  m_nTestWarnings     (0),
-  m_Time_Real         (0),
-  m_Time_User         (0),
-  m_Time_Kernel       (0)
-{;}
+ :m_Tracer            (pLog,L"summary")
+ ,m_nLogErrors        (pLog->get_error_count())
+ ,m_nLogWarnings      (pLog->get_warning_count())
+ ,m_nTest             (0)
+ ,m_nTestWithErrors   (0)
+ ,m_nTestWithWarnings (0)
+ ,m_nTestSucceeded    (0)
+ ,m_nTestErrors       (0)
+ ,m_nTestWarnings     (0)
+ ,m_Time_Real         (0)
+ ,m_Time_User         (0)
+ ,m_Time_Kernel       (0)
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTracer>
 void TTSO_SummaryBuilder::print_total_ex(TTracer&              tracer,
                                          wstr_param_type const header,
-                                         size_t          const nError,
-                                         size_t          const nWarning)
+                                         count_type      const nError,
+                                         count_type      const nWarning)
 {
  if(header.empty())
  {
@@ -136,10 +140,10 @@ void TTSO_SummaryBuilder::print_total_ex(TTracer&              tracer,
 template<class TTracer>
 void TTSO_SummaryBuilder::print_total_ex(TTracer&              tracer,
                                          wstr_param_type const header,
-                                         size_t          const nError,
-                                         size_t          const nWarning,
-                                         unsigned long   const nFullPass,
-                                         unsigned long   const nTotalTests)
+                                         count_type      const nError,
+                                         count_type      const nWarning,
+                                         count_type      const nFullPass,
+                                         count_type      const nTotalTests)
 {
  self_type::print_total_ex(tracer,header,nError,nWarning);
 

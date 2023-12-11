@@ -125,7 +125,7 @@ class TVariant:public TBaseVariant
   //-------
   TVariant(LONG          data);
   TVariant(ULONG         data);
-  TVariant(int           data);
+  TVariant(int           data)=delete;
   TVariant(short         data);
   TVariant(double        data);
   TVariant(float         data);

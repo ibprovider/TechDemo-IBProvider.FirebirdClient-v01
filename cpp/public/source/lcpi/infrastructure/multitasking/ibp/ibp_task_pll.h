@@ -17,10 +17,11 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
  :public core::structure::t_smart_interface
 {
  private:
-  typedef ibp_task_pll__controller                       self_type;
+  using self_type=ibp_task_pll__controller;
 
  public:
-  typedef core::structure::t_smart_object_ptr<self_type> self_ptr;
+  using self_ptr
+   =core::structure::t_smart_object_ptr<self_type>;
 
  public:
   /// <summary>
@@ -80,13 +81,17 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
  :public core::structure::t_smart_interface
 {
  private:
-  typedef ibp_task_pll__manager                          self_type;
+  using self_type=ibp_task_pll__manager;
 
  public: //typedefs ------------------------------------------------------
-  typedef core::structure::t_smart_object_ptr<self_type> self_ptr;
+  using self_ptr
+   =core::structure::t_smart_object_ptr<self_type>;
 
-  typedef ibp_task_pll__controller                       task_controller_type;
-  typedef task_controller_type::self_ptr                 task_controller_ptr;
+  using task_controller_type
+   =ibp_task_pll__controller;
+
+  using task_controller_ptr
+   =task_controller_type::self_ptr;
 
  public:
   /// <summary>
@@ -108,8 +113,11 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
  :public core::structure::t_smart_interface
 {
  public:
-  typedef ibp_task_pll__manager                     task_manager_type;
-  typedef task_manager_type::self_ptr               task_manager_ptr;
+  using task_manager_type
+   =ibp_task_pll__manager;
+
+  using task_manager_ptr
+   =task_manager_type::self_ptr;
 
  public:
   /// <summary>
@@ -129,8 +137,11 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
 class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__CLASS_STG ibp_task_pll__factory
 {
  public:
-  typedef ibp_task_pll__manager                     task_manager_type;
-  typedef task_manager_type::self_ptr               task_manager_ptr;
+  using task_manager_type
+   =ibp_task_pll__manager;
+
+  using task_manager_ptr
+   =task_manager_type::self_ptr;
 
  public:
   ibp_task_pll__factory()=delete;

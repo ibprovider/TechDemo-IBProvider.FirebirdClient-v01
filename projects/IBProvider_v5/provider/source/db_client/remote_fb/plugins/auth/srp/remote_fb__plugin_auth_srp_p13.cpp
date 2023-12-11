@@ -19,7 +19,7 @@
 #include "source/error_services/ibp_error_bug_check.h"
 #include "source/ibp_utils.h"
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace plugins{namespace auth{namespace srp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -152,7 +152,7 @@ void RemoteFB__Plugin_Auth_SRP_P13::authenticate
 
    if(!clientConnectBlock.m_spDsPropValues->Direct__GetValue(DBPROPSET_DBINIT,DBPROP_AUTH_USERID,nullptr,&varPropValue__UserID))
    {
-    //ERROR - [BUG CHECK] user login not defined!
+    //ERROR - [BUG CHECK] user login is not defined!
     assert(false);
 
     IBP_ThrowBugCheck__CnPropNotDefined
@@ -171,7 +171,7 @@ void RemoteFB__Plugin_Auth_SRP_P13::authenticate
 
    if(!clientConnectBlock.m_spDsPropValues->Direct__GetValue(DBPROPSET_DBINIT,DBPROP_AUTH_PASSWORD,nullptr,&varPropValue__UserPassword))
    {
-    //ERROR - [BUG CHECK] user Password not defined!
+    //ERROR - [BUG CHECK] user Password is not defined!
     assert(false);
 
     IBP_ThrowBugCheck__CnPropNotDefined

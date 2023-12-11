@@ -23,8 +23,8 @@ RemoteFB__PortStream__Crypt_Arc4::tag_cypher::tag_cypher(const RemoteFB__CryptKe
  CHECK_READ_PTR(Key.ptr,Key.size)
 
  //-----------------------------------------
- const wchar_t* const c_bugcheck_src=
-  L"RemoteFB__PortStream__Crypt_Arc4::tag_cypher::tag_cypher";
+ const wchar_t* const c_bugcheck_src
+  =L"RemoteFB__PortStream__Crypt_Arc4::tag_cypher::tag_cypher";
 
  if(Key.size==0)
  {

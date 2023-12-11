@@ -35,11 +35,11 @@ class t_debug__range_ptr
   using uint64_t=unsigned __int64;
 
  public: //typedefs ------------------------------------------------------
-  typedef std::random_access_iterator_tag                 iterator_category;
-  typedef T                                               value_type;
-  typedef ptrdiff_t                                       difference_type;
-  typedef T*                                              pointer;
-  typedef T&                                              reference;
+  using iterator_category = std::random_access_iterator_tag;
+  using value_type        = T;
+  using difference_type   = ptrdiff_t;
+  using pointer           = T*;
+  using reference         = T&;
 
  public:
   t_debug__range_ptr()

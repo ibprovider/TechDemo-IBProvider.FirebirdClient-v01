@@ -59,12 +59,12 @@ class TestsFor__RemoteFB__ClientConnectBlock_v2__RegAuthPluginFactory::tag_impl:
   {;}
 
   //factory interface ----------------------------------------------------
-  virtual name_type get_name()const COMP_W000004_OVERRIDE_FINAL
+  virtual name_type get_name()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL
   {
    return m_wstrName;
   }//get_name
 
-  virtual remote_fb::plugins::auth::RemoteFB__Plugin_AuthPtr create_plugin()const COMP_W000004_OVERRIDE_FINAL
+  virtual remote_fb::plugins::auth::RemoteFB__Plugin_AuthPtr create_plugin()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL
   {
    assert(false);
 

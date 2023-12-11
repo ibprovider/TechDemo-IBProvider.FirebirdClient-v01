@@ -11,9 +11,9 @@
 
 #include "source/ibp_memory.h"
 
-#include <structure/utilities/to_underlying.h>
-
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 #include <lcpi/lib/common_utilities.h>
+
 #include <lcpi/infrastructure/os/windows-oleaut32.h>
 
 namespace lcpi{namespace ibp{
@@ -646,7 +646,7 @@ IBP_ErrorVariant::tag_impl::tag_impl()
   }
   else
   {
-   assert(structure::to_underlying(sm_TypeServices[i].vt)==i);
+   assert(lib::structure::to_underlying(sm_TypeServices[i].vt)==i);
 
    assert(sm_TypeServices[i].pfnInit!=nullptr);
    assert(sm_TypeServices[i].pfnClear!=nullptr);
@@ -1818,7 +1818,7 @@ void IBP_ErrorVariant::Helper__Init(const IBP_ERRORVARIANT& data)
 {
  assert(m_data.vt==IBP_EVT::V_EMPTY);
 
- auto const vt_i=structure::to_underlying(data.vt);
+ auto const vt_i=lib::structure::to_underlying(data.vt);
 
  assert(vt_i<_LCPI_DIM_(tag_impl::sm_TypeServices));
 
@@ -1834,7 +1834,7 @@ void IBP_ErrorVariant::Helper__Init(const IBP_ERRORVARIANT& data)
 //------------------------------------------------------------------------
 void IBP_ErrorVariant::Helper__Clear()
 {
- auto const vt_i=structure::to_underlying(m_data.vt);
+ auto const vt_i=lib::structure::to_underlying(m_data.vt);
 
  assert(vt_i<_LCPI_DIM_(tag_impl::sm_TypeServices));
 

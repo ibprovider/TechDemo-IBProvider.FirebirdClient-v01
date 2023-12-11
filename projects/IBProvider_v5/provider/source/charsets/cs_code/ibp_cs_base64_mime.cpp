@@ -56,7 +56,9 @@ db_obj::t_db_text_stream__ucs2_ptr
  if(mbc_stream==NULL)
   return nullptr;
 
- return structure::not_null_ptr(new tag_text_stream__mbc_to_ucs2(mbc_stream));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__mbc_to_ucs2
+           (mbc_stream));
 }//mbc_stream_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -66,7 +68,10 @@ db_obj::t_db_text_stream__ucs2_ptr
 {
  CHECK_READ_TYPED_PTR(mbc_buffer,mbc_buffer_size);
 
- return structure::not_null_ptr(new tag_text_stream__mbc_buffer_to_ucs2(mbc_buffer,mbc_buffer_size));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__mbc_buffer_to_ucs2
+           (mbc_buffer,
+            mbc_buffer_size));
 }//mbc_buffer_to_ucs2_stream
 
 //------------------------------------------------------------------------
@@ -76,7 +81,9 @@ db_obj::t_db_text_stream__mbc_ptr
  if(ucs2_stream==NULL)
   return nullptr;
 
- return structure::not_null_ptr(new tag_text_stream__ucs2_to_mbc(ucs2_stream));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__ucs2_to_mbc
+           (ucs2_stream));
 }//ucs2_stream_to_mbc_stream
 
 //------------------------------------------------------------------------

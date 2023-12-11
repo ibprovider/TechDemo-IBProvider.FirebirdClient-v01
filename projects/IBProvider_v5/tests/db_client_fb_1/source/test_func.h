@@ -11,19 +11,21 @@ namespace lcpi{namespace ibp_tests{
 //class TTSO_TestFunc
 
 class TTSO_TestFunc
- :public structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
+ :public lib::structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
 {
  private:
-  typedef TTSO_TestFunc                     self_type;
+  using self_type=TTSO_TestFunc;
 
-  TTSO_TestFunc(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_TestFunc(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TTSO_TestFunc();
 
  public: //typedefs ------------------------------------------------------
-  typedef void (*TTestFunc)(TTSO_GlobalContext* pParams,
-                            context_type*       pCtx);
+  using TTestFunc
+    =void (*)
+       (TTSO_GlobalContext* pParams,
+        context_type*       pCtx);
 
  public:
   TTSO_TestFunc(TTSO_GlobalContext* pParams,
@@ -32,11 +34,11 @@ class TTSO_TestFunc
                 const char*         pExecRules=nullptr);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const COMP_W000004_OVERRIDE_FINAL;
+  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool can_exec()const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void run(context_type* pCtx)const COMP_W000004_OVERRIDE_FINAL;
+  virtual void run(context_type* pCtx)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   TTSO_GlobalContext::self_ptr const m_spParams;

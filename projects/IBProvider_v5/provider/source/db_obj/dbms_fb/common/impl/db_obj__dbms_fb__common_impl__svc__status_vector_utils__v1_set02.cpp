@@ -1159,10 +1159,12 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
   std::wstring tmp;
 
-  structure::ansi_to_unicode(&tmp,
-                             reinterpret_cast<const char*>((*pps)[1]),
-                             structure::negative_one,
-                             &error);
+  structure::ansi_to_unicode
+   (&tmp,
+    reinterpret_cast<const char*>((*pps)[1]),
+    lib::structure::negative_one,
+    &error);
+
   if(!error)
   {
    msg_part->swap(tmp);
@@ -1748,7 +1750,7 @@ bool fb_common_impl__svc__status_vector_utils__v1_set02::helper__get_win32_error
   return false;
 
  const WCHAR* const e2
-  =structure::total_miss_space_back(static_cast<const WCHAR*>(tmp),e);
+  =structure::total_skip_spaces_back(static_cast<const WCHAR*>(tmp),e);
 
  if(tmp==e2)
   return false;

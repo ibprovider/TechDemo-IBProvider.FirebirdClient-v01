@@ -228,7 +228,7 @@ bool t_ibp_basic_locale_services<charT>::eq_to_str_i(Iterator         first1,
 template<typename charT>
 t_ibp_basic_equal_char_i<charT>::t_ibp_basic_equal_char_i
                               (const locale_services_type* const pLocaleServices)
- :m_spLocaleServices(structure::not_null_ptr(pLocaleServices))
+ :m_spLocaleServices(lib::structure::not_null_ptr(pLocaleServices))
 {
  assert(m_spLocaleServices);
 }

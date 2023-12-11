@@ -16,7 +16,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 //class RemoteFB__ConnectorData
 
 RemoteFB__ConnectorData::RemoteFB__ConnectorData(RemoteFB__Port* const pPort)
- :m_spPort(structure::not_null_ptr(pPort))
+ :m_spPort(lib::structure::not_null_ptr(pPort))
 {
  assert(m_spPort);
 }//RemoteFB__ConnectorData

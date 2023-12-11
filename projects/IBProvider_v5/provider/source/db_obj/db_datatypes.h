@@ -498,6 +498,9 @@ enum tag_enum_dbtype
  dbtype__fb040_decfloat16        =47, // t_dbvalue__fb040_decfloat16
  dbtype__fb040_decfloat34        =48, // t_dbvalue__fb040_decfloat34
 
+ dbtype__isc_cstring_bin         =49,
+ dbtype__isc_cstring_txt         =50,
+
  dbtype__none                =-1
 };//enum tag_enum_dbtype
 

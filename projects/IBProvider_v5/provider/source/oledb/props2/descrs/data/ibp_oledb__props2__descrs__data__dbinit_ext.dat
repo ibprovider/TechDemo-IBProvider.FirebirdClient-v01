@@ -870,17 +870,16 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__BOOL
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I2__EMPTY
  (IBP_DBPROP__INIT__AUTO_INSERT_FIELD_RULE,
-  OLEDB_PDESCR2(L"auto_insert_field_rule"),
+  IBP_DBPROP_NAME__STD__AUTO_INSERT_FIELD_RULE,
   OLEDB_PROPFLAGS_DBINITRW,
   DBPROPOPTIONS_OPTIONAL,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_insert_field_rule::GetInstancePtr()))
 
-IBP_OLEDB_PROPS2__DESCR_PARAM__I2
+IBP_OLEDB_PROPS2__DESCR_PARAM__I2__EMPTY
  (IBP_DBPROP__INIT__AUTO_UPDATE_FIELD_RULE /*258*/,
-  OLEDB_PDESCR2(L"auto_update_field_rule"),
+  IBP_DBPROP_NAME__STD__AUTO_UPDATE_FIELD_RULE,
   OLEDB_PROPFLAGS_DBINITRW,
   DBPROPOPTIONS_OPTIONAL,
-  ibprovider::ibp_auto_update_field_rule__all,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__auto_update_field_rule::GetInstancePtr()))
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__I4

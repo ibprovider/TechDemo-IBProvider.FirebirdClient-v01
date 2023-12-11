@@ -131,7 +131,7 @@ ZLIB1__ApiProviderPtr
   return self_type::helper__create_zprovider__dll(ole_lib::BStrToBox(varPropValue__ZLibrary.bstrVal));
  }//if
 
- //zlib1 library not defined
+ //zlib1 library is not defined
  return self_type::helper__create_zprovider__dll(self_type::c_default__ZLIB1_DLL);
 }//helper__create_zprovider__dll
 

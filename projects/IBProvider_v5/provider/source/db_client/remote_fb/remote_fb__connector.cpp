@@ -138,7 +138,7 @@ RemoteFB__Connector::self_ptr
 
  //-----------------------------------------
  self_ptr spConnector
-  (structure::not_null_ptr
+  (lib::structure::not_null_ptr
     (new self_type
       (spPort)));
 

@@ -50,7 +50,7 @@ static t_ibp_string helper__get_icu_library_path
   }//if
   else
   {
-   //icu library not defined
+   //icu library is not defined
    break;
   }//else
 

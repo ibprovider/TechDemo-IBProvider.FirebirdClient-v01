@@ -220,7 +220,7 @@ REFGUID TIBP_ComModule::GetComApiID()
 TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
 {
 #ifndef IBP_PLATFORM_ID
-# error IBP_PLATFORM_ID not defined!
+# error IBP_PLATFORM_ID is not defined!
 #endif
 
 #if   (IBP_PLATFORM_ID==IBP_PLATFORM_ID__WINNT_AMD64)

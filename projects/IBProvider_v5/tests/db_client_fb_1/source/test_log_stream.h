@@ -78,7 +78,7 @@ class TTSO_Basic_LogStream:public TTSO_Basic_LogStream_ToFile<Allocator>
   virtual ~TTSO_Basic_LogStream();
 
   //interface ------------------------------------------------------------
-  virtual void out(const char_type* s) COMP_W000004_OVERRIDE_FINAL;
+  virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const UINT m_ConsoleCP;

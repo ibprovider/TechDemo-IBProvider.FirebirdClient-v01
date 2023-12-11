@@ -31,7 +31,7 @@ oledb_lib::OLEDB_Props2__Data__Descrs::self_cptr
 
  const oledb_lib::OLEDB_Props2__Data__Descrs::self_ptr
   spDescrs
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new oledb_lib::OLEDB_Props2__Data__Descrs
        (DBPROPSET_DBINIT,
         DBPROPSET_DBINITALL,
@@ -46,7 +46,7 @@ oledb_lib::OLEDB_Props2__Data__Descrs::self_cptr
  assert(spDescrs);
  assert(spDescrs->Count()==nCapacity);
 
- return structure::not_null_ptr(spDescrs.ptr());
+ return lib::structure::not_null_ptr(spDescrs.ptr());
 }//CreatePropDescrs
 
 //------------------------------------------------------------------------

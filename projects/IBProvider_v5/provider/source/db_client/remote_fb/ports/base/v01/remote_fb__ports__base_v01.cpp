@@ -128,7 +128,7 @@ RemoteFB__SmartObjectPtr RemoteFB__Port_BASE_v01::tag_recv_ctx::query_service(RE
 
 RemoteFB__Port_BASE_v01::RemoteFB__Port_BASE_v01(RemoteFB__PortStream*                 const pSocket,
                                                  transmission::RemoteFB__PacketStream* const pPacketStream)
- :m_spSocket         (structure::not_null_ptr(pSocket))
+ :m_spSocket         (lib::structure::not_null_ptr(pSocket))
  ,m_PacketSendGuard  ()
  ,m_port_state_guard ()
  ,m_port_state       (c_state__none)

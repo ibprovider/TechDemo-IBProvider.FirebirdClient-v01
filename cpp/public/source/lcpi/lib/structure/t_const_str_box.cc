@@ -6,7 +6,7 @@
 
 #include <lcpi/lib/structure/t_algorithm.h>
 
-#include <lcpi/lib/structure/utilities/string/miss_space.h>
+#include <lcpi/lib/structure/utilities/string/skip_spaces.h>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -281,11 +281,11 @@ template<class charT>
 t_basic_const_str_box<charT>
  trim(const t_basic_const_str_box<charT>& str)
 {
- const charT*
-  e(__miss_space_back(str.ptr,str.ptr+str.len,tag_is_trim_char<charT>()));
+ const charT* const
+  e(__skip_spaces_back(str.ptr,str.ptr+str.len,tag_is_trim_char<charT>()));
 
- const charT*
-  b(__miss_space(str.ptr,e,tag_is_trim_char<charT>()));
+ const charT* const
+  b(__skip_spaces(str.ptr,e,tag_is_trim_char<charT>()));
 
  assert(str.ptr<=b);
  assert(e<=(str.ptr+str.len));

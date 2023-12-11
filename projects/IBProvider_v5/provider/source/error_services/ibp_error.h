@@ -16,7 +16,7 @@
 #include "source/error_services/ibp_error_records_r.h"
 
 #ifndef OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO
-# error OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO not defined!
+# error OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO is not defined!
 #endif
 
 #if(OLE_LIB__COM_ERROR__HAS__SET_ERROR_INFO!=0)

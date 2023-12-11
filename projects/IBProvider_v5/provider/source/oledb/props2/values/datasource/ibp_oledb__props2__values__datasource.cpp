@@ -74,13 +74,13 @@ IBP_OLEDB_Props2__Values__DATASOURCE::~IBP_OLEDB_Props2__Values__DATASOURCE()
 //------------------------------------------------------------------------
 IBP_OLEDB_Props2__Values__DATASOURCE::self_ptr IBP_OLEDB_Props2__Values__DATASOURCE::Create()
 {
- return structure::not_null_ptr(new self_type());
+ return lib::structure::not_null_ptr(new self_type());
 }//Create
 
 //------------------------------------------------------------------------
 IBP_OLEDB_Props2__Values__DATASOURCE::self_ptr IBP_OLEDB_Props2__Values__DATASOURCE::CreateClone()const
 {
- return structure::not_null_ptr(new self_type(this,tagCopyKind_Clone()));
+ return lib::structure::not_null_ptr(new self_type(this,tagCopyKind_Clone()));
 }//CreateClone
 
 //------------------------------------------------------------------------
@@ -88,7 +88,7 @@ IBP_OLEDB_Props2__Values__DATASOURCE::self_ptr IBP_OLEDB_Props2__Values__DATASOU
 {
  assert(!this->DEBUG__IsChild());
 
- return structure::not_null_ptr(new self_type(this,tagCopyKind_Child()));
+ return lib::structure::not_null_ptr(new self_type(this,tagCopyKind_Child()));
 }//CreateChild
 
 //------------------------------------------------------------------------
@@ -301,17 +301,11 @@ ibp_ipropval__remote__wire_crypt
 
  //ERROR: [BUG CHECK] неизвестное значение свойства инициализации
 
- structure::wstr_formatter
-  freason(me_bug_check__prop__unexpected_value_2);
-
- freason
-  <<IBP_DBPROP_NAME__INIT__REMOTE__WIRE_CRYPT
-  <<strPropValue__WireCrypt;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ThrowBugCheck__UnexpectedPropValue
   (c_bugcheck_src,
    L"#001",
-   freason.c_str());
+   IBP_DBPROP_NAME__INIT__REMOTE__WIRE_CRYPT,
+   strPropValue__WireCrypt);
 }//Get_Remote_WireCrypt
 
 //------------------------------------------------------------------------
@@ -343,17 +337,11 @@ ibp_ipropval__remote__wire_compression
 
  //ERROR: [BUG CHECK] неизвестное значение свойства инициализации
 
- structure::wstr_formatter
-  freason(me_bug_check__prop__unexpected_value_2);
-
- freason
-  <<IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION
-  <<strPropValue__WireCompression;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ThrowBugCheck__UnexpectedPropValue
   (c_bugcheck_src,
    L"#001",
-   freason.c_str());
+   IBP_DBPROP_NAME__INIT__REMOTE__WIRE_COMPRESSION,
+   strPropValue__WireCompression);
 }//Get_Remote_WireCompression
 
 //------------------------------------------------------------------------

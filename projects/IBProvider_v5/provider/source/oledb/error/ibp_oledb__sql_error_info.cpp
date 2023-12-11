@@ -43,7 +43,7 @@ lib::com::base::IUnknownPtr
 {
  const ole_lib::INondelegatingPtr2<self_type>
   spX
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new self_type
        (pUnkOuter,
         ComServerLink,
@@ -59,7 +59,7 @@ lib::com::base::IUnknownPtr
 
  assert(hr==S_OK);
 
- return structure::not_null_ptr(spX->GetNondelegatingUnknown());
+ return lib::structure::not_null_ptr(spX->GetNondelegatingUnknown());
 }//Create
 
 //Root interface ---------------------------------------------------------

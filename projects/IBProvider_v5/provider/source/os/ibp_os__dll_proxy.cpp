@@ -15,7 +15,7 @@ namespace lcpi{namespace ibp{namespace os{
 
 t_ibp_os__dll_proxy::t_ibp_os__dll_proxy(t_ibp_os__dlls*     const        pDLLs,
                                          t_ibp_os__dll_loader::self_ptr&& spDllLoader)
- :m_spDLLs(structure::not_null_ptr(pDLLs))
+ :m_spDLLs(lib::structure::not_null_ptr(pDLLs))
  ,m_spDllLoader(__STL_MOVE_VALUE(spDllLoader))
 {
  assert(m_spDLLs);

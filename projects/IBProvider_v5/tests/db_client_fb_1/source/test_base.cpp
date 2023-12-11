@@ -89,25 +89,25 @@ TSYS_RootLog::~TSYS_RootLog()
 //interface --------------------------------------------------------------
 void TSYS_RootLog::add_other_error_count(count_type const x)
 {
- thread_traits::add(&m_other_error_count,x);
+ lib::structure::mt::interlocked::add(&m_other_error_count,x);
 }//add_other_error_count
 
 //------------------------------------------------------------------------
 void TSYS_RootLog::add_other_warning_count(count_type const x)
 {
- thread_traits::add(&m_other_warning_count,x);
+ lib::structure::mt::interlocked::add(&m_other_warning_count,x);
 }//add_other_warning_count
 
 //------------------------------------------------------------------------
 void TSYS_RootLog::inc_pass_count()
 {
- thread_traits::increment(&m_pass_count);
+ lib::structure::mt::interlocked::increment(&m_pass_count);
 }//inc_pass_count
 
 //------------------------------------------------------------------------
 void TSYS_RootLog::inc_total_test_count()
 {
- thread_traits::increment(&m_total_test_count);
+ lib::structure::mt::interlocked::increment(&m_total_test_count);
 }//inc_total_test_count
 
 //selectors --------------------------------------------------------------
@@ -352,7 +352,7 @@ const TTSO_GlobalContext::tag_named_expression
 
 //------------------------------------------------------------------------
 TTSO_GlobalContext::TTSO_GlobalContext(const TSYS_CommandLine* const pSysCL)
- :m_spSysCL(structure::not_null_ptr(pSysCL))
+ :m_spSysCL(lib::structure::not_null_ptr(pSysCL))
  ,m_ExpressionParser(pSysCL)
 {
  for(const auto& x : sm_named_expressions)
@@ -391,7 +391,7 @@ bool TTSO_GlobalContext::calc_expression(structure::t_const_str_box const expres
 //class TTSO_RunContext
 
 TTSO_RunContext::TTSO_RunContext(log_type* const pLog)
- :m_spLog(structure::not_null_ptr(pLog))
+ :m_spLog(lib::structure::not_null_ptr(pLog))
 {
  assert(m_spLog);
 }//TTSO_RunContext
@@ -405,19 +405,17 @@ void TTSO_RunContext::trace(message_type* const message)
 {
  assert(message);
 
- typedef structure::t_multi_thread_traits   thread_traits;
-
  switch(message->get_msg_kind())
  {
   case tso_msg_error:
   {
-   thread_traits::increment(&m_test_info.err_count);
+   lib::structure::mt::interlocked::increment(&m_test_info.err_count);
    break;
   }//case - error
 
   case tso_msg_warning:
   {
-   thread_traits::increment(&m_test_info.warning_count);
+   lib::structure::mt::interlocked::increment(&m_test_info.warning_count);
    break;
   }//case - warning
  }//switch

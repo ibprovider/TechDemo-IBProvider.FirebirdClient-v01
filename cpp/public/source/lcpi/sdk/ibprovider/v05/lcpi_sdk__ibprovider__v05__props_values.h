@@ -699,26 +699,46 @@ enum t_ibp_refresh_trans_type
 extern const IBP_SHORT g_IBP_PropValuesFor__refresh_trans_type[3];
 
 ////////////////////////////////////////////////////////////////////////////////
-//настройки автоматического режима обновления множества
+//The configuration of an automated rowset update mode
 
-enum
+// The enumeration of columns for the insert of a new row
+enum:IBP_PROP__AUTO_INSERT_FIELD_RULE
 {
- //перечисление колонок при вставке нового ряда
- ibp_auto_insert_field_rule__all         =0, //все колонки [default]
- ibp_auto_insert_field_rule__installed   =1, //для которых установили данные
- ibp_auto_insert_field_rule__not_null    =2, //не NULL
-};
+ // Enumerating all the columns. DEFAULT values will be passed as NULL values.
+ ibp_auto_insert_field_rule__all         =0,
+
+ // Enumerating only the columns with not DEFAULT values.
+ ibp_auto_insert_field_rule__installed   =1,
+
+ // Enumerating only OK-values (those do not have DEFAULT or NULL values).
+ ibp_auto_insert_field_rule__ok          =2,
+};//enum
 
 extern const IBP_PROP__AUTO_INSERT_FIELD_RULE g_IBP_PropValuesFor__auto_insert_field_rule[3];
 
 //------------------------------------------------------------------------
-enum
-{
- ibp_auto_update_field_rule__all         =0,
- ibp_auto_update_field_rule__installed   =1,
-};
 
-extern const IBP_PROP__AUTO_UPDATE_FIELD_RULE g_IBP_PropValuesFor__auto_update_field_rule[2];
+// The enumeration of columns for the update of a row
+enum:IBP_PROP__AUTO_UPDATE_FIELD_RULE
+{
+ // Enumerating all the columns. DEFAULT values will be passed as NULL values.
+ ibp_auto_update_field_rule__all         =0,
+
+ // Enumerating only the modified columns. DEFAULT values will be passed as NULL values.
+ ibp_auto_update_field_rule__modified    =1,
+
+ // Enumerating all the columns. DEFAULT values will be as is.
+ //
+ // This mode requires the support of server (FB4+).
+ ibp_auto_update_field_rule__all2        =2,
+
+ // Enumerating only the modified columns. DEFAULT values will be passed as is.
+ //
+ // This mode requires the support of server (FB4+).
+ ibp_auto_update_field_rule__modified2   =3,
+};//enum
+
+extern const IBP_PROP__AUTO_UPDATE_FIELD_RULE g_IBP_PropValuesFor__auto_update_field_rule[4];
 
 ////////////////////////////////////////////////////////////////////////////////
 //Правила для обратного чтения результатов запросов обновляемых множеств

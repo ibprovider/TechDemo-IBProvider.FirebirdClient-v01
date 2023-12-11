@@ -46,10 +46,10 @@ void IBP_CallContext::tag_error_adapter::add_summary_error
 
  const t_ibp_error_element::self_ptr
   spErrRec
-   (structure::not_null_ptr
-    (new t_ibp_error_element
-      (err_code,
-       mc_id_2)));
+   (lib::structure::not_null_ptr
+     (new t_ibp_error_element
+       (err_code,
+        mc_id_2)));
 
  assert(spErrRec);
 

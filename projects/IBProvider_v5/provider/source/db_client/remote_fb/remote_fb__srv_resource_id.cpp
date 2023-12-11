@@ -8,8 +8,11 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/remote_fb__srv_resource_id.h"
-#include <structure/t_negative_one.h>
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/t_negative_one.h>
+
+#ifndef NDEBUG
+#include <lcpi/lib/structure/utilities/to_underlying.h>
+#endif
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +72,7 @@ bool RemoteFB__SrvResourceID::has_value()const
 //------------------------------------------------------------------------
 RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_value()const
 {
- assert_msg(m_state==state__value,"state: "<<structure::to_underlying(m_state));
+ assert_msg(m_state==state__value,"state: "<<lib::structure::to_underlying(m_state));
 
  return m_value;
 }//get_value
@@ -77,7 +80,7 @@ RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_value()const
 //------------------------------------------------------------------------
 RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_wait_drop()const
 {
- assert_msg(m_state==state__wait_drop,"state: "<<structure::to_underlying(m_state));
+ assert_msg(m_state==state__wait_drop,"state: "<<lib::structure::to_underlying(m_state));
 
  return m_value;
 }//get_wait_drop
@@ -85,7 +88,7 @@ RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_wait_drop()cons
 //------------------------------------------------------------------------
 RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_wait_close()const
 {
- assert_msg(m_state==state__wait_close,"state: "<<structure::to_underlying(m_state));
+ assert_msg(m_state==state__wait_close,"state: "<<lib::structure::to_underlying(m_state));
 
  return m_value;
 }//get_wait_close
@@ -93,7 +96,7 @@ RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_wait_close()con
 //------------------------------------------------------------------------
 RemoteFB__SrvResourceID::value_type RemoteFB__SrvResourceID::get_wait_cancel()const
 {
- assert_msg(m_state==state__wait_cancel,"state: "<<structure::to_underlying(m_state));
+ assert_msg(m_state==state__wait_cancel,"state: "<<lib::structure::to_underlying(m_state));
 
  return m_value;
 }//get_wait_cancel

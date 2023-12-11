@@ -404,7 +404,7 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
  //-----------------------------------------
  {
   structure::wstr_formatter msgEng
-   (L"[Subsystem: %1] Incorrect format of string for INET-connection to database on host [%2]. Connection port not defined.");
+   (L"[Subsystem: %1] Incorrect format of string for INET-connection to database on host [%2]. Connection port is not defined.");
 
   msgEng<<ucs2_SubSystemID<<ucs2_host_sign;
 
@@ -2256,7 +2256,7 @@ bool TestCheckErrors::check_err_rec__cn_err__not_defined_req_init_prop
  //-----------------------------------------
  {
   const char* const templ_utf8
-   ="[Subsystem: %1] Required initialization property \"%2\" not defined.";
+   ="[Subsystem: %1] Required initialization property \"%2\" is not defined.";
 
   structure::wstr_formatter msgEng(utf8_to_wstring(templ_utf8));
 

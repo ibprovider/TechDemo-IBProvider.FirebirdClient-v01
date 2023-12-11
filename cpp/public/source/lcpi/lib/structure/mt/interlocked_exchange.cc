@@ -18,17 +18,22 @@ namespace detail{
 class interlocked_exchange__impl
 {
  public:
+  using ulong_type =unsigned long;
+  using uint32_type=unsigned __int32;
+  using uint64_type=unsigned __int64;
+
+ public:
   template<typename T>
   static T* exec(T* volatile* pDestination,std::nullptr_t newValue);
 
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pDestination,T2* newValue);
 
-  static unsigned long exec(unsigned long volatile* pDestination,unsigned long newValue);
+  static ulong_type exec(ulong_type volatile* pDestination,ulong_type newValue);
 
-  static unsigned __int32 exec(unsigned __int32 volatile* pDestination,unsigned __int32 newValue);
+  static uint32_type exec(uint32_type volatile* pDestination,uint32_type newValue);
 
-  static unsigned __int64 exec(unsigned __int64 volatile* pDestination,unsigned __int64 newValue);
+  static uint64_type exec(uint64_type volatile* pDestination,uint64_type newValue);
 };//class interlocked_exchange__impl
 
 //------------------------------------------------------------------------
@@ -54,34 +59,37 @@ T1* interlocked_exchange__impl::exec(T1* volatile *  const pDestination,
 }//exec - T1**, T2*
 
 //------------------------------------------------------------------------
-inline unsigned long interlocked_exchange__impl::exec
-                             (unsigned long volatile* const pDestination,
-                              unsigned long           const newValue)
+inline interlocked_exchange__impl::ulong_type
+ interlocked_exchange__impl::exec
+  (ulong_type volatile* const pDestination,
+   ulong_type           const newValue)
 {
  LCPI__assert(pDestination);
 
  return InterlockedExchange(pDestination,newValue);
-}//exec - unsigned long
+}//exec - ulong_type
 
 //------------------------------------------------------------------------
-inline unsigned __int32 interlocked_exchange__impl::exec
-                             (unsigned __int32 volatile* const pDestination,
-                              unsigned __int32           const newValue)
+inline interlocked_exchange__impl::uint32_type
+ interlocked_exchange__impl::exec
+  (uint32_type volatile* const pDestination,
+   uint32_type           const newValue)
 {
  LCPI__assert(pDestination);
 
  return InterlockedExchange(pDestination,newValue);
-}//exec - unsigned __int32
+}//exec - uint32_type
 
 //------------------------------------------------------------------------
-inline unsigned __int64 interlocked_exchange__impl::exec
-                             (unsigned __int64 volatile* const pDestination,
-                              unsigned __int64           const newValue)
+inline interlocked_exchange__impl::uint64_type
+ interlocked_exchange__impl::exec
+  (uint64_type volatile* const pDestination,
+   uint64_type           const newValue)
 {
  LCPI__assert(pDestination);
 
  return InterlockedExchange(pDestination,newValue);
-}//exec - unsigned __int64
+}//exec - uint64_type
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace detail

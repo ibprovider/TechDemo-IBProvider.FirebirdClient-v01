@@ -15,7 +15,7 @@
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
 #include "source/error_services/ibp_error_bug_check.h"
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////

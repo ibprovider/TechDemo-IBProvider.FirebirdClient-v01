@@ -13,7 +13,7 @@ namespace lcpi{namespace lib{namespace structure{namespace mt{
 class t_guard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_guard                              self_type;
+  using self_type=t_guard;
 
   t_guard(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;

@@ -31,11 +31,11 @@ inline t_thread_traits__multi::int_type t_thread_traits__multi::decrement(volati
 template<typename T1,typename T2>
 inline T1 t_thread_traits__multi::exchange(volatile T1* const target,T2 const value)
 {
- typedef typename std::conditional
-          <std::is_enum<T1>::value,
-           tag_exchange__enum,
-           tag_exchange__std>::type
-  _e;
+ using _e
+  =typename std::conditional
+     <std::is_enum<T1>::value,
+      tag_exchange__enum,
+      tag_exchange__std>::type;
 
  return _e::exec(target,value);
 }//exchange

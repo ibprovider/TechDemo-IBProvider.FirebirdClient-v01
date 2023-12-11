@@ -31,13 +31,13 @@ class TestOperationContext LCPI_CPP_CFG__CLASS__FINAL:public db_obj::t_db_operat
   void cancel();
 
   //ctx interface --------------------------------------------------------
-  virtual db_obj::t_db_object_ptr get_service(REFCLSID svcID) COMP_W000004_OVERRIDE_FINAL;
+  virtual db_obj::t_db_object_ptr get_service(REFCLSID svcID) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool is_cancelled()const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool is_cancelled()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void push_operation(db_obj::t_db_operation* op) COMP_W000004_OVERRIDE_FINAL;
+  virtual void push_operation(db_obj::t_db_operation* op) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void pop_operation(db_obj::t_db_operation* op) COMP_W000004_OVERRIDE_FINAL;
+  virtual void pop_operation(db_obj::t_db_operation* op) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef structure::t_multi_thread_traits               thread_traits;

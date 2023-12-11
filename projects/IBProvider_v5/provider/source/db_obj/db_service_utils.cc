@@ -42,7 +42,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service
 
 //------------------------------------------------------------------------
@@ -77,7 +77,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service
 
 //------------------------------------------------------------------------
@@ -176,7 +176,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service__if_it_exists
 
 //------------------------------------------------------------------------
@@ -244,7 +244,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service__if_it_exists
 
 //------------------------------------------------------------------------
@@ -297,7 +297,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service
 
 //------------------------------------------------------------------------
@@ -351,7 +351,7 @@ lib::structure::t_smart_object_ptr<T>
 
  assert(pSvc);
 
- return structure::not_null_ptr(pSvc);
+ return lib::structure::not_null_ptr(pSvc);
 }//query_db_service
 
 //------------------------------------------------------------------------

@@ -37,13 +37,13 @@ class t_basic_message
  :public structure::t_basic_smart_interface_impl__dynamic<t_message,Allocator>
 {
  private:
-  typedef t_basic_message<Allocator>                       self_type;
+  using self_type=t_basic_message<Allocator>;
 
   t_basic_message(const self_type&);
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>         self_ptr;
+  using self_ptr=structure::t_smart_object_ptr<self_type>;
 
   typedef t_message::string_type                           string_type;
   typedef t_message::lcid_type                             lcid_type;
@@ -79,15 +79,13 @@ class t_basic_message
 
 template<class Allocator>
 class t_basic_tracer
- :public t_basic_str_args
-   <t_message::string_type::value_type,t_basic_tracer<Allocator> >
+ :public t_basic_str_args<t_message::string_type::value_type,t_basic_tracer<Allocator> >
 {
  private:
-  typedef t_basic_tracer<Allocator>                              self_type;
-  typedef t_basic_str_args
-           <t_message::string_type::value_type,self_type>        inherited;
-                           
-  self_type& operator = (const self_type&);
+  using self_type=t_basic_tracer<Allocator>;
+  using inherited=t_basic_str_args<t_message::string_type::value_type,self_type>;
+
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef typename inherited::string_type                        arg_type;
@@ -147,8 +145,8 @@ class t_basic_tracer
 struct t_push_data
 {
  public:
-  typedef t_message::msg_kind_type          msg_kind_type;
-  typedef t_message::error_code_type        error_code_type;
+  using msg_kind_type   =t_message::msg_kind_type;
+  using error_code_type =t_message::error_code_type;
 
  public:
   msg_kind_type   m_msg_kind;
@@ -195,22 +193,22 @@ class t_basic_log_stream__console
  :public structure::t_basic_smart_interface_impl__dynamic<t_log_stream,Allocator>
 {
  private:
-  typedef t_basic_log_stream__console<Allocator>          self_type;
-  
-  t_basic_log_stream__console(const self_type&);
-  self_type& operator = (const self_type&);
-  
+  using self_type=t_basic_log_stream__console<Allocator>;
+
+  t_basic_log_stream__console(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
+
  public: //typedefs ------------------------------------------------------
   typedef t_log_stream::char_type                         char_type;
 
  public:
   t_basic_log_stream__console(UINT ConsoleCP);
-  
+
   virtual ~t_basic_log_stream__console();
-  
+
   //t_log_stream interface -----------------------------------------------
   virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract
-  
+
  private:
   const UINT  m_ConsoleCP;
   std::string m_tmp_buffer;
@@ -223,10 +221,10 @@ template<class t_log_stream>
 class t_basic_root_log__printer
 {
  private:
-  typedef t_basic_root_log__printer<t_log_stream> self_type;
-  
-  t_basic_root_log__printer(const self_type&);
-  self_type& operator = (const self_type&);
+  using self_type=t_basic_root_log__printer<t_log_stream>;
+
+  t_basic_root_log__printer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef t_log_stream                            log_stream_type;
@@ -234,23 +232,23 @@ class t_basic_root_log__printer
   typedef typename log_stream_type::char_type     char_type;
 
   typedef structure::t_str_parameter<char_type>   str_arg_type;
-  
+
   typedef __STL_DEF_BASIC_STRING(char_type)       string_type;
 
  public:
   t_basic_root_log__printer(log_stream_type*    stream,
                             const string_type&  line_prefix);
- 
+
  ~t_basic_root_log__printer();
- 
+
   self_type& out(str_arg_type);
-  
+
   self_type& send();
-  
+
  private:
   const log_stream_ptr  m_stream;
   const string_type     m_line_prefix;
- 
+
  private:
   string_type m_buffer;
 };//class t_basic_root_log__printer
@@ -263,10 +261,10 @@ class t_basic_root_log
  :public structure::t_basic_smart_interface_impl__dynamic<t_simple_log,Allocator>
 {
  private:
-  typedef t_basic_root_log<Allocator>                 self_type;
+  using self_type=t_basic_root_log<Allocator>;
 
-  t_basic_root_log(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_root_log(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef t_smart_object_ptr<self_type>               self_ptr;
@@ -276,14 +274,15 @@ class t_basic_root_log
   typedef t_def_thread_traits                         thread_traits;
   typedef thread_traits::guard_type                   guard_type;
   typedef thread_traits::lock_guard_type              lock_guard_type;
-  typedef thread_traits::int_type                     count_type;
+
+  using count_type=unsigned __int64;
 
  public:
   bool print_ts;
   bool print_thread_id;
-  
+
   explicit t_basic_root_log(UINT CodePage=CP_OEMCP);
-  
+
   explicit t_basic_root_log(t_log_stream* pOutputStream);
 
   virtual ~t_basic_root_log();
@@ -292,7 +291,7 @@ class t_basic_root_log
   count_type get_unhandled_error_count()const;
 
   count_type get_error_count()const;
-  
+
   count_type get_warning_count()const;
 
   //modificators ---------------------------------------------------------
@@ -312,7 +311,7 @@ class t_basic_root_log
  private:
   guard_type             m_output_guard;
   log_stream_ptr  const  m_output_stream;
-  
+
  private:
   count_type             m_unhandled_error_count;
 
@@ -326,8 +325,8 @@ class t_basic_root_log
 class t_basic_exception_router
 {
  private:
-  typedef t_basic_exception_router            self_type;
- 
+  using self_type=t_basic_exception_router;
+
  public:
   template<class t_tracer>
   static void route(t_tracer& tracer);

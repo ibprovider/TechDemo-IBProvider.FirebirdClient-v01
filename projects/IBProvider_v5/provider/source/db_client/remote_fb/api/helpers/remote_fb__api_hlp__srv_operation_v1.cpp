@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 
 RemoteFB__API_HLP__SrvOperation_v1::RemoteFB__API_HLP__SrvOperation_v1
                                            (RemoteFB__ConnectorData* const pCnData)
- :m_spCnData(structure::not_null_ptr(pCnData))
+ :m_spCnData(lib::structure::not_null_ptr(pCnData))
  ,m_state(c_state__before_send)
 #ifndef NDEBUG
  ,m_debug__op_cancel_was_sended(0)
@@ -237,7 +237,7 @@ void RemoteFB__API_HLP__SrvOperation_v1::helper__throw_bug_check__unk_state
 
 RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame::tag_send_frame
                                            (RemoteFB__API_HLP__SrvOperation_v1* const pOp)
- :m_spOp(structure::not_null_ptr(pOp))
+ :m_spOp(lib::structure::not_null_ptr(pOp))
 {
  assert(m_spOp);
 

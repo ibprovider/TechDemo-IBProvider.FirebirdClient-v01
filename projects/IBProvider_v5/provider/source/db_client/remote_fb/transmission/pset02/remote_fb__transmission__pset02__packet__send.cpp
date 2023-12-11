@@ -27,15 +27,11 @@ static void Helper__RemoteFB__SendPacket__ThrowBugCheck__UnkOp
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__send_packet_with_unk_operation_1);
-
- freason<<operationID;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__send_packet_with_unk_operation_1,
+   operationID);
 }//Helper__RemoteFB__SendPacket__ThrowBugCheck__UnkOp
 
 //------------------------------------------------------------------------
@@ -51,8 +47,8 @@ void RemoteFB__PSET02__SendPacket(RemoteFB__PortOperationContext&               
                                   size_t                                      const cEncoders,
                                   const RemoteFB__PSET02__PacketEncoderDescr* const pEncoders)
 {
- const wchar_t* const
-  c_bugcheck_src=L"RemoteFB__PSET02__SendPacket";
+ const wchar_t* const c_bugcheck_src
+  =L"RemoteFB__PSET02__SendPacket";
 
  //-----------------------------------------
  const size_t idx=static_cast<size_t>(packet.operation);

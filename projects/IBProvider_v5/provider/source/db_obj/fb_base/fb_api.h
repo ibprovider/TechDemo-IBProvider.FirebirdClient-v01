@@ -89,12 +89,25 @@ enum
 ////////////////////////////////////////////////////////////////////////////////
 //UDF argument mechanism
 
+// Parameter passing mechanism for UDFs.
+// Also used for returning values, except for scalar_array.
+
+// enum FUN_T
+// {
+//  FUN_value,
+//  FUN_reference,
+//  FUN_descriptor,
+//  FUN_blob_struct,
+//  FUN_scalar_array,
+//  FUN_ref_with_null
+// };
+
 enum
 {
  ibp_fb_udf_arg_mech__by_value                       = 0, //IB4
  ibp_fb_udf_arg_mech__by_reference                   = 1, //IB4
  ibp_fb_udf_arg_mech__by_vms_description             = 2, //IB4? [есть в IB6]
- ibp_fb_udf_arg_mech__by_isc_description             = 3, //IB4
+ ibp_fb_udf_arg_mech__by_blob_struct                 = 3, //IB4
  ibp_fb_udf_arg_mech__by_scalar_array_description    = 4, //IB4? [есть в IB6]
 
  ibp_fb_udf_arg_mech__by_reference_with_null         = 5, //FB2.0

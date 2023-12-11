@@ -34,7 +34,7 @@ class TTSO_PushTest__Filter
   virtual ~TTSO_PushTest__Filter();
 
   //TTSO_PushTest interface ----------------------------------------------
-  virtual void PushTest(const TTSO_Test* pTest)COMP_W000004_OVERRIDE_FINAL;
+  virtual void PushTest(const TTSO_Test* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   void test_cancel_signal();

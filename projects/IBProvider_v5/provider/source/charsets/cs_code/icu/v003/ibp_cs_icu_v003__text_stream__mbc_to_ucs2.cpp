@@ -17,8 +17,8 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 t_ibp_cs_icu::tag_text_stream__mbc_to_ucs2::tag_text_stream__mbc_to_ucs2
                                            (const charset_type*            const charset,
                                             db_obj::t_db_text_stream__mbc* const source__mbc)
- :m_charset            (structure::not_null_ptr(charset))
- ,m_source__mbc        (structure::not_null_ptr(source__mbc))
+ :m_charset            (lib::structure::not_null_ptr(charset))
+ ,m_source__mbc        (lib::structure::not_null_ptr(source__mbc))
  ,m_icu_conv           (charset,tag_conv_holder::conv_direction__to_unicode)
  ,m_get_eof            (false)
  ,m_target_buffer_pos  (0)

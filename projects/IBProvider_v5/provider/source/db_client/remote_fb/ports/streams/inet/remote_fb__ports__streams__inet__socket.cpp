@@ -353,15 +353,11 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
    {
     //ERROR - [BUG CHECK] too large address length!
 
-    structure::wstr_formatter
-     freason(me_bug_check__too_large_length_of_network_address_1);
-
-    freason<<pai->ai_addrlen;
-
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#001",
-      freason.c_str());
+      me_bug_check__too_large_length_of_network_address_1,
+      pai->ai_addrlen);
    }//if
 
    //---------------------------------------

@@ -162,7 +162,7 @@ ICU__Loader::tag_dll__icuuc_v063::dll_init_mutex_ptr
 //------------------------------------------------------------------------
 IBP_SmartObjectPtr ICU__Loader::tag_dll__icuuc_v063::helper__create_dll_init_mutex()
 {
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new dll_init_mutex_type());
 }//helper__create_dll_init_mutex
 
@@ -246,7 +246,7 @@ ICU__Loader::tag_dll_ptr ICU__Loader::helper__create_icuuc_v063
 {
  assert(pICUUC_DLL);
 
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new tag_dll__icuuc_v063
            (pICUUC_DLL,
             dllVersion));

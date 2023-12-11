@@ -412,7 +412,7 @@ t_basic_str_formatter<charT,traits,allocator>&
     //registry arg name
     m_args[string_type(beg,cur)];
 
-    if(cur!=end && (*cur)==m_traits.arg_prefix()) //skeep end arg prefix
+    if(cur!=end && (*cur)==m_traits.arg_prefix()) //skip end arg prefix
      ++cur;
    }//elif - named param
    else

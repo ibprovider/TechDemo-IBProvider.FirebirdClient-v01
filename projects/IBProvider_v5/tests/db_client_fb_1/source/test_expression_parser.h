@@ -20,15 +20,15 @@ class TSYS_CommandLine;
 class TIBP_TSO_ExpressionComparer:public TSYS_SmartMemoryObject
 {
  private:
-  typedef TIBP_TSO_ExpressionComparer                     self_type;
+  using self_type=TIBP_TSO_ExpressionComparer;
 
-  TIBP_TSO_ExpressionComparer(const self_type&);
-  self_type& operator = (const self_type&);
+  TIBP_TSO_ExpressionComparer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<const self_type>  self_cptr;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
 
-  typedef std::string                                     expression_type;
+  using expression_type=std::string;
 
  protected:
   TIBP_TSO_ExpressionComparer();
@@ -55,13 +55,13 @@ class TIBP_TSO_ExpressionComparer:public TSYS_SmartMemoryObject
 class TIBP_TSO_EqualComparer:public TIBP_TSO_ExpressionComparer
 {
  private:
-  typedef TIBP_TSO_EqualComparer   self_type;
+  using self_type=TIBP_TSO_EqualComparer;
 
-  TIBP_TSO_EqualComparer(const self_type&);
-  self_type& operator = (const self_type&);
+  TIBP_TSO_EqualComparer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
-  TIBP_TSO_EqualComparer(const expression_type& value);
+  explicit TIBP_TSO_EqualComparer(const expression_type& value);
 
   virtual ~TIBP_TSO_EqualComparer();
 
@@ -69,8 +69,8 @@ class TIBP_TSO_EqualComparer:public TIBP_TSO_ExpressionComparer
   static self_cptr create(const expression_type& value);
 
  public:
-  virtual bool operator == (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator != (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool operator == (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator != (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const expression_type  m_value;
@@ -79,16 +79,17 @@ class TIBP_TSO_EqualComparer:public TIBP_TSO_ExpressionComparer
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_VersionComparer
 
-class TIBP_TSO_VersionComparer:public TIBP_TSO_ExpressionComparer
+class TIBP_TSO_VersionComparer LCPI_CPP_CFG__CLASS__FINAL
+ :public TIBP_TSO_ExpressionComparer
 {
  private:
-  typedef TIBP_TSO_VersionComparer   self_type;
+  using self_type=TIBP_TSO_VersionComparer;
 
-  TIBP_TSO_VersionComparer(const self_type&);
-  self_type& operator = (const self_type&);
+  TIBP_TSO_VersionComparer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
-  TIBP_TSO_VersionComparer(const expression_type& version_str);
+  explicit TIBP_TSO_VersionComparer(const expression_type& version_str);
 
   virtual ~TIBP_TSO_VersionComparer();
 
@@ -96,12 +97,12 @@ class TIBP_TSO_VersionComparer:public TIBP_TSO_ExpressionComparer
   static self_cptr create(const expression_type& version_str);
 
  public:
-  virtual bool operator == (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator >  (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator <  (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator >= (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator <= (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator != (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool operator == (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator >  (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator <  (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator >= (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator <= (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator != (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const structure::str_version  m_version;
@@ -110,13 +111,14 @@ class TIBP_TSO_VersionComparer:public TIBP_TSO_ExpressionComparer
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_ServerComparer
 
-class TIBP_TSO_ServerComparer:public TIBP_TSO_ExpressionComparer
+class TIBP_TSO_ServerComparer LCPI_CPP_CFG__CLASS__FINAL
+ :public TIBP_TSO_ExpressionComparer
 {
  private:
-  typedef TIBP_TSO_ServerComparer   self_type;
+  using self_type=TIBP_TSO_ServerComparer;
 
-  TIBP_TSO_ServerComparer(const self_type&);
-  self_type& operator = (const self_type&);
+  TIBP_TSO_ServerComparer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   TIBP_TSO_ServerComparer(const expression_type& server_str,
@@ -129,12 +131,12 @@ class TIBP_TSO_ServerComparer:public TIBP_TSO_ExpressionComparer
                           const expression_type& version_str);
 
  public:
-  virtual bool operator == (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator >  (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator <  (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator >= (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator <= (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
-  virtual bool operator != (const expression_type& str) const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool operator == (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator >  (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator <  (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator >= (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator <= (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool operator != (const expression_type& str) const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const std::string             m_server_id;
@@ -144,21 +146,20 @@ class TIBP_TSO_ServerComparer:public TIBP_TSO_ExpressionComparer
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_ExpressionParser
 
-class TIBP_TSO_ExpressionParser
+class TIBP_TSO_ExpressionParser LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TIBP_TSO_ExpressionParser         self_type;
+  using self_type=TIBP_TSO_ExpressionParser;
 
-  TIBP_TSO_ExpressionParser(const self_type&);
-  self_type& operator = (const self_type&);
+  TIBP_TSO_ExpressionParser(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef char                              expression_element;
-  typedef structure::t_basic_const_str_box
-           <expression_element>             expression_box_type;
+  using expression_element=char;
+  
+  using expression_box_type=lib::structure::t_basic_const_str_box<expression_element>;
 
-  typedef __STL_DEF_BASIC_STRING
-           (expression_element)             expression_str_type;
+  using expression_str_type=std::basic_string<expression_element>;
 
   enum enum_calc_result
   {
@@ -169,7 +170,7 @@ class TIBP_TSO_ExpressionParser
    calc_result__yes        =1,
   };//enum_calc_result
 
-  typedef enum_calc_result                  calc_result_type;
+  using calc_result_type=enum_calc_result;
 
  public:
   explicit TIBP_TSO_ExpressionParser(const TSYS_CommandLine* pCL);
@@ -184,7 +185,7 @@ class TIBP_TSO_ExpressionParser
  private:
   class tag_ctx;
 
-  typedef tag_ctx                           ctx_type;
+  using ctx_type=tag_ctx;
 
  private:
   enum token_type
@@ -195,8 +196,9 @@ class TIBP_TSO_ExpressionParser
   };
 
  private:
-  typedef TIBP_TSO_ExpressionComparer       comparer_type;
-  typedef comparer_type::self_cptr          comparer_cptr;
+  using comparer_type=TIBP_TSO_ExpressionComparer;
+
+  using comparer_cptr=comparer_type::self_cptr;
 
  private:
   bool process_1_or(ctx_type& ctx)const;
@@ -242,7 +244,7 @@ class TIBP_TSO_ExpressionParser
   const comparer_cptr m_spDBDialectComparer;
 
  private:
-  typedef std::map<std::string,std::string> macroses_type;
+  using macroses_type=std::map<std::string,std::string>;
 
   macroses_type m_macroses;
 

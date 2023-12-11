@@ -108,10 +108,10 @@ void t_ibp_error_elements::add_limit_event()
  //-----------------------------------------
  error_record_ptr
   spLimitRec
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
     (new t_ibp_error_element
-          (S_FALSE,
-           ibp_mce_common__err_count_limit_was_reached_0)));
+      (S_FALSE,
+       ibp_mce_common__err_count_limit_was_reached_0)));
 
  assert(spLimitRec);
 

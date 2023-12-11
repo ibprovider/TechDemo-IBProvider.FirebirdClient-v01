@@ -76,6 +76,12 @@ namespace lcpi{namespace ibp{
 #define IBP_DBPROP_NAME__STD__SUPPORT_SQUARE_DELIM_NAME \
  MAKE_OLEDB_WMS(L"support_square_delim_name")
 
+#define IBP_DBPROP_NAME__STD__AUTO_INSERT_FIELD_RULE \
+ MAKE_OLEDB_WMS(L"auto_insert_field_rule")
+
+#define IBP_DBPROP_NAME__STD__AUTO_UPDATE_FIELD_RULE \
+ MAKE_OLEDB_WMS(L"auto_update_field_rule")
+
 ////////////////////////////////////////////////////////////////////////////////
 //! @}
 ////////////////////////////////////////////////////////////////////////////////

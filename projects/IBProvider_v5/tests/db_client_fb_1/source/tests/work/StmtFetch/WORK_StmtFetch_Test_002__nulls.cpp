@@ -38,11 +38,11 @@ class WORK_StmtFetch_Test_002__nulls::tag_impl
            size_t                  nFields);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const COMP_W000004_OVERRIDE_FINAL;
+  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool can_exec()const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual void run(context_type* pCtx)const COMP_W000004_OVERRIDE_FINAL;
+  virtual void run(context_type* pCtx)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   TTSO_GlobalContext::self_ptr const m_spParams;

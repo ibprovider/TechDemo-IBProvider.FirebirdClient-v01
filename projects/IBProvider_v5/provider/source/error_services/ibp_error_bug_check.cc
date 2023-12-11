@@ -23,11 +23,12 @@ void IBP_ThrowBugCheck__UnexpectedPropValue(const wchar_t* const place,
  assert(point);
  assert(prop_name);
 
- structure::wstr_formatter freason(me_bug_check__prop__unexpected_value_2);
-
- freason<<prop_name<<value;
-
- IBP_ThrowBugCheck(place,point,freason.c_str()); //throw!
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   me_bug_check__prop__unexpected_value_2,
+   prop_name,
+   value);
 
 #if(COMP_BUILD_UNUSED_CODE!=0)
  assert_hint(false);
@@ -45,12 +46,11 @@ void IBP_ThrowBugCheck__IncorrectDataLength(const wchar_t* const place,
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__incorrect_length_of_data_1);
-
- freason<<length;
-
- IBP_ThrowBugCheck(place,point,freason.c_str()); //throw!
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   me_bug_check__incorrect_length_of_data_1,
+   length);
 
 #if(COMP_BUILD_UNUSED_CODE!=0)
  assert_hint(false);
@@ -69,12 +69,12 @@ void IBP_ThrowBugCheck__TooLargeDataLength(const wchar_t* const place,
  assert(place);
  assert(point);
 
- structure::wstr_formatter
-  freason(me_bug_check__size_of_result_data_larger_than_buf_size_2);
-
- freason<<length<<bufSize;
-
- IBP_ThrowBugCheck(place,point,freason.c_str()); //throw!
+ IBP_ErrorUtils::Throw__BugCheck
+  (place,
+   point,
+   me_bug_check__size_of_result_data_larger_than_buf_size_2,
+   length,
+   bufSize);
 
 #if(COMP_BUILD_UNUSED_CODE!=0)
  assert_hint(false);

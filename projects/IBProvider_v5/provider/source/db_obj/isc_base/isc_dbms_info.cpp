@@ -8,7 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_obj/isc_base/isc_dbms_info.h"
-#include <structure/utilities/string/del_space.h>
+#include <structure/utilities/string/del_spaces.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +23,8 @@ namespace lcpi{namespace ibp{namespace isc_base{
 t_isc_dbms_info::t_isc_dbms_info()
  :id(isc_dbms_id_Unknown)
  ,name(g_dbms_name_Unknown)
-{}
+{
+}
 
 //------------------------------------------------------------------------
 t_isc_dbms_info::t_isc_dbms_info(const self_type& x)
@@ -31,7 +32,8 @@ t_isc_dbms_info::t_isc_dbms_info(const self_type& x)
  ,id       (x.id)
  ,name     (x.name)
  ,version  (x.version)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_isc_dbms_info& t_isc_dbms_info::operator = (const self_type& x)
@@ -67,7 +69,7 @@ t_isc_dbms_info::string_type t_isc_dbms_info::get_title()const
 
  x+=this->version;
 
- return __STL_MOVE_VALUE(structure::self_del_space(x));
+ return __STL_MOVE_VALUE(lib::structure::self_del_spaces(x));
 }//get_title
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -52,7 +52,7 @@ bool RemoteFB__ClientConnectBlock_v1::tag_expected_ptype_descr::operator != (pty
 
 RemoteFB__ClientConnectBlock_v1::RemoteFB__ClientConnectBlock_v1
                                (oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* const pDsPropValues)
- :m_spDsPropValues(structure::not_null_ptr(pDsPropValues))
+ :m_spDsPropValues(lib::structure::not_null_ptr(pDsPropValues))
  ,m_AuthKind(auth_kind__none)
 {
  assert(m_spDsPropValues);

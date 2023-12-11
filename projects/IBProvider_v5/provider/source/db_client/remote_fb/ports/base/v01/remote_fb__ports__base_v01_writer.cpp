@@ -35,7 +35,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 
 RemoteFB__Port_BASE_v01::tag_writer::tag_writer(RemoteFB__Port_BASE_v01* const pPort,
                                                 bool                     const IsDeferredPacket)
- :m_spPort(structure::not_null_ptr(pPort))
+ :m_spPort(lib::structure::not_null_ptr(pPort))
  ,m_IsDeferredPacket(IsDeferredPacket)
 {
  assert(m_spPort);

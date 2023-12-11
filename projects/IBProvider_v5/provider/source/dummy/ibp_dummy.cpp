@@ -9,7 +9,8 @@ namespace lcpi{namespace ibp{
 
 t_ibp_locale_services::self_ptr IBP_GetStdLocaleC()
 {
- return structure::not_null_ptr(new t_ibp_unicode_locale_services());
+ return lib::structure::not_null_ptr
+         (new t_ibp_unicode_locale_services());
 }//IBP_GetStdLocaleC
 
 ////////////////////////////////////////////////////////////////////////////////

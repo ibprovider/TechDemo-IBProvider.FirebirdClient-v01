@@ -235,7 +235,7 @@ class TTSO_PushTest__ExecutorMT
                          log_ex_type*              pRootLog);
 
   //TTSO_PushTest interface ----------------------------------------------
-  virtual void PushTest(const TTSO_Test* pTest)COMP_W000004_OVERRIDE_FINAL;
+  virtual void PushTest(const TTSO_Test* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //----------------------------------------------------------------------
   void cancel();

@@ -79,13 +79,13 @@ HRESULT QueryComInterface(T* ptr,REFIID riid,void** ppv,HRESULT null_ptr_hr);
 //class IPtr - smart pointer with support QueryInterface
 
 template <class T,const IID* piid>
-class IPtr
+class IPtr LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IPtr<T,piid>                    self_type;
+  using self_type=IPtr<T,piid>;
 
  public:
-  typedef T                               interface_type;
+  using interface_type=T;
 
  public:
   HRESULT m_hr;
@@ -174,13 +174,13 @@ class IPtr
 //class IPtr<IUnknown,&IID_IUnknown>
 
 template<>
-class IPtr<IUnknown,&IID_IUnknown>
+class IPtr<IUnknown,&IID_IUnknown> LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IPtr<IUnknown,&IID_IUnknown>    self_type;
+  using self_type=IPtr<IUnknown,&IID_IUnknown>;
 
  public:
-  typedef IUnknown                        interface_type;
+  using interface_type=IUnknown;
 
  public:
   HRESULT m_hr;
@@ -278,13 +278,13 @@ class IPtr<IUnknown,&IID_IUnknown>
 
 //------------------------------------------------------------------------
 template<class T>
-class IPtr2
+class IPtr2 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IPtr2<T> self_type;
+  using self_type=IPtr2<T>;
 
  public:
-  typedef T        interface_type;
+  using interface_type=T;
 
  public:
   IPtr2();
@@ -377,16 +377,16 @@ typedef IPtr2<IUnknown> IUnknownPtr2;
 //class INondelegatingPtr2
 
 template<class T>
-class INondelegatingPtr2
+class INondelegatingPtr2 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef INondelegatingPtr2<T> self_type;
+  using self_type=INondelegatingPtr2<T>;
 
-  INondelegatingPtr2(const self_type&);
-  self_type& operator = (const self_type&);
+  INondelegatingPtr2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef T                     interface_type;
+  using interface_type=T;
 
  public:
   INondelegatingPtr2();

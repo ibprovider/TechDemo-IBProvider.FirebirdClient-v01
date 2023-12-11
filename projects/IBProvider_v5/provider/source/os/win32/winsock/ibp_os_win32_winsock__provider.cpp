@@ -35,7 +35,7 @@ t_winsock__provider::t_winsock__provider(dll_type* const pDLL)
  ,INIT_WINSOCK_POINT(htonl)
  ,INIT_WINSOCK_POINT(freeaddrinfo)
  ,INIT_WINSOCK_POINT(getaddrinfo)
- ,m_spDLL(structure::not_null_ptr(pDLL))
+ ,m_spDLL(lib::structure::not_null_ptr(pDLL))
 {
  assert(m_spDLL);
 
@@ -82,7 +82,7 @@ t_winsock__provider::self_ptr
 {
  assert(pDLL);
 
- return structure::not_null_ptr(new self_type(pDLL));
+ return lib::structure::not_null_ptr(new self_type(pDLL));
 }//create
 
 //------------------------------------------------------------------------

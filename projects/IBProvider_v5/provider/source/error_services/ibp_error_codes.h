@@ -486,6 +486,15 @@ enum ibp_msg_code_type
  ///////////////////////////////////////////////////////////////////////////////
 
  /// \brief
+ ///  The defined property value is not supported with current connection.<br>
+ /// \b
+ ///  Params: property name, property value sign, dbms sign
+ ibp_mce_common__prop_value_is_not_supported_by_current_connection_3
+  =IBP_MCE_COMMON__PROP_VALUE_IS_NOT_SUPPORTED_BY_CURRENT_CONNECTION_3,
+
+ ///////////////////////////////////////////////////////////////////////////////
+
+ /// \brief
  ///  [BUG CHECK] Сервис не поддерживается.<br>
  /// \b
  ///  Params: service_guid, interface name
@@ -723,7 +732,9 @@ enum ibp_msg_code_type
  ibp_mce_dbobj__cant_assign_str__large_len_4
   =IBP_MCE_DBOBJ__CANT_ASSIGN_STR__LARGE_LEN_4,
 
- //Reserved
+ ibp_mce_dbobj__cstring_data_contains_internal_zeros_0
+  =IBP_MCE_DBOBJ__CSTRING_DATA_CONTAINS_INTERNAL_ZEROS_0,
+
  //Reserved
  //Reserved
  //Reserved
@@ -1549,11 +1560,18 @@ enum ibp_msg_code_type
   =IBP_MCE_SCHEMA__UNKNOWN_SRV_SP_TYPE_2,
 
  /// \brief
- ///  Ошибка обработки описания индекса
+ ///  Ошибка обработки описания индекса.<br>
  /// \b
  ///  Params: index name, table name, column name
  ibp_mce_schema__failed_to_load_index_info_3
   =IBP_MCE_SCHEMA__FAILED_TO_LOAD_INDEX_INFO_3,
+
+ /// \brief
+ ///  Parameter direction is not defined.<br>
+ /// \b
+ ///  Params: proc_name, param_name
+ ibp_mce_schema_null_proc_param_direction_2
+  =IBP_MCE_SCHEMA_NULL_PROC_PARAM_DIRECTION_2,
 
 //Table open ------------------------------------------------------------
  ibp_mce_empty_table_name_0

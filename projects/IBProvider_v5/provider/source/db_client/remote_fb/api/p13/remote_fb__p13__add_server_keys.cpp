@@ -200,7 +200,7 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
     ep(srv_key__plugins.cend());
 
    //----
-   pp=structure::miss_space2(pp,ep);
+   pp=structure::skip_spaces2(pp,ep);
 
    if(pp==ep)
    {
@@ -221,7 +221,7 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
 
    for(sep_kind_type sep_kind=sep_kind__unk;;)
    {
-    assert(structure::miss_space2(pp,ep)==pp);
+    assert(structure::skip_spaces2(pp,ep)==pp);
 
     const std::wstring::const_iterator
      pp1=pp;
@@ -243,7 +243,7 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
     const std::wstring::const_iterator
      pp2=pp;
 
-    pp=structure::miss_space2(pp,ep);
+    pp=structure::skip_spaces2(pp,ep);
 
     const RemoteFB__KnownServerKey::self_ptr
      spSrvKey(RemoteFB__KnownServerKey::Create
@@ -265,7 +265,7 @@ void RemoteFB__P13__AddServerKeys::exec(RemoteFB__ClientConnectBlock_v2& clientC
     {
      ++pp;
 
-     pp=structure::miss_space2(pp,ep);
+     pp=structure::skip_spaces2(pp,ep);
 
      cur_sep_kind=sep_kind__comma;
     }

@@ -75,7 +75,7 @@ t_ibp_os__dll_ptr t_ibp_os__dlls::GetDLL(t_ibp_str_box const DLL_Name,
 
  t_ibp_os__dll_loader::self_ptr
   spDLL
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_os__dll_loader
        (DLL_Name))); //throw
 

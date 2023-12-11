@@ -17,7 +17,7 @@
 #include "source/error_services/ibp_error_messages.h"
 #include "source/ibp_utils.h"
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -239,7 +239,7 @@ void RemoteFB__ErrorUtils::SetInvalidPortState_And_Throw_BugCheck2_UnexpectedSer
  {
   const t_ibp_error_element::self_ptr
    spErrRec
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new t_ibp_error_element
         (E_FAIL,
          ibp_mce_remote__bug_check__unexpected_answer_from_server_3)));

@@ -12,7 +12,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef IBP_CFG_HAS_MODULE_CONFIG
-# error IBP_CFG_HAS_MODULE_CONFIG not defined!
+# error IBP_CFG_HAS_MODULE_CONFIG is not defined!
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -323,6 +323,10 @@ extern const wchar_t
 extern const wchar_t
  me_bug_check__too_large_number_of_RPT_elements_2[];
 
+//params: actual size, required size
+extern const wchar_t
+ me_bug_check__buffer_is_small_2[];
+
 ////////////////////////////////////////////////////////////////////////////////
 
 //params: length
@@ -413,6 +417,20 @@ extern const wchar_t
 
 extern const wchar_t
  me_bug_check__unexpected_problem_with_the_building_of_string_was_occurred_0[];
+
+////////////////////////////////////////////////////////////////////////////////
+
+extern const wchar_t
+ me_bug_check__unknown_argument_value_mechanism_1[];
+
+extern const wchar_t
+ me_bug_check__unknown_return_value_mechanism_1[];
+
+////////////////////////////////////////////////////////////////////////////////
+
+//params: direction id
+extern const wchar_t
+ me_bug_check__unknown_parameter_direction_1[];
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

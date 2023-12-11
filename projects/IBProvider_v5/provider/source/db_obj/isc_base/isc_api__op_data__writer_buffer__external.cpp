@@ -9,7 +9,7 @@
 
 #include "source/db_obj/isc_base/isc_api__op_data__writer_buffer__external.h"
 #include "source/error_services/ibp_error_utils.h"
-#include <structure/t_str_formatter.h>
+#include "source/error_services/ibp_error_messages.h"
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,12 +20,15 @@ void t_isc_api__op_data__writer_buffer__external::put_bytes(const char*     p,
 {
  CHECK_READ_TYPED_PTR(p,n);
 
+ const wchar_t* const c_bugcheck_src
+  =L"t_isc_api__op_data__writer_buffer__external::put_bytes";
+
  assert(m_used_size<=m_buffer_size);
 
  if((m_buffer_size-m_used_size)<n)
  {
   this->helper__throw_bug_check__overflow
-   (L"t_isc_api__op_data__writer_buffer__external::put_bytes",
+   (c_bugcheck_src,
     L"#001",
     m_used_size+n);
  }//if
@@ -52,18 +55,12 @@ void t_isc_api__op_data__writer_buffer__external::helper__throw_bug_check__overf
  assert(point);
  assert(req_size<=this->get_capacity());
 
- //! \todo
- //!  Убрать отсюда шаблон сообщения об ошибке
-
- structure::wstr_formatter
-  freason(L"buffer is small: %1. required size: %2");
-
- freason<<this->get_capacity()<<req_size;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (source,
    point,
-   freason.c_str());
+   me_bug_check__buffer_is_small_2,
+   this->get_capacity(),
+   req_size);
 }//helper__throw_bug_check__overflow
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -72,32 +72,35 @@ extern const TCHAR* const c_prog_arg__cn_str;
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef structure::t_smart_interface                          TTSO_SmartInterface;
+using TTSO_SmartInterface
+ =lib::structure::t_smart_interface;
 
-typedef structure::t_basic_smart_interface_impl__dynamic
-         <TTSO_SmartInterface,
-          TTSO_MemoryAllocator>                               TTSO_SmartMemoryObject;
+using TTSO_SmartMemoryObject
+ =lib::structure::t_basic_smart_interface_impl__dynamic<TTSO_SmartInterface,TTSO_MemoryAllocator>;
 
-typedef tso_obj::t_basic_root_log<TTSO_MemoryAllocator>       TTSO_RootLog;
+using TTSO_RootLog
+ =tso_obj::t_basic_root_log<TTSO_MemoryAllocator>;
 
-typedef tso_obj::t_basic_tracer<TTSO_MemoryAllocator>         TTSO_Tracer;
+using TTSO_Tracer
+ =tso_obj::t_basic_tracer<TTSO_MemoryAllocator>;
 
-typedef tso_obj::t_basic_exception_router                     TTSO_ExceptionRouter;
+using TTSO_ExceptionRouter
+ =tso_obj::t_basic_exception_router;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_Basic_TracerAutoSend
 
 template<class TTracer>
-class TTSO_Basic_TracerAutoSend
+class TTSO_Basic_TracerAutoSend LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TTSO_Basic_TracerAutoSend<TTracer>          self_type;
+  using self_type=TTSO_Basic_TracerAutoSend<TTracer>;
 
-  TTSO_Basic_TracerAutoSend(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_Basic_TracerAutoSend(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef TTracer                                     tracer_type;
+  using tracer_type=TTracer;
 
  public:
   TTSO_Basic_TracerAutoSend(tracer_type& tracer);
@@ -111,32 +114,32 @@ class TTSO_Basic_TracerAutoSend
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef TTSO_Basic_TracerAutoSend<TTSO_Tracer> TTSO_TracerAutoSend;
+using TTSO_TracerAutoSend=TTSO_Basic_TracerAutoSend<TTSO_Tracer>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TSYS_RootLog
 
-class TSYS_RootLog:public tso_obj::t_basic_root_log<TSYS_MemoryAllocator>
+class TSYS_RootLog LCPI_CPP_CFG__CLASS__FINAL
+  :public tso_obj::t_basic_root_log<TSYS_MemoryAllocator>
 {
  private:
-  typedef TSYS_RootLog                                     self_type;
-  typedef tso_obj::t_basic_root_log<TSYS_MemoryAllocator>  inherited;
+  using self_type=TSYS_RootLog;
+  using inherited=tso_obj::t_basic_root_log<TSYS_MemoryAllocator>;
 
-  TSYS_RootLog(const self_type&);
-  self_type& operator = (const self_type&);
+  TSYS_RootLog(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TSYS_RootLog();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>         self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef inherited::thread_traits                         thread_traits;
-  typedef inherited::count_type                            count_type;
+  using count_type=inherited::count_type;
 
  public:
-  TSYS_RootLog(UINT CodePage);
+  explicit TSYS_RootLog(UINT CodePage);
 
-  TSYS_RootLog(tso_obj::t_log_stream* pOutputStream);
+  explicit TSYS_RootLog(tso_obj::t_log_stream* pOutputStream);
 
   //interface ------------------------------------------------------------
   void add_other_error_count(count_type x);
@@ -165,32 +168,39 @@ class TSYS_RootLog:public tso_obj::t_basic_root_log<TSYS_MemoryAllocator>
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef tso_obj::t_basic_tracer<TSYS_MemoryAllocator>        TSYS_Tracer;
+using TSYS_Tracer=tso_obj::t_basic_tracer<TSYS_MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TSYS_CommandLine
 
-class TSYS_CommandLine:public TSYS_SmartMemoryObject
+class TSYS_CommandLine LCPI_CPP_CFG__CLASS__FINAL
+  :public TSYS_SmartMemoryObject
 {
  private:
-  typedef TSYS_CommandLine                                   self_type;
+  using self_type=TSYS_CommandLine;
 
-  TSYS_CommandLine(const self_type&);
-  self_type& operator = (const self_type&);
+  TSYS_CommandLine(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TSYS_CommandLine();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<const self_type>     self_cptr;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
 
-  typedef TSYS_MemoryAllocator                               allocator_type;
+  using allocator_type=TSYS_MemoryAllocator;
 
-  typedef structure::t_string                                string_type;
-  typedef structure::t_char                                  char_type;
-  typedef structure::t_basic_cmd_line_parser<char_type,
-                                             allocator_type> cmd_line_parser_type;
-  typedef cmd_line_parser_type::arg_type                     cmd_arg_type;
-  typedef cmd_line_parser_type::arg_cptr                     cmd_arg_ptr;
+  using string_type=structure::t_string;
+
+  using char_type=structure::t_char;
+
+  using cmd_line_parser_type
+   =structure::t_basic_cmd_line_parser<char_type,allocator_type>;
+
+  using cmd_arg_type
+   =cmd_line_parser_type::arg_type;
+
+  using cmd_arg_ptr
+   =cmd_line_parser_type::arg_cptr;
 
  public:
   TSYS_CommandLine();
@@ -224,24 +234,26 @@ class TSYS_CommandLine:public TSYS_SmartMemoryObject
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_GlobalContext
 
-class TTSO_GlobalContext:public TSYS_SmartMemoryObject
+class TTSO_GlobalContext LCPI_CPP_CFG__CLASS__FINAL
+  :public TSYS_SmartMemoryObject
 {
  private:
-  typedef TTSO_GlobalContext                                  self_type;
+  using self_type=TTSO_GlobalContext;
 
-  TTSO_GlobalContext(const TTSO_GlobalContext&);
-  self_type& operator = (const self_type&);
+  TTSO_GlobalContext(const TTSO_GlobalContext&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TTSO_GlobalContext();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>         self_ptr;
-  typedef structure::t_smart_object_ptr<const self_type>   self_cptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef TSYS_CommandLine::cmd_line_parser_type           args_type;
+  using self_cptr=lib::structure::t_smart_object_ptr<const self_type>;
+
+  using args_type=TSYS_CommandLine::cmd_line_parser_type;
 
  public:
-  TTSO_GlobalContext(const TSYS_CommandLine* pSysCL);
+  explicit TTSO_GlobalContext(const TSYS_CommandLine* pSysCL);
 
   //selectors ------------------------------------------------------------
   const args_type& args()const;
@@ -270,26 +282,23 @@ class TTSO_GlobalContext:public TSYS_SmartMemoryObject
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_RunContext
 
-class TTSO_RunContext
- :public structure::t_basic_smart_interface_impl__dynamic<structure::tso_obj::t_simple_log,
-                                                          TTSO_MemoryAllocator>
+class TTSO_RunContext LCPI_CPP_CFG__CLASS__FINAL
+ :public lib::structure::t_basic_smart_interface_impl__dynamic
+   <structure::tso_obj::t_simple_log,TTSO_MemoryAllocator>
 {
  private:
-  typedef TTSO_RunContext                               self_type;
+  using self_type=TTSO_RunContext;
 
-  TTSO_RunContext(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_RunContext(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TTSO_RunContext();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>      self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef tso_obj::t_simple_log                         log_type;
-  typedef log_type::self_ptr                            log_ptr;
-
-  typedef structure::t_multi_thread_traits              thread_traits;
-  typedef thread_traits::int_type                       count_type;
+  using log_type=tso_obj::t_simple_log;
+  using log_ptr=log_type::self_ptr;
 
  public:
   TTSO_TestState2 m_test_info;
@@ -298,7 +307,7 @@ class TTSO_RunContext
   TTSO_RunContext(log_type* pLog);
 
   //log interface --------------------------------------------------------
-  virtual void trace(message_type* msg) COMP_W000004_OVERRIDE_FINAL;
+  virtual void trace(message_type* msg) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const log_ptr m_spLog;
@@ -310,7 +319,7 @@ class TTSO_RunContext
 class TTSO_Test:public TTSO_SmartInterface
 {
  public: //typedefs ------------------------------------------------------
-  typedef TTSO_RunContext                               context_type;
+  using context_type=TTSO_RunContext;
 
  public:
   virtual std::string get_id()const=0;
@@ -320,9 +329,9 @@ class TTSO_Test:public TTSO_SmartInterface
   virtual void run(context_type* pCtx)const=0;
 };//class TTSO_Test
 
-typedef structure::t_smart_object_ptr<TTSO_Test>        TTSO_TestPtr;
+using TTSO_TestPtr=lib::structure::t_smart_object_ptr<TTSO_Test>;
 
-typedef structure::t_smart_object_ptr<const TTSO_Test>  TTSO_TestCPtr;
+using TTSO_TestCPtr=lib::structure::t_smart_object_ptr<const TTSO_Test>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest
@@ -333,7 +342,7 @@ class TTSO_PushTest:public TTSO_SmartInterface
   virtual void PushTest(const TTSO_Test* pTest)=0;
 };//class TTSO_PushTest
 
-typedef structure::t_smart_object_ptr<TTSO_PushTest> TTSO_PushTestPtr;
+using TTSO_PushTestPtr=lib::structure::t_smart_object_ptr<TTSO_PushTest>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_tests*/}/*nms lcpi*/

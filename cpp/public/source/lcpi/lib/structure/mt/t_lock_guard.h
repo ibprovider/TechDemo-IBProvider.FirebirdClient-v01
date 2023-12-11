@@ -14,13 +14,13 @@ template<class TGuard>
 class t_lock_guard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_lock_guard<TGuard>                                  self_type;
+  using self_type=t_lock_guard<TGuard>;
 
   t_lock_guard(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef TGuard                                                guard_type;
+  using guard_type=TGuard;
 
  public:
   explicit t_lock_guard(guard_type& x);

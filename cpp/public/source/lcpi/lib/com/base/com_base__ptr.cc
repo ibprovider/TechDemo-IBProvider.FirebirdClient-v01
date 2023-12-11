@@ -5,6 +5,7 @@
 #define _cpp_public_lcpi_lib_com_base__ptr_CC_
 
 #include <lcpi/lib/structure/debug/debug_code.h>
+#include <utility>
 
 namespace lcpi{namespace lib{namespace com{namespace base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +15,7 @@ template<class ISource,class IDest>
 HRESULT CopyComInterface(ISource* const pISource,IDest** const ppIDest)
 {
  assert(ppIDest!=nullptr);
- //assert((*ppIDest)==nullptr); //[2012-09-11] not works in real world
+ //assert((*ppIDest)==nullptr); //[2012-09-11] it does not work in real world
 
  if(ppIDest==nullptr)
   return E_INVALIDARG;
@@ -29,7 +30,7 @@ template<class ISource,class IDest>
 HRESULT MoveComInterface(ISource* &rpISource,IDest** const ppIDest)
 {
  assert(ppIDest!=nullptr);
- //assert((*ppIDest)==nullptr); //[2012-09-11] not works in real world
+ //assert((*ppIDest)==nullptr); //[2012-09-11] it does not work in real world
  assert(reinterpret_cast<void**>(ppIDest)!=reinterpret_cast<void**>(&rpISource));
 
  if(ppIDest==nullptr)
@@ -47,7 +48,7 @@ template<class ISource,class IDest>
 inline
 void CopyComInterface2(ISource* const pISource,IDest* &rpIDest)
 {
- //assert(rpIDest==nullptr); //[2012-09-11] not works in real world
+ //assert(rpIDest==nullptr); //[2012-09-11] it does not work in real world
 
  if(pISource!=nullptr)
   static_cast<IDest*>(pISource)->AddRef();
@@ -60,7 +61,7 @@ template<class ISource,class IDest>
 inline
 void MoveComInterface2(ISource* &rpISource,IDest* &rpIDest)
 {
- //assert(rpIDest==nullptr); //[2012-09-11] not works in real world
+ //assert(rpIDest==nullptr); //[2012-09-11] it does not work in real world
  assert(reinterpret_cast<void**>(&rpIDest)!=reinterpret_cast<void**>(&rpISource));
 
  rpIDest=rpISource;

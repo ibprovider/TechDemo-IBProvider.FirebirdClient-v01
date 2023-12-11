@@ -101,8 +101,8 @@ void TTSO_SummaryBuilder::print_summary(wstr_param_type header,
 
 //------------------------------------------------------------------------
 void TTSO_SummaryBuilder::print_total(wstr_param_type const header,
-                                      size_t          const nError,
-                                      size_t          const nWarning)
+                                      count_type       const nError,
+                                      count_type       const nWarning)
 {
  this->print_total_ex(m_Tracer,header,nError,nWarning);
 }//print_total
@@ -166,10 +166,11 @@ void TTSO_SummaryBuilder::print_summary_ex(TTSO_Tracer&    tracer,
  {
   tracer<<send;
 
-  this->print_total_ex(tracer,
-                       L"",
-                       m_nLogErrors,
-                       m_nLogWarnings);
+  this->print_total_ex
+   (tracer,
+    L"",
+    m_nLogErrors,
+    m_nLogWarnings);
  }
 }//print_summary_ex
 

@@ -10,7 +10,7 @@
 #include "source/db_obj/db_datatypes.h"
 #include "source/error_services/ibp_error_utils.h"
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -145,6 +145,8 @@ DEF_DBTYPE_INFO(dbtype__fb040_int128                       ,"fb040_int128");
 DEF_DBTYPE_INFO(dbtype__fb040_numeric_i16                  ,"fb040_numeric_i16");
 DEF_DBTYPE_INFO(dbtype__fb040_decfloat16                   ,"fb040_decfloat16");
 DEF_DBTYPE_INFO(dbtype__fb040_decfloat34                   ,"fb040_decfloat34");
+DEF_DBTYPE_INFO(dbtype__isc_cstring_bin                    ,"isc_cstring_bin");
+DEF_DBTYPE_INFO(dbtype__isc_cstring_txt                    ,"isc_cstring_txt");
 
 #undef DEF_DBTYPE_INFO
 
@@ -203,6 +205,8 @@ static const tag_dbtype_info* const g_dbtype_descrs[]=
  /*46*/  ADD_DBTYPE_INFO(dbtype__fb040_numeric_i16),
  /*47*/  ADD_DBTYPE_INFO(dbtype__fb040_decfloat16),
  /*48*/  ADD_DBTYPE_INFO(dbtype__fb040_decfloat34),
+ /*49*/  ADD_DBTYPE_INFO(dbtype__isc_cstring_bin),
+ /*50*/  ADD_DBTYPE_INFO(dbtype__isc_cstring_txt),
 };//g_dbtype_descrs
 
 #undef ADD_DBTYPE_INFO
@@ -261,7 +265,7 @@ const wchar_t* get_dbtype_name(t_dbtype const typeID)
   (L"db_obj::get_dbtype_name",
    L"#001",
    L"unknown dbtype id: %1",
-   structure::to_underlying(typeID));
+   lib::structure::to_underlying(typeID));
 }//get_dbtype_name
 
 ////////////////////////////////////////////////////////////////////////////////

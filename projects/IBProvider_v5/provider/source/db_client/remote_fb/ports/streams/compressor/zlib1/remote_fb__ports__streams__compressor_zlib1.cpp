@@ -18,7 +18,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 
 RemoteFB__PortStream__Compressor_ZLib1::tag_zstream_for_deflate::tag_zstream_for_deflate
                                            (ZLIB1__ApiProvider* const pZApiProvider)
- :m_spZApiProvider(structure::not_null_ptr(pZApiProvider))
+ :m_spZApiProvider(lib::structure::not_null_ptr(pZApiProvider))
 {
  assert(m_spZApiProvider);
 
@@ -72,7 +72,7 @@ int RemoteFB__PortStream__Compressor_ZLib1::tag_zstream_for_deflate::deflate(int
 
 RemoteFB__PortStream__Compressor_ZLib1::tag_zstream_for_inflate::tag_zstream_for_inflate
                                            (ZLIB1__ApiProvider* const pZApiProvider)
- :m_spZApiProvider(structure::not_null_ptr(pZApiProvider))
+ :m_spZApiProvider(lib::structure::not_null_ptr(pZApiProvider))
 {
  assert(m_spZApiProvider);
 
@@ -130,7 +130,7 @@ RemoteFB__PortStream__Compressor_ZLib1::RemoteFB__PortStream__Compressor_ZLib1
                                             RemoteFB__PortStream* const pParentStream,
                                             z_api::zbuf_size_type const cbOpBuffer,
                                             void*                 const pCommonBuffer)
- :m_spParentStream(structure::not_null_ptr(pParentStream))
+ :m_spParentStream(lib::structure::not_null_ptr(pParentStream))
  ,m_zstream_for_deflate(pZApiProvider)
  ,m_zstream_for_inflate(pZApiProvider)
 #ifndef NDEBUG

@@ -18,9 +18,9 @@
 #include <structure/t_dynamic_array.h>
 #include <structure/t_function.h>
 
-#include <structure/utilities/string/trim.h>
-#include <structure/utilities/to_hex.h>
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/string/trim.h>
+#include <lcpi/lib/structure/utilities/to_hex.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +86,7 @@ std::wstring TIBP_MessageTextBuilder::GetSystemErrorMsg(LCID  const lcid,
 
  const auto_free_type _local_free(::LocalFree,Pointer);
 
- WCHAR* const ePointer=structure::total_miss_space_back(Pointer,Pointer+res);
+ WCHAR* const ePointer=lib::structure::total_skip_spaces_back(Pointer,Pointer+res);
 
  if(Pointer==ePointer)
  {
@@ -486,7 +486,7 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
    }//case - V_CPP_ERR_TEXT
 
    default:
-    assert_msg(false,"vt="<<structure::to_underlying(pv->vt));
+    assert_msg(false,"vt="<<lib::structure::to_underlying(pv->vt));
 
     fmsg<<L"???";
     break;

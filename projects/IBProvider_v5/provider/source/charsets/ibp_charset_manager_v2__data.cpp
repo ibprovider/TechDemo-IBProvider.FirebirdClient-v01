@@ -41,7 +41,7 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(_cs_name)             \
  cs_info.ucs2_for_char      =1;                                           \
  cs_info.flags              =0;                                           \
                                                                           \
- return structure::not_null_ptr                                           \
+ return lib::structure::not_null_ptr                                      \
          (new t_ibp_cs_bit8                                               \
            (cs_info,                                                      \
             &g_ibp_cs_map_##_cs_base));                                   \
@@ -120,7 +120,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(BIG_5)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_map_BIG_5));
+ return lib::structure::not_null_ptr
+          (new cs_type
+            (cs_info,
+             &g_ibp_cs_map_BIG_5));
 }//BIG_5
 
 //------------------------------------------------------------------------
@@ -137,7 +140,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(GB_2312)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_map_GB_2312));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_map_GB_2312));
 }//GB_2312
 
 //------------------------------------------------------------------------
@@ -154,7 +160,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(KSC_5601)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_map_KSC_5601));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_map_KSC_5601));
 }//KSC_5601
 
 //------------------------------------------------------------------------
@@ -173,7 +182,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(EUCJ_0208)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_EUCJ_0208_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_EUCJ_0208_traits));
 }//EUCJ_0208
 
 //------------------------------------------------------------------------
@@ -192,7 +204,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(SJIS_0208)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_SJIS_0208_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_SJIS_0208_traits));
 }//SJIS_0208
 
 //------------------------------------------------------------------------
@@ -211,7 +226,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(ASCII)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_ASCII_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_ASCII_traits));
 }//ASCII
 
 //------------------------------------------------------------------------
@@ -230,7 +248,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(UNICODE_FSS)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_UNICODE_FSS_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_UNICODE_FSS_traits));
 }//UNICODE_FSS
 
 //------------------------------------------------------------------------
@@ -253,7 +274,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(UTF8)
  cs_info.ucs2_for_char      =mng->m_wchars_in_utf8_symbol;
  cs_info.flags              =0;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_UTF8_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_UTF8_traits));
 }//UTF8
 
 //------------------------------------------------------------------------
@@ -270,7 +294,10 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(NONE)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =db_obj::db_charset_info_flag__is_none|db_obj::db_charset_info_flag__is_stable;
 
- return structure::not_null_ptr(new cs_type(cs_info,&g_ibp_cs_ASCII_traits));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info,
+            &g_ibp_cs_ASCII_traits));
 }//NONE
 
 //------------------------------------------------------------------------
@@ -287,7 +314,9 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(OCTETS)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =db_obj::db_charset_info_flag__is_octets|db_obj::db_charset_info_flag__is_stable;
 
- return structure::not_null_ptr(new cs_type(cs_info));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info));
 }//OCTETS
 
 //------------------------------------------------------------------------
@@ -304,7 +333,9 @@ static db_obj::t_db_charset_ptr IBP_CS_FACTORY_NAME(BASE64)
  cs_info.ucs2_for_char      =1;
  cs_info.flags              =db_obj::db_charset_info_flag__is_stable;
 
- return structure::not_null_ptr(new cs_type(cs_info));
+ return lib::structure::not_null_ptr
+         (new cs_type
+           (cs_info));
 }//BASE64
 
 ////////////////////////////////////////////////////////////////////////////////

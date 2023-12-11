@@ -57,11 +57,11 @@ class t_ibp_error_element LCPI_CPP_CFG__CLASS__FINAL
  ,public db_obj::t_db_smart_object_base2
 {
  private:
-  typedef t_ibp_error_element                       self_type;
-  typedef lib::structure::t_err_record              inherited_record;
+  using self_type        =t_ibp_error_element;
+  using inherited_record =lib::structure::t_err_record;
 
-  t_ibp_error_element(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_error_element(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -70,8 +70,11 @@ class t_ibp_error_element LCPI_CPP_CFG__CLASS__FINAL
 
  public: //typedefs ------------------------------------------------------
   ///Смарт-указатель на объект
-  typedef lib::structure::t_smart_object_ptr<const self_type>  self_cptr;
-  typedef lib::structure::t_smart_object_ptr<self_type>        self_ptr;
+  using self_cptr
+   =lib::structure::t_smart_object_ptr<const self_type>;
+
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
   typedef inherited_record::string_type             string_type;
   typedef inherited_record::system_id_type          system_id_type;
@@ -85,7 +88,8 @@ class t_ibp_error_element LCPI_CPP_CFG__CLASS__FINAL
   using get_cerr_obj_ptr
    =lib::structure::t_smart_object_ptr<get_cerr_obj_type>;
 
-  typedef ibp_msg_code_type                         mc_type;
+  using mc_type
+   =ibp_msg_code_type;
 
   using params_type
    =lib::structure::t_fix_vector<IBP_ErrorVariant,ibp_limc_MaxErrorArgsCount>;

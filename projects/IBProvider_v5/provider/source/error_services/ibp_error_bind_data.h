@@ -36,13 +36,14 @@ class IBP_BindErrorDataSet;
 
 class IBP_BindErrorDataTraits LCPI_CPP_CFG__CLASS__FINAL
 {
+ private:
+  using self_type=IBP_BindErrorDataTraits;
+
  public: //typedefs ------------------------------------------------------
-  typedef IBP_BindErrorDataTraits                    self_type;
+  using args_type=t_ibp_error_args<self_type>;
 
-  typedef t_ibp_error_args<self_type>                args_type;
-
-  typedef IBP_BindErrorData                          out_return_type;
-};//struct IBP_BindErrorDataTraits
+  using out_return_type=IBP_BindErrorData;
+};//class IBP_BindErrorDataTraits
 
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_BindErrorData
@@ -55,10 +56,10 @@ class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
  ,public IBP_BindErrorDataTraits::args_type
 {
  private:
-  typedef IBP_BindErrorData                               self_type;
+  using self_type=IBP_BindErrorData;
 
-  IBP_BindErrorData(const self_type&);
-  self_type& operator = (const self_type&);
+  IBP_BindErrorData(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -66,8 +67,9 @@ class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
   virtual ~IBP_BindErrorData();
 
  public: //typedefs ------------------------------------------------------
-  typedef DBORDINAL                                        ordinal_type;
-  typedef ibp_msg_code_type                                msg_code_type;
+  using ordinal_type=DBORDINAL;
+
+  using msg_code_type=ibp_msg_code_type;
 
   using params_type
    =structure::t_fix_vector<IBP_ErrorVariant,ibp_limc_MaxErrorArgsCount>;
@@ -120,7 +122,7 @@ class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
   self_type* m_pNext;
 };//class IBP_BindErrorData
 
-typedef lib::structure::t_smart_object_ptr<IBP_BindErrorData> IBP_BindErrorDataPtr;
+using IBP_BindErrorDataPtr=lib::structure::t_smart_object_ptr<IBP_BindErrorData>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_BindErrorDataSet
@@ -132,13 +134,13 @@ typedef lib::structure::t_smart_object_ptr<IBP_BindErrorData> IBP_BindErrorDataP
 class IBP_BindErrorDataSet LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_BindErrorDataSet              self_type;
+  using self_type=IBP_BindErrorDataSet;
 
-  IBP_BindErrorDataSet(const self_type&);
-  self_type& operator = (const self_type&);
+  IBP_BindErrorDataSet(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef size_t                            size_type;
+  using size_type=size_t;
 
  public:
   /// <summary>

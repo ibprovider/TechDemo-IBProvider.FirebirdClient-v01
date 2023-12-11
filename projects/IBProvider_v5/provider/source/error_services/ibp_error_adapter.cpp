@@ -94,7 +94,7 @@ void t_ibp_error_adapter::add(HRESULT const err_code)
 {
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         ibp_mce_standart_error)));
@@ -111,7 +111,7 @@ void t_ibp_error_adapter::add(HRESULT      const err_code,
 
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         ibp_mce_unknown_error_1)));
@@ -208,14 +208,14 @@ void t_ibp_error_adapter::add(mc_type     const mc_id_2,
 {
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         mc_id_2)));
 
  const IBP_BindErrorDataPtr
   spBindError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
       (new IBP_BindErrorData
         (0,
          err_code,
@@ -238,7 +238,7 @@ void t_ibp_error_adapter::add(mc_type      const mc_id_2,
 
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         mc_id_2)));
@@ -337,14 +337,14 @@ void t_ibp_error_adapter::add_row_error(mc_type     const mc_id_3,
 {
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         mc_id_3)));
 
  const IBP_BindErrorDataPtr
   spBindError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new IBP_BindErrorData
        (0,
         err_code,
@@ -367,7 +367,7 @@ void t_ibp_error_adapter::add_row_error(mc_type      const mc_id_3,
 
  const t_ibp_error_element::self_ptr
   spError
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new t_ibp_error_element
        (err_code,
         mc_id_3)));

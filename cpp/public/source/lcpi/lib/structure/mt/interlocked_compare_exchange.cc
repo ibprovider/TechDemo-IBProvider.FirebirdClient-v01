@@ -18,15 +18,25 @@ namespace detail{
 class interlocked_compare_exchange__impl
 {
  public:
+  using long_type  =long;
+  using ulong_type =unsigned long;
+  using uint32_type=unsigned __int32;
+  using uint64_type=unsigned __int64;
+
+ public:
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pValue,T2* newValue,std::nullptr_t testValue);
 
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pValue,T2* newValue,T1* testValue);
 
-  static long exec(long volatile* pValue,long newValue,long testValue);
+  static long_type exec(long_type volatile* pValue,long_type newValue,long_type testValue);
 
-  static unsigned long exec(unsigned long volatile* pValue,unsigned long newValue,unsigned long testValue);
+  static ulong_type exec(ulong_type volatile* pValue,ulong_type newValue,ulong_type testValue);
+
+  static uint32_type exec(uint32_type volatile* pValue,uint32_type newValue,uint32_type testValue);
+
+  static uint64_type exec(uint64_type volatile* pValue,uint64_type newValue,uint64_type testValue);
 };//class interlocked_compare_exchange__impl
 
 //------------------------------------------------------------------------
@@ -56,26 +66,52 @@ T1* interlocked_compare_exchange__impl::exec(T1* volatile*  const pValue,
 }//exec - T1**, T2*, T1*
 
 //------------------------------------------------------------------------
-inline long interlocked_compare_exchange__impl::exec
-                                  (long volatile* const pValue,
-                                   long           const newValue,
-                                   long           const testValue)
+inline interlocked_compare_exchange__impl::long_type
+ interlocked_compare_exchange__impl::exec
+  (long_type volatile* const pValue,
+   long_type           const newValue,
+   long_type           const testValue)
 {
  LCPI__assert(pValue);
 
  return InterlockedCompareExchange(pValue,newValue,testValue);
-}//exec - long
+}//exec - long_type
 
 //------------------------------------------------------------------------
-inline unsigned long interlocked_compare_exchange__impl::exec
-                                           (unsigned long volatile* const pValue,
-                                            unsigned long           const newValue,
-                                            unsigned long           const testValue)
+inline interlocked_compare_exchange__impl::ulong_type
+ interlocked_compare_exchange__impl::exec
+  (ulong_type volatile* const pValue,
+   ulong_type           const newValue,
+   ulong_type           const testValue)
 {
  LCPI__assert(pValue);
 
  return InterlockedCompareExchange(pValue,newValue,testValue);
-}//exec - unsigned long
+}//exec - ulong_type
+
+//------------------------------------------------------------------------
+inline interlocked_compare_exchange__impl::uint32_type
+ interlocked_compare_exchange__impl::exec
+  (uint32_type volatile* const pValue,
+   uint32_type           const newValue,
+   uint32_type           const testValue)
+{
+ LCPI__assert(pValue);
+
+ return InterlockedCompareExchange(pValue,newValue,testValue);
+}//exec - uint32_type
+
+//------------------------------------------------------------------------
+inline interlocked_compare_exchange__impl::uint64_type
+ interlocked_compare_exchange__impl::exec
+  (uint64_type volatile* const pValue,
+   uint64_type           const newValue,
+   uint64_type           const testValue)
+{
+ LCPI__assert(pValue);
+
+ return InterlockedCompareExchange(pValue,newValue,testValue);
+}//exec - uint64_type
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace detail

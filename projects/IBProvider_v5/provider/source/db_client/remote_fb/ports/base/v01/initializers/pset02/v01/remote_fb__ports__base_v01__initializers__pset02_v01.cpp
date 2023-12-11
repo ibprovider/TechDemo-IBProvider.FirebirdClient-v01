@@ -33,7 +33,7 @@
 #include "source/error_services/ibp_error_messages.h"
 #include "source/ibp_utils.h"
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace ports{namespace base_v01{namespace initializers{namespace pset02{namespace v01{
 ////////////////////////////////////////////////////////////////////////////////
@@ -814,9 +814,9 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__GetProtocolArchit
  auto sPropValue=strPropValue__PArch.begin();
  auto ePropValue=strPropValue__PArch.end();
 
- sPropValue=structure::miss_space(sPropValue,ePropValue);
+ sPropValue=structure::skip_spaces(sPropValue,ePropValue);
 
- ePropValue=structure::miss_space_back(sPropValue,ePropValue);
+ ePropValue=structure::skip_spaces_back(sPropValue,ePropValue);
 
  assert(sPropValue<=ePropValue);
 
@@ -825,7 +825,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__GetProtocolArchit
  for(;;)
  {
   //ищем начало данных
-  sPropValue=structure::miss_space(sPropValue,ePropValue);
+  sPropValue=structure::skip_spaces(sPropValue,ePropValue);
 
   //особый случай: пустая строка
   if(parchs.empty() && sPropValue==ePropValue)
@@ -836,7 +836,7 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__GetProtocolArchit
   sPropValue=std::find(sPropValue,ePropValue,IBP_T(','));
 
   //игнорируем хвостовые пробелы
-  auto const eName(structure::miss_space_back(sName,sPropValue));
+  auto const eName(structure::skip_spaces_back(sName,sPropValue));
 
   assert(sName<=eName);
 
@@ -876,15 +876,11 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect__GetProtocolArchit
   {
    //ERROR - многократное указание архитектуры протокола
 
-   structure::wstr_formatter
-    freason(me_bug_check__mult_enum_of_protocol_architecture_1);
-
-   freason<<t_ibp_string(sName,eName);
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#002",
-     freason.c_str());
+     me_bug_check__mult_enum_of_protocol_architecture_1,
+     t_ibp_string(sName,eName));
   }//if
 
   assert(!parchs.full());

@@ -227,8 +227,8 @@ long TTSO_TestQueueMT::build_summary(const runners_type& runners)const
  //5. Total informations
 
  //----------------------------------------- prepare summary builders
- size_t nTotalError   (m_spLog->get_error_count());
- size_t nTotalWarning (m_spLog->get_warning_count());
+ auto nTotalError   (m_spLog->get_error_count());
+ auto nTotalWarning (m_spLog->get_warning_count());
 
  const TTSO_SummaryBuilder::self_ptr
   spRootBuilder(structure::not_null_ptr(new TTSO_SummaryBuilder(m_spLog.ptr())));

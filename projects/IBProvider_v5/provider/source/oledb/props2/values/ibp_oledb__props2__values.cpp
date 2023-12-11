@@ -20,7 +20,7 @@
 
 #include <ole_lib/ole_auto/ole_auto_variant_compare.h>
 
-#include <structure/utilities/to_underlying.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +120,7 @@ bool IBP_OLEDB_Props2__Values::HasEqualPropValue
    ole_lib::guid_to_wstring(propGuid),
    propId,
    prop1_Value.vt,
-   structure::to_underlying(r));
+   lib::structure::to_underlying(r));
 }//HasEqualPropValue
 
 //------------------------------------------------------------------------

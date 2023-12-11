@@ -238,7 +238,7 @@ t_ibp_error& t_ibp_error::add_error(HRESULT const err_code,
                                     mc_type const msg_code)
 {
  error_record_ptr x
-  (structure::not_null_ptr
+  (lib::structure::not_null_ptr
     (new error_record_type
       (err_code,
        msg_code)));
@@ -262,7 +262,7 @@ t_ibp_error& t_ibp_error::add_error(HRESULT            const err_code,
                                     get_cerr_obj_type* const pGetCErr)
 {
  error_record_ptr x
-  (structure::not_null_ptr
+  (lib::structure::not_null_ptr
     (new error_record_type
       (err_code,
        msg_code,
@@ -287,7 +287,7 @@ t_ibp_error& t_ibp_error::add_error(HRESULT        const err_code,
                                     mc_type        const msg_code)
 {
  error_record_ptr x
-  (structure::not_null_ptr
+  (lib::structure::not_null_ptr
     (new error_record_type
       (err_code,
        subsys_id,
@@ -313,7 +313,7 @@ t_ibp_error& t_ibp_error::add_error(HRESULT            const err_code,
                                     get_cerr_obj_type* const pGetCErr)
 {
  error_record_ptr x
-  (structure::not_null_ptr
+  (lib::structure::not_null_ptr
     (new error_record_type
       (err_code,
        subsys_id,

@@ -21,7 +21,7 @@ namespace lcpi{namespace ibp{namespace charsets{namespace cs_code{namespace icu{
 
 t_ibp_cs_icu::tag_conv_holder::tag_conv_holder
                                 (t_ibp_icu_provider* const pICU)
- :m_spICU (structure::not_null_ptr(pICU))
+ :m_spICU (lib::structure::not_null_ptr(pICU))
  ,m_ptr   (NULL)
 {
  assert(m_spICU);
@@ -44,7 +44,7 @@ t_ibp_cs_icu::tag_conv_holder::tag_conv_holder
                                 (t_ibp_icu_provider*       const pICU,
                                  const std::string&              icu_cs_name,
                                  conv_direction_flags_type const direction_flags)
- :m_spICU (structure::not_null_ptr(pICU))
+ :m_spICU (lib::structure::not_null_ptr(pICU))
  ,m_ptr   (NULL)
 {
  assert(m_spICU);
@@ -181,7 +181,7 @@ t_ibp_cs_icu::t_ibp_cs_icu(t_ibp_icu_provider* const        pICU,
                            const db_obj::t_db_charset_info& cs_info,
                            const std::string&               icu_cs_name)
  :m_cs_info     (cs_info)
- ,m_spICU       (structure::not_null_ptr(pICU))
+ ,m_spICU       (lib::structure::not_null_ptr(pICU))
  ,m_icu_cs_name (icu_cs_name)
 {
  assert(m_spICU);
@@ -249,7 +249,11 @@ t_ibp_cs_icu::self_ptr
  cs_info.name=cs_name.make_str();
 
  //----
- return structure::not_null_ptr(new self_type(pICU,cs_info,icu_cs_name));
+ return lib::structure::not_null_ptr
+         (new self_type
+           (pICU,
+            cs_info,
+            icu_cs_name));
 }//create
 
 //t_db_charset interface -------------------------------------------------
@@ -413,7 +417,7 @@ db_obj::t_db_text_stream__ucs2_ptr
  if(mbc_stream==NULL)
   return nullptr;
 
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new tag_text_stream__mbc_to_ucs2
            (this,
             mbc_stream));
@@ -426,7 +430,7 @@ db_obj::t_db_text_stream__ucs2_ptr
 {
  CHECK_READ_TYPED_PTR(mbc_buffer,mbc_buffer_size);
 
- return structure::not_null_ptr
+ return lib::structure::not_null_ptr
          (new tag_text_stream__mbc_buffer_to_ucs2
            (this,
             mbc_buffer,
@@ -440,7 +444,10 @@ db_obj::t_db_text_stream__mbc_ptr
  if(ucs2_stream==NULL)
   return nullptr;
 
- return structure::not_null_ptr(new tag_text_stream__ucs2_to_mbc(this,ucs2_stream));
+ return lib::structure::not_null_ptr
+         (new tag_text_stream__ucs2_to_mbc
+           (this,
+            ucs2_stream));
 }//ucs2_stream_to_mbc_stream
 
 //------------------------------------------------------------------------

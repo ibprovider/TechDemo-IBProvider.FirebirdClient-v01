@@ -82,11 +82,11 @@ std::wstring IBP_Utils::GetStmtSign(structure::t_const_wstr_box const stmt)
  structure::t_const_wstr_box::iterator b(stmt.begin());
  structure::t_const_wstr_box::iterator e(stmt.end());
 
- b=structure::miss_space2(b,e);
+ b=structure::skip_spaces2(b,e);
 
  assert(b<=e);
 
- e=structure::miss_space2_back(b,e);
+ e=structure::skip_spaces2_back(b,e);
 
  assert(b<=e);
 
@@ -98,7 +98,7 @@ std::wstring IBP_Utils::GetStmtSign(structure::t_const_wstr_box const stmt)
 
   e=(b+(cfg::ibp_cfg__max_stmt_sign_length-4));
 
-  e=structure::miss_space2_back(b,e);
+  e=structure::skip_spaces2_back(b,e);
 
   assert(b<e);
  }//if truncated

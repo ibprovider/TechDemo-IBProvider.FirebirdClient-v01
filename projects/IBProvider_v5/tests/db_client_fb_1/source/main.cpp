@@ -121,9 +121,9 @@ class TTestListProcessor
 TTestListProcessor::TTestListProcessor(TTSO_PushTest*      const pTestPush,
                                        TTSO_GlobalContext* const pSD,
                                        TSYS_RootLog*       const pSysRootLog)
- :m_spFilter     (structure::not_null_ptr(new TTSO_PushTest__Filter(pSD,pSysRootLog,pTestPush)))
- ,m_spSD         (structure::not_null_ptr(pSD))
- ,m_spSysRootLog (structure::not_null_ptr(pSysRootLog))
+ :m_spFilter     (lcpi::lib::structure::not_null_ptr(new TTSO_PushTest__Filter(pSD,pSysRootLog,pTestPush)))
+ ,m_spSD         (lcpi::lib::structure::not_null_ptr(pSD))
+ ,m_spSysRootLog (lcpi::lib::structure::not_null_ptr(pSysRootLog))
 {
  assert(m_spFilter);
  assert(m_spSD);
@@ -171,17 +171,25 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
 
  if(pSysCL->RootLogFilePath().empty())
  {
-  spRootLog=structure::not_null_ptr(new TSYS_RootLog(CP_OEMCP));
+  spRootLog
+    =lcpi::lib::structure::not_null_ptr
+      (new TSYS_RootLog(CP_OEMCP));
  }
  else
  {
   const TSYS_LogStream::self_ptr
-   spRootLogStream(structure::not_null_ptr(new TSYS_LogStream(CP_OEMCP,
-                                                              pSysCL->RootLogFilePath())));
+   spRootLogStream
+    (lcpi::lib::structure::not_null_ptr
+      (new TSYS_LogStream
+        (CP_OEMCP,
+         pSysCL->RootLogFilePath())));
 
   assert(spRootLogStream);
 
-  spRootLog=structure::not_null_ptr(new TSYS_RootLog(spRootLogStream));
+  spRootLog
+    =lcpi::lib::structure::not_null_ptr
+      (new TSYS_RootLog
+        (spRootLogStream));
  }//if
 
  //-----------------------------------------------------------------------
@@ -199,17 +207,23 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
 
  //-----------------------------------------------------------------------
  const TTSO_GlobalContext::self_ptr
-  spParams(new TTSO_GlobalContext(pSysCL));
+  spParams
+   (lcpi::lib::structure::not_null_ptr
+     (new TTSO_GlobalContext(pSysCL)));
 
  const TTSO_PushTest__ExecutorMT::self_ptr
-  spExecutor(TTSO_PushTest__ExecutorMT::create(spParams,
-                                               pSysCL->BaseLogFilePath(),
-                                               spRootLog));
+  spExecutor
+   (TTSO_PushTest__ExecutorMT::create
+     (spParams,
+      pSysCL->BaseLogFilePath(),
+      spRootLog));
+
  //-----------------------------------------------------------------------
  RootTracer<<L"CommandLine:\n\n"
            <<::GetCommandLine()
            <<L"\n"
            <<send;
+
  RootTracer<<L"Run!"<<send;
  RootTracer<<send;
  RootTracer<<L"Enter [cancel] for interrupt execution"<<send;
@@ -289,7 +303,7 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
   std::cout<<"ROOT LOG FILE: \""<<pSysCL->RootLogFilePath()<<'\"'<<std::endl;
  }//if
 
- return spRootLog->get_total_error_count();
+ return (int)min(spRootLog->get_total_error_count(),INT_MAX);
 }//ExecuteTests
 
 ////////////////////////////////////////////////////////////////////////////////

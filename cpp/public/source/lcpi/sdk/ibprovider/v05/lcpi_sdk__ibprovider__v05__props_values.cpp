@@ -266,15 +266,17 @@ extern const IBP_PROP__AUTO_INSERT_FIELD_RULE g_IBP_PropValuesFor__auto_insert_f
 {
  ibp_auto_insert_field_rule__all,
  ibp_auto_insert_field_rule__installed,
- ibp_auto_insert_field_rule__not_null,
+ ibp_auto_insert_field_rule__ok,
 };//g_IBP_PropValuesFor__auto_insert_field_rule
 
 ////////////////////////////////////////////////////////////////////////////////
 
-extern const IBP_PROP__AUTO_UPDATE_FIELD_RULE g_IBP_PropValuesFor__auto_update_field_rule[2]=
+extern const IBP_PROP__AUTO_UPDATE_FIELD_RULE g_IBP_PropValuesFor__auto_update_field_rule[4]=
 {
  ibp_auto_update_field_rule__all,
- ibp_auto_update_field_rule__installed,
+ ibp_auto_update_field_rule__modified,
+ ibp_auto_update_field_rule__all2,
+ ibp_auto_update_field_rule__modified2,
 };//g_IBP_PropValuesFor__auto_update_field_rule
 
 ////////////////////////////////////////////////////////////////////////////////

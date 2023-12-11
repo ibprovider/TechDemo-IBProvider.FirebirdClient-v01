@@ -479,7 +479,7 @@ enum
 {
  //ibp_isc_internal_dtype__unknown   =0,
  ibp_isc_internal_dtype__text      =1,
- //ibp_isc_internal_dtype__cstring   =2,
+ ibp_isc_internal_dtype__cstring   =2,
  ibp_isc_internal_dtype__varying   =3,
 
  //ibp_isc_internal_dtype__packed    =6,

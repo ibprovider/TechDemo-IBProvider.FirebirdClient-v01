@@ -319,7 +319,7 @@ t_basic_cmd_line_parser<charT,Allocator>&
    //[start,cur) - argument value
    this->helper__install_arg_value(arg,start,cur);
 
-   //skeep '"'
+   //skip '"'
    assert(cur!=end);
 
    ++cur;

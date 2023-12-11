@@ -17,7 +17,7 @@ t_ibp_cs_bit8::tag_text_stream__mbc_buffer_to_ucs2::tag_text_stream__mbc_buffer_
                                         (const t_ibp_cs_bit8* const charset,
                                          const char*          const source_buffer,
                                          size_type            const source_buffer_size)
- :m_charset            (structure::not_null_ptr(charset))
+ :m_charset            (lib::structure::not_null_ptr(charset))
  ,m_source_buffer_pos  (0)
  ,m_source_buffer_size (source_buffer_size)
  ,m_source_buffer      (source_buffer)

@@ -4,6 +4,8 @@
 #ifndef _lcpi_oledb_wms_H_
 #define _lcpi_oledb_wms_H_
 
+#include <lcpi/lib/.config.h>
+
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -12,7 +14,7 @@ namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class tagOLEDB_WMS
 
-class tagOLEDB_WMS
+class tagOLEDB_WMS LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
 

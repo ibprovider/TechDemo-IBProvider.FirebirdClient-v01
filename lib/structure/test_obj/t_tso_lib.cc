@@ -223,7 +223,7 @@ template<class Allocator>
 void t_basic_log_stream__console<Allocator>::out(const char_type* s)//abstract
 {
  structure::tstr_to_tstr(&m_tmp_buffer,s,structure::t_negative_one(),NULL,m_ConsoleCP);
- 
+
  std::cout<<m_tmp_buffer;
 }//out
 
@@ -252,10 +252,10 @@ t_basic_root_log__printer<t_log_stream>&
  t_basic_root_log__printer<t_log_stream>::out(str_arg_type x)
 {
  m_buffer.append(x.str());
- 
+
  return *this;
 }//out
-  
+
 //------------------------------------------------------------------------
 template<class t_log_stream>
 t_basic_root_log__printer<t_log_stream>&
@@ -264,12 +264,12 @@ t_basic_root_log__printer<t_log_stream>&
  assert(m_stream);
 
  m_buffer+=structure::t_char_traits2<char_type>::ch_new_line();
- 
+
  m_stream->out(m_line_prefix.c_str());
  m_stream->out(m_buffer.c_str());
- 
+
  m_buffer.clear();
- 
+
  return *this;
 }//send
 
@@ -317,7 +317,7 @@ typename t_basic_root_log<Allocator>::count_type
 {
  return m_unhandled_error_count;
 }//get_unhandled_error_count
-  
+
 //------------------------------------------------------------------------
 template<class Allocator>
 RELEASE_CODE(inline)
@@ -326,7 +326,7 @@ typename t_basic_root_log<Allocator>::count_type
 {
  return m_error_count;
 }//get_error_count
-  
+
 //------------------------------------------------------------------------
 template<class Allocator>
 RELEASE_CODE(inline)
@@ -341,10 +341,10 @@ template<class Allocator>
 RELEASE_CODE(inline)
 void t_basic_root_log<Allocator>::inc_unhandled_error_count()
 {
- thread_traits::increment(&m_error_count);
+ structure::mt::interlocked::increment(&m_error_count);
 
- thread_traits::increment(&m_unhandled_error_count);
-}//inc_unhandled_error_count  
+ structure::mt::interlocked::increment(&m_unhandled_error_count);
+}//inc_unhandled_error_count
 
 //t_log interface --------------------------------------------------------
 template<class Allocator>
@@ -353,7 +353,7 @@ void t_basic_root_log<Allocator>::trace(message_type* const msg)
  if(!msg)
   return;
 
- typedef message_type::string_type          string_type;
+ using string_type=message_type::string_type;
 
  string_type source;
  string_type descr;
@@ -362,10 +362,10 @@ void t_basic_root_log<Allocator>::trace(message_type* const msg)
 
  const lock_guard_type __lock(m_output_guard);
 
- typedef t_basic_root_log__printer<t_log_stream> printer_type;
+ using printer_type=t_basic_root_log__printer<t_log_stream>;
 
  printer_type printer(m_output_stream,this->build_log_line_prefix());
- 
+
  switch(msg->get_msg_kind())
  {
   case tso_msg_info: //[2018-12-23] For PVS-Studio
@@ -375,15 +375,15 @@ void t_basic_root_log<Allocator>::trace(message_type* const msg)
 
   case tso_msg_error:
    {
-    thread_traits::increment(&m_error_count);
-    
+    structure::mt::interlocked::increment(&m_error_count);
+
     printer.out(L"ERROR: ");
     break;
    }
 
   case tso_msg_warning:
    {
-    thread_traits::increment(&m_warning_count);
+    structure::mt::interlocked::increment(&m_warning_count);
 
     printer.out(L"WARNING: ");
     break;
@@ -430,9 +430,9 @@ std::wstring t_basic_root_log<Allocator>::build_log_line_prefix()const
  if(this->print_ts)
  {
   SYSTEMTIME systime;
-  
+
   ::GetLocalTime(&systime);
-  
+
   oss<<L"["
      <<std::setfill(L'0')<<std::setw(2)<<systime.wDay<<L"."
      <<std::setfill(L'0')<<std::setw(2)<<systime.wMonth<<L"."
@@ -442,7 +442,7 @@ std::wstring t_basic_root_log<Allocator>::build_log_line_prefix()const
      <<std::setfill(L'0')<<std::setw(2)<<systime.wSecond
      <<L"] ";
  }//if print_ts
- 
+
  return oss.str();
 }//build_log_line_prefix
 

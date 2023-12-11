@@ -42,7 +42,7 @@ fb_v03_0_0__svc__status_vector_utils::~fb_v03_0_0__svc__status_vector_utils()
 common::fb_common__svc__status_vector_utils_ptr
  fb_v03_0_0__svc__status_vector_utils::create()
 {
- return structure::not_null_ptr(&sm_Instance);
+ return lib::structure::not_null_ptr(&sm_Instance);
 }//create
 
 //internal interface -----------------------------------------------------

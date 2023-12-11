@@ -16,8 +16,8 @@ namespace lcpi{namespace ibp{
 t_ibp_cs_bit8::tag_text_stream__mbc_to_ucs2::tag_text_stream__mbc_to_ucs2
                                         (const t_ibp_cs_bit8*           const charset,
                                          db_obj::t_db_text_stream__mbc* const source__mbc)
- :m_charset            (structure::not_null_ptr(charset))
- ,m_source__mbc        (structure::not_null_ptr(source__mbc))
+ :m_charset            (lib::structure::not_null_ptr(charset))
+ ,m_source__mbc        (lib::structure::not_null_ptr(source__mbc))
  ,m_source_buffer_pos  (0)
  ,m_source_buffer_size (0)
 {

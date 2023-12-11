@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental C++ Library
-//                                                 Dmitry Kovalenko. 28.01.2020
-#ifndef _cpp_public_lcpi_lib_structure_utilities__string__miss_space_H_
-#define _cpp_public_lcpi_lib_structure_utilities__string__miss_space_H_
+//                                                 Dmitry Kovalenko. 03.12.2023
+#ifndef _cpp_public_lcpi_lib_structure_utilities__string__skip_spaces_H_
+#define _cpp_public_lcpi_lib_structure_utilities__string__skip_spaces_H_
 
 #include <lcpi/lib/.config.h>
 
@@ -11,39 +11,39 @@ namespace lcpi{namespace lib{namespace structure{
 //Miss space functions
 
 template<class ForwardIterator>
-inline ForwardIterator miss_space
+inline ForwardIterator skip_spaces
         (ForwardIterator first,
          ForwardIterator last);
 
 template<class ForwardIterator>
-inline ForwardIterator miss_space2
+inline ForwardIterator skip_spaces2
         (ForwardIterator fisrt,
          ForwardIterator last);
 
 template<class ForwardIterator>
-inline ForwardIterator total_miss_space
+inline ForwardIterator total_skip_spaces
         (ForwardIterator fisrt,
          ForwardIterator last);
 
 //------------------------------------------------------------------------
 template<class BidirectionalIterator>
-inline BidirectionalIterator miss_space_back
+inline BidirectionalIterator skip_spaces_back
         (BidirectionalIterator first,
          BidirectionalIterator last);
 
 template<class BidirectionalIterator>
-inline BidirectionalIterator miss_space2_back
+inline BidirectionalIterator skip_spaces2_back
         (BidirectionalIterator first,
          BidirectionalIterator last);
 
 template<class BidirectionalIterator>
-inline BidirectionalIterator total_miss_space_back
+inline BidirectionalIterator total_skip_spaces_back
         (BidirectionalIterator first,
          BidirectionalIterator last);
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 ////////////////////////////////////////////////////////////////////////////////
-#include <lcpi/lib/structure/utilities/string/miss_space.cc>
+#include <lcpi/lib/structure/utilities/string/skip_spaces.cc>
 ////////////////////////////////////////////////////////////////////////////////
 #endif

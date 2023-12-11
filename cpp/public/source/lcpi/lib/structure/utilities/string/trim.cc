@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_utilities__string__trim_CC_
 #define _cpp_public_lcpi_lib_structure_utilities__string__trim_CC_
 
-#include <lcpi/lib/structure/utilities/string/miss_space.h>
+#include <lcpi/lib/structure/utilities/string/skip_spaces.h>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -12,10 +12,11 @@ namespace lcpi{namespace lib{namespace structure{
 template<class TStr,class TTrimComp>
 TStr trimr(const TStr& str,TTrimComp is_trim_char)
 {
- typename TStr::const_iterator const beg(str.begin());
- typename TStr::const_iterator const end(str.end());
+ using const_iterator=typename TStr::const_iterator;
 
- typename TStr::const_iterator const i(__miss_space_back(beg,end,is_trim_char));
+ const_iterator const beg(str.begin());
+
+ const_iterator const i(__skip_spaces_back(beg,str.end(),is_trim_char));
 
  return TStr(beg,i);
 }//trimr
@@ -24,10 +25,11 @@ TStr trimr(const TStr& str,TTrimComp is_trim_char)
 template<class TStr,class TTrimComp>
 TStr triml(const TStr& str,TTrimComp is_trim_char)
 {
- typename TStr::const_iterator const beg(str.begin());
- typename TStr::const_iterator const end(str.end());
+ using const_iterator=typename TStr::const_iterator;
 
- typename TStr::const_iterator const i(__miss_space(beg,end,is_trim_char));
+ const_iterator const end(str.end());
+
+ const_iterator const i(__skip_spaces(str.begin(),end,is_trim_char));
 
  return TStr(i,end);
 }//triml
@@ -36,9 +38,15 @@ TStr triml(const TStr& str,TTrimComp is_trim_char)
 template<class TStr,class TTrimComp>
 TStr trim(const TStr& str,TTrimComp is_trim_char)
 {
- TStr t(trimr(str,is_trim_char));
+ using const_iterator=typename TStr::const_iterator;
 
- return self_triml(t,is_trim_char);
+ const_iterator const end(str.end());
+
+ const_iterator const b(__skip_spaces(str.begin(),end,is_trim_char));
+
+ const_iterator const e(__skip_spaces_back(b,end,is_trim_char));
+
+ return TStr(b,e);
 }//trim
 
 //------------------------------------------------------------------------
@@ -48,7 +56,7 @@ TStr& self_trimr(TStr& str,TTrimComp is_trim_char)
  typename TStr::iterator const beg(str.begin());
  typename TStr::iterator const end(str.end());
 
- typename TStr::iterator const i(__miss_space_back(beg,end,is_trim_char));
+ typename TStr::iterator const i(__skip_spaces_back(beg,end,is_trim_char));
 
  str.erase(i,end);
 
@@ -61,7 +69,7 @@ TStr& self_triml(TStr& str,TTrimComp is_trim_char)
 {
  typename TStr::iterator const beg(str.begin());
  typename TStr::iterator const end(str.end());
- typename TStr::iterator const i(__miss_space(beg,end,is_trim_char));
+ typename TStr::iterator const i(__skip_spaces(beg,end,is_trim_char));
 
  str.erase(beg,i);
 
@@ -180,7 +188,7 @@ inline std::basic_string<charT,traits,Allocator>&
 template<class ForwardIterator,class TTrimComp>
 bool __trim_empty(ForwardIterator beg,ForwardIterator end,TTrimComp is_space_char)
 {
- return __miss_space
+ return __skip_spaces
          (beg,
           end,
           is_space_char)==end;

@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common
 FB_ErrorTextObj::FB_ErrorTextObj(sv_utils_type*     const pStatusVectorUtils,
                                  size_t             const szStatusVector,
                                  const status_type* const pStatusVector)
- :m_spStatusVectorUtils(structure::not_null_ptr(pStatusVectorUtils))
+ :m_spStatusVectorUtils(lib::structure::not_null_ptr(pStatusVectorUtils))
  ,m_szStatusVector(szStatusVector)
  ,m_pStatusVector(pStatusVector)
 {
@@ -147,7 +147,7 @@ FB_ErrorTextObj::self_ptr
  assert(pv);
 
  //-----------------------------------------
- return structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
+ return lib::structure::not_null_ptr(reinterpret_cast<self_type*>(pv));
 }//Create
 
 //interface --------------------------------------------------------------

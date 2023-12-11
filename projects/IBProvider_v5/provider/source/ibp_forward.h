@@ -19,7 +19,7 @@
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef IBP_ENGINE_UPDATE_ROWSET
-# error "IBP_ENGINE_UPDATE_ROWSET not defined"
+# error "IBP_ENGINE_UPDATE_ROWSET is not defined"
 #endif
 ////////////////////////////////////////////////////////////////////////////////
 //connection settings
@@ -177,6 +177,8 @@ class TIBP_RW_ColumnDescrContainer;
 #if(IBP_ENGINE_UPDATE_ROWSET!=0)
 
 class TIBP_RW_AutoGenKeyRules;
+
+class TIBP_RW_AutoGenKeyRule;
 
 #endif //IBP_ENGINE_UPDATE_ROWSET!=0
 

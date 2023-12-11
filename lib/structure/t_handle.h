@@ -47,10 +47,10 @@ class t_counter_inc_dec;
 //class t_handle_counter
 
 template<class T,class tag_thread_traits>
-class t_handle_counter
+class t_handle_counter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_handle_counter<T,tag_thread_traits>        self_type;
+  using self_type=t_handle_counter<T,tag_thread_traits>;
 
  public: //typedefs ------------------------------------------------------
   typedef T                                            value_type;
@@ -82,7 +82,7 @@ class t_handle_counter
    ,m_Data(Data)
   {;}
 
- self_type& operator = (const self_type& x)
+  self_type& operator = (const self_type& x)
   {
    m_Data   =x.m_Data;
    m_cntRef =x.m_cntRef;
@@ -112,13 +112,13 @@ class t_handle_counter
 //class t_auto_switch
 
 template<class TFlag,class TSetValue=TFlag,class TResetValue=TFlag>
-class t_auto_switch
+class t_auto_switch LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_auto_switch<TFlag,TSetValue,TResetValue>              self_type;
+  using self_type=t_auto_switch<TFlag,TSetValue,TResetValue>;
 
-  t_auto_switch(const self_type&);
-  t_auto_switch& operator = (const self_type&);
+  t_auto_switch(const self_type&)=delete;
+  t_auto_switch& operator = (const self_type&)=delete;
 
   TFlag&            m_flag;
   const TResetValue m_reset_value;
@@ -147,16 +147,16 @@ class t_data_holder_ro:public THolderBaseClass
   friend class t_data_holder_rw<TData,THolderBaseClass>;
 
  private:
-  typedef t_data_holder_ro<TData,THolderBaseClass>               self_type;
-  typedef THolderBaseClass                                       inherited;
+  using self_type=t_data_holder_ro<TData,THolderBaseClass>;
+  using inherited=THolderBaseClass;
 
-  t_data_holder_ro(const self_type&);
-  self_type& operator = (const self_type&);
+  t_data_holder_ro(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~t_data_holder_ro();
 
  public: //typedefs ------------------------------------------------------
-  typedef TData                                                  data_type;
+  using data_type=TData;
 
  public:
   t_data_holder_ro();
@@ -182,19 +182,20 @@ class t_data_holder_ro:public THolderBaseClass
 //class class t_data_holder_rw
 
 template<class TData,class THolderBaseClass>
-class t_data_holder_rw:public t_data_holder_ro<TData,THolderBaseClass>
+class t_data_holder_rw LCPI_CPP_CFG__CLASS__FINAL
+ :public t_data_holder_ro<TData,THolderBaseClass>
 {
  private:
-  typedef t_data_holder_rw<TData,THolderBaseClass>               self_type;
-  typedef t_data_holder_ro<TData,THolderBaseClass>               inherited;
+  using self_type=t_data_holder_rw<TData,THolderBaseClass>;
+  using inherited=t_data_holder_ro<TData,THolderBaseClass>;
 
-  t_data_holder_rw(const self_type&);
-  self_type& operator = (const self_type&);
+  t_data_holder_rw(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~t_data_holder_rw();
 
  public: //typedefs ------------------------------------------------------
-  typedef typename inherited::data_type                          data_type;
+  using data_type=typename inherited::data_type;
 
  public:
   t_data_holder_rw();
@@ -220,21 +221,21 @@ template<class TData,class THolderBaseClass,class ThreadTraits>
 class t_mt_data_holder_ro:public THolderBaseClass
 {
  private:
-  typedef t_mt_data_holder_ro<TData,THolderBaseClass,ThreadTraits>   self_type;
-  typedef THolderBaseClass                                           inherited;
+  using self_type=t_mt_data_holder_ro<TData,THolderBaseClass,ThreadTraits>;
+  using inherited=THolderBaseClass;
 
-  t_mt_data_holder_ro(const self_type&);
-  self_type& operator = (const self_type&);
+  t_mt_data_holder_ro(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   friend class t_mt_data_holder_rw<TData,THolderBaseClass,ThreadTraits>;
 
  public: //typedefs ------------------------------------------------------
-  typedef TData                                                      data_type;
-  typedef ThreadTraits                                               thread_traits;
+  using data_type     =TData;
+  using thread_traits =ThreadTraits;
 
-  typedef typename thread_traits::guard_type                         guard_type;
-  typedef typename thread_traits::lock_guard_type                    lock_guard_type;
+  using guard_type      =typename thread_traits::guard_type;
+  using lock_guard_type =typename thread_traits::lock_guard_type;
 
  public:
   t_mt_data_holder_ro();
@@ -253,20 +254,19 @@ class t_mt_data_holder_ro:public THolderBaseClass
 //class t_mt_data_holder_rw - construct thread-safe read-write data holder
 
 template<class TData,class THolderBaseClass,class ThreadTraits>
-class t_mt_data_holder_rw:public t_mt_data_holder_ro<TData,
-                                                     THolderBaseClass,
-                                                     ThreadTraits>
+class t_mt_data_holder_rw LCPI_CPP_CFG__CLASS__FINAL
+ :public t_mt_data_holder_ro<TData,THolderBaseClass,ThreadTraits>
 {
  private:
-  typedef t_mt_data_holder_rw<TData,THolderBaseClass,ThreadTraits>   self_type;
-  typedef t_mt_data_holder_ro<TData,THolderBaseClass,ThreadTraits>   inherited;
+  using self_type=t_mt_data_holder_rw<TData,THolderBaseClass,ThreadTraits>;
+  using inherited=t_mt_data_holder_ro<TData,THolderBaseClass,ThreadTraits>;
 
-  t_mt_data_holder_rw(const self_type&);
-  self_type& operator = (const self_type&);
+  t_mt_data_holder_rw(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef typename inherited::data_type                               data_type;
-  typedef typename inherited::lock_guard_type                         lock_guard_type;
+  using data_type       =typename inherited::data_type;
+  using lock_guard_type =typename inherited::lock_guard_type;
 
  public:
   t_mt_data_holder_rw();
@@ -281,18 +281,18 @@ class t_mt_data_holder_rw:public t_mt_data_holder_ro<TData,
 //template class t_counter_inc_dec
 
 template<class ThreadTraits>
-class t_counter_inc_dec
+class t_counter_inc_dec LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_counter_inc_dec<ThreadTraits>      self_type;
+  using self_type=t_counter_inc_dec<ThreadTraits>;
 
-  t_counter_inc_dec(const self_type&);
-  self_type& operator = (const self_type&);
+  t_counter_inc_dec(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef ThreadTraits                         thread_traits;
+  using thread_traits=ThreadTraits;
 
-  typedef typename thread_traits::int_type     value_type;
+  using value_type=typename thread_traits::int_type;
 
  public:
   /// <summary>

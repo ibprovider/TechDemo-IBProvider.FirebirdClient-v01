@@ -273,7 +273,7 @@ void
 
   assert((*pos)==ch_equal);
 
-  ++pos; //skeep '='
+  ++pos; //skip '='
 
   self_type::helper__parse_value(pos,source_end,&value);
 
@@ -341,7 +341,7 @@ void t_basic_parameter_list<charT,Allocator>::helper__parse_name
   if(cur_char==c_ch_space)
   {
    if(pName->empty())
-    continue; //skeep forward spaces
+    continue; //skip forward spaces
 
    if(pName->back()==c_ch_space)
     continue; //prev symbol is space
@@ -420,7 +420,7 @@ void t_basic_parameter_list<charT,Allocator>::helper__parse_value
   if(helper__is_space_char(cur_char))
    cur_char=c_ch_space;
 
-  //skeep forward space
+  //skip forward space
   if(cur_char==c_ch_space)
   {
    if(pValue->empty())
@@ -476,7 +476,7 @@ bool t_basic_parameter_list<charT,Allocator>::helper__parse_quoted_string
  //-----------------------------------------
  const char_type scan_quote_ch=*pos;
 
- ++pos; //skeep first quote ch
+ ++pos; //skip first quote ch
 
  while(pos!=end)
  {

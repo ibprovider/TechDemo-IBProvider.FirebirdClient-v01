@@ -84,7 +84,7 @@ HRESULT BuildExcepInfo(HRESULT hr,EXCEPINFO* const pExcepInfo)
 //Utility for processing of C++ exception at implementation of COM-objects
 
 #ifndef OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER
-# error "OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER not defined!"
+# error "OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER is not defined!"
 #endif
 
 #if(OLE_LIB__BUILD_DEFAULT_CURRENT_EXCEPTION_HANDLER!=0)
@@ -258,7 +258,7 @@ HRESULT OLE_MapErrorRecordToHRESULT(const structure::t_err_record* const err_rec
 HRESULT OLE_MapCurrentExceptionToHRESULT()
 {
 #ifndef OLE_LIB__CURRENT_EXCEPTION_HANDLER
-# error "OLE_LIB__CURRENT_EXCEPTION_HANDLER not defined!"
+# error "OLE_LIB__CURRENT_EXCEPTION_HANDLER is not defined!"
 #endif
 
  return OLE_LIB__CURRENT_EXCEPTION_HANDLER

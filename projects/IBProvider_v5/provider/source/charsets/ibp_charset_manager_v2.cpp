@@ -19,10 +19,11 @@
 
 #include <win32lib/win32lib.h>
 
-#include <structure/utilities/string/trim.h>
-#include <structure/utilities/string/string_compare.h>
-#include <structure/utilities/to_underlying.h>
 #include <structure/t_str_version.h>
+
+#include <lcpi/lib/structure/utilities/string/trim.h>
+#include <lcpi/lib/structure/utilities/string/string_compare.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -615,7 +616,7 @@ void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
  const wchar_t* const c_bugcheck_src
   =L"t_ibp_charset_manager_v2::reg_cs_id_name";
 
- const size_t idx=structure::to_underlying(cs_id);
+ const size_t idx=lib::structure::to_underlying(cs_id);
 
  if(!(idx<m_cs_id_names.size()))
  {
@@ -623,7 +624,7 @@ void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
    (c_bugcheck_src,
     L"#001",
     L"unknown cs_id [%1]",
-    structure::to_underlying(cs_id));
+    lib::structure::to_underlying(cs_id));
  }//if
 
  assert(idx<m_cs_id_names.size());
@@ -634,7 +635,7 @@ void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
    (c_bugcheck_src,
     L"#002",
     L"cs_id [%1] already registered for [%2]",
-    structure::to_underlying(cs_id),
+    lib::structure::to_underlying(cs_id),
     m_cs_id_names[idx]->get_info().name);
  }//if
 
@@ -724,7 +725,7 @@ void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
     (c_bugcheck_src,
      L"#003",
      L"unexpected cs_id [%1]",
-     structure::to_underlying(cs_id));
+     lib::structure::to_underlying(cs_id));
   }//default
  }//switch(cs_id)
 }//reg_cs_id_name
@@ -754,7 +755,7 @@ db_obj::t_db_charset_const_ptr t_ibp_charset_manager_v2::get_charset
  const wchar_t* const c_bugcheck_src
   =L"t_ibp_charset_manager_v2::get_charset";
 
- const size_t idx=structure::to_underlying(cs_id);
+ const size_t idx=lib::structure::to_underlying(cs_id);
 
  if(!(idx<m_cs_id_names.size()))
  {
@@ -762,7 +763,7 @@ db_obj::t_db_charset_const_ptr t_ibp_charset_manager_v2::get_charset
    (c_bugcheck_src,
     L"#001",
     L"unknown cs_id [%1]",
-    structure::to_underlying(cs_id));
+    lib::structure::to_underlying(cs_id));
  }//if
 
  assert(idx<m_cs_id_names.size());
@@ -773,7 +774,7 @@ db_obj::t_db_charset_const_ptr t_ibp_charset_manager_v2::get_charset
    (c_bugcheck_src,
     L"#002",
     L"unknown cs_id [%1]",
-    structure::to_underlying(cs_id));
+    lib::structure::to_underlying(cs_id));
  }//if
 
  assert(m_cs_id_names[idx]);
@@ -1011,7 +1012,7 @@ charsets::t_ibp_charset_provider_ptr
    ///Создание провайдера ICU API v3
    namespace icu_ns=ibp::charsets::cs_code::icu::v003;
 
-   return structure::not_null_ptr
+   return lib::structure::not_null_ptr
            (new icu_ns::t_ibp_icu_provider(pIcuDll));
   }//if
 
@@ -1035,7 +1036,7 @@ charsets::t_ibp_charset_provider_ptr
    ///Создание провайдера ICU API v63
    namespace icu_ns=ibp::charsets::cs_code::icu::v063;
 
-   return structure::not_null_ptr
+   return lib::structure::not_null_ptr
            (new icu_ns::t_ibp_icu_provider(pIcuDll));
   }//if
 
@@ -1044,7 +1045,7 @@ charsets::t_ibp_charset_provider_ptr
    ///Создание провайдера ICU API v52
    namespace icu_ns=ibp::charsets::cs_code::icu::v052;
 
-   return structure::not_null_ptr
+   return lib::structure::not_null_ptr
            (new icu_ns::t_ibp_icu_provider(pIcuDll));
   }//if
 

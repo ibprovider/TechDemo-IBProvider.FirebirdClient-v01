@@ -12,9 +12,9 @@ TTSO_TestFunc::TTSO_TestFunc(TTSO_GlobalContext* const pParams,
                              const char*         const pTestID,
                              TTestFunc           const Func,
                              const char*         const pExecRules)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
- ,m_Func(structure::not_null_ptr(Func))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
+ ,m_Func(lib::structure::not_null_ptr(Func))
  ,m_ExecRules(pExecRules?pExecRules:"")
 {
  assert(m_spParams);
@@ -24,7 +24,8 @@ TTSO_TestFunc::TTSO_TestFunc(TTSO_GlobalContext* const pParams,
 
 //------------------------------------------------------------------------
 TTSO_TestFunc::~TTSO_TestFunc()
-{;}
+{
+}
 
 //test interface ---------------------------------------------------------
 std::string TTSO_TestFunc::get_id()const

@@ -30,7 +30,7 @@ t_auth__provider::t_auth__provider(dll_type* const pDLL)
  //,INIT_AUTH_POINT(FreeContextBuffer)
  ,INIT_AUTH_POINT(InitializeSecurityContext)
  //,INIT_AUTH_POINT(AcceptSecurityContext)
- ,m_spDLL(structure::not_null_ptr(pDLL))
+ ,m_spDLL(lib::structure::not_null_ptr(pDLL))
  ,m_hCred()
  ,m_timeOut()
 {
@@ -84,7 +84,7 @@ t_auth__provider::self_ptr
 {
  assert(pDLL);
 
- return structure::not_null_ptr(new self_type(pDLL));
+ return lib::structure::not_null_ptr(new self_type(pDLL));
 }//create
 
 ////////////////////////////////////////////////////////////////////////////////

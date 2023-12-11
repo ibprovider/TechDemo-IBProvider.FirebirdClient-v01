@@ -10,12 +10,12 @@ namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef COMP_CONF_SUPPORT_MEMBER_TEMPLATE
-# error "COMP_CONF_SUPPORT_MEMBER_TEMPLATE not defined"
+# error "COMP_CONF_SUPPORT_MEMBER_TEMPLATE is not defined"
 #endif
 
 //------------------------------------------------------------------------
 #ifndef COMP_CONF_SUPPORT_RVALUE_REFERENCE
-# error "COMP_CONF_SUPPORT_RVALUE_REFERENCE not defined"
+# error "COMP_CONF_SUPPORT_RVALUE_REFERENCE is not defined"
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

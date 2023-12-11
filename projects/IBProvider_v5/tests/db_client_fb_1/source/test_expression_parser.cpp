@@ -319,19 +319,19 @@ void TIBP_TSO_ExpressionParser::reg_macro(const char* const name,
  assert(l_name>0);
  assert(l_expression>0);
 
- const char* const n1=structure::miss_space(name,name+l_name);
- const char* const n2=structure::miss_space_back(n1,name+l_name);
+ const char* const n1=lib::structure::skip_spaces(name,name+l_name);
+ const char* const n2=lib::structure::skip_spaces_back(n1,name+l_name);
 
  assert(n1!=n2);
 
- assert(structure::miss_space(expression,expression+l_expression)!=(expression+l_expression));
+ assert(lib::structure::skip_spaces(expression,expression+l_expression)!=(expression+l_expression));
 
  //-----------------------------------------
  if(!m_macroses.insert(macroses_type::value_type(std::string(n1,n2),expression)).second)
  {
   structure::str_formatter fmsg("[BUG FIX] expression macros \"%1\" already defined");
 
-  fmsg<<structure::t_const_str_box(n1,n2-n1);
+  fmsg<<lib::structure::t_const_str_box(n1,n2-n1);
 
   throw std::runtime_error(fmsg.str());
  }//if
