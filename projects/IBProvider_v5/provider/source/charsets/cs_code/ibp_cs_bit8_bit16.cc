@@ -130,8 +130,8 @@ db_obj::t_db_text_stream__ucs2_ptr
  if(mbc_stream==NULL)
   return nullptr;
 
- typedef t_ibp_text_stream__mbc_to_ucs2<self_type>
-          tag_text_stream__mbc_to_ucs2;
+ using tag_text_stream__mbc_to_ucs2
+  =t_ibp_text_stream__mbc_to_ucs2<self_type>;
 
  return lib::structure::not_null_ptr
          (new tag_text_stream__mbc_to_ucs2
@@ -148,8 +148,8 @@ db_obj::t_db_text_stream__ucs2_ptr
 {
  CHECK_READ_TYPED_PTR(mbc_buffer,mbc_buffer_size);
 
- typedef t_ibp_text_stream__mbc_buffer_to_ucs2<self_type>
-          tag_text_stream__mbc_buffer_to_ucs2;
+ using tag_text_stream__mbc_buffer_to_ucs2
+  =t_ibp_text_stream__mbc_buffer_to_ucs2<self_type>;
 
  return lib::structure::not_null_ptr
          (new tag_text_stream__mbc_buffer_to_ucs2
@@ -167,8 +167,8 @@ db_obj::t_db_text_stream__mbc_ptr
  if(ucs2_stream==NULL)
   return nullptr;
 
- typedef t_ibp_text_stream__ucs2_to_mbc<self_type>
-          tag_text_stream__ucs2_to_mbc;
+ using tag_text_stream__ucs2_to_mbc
+  =t_ibp_text_stream__ucs2_to_mbc<self_type>;
 
  return lib::structure::not_null_ptr
           (new tag_text_stream__ucs2_to_mbc
@@ -184,8 +184,8 @@ db_obj::t_db_cs_result
                                              wchar_t*      const  ws,
                                              size_type&           wsz)const
 {
- typedef structure::t_basic_istream_buffer_iterator
-          <ansi_streambuf_type::value_type>              in_buf_iterator;
+ using in_buf_iterator
+  =structure::t_basic_istream_buffer_iterator<ansi_streambuf_type::value_type>;
 
  CHECK_WRITE_TYPED_PTR(ws,wsz);
 
@@ -237,8 +237,8 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::sb_len_as_unicode
                                             (ansi_streambuf_type& in_buf,
                                              size_type&           wsz)const
 {
- typedef structure::t_basic_istream_buffer_iterator
-          <ansi_streambuf_type::value_type>              in_buf_iterator;
+ using in_buf_iterator
+  =structure::t_basic_istream_buffer_iterator<ansi_streambuf_type::value_type>;
 
  wsz=0;
 
@@ -287,7 +287,8 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::sb_len_as_unicode
 //------------------------------------------------------------------------
 template<class TCS_Traits>
 bool t_ibp_cs_bit8_bit16<TCS_Traits>::unicode_to_blob
-                                            (const wchar_t*                        source,
+                                            (db_obj::t_db_operation_context&       op_ctx,
+                                             const wchar_t*                        source,
                                              size_type                       const source_size,
                                              db_obj::t_db_seq_stream_writer* const writer)const
 {
@@ -302,7 +303,7 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::unicode_to_blob
  //---- подключаем объект записи к буферу потока
  char out_buf[8*1024];
 
- db_obj::t_db_blob_writer_buf writer_buf(out_buf,_DIM_(out_buf),writer);
+ db_obj::t_db_blob_writer_buf writer_buf(&op_ctx,out_buf,_DIM_(out_buf),writer);
 
  typedef structure::t_basic_ostream_buffer_iterator<db_obj::t_db_blob_writer_buf::char_type>
   writer_buf_iterator;

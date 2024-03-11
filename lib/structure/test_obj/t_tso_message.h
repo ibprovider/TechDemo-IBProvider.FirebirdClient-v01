@@ -8,6 +8,8 @@
 #include <structure/t_smart_object_ptr.h>
 #include <structure/t_lcid.h>
 
+#include <string>
+
 namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //containings
@@ -15,7 +17,7 @@ namespace structure{namespace tso_obj{
 class t_message;
 
 ////////////////////////////////////////////////////////////////////////////////
-//enum t_msg_kind 
+//enum t_msg_kind
 
 enum t_msg_kind
 {
@@ -29,18 +31,18 @@ enum t_msg_kind
 ////////////////////////////////////////////////////////////////////////////////
 //class t_message
 
-class t_message:public t_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_message:public t_smart_interface
 {
  public:
-  typedef t_message                             self_type;
+  using self_type=t_message;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>         self_ptr;
+  using self_ptr=t_smart_object_ptr<self_type>;
 
-  typedef t_lcid                                lcid_type;
-  typedef std::wstring                          string_type;
-  typedef long                                  error_code_type;
-  typedef t_msg_kind                            msg_kind_type;
+  using lcid_type         = t_lcid;
+  using string_type       = std::wstring;
+  using error_code_type   = long;
+  using msg_kind_type     = t_msg_kind;
 
  public: //interface -----------------------------------------------------
   virtual error_code_type get_error_code()const=0;
@@ -51,10 +53,10 @@ class t_message:public t_smart_interface
                                string_type*     source,
                                string_type*     description)const=0;
 
-  virtual self_ptr clone()const=0;                         
+  virtual self_ptr clone()const=0;
 };//class t_message
 
-typedef t_message::self_ptr t_message_ptr;
+using t_message_ptr=t_message::self_ptr;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms tso_obj*/}/*nms structure*/

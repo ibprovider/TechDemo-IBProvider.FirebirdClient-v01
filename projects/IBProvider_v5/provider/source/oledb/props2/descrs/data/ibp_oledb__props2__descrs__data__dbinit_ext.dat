@@ -845,6 +845,14 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__timezones_source::GetInstancePtr()))
 
 //------------------------------------------------------------------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__BLOB_SEND_MODE, /*119 (0x77)*/
+  OLEDB_PDESCR2(L"blob_send_mode"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__blob_send_mode::GetInstancePtr()))
+
+//------------------------------------------------------------------------
 #if(IBP_ENGINE_DIRECT_FB!=0)
 
 IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY

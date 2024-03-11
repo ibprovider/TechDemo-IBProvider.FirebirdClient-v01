@@ -146,7 +146,7 @@ inline t_string BStrToTStr(const BSTR source)
 #if(COMP_CONF_SUPPORT_TEMPLATE_FUNC_SPECIALIZE_BY_RETURN)
 
 template<class charT>
-inline __STL_DEF_BASIC_STRING(charT) BStrToUnkStr(const BSTR bstr);
+inline LCPI_STL_DEF_BASIC_STRING(charT) BStrToUnkStr(const BSTR bstr);
 
 //------------------------------------------------------------------------
 template<>

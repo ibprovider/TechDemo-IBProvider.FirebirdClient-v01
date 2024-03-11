@@ -38,9 +38,10 @@ t_ibp_cs_icu::tag_text_stream__ucs2_to_mbc::~tag_text_stream__ucs2_to_mbc()
 //------------------------------------------------------------------------
 db_obj::t_db_cs_result
  t_ibp_cs_icu::tag_text_stream__ucs2_to_mbc::read_mbc
-                                           (size_type  const mbc_buffer_size,
-                                            char*      const mbc_buffer,
-                                            size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& op_ctx,
+                         size_type                 const mbc_buffer_size,
+                         char*                     const mbc_buffer,
+                         size_type*                const cb_readed)
 {
  assert(cb_readed);
  assert(m_charset);
@@ -175,7 +176,8 @@ db_obj::t_db_cs_result
    const db_obj::t_db_cs_result
     cvt_result
      =m_source__ucs2->read_ucs2
-       (_DIM_(m_source_buffer)-m_source_buffer_size,
+       (op_ctx,
+        _DIM_(m_source_buffer)-m_source_buffer_size,
         m_source_buffer+m_source_buffer_size,
         &cb_readed_ucs2);
 

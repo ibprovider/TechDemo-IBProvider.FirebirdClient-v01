@@ -28,9 +28,9 @@ TestsFor__PSET01__002__unk_auth::TestsFor__PSET01__002__unk_auth
                                            (TTSO_GlobalContext* const pParams,
                                             const char*         const pTestID,
                                             const wchar_t*      const pAuthName)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_testID(structure::not_null_ptr(pTestID))
- ,m_authName(structure::not_null_ptr(pAuthName))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_testID(lib::structure::not_null_ptr(pTestID))
+ ,m_authName(lib::structure::not_null_ptr(pAuthName))
 {
  assert(m_spParams);
 }//TestsFor__PSET01__002__unk_auth
@@ -69,7 +69,7 @@ void TestsFor__PSET01__002__unk_auth::create(TTSO_PushTest*      const pTestPush
 
   TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new self_type
         (pParams,
          ftestID.c_str(),

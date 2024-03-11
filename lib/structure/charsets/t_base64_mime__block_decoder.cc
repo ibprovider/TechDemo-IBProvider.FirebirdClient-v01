@@ -272,7 +272,7 @@ typename t_base64_mime__block_decoder<charT>::decode_ch_result_type
  }//if '/'
  
  //unexpected MIME-symbol
- return decode_ch_result_type(structure::t_negative_one(),false);
+ return decode_ch_result_type(structure::negative_one,false);
 }//decode_ch
 
 ////////////////////////////////////////////////////////////////////////////////

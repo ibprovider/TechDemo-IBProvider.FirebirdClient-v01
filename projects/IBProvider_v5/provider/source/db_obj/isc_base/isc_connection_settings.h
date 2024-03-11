@@ -17,7 +17,7 @@
 
 #include <ole_lib/oledb/provider/props2/oledb_props2__data__values.h>
 
-#include <structure/stl/t_stl_vector.h>
+#include <lcpi/lib/structure/stl/t_stl_vector.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,10 +74,10 @@ typedef long t_isc_tr_flags;
 /// <summary>
 ///  Настройки подключения
 /// </summary>
-class t_isc_connection_settings
+class t_isc_connection_settings LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef  t_isc_connection_settings                        self_type;
+  using self_type=t_isc_connection_settings;
 
   self_type& operator = (const self_type&)=delete;
 
@@ -94,7 +94,7 @@ class t_isc_connection_settings
   typedef structure::t_value_with_null<t_isc_ods_id>        ods_id_type_N;
 
  public:
-  class tag_db_info__impl
+  class tag_db_info__impl LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
     unsigned char          isc_implId;  //идентификатор платформы
@@ -108,9 +108,10 @@ class t_isc_connection_settings
     tag_db_info__impl();
   };//class tag_db_info__impl
 
-  typedef structure::t_stl_vector
-           <tag_db_info__impl,
-            db_obj::t_db_memory_allocator>                  db_info__impl_stack_type;
+  using db_info__impl_stack_type
+   =lib::structure::t_stl_vector
+     <tag_db_info__impl,
+      db_obj::t_db_memory_allocator>;
 
  private:
   void internal_init();
@@ -403,7 +404,7 @@ class t_isc_connection_settings
   long                   dbms__guid_rules;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_err__not_support_database_ods(const t_isc_ods_id& req_id)const;
 };//class t_isc_connection_settings
 

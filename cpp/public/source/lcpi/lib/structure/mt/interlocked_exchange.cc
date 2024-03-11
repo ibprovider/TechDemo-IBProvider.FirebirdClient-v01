@@ -4,8 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_exchange_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_exchange_CC_
 
-#include <lcpi/lib/structure/debug/assert.h>
-
 #include <type_traits>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
@@ -18,7 +16,12 @@ namespace detail{
 class interlocked_exchange__impl
 {
  public:
+  using long_type  =signed long;
   using ulong_type =unsigned long;
+
+  using int32_type =signed __int32;
+  using int64_type =signed __int64;
+
   using uint32_type=unsigned __int32;
   using uint64_type=unsigned __int64;
 
@@ -29,7 +32,13 @@ class interlocked_exchange__impl
   template<typename T1,typename T2>
   static T1* exec(T1* volatile* pDestination,T2* newValue);
 
+  static long_type exec(long_type volatile* pDestination,long_type newValue);
+
   static ulong_type exec(ulong_type volatile* pDestination,ulong_type newValue);
+
+  static int32_type exec(int32_type volatile* pDestination,int32_type newValue);
+
+  static int64_type exec(int64_type volatile* pDestination,int64_type newValue);
 
   static uint32_type exec(uint32_type volatile* pDestination,uint32_type newValue);
 
@@ -59,6 +68,17 @@ T1* interlocked_exchange__impl::exec(T1* volatile *  const pDestination,
 }//exec - T1**, T2*
 
 //------------------------------------------------------------------------
+inline interlocked_exchange__impl::long_type
+ interlocked_exchange__impl::exec
+  (long_type volatile* const pDestination,
+   long_type           const newValue)
+{
+ LCPI__assert(pDestination);
+
+ return InterlockedExchange(pDestination,newValue);
+}//exec - long_type
+
+//------------------------------------------------------------------------
 inline interlocked_exchange__impl::ulong_type
  interlocked_exchange__impl::exec
   (ulong_type volatile* const pDestination,
@@ -68,6 +88,32 @@ inline interlocked_exchange__impl::ulong_type
 
  return InterlockedExchange(pDestination,newValue);
 }//exec - ulong_type
+
+//------------------------------------------------------------------------
+inline interlocked_exchange__impl::int32_type
+ interlocked_exchange__impl::exec
+  (int32_type volatile* const pDestination,
+   int32_type           const newValue)
+{
+ LCPI__assert(pDestination);
+
+ assert_s(sizeof(int32_type)==sizeof(uint32_type));
+
+ return static_cast<int32_type>(InterlockedExchange(reinterpret_cast<uint32_type volatile*>(pDestination),*reinterpret_cast<const uint32_type*>(&newValue)));
+}//exec - int32_type
+
+//------------------------------------------------------------------------
+inline interlocked_exchange__impl::int64_type
+ interlocked_exchange__impl::exec
+  (int64_type volatile* const pDestination,
+   int64_type           const newValue)
+{
+ LCPI__assert(pDestination);
+
+ assert_s(sizeof(int64_type)==sizeof(uint64_type));
+
+ return static_cast<int64_type>(InterlockedExchange(reinterpret_cast<uint64_type volatile*>(pDestination),*reinterpret_cast<const uint64_type*>(&newValue)));
+}//exec - int64_type
 
 //------------------------------------------------------------------------
 inline interlocked_exchange__impl::uint32_type

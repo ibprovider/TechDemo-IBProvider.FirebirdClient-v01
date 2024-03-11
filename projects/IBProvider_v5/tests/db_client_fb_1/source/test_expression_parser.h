@@ -223,7 +223,7 @@ class TIBP_TSO_ExpressionParser LCPI_CPP_CFG__CLASS__FINAL
 
   static bool helper__is_delimiter(const expression_element c);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error(ctx_type& ctx, const char* const str);
 
  private:

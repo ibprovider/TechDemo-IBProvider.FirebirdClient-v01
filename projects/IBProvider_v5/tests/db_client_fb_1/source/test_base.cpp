@@ -71,7 +71,8 @@ TSYS_RootLog::TSYS_RootLog(UINT const CodePage)
  ,m_other_warning_count (0)
  ,m_pass_count          (0)
  ,m_total_test_count    (0)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 TSYS_RootLog::TSYS_RootLog(tso_obj::t_log_stream* const pOutputStream)
@@ -80,11 +81,13 @@ TSYS_RootLog::TSYS_RootLog(tso_obj::t_log_stream* const pOutputStream)
  ,m_other_warning_count (0)
  ,m_pass_count          (0)
  ,m_total_test_count    (0)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 TSYS_RootLog::~TSYS_RootLog()
-{;}
+{
+}
 
 //interface --------------------------------------------------------------
 void TSYS_RootLog::add_other_error_count(count_type const x)
@@ -363,7 +366,8 @@ TTSO_GlobalContext::TTSO_GlobalContext(const TSYS_CommandLine* const pSysCL)
 
 //------------------------------------------------------------------------
 TTSO_GlobalContext::~TTSO_GlobalContext()
-{;}
+{
+}
 
 //selectors --------------------------------------------------------------
 const TTSO_GlobalContext::args_type& TTSO_GlobalContext::args()const

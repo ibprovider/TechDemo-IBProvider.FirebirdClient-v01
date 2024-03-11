@@ -4,9 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 
-#include <lcpi/lib/structure/debug/assert.h>
-#include <lcpi/lib/structure/debug/assert_s.h>
-
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 

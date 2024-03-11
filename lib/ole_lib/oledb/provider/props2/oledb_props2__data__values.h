@@ -268,13 +268,13 @@ class OLEDB_Props2__Data__Values:public t_oledb_smart_memory_object
          const char                 bugcheck_src[])const;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__NoValue
          (const char* place,
           REFGUID     propGuid,
           DBPROPID    propId);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__BadValueType
          (const char* place,
           REFGUID     propGuid,

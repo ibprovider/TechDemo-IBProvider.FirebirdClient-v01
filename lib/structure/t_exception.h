@@ -4,10 +4,6 @@
 #ifndef _t_exception_H_
 #define _t_exception_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <lcpi/lib/structure/t_exception.h>
 
 namespace structure{

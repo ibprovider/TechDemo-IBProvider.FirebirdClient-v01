@@ -11,13 +11,13 @@ namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_str_parameter
 
-template<class charT,class strT=__STL_DEF_BASIC_STRING(charT) >
+template<class charT,class strT=LCPI_STL_DEF_BASIC_STRING(charT) >
 class t_str_parameter
 {
  private:
-  typedef t_str_parameter<charT,strT>                    self_type;
+  using self_type=t_str_parameter<charT,strT>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   typedef strT                                           string_type;

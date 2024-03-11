@@ -6,7 +6,7 @@
 //
 
 template<typename T>
-struct norm_closure_arg
+struct norm_closure_arg LCPI_CPP_CFG__CLASS__FINAL
 {
  using type=T;
 };//struct norm_closure_arg
@@ -18,7 +18,7 @@ using norm_closure_arg_t=typename norm_closure_arg<T>::type;
 //class t_closure
 
 template<class TResult,class...TARGS>
-class t_closure COMP_W000006_CLASS_FINAL
+class t_closure LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs
   typedef t_closure<TResult,TARGS...>   self_type;
@@ -101,7 +101,7 @@ inline bool operator != (std::nullptr_t /*v*/,const t_closure<TResult,TARGS...>&
 //class t_closure_caller_f
 
 template<typename PFunc,class TResult,class ...TARGS>
-class t_closure_caller_f COMP_W000006_CLASS_FINAL
+class t_closure_caller_f LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs
   typedef closure_v3::__closure_data think_type;
@@ -119,7 +119,7 @@ class t_closure_caller_f COMP_W000006_CLASS_FINAL
 //class t_closure_caller
 
 template<class TObj,typename TMemFunc,class TResult,class ...TARGS>
-class t_closure_caller COMP_W000006_CLASS_FINAL
+class t_closure_caller LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs
   typedef closure_v3::__closure_data think_type;

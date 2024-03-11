@@ -22,15 +22,15 @@ struct TTSO_TestState2;
 class TTSO_TestState2_Storage
 {
  private:
-  typedef TTSO_TestState2_Storage                      self_type;
+  using self_type=TTSO_TestState2_Storage;
 
-  typedef TTSO_TestState2_Storage(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_TestState2_Storage(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned __int64                             count_type;
+  using count_type=unsigned __int64;
 
-  typedef TTSO_TestState2                              item_type;
+  using item_type=TTSO_TestState2;
 
  public:
   TTSO_TestState2_Storage();
@@ -48,7 +48,7 @@ class TTSO_TestState2_Storage
   typedef thread_traits::guard_type                    guard_type;
   typedef thread_traits::lock_guard_type               lock_guard_type;
 
-  typedef win32lib::TTemporaryFile64_ST                file_type;
+  using file_type=win32lib::TTemporaryFile64_ST;
 
  private:
   mutable guard_type m_guard;

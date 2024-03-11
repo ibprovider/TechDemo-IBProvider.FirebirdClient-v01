@@ -202,7 +202,7 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  {
   RootTracer<<L"Press any key for begin execution ..."<<send;
 
-  _GCRT_getch();
+  LCPI_GCRT_getch();
  }
 
  //-----------------------------------------------------------------------
@@ -343,14 +343,14 @@ int main()
  if(wait_press_any_key_on_exit)
  {
   //clear keyboard buffer
-  while(_GCRT_kbhit()!=0)
+  while(LCPI_GCRT_kbhit()!=0)
   {
-   _GCRT_getch();
+   LCPI_GCRT_getch();
   }//while
 
   std::cout<<std::endl<<"DONE [press any key]."<<std::endl;
 
-  _GCRT_getch();
+  LCPI_GCRT_getch();
  }//if
 
  return err_count;

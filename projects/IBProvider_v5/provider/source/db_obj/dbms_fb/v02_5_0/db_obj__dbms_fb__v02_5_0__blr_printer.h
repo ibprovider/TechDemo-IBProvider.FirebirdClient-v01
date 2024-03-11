@@ -86,7 +86,7 @@ class fb_v02_5_0__blr_printer
   static bool helper__is_printable(const FB_SCHAR ch);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__error(context_type& ctx, const FB_TEXT* string);
 
   static void helper__format(context_type& ctx, const FB_TEXT* string);
@@ -94,36 +94,36 @@ class fb_v02_5_0__blr_printer
   static void helper__indent(context_type& ctx, size_t level);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_blr_version(context_type& ctx,
                                                    unsigned      blr_version);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_blr_code(context_type& ctx,
                                                 unsigned      blr_code);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_join_type(context_type& ctx,
                                                  unsigned      join_type);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_conditional_type(context_type& ctx,
                                                         unsigned      conditional_type);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_data_type(context_type& ctx,
                                                  unsigned      data_type);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_relation_type(context_type& ctx,
                                                      unsigned      relation_type);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__unk_command_end(context_type& ctx,
                                                    unsigned      end_code);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error(context_type&   ctx,
                                   const FB_SCHAR* errTempl_1,
                                   unsigned        v1);

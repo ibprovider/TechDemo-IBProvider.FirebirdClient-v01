@@ -9,8 +9,11 @@
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__blob__write.h"
 #include "source/db_client/remote_fb/api/p13/remote_fb__p13__blob_helper.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__srv_operation.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
+
+#include "source/db_obj/db_operation_reg.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p13{
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,10 +30,11 @@ RemoteFB__API_P13__WriteBlob::~RemoteFB__API_P13__WriteBlob()
 {;}
 
 //interface --------------------------------------------------------------
-void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
-                                        blob_handle_type*        const pBlobHandle,
-                                        size_t                   const cbBuffer,
-                                        const void*              const pvBuffer)
+void RemoteFB__API_P13__WriteBlob::exec(db_obj::t_db_operation_context& OpCtx,
+                                        RemoteFB__ConnectorData*  const pData,
+                                        blob_handle_type*         const pBlobHandle,
+                                        size_t                    const cbBuffer,
+                                        const void*               const pvBuffer)
 {
  assert(pData!=nullptr);
  assert(cbBuffer==0 || pvBuffer!=nullptr);
@@ -40,6 +44,11 @@ void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
   =L"RemoteFB__API_P13__WriteBlob::exec";
+
+ //-----------------------------------------
+ RemoteFB__P13__SrvOperation serverOperation(pData);
+
+ db_obj::t_db_operation_reg regServerOperation(OpCtx,&serverOperation);
 
  //----------------------------------------- проверка дескриптора блоба
  if((*pBlobHandle)==nullptr)
@@ -103,7 +112,8 @@ void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
  try //захват ошибок записи блоба
  {
   const protocol::P_USHORT
-   c_WriteBufferSize=structure::t_numeric_limits<protocol::P_USHORT>::max_value();
+   c_WriteBufferSize
+    =lib::structure::t_numeric_limits<protocol::P_USHORT>::max_value();
 
   //-----------------------------------------
   using byte_type=unsigned char;
@@ -136,7 +146,8 @@ void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
     {
      //Вызываем вспомогательную функцию для сохранения данных в блобе
      RemoteFB__P13__BlobHelper::WriteSegment
-      (pData,
+      (serverOperation,
+       pData,
        (*pBlobHandle)->m_ID.get_value(),
        static_cast<protocol::P_USHORT>((*pBlobHandle)->m_WriteMode__BufferPos),
        (*pBlobHandle)->m_Buffer.buffer()); //throw
@@ -174,7 +185,8 @@ void RemoteFB__API_P13__WriteBlob::exec(RemoteFB__ConnectorData* const pData,
    {
     //пишем данные прямо в блоб (c_WriteBufferSize, pSrc)
     RemoteFB__P13__BlobHelper::WriteSegment
-     (pData,
+     (serverOperation,
+      pData,
       (*pBlobHandle)->m_ID.get_value(),
       c_WriteBufferSize,
       pSrc); //throw

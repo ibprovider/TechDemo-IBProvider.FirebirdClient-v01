@@ -4,10 +4,6 @@
 #ifndef _t_numeric_cast_H_
 #define _t_numeric_cast_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/t_limits.h>
 
 namespace structure{

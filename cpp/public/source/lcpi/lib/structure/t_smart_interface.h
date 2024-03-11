@@ -5,6 +5,7 @@
 #define _cpp_public_lcpi_lib_structure__t_smart_interface_H_
 
 #include <lcpi/infrastructure/core/structure/t_smart_interface.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

@@ -69,7 +69,7 @@ template<class Traits>
 class t_ibp_error_args
 {
  private:
-  typedef t_ibp_error_args<Traits>                      self_type;
+  using self_type=t_ibp_error_args<Traits>;
 
   t_ibp_error_args(const self_type&) COMP_W000002_COPY_CTOR_IMPL
   self_type& operator = (const self_type&);

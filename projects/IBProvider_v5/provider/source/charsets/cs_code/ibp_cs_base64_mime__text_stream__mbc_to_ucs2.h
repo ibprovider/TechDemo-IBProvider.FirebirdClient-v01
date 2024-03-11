@@ -20,14 +20,14 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  BASE64 [MIME]. Конвертор потока MBC-символов в поток UCS2-символов.
 /// </summary>
-class t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2
+class t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2 LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_text_stream__ucs2)
 {
  private:
-  typedef tag_text_stream__mbc_to_ucs2                self_type;
+  using self_type=tag_text_stream__mbc_to_ucs2;
 
-  tag_text_stream__mbc_to_ucs2(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_text_stream__mbc_to_ucs2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -52,6 +52,7 @@ class t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2
   /// <summary>
   ///  Чтение UCS2-символов
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  ucs2_buffer_size
   //! \param[out] ucs2_buffer
   //! \param[out] cb_readed
@@ -62,9 +63,12 @@ class t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2
   //!
   //! \note
   //!  Если буфер заполнился не до конца, то считается что достигнут EOF
-  virtual db_obj::t_db_cs_result read_ucs2(size_type  ucs2_buffer_size,
-                                           wchar_t*   ucs2_buffer,
-                                           size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual db_obj::t_db_cs_result
+           read_ucs2
+            (db_obj::t_db_operation_context& op_ctx,
+             size_type                       ucs2_buffer_size,
+             wchar_t*                        ucs2_buffer,
+             size_type*                      cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
   typedef structure::t_multi_thread_traits               thread_traits;
@@ -83,8 +87,8 @@ class t_ibp_cs_base64_mime::tag_text_stream__mbc_to_ucs2
    state_id__process_terminate_space =1,
   };//enum tag_state_id
 
-  typedef structure::charsets::t_base64_mime__block_decoder<source_char_type>
-   mime_decoder_type;
+  using mime_decoder_type
+   =structure::charsets::t_base64_mime__block_decoder<source_char_type>;
 
  private:
   /// <summary>

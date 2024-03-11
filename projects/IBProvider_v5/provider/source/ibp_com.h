@@ -18,24 +18,25 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //contents
 
-class TIBP_ComModule;
+class IBP_ComModule;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule
+//class IBP_ComModule
 
 /// <summary>
 ///  Менеджер COM-модуля
 /// </summary>
-class TIBP_ComModule
+class IBP_ComModule LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TIBP_ComModule                                  self_type;
+  using self_type=IBP_ComModule;
 
  public:  //typedefs -----------------------------------------------------
-  typedef structure::t_multi_thread_traits                thread_traits;
+  using thread_traits=structure::t_multi_thread_traits;
 
-  typedef structure::t_string                             string_type;
-  typedef structure::t_char                               char_type;
+  using string_type=structure::t_string;
+
+  using char_type=structure::t_char;
 
   class TData;
   class THelper;
@@ -147,7 +148,7 @@ class TIBP_ComModule
  private:
   static HINSTANCE sm_hInstance;
   static TData*    sm_pData;
-};//class TIBP_ComModule
+};//class IBP_ComModule
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -113,7 +113,7 @@ static void __ibp_check_own_cs_info_order__()
   assert(cs0);
   assert(cs0->name);
 
-  assert_msg(structure::string_compare(cs0->name,cs1->name)<0,"i="<<i);
+  assert_msg(lib::structure::string_compare(cs0->name,cs1->name)<0,"i="<<i);
  }//for
 }//__ibp_check_own_cs_info_order__
 
@@ -556,7 +556,8 @@ const t_ibp_char* const* ibp_get_charset_std_collations(const t_ibp_str_box& cse
 {
  t_ibp_string n=cset_name.make_str();
 
- structure::total_self_trim(n);
+ //! \todo Replace this usage of total_self_trim with self_trim2
+ lib::structure::total_self_trim(n);
 
  IBP_GetStdLocaleC()->toupper_str(&n);
 
@@ -1126,7 +1127,8 @@ t_ibp_charset_manager_v2::charset_name_type
 
  charset_name_type std_cs_name(cs_name.begin(),cs_name.end());
 
- structure::total_self_trim(std_cs_name);
+ //! \todo Replace this usage of total_self_trim with self_trim2
+ lib::structure::total_self_trim(std_cs_name);
 
  if(std_cs_name.empty() && process_empty_name)
  {

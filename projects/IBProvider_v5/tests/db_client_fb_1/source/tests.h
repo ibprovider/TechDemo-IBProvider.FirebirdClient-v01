@@ -10,11 +10,14 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct TTestCreatorDescr
 
-struct TTestCreatorDescr
+struct TTestCreatorDescr LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  typedef void (*TTestCreator)(TTSO_PushTest*      pTestPusher,
-                               TTSO_GlobalContext* pParams);
+  using TTestCreator
+    =void (*)
+      (TTSO_PushTest*      pTestPusher,
+       TTSO_GlobalContext* pParams);
+
  public:
   TTestCreator TestCreator;
 };//struct TTestCreatorDescr

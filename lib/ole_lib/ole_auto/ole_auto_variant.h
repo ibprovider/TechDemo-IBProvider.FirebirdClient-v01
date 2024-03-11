@@ -4,10 +4,6 @@
 #ifndef _ole_auto_variant_H_
 #define _ole_auto_variant_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <ole_lib/ole_base.h>
 #include <structure/t_value_with_null.h>
 

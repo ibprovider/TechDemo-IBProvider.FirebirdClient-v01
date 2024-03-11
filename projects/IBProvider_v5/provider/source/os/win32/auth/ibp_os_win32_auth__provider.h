@@ -24,19 +24,24 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
 /// <summary>
 ///  Провайдер Windows Socket API
 /// </summary>
-class t_auth__provider:public IBP_SmartMemoryObject
+class t_auth__provider LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_SmartMemoryObject
 {
  private:
-  typedef t_auth__provider                               self_type;
+  using self_type=t_auth__provider;
 
-  t_auth__provider(const self_type&);
-  self_type& operator = (const self_type);
+  t_auth__provider(const self_type&)=delete;
+  self_type& operator = (const self_type)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef lib::structure::t_smart_object_ptr<self_type>  self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef t_ibp_os__dll                                  dll_type;
-  typedef t_ibp_os__dll_ptr                              dll_ptr;
+  using dll_type
+   =t_ibp_os__dll;
+
+  using dll_ptr
+   =t_ibp_os__dll_ptr;
 
  private:
   /// <summary>

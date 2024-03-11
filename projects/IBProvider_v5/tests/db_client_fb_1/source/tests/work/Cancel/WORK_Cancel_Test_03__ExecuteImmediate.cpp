@@ -81,8 +81,8 @@ WORK_Cancel_Test_03__ExecuteImmediate::tag_thread::tag_thread
  :m_Exc         (S_OK)
  ,m_HasExc      (false)
  ,m_OpCtx       (cnParams)
- ,m_spLog       (structure::not_null_ptr(pLog))
- ,m_spConnector (structure::not_null_ptr(pConnector))
+ ,m_spLog       (lib::structure::not_null_ptr(pLog))
+ ,m_spConnector (lib::structure::not_null_ptr(pConnector))
  ,m_hTr         (hTr)
  ,m_SQL_Dialect (SQL_Dialect)
 {
@@ -143,7 +143,7 @@ class WORK_Cancel_Test_03__ExecuteImmediate::tag_impl
  :public structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
   tag_impl(const self_type&);
   self_type& operator = (const self_type&);
@@ -177,7 +177,7 @@ WORK_Cancel_Test_03__ExecuteImmediate::tag_impl::tag_impl(TTSO_GlobalContext*   
                                                      const char*             pTestID,
                                                      const TTSO_TestData_v2& Data)
  :m_spParams(pParams)
- ,m_TestID(structure::not_null_ptr(pTestID))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
 {
  assert(m_spParams);
@@ -247,7 +247,7 @@ void WORK_Cancel_Test_03__ExecuteImmediate::tag_impl::run(context_type* const pC
 
  //---------------
  const tag_thread::self_ptr
-  spThread(structure::not_null_ptr(new tag_thread(pCtx,
+  spThread(lib::structure::not_null_ptr(new tag_thread(pCtx,
                                                   params,
                                                   spConnector,
                                                   hTr,

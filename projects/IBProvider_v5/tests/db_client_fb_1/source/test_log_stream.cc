@@ -33,11 +33,12 @@ TTSO_Basic_LogStream_ToFile<Allocator>::~TTSO_Basic_LogStream_ToFile()
 template<class Allocator>
 void TTSO_Basic_LogStream_ToFile<Allocator>::out(const char_type* const s)
 {
- structure::tstr_to_tstr(&m_tmp_buffer,
-                         s,
-                         structure::negative_one,
-                         nullptr,
-                         CP_ACP);
+ structure::tstr_to_tstr
+  (&m_tmp_buffer,
+   s,
+   structure::negative_one,
+   nullptr,
+   CP_ACP);
 
  m_log_file<<m_tmp_buffer;
 
@@ -53,7 +54,8 @@ TTSO_Basic_LogStream<Allocator>::TTSO_Basic_LogStream
                                             const std::string& LogFilePath)
  :inherited(LogFilePath)
  ,m_ConsoleCP(ConsoleCP)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class Allocator>
@@ -64,11 +66,12 @@ TTSO_Basic_LogStream<Allocator>::~TTSO_Basic_LogStream()
 template<class Allocator>
 void TTSO_Basic_LogStream<Allocator>::out(const char_type* const s)
 {
- structure::tstr_to_tstr(&m_tmp_buffer,
-                         s,
-                         structure::negative_one,
-                         nullptr,
-                         m_ConsoleCP);
+ structure::tstr_to_tstr
+  (&m_tmp_buffer,
+   s,
+   structure::negative_one,
+   nullptr,
+   m_ConsoleCP);
 
  std::cout<<m_tmp_buffer;
 

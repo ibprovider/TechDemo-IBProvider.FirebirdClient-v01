@@ -234,7 +234,8 @@ bool t_ibp_cs_bit8::sb_len_as_unicode(ansi_streambuf_type& in_buf,size_type& wsz
 }//sb_len_as_unicode
 
 //------------------------------------------------------------------------
-bool t_ibp_cs_bit8::unicode_to_blob(const wchar_t*                        source,
+bool t_ibp_cs_bit8::unicode_to_blob(db_obj::t_db_operation_context&       op_ctx,
+                                    const wchar_t*                        source,
                                     size_type                       const source_size,
                                     db_obj::t_db_seq_stream_writer* const writer)const
 {
@@ -275,7 +276,7 @@ bool t_ibp_cs_bit8::unicode_to_blob(const wchar_t*                        source
 
   if(out==out_end)
   {
-   writer->write(sizeof(out_buffer),out_buffer);
+   writer->write(op_ctx,sizeof(out_buffer),out_buffer);
 
    out=out_buffer;
   }//if - сброс буфера
@@ -286,7 +287,7 @@ bool t_ibp_cs_bit8::unicode_to_blob(const wchar_t*                        source
   //сброс невыгруженных данных
   assert(out<=out_end);
 
-  writer->write((out-out_buffer)*sizeof(*out),out_buffer);
+  writer->write(op_ctx,(out-out_buffer)*sizeof(*out),out_buffer);
  }//if
 
  return true;

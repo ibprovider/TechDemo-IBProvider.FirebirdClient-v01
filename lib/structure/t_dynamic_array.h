@@ -90,7 +90,7 @@ class t_dynamic_array
   void swap(self_type& x);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_range_error(size_type i)const;//throw
 
  private:

@@ -4,7 +4,7 @@
 
 #include "source/error_services/ibp_error_utils.h"
 
-#include <structure/utilities/string/string_length.h>
+#include <lcpi/lib/structure/utilities/string/string_length.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -319,7 +319,7 @@ lib::structure::t_smart_object_ptr<T>
                   const t_db_svc_descr&   svc_descr)
 {
  assert(svc_descr.name!=nullptr);
- assert(structure::string_length(svc_descr.name)>0);
+ assert(lib::structure::string_length(svc_descr.name)>0);
 
  typedef T svc_type;
 

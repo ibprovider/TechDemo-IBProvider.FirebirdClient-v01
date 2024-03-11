@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_026__CreateBlob__v0::tag_impl
 
-class WORK_Test_026__CreateBlob__v0::tag_impl
+class WORK_Test_026__CreateBlob__v0::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -247,6 +247,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_002__no_params
  svc::RemoteFB_Connector__WriteBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob,
    sizeof(c_testData),
    c_testData);
@@ -255,6 +256,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_002__no_params
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -341,6 +343,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_002__no_params
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -362,10 +365,11 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_003__create_segmented_blob
                                             context_type*           pCtx,
                                             const TTSO_TestData_v2& Data)
 {
- return helper_003(pParams,
-                   pCtx,
-                   Data,
-                   isc_api::ibp_isc_bpb_type_segmented);
+ return helper_003
+         (pParams,
+          pCtx,
+          Data,
+          isc_api::ibp_isc_bpb_type_segmented);
 }//test_003__create_segmented_blob
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -376,10 +380,11 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::test_003__create_streamed_blob
                                             context_type*           pCtx,
                                             const TTSO_TestData_v2& Data)
 {
- return helper_003(pParams,
-                   pCtx,
-                   Data,
-                   isc_api::ibp_isc_bpb_type_stream);
+ return helper_003
+         (pParams,
+          pCtx,
+          Data,
+          isc_api::ibp_isc_bpb_type_stream);
 }//test_003__create_streamed_blob
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -465,6 +470,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
  svc::RemoteFB_Connector__WriteBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob,
    sizeof(c_testData),
    c_testData);
@@ -473,6 +479,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -564,6 +571,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
   =svc::RemoteFB_Connector__ReadBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob,
      sizeof(blobData),
      blobData,
@@ -582,6 +590,7 @@ void WORK_Test_026__CreateBlob__v0::tag_impl::helper_003
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -684,7 +693,7 @@ void WORK_Test_026__CreateBlob__v0::create
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

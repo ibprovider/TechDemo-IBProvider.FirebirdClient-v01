@@ -618,7 +618,7 @@ const DBPROPID IBP_DBPROP__INIT__REMOTE__PROTOCOL_ARCHITECTURE  =0x0060;
 
 //------------------------------------------------------------------------
 /// <summary>
-///  Режим чтения/записи массивов базы данных
+///  Database array read/write mode
 /// </summary>
 const DBPROPID IBP_DBPROP__INIT__ARRAY_RW_MODE                  =0x0061;
 
@@ -755,6 +755,12 @@ const DBPROPID IBP_DBPROP__INIT__ICUIN_LIBRARY_64               =0x0075;
 ///  Source of timezones data
 /// </summary>
 const DBPROPID IBP_DBPROP__INIT__TIMEZONES_SOURCE               =0x0076;
+
+//------------------------------------------------------------------------
+/// <summary>
+///  BLOB send mode
+/// </summary>
+const DBPROPID IBP_DBPROP__INIT__BLOB_SEND_MODE                 =0x0077;
 
 //------------------------------------------------------------------------
 #if 1 || !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)

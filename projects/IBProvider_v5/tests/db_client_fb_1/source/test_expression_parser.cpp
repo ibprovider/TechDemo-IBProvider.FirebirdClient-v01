@@ -249,16 +249,17 @@ bool TIBP_TSO_ServerComparer::operator != (const expression_type& str)const
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_ExpressionParser::tag_ctx
 
-class TIBP_TSO_ExpressionParser::tag_ctx
+class TIBP_TSO_ExpressionParser::tag_ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_ctx                           ctx_type;
+  using ctx_type=tag_ctx;
 
-  tag_ctx(const tag_ctx&);
-  self_type& operator = (const self_type&);
+  tag_ctx(const tag_ctx&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef expression_box_type::iterator     expression_iterator;
+  using expression_iterator
+   =expression_box_type::iterator;
 
  public:
   expression_iterator const m_exp_beg;
@@ -283,11 +284,13 @@ TIBP_TSO_ExpressionParser::tag_ctx::tag_ctx(const expression_box_type* const exp
  ,m_exp_end(exp_str->end())
  ,m_exp_pos(exp_str->begin())
  ,m_last_token_type(type_none)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 TIBP_TSO_ExpressionParser::tag_ctx::~tag_ctx()
-{;}
+{
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TIBP_TSO_ExpressionParser
@@ -300,11 +303,13 @@ TIBP_TSO_ExpressionParser::TIBP_TSO_ExpressionParser
   (helper__createOdsComparer(pCL))
  ,m_spDBDialectComparer
   (helper__createDBDialectComparer(pCL))
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 TIBP_TSO_ExpressionParser::~TIBP_TSO_ExpressionParser()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 void TIBP_TSO_ExpressionParser::reg_macro(const char* const name,
@@ -585,6 +590,7 @@ const TIBP_TSO_ExpressionParser::expression_element
  TIBP_TSO_ExpressionParser::sm_space_symbols[]
   ={' ','\t','\r','\n'};
 
+//------------------------------------------------------------------------
 bool TIBP_TSO_ExpressionParser::helper__is_space(const expression_element c)
 {
  return std::find(sm_space_symbols,_END_(sm_space_symbols),c)!=_END_(sm_space_symbols);
@@ -595,6 +601,7 @@ const TIBP_TSO_ExpressionParser::expression_element
  TIBP_TSO_ExpressionParser::sm_bracket_symbols[]
   ={'(',')'};
 
+//------------------------------------------------------------------------
 bool TIBP_TSO_ExpressionParser::helper__is_bracket(const expression_element c)
 {
  return std::find(sm_bracket_symbols,_END_(sm_bracket_symbols),c)!=_END_(sm_bracket_symbols);
@@ -605,6 +612,7 @@ const TIBP_TSO_ExpressionParser::expression_element
  TIBP_TSO_ExpressionParser::sm_operator_symbols[]
   ={'<','>','!','=','|','&'};
 
+//------------------------------------------------------------------------
 bool TIBP_TSO_ExpressionParser::helper__is_operator(const expression_element c)
 {
  return std::find(sm_operator_symbols,_END_(sm_operator_symbols),c)!=_END_(sm_operator_symbols);

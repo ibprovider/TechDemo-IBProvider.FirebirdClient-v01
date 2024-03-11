@@ -2,10 +2,6 @@
 #ifndef _t_tree_iterators_H_
 #define _t_tree_iterators_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/tree/t_tree_iterator_base.h>
 #include <iterator>
 

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Classes of exception for WIN32-errors
-//                                              Dmitry Kovalenko. 12.04.2004.
+//                                                 Dmitry Kovalenko. 12.04.2004.
 #ifndef _win32_error_H_
 #define _win32_error_H_
 
@@ -26,13 +26,13 @@ t_string GetErrorMsg(DWORD dwErrorCode,bool AppendErrCode=true);
 class t_base_win32_error:virtual public structure::t_exception
 {
  private:
-  typedef t_base_win32_error                        self_type;
-  typedef structure::t_exception                    inherited;
+  using self_type=t_base_win32_error;
+  using inherited=structure::t_exception;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef LONG                                      win32_code_type;
+  using win32_code_type=LONG;
 
  public:
   t_base_win32_error(const self_type& x)
@@ -46,7 +46,7 @@ class t_base_win32_error:virtual public structure::t_exception
   {
   }
 
-  virtual ~t_base_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_base_win32_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //t_exception interface ------------------------------------------------
   virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
@@ -54,7 +54,7 @@ class t_base_win32_error:virtual public structure::t_exception
   //selectors ------------------------------------------------------------
   win32_code_type win32_code()const
    {return m_win32_code;}
-  
+
  private:
   const win32_code_type m_win32_code;
 };//class t_base_win32_error
@@ -65,14 +65,15 @@ class t_base_win32_error:virtual public structure::t_exception
 class t_win32_error:public t_base_win32_error
 {
  private:
-  typedef t_win32_error                          self_type;
-  typedef t_base_win32_error                     inherited;
+  using self_type=t_win32_error;
+  using inherited=t_base_win32_error;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef std::string::value_type                char_type;
-  typedef structure::t_str_parameter<char_type>  str_arg_type;
+  using char_type=std::string::value_type;
+
+  using str_arg_type=structure::t_str_parameter<char_type>;
 
  public:
   t_win32_error(const self_type&);
@@ -81,10 +82,10 @@ class t_win32_error:public t_base_win32_error
 
   t_win32_error(win32_code_type win32_code,str_arg_type msg);
 
-  virtual ~t_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_win32_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //std::exception -------------------------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //structure::t_exception -----------------------------------------------
   virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw
@@ -94,10 +95,10 @@ class t_win32_error:public t_base_win32_error
    {return m_msg;}
 
   //----------------------------------------------------------------------
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error(win32_code_type win32_code);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error(win32_code_type win32_code,str_arg_type msg);
 
  private:

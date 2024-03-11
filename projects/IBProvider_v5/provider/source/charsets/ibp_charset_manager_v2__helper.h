@@ -9,7 +9,7 @@
 
 #include "source/charsets/ibp_charset_manager_v2.h"
 
-#include <structure/utilities/string/string_compare.h>
+#include <lcpi/lib/structure/utilities/string/string_compare.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ class t_ibp_charset_manager_v2::tag_aliase_less_by_name
  private:
   static bool helper__less(const cs_name_box_type& n1,const cs_name_box_type& n2)
   {
-   return structure::string_compare_v2
+   return lib::structure::string_compare_v2
            (n1.data(),
             n1.size(),
             n2.data(),

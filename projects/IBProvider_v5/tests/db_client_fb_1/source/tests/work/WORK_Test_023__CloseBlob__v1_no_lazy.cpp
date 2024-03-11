@@ -17,10 +17,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl
 
-class WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl
+class WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -49,6 +49,11 @@ class WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl
  #endif
 
   static void test_005__err__bad_blob_handle
+               (TTSO_GlobalContext*     pParams,
+                context_type*           pCtx,
+                const TTSO_TestData_v2& Data);
+
+  static void test_300__read_blob__op_cancel
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
@@ -185,6 +190,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_001
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  _TSO_CHECK(!hBlob);
@@ -236,6 +242,9 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_002__bug_check__zero_b
  Data.SetParams(params);
 
  //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
@@ -256,6 +265,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_002__bug_check__zero_b
    svc::RemoteFB_Connector__CloseBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
@@ -317,6 +327,9 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_003__bug_check__null_b
  Data.SetParams(params);
 
  //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
@@ -337,6 +350,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_003__bug_check__null_b
    svc::RemoteFB_Connector__CloseBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
@@ -503,6 +517,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_004__bug_check__bad_ow
    svc::RemoteFB_Connector__CloseBlob
     (tracer,
      spConnector2,
+     OpCtx,
      &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
@@ -685,6 +700,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_005__err__bad_blob_han
    svc::RemoteFB_Connector__CloseBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob);
   }
   catch(const ibp::t_ibp_error& exc)
@@ -734,6 +750,157 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_005__err__bad_blob_han
 }//test_005__err__bad_blob_handle
 
 ////////////////////////////////////////////////////////////////////////////////
+//TEST 300
+
+void WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::test_300__read_blob__op_cancel
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx,
+                                            const TTSO_TestData_v2&   Data)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ tracer<<L"Hello from test!"<<send;
+
+ //-----------------------------------------
+ using svc=TestServices;
+
+ //-----------------------------------------
+ svc::dbprops_type params(pParams);
+
+ params.set_dbprop_init__location(svc::BuildLocationString(pParams));
+ params.set_dbprop_init__user_id(L"SYSDBA");
+ params.set_dbprop_init__password(L"masterkey");
+
+ Data.SetParams(params);
+
+ //-----------------------------------------
+ isc_base::t_isc_connection_settings cns;
+
+ const svc::remote_fb_connector_ptr
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns));
+
+ //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
+
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(hTr!=nullptr);
+
+ _TSO_CHECK(hTr->m_pParentPort==spConnector->GetPort());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
+
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ svc::RemoteFB_Connector__StmtPrepare
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   static_cast<short>(cns.db_dialect_Ex.value()),
+   "execute block returns (x blob) as begin x=x'FF'; suspend; end;");
+
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   nullptr,
+   nullptr);
+
+ //-----------------------------------------
+ db_obj::DB_IBBLOBID blobID={};
+
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqlvar[0].sqltype    =isc_api::ibp_isc_sql_blob;
+ xsqlda->sqlvar[0].sqlsubtype =0;
+ xsqlda->sqlvar[0].sqlscale   =0;
+ xsqlda->sqlvar[0].sqllen     =sizeof(blobID);
+ xsqlda->sqlvar[0].sqldata    =reinterpret_cast<char*>(&blobID);
+ xsqlda->sqlvar[0].sqlind     =nullptr;
+
+ xsqlda->sqld=1;
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtFetch_ToRow
+  (spConnector,
+   OpCtx,
+   &hStmt,
+   xsqlda);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
+
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
+
+ _TSO_CHECK(hBlob);
+
+ _TSO_CHECK(hBlob->m_ID.has_value());
+
+ _TSO_CHECK(hBlob->m_pParentTr==hTr);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__BlobHandle hCopyBlob(hBlob);
+
+ _TSO_CHECK(hCopyBlob);
+
+ OpCtx.cancel(); // will be ignored
+
+ svc::RemoteFB_Connector__CloseBlob
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hBlob);
+
+ _TSO_CHECK(!hBlob);
+
+ _TSO_CHECK(hCopyBlob->m_ID.is_null());
+
+ _TSO_CHECK(hCopyBlob->m_pParentTr==nullptr);
+
+ //-----------------------------------------
+ _TSO_CHECK(hTr);
+
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(!hTr);
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector);
+}//test_300__read_blob__op_cancel
+
+////////////////////////////////////////////////////////////////////////////////
 
 const wchar_t* WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::helper__get_close_blob_bugcheck_src
                                            (remote_fb::RemoteFB__Connector* pConnector)
@@ -763,13 +930,13 @@ const wchar_t* WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::helper__get_close
 
 //------------------------------------------------------------------------
 const wchar_t* WORK_Test_023__CloseBlob__v1_no_lazy::tag_impl::helper__get_close_blob_subsystem_id
-                                           (remote_fb::RemoteFB__Connector* pConnector)
+                                           (remote_fb::RemoteFB__Connector* const pConnector)
 {
  assert(pConnector);
 
- typedef TestServices svc;
+ using svc=TestServices;
 
- typedef TestCheckErrors errSvc;
+ using errSvc=TestCheckErrors;
 
  switch(const auto v=pConnector->GetPort()->get_protocol_version())
  {
@@ -830,6 +997,10 @@ const WORK_Test_023__CloseBlob__v1_no_lazy::tag_descr
  DEF_TEST_DESCR
   ("005.err.bad_blob_handle",
    test_005__err__bad_blob_handle)
+
+ DEF_TEST_DESCR
+  ("300.read_blob.op_cancel",
+   test_300__read_blob__op_cancel)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -877,7 +1048,7 @@ void WORK_Test_023__CloseBlob__v1_no_lazy::create
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

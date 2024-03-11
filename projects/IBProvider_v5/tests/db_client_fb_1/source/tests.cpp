@@ -105,6 +105,7 @@
 #include "source/tests/work/WORK_Test_021__StmtClose__v2_lazy_send.h"
 #include "source/tests/work/WORK_Test_022__OpenBlob__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_022__OpenBlob__v2_lazy_send.h"
+#include "source/tests/work/WORK_Test_023__CloseBlob__v0.h"
 #include "source/tests/work/WORK_Test_023__CloseBlob__v1_no_lazy.h"
 #include "source/tests/work/WORK_Test_023__CloseBlob__v2_lazy_send.h"
 #include "source/tests/work/WORK_Test_024__GetBlobInfo.h"
@@ -460,6 +461,8 @@ const TTestCreatorDescr g_Tests[]=
  DEF_CREATOR_DESCR(WORK_Test_022__OpenBlob__v1_no_lazy::create),
 
  DEF_CREATOR_DESCR(WORK_Test_022__OpenBlob__v2_lazy_send::create),
+
+ DEF_CREATOR_DESCR(WORK_Test_023__CloseBlob__v0::create),
 
  DEF_CREATOR_DESCR(WORK_Test_023__CloseBlob__v1_no_lazy::create),
 

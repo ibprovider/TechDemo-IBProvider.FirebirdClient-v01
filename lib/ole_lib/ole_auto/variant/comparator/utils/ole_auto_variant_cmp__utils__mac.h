@@ -12,14 +12,14 @@ namespace ole_lib{namespace variant_comparator{
  TVariantComparator__##vt1##__##vt2
 
 #define OLE_AUTO_VARIANT_COMPARATOR_CLASS__SIMPLE(vt1,vt2)                \
- class OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2)                  \
-  :public TVariantComparator                                              \
+class OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2) LCPI_CPP_CFG__CLASS__FINAL \
+ :public TVariantComparator                                               \
 {                                                                         \
  private:                                                                 \
-  typedef OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2)    self_type; \
+  using self_type=OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2);      \
                                                                           \
-  OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2)(const self_type&);    \
-  self_type& operator = (const self_type&);                               \
+  OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2)(const self_type&)=delete;    \
+  self_type& operator = (const self_type&)=delete;                               \
                                                                           \
  private:                                                                 \
   OLE_AUTO_VARIANT_COMPARATOR_NAME__SIMPLE(vt1,vt2)(){;}                  \
@@ -31,7 +31,7 @@ namespace ole_lib{namespace variant_comparator{
                                                                           \
   virtual cmp_code_type exec(ctx_type&       ctx,                         \
                              const VARIANT&  v1,                          \
-                             const VARIANT&  v2)const COMP_W000004_OVERRIDE_FINAL; \
+                             const VARIANT&  v2)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; \
 };
 
 ////////////////////////////////////////////////////////////////////////////////

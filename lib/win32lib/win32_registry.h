@@ -12,34 +12,54 @@ namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
 //class TRegistry
 
-class TRegistry
+class TRegistry LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TRegistry                                                  self_type;
+  using self_type=TRegistry;
 
-  TRegistry(const self_type& reg);
-  self_type& operator = (const self_type&);
+  TRegistry(const self_type& reg)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_void_allocator                                allocator_type;
-  typedef structure::t_stl_vector<t_string,allocator_type>           TNameArray;
-  typedef structure::t_typed_simple_buffer<BYTE,allocator_type>      TDataBuffer;
+  using allocator_type
+   =structure::t_void_allocator;
 
-  typedef structure::t_char                                          char_type;
+  using TNameArray
+   =structure::t_stl_vector<t_string,allocator_type>;
 
-  typedef structure::t_str_parameter<char_type>                      str_arg_type;
+  using TDataBuffer
+   =structure::t_typed_simple_buffer<BYTE,allocator_type>;
 
-  typedef structure::t_typed_simple_buffer<char_type,allocator_type> char_buffer_type;
+  using char_type
+   =structure::t_char;
 
-  struct TRegKeyInfo
+  using str_arg_type
+   =structure::t_str_parameter<char_type>;
+
+  using char_buffer_type
+   =structure::t_typed_simple_buffer<char_type,allocator_type>;
+
+  using dword_type
+   =DWORD;
+
+  struct TRegKeyInfo LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
-    typedef DWORD                num_sub_keys_type;
-    typedef DWORD                max_sub_key_name_len_type;
-    typedef DWORD                num_values_type;
-    typedef DWORD                max_value_name_len_type;
-    typedef DWORD                max_data_len_type;
-    
+    using num_sub_keys_type
+     =dword_type;
+
+    using max_sub_key_name_len_type
+     =dword_type;
+
+    using num_values_type
+     =dword_type;
+
+    using max_value_name_len_type
+     =dword_type;
+
+    using max_data_len_type
+     =dword_type;
+
    public:
     num_sub_keys_type            NumSubKeys;
     max_sub_key_name_len_type    MaxSubKeyLen;
@@ -49,10 +69,10 @@ class TRegistry
     FILETIME                     FileTime;
   };//struct TRegKeyInfo
 
-  struct TRegDataInfo
+  struct TRegDataInfo LCPI_CPP_CFG__CLASS__FINAL
   {
-   DWORD type;//тип данных
-   DWORD size;//размер в байтах
+   dword_type type;//тип данных
+   dword_type size;//размер в байтах
   };
 
   //класс обслуживающий ключи реестра
@@ -79,7 +99,7 @@ class TRegistry
   static LONG GetValueInfo(HKEY          hKey,
                            str_arg_type  name,
                            TRegDataInfo& data);
-  
+
   static LONG GetValueInfo(HKEY          hKey,
                            str_arg_type  name,
                            DWORD&        type,
@@ -101,7 +121,7 @@ class TRegistry
   static bool ValueExists(HKEY key,str_arg_type name);
 
   static LONG DeleteKey(HKEY key,str_arg_type key_name);
-  
+
   static LONG DeleteKey(HKEY key,str_arg_type path,str_arg_type key_name);
 
   static LONG DeleteValue(HKEY key,str_arg_type name);
@@ -111,14 +131,15 @@ class TRegistry
   static t_string ReadString(HKEY         hkey,
                              str_arg_type name,
                              LONG*        lpResult);
-  
+
   static bool WriteString(HKEY            hkey,
                           str_arg_type    name,
                           const t_string& value,
                           LONG*           lpResult);
 
   //LONG variables ------------------------------------------------------
-  static LONG   ReadInteger(HKEY hkey,str_arg_type name,LONG* lpResult);
+  static LONG  ReadInteger(HKEY hkey,str_arg_type name,LONG* lpResult);
+
   static bool  WriteInteger(HKEY hkey,str_arg_type name,LONG value,LONG* lpResult);
 
   //Binary variables ----------------------------------------------------
@@ -162,7 +183,7 @@ class TRegistry
  public:
   explicit TRegistry(HKEY _RootKey=HKEY_CURRENT_USER);
 
-  //copy reg.RootKey and clone reg.CurrentKey 
+  //copy reg.RootKey and clone reg.CurrentKey
   TRegistry(const TRegistry& reg,REGSAM samDesired);
 
  ~TRegistry();
@@ -174,7 +195,7 @@ class TRegistry
   HKEY   GetKeyEx (str_arg_type key_name,REGSAM samDesired,LONG* lResult);
 
   LONG   GetValueInfo(str_arg_type key_name,TRegDataInfo& data);
-  
+
   LONG   GetKeyInfo(TRegKeyInfo& info);
 
   DWORD  GetDataSize(str_arg_type name,LONG* lResult);
@@ -186,9 +207,9 @@ class TRegistry
   bool   ValueExists(str_arg_type name);
 
   LONG   DeleteKey(str_arg_type key_name);
-  
+
   LONG   DeleteKey(str_arg_type path,str_arg_type key_name);
-  
+
   LONG   DeleteValue(str_arg_type name);
 
   void   GetKeyNames(TNameArray& names);
@@ -236,16 +257,16 @@ class TRegistry
 ////////////////////////////////////////////////////////////////////////////////
 //class TRegistry::TKey
 
-class TRegistry::TKey
+class TRegistry::TKey LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TKey                                    self_type;
+  using self_type=TKey;
 
-  TKey(const self_type&);
-  self_type& operator = (const self_type&);
+  TKey(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_str_parameter<t_char>      str_arg_type;
+  using str_arg_type=structure::t_str_parameter<t_char>;
 
  public:
   bool call_close;
@@ -268,7 +289,7 @@ class TRegistry::TKey
   self_type& set(HKEY key,bool _call_close);
 
   LONG OpenKeyEx(HKEY hKey,str_arg_type subKey,REGSAM samDesired);
-  
+
   LONG CreateKeyEx(HKEY hKey,str_arg_type subKey,REGSAM samDesired);
 
  private:

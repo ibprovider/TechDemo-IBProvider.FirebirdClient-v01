@@ -21,6 +21,10 @@ const char TestCheckErrors::sm_srcID__UnknownDBMS[]
  ="Unknown DBMS";
 
 //------------------------------------------------------------------------
+const wchar_t TestCheckErrors::sm_srcID_wstr__IBProvider[]
+ =L"LCPI.IBProvider.5";
+
+//------------------------------------------------------------------------
 const wchar_t TestCheckErrors::sm_srcID_wstr__Firebird[]
  =L"Firebird";
 
@@ -262,7 +266,7 @@ bool TestCheckErrors::check_err_rec__common_err__formed_buf_is_too_large
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -280,7 +284,7 @@ bool TestCheckErrors::check_err_rec__common_err__formed_buf_is_too_large
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -340,7 +344,7 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -358,7 +362,7 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -394,7 +398,7 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -412,7 +416,7 @@ bool TestCheckErrors::check_err_rec__direct_fb__bad_format_of_str_for_inet_cn_to
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -500,7 +504,7 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -518,7 +522,7 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -554,7 +558,7 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol_architecture
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -572,7 +576,7 @@ bool TestCheckErrors::check_err_rec__unsupported_protocol_architecture
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -617,7 +621,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__requested_protocol_type_no
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__requested_protocol_type_not_supported_2
@@ -656,7 +660,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__unsupported_protocol_type_
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__unsupported_protocol_type_2
@@ -695,7 +699,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__unsupported_protocol_flags
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__unsupported_protocol_flags_2
@@ -730,7 +734,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__server_rejected_cn_compres
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__server_rejected_cn_compression_0
@@ -765,7 +769,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__server_required_cn_compres
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__server_required_cn_compression_0
@@ -801,7 +805,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__unsupported_wire_compressi
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__unsupported_wire_compression_type_1
@@ -836,7 +840,7 @@ bool TestCheckErrors::check_err_rec___ibp_mce_remote__wire_compression_not_suppo
  return self_type::TestCheckErrors::error_rec__check_data__EN_RU
          (tracer,
           pErrorRec,
-          self_type::utf8_to_wstring(self_type::sm_srcID__IBProvider),
+          self_type::self_type::sm_srcID_wstr__IBProvider,
           msgEng.str(),
           msgRus.str());
 }//check_err_rec___ibp_mce_remote__wire_compression_not_supported_0
@@ -868,7 +872,7 @@ bool TestCheckErrors::check_err_rec__bug_check__cant_convert_auth_service_name_f
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -887,7 +891,7 @@ bool TestCheckErrors::check_err_rec__bug_check__cant_convert_auth_service_name_f
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -925,7 +929,7 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_already_was_used
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -944,7 +948,7 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_already_was_used
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -982,7 +986,7 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_factory_already_was
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -1001,7 +1005,7 @@ bool TestCheckErrors::check_err_rec__bug_check__auth_service_factory_already_was
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -1039,7 +1043,7 @@ bool TestCheckErrors::check_err_rec__winsock__cant_detect_host_address
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -1057,7 +1061,7 @@ bool TestCheckErrors::check_err_rec__winsock__cant_detect_host_address
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2028,7 +2032,7 @@ bool TestCheckErrors::check_err_rec__cn_err__db_name_is_too_long
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2048,7 +2052,7 @@ bool TestCheckErrors::check_err_rec__cn_err__db_name_is_too_long
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2082,7 +2086,7 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_db_name_to_utf8
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2102,7 +2106,7 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_db_name_to_utf8
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2137,7 +2141,7 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_cn_param_to_utf8
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2157,7 +2161,7 @@ bool TestCheckErrors::check_err_rec__cn_err__translate_cn_param_to_utf8
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2191,7 +2195,7 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_cn_type
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2211,7 +2215,7 @@ bool TestCheckErrors::check_err_rec__cn_err__cant_detect_cn_type
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2246,7 +2250,7 @@ bool TestCheckErrors::check_err_rec__cn_err__not_defined_req_init_prop
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2266,7 +2270,7 @@ bool TestCheckErrors::check_err_rec__cn_err__not_defined_req_init_prop
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -2613,7 +2617,7 @@ bool TestCheckErrors::check_err_rec__tr_err__prep_data_is_too_large
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -2631,7 +2635,7 @@ bool TestCheckErrors::check_err_rec__tr_err__prep_data_is_too_large
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3093,7 +3097,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__not_prepared
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3111,7 +3115,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__not_prepared
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3143,7 +3147,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_columns_operation
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3159,7 +3163,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_columns_operation
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3191,7 +3195,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_parameters_operatio
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3207,7 +3211,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__errors_in_get_parameters_operatio
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3336,7 +3340,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__defer_exec_stmt_requires_tr_conte
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3354,7 +3358,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__defer_exec_stmt_requires_tr_conte
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3389,7 +3393,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_reexecute_stmt_with_op
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3407,7 +3411,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_reexecute_stmt_with_op
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3597,7 +3601,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_prepare_stmt_with_open
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3615,7 +3619,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_prepare_stmt_with_open
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3650,7 +3654,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_close_a_closed_cursor
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3668,7 +3672,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__attempt_to_close_a_closed_cursor
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3703,7 +3707,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_from_closed_cursor
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3721,7 +3725,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_from_closed_cursor
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3756,7 +3760,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_after_eof
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3774,7 +3778,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_after_eof
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -3799,7 +3803,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_fail
       (tracer,
        pErrorRec,
        self_type::lcid__RUS,
-       utf8_to_wstring(self_type::sm_srcID__IBProvider),
+       self_type::sm_srcID_wstr__IBProvider,
        utf8_to_wstring("Ошибка выборки данных результирующего множества.")))
  {
   resultValue=false;
@@ -3810,7 +3814,7 @@ bool TestCheckErrors::check_err_rec__stmt_err__fetch_fail
       (tracer,
        pErrorRec,
        self_type::lcid__ENG,
-       utf8_to_wstring(self_type::sm_srcID__IBProvider),
+       self_type::sm_srcID_wstr__IBProvider,
        L"Failed to fetch a row from cursor."))
  {
   resultValue=false;
@@ -3956,6 +3960,59 @@ bool TestCheckErrors::check_err_rec__blob_err__bug_check__wrong_blob_handle_mode
 }//check_err_rec__blob_err__bug_check__wrong_blob_handle_mode
 
 //------------------------------------------------------------------------
+bool TestCheckErrors::check_err_rec__blob_err__fail_write_to_db_0
+                                      (TTSO_Tracer&                         tracer,
+                                       const structure::t_err_record* const pErrorRec,
+                                       wstr_box_type                  const ucs2_SubSystemID)
+{
+ assert(pErrorRec!=nullptr);
+
+ bool resultValue=true;
+
+ //-----------------------------------------
+ {
+  const char* const c_templ
+   ="[Подсистема: %1] Запись BLOB: Ошибка записи данных.";
+
+  structure::wstr_formatter msgRus
+   (utf8_to_wstring(c_templ));
+
+  msgRus<<ucs2_SubSystemID;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__RUS,
+        self_type::sm_srcID_wstr__IBProvider,
+        msgRus.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ {
+  structure::wstr_formatter msgEng
+   (L"[Subsystem: %1] Write BLOB: Failed to write the data.");
+
+  msgEng<<ucs2_SubSystemID;
+
+  if(!self_type::error_rec__check_data
+       (tracer,
+        pErrorRec,
+        self_type::lcid__ENG,
+        self_type::sm_srcID_wstr__IBProvider,
+        msgEng.str()))
+  {
+   resultValue=false;
+  }//if
+ }//local
+
+ //-----------------------------------------
+ return resultValue;
+}//check_err_rec__blob_err__fail_write_to_db_0
+
+//------------------------------------------------------------------------
 bool TestCheckErrors::check_err_rec__blob_err__close_closed_blob
                                       (TTSO_Tracer&                         tracer,
                                        const structure::t_err_record* const pErrorRec,
@@ -3979,7 +4036,7 @@ bool TestCheckErrors::check_err_rec__blob_err__close_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -3997,7 +4054,7 @@ bool TestCheckErrors::check_err_rec__blob_err__close_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4032,7 +4089,7 @@ bool TestCheckErrors::check_err_rec__blob_err__cancel_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4050,7 +4107,7 @@ bool TestCheckErrors::check_err_rec__blob_err__cancel_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4085,7 +4142,7 @@ bool TestCheckErrors::check_err_rec__blob_err__read_from_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4103,7 +4160,7 @@ bool TestCheckErrors::check_err_rec__blob_err__read_from_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4138,7 +4195,7 @@ bool TestCheckErrors::check_err_rec__blob_err__write_into_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4156,7 +4213,7 @@ bool TestCheckErrors::check_err_rec__blob_err__write_into_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4191,7 +4248,7 @@ bool TestCheckErrors::check_err_rec__blob_err__work_with_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4209,7 +4266,7 @@ bool TestCheckErrors::check_err_rec__blob_err__work_with_closed_blob
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4299,7 +4356,7 @@ bool TestCheckErrors::check_err_rec__slice_err__get_fail__invalid_array_buffer_s
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4319,7 +4376,7 @@ bool TestCheckErrors::check_err_rec__slice_err__get_fail__invalid_array_buffer_s
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4358,7 +4415,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_version
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4376,7 +4433,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_version
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4413,7 +4470,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__too_many_vars
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4431,7 +4488,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__too_many_vars
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4467,7 +4524,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqllen
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4485,7 +4542,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqllen
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4521,7 +4578,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4539,7 +4596,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlscale
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4574,7 +4631,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__unknown_sqltype
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4592,7 +4649,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__unknown_sqltype
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4627,7 +4684,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4645,7 +4702,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_ptr
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4682,7 +4739,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_value
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4700,7 +4757,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_sqlind_value
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4735,7 +4792,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__xsqlvar_not_supports_null_state
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4753,7 +4810,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__xsqlvar_not_supports_null_state
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4788,7 +4845,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_varchar_data_length
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4806,7 +4863,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__incorrect_varchar_data_length
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4842,7 +4899,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__varchar_data_length_is_greater_
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4860,7 +4917,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__varchar_data_length_is_greater_
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4896,7 +4953,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4914,7 +4971,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_info_
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -4950,7 +5007,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -4968,7 +5025,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__failed_to_process_xsqlvar_data
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5006,7 +5063,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_count_of_xvars
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5024,7 +5081,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_count_of_xvars
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5061,7 +5118,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqltype_of_xva
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5079,7 +5136,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqltype_of_xva
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5117,7 +5174,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5135,7 +5192,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqlscale_of_xv
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5173,7 +5230,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqllen_of_xvar
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5191,7 +5248,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__other_sqllen_of_xvar
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5228,7 +5285,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqld
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5246,7 +5303,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqld
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5284,7 +5341,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqln
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5302,7 +5359,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__bug_check__incorrect_sqln
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5340,7 +5397,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__blr_data_is_too_long
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5358,7 +5415,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_err__blr_data_is_too_long
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5395,7 +5452,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5413,7 +5470,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5450,7 +5507,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unk_version
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5468,7 +5525,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unk_version
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5504,7 +5561,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_end_of_data
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5522,7 +5579,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_end_of_data
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5560,7 +5617,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__str_len_exceed_size_of_buffer_tail
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5578,7 +5635,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__str_len_exceed_size_of_buffer_tail
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5616,7 +5673,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_element_value
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5634,7 +5691,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_element_value
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5671,7 +5728,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_struct_fields
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5689,7 +5746,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_struct_fields
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5730,7 +5787,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_index_of_bound
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5749,7 +5806,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_index_of_bound
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5786,7 +5843,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_bound_range
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5804,7 +5861,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__mult_def_of_bound_range
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5845,7 +5902,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__bad_bound_range
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5863,7 +5920,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__bad_bound_range
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5901,7 +5958,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_kind_of_literal
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5919,7 +5976,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_kind_of_literal
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -5956,7 +6013,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_element_fields
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -5974,7 +6031,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__wrong_count_of_element_fields
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6012,7 +6069,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_tag
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6030,7 +6087,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unexpected_tag
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6068,7 +6125,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__incorrect_index_property_of_scalar
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6086,7 +6143,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__incorrect_index_property_of_scalar
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6124,7 +6181,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__inconsistent_sizes_of_buffer_and_d
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6142,7 +6199,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__inconsistent_sizes_of_buffer_and_d
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6179,7 +6236,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_tag
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6197,7 +6254,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_tag
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6233,7 +6290,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimensions
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6251,7 +6308,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimensions
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6288,7 +6345,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimension
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6306,7 +6363,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__no_data_of_dimension
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6344,7 +6401,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_blr_type_id
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6362,7 +6419,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__unknown_blr_type_id
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6400,7 +6457,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__invalid_element_length
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6418,7 +6475,7 @@ bool TestCheckErrors::check_err_rec__sdl_err__invalid_element_length
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6498,7 +6555,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incorrect_xsqld
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6517,7 +6574,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incorrect_xsqld
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6557,7 +6614,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__xvar_seq_number
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6576,7 +6633,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__xvar_seq_number
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6614,7 +6671,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_xvar
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6633,7 +6690,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_xvar
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6672,7 +6729,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_seq_
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6691,7 +6748,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__unexpected_seq_
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6727,7 +6784,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6745,7 +6802,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__mult_def_of_xsq
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6781,7 +6838,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6799,7 +6856,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__not_def_xsqvar_
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6835,7 +6892,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6853,7 +6910,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__negative_sqllen
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6890,7 +6947,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6908,7 +6965,7 @@ bool TestCheckErrors::check_err_rec__xsqlda_info_data_bug_check__incompleted_def
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -6945,7 +7002,7 @@ bool TestCheckErrors::check_err_rec__isc__parse_msg_buf_data__failed_to_process_
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -6963,7 +7020,7 @@ bool TestCheckErrors::check_err_rec__isc__parse_msg_buf_data__failed_to_process_
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -7087,7 +7144,7 @@ bool TestCheckErrors::check_err_rec__info_buf_err__transport_data_to_integer__si
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -7105,7 +7162,7 @@ bool TestCheckErrors::check_err_rec__info_buf_err__transport_data_to_integer__si
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -7312,7 +7369,7 @@ bool TestCheckErrors::check_err_rec__common__internal_err__unk_sql_type
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -7330,7 +7387,7 @@ bool TestCheckErrors::check_err_rec__common__internal_err__unk_sql_type
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;
@@ -8077,7 +8134,7 @@ bool TestCheckErrors::helper__bug_check(TTSO_Tracer&                         tra
        (tracer,
         pErrorRec,
         self_type::lcid__RUS,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgRus.str()))
   {
    resultValue=false;
@@ -8097,7 +8154,7 @@ bool TestCheckErrors::helper__bug_check(TTSO_Tracer&                         tra
        (tracer,
         pErrorRec,
         self_type::lcid__ENG,
-        utf8_to_wstring(self_type::sm_srcID__IBProvider),
+        self_type::sm_srcID_wstr__IBProvider,
         msgEng.str()))
   {
    resultValue=false;

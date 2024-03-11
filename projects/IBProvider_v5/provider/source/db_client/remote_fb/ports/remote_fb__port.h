@@ -500,7 +500,7 @@ T* RemoteFB__AllocPacketMemory(RemoteFB__PacketMemory*              const pMem,
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void RemoteFB__ProcessCurrentException_SetInvalidPortState_Raise(RemoteFB__Port* pPort);
 
 ////////////////////////////////////////////////////////////////////////////////

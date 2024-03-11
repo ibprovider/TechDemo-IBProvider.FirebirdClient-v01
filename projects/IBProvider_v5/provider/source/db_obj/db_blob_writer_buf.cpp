@@ -13,22 +13,26 @@ namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_db_blob_writer_buf
 
-t_db_blob_writer_buf::t_db_blob_writer_buf(char*                   const buffer,
-                                           size_type               const sz,
-                                           t_db_seq_stream_writer* const writer)
+t_db_blob_writer_buf::t_db_blob_writer_buf
+                        (t_db_operation_context* const pOpCtx,
+                         char*                   const buffer,
+                         size_type               const sz,
+                         t_db_seq_stream_writer* const writer)
  :inherited    (buffer,buffer+sz)
+ ,m_pOpCtx     (pOpCtx)
+ ,m_blob_writer(lib::structure::not_null_ptr(writer))
  ,m_buffer     (buffer)
  #ifndef NDEBUG
  ,m_buffer_sz  (sz)
  #endif
- ,m_blob_writer(lib::structure::not_null_ptr(writer))
 {
+ assert(m_pOpCtx);
+ assert(m_blob_writer);
+
  assert_s(sizeof(*buffer)==1);
 
  assert(this->get_buffer_pos()==m_buffer);
  assert(this->get_buffer_end()==(m_buffer+sz));
-
- assert(m_blob_writer);
 }//t_db_blob_writer_buf
 
 //------------------------------------------------------------------------
@@ -41,6 +45,7 @@ t_db_blob_writer_buf::~t_db_blob_writer_buf()
 void t_db_blob_writer_buf::overflow()
 {
  assert_s(sizeof(*m_buffer)==1);
+ assert(m_pOpCtx);
  assert(m_blob_writer);
 
  assert(this->get_buffer_end()==(m_buffer+m_buffer_sz));
@@ -56,7 +61,10 @@ void t_db_blob_writer_buf::overflow()
  //DONE: Проверить тестовую генерацию исключения
  //t_ibp_error::throw_error("test error",E_FAIL);
 
- m_blob_writer->write(static_cast<size_t>(ptr-m_buffer),m_buffer); //throw
+ m_blob_writer->write
+  (*m_pOpCtx,
+   static_cast<size_t>(ptr-m_buffer),
+   m_buffer); //throw
 
  //---
  assert(this->get_buffer_end()==(m_buffer+m_buffer_sz));

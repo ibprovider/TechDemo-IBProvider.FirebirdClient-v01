@@ -7,7 +7,7 @@
 #ifndef _ibp_flags_H_
 #define _ibp_flags_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////

@@ -85,7 +85,7 @@ class RemoteFB__Port_BASE_v01::tag_reader LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Генерация исключения "чтение невозможно, потому что произошли критические ошибки."
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_error__port_has_failed_state()const;
 
  private:

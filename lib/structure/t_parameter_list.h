@@ -27,16 +27,16 @@ template<class charT,class Allocator>
 class t_basic_parameter_list
 {
  private:
-  typedef t_basic_parameter_list<charT,Allocator>       self_type;
+  using self_type=t_basic_parameter_list<charT,Allocator>;
 
-  t_basic_parameter_list(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_parameter_list(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef charT                                         char_type;
   typedef Allocator                                     allocator_type;
   typedef std::char_traits<char_type>                   traits_type;
-  typedef __STL_DEF_BASIC_STRING(char_type)             string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)          string_type;
 
   typedef t_basic_const_str_box<char_type>              str_box_type;
 

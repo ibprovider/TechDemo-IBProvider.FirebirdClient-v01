@@ -4,7 +4,8 @@
 #ifndef _t_char_base_H_
 #define _t_char_base_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
+#include <string>
 #include <tchar.h>
 
 namespace structure{

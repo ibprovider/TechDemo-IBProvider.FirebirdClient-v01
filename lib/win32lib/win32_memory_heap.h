@@ -4,17 +4,17 @@
 #ifndef _win32_memory_heap_H_
 #define _win32_memory_heap_H_
 
-#include <structure/t_common.h>
+#include <structure/mt/interlocked.h>
 
 namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
 //Define custom class for Win32 heap
 
 #define WIN32LIB__DECLARE_HEAP_CLASS(Name)                                \
-class __T##Name##Win32__                                                  \
+class __T##Name##Win32__ LCPI_CPP_CFG__CLASS__FINAL                       \
 {                                                                         \
  private:                                                                 \
-  typedef __T##Name##Win32__                self_type;                    \
+  using self_type=__T##Name##Win32__;                                     \
                                                                           \
  private:                                                                 \
   static HANDLE       sm_hHeap;                                           \
@@ -22,8 +22,6 @@ class __T##Name##Win32__                                                  \
   static LPCSTR const sm_HeapName;                                        \
                                                                           \
  public:                                                                  \
-  typedef __T##Name##Win32__ type_heap;                                   \
-                                                                          \
   static LPCSTR GetName()                                                 \
          {                                                                \
           return sm_HeapName;                                             \
@@ -50,7 +48,7 @@ class __T##Name##Win32__                                                  \
          {                                                                \
           assert(self_type::Created());                                   \
                                                                           \
-          return ::HeapValidate(sm_hHeap,dwFlags,NULL);                   \
+          return ::HeapValidate(sm_hHeap,dwFlags,nullptr);                \
          }                                                                \
                                                                           \
   static void* vAlloc(size_t sz);                                         \
@@ -139,9 +137,9 @@ void* Owner##__T##Name##Win32__::vAlloc(size_t const sz)                  \
                                                                           \
  void* const pv=::HeapAlloc(sm_hHeap,HEAP_ZERO_MEMORY,sz);                \
                                                                           \
- if(pv!=NULL)                                                             \
+ if(pv!=nullptr)                                                          \
  {                                                                        \
-  ::InterlockedIncrement(&sm_cAllocs);                                    \
+  ::lcpi::lib::structure::mt::interlocked::increment(&sm_cAllocs);        \
  }                                                                        \
  else                                                                     \
  {                                                                        \
@@ -156,18 +154,23 @@ BOOL Owner##__T##Name##Win32__::bFree(void* const pv)                     \
  assert_msg(sm_hHeap!=NULL,                                               \
             "Heap \""<<sm_HeapName<<"\" not created");                    \
                                                                           \
- if(pv==NULL) return true;                                                \
+ if(pv==nullptr) return true;                                             \
+                                                                          \
+ assert(sm_cAllocs>0);                                                    \
                                                                           \
  BOOL const res=::HeapFree(sm_hHeap,0,pv);                                \
                                                                           \
  if(res)                                                                  \
  {                                                                        \
-  ::InterlockedDecrement(&sm_cAllocs);                                    \
+  ::lcpi::lib::structure::mt::interlocked::decrement(&sm_cAllocs);        \
  }                                                                        \
  else                                                                     \
  {                                                                        \
-  DebugMessage("ERROR: free blocks "<<std::hex<<pv<<" in heap "           \
-               "\""<<sm_HeapName<<"\" LastError: "<<GetLastError());      \
+  DebugMessage                                                            \
+   ("ERROR: freeing the block 0x"<<std::hex<<std::uppercase<<pv           \
+    <<std::dec<<std::nouppercase                                          \
+    <<" in heap \""<<sm_HeapName<<"\" has finished with the error code: " \
+    <<GetLastError());                                                    \
  }                                                                        \
                                                                           \
  return res;                                                              \

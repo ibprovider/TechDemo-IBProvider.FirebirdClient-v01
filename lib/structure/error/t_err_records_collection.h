@@ -4,10 +4,6 @@
 #ifndef _t_err_records_collection_H_
 #define _t_err_records_collection_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/t_smart_vector.h>
 #include <structure/error/t_err_records.h>
 
@@ -22,14 +18,15 @@ class t_err_records_collection;
 //class t_err_records_collection
 
 template<class Allocator>
-class t_err_records_collection:public t_err_records_r
-                              ,public t_err_records_w
+class t_err_records_collection
+ :public t_err_records_r
+ ,public t_err_records_w
 {
  private:
-  typedef t_err_records_collection<Allocator>              self_type;
+  using self_type=t_err_records_collection<Allocator>;
 
-  t_err_records_collection(const self_type& x);
-  self_type& operator = (const self_type&);
+  t_err_records_collection(const self_type& x)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef Allocator                                        allocator_type;
@@ -64,11 +61,11 @@ class t_err_records_collection:public t_err_records_r
   const_iterator     end()    const       {return m_records.end();}
 
   //t_err_records interface ----------------------------------------------
-  virtual void        add_record(record_type* record) COMP_W000004_OVERRIDE_FINAL;
+  virtual void        add_record(record_type* record) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual size_type   get_record_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type   get_record_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual record_ptr  get_record(size_type i)const COMP_W000004_OVERRIDE_FINAL;
+  virtual record_ptr  get_record(size_type i)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   record_vector_type m_records;

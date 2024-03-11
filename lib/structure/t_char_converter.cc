@@ -160,7 +160,7 @@ typename t_ansi_to_unicode<unicode_string>::string_type
 {
  string_type result;
 
- return __STL_MOVE_VALUE(self_type::convert(&result,str,str_len,error,CodePage));
+ return LCPI_STL_MOVE_VALUE(self_type::convert(&result,str,str_len,error,CodePage));
 }//t_ansi_to_unicode::convert
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -335,7 +335,7 @@ typename t_unicode_to_ansi<ansi_string>::string_type
 {
  string_type result;
 
- return __STL_MOVE_VALUE(self_type::convert(&result,wstr,wstr_len,error,CodePage));
+ return LCPI_STL_MOVE_VALUE(self_type::convert(&result,wstr,wstr_len,error,CodePage));
 }//t_unicode_to_ansi::convert
 
 //////////////////////////////////////////////////////////////////////////
@@ -724,7 +724,7 @@ typename t_ansi1_to_ansi2<ansi_string>::string_type
 {
  string_type result;
 
- return __STL_MOVE_VALUE(this->convert(&result,s,n,error));
+ return LCPI_STL_MOVE_VALUE(this->convert(&result,s,n,error));
 }//t_ansi1_to_ansi2::convert
 
 ////////////////////////////////////////////////////////////////////////////////

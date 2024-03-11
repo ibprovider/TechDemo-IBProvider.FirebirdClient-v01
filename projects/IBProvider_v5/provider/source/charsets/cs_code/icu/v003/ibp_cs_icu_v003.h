@@ -142,11 +142,13 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Переконвертация UNICODE-строки с сохранением результата в BLOB
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  source
   //! \param[in]  source_size
   //! \param[in]  writer
   //!  Not NULL
-  virtual bool unicode_to_blob(const wchar_t*                  source,
+  virtual bool unicode_to_blob(db_obj::t_db_operation_context& op_ctx,
+                               const wchar_t*                  source,
                                size_type                       source_size,
                                db_obj::t_db_seq_stream_writer* writer)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -194,7 +196,7 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] func_name
   //! \param[in] check_point
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void Throw_BugCheck(const char* func_name,const wchar_t* check_point)const;
 
  private:

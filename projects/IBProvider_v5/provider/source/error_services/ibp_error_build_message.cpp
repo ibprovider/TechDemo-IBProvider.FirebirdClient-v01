@@ -54,7 +54,7 @@ std::wstring TIBP_MessageTextBuilder::GetSystemErrorMsg(LCID  const lcid,
   std::wstring result;
 
   result =L"<failed to get the message of system error 0x";
-  result+=structure::to_hex::upper<wchar_t>(errorCode).c_str();
+  result+=lib::structure::to_hex::upper<wchar_t>(errorCode).c_str();
   result+=L">";
 
   return result;
@@ -69,7 +69,7 @@ std::wstring TIBP_MessageTextBuilder::GetSystemErrorMsg(LCID  const lcid,
   std::wstring result;
 
   result =L"<[bug check] null pointer to message of system error 0x";
-  result+=structure::to_hex::upper<wchar_t>(errorCode).c_str();
+  result+=lib::structure::to_hex::upper<wchar_t>(errorCode).c_str();
   result+=L">";
 
   return result;
@@ -93,7 +93,7 @@ std::wstring TIBP_MessageTextBuilder::GetSystemErrorMsg(LCID  const lcid,
   std::wstring result;
 
   result =L"<[bug check] empty message of system error 0x";
-  result+=structure::to_hex::upper<wchar_t>(errorCode).c_str();
+  result+=lib::structure::to_hex::upper<wchar_t>(errorCode).c_str();
   result+=L">";
 
   return result;
@@ -525,7 +525,7 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
   }//while
 
   //--------------------------
-  structure::total_self_trim(tmp);
+  lib::structure::total_self_trim(tmp);
 
   //--------------------------
   if(tmp.empty())

@@ -995,13 +995,22 @@ extern const IBP_CHAR ibp_propval__remote__wire_compression__required[];
 extern const IBP_CHAR* const g_IBP_PropValuesFor__remote__wire_compression[3];
 
 ////////////////////////////////////////////////////////////////////////////////
-// Режимы чтения/записи массивов базы данных
+// Database array read/write modes
 
 extern const IBP_CHAR ibp_propval__array_rw_mode__direct[];
 
 extern const IBP_CHAR ibp_propval__array_rw_mode__api[];
 
 extern const IBP_CHAR* const g_IBP_PropValuesFor__array_rw_mode[2];
+
+////////////////////////////////////////////////////////////////////////////////
+// BLOB write modes
+
+extern const IBP_CHAR ibp_propval__blob_send_mode__std[];
+
+extern const IBP_CHAR ibp_propval__blob_send_mode__varchar[];
+
+extern const IBP_CHAR* const g_IBP_PropValuesFor__blob_send_mode[2];
 
 ////////////////////////////////////////////////////////////////////////////////
 

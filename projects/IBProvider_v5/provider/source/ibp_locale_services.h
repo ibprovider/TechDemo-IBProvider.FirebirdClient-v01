@@ -10,7 +10,7 @@
 #include "source/ibp_memory.h"
 #include "source/ibp_char.h"
 
-#include <structure/t_char_traits2.h>
+#include <lcpi/lib/structure/t_char_traits2.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,13 +35,13 @@ class t_ibp_basic_locale_services LCPI_CPP_CFG__CLASS__FINAL
   virtual ~t_ibp_basic_locale_services();
 
  public: //typedefs ------------------------------------------------------
-  using self_ptr=lib::structure::t_smart_object_ptr<const self_type>;
+  using self_ptr     =lib::structure::t_smart_object_ptr<const self_type>;
 
-  typedef charT                                              char_type;
-  typedef __STL_DEF_BASIC_STRING(char_type)                  string_type;
-  typedef size_t                                             size_type;
+  using char_type    =charT;
+  using string_type  =LCPI_STL_DEF_BASIC_STRING(char_type);
+  using size_type    =size_t;
 
-  typedef structure::t_char_traits2<charT>                   char_traits2;
+  using char_traits2 =lib::structure::t_char_traits2<charT>;
 
  public:
   /// <summary>
@@ -117,13 +117,13 @@ class t_ibp_basic_locale_services LCPI_CPP_CFG__CLASS__FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef t_ibp_basic_locale_services<char>               t_ibp_ansi_locale_services;
+using t_ibp_ansi_locale_services    =t_ibp_basic_locale_services<char>;
 
-typedef t_ibp_basic_locale_services<wchar_t>            t_ibp_unicode_locale_services;
+using t_ibp_unicode_locale_services =t_ibp_basic_locale_services<wchar_t>;
 
-typedef t_ibp_basic_locale_services<t_ibp_char>         t_ibp_locale_services;
+using t_ibp_locale_services         =t_ibp_basic_locale_services<t_ibp_char>;
 
-typedef t_ibp_basic_locale_services<structure::t_char>  t_ibp_sys_locale_services;
+using t_ibp_sys_locale_services     =t_ibp_basic_locale_services<structure::t_char>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_basic_equal_char_i
@@ -135,13 +135,13 @@ template<typename charT>
 class t_ibp_basic_equal_char_i LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_basic_equal_char_i<charT>               self_type;
+  using self_type=t_ibp_basic_equal_char_i<charT>;
 
  public: //typedefs ------------------------------------------------------
-  typedef charT                                         char_type;
+  using char_type=charT;
 
-  typedef t_ibp_basic_locale_services<char_type>        locale_services_type;
-  typedef typename locale_services_type::self_ptr       locale_services_ptr;
+  using locale_services_type =t_ibp_basic_locale_services<char_type>;
+  using locale_services_ptr  =typename locale_services_type::self_ptr;
 
  public:
   //! \brief

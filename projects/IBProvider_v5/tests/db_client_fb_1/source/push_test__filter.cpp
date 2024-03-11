@@ -12,9 +12,9 @@ namespace lcpi{namespace ibp_tests{
 TTSO_PushTest__Filter::TTSO_PushTest__Filter(const TTSO_GlobalContext* const pSD,
                                              TSYS_RootLog*             const pSysRootLog,
                                              TTSO_PushTest*            const pWorker)
- :m_spSD(pSD)
- ,m_spSysRootLog(pSysRootLog)
- ,m_spWorker(pWorker)
+ :m_spSD(lib::structure::not_null_ptr(pSD))
+ ,m_spSysRootLog(lib::structure::not_null_ptr(pSysRootLog))
+ ,m_spWorker(lib::structure::not_null_ptr(pWorker))
  ,m_ignore_rules(pSD->args().has(c_prog_arg__ignore_rules))
 {
  assert(m_spSD);
@@ -24,7 +24,8 @@ TTSO_PushTest__Filter::TTSO_PushTest__Filter(const TTSO_GlobalContext* const pSD
 
 //------------------------------------------------------------------------
 TTSO_PushTest__Filter::~TTSO_PushTest__Filter()
-{;}
+{
+}
 
 //TTSO_PushTest interface ------------------------------------------------
 void TTSO_PushTest__Filter::PushTest(const TTSO_Test* const pTest)
@@ -51,9 +52,9 @@ void TTSO_PushTest__Filter::test_cancel_signal()
 
  const char* const cm_exit="cancel";
 
- while(_GCRT_kbhit()!=0)
+ while(LCPI_GCRT_kbhit()!=0)
  {
-  m_kb_cmd+=static_cast<char>(_GCRT_getch());
+  m_kb_cmd+=static_cast<char>(LCPI_GCRT_getch());
 
   if(m_kb_cmd.rfind(cm_exit)!=m_kb_cmd.npos)
    throw tag_cancel_exc();

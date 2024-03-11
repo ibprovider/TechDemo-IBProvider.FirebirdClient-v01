@@ -408,6 +408,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /// \brief
+///  Unsupported blob send mode.<br>
+/// \b
+///  Params: mode, dbms sign
+/// \note
+///  There is needed to define subsystem id.
+#define IBP_MCE_COMMON__UNSUPPORTED_BLOB_SEND_MODE_2                      1052
+
+////////////////////////////////////////////////////////////////////////////////
+
+/// \brief
 ///  [BUG CHECK] Сервис не поддерживается.<br>
 /// \b
 ///  Params: service_guid, interface name

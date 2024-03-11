@@ -7,6 +7,7 @@
 #ifndef _remote_fb__api_p12__blob__read_H_
 #define _remote_fb__api_p12__blob__read_H_
 
+#include "source/db_client/remote_fb/api/p12/remote_fb__api_p12.h"
 #include "source/db_client/remote_fb/api/remote_fb__api__blob__read.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
@@ -44,6 +45,7 @@ class RemoteFB__API_P12__ReadBlob LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Чтение данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobHandle
@@ -59,11 +61,12 @@ class RemoteFB__API_P12__ReadBlob LCPI_CPP_CFG__CLASS__FINAL
   //!
   //! \note
   //!  При достижении конца буфера с данными мы можем вернуть данные.
-  virtual bool exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle,
-                    size_t                   cbBuffer,
-                    void*                    pvBuffer,
-                    size_t*                  pcbActualReaded)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle,
+                    size_t                          cbBuffer,
+                    void*                           pvBuffer,
+                    size_t*                         pcbActualReaded)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   class tagOpMemoryBuffer;
@@ -72,12 +75,15 @@ class RemoteFB__API_P12__ReadBlob LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Загрузка данных в буфер дескриптора блоба.
   /// </summary>
+  //! \param[in] serverOperation
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobData
   //!  Not null.
-  static void helper__read_to_buffer(RemoteFB__ConnectorData* pData,
-                                     blob_data_type*          pBlobData);
+  static void helper__read_to_buffer
+               (RemoteFB__P12__SrvOperation& serverOperation,
+                RemoteFB__ConnectorData*     pData,
+                blob_data_type*              pBlobData);
 };//class RemoteFB__API_P12__ReadBlob
 
 ////////////////////////////////////////////////////////////////////////////////

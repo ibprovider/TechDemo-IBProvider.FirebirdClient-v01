@@ -600,7 +600,7 @@ t_oledb_string GetDBBindStatusInfo(size_t cBindings,const DBBINDSTATUS rgStatus[
    if(!text.empty())
     text+=_OLEDB_LIB_T("\n");
 
-   _VERIFY_EQ(_OLEDB_LIB_itot_s(LONG(i-rgStatus),tmpStr,_DIM_(tmpStr),10),0L);
+   LCPI__VERIFY_EQ(_OLEDB_LIB_itot_s(LONG(i-rgStatus),tmpStr,_DIM_(tmpStr),10),0L);
 
    text+=tmpStr;
    text+=_OLEDB_LIB_T(": ");

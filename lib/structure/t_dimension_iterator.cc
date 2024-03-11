@@ -52,10 +52,10 @@ t_dimension_iterator<T,Allocator>::t_dimension_iterator(const self_type& x)
 
 template<class T,class Allocator>
 t_dimension_iterator<T,Allocator>::t_dimension_iterator(self_type&& x)
- :m_pt          (__STL_MOVE_VALUE(x.m_pt))
- ,m_bounds      (__STL_MOVE_VALUE(x.m_bounds))
- ,m_state       (__STL_MOVE_VALUE(x.m_state))
- ,m_no_elements (__STL_MOVE_VALUE(x.m_no_elements))
+ :m_pt          (LCPI_STL_MOVE_VALUE(x.m_pt))
+ ,m_bounds      (LCPI_STL_MOVE_VALUE(x.m_bounds))
+ ,m_state       (LCPI_STL_MOVE_VALUE(x.m_state))
+ ,m_no_elements (LCPI_STL_MOVE_VALUE(x.m_no_elements))
 {
  assert(x.m_bounds.empty());
  assert(x.m_pt.empty());
@@ -93,10 +93,10 @@ t_dimension_iterator<T,Allocator>&
  if(this==&x)
   return *this;
 
- m_bounds      =__STL_MOVE_VALUE(x.m_bounds);
- m_pt          =__STL_MOVE_VALUE(x.m_pt);
- m_state       =__STL_MOVE_VALUE(x.m_state);
- m_no_elements =__STL_MOVE_VALUE(x.m_no_elements);
+ m_bounds      =LCPI_STL_MOVE_VALUE(x.m_bounds);
+ m_pt          =LCPI_STL_MOVE_VALUE(x.m_pt);
+ m_state       =LCPI_STL_MOVE_VALUE(x.m_state);
+ m_no_elements =LCPI_STL_MOVE_VALUE(x.m_no_elements);
 
  assert(x.m_bounds.empty());
  assert(x.m_pt.empty());

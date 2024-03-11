@@ -71,7 +71,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
  ,public  t_ibp_error_records_r
 {
  private:
-  typedef t_ibp_error                               self_type;
+  using self_type=t_ibp_error;
 
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   t_ibp_error(self_type&& exc);
@@ -80,7 +80,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
 
   //метод без реализации.
   //нужен для проверки отсутствия виртуального set_error_info в базовом классе.
-  HRESULT set_error_info(REFIID exc_iid)const;
+  HRESULT set_error_info(REFIID exc_iid)const=delete;
 
  private:
   struct tag_ctr__swap{};
@@ -100,7 +100,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   typedef ole_lib::t_base_com_error                 base_error_type;
   typedef t_ibp_error_traits::args_type             args_type;
 
-  typedef structure::t_err_records_r                base_records_r_type;
+  typedef lib::structure::t_err_records_r           base_records_r_type;
 
   typedef t_ibp_error_element                       error_record_type;
   typedef t_ibp_error_element::self_ptr             error_record_ptr;
@@ -183,7 +183,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
 
   explicit t_ibp_error(error_record_type* const record);
 
-  virtual ~t_ibp_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_ibp_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //----------------------------------------------------------------------
 #ifdef IBP_BUILD_TESTCODE
@@ -209,7 +209,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   void swap(self_type& x);
 
   //exception interface --------------------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//override
+  virtual const char* what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//override
 
   //----------------------------------------------------------------------
   /// <summary>
@@ -273,25 +273,25 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Генерация исключения
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw - override
+  LCPI_CPP_CFG__DECLSPEC__NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//throw - override
 
  public:
   /// <summary>
   ///  Генерация исключения с указанным кодом ошибки
   /// </summary>
   //! \param[in] new_err_code
-  COMP_CONF_DECLSPEC_NORETURN void raise(HRESULT new_err_code);//throw
+  LCPI_CPP_CFG__DECLSPEC__NORETURN void raise(HRESULT new_err_code);//throw
 
   /// <summary>
   ///  Генерация исключения с перемещением состояния объекта
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN void raise_me();//throw
+  LCPI_CPP_CFG__DECLSPEC__NORETURN void raise_me();//throw
 
   /// <summary>
   ///  Генерация исключения с новым кодом ошибки и перемещением состояния объекта
   /// </summary>
   //! \param[in] new_err_code
-  COMP_CONF_DECLSPEC_NORETURN void raise_me(HRESULT new_err_code);//throw
+  LCPI_CPP_CFG__DECLSPEC__NORETURN void raise_me(HRESULT new_err_code);//throw
 
  private: //вспомогательные утилиты --------------------------------------
   virtual self_type& add_arg(const base_variant_type& x) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract

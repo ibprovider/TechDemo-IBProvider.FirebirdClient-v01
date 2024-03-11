@@ -4,9 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__t_guard_CC_
 #define _cpp_public_lcpi_lib_structure_mt__t_guard_CC_
 
-#include <lcpi/lib/structure/debug/assert_msg.h>
-#include <lcpi/lib/structure/debug/assert_s.h>
-
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_guard

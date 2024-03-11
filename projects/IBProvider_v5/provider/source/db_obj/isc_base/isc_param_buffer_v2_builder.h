@@ -178,7 +178,7 @@ class t_isc_param_buffer_v2_builder
   void helper__push_length(tag_size_type valueSize);
 
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_error__value_is_too_large(tag_id_type      tagID,
                                                const wchar_t*   tagSIGN,
                                                size_t           valueSize)const;

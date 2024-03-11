@@ -35,12 +35,12 @@ template<class charT>
 class t_str_version_part
 {
  private:
-  typedef t_str_version_part<charT>                 self_type;
+  using self_type=t_str_version_part<charT>;
 
  public: //typedefs -----------------------------------------------------
-  typedef charT                                     char_type;
+  using char_type=charT;
 
-  typedef __STL_DEF_BASIC_STRING(charT)             string_type;
+  using string_type=LCPI_STL_DEF_BASIC_STRING(charT);
 
  public:
   t_str_version_part(const self_type& x);
@@ -111,13 +111,13 @@ template<class charT,class Allocator>
 class t_str_version
 {
  private:
-  typedef t_str_version<charT,Allocator>            self_type;
+  using self_type=t_str_version<charT,Allocator>;
 
  public: //typedefs
   typedef charT                                     char_type;
   typedef Allocator                                 allocator_type;
 
-  typedef __STL_DEF_BASIC_STRING(charT)             string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(charT)          string_type;
 
   typedef t_basic_const_str_box<charT>              str_box_type;
 

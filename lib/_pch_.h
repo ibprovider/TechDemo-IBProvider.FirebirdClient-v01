@@ -17,9 +17,7 @@
 //required macros define (used in <debug_services.h>)
 //__ODS_IMPLEMENTATION__(msg)
 
-//WIN32 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-#if((defined(_MSC_VER) && defined(_WIN32)) ||       \
-    (defined(__BORLANDC__) && (defined(__WIN32__))))
+#if defined(_WIN32)
 
   #if(!defined(__WIN32__))
     #define __WIN32__
@@ -27,9 +25,9 @@
 
   #include <_pch_win_.h>
 
-#else //UNKNOWN TARGET xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- #error("unknown target") 
-#endif//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#else
+  #error("unknown target") 
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -4,7 +4,8 @@
 #ifndef _t_locale_H_
 #define _t_locale_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
+
 #include <functional>
 
 #ifndef __BORLANDC__
@@ -43,12 +44,12 @@ template<class charT>
 class t_ctype
 {
  private:
-  typedef t_ctype<charT>          self_type;
+  using self_type=t_ctype<charT>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef charT                   char_type;
+  using char_type=charT;
 
  private:
   typedef std::locale             locale_type;
@@ -57,23 +58,27 @@ class t_ctype
  public:
   t_ctype()
    :m_locale("C")
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   t_ctype(const self_type& x)
    :m_locale(x.m_locale)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_ctype(const locale_type& l)
    :m_locale(l)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_ctype(const char* locale_name)
    :m_locale(locale_name)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
  public:
   const locale_type& get_locale()const   {return m_locale;}
@@ -127,12 +132,12 @@ template<class charT>
 class t_collate
 {
  private:
-  typedef t_collate<charT>        self_type;
+  using self_type=t_collate<charT>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef charT                   char_type;
+  using char_type=charT;
 
  private:
   typedef std::locale             locale_type;
@@ -141,23 +146,27 @@ class t_collate
  public:
   t_collate()
    :m_locale("C"),
-    m_collate(__STL_USE_FACET(collate_type,m_locale))
-  {;}
+    m_collate(LCPI_STL_USE_FACET(collate_type,m_locale))
+  {
+  }
 
   t_collate(const self_type& x)
    :m_locale(x.m_locale),
-    m_collate(__STL_USE_FACET(collate_type,m_locale))
-  {;}
+    m_collate(LCPI_STL_USE_FACET(collate_type,m_locale))
+  {
+  }
 
   explicit t_collate(const locale_type& l)
    :m_locale(l),
-    m_collate(__STL_USE_FACET(collate_type,m_locale))
-  {;}
+    m_collate(LCPI_STL_USE_FACET(collate_type,m_locale))
+  {
+  }
 
   explicit t_collate(const char* locale_name)
    :m_locale(locale_name),
-    m_collate(__STL_USE_FACET(collate_type,m_locale))
-  {;}
+    m_collate(LCPI_STL_USE_FACET(collate_type,m_locale))
+  {
+  }
 
  public:
   int compare(const char_type* low1, const char_type* high1,
@@ -178,12 +187,12 @@ template<class charT>
 class t_char_upper
 {
  private:
-  typedef t_char_upper<charT>     self_type;
+  using self_type=t_char_upper<charT>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef charT                   char_type;
+  using char_type=charT;
 
  private:
   typedef std::locale             locale_type;
@@ -192,23 +201,27 @@ class t_char_upper
  public:
   t_char_upper()
    :m_locale("C")
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   t_char_upper(const self_type& x)
    :m_locale(x.m_locale)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_char_upper(const locale_type& l)
    :m_locale(l)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_char_upper(const char* const locale_name)
    :m_locale(locale_name),
-    m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+    m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   char_type operator () (char_type const c)const
    {return m_ctype.toupper(c);}
@@ -239,12 +252,12 @@ template<class charT>
 class t_char_lower
 {
  private:
-  typedef t_char_lower<charT>     self_type;
+  using self_type=t_char_lower<charT>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef charT                   char_type;
+  using char_type=charT;
 
  private:
   typedef std::locale             locale_type;
@@ -253,23 +266,27 @@ class t_char_lower
  public:
   t_char_lower()
    :m_locale("C")
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   t_char_lower(const self_type& x)
    :m_locale(x.m_locale)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_char_lower(const locale_type& l)
    :m_locale(l)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   explicit t_char_lower(const char* const locale_name)
    :m_locale(locale_name)
-   ,m_ctype(__STL_USE_FACET(ctype_type,m_locale))
-  {;}
+   ,m_ctype(LCPI_STL_USE_FACET(ctype_type,m_locale))
+  {
+  }
 
   char_type operator () (char_type const c)const
    {return m_ctype.tolower(c);}
@@ -300,24 +317,26 @@ template<class charT>
 class t_char_less_i
 {
  private:
-  typedef t_char_less_i<charT>              self_type;
+  using self_type=t_char_less_i<charT>;
 
  public: //typedefs ------------------------------------------------------
-  typedef charT                             char_type;
+  using char_type=charT;
 
  public:
   explicit t_char_less_i(const std::locale& loc)
    :m_cl(loc)
-   {;}
+  {
+  }
 
   explicit t_char_less_i(const char* locale_name)
    :m_cl(locale_name)
-   {;}
+  {
+  }
 
   bool operator () (char_type a,char_type b)const
-   {
-    return m_cl(a)<m_cl(b);
-   }
+  {
+   return m_cl(a)<m_cl(b);
+  }
 
  private:
   t_char_lower<char_type> m_cl;
@@ -330,24 +349,26 @@ template<class charT>
 class t_char_equal_i
 {
  private:
-  typedef t_char_equal_i<charT>             self_type;
+  using self_type=t_char_equal_i<charT>;
 
  public: //typedefs ------------------------------------------------------
-  typedef charT                             char_type;
+  using char_type=charT;
 
  public:
   explicit t_char_equal_i(const std::locale& loc)
    :m_cl(loc)
-   {;}
+  {
+  }
 
   explicit t_char_equal_i(const char* locale_name)
    :m_cl(locale_name)
-   {;}
+  {
+  }
 
   bool operator () (char_type a,char_type b)const
-   {
-    return m_cl(a)==m_cl(b);
-   }
+  {
+   return m_cl(a)==m_cl(b);
+  }
 
  private:
   t_char_lower<char_type> m_cl;
@@ -360,24 +381,26 @@ template<class charT>
 class t_char_not_equal_i
 {
  private:
-  typedef t_char_not_equal_i<charT>         self_type;
+  using self_type=t_char_not_equal_i<charT>;
 
  public: //typedefs ------------------------------------------------------
-  typedef charT                             char_type;
+  using char_type=charT;
 
  public:
   explicit t_char_not_equal_i(const std::locale& loc)
    :m_cl(loc)
-   {;}
+  {
+  }
 
   explicit t_char_not_equal_i(const char* locale_name)
    :m_cl(locale_name)
-   {;}
+  {
+  }
 
   bool operator () (char_type a,char_type b)const
-   {
-    return m_cl(a)!=m_cl(b);
-   }
+  {
+   return m_cl(a)!=m_cl(b);
+  }
 
  private:
   t_char_lower<char_type> m_cl;

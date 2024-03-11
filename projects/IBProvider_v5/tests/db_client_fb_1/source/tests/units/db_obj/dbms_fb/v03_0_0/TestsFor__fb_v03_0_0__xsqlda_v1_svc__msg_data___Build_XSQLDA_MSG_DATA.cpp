@@ -16,7 +16,7 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl
 
-class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl
+class TestsFor__fb_v03_0_0__xsqlda_v1_svc__msg_data___Build_XSQLDA_MSG_DATA::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_impl                                              self_type;

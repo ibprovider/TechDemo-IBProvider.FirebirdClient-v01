@@ -321,7 +321,7 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__from_value(pnode_type const p
  {
   new(p) node_type(parent,
                    node_type::tag_from_value(),
-                   __STL_FORWARD_VALUE(rrx_type,rrx)); //no-throw
+                   LCPI_STL_FORWARD_VALUE(rrx_type,rrx)); //no-throw
  }
  catch(...)
  {
@@ -374,7 +374,7 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__emplace(pnode_type parent,
  {
   new(p) node_type(parent,
                    node_type::tag_from_emplace(),
-                   __STL_FORWARD_VALUE(Args,args)...); //throw
+                   LCPI_STL_FORWARD_VALUE(Args,args)...); //throw
  }
  catch(...)
  {

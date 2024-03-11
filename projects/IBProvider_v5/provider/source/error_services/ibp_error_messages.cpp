@@ -135,16 +135,10 @@ extern const wchar_t me_bug_check__internal_dbtype_is_not_supported_1[]
   =L"the internal dbtype [%1] is not supported";
 
 //------------------------------------------------------------------------
-//The unknown write mode of column values
-//Params: write mode id
-extern const wchar_t me_bug_check__unknown__row_write_mode_1[]
- =L"the unknown write mode of column values [%1]";
-
-//------------------------------------------------------------------------
-//The unexpected write mode of column values
-//Params: write mode id
-extern const wchar_t me_bug_check__unexpected__row_write_mode_1[]
- =L"the unexpected write mode of column values [%1]";
+//The unknown db_row_kind
+//Params: db_row_kind
+extern const wchar_t me_bug_check__unknown__db_row_kind_1[]
+ =L"the unknown db_row_kind [%1]";
 
 //------------------------------------------------------------------------
 //The columns were not described after second attempt

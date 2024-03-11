@@ -2,10 +2,6 @@
 #ifndef _t_tree_avl_H_
 #define _t_tree_avl_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/tree/t_tree_avl_base.h>
 #include <structure/tree/t_tree_iterators.h>
 
@@ -130,19 +126,19 @@ class t_tree_avl LCPI_CPP_CFG__CLASS__FINAL
 
   void erase(iterator);
 
-  COMP_W000003_USING inherited::clear;
+  using inherited::clear;
 
   void swap(self_type&);
 
   value_compare value_comp()const;
 
-  COMP_W000003_USING inherited::empty;
-  COMP_W000003_USING inherited::size;
-  COMP_W000003_USING inherited::capacity;
-  COMP_W000003_USING inherited::reserve;
+  using inherited::empty;
+  using inherited::size;
+  using inherited::capacity;
+  using inherited::reserve;
 
   #ifdef _TEST_STRUCTURE_TREE
-  COMP_W000003_USING inherited::get_alloc_count;
+  using inherited::get_alloc_count;
  #endif
 
  public:

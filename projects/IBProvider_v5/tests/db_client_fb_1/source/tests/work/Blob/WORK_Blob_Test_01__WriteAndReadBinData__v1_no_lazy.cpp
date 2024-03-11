@@ -21,7 +21,7 @@ class WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl
  :public structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
   tag_impl(const self_type&);
   self_type& operator = (const self_type&);
@@ -66,7 +66,7 @@ WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl::tag_impl
                                             bool                const forceFlush,
                                             size_t              const szBlob,
                                             size_t              const szBlock)
- :m_spParams(structure::not_null_ptr(pParams))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
  ,m_TestID(pTestID)
  ,m_Data(Data)
  ,m_forceFlush(forceFlush)
@@ -215,16 +215,20 @@ void WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl::run(context_t
    if(m_szBlock<sz)
     sz=m_szBlock;
 
-   spConnector->WriteBlob(&hBlob,
-                          sz,
-                          pSrc); //throw
+   spConnector->WriteBlob
+    (OpCtx,
+     &hBlob,
+     sz,
+     pSrc); //throw
 
    _TSO_CHECK(hBlob);
    _TSO_CHECK(hBlob->m_WriteMode__BufferPos<=hBlob->m_Buffer.size());
 
    if(m_forceFlush)
    {
-    spConnector->FlushBlob(&hBlob);
+    spConnector->FlushBlob
+     (OpCtx,
+      &hBlob);
 
     _TSO_CHECK(hBlob);
     _TSO_CHECK(hBlob->m_WriteMode__BufferPos==0);
@@ -240,6 +244,7 @@ void WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl::run(context_t
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -286,7 +291,8 @@ void WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl::run(context_t
   for(;;)
   {
    readResult=spConnector->ReadBlob
-    (&hBlob,
+    (OpCtx,
+     &hBlob,
      blobData2.size(),
      blobData2.buffer(),
      &cbActualReaded); //throw
@@ -322,6 +328,7 @@ void WORK_Blob_Test_01__WriteAndReadBinData__v1_no_lazy::tag_impl::run(context_t
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------

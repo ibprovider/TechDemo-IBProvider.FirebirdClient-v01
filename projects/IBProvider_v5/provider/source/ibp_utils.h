@@ -7,7 +7,7 @@
 #ifndef _ibp_utils_H_
 #define _ibp_utils_H_
 
-#include <structure/t_const_str_box.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 #include <vector>
 
 namespace lcpi{namespace ibp{
@@ -25,6 +25,13 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
  private:
   using self_type=IBP_Utils;
 
+ public:
+  using wstr_box_type
+   =lib::structure::t_const_wstr_box;
+ 
+  using str_box_type
+   =lib::structure::t_const_str_box;
+ 
  public:
   static HRESULT GetAsynchRowsetOpStatus__Complete
                                    (DBCOUNTITEM*   pulProgress,
@@ -47,7 +54,7 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
   ///  ‘ормирование сигнатуры запроса
   /// </summary>
   //! \param[in] stmt
-  static std::wstring GetStmtSign(structure::t_const_wstr_box stmt);
+  static std::wstring GetStmtSign(wstr_box_type stmt);
 
  public:
   /// <summary>
@@ -55,7 +62,7 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] authName
   //!  Ќормализованное им€ метода аутентификации.
-  static bool IsSSPI(structure::t_const_wstr_box authName);
+  static bool IsSSPI(wstr_box_type authName);
 
  public:
   /// <summary>
@@ -71,8 +78,8 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
   //!  1. (*pWStr) не очищаетс€ перед началом работы.
   //!  2. (*pWStr) не очищаетс€ в случае ошибки преобразовани€.
   static bool Utf8ToWStr__Fast
-               (const structure::t_basic_const_str_box<char>& Utf8Str,
-                std::wstring*                                 pWStr);
+               (const str_box_type& Utf8Str,
+                std::wstring*       pWStr);
  public:
   /// <summary>
   ///  ѕреобразование WSTR-строки в UTF8-строку.
@@ -87,15 +94,15 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
   //!  1. (*pUtf8Str) не очищаетс€ перед началом работы.
   //!  2. (*pUtf8Str) не очищаетс€ в случае ошибки преобразовани€.
   static bool WStrToUtf8__Fast
-               (const structure::t_const_wstr_box& WStr,
-                std::string*                       pUtf8Str);
+               (const wstr_box_type& WStr,
+                std::string*         pUtf8Str);
 
  public:
   /// <summary>
   ///  ‘ормирование строки с экранированными символами.
   /// </summary>
   //! \param[in] text
-  static std::wstring EscapingText(structure::t_const_wstr_box text);
+  static std::wstring EscapingText(wstr_box_type text);
 
  public:
   /// <summary>
@@ -103,8 +110,8 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] s1
   //! \param[in] s2
-  static bool EqualAsciiStr_i(const structure::t_const_wstr_box& s1,
-                              const structure::t_const_wstr_box& s2);
+  static bool EqualAsciiStr_i(const wstr_box_type& s1,
+                              const wstr_box_type& s2);
 
  public:
   static bool TestProviderErrorRules__explain_dbms_error(long rules);
@@ -134,13 +141,13 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   static bool IsValidCharsetName
-               (const structure::t_const_wstr_box& name);
+               (const wstr_box_type& name);
 
   static bool IsValidCharsetCollationName
-               (const structure::t_const_wstr_box& name);
+               (const wstr_box_type& name);
 
  public:
-  static bool IsValidSimpleString(const structure::t_const_wstr_box& name);
+  static bool IsValidSimpleString(const wstr_box_type& name);
 };//class IBP_Utils
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -159,7 +166,7 @@ std::wstring IBP_Utils::MakePointStr(const std::vector<long,Allocator>& pt)
   if(x!=0)
    result+=L',';
 
-  _VERIFY_EQ(_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
+  LCPI__VERIFY_EQ(LCPI_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
 
   assert(std::find(buf,_END_(buf),0)!=_END_(buf));
 
@@ -185,7 +192,7 @@ std::wstring IBP_Utils::MakePointStr__revert(const std::vector<long,Allocator>& 
 
   --x;
 
-  _VERIFY_EQ(_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
+  LCPI__VERIFY_EQ(LCPI_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
 
   assert(std::find(buf,_END_(buf),0)!=_END_(buf));
 

@@ -9,7 +9,8 @@
 
 #include "source/external/libtommath/set01/ibp_external__libtommath_set01__tommath.h"
 #include "source/ibp_memory.h"
-#include <structure/t_simple_buffer.h>
+
+#include <lcpi/lib/structure/t_simple_buffer.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,15 +22,14 @@ namespace lcpi{namespace ibp{
 /// <source>
 ///  Класс для представления безразмерного целого числа.
 /// </source>
-class IBP_BigInteger
+class IBP_BigInteger LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_BigInteger                    self_type;
+  using self_type=IBP_BigInteger;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_typed_simple_buffer
-           <unsigned char,
-            IBP_MemoryAllocator>            bytes_type;
+  using bytes_type
+   =lib::structure::t_typed_simple_buffer<unsigned char,IBP_MemoryAllocator>;
 
   struct tag_unsigned_bin{};
 
@@ -118,20 +118,20 @@ class IBP_BigInteger
   class tag_crypt_prov;
 
  private:
-  class tag_data
+  class tag_data LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef tag_data                                    self_type;
+    using self_type=tag_data;
 
-    tag_data(const self_type& x);
-    self_type& operator = (const self_type&);
+    tag_data(const self_type& x)=delete;
+    self_type& operator = (const self_type&)=delete;
 
    public: //typedefs ------------------------------------------------------
-    typedef ibp::external::libtommath::set01::mp_int    value_type;
+    using value_type=ibp::external::libtommath::set01::mp_int;
 
-    typedef value_type*                                 pointer;
+    using pointer=value_type*;
 
-    typedef const value_type*                           const_pointer;
+    using const_pointer=const value_type*;
 
    public:
     tag_data();

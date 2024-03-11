@@ -166,7 +166,7 @@ void RemoteFB__API_P12__StartTransaction::exec(RemoteFB__ConnectorData* const pD
    pData->TrList__Add(newTrHandle); //no throw
 
    //возвращаем дескриптор вызывающей стороне
-   (*pTrHandle)=__STL_MOVE_VALUE(newTrHandle);
+   (*pTrHandle)=LCPI_STL_MOVE_VALUE(newTrHandle);
 
    break;
   }//if - protocol::op_response

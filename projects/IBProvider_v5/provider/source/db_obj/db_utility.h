@@ -17,7 +17,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //обработка ошибок
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void throw_cantconvertvalue(t_dbtype src_dbtype,
                             t_dbtype dest_type);
 

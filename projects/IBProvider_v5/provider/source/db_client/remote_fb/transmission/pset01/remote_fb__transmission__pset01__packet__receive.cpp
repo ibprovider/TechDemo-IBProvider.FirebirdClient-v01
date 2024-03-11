@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 static void Helper__RemoteFB__ReceivePacket__GetDecoder__ThrowErrow__UnkOp
                                            (int const iOp)
 {

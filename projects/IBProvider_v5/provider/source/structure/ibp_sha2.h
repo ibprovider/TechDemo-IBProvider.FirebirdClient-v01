@@ -9,8 +9,8 @@
 
 #include "source/ibp_memory.h"
 
-#include <structure/t_const_str_box.h>
-#include <structure/t_simple_buffer.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
+#include <lcpi/lib/structure/t_simple_buffer.h>
 
 #include <array>
 
@@ -56,10 +56,11 @@ static const size_t SHA384_BLOCK_SIZE   = ( SHA512_BLOCK_SIZE );
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha2_Result
 
-class IBP_Sha2_Result
+class IBP_Sha2_Result LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_typed_simple_buffer<unsigned char,IBP_MemoryAllocator> data_type;
+  using data_type
+   =lib::structure::t_typed_simple_buffer<unsigned char,IBP_MemoryAllocator>;
 
  public:
   data_type m_value;
@@ -91,19 +92,20 @@ class IBP_Sha2_Types
 //class IBP_Sha2_Base
 
 template<class SHA_TRAITS>
-class IBP_Sha2_Base LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+class IBP_Sha2_Base LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  private:
-  typedef IBP_Sha2_Base<SHA_TRAITS>      self_type;
+  using self_type=IBP_Sha2_Base<SHA_TRAITS>;
 
-  IBP_Sha2_Base(const self_type&);
-  self_type& operator = (const self_type&);
+  IBP_Sha2_Base(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef IBP_Sha2_Result                SHA_RESULT;
+  using SHA_RESULT=IBP_Sha2_Result;
 
  private:
-  typedef typename SHA_TRAITS::ctx_type  ctx_type;
+  using ctx_type=typename SHA_TRAITS::ctx_type;
 
  public:
   IBP_Sha2_Base();
@@ -126,7 +128,7 @@ class IBP_Sha2_Base LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
    state__finished =1,
   };
 
-  typedef enum_state  state_type;
+  using state_type=enum_state;
 
  private:
   state_type m_state;
@@ -145,12 +147,13 @@ typedef IBP_Sha2_Base<IBP_Sha512_Traits> IBP_Sha512;
 ////////////////////////////////////////////////////////////////////////////////
 //struct IBP_Sha256_Ctx
 
-struct IBP_Sha256_Ctx LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+struct IBP_Sha256_Ctx LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  public:
-  typedef IBP_Sha2_Types::uint32 uint32;
+  using uint32=IBP_Sha2_Types::uint32;
 
-  typedef std::array<uint32,8>   h_type;
+  using h_type=std::array<uint32,8>;
 
  public:
   size_t        tot_len;
@@ -166,10 +169,11 @@ struct IBP_Sha256_Ctx LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha224_Traits
 
-class IBP_Sha224_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+class IBP_Sha224_Traits LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  public:
-  typedef IBP_Sha256_Ctx ctx_type;
+  using ctx_type=IBP_Sha256_Ctx;
 
  public:
   static void sha_init(ctx_type *ctx);
@@ -187,10 +191,11 @@ class IBP_Sha224_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha256_Traits
 
-class IBP_Sha256_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+class IBP_Sha256_Traits LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  public:
-  typedef IBP_Sha256_Ctx ctx_type;
+  using ctx_type=IBP_Sha256_Ctx;
 
  public:
   static void sha_init(ctx_type* ctx);
@@ -211,9 +216,9 @@ class IBP_Sha256_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 struct IBP_Sha512_Ctx LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  typedef IBP_Sha2_Types::uint64 uint64;
+  using uint64=IBP_Sha2_Types::uint64;
 
-  typedef std::array<uint64,8>   h_type;
+  using h_type=std::array<uint64,8>;
 
  public:
   size_t        tot_len;
@@ -229,10 +234,11 @@ struct IBP_Sha512_Ctx LCPI_CPP_CFG__CLASS__FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha384_Traits
 
-class IBP_Sha384_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+class IBP_Sha384_Traits LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  public:
-  typedef IBP_Sha512_Ctx ctx_type;
+  using ctx_type=IBP_Sha512_Ctx;
 
  public:
   static void sha_init(ctx_type* ctx);
@@ -250,10 +256,11 @@ class IBP_Sha384_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_Sha512_Traits
 
-class IBP_Sha512_Traits LCPI_CPP_CFG__CLASS__FINAL:private IBP_Sha2_Types
+class IBP_Sha512_Traits LCPI_CPP_CFG__CLASS__FINAL
+ :private IBP_Sha2_Types
 {
  public:
-  typedef IBP_Sha512_Ctx ctx_type;
+  using ctx_type=IBP_Sha512_Ctx;
 
  public:
   static void sha_init(ctx_type* ctx);

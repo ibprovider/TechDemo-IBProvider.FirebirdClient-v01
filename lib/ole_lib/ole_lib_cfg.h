@@ -6,8 +6,6 @@
 
 #include <lcpi/lib/com/.config.h>
 
-#include <structure/t_common.h>
-
 ////////////////////////////////////////////////////////////////////////////////
 //configuration
 //
@@ -35,6 +33,7 @@
 //     ole_lib::TBaseUnknown2NPtr
 //
 ////////////////////////////////////////////////////////////////////////////////
+
 #ifdef _USE_ATL_
 # define OLE_LIB_NO_COM_MODULE
 #endif
@@ -42,7 +41,7 @@
 //------------------------------------------------------------------------
 #ifndef OLE_LIB_DEFAULT_TYPE_HOLDER
 # if !defined(OLE_LIB_NO_COM_MODULE) && !defined(OLE_LIB_NO_OLE_AUTO)
-#  define OLE_LIB_DEFAULT_TYPE_HOLDER ole_lib::TComModule
+#  define OLE_LIB_DEFAULT_TYPE_HOLDER ::ole_lib::TComModule
 # else
 #  define OLE_LIB_DEFAULT_TYPE_HOLDER void* //DEFAULT
 # endif

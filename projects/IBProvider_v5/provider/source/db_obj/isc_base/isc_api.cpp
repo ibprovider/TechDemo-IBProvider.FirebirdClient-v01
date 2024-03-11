@@ -63,6 +63,13 @@ bool isc_ignore_numeric_scale(long const numeric_rules,
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLVAR_V1
 
+void XSQLVAR_V1::reset_pointers()
+{
+ this->sqldata=nullptr;
+ this->sqlind=nullptr;
+}//reset_pointers
+
+//------------------------------------------------------------------------
 XSQLVAR_V1::name_box_type
  XSQLVAR_V1::get_xsqlvar_relname_box()const
 {
@@ -269,6 +276,13 @@ void XSQLVAR_V1_EXT::set_original_fields(const XSQLVAR_V1& xsqlvar)
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLVAR_V2
 
+void XSQLVAR_V2::reset_pointers()
+{
+ this->sqldata=nullptr;
+ this->sqlind=nullptr;
+}//reset_pointers
+
+//------------------------------------------------------------------------
 XSQLVAR_V2::name_box_type
  XSQLVAR_V2::get_xsqlvar_relname_box()const
 {

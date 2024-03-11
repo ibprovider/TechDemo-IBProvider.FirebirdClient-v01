@@ -141,5 +141,47 @@ const T& IBP_BufferView<const T>::operator [] (size_t const index)const
 }//operator [] - const
 
 ////////////////////////////////////////////////////////////////////////////////
+//class IBP_BufferView<void>
+
+inline IBP_BufferView<void>::IBP_BufferView()
+ :m_pData(nullptr)
+ ,m_Size(0)
+{
+}
+
+//------------------------------------------------------------------------
+inline IBP_BufferView<void>::IBP_BufferView(std::nullptr_t)
+ :m_pData(nullptr)
+ ,m_Size(0)
+{
+}
+
+//------------------------------------------------------------------------
+inline IBP_BufferView<void>::IBP_BufferView(size_t const n,void* const ptr)
+ :m_pData(ptr)
+ ,m_Size(n)
+{
+ CHECK_READ_WRITE_PTR(m_pData,m_Size)
+}
+
+//------------------------------------------------------------------------
+inline size_t IBP_BufferView<void>::size()const
+{
+ return m_Size;
+}//size
+
+//------------------------------------------------------------------------
+inline bool IBP_BufferView<void>::empty()const
+{
+ return m_Size==0;
+}//empty
+
+//------------------------------------------------------------------------
+inline void* IBP_BufferView<void>::data()const
+{
+ return m_pData;
+}//data
+
+////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/
 #endif

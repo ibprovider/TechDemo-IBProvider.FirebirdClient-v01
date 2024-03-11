@@ -4,10 +4,6 @@
 #ifndef _oledb_common_H_
 #define _oledb_common_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 //#include <ole_lib/oledb/oledb_guids.h>
 //#include <ole_lib/oledb/oledb_std.h>
 #include <ole_lib/oledb/oledb_char.h>

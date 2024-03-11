@@ -22,17 +22,19 @@ class t_ibp_os_win32__dll_init_mutex LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_SmartMemoryObject
 {
  private:
-  typedef t_ibp_os_win32__dll_init_mutex                   self_type;
+  using self_type=t_ibp_os_win32__dll_init_mutex;
 
-  t_ibp_os_win32__dll_init_mutex(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_os_win32__dll_init_mutex(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~t_ibp_os_win32__dll_init_mutex();
 
  public: //typedefs ------------------------------------------------------
-  typedef lib::structure::t_smart_object_ptr<self_type>    self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_closure_r0<void>                    op_func_type;
+  using op_func_type
+   =structure::t_closure_r0<void>;
 
  public:
   t_ibp_os_win32__dll_init_mutex();

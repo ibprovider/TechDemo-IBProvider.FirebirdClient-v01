@@ -27,6 +27,7 @@
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__named_param_rules.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__first_week_day.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__array_rw_mode.h"
+#include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__blob_send_mode.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__rowset_file__sys_flags.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__array_type.h"
 #include "source/oledb/props2/handlers/code/extract_value/ibp_oledb__props2__handler__extract_value__prop__reset_ds_tr_rule.h"
@@ -234,6 +235,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
 #endif
 
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__BICURSOR                            ,0,"bicursor")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__BLOB_SEND_MODE                      ,0,"blob_send_mode")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE                               ,1,"charset")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CLEAR_PARAM_INFO                    ,0,"clear_param_info")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE                               ,0,"ctype")

@@ -7,7 +7,7 @@
 #ifndef _ibp_base64_H_
 #define _ibp_base64_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////

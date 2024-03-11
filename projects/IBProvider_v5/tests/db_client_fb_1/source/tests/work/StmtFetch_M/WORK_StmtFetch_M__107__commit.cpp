@@ -79,8 +79,8 @@ WORK_StmtFetch_M__107__commit::tag_impl::tag_impl
                                             const char*         const pTestID,
                                             const TTSO_TestData_v2&   Data,
                                             const tag_rs_descr&       ResultSet)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
  ,m_ResultSet(ResultSet)
 {
@@ -411,7 +411,7 @@ void WORK_StmtFetch_M__107__commit::create(TTSO_PushTest*      const pTestPusher
 
   const tag_impl::self_ptr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new tag_impl
         (pParams,
          ftestID.c_str(),

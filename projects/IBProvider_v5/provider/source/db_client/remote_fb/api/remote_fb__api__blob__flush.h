@@ -30,12 +30,14 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__FlushBlob
   /// <summary>
   ///  Запись буферизированных данных блоба
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobHandle
   //!  Not null. На входе должен указывать на дескриптор создаваемого блоба.
-  virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle)=0;
+  virtual void exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle)=0;
 };//class RemoteFB__API__FlushBlob
 
 ////////////////////////////////////////////////////////////////////////////////

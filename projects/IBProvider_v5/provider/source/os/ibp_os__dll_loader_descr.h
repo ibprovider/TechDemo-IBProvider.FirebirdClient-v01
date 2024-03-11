@@ -59,7 +59,7 @@ class t_ibp_os__dll_loader_descr LCPI_CPP_CFG__CLASS__FINAL
   children_type m_children;
 
   explicit t_ibp_os__dll_loader_descr(t_ibp_os__dll_loader::self_ptr&& spLoader)
-   :m_spDllLoader(__STL_MOVE_VALUE(spLoader))
+   :m_spDllLoader(LCPI_STL_MOVE_VALUE(spLoader))
    ,m_LockUntilUnload(false)
   {
    assert(m_spDllLoader);

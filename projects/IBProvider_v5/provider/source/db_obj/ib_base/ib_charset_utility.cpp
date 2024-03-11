@@ -184,7 +184,7 @@ bool ib_object_name_is_ok(const isc_base::t_isc_connection_settings& cns,
     (c_bugcheck_src,
      L"#001",
      L"unexpected max_obj_name_len.kind [%1]",
-     structure::to_underlying(kind));
+     lib::structure::to_underlying(kind));
   }//default
  }//switch
 }//ib_object_name_is_ok

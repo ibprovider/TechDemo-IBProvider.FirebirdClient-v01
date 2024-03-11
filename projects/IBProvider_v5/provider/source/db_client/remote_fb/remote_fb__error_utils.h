@@ -36,7 +36,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__BugCheck__DEBUG
                (const wchar_t*  place,
                 const wchar_t*  point,
@@ -44,7 +44,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...       args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT            hr,
                 t_ibp_subsystem_id subsystem_id,
@@ -57,7 +57,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] subsystem_id
   //! \param[in] protocolID
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__RequestedProtocolNotSupported
                (subsystem_id_type  subsystem_id,
                 wstr_box_type      protocolID);
@@ -71,7 +71,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //!  Protocol version number.
   //! \param[in] protocolTypeID
   //!  Protocol type identifier.
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__UnsupportedProtocolTypeID
                (subsystem_id_type  subsystem_id,
                 unsigned           protocolVersionNum,
@@ -85,7 +85,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //!  Protocol version number.
   //! \param[in] protocolTypeSign
   //!  Protocol type identifier.
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__ReqProtocolTypeIdDoesNotSupported
                (subsystem_id_type  subsystem_id,
                 unsigned           protocolVersionNum,
@@ -98,7 +98,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] protocolVerNum
   //!  Protocol version number.
   //! \param[in] protocolFlags
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__UnsupportedProtocolFlags
                (subsystem_id_type  subsystem_id,
                 unsigned           protocolVerNum,
@@ -109,7 +109,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   ///  Генерация исключения - сервер отклонил компрессию подключения
   /// </summary>
   //! \param[in] subsystem_id
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__ServerRejectedConnectionCompression
                (subsystem_id_type  subsystem_id);
 
@@ -117,7 +117,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   ///  Генерация исключения - сервер требует компрессию подключения
   /// </summary>
   //! \param[in] subsystem_id
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__ServerRequiredConnectionCompression
                (subsystem_id_type  subsystem_id);
 
@@ -126,7 +126,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   /// </summary>
   //! \param[in] subsystem_id
   //! \param[in] typeName
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__UnsupportedWireCompressionType
                (subsystem_id_type  subsystem_id,
                 wstr_box_type      typeName);
@@ -140,7 +140,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //!  Идентификатор операции с сервером.
   //! \param[in] place
   //! \param[in] point
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__OpStatusVectorProcessingError
                (subsystem_id_type   subsystem_id,
                 p_operation_id_type operationID,
@@ -155,7 +155,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] point
   //! \param[in] actualProtocolSetID
   //! \param[in] expectedProtocolSetID
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_UnexpectedPacketStructure
                (const wchar_t*            place,
                 const wchar_t*            point,
@@ -168,7 +168,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] place
   //! \param[in] point
   //! \param[in] protocolVersion
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_AcceptedUnexpectedProtocolVersion
                (const wchar_t*               place,
                 const wchar_t*               point,
@@ -180,7 +180,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] place
   //! \param[in] point
   //! \param[in] protocolArchitecture
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_AcceptedUnexpectedProtocolArchitecture
                (const wchar_t*    place,
                 const wchar_t*    point,
@@ -194,7 +194,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] place
   //! \param[in] point
   //! \param[in] answerID
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void SetInvalidPortState_And_Throw_BugCheck_UnexpectedServerAnswer
                (RemoteFB__Port*     pPort,
                 const wchar_t*      place,
@@ -210,7 +210,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] place
   //! \param[in] point
   //! \param[in] answerID
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void SetInvalidPortState_And_Throw_BugCheck2_UnexpectedServerAnswer
                (t_ibp_error&        Errors,
                 RemoteFB__Port*     pPort,
@@ -224,55 +224,55 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] place
   //! \param[in] point
   //! \param[in] protocolVersion
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_UnexpectedProtocolVersion
                (const wchar_t*               place,
                 const wchar_t*               point,
                 protocol::P_PROTOCOL_VERSION protocolVersion);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_BadCnHandle
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_BadTrHandle
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_TrHandleNotZero
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_BadStmtHandle
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_StmtHandleNotZero
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_BlobHandleNotZero
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_BadBlobHandle
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectBlobHandleMode
                (const wchar_t* place,
                 const wchar_t* point,
                 int            blobMode);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_UnexpectedChangeOfTransaction
                (const wchar_t*    place,
                 const wchar_t*    point,
@@ -280,7 +280,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 protocol::P_OBJCT newTrID);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck_Incorrect_XSQLDA_Version
                (const wchar_t* place,
                 const wchar_t* point,
@@ -288,13 +288,13 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 long           version);
 
   template<typename TSQLD>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_Incorrect_XSQLDA_sqld
                (subsystem_id_type subsystem_id,
                 const wchar_t*    pXSQLDA_Sign,
                 TSQLD             pXSQLDA_sqld);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_Incorrect_XSQLDA_sqln
                (subsystem_id_type subsystem_id,
                 const wchar_t*    pXSQLDA_Sign,
@@ -302,7 +302,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 long              pXSQLDA_sqld);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_UnexpectedUserRowDataBufferSize
                (const wchar_t* place,
                 const wchar_t* point,
@@ -310,13 +310,13 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 size_t         expectedSize);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__InvalidArray__ZeroSizeOfElement
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       blrTypeID);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__InvalidArray__InvalidBufferSize
                (const wchar_t* place,
                 const wchar_t* point,
@@ -326,56 +326,56 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 size_t         ExpectedSize);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__no_data
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__unexpected_end_of_data
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__unk_version
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       sdlVersion);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__len_of_str_data_exceed_the_size_of_buffer_tail
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       strLength,
                 size_t         bufferTailSize);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__mult_def_of_element
                (const wchar_t* place,
                 const wchar_t* point,
                 const wchar_t* elementTagID,
                 size_t         elementTagOffset);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__wrong_count_of_struct_fields
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         fieldCount);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__wrong_index_of_bound
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         boundIndex,
                 size_t         maxBoundCount);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__mult_def_of_bound_range
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         boundIndex);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__bad_bound_range
                (const wchar_t* place,
                 const wchar_t* point,
@@ -383,162 +383,162 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 signed __int32 lower,
                 signed __int32 upper);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__unknown_kind_of_literal
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       literalKind,
                 size_t         offset);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__wrong_count_of_element_fields
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       fieldCount);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__unexpected_tag
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       tagID,
                 size_t         tagOffset);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__incorrect_index_property_of_scalar_tag
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       index,
                 size_t         indexOffset);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__inconsistent_sizes_of_buffer_and_data
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         bufferSize,
                 size_t         dataSize);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__no_data_of_tag
                (const wchar_t* place,
                 const wchar_t* point,
                 const wchar_t* tagID);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__no_data_of_dimensions
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__no_data_of_dimension
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         boundIndex);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__unknown_blrtypeid
                (const wchar_t* place,
                 const wchar_t* point,
                 unsigned       blrTypeID,
                 size_t         offset);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__invalid_element_length
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         length,
                 const wchar_t* blrTypeSign);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck_IncorrectSDL__failed_to_translate_str_to_unicode
                (const wchar_t* place,
                 const wchar_t* point,
                 wstr_box_type  cs_name);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__AuthServiceNotSupported
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__UnknownAuthServiceName
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__IncorrectAuthServiceName
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__cant_convert_auth_service_name_from_utf8_to_wstr
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__cant_convert_auth_service_name_from_wstr_to_utf8
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__cant_convert_auth_service_names_from_wstr_to_utf8
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__auth_service_already_was_used
                (const wchar_t* place,
                 const wchar_t* point,
                 wstr_box_type  authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__auth_service_factory_already_was_registered
                (const wchar_t* place,
                 const wchar_t* point,
                 wstr_box_type  authServiceName);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__cant_convert_name_of_wire_crypt_key_from_utf8_to_wstr
                (const wchar_t* place,
                 const wchar_t* point);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__cant_convert_name_of_wire_crypt_key_from_wstr_to_utf8
                 (const wchar_t* place,
                  const wchar_t* point);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__unknown_wire_crypt_permission
                (const wchar_t*    place,
                 const wchar_t*    point,
                 unsigned          permission);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_BugCheck__unknown_wire_compression_rule
                (const wchar_t*    place,
                 const wchar_t*    point,
                 unsigned          rule);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__MultipleDefinitionOfServerKey
                (subsystem_id_type subsystem_id,
                 wstr_box_type     keyType,
                 wstr_box_type     keyPlugin);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__WireCryptImpossibled_NoKnownSrvKeys
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__WireCryptImpossibled_NoCryptKeys
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__WireCryptImpossibled_NoSupportForKnownServerKeys
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
@@ -547,7 +547,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Генерация исключения "некорректное использование сервиса аутентификации".
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcErr__IncorrectUsage__NoCnParam
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName,
@@ -556,32 +556,32 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Генерация исключения "некорректное использование сервиса аутентификации".
   /// </summary>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcErr__IncorrectUsage__AlreadyWasCompleted
                (subsystem_id_type subsystem_id,
                 wstr_box_type     authServiceName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         cbAuthData);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcBugCheck__IncorrectLenghtOfAuthData
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         cbAuthData,
                 size_t         cbExpectedLength);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcBugCheck__TooLongAuthData
                (const wchar_t* place,
                 const wchar_t* point,
                 size_t         cbAuthData,
                 size_t         cbMaxLength);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_AuthSvcBugCheck__IncorrectServerKey
                (const wchar_t* place,
                 const wchar_t* point);
@@ -591,7 +591,7 @@ class RemoteFB__ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 //class RemoteFB__ErrorUtils
 
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void RemoteFB__ErrorUtils::Throw__BugCheck__DEBUG
              (const wchar_t* const place,
               const wchar_t* const point,
@@ -611,7 +611,7 @@ void RemoteFB__ErrorUtils::Throw__BugCheck__DEBUG
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void RemoteFB__ErrorUtils::Throw__Error
                (HRESULT            const hr,
                 t_ibp_subsystem_id const subsystem_id,
@@ -629,7 +629,7 @@ void RemoteFB__ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename TSQLD>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void RemoteFB__ErrorUtils::Throw_BugCheck_Incorrect_XSQLDA_sqld
                                            (subsystem_id_type const subsystem_id,
                                             const wchar_t*    const pXSQLDA_Sign,

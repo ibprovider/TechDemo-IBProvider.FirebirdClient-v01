@@ -12,9 +12,11 @@
 #include "source/error_services/ibp_sqlstate_codes.h"
 #include "source/error_services/ibp_error_build_message.h"
 
-#include <structure/utilities/to_hex.h>
-#include <structure/utilities/string/string_length.h>
 #include <structure/t_str_formatter.h>
+
+#include <lcpi/lib/structure/utilities/to_hex.h>
+#include <lcpi/lib/structure/utilities/string/string_length.h>
+
 #include <array>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{namespace impl{
@@ -178,7 +180,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     continue;
 
    assert(x->sqlstate2!=nullptr);
-   assert(structure::string_length(x->sqlstate2)==5);
+   assert(lib::structure::string_length(x->sqlstate2)==5);
 
    // we get 00000 for info messages like "Table %"
    // these are completely ignored
@@ -1398,7 +1400,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   //---------
   std::array<IBP_ErrorVariant,2> args;
 
-  args[0]=std::wstring(L"0x").append(structure::to_hex::upper<wchar_t>(errnum).c_str());
+  args[0]=std::wstring(L"0x").append(lib::structure::to_hex::upper<wchar_t>(errnum).c_str());
 
   std::wstring msgtext;
 

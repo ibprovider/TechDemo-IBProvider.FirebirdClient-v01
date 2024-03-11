@@ -330,9 +330,9 @@ t_string TRegistry::ReadString(HKEY         const hkey,
  {
   switch(type)
   {
-   case          REG_SZ:
-   case    REG_MULTI_SZ:
-   case   REG_EXPAND_SZ:
+   case REG_SZ:
+   case REG_MULTI_SZ:
+   case REG_EXPAND_SZ:
     {
      if(buffer.empty())
       break;
@@ -350,7 +350,7 @@ t_string TRegistry::ReadString(HKEY         const hkey,
      break;
     }//XXX_SZ
     
-   case       REG_DWORD:
+   case REG_DWORD:
     {
      assert(buffer.size()==sizeof(DWORD));
 
@@ -360,7 +360,7 @@ t_string TRegistry::ReadString(HKEY         const hkey,
      {
       TCHAR tmpStr[64];
 
-      _GCRT_itot_s(*reinterpret_cast<const DWORD*>(buffer.buffer()),tmpStr,_DIM_(tmpStr),10);
+      LCPI_GCRT_itot_s(*reinterpret_cast<const DWORD*>(buffer.buffer()),tmpStr,_DIM_(tmpStr),10);
 
       value=tmpStr;
      }
@@ -424,8 +424,10 @@ LONG TRegistry::ReadInteger(HKEY         const hkey,
  {
   switch(type)
   {
-   case      REG_DWORD:assert(buffer.size()==sizeof(value));
-   case     REG_BINARY:
+   case REG_DWORD:
+    assert(buffer.size()==sizeof(value));
+
+   case REG_BINARY:
     {
      if(buffer.size()!=sizeof(value))
       lResult=ERROR_CANTREAD;
@@ -435,9 +437,9 @@ LONG TRegistry::ReadInteger(HKEY         const hkey,
      break;
     }//DWORD/BINARY
 
-   case         REG_SZ:
-   case   REG_MULTI_SZ:
-   case  REG_EXPAND_SZ:
+   case REG_SZ:
+   case REG_MULTI_SZ:
+   case REG_EXPAND_SZ:
     {
      if(buffer.empty())
       break;

@@ -17,16 +17,16 @@ class throw_error
   typedef t_const_wstr_box                  wstr_box_type;
 
  public: //t_basic_parameter_list errors ---------------------------------
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void parameter_list__duplicate_param(astr_box_type name);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void parameter_list__duplicate_param(wstr_box_type name);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void parameter_list__bad_format_of_quoted_item_name();
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void parameter_list__bad_format_of_quoted_item_value();
 };//class throw_error
 

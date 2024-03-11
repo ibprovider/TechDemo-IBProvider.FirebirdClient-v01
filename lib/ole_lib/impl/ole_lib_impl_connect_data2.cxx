@@ -24,7 +24,7 @@ TConnectData2::TConnectData2(const CONNECTDATA& x)
 #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
 
 TConnectData2::TConnectData2(self_type&& x)
- :m_cd(__STL_MOVE_VALUE(x.m_cd))
+ :m_cd(LCPI_STL_MOVE_VALUE(x.m_cd))
 {
  assert(&m_cd!=&x.m_cd);
 

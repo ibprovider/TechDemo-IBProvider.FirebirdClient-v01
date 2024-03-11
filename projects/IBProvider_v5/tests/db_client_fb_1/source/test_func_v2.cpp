@@ -57,7 +57,8 @@ const ibp::t_ibp_string& TSO_RemoteFB_GetProtocolTypeSign(const ibp::t_ibp_strin
 //class TTSO_TestData_v2
 
 TTSO_TestData_v2::TTSO_TestData_v2()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 bool TTSO_TestData_v2::can_exec(const TTSO_GlobalContext* const pParams)const
@@ -108,9 +109,9 @@ TTSO_TestFunc_v2::TTSO_TestFunc_v2(TTSO_GlobalContext* const pParams,
                                    TTestFunc           const Func,
                                    const TTSO_TestData_v2&   Data,
                                    const char*         const pExecRules)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
- ,m_Func(structure::not_null_ptr(Func))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
+ ,m_Func(lib::structure::not_null_ptr(Func))
  ,m_Data(Data)
  ,m_ExecRules(pExecRules?pExecRules:"")
 {
@@ -121,7 +122,8 @@ TTSO_TestFunc_v2::TTSO_TestFunc_v2(TTSO_GlobalContext* const pParams,
 
 //------------------------------------------------------------------------
 TTSO_TestFunc_v2::~TTSO_TestFunc_v2()
-{;}
+{
+}
 
 //test interface ---------------------------------------------------------
 std::string TTSO_TestFunc_v2::get_id()const

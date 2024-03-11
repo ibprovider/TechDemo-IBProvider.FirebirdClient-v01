@@ -69,7 +69,7 @@ void TEnumIPtr2Traits<TEnumItemInterface,Allocator>::Add
                                            (storage_type&    storage,
                                             user_item_type&& item)
 {
- storage.push_back(__STL_MOVE_VALUE(item));
+ storage.push_back(LCPI_STL_MOVE_VALUE(item));
 }//Add
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0

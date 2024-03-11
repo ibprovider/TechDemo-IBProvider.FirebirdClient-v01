@@ -23,28 +23,28 @@ class ISC_API_HLP__XSQLDA__ErrorUtils
 {
  public:
   template<typename TSize>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__XSQLVAR__IncorrectSqlLen
                (const wchar_t*     sqlTypeSign,
                 TSize              sqlLen);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__XSQLVAR__IncorrectSqlScale
                (const wchar_t*     sqlBaseTypeSign,
                 long               sqlScale);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__XSQLVAR__NullPtrInSQLIND
                (long               sqlType);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__XSQLVAR__OtherSqlScale
                (const wchar_t*     sqlBaseTypeSign,
                 long               actualSqlScale,
                 long               expectedSqlScale);
 
   template<typename TActualSize,typename TExpectedSize>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__XSQLVAR__OtherSqlLen
                (const wchar_t*     sqlTypeSign,
                 TActualSize        actualSqlLen,

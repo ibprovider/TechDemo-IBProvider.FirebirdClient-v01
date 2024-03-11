@@ -532,6 +532,21 @@ extern const IBP_CHAR* const g_IBP_PropValuesFor__array_rw_mode[2]=
 };//g_IBP_PropValuesFor__array_rw_mode
 
 ////////////////////////////////////////////////////////////////////////////////
+// BLOB send modes
+
+extern const IBP_CHAR ibp_propval__blob_send_mode__std[]
+ =IBP_T("std");
+
+extern const IBP_CHAR ibp_propval__blob_send_mode__varchar[]
+ =IBP_T("varchar");
+
+extern const IBP_CHAR* const g_IBP_PropValuesFor__blob_send_mode[2]=
+{
+ ibp_propval__blob_send_mode__std,
+ ibp_propval__blob_send_mode__varchar,
+};//g_IBP_PropValuesFor__blob_send_mode
+
+////////////////////////////////////////////////////////////////////////////////
 
 extern const IBP_LONG g_IBP_PropValuesFor__wchars_in_utf8_symbol[2]=
 {

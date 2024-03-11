@@ -11,7 +11,7 @@
 #include <win32lib/win32_resource.h>
 #include <win32lib/win32_resource_versioninfo.h>
 
-#include <structure/utilities/string/trim.h>
+#include <lcpi/lib/structure/utilities/string/trim.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -183,7 +183,7 @@ std::wstring t_ibp_os_win32__dll_version_info::tag_loader::get_string
  if(!pStr)
   return std::wstring();
 
- return structure::trim(pStr->value());
+ return lib::structure::trim(pStr->value());
 }//get_string
 
 ////////////////////////////////////////////////////////////////////////////////

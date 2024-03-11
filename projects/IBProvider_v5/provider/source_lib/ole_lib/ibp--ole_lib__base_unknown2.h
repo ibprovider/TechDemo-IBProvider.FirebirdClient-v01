@@ -34,9 +34,9 @@ class TBaseUnknown2__SERVER_LINK_DATA
 class TBaseUnknown2__SERVER_LINK LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TBaseUnknown2__SERVER_LINK                                 self_type;
+  using self_type=TBaseUnknown2__SERVER_LINK;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TBaseUnknown2__SERVER_LINK(const self_type& ptr);
@@ -68,14 +68,14 @@ class TBaseUnknown2__SERVER_LINK LCPI_CPP_CFG__CLASS__FINAL
 class TBaseUnknown2:public ::lcpi::lib::com::base::TBaseUnknown3A<ole_lib::TComObjectMemoryAllocator>
 {
  private:
-  typedef TBaseUnknown2                                              self_type;
-  typedef TBaseUnknown3A<ole_lib::TComObjectMemoryAllocator>         inherited;
+  using self_type=TBaseUnknown2;
+  using inherited=TBaseUnknown3A<ole_lib::TComObjectMemoryAllocator>;
 
   TBaseUnknown2(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef TBaseUnknown2__SERVER_LINK                                 COM_SERVER_LINK_TYPE;
+  using COM_SERVER_LINK_TYPE=TBaseUnknown2__SERVER_LINK;
 
  public:
   template<class ... TCOM_SERVER_LINK_ARGS>

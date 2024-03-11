@@ -9,8 +9,8 @@
 
 #include "source/db_obj/isc_base/isc_api.h"
 
-#include <structure/utilities/string/string_compare.h>
-#include <structure/utilities/string/string_length.h>
+#include <lcpi/lib/structure/utilities/string/string_compare.h>
+#include <lcpi/lib/structure/utilities/string/string_length.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////

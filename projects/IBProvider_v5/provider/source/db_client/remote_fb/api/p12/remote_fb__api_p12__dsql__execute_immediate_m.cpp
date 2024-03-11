@@ -175,7 +175,7 @@ void RemoteFB__API_P12__ExecuteImmediate_M::exec(db_obj::t_db_operation_context&
    pData->TrList__Add(newTrHandle); //no throw
 
    //возвращаем дескриптор вызывающей стороне
-   (*pTrHandle)=__STL_MOVE_VALUE(newTrHandle);
+   (*pTrHandle)=LCPI_STL_MOVE_VALUE(newTrHandle);
   }//if
   else
   if((*pTrHandle)->m_ID.get_value()!=TrID)

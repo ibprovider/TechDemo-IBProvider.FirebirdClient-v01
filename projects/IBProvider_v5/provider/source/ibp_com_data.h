@@ -26,30 +26,32 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule::TData
+//class IBP_ComModule::TData
 
 /// <summary>
 ///  ”правл€ющие данные COM-модул€
 /// </summary>
-class TIBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
+class IBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TData                                           self_type;
+  using self_type=TData;
 
-  TData(const self_type&);
-  self_type& operator = (const self_type&);
+  TData(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef IBP_MemoryAllocator                             allocator_type;
+  using allocator_type=IBP_MemoryAllocator;
 
 #ifndef IBP_BUILD_TESTCODE
   using class_factory_datas_type
    =lib::structure::t_fix_vector<IBP_OLEDB__ClassFactoryData,10>;
 #endif
 
-  typedef structure::t_multi_thread_traits                thread_traits;
-  typedef thread_traits::guard_type                       guard_type;
-  typedef thread_traits::lock_guard_type                  lock_guard_type;
+  using thread_traits=structure::t_multi_thread_traits;
+
+  using guard_type=thread_traits::guard_type;
+
+  using lock_guard_type=thread_traits::lock_guard_type;
 
  public:
   ///Identifier of used COM API.
@@ -142,18 +144,18 @@ class TIBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
 
   ///»м€ нашего модул€
   string_type           m_ModuleName;
-};//class TIBP_ComModule::TData
+};//class IBP_ComModule::TData
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule::TData
+//class IBP_ComModule::TData
 
-inline const TIBP_ComModule::string_type& TIBP_ComModule::TData::GetModulePath()const
+inline const IBP_ComModule::string_type& IBP_ComModule::TData::GetModulePath()const
 {
  return m_ModulePath;
 }//GetModulePath
   
 //------------------------------------------------------------------------
-inline const TIBP_ComModule::string_type& TIBP_ComModule::TData::GetModuleName()const
+inline const IBP_ComModule::string_type& IBP_ComModule::TData::GetModuleName()const
 {
  return m_ModuleName;
 }//GetModuleName

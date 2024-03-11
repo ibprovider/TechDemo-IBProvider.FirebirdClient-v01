@@ -4,7 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure_debug__t_debug__mt_guard_rw_H_
 #define _cpp_public_lcpi_lib_structure_debug__t_debug__mt_guard_rw_H_
 
-#include <lcpi/lib/structure/debug/assert_msg.h>
 #include <lcpi/lib/structure/mt/interlocked.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace debug{

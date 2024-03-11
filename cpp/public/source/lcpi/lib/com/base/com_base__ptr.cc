@@ -4,7 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_com_base__ptr_CC_
 #define _cpp_public_lcpi_lib_com_base__ptr_CC_
 
-#include <lcpi/lib/structure/debug/debug_code.h>
 #include <utility>
 
 namespace lcpi{namespace lib{namespace com{namespace base{

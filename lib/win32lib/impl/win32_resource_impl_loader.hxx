@@ -10,17 +10,18 @@ class TResourceLoader;
 ////////////////////////////////////////////////////////////////////////////////
 //class TResourceLoader
 
-class TResourceLoader
+class TResourceLoader LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TResourceLoader                              self_type;
+  using self_type=TResourceLoader;
 
-  TResourceLoader(const self_type&);
-  self_type& operator = (const self_type&);
+  TResourceLoader(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef self_type*                                   self_ptr;
-  typedef structure::t_lcid                            lcid_type;
+  using self_ptr=self_type*;
+
+  using lcid_type=structure::t_lcid;
 
  public:
   TResourceLoader()

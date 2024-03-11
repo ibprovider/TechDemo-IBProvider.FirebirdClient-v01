@@ -25,7 +25,7 @@ class TVariantComparatorContext_STD:public TVariantComparatorContext
 
   //interface ------------------------------------------------------------
   virtual cmp_code_type Compare(const VARIANT& v1,
-                                const VARIANT& v2) COMP_W000004_OVERRIDE;
+                                const VARIANT& v2) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
  private: //typedefs -----------------------------------------------------
   class tag_helpers;

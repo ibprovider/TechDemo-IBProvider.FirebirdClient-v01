@@ -18,10 +18,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Array_Write_Test_009__char::tag_impl
 
-class WORK_Array_Write_Test_009__char::tag_impl
+class WORK_Array_Write_Test_009__char::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -688,7 +688,7 @@ void WORK_Array_Write_Test_009__char::create(TTSO_PushTest*      const pTestPush
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

@@ -676,7 +676,8 @@ bool t_ibp_cs_icu::sb_len_as_unicode(ansi_streambuf_type& in_buf,
 }//sb_len_as_unicode
 
 //------------------------------------------------------------------------
-bool t_ibp_cs_icu::unicode_to_blob(const wchar_t*                  const source,
+bool t_ibp_cs_icu::unicode_to_blob(db_obj::t_db_operation_context&       op_ctx,
+                                   const wchar_t*                  const source,
                                    size_type                       const source_size,
                                    db_obj::t_db_seq_stream_writer* const writer)const
 {
@@ -698,7 +699,7 @@ bool t_ibp_cs_icu::unicode_to_blob(const wchar_t*                  const source,
  //---- подключаем объект записи к буферу потока
  char out_buf[8*1024];
 
- db_obj::t_db_blob_writer_buf writer_buf(out_buf,_DIM_(out_buf),writer);
+ db_obj::t_db_blob_writer_buf writer_buf(&op_ctx,out_buf,_DIM_(out_buf),writer);
 
  //---- выгружем блоками по 8K
  char target_buffer[8*1024];

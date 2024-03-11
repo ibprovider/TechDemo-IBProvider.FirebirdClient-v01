@@ -188,10 +188,11 @@ typename t_basic_fix_streambuf<charT,traits>::pos_type
   //this->setp(this->pbase(),this->epptr());
   //this->pbump(static_cast<int>(_pos));
 
-  __STL_STREAMBUF_SETP(*this,
-                       /*pFirst*/this->pbase(),
-                       /*pNext*/ this->pbase()+_pos,
-                       /*pLast*/ this->epptr());
+  LCPI_STL_STREAMBUF_SETP
+   (*this,
+    /*pFirst*/this->pbase(),
+    /*pNext*/ this->pbase()+_pos,
+    /*pLast*/ this->epptr());
  }//else
 
  return pos_type(static_cast<int>(_pos));

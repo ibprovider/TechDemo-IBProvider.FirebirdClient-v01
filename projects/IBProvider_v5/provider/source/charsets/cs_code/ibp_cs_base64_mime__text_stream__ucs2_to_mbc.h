@@ -20,14 +20,14 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  BASE64 [MIME]. Конвертор потока UCS2-символов в поток MBC-символов.
 /// </summary>
-class t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc
+class t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_text_stream__mbc)
 {
  private:
-  typedef tag_text_stream__ucs2_to_mbc                self_type;
+  using self_type=tag_text_stream__ucs2_to_mbc;
 
-  tag_text_stream__ucs2_to_mbc(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_text_stream__ucs2_to_mbc(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -59,9 +59,12 @@ class t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc
   //! \return
   //! - db_cs_result__ok
   //! - db_cs_result__fail
-  virtual db_obj::t_db_cs_result read_mbc(size_type  mbc_buffer_size,
-                                          char*      mbc_buffer,
-                                          size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual db_obj::t_db_cs_result
+           read_mbc
+            (db_obj::t_db_operation_context& op_ctx,
+             size_type                       mbc_buffer_size,
+             char*                           mbc_buffer,
+             size_type*                      cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
   typedef structure::t_multi_thread_traits               thread_traits;
@@ -80,8 +83,8 @@ class t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc
    state_id__process_terminate_space =1,
   };//enum tag_state_id
 
-  typedef structure::charsets::t_base64_mime__block_decoder<source_char_type>
-   mime_decoder_type;
+  using mime_decoder_type
+   =structure::charsets::t_base64_mime__block_decoder<source_char_type>;
 
  private:
   /// <summary>

@@ -18,7 +18,7 @@ t_base_com_error::t_base_com_error(HRESULT const code)
 }
 
 //------------------------------------------------------------------------
-t_base_com_error::~t_base_com_error()__STL_EXCEPTION_DCR_THROW_SPEC
+t_base_com_error::~t_base_com_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
 {
 }
 
@@ -35,7 +35,7 @@ void t_base_com_error::swap(self_type& x)
 }//swap
 
 //------------------------------------------------------------------------
-const char* t_base_com_error::what()const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_base_com_error::what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return "base com error";
 }//what

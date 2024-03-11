@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p13/remote_fb__api_p13__blob__read.h"
+#include "source/db_client/remote_fb/api/p13/remote_fb__p13__srv_operation.h"
 #include "source/db_client/remote_fb/api/pset02/remote_fb__pset02__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -16,6 +17,8 @@
 #include "source/db_obj/isc_base/isc_portable_format_to_integer.h"
 #include "source/error_services/ibp_error_bug_check.h"
 #include "source/error_services/ibp_error_messages.h"
+
+#include "source/db_obj/db_operation_reg.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p13{
 ////////////////////////////////////////////////////////////////////////////////
@@ -119,11 +122,13 @@ RemoteFB__API_P13__ReadBlob::~RemoteFB__API_P13__ReadBlob()
 {;}
 
 //interface --------------------------------------------------------------
-bool RemoteFB__API_P13__ReadBlob::exec(RemoteFB__ConnectorData* const pData,
-                                       blob_handle_type*        const pBlobHandle,
-                                       size_t                   const cbBuffer,
-                                       void*                    const pvBuffer,
-                                       size_t*                  const pcbActualReaded)
+bool RemoteFB__API_P13__ReadBlob::exec
+                        (db_obj::t_db_operation_context& OpCtx,
+                         RemoteFB__ConnectorData*  const pData,
+                         blob_handle_type*         const pBlobHandle,
+                         size_t                    const cbBuffer,
+                         void*                     const pvBuffer,
+                         size_t*                   const pcbActualReaded)
 {
  assert(pData!=nullptr);
  assert(!pData->GetPort()->TestPortFlag__rpc());
@@ -138,6 +143,11 @@ bool RemoteFB__API_P13__ReadBlob::exec(RemoteFB__ConnectorData* const pData,
 
  //-----------------------------------------
  (*pcbActualReaded)=0;
+
+ //-----------------------------------------
+ RemoteFB__P13__SrvOperation serverOperation(pData);
+
+ db_obj::t_db_operation_reg regServerOperation(OpCtx,&serverOperation);
 
  //----------------------------------------- проверка дескриптора блоба
  if((*pBlobHandle)==nullptr)
@@ -296,8 +306,10 @@ bool RemoteFB__API_P13__ReadBlob::exec(RemoteFB__ConnectorData* const pData,
    break; //загрузка завершена
 
   //-----
-  self_type::helper__read_to_buffer(pData,
-                                    *pBlobHandle); //throw
+  self_type::helper__read_to_buffer
+   (serverOperation,
+    pData,
+    *pBlobHandle); //throw
 
   assert((*pBlobHandle)->m_ReadMode__State==blob_data_type::ReadState__Ok ||
          (*pBlobHandle)->m_ReadMode__State==blob_data_type::ReadState__Segment ||
@@ -323,8 +335,9 @@ bool RemoteFB__API_P13__ReadBlob::exec(RemoteFB__ConnectorData* const pData,
 
 //------------------------------------------------------------------------
 void RemoteFB__API_P13__ReadBlob::helper__read_to_buffer
-                                           (RemoteFB__ConnectorData* const pData,
-                                            blob_data_type*          const pBlobData)
+                        (RemoteFB__P13__SrvOperation&   serverOperation,
+                         RemoteFB__ConnectorData* const pData,
+                         blob_data_type*          const pBlobData)
 {
  assert(pData);
  assert(pBlobData);
@@ -375,9 +388,14 @@ void RemoteFB__API_P13__ReadBlob::helper__read_to_buffer
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
+  //------ Let's define the boundaries of work with the server
+  RemoteFB__P13__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
+
   pData->GetPort()->send_packet
    (portOpCtx,
     packet); //throw
+
+  sendFrame.complete(); //throw
  }//local
 
  //----------------------------------------- 4. get response

@@ -7,7 +7,7 @@
 #ifndef _ibp_os_win32__dll_version_info_H_
 #define _ibp_os_win32__dll_version_info_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -24,13 +24,13 @@ class t_ibp_os_win32__dll_version_info;
 /// <summary>
 ///  Класс для получения информации о версии DLL
 /// </summary>
-class t_ibp_os_win32__dll_version_info
+class t_ibp_os_win32__dll_version_info LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_os_win32__dll_version_info             self_type;
+  using self_type=t_ibp_os_win32__dll_version_info;
 
-  t_ibp_os_win32__dll_version_info(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_os_win32__dll_version_info(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// VS_FIXEDFILEINFO::FileVersion

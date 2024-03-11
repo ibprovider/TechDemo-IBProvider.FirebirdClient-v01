@@ -73,7 +73,7 @@ enum class ibp_task_result_code
  //! \brief Exit code: ok
  ok            =0x01,
 
- //! \brief Exit code: canced
+ //! \brief Exit code: canceled
  cancelled     =0x02,
 };//enum class ibp_task_result_code
 

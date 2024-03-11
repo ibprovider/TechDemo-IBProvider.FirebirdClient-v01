@@ -8,7 +8,7 @@
 #define _ibp_error_elements_H_
 
 #include "source/error_services/ibp_error_element.h"
-#include <structure/stl/t_stl_vector.h>
+#include <lcpi/lib/structure/stl/t_stl_vector.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -59,9 +59,8 @@ class t_ibp_error_elements LCPI_CPP_CFG__CLASS__FINAL
   void swap(self_type& x);
 
  private:
-  typedef structure::t_stl_vector
-           <error_record_ptr,
-            IBP_MemoryAllocator>            items_type;
+  using items_type
+   =lib::structure::t_stl_vector<error_record_ptr,IBP_MemoryAllocator>;
 
  private:
   items_type m_items;

@@ -25,7 +25,7 @@ t_ibp_error_elements::t_ibp_error_elements(const self_type& x)
 
 //------------------------------------------------------------------------
 t_ibp_error_elements::t_ibp_error_elements(self_type&& x)
- :m_items(__STL_MOVE_VALUE(x.m_items))
+ :m_items(LCPI_STL_MOVE_VALUE(x.m_items))
 {
 }
 
@@ -45,7 +45,7 @@ t_ibp_error_elements& t_ibp_error_elements::operator = (const self_type& x)
 //------------------------------------------------------------------------
 t_ibp_error_elements& t_ibp_error_elements::operator = (self_type&& x)
 {
- m_items=__STL_MOVE_VALUE(x.m_items);
+ m_items=LCPI_STL_MOVE_VALUE(x.m_items);
 
  return *this;
 }//operator move
@@ -115,7 +115,7 @@ void t_ibp_error_elements::add_limit_event()
 
  assert(spLimitRec);
 
- m_items.push_back(__STL_MOVE_VALUE(spLimitRec));
+ m_items.push_back(LCPI_STL_MOVE_VALUE(spLimitRec));
 
  assert(!m_items.empty());
 }//add_limit_event

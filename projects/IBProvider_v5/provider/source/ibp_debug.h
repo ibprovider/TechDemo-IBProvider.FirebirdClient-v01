@@ -4,13 +4,18 @@
 //! \brief   Конструкции для отладки провайдера
 //! \author  Kovalenko Dmitry
 //! \date    12.11.2008
-#ifndef _ibp_debug_
-#define _ibp_debug_
+#ifndef _ibp_debug_H_
+#define _ibp_debug_H_
+
+#include "source/os/ibp_os__thread_api.h"
 
 #include <lcpi/lib/structure/mt/t_lock_guard.h>
+#include <lcpi/lib/structure/mt/interlocked.h>
+#include <lcpi/lib/code_gen.h>
 
 #include <ostream>
 #include <sstream>
+#include <type_traits>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +38,7 @@ class  t_ibp_debug__mt_guard2_lock_first;
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_ibp_debug__file_and_line
 
-struct t_ibp_debug__file_and_line
+struct t_ibp_debug__file_and_line LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   const char* m_file;
@@ -65,13 +70,13 @@ std::ostream& operator << (std::ostream& os,const t_ibp_debug__file_and_line& x)
 /// </summary>
 //! \attention
 //!  Не отслеживает повторные блокировки в рамках одного потока
-class t_ibp_debug__mt_guard
+class t_ibp_debug__mt_guard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_debug__mt_guard    self_type;
+  using self_type=t_ibp_debug__mt_guard;
 
-  t_ibp_debug__mt_guard(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_debug__mt_guard(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
@@ -79,7 +84,8 @@ class t_ibp_debug__mt_guard
   /// </summary>
   t_ibp_debug__mt_guard()
    :m_dwOwnerThreadID(0)
-  {}
+  {
+  }
 
   /// <summary>
   ///  Деструктор
@@ -103,7 +109,7 @@ class t_ibp_debug__mt_guard
   /// </summary>
   bool current_thread_is_owner()const
   {
-   return m_dwOwnerThreadID==::GetCurrentThreadId();
+   return m_dwOwnerThreadID==self_type::helper__get_current_thread_id();
   }//current_thread_is_owner
 
   /// <summary>
@@ -111,9 +117,11 @@ class t_ibp_debug__mt_guard
   /// </summary>
   void lock()
   {
-   const DWORD dwCurrentThreadID=::GetCurrentThreadId();
+   const auto dwCurrentThreadID
+    =self_type::helper__get_current_thread_id();
 
-   const DWORD dwPrevThreadID=::InterlockedCompareExchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
+   const auto dwPrevThreadID
+    =lib::structure::mt::interlocked::compare_exchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
 
    assert_msg(dwPrevThreadID==0,
                "dwPrevThreadID="<<dwPrevThreadID<<"\n"
@@ -125,9 +133,11 @@ class t_ibp_debug__mt_guard
   /// </summary>
   void unlock()
   {
-   const DWORD dwCurrentThreadID=::GetCurrentThreadId();
+   const auto dwCurrentThreadID
+    =self_type::helper__get_current_thread_id();
 
-   const DWORD dwPrevThreadID=::InterlockedCompareExchange(&m_dwOwnerThreadID,0,dwCurrentThreadID);
+   const auto dwPrevThreadID
+    =lib::structure::mt::interlocked::compare_exchange(&m_dwOwnerThreadID,0,dwCurrentThreadID);
 
    assert_msg(dwPrevThreadID==dwCurrentThreadID,
                "dwPrevThreadID="<<dwPrevThreadID<<"\n"
@@ -135,8 +145,17 @@ class t_ibp_debug__mt_guard
   }//unlock
 
  private:
+  using thread_id_type=os::ibp_os__thread_api::thread_id_type;
+
+ private:
+  static thread_id_type helper__get_current_thread_id()
+  {
+   return os::ibp_os__thread_api::GetCurrentThreadId();
+  }//helper__get_current_thread_id
+
+ private:
   ///Идентификатор владельца блокировки
-  DWORD m_dwOwnerThreadID;
+  thread_id_type m_dwOwnerThreadID;
 };//class t_ibp_debug__mt_guard
 
 #endif // ndef NDEBUG
@@ -164,13 +183,13 @@ using t_ibp_debug__mt_guard_lock
 /// </summary>
 //! \attention
 //!  Отслеживаются повторные блокировки в рамках одного потока
-class t_ibp_debug__mt_guard2
+class t_ibp_debug__mt_guard2 LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_debug__mt_guard2            self_type;
+  using self_type=t_ibp_debug__mt_guard2;
 
-  t_ibp_debug__mt_guard2(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_debug__mt_guard2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>
@@ -179,7 +198,8 @@ class t_ibp_debug__mt_guard2
   t_ibp_debug__mt_guard2()
    :m_dwOwnerThreadID(0)
    ,m_cntLocks(0)
-  {}
+  {
+  }
 
   /// <summary>
   ///  Деструктор
@@ -205,7 +225,7 @@ class t_ibp_debug__mt_guard2
   /// </summary>
   bool current_thread_is_owner()const
   {
-   return m_dwOwnerThreadID==::GetCurrentThreadId();
+   return m_dwOwnerThreadID==self_type::helper__get_current_thread_id();
   }//current_thread_is_owner
 
   /// <summary>
@@ -213,9 +233,11 @@ class t_ibp_debug__mt_guard2
   /// </summary>
   void lock()
   {
-   const DWORD dwCurrentThreadID=::GetCurrentThreadId();
+   const auto dwCurrentThreadID
+    =self_type::helper__get_current_thread_id();
 
-   const DWORD dwPrevThreadID=::InterlockedCompareExchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
+   const auto dwPrevThreadID
+    =lib::structure::mt::interlocked::compare_exchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
 
    if(dwPrevThreadID==0)
    {
@@ -233,7 +255,7 @@ class t_ibp_debug__mt_guard2
                "dwCurrentThreadID="<<dwCurrentThreadID);
    }//else
 
-   ::InterlockedIncrement(&m_cntLocks);
+   lib::structure::mt::interlocked::increment(&m_cntLocks);
 
    assert(m_cntLocks>0);
   }//lock
@@ -243,9 +265,11 @@ class t_ibp_debug__mt_guard2
   /// </summary>
   void lock_first()
   {
-   const DWORD dwCurrentThreadID=::GetCurrentThreadId();
+   const auto dwCurrentThreadID
+    =self_type::helper__get_current_thread_id();
 
-   const DWORD dwPrevThreadID=::InterlockedCompareExchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
+   const auto dwPrevThreadID
+    =lib::structure::mt::interlocked::compare_exchange(&m_dwOwnerThreadID,dwCurrentThreadID,0);
 
    assert_msg(dwPrevThreadID==0,
               "dwPrevThreadID="<<dwPrevThreadID<<"\n"
@@ -253,7 +277,7 @@ class t_ibp_debug__mt_guard2
 
    assert(m_cntLocks==0);
 
-   ::InterlockedIncrement(&m_cntLocks);
+   lib::structure::mt::interlocked::increment(&m_cntLocks);
 
    assert(m_cntLocks>0);
   }//lock_first
@@ -265,15 +289,17 @@ class t_ibp_debug__mt_guard2
   {
    assert(m_cntLocks>0);
 
-   const DWORD dwCurrentThreadID=::GetCurrentThreadId();
+   const auto dwCurrentThreadID
+    =self_type::helper__get_current_thread_id();
 
    assert_msg(m_dwOwnerThreadID==dwCurrentThreadID,
               "m_dwOwnerThreadID="<<m_dwOwnerThreadID<<"\n"
               "dwCurrentThreadID="<<dwCurrentThreadID);
 
-   if(::InterlockedDecrement(&m_cntLocks)==0)
+   if(lib::structure::mt::interlocked::decrement(&m_cntLocks)==0)
    {
-    const DWORD dwPrevThreadID=::InterlockedCompareExchange(&m_dwOwnerThreadID,0,dwCurrentThreadID);
+    const auto dwPrevThreadID
+     =lib::structure::mt::interlocked::compare_exchange(&m_dwOwnerThreadID,0,dwCurrentThreadID);
 
     assert_msg(dwPrevThreadID==dwCurrentThreadID,
                "dwPrevThreadID="<<dwPrevThreadID<<"\n"
@@ -282,11 +308,20 @@ class t_ibp_debug__mt_guard2
   }//unlock
 
  private:
+  using thread_id_type=os::ibp_os__thread_api::thread_id_type;
+
+ private:
+  static thread_id_type helper__get_current_thread_id()
+  {
+   return os::ibp_os__thread_api::GetCurrentThreadId();
+  }//helper__get_current_thread_id
+
+ private:
   ///Идентификатор владельца блокировки
-  DWORD m_dwOwnerThreadID;
+  thread_id_type m_dwOwnerThreadID;
 
   ///Счетчик рекурсивных блокировок
-  LONG m_cntLocks;
+  unsigned m_cntLocks;
 };//class t_ibp_debug__mt_guard2
 
 #endif // ndef NDEBUG
@@ -312,13 +347,13 @@ using t_ibp_debug__mt_guard2_lock
 /// <summary>
 ///  Отладочный класс для автоматизации работы с t_ibp_debug__mt_guard2
 /// <summary>
-class t_ibp_debug__mt_guard2_lock_first
+class t_ibp_debug__mt_guard2_lock_first LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_debug__mt_guard2_lock_first self_type;
+  using self_type=t_ibp_debug__mt_guard2_lock_first;
 
-  t_ibp_debug__mt_guard2_lock_first(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_debug__mt_guard2_lock_first(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>

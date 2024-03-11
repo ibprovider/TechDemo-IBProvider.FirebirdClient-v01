@@ -12,6 +12,7 @@
 #include "source/ibp_utils.h"
 
 #include <lcpi/lib/structure/utilities/string/is_like_str.h>
+
 #include <sstream>
 
 namespace lcpi{namespace ibp{namespace isc_base{

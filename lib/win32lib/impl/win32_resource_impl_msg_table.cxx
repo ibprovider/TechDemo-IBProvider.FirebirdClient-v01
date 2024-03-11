@@ -55,9 +55,9 @@ const MESSAGE_RESOURCE_ENTRY* MsgTable_FindEntry(const MESSAGE_RESOURCE_DATA* pM
 
 //------------------------------------------------------------------------
 template<typename charT>
-void MsgTable_MessageNormalzation(__STL_DEF_BASIC_STRING(charT)& msg)
+void MsgTable_MessageNormalzation(LCPI_STL_DEF_BASIC_STRING(charT)& msg)
 {
- typedef __STL_DEF_BASIC_STRING(charT) string_type;
+ using string_type=LCPI_STL_DEF_BASIC_STRING(charT);
 
  //----------------------------------------- removing of terminal nulls
  {

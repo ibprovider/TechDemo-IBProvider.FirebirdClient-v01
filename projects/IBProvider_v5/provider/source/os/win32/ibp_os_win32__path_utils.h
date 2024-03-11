@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{
 class t_ibp_os_win32__path_utils LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_os_win32__path_utils                       self_type;
+  using self_type=t_ibp_os_win32__path_utils;
 
  public:
   static t_ibp_str_box GetParentDir(const t_ibp_str_box& path);

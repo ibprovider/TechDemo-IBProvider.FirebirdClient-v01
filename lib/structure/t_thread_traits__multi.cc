@@ -57,7 +57,7 @@ class t_thread_traits__multi::tag_exchange__enum
 
    return static_cast<T1>
            (tag_exchange__std::exec
-             ((_ut*)target,
+             ((volatile _ut*)target,
               static_cast<_ut>(value)));
   }//exec
 };//struct t_thread_traits__multi::tag_exchange__enum
@@ -68,19 +68,12 @@ class t_thread_traits__multi::tag_exchange__enum
 class t_thread_traits__multi::tag_exchange__std
 {
  public:
-  static long exec(volatile long* const target,long const value)
+  template<typename T1,typename T2>
+  static T1 exec(volatile T1* const target,T2 const value)
   {
    assert(target);
 
-   return ::InterlockedExchange(target,value);
-  }//exec
-
-  static int exec(volatile int* const target,int const value)
-  {
-   assert(target);
-   assert_s(sizeof(long)==sizeof(int));
-
-   return (int)::InterlockedExchange((volatile long*)target,(long)value);
+   return interlocked::exchange(target,static_cast<T2>(value));
   }//exec
 };//struct t_thread_traits__multi::tag_exchange__std
 
@@ -120,14 +113,14 @@ void t_thread_traits__multi::tag_guard::lock()
  {
   assert(m_OwnerThreadID==0);
 
-  ::InterlockedExchange(&m_OwnerThreadID,::GetCurrentThreadId());
+  interlocked::exchange(&m_OwnerThreadID,::GetCurrentThreadId());
  }
  else
  {
   assert(m_OwnerThreadID==::GetCurrentThreadId());
  }//else
 
- ::InterlockedIncrement(&m_cntLock);
+ interlocked::increment(&m_cntLock);
 #endif
 }//lock
 
@@ -139,8 +132,8 @@ void t_thread_traits__multi::tag_guard::unlock()
  assert(m_OwnerThreadID==::GetCurrentThreadId());
 
 #ifndef NDEBUG
- if(::InterlockedDecrement(&m_cntLock)==0)
-  ::InterlockedExchange(&m_OwnerThreadID,0);
+ if(interlocked::decrement(&m_cntLock)==0)
+  interlocked::exchange(&m_OwnerThreadID,0);
 #endif
 
  ::LeaveCriticalSection(&m_cs);

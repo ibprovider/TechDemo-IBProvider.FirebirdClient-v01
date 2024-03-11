@@ -39,9 +39,10 @@ t_ibp_cs_icu::tag_text_stream__mbc_buffer_to_ucs2::~tag_text_stream__mbc_buffer_
 //------------------------------------------------------------------------
 db_obj::t_db_cs_result
  t_ibp_cs_icu::tag_text_stream__mbc_buffer_to_ucs2::read_ucs2
-                                           (size_type  const ucs2_buffer_size,
-                                            wchar_t*   const ucs2_buffer,
-                                            size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& /*op_ctx*/,
+                         size_type                 const ucs2_buffer_size,
+                         wchar_t*                  const ucs2_buffer,
+                         size_type*                const cb_readed)
 {
  assert(cb_readed);
  assert(m_charset);

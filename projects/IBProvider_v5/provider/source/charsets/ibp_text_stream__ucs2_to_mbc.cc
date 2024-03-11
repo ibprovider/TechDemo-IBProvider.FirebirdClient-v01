@@ -37,9 +37,10 @@ t_ibp_text_stream__ucs2_to_mbc<TCharset>::~t_ibp_text_stream__ucs2_to_mbc()
 template<class TCharset>
 db_obj::t_db_cs_result
  t_ibp_text_stream__ucs2_to_mbc<TCharset>::read_mbc
-                                   (size_type  const mbc_buffer_size,
-                                    char*      const mbc_buffer,
-                                    size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& op_ctx,
+                         size_type                 const mbc_buffer_size,
+                         char*                     const mbc_buffer,
+                         size_type*                const cb_readed)
 {
  assert(m_charset);
  assert(m_source__ucs2);
@@ -83,11 +84,12 @@ db_obj::t_db_cs_result
    const wchar_t* source_pos=m_source_buffer+m_source_buffer_pos;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_charset->single_ucs2_to_mbc
-                                 (&source_pos,
-                                  m_source_buffer+m_source_buffer_size,
-                                  m_target_buffer,
-                                  m_target_buffer_size);
+    cvt_result
+     =m_charset->single_ucs2_to_mbc
+       (&source_pos,
+        m_source_buffer+m_source_buffer_size,
+        m_target_buffer,
+        m_target_buffer_size);
 
    assert(source_pos>=m_source_buffer+m_source_buffer_pos);
    assert(source_pos<=m_source_buffer+m_source_buffer_size);
@@ -146,9 +148,12 @@ db_obj::t_db_cs_result
    size_type cb_readed_ucs2=0;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_source__ucs2->read_ucs2(_DIM_(m_source_buffer)-m_source_buffer_size,
-                                         m_source_buffer+m_source_buffer_size,
-                                         &cb_readed_ucs2);
+    cvt_result
+     =m_source__ucs2->read_ucs2
+       (op_ctx,
+        _DIM_(m_source_buffer)-m_source_buffer_size,
+        m_source_buffer+m_source_buffer_size,
+        &cb_readed_ucs2);
 
    assert(cb_readed_ucs2<=_DIM_(m_source_buffer)-m_source_buffer_size);
 

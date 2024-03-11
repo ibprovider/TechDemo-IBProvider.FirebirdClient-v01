@@ -4,8 +4,6 @@
 #ifndef _t_not_null_ptr_H_
 #define _t_not_null_ptr_H_
 
-#include <structure/t_common.h>
-
 #include <lcpi/lib/structure/t_not_null_ptr.h>
 
 namespace structure{

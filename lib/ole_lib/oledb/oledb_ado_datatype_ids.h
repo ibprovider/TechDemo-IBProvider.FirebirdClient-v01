@@ -4,7 +4,7 @@
 #ifndef _oledb_ado_datatype_ids_H_
 #define _oledb_ado_datatype_ids_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////

@@ -55,7 +55,7 @@ class RemoteFB__P12_LAZY_SEND__SrvResourceHelper LCPI_CPP_CFG__CLASS__FINAL
   static void Helper__ReleaseBlobs(RemoteFB__ConnectorData* pData);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__UnkBlobHandleState
                                            (const wchar_t* place,
                                             const wchar_t* point,

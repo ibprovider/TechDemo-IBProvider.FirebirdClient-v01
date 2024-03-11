@@ -90,7 +90,8 @@ class t_ibp_cs_octets:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_char
   virtual bool sb_len_as_unicode(ansi_streambuf_type& in_buf,
                                  size_type&           wsz)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual bool unicode_to_blob(const wchar_t*                  source,
+  virtual bool unicode_to_blob(db_obj::t_db_operation_context& op_ctx,
+                               const wchar_t*                  source,
                                size_type                       source_size,
                                db_obj::t_db_seq_stream_writer* writer)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 

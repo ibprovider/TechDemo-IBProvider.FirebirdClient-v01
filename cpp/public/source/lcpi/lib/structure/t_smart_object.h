@@ -33,14 +33,14 @@ template<class TSmartInterface>
 class t_basic_smart_interface_impl__static_v2:public TSmartInterface
 {
  private:
-  typedef t_basic_smart_interface_impl__static_v2               self_type;
-  typedef TSmartInterface                                       inherited;
+  using self_type=t_basic_smart_interface_impl__static_v2;
+  using inherited=TSmartInterface;
 
-  t_basic_smart_interface_impl__static_v2(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_smart_interface_impl__static_v2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef cnt_ref_traits::cnt_ref_type                          cnt_ref_type;
+  using cnt_ref_type=cnt_ref_traits::cnt_ref_type;
 
  public:
   template<typename... TArgs>
@@ -75,14 +75,15 @@ template<class TSmartInterface,class Allocator>
 class t_basic_smart_interface_impl__dynamic:public TSmartInterface
 {
  private:
-  typedef t_basic_smart_interface_impl__dynamic                 self_type;
-  typedef TSmartInterface                                       inherited;
+  using self_type=t_basic_smart_interface_impl__dynamic;
+  using inherited=TSmartInterface;
 
-  t_basic_smart_interface_impl__dynamic(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_smart_interface_impl__dynamic(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef cnt_ref_traits::cnt_ref_type                          cnt_ref_type;
+  using cnt_ref_type
+   =cnt_ref_traits::cnt_ref_type;
 
  public:
   template<typename... TArgs>
@@ -101,7 +102,8 @@ class t_basic_smart_interface_impl__dynamic:public TSmartInterface
   cnt_ref_type get_cntRef()const;
 
  private:
-  typedef typename Allocator::template rebind<void>::other      raw_alloc_type;
+  using raw_alloc_type
+   =typename Allocator::template rebind<void>::other;
 
  public:
   static void* operator new (size_t sz);
@@ -143,16 +145,20 @@ template<class Allocator>
 class t_basic_smart_object_base2:public t_nondelegating_smart_interface
 {
  private:
-  typedef t_basic_smart_object_base2                            self_type;
+  using self_type=t_basic_smart_object_base2;
 
-  t_basic_smart_object_base2(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_smart_object_base2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef cnt_ref_traits::cnt_ref_type                          cnt_ref_type;
+  using cnt_ref_type
+   =cnt_ref_traits::cnt_ref_type;
 
-  typedef t_nondelegating_smart_interface                       nondelegating_smart_interface_type;
-  typedef infrastructure::core::structure::t_smart_interface    smart_interface_type;
+  using nondelegating_smart_interface_type
+   =t_nondelegating_smart_interface;
+
+  using smart_interface_type
+   =infrastructure::core::structure::t_smart_interface;
 
  protected:
   virtual ~t_basic_smart_object_base2();
@@ -176,7 +182,8 @@ class t_basic_smart_object_base2:public t_nondelegating_smart_interface
   smart_interface_type* get_nondelegating();
 
  private:
-  typedef typename Allocator::template rebind<void>::other      raw_alloc_type;
+  using raw_alloc_type
+   =typename Allocator::template rebind<void>::other;
 
  public:
   static void* operator new (size_t sz);

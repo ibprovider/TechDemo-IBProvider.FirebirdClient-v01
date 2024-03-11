@@ -4,7 +4,7 @@
 #ifndef _t_thread_traits__multi_H_
 #define _t_thread_traits__multi_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,16 +15,18 @@ class t_thread_traits__multi;
 ////////////////////////////////////////////////////////////////////////////////
 //class t_thread_traits__multi
 
-class t_thread_traits__multi
+class t_thread_traits__multi LCPI_CPP_CFG__CLASS__FINAL
 {
  private: //lock classes -------------------------------------------------
   class tag_guard;
   class tag_lock_guard;
 
  public: //typedefs ------------------------------------------------------
-  typedef long                         int_type;
-  typedef tag_guard                    guard_type;
-  typedef tag_lock_guard               lock_guard_type;
+  using int_type=long;
+
+  using guard_type=tag_guard;
+
+  using lock_guard_type=tag_lock_guard;
 
  public: //---------------------------------------------------------------
   static void add(volatile int_type* const x,int_type a);
@@ -45,16 +47,16 @@ class t_thread_traits__multi
 ////////////////////////////////////////////////////////////////////////////////
 //class t_thread_traits__multi::tag_guard
 
-class t_thread_traits__multi::tag_guard
+class t_thread_traits__multi::tag_guard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_guard                            self_type;
+  using self_type=tag_guard;
 
-  tag_guard(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_guard(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef tag_lock_guard                       lock_type;
+  using lock_type=tag_lock_guard;
 
  public:
   tag_guard();
@@ -90,16 +92,16 @@ class t_thread_traits__multi::tag_guard
 ////////////////////////////////////////////////////////////////////////////////
 //class t_thread_traits__multi::tag_lock_guard
 
-class t_thread_traits__multi::tag_lock_guard
+class t_thread_traits__multi::tag_lock_guard LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_lock_guard                            self_type;
+  using self_type=tag_lock_guard;
 
-  tag_lock_guard(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_lock_guard(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef t_thread_traits__multi::guard_type         guard_type;
+  using guard_type=t_thread_traits__multi::guard_type;
 
  public:
   tag_lock_guard(guard_type& x)

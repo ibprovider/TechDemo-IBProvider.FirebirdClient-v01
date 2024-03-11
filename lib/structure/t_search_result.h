@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI Instrumental Library for C++
 //                                               Dmitry Kovalenko. 28.02.2003
-#ifndef _t_search_result_H_
-#define _t_search_result_H_
+#ifndef _lcpi_lib_structure__t_search_result_H_
+#define _lcpi_lib_structure__t_search_result_H_
 
 #include <lcpi/lib/structure/t_search_result.h>
 

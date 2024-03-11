@@ -222,7 +222,7 @@ class isc_portable_format_to_integer
                  structure::t_value_with_null<result_type>* result);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_error__bad_format
                              (ibp::t_ibp_subsystem_id subsystem,
                               const wchar_t*          value_sign,

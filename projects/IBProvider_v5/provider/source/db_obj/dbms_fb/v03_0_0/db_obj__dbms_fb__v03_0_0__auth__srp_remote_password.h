@@ -11,7 +11,7 @@
 #include "source/structure/ibp_sha1.h"
 #include "source/ibp_forward.h"
 
-#include <structure/t_const_str_box.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v03_0_0{
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,12 +69,12 @@ class fb_v03_0_0__auth__srp_remote_password
   std::string getClientKey()const;
 
   void calcClientSessionKeyAndProof
-        (bytes_type*                pSessionKey,
-         std::string*               pClientProof,
-         structure::t_const_str_box account,
-         structure::t_const_str_box salt,
-         structure::t_const_str_box password,
-         const char*                serverPubKey)const;
+        (bytes_type*                     pSessionKey,
+         std::string*                    pClientProof,
+         lib::structure::t_const_str_box account,
+         lib::structure::t_const_str_box salt,
+         lib::structure::t_const_str_box password,
+         const char*                     serverPubKey)const;
 
  private:
   typedef sha1::IBP_Sha1          sha1_type;

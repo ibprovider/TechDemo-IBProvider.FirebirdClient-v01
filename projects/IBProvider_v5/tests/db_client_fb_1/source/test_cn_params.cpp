@@ -15,7 +15,7 @@ namespace lcpi{namespace ibp_tests{
 //class TestCnParams
 
 TestCnParams::TestCnParams(const TTSO_GlobalContext* const pParams)
- :m_spGlobalCtx(structure::not_null_ptr(pParams))
+ :m_spGlobalCtx(lib::structure::not_null_ptr(pParams))
  ,m_spDsPropValues(ibp::oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE::Create())
 {
  assert(m_spGlobalCtx);
@@ -49,7 +49,7 @@ TestCnParams::TestCnParams(const TTSO_GlobalContext* const pParams)
 
   ole_lib::TBaseUnknown2NPtr
    spCallObj
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new ole_lib::TBaseUnknown2
         (nullptr,
          ole_lib::TBaseUnknown2__SERVER_LINK::Create_DUMMY())));

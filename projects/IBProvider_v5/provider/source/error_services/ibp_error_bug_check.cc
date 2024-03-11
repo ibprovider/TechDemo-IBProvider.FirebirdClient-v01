@@ -13,7 +13,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename T>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowBugCheck__UnexpectedPropValue(const wchar_t* const place,
                                             const wchar_t* const point,
                                             const wchar_t* const prop_name,
@@ -38,7 +38,7 @@ void IBP_ThrowBugCheck__UnexpectedPropValue(const wchar_t* const place,
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename TLength>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowBugCheck__IncorrectDataLength(const wchar_t* const place,
                                             const wchar_t* const point,
                                             TLength        const length)
@@ -60,7 +60,7 @@ void IBP_ThrowBugCheck__IncorrectDataLength(const wchar_t* const place,
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename TLength,typename TBufSize>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowBugCheck__TooLargeDataLength(const wchar_t* const place,
                                            const wchar_t* const point,
                                            TLength        const length,

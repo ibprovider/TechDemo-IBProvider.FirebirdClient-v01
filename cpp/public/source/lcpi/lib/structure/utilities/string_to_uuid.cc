@@ -5,7 +5,6 @@
 #define _cpp_public_lcpi_lib_structure_utilities__string_to_uuid_CC_
 
 #include <lcpi/lib/structure/t_char_traits2.h>
-#include <lcpi/lib/structure/debug/assert_s.h>
 #include <lcpi/lib/common_utilities.h>
 
 #include <iterator> //std::iterator_traits

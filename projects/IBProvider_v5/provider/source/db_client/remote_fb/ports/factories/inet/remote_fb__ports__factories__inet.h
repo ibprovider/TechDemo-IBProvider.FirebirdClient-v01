@@ -183,10 +183,10 @@ class RemoteFB__PortFactory__INET LCPI_CPP_CFG__CLASS__FINAL
                         wstr_box_type const ucs2_port);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowErr__IncorrectFormatOfStringWithDbLocation();
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowErr__IncorrectFormatOfStringWithDbLocation__NoPort(wstr_box_type hostName);
 
  private:

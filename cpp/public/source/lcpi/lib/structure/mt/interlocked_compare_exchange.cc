@@ -4,8 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_compare_exchange_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_compare_exchange_CC_
 
-#include <lcpi/lib/structure/debug/assert.h>
-
 #include <type_traits>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{

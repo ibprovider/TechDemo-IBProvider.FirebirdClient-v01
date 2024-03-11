@@ -34,7 +34,7 @@ t_tree_avl_base<T,Compare,Allocator>::t_tree_avl_base(const value_compare& cmp)
 template<class T,class Compare,class Allocator>
 t_tree_avl_base<T,Compare,Allocator>::t_tree_avl_base(self_type&& x)
 {
- this->assign_rv(__STL_MOVE_VALUE(x));
+ this->assign_rv(LCPI_STL_MOVE_VALUE(x));
 }//t_tree_avl move
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -282,7 +282,7 @@ typename t_tree_avl_base<T,Compare,Allocator>::pair_type
   m_head
    =this->internal_alloc_node__from_value
      (pnode_type(),
-      __STL_FORWARD_VALUE(insert_value_type,rrvalue));
+      LCPI_STL_FORWARD_VALUE(insert_value_type,rrvalue));
 
   this->update_tree_balance(m_head);
 
@@ -307,7 +307,7 @@ typename t_tree_avl_base<T,Compare,Allocator>::pair_type
      new_node
       =this->internal_alloc_node__from_value
         (cur_node,
-         __STL_FORWARD_VALUE(insert_value_type,rrvalue));
+         LCPI_STL_FORWARD_VALUE(insert_value_type,rrvalue));
 
     assert(new_node->m_parent==cur_node);
 
@@ -333,7 +333,7 @@ typename t_tree_avl_base<T,Compare,Allocator>::pair_type
      new_node
       =this->internal_alloc_node__from_value
         (cur_node,
-         __STL_FORWARD_VALUE(insert_value_type,rrvalue));
+         LCPI_STL_FORWARD_VALUE(insert_value_type,rrvalue));
 
     assert(new_node->m_parent==cur_node);
 
@@ -364,7 +364,7 @@ typename t_tree_avl_base<T,Compare,Allocator>::pair_type
   m_head
    =this->internal_alloc_node__emplace
      (pnode_type(),
-      __STL_FORWARD_VALUE(Args,args)...);
+      LCPI_STL_FORWARD_VALUE(Args,args)...);
 
   assert(m_head);
 
@@ -379,7 +379,7 @@ typename t_tree_avl_base<T,Compare,Allocator>::pair_type
   new_node
    =this->internal_alloc_node__emplace
      (m_head,
-      __STL_FORWARD_VALUE(Args,args)...);
+      LCPI_STL_FORWARD_VALUE(Args,args)...);
 
  assert(new_node);
 

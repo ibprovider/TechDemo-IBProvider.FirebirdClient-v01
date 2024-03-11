@@ -108,7 +108,7 @@ class RemoteFB__ArraySliceDescr LCPI_CPP_CFG__CLASS__FINAL
   size_t GetMemorySize()const;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void Helper__ThrowErr__CantCalcElementCount()const;
 };//class RemoteFB__ArraySliceDescr
 

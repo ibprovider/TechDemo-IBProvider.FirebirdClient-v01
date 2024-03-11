@@ -10,13 +10,13 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PerfTimers
 
-class TTSO_PerfTimers
+class TTSO_PerfTimers LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TTSO_PerfTimers               self_type;
+  using self_type=TTSO_PerfTimers;
 
-  TTSO_PerfTimers(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_PerfTimers(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TTSO_PerfTimers();

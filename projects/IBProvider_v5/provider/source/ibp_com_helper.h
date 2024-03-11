@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup ibp
 //! \file    ibp_com_helper.h
-//! \brief   Реализация вспомогательного класса TIBP_ComModule::THelper
+//! \brief   Реализация вспомогательного класса IBP_ComModule::THelper
 //! \author  Kovalenko Dmitry
 //! \date    07.05.2009
 #ifndef _ibp_com_helper_H_
@@ -15,12 +15,12 @@ namespace lcpi{namespace ibp{
 //! \addtogroup ibp
 //! @{
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule::THelper
+//class IBP_ComModule::THelper
 
-class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
+class IBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef THelper                               self_type;
+  using self_type=THelper;
 
  public: //Управление собственными кучами провайдера ---------------------
   static bool InitHeaps();
@@ -107,7 +107,7 @@ class TIBP_ComModule::THelper LCPI_CPP_CFG__CLASS__FINAL
  #ifdef _PROCESS_DEBUG_MESSAGE_
   static void Helper__ReadFlushLogFilePeriod();
  #endif
-};//class TIBP_ComModule::THelper
+};//class IBP_ComModule::THelper
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

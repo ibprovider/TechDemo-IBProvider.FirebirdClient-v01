@@ -192,7 +192,7 @@ void RemoteFB__API_P12__CreateBlob::exec(RemoteFB__ConnectorData* const pData,
  (*pTrHandle)->BlobList__Add(NewBlobHandle); //no throw
 
  // возвращаем дескриптор вызывающей стороне
- (*pBlobHandle)=__STL_MOVE_VALUE(NewBlobHandle);
+ (*pBlobHandle)=LCPI_STL_MOVE_VALUE(NewBlobHandle);
 
  assert(*pBlobHandle);
 

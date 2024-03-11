@@ -7,12 +7,9 @@
 #ifndef _ibp_error_codes_H_
 #define _ibp_error_codes_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
-#include <structure/t_common.h>
 #include "rc/ibp_msg_err_ids.rh"
+
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -492,7 +489,18 @@ enum ibp_msg_code_type
  ibp_mce_common__prop_value_is_not_supported_by_current_connection_3
   =IBP_MCE_COMMON__PROP_VALUE_IS_NOT_SUPPORTED_BY_CURRENT_CONNECTION_3,
 
- ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+ /// \brief
+ ///  Unsupported blob send mode.<br>
+ /// \b
+ ///  Params: mode, dbms sign
+ /// \note
+ ///  There is needed to define subsystem id.
+ ibp_mce_common__unsupported_blob_send_mode_2
+  =IBP_MCE_COMMON__UNSUPPORTED_BLOB_SEND_MODE_2,
+
+///////////////////////////////////////////////////////////////////////////////
 
  /// \brief
  ///  [BUG CHECK] Сервис не поддерживается.<br>

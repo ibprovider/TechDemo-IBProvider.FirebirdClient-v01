@@ -4,7 +4,7 @@
 #ifndef _t_pointer_cast_H_
 #define _t_pointer_cast_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

@@ -20,7 +20,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 /// <summary>
 ///  Интерфейс потока мультибайтных символов
 /// </summary>
-class t_db_text_stream__mbc:public t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_text_stream__mbc:public t_db_smart_interface
 {
  public: //typedefs ------------------------------------------------------
   typedef size_t                            size_type;
@@ -30,6 +30,7 @@ class t_db_text_stream__mbc:public t_db_smart_interface
   /// <summary>
   ///  Чтение символов
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  mbc_buffer_size
   //! \param[out] mbc_buffer
   //! \param[out] cch_readed
@@ -40,9 +41,10 @@ class t_db_text_stream__mbc:public t_db_smart_interface
   //!
   //! \note
   //!  Если буфер заполнился не до конца, то считается что достигнут EOF
-  virtual t_db_cs_result read_mbc(size_type  mbc_buffer_size,
-                                  char*      mbc_buffer,
-                                  size_type* cch_readed)=0;
+  virtual t_db_cs_result read_mbc(t_db_operation_context& op_ctx,
+                                  size_type               mbc_buffer_size,
+                                  char*                   mbc_buffer,
+                                  size_type*              cch_readed)=0;
 };//class t_db_text_stream__mbc
 
 ////////////////////////////////////////////////////////////////////////////////

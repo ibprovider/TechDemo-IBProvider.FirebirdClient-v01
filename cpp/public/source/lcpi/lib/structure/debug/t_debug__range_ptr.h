@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_debug__t_debug__range_ptr_H_
 #define _cpp_public_lcpi_lib_structure_debug__t_debug__range_ptr_H_
 
-#include <lcpi/lib/structure/debug/assert.h>
+#include <lcpi/lib/.config.h>
 #include <iterator>
 #include <type_traits>
 #include <limits>

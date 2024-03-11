@@ -82,7 +82,39 @@ class IBP_BufferView<const T> LCPI_CPP_CFG__CLASS__FINAL
   const T* m_pData;
 
   size_t m_Size;
-};//class IBP_BufferView<const TVector>
+};//class IBP_BufferView<const T>
+
+////////////////////////////////////////////////////////////////////////////////
+//class IBP_BufferView
+
+template<>
+class IBP_BufferView<void> LCPI_CPP_CFG__CLASS__FINAL
+{
+ private:
+  using self_type=IBP_BufferView;
+
+ public:
+  IBP_BufferView();
+
+  IBP_BufferView(const self_type&)=default;
+
+  IBP_BufferView(std::nullptr_t);
+
+  IBP_BufferView(size_t n,void* ptr);
+
+  self_type& operator = (const self_type&)=default;
+
+  size_t size()const;
+
+  bool empty()const;
+
+  void* data()const;
+
+ private:
+  void* m_pData;
+
+  size_t m_Size;
+};//class IBP_BufferView<void>
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp*/}/*nms lcpi*/

@@ -233,7 +233,7 @@ class t_basic_root_log__printer
 
   typedef structure::t_str_parameter<char_type>   str_arg_type;
 
-  typedef __STL_DEF_BASIC_STRING(char_type)       string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)    string_type;
 
  public:
   t_basic_root_log__printer(log_stream_type*    stream,

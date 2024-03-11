@@ -24,7 +24,7 @@ void t_ibp_error__com_module_is_shutdown::throw_error()
 }//throw_error
 
 //std::exception interface -----------------------------------------------
-const char* t_ibp_error__com_module_is_shutdown::what()const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_ibp_error__com_module_is_shutdown::what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return "IBProvider module is in shutdown state.";
 }//what

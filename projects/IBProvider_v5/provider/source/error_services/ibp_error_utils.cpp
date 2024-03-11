@@ -16,7 +16,7 @@
 
 #include <win32lib/win32_error.h>
 
-#include <structure/utilities/string/string_is_null_or_empty.h>
+#include <lcpi/lib/structure/utilities/string/string_is_null_or_empty.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -239,7 +239,7 @@ void IBP_ThrowInitPropCantProcessCurrentDBClient_I4
 void IBP_ThrowCantConvertCnPropToUTF8(t_ibp_subsystem_id const subsystem_id,
                                       const wchar_t*     const prop_name)
 {
- assert(!structure::string_is_null_or_empty(prop_name));
+ assert(!lib::structure::string_is_null_or_empty(prop_name));
 
  IBP_ErrorUtils::Throw__Error
   (E_FAIL,
@@ -538,11 +538,11 @@ void IBP_ThrowOverflowInMemSizeCalculation(const wchar_t* const place,
  assert(place);
  assert(point);
 
- t_ibp_error exc(E_FAIL,ibp_mce_common__overflow_in_mem_size_calculation_2);
-
- exc<<place<<point;
-
- exc.raise_me();
+ IBP_ErrorUtils::Throw__Error
+  (E_FAIL,
+   ibp_mce_common__overflow_in_mem_size_calculation_2,
+   place,
+   point);
 }//IBP_ThrowOverflowInMemSizeCalculation
 
 ////////////////////////////////////////////////////////////////////////////////

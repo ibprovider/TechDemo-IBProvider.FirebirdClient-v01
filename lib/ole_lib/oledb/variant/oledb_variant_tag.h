@@ -4,10 +4,6 @@
 #ifndef _oledb_variant_tag_
 #define _oledb_variant_tag_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <ole_lib/oledb/oledb_datatypes.h>
 
 namespace oledb_lib{

@@ -31,8 +31,8 @@ template<class charT,class Allocator>
 inline t_basic_parameter_list<charT,Allocator>::tag_item::tag_item
                                                    (string_type&& n,
                                                     string_type&& v)
- :m_name   (__STL_MOVE_VALUE(n))
- ,m_value  (__STL_MOVE_VALUE(v))
+ :m_name   (LCPI_STL_MOVE_VALUE(n))
+ ,m_value  (LCPI_STL_MOVE_VALUE(v))
 {;}
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -52,8 +52,8 @@ inline t_basic_parameter_list<charT,Allocator>::tag_item::tag_item
 template<class charT,class Allocator>
 inline t_basic_parameter_list<charT,Allocator>::tag_item::tag_item
                                                    (self_type&& x)
- :m_name  (__STL_MOVE_VALUE(x.m_name))
- ,m_value (__STL_MOVE_VALUE(x.m_value))
+ :m_name  (LCPI_STL_MOVE_VALUE(x.m_name))
+ ,m_value (LCPI_STL_MOVE_VALUE(x.m_value))
 {;}
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -82,7 +82,7 @@ template<class charT,class Allocator>
 inline typename t_basic_parameter_list<charT,Allocator>::tag_item&
  t_basic_parameter_list<charT,Allocator>::tag_item::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 
@@ -284,9 +284,9 @@ void
    ++pos;
   }//if
 
-  item_type newItem(__STL_MOVE_VALUE(name),__STL_MOVE_VALUE(value));
+  item_type newItem(LCPI_STL_MOVE_VALUE(name),LCPI_STL_MOVE_VALUE(value));
 
-  if(!items.insert(__STL_MOVE_VALUE(newItem)).second)
+  if(!items.insert(LCPI_STL_MOVE_VALUE(newItem)).second)
    internal::throw_error::parameter_list__duplicate_param(newItem.name());
  }//while pos
 

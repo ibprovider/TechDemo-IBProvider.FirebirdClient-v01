@@ -12,12 +12,12 @@ namespace lcpi{namespace ibp_tests{
 //class tag_tso_tracer_data_or_na
 
 template<class TData>
-class tag_tso_tracer_data_or_na
+class tag_tso_tracer_data_or_na LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_tso_tracer_data_or_na<TData>      self_type;
+  using self_type=tag_tso_tracer_data_or_na<TData>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_tso_tracer_data_or_na(bool ok,const TData& data)

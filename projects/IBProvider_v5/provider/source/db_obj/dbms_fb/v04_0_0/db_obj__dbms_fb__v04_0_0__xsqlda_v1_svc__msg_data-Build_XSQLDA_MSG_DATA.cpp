@@ -619,12 +619,6 @@ size_t fb_v04_0_0__xsqlda_v1_svc__msg_data::Helper__Build_XSQLDA_MSG_DATA__FillB
 
    const size_t block_length=sizeof(isc_api::isc_varchar_size_type)+xvar_sqllen;
 
-   assert(pXSQLVAR->sqldata!=nullptr);
-
-   CHECK_READ_PTR(pXSQLVAR->sqldata,block_length);
-
-   assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%sizeof(isc_api::isc_varchar_size_type))==0);
-
    //--------------------------------------
    assert(offset<=DataBuffer.size());
 
@@ -644,6 +638,12 @@ size_t fb_v04_0_0__xsqlda_v1_svc__msg_data::Helper__Build_XSQLDA_MSG_DATA__FillB
    //--------------------------------------
    if(!IsNull)
    {
+    assert(pXSQLVAR->sqldata!=nullptr);
+
+    CHECK_READ_PTR(pXSQLVAR->sqldata,sizeof(isc_api::isc_varchar_size_type));
+
+    assert((reinterpret_cast<size_t>(pXSQLVAR->sqldata)%sizeof(isc_api::isc_varchar_size_type))==0);
+
     const isc_api::isc_varchar_size_type
      varchar_size
       =*reinterpret_cast<const isc_api::isc_varchar_size_type*>(pXSQLVAR->sqldata);
@@ -677,7 +677,11 @@ size_t fb_v04_0_0__xsqlda_v1_svc__msg_data::Helper__Build_XSQLDA_MSG_DATA__FillB
        xvar_sqllen);
     }//if
 
-    memcpy(DataBuffer.ptr_at(offset),pXSQLVAR->sqldata,sizeof(isc_api::isc_varchar_size_type)+varchar_size);
+    const size_t cb=sizeof(isc_api::isc_varchar_size_type)+varchar_size;
+
+    CHECK_READ_PTR(pXSQLVAR->sqldata,cb);
+
+    memcpy(DataBuffer.ptr_at(offset),pXSQLVAR->sqldata,cb);
    }//if
 
    offset+=block_length;

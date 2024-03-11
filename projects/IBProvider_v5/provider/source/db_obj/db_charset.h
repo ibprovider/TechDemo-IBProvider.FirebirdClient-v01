@@ -11,7 +11,8 @@
 #include "source/db_obj/db_text_stream__mbc.h"
 #include "source/db_obj/db_text_stream__ucs2.h"
 #include <structure/stream/t_istream_buffer.h>
-#include <structure/utilities/string/string_compare_v2.h>
+
+#include <lcpi/lib/structure/utilities/string/string_compare_v2.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{
 ////////////////////////////////////////////////////////////////////////////////
@@ -123,11 +124,13 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_charset
   /// <summary>
   ///  Переконвертация UNICODE-строки с сохранением результата в BLOB
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  source
   //! \param[in]  source_size
   //! \param[in]  writer
   //!  Not NULL
-  virtual bool unicode_to_blob(const wchar_t*          source,
+  virtual bool unicode_to_blob(t_db_operation_context& op_ctx,
+                               const wchar_t*          source,
                                size_type               source_size,
                                t_db_seq_stream_writer* writer)const=0;
 };//class t_db_charset
@@ -172,7 +175,7 @@ class t_db_charset::tag_less_by_name
  private:
   static bool helper__less(const cs_name_box_type& n1,const cs_name_box_type& n2)
   {
-   return structure::string_compare_v2
+   return lib::structure::string_compare_v2
            (n1.data(),
             n1.size(),
             n2.data(),

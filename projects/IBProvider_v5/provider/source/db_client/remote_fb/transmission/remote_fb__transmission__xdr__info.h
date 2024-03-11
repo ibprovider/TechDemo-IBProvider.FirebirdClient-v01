@@ -7,7 +7,7 @@
 #ifndef _remote_fb__transmission__xdr__info_H_
 #define _remote_fb__transmission__xdr__info_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{
 ////////////////////////////////////////////////////////////////////////////////

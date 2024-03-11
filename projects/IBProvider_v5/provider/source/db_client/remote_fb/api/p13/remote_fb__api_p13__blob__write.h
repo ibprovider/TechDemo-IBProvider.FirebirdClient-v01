@@ -44,6 +44,8 @@ class RemoteFB__API_P13__WriteBlob LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Запись данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
+  //!  The operation context.
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobHandle
@@ -52,10 +54,11 @@ class RemoteFB__API_P13__WriteBlob LCPI_CPP_CFG__CLASS__FINAL
   //!  Размер буфера
   //! \param[out] pvBuffer
   //!  Буфер с данными
-  virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle,
-                    size_t                   cbBuffer,
-                    const void*              pvBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual void exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle,
+                    size_t                          cbBuffer,
+                    const void*                     pvBuffer)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P13__WriteBlob
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -4,22 +4,23 @@
 #ifndef _t_tso_timer_H_
 #define _t_tso_timer_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
+#include <string>
 
 namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_tso_real_timer
 
-class t_tso_real_timer
+class t_tso_real_timer LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_tso_real_timer                  self_type;
+  using self_type=t_tso_real_timer;
   
-  t_tso_real_timer(const self_type&);
-  self_type& operator = (self_type&);
+  t_tso_real_timer(const self_type&)=delete;
+  self_type& operator = (self_type&)=delete;
  
  public: //typedefs ------------------------------------------------------
-  typedef __int64                           value_type;
+  using value_type=__int64;
  
  public:
   t_tso_real_timer();

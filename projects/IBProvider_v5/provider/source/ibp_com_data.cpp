@@ -13,13 +13,13 @@
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule::TData
+//class IBP_ComModule::TData
 
 #ifdef _PROCESS_DEBUG_MESSAGE_
-LONG TIBP_ComModule::TData::sm_FlushLogFilePeriod=0;
+LONG IBP_ComModule::TData::sm_FlushLogFilePeriod=0;
 #endif
 
-TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
+IBP_ComModule::TData::TData(HINSTANCE const hInstance)
  :m_ComApiID(GUID_NULL)
  ,m_ModulePath(win32lib::GetModuleFileName(hInstance))
  ,m_module_lock_count_guard()
@@ -41,7 +41,7 @@ TIBP_ComModule::TData::TData(HINSTANCE const hInstance)
 }//TData
 
 //------------------------------------------------------------------------
-TIBP_ComModule::TData::~TData()
+IBP_ComModule::TData::~TData()
 {
  assert_msg
   (m_module_lock_count==0,
@@ -66,7 +66,7 @@ TIBP_ComModule::TData::~TData()
 #define IBP__BUILD_PRIVATE_CLSID(a,b,c,d,e) IBP__BUILD_PRIVATE_CLSID1(a,b,c,d,e)
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProvider__private()
+REFCLSID IBP_ComModule::TData::Get_CLSID_IBProvider__private()
 {
 return IBP__BUILD_PRIVATE_CLSID
    (ibprovider::CLSID_IBProvider__private__,
@@ -77,7 +77,7 @@ return IBP__BUILD_PRIVATE_CLSID
 }//Get_CLSID_IBProvider__private
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProviderErrorLookup__private()
+REFCLSID IBP_ComModule::TData::Get_CLSID_IBProviderErrorLookup__private()
 {
 return IBP__BUILD_PRIVATE_CLSID
    (ibprovider::CLSID_IBProviderErrorLookup__private__,
@@ -88,7 +88,7 @@ return IBP__BUILD_PRIVATE_CLSID
 }//Get_CLSID_IBProviderErrorLookup__private
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProviderDataLinkPropPage__private()
+REFCLSID IBP_ComModule::TData::Get_CLSID_IBProviderDataLinkPropPage__private()
 {
 return IBP__BUILD_PRIVATE_CLSID
    (ibprovider::CLSID_IBProviderDataLinkPropPage__private__,
@@ -99,7 +99,7 @@ return IBP__BUILD_PRIVATE_CLSID
 }//Get_CLSID_IBProviderDataLinkPropPage__private
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::TData::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
+REFCLSID IBP_ComModule::TData::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
 {
 return IBP__BUILD_PRIVATE_CLSID
    (ibprovider::CLSID_IBProviderDataLinkAdvPropPage__private__,

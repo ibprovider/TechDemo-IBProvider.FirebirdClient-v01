@@ -23,7 +23,7 @@ class WORK_StmtFetch_M__101__Failed::tag_impl LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
   tag_impl(const self_type&);
   self_type& operator = (const self_type&);
@@ -67,8 +67,8 @@ WORK_StmtFetch_M__101__Failed::tag_impl::tag_impl
                                             size_t              const cBlocks,
                                             int                 const cRows,
                                             size_t              const cPass)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
  ,m_cBlocks(cBlocks)
  ,m_cRows(cRows)
@@ -491,7 +491,7 @@ void WORK_StmtFetch_M__101__Failed::create(TTSO_PushTest*      const pTestPusher
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new tag_impl
         (pParams,
          ftestID.c_str(),

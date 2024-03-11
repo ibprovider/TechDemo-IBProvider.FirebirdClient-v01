@@ -4,7 +4,7 @@
 #ifndef _digit_lib_H_
 #define _digit_lib_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

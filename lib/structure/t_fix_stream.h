@@ -7,7 +7,7 @@
 #ifndef _t_fix_stream_H_
 #define _t_fix_stream_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 #include <ostream>
 #include <istream>
 

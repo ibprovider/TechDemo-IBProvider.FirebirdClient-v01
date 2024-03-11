@@ -181,7 +181,7 @@ inline void
  t_allocator_interface<Allocator,T>::construct(pointer const p,
                                                Args&&...     args)
 {
- __generic_construct(p,__STL_FORWARD_VALUE(Args,args)...);
+ __generic_construct(p,LCPI_STL_FORWARD_VALUE(Args,args)...);
 }//construct
 
 //------------------------------------------------------------------------

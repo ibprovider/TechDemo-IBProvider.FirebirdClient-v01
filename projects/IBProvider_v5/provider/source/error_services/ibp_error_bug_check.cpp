@@ -284,7 +284,7 @@ void IBP_ThrowBugCheck_UnknownSqlParserScope(const wchar_t*              const p
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowBugCheck_FailedToTranslateDbNumericIntoWStr
             (const wchar_t* const place,
              const wchar_t* const point)

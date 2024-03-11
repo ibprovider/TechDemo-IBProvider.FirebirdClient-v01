@@ -4,18 +4,12 @@
 #ifndef _lcpi_lib_structure_stl__t_stl_vector_H_
 #define _lcpi_lib_structure_stl__t_stl_vector_H_
 
-#include <vector>
+#include <lcpi/lib/structure/stl/t_stl_vector.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 
-//Helper structure to overcome C++17 requirements
-
-template<class T,class allocator>
-using t_stl_vector
- =std::vector
-   <T,
-    typename allocator::template rebind<T>::other>;
+using namespace ::lcpi::lib::structure;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure

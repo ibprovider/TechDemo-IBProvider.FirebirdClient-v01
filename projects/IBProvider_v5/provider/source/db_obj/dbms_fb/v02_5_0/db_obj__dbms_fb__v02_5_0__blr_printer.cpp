@@ -11,9 +11,10 @@
 #include "source/error_services/ibp_error_utils.h"
 #include "source/error_services/ibp_error.h"
 
-#include <structure/utilities/string/trim.h>
-#include <structure/utilities/string/string_length.h>
 #include <structure/t_value_with_null.h>
+
+#include <lcpi/lib/structure/utilities/string/trim.h>
+#include <lcpi/lib/structure/utilities/string/string_length.h>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v02_5_0{
 ////////////////////////////////////////////////////////////////////////////////
@@ -551,13 +552,13 @@ const fb_v02_5_0__blr_printer::FB_TEXT* const fb_v02_5_0__blr_printer::sm_sub_co
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_v02_5_0__blr_printer::tag_blr_reader
 
-class fb_v02_5_0__blr_printer::tag_blr_reader
+class fb_v02_5_0__blr_printer::tag_blr_reader LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_blr_reader                    self_type;
+  using self_type=tag_blr_reader;
 
-  tag_blr_reader(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_blr_reader(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_blr_reader(size_t          szBlr,
@@ -590,8 +591,8 @@ class fb_v02_5_0__blr_printer::tag_blr_reader
  #endif
 
   void helper__throw_error__unexpected_end_of_buffer
-                                           (const wchar_t* place,
-                                            const wchar_t* point)const;
+        (const wchar_t* place,
+         const wchar_t* point)const;
 
  private:
   const FB_UCHAR* const m_pBeg;
@@ -664,8 +665,9 @@ fb_v02_5_0__blr_printer::FB_UCHAR
  {
   //ERROR - [BUG CHECK] buffer too small
 
-  helper__throw_error__unexpected_end_of_buffer(c_bugcheck_src,
-                                                L"#001");
+  self_type::helper__throw_error__unexpected_end_of_buffer
+   (c_bugcheck_src,
+    L"#001");
  }//if
 
  return *m_pPos;
@@ -684,8 +686,9 @@ fb_v02_5_0__blr_printer::FB_USHORT
  {
   //ERROR - [BUG CHECK] buffer too small
 
-  helper__throw_error__unexpected_end_of_buffer(c_bugcheck_src,
-                                                L"#001");
+  self_type::helper__throw_error__unexpected_end_of_buffer
+   (c_bugcheck_src,
+    L"#001");
  }//if
 
  assert_s(sizeof(FB_USHORT)==2);
@@ -710,8 +713,9 @@ fb_v02_5_0__blr_printer::FB_UCHAR
  {
   //ERROR - [BUG CHECK] buffer too small
 
-  helper__throw_error__unexpected_end_of_buffer(c_bugcheck_src,
-                                                L"#001");
+  self_type::helper__throw_error__unexpected_end_of_buffer
+   (c_bugcheck_src,
+    L"#001");
  }//if
 
  const FB_UCHAR byte=m_pPos[0];
@@ -734,8 +738,9 @@ fb_v02_5_0__blr_printer::FB_USHORT
  {
   //ERROR - [BUG CHECK] buffer too small
 
-  helper__throw_error__unexpected_end_of_buffer(c_bugcheck_src,
-                                                L"#001");
+  self_type::helper__throw_error__unexpected_end_of_buffer
+   (c_bugcheck_src,
+    L"#001");
  }//if
 
  assert_s(sizeof(FB_USHORT)==2);
@@ -778,13 +783,13 @@ void fb_v02_5_0__blr_printer::tag_blr_reader::helper__throw_error__unexpected_en
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_v02_5_0__blr_printer::tag_context
 
-class fb_v02_5_0__blr_printer::tag_context
+class fb_v02_5_0__blr_printer::tag_context LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_context                       self_type;
+  using self_type=tag_context;
 
-  tag_context(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_context(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   blr_reader_type&             m_blr_reader;
@@ -821,7 +826,8 @@ fb_v02_5_0__blr_printer::tag_context::tag_context
 
 //------------------------------------------------------------------------
 fb_v02_5_0__blr_printer::tag_context::~tag_context()
-{;}
+{
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_v02_5_0__blr_printer
@@ -845,20 +851,20 @@ void fb_v02_5_0__blr_printer::exec(const FB_UCHAR*        const blr,
  switch(const FB_UCHAR version=ctx.m_blr_reader.getByte())
  {
   case blr_code_type::c_version4:
-   helper__format(ctx, "blr_version4,");
+   self_type::helper__format(ctx, "blr_version4,");
    break;
 
   case blr_code_type::c_version5:
-   helper__format(ctx, "blr_version5,");
+   self_type::helper__format(ctx, "blr_version5,");
    break;
 
   default:
-   helper__throw_error__unk_blr_version(ctx, version);
+   self_type::helper__throw_error__unk_blr_version(ctx, version);
  }//switch version
 
- helper__print_line(ctx, /*offset*/0);
+ self_type::helper__print_line(ctx, /*offset*/0);
 
- helper__print_verb(ctx, /*level*/0);
+ self_type::helper__print_verb(ctx, /*level*/0);
 
  const size_t offset=ctx.m_blr_reader.getOffset();
 
@@ -866,14 +872,14 @@ void fb_v02_5_0__blr_printer::exec(const FB_UCHAR*        const blr,
  {
   case blr_code_type::c_eoc:
   {
-   helper__format(ctx, "blr_eoc");
-   helper__print_line(ctx, offset);
+   self_type::helper__format(ctx, "blr_eoc");
+   self_type::helper__print_line(ctx, offset);
    break;
   }//case
 
   default:
   {
-   helper__throw_error__unk_command_end(ctx, eoc);
+   self_type::helper__throw_error__unk_command_end(ctx, eoc);
   }//default
  }//switch
 }//exec
@@ -884,20 +890,20 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 {
  size_t offset=ctx.m_blr_reader.getOffset();
 
- helper__indent(ctx, level);
+ self_type::helper__indent(ctx, level);
 
  const FB_UCHAR blr_operator1=ctx.m_blr_reader.getByte();
 
  if(blr_operator1==blr_code_type::c_end)
  {
-  helper__format(ctx, "blr_end, ");
+  self_type::helper__format(ctx, "blr_end, ");
 
-  helper__print_line(ctx, offset);
+  self_type::helper__print_line(ctx, offset);
 
   return;
  }//if
 
- helper__print_blr(ctx, blr_operator1);
+ self_type::helper__print_blr(ctx, blr_operator1);
 
  ++level;
 
@@ -920,14 +926,14 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    //---------------------------------------------------------------------
    case op_verb:
    {
-    helper__print_verb(ctx, level);
+    self_type::helper__print_verb(ctx, level);
     break;
    }//op_verb
 
    //---------------------------------------------------------------------
    case op_line:
    {
-    offset=helper__print_line(ctx, offset);
+    offset=self_type::helper__print_line(ctx, offset);
     break;
    }//op_line
 
@@ -936,7 +942,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     //assert(nn1.null());
 
-    nn1=helper__print_byte(ctx);
+    nn1=self_type::helper__print_byte(ctx);
 
     break;
    }//op_byte
@@ -946,12 +952,12 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     //assert(nn1.null());
 
-    nn1=helper__print_byte(ctx);
+    nn1=self_type::helper__print_byte(ctx);
 
-    helper__print_line(ctx, offset);
+    self_type::helper__print_line(ctx, offset);
 
     if(nn1 DEBUG_CODE(.value()) !=0)
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
 
     break;
    }//op_byte_opt_verb
@@ -961,7 +967,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     //assert(nn1.null());
 
-    nn1=helper__print_word(ctx);
+    nn1=self_type::helper__print_word(ctx);
 
     break;
    }//op_word
@@ -978,7 +984,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     //assert(nn1.null());
 
-    nn1=helper__print_dtype(ctx);
+    nn1=self_type::helper__print_dtype(ctx);
 
     break;
    }//op_dtype
@@ -990,7 +996,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__print_char(ctx);
+     self_type::helper__print_char(ctx);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1001,7 +1007,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    //---------------------------------------------------------------------
    case op_join:
    {
-    helper__print_join(ctx);
+    self_type::helper__print_join(ctx);
     break;
    }//op_join
 
@@ -1012,11 +1018,11 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__indent(ctx, level);
+     self_type::helper__indent(ctx, level);
 
-     helper__print_dtype(ctx);
+     self_type::helper__print_dtype(ctx);
 
-     offset=helper__print_line(ctx, offset);
+     offset=self_type::helper__print_line(ctx, offset);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1031,7 +1037,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__print_verb(ctx, level+1);
+     self_type::helper__print_verb(ctx, level+1);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1046,11 +1052,11 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__indent(ctx, level);
+     self_type::helper__indent(ctx, level);
 
-     helper__print_cond(ctx);
+     self_type::helper__print_cond(ctx);
 
-     offset=helper__print_line(ctx, offset);
+     offset=self_type::helper__print_line(ctx, offset);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1061,14 +1067,14 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    //---------------------------------------------------------------------
    case op_set_error:
    {
-    helper__print_cond(ctx);
+    self_type::helper__print_cond(ctx);
     break;
    }//op_set_error
 
    //---------------------------------------------------------------------
    case op_indent:
    {
-    helper__indent(ctx, level);
+    self_type::helper__indent(ctx, level);
     break;
    }//op_indent
 
@@ -1077,7 +1083,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     while(ctx.m_blr_reader.peekByte()!=blr_code_type::c_end)
     {
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }//while
 
     break;
@@ -1090,13 +1096,13 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__indent(ctx, level);
+     self_type::helper__indent(ctx, level);
 
-     helper__print_word(ctx);
+     self_type::helper__print_word(ctx);
 
-     offset=helper__print_line(ctx, offset);
+     offset=self_type::helper__print_line(ctx, offset);
 
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1111,7 +1117,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }
 
     DEBUG_CODE(nn1.reset();)
@@ -1126,14 +1132,14 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__indent(ctx, level);
+     self_type::helper__indent(ctx, level);
 
-     for(unsigned n2=helper__print_byte(ctx);n2>0;--n2)
+     for(unsigned n2=self_type::helper__print_byte(ctx);n2>0;--n2)
      {
-      helper__print_char(ctx);
+      self_type::helper__print_char(ctx);
      }
 
-     offset=helper__print_line(ctx,offset);
+     offset=self_type::helper__print_line(ctx,offset);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1148,9 +1154,9 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
 
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1163,7 +1169,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    {
     const FB_UCHAR blr_operator2 = ctx.m_blr_reader.getByte();
 
-    helper__print_blr(ctx, blr_operator2);
+    self_type::helper__print_blr(ctx, blr_operator2);
 
     // Strange message. Notice that blr_lock_relation was part of PC_ENGINE.
 
@@ -1171,9 +1177,9 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
     {
      case blr_code_type::c_relation:
      {
-      for(unsigned n2=helper__print_byte(ctx);n2>0;--n2)
+      for(unsigned n2=self_type::helper__print_byte(ctx);n2>0;--n2)
       {
-       helper__print_char(ctx);
+       self_type::helper__print_char(ctx);
       }
 
       break;
@@ -1181,14 +1187,14 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
      case blr_code_type::c_rid:
      {
-      helper__print_word(ctx);
+      self_type::helper__print_word(ctx);
 
       break;
      }//case - rid
 
      default:
      {
-      helper__throw_error__unk_relation_type(ctx,blr_operator2);
+      self_type::helper__throw_error__unk_relation_type(ctx,blr_operator2);
      }//default
     }//switch
 
@@ -1198,18 +1204,18 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    //---------------------------------------------------------------------
    case op_exec_into:
    {
-    helper__print_verb(ctx, level);
+    self_type::helper__print_verb(ctx, level);
 
-    if(!helper__print_byte(ctx))
+    if(!self_type::helper__print_byte(ctx))
     {
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }
 
     assert(!nn1.null());
 
     for(;nn1 DEBUG_CODE(.value())>0;--nn1 DEBUG_CODE(.value()))
     {
-     helper__print_verb(ctx, level);
+     self_type::helper__print_verb(ctx, level);
     }//for
 
     DEBUG_CODE(nn1.reset();)
@@ -1220,7 +1226,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
    //---------------------------------------------------------------------
    case op_exec_stmt:
    {
-    offset=helper__print_line(ctx, offset);
+    offset=self_type::helper__print_line(ctx, offset);
 
 #ifdef NDEBUG
     unsigned inputs1  = 0;
@@ -1237,17 +1243,17 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
      if(blr_operator2==blr_code_type::c_end)
       break;
 
-     helper__indent(ctx, level);
+     self_type::helper__indent(ctx, level);
 
      if(!(blr_operator2<_DIM_(sm_sub_codes)))
-      helper__throw_error__unk_blr_code(ctx,blr_operator2);
+      self_type::helper__throw_error__unk_blr_code(ctx,blr_operator2);
 
      assert(blr_operator2<_DIM_(sm_sub_codes));
 
      if(sm_sub_codes[blr_operator2]==nullptr)
-      helper__throw_error__unk_blr_code(ctx,blr_operator2);
+      self_type::helper__throw_error__unk_blr_code(ctx,blr_operator2);
 
-     helper__format(ctx, sm_sub_codes[blr_operator2]);
+     self_type::helper__format(ctx, sm_sub_codes[blr_operator2]);
 
      switch (blr_operator2)
      {
@@ -1255,8 +1261,8 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
       {
        assert(inputs1.null());
 
-       inputs1 = helper__print_word(ctx);
-       offset  = helper__print_line(ctx, offset);
+       inputs1 = self_type::helper__print_word(ctx);
+       offset  = self_type::helper__print_line(ctx, offset);
 
        break;
       }//case
@@ -1265,8 +1271,8 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
       {
        assert(outputs1.null());
 
-       outputs1 = helper__print_word(ctx);
-       offset   = helper__print_line(ctx, offset);
+       outputs1 = self_type::helper__print_word(ctx);
+       offset   = self_type::helper__print_line(ctx, offset);
 
        break;
       }//case
@@ -1278,9 +1284,9 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
       case blr_code_type::c_exec_stmt_pwd:
       case blr_code_type::c_exec_stmt_role:
       {
-       offset = helper__print_line(ctx, offset);
+       offset = self_type::helper__print_line(ctx, offset);
 
-       helper__print_verb(ctx, level+1);
+       self_type::helper__print_verb(ctx, level+1);
 
        break;
       }//case
@@ -1288,23 +1294,23 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
       // case blr_exec_stmt_tran:
       case blr_code_type::c_exec_stmt_tran_clone:
       {
-       helper__print_byte(ctx);
+       self_type::helper__print_byte(ctx);
 
-       offset = helper__print_line(ctx, offset);
+       offset = self_type::helper__print_line(ctx, offset);
 
        break;
       }//case
 
       case blr_code_type::c_exec_stmt_privs:
       {
-       offset = helper__print_line(ctx, offset);
+       offset = self_type::helper__print_line(ctx, offset);
 
        break;
       }//case
 
       case blr_code_type::c_exec_stmt_in_params:
       {
-       offset=helper__print_line(ctx, offset);
+       offset=self_type::helper__print_line(ctx, offset);
 
        //! \todo
        //!  MAKE AS BUG CHECK?
@@ -1312,9 +1318,9 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
        for(;inputs1 DEBUG_CODE(.value())>0;--inputs1 DEBUG_CODE(.value()))
        {
-        helper__print_verb(ctx, level+1);     // param expression
+        self_type::helper__print_verb(ctx, level+1);     // param expression
 
-        offset=helper__print_line(ctx, offset);
+        offset=self_type::helper__print_line(ctx, offset);
        }//for
 
        DEBUG_CODE(inputs1.reset();)
@@ -1324,7 +1330,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
       case blr_code_type::c_exec_stmt_in_params2:
       {
-       offset = helper__print_line(ctx, offset);
+       offset = self_type::helper__print_line(ctx, offset);
 
        //! \todo
        //!  MAKE AS BUG CHECK?
@@ -1333,18 +1339,18 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
        for(;inputs1 DEBUG_CODE(.value())>0;--inputs1 DEBUG_CODE(.value()))
        {
         // input param name
-        helper__indent(ctx, level+1);
+        self_type::helper__indent(ctx, level+1);
 
-        for(FB_UCHAR len=helper__print_byte(ctx);len>0;--len)
+        for(FB_UCHAR len=self_type::helper__print_byte(ctx);len>0;--len)
         {
-         helper__print_char(ctx);
+         self_type::helper__print_char(ctx);
         }
 
-        offset=helper__print_line(ctx, offset);
+        offset=self_type::helper__print_line(ctx, offset);
 
-        helper__print_verb(ctx, level+1);     // param expression
+        self_type::helper__print_verb(ctx, level+1);     // param expression
 
-        offset=helper__print_line(ctx, offset);
+        offset=self_type::helper__print_line(ctx, offset);
        }//for
 
        DEBUG_CODE(inputs1.reset();)
@@ -1354,7 +1360,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
       case blr_code_type::c_exec_stmt_out_params:
       {
-       offset=helper__print_line(ctx, offset);
+       offset=self_type::helper__print_line(ctx, offset);
 
        //! \todo
        //!  MAKE AS BUG CHECK?
@@ -1362,9 +1368,9 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
        for(;outputs1 DEBUG_CODE(.value())>0;--outputs1 DEBUG_CODE(.value()))
        {
-        helper__print_verb(ctx, level+1);     // param expression
+        self_type::helper__print_verb(ctx, level+1);     // param expression
 
-        offset=helper__print_line(ctx, offset);
+        offset=self_type::helper__print_line(ctx, offset);
        }//for
 
        break;
@@ -1374,7 +1380,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
       {
        //ERROR - WRONG BLR CODE
 
-       helper__throw_error__unk_blr_code(ctx,blr_operator2);
+       self_type::helper__throw_error__unk_blr_code(ctx,blr_operator2);
       }//default
      }//switch blr_operation2
     }//for[ever]
@@ -1382,7 +1388,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
     // print blr_end
     ctx.m_blr_reader.seekBackward(1);
 
-    helper__print_verb(ctx, level);
+    self_type::helper__print_verb(ctx, level);
 
     break;
    }//op_exec_stmt
@@ -1394,14 +1400,14 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
     //n=helper__print_byte(ctx);
     //for(FB_UCHAR i = 0; i < (FB_UCHAR) n; ++i)
 
-    for(unsigned n2=helper__print_byte(ctx);n2>0;--n2)
+    for(unsigned n2=self_type::helper__print_byte(ctx);n2>0;--n2)
     {
-     helper__print_byte(ctx);
+     self_type::helper__print_byte(ctx);
     }//for
 
-    offset=helper__print_line(ctx, offset);
+    offset=self_type::helper__print_line(ctx, offset);
 
-    helper__print_verb(ctx, level);
+    self_type::helper__print_verb(ctx, level);
 
     break;
    }//op_derived_expr
@@ -1412,21 +1418,21 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 #ifdef SCROLLABLE_CURSORS
     const FB_UCHAR blr_operator2=
 #endif
-     helper__print_byte(ctx);
+     self_type::helper__print_byte(ctx);
 
-    helper__print_word(ctx);
+    self_type::helper__print_word(ctx);
 
 #ifdef SCROLLABLE_CURSORS
     if (blr_operator2 == blr_cursor_fetch)
     {
      if (ctx.m_blr_reader.peekByte() == blr_seek)
      {
-      helper__print_verb(ctx, level);
+      self_type::helper__print_verb(ctx, level);
      }
     }
 #endif
 
-    offset = helper__print_line(ctx, offset);
+    offset = self_type::helper__print_line(ctx, offset);
     break;
    }//op_cursor_stmt
 
@@ -1438,7 +1444,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 
     fmsg<<*blrOps<<blr_operator1;
 
-    helper__error(ctx,fmsg.c_str());
+    self_type::helper__error(ctx,fmsg.c_str());
    }//default
   }//switch
  }//while (*ops)
@@ -1450,11 +1456,12 @@ size_t fb_v02_5_0__blr_printer::helper__print_line(context_type& ctx,
 {
  if(ctx.m_routine)
  {
-  structure::self_trimr(ctx.m_string);
+  lib::structure::self_trimr(ctx.m_string);
 
-  ctx.m_routine(ctx.m_user_arg,
-                offset,
-                ctx.m_string.c_str());
+  ctx.m_routine
+   (ctx.m_user_arg,
+    offset,
+    ctx.m_string.c_str());
  }//if
 
  ctx.m_string.erase();
@@ -1467,12 +1474,12 @@ void fb_v02_5_0__blr_printer::helper__print_blr(context_type&  ctx,
                                                 FB_UCHAR const blr_operator)
 {
  if(!(blr_operator<_DIM_(sm_blr_table)))
-  helper__throw_error__unk_blr_code(ctx,blr_operator);
+  self_type::helper__throw_error__unk_blr_code(ctx,blr_operator);
 
  if(sm_blr_table[blr_operator].blr_string2==nullptr)
-  helper__throw_error__unk_blr_code(ctx,blr_operator);
+  self_type::helper__throw_error__unk_blr_code(ctx,blr_operator);
 
- helper__format(ctx,sm_blr_table[blr_operator].blr_string2);
+ self_type::helper__format(ctx,sm_blr_table[blr_operator].blr_string2);
 }//helper__print_blr
 
 //------------------------------------------------------------------------
@@ -1485,17 +1492,17 @@ fb_v02_5_0__blr_printer::FB_UCHAR
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"chr(%d), ",(int)b);
+  LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"chr(%d), ",(int)b);
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }
  else
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%d, ",(int)b);
+  LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%d, ",(int)b);
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }//else
 
  return b;
@@ -1520,17 +1527,17 @@ fb_v02_5_0__blr_printer::FB_USHORT
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n2(tmp,_DIM_(tmp),"chr(%d),chr(%d), ",(int)v1,(int)v2);
+  LCPI_GCRT_sprintf_s_n2(tmp,_DIM_(tmp),"chr(%d),chr(%d), ",(int)v1,(int)v2);
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }
  else
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n2(tmp,_DIM_(tmp),"%d,%d, ",(int)v1,(int)v2);
+  LCPI_GCRT_sprintf_s_n2(tmp,_DIM_(tmp),"%d,%d, ",(int)v1,(int)v2);
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }//else
 
  return resultValue;
@@ -1541,28 +1548,28 @@ void fb_v02_5_0__blr_printer::helper__print_char(context_type& ctx)
 {
  const FB_UCHAR b=ctx.m_blr_reader.getByte();
 
- if(helper__is_printable(b))
+ if(self_type::helper__is_printable(b))
  {
   const FB_TEXT str[]={'\'',static_cast<FB_SCHAR>(b),'\'',',',0};
 
-  helper__format(ctx, str);
+  self_type::helper__format(ctx, str);
  }
  else
  if(ctx.m_language)
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"chr(%d),",(int)b);
+  LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"chr(%d),",(int)b);
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }
  else
  {
   FB_TEXT tmp[128];
 
-  _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%d,",(int)static_cast<FB_SCHAR>(b));
+  LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%d,",(int)static_cast<FB_SCHAR>(b));
 
-  helper__format(ctx, tmp);
+  self_type::helper__format(ctx, tmp);
  }//else
 }//helper__print_char
 
@@ -1572,19 +1579,19 @@ void fb_v02_5_0__blr_printer::helper__print_join(context_type& ctx)
  switch(const FB_UCHAR join_type=ctx.m_blr_reader.getByte())
  {
   case blr_code_type::c_inner:
-   return helper__format(ctx,"blr_inner, ");
+   return self_type::helper__format(ctx,"blr_inner, ");
 
   case blr_code_type::c_left:
-   return helper__format(ctx,"blr_left, ");
+   return self_type::helper__format(ctx,"blr_left, ");
 
   case blr_code_type::c_right:
-   return helper__format(ctx, "blr_right, ");
+   return self_type::helper__format(ctx, "blr_right, ");
 
   case blr_code_type::c_full:
-   return helper__format(ctx, "blr_full, ");
+   return self_type::helper__format(ctx, "blr_full, ");
 
   default:
-   helper__throw_error__unk_join_type(ctx,join_type);
+   self_type::helper__throw_error__unk_join_type(ctx,join_type);
  }//switch join_type
 }//helper__print_join
 
@@ -1595,11 +1602,11 @@ void fb_v02_5_0__blr_printer::helper__print_cond(context_type& ctx)
  {
   case blr_code_type::c_gds_code:
   {
-   helper__format(ctx, "blr_gds_code, ");
+   self_type::helper__format(ctx, "blr_gds_code, ");
 
-   for(unsigned n=helper__print_byte(ctx);n>0;--n)
+   for(unsigned n=self_type::helper__print_byte(ctx);n>0;--n)
    {
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
    }
 
    break;
@@ -1607,11 +1614,11 @@ void fb_v02_5_0__blr_printer::helper__print_cond(context_type& ctx)
 
   case blr_code_type::c_exception:
   {
-   helper__format(ctx, "blr_exception, ");
+   self_type::helper__format(ctx, "blr_exception, ");
 
-   for(unsigned n=helper__print_byte(ctx);n>0;--n)
+   for(unsigned n=self_type::helper__print_byte(ctx);n>0;--n)
    {
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
    }
 
    break;
@@ -1619,44 +1626,44 @@ void fb_v02_5_0__blr_printer::helper__print_cond(context_type& ctx)
 
   case blr_code_type::c_exception_msg:
   {
-   helper__format(ctx, "blr_exception_msg, ");
+   self_type::helper__format(ctx, "blr_exception_msg, ");
 
    for(unsigned n=helper__print_byte(ctx);n>0;--n)
    {
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
    }
 
-   helper__print_verb(ctx, /*level*/0);
+   self_type::helper__print_verb(ctx, /*level*/0);
 
    break;
   }//c_exception_msg
 
   case blr_code_type::c_sql_code:
   {
-   helper__format(ctx, "blr_sql_code, ");
+   self_type::helper__format(ctx, "blr_sql_code, ");
 
-   helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
 
    break;
   }//c_sql_code
 
   case blr_code_type::c_default_code:
   {
-   helper__format(ctx, "blr_default_code, ");
+   self_type::helper__format(ctx, "blr_default_code, ");
 
    break;
   }//c_default_code
 
   case blr_code_type::c_raise:
   {
-   helper__format(ctx, "blr_raise, ");
+   self_type::helper__format(ctx, "blr_raise, ");
 
    break;
   }//c_raise
 
   default:
   {
-   helper__throw_error__unk_conditional_type(ctx,conditional_type);
+   self_type::helper__throw_error__unk_conditional_type(ctx,conditional_type);
   }//default
  }//switch
 }//helper__print_cond
@@ -1788,65 +1795,65 @@ unsigned fb_v02_5_0__blr_printer::helper__print_dtype(context_type& ctx)
    break;
 
   default:
-   helper__throw_error__unk_data_type(ctx, dtype);
+   self_type::helper__throw_error__unk_data_type(ctx, dtype);
  }//switch ctype
 
- helper__format(ctx, string2);
+ self_type::helper__format(ctx, string2);
 
  switch (dtype)
  {
   case blr_code_type::c_not_nullable:
-   length =helper__print_dtype(ctx);
+   length =self_type::helper__print_dtype(ctx);
    break;
 
   case blr_code_type::c_text:
-   length =helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    break;
 
   case blr_code_type::c_varying:
-   length =helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    length+=2;
    break;
 
   case blr_code_type::c_cstring:
-   length =helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    break;
 
   case blr_code_type::c_short:
   case blr_code_type::c_long:
   case blr_code_type::c_quad:
   case blr_code_type::c_int64:
-   helper__print_byte(ctx);
+   self_type::helper__print_byte(ctx);
    break;
 
   case blr_code_type::c_text2:
-   helper__print_word(ctx);
-   length =helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    break;
 
   case blr_code_type::c_varying2:
-   helper__print_word(ctx);
-   length =helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    length+=2;
    break;
 
   case blr_code_type::c_cstring2:
-   helper__print_word(ctx);
-   length =helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
+   length =self_type::helper__print_word(ctx);
    break;
 
   case blr_code_type::c_blob2:
-   helper__print_word(ctx);
-   helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
    break;
 
   case blr_code_type::c_domain_name:
   {
    // 0 = blr_domain_type_of; 1 = blr_domain_full
-   helper__print_byte(ctx);
+   self_type::helper__print_byte(ctx);
 
    for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
 
    break;
   }//case c_domain_name
@@ -1854,12 +1861,12 @@ unsigned fb_v02_5_0__blr_printer::helper__print_dtype(context_type& ctx)
   case blr_code_type::c_domain_name2:
   {
    // 0 = blr_domain_type_of; 1 = blr_domain_full
-   helper__print_byte(ctx);
+   self_type::helper__print_byte(ctx);
 
    for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
 
-   helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
 
    break;
   }//case c_domain_name2
@@ -1867,15 +1874,15 @@ unsigned fb_v02_5_0__blr_printer::helper__print_dtype(context_type& ctx)
   case blr_code_type::c_column_name:
   {
    // 0 = blr_domain_type_of; 1 = blr_domain_full
-   helper__print_byte(ctx);
+   self_type::helper__print_byte(ctx);
 
    for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
 
-   helper__format(ctx, " ");
+   self_type::helper__format(ctx, " ");
 
-   for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+   for(FB_UCHAR n = self_type::helper__print_byte(ctx); n > 0; --n)
+    self_type::helper__print_char(ctx);
 
    break;
   }//case c_column_name
@@ -1883,17 +1890,17 @@ unsigned fb_v02_5_0__blr_printer::helper__print_dtype(context_type& ctx)
   case blr_code_type::c_column_name2:
   {
    // 0 = blr_domain_type_of; 1 = blr_domain_full
-   helper__print_byte(ctx);
+   self_type::helper__print_byte(ctx);
 
    for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
 
-   helper__format(ctx, " ");
+   self_type::helper__format(ctx, " ");
 
    for(FB_UCHAR n = helper__print_byte(ctx); n > 0; --n)
-    helper__print_char(ctx);
+    self_type::helper__print_char(ctx);
 
-   helper__print_word(ctx);
+   self_type::helper__print_word(ctx);
 
    break;
   }//case c_column_name2
@@ -1928,11 +1935,11 @@ void fb_v02_5_0__blr_printer::helper__error(context_type&        ctx,
                                             const FB_TEXT* const string)
 {
  assert(string);
- assert(structure::string_length(string)>0);
+ assert(lib::structure::string_length(string)>0);
 
- helper__format(ctx, string);
+ self_type::helper__format(ctx, string);
 
- helper__print_line(ctx, /*offset*/0);
+ self_type::helper__print_line(ctx, /*offset*/0);
 
  //[2015-11-21] Тормозим и изучаем проблему с BLR
  assert_msg(false,string);
@@ -1949,7 +1956,7 @@ void fb_v02_5_0__blr_printer::helper__format(context_type&        ctx,
                                              const FB_TEXT* const string)
 {
  assert(string);
- assert(structure::string_length(string)>0);
+ assert(lib::structure::string_length(string)>0);
 
  ctx.m_string+=string;
 }//helper__format
@@ -1969,9 +1976,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_blr_version
                                            (context_type&  ctx,
                                             unsigned const blr_version)
 {
- helper__throw_error(ctx,
-                     "*** blr version %1 is not supported ***",
-                     blr_version);
+ self_type::helper__throw_error
+  (ctx,
+   "*** blr version %1 is not supported ***",
+   blr_version);
 }//helper__throw_error__unk_blr_version
 
 //------------------------------------------------------------------------
@@ -1979,9 +1987,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_blr_code
                                            (context_type&  ctx,
                                             unsigned const blr_code)
 {
- helper__throw_error(ctx,
-                     "*** blr operator %1 is undefined ***",
-                     blr_code);
+ self_type::helper__throw_error
+  (ctx,
+   "*** blr operator %1 is undefined ***",
+   blr_code);
 }//helper__throw_error__blr_code_undefined
 
 //------------------------------------------------------------------------
@@ -1989,9 +1998,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_join_type
                                            (context_type&  ctx,
                                             unsigned const join_type)
 {
- helper__throw_error(ctx,
-                     "*** invalid join type [%1] ***",
-                     join_type);
+ self_type::helper__throw_error
+  (ctx,
+   "*** invalid join type [%1] ***",
+   join_type);
 }//helper__throw_error__unk_join_type
 
 //------------------------------------------------------------------------
@@ -1999,9 +2009,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_conditional_type
                                            (context_type&  ctx,
                                             unsigned const conditional_type)
 {
- helper__throw_error(ctx,
-                     "*** invalid condition type [%1] ***",
-                     conditional_type);
+ self_type::helper__throw_error
+  (ctx,
+   "*** invalid condition type [%1] ***",
+   conditional_type);
 }//helper__throw_error__unk_conditional_type
 
 //------------------------------------------------------------------------
@@ -2009,9 +2020,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_data_type
                                            (context_type&  ctx,
                                             unsigned const data_type)
 {
- helper__throw_error(ctx,
-                     "*** invalid data type [%1] ***",
-                     data_type);
+ self_type::helper__throw_error
+  (ctx,
+   "*** invalid data type [%1] ***",
+   data_type);
 }//helper__throw_error__unk_data_type
 
 //------------------------------------------------------------------------
@@ -2019,9 +2031,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_relation_type
                                            (context_type&  ctx,
                                             unsigned const relation_type)
 {
- helper__throw_error(ctx,
-                     "*** invalid relation type [%1] ***",
-                     relation_type);
+ self_type::helper__throw_error
+  (ctx,
+   "*** invalid relation type [%1] ***",
+   relation_type);
 }//helper__throw_error__unk_relation_type
 
 //------------------------------------------------------------------------
@@ -2029,9 +2042,10 @@ void fb_v02_5_0__blr_printer::helper__throw_error__unk_command_end
                                            (context_type&  ctx,
                                             unsigned const end_code)
 {
- helper__throw_error(ctx,
-                     "*** expected end of command, encounted %1 ***",
-                     end_code);
+ self_type::helper__throw_error
+  (ctx,
+   "*** expected end of command, encounted %1 ***",
+   end_code);
 }//helper__throw_error__unk_command_end
 
 //------------------------------------------------------------------------
@@ -2045,7 +2059,9 @@ void fb_v02_5_0__blr_printer::helper__throw_error(context_type&         ctx,
 
  fmsg<<v1;
 
- helper__error(ctx,fmsg.c_str());
+ self_type::helper__error
+  (ctx,
+   fmsg.c_str());
 }//helper__throw_error
 
 ////////////////////////////////////////////////////////////////////////////////

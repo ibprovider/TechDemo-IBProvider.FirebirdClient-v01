@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_025__ReadBlob::tag_impl
 
-class WORK_Test_025__ReadBlob::tag_impl
+class WORK_Test_025__ReadBlob::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -66,6 +66,11 @@ class WORK_Test_025__ReadBlob::tag_impl
  #endif
 
   static void test_200__err__hack_close_blob
+               (TTSO_GlobalContext*     pParams,
+                context_type*           pCtx,
+                const TTSO_TestData_v2& Data);
+
+  static void test_300__op_cancel
                (TTSO_GlobalContext*     pParams,
                 context_type*           pCtx,
                 const TTSO_TestData_v2& Data);
@@ -201,6 +206,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_001
   =svc::RemoteFB_Connector__ReadBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob,
      sizeof(Buffer),
      Buffer,
@@ -221,6 +227,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_001
   =svc::RemoteFB_Connector__ReadBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob,
      sizeof(Buffer),
      Buffer,
@@ -382,6 +389,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_002
    =svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector,
+      OpCtx,
       &hBlob,
       sizeof(Buffer),
       Buffer,
@@ -412,6 +420,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_002
   =svc::RemoteFB_Connector__ReadBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob,
      sizeof(Buffer),
      Buffer,
@@ -567,6 +576,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_003__empty
   =svc::RemoteFB_Connector__ReadBlob
     (tracer,
      spConnector,
+     OpCtx,
      &hBlob,
      sizeof(Buffer),
      Buffer,
@@ -724,6 +734,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_100__bug_check__closed_blob_handle
   svc::RemoteFB_Connector__CloseBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlobCopy);
  }//local
 
@@ -744,6 +755,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_100__bug_check__closed_blob_handle
     svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector,
+      OpCtx,
       &hBlob,
       sizeof(tmp),
       tmp,
@@ -817,6 +829,9 @@ void WORK_Test_025__ReadBlob::tag_impl::test_101__bug_check__zero_blob_handle
  Data.SetParams(params);
 
  //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
@@ -841,6 +856,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_101__bug_check__zero_blob_handle
     svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector,
+      OpCtx,
       &hBlob,
       sizeof(tmp),
       tmp,
@@ -1018,6 +1034,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_102__bug_check__bad_owner_cn
     svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector2,
+      OpCtx,
       &hBlob,
       sizeof(tmp),
       tmp,
@@ -1092,6 +1109,9 @@ void WORK_Test_025__ReadBlob::tag_impl::test_103__err__read_from_new_blob
  Data.SetParams(params);
 
  //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
  isc_base::t_isc_connection_settings cns;
 
  const svc::remote_fb_connector_ptr
@@ -1146,6 +1166,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_103__err__read_from_new_blob
     svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector,
+      OpCtx,
       &hBlob,
       sizeof(tmp),
       tmp,
@@ -1327,6 +1348,7 @@ void WORK_Test_025__ReadBlob::tag_impl::test_200__err__hack_close_blob
     svc::RemoteFB_Connector__ReadBlob
      (tracer,
       spConnector,
+      OpCtx,
       &hBlob,
       sizeof(tmp),
       tmp,
@@ -1369,6 +1391,188 @@ void WORK_Test_025__ReadBlob::tag_impl::test_200__err__hack_close_blob
   (tracer,
    spConnector);
 }//test_200__err__hack_close_blob
+
+////////////////////////////////////////////////////////////////////////////////
+//TEST 300
+
+void WORK_Test_025__ReadBlob::tag_impl::test_300__op_cancel
+                                           (TTSO_GlobalContext* const pParams,
+                                            context_type*       const pCtx,
+                                            const TTSO_TestData_v2&   Data)
+{
+ assert(pParams!=nullptr);
+ assert(pCtx!=nullptr);
+
+ //-----------------------------------------
+ TTSO_Tracer tracer(pCtx,L"test");
+
+ //-----------------------------------------
+ typedef TestServices  svc;
+
+ //-----------------------------------------
+ svc::dbprops_type params(pParams);
+
+ params.set_dbprop_init__location(svc::BuildLocationString(pParams));
+ params.set_dbprop_init__user_id(L"SYSDBA");
+ params.set_dbprop_init__password(L"masterkey");
+
+ Data.SetParams(params);
+
+ //-----------------------------------------
+ isc_base::t_isc_connection_settings cns;
+
+ const svc::remote_fb_connector_ptr
+  spConnector
+   (svc::RemoteFB_Connector__ConnectToDatabase
+     (tracer,
+      params,
+      cns));
+
+ //-----------------------------------------
+ TestOperationContext OpCtx(params);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__TrHandle hTr(nullptr);
+
+ svc::RemoteFB_Connector__StartTransaction
+  (tracer,
+   spConnector,
+   &hTr);
+
+ _TSO_CHECK(hTr!=nullptr);
+
+ _TSO_CHECK(hTr->m_pParentPort==spConnector->GetPort());
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__StmtHandle hStmt(nullptr);
+
+ svc::RemoteFB_Connector__StmtAllocate
+  (tracer,
+   spConnector,
+   &hStmt);
+
+ svc::RemoteFB_Connector__StmtPrepare
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   static_cast<short>(cns.db_dialect_Ex.value()),
+   "execute block returns (x blob) as begin x=x''; suspend; end;");
+
+ svc::RemoteFB_Connector__StmtExecute
+  (tracer,
+   spConnector,
+   OpCtx,
+   &hTr,
+   &hStmt,
+   nullptr,
+   nullptr);
+
+ //-----------------------------------------
+ db_obj::DB_IBBLOBID blobID={};
+
+ XSQLDA_V1_Wrapper xsqlda(1);
+
+ xsqlda->sqlvar[0].sqltype    =isc_api::ibp_isc_sql_blob;
+ xsqlda->sqlvar[0].sqlsubtype =0;
+ xsqlda->sqlvar[0].sqlscale   =0;
+ xsqlda->sqlvar[0].sqllen     =sizeof(blobID);
+ xsqlda->sqlvar[0].sqldata    =reinterpret_cast<char*>(&blobID);
+ xsqlda->sqlvar[0].sqlind     =nullptr;
+
+ xsqlda->sqld=1;
+
+ //-----------------------------------------
+ svc::RemoteFB_Connector__StmtFetch_ToRow
+  (spConnector,
+   OpCtx,
+   &hStmt,
+   xsqlda);
+
+ //-----------------------------------------
+ remote_fb::handles::RemoteFB__BlobHandle hBlob(nullptr);
+
+ svc::RemoteFB_Connector__OpenBlob
+  (tracer,
+   spConnector,
+   &hTr,
+   &hBlob,
+   blobID);
+
+ _TSO_CHECK(hBlob);
+
+ _TSO_CHECK(hBlob->m_ID.has_value());
+
+ _TSO_CHECK(hBlob->m_pParentTr==hTr);
+
+ _TSO_CHECK(hBlob->m_BlobMode==hBlob->BlobMode__Open);
+
+ //-----------------------------------------
+ OpCtx.cancel();
+
+ {
+  char tmp[100];
+
+  size_t cbActualReaded=0;
+
+  for(size_t pass=0;pass!=3;)
+  {
+   ++pass;
+
+   tracer<<L"------------------------------- pass: "<<pass<<send;
+
+   try
+   {
+    svc::RemoteFB_Connector__ReadBlob
+     (tracer,
+      spConnector,
+      OpCtx,
+      &hBlob,
+      sizeof(tmp),
+      tmp,
+      &cbActualReaded);
+   }
+   catch(const ibp::t_ibp_error& exc)
+   {
+    typedef TestCheckErrors errSvc;
+
+    errSvc::print_exception_ok
+     (tracer,
+      exc);
+
+    errSvc::check_err_count
+     (exc,
+      1);
+
+    errSvc::check_err_code
+     (exc.com_code(),
+      DB_E_CANCELED);
+
+    _TSO_CHECK(exc.get_record(0));
+
+    errSvc::check_err_rec__srv_err__op_was_cancelled
+     (tracer,
+      errSvc::sm_srcID_wstr__IBProvider,
+      exc.get_record(0));
+    
+    continue;
+   }//catch
+
+   svc::Trace_WeWaitTheException(tracer);
+   break;
+  }//for pass
+ }//local
+
+ svc::RemoteFB_Connector__Commit
+  (tracer,
+   spConnector,
+   &hTr);
+
+ svc::RemoteFB_Connector__DetachDatabase
+  (tracer,
+   spConnector);
+}//test_300__op_cancel
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1498,6 +1702,11 @@ const WORK_Test_025__ReadBlob::tag_descr
   ("200.err.hack_close_blob",
    test_200__err__hack_close_blob,
    true)
+
+ DEF_TEST_DESCR
+  ("300.op_cancel",
+   test_300__op_cancel,
+   true)
 };//sm_Tests
 
 #undef DEF_TEST_DESCR
@@ -1554,7 +1763,7 @@ void WORK_Test_025__ReadBlob::create(TTSO_PushTest*      const pTestPusher,
    <<TestDescr.pTestSign;
 
   const TTSO_TestPtr spTest
-   (structure::not_null_ptr
+   (lib::structure::not_null_ptr
      (new TTSO_TestFunc_v2
        (pParams,
         ftestID.c_str(),

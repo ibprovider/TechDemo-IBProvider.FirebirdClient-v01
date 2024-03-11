@@ -5,7 +5,7 @@
 #ifndef NDEBUG
 # include <structure/t_vector_debug_iterator.h>
 #else
-# include <structure/t_common.h>
+# include <lcpi/lib/.config.h>
 #endif
 
 namespace structure{

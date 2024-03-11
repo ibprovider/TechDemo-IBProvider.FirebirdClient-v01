@@ -8,7 +8,8 @@
 t_ole_error::t_ole_error(const self_type& exc)
  :inherited(exc)
  ,m_what_arg(exc.m_what_arg)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ole_error::t_ole_error(HRESULT      const hr,
@@ -16,20 +17,23 @@ t_ole_error::t_ole_error(HRESULT      const hr,
                          str_box_type const text)
  :inherited(hr,text)
  ,m_what_arg(what_arg.begin(),what_arg.end())
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ole_error::t_ole_error(const TOleStatus& status)
  :inherited(status.m_last_result,status.get_text())
  ,m_what_arg(status.get_msg())
-{;}
+{
+}
 
 //------------------------------------------------------------------------
-t_ole_error::~t_ole_error() __STL_EXCEPTION_DCR_THROW_SPEC
-{;}
+t_ole_error::~t_ole_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
+{
+}
 
 //------------------------------------------------------------------------
-const char* t_ole_error::what() const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_ole_error::what() const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return m_what_arg.c_str();
 }//what

@@ -4,7 +4,7 @@
 #ifndef _t_deque_adapter_H_
 #define _t_deque_adapter_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

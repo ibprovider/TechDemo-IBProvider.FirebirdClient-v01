@@ -30,8 +30,9 @@ RemoteFB__API_P12__CloseBlob::~RemoteFB__API_P12__CloseBlob()
 {;}
 
 //interface --------------------------------------------------------------
-void RemoteFB__API_P12__CloseBlob::exec(RemoteFB__ConnectorData* const pData,
-                                        blob_handle_type*        const pBlobHandle)
+void RemoteFB__API_P12__CloseBlob::exec(db_obj::t_db_operation_context& OpCtx,
+                                        RemoteFB__ConnectorData*  const pData,
+                                        blob_handle_type*         const pBlobHandle)
 {
  assert(pData!=nullptr);
  assert(pData->GetPort());
@@ -85,7 +86,8 @@ void RemoteFB__API_P12__CloseBlob::exec(RemoteFB__ConnectorData* const pData,
   {
    //выгрузка буферизированных данных
    pData->m_API__FlushBlob.get()->exec
-    (pData,
+    (OpCtx,
+     pData,
      pBlobHandle);
   }
   catch(const std::exception& e)

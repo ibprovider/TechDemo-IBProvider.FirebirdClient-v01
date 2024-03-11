@@ -305,7 +305,7 @@ static t_load_ver_info_element2_result load_ver_info_element2
  //--------------------------
  assert(spElement);
 
- return t_load_ver_info_element2_result(__STL_MOVE_VALUE(spElement),pEntry->end());
+ return t_load_ver_info_element2_result(LCPI_STL_MOVE_VALUE(spElement),pEntry->end());
 }//load_ver_info_element2
 
 //------------------------------------------------------------------------
@@ -671,7 +671,7 @@ const void* t_ver_info_element__VS_VERSION_INFO::internal__load(const tag_entry&
 
   assert(childData.first);
 
-  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+  m_childs.push_back(LCPI_STL_MOVE_VALUE(childData.first));
 
   assert(pChildren<childData.second);
   assert(childData.second<=eChildren);
@@ -727,7 +727,7 @@ t_ver_info_element__String::create_result_type
  assert(pvBlock<eData);
  assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
 
- return create_result_type(__STL_MOVE_VALUE(spString),eData);
+ return create_result_type(LCPI_STL_MOVE_VALUE(spString),eData);
 }//create
 
 //------------------------------------------------------------------------
@@ -841,7 +841,7 @@ t_ver_info_element__StringTable::create_result_type
  assert(pvBlock<eData);
  assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
 
- return create_result_type(__STL_MOVE_VALUE(spStringTable),eData);
+ return create_result_type(LCPI_STL_MOVE_VALUE(spStringTable),eData);
 }//create
 
 //interface --------------------------------------------------------------
@@ -881,7 +881,7 @@ const void* t_ver_info_element__StringTable::internal__load(const tag_entry& ent
 
   assert(childData.first);
 
-  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+  m_childs.push_back(LCPI_STL_MOVE_VALUE(childData.first));
 
   assert(pChildren<childData.second);;
   assert(childData.second<=eChildren);
@@ -965,7 +965,7 @@ const void* t_ver_info_element__StringFileInfo::internal__load(const tag_entry& 
 
   assert(childData.first);
 
-  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+  m_childs.push_back(LCPI_STL_MOVE_VALUE(childData.first));
 
   assert(pChildren<childData.second);;
   assert(childData.second<=eChildren);
@@ -1025,7 +1025,7 @@ t_ver_info_element__Var::create_result_type
  assert(pvBlock<eData);
  assert(eData<=reinterpret_cast<const char*>(pvBlock)+cbBlock);
 
- return create_result_type(__STL_MOVE_VALUE(spVar),eData);
+ return create_result_type(LCPI_STL_MOVE_VALUE(spVar),eData);
 }//create
 
 //selectors --------------------------------------------------------------
@@ -1196,7 +1196,7 @@ const void* t_ver_info_element__VarFileInfo::internal__load(const tag_entry& ent
 
   assert(childData.first);
 
-  m_childs.push_back(__STL_MOVE_VALUE(childData.first));
+  m_childs.push_back(LCPI_STL_MOVE_VALUE(childData.first));
 
   assert(pChildren<childData.second);;
   assert(childData.second<=eChildren);

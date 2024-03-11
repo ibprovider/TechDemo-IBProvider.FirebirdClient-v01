@@ -17,10 +17,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__P13__ProcessAuthResponse::tag_impl
 
-class TestsFor__RemoteFB__P13__ProcessAuthResponse::tag_impl
+class TestsFor__RemoteFB__P13__ProcessAuthResponse::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;

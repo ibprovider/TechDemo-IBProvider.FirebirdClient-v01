@@ -7,9 +7,6 @@
 #include <lcpi/lib/com/base/com_base__ptr.h>
 #include <lcpi/lib/com/base/com_base__guid_to_string.h>
 
-#include <lcpi/lib/structure/debug/assert_msg.h>
-#include <lcpi/lib/structure/debug/debug_code.h>
-
 #include <lcpi/lib/structure/mt/interlocked.h>
 
 namespace lcpi{namespace lib{namespace com{namespace base{

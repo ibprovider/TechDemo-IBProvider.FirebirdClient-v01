@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__blob_helper.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
 #include "source/db_client/remote_fb/api/pset01/remote_fb__pset01__error_utilities.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__operation_context.h"
@@ -19,7 +20,8 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace a
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__P12__BlobHelper
 
-void RemoteFB__P12__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pData,
+void RemoteFB__P12__BlobHelper::WriteSegment(RemoteFB__P12__SrvOperation&   serverOperation,
+                                             RemoteFB__ConnectorData* const pData,
                                              protocol::P_OBJCT        const blobSrvID,
                                              protocol::P_USHORT       const cbData,
                                              const void*              const pvData)
@@ -58,9 +60,14 @@ void RemoteFB__P12__BlobHelper::WriteSegment(RemoteFB__ConnectorData* const pDat
   //---------------------------------------- 3. send packet
   RemoteFB__OperationContext portOpCtx;
 
+  //------ Let's define the boundaries of work with the server
+  RemoteFB__P12__SrvOperation::tag_send_frame sendFrame(&serverOperation); //throw
+
   pData->GetPort()->send_packet
    (portOpCtx,
     packet); //throw
+
+  sendFrame.complete(); //throw
  }//local
 
  //----------------------------------------- 4. get response

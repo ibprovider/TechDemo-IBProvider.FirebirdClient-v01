@@ -30,10 +30,10 @@ using structure::t_string;
 
 #if(IBP_EDITION_ID==IBP_EDITION_ID__FREE)
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowFeaturesNotAvailableInFreeEdition(const wchar_t* FeatureName); //throw
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowFreeVersionCanNotWorkWithThisServer
                   (structure::str_parameter ServerName,
                    structure::str_parameter ServerVersion,
@@ -77,25 +77,25 @@ HRESULT IBP_GetMaxByTerribleHRESULT(HRESULT hr1,HRESULT hr2);
 ////////////////////////////////////////////////////////////////////////////////
 //генерация исключения ошибки конвертирования
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowConvertError
        (HRESULT           error_code,
         DBTYPE            wSourceType,
         DBTYPE            wDestType);//throw
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ReThrowConvertErrorWithCorrectedHResult
        (const std::exception& innerException,
         DBTYPE                wSourceType,
         DBTYPE                wDestType);//throw
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ReThrowConvertErrorWithCorrectedHResult
        (const std::exception&            innerException,
         lib::structure::t_const_wstr_box sourceTypeSign,
         lib::structure::t_const_wstr_box destTypeSign);//throw
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowErr__save_numeric_as_native_type
        (HRESULT        hr,
         const wchar_t* baseTypeName);
@@ -103,13 +103,13 @@ void IBP_ThrowErr__save_numeric_as_native_type
 ////////////////////////////////////////////////////////////////////////////////
 //генерация ошибки "интегрированная аутентификация не поддерживается"
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIntegratedAuthIsNotSupported
        (t_ibp_subsystem_id         subsystem_id,
         structure::t_const_str_box db_client_name,
         structure::t_const_str_box db_client_version);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowUnknownNameOfIntegratedAuth
        (t_ibp_subsystem_id subsystem_id,
         t_ibp_str_box      authName);
@@ -118,14 +118,14 @@ COMP_CONF_DECLSPEC_NORETURN
 //Генерация исключения для ошибки использования свойства инициализации,
 //неподдерживаемого текущим клиентом БД.
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowInitPropCantPassIntoDBClient
        (t_ibp_subsystem_id          subsystem_id,
         const wchar_t*              prop_name,
         structure::t_const_str_box  db_client_name,
         structure::t_const_str_box  db_client_version);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowInitPropCantProcessCurrentDBClient_I4
        (t_ibp_subsystem_id          subsystem_id,
         const wchar_t*              prop_name,
@@ -133,14 +133,14 @@ COMP_CONF_DECLSPEC_NORETURN
         structure::t_const_str_box  db_client_version,
         LONG                        prop_value);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCantConvertCnPropToUTF8
        (t_ibp_subsystem_id  subsystem_id,
         const wchar_t*      prop_name);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowBugCheck
        (const wchar_t* place,
         const wchar_t* point,
@@ -159,7 +159,7 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowBugCheck2
        (t_ibp_error&   Errors,
         const wchar_t* place,
@@ -180,10 +180,10 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCantTranslateSysDataToUnicode(const wchar_t* pSysDataName);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCantTranslateSysDataFromUnicode
   (t_ibp_wstr_box sysDataName,
    t_ibp_wstr_box targetCsName);
@@ -191,11 +191,11 @@ COMP_CONF_DECLSPEC_NORETURN
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename DstCharT>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCantTranslateSysData(const wchar_t* pSysDataName);
 
 template<>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 inline
  void IBP_ThrowCantTranslateSysData<wchar_t>(const wchar_t* const pSysDataName)
  {
@@ -204,13 +204,13 @@ inline
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowErr__FailedToMakeUpperStr
        (const wchar_t* sourceSign,
         size_t         sourceLength,
         size_t         processedLength);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowErr__FailedToMakeLowerStr
        (const wchar_t* sourceSign,
         size_t         sourceLength,
@@ -219,7 +219,7 @@ COMP_CONF_DECLSPEC_NORETURN
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename TextIterator>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowErrorSymbolInCommandText
       (TextIterator beg,
        TextIterator cur_pos);
@@ -231,40 +231,40 @@ t_string IBP_ExtractErrorMessage(const std::exception& exc,
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowOverflowArrayTotalElementCount_v2
        (t_ibp_wstr_box ArrayRelationName,
         t_ibp_wstr_box ArrayFieldName);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowSimpleError
        (HRESULT           err_code,
         ibp_msg_code_type msg_code_0);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowSimpleError
        (HRESULT                        err_code,
         ibp_msg_code_type              msg_code_0,
         t_ibp_get_custom_error_object* pGetCErr);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowSimpleError
        (HRESULT            err_code,
         t_ibp_subsystem_id subsystem_id,
         ibp_msg_code_type  msg_code_0);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowSimpleError_safe
        (HRESULT           err_code,
         ibp_msg_code_type msg_code_0);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowErrorWithDetail_safe
        (HRESULT           hr,
         ibp_msg_code_type primaryErrMsgID_1,
@@ -272,81 +272,81 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowOverflowInMemSizeCalculation
        (const wchar_t* place,
         const wchar_t* point);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowOperationWasCancelled();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowDataSourceNotInited();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowDataSourceAlreadyInitialized();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowDataSourceHasChildObjects(size_t n);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowNoTransaction_safe();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowTransactionAlreadyStarted();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowBadTrNodeNumber
        (ULONG  TrLevelNumber,
         size_t cTrLevels);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCmdIncorrectText();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCmdExecParamsNotRequired();
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowCmdError__GetStmtInfo_NoData
        (t_ibp_subsystem_id subsystemID,
         const wchar_t*     propSign);
 
 //------------------------------------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowWriteBlobError__CantQueryStorageObjectInterface
        (HRESULT        hr,
         const wchar_t* pwszInterfaceName);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowWriteBlobError__UnknownStorageObjectInterface(REFIID riid);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowWriteBlobError__StorageObjectWithUnsupportedInterfaces();
 
 //------------------------------------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowReadBlobError__WrongStorageAccessFlags(DWORD dwFlags);
 
 //------------------------------------------
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowReadBlobError__UnknownStorageObjectInterface(REFIID riid);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIscStatusVectorProcessingError
        (const wchar_t* check_place,
         const wchar_t* check_point);
@@ -354,14 +354,14 @@ COMP_CONF_DECLSPEC_NORETURN
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
        (const wchar_t* sqlTypeSign,
         T              sqllen);
 
 //------------------------------------------
 template<class T>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
        (t_ibp_subsystem_id subsystem_id,
         const wchar_t*     sqlTypeSign,
@@ -369,7 +369,7 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowErr_FormedParamBufIsTooLarge
        (t_ibp_subsystem_id           subsystemID,
         structure::t_const_wstr_box  ucs2BufName,
@@ -378,14 +378,14 @@ COMP_CONF_DECLSPEC_NORETURN
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__unexpected_dim_count
        (const wchar_t* place,
         const wchar_t* point,
         size_t         actualDimCount,
         size_t         expectedDimCount);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__incorrect_range_of_dim
        (const wchar_t* place,
         const wchar_t* point,
@@ -395,7 +395,7 @@ COMP_CONF_DECLSPEC_NORETURN
         long           defLowerBound,
         long           defUpperBound);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__unexpected_element_size
        (const wchar_t* place,
         const wchar_t* point,
@@ -403,21 +403,21 @@ COMP_CONF_DECLSPEC_NORETURN
         size_t         actualSize,
         size_t         expectedSize);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__incorrect_element_size
        (const wchar_t* place,
         const wchar_t* point,
         const wchar_t* typeName,
         size_t         actualSize);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__incorrect_element_scale
        (const wchar_t* place,
         const wchar_t* point,
         const wchar_t* typeName,
         short          elementScale);
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowArrayBlobErr__BugCheck__incorrect_length_of_string_element
        (const wchar_t*              place,
         const wchar_t*              point,
@@ -436,7 +436,7 @@ lib::structure::t_smart_object_ptr<t_ibp_get_custom_error_object>
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 void IBP_ThrowFileError(ibp_msg_code_type const     msg_1,
                         structure::t_const_wstr_box wFileName);
 
@@ -456,12 +456,12 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT hr);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (const std::exception& e,
                 HRESULT               hr,
@@ -469,14 +469,14 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...             args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT            hr,
                 ibp_msg_code_type  msg_code,
                 Args&&...          args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (const std::exception& e,
                 HRESULT               hr,
@@ -485,7 +485,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...             args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT            hr,
                 t_ibp_subsystem_id subsystem_id,
@@ -494,7 +494,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  private:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT                         hr,
                 ibp_msg_code_type               msg_code,
@@ -502,7 +502,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...                       args)=delete;
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__Error
                (HRESULT                         hr,
                 t_ibp_subsystem_id              subsystem_id,
@@ -512,7 +512,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__ErrorWithCustomErrorObject
                (HRESULT                         hr,
                 ibp_msg_code_type               msg_code,
@@ -520,7 +520,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...                       args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__ErrorWithCustomErrorObject
                (HRESULT                         hr,
                 t_ibp_subsystem_id              subsystem_id,
@@ -530,14 +530,14 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ReThrowWithSameHResult
                (const std::exception& e,
                 ibp_msg_code_type     msg_code,
                 Args&&...             args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ReThrowWithSameHResult
                (const std::exception& e,
                 t_ibp_subsystem_id    subsystem_id,
@@ -546,7 +546,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ReThrowWithNewHResult
                (const std::exception& e,
                 HRESULT               hr,
@@ -554,7 +554,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...             args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ReThrowWithNewHResult
                (const std::exception& e,
                 HRESULT               hr,
@@ -564,7 +564,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__BugCheck__DEBUG
                (const std::exception& e,
                 const wchar_t*        place,
@@ -573,7 +573,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...             args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__BugCheck__DEBUG
                (const wchar_t*  place,
                 const wchar_t*  point,
@@ -581,7 +581,7 @@ class IBP_ErrorUtils LCPI_CPP_CFG__CLASS__FINAL
                 Args&&...       args);
 
   template<typename... Args>
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw__BugCheck
                (const wchar_t*  place,
                 const wchar_t*  point,

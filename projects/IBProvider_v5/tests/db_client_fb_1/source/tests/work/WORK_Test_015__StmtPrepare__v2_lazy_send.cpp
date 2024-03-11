@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_015__StmtPrepare__v2_lazy_send::tag_impl
 
-class WORK_Test_015__StmtPrepare__v2_lazy_send::tag_impl
+class WORK_Test_015__StmtPrepare__v2_lazy_send::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -3095,7 +3095,7 @@ void WORK_Test_015__StmtPrepare__v2_lazy_send::create
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

@@ -4,12 +4,6 @@
 #ifndef _oledb_variant_H_
 #define _oledb_variant_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
-////////////////////////////////////////////////////////////////////////////////
-
 #include <ole_lib/oledb/variant/oledb_variant_fwrd.h>  //forward declarations
 #include <ole_lib/oledb/variant/oledb_variant_tag.h>   //tagDBVARIANT
 #include <ole_lib/oledb/variant/oledb_variant_cvt_fwrd.h>
@@ -350,7 +344,7 @@ struct DBVARIANT:public tagDBVARIANT
   structure::t_string get_print_tstr()const;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_bug_check__unexpected_dbtype
                (const char* place,
                 const char* point,

@@ -39,9 +39,10 @@ class t_db_blob_writer_buf LCPI_CPP_CFG__CLASS__FINAL
   using char_type=value_type;
 
  public:
-  t_db_blob_writer_buf(char*                   const buffer,
-                       size_type               const sz,
-                       t_db_seq_stream_writer* const writer);
+  t_db_blob_writer_buf(t_db_operation_context* pOpCtx,
+                       char*                   buffer,
+                       size_type               sz,
+                       t_db_seq_stream_writer* writer);
 
   virtual ~t_db_blob_writer_buf();
 
@@ -49,13 +50,15 @@ class t_db_blob_writer_buf LCPI_CPP_CFG__CLASS__FINAL
   virtual void overflow() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL; //throw
 
  private:
+  t_db_operation_context*    const m_pOpCtx;
+  t_db_seq_stream_writer_ptr const m_blob_writer;
+
+ private:
   char* const m_buffer;
 
  #ifndef NDEBUG
   size_type const m_buffer_sz;
  #endif
-
-  const t_db_seq_stream_writer_ptr m_blob_writer;
 };//class t_db_blob_writer_buf
 
 ////////////////////////////////////////////////////////////////////////////////

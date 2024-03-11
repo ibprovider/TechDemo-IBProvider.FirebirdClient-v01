@@ -12,7 +12,7 @@
 #include "source/error_services/ibp_error_utils.h"
 #include "source/ibp_utils.h"
 
-#include <structure/utilities/string/string_is_null_or_empty.h>
+#include <lcpi/lib/structure/utilities/string/string_is_null_or_empty.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ t_isc_param_buffer_v2_builder&
 {
  assert_s(sizeof(tagID)==1);
  assert_s(sizeof(tag_size_type)==4);
- assert(!structure::string_is_null_or_empty(tagSIGN));
+ assert(!lib::structure::string_is_null_or_empty(tagSIGN));
 
  CHECK_READ_TYPED_PTR(str.ptr,str.len);
 
@@ -172,7 +172,7 @@ t_isc_param_buffer_v2_builder&
                              const wchar_t*    const tagSIGN,
                              ucs2_str_box_type const str)
 {
- assert(!structure::string_is_null_or_empty(tagSIGN));
+ assert(!lib::structure::string_is_null_or_empty(tagSIGN));
 
  CHECK_READ_TYPED_PTR(str.ptr,str.len);
 
@@ -206,7 +206,7 @@ t_isc_param_buffer_v2_builder&
                              const wchar_t*    const tagSIGN,
                              ucs2_str_box_type const str)
 {
- assert(!structure::string_is_null_or_empty(tagSIGN));
+ assert(!lib::structure::string_is_null_or_empty(tagSIGN));
 
  CHECK_READ_TYPED_PTR(str.ptr,str.len);
 
@@ -239,7 +239,7 @@ t_isc_param_buffer_v2_builder&
 {
  assert_s(sizeof(tagID)==1);
  assert_s(sizeof(tag_size_type)==4);
- assert(!structure::string_is_null_or_empty(tagSIGN));
+ assert(!lib::structure::string_is_null_or_empty(tagSIGN));
 
  CHECK_READ_PTR(pv,cb);
 
@@ -284,7 +284,7 @@ void t_isc_param_buffer_v2_builder::helper__throw_error__value_is_too_large
                                             const wchar_t* const tagSIGN,
                                             size_t         const valueSize)const
 {
- assert(!structure::string_is_null_or_empty(tagSIGN));
+ assert(!lib::structure::string_is_null_or_empty(tagSIGN));
 
  assert_s(1==sizeof(tagID));
 

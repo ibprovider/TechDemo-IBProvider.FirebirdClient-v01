@@ -44,7 +44,7 @@ inline bool GuidLess(REFGUID guid1,REFGUID guid2)
 ////////////////////////////////////////////////////////////////////////////////
 //class TGuidLess
 
-class TGuidLess
+class TGuidLess LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   TGuidLess()

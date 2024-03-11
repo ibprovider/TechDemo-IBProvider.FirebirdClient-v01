@@ -36,7 +36,8 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_blob_writer
   /// <summary>
   ///  Завершение записи
   /// </summary>
-  virtual void close_blob()=0;//throw
+  //! \param[in] op_ctx
+  virtual void close_blob(t_db_operation_context& op_ctx)=0;//throw
 
   /// <summary>
   ///  Отмена записи

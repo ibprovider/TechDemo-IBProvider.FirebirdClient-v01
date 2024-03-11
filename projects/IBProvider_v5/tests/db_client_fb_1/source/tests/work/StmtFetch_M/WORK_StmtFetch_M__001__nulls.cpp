@@ -185,8 +185,8 @@ WORK_StmtFetch_M__001__nulls::tag_impl::tag_impl(TTSO_GlobalContext* const pPara
                                             bool                const Revert,
                                             size_t              const nFields,
                                             size_t              const nNulls)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID  (structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID  (lib::structure::not_null_ptr(pTestID))
  ,m_Data    (Data)
  ,m_Revert  (Revert)
  ,m_nFields (nFields)
@@ -557,7 +557,7 @@ void WORK_StmtFetch_M__001__nulls::create(TTSO_PushTest*      const pTestPusher,
 
     const tag_impl::self_ptr
      spTest
-      (structure::not_null_ptr
+      (lib::structure::not_null_ptr
         (new tag_impl
           (pParams,
            ftestID.c_str(),

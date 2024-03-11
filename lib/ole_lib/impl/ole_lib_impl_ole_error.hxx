@@ -23,33 +23,33 @@ class t_ole_error:public t_base_ole_error
 
   explicit t_ole_error(const TOleStatus& status);
 
-  virtual ~t_ole_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_ole_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //std::exception interface ---------------------------------------------
-  virtual const char* what() const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* what() const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //structure::t_exception interface -------------------------------------
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
   //direct throw exception
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void generate(HRESULT hr,str_box_type what_arg,str_box_type text);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void generate(const TOleStatus& status);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error     (HRESULT hr,str_box_type verb);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error     (HRESULT hr);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_disp_error(HRESULT hr,str_box_type verb);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_disp_error(HRESULT hr);
 
  private:

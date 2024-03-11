@@ -7,7 +7,7 @@
 #ifndef _isc_integer_to_portable_format_H_
 #define _isc_integer_to_portable_format_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////

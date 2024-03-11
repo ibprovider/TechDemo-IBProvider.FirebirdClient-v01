@@ -126,7 +126,7 @@ class IBP_OLEDB_Props2__Values
         (REFGUID                               propGuid,
          DBPROPID                              propId,
          DBPROPOPTIONS                         dwOptions,
-         const VARIANT&                        Value) COMP_W000004_OVERRIDE;
+         const VARIANT&                        Value) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
  private:
   bool Helper__GetValueFromStaticPropData

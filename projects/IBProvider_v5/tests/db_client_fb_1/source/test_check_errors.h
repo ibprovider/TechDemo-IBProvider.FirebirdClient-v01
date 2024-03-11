@@ -29,6 +29,8 @@ class TestCheckErrors
 
   static const char sm_srcID__UnknownDBMS[];
 
+  static const wchar_t sm_srcID_wstr__IBProvider[];
+
   static const wchar_t sm_srcID_wstr__Firebird[];
 
   static const wchar_t sm_subsysID__remote_fb[];
@@ -560,6 +562,11 @@ class TestCheckErrors
                 wstr_box_type                  ucs2Place,
                 wstr_box_type                  ucs2Point,
                 int                            blobHandleMode);
+
+  static bool check_err_rec__blob_err__fail_write_to_db_0
+               (TTSO_Tracer&                   tracer,
+                const structure::t_err_record* pErrorRec,
+                wstr_box_type                  ucs2_SubsystemID);
 
   static bool check_err_rec__blob_err__close_closed_blob
                (TTSO_Tracer&                   tracer,

@@ -16,11 +16,12 @@ class TMsgTableLoader;
 class TBaseMsgTableLoader
 {
  private:
-  typedef TBaseMsgTableLoader                          self_type;
+  using self_type=TBaseMsgTableLoader;
 
  public: //typedefs ------------------------------------------------------
-  typedef TResID                                       res_id_type;
-  typedef structure::t_lcid                            lcid_type;
+  using res_id_type=TResID;
+
+  using lcid_type=structure::t_lcid;
 
   enum enum_error_code
   {
@@ -30,7 +31,7 @@ class TBaseMsgTableLoader
    err_fail_convert     = 3,
   };//enum_error_code
 
-  typedef enum_error_code                              error_code_type;
+  using error_code_type=enum_error_code;
 
  protected:
   TBaseMsgTableLoader(){;}
@@ -58,22 +59,26 @@ class TBaseMsgTableLoader
 //class TMsgTableLoader
 
 template<class TResourceModule>
-class TMsgTableLoader:public TBaseMsgTableLoader
+class TMsgTableLoader
+ :public TBaseMsgTableLoader
 {
  private:
-  typedef TMsgTableLoader<TResourceModule>             self_type;
-  typedef TBaseMsgTableLoader                          inherited;
+  using self_type=TMsgTableLoader<TResourceModule>;
+  using inherited=TBaseMsgTableLoader;
 
-  TMsgTableLoader(const self_type&);
-  self_type& operator = (const self_type&);
+  TMsgTableLoader(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef TResourceModule                              module_type;
-  typedef typename module_type::self_ptr               module_ptr;
+  using module_type=TResourceModule;
 
-  typedef inherited::res_id_type                       res_id_type;
-  typedef inherited::lcid_type                         lcid_type;
-  typedef inherited::error_code_type                   error_code_type;
+  using module_ptr=typename module_type::self_ptr;
+
+  using res_id_type=inherited::res_id_type;
+
+  using lcid_type=inherited::lcid_type;
+
+  using error_code_type=inherited::error_code_type;
 
  public:
   TMsgTableLoader();

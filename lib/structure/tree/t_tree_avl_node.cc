@@ -39,9 +39,10 @@ t_tree_avl_node<T>::t_tree_avl_node(self_type*     const parent,
  :m_right   (nullptr)
  ,m_left    (nullptr)
  ,m_parent  (parent)
- ,m_key     (__STL_FORWARD_VALUE(U,key))
+ ,m_key     (LCPI_STL_FORWARD_VALUE(U,key))
  ,m_balance (0)
-{;}
+{
+}
 
 #else // !COMP_CONF_SUPPORT_MEMBER_TEMPLATE
 
@@ -52,9 +53,10 @@ t_tree_avl_node<T>::t_tree_avl_node(self_type*     const parent,
  :m_right   (nullptr)
  ,m_left    (nullptr)
  ,m_parent  (parent)
- ,m_key     (__STL_FORWARD_VALUE(value_type,key))
+ ,m_key     (LCPI_STL_MOVE_VALUE(key))
  ,m_balance (0)
-{;}
+{
+}
 
 #endif // !COMP_CONF_SUPPORT_MEMBER_TEMPLATE
 
@@ -70,7 +72,8 @@ t_tree_avl_node<T>::t_tree_avl_node(self_type*    const parent,
  ,m_parent  (parent)
  ,m_key     (node.m_key)
  ,m_balance (node.m_balance)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 #if(COMP_CONF_SUPPORT_VARIADIC_TEMPLATES!=0)
@@ -83,7 +86,7 @@ t_tree_avl_node<T>::t_tree_avl_node(self_type*       const parent,
  :m_right   (nullptr)
  ,m_left    (nullptr)
  ,m_parent  (parent)
- ,m_key     (__STL_FORWARD_VALUE(Args,args)...)
+ ,m_key     (LCPI_STL_FORWARD_VALUE(Args,args)...)
  ,m_balance (0)
 {
 }//t_tree_avl_node

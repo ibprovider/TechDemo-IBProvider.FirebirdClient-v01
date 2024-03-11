@@ -7,7 +7,7 @@
 #ifndef _remote_fb__transmission__pset02__op__info_H_
 #define _remote_fb__transmission__pset02__op__info_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace transmission{namespace pset02{
 ////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace t
 class RemoteFB__PSET02__OpInfo LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  static size_t  get_size__op_fetch_response(size_t szMsg);
+  static size_t get_size__op_fetch_response(size_t szMsg);
 };//class RemoteFB__PSET02__OpInfo
 
 ////////////////////////////////////////////////////////////////////////////////

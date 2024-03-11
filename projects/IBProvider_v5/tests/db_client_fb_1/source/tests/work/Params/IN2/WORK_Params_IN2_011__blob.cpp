@@ -16,10 +16,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_IN2_011__blob::tag_impl
 
-class WORK_Params_IN2_011__blob::tag_impl
+class WORK_Params_IN2_011__blob::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -249,6 +249,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__WriteBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob,
     sizeof(blob1),
     blob1);
@@ -256,6 +257,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__CloseBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob);
 
   //-----------------------------------------
@@ -272,6 +274,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__WriteBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob,
     sizeof(blob2),
     blob2);
@@ -279,6 +282,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__CloseBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob);
 
   //----------------------------------------
@@ -342,6 +346,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__ReadBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob,
     sizeof(out_blob1),
     out_blob1,
@@ -356,6 +361,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__CloseBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob);
 
   //---------------------------------------- check out blob2
@@ -375,6 +381,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__ReadBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob,
     sizeof(out_blob2),
     out_blob2,
@@ -389,6 +396,7 @@ void WORK_Params_IN2_011__blob::tag_impl::test_001
   svc::RemoteFB_Connector__CloseBlob
    (tracer,
     spConnector,
+    OpCtx,
     &hBlob);
 
   //----------------------------------------
@@ -508,7 +516,7 @@ void WORK_Params_IN2_011__blob::create
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

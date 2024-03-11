@@ -9,8 +9,6 @@
 
 #include "source/os/ibp_os__dll.h"
 
-#include <lcpi/lib/structure/debug/debug_code.h>
-
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_os_win32
@@ -28,20 +26,20 @@ class t_ibp_os_win32__dll_entry_point;
 ///  Шаблон подключения к точке входа DLL
 /// </summary>
 template<class TFunc>
-class t_ibp_os_win32__dll_entry_point
+class t_ibp_os_win32__dll_entry_point LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_os_win32__dll_entry_point<TFunc>         self_type;
+  using self_type=t_ibp_os_win32__dll_entry_point<TFunc>;
 
-  t_ibp_os_win32__dll_entry_point(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_os_win32__dll_entry_point(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef TFunc                                          func_type;
+  using func_type=TFunc;
 
-  typedef t_ibp_os__dll                                  dll_type;
+  using dll_type=t_ibp_os__dll;
 
-  typedef t_ibp_os__dll_ptr                              dll_ptr;
+  using dll_ptr=t_ibp_os__dll_ptr;
 
  public: //---------------------------------------------------------------
   /// <summary>

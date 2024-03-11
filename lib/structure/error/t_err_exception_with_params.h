@@ -4,10 +4,6 @@
 #ifndef _t_err_exception_with_params_H_
 #define _t_err_exception_with_params_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/error/t_err_records.h>
 #include <structure/t_exception.h>
 #include <structure/t_str_args.h>
@@ -34,10 +30,10 @@ class t_err_exception_with_params;
 
 template<class t_record,class charT>
 class t_err_exception_with_params
-       :virtual public t_exception
-       ,public t_basic_str_args<charT,t_err_exception_with_params<t_record,charT> >
-       ,public t_err_records_r
-       ,public t_err_records_w
+ :virtual public t_exception
+ ,public t_basic_str_args<charT,t_err_exception_with_params<t_record,charT> >
+ ,public t_err_records_r
+ ,public t_err_records_w
 {
  private:
   typedef t_err_exception_with_params<t_record,charT>       self_type;
@@ -90,7 +86,7 @@ class t_err_exception_with_params
 
   explicit t_err_exception_with_params(msg_id_type msg_id);
 
-  virtual ~t_err_exception_with_params() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_err_exception_with_params() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //selectors ------------------------------------------------------------
   const record_ptr& cur_record()const
@@ -100,24 +96,24 @@ class t_err_exception_with_params
    {return m_records;}
 
   //exception interface --------------------------------------------------
-  virtual const char* what()const throw() COMP_W000004_OVERRIDE;
+  virtual const char* what()const throw() LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //t_exception interface ------------------------------------------------
-  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const COMP_W000004_OVERRIDE;
+  LCPI_CPP_CFG__DECLSPEC__NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //t_error_with_params_base interface -----------------------------------
-  virtual self_type& add_arg(const arg_type& arg) COMP_W000004_OVERRIDE;//abstract
+  virtual self_type& add_arg(const arg_type& arg) LCPI_CPP_CFG__METHOD__OVERRIDE;//abstract
 
-  virtual self_type& add_arg__exc(const std::exception& e) COMP_W000004_OVERRIDE; //override
+  virtual self_type& add_arg__exc(const std::exception& e) LCPI_CPP_CFG__METHOD__OVERRIDE; //override
 
   //t_err_records interface ----------------------------------------------
-  virtual size_t get_record_count()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_t get_record_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual t_err_record::self_ptr get_record(size_t record_num)const COMP_W000004_OVERRIDE_FINAL;
+  virtual t_err_record::self_ptr get_record(size_t record_num)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //! \brief
   //!  Add new err_record to collection. Current error_record reset to NULL.
-  virtual void add_record(t_err_record* record) COMP_W000004_OVERRIDE;
+  virtual void add_record(t_err_record* record) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //add error record argument object -------------------------------------
   self_type& add_arg__obj(typename record_type::arg_obj_type* obj);

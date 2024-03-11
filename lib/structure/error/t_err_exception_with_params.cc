@@ -11,7 +11,8 @@ namespace structure{
 template<class t_record,class charT>
 t_err_exception_with_params<t_record,charT>::t_err_exception_with_params
                                            (const structure::t_dummy&)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class t_record,class charT>
@@ -20,7 +21,8 @@ t_err_exception_with_params<t_record,charT>::t_err_exception_with_params
  :inherited    (x)
  ,m_cur_record (x.m_cur_record)
  ,m_records    (x.m_records)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
  #if 0 //03.06.2007, 05.06.2019
@@ -107,8 +109,9 @@ t_err_exception_with_params<t_record,charT>::t_err_exception_with_params
 
 //------------------------------------------------------------------------
 template<class t_record,class charT>
-t_err_exception_with_params<t_record,charT>::~t_err_exception_with_params()__STL_EXCEPTION_DCR_THROW_SPEC
-{;}
+t_err_exception_with_params<t_record,charT>::~t_err_exception_with_params()LCPI_STL_EXCEPTION_DCR_THROW_SPEC
+{
+}
 
 //exception interface ----------------------------------------------------
 template<class t_record,class charT>

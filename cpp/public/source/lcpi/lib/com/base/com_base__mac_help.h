@@ -14,17 +14,17 @@
 #define OLE_LIB__DECLARE_IUNKNOWN                                         \
  virtual HRESULT __stdcall QueryInterface                                 \
                             (const IID& iid,                              \
-                             void**     ppv) COMP_W000004_OVERRIDE_FINAL  \
+                             void**     ppv) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL  \
  {                                                                        \
   return this->OuterUnknown__QueryInterface(iid,ppv);                     \
  }                                                                        \
                                                                           \
- virtual ULONG __stdcall AddRef() COMP_W000004_OVERRIDE_FINAL             \
+ virtual ULONG __stdcall AddRef() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL    \
  {                                                                        \
   return this->OuterUnknown__AddRef();                                    \
  }                                                                        \
                                                                           \
- virtual ULONG __stdcall Release() COMP_W000004_OVERRIDE_FINAL            \
+ virtual ULONG __stdcall Release() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL   \
  {                                                                        \
   return this->OuterUnknown__Release();                                   \
  }
@@ -33,7 +33,7 @@
 //implementation of TGetComponentClassID
 
 #define OLE_LIB__DECLARE_GET_COMPONENT_CLASS_ID(ComponentID)              \
- virtual REFCLSID GetComponentClassID()const COMP_W000004_OVERRIDE_FINAL  \
+ virtual REFCLSID GetComponentClassID()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL  \
  {                                                                        \
   return ComponentID;                                                     \
  }
@@ -63,12 +63,12 @@
 #define OLE_LIB__DECLARE_ROOT_INTERFACE                                      \
  virtual HRESULT __stdcall NondelegatingQueryInterface                       \
                            (REFIID        riid,                              \
-                            void**        ppv) COMP_W000004_OVERRIDE;
+                            void**        ppv) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
 #define OLE_LIB__DEFINE_ROOT_INTERFACE_INL()                                 \
  virtual HRESULT __stdcall NondelegatingQueryInterface                       \
                             (REFIID       riid,                              \
-                             void** const ppv) COMP_W000004_OVERRIDE         \
+                             void** const ppv) LCPI_CPP_CFG__METHOD__OVERRIDE  \
  {                                                                           \
   OLE_LIB__IMETHOD_PROLOG                                                    \
                                                                              \

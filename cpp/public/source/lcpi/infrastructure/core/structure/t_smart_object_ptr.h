@@ -24,10 +24,10 @@ template<class T>
 struct t_sptr_traits final
 {
  public:
-  typedef T           item_type;
-  typedef T&          reference;
-  typedef T*          pointer;
-  typedef T*          internal_pointer;
+  using item_type        = T;
+  using reference        = T&;
+  using pointer          = T*;
+  using internal_pointer = T*;
 
  public:
   static void increment_cntRef(pointer const ptr);
@@ -42,14 +42,14 @@ template<class T,class traits_data>
 class t_smart_object_ptr final
 {
  private:
-  typedef t_smart_object_ptr<T,traits_data>            self_type;
+  using self_type=t_smart_object_ptr<T,traits_data>;
 
  public: //typedef -------------------------------------------------------
-  typedef traits_data                                  traits_data_type;
-  typedef typename traits_data::item_type              item_type;
-  typedef typename traits_data::reference              reference;
-  typedef typename traits_data::pointer                pointer;
-  typedef typename traits_data::internal_pointer       internal_pointer;
+  using traits_data_type = traits_data;
+  using item_type        = typename traits_data::item_type;
+  using reference        = typename traits_data::reference;
+  using pointer          = typename traits_data::pointer;
+  using internal_pointer = typename traits_data::internal_pointer;
 
  public: //---------------------------------------------------------------
   t_smart_object_ptr();
@@ -132,8 +132,8 @@ namespace std{
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T,class traits_data>
-void swap(lcpi::infrastructure::core::structure::t_smart_object_ptr<T,traits_data>& x1,
-          lcpi::infrastructure::core::structure::t_smart_object_ptr<T,traits_data>& x2)
+void swap(::lcpi::infrastructure::core::structure::t_smart_object_ptr<T,traits_data>& x1,
+          ::lcpi::infrastructure::core::structure::t_smart_object_ptr<T,traits_data>& x2)
 {
  x1.swap(x2);
 }//swap

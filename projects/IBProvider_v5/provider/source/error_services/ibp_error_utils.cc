@@ -15,7 +15,7 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 
 template<typename TextIterator>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ThrowErrorSymbolInCommandText(TextIterator beg,
                                        TextIterator cur_pos)
 {
@@ -38,7 +38,7 @@ void IBP_ThrowErrorSymbolInCommandText(TextIterator beg,
 ////////////////////////////////////////////////////////////////////////////////
 
 template<class T>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
        (const wchar_t* const sqlTypeSign,
         T              const sqllen)
@@ -54,7 +54,7 @@ COMP_CONF_DECLSPEC_NORETURN
 
 //------------------------------------------------------------------------
 template<class T>
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
  void IBP_ThrowIscErr_BugCheck_BadSqlLenOfXVar
        (t_ibp_subsystem_id const subsystem_id,  
         const wchar_t*     const sqlTypeSign,
@@ -74,7 +74,7 @@ COMP_CONF_DECLSPEC_NORETURN
 //class IBP_ErrorUtils
 
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
                (HRESULT const hr)
 {
@@ -87,7 +87,7 @@ void IBP_ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
                (const std::exception&    e,
                 HRESULT            const hr,
@@ -109,7 +109,7 @@ void IBP_ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
                (HRESULT            const hr,
                 ibp_msg_code_type  const msg_code,
@@ -128,7 +128,7 @@ void IBP_ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
                (const std::exception&    e,
                 HRESULT            const hr,
@@ -151,7 +151,7 @@ void IBP_ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__Error
                (HRESULT            const hr,
                 t_ibp_subsystem_id const subsystem_id,
@@ -171,7 +171,7 @@ void IBP_ErrorUtils::Throw__Error
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
                (HRESULT                         const hr,
                 ibp_msg_code_type               const msg_code,
@@ -191,7 +191,7 @@ void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
                (HRESULT                         const hr,
                 t_ibp_subsystem_id              const subsystem_id,
@@ -214,7 +214,7 @@ void IBP_ErrorUtils::Throw__ErrorWithCustomErrorObject
 //IBP_ErrorUtils::ReThrowWithSameHResult
 
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithSameHResult
                (const std::exception&    e,
                 ibp_msg_code_type  const msg_code,
@@ -237,7 +237,7 @@ void IBP_ErrorUtils::ReThrowWithSameHResult
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithSameHResult
                (const std::exception&    e,
                 t_ibp_subsystem_id const subsystem_id,
@@ -264,7 +264,7 @@ void IBP_ErrorUtils::ReThrowWithSameHResult
 //IBP_ErrorUtils::ReThrowWithNewHResult
 
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithNewHResult
                (const std::exception&    e,
                 HRESULT            const hr,
@@ -290,7 +290,7 @@ void IBP_ErrorUtils::ReThrowWithNewHResult
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN /*defined for avoiding a possible problem with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN /*defined for avoiding a possible problem with MSVC*/
 void IBP_ErrorUtils::ReThrowWithNewHResult
                (const std::exception&    e,
                 HRESULT            const hr,
@@ -320,7 +320,7 @@ void IBP_ErrorUtils::ReThrowWithNewHResult
 //class IBP_ErrorUtils
 
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck__DEBUG
              (const std::exception& e,
               const wchar_t* const  place,
@@ -354,7 +354,7 @@ void IBP_ErrorUtils::Throw__BugCheck__DEBUG
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck__DEBUG
              (const wchar_t* const place,
               const wchar_t* const point,
@@ -386,7 +386,7 @@ void IBP_ErrorUtils::Throw__BugCheck__DEBUG
 
 //------------------------------------------------------------------------
 template<typename... Args>
-COMP_CONF_DECLSPEC_NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
+LCPI_CPP_CFG__DECLSPEC__NORETURN  /*defined for avoiding a problem (warning) with MSVC*/
 void IBP_ErrorUtils::Throw__BugCheck
              (const wchar_t* const place,
               const wchar_t* const point,

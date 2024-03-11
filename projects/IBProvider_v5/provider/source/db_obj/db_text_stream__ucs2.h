@@ -22,7 +22,7 @@ namespace lcpi{namespace ibp{namespace db_obj{
 /// </summary>
 //! \todo
 //!  Перевести интерфейс на t_db_smart_interface
-class t_db_text_stream__ucs2:public t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_text_stream__ucs2:public t_db_smart_interface
 {
  public: //typedefs ------------------------------------------------------
   typedef size_t                            size_type;
@@ -32,6 +32,7 @@ class t_db_text_stream__ucs2:public t_db_smart_interface
   /// <summary>
   ///  Чтение UCS2-символов
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  ucs2_buffer_size
   //! \param[out] ucs2_buffer
   //! \param[out] cch_readed
@@ -42,9 +43,10 @@ class t_db_text_stream__ucs2:public t_db_smart_interface
   //!
   //! \note
   //!  Если буфер заполнился не до конца, то считается что достигнут EOF
-  virtual t_db_cs_result read_ucs2(size_type  ucs2_buffer_size,
-                                   wchar_t*   ucs2_buffer,
-                                   size_type* cch_readed)=0;
+  virtual t_db_cs_result read_ucs2(t_db_operation_context& op_ctx,
+                                   size_type               ucs2_buffer_size,
+                                   wchar_t*                ucs2_buffer,
+                                   size_type*              cch_readed)=0;
 };//class t_db_text_stream__ucs2
 
 ////////////////////////////////////////////////////////////////////////////////

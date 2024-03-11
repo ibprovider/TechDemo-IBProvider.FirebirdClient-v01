@@ -11,7 +11,7 @@
 #include "source/ibp_char.h"
 
 #include <ole_lib/ole_base.h>
-#include <structure/stl/t_stl_map.h>
+#include <lcpi/lib/structure/stl/t_stl_map.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,13 +32,13 @@ class t_ibp_os_win32__dll_loader LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_INTERFACE_IMPL_DYNAMIC(t_ibp_os__dll)
 {
  private:
-  typedef t_ibp_os_win32__dll_loader                  self_type;
+  using self_type=t_ibp_os_win32__dll_loader;
 
-  t_ibp_os_win32__dll_loader(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_os_win32__dll_loader(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>    self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
  public:
   /// <summary>
@@ -104,11 +104,12 @@ class t_ibp_os_win32__dll_loader LCPI_CPP_CFG__CLASS__FINAL
   typedef thread_traits::guard_type                        guard_type;
   typedef thread_traits::lock_guard_type                   lock_guard_type;
 
-  typedef structure::t_stl_map
-           <GUID,
-            IBP_SmartObjectPtr,
-            ole_lib::TGuidLess,
-            IBP_MemoryAllocator>                           service_objects_map_type;
+  using service_objects_map_type
+   =lib::structure::t_stl_map
+     <GUID,
+      IBP_SmartObjectPtr,
+      ole_lib::TGuidLess,
+      IBP_MemoryAllocator>;
 
  private:
   guard_type                  m_ServiceObjs_Guard;

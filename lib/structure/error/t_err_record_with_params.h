@@ -4,10 +4,6 @@
 #ifndef _t_err_record_with_params_H_
 #define _t_err_record_with_params_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/error/t_err_record.h>
 #include <structure/t_str_args.h>
 #include <structure/t_smart_vector.h>
@@ -34,19 +30,20 @@ template<class t_string>
 class t_err_record_arg_string:virtual public t_smart_memory_object
 {
  private:
-  typedef t_err_record_arg_string<t_string>              self_type;
+  using self_type=t_err_record_arg_string<t_string>;
 
-  t_err_record_arg_string(const self_type&);
-  self_type& operator = (const self_type&);
+  t_err_record_arg_string(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  protected:
   virtual ~t_err_record_arg_string();
 
  public: //typedefs ------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>                  self_ptr;
+  using self_ptr=t_smart_object_ptr<self_type>;
 
-  typedef t_string                                       string_type;
-  typedef t_err_record::lcid_type                        lcid_type;
+  using string_type=t_string;
+
+  using lcid_type=t_err_record::lcid_type;
 
  public:
   t_err_record_arg_string()
@@ -70,26 +67,26 @@ template<class t_string>
 class t_err_record_arg_source_name:public t_err_record_arg_string<t_string>
 {
  private:
-  typedef t_err_record_arg_source_name<t_string>             self_type;
-  typedef t_err_record_arg_string<t_string>                  inherited;
+  using self_type=t_err_record_arg_source_name<t_string>;
+  using inherited=t_err_record_arg_string<t_string>;
 
-  t_err_record_arg_source_name(const self_type&);
-  self_type& operator = (const self_type&);
+  t_err_record_arg_source_name(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~t_err_record_arg_source_name();
 
  public: //typedefs ------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>                      self_ptr;
+  using self_ptr=t_smart_object_ptr<self_type>;
 
-  typedef t_err_record                                       record_type;
-  typedef typename inherited::string_type                    string_type;
-  typedef typename inherited::lcid_type                      lcid_type;
+  using record_type =t_err_record;
+  using string_type =typename inherited::string_type;
+  using lcid_type   =typename inherited::lcid_type;
 
  public:
   t_err_record_arg_source_name(record_type* const x);
 
   //t_err_record_arg_source_name interface -------------------------------
-  virtual bool get_arg_string(lcid_type lcid,string_type& s)const COMP_W000004_OVERRIDE_FINAL;
+  virtual bool get_arg_string(lcid_type lcid,string_type& s)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typename record_type::self_ptr m_record;
@@ -105,13 +102,13 @@ class t_err_record_with_params_base
 
 {
  private:
-  typedef t_err_record_with_params_base<charT>                      self_type;
-  typedef t_basic_smart_interface_impl__dynamic<t_err_record,
-                                                t_void_allocator>   inherited;
-  typedef t_basic_str_args<charT,self_type>                         base_args_type;
+  using self_type=t_err_record_with_params_base<charT>;
+  using inherited=t_basic_smart_interface_impl__dynamic<t_err_record,t_void_allocator>;
 
-  t_err_record_with_params_base(const self_type&);
-  self_type& operator = (const self_type&);
+  using base_args_type=t_basic_str_args<charT,self_type>;
+
+  t_err_record_with_params_base(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef typename base_args_type::char_type             char_type;
@@ -201,16 +198,16 @@ class t_err_record_with_params
  ,public record_traits::record_data_ext_type
 {
  private:
-  typedef t_err_record_with_params<record_traits,charT>     self_type;
-  typedef t_err_record_with_params_base<charT>              inherited;
+  using self_type=t_err_record_with_params<record_traits,charT>;
+  using inherited=t_err_record_with_params_base<charT>;
 
-  t_err_record_with_params(const self_type&);
-  self_type& operator = (const self_type&);
+  t_err_record_with_params(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef record_traits                             traits_type;
+  using traits_type=record_traits;
 
-  typedef t_smart_object_ptr<self_type>             self_ptr;
+  using self_ptr=t_smart_object_ptr<self_type>;
 
   typedef typename traits_type::source_id_type      source_id_type;
   typedef typename traits_type::msg_id_type         msg_id_type;
@@ -280,7 +277,7 @@ class t_err_record_with_params
   bool build_description(lcid_type,string_type&)const;
 
  private:
-  class tag_msgID_to_num___std
+  class tag_msgID_to_num___std LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
     template<typename TMsgID>
@@ -290,7 +287,7 @@ class t_err_record_with_params
     }//exec
   };//class tag_msgID_to_num___std
 
-  class tag_msgID_to_num___enum
+  class tag_msgID_to_num___enum LCPI_CPP_CFG__CLASS__FINAL
   {
    public:
     template<typename TMsgID>

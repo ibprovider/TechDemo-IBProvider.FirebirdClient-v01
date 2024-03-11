@@ -22,13 +22,13 @@ class TResID_Ex;
 //class TResID_Wrapper
 
 template<class T>
-class TResID_Wrapper
+class TResID_Wrapper LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TResID_Wrapper<T>        self_type;
- 
-  self_type& operator = (const self_type);
-  
+  using self_type=TResID_Wrapper<T>;
+
+  self_type& operator = (const self_type)=delete;
+
  public:
   const T& m_data;
 
@@ -54,16 +54,17 @@ T& operator << (T& x,const win32lib::TResID_Wrapper<T2>& w)
 ////////////////////////////////////////////////////////////////////////////////
 //class TResID
 
-class TResID
+class TResID LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TResID                            self_type;
+  using self_type=TResID;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_char                            char_type;
-  typedef WORD                              id_type;
+  using char_type=t_char;
 
-  typedef __STL_DEF_BASIC_STRING(char_type) string_type;
+  using id_type=WORD;
+
+  using string_type=std::basic_string<char_type>;
 
  public: //---------------------------------------------------------------
   TResID();
@@ -104,16 +105,17 @@ class TResID
 ////////////////////////////////////////////////////////////////////////////////
 //class TResID_Ex
 
-class TResID_Ex
+class TResID_Ex LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TResID_Ex                         self_type;
+  using self_type=TResID_Ex;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_char                            char_type;
-  typedef WORD                              id_type;
+  using char_type=t_char;
 
-  typedef __STL_DEF_BASIC_STRING(char_type) string_type;
+  using id_type=WORD;
+
+  using string_type=std::basic_string<char_type>;
 
  public: //---------------------------------------------------------------
   TResID_Ex();
@@ -124,7 +126,7 @@ class TResID_Ex
 
   TResID_Ex(const id_type resNum);
 
- ~TResID_Ex(); 
+ ~TResID_Ex();
 
   self_type& operator = (const self_type&);
 
@@ -156,7 +158,7 @@ class TResID_Ex
 
   operator TResID () const
    {return TResID(m_Str);}
-    
+
  private:
   union
   {

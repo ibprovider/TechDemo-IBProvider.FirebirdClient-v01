@@ -19,13 +19,14 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Заглушка для представления кодовой страницы BASE64
 /// </summary>
-class t_ibp_cs_base64_mime:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
+class t_ibp_cs_base64_mime LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset)
 {
  private:
-  typedef t_ibp_cs_base64_mime                   self_type;
+  using self_type=t_ibp_cs_base64_mime;
 
-  t_ibp_cs_base64_mime(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_cs_base64_mime(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -53,8 +54,9 @@ class t_ibp_cs_base64_mime:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db
   //!  - \b false - Произошла ошибка конвертирования
   //!
   //! В случае ошибки конвертирования, значение (*pws) не определено
-  virtual bool to_unicode_v2(std::wstring*              pws,
-                             structure::t_const_str_box s)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool to_unicode_v2
+           (std::wstring*                   pws,
+            lib::structure::t_const_str_box s)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   /// <summary>
   ///  From UCS2 To ASCII
@@ -67,8 +69,9 @@ class t_ibp_cs_base64_mime:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db
   //!  - \b false - Произошла ошибка конвертирования
   //!
   //! В случае ошибки конвертирования, значение (*ps) не определено
-  virtual bool from_unicode_v2(std::string*                ps,
-                               structure::t_const_wstr_box ws)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual bool from_unicode_v2
+           (std::string*                     ps,
+            lib::structure::t_const_wstr_box ws)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual db_obj::t_db_text_stream__ucs2_ptr
            mbc_stream_to_ucs2_stream(db_obj::t_db_text_stream__mbc* mbc_stream)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
@@ -91,11 +94,13 @@ class t_ibp_cs_base64_mime:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db
   /// <summary>
   ///  Переконвертация UNICODE-строки с сохранением результата в BLOB
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  source
   //! \param[in]  source_size
   //! \param[in]  writer
   //!  Not NULL
-  virtual bool unicode_to_blob(const wchar_t*                  source,
+  virtual bool unicode_to_blob(db_obj::t_db_operation_context& op_ctx,
+                               const wchar_t*                  source,
                                size_type                       source_size,
                                db_obj::t_db_seq_stream_writer* writer)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -106,8 +111,9 @@ class t_ibp_cs_base64_mime:public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db
 
  private:
   template<typename source_charT,typename dest_charT>
-  static bool tbase64_to_tbase64(__STL_DEF_BASIC_STRING(dest_charT)*            dest_str,
-                                 structure::t_basic_const_str_box<source_charT> source);
+  static bool tbase64_to_tbase64
+          (LCPI_STL_DEF_BASIC_STRING(dest_charT)*              dest_str,
+           lib::structure::t_basic_const_str_box<source_charT> source);
 
  private:
   ///Описание кодовой страницы

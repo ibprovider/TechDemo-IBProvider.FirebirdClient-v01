@@ -20,7 +20,7 @@ namespace lcpi{namespace lib{namespace com{namespace base{
 
 //------------------------------------------------------------------------
 #define OLE_LIB__DECLARE_IPTR_TYPE_NS(NS,INTERFACE)                       \
- typedef OLE_LIB__BUILD_IPTR_TYPE_NS(NS,INTERFACE)    INTERFACE##Ptr
+ using INTERFACE##Ptr=OLE_LIB__BUILD_IPTR_TYPE_NS(NS,INTERFACE)
 
 //------------------------------------------------------------------------
 #define OLE_LIB__DECLARE_IPTR_TYPE(INTERFACE)                             \
@@ -264,7 +264,7 @@ class IPtr<IUnknown,&IID_IUnknown> LCPI_CPP_CFG__CLASS__FINAL
 //class IPtr2 - without use QueryInterface
 
 #define OLE_LIB__DECLARE_IPTR2_TYPE_EX(InterfaceType,typedef_name)        \
- typedef ::lcpi::lib::com::base::IPtr2<InterfaceType> typedef_name
+ using typedef_name=::lcpi::lib::com::base::IPtr2<InterfaceType>
 
 #define OLE_LIB__DECLARE_IPTR2_TYPE(InterfaceType)                        \
  OLE_LIB__DECLARE_IPTR2_TYPE_EX(InterfaceType,InterfaceType##Ptr)
@@ -369,9 +369,9 @@ class IPtr2 LCPI_CPP_CFG__CLASS__FINAL
 };//template class IPtr2
 
 //deprecated [2017-03-26]
-typedef IPtr2<IUnknown> IUnknownPtr;
+using IUnknownPtr=IPtr2<IUnknown>;
 
-typedef IPtr2<IUnknown> IUnknownPtr2;
+using IUnknownPtr2=IPtr2<IUnknown>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class INondelegatingPtr2
@@ -449,16 +449,16 @@ namespace std{
 //STL specializations
 
 template<class T,IID* piid>
-inline void swap(lcpi::lib::com::base::IPtr<T,piid>& x1,
-                 lcpi::lib::com::base::IPtr<T,piid>& x2)
+inline void swap(::lcpi::lib::com::base::IPtr<T,piid>& x1,
+                 ::lcpi::lib::com::base::IPtr<T,piid>& x2)
 {
  x1.swap(x2);
 }//swap IPtr
 
 //------------------------------------------------------------------------
 template<class T>
-inline void swap(lcpi::lib::com::base::IPtr2<T>& x1,
-                 lcpi::lib::com::base::IPtr2<T>& x2)
+inline void swap(::lcpi::lib::com::base::IPtr2<T>& x1,
+                 ::lcpi::lib::com::base::IPtr2<T>& x2)
 {
  x1.swap(x2);
 }//swap IPtr2

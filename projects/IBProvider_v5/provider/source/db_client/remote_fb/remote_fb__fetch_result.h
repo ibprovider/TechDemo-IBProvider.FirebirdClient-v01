@@ -10,7 +10,7 @@
 #include "source/db_client/remote_fb/remote_fb__memory.h"
 #include "source/db_client/remote_fb/remote_fb__msg_data_element_descr.h"
 
-#include <structure/stl/t_stl_vector.h>
+#include <lcpi/lib/structure/stl/t_stl_vector.h>
 #include <structure/t_simple_buffer.h>
 #include <structure/t_cycle_buffer_manager.h>
 
@@ -50,16 +50,16 @@ class RemoteFB__FetchResult LCPI_CPP_CFG__CLASS__FINAL
    =RemoteFB__MemoryAllocator;
 
   using msg_blr_buffer_type
-   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
+   =lib::structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
   using msg_data_descrs_type
-   =structure::t_stl_vector<RemoteFB__MsgDataElementDescr,allocator_type>;
+   =lib::structure::t_stl_vector<RemoteFB__MsgDataElementDescr,allocator_type>;
 
   using msg_data_buffer_type
-   =structure::t_typed_simple_buffer<byte_type,allocator_type>;
+   =lib::structure::t_typed_simple_buffer<byte_type,allocator_type>;
 
   using msg_nulls_buffer_type
-   =structure::t_typed_simple_buffer<unsigned char,allocator_type>;
+   =lib::structure::t_typed_simple_buffer<unsigned char,allocator_type>;
 
   /// <summary>
   ///  Перечисление состояний процесса обработки пакетов с ответами

@@ -24,9 +24,9 @@ class t_base_com_error:virtual public structure::t_exception
 
   explicit t_base_com_error(HRESULT code);
 
-  virtual ~t_base_com_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_base_com_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
-  COMP_CONF_DECLSPEC_NORETURN static void throw_error(HRESULT code);
+  LCPI_CPP_CFG__DECLSPEC__NORETURN static void throw_error(HRESULT code);
 
   //-----------------------------------------------------------------
   void swap(self_type& x);
@@ -35,10 +35,10 @@ class t_base_com_error:virtual public structure::t_exception
   HRESULT com_code()const;
 
   //std::exception interface ----------------------------------------
-  virtual const char* what()const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
+  virtual const char* what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //structure::t_exception interface --------------------------------
-  COMP_CONF_DECLSPEC_NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
+  LCPI_CPP_CFG__DECLSPEC__NORETURN virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //interface -------------------------------------------------------
 

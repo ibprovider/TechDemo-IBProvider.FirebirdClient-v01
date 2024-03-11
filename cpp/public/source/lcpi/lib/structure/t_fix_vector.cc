@@ -4,7 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure__t_fix_vector_CC_
 #define _cpp_public_lcpi_lib_structure__t_fix_vector_CC_
 
-#include <lcpi/lib/structure/debug/debug_code.h>
 #include <lcpi/lib/structure/t_algorithm.h>
 #include <lcpi/lib/structure/t_memory.h>
 #include <iterator>
@@ -362,7 +361,7 @@ void t_fix_vector<T,N>::emplace_back(Args&&... args)
  if(this->size()==this->capacity())
   this->helper__throw_bad_alloc(this->size()+1);
 
- __generic_construct(this->buffer()+m_size,__STL_FORWARD_VALUE(Args,args)...); //throw
+ __generic_construct(this->buffer()+m_size,LCPI_STL_FORWARD_VALUE(Args,args)...); //throw
 
  ++m_size;
 }//emplace_back

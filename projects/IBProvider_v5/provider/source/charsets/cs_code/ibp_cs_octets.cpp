@@ -135,7 +135,8 @@ bool t_ibp_cs_octets::sb_len_as_unicode(ansi_streambuf_type& /*in_buf*/,
 }//sb_len_as_unicode
 
 //------------------------------------------------------------------------
-bool t_ibp_cs_octets::unicode_to_blob(const wchar_t*                  const /*source*/,
+bool t_ibp_cs_octets::unicode_to_blob(db_obj::t_db_operation_context&       /*op_ctx*/,
+                                      const wchar_t*                  const /*source*/,
                                       size_type                       const /*source_size*/,
                                       db_obj::t_db_seq_stream_writer* const /*writer*/)const
 {

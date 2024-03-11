@@ -27,10 +27,11 @@ bool get_str_version_parts_v2(t_basic_const_str_box<charT> const ver,
 {
  assert(ver_parts);
 
- typedef __STL_DEF_BASIC_STRING(charT)            string_type;
- typedef t_char_traits2<charT>                    ch_traits2;
+ using string_type=LCPI_STL_DEF_BASIC_STRING(charT);
 
- typedef t_basic_const_str_box<charT>             box_type;
+ using ch_traits2=t_char_traits2<charT>;
+
+ using box_type=t_basic_const_str_box<charT>;
 
  typename box_type::iterator        i(ver.begin());
  typename box_type::iterator const _e(ver.end());
@@ -95,7 +96,7 @@ t_str_version_part<charT>::t_str_version_part(const self_type& x)
 template<class charT>
 RELEASE_CODE(inline)
 t_str_version_part<charT>::t_str_version_part(self_type&& x)
- :m_value(__STL_MOVE_VALUE(x.m_value))
+ :m_value(LCPI_STL_MOVE_VALUE(x.m_value))
 {
  assert(!m_value.empty());
 }
@@ -117,7 +118,7 @@ t_str_version_part<charT>::t_str_version_part(const string_type& x)
 template<class charT>
 RELEASE_CODE(inline)
 t_str_version_part<charT>::t_str_version_part(string_type&& x)
- :m_value(__STL_MOVE_VALUE(x))
+ :m_value(LCPI_STL_MOVE_VALUE(x))
 {
  assert(!m_value.empty());
 }
@@ -143,7 +144,7 @@ t_str_version_part<charT>& t_str_version_part<charT>::operator = (const self_typ
 template<class charT>
 t_str_version_part<charT>& t_str_version_part<charT>::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 

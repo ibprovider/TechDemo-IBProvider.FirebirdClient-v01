@@ -7,7 +7,7 @@
 #ifndef _ibp_error_records_r_H_
 #define _ibp_error_records_r_H_
 
-#include <structure/error/t_err_records.h>
+#include <lcpi/lib/structure/error/t_err_records_r.h>
 #include <structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{
@@ -15,10 +15,10 @@ namespace lcpi{namespace ibp{
 //class t_ibp_error_records_r
 
 class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_error_records_r
- :public structure::t_err_records_r
+ :public lib::structure::t_err_records_r
 {
  public:
-  typedef structure::t_value_with_null<size_t>    size_type_N;
+  using size_type_N=structure::t_value_with_null<size_t>;
 
  public:
   virtual ~t_ibp_error_records_r()

@@ -5,7 +5,6 @@
 #define _cpp_public_lcpi_lib_com_base__string_to_guid_CC_
 
 #include <lcpi/lib/structure/utilities/string_to_uuid.h>
-#include <lcpi/lib/structure/debug/assert.h>
 #include <lcpi/lib/structure/t_char_traits2.h>
 
 namespace lcpi{namespace lib{namespace com{namespace base{

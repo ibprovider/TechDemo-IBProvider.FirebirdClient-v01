@@ -45,7 +45,7 @@ t_string GetErrorMsg(DWORD const dwErrorCode,
  {
   TCHAR tmpStr[160]={};
 
-  _GCRT_stprintf_s_n1(tmpStr,_DIM_(tmpStr),_T("WIN32 Error: 0x%X"),dwErrorCode);
+  LCPI_GCRT_stprintf_s_n1(tmpStr,_DIM_(tmpStr),_T("WIN32 Error: 0x%X"),dwErrorCode);
 
   const TCHAR* const e=std::find(tmpStr,_END_(tmpStr),0);
 
@@ -64,7 +64,7 @@ t_string GetErrorMsg(DWORD const dwErrorCode,
 ////////////////////////////////////////////////////////////////////////////////
 //class t_base_win32_error
 
-t_base_win32_error::~t_base_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC
+t_base_win32_error::~t_base_win32_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
 {
 }
 
@@ -101,12 +101,12 @@ t_win32_error::t_win32_error(win32_code_type const win32_code,
 }//t_win32_error - win32_code, msg
 
 //------------------------------------------------------------------------
-t_win32_error::~t_win32_error() __STL_EXCEPTION_DCR_THROW_SPEC
+t_win32_error::~t_win32_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
 {
 }
 
 //std::exception ---------------------------------------------------------
-const char* t_win32_error::what()const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_win32_error::what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return m_what.c_str();
 }//what

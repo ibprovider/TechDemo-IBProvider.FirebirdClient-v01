@@ -57,8 +57,8 @@ class WORK_StmtFetch__Types__decfloat34_001::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 WORK_StmtFetch__Types__decfloat34_001::tag_impl::tag_impl(TTSO_GlobalContext* const pParams,
                                            const char*         const pTestID,
                                            const TTSO_TestData_v2&   Data)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
 {
  assert(m_spParams);
@@ -284,7 +284,7 @@ void WORK_StmtFetch__Types__decfloat34_001::create
 
   const tag_impl::self_ptr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new tag_impl
         (pParams,
          ftestID.c_str(),

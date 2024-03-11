@@ -116,11 +116,13 @@ class t_ibp_cs_bit8_bit16 LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Переконвертация UNICODE-строки с сохранением результата в BLOB
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  source
   //! \param[in]  source_size
   //! \param[in]  writer
   //!  Not NULL
-  virtual bool unicode_to_blob(const wchar_t*                  source,
+  virtual bool unicode_to_blob(db_obj::t_db_operation_context& op_ctx,
+                               const wchar_t*                  source,
                                size_type                       source_size,
                                db_obj::t_db_seq_stream_writer* writer)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 

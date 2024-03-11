@@ -12,10 +12,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class ISC_Test__portable_format_to_integer__unsigned_long::tag_impl
 
-class ISC_Test__portable_format_to_integer__unsigned_long::tag_impl
+class ISC_Test__portable_format_to_integer__unsigned_long::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;

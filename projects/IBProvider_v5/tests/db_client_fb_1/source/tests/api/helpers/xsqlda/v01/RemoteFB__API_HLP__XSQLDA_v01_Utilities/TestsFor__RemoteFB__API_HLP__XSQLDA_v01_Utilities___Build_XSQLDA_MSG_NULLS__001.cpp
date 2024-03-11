@@ -53,7 +53,7 @@ TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001:
                                            (TTSO_GlobalContext*        const pParams,
                                             structure::t_const_str_box const TestID,
                                             unsigned char              const nXVars)
- :m_spParams(structure::not_null_ptr(pParams))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
  ,m_TestID(TestID.make_str())
  ,m_nXVars(nXVars)
 {
@@ -188,7 +188,7 @@ void TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS_
 
   const TTSO_TestCPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new tag_impl
         (pParams,
          ftestID.str(),

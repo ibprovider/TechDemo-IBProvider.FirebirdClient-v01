@@ -14,16 +14,16 @@ namespace lcpi{namespace ibp_tests{
 class XSQLDA_V1_Wrapper
 {
  private:
-  typedef XSQLDA_V1_Wrapper                 self_type;
+  using self_type=XSQLDA_V1_Wrapper;
 
-  XSQLDA_V1_Wrapper(const self_type&);
-  self_type& operator = (const self_type&);
-
- public:
-  typedef isc_api::XSQLDA_V1*               pointer;
+  XSQLDA_V1_Wrapper(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  XSQLDA_V1_Wrapper(size_t n);
+  using pointer=isc_api::XSQLDA_V1*;
+
+ public:
+  explicit XSQLDA_V1_Wrapper(size_t n);
 
  ~XSQLDA_V1_Wrapper();
 

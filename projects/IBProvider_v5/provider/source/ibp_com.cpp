@@ -34,13 +34,14 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //static data
 
-HINSTANCE              TIBP_ComModule::sm_hInstance=NULL;
-TIBP_ComModule::TData* TIBP_ComModule::sm_pData=NULL;
+HINSTANCE IBP_ComModule::sm_hInstance=NULL;
+
+IBP_ComModule::TData* IBP_ComModule::sm_pData=NULL;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TIBP_ComModule
+//class IBP_ComModule
 
-bool TIBP_ComModule::Init(HINSTANCE const hInstance)
+bool IBP_ComModule::Init(HINSTANCE const hInstance)
 {
  bool bResult=false;
 
@@ -81,7 +82,7 @@ bool TIBP_ComModule::Init(HINSTANCE const hInstance)
 }//Init
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::Term()
+void IBP_ComModule::Term()
 {
 #ifdef DebugMessage
  try
@@ -91,7 +92,7 @@ void TIBP_ComModule::Term()
 
   DebugMessage("*****************************")
 
-  DebugMessage("TIBP_ComModule::Term "
+  DebugMessage("IBP_ComModule::Term "
                "["<<structure::tstr_to_str(ModuleName)<<"]");
 
   if(sm_pData!=nullptr)
@@ -174,13 +175,13 @@ void TIBP_ComModule::Term()
 ////////////////////////////////////////////////////////////////////////////////
 //”правление COM-модулем
 
-HINSTANCE TIBP_ComModule::GetModuleInstance()
+HINSTANCE IBP_ComModule::GetModuleInstance()
 {
  return sm_hInstance;
 }//GetModuleInstance
 
 //------------------------------------------------------------------------
-const TIBP_ComModule::string_type& TIBP_ComModule::GetModulePath()
+const IBP_ComModule::string_type& IBP_ComModule::GetModulePath()
 {
  assert(sm_pData);
 
@@ -188,7 +189,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::GetModulePath()
 }//GetModulePath
 
 //------------------------------------------------------------------------
-const TIBP_ComModule::string_type& TIBP_ComModule::GetModuleName()
+const IBP_ComModule::string_type& IBP_ComModule::GetModuleName()
 {
  assert(sm_pData);
 
@@ -196,7 +197,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::GetModuleName()
 }//GetModuleName
 
 //сборка номера версии провайдера ----------------------------------------
-TIBP_ComModule::string_type TIBP_ComModule::GetModuleVersion(const char_type* const prefix)
+IBP_ComModule::string_type IBP_ComModule::GetModuleVersion(const char_type* const prefix)
 {
  string_type result;
 
@@ -209,7 +210,7 @@ TIBP_ComModule::string_type TIBP_ComModule::GetModuleVersion(const char_type* co
 }//GetModuleVersion
 
 //------------------------------------------------------------------------
-REFGUID TIBP_ComModule::GetComApiID()
+REFGUID IBP_ComModule::GetComApiID()
 {
  assert(sm_pData!=nullptr);
 
@@ -217,7 +218,7 @@ REFGUID TIBP_ComModule::GetComApiID()
 }//GetComApiID
 
 //------------------------------------------------------------------------
-TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
+IBP_ComModule::string_type IBP_ComModule::GetProviderLabel()
 {
 #ifndef IBP_PLATFORM_ID
 # error IBP_PLATFORM_ID is not defined!
@@ -239,7 +240,7 @@ TIBP_ComModule::string_type TIBP_ComModule::GetProviderLabel()
 //------------------------------------------------------------------------
 #ifndef NDEBUG
 
-bool TIBP_ComModule::DEBUG__ModuleIsActive()
+bool IBP_ComModule::DEBUG__ModuleIsActive()
 {
  return self_type::GetModuleLockCount()!=0;
 }//DEBUG__ModuleIsActive
@@ -249,7 +250,7 @@ bool TIBP_ComModule::DEBUG__ModuleIsActive()
 //------------------------------------------------------------------------
 #ifndef NDEBUG
 
-bool TIBP_ComModule::DEBUG__ModuleIsShutdown()
+bool IBP_ComModule::DEBUG__ModuleIsShutdown()
 {
  return self_type::GetModuleLockCount()==0;
 }//DEBUG__ModuleIsShutdown
@@ -257,7 +258,7 @@ bool TIBP_ComModule::DEBUG__ModuleIsShutdown()
 #endif // !NDEBUG
 
 //------------------------------------------------------------------------
-size_t TIBP_ComModule::GetModuleLockCount()
+size_t IBP_ComModule::GetModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
@@ -265,7 +266,7 @@ size_t TIBP_ComModule::GetModuleLockCount()
 }//GetModuleLockCount
 
 //------------------------------------------------------------------------
-size_t TIBP_ComModule::GetComponentCount()
+size_t IBP_ComModule::GetComponentCount()
 {
  assert(sm_pData!=nullptr);
 
@@ -273,7 +274,7 @@ size_t TIBP_ComModule::GetComponentCount()
 }//GetComponentCount
 
 //------------------------------------------------------------------------
-bool TIBP_ComModule::DllCanUnloadNow()
+bool IBP_ComModule::DllCanUnloadNow()
 {
  assert(sm_pData!=nullptr);
 
@@ -289,7 +290,7 @@ bool TIBP_ComModule::DllCanUnloadNow()
 //------------------------------------------------------------------------
 #ifndef IBP_BUILD_TESTCODE
 
-void TIBP_ComModule::CheckActiveState()
+void IBP_ComModule::CheckActiveState()
 {
  if(self_type::GetModuleLockCount()==0)
  {
@@ -302,7 +303,7 @@ void TIBP_ComModule::CheckActiveState()
 #endif
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::IncrementModuleLockCount()
+void IBP_ComModule::IncrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
@@ -312,7 +313,7 @@ void TIBP_ComModule::IncrementModuleLockCount()
 }//IncrementModuleLockCount
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::DecrementModuleLockCount()
+void IBP_ComModule::DecrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
@@ -335,7 +336,7 @@ void TIBP_ComModule::DecrementModuleLockCount()
 }//DecrementModuleLockCount
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::IncrementComponentCount2()
+void IBP_ComModule::IncrementComponentCount2()
 {
  assert(sm_pData!=nullptr);
 
@@ -343,7 +344,7 @@ void TIBP_ComModule::IncrementComponentCount2()
 }//IncrementComponentCount2
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::DecrementComponentCount2()
+void IBP_ComModule::DecrementComponentCount2()
 {
  assert(sm_pData!=nullptr);
 
@@ -353,7 +354,7 @@ void TIBP_ComModule::DecrementComponentCount2()
 }//DecrementComponentCount2
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::LockServer()
+void IBP_ComModule::LockServer()
 {
  assert(sm_pData!=nullptr);
 
@@ -361,7 +362,7 @@ void TIBP_ComModule::LockServer()
 }//LockServer
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::UnlockServer()
+void IBP_ComModule::UnlockServer()
 {
  assert(sm_pData!=nullptr);
  assert(sm_pData->m_server_lock_count>0);
@@ -374,7 +375,7 @@ void TIBP_ComModule::UnlockServer()
 
 #ifndef IBP_BUILD_TESTCODE
 
-HRESULT TIBP_ComModule::GetClassObject(REFGUID      rComApiID,
+HRESULT IBP_ComModule::GetClassObject(REFGUID      rComApiID,
                                        REFCLSID     rclsid,
                                        REFIID       riid,
                                        void** const ppv)
@@ -429,7 +430,7 @@ HRESULT TIBP_ComModule::GetClassObject(REFGUID      rComApiID,
 ////////////////////////////////////////////////////////////////////////////////
 //получение параметров регистрации модул€ в системе
 
-const TIBP_ComModule::string_type& TIBP_ComModule::GetProgRegParams()
+const IBP_ComModule::string_type& IBP_ComModule::GetProgRegParams()
 {
  assert(sm_pData!=NULL);
 
@@ -437,7 +438,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::GetProgRegParams()
 }//GetProgRegParams
 
 //------------------------------------------------------------------------
-const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_FileExt()
+const IBP_ComModule::string_type& IBP_ComModule::Get_IBProvider_FileExt()
 {
  assert(sm_pData!=NULL);
 
@@ -445,7 +446,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_FileExt()
 }//Get_IBProvider_FileExt
 
 //------------------------------------------------------------------------
-const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_ProgID()
+const IBP_ComModule::string_type& IBP_ComModule::Get_IBProvider_ProgID()
 {
  assert(sm_pData!=NULL);
 
@@ -453,7 +454,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_ProgID()
 }//Get_IBProvider_ProgID
 
 //------------------------------------------------------------------------
-const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_Descr()
+const IBP_ComModule::string_type& IBP_ComModule::Get_IBProvider_Descr()
 {
  assert(sm_pData!=NULL);
 
@@ -462,7 +463,7 @@ const TIBP_ComModule::string_type& TIBP_ComModule::Get_IBProvider_Descr()
 
 //------------------------------------------------------------------------
 #ifdef _PROCESS_DEBUG_MESSAGE_
-LONG TIBP_ComModule::Get_FlushLogFilePeriod()
+LONG IBP_ComModule::Get_FlushLogFilePeriod()
 {
  return TData::sm_FlushLogFilePeriod;
 }//Get_FlushLogFilePeriod
@@ -471,7 +472,7 @@ LONG TIBP_ComModule::Get_FlushLogFilePeriod()
 ////////////////////////////////////////////////////////////////////////////////
 //получение идентификаторов компонент модул€
 
-REFCLSID TIBP_ComModule::Get_CLSID_IBProvider()
+REFCLSID IBP_ComModule::Get_CLSID_IBProvider()
 {
  assert(sm_pData!=NULL);
 
@@ -479,13 +480,13 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProvider()
 }//Get_CLSID_IBProvider
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProvider__private()
+REFCLSID IBP_ComModule::Get_CLSID_IBProvider__private()
 {
  return TData::Get_CLSID_IBProvider__private();
 }//Get_CLSID_IBProvider__private
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProviderErrors()
+REFCLSID IBP_ComModule::Get_CLSID_IBProviderErrors()
 {
  assert(sm_pData!=NULL);
 
@@ -493,7 +494,7 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProviderErrors()
 }//Get_CLSID_IBProviderErrors
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkPropPage()
+REFCLSID IBP_ComModule::Get_CLSID_IBProviderDataLinkPropPage()
 {
  assert(sm_pData!=NULL);
 
@@ -501,13 +502,13 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkPropPage()
 }//Get_CLSID_IBProviderDataLinkPropPage
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkPropPage__private()
+REFCLSID IBP_ComModule::Get_CLSID_IBProviderDataLinkPropPage__private()
 {
  return TData::Get_CLSID_IBProviderDataLinkPropPage__private();
 }//Get_CLSID_IBProviderDataLinkPropPage__private
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage()
+REFCLSID IBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage()
 {
  assert(sm_pData!=NULL);
 
@@ -515,7 +516,7 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage()
 }//Get_CLSID_IBProviderDataLinkAdvPropPage
 
 //------------------------------------------------------------------------
-REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
+REFCLSID IBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
 {
  return TData::Get_CLSID_IBProviderDataLinkAdvPropPage__private();
 }//Get_CLSID_IBProviderDataLinkAdvPropPage__private
@@ -523,7 +524,7 @@ REFCLSID TIBP_ComModule::Get_CLSID_IBProviderDataLinkAdvPropPage__private()
 //------------------------------------------------------------------------
 #ifndef IBP_BUILD_TESTCODE
 
-HRESULT TIBP_ComModule::CurrentExceptionHandler(ole_lib::TBaseUnknown2* const pRootInterface,
+HRESULT IBP_ComModule::CurrentExceptionHandler(ole_lib::TBaseUnknown2* const pRootInterface,
                                                 REFCLSID                      ComponentID,
                                                 REFIID                        InterfaceID,
                                                 bool const                    CreateErrInfo)
@@ -567,7 +568,7 @@ HRESULT TIBP_ComModule::CurrentExceptionHandler(ole_lib::TBaseUnknown2* const pR
 
 #ifdef IBP_BUILD_TESTCODE
 
-size_t TIBP_ComModule::TestCode__GetAllocBlockCount()
+size_t IBP_ComModule::TestCode__GetAllocBlockCount()
 {
  return THelper::TestCode__GetAllocBlockCount();
 }//TestCode__GetAllocBlockCount

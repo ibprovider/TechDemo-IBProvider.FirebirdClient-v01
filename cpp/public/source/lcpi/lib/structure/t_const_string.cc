@@ -144,7 +144,7 @@ t_basic_const_string<charT,charTraits>::t_basic_const_string(const self_type& x)
 //------------------------------------------------------------------------
 template<typename charT,class charTraits>
 t_basic_const_string<charT,charTraits>::t_basic_const_string(self_type&& x)
- :m_data(__STL_MOVE_VALUE(x.m_data))
+ :m_data(LCPI_STL_MOVE_VALUE(x.m_data))
 {
  assert(m_data);
 
@@ -156,7 +156,7 @@ t_basic_const_string<charT,charTraits>::t_basic_const_string(self_type&& x)
 //------------------------------------------------------------------------
 template<typename charT,class charTraits>
 t_basic_const_string<charT,charTraits>::t_basic_const_string(data_ptr&& x)
- :m_data(__STL_MOVE_VALUE(x))
+ :m_data(LCPI_STL_MOVE_VALUE(x))
 {
  assert(m_data);
 }//t_basic_const_string
@@ -197,7 +197,7 @@ t_basic_const_string<charT,charTraits>&
  if(&x==this)
   return *this;
 
- m_data=__STL_MOVE_VALUE(x.m_data);
+ m_data=LCPI_STL_MOVE_VALUE(x.m_data);
 
  assert(m_data);
 
@@ -235,7 +235,7 @@ t_basic_const_string<charT,charTraits> t_basic_const_string<charT,charTraits>::c
 
  assert(data);
 
- return self_type(__STL_MOVE_VALUE(data));
+ return self_type(LCPI_STL_MOVE_VALUE(data));
 }//create
 
 //------------------------------------------------------------------------
@@ -266,13 +266,15 @@ t_basic_const_string<charT,charTraits> t_basic_const_string<charT,charTraits>::c
  if(str.empty())
   return self_type();
 
- data_ptr data(t_basic_const_string_data__dynamic<charT,Allocator>::create
-                 (str.len,
-                  str.ptr));
+ data_ptr
+  data
+   (t_basic_const_string_data__dynamic<charT,Allocator>::create
+     (str.len,
+      str.ptr));
 
  assert(data);
 
- return self_type(__STL_MOVE_VALUE(data));
+ return self_type(LCPI_STL_MOVE_VALUE(data));
 }//create
 
 //interface --------------------------------------------------------------

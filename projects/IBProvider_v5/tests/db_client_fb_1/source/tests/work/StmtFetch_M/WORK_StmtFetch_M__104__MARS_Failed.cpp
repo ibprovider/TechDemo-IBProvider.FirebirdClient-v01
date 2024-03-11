@@ -96,8 +96,8 @@ WORK_StmtFetch_M__104__MARS_Failed::tag_impl::tag_impl
                                            (TTSO_GlobalContext* const pParams,
                                             const char*         const pTestID,
                                             const TTSO_TestData_v2&   Data)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_TestID(structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
 {
  assert(m_spParams);
@@ -575,7 +575,7 @@ void WORK_StmtFetch_M__104__MARS_Failed::create(TTSO_PushTest*      const pTestP
 
    const tag_impl::self_ptr
     spTest
-     (structure::not_null_ptr
+     (lib::structure::not_null_ptr
        (new tag_impl
          (pParams,
           ftestID.c_str(),

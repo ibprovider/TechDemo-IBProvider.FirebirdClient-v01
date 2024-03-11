@@ -9,8 +9,11 @@
 
 #include "source/db_client/remote_fb/api/p12/remote_fb__api_p12__blob__flush.h"
 #include "source/db_client/remote_fb/api/p12/remote_fb__p12__blob_helper.h"
+#include "source/db_client/remote_fb/api/p12/remote_fb__p12__srv_operation.h"
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
+
+#include "source/db_obj/db_operation_reg.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace api{namespace p12{
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,14 +30,20 @@ RemoteFB__API_P12__FlushBlob::~RemoteFB__API_P12__FlushBlob()
 {;}
 
 //interface --------------------------------------------------------------
-void RemoteFB__API_P12__FlushBlob::exec(RemoteFB__ConnectorData* const pData,
-                                        blob_handle_type*        const pBlobHandle)
+void RemoteFB__API_P12__FlushBlob::exec(db_obj::t_db_operation_context& OpCtx,
+                                        RemoteFB__ConnectorData*  const pData,
+                                        blob_handle_type*         const pBlobHandle)
 {
  assert(pData!=nullptr);
 
  //-----------------------------------------
  const wchar_t* const c_bugcheck_src
   =L"RemoteFB__API_P12__FlushBlob::exec";
+
+ //-----------------------------------------
+ RemoteFB__P12__SrvOperation serverOperation(pData);
+
+ db_obj::t_db_operation_reg regServerOperation(OpCtx,&serverOperation);
 
  //----------------------------------------- проверка дескриптора блоба
  if((*pBlobHandle)==nullptr)
@@ -103,7 +112,8 @@ void RemoteFB__API_P12__FlushBlob::exec(RemoteFB__ConnectorData* const pData,
   if((*pBlobHandle)->m_WriteMode__BufferPos>0)
   {
    RemoteFB__P12__BlobHelper::WriteSegment
-    (pData,
+    (serverOperation,
+     pData,
      (*pBlobHandle)->m_ID.get_value(),
      static_cast<protocol::P_USHORT>((*pBlobHandle)->m_WriteMode__BufferPos),
      (*pBlobHandle)->m_Buffer.buffer()); //throw

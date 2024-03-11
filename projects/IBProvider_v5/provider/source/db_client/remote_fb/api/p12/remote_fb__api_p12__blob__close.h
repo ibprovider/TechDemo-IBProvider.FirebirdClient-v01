@@ -45,12 +45,14 @@ class RemoteFB__API_P12__CloseBlob LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Закрытие блоба.
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in] pData
   //!  Not null.
   //! \param[in,out] pBlobHandle
   //!  Not null. На входе должен указывать на ненулевое значение.
-  virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual void exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 };//class RemoteFB__API_P12__CloseBlob
 
 ////////////////////////////////////////////////////////////////////////////////

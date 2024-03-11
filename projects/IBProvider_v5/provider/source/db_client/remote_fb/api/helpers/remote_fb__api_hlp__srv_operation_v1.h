@@ -74,10 +74,10 @@ class RemoteFB__API_HLP__SrvOperation_v1 LCPI_CPP_CFG__CLASS__FINAL
   static const state_type  c_state__cancelled   =2;
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_err__cancel_not_support();
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_bug_check__unk_state(const wchar_t* place,
                                                  const wchar_t* point,
                                                  state_type     stateID);

@@ -154,7 +154,7 @@ class t_basic_cmd_line_arg:public t_basic_smart_interface_impl__dynamic<t_smart_
   typedef t_smart_object_ptr<const self_type>   self_cptr;
 
   typedef charT                                 char_type;
-  typedef __STL_DEF_BASIC_STRING(char_type)     string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)  string_type;
 
  public:
   string_type m_name;
@@ -219,7 +219,7 @@ class t_basic_cmd_line_parser:private t_basic_cmd_line_parser_base<charT>,
 
   typedef t_basic_const_str_box<char_type>                   str_box_type;
 
-  typedef __STL_DEF_BASIC_STRING(char_type)                  string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)               string_type;
   typedef typename string_type::size_type                    str_size_type;
 
   typedef tag_arg_flags                                      arg_flags_type;

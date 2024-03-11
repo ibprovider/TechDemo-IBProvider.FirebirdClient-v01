@@ -7,7 +7,8 @@
 #include "source/test_base.h"
 #include "source/test_state2_storage.h"
 #include <structure/mt/t_mt_thread_controller__win32.h>
-#include <structure/stl/t_stl_list.h>
+
+#include <lcpi/lib/structure/stl/t_stl_list.h>
 
 namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,24 +21,25 @@ class TTSO_PushTest__ExecutorMT;
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef structure::t_smart_vector<TTSO_TestRunnerMT,
-                                  TTSO_MemoryAllocator>  TTSO_TestRunnerMT_Vector;
+using TTSO_TestRunnerMT_Vector
+ =structure::t_smart_vector<TTSO_TestRunnerMT,TTSO_MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestQueueMT
 
-class TTSO_TestQueueMT:public TTSO_SmartMemoryObject
+class TTSO_TestQueueMT LCPI_CPP_CFG__CLASS__FINAL
+ :public TTSO_SmartMemoryObject
 {
  private:
-  typedef TTSO_TestQueueMT                                  self_type;
+  using self_type=TTSO_TestQueueMT;
 
-  TTSO_TestQueueMT(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_TestQueueMT(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>          self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef TTSO_MemoryAllocator                              allocator_type;
+  using allocator_type=TTSO_MemoryAllocator;
 
   typedef TTSO_Test                                         test_type;
   typedef TTSO_TestCPtr                                     test_cptr;
@@ -45,10 +47,10 @@ class TTSO_TestQueueMT:public TTSO_SmartMemoryObject
   typedef TSYS_RootLog                                      log_ex_type;
   typedef log_ex_type::self_ptr                             log_ex_ptr;
 
-  class tag_test_data
+  class tag_test_data LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef tag_test_data                   self_type;
+    using self_type=tag_test_data;
 
    public:
     unsigned m_exec_count;
@@ -62,9 +64,8 @@ class TTSO_TestQueueMT:public TTSO_SmartMemoryObject
     self_type& operator = (const self_type&);
   };//class tag_test_data
 
-  typedef structure::t_stl_list
-           <tag_test_data,
-            allocator_type>                                 test_queue_type;
+  using test_queue_type
+   =lib::structure::t_stl_list<tag_test_data,allocator_type>;
 
   typedef test_queue_type::size_type                        size_type;
 
@@ -119,9 +120,7 @@ class TTSO_TestQueueMT:public TTSO_SmartMemoryObject
   test_cptr pop_test_impl(HANDLE hCancelEvent);
 
  private:
-  typedef TTSO_MemoryAllocator              allocator_type;
-
-  typedef TTSO_TestState2_Storage           test_results_type;
+  using test_results_type=TTSO_TestState2_Storage;
 
  private:
   const unsigned     m_ExecMultiplicator;
@@ -149,17 +148,18 @@ class TTSO_TestQueueMT:public TTSO_SmartMemoryObject
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_TestRunnerMT
 
-class TTSO_TestRunnerMT:public structure::t_basic_thread_controller__win32<TTSO_SmartMemoryObject>
+class TTSO_TestRunnerMT LCPI_CPP_CFG__CLASS__FINAL
+ :public structure::t_basic_thread_controller__win32<TTSO_SmartMemoryObject>
 {
  public:
-  typedef TTSO_TestRunnerMT                                                    self_type;
-  typedef structure::t_basic_thread_controller__win32<TTSO_SmartMemoryObject>  inherited;
+  using self_type=TTSO_TestRunnerMT;
+  using inherited=structure::t_basic_thread_controller__win32<TTSO_SmartMemoryObject>;
 
-  TTSO_TestRunnerMT(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_TestRunnerMT(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>                  self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
   typedef TTSO_TestQueueMT                                          test_queue_type;
   typedef test_queue_type::self_ptr                                 test_queue_ptr;
@@ -190,10 +190,10 @@ class TTSO_TestRunnerMT:public structure::t_basic_thread_controller__win32<TTSO_
    {return m_log;}
 
  public:
-  virtual const wchar_t* thread_name_impl()const COMP_W000004_OVERRIDE;
+  virtual const wchar_t* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  virtual void thread_worker_impl() COMP_W000004_OVERRIDE;
+  virtual void thread_worker_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const TTSO_GlobalContext::self_cptr m_spSD;
@@ -206,20 +206,20 @@ class TTSO_TestRunnerMT:public structure::t_basic_thread_controller__win32<TTSO_
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest__ExecutorMT
 
-class TTSO_PushTest__ExecutorMT
- :public structure::t_basic_smart_interface_impl__dynamic<TTSO_PushTest,TTSO_MemoryAllocator>
+class TTSO_PushTest__ExecutorMT LCPI_CPP_CFG__CLASS__FINAL
+ :public lib::structure::t_basic_smart_interface_impl__dynamic<TTSO_PushTest,TTSO_MemoryAllocator>
 {
  private:
-  typedef TTSO_PushTest__ExecutorMT                   self_type;
+  using self_type=TTSO_PushTest__ExecutorMT;
 
-  TTSO_PushTest__ExecutorMT(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_PushTest__ExecutorMT(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>    self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef TSYS_RootLog                                log_ex_type;
-  typedef log_ex_type::self_ptr                       log_ex_ptr;
+  using log_ex_type=TSYS_RootLog;
+  using log_ex_ptr=log_ex_type::self_ptr;
 
  private:
   TTSO_PushTest__ExecutorMT(const TTSO_GlobalContext* pSD,
@@ -235,7 +235,7 @@ class TTSO_PushTest__ExecutorMT
                          log_ex_type*              pRootLog);
 
   //TTSO_PushTest interface ----------------------------------------------
-  virtual void PushTest(const TTSO_Test* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual void PushTest(const TTSO_Test* pTest) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   //----------------------------------------------------------------------
   void cancel();

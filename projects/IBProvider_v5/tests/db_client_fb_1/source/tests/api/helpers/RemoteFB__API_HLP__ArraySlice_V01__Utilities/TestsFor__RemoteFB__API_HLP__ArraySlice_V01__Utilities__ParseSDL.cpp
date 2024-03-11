@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
 
-class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl
+class TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_impl                                                  self_type;
@@ -6521,7 +6521,7 @@ void TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL::create
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc
         (pParams,
          ftestID.c_str(),

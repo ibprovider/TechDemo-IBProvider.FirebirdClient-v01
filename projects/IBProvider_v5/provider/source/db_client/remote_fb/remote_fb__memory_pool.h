@@ -50,7 +50,7 @@ class RemoteFB__MemoryPool
   //! \return
   //!  ”казатель на выделенный блок.
   virtual void* allocate(enumMemoryID memID,
-                         size_t       sz)COMP_W000004_OVERRIDE;
+                         size_t       sz) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //own interface --------------------------------------------------------
   void deallocate_all();

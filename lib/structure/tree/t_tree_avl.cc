@@ -22,7 +22,7 @@ t_tree_avl<T,Compare,Allocator>::t_tree_avl(const self_type& tree)
 
 template<class T,class Compare,class Allocator>
 t_tree_avl<T,Compare,Allocator>::t_tree_avl(self_type&& x)
- :inherited(__STL_MOVE_VALUE(x))
+ :inherited(LCPI_STL_MOVE_VALUE(x))
 {
 }//t_tree_avl move
 
@@ -68,7 +68,7 @@ template<class T,class Compare,class Allocator>
 t_tree_avl<T,Compare,Allocator>&
  t_tree_avl<T,Compare,Allocator>::operator = (self_type&& x)
 {
- this->assign_rv(__STL_MOVE_VALUE(x));
+ this->assign_rv(LCPI_STL_MOVE_VALUE(x));
 
  return *this;
 }//move operator
@@ -245,7 +245,7 @@ typename t_tree_avl<T,Compare,Allocator>::pair_type
 #endif
 
  const inherited::pair_type r
-  =this->insert_node(__STL_FORWARD_VALUE(insert_value_type,rrvalue));
+  =this->insert_node(LCPI_STL_FORWARD_VALUE(insert_value_type,rrvalue));
 
  assert(r.first);
 
@@ -287,7 +287,7 @@ typename t_tree_avl<T,Compare,Allocator>::pair_type
  t_tree_avl<T,Compare,Allocator>::emplace(Args&&... args)
 {
  const inherited::pair_type r
-  =this->emplace_node(__STL_FORWARD_VALUE(Args,args)...);
+  =this->emplace_node(LCPI_STL_FORWARD_VALUE(Args,args)...);
 
  assert(r.first);
 

@@ -172,7 +172,7 @@ t_smart_object_ptr<T,traits_data>&
 {
  //note. this->set(NULL) is equal to this->Release()
 
- internal_pointer const old_ptr(__STL_MOVE_VALUE(m_ptr));
+ internal_pointer const old_ptr(std::move(m_ptr));
 
  m_ptr=nn_ptr;
 
@@ -203,7 +203,7 @@ t_smart_object_ptr<T,traits_data>&
 {
  if(m_ptr)
  {
-  internal_pointer const old_ptr(__STL_MOVE_VALUE(m_ptr));
+  internal_pointer const old_ptr(std::move(m_ptr));
 
   m_ptr=nullptr;
 

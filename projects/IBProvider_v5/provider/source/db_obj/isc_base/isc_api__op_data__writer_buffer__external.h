@@ -46,7 +46,7 @@ class t_isc_api__op_data__writer_buffer__external
   void put_bytes(const char* s,size_type n);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_bug_check__overflow(const wchar_t* source,
                                          const wchar_t* point,
                                          size_t         req_size)const;

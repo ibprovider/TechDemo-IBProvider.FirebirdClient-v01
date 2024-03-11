@@ -48,11 +48,12 @@ t_string TSystemTime::Date(const SYSTEMTIME& sys)
 {
  TCHAR tmp[128];
 
- _GCRT_stprintf_s_n3(tmp,_DIM_(tmp),
-                     _T("%02d.%02d.%04d"),
-                     sys.wDay,
-                     sys.wMonth,
-                     sys.wYear);
+ LCPI_GCRT_stprintf_s_n3
+  (tmp,_DIM_(tmp),
+   _T("%02d.%02d.%04d"),
+   sys.wDay,
+   sys.wMonth,
+   sys.wYear);
 
  return t_string(tmp);
 }//Date
@@ -62,11 +63,12 @@ t_string TSystemTime::Time(const SYSTEMTIME& sys)
 {
  TCHAR tmp[128];
 
- _GCRT_stprintf_s_n3(tmp,_DIM_(tmp),
-                     _T("%02d:%02d:%02d"),
-                     sys.wHour,
-                     sys.wMinute,
-                     sys.wSecond);
+ LCPI_GCRT_stprintf_s_n3
+  (tmp,_DIM_(tmp),
+   _T("%02d:%02d:%02d"),
+   sys.wHour,
+   sys.wMinute,
+   sys.wSecond);
 
  return t_string(tmp);
 }//Time
@@ -76,14 +78,15 @@ t_string TSystemTime::DateTime(const SYSTEMTIME& sys)
 {
  TCHAR tmp[256];
 
- _GCRT_stprintf_s_n6(tmp,_DIM_(tmp),
-                     _T("%02d.%02d.%04d %02d:%02d:%02d"),
-                     sys.wDay,
-                     sys.wMonth,
-                     sys.wYear,
-                     sys.wHour,
-                     sys.wMinute,
-                     sys.wSecond);
+ LCPI_GCRT_stprintf_s_n6
+  (tmp,_DIM_(tmp),
+   _T("%02d.%02d.%04d %02d:%02d:%02d"),
+   sys.wDay,
+   sys.wMonth,
+   sys.wYear,
+   sys.wHour,
+   sys.wMinute,
+   sys.wSecond);
 
  return t_string(tmp);
 }//DateTime

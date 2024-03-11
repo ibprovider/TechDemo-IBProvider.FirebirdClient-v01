@@ -5,7 +5,6 @@
 #define _cpp_public_lcpi_lib_structure__t_memory_H_
 
 #include <lcpi/lib/structure/mt/interlocked.h>
-#include <lcpi/lib/structure/debug/debug_code.h>
 #include <lcpi/lib/code_gen.h>
 #include <utility>
 

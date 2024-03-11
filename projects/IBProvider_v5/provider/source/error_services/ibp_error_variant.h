@@ -135,10 +135,11 @@ struct IBP_ERRORVARIANT LCPI_CPP_CFG__CLASS__FINAL
    IBP_ERRORVARIANT_TYPES::T_CPP_ERR_TEXT_PTR   pCppErrText;
   } value;
 
- IBP_ERRORVARIANT()
- {
-  memset(this,0,sizeof(*this));
- }
+ public:
+  IBP_ERRORVARIANT()
+  {
+   memset(this,0,sizeof(*this));
+  }
 };//struct IBP_ERRORVARIANT
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -2,9 +2,7 @@
 #ifndef _t_tree_iterator_base_H_
 #define _t_tree_iterator_base_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

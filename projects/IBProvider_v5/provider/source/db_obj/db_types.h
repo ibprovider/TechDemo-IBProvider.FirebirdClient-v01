@@ -15,7 +15,7 @@
 #include "source/db_obj/db_memory.h"
 
 #include <structure/t_value_with_null.h>
-#include <structure/stl/t_stl_vector.h>
+#include <lcpi/lib/structure/stl/t_stl_vector.h>
 #include <string>
 #include <cstdint>
 
@@ -50,20 +50,22 @@ typedef t_db_string::value_type                          t_db_char;
 typedef std::uint32_t                                    t_db_utf32;
 
 /// Контейнер для хранения имен объектов БД
-typedef structure::t_stl_vector
-         <t_db_object_name,
-          t_db_memory_allocator>                         t_db_object_name_array;
+using t_db_object_name_array
+ =lib::structure::t_stl_vector<t_db_object_name,t_db_memory_allocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_db_sql_traits
 
 struct t_db_sql_traits LCPI_CPP_CFG__CLASS__FINAL
 {
- typedef t_db_char                                           char_type;
+ using char_type
+  =t_db_char;
 
- typedef const structure::t_basic_const_str_box<char_type>   input_type;
+ using input_type
+  =const lib::structure::t_basic_const_str_box<char_type>;
 
- typedef input_type::iterator                                input_iterator;
+ using input_iterator
+  =input_type::iterator;
 };//struct t_db_sql_traits
 
 ////////////////////////////////////////////////////////////////////////////////

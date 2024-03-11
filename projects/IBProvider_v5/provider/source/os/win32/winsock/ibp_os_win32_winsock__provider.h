@@ -24,19 +24,24 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{namespace winsock{
 /// <summary>
 ///  Провайдер Windows Socket API
 /// </summary>
-class t_winsock__provider:public IBP_SmartMemoryObject
+class t_winsock__provider LCPI_CPP_CFG__CLASS__FINAL
+ :public IBP_SmartMemoryObject
 {
  private:
-  typedef t_winsock__provider                            self_type;
+  using self_type=t_winsock__provider;
 
-  t_winsock__provider(const self_type&);
-  self_type& operator = (const self_type);
+  t_winsock__provider(const self_type&)=delete;
+  self_type& operator = (const self_type)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef lib::structure::t_smart_object_ptr<self_type>  self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef t_ibp_os__dll                                  dll_type;
-  typedef t_ibp_os__dll_ptr                              dll_ptr;
+  using dll_type
+   =t_ibp_os__dll;
+
+  using dll_ptr
+   =t_ibp_os__dll_ptr;
 
  private:
   /// <summary>
@@ -44,7 +49,7 @@ class t_winsock__provider:public IBP_SmartMemoryObject
   /// </summary>
   //! \param[in] pDLL
   //!  Not null.
-  t_winsock__provider(dll_type* pDLL);
+  explicit t_winsock__provider(dll_type* pDLL);
 
   /// <summary>
   ///  Деструктор

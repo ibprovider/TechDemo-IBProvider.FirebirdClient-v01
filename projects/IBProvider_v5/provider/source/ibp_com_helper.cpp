@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! \ingroup ibp
 //! \file    ibp_com_helper.cpp
-//! \brief   Реализация вспомогательного класса TIBP_ComModule::THelper
+//! \brief   Реализация вспомогательного класса IBP_ComModule::THelper
 //! \author  Kovalenko Dmitry
 //! \date    07.05.2009
 #include <_pch_.h>
@@ -77,7 +77,7 @@ WIN32LIB__DEFINE_HEAP(,g_DataHeap,throw std::bad_alloc())
 ////////////////////////////////////////////////////////////////////////////////
 //Создание/уничтожение собственных куч
 
-bool TIBP_ComModule::THelper::InitHeaps()
+bool IBP_ComModule::THelper::InitHeaps()
 {
  if(!g_ObjectHeap.Create(0,64*1024,0))
   return false;
@@ -101,7 +101,7 @@ bool TIBP_ComModule::THelper::InitHeaps()
 }//InitHeaps
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::TermHeaps()
+void IBP_ComModule::THelper::TermHeaps()
 {
  self_type::Helper__DestroyHeap(g_DataHeap);
  self_type::Helper__DestroyHeap(g_ObjectHeap);
@@ -109,7 +109,7 @@ void TIBP_ComModule::THelper::TermHeaps()
 
 //------------------------------------------------------------------------
 template<class THeap>
-void TIBP_ComModule::THelper::Helper__DestroyHeap(THeap& UNUSED_ARG(Heap))
+void IBP_ComModule::THelper::Helper__DestroyHeap(THeap& UNUSED_ARG(Heap))
 {
  assert_msg(THeap::GetAllocCount()==0,
             "Heap: ["<<THeap::GetName()<<"]. "
@@ -130,7 +130,7 @@ void TIBP_ComModule::THelper::Helper__DestroyHeap(THeap& UNUSED_ARG(Heap))
 ////////////////////////////////////////////////////////////////////////////////
 //Инициализация/деинициализация собственных данных
 
-bool TIBP_ComModule::THelper::InitData(HINSTANCE hInstance)
+bool IBP_ComModule::THelper::InitData(HINSTANCE hInstance)
 {
  bool result=false;
 
@@ -194,7 +194,7 @@ bool TIBP_ComModule::THelper::InitData(HINSTANCE hInstance)
 }//InitData
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::TermData()
+void IBP_ComModule::THelper::TermData()
 {
  TData* const pTmp=sm_pData;
 
@@ -206,7 +206,7 @@ void TIBP_ComModule::THelper::TermData()
 //------------------------------------------------------------------------
 #ifdef IBP_BUILD_TESTCODE
 
-size_t TIBP_ComModule::THelper::TestCode__GetAllocBlockCount()
+size_t IBP_ComModule::THelper::TestCode__GetAllocBlockCount()
 {
  return g_DataHeap.GetAllocCount()+g_ObjectHeap.GetAllocCount();
 }//TestCode__GetAllocBlockCount
@@ -244,7 +244,7 @@ static const wchar_t* const g_COM_API_Providers[]=
 
 ////////////////////////////////////////////////////////////////////////////////
 
-bool TIBP_ComModule::THelper::Helper__DetectComApiID()
+bool IBP_ComModule::THelper::Helper__DetectComApiID()
 {
  assert(sm_pData!=nullptr);
 
@@ -340,7 +340,7 @@ bool TIBP_ComModule::THelper::Helper__DetectComApiID()
 //Чтение конфигурационных данных модуля
 
 #if(IBP_CFG_HAS_MODULE_CONFIG)
-void TIBP_ComModule::THelper::Helper__ProcessModuleConfig()
+void IBP_ComModule::THelper::Helper__ProcessModuleConfig()
 {
  assert(sm_pData!=NULL);
  assert(_Module.GetModuleInstance()!=NULL);
@@ -371,7 +371,7 @@ void TIBP_ComModule::THelper::Helper__ProcessModuleConfig()
 #endif //IBP_CFG_HAS_MODULE_CONFIG
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::Helper__ProcessComponentConfig()
+void IBP_ComModule::THelper::Helper__ProcessComponentConfig()
 {
  assert(sm_pData!=NULL);
  assert(_Module.GetModuleInstance()!=NULL);
@@ -462,7 +462,7 @@ void TIBP_ComModule::THelper::Helper__ProcessComponentConfig()
 }//Helper__ProcessComponentConfig
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::Helper__ProcessRegParam__CLSID
+void IBP_ComModule::THelper::Helper__ProcessRegParam__CLSID
                                            (param_parser_type&     params,
                                             const char_type* const prop_id,
                                             REFCLSID               default_clsid,
@@ -499,8 +499,9 @@ void TIBP_ComModule::THelper::Helper__ProcessRegParam__CLSID
 }//Helper__ProcessRegParam__CLSID
 
 //------------------------------------------------------------------------
-bool TIBP_ComModule::THelper::Helper__HasComponent(const string_type& param_value,
-                                                   CLSID&             clsid)
+bool IBP_ComModule::THelper::Helper__HasComponent
+                                           (const string_type& param_value,
+                                            CLSID&             clsid)
 {
  if(param_value.empty())
  {
@@ -516,7 +517,7 @@ bool TIBP_ComModule::THelper::Helper__HasComponent(const string_type& param_valu
 }//Helper__HasComponent
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::Helper__ProcessRegParam__String
+void IBP_ComModule::THelper::Helper__ProcessRegParam__String
                                            (param_parser_type&     params,
                                             const char_type* const prop_id,
                                             const char*      const prop_def_value,
@@ -549,7 +550,7 @@ void TIBP_ComModule::THelper::Helper__ProcessRegParam__String
 
 #ifndef IBP_BUILD_TESTCODE
 
-void TIBP_ComModule::THelper::Helper__CreateFactoryData()
+void IBP_ComModule::THelper::Helper__CreateFactoryData()
 {
  assert(sm_pData!=NULL);
 
@@ -588,7 +589,7 @@ void TIBP_ComModule::THelper::Helper__CreateFactoryData()
 }//Helper__CreateFactoryData
 
 //------------------------------------------------------------------------
-void TIBP_ComModule::THelper::Helper__AddFactoryData
+void IBP_ComModule::THelper::Helper__AddFactoryData
                                            (REFCLSID                 rclsid,
                                             PFNCREATEINSTANCE1 const fn)
 {
@@ -610,7 +611,7 @@ void TIBP_ComModule::THelper::Helper__AddFactoryData
 //чтение служебных параметров модуля
 
 #ifdef _PROCESS_DEBUG_MESSAGE_
-void TIBP_ComModule::THelper::Helper__ReadFlushLogFilePeriod()
+void IBP_ComModule::THelper::Helper__ReadFlushLogFilePeriod()
 {//Читаем настройки трассировочной версии
  assert(sm_pData!=NULL);
 

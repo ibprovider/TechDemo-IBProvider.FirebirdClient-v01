@@ -36,15 +36,16 @@ const db_obj::t_db_charset_info& t_ibp_cs_base64_mime::get_info()const
 
 //------------------------------------------------------------------------
 bool t_ibp_cs_base64_mime::to_unicode_v2
-                                 (std::wstring*              const pws,
-                                  structure::t_const_str_box const s)const
+      (std::wstring*                   const pws,
+       lib::structure::t_const_str_box const s)const
 {
  return self_type::tbase64_to_tbase64(pws,s);
 }//to_unicode_v2
 
 //------------------------------------------------------------------------
-bool t_ibp_cs_base64_mime::from_unicode_v2(std::string*                const ps,
-                                           structure::t_const_wstr_box const ws)const
+bool t_ibp_cs_base64_mime::from_unicode_v2
+      (std::string*                     const ps,
+       lib::structure::t_const_wstr_box const ws)const
 {
  return self_type::tbase64_to_tbase64(ps,ws);
 }//from_unicode_v2
@@ -176,13 +177,17 @@ db_obj::t_db_cs_result t_ibp_cs_base64_mime::sb_to_unicode
 bool t_ibp_cs_base64_mime::sb_len_as_unicode(ansi_streambuf_type& in_buf,
                                              size_type&           wsz)const
 {
- typedef char                                              source_char_type;
- typedef structure::t_char_traits2<source_char_type>       source_char_traits2;
+ using source_char_type
+  =char;
 
- typedef structure::t_basic_istream_buffer_iterator
-          <ansi_streambuf_type::value_type>                in_buf_iterator;
+ using source_char_traits2
+  =lib::structure::t_char_traits2<source_char_type>;
 
- typedef wchar_t                                           dest_char_type;
+ using in_buf_iterator
+  =structure::t_basic_istream_buffer_iterator<ansi_streambuf_type::value_type>;
+
+ using dest_char_type
+  =wchar_t;
 
  //-----
  wsz=0;
@@ -252,14 +257,19 @@ bool t_ibp_cs_base64_mime::sb_len_as_unicode(ansi_streambuf_type& in_buf,
 }//sb_len_as_unicode
 
 //------------------------------------------------------------------------
-bool t_ibp_cs_base64_mime::unicode_to_blob(const wchar_t*                  source,
+bool t_ibp_cs_base64_mime::unicode_to_blob(db_obj::t_db_operation_context& op_ctx,
+                                           const wchar_t*                  source,
                                            size_type                       source_size,
                                            db_obj::t_db_seq_stream_writer* writer)const
 {
- typedef wchar_t                                       source_char_type;
- typedef structure::t_char_traits2<source_char_type>   source_char_traits2;
+ using source_char_type
+  =wchar_t;
 
- typedef char                                          dest_char_type;
+ using source_char_traits2
+  =lib::structure::t_char_traits2<source_char_type>;
+
+ using dest_char_type
+  =char;
 
  //-----
  assert(writer);
@@ -289,7 +299,10 @@ bool t_ibp_cs_base64_mime::unicode_to_blob(const wchar_t*                  sourc
                                                     \
   if(out==out_end)                                  \
   {                                                 \
-   writer->write(sizeof(out_buffer),out_buffer);    \
+   writer->write                                    \
+    (op_ctx,                                        \
+     sizeof(out_buffer),                            \
+     out_buffer);                                   \
                                                     \
    out=out_buffer;                                  \
   }                                                 \
@@ -337,7 +350,10 @@ bool t_ibp_cs_base64_mime::unicode_to_blob(const wchar_t*                  sourc
  if(out!=out_buffer)
  {
   //выгружаем несохраненные данные
-  writer->write(sizeof(*out)*(out-out_buffer),out_buffer); //throw
+  writer->write
+   (op_ctx,
+    sizeof(*out)*(out-out_buffer),
+    out_buffer); //throw
  }//if
 
  //-----------------------------------------
@@ -347,19 +363,21 @@ bool t_ibp_cs_base64_mime::unicode_to_blob(const wchar_t*                  sourc
 //------------------------------------------------------------------------
 template<typename source_charT,typename dest_charT>
 bool t_ibp_cs_base64_mime::tbase64_to_tbase64
-                               (__STL_DEF_BASIC_STRING(dest_charT)*            const dest_str,
-                                structure::t_basic_const_str_box<source_charT> const source)
+      (LCPI_STL_DEF_BASIC_STRING(dest_charT)*              const dest_str,
+       lib::structure::t_basic_const_str_box<source_charT> const source)
 {
  assert(dest_str);
 
  CHECK_READ_TYPED_PTR(source.ptr,source.len);
 
  //-----------------------------------------
- typedef source_charT                                   source_char_type;
- typedef structure::t_char_traits2<source_char_type>    source_char_traits2;
+ using source_char_type=source_charT;
 
- typedef dest_charT                                     dest_char_type;
- typedef __STL_DEF_BASIC_STRING(dest_char_type)         dest_string_type;
+ using source_char_traits2=lib::structure::t_char_traits2<source_char_type>;
+
+ using dest_char_type=dest_charT;
+
+ using dest_string_type=LCPI_STL_DEF_BASIC_STRING(dest_char_type);
 
  //-----------------------------------------
  dest_str->clear();

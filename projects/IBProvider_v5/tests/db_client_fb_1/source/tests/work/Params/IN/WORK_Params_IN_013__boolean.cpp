@@ -16,10 +16,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Params_IN_013__boolean::tag_impl
 
-class WORK_Params_IN_013__boolean::tag_impl
+class WORK_Params_IN_013__boolean::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;

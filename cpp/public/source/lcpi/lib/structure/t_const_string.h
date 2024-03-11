@@ -88,9 +88,9 @@ class t_basic_const_string_data__static LCPI_CPP_CFG__CLASS__FINAL
   static self_ptr create();
 
   //interface ------------------------------------------------------------
-  virtual size_type size()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type size()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual const_pointer data()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const_pointer data()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   const size_type m_size;
@@ -131,9 +131,9 @@ class t_basic_const_string_data__dynamic LCPI_CPP_CFG__CLASS__FINAL
                          const_pointer str);
 
  private:
-  virtual size_type size()const COMP_W000004_OVERRIDE_FINAL;
+  virtual size_type size()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  virtual const_pointer data()const COMP_W000004_OVERRIDE_FINAL;
+  virtual const_pointer data()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   typedef typename Allocator::template rebind<void>::other raw_allocator_type;

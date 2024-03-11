@@ -11,10 +11,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //struct TTSO_TestState2 [POD]
 
-struct TTSO_TestState2
+struct TTSO_TestState2 LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_str_box           str_box_type;
+  using str_box_type=lib::structure::t_const_str_box;
 
  public:
   size_t     thread_idx;

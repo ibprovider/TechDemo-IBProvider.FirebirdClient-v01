@@ -22,14 +22,14 @@ namespace lcpi{namespace ibp{
 ///  Универсальный конвертор потока UCS2-символов в поток MultiByte-символов
 /// </summary>
 template<class TCharset>
-class t_ibp_text_stream__ucs2_to_mbc
+class t_ibp_text_stream__ucs2_to_mbc LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_text_stream__mbc)
 {
  private:
-  typedef t_ibp_text_stream__ucs2_to_mbc<TCharset>    self_type;
+  using self_type=t_ibp_text_stream__ucs2_to_mbc<TCharset>;
 
-  t_ibp_text_stream__ucs2_to_mbc(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_text_stream__ucs2_to_mbc(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -56,13 +56,17 @@ class t_ibp_text_stream__ucs2_to_mbc
   /// <summary>
   ///  Чтение MultiByte-символов
   /// </summary>
+  //! \param[in]  op_ctx
   //! \param[in]  mbc_buffer_size
   //! \param[out] mbc_buffer
   //! \param[out] cb_readed
   //!  Not NULL
-  virtual db_obj::t_db_cs_result read_mbc(size_type  mbc_buffer_size,
-                                          char*      mbc_buffer,
-                                          size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual db_obj::t_db_cs_result
+           read_mbc
+            (db_obj::t_db_operation_context& op_ctx,
+             size_type  mbc_buffer_size,
+             char*      mbc_buffer,
+             size_type* cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
   typedef structure::t_multi_thread_traits               thread_traits;

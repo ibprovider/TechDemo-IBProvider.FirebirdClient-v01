@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure__t_char_traits2_H_
 #define _cpp_public_lcpi_lib_structure__t_char_traits2_H_
 
-#include <lcpi/lib/structure/debug/debug_code.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

@@ -39,9 +39,10 @@ t_ibp_text_stream__mbc_buffer_to_ucs2<TCharset>::~t_ibp_text_stream__mbc_buffer_
 template<class TCharset>
 db_obj::t_db_cs_result
  t_ibp_text_stream__mbc_buffer_to_ucs2<TCharset>::read_ucs2
-                                   (size_type  const ucs2_buffer_size,
-                                    wchar_t*   const ucs2_buffer,
-                                    size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& /*op_ctx*/,
+                         size_type                 const ucs2_buffer_size,
+                         wchar_t*                  const ucs2_buffer,
+                         size_type*                const cb_readed)
 {
  assert(m_charset);
  assert(cb_readed);
@@ -88,11 +89,12 @@ db_obj::t_db_cs_result
    const char* source_ptr=m_source_buffer+m_source_buffer_pos;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_charset->single_mbc_to_ucs2
-                                 (&source_ptr,
-                                  m_source_buffer+m_source_buffer_size,
-                                  m_target_buffer,
-                                  m_target_buffer_size);
+    cvt_result
+     =m_charset->single_mbc_to_ucs2
+       (&source_ptr,
+        m_source_buffer+m_source_buffer_size,
+        m_target_buffer,
+        m_target_buffer_size);
 
    assert(source_ptr>=m_source_buffer+m_source_buffer_pos);
    assert(source_ptr<=m_source_buffer+m_source_buffer_size);

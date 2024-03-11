@@ -37,9 +37,10 @@ t_ibp_text_stream__mbc_to_ucs2<TCharset>::~t_ibp_text_stream__mbc_to_ucs2()
 template<class TCharset>
 db_obj::t_db_cs_result
  t_ibp_text_stream__mbc_to_ucs2<TCharset>::read_ucs2
-                                   (size_type  const ucs2_buffer_size,
-                                    wchar_t*   const ucs2_buffer,
-                                    size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& op_ctx,
+                         size_type                 const ucs2_buffer_size,
+                         wchar_t*                  const ucs2_buffer,
+                         size_type*                const cb_readed)
 {
  assert(m_charset);
  assert(m_source__mbc);
@@ -83,11 +84,12 @@ db_obj::t_db_cs_result
    const char* source_pos=m_source_buffer+m_source_buffer_pos;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_charset->single_mbc_to_ucs2
-                                 (&source_pos,
-                                  m_source_buffer+m_source_buffer_size,
-                                  m_target_buffer,
-                                  m_target_buffer_size);
+    cvt_result
+     =m_charset->single_mbc_to_ucs2
+       (&source_pos,
+        m_source_buffer+m_source_buffer_size,
+        m_target_buffer,
+        m_target_buffer_size);
 
    assert(source_pos>=m_source_buffer+m_source_buffer_pos);
    assert(source_pos<=m_source_buffer+m_source_buffer_size);
@@ -158,9 +160,12 @@ db_obj::t_db_cs_result
    size_type cb_readed_mbc=0;
 
    const db_obj::t_db_cs_result
-    cvt_result=m_source__mbc->read_mbc(_DIM_(m_source_buffer)-m_source_buffer_size,
-                                       m_source_buffer+m_source_buffer_size,
-                                       &cb_readed_mbc);
+    cvt_result
+     =m_source__mbc->read_mbc
+       (op_ctx,
+        _DIM_(m_source_buffer)-m_source_buffer_size,
+        m_source_buffer+m_source_buffer_size,
+        &cb_readed_mbc);
 
    assert(cb_readed_mbc<=_DIM_(m_source_buffer)-m_source_buffer_size);
 

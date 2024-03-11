@@ -15,10 +15,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class FB25_Test_009__BlrPrinter::tag_impl
 
-class FB25_Test_009__BlrPrinter::tag_impl
+class FB25_Test_009__BlrPrinter::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -147,7 +147,6 @@ void FB25_Test_009__BlrPrinter::tag_impl::helper__exec
       params,
       cns));
 
-
  //-----------------------------------------
  TestOperationContext OpCtx(params);
 
@@ -223,9 +222,10 @@ void FB25_Test_009__BlrPrinter::tag_impl::helper__exec
 
   svc::remote_fb_blob_handle_type hBlob(nullptr);
 
-  spConnector->OpenBlob(&hTr,
-                        &hBlob,
-                        blobID);
+  spConnector->OpenBlob
+   (&hTr,
+    &hBlob,
+    blobID);
 
   //----------------------------------------
   std::vector<unsigned char> blr;
@@ -236,23 +236,29 @@ void FB25_Test_009__BlrPrinter::tag_impl::helper__exec
   {
    size_t cbActualReaded=0;
 
-   const bool r=spConnector->ReadBlob(&hBlob,
-                                      block.size(),
-                                      block.buffer(),
-                                      &cbActualReaded);
+   const bool r
+    =spConnector->ReadBlob
+       (OpCtx,
+        &hBlob,
+        block.size(),
+        block.buffer(),
+        &cbActualReaded);
 
    _TSO_CHECK(cbActualReaded<=block.size());
 
-   blr.insert(blr.end(),
-              block.buffer(),
-              block.buffer()+cbActualReaded);
+   blr.insert
+    (blr.end(),
+     block.buffer(),
+     block.buffer()+cbActualReaded);
 
    if(!r)
     break;
   }//for[ever]
 
   //----------------------------------------
-  spConnector->CloseBlob(&hBlob);
+  spConnector->CloseBlob
+   (OpCtx,
+    &hBlob);
 
   //----------------------------------------
   tracer<<"blr size: "<<blr.size()<<send;
@@ -367,7 +373,7 @@ void FB25_Test_009__BlrPrinter::create(TTSO_PushTest*      const pTestPusher,
          <<d.pTestSign;
 
   const TTSO_TestPtr
-   spTest(structure::not_null_ptr
+   spTest(lib::structure::not_null_ptr
            (new TTSO_TestFunc(pParams,
                               ftestID.c_str(),
                               d.Func,

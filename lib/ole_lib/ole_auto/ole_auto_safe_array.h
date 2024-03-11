@@ -7,15 +7,11 @@
 #ifndef _ole_auto_safe_array_H_
 #define _ole_auto_safe_array_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
-#include "structure/t_common.h"
-
-#include <vector>
+#include <lcpi/lib/.config.h>
 
 #include <lcpi/infrastructure/os/windows-oleaut32.h>
+
+#include <vector>
 
 namespace ole_lib{
 ////////////////////////////////////////////////////////////////////////////////

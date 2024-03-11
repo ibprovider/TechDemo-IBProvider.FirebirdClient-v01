@@ -138,7 +138,7 @@ void RemoteFB__API_P12__AllocateStatement::exec(RemoteFB__ConnectorData* const p
  pData->StmtList__Add(NewStmtHandle);
 
  // возвращаем дескриптор вызывающей стороне
- (*pStmtHandle)=__STL_MOVE_VALUE(NewStmtHandle);
+ (*pStmtHandle)=LCPI_STL_MOVE_VALUE(NewStmtHandle);
 
  assert(*pStmtHandle);
 }//exec

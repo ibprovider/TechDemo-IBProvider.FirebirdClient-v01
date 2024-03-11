@@ -7,7 +7,7 @@
 #ifndef _ibp_char_H_
 #define _ibp_char_H_
 
-#include <structure/t_const_str_box.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -16,19 +16,24 @@ namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 
 ///Тип основного символа для строк модуля
-typedef wchar_t                                          t_ibp_char;
+using t_ibp_char
+ =wchar_t;
 
 ///Класс для работы со строками
-typedef __STL_DEF_BASIC_STRING(t_ibp_char)               t_ibp_string;
+using t_ibp_string
+ =LCPI_STL_DEF_BASIC_STRING(t_ibp_char);
 
 ///Класс для работы со строками
-typedef structure::t_basic_const_str_box<t_ibp_char>     t_ibp_str_box;
+using t_ibp_str_box
+ =lib::structure::t_basic_const_str_box<t_ibp_char>;
 
 ///Класс для работы со UNICODE-строками
-typedef structure::t_basic_const_str_box<wchar_t>        t_ibp_wstr_box;
+using t_ibp_wstr_box
+ =lib::structure::t_basic_const_str_box<wchar_t>;
 
 ///Класс для работы со ANSI-строками
-typedef structure::t_basic_const_str_box<char>           t_ibp_astr_box;
+using t_ibp_astr_box
+ =lib::structure::t_basic_const_str_box<char>;
 
 ///Макрос для формирования юникодной строки
 #define IBP_MAKE_UNICODE_TEXT(text) L##text

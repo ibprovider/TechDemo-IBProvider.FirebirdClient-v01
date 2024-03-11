@@ -7,7 +7,7 @@
 #ifndef _remote_fb__protocol_set02__forward_H_
 #define _remote_fb__protocol_set02__forward_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace protocol{namespace set02{
 ////////////////////////////////////////////////////////////////////////////////

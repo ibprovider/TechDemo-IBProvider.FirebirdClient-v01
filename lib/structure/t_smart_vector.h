@@ -4,10 +4,6 @@
 #ifndef _t_smart_vector_H_
 #define _t_smart_vector_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/t_smart_object.h>
 #include <structure/stl/t_stl_vector.h>
 

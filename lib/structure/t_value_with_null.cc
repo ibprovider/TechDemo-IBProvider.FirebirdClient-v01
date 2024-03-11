@@ -26,8 +26,8 @@ inline t_value_with_null<T>::t_value_with_null(const self_type& x)
 
 template<class T>
 inline t_value_with_null<T>::t_value_with_null(self_type&& x)
- :m_value (__STL_MOVE_VALUE(x.m_value))
- ,m_null  (__STL_MOVE_VALUE(x.m_null))
+ :m_value (LCPI_STL_MOVE_VALUE(x.m_value))
+ ,m_null  (LCPI_STL_MOVE_VALUE(x.m_null))
 {
  x.reset();
 }//move constructor
@@ -61,7 +61,7 @@ inline t_value_with_null<T>::t_value_with_null(const value_type& x)
 
 template<class T>
 inline t_value_with_null<T>::t_value_with_null(value_type&& x)
- :m_value(__STL_FORWARD_VALUE(value_type,x))
+ :m_value(LCPI_STL_MOVE_VALUE(x))
  ,m_null(false)
 {
 }
@@ -123,8 +123,8 @@ inline t_value_with_null<T>& t_value_with_null<T>::operator = (self_type&& x)
 {
  if(&x!=this)
  {
-  this->m_value =__STL_MOVE_VALUE(x.m_value);
-  this->m_null  =__STL_MOVE_VALUE(x.m_null);
+  this->m_value =LCPI_STL_MOVE_VALUE(x.m_value);
+  this->m_null  =LCPI_STL_MOVE_VALUE(x.m_null);
 
   x.reset();
  }//if &x!=this
@@ -152,9 +152,7 @@ inline t_value_with_null<T>& t_value_with_null<T>::operator = (const value_type&
 template<class T>
 inline t_value_with_null<T>& t_value_with_null<T>::operator = (value_type&& x)
 {
- typedef value_type x_type;
-
- return this->set(__STL_FORWARD_VALUE(x_type,x));
+ return this->set(LCPI_STL_MOVE_VALUE(x));
 }//operator = generic_type / value_type
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -179,9 +177,7 @@ inline t_value_with_null<T>& t_value_with_null<T>::set(const value_type& x)
 template<class T>
 inline t_value_with_null<T>& t_value_with_null<T>::set(value_type&& x)
 {
- typedef value_type x_type;
-
- this->m_value=__STL_FORWARD_VALUE(x_type,x);
+ this->m_value=LCPI_STL_MOVE_VALUE(x);
  this->m_null =false;
 
  return *this;
@@ -200,9 +196,7 @@ inline t_value_with_null<T>& t_value_with_null<T>::set_t(const value_type& x)
 template<class T>
 inline t_value_with_null<T>& t_value_with_null<T>::set_t(value_type&& x)
 {
- typedef value_type x_type;
-
- return this->set(__STL_FORWARD_VALUE(x_type,x));
+ return this->set(LCPI_STL_MOVE_VALUE(x));
 }//set_t [move version]
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -277,7 +271,7 @@ bool t_value_with_null<T>::assign_once(value_type&& x)
  if(!this->null())
   return false;
 
- this->set(__STL_FORWARD_VALUE(value_type,x));
+ this->set(LCPI_STL_MOVE_VALUE(x));
 
  return true;
 }//assign_once [move version]

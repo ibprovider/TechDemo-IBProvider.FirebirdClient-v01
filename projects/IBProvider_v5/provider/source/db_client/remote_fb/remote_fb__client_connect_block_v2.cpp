@@ -245,7 +245,7 @@ const std::wstring& RemoteFB__ClientConnectBlock_v2::GetAuthPluginNames()
    lib::structure::append(&result,m_AuthPlugins[i]->get_name());
   }//for i
 
-  m_AuthPluginNames=__STL_MOVE_VALUE(result);
+  m_AuthPluginNames=LCPI_STL_MOVE_VALUE(result);
  }//if m_AuthPluginNames.null()
 
  assert(!m_AuthPluginNames.null());

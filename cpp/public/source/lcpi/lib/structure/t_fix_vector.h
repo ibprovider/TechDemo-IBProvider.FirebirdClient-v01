@@ -85,11 +85,12 @@ class t_fix_vector_base
 //class t_fix_vector
 
 template<class T,size_t N>
-class t_fix_vector:private t_fix_vector_base<T,N>
+class t_fix_vector LCPI_CPP_CFG__CLASS__FINAL
+ :private t_fix_vector_base<T,N>
 {
  private:
-  typedef t_fix_vector<T,N>                                self_type;
-  typedef t_fix_vector_base<T,N>                           inherited;
+  using self_type=t_fix_vector<T,N>;
+  using inherited=t_fix_vector_base<T,N>;
 
  public: //typedefs ------------------------------------------------------
   enum{num_of_elements=N};
@@ -191,7 +192,7 @@ class t_fix_vector:private t_fix_vector_base<T,N>
   void construct(Iterator first,Iterator last,std::random_access_iterator_tag);
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void helper__throw_bad_alloc(size_type n);
 
  private:

@@ -30,6 +30,7 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__ReadBlob
   /// <summary>
   ///  Чтение данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobHandle
@@ -45,11 +46,12 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__ReadBlob
   //!
   //! \note
   //!  При достижении конца буфера с данными мы можем вернуть данные.
-  virtual bool exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle,
-                    size_t                   cbBuffer,
-                    void*                    pvBuffer,
-                    size_t*                  pcbActualReaded)=0;
+  virtual bool exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle,
+                    size_t                          cbBuffer,
+                    void*                           pvBuffer,
+                    size_t*                         pcbActualReaded)=0;
 };//class RemoteFB__API__ReadBlob
 
 ////////////////////////////////////////////////////////////////////////////////

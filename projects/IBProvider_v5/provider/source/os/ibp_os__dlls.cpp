@@ -79,11 +79,11 @@ t_ibp_os__dll_ptr t_ibp_os__dlls::GetDLL(t_ibp_str_box const DLL_Name,
      (new t_ibp_os__dll_loader
        (DLL_Name))); //throw
 
- auto x=m_items.insert(__STL_MOVE_VALUE(spDLL));
+ auto x=m_items.insert(LCPI_STL_MOVE_VALUE(spDLL));
 
  assert((*x.first).GetDllLoader());
 
- spDLL=structure::not_null_ptr((*x.first).GetDllLoader());
+ spDLL=lib::structure::not_null_ptr((*x.first).GetDllLoader());
 
  assert(spDLL);
 
@@ -107,10 +107,10 @@ t_ibp_os__dll_ptr t_ibp_os__dlls::GetDLL(t_ibp_str_box const DLL_Name,
 
  t_ibp_os__dll_ptr
   spDllProxy
-   =structure::not_null_ptr
+   =lib::structure::not_null_ptr
      (new t_ibp_os__dll_proxy
        (this,
-        __STL_MOVE_VALUE(spDLL)));
+        LCPI_STL_MOVE_VALUE(spDLL)));
 
  assert(spDllProxy);
 

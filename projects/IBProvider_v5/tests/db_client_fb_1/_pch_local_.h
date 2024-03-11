@@ -50,7 +50,7 @@ namespace ibprovider=lcpi::sdk::ibprovider::v05;
 
 #include "source/ibp_com.h"
 
-extern LCPI_IBP_NMS::TIBP_ComModule _Module;
+extern LCPI_IBP_NMS::IBP_ComModule _Module;
 
 ////////////////////////////////////////////////////////////////////////////////
 

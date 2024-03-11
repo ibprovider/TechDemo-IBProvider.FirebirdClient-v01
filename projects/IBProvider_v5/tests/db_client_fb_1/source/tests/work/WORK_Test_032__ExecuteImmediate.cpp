@@ -16,10 +16,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Test_032__ExecuteImmediate::tag_impl
 
-class WORK_Test_032__ExecuteImmediate::tag_impl
+class WORK_Test_032__ExecuteImmediate::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
@@ -2776,6 +2776,7 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S012__insert__blob
  svc::RemoteFB_Connector__WriteBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob,
    sizeof(testBlobData),
    testBlobData);
@@ -2783,6 +2784,7 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S012__insert__blob
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  //-----------------------------------------
@@ -2839,6 +2841,7 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S012__insert__blob
  svc::RemoteFB_Connector__ReadBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob,
    sizeof(readedBlobData),
    readedBlobData,
@@ -2856,6 +2859,7 @@ void WORK_Test_032__ExecuteImmediate::tag_impl::test_S012__insert__blob
  svc::RemoteFB_Connector__CloseBlob
   (tracer,
    spConnector,
+   OpCtx,
    &hBlob);
 
  _TSO_CHECK(!hBlob);
@@ -3110,7 +3114,7 @@ void WORK_Test_032__ExecuteImmediate::create(TTSO_PushTest*      const pTestPush
 
   const TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new TTSO_TestFunc_v2
         (pParams,
          ftestID.c_str(),

@@ -2,10 +2,6 @@
 #ifndef _t_tree_base_H_
 #define _t_tree_base_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/memory/t_mem_cluster_allocator_builder.h>
 
 namespace structure{

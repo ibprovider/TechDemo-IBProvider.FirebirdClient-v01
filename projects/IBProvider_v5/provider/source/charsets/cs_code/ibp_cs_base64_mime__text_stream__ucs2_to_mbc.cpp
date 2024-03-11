@@ -33,9 +33,10 @@ t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc::~tag_text_stream__ucs2_to_mb
 
 //t_db_text_stream__mbc interface ----------------------------------------
 db_obj::t_db_cs_result t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc::read_mbc
-                                           (size_type  const mbc_buffer_size,
-                                            char*      const mbc_buffer,
-                                            size_type* const cb_readed)
+                        (db_obj::t_db_operation_context& op_ctx,
+                         size_type                 const mbc_buffer_size,
+                         char*                     const mbc_buffer,
+                         size_type*                const cb_readed)
 {
  assert(cb_readed);
  assert(m_source__ucs2);
@@ -65,7 +66,12 @@ db_obj::t_db_cs_result t_ibp_cs_base64_mime::tag_text_stream__ucs2_to_mbc::read_
    assert(m_source__ucs2);
 
    const db_obj::t_db_cs_result
-    cs_result=m_source__ucs2->read_ucs2(_DIM_(m_buffer),m_buffer,&m_buffer_size); //throw
+    cs_result
+     =m_source__ucs2->read_ucs2
+       (op_ctx,
+        _DIM_(m_buffer),
+        m_buffer,
+        &m_buffer_size); //throw
 
    assert(m_buffer_size<=_DIM_(m_buffer));
 

@@ -172,7 +172,7 @@ t_ibp_error::t_ibp_error(error_record_type* const pError)
 }//t_ibp_error
 
 //------------------------------------------------------------------------
-t_ibp_error::~t_ibp_error() __STL_EXCEPTION_DCR_THROW_SPEC
+t_ibp_error::~t_ibp_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
 {;}
 
 //assign operators -------------------------------------------------------
@@ -214,7 +214,7 @@ void t_ibp_error::swap(self_type& x)
 }//swap
 
 //exception interface ----------------------------------------------------
-const char* t_ibp_error::what()const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_ibp_error::what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return "IBProvider Exception";
 }//what

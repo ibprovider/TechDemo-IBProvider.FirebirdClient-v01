@@ -4,7 +4,6 @@
 #ifndef _structure_charsets_t_cs_utf_fss_CC_
 #define _structure_charsets_t_cs_utf_fss_CC_
 
-#include <lcpi/lib/structure/debug/assert.h>
 #include <limits>
 
 namespace structure{namespace charsets{namespace cs_utf_fss{

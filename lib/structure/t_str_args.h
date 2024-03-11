@@ -25,7 +25,7 @@ template<class charT,class t_outer>
 class t_basic_str_args
 {
  private:
-  typedef t_basic_str_args<charT,t_outer>                    self_type;
+  using self_type=t_basic_str_args<charT,t_outer>;
 
   t_basic_str_args(const self_type&) COMP_W000002_COPY_CTOR_IMPL
   self_type& operator = (const self_type&);

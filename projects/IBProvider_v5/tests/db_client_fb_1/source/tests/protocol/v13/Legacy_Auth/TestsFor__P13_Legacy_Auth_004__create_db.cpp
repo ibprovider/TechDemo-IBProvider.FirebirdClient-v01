@@ -58,8 +58,8 @@ TestsFor__P13_Legacy_Auth_004__create_db::TestsFor__P13_Legacy_Auth_004__create_
                                             CryptMode           const cryptMode,
                                             CompressMode        const compressMode,
                                             PFnExec             const pfnExec)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_testID(structure::not_null_ptr(pTestID))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_testID(lib::structure::not_null_ptr(pTestID))
  ,m_cryptMode(cryptMode)
  ,m_compressMode(compressMode)
  ,m_pfnExec(pfnExec)
@@ -110,7 +110,7 @@ void TestsFor__P13_Legacy_Auth_004__create_db::create(TTSO_PushTest*      const 
 
   TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new self_type
         (pParams,
          ftestID.c_str(),

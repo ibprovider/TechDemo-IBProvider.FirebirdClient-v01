@@ -29,24 +29,24 @@ class t_base_ole_error:public t_base_com_error
 
   t_base_ole_error(HRESULT code,str_box_type text);
 
-  virtual ~t_base_ole_error() __STL_EXCEPTION_DCR_THROW_SPEC;
+  virtual ~t_base_ole_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC;
 
   //selectors ----------------------------------------------------------
   const std::string& text() const {return m_text;}
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error(HRESULT code);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void throw_error(HRESULT code,str_box_type text);
 
  public:
   //std::exception interface -------------------------------------------
-  virtual const char* what() const __STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
+  virtual const char* what() const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC LCPI_CPP_CFG__METHOD__OVERRIDE;
 
   //structure::t_exception interface -----------------------------------
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   virtual void raise()const LCPI_CPP_CFG__METHOD__OVERRIDE;//throw
 
   //t_base_com_error interface -----------------------------------------

@@ -14,7 +14,7 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002::tag_impl
 
-class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002::tag_impl
+class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__002::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   typedef tag_impl                                              self_type;

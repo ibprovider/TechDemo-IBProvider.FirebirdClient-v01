@@ -7,7 +7,7 @@
 #ifndef _isc_types_H_
 #define _isc_types_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////

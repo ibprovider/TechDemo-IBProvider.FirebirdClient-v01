@@ -14,17 +14,20 @@ t_base_ole_error::t_base_ole_error(HRESULT      const code,
                                    str_box_type const text)
  :inherited(code)
  ,m_text(text.begin(),text.end())
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_base_ole_error::t_base_ole_error(const self_type& exc)
  :inherited(exc)
  ,m_text(exc.m_text)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
-t_base_ole_error::~t_base_ole_error() __STL_EXCEPTION_DCR_THROW_SPEC
-{;}
+t_base_ole_error::~t_base_ole_error() LCPI_STL_EXCEPTION_DCR_THROW_SPEC
+{
+}
 
 //------------------------------------------------------------------------
 void t_base_ole_error::throw_error(HRESULT const code)
@@ -40,7 +43,7 @@ void t_base_ole_error::throw_error(HRESULT      const code,
 }//throw_error
 
 //------------------------------------------------------------------------
-const char* t_base_ole_error::what()const __STL_EXCEPTION_WHAT_THROW_SPEC
+const char* t_base_ole_error::what()const LCPI_STL_EXCEPTION_WHAT_THROW_SPEC
 {
  return m_text.c_str();
 }//what

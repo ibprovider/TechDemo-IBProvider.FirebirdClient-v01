@@ -7,7 +7,7 @@
 #ifndef _fb_api_H_
 #define _fb_api_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace ibp{namespace fb_api{
 //////////////////////////////////////////////////////////////////////////

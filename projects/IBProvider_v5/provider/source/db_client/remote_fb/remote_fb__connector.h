@@ -419,9 +419,11 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Закрытие блоба.
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in,out] pBlobHandle
   //!  Not null. На входе должен указывать на ненулевое значение.
-  void CloseBlob(blob_handle_type* pBlobHandle);
+  void CloseBlob(db_obj::t_db_operation_context& OpCtx,
+                 blob_handle_type*               pBlobHandle);
 
   //----------------------------------------------------------------------
   /// <summary>
@@ -449,6 +451,7 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Чтение данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
   //! \param[in] pBlobHandle
   //!  Not null. На входе должен указывать на дескриптор открытого блоба.
   //! \param[in] cbBuffer
@@ -462,24 +465,28 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   //!
   //! \note
   //!  При достижении конца буфера с данными мы можем вернуть данные.
-  bool ReadBlob(blob_handle_type* pBlobHandle,
-                size_t            cbBuffer,
-                void*             pvBuffer,
-                size_t*           pcbActualReaded);
+  bool ReadBlob(db_obj::t_db_operation_context& OpCtx,
+                blob_handle_type*               pBlobHandle,
+                size_t                          cbBuffer,
+                void*                           pvBuffer,
+                size_t*                         pcbActualReaded);
 
   //----------------------------------------------------------------------
   /// <summary>
   ///  Запись данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
+  //!  The operation context.
   //! \param[in] pBlobHandle
   //!  Not null. На входе должен указывать на дескриптор создаваемого блоба.
   //! \param[in] cbBuffer
   //!  Размер буфера
   //! \param[out] pvBuffer
   //!  Указатель на данные
-  void WriteBlob(blob_handle_type* pBlobHandle,
-                 size_t            cbBuffer,
-                 const void*       pvBuffer);
+  void WriteBlob(db_obj::t_db_operation_context& OpCtx,
+                 blob_handle_type*               pBlobHandle,
+                 size_t                          cbBuffer,
+                 const void*                     pvBuffer);
 
   //----------------------------------------------------------------------
  #ifdef IBP_BUILD_TESTCODE
@@ -487,9 +494,12 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Сброс буферизированных данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
+  //!  The operation context.
   //! \param[in] pBlobHandle
   //!  Not null. На входе должен указывать на дескриптор создаваемого блоба.
-  void FlushBlob(blob_handle_type* pBlobHandle);
+  void FlushBlob(db_obj::t_db_operation_context& OpCtx,
+                 blob_handle_type*               pBlobHandle);
 
  #endif //IBP_BUILD_TESTCODE
 

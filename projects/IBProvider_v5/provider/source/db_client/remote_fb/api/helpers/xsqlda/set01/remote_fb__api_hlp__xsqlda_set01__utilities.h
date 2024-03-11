@@ -62,7 +62,7 @@ class RemoteFB__API_HLP__XSQLDA_SET01__Utilities LCPI_CPP_CFG__CLASS__FINAL
                                       bool             data_is_truncated,
                                       TBuffer&         buffer);
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowError__GetStmtInfo__NoData(const wchar_t* propSign);
 };//class RemoteFB__API_HLP__XSQLDA_SET01__Utilities
 

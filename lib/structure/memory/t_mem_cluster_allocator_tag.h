@@ -4,7 +4,7 @@
 #ifndef _t_mem_cluster_allocator_tag_H_
 #define _t_mem_cluster_allocator_tag_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

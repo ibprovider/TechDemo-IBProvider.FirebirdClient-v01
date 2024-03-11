@@ -29,7 +29,7 @@ class t_str_args_traits
   typedef charT                                           char_type;
 
   //BCB3 not define default template arguments
-  typedef __STL_DEF_BASIC_STRING(char_type)               string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)            string_type;
 
   typedef typename string_type::size_type                 size_type;
 };//template class t_str_formatter_traits
@@ -47,7 +47,7 @@ class t_str_args_traits<char>
   typedef char                                            char_type;
 
   //BCB3 not define default template arguments
-  typedef __STL_DEF_BASIC_STRING(char_type)               string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)            string_type;
 
   typedef string_type::size_type                          size_type;
 
@@ -59,7 +59,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_itoa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_itoa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_int
@@ -68,7 +68,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ultoa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ultoa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_uint
@@ -77,7 +77,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ltoa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ltoa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_long
@@ -86,7 +86,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ultoa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ultoa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_ulong
@@ -95,7 +95,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_i64toa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_i64toa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_int64
@@ -104,7 +104,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ui64toa_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ui64toa_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_uint64
@@ -113,7 +113,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[128];
 
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)value);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)value);
 
     return string_type(tmp);
    }//arg_float
@@ -122,7 +122,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[128];
 
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",value);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",value);
 
     return string_type(tmp);
    }//arg_double
@@ -131,7 +131,7 @@ class t_str_args_traits<char>
    {
     char_type tmp[128];
 
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16Lg",value);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16Lg",value);
 
     return string_type(tmp);
    }//arg_long_double
@@ -157,7 +157,7 @@ class t_str_args_traits<char>
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   static string_type&& arg_str(string_type&& value)
    {
-    return __STL_MOVE_VALUE(value);
+    return LCPI_STL_MOVE_VALUE(value);
    }//arg_str
  #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -260,7 +260,7 @@ class t_str_args_traits<char>
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   static string_type&& arg(string_type&& value)
    {
-    return __STL_MOVE_VALUE(value);
+    return LCPI_STL_MOVE_VALUE(value);
    }//arg
  #endif
 };//class t_str_args_traits<char>
@@ -277,7 +277,7 @@ class t_str_args_traits<wchar_t>
  public: //typedefs ------------------------------------------------------
   typedef wchar_t                                         char_type;
 
-  typedef __STL_DEF_BASIC_STRING(char_type)               string_type;
+  typedef LCPI_STL_DEF_BASIC_STRING(char_type)            string_type;
 
   typedef string_type::size_type                          size_type;
 
@@ -289,7 +289,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_itow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_itow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_int
@@ -298,7 +298,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ultow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ultow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_uint
@@ -307,7 +307,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ltow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ltow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_long
@@ -316,7 +316,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ultow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ultow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_ulong
@@ -325,7 +325,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_i64tow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_i64tow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_int64
@@ -334,7 +334,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[64];
 
-    _VERIFY_EQ(_GCRT_ui64tow_s(value,tmp,_DIM_(tmp),10),0L);
+    LCPI__VERIFY_EQ(LCPI_GCRT_ui64tow_s(value,tmp,_DIM_(tmp),10),0L);
 
     return string_type(tmp);
    }//arg_uint64
@@ -343,7 +343,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[128];
 
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)value);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)value);
 
     return string_type(tmp);
    }//arg_double
@@ -352,7 +352,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[128];
 
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",value);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",value);
 
     return string_type(tmp);
    }//arg_double
@@ -361,7 +361,7 @@ class t_str_args_traits<wchar_t>
    {
     char_type tmp[128];
 
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16Lg",value);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16Lg",value);
 
     return string_type(tmp);
    }//arg_long_double
@@ -387,7 +387,7 @@ class t_str_args_traits<wchar_t>
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   static string_type&& arg_str(string_type&& value)
    {
-    return __STL_MOVE_VALUE(value);
+    return LCPI_STL_MOVE_VALUE(value);
    }//arg_str
  #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -475,7 +475,7 @@ class t_str_args_traits<wchar_t>
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   static string_type&& arg(string_type&& value)
    {
-    return __STL_MOVE_VALUE(value);
+    return LCPI_STL_MOVE_VALUE(value);
    }//arg
  #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 

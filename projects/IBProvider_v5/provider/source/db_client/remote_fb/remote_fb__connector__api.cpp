@@ -483,7 +483,8 @@ void RemoteFB__Connector::CreateBlob(tr_handle_type*          const pTrHandle,
 }//CreateBlob
 
 //------------------------------------------------------------------------
-void RemoteFB__Connector::CloseBlob(blob_handle_type* const pBlobHandle)
+void RemoteFB__Connector::CloseBlob(db_obj::t_db_operation_context& OpCtx,
+                                    blob_handle_type*         const pBlobHandle)
 {
  assert(pBlobHandle!=nullptr);
 
@@ -493,7 +494,8 @@ void RemoteFB__Connector::CloseBlob(blob_handle_type* const pBlobHandle)
  const lock_guard_type lock(m_Guard);
 
  m_spData->m_API__CloseBlob.get()->exec
-  (m_spData,
+  (OpCtx,
+   m_spData,
    pBlobHandle); //throw
 }//CloseBlob
 
@@ -534,10 +536,11 @@ void RemoteFB__Connector::GetBlobInfo(blob_handle_type*    const pBlobHandle,
 }//GetBlobInfo
 
 //------------------------------------------------------------------------
-bool RemoteFB__Connector::ReadBlob(blob_handle_type* const pBlobHandle,
-                                   size_t            const cbBuffer,
-                                   void*             const pvBuffer,
-                                   size_t*           const pcbActualReaded)
+bool RemoteFB__Connector::ReadBlob(db_obj::t_db_operation_context& OpCtx,
+                                   blob_handle_type*         const pBlobHandle,
+                                   size_t                    const cbBuffer,
+                                   void*                     const pvBuffer,
+                                   size_t*                   const pcbActualReaded)
 {
  assert(pBlobHandle!=nullptr);
 
@@ -547,7 +550,8 @@ bool RemoteFB__Connector::ReadBlob(blob_handle_type* const pBlobHandle,
  const lock_guard_type lock(m_Guard);
 
  return m_spData->m_API__ReadBlob.get()->exec
-         (m_spData,
+         (OpCtx,
+          m_spData,
           pBlobHandle,
           cbBuffer,
           pvBuffer,
@@ -555,9 +559,10 @@ bool RemoteFB__Connector::ReadBlob(blob_handle_type* const pBlobHandle,
 }//ReadBlob
 
 //------------------------------------------------------------------------
-void RemoteFB__Connector::WriteBlob(blob_handle_type* const pBlobHandle,
-                                    size_t            const cbBuffer,
-                                    const void*       const pvBuffer)
+void RemoteFB__Connector::WriteBlob(db_obj::t_db_operation_context& OpCtx,
+                                    blob_handle_type*         const pBlobHandle,
+                                    size_t                    const cbBuffer,
+                                    const void*               const pvBuffer)
 {
  assert(pBlobHandle!=nullptr);
 
@@ -567,7 +572,8 @@ void RemoteFB__Connector::WriteBlob(blob_handle_type* const pBlobHandle,
  const lock_guard_type lock(m_Guard);
 
  return m_spData->m_API__WriteBlob.get()->exec
-         (m_spData,
+         (OpCtx,
+          m_spData,
           pBlobHandle,
           cbBuffer,
           pvBuffer);
@@ -576,7 +582,8 @@ void RemoteFB__Connector::WriteBlob(blob_handle_type* const pBlobHandle,
 //------------------------------------------------------------------------
 #ifdef IBP_BUILD_TESTCODE
 
-void RemoteFB__Connector::FlushBlob(blob_handle_type* const pBlobHandle)
+void RemoteFB__Connector::FlushBlob(db_obj::t_db_operation_context& OpCtx,
+                                    blob_handle_type*         const pBlobHandle)
 {
  assert(pBlobHandle!=nullptr);
 
@@ -586,7 +593,8 @@ void RemoteFB__Connector::FlushBlob(blob_handle_type* const pBlobHandle)
  const lock_guard_type lock(m_Guard);
 
  return m_spData->m_API__FlushBlob.get()->exec
-         (m_spData,
+         (OpCtx,
+          m_spData,
           pBlobHandle);
 }//FlushBlob
 

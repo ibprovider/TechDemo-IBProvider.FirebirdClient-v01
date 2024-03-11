@@ -231,7 +231,10 @@ long TTSO_TestQueueMT::build_summary(const runners_type& runners)const
  auto nTotalWarning (m_spLog->get_warning_count());
 
  const TTSO_SummaryBuilder::self_ptr
-  spRootBuilder(structure::not_null_ptr(new TTSO_SummaryBuilder(m_spLog.ptr())));
+  spRootBuilder
+   (lib::structure::not_null_ptr
+     (new TTSO_SummaryBuilder
+       (m_spLog.ptr())));
 
  builders_type ThreadBuilders;
 
@@ -245,7 +248,10 @@ long TTSO_TestQueueMT::build_summary(const runners_type& runners)const
   nTotalWarning  +=spThreadLog->get_warning_count();
 
   const TTSO_SummaryBuilder::self_ptr
-   spRootBuilder(structure::not_null_ptr(new TTSO_SummaryBuilder(spThreadLog.ptr())));
+   spRootBuilder
+    (lib::structure::not_null_ptr
+      (new TTSO_SummaryBuilder
+        (spThreadLog.ptr())));
 
   ThreadBuilders.push_back(spRootBuilder);
  }//for i
@@ -343,14 +349,16 @@ long TTSO_TestQueueMT::build_summary(const runners_type& runners)const
 
   ThreadBuilders[i]->print_summary(L"",true);
 
-  ThreadBuilders[i]->print_summary_ex(spRootBuilder->m_Tracer,
-                                      runners[i]->thread_name(),
-                                      true);
+  ThreadBuilders[i]->print_summary_ex
+   (spRootBuilder->m_Tracer,
+    runners[i]->thread_name(),
+    true);
  }//for i
 
- spRootBuilder->print_total(L"ROOT THREAD",
-                            m_spLog->get_error_count(),
-                            m_spLog->get_warning_count());
+ spRootBuilder->print_total
+  (L"ROOT THREAD",
+   m_spLog->get_error_count(),
+   m_spLog->get_warning_count());
 
  //-------------
  spRootBuilder->print_summary(L"SUMMARY INFORMATION",false);
@@ -361,6 +369,7 @@ long TTSO_TestQueueMT::build_summary(const runners_type& runners)const
 
  //-------------
  long result;
+
  structure::verified_length_cast(&result,nTotalError,"TTSO_TestQueueMT::build_summary");
 
  return result;
@@ -405,13 +414,13 @@ TTSO_TestRunnerMT::self_ptr TTSO_TestRunnerMT::create
  fLogFileName<<BaseLogFilePath<<(ThreadIdx+1);
 
  const TTSO_LogStream::self_ptr
-  spThreadLogStream(structure::not_null_ptr(new TTSO_LogStream_ToFile(fLogFileName.str())));
+  spThreadLogStream(lib::structure::not_null_ptr(new TTSO_LogStream_ToFile(fLogFileName.str())));
 
  assert(spThreadLogStream);
 
  //---------
  const TTSO_RootLog::self_ptr
-  spThreadLog(structure::not_null_ptr(new TTSO_RootLog(spThreadLogStream)));
+  spThreadLog(lib::structure::not_null_ptr(new TTSO_RootLog(spThreadLogStream)));
 
  assert(spThreadLog);
 
@@ -442,7 +451,7 @@ const wchar_t* TTSO_TestRunnerMT::thread_name_impl()const
 void TTSO_TestRunnerMT::thread_worker_impl()
 {
  const TTSO_RunContext::self_ptr
-  spCtx(structure::not_null_ptr(new TTSO_RunContext(m_log)));
+  spCtx(lib::structure::not_null_ptr(new TTSO_RunContext(m_log)));
 
  TTSO_Tracer thread_tracer(m_log);
 
@@ -539,7 +548,7 @@ TTSO_PushTest__ExecutorMT::TTSO_PushTest__ExecutorMT
  ,m_BaseLogFilePath (BaseLogFilePath)
  ,m_spLog           (pLog)
  ,m_nThread         (nThread)
- ,m_spTestQueue     (structure::not_null_ptr(new test_queue_type(pLog,1)))
+ ,m_spTestQueue     (lib::structure::not_null_ptr(new test_queue_type(pLog,1)))
 {
  assert(m_spSD);
  assert(m_spLog);

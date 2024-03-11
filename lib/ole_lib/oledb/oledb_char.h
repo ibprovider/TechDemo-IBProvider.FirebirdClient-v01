@@ -36,9 +36,9 @@ typedef char                         t_oledb_char;
 
 # define _OLEDB_LIB_lstrcmpi                              lstrcmpiA
 # define _OLEDB_LIB_strcmp                                strcmp
-# define _OLEDB_LIB_stricmp                               _GCRT_stricmp
-# define _OLEDB_LIB_itot_s                                _GCRT_itoa_s
-# define _OLEDB_LIB_ltot_s                                _GCRT_ltoa_s
+# define _OLEDB_LIB_stricmp                               LCPI_GCRT_stricmp
+# define _OLEDB_LIB_itot_s                                LCPI_GCRT_itoa_s
+# define _OLEDB_LIB_ltot_s                                LCPI_GCRT_ltoa_s
 
 #else
 typedef wchar_t                      t_oledb_char;
@@ -47,9 +47,9 @@ typedef wchar_t                      t_oledb_char;
 
 # define _OLEDB_LIB_lstrcmpi                              lstrcmpiW
 # define _OLEDB_LIB_strcmp                                wcscmp
-# define _OLEDB_LIB_stricmp                               _GCRT_wcsicmp
-# define _OLEDB_LIB_itot_s                                _GCRT_itow_s
-# define _OLEDB_LIB_ltot_s                                _GCRT_ltow_s
+# define _OLEDB_LIB_stricmp                               LCPI_GCRT_wcsicmp
+# define _OLEDB_LIB_itot_s                                LCPI_GCRT_itow_s
+# define _OLEDB_LIB_ltot_s                                LCPI_GCRT_ltow_s
 
 #endif
 

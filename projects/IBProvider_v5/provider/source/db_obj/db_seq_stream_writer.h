@@ -26,10 +26,12 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_seq_stream_writer
   /// <summary>
   ///  Запись в поток
   /// </summary>
+  //! \param[in] op_ctx
   //! \param[in] BufferSize
   //! \param[in] pBuffer
-  virtual void write(size_t      BufferSize,
-                     const void* pBuffer)=0;//throw
+  virtual void write(t_db_operation_context& op_ctx,
+                     size_t                  BufferSize,
+                     const void*             pBuffer)=0;//throw
 };//class t_db_seq_stream_writer
 
 ////////////////////////////////////////////////////////////////////////////////

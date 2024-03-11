@@ -77,11 +77,11 @@ inline TTSO_Tracer& operator << (TTSO_Tracer& tracer,const lcpi::ibp::isc_api::t
 class TestServices
 {
  private:
-  typedef TestServices                                  self_type;
+  using self_type=TestServices;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_wstr_box                   wstr_box_type;
-  typedef structure::t_const_str_box                    str_box_type;
+  typedef lib::structure::t_const_wstr_box              wstr_box_type;
+  typedef lib::structure::t_const_str_box               str_box_type;
 
   //----------------------------------------
   typedef isc_base::t_isc_connection_settings           cns_type;
@@ -124,10 +124,12 @@ class TestServices
   typedef remote_fb::RemoteFB__OutMsg_v1                remote_fb_out_msg_v1;
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  static void Trace_WeWaitTheException(TTSO_Tracer& tracer);
+
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_WeWaitTheError();
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Throw_UnknownProtocolVersion(remote_fb::protocol::P_PROTOCOL_VERSION v);
 
  public: //--------------------------------- CommonServices
@@ -505,9 +507,10 @@ class TestServices
 
   static void
    RemoteFB_Connector__CloseBlob
-            (TTSO_Tracer&                 tracer,
-             remote_fb_connector_type*    pConnector,
-             remote_fb_blob_handle_type*  pBlobHandle);
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_blob_handle_type*     pBlobHandle);
 
   static void
    RemoteFB_Connector__CancelBlob
@@ -526,26 +529,29 @@ class TestServices
 
   static bool
    RemoteFB_Connector__ReadBlob
-            (TTSO_Tracer&                tracer,
-             remote_fb_connector_type*   pConnector,
-             remote_fb_blob_handle_type* pBlobHandle,
-             size_t                      cbBuffer,
-             void*                       pvBuffer,
-             size_t*                     pcbActualReaded);
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_blob_handle_type*     pBlobHandle,
+             size_t                          cbBuffer,
+             void*                           pvBuffer,
+             size_t*                         pcbActualReaded);
 
   static void
    RemoteFB_Connector__WriteBlob
-            (TTSO_Tracer&                tracer,
-             remote_fb_connector_type*   pConnector,
-             remote_fb_blob_handle_type* pBlobHandle,
-             size_t                      cbBuffer,
-             const void*                 pvBuffer);
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_blob_handle_type*     pBlobHandle,
+             size_t                          cbBuffer,
+             const void*                     pvBuffer);
 
   static void
    RemoteFB_Connector__FlushBlob
-            (TTSO_Tracer&                tracer,
-             remote_fb_connector_type*   pConnector,
-             remote_fb_blob_handle_type* pBlobHandle);
+            (TTSO_Tracer&                    tracer,
+             remote_fb_connector_type*       pConnector,
+             db_obj::t_db_operation_context& op_ctx,
+             remote_fb_blob_handle_type*     pBlobHandle);
 
  public:
   static void
@@ -906,12 +912,12 @@ template<typename charT>
 std::basic_string<charT>
  TestServices::PrepareStrForPrint(structure::t_basic_const_str_box<charT> const src)
 {
- typedef structure::t_char_traits2<charT> _ct2;
+ using _ct2=lib::structure::t_char_traits2<charT>;
 
  std::basic_string<charT> result;
 
  if(src.ptr==nullptr)
-  return __STL_MOVE_VALUE(structure::tstr_to_tstr(&result,"NULL"));
+  return LCPI_STL_MOVE_VALUE(structure::tstr_to_tstr(&result,"NULL"));
 
  result+='\"';
 
@@ -947,7 +953,7 @@ std::basic_string<charT>
 
  result+='\"';
 
- return __STL_MOVE_VALUE(result);
+ return LCPI_STL_MOVE_VALUE(result);
 }//PrepareStrForPrint
 
 ////////////////////////////////////////////////////////////////////////////////

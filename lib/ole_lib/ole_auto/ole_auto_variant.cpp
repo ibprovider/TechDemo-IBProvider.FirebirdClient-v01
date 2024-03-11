@@ -507,7 +507,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(LCPI_OS__VariantTimeToSystemTime(pVariant->date,&sys)==FALSE)
      return E_FAIL;
 
-    _GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
+    LCPI_GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
 
     break;
    }//VT_DATE
@@ -522,7 +522,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(LCPI_OS__VariantTimeToSystemTime(*pVariant->pdate,&sys)==FALSE)
      return E_FAIL;
 
-    _GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
+    LCPI_GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
 
     break;
    }//VT_DATE|VT_BYREF
@@ -566,7 +566,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
   //DOUBLE ---------------------------------------------------------------
   case VT_R8:
    {
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)pVariant->dblVal);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)pVariant->dblVal);
 
     break;
    }//VT_R8
@@ -576,7 +576,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(pVariant->pdblVal==NULL)
      return E_POINTER;
 
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)*pVariant->pdblVal);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.16lg",(double)*pVariant->pdblVal);
 
     break;
    }//VT_R8|VT_BYREF
@@ -584,7 +584,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
   //FLOAT ----------------------------------------------------------------
   case VT_R4:
    {
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.9lg",(double)pVariant->fltVal);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.9lg",(double)pVariant->fltVal);
 
     break;
    }//VT_R4
@@ -594,7 +594,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(pVariant->pfltVal==NULL)
      return E_POINTER;
 
-    _GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.9lg",(double)*pVariant->pfltVal);
+    LCPI_GCRT_sprintf_s_n1(tmp,_DIM_(tmp),"%.9lg",(double)*pVariant->pfltVal);
 
     break;
    }//VT_R4|VT_BYREF
@@ -654,7 +654,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(LCPI_OS__VariantTimeToSystemTime(pVariant->date,&sys)==FALSE)
      return E_FAIL;
 
-    _GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
+    LCPI_GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
 
     break;
    }//VT_DATE
@@ -669,7 +669,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(LCPI_OS__VariantTimeToSystemTime(*(pVariant->pdate),&sys)==FALSE)
      return E_FAIL;
 
-    _GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
+    LCPI_GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",sys.wDay,sys.wMonth,sys.wYear);
 
     break;
    }//VT_DATE|VT_BYREF
@@ -715,7 +715,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
   //DOUBLE ---------------------------------------------------------------
   case VT_R8:
    {
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)pVariant->dblVal);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)pVariant->dblVal);
 
     break;
    }//VT_R8
@@ -725,7 +725,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(pVariant->pdblVal==NULL)
      return E_POINTER;
 
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)*pVariant->pdblVal);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.16lg",(double)*pVariant->pdblVal);
 
     break;
    }//VT_R8|VT_BYREF
@@ -733,7 +733,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
   //FLOAT ----------------------------------------------------------------
   case VT_R4:
    {
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.9lg",(double)pVariant->fltVal);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.9lg",(double)pVariant->fltVal);
 
     break;
    }//VT_R4
@@ -743,7 +743,7 @@ HRESULT TVariant::to_string(const VARIANT* const pVariant,
     if(pVariant->pfltVal==NULL)
      return E_POINTER;
 
-    _GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.9lg",(double)*pVariant->pfltVal);
+    LCPI_GCRT_swprintf_s_n1(tmp,_DIM_(tmp),L"%.9lg",(double)*pVariant->pfltVal);
 
     break;
    }//VT_R4|VT_BYREF
@@ -1241,14 +1241,16 @@ std::string TVariant::variant_date_to_str(DATE date,bool WithTime)
 
  if(!WithTime)
  {
-  c=_GCRT_sprintf_s_n3(tmp,_DIM_(tmp),"%02d.%02d.%04d",
-                       sys.wDay,sys.wMonth,sys.wYear);
+  c=LCPI_GCRT_sprintf_s_n3
+     (tmp,_DIM_(tmp),"%02d.%02d.%04d",
+      sys.wDay,sys.wMonth,sys.wYear);
  }
  else
  {
-  c=_GCRT_sprintf_s_n6(tmp,_DIM_(tmp),"%02d.%02d.%04d %02d:%02d:%02d",
-                       sys.wDay,sys.wMonth,sys.wYear,
-                       sys.wHour,sys.wMinute,sys.wSecond);
+  c=LCPI_GCRT_sprintf_s_n6
+     (tmp,_DIM_(tmp),"%02d.%02d.%04d %02d:%02d:%02d",
+      sys.wDay,sys.wMonth,sys.wYear,
+      sys.wHour,sys.wMinute,sys.wSecond);
  }//else
 
  return std::string(tmp,(c==EOF)?0:c);
@@ -1268,14 +1270,16 @@ std::wstring TVariant::variant_date_to_wstr(DATE date,bool WithTime)
 
  if(!WithTime)
  {
-  c=_GCRT_swprintf_s_n3(tmp,_DIM_(tmp),L"%02d.%02d.%04d",
-                       sys.wDay,sys.wMonth,sys.wYear);
+  c=LCPI_GCRT_swprintf_s_n3
+     (tmp,_DIM_(tmp),L"%02d.%02d.%04d",
+      sys.wDay,sys.wMonth,sys.wYear);
  }
  else
  {
-  c=_GCRT_swprintf_s_n6(tmp,_DIM_(tmp),L"%02d.%02d.%04d %02d:%02d:%02d",
-                       sys.wDay,sys.wMonth,sys.wYear,
-                       sys.wHour,sys.wMinute,sys.wSecond);
+  c=LCPI_GCRT_swprintf_s_n6
+     (tmp,_DIM_(tmp),L"%02d.%02d.%04d %02d:%02d:%02d",
+      sys.wDay,sys.wMonth,sys.wYear,
+      sys.wHour,sys.wMinute,sys.wSecond);
  }//else
 
  return std::wstring(tmp,(c==EOF)?0:c);

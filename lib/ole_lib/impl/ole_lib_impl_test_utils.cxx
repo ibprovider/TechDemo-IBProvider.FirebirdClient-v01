@@ -4,11 +4,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-t_string TestIID(REFIID riid)
+structure::t_string TestIID(REFIID riid)
 {
- t_string str_iid(guid_to_tstr(riid));
+ structure::t_string str_iid(guid_to_tstr(riid));
 
- t_string t(_T("Interface\\"));
+ structure::t_string t(_T("Interface\\"));
 
  t+=str_iid;
 
@@ -559,7 +559,7 @@ struct THResultName
 
 ////////////////////////////////////////////////////////////////////////////////
 
-t_string TestHResult(HRESULT const hr)
+structure::t_string TestHResult(HRESULT const hr)
 {
  const THResultName* i=std::find(g_test_hr_names,_END_(g_test_hr_names),hr);
 
@@ -568,9 +568,15 @@ t_string TestHResult(HRESULT const hr)
 
  TCHAR tmpStr[64];
 
- _GCRT_stprintf_s_n1(tmpStr,_DIM_(tmpStr),_T("0x%lX"),hr);
+ const int cc=LCPI_GCRT_stprintf_s_n1(tmpStr,_DIM_(tmpStr),_T("0x%lX"),hr);
 
- return t_string(tmpStr);
+ if(cc<0)
+  throw std::runtime_error("Can't convert HRESULT to string.");
+
+ assert(cc>=0);
+ assert(cc<_DIM_(tmpStr));
+
+ return structure::t_string(tmpStr,cc);
 }//TestHResult
 
 ////////////////////////////////////////////////////////////////////////////////

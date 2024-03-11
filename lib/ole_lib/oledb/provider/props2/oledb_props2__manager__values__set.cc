@@ -60,15 +60,15 @@ class OLEDB_Props2__Manager__Values::tag_set_op_helper
           (DBPROPSTATUS status);
 
  public:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__QueuedUnknownProperty
           (const TDBPropID& propID);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__UnknownCondKind
           (const set_prop_data_type* pCondData);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void ThrowBugCheck__UnexpectedVarCompareResult
           (const TDBPropID& propID,
            VARTYPE          vt1,

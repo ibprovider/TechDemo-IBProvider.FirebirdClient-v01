@@ -16,7 +16,7 @@
 
 #include <structure/t_value_with_null.h>
 
-#include <structure/stl/t_stl_set.h>
+#include <lcpi/lib/structure/stl/t_stl_set.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -220,7 +220,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
    m_AuthPluginNames;
 
   /// Множество имен использованных плагинов аутентификации
-  structure::t_stl_set<structure::t_const_wstring,tag_plugin_name_less,allocator_type>
+  lib::structure::t_stl_set<lib::structure::t_const_wstring,tag_plugin_name_less,allocator_type>
    m_UsedAuthPlugins;
 };//class RemoteFB__ClientConnectBlock_v2
 

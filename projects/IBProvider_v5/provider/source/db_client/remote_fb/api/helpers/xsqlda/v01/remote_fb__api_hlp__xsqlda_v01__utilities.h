@@ -162,17 +162,17 @@ class RemoteFB__API_HLP__XSQLDA_V01__Utilities LCPI_CPP_CFG__CLASS__FINAL
                               short*           pActualLength,
                               const wchar_t*   tagSign);
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__UnexpectedTruncation
                              (const wchar_t* place,
                               const wchar_t* point,
                               size_t         sqld);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__XSQLVAR__MultDefFieldValue
                              (const wchar_t* fieldName);
 
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   static void Helper__ThrowBugCheck__XSQLVAR__NotDefFieldValue
                              (const wchar_t* fieldName);
 };//class RemoteFB__API_HLP__XSQLDA_V01__Utilities

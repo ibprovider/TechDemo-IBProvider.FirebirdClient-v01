@@ -12,7 +12,8 @@ template<class TString>
 RELEASE_CODE(inline)
 t_basic_str_formatter__fpart<TString>::t_basic_str_formatter__fpart()
  :is_arg(false)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TString>
@@ -23,7 +24,8 @@ t_basic_str_formatter__fpart<TString>::t_basic_str_formatter__fpart
                                             const char_type* const end)
  :is_arg(_is_arg)
  ,value(beg,end)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TString>
@@ -32,7 +34,8 @@ t_basic_str_formatter__fpart<TString>::t_basic_str_formatter__fpart
                                            (const self_type& x)
  :is_arg(x.is_arg)
  ,value (x.value)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
@@ -41,9 +44,10 @@ template<class TString>
 RELEASE_CODE(inline)
 t_basic_str_formatter__fpart<TString>::t_basic_str_formatter__fpart
                                            (self_type&& x)
- :is_arg(__STL_MOVE_VALUE(x.is_arg))
- ,value (__STL_MOVE_VALUE(x.value))
-{;}
+ :is_arg(LCPI_STL_MOVE_VALUE(x.is_arg))
+ ,value (LCPI_STL_MOVE_VALUE(x.value))
+{
+}
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -66,7 +70,7 @@ template<class TString>
 t_basic_str_formatter__fpart<TString>&
  t_basic_str_formatter__fpart<TString>::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 
@@ -89,15 +93,17 @@ void t_basic_str_formatter__fpart<TString>::swap(self_type& x)
 template<class TString>
 t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value()
  :m_assign(false)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TString>
 t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
                                            (const self_type& x)
- :m_assign(x.m_assign),
-  m_value(x.m_value)
-{;}
+ :m_assign(x.m_assign)
+ ,m_value(x.m_value)
+{
+}
 
 //------------------------------------------------------------------------
 #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
@@ -105,9 +111,10 @@ t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
 template<class TString>
 t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
                                            (self_type&& x)
- :m_assign  (__STL_MOVE_VALUE(x.m_assign)),
-  m_value   (__STL_MOVE_VALUE(x.m_value))
-{;}
+ :m_assign  (LCPI_STL_MOVE_VALUE(x.m_assign))
+ ,m_value   (LCPI_STL_MOVE_VALUE(x.m_value))
+{
+}
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -130,7 +137,7 @@ template<class TString>
 t_basic_str_formatter__arg_value<TString>&
  t_basic_str_formatter__arg_value<TString>::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 
@@ -181,7 +188,7 @@ template<class TString>
 RELEASE_CODE(inline)
 void t_basic_str_formatter__arg_value<TString>::set_value(string_type&& v)
 {
- m_value =__STL_MOVE_VALUE(v);
+ m_value =LCPI_STL_MOVE_VALUE(v);
  m_assign=true;
 }//set_value
 
@@ -202,16 +209,17 @@ void t_basic_str_formatter__arg_value<TString>::reset()
 //constructors -----------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter()
- :m_next_num_arg (first_num_arg_idx),
-  m_modes        (self_type::fl_defaults)
-{;}
+ :m_next_num_arg (first_num_arg_idx)
+ ,m_modes        (self_type::fl_defaults)
+{
+}
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (str_box_type const fstr)
- :m_next_num_arg (first_num_arg_idx),
-  m_modes        (self_type::fl_defaults)
+ :m_next_num_arg (first_num_arg_idx)
+ ,m_modes        (self_type::fl_defaults)
 {
  this->init(fstr);
 }
@@ -221,8 +229,8 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (const char_type* const fstr,
                                             size_type        const n)
- :m_next_num_arg  (first_num_arg_idx),
-  m_modes         (self_type::fl_defaults)
+ :m_next_num_arg  (first_num_arg_idx)
+ ,m_modes         (self_type::fl_defaults)
 {
  this->init(fstr,n);
 }
@@ -231,13 +239,14 @@ t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (const self_type& x)
- :m_traits       (x.m_traits),
-  m_modes        (x.m_modes),
-  m_fparts       (x.m_fparts),
-  m_args         (x.m_args),
-  m_next_num_arg (x.m_next_num_arg),
-  m_result       (x.m_result)
-{;}
+ :m_traits       (x.m_traits)
+ ,m_modes        (x.m_modes)
+ ,m_fparts       (x.m_fparts)
+ ,m_args         (x.m_args)
+ ,m_next_num_arg (x.m_next_num_arg)
+ ,m_result       (x.m_result)
+{
+}
 
 //------------------------------------------------------------------------
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
@@ -245,13 +254,14 @@ t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (self_type&& x)
- :m_traits       (__STL_MOVE_VALUE(x.m_traits)),
-  m_modes        (__STL_MOVE_VALUE(x.m_modes)),
-  m_fparts       (__STL_MOVE_VALUE(x.m_fparts)),
-  m_args         (__STL_MOVE_VALUE(x.m_args)),
-  m_next_num_arg (__STL_MOVE_VALUE(x.m_next_num_arg)),
-  m_result       (__STL_MOVE_VALUE(x.m_result))
-{;}
+ :m_traits       (LCPI_STL_MOVE_VALUE(x.m_traits))
+ ,m_modes        (LCPI_STL_MOVE_VALUE(x.m_modes))
+ ,m_fparts       (LCPI_STL_MOVE_VALUE(x.m_fparts))
+ ,m_args         (LCPI_STL_MOVE_VALUE(x.m_args))
+ ,m_next_num_arg (LCPI_STL_MOVE_VALUE(x.m_next_num_arg))
+ ,m_result       (LCPI_STL_MOVE_VALUE(x.m_result))
+{
+}
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
 
@@ -284,7 +294,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 
@@ -362,7 +372,7 @@ t_basic_str_formatter<charT,traits,allocator>&
   cur=std::find(cur,const_cast<const char_type*>(end),m_traits.arg_prefix());
 
   //добавляем пропущенный участок текста
-  append_fpart(false,beg,cur);
+  this->append_fpart(false,beg,cur);
 
   if(cur==end)
    break;
@@ -377,7 +387,7 @@ t_basic_str_formatter<charT,traits,allocator>&
 
   if(*cur==m_traits.arg_prefix()) //double arg prefix
   {
-   append_fpart(false,cur,cur+1);
+   this->append_fpart(false,cur,cur+1);
    ++cur;
   }
   else
@@ -551,7 +561,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
 t_basic_str_formatter<charT,traits,allocator>::push_next_num_arg(string_type&& value)
 {
- m_args[m_traits.arg_uint64(m_next_num_arg)].set_value(__STL_MOVE_VALUE(value));
+ m_args[m_traits.arg_uint64(m_next_num_arg)].set_value(LCPI_STL_MOVE_VALUE(value));
 
  ++m_next_num_arg;
 
@@ -759,7 +769,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (std::string&& value)
 {
- return this->push_next_num_arg(m_traits.arg_str(__STL_MOVE_VALUE(value)));
+ return this->push_next_num_arg(m_traits.arg_str(LCPI_STL_MOVE_VALUE(value)));
 }
 
 //------------------------------------------------------------------------
@@ -767,7 +777,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (std::wstring&& value)
 {
- return this->push_next_num_arg(m_traits.arg_str(__STL_MOVE_VALUE(value)));
+ return this->push_next_num_arg(m_traits.arg_str(LCPI_STL_MOVE_VALUE(value)));
 }
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -820,7 +830,7 @@ t_basic_str_formatter<charT,traits,allocator>&
                                                 (const num_arg_index_type idx,
                                                  string_type&&            value)
 {
- m_args[m_traits.arg_uint64(idx)].set_value(__STL_MOVE_VALUE(value));
+ m_args[m_traits.arg_uint64(idx)].set_value(LCPI_STL_MOVE_VALUE(value));
 
  return *this;
 }//set_num_arg
@@ -1034,7 +1044,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     std::string&&            str)
 {
- return this->set_num_arg(idx,m_traits.arg_str(__STL_MOVE_VALUE(str)));
+ return this->set_num_arg(idx,m_traits.arg_str(LCPI_STL_MOVE_VALUE(str)));
 }//set
 
 //------------------------------------------------------------------------
@@ -1043,7 +1053,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     std::wstring&&           str)
 {
- return this->set_num_arg(idx,m_traits.arg_str(__STL_MOVE_VALUE(str)));
+ return this->set_num_arg(idx,m_traits.arg_str(LCPI_STL_MOVE_VALUE(str)));
 }//set
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -1254,7 +1264,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             std::string&&       str)
 {
- return this->set_named_arg(name,m_traits.arg_str(__STL_MOVE_VALUE(str)));
+ return this->set_named_arg(name,m_traits.arg_str(LCPI_STL_MOVE_VALUE(str)));
 }//set_by_name
 
 //------------------------------------------------------------------------
@@ -1263,7 +1273,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             std::wstring&&      wstr)
 {
- return this->set_named_arg(name,m_traits.arg_str(__STL_MOVE_VALUE(wstr)));
+ return this->set_named_arg(name,m_traits.arg_str(LCPI_STL_MOVE_VALUE(wstr)));
 }//set_by_name
 
 #endif //COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0
@@ -1291,7 +1301,7 @@ t_basic_str_formatter<charT,traits,allocator>&
 {
  assert(name.c_str());
 
- m_args[name.c_str()].set_value(__STL_MOVE_VALUE(value));
+ m_args[name.c_str()].set_value(LCPI_STL_MOVE_VALUE(value));
 
  return *this;
 }//set_named_arg - move value

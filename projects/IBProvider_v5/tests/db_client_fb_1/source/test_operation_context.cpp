@@ -60,7 +60,7 @@ void TestOperationContext::cancel()
 {
  const lock_guard_type __lock_cur_op(m_current_operation_guard);
 
- thread_traits::exchange(&m_is_cancelled,1);
+ lib::structure::mt::interlocked::exchange(&m_is_cancelled,1);
 
  if(m_current_operation)
   m_current_operation->cancel();

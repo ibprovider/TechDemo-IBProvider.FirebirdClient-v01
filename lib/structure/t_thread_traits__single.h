@@ -4,7 +4,7 @@
 #ifndef _t_thread_traits__single_H_
 #define _t_thread_traits__single_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

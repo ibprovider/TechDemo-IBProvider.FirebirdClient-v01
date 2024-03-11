@@ -375,7 +375,7 @@ enum
  /// Кодовая страница UNICODE_FSS
  ibp_isc_cs_id__UNICODE_FSS   =3,
 
- /// [FB4] Кодовая страница UTF8 
+ /// [FB4] Кодовая страница UTF8
  ibp_fb040_cs_id__UTF8        =4,
 
  /// Идентификатор кодовой страницы подключения
@@ -528,20 +528,14 @@ const t_ibp_fb030_bool ibp_fb030_true  =db_obj::dbvalue__bool_i1_true;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/// <summary>
-///  Перечисление максимальных длин ISC-типов данных
-/// </summary>
-enum enum_ibp_isc_max_datatype_length
-{
- /// \brief Максимальное количество БАЙТ в CHAR-значении
- ibp_isc_max_char_length                 =32767,
+/// \brief Максимальное количество БАЙТ в CHAR-значении
+const unsigned ibp_isc_max_char_length      =32767;
 
- /// \brief Максимальное количество БАЙТ в VARCHAR-значении
- ibp_isc_max_varchar_length              =32765,
+/// \brief Максимальное количество БАЙТ в VARCHAR-значении
+const unsigned ibp_isc_max_varchar_length   =32765;
 
- /// \brief Максимальное количество БАЙТ в CSTRING-значении
- ibp_isc_max_cstring_length              =32767,
-};//enum enum_ibp_isc_max_datatype_length
+/// \brief Максимальное количество БАЙТ в CSTRING-значении
+const unsigned ibp_isc_max_cstring_length   =32767;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -993,11 +987,11 @@ typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_fetch)
 typedef isc_status (ISC_EXPORT_V5 t_isc_dsql_fetch_m)
  (
   isc_status_20&,
-  isc_stmt_handle*, 
-  unsigned short       blrLength, 
-  const unsigned char* blr, 
-  unsigned short       msgType, 
-  unsigned short       msgLength, 
+  isc_stmt_handle*,
+  unsigned short       blrLength,
+  const unsigned char* blr,
+  unsigned short       msgType,
+  unsigned short       msgLength,
   unsigned char*       msg
  );//t_isc_dsql_fetch_m
 
@@ -1182,6 +1176,9 @@ struct XSQLVAR_V1
   char   aliasname [isc_metadatalen_v1];
 
  public:
+  void reset_pointers();
+
+ public:
   //! \brief Псевдоним дескриптора константной строки
   typedef structure::t_const_str_box        name_box_type;
 
@@ -1260,10 +1257,12 @@ struct XSQLDA_V1
 struct XSQLVAR_V1_EXT
 {
  public: //typedefs ------------------------------------------------------
-  typedef XSQLVAR_V1::sqltype_type       sqltype_type;
-  typedef XSQLVAR_V1::sqlsubtype_type    sqlsubtype_type;
-  typedef XSQLVAR_V1::sqlscale_type      sqlscale_type;
-  typedef XSQLVAR_V1::sqllen_type        sqllen_type;
+  using sqltype_type     = XSQLVAR_V1::sqltype_type;
+  using sqlsubtype_type  = XSQLVAR_V1::sqlsubtype_type;
+  using sqlscale_type    = XSQLVAR_V1::sqlscale_type;
+  using sqllen_type      = XSQLVAR_V1::sqllen_type;
+
+  using sqlcharset_type  = db_obj::t_dbvalue__i2;
 
  public:
   //! Datatype of field
@@ -1293,10 +1292,10 @@ struct XSQLVAR_V1_EXT
 
  public:
   //! \brief Получение идентификатора кодовой страницы. Только для CHAR/VARCHAR.
-  long original__get_char_codepageID()const;
+  sqlcharset_type original__get_char_codepageID()const;
 
   //! \brief Получение идентификатора кодовой страницы. Только для BLOB [Firebird 2.1+].
-  long original__get_blob_codepageID__fb021()const;
+  sqlcharset_type original__get_blob_codepageID__fb021()const;
 
   //! \brief Получение идентификатора типа.
   sqltype_type original__get_typeID()const;
@@ -1406,6 +1405,9 @@ struct XSQLVAR_V2
   char             aliasname[isc_metadatalen_v2];
 
  public:
+  void reset_pointers();
+
+ public:
   //! \brief Псевдоним дескриптора константной строки
   typedef structure::t_const_str_box        name_box_type;
 
@@ -1483,10 +1485,12 @@ struct XSQLDA_V2
 struct XSQLVAR_V2_EXT
 {
  public: //typedefs ------------------------------------------------------
-  typedef XSQLVAR_V2::sqltype_type          sqltype_type;
-  typedef XSQLVAR_V2::sqlsubtype_type       sqlsubtype_type;
-  typedef XSQLVAR_V2::sqlscale_type         sqlscale_type;
-  typedef XSQLVAR_V2::sqllen_type           sqllen_type;
+  using sqltype_type     = XSQLVAR_V2::sqltype_type;
+  using sqlsubtype_type  = XSQLVAR_V2::sqlsubtype_type;
+  using sqlscale_type    = XSQLVAR_V2::sqlscale_type;
+  using sqllen_type      = XSQLVAR_V2::sqllen_type;
+
+  using sqlcharset_type  = db_obj::t_dbvalue__i2;
 
  public:
   //! datatype of field
@@ -1519,7 +1523,7 @@ struct XSQLVAR_V2_EXT
 
  public:
   //! \brief Получение идентификатора кодовой страницы. Только для CHAR/VARCHAR.
-  long original__get_char_codepageID()const;
+  sqlcharset_type original__get_char_codepageID()const;
 
   //! \brief Получение идентификатора типа.
   sqltype_type original__get_typeID()const;
@@ -1644,23 +1648,23 @@ inline size_t XSQLDA_V1::LENGTH(size_t const n)
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLVAR_V1_EXT
 
-inline long XSQLVAR_V1_EXT::original__get_char_codepageID()const
+inline XSQLVAR_V1_EXT::sqlcharset_type XSQLVAR_V1_EXT::original__get_char_codepageID()const
 {
  ///Идентификатор кодовой страницы хранится в младшем байте sqlsubtype
 
  const unsigned char id=static_cast<unsigned char>(this->original__sqlsubtype&0xFF);
 
- return static_cast<long>(id);
+ return id;
 }//original__get_char_codepageID
 
 //------------------------------------------------------------------------
-inline long XSQLVAR_V1_EXT::original__get_blob_codepageID__fb021()const
+inline XSQLVAR_V1_EXT::sqlcharset_type XSQLVAR_V1_EXT::original__get_blob_codepageID__fb021()const
 {
  ///Идентификатор кодовой страницы хранится в младшем байте sqlscale
 
  const unsigned char id=static_cast<unsigned char>(this->original__sqlscale&0xFF);
 
- return static_cast<long>(id);
+ return id;
 }//original__get_blob_codepageID__fb021
 
 //------------------------------------------------------------------------
@@ -1714,12 +1718,12 @@ inline size_t XSQLDA_V2::LENGTH(size_t n)
 ////////////////////////////////////////////////////////////////////////////////
 //struct XSQLVAR_V2_EXT
 
-inline long XSQLVAR_V2_EXT::original__get_char_codepageID()const
+inline XSQLVAR_V2_EXT::sqlcharset_type XSQLVAR_V2_EXT::original__get_char_codepageID()const
 {
  ///Идентификатор кодовой страницы хранится в младшем байте sqlsubtype
  const unsigned char id=static_cast<unsigned char>(this->original__sqlsubtype&0xFF);
 
- return static_cast<long>(id);
+ return id;
 }//original__get_char_codepageID
 
 //------------------------------------------------------------------------

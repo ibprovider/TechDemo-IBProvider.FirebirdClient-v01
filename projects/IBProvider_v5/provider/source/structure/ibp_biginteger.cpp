@@ -41,7 +41,7 @@ switch(const int op_result=libtommath::func args)                         \
 
 ////////////////////////////////////////////////////////////////////////////////
 
-COMP_CONF_DECLSPEC_NORETURN
+LCPI_CPP_CFG__DECLSPEC__NORETURN
 static void helper__throw_error(const char*                 const op_sign,
                                 int                         const op_result,
                                 structure::t_const_wstr_box const arguments)
@@ -59,13 +59,13 @@ static void helper__throw_error(const char*                 const op_sign,
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_BigInteger::tag_crypt_prov
 
-class IBP_BigInteger::tag_crypt_prov
+class IBP_BigInteger::tag_crypt_prov LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_crypt_prov                    self_type;
+  using self_type=tag_crypt_prov;
 
-  tag_crypt_prov(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_crypt_prov(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_crypt_prov();
@@ -244,7 +244,8 @@ IBP_BigInteger::IBP_BigInteger(size_t const count, const unsigned char* const by
 
 //------------------------------------------------------------------------
 IBP_BigInteger::~IBP_BigInteger()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 IBP_BigInteger& IBP_BigInteger::operator = (const self_type& x)
@@ -261,7 +262,7 @@ IBP_BigInteger& IBP_BigInteger::operator = (const self_type& x)
 
 IBP_BigInteger& IBP_BigInteger::operator = (self_type&& x)
 {
- self_type tmp(__STL_MOVE_VALUE(x));
+ self_type tmp(LCPI_STL_MOVE_VALUE(x));
 
  this->swap(tmp);
 

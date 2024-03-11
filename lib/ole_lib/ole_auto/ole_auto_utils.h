@@ -7,11 +7,8 @@
 #ifndef _ole_auto_utils_H_
 #define _ole_auto_utils_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
+#include <lcpi/lib/.config.h>
 
-#include <structure/t_common.h>
 #include <OleAuto.h>
 
 namespace ole_lib{

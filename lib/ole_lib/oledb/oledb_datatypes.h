@@ -4,10 +4,6 @@
 #ifndef _oledb_datatypes_H_
 #define _oledb_datatypes_H_
 
-#if(COMP_CONF_SUPPORT_PRAGMA_ONCE)
-# pragma once
-#endif
-
 #include <structure/t_value_with_null.h>
 #include <ole_lib/ole_ptr_std.h>
 #include <ole_lib/ole_base.h>
@@ -222,11 +218,11 @@ typedef tag_oledb_value__DBTIMESTAMPOFFSET       t_oledb_value__DBTIMESTAMPOFFSE
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef __STL_DEF_BASIC_STRING(t_oledb_value__CHAR)
+typedef LCPI_STL_DEF_BASIC_STRING(t_oledb_value__CHAR)
  t_oledb_value__CPP_STR;
 
 //------------------------------------------------------------------------
-typedef __STL_DEF_BASIC_STRING(t_oledb_value__WCHAR)
+typedef LCPI_STL_DEF_BASIC_STRING(t_oledb_value__WCHAR)
  t_oledb_value__CPP_WSTR;
 
 //------------------------------------------------------------------------

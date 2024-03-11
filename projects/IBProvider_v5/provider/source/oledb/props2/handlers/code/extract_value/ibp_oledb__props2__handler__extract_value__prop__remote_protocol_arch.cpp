@@ -110,10 +110,11 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Prop__remote_protocol_arch::Extrac
   {
    assert(ibprovider::g_IBP_PropValuesFor__remote__parch[iArch]);
 
-   if(structure::equal_to_string(sName,
-                                 eName,
-                                 ibprovider::g_IBP_PropValuesFor__remote__parch[iArch],
-                                 eq_op()))
+   if(lib::structure::equal_to_string
+       (sName,
+        eName,
+        ibprovider::g_IBP_PropValuesFor__remote__parch[iArch],
+        eq_op()))
    {
     break;
    }//if

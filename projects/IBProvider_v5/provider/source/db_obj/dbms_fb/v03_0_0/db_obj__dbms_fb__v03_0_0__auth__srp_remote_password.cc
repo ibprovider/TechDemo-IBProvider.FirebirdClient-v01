@@ -43,12 +43,12 @@ std::string fb_v03_0_0__auth__srp_remote_password<SecureHashAlgorithms>::getClie
 //------------------------------------------------------------------------
 template<class SecureHashAlgorithms>
 void fb_v03_0_0__auth__srp_remote_password<SecureHashAlgorithms>::calcClientSessionKeyAndProof
-                                           (bytes_type*                const pSessionKey,
-                                            std::string*               const pClientProof,
-                                            structure::t_const_str_box const account,
-                                            structure::t_const_str_box const salt,
-                                            structure::t_const_str_box const password,
-                                            const char*                const serverPubKey)const
+                        (bytes_type*                     const pSessionKey,
+                         std::string*                    const pClientProof,
+                         lib::structure::t_const_str_box const account,
+                         lib::structure::t_const_str_box const salt,
+                         lib::structure::t_const_str_box const password,
+                         const char*                     const serverPubKey)const
 {
  assert(pSessionKey);
  assert(pClientProof);

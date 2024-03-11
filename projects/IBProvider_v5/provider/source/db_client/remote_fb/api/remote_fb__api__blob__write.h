@@ -30,6 +30,8 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__WriteBlob
   /// <summary>
   ///  Запись данных блоба.
   /// </summary>
+  //! \param[in] OpCtx
+  //!  The operation context.
   //! \param[in] pData
   //!  Not null.
   //! \param[in] pBlobHandle
@@ -38,10 +40,11 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE RemoteFB__API__WriteBlob
   //!  Размер буфера
   //! \param[out] pvBuffer
   //!  Буфер с данными
-  virtual void exec(RemoteFB__ConnectorData* pData,
-                    blob_handle_type*        pBlobHandle,
-                    size_t                   cbBuffer,
-                    const void*              pvBuffer)=0;
+  virtual void exec(db_obj::t_db_operation_context& OpCtx,
+                    RemoteFB__ConnectorData*        pData,
+                    blob_handle_type*               pBlobHandle,
+                    size_t                          cbBuffer,
+                    const void*                     pvBuffer)=0;
 };//class RemoteFB__API__WriteBlob
 
 ////////////////////////////////////////////////////////////////////////////////

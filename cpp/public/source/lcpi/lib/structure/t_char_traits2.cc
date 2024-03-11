@@ -4,8 +4,6 @@
 #ifndef _cpp_public_lcpi_lib_structure__t_char_traits2_CC_
 #define _cpp_public_lcpi_lib_structure__t_char_traits2_CC_
 
-#include <lcpi/lib/structure/debug/assert.h>
-
 #include <lcpi/lib/structure/t_negative_one.h>
 
 namespace lcpi{namespace lib{namespace structure{

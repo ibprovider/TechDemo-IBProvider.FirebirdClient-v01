@@ -4,7 +4,7 @@
 #ifndef _structure_charsets_t_cs_utf8_H_
 #define _structure_charsets_t_cs_utf8_H_
 
-#include <structure/t_common.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{namespace charsets{namespace cs_utf8{
 ////////////////////////////////////////////////////////////////////////////////

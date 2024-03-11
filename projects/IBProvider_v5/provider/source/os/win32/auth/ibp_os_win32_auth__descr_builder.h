@@ -8,8 +8,10 @@
 #define _ibp_os_win32_auth__descr_builder_H_
 
 #include "source/os/win32/auth/ibp_os_win32_auth__provider.h"
-#include <structure/t_simple_buffer.h>
+
 #include <structure/t_value_with_null.h>
+
+#include <lcpi/lib/structure/t_simple_buffer.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,19 +20,20 @@ namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_auth__descr_builder
 
-class t_auth__descr_builder
+class t_auth__descr_builder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_auth__descr_builder             self_type;
+  using self_type=t_auth__descr_builder;
 
-  t_auth__descr_builder(const self_type&);
-  self_type& operator = (const self_type&);
+  t_auth__descr_builder(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef IBP_MemoryAllocator               allocator_type;
+  using allocator_type
+   =IBP_MemoryAllocator;
 
-  typedef structure::t_void_simple_buffer
-           <allocator_type>                 output_type;
+  using output_type
+   =lib::structure::t_void_simple_buffer<allocator_type>;
 
  public:
   t_auth__descr_builder();
@@ -53,8 +56,11 @@ class t_auth__descr_builder
                                size_t                    len,
                                void*                     p);
  private:
-  typedef API::AUTH__SECURITY_STATUS                        auth_err_code_type;
-  typedef structure::t_value_with_null<auth_err_code_type>  auth_err_code_type_N;
+  using auth_err_code_type
+   =API::AUTH__SECURITY_STATUS;
+  
+  using auth_err_code_type_N
+   =structure::t_value_with_null<auth_err_code_type>;
 
  private:
   auth_err_code_type_N m_LastResultCode;

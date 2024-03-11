@@ -64,9 +64,9 @@ TestsFor__P13_Srp_001__connect_db::TestsFor__P13_Srp_001__connect_db
                                             const wchar_t*      const pSrpName,
                                             CryptMode           const cryptMode,
                                             CompressMode        const compressMode)
- :m_spParams(structure::not_null_ptr(pParams))
- ,m_testID(structure::not_null_ptr(pTestID))
- ,m_srpName(structure::not_null_ptr(pSrpName))
+ :m_spParams(lib::structure::not_null_ptr(pParams))
+ ,m_testID(lib::structure::not_null_ptr(pTestID))
+ ,m_srpName(lib::structure::not_null_ptr(pSrpName))
  ,m_cryptMode(cryptMode)
  ,m_compressMode(compressMode)
 {
@@ -111,7 +111,7 @@ void TestsFor__P13_Srp_001__connect_db::create(TTSO_PushTest*      const pTestPu
 
   TTSO_TestPtr
    spTest
-    (structure::not_null_ptr
+    (lib::structure::not_null_ptr
       (new self_type
         (pParams,
          ftestID.c_str(),

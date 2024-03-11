@@ -23,17 +23,17 @@ class TTSO_Basic_LogStream;
 
 template<class Allocator>
 class TTSO_Basic_LogStream_ToFile
- :public structure::t_basic_smart_interface_impl__dynamic
+ :public lib::structure::t_basic_smart_interface_impl__dynamic
    <structure::tso_obj::t_log_stream,Allocator>
 {
  private:
-  typedef TTSO_Basic_LogStream_ToFile<Allocator>       self_type;
+  using self_type=TTSO_Basic_LogStream_ToFile<Allocator>;
 
-  TTSO_Basic_LogStream_ToFile(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_Basic_LogStream_ToFile(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef structure::tso_obj::t_log_stream::char_type  char_type;
+  using char_type=structure::tso_obj::t_log_stream::char_type;
 
  public:
   TTSO_Basic_LogStream_ToFile(const std::string& LogFilePath);
@@ -41,7 +41,7 @@ class TTSO_Basic_LogStream_ToFile
   virtual ~TTSO_Basic_LogStream_ToFile();
 
   //interface ------------------------------------------------------------
-  virtual void out(const char_type* s) COMP_W000004_OVERRIDE;
+  virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
  private:
   //temporary buffer for string conversion
@@ -53,24 +53,25 @@ class TTSO_Basic_LogStream_ToFile
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef TTSO_Basic_LogStream_ToFile
- <TTSO_MemoryAllocator>                              TTSO_LogStream_ToFile;
+using TTSO_LogStream_ToFile
+ =TTSO_Basic_LogStream_ToFile<TTSO_MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_Basic_LogStream
 
 template<class Allocator>
-class TTSO_Basic_LogStream:public TTSO_Basic_LogStream_ToFile<Allocator>
+class TTSO_Basic_LogStream LCPI_CPP_CFG__CLASS__FINAL
+  :public TTSO_Basic_LogStream_ToFile<Allocator>
 {
  private:
-  typedef TTSO_Basic_LogStream<Allocator>            self_type;
-  typedef TTSO_Basic_LogStream_ToFile<Allocator>     inherited;
+  using self_type=TTSO_Basic_LogStream<Allocator>;
+  using inherited=TTSO_Basic_LogStream_ToFile<Allocator>;
 
-  TTSO_Basic_LogStream(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_Basic_LogStream(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef typename inherited::char_type              char_type;
+  using char_type=typename inherited::char_type;
 
  public:
   TTSO_Basic_LogStream(UINT ConsoleCP,const std::string& LogFilePath);
@@ -90,9 +91,11 @@ class TTSO_Basic_LogStream:public TTSO_Basic_LogStream_ToFile<Allocator>
 ////////////////////////////////////////////////////////////////////////////////
 //typedef
 
-typedef TTSO_Basic_LogStream<TTSO_MemoryAllocator> TTSO_LogStream;
+using TTSO_LogStream
+ =TTSO_Basic_LogStream<TTSO_MemoryAllocator>;
 
-typedef TTSO_Basic_LogStream<TSYS_MemoryAllocator> TSYS_LogStream;
+using TSYS_LogStream
+ =TTSO_Basic_LogStream<TSYS_MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_tests*/}/*nms lcpi*/

@@ -3826,6 +3826,15 @@
     <ClCompile Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zutil.cpp">
       <Filter>IBP\source\external\zlib\builtin\v001_002_011</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v0.cpp">
+      <Filter>source\tests\work</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\oledb\props2\handlers\code\extract_value\ibp_oledb__props2__handler__extract_value__prop__blob_send_mode.cpp">
+      <Filter>IBP\source\oledb\props2\handlers\code\extract_value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__thread_api.cpp">
+      <Filter>IBP\source\os\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -6078,6 +6087,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\external\zlib1\builtin\v001_002_011\ibp_external__zlib1_builtin_v001_002_011__zutil.h">
       <Filter>IBP\source\external\zlib\builtin\v001_002_011\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v0.h">
+      <Filter>source\tests\work\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

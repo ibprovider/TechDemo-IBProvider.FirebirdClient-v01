@@ -32,7 +32,7 @@ class t_ibp_error_adapter;
 class t_ibp_error_adapter
 {
  private:
-  typedef t_ibp_error_adapter                          self_type;
+  using self_type=t_ibp_error_adapter;
 
   t_ibp_error_adapter(const self_type&) COMP_W000002_COPY_CTOR_IMPL
   self_type& operator = (const self_type&);

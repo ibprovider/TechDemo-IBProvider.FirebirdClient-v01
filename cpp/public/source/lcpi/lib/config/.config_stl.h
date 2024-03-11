@@ -10,6 +10,7 @@
 //STL library IDs
 
 #define LCPI_STL_LIBRARY_ID_VC12                   0x400000C0
+#define LCPI_STL_LIBRARY_ID_VC14                   0x400000D0
 #define LCPI_STL_LIBRARY_ID_VC15                   0x400000F0
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +85,13 @@
 // LCPI_STL_FORWARD_VALUE(T,x)
 //   std::forward<T>(x)
 //
+// LCPI_STL_HAS_ENABLE_IF
+//  0 : hasn't 'std::enable_if' function
+//  1 : has
+//
+// LCPI_STL_HAS_NEGATION
+//  0 : hasn't 'std::negation' function
+//  1 : has
 
 ///////////////////////////////////////////////////////////////////////////////
 //Detect CRT Library ID
@@ -97,7 +105,7 @@
 # if    (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V120)
 #  define LCPI_STL_LIBRARY_ID                              LCPI_STL_LIBRARY_ID_VC12
 # elif  (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V140)
-#  define LCPI_STL_LIBRARY_ID                              LCPI_STL_LIBRARY_ID_VC12
+#  define LCPI_STL_LIBRARY_ID                              LCPI_STL_LIBRARY_ID_VC14
 # elif  (LCPI_CPP_COMP_ID__CURRENT==LCPI_CPP_COMP_ID__VISUALC_V150)
 #  define LCPI_STL_LIBRARY_ID                              LCPI_STL_LIBRARY_ID_VC15
 # else
@@ -112,6 +120,9 @@
 
 #if (LCPI_STL_LIBRARY_ID==LCPI_STL_LIBRARY_ID_VC15)
 # include <lcpi/lib/config/stl/.config_stl__vc15.h>
+
+#elif (LCPI_STL_LIBRARY_ID==LCPI_STL_LIBRARY_ID_VC14)
+# include <lcpi/lib/config/stl/.config_stl__vc14.h>
 
 #elif (LCPI_STL_LIBRARY_ID==LCPI_STL_LIBRARY_ID_VC12)
 # include <lcpi/lib/config/stl/.config_stl__vc12.h>

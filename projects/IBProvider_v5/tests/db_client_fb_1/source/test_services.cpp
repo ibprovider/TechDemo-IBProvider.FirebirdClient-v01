@@ -15,6 +15,12 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestServices
 
+void TestServices::Trace_WeWaitTheException(TTSO_Tracer& tracer)
+{
+ tracer(tso_msg_error,-1)<<L"We wait the exception!"<<send;
+}//Trace_WeWaitTheException
+
+//------------------------------------------------------------------------
 void TestServices::Throw_WeWaitTheError()
 {
  throw std::runtime_error("We wait the error!");
@@ -1487,9 +1493,10 @@ void TestServices::RemoteFB_Connector__CreateBlob
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__CloseBlob
-                                           (TTSO_Tracer&                      tracer,
-                                            remote_fb_connector_type*   const pConnector,
-                                            remote_fb_blob_handle_type* const pBlobHandle)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_blob_handle_type* const pBlobHandle)
 {
  assert(pConnector);
 
@@ -1499,7 +1506,9 @@ void TestServices::RemoteFB_Connector__CloseBlob
 
  try
  {
-  pConnector->CloseBlob(pBlobHandle); //throw
+  pConnector->CloseBlob
+   (op_ctx,
+    pBlobHandle); //throw
  }
  catch(...)
  {
@@ -1513,9 +1522,9 @@ void TestServices::RemoteFB_Connector__CloseBlob
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__CancelBlob
-                                           (TTSO_Tracer&                      tracer,
-                                            remote_fb_connector_type*   const pConnector,
-                                            remote_fb_blob_handle_type* const pBlobHandle)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_blob_handle_type* const pBlobHandle)
 {
  assert(pConnector);
 
@@ -1539,12 +1548,12 @@ void TestServices::RemoteFB_Connector__CancelBlob
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetBlobInfo
-                                           (TTSO_Tracer&                      tracer,
-                                            remote_fb_connector_type*   const pConnector,
-                                            remote_fb_blob_handle_type* const pBlobHandle,
-                                            unsigned short              const cItems,
-                                            const unsigned char*        const pItems,
-                                            remote_fb::RemoteFB__InfoBuffer&  ResultBuffer)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_blob_handle_type* const pBlobHandle,
+                         unsigned short              const cItems,
+                         const unsigned char*        const pItems,
+                         remote_fb::RemoteFB__InfoBuffer&  ResultBuffer)
 {
  assert(pConnector);
 
@@ -1571,12 +1580,14 @@ void TestServices::RemoteFB_Connector__GetBlobInfo
 }//RemoteFB_Connector__GetBlobInfo
 
 //------------------------------------------------------------------------------
-bool TestServices::RemoteFB_Connector__ReadBlob(TTSO_Tracer&                      tracer,
-                                                remote_fb_connector_type*   const pConnector,
-                                                remote_fb_blob_handle_type* const pBlobHandle,
-                                                size_t                      const cbBuffer,
-                                                void*                       const pvBuffer,
-                                                size_t*                     const pcbActualReaded)
+bool TestServices::RemoteFB_Connector__ReadBlob
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_blob_handle_type* const pBlobHandle,
+                         size_t                      const cbBuffer,
+                         void*                       const pvBuffer,
+                         size_t*                     const pcbActualReaded)
 {
  assert(pConnector);
  assert(pcbActualReaded);
@@ -1595,7 +1606,8 @@ bool TestServices::RemoteFB_Connector__ReadBlob(TTSO_Tracer&                    
  {
   resultValue
    =pConnector->ReadBlob
-     (pBlobHandle,
+     (op_ctx,
+      pBlobHandle,
       cbBuffer,
       pvBuffer,
       pcbActualReaded); //throw
@@ -1613,11 +1625,13 @@ bool TestServices::RemoteFB_Connector__ReadBlob(TTSO_Tracer&                    
 }//RemoteFB_Connector__ReadBlob
 
 //------------------------------------------------------------------------------
-void TestServices::RemoteFB_Connector__WriteBlob(TTSO_Tracer&                      tracer,
-                                                 remote_fb_connector_type*   const pConnector,
-                                                 remote_fb_blob_handle_type* const pBlobHandle,
-                                                 size_t                      const cbBuffer,
-                                                 const void*                 const pvBuffer)
+void TestServices::RemoteFB_Connector__WriteBlob
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_blob_handle_type* const pBlobHandle,
+                         size_t                      const cbBuffer,
+                         const void*                 const pvBuffer)
 {
  assert(pConnector);
 
@@ -1632,7 +1646,8 @@ void TestServices::RemoteFB_Connector__WriteBlob(TTSO_Tracer&                   
  try
  {
   pConnector->WriteBlob
-   (pBlobHandle,
+   (op_ctx,
+    pBlobHandle,
     cbBuffer,
     pvBuffer); //throw
  }
@@ -1647,9 +1662,11 @@ void TestServices::RemoteFB_Connector__WriteBlob(TTSO_Tracer&                   
 }//RemoteFB_Connector__WriteBlob
 
 //------------------------------------------------------------------------------
-void TestServices::RemoteFB_Connector__FlushBlob(TTSO_Tracer&                      tracer,
-                                                 remote_fb_connector_type*   const pConnector,
-                                                 remote_fb_blob_handle_type* const pBlobHandle)
+void TestServices::RemoteFB_Connector__FlushBlob
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_blob_handle_type* const pBlobHandle)
 {
  assert(pConnector);
 
@@ -1659,7 +1676,9 @@ void TestServices::RemoteFB_Connector__FlushBlob(TTSO_Tracer&                   
 
  try
  {
-  pConnector->FlushBlob(pBlobHandle); //throw
+  pConnector->FlushBlob
+   (op_ctx,
+    pBlobHandle); //throw
  }
  catch(...)
  {

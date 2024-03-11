@@ -7,6 +7,7 @@
 #ifndef _remote_fb__p12__blob_helper_H_
 #define _remote_fb__p12__blob_helper_H_
 
+#include "source/db_client/remote_fb/api/p12/remote_fb__api_p12.h"
 #include "source/db_client/remote_fb/protocol/remote_fb__protocol.h"
 #include "source/db_client/remote_fb/remote_fb__forward.h"
 
@@ -26,10 +27,11 @@ class RemoteFB__P12__BlobHelper LCPI_CPP_CFG__CLASS__FINAL
   using self_type=RemoteFB__P12__BlobHelper;
 
  public:
-  static void WriteSegment(RemoteFB__ConnectorData* pData,
-                           protocol::P_OBJCT        blobSrvID,
-                           protocol::P_USHORT       cbData,
-                           const void*              pvData);
+  static void WriteSegment(RemoteFB__P12__SrvOperation& serverOperation,
+                           RemoteFB__ConnectorData*     pData,
+                           protocol::P_OBJCT            blobSrvID,
+                           protocol::P_USHORT           cbData,
+                           const void*                  pvData);
 };//class RemoteFB__P12__BlobHelper
 
 ////////////////////////////////////////////////////////////////////////////////

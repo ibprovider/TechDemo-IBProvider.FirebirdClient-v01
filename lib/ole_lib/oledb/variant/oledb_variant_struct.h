@@ -11,10 +11,10 @@ namespace oledb_lib{
 class DBVARIANT::TTypeConverterMap
 {
  private:
-  typedef TTypeConverterMap                               self_type;
+  using self_type=TTypeConverterMap;
 
-  TTypeConverterMap(const self_type&);
-  self_type& operator = (const self_type&);
+  TTypeConverterMap(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TTypeConverterMap(const LPCTYPECONVERTER* pSimpleCvts,
@@ -39,13 +39,13 @@ class DBVARIANT::TTypeConverterMap
 ////////////////////////////////////////////////////////////////////////////////
 //inner struct DBVARIANT::TTypeService
 
-struct COMP_CONF_DECLSPEC_NOVTABLE DBVARIANT::TTypeService
+struct LCPI_CPP_CFG__DECLSPEC__NOVTABLE DBVARIANT::TTypeService
 {
  private:
-  typedef TTypeService                      self_type;
+  using self_type=TTypeService;
 
-  TTypeService(const self_type&);
-  self_type& operator = (const self_type&);
+  TTypeService(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  private:
   const DBTYPE m_wType;
@@ -155,7 +155,7 @@ struct COMP_CONF_DECLSPEC_NOVTABLE DBVARIANT::TTypeService
     void*            pBuffer)const=0;//out
 
  private:
-  COMP_CONF_DECLSPEC_NORETURN
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
   void helper__throw_bug_check__unexpected_data_status
                (const char* place,
                 const char* point,

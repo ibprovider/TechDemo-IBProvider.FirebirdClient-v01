@@ -6,13 +6,13 @@ namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_tree_iterator
 
-//------------------------------------------------------------------------
 template<class TTree>
 RELEASE_CODE(inline)
 t_tree_iterator<TTree>::t_tree_iterator()
  :m_tree(nullptr)
  ,m_cur_node(nullptr)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>
@@ -21,7 +21,8 @@ t_tree_iterator<TTree>::t_tree_iterator(ptree_type const tree,
                                         pnode_type const cur_node)
  :m_tree(tree)
  ,m_cur_node(cur_node)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>
@@ -29,7 +30,8 @@ RELEASE_CODE(inline)
 t_tree_iterator<TTree>::t_tree_iterator(const self_type& it)
  :m_tree(it.m_tree)
  ,m_cur_node(it.m_cur_node)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>
@@ -160,7 +162,8 @@ RELEASE_CODE(inline)
 t_tree_const_iterator<TTree>::t_tree_const_iterator()
  :m_tree(nullptr)
  ,m_cur_node(nullptr)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>
@@ -179,7 +182,8 @@ RELEASE_CODE(inline)
 t_tree_const_iterator<TTree>::t_tree_const_iterator(const self_type& it)
  :m_tree(it.m_tree)
  ,m_cur_node(it.m_cur_node)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>
@@ -187,7 +191,8 @@ RELEASE_CODE(inline)
 t_tree_const_iterator<TTree>::t_tree_const_iterator(const rw_iterator_type& it)
  :m_tree(it.get_tree())
  ,m_cur_node(it.get_current())
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class TTree>

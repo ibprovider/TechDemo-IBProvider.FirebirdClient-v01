@@ -75,18 +75,18 @@ HRESULT IBP_Utils::GetAsynchRowsetOpStatus__Population
 }//GetAsynchRowsetOpStatus__Population
 
 //------------------------------------------------------------------------
-std::wstring IBP_Utils::GetStmtSign(structure::t_const_wstr_box const stmt)
+std::wstring IBP_Utils::GetStmtSign(wstr_box_type const stmt)
 {
  CHECK_READ_TYPED_PTR(stmt.ptr,stmt.len);
 
- structure::t_const_wstr_box::iterator b(stmt.begin());
- structure::t_const_wstr_box::iterator e(stmt.end());
+ wstr_box_type::iterator b(stmt.begin());
+ wstr_box_type::iterator e(stmt.end());
 
- b=structure::skip_spaces2(b,e);
+ b=lib::structure::skip_spaces2(b,e);
 
  assert(b<=e);
 
- e=structure::skip_spaces2_back(b,e);
+ e=lib::structure::skip_spaces2_back(b,e);
 
  assert(b<=e);
 
@@ -98,7 +98,7 @@ std::wstring IBP_Utils::GetStmtSign(structure::t_const_wstr_box const stmt)
 
   e=(b+(cfg::ibp_cfg__max_stmt_sign_length-4));
 
-  e=structure::skip_spaces2_back(b,e);
+  e=lib::structure::skip_spaces2_back(b,e);
 
   assert(b<e);
  }//if truncated
@@ -134,7 +134,7 @@ std::wstring IBP_Utils::GetStmtSign(structure::t_const_wstr_box const stmt)
 }//GetStmtSign
 
 //------------------------------------------------------------------------
-bool IBP_Utils::IsSSPI(structure::t_const_wstr_box const authName)
+bool IBP_Utils::IsSSPI(wstr_box_type const authName)
 {
  if(authName.empty())
   return true;
@@ -144,8 +144,8 @@ bool IBP_Utils::IsSSPI(structure::t_const_wstr_box const authName)
 
 //------------------------------------------------------------------------
 bool IBP_Utils::Utf8ToWStr__Fast
-               (const structure::t_basic_const_str_box<char>& Utf8Str,
-                std::wstring*                           const pWStr)
+               (const str_box_type& Utf8Str,
+                std::wstring* const pWStr)
 {
  assert(pWStr);
 
@@ -158,18 +158,19 @@ bool IBP_Utils::Utf8ToWStr__Fast
 
  utf8::t_cs_cvt_result cvt_result=utf8::cs_cvt_result__ok;
 
- utf8::utf8_to_ucs2(Utf8Str.begin(),
-                    Utf8Str.end(),
-                    std::back_inserter(*pWStr),
-                    &cvt_result);
+ utf8::utf8_to_ucs2
+  (Utf8Str.begin(),
+   Utf8Str.end(),
+   std::back_inserter(*pWStr),
+   &cvt_result);
 
  return cvt_result==utf8::cs_cvt_result__ok;
 }//Utf8ToWStr__Fast
 
 //------------------------------------------------------------------------
 bool IBP_Utils::WStrToUtf8__Fast
-               (const structure::t_const_wstr_box& WStr,
-                std::string*                 const pUtf8Str)
+               (const wstr_box_type& WStr,
+                std::string*   const pUtf8Str)
 {
  assert(pUtf8Str);
 
@@ -182,21 +183,21 @@ bool IBP_Utils::WStrToUtf8__Fast
 
  utf8::t_cs_cvt_result cvt_result=utf8::cs_cvt_result__ok;
 
- utf8::ucs2_to_utf8(WStr.begin(),
-                    WStr.end(),
-                    std::back_inserter(*pUtf8Str),
-                    &cvt_result);
+ utf8::ucs2_to_utf8
+  (WStr.begin(),
+   WStr.end(),
+   std::back_inserter(*pUtf8Str),
+   &cvt_result);
 
  return cvt_result==utf8::cs_cvt_result__ok;
 }//WStrToUtf8__Fast
 
 //------------------------------------------------------------------------
-std::wstring IBP_Utils::EscapingText(structure::t_const_wstr_box const text)
+std::wstring IBP_Utils::EscapingText(wstr_box_type const text)
 {
  std::wstring result;
 
- for(structure::t_const_wstr_box::iterator i(text.begin()),
-                                          _e(text.end());
+ for(wstr_box_type::iterator i(text.begin()),_e(text.end());
      i!=_e;
      ++i)
  {
@@ -232,14 +233,15 @@ std::wstring IBP_Utils::EscapingText(structure::t_const_wstr_box const text)
 }//EscapingText
 
 //------------------------------------------------------------------------
-bool IBP_Utils::EqualAsciiStr_i(const structure::t_const_wstr_box& s1,
-                                const structure::t_const_wstr_box& s2)
+bool IBP_Utils::EqualAsciiStr_i(const wstr_box_type& s1,
+                                const wstr_box_type& s2)
 {
- return structure::equal(s1.begin(),
-                         s1.end(),
-                         s2.begin(),
-                         s2.end(),
-                         structure::t_latin_equal_i<wchar_t>());
+ return lib::structure::equal
+         (s1.begin(),
+          s1.end(),
+          s2.begin(),
+          s2.end(),
+          structure::t_latin_equal_i<wchar_t>());
 }//EqualAsciiStr_i
 
 //------------------------------------------------------------------------
@@ -282,7 +284,7 @@ bool IBP_Utils::TestChar_IsDigit(wchar_t const ch)
 }//TestChar_IsLatin
 
 //------------------------------------------------------------------------
-bool IBP_Utils::IsValidCharsetName(const structure::t_const_wstr_box& name)
+bool IBP_Utils::IsValidCharsetName(const wstr_box_type& name)
 {
  auto       p=name.begin();
  auto const e=name.end();
@@ -314,13 +316,13 @@ bool IBP_Utils::IsValidCharsetName(const structure::t_const_wstr_box& name)
 }//IsValidCharsetName
 
 //------------------------------------------------------------------------
-bool IBP_Utils::IsValidCharsetCollationName(const structure::t_const_wstr_box& name)
+bool IBP_Utils::IsValidCharsetCollationName(const wstr_box_type& name)
 {
  return self_type::IsValidCharsetName(name);
 }//IsValidCharsetCollationName
 
 //------------------------------------------------------------------------
-bool IBP_Utils::IsValidSimpleString(const structure::t_const_wstr_box& name)
+bool IBP_Utils::IsValidSimpleString(const wstr_box_type& name)
 {
  for(auto p=name.begin(),_e=name.end();p!=_e;++p)
  {

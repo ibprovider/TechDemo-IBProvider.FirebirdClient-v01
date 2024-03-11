@@ -13,10 +13,10 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class INET_Socket_Test_003__inet4::tag_impl
 
-class INET_Socket_Test_003__inet4::tag_impl
+class INET_Socket_Test_003__inet4::tag_impl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_impl                          self_type;
+  using self_type=tag_impl;
 
  public: //typedefs ------------------------------------------------------
   typedef TTSO_Test::context_type           context_type;
