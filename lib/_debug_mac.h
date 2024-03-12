@@ -4,8 +4,9 @@
 #ifndef _lcpi_lib__debug_mac_H_
 #define _lcpi_lib__debug_mac_H_
 
-#if !defined(NDEBUG_MSG) && !defined(NDEBUG)
-#include <sstream>
+#if !defined(_NO_ODS_)
+# include <sstream>
+# include <iomanip>
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////

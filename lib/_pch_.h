@@ -34,15 +34,6 @@
 //set of helpers macroses
 #include <_util_mac.h>
 
-//compiler configurations
-#include <config/config_compiler.h>
-
-//CRT configurations
-#include <config/config_crt.h>
-
-//STL configurations
-#include <config/config_stl.h>
-
 //set of debug macroses
 #include <_debug_mac.h>
 
