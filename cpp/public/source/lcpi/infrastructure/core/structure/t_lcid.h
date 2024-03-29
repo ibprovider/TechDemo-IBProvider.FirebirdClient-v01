@@ -6,6 +6,8 @@
 
 #include <lcpi/infrastructure/core/structure/t_explicit.h>
 
+#include <cstdint>
+
 namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_lcid
@@ -13,7 +15,7 @@ namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 class LCPI_INFRASTRUCTURE_CORE__CFG__CLASS_STG t_lcid final
 {
  private:
-  typedef t_lcid                            self_type;
+  using self_type=t_lcid;
 
  public: //typedefs
   enum enum_kind
@@ -23,11 +25,13 @@ class LCPI_INFRASTRUCTURE_CORE__CFG__CLASS_STG t_lcid final
   };
 
  public:
-  typedef char                              char_type;
+  using char_type=char;
 
-  typedef enum_kind                         kind_type;
-  typedef unsigned int                      number_type;
-  typedef const char_type*                  name_ptr;
+  using kind_type=enum_kind;
+
+  using number_type=std::uint32_t;
+
+  using name_ptr=const char_type*;
 
  public: //---------------------------------------------------------------
   t_lcid();

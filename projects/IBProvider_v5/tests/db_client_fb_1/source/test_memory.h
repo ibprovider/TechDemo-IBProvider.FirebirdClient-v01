@@ -2,28 +2,32 @@
 #ifndef _test_memory_H_
 #define _test_memory_H_
 
-#include <lcpi/lib/structure/t_smart_object.h>
-#include <lcpi/lib/structure/t_memory.h>
+#include <structure/test_obj/fw/set01/test_fw_set01__base.h>
 
 namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //Memory Allocator
 
-LCPI_CPP_LIB__DECLARE_WRAP_ALLOCATOR(TTSO_MemoryAllocator)
+using TTSO_MemoryAllocator
+ =structure::test_fw::set01::TestFW__StdMemoryAllocator;
+
+using TTSO_SmartInterface
+ =lib::structure::t_smart_interface;
+
+using TTSO_SmartMemoryObject
+ =lib::structure::t_basic_smart_interface_impl__dynamic<TTSO_SmartInterface,TTSO_MemoryAllocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs for system structures
 
 using TSYS_MemoryAllocator
- =TTSO_MemoryAllocator;
+ =structure::test_fw::set01::TestFW__SysMemoryAllocator;
 
 using TSYS_SmartInterface
- =lcpi::lib::structure::t_smart_interface;
+ =structure::test_fw::set01::TestFW__SysSmartInterface;
 
 using TSYS_SmartMemoryObject
- =lcpi::lib::structure::t_basic_smart_interface_impl__dynamic
-   <TSYS_SmartInterface,
-    TSYS_MemoryAllocator>;
+ =structure::test_fw::set01::TestFW__SysSmartMemoryObject;
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_tests*/}/*nms lcpi*/

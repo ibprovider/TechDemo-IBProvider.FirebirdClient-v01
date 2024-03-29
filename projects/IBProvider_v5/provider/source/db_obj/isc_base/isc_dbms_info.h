@@ -21,14 +21,17 @@ namespace lcpi{namespace ibp{namespace isc_base{
 /// <summary>
 ///  Описание ISC-сервера, ISC-клиента
 /// </summary>
-class t_isc_dbms_info
+class t_isc_dbms_info LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_isc_dbms_info                              self_type;
+  using self_type=t_isc_dbms_info;
 
  public: //typedefs ------------------------------------------------------
-  typedef std::string                                  string_type;
-  typedef structure::t_value_with_null<string_type>    string_type_N;
+  using string_type
+   =std::string;
+
+  using string_type_N
+   =lib::structure::t_value_with_null<string_type>;
 
   class tag_push_descr_ex;
 
@@ -91,12 +94,12 @@ inline bool operator == (const t_isc_dbms_info& x1,const t_isc_dbms_info& x2)
 ////////////////////////////////////////////////////////////////////////////////
 //class t_isc_dbms_info::tag_push_descr_ex
 
-class t_isc_dbms_info::tag_push_descr_ex
+class t_isc_dbms_info::tag_push_descr_ex LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_push_descr_ex                 self_type;
+  using self_type=tag_push_descr_ex;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_push_descr_ex(const self_type& x)

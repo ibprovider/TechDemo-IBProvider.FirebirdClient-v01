@@ -82,16 +82,26 @@ class t_isc_connection_settings LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_ibp_isc_dialect                                 dialect_type;
+  using dialect_type
+   =t_ibp_isc_dialect;
 
-  typedef structure::t_value_with_null<bool>                bool_type_N;
-  typedef structure::t_value_with_null<long>                long_type_N;
-  typedef structure::t_value_with_null<std::string>         str_type_N;
-  typedef structure::t_value_with_null<dialect_type>        dialect_type_N;
+  using bool_type_N
+   =lib::structure::t_value_with_null<bool>;
 
-  typedef structure::t_value_with_null<isc_api::t_ibp_isc_timestamp> ib_timestamp_type_N;
+  using long_type_N
+   =lib::structure::t_value_with_null<long>;
 
-  typedef structure::t_value_with_null<t_isc_ods_id>        ods_id_type_N;
+  using str_type_N
+   =structure::t_value_with_null<std::string>;
+
+  using dialect_type_N
+   =lib::structure::t_value_with_null<dialect_type>;
+
+  using ib_timestamp_type_N
+   =lib::structure::t_value_with_null<isc_api::t_ibp_isc_timestamp>;
+
+  using ods_id_type_N
+   =structure::t_value_with_null<t_isc_ods_id>;
 
  public:
   class tag_db_info__impl LCPI_CPP_CFG__CLASS__FINAL

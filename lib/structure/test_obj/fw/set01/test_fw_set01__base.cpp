@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+#include <_pch_.h>
+#pragma hdrstop
+
+#include <structure/test_obj/fw/set01/test_fw_set01__base.h>
+
+namespace structure{namespace test_fw{namespace set01{
+////////////////////////////////////////////////////////////////////////////////
+//Memory Allocator
+
+LCPI_CPP_LIB__DEFINE_WRAP_ALLOCATOR(TestFW__StdMemoryAllocator)
+
+LCPI_CPP_LIB__DEFINE_WRAP_ALLOCATOR(TestFW__SysMemoryAllocator)
+
+////////////////////////////////////////////////////////////////////////////////
+}/*nms set01*/}/*nms test_fw*/}/*nms structure*/

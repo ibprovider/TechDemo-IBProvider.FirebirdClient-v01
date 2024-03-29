@@ -156,7 +156,7 @@ static HRESULT Variant_Copy_Dispatch(VARIANT* pDest,const VARIANT* pSource)
  if(pDest==pSource)
   return S_OK;
 
- DECLARE_IPTR_TYPE(IDispatch);
+ OLE_LIB__DECLARE_IPTR_TYPE(IDispatch);
 
  IDispatchPtr spDisp(pSource->pdispVal);
 
@@ -752,7 +752,7 @@ HRESULT Variant_CopyInd_ByRef_Dispatch(VARIANT* pDest,const VARIANT* pSource) //
  assert(pSource);
  assert(pSource->vt==(VT_BYREF|VT_DISPATCH));                             // !!!
 
- DECLARE_IPTR_TYPE(IDispatch);
+ OLE_LIB__DECLARE_IPTR_TYPE(IDispatch);
 
  IDispatchPtr x;                                                          // !!!
 

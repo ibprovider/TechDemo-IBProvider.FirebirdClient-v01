@@ -219,9 +219,10 @@ t_mt_data_holder_rw<TData,THolderBaseClass,ThreadTraits>&
 ////////////////////////////////////////////////////////////////////////////////
 //template class t_counter_inc_dec
 
-template<class ThreadTraits>
+template<typename TValue,class ThreadTraits>
 RELEASE_CODE(inline)
-t_counter_inc_dec<ThreadTraits>::t_counter_inc_dec(value_type& counter)
+t_counter_inc_dec<TValue,ThreadTraits>::t_counter_inc_dec
+                             (value_type& counter)
  :m_counter(&counter)
 {
  assert(m_counter);
@@ -230,10 +231,11 @@ t_counter_inc_dec<ThreadTraits>::t_counter_inc_dec(value_type& counter)
 }//t_counter_inc_dec
 
 //------------------------------------------------------------------------
-template<class ThreadTraits>
+template<typename TValue,class ThreadTraits>
 RELEASE_CODE(inline)
-t_counter_inc_dec<ThreadTraits>::t_counter_inc_dec(value_type&       counter,
-                                                   value_type  const init_value)
+t_counter_inc_dec<TValue,ThreadTraits>::t_counter_inc_dec
+                             (value_type&       counter,
+                              value_type  const init_value)
  :m_counter(&counter)
 {
  assert(m_counter);
@@ -242,9 +244,9 @@ t_counter_inc_dec<ThreadTraits>::t_counter_inc_dec(value_type&       counter,
 }//t_counter_inc_dec
 
 //------------------------------------------------------------------------
-template<class ThreadTraits>
+template<typename TValue,class ThreadTraits>
 RELEASE_CODE(inline)
-t_counter_inc_dec<ThreadTraits>::~t_counter_inc_dec()
+t_counter_inc_dec<TValue,ThreadTraits>::~t_counter_inc_dec()
 {
  assert(m_counter);
 

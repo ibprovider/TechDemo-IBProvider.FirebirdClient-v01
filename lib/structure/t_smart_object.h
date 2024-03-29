@@ -20,15 +20,15 @@ namespace structure{
 
 template<class TSmartInterface>
 using t_basic_smart_interface_impl__static_v2
- =lcpi::lib::structure::t_basic_smart_interface_impl__static_v2<TSmartInterface>;
+ =::lcpi::lib::structure::t_basic_smart_interface_impl__static_v2<TSmartInterface>;
 
 template<class TSmartInterface,class Allocator>
 using t_basic_smart_interface_impl__dynamic
- =lcpi::lib::structure::t_basic_smart_interface_impl__dynamic<TSmartInterface,Allocator>;
+ =::lcpi::lib::structure::t_basic_smart_interface_impl__dynamic<TSmartInterface,Allocator>;
 
 template<class Allocator=t_void_allocator>
 using t_basic_smart_object_base2
- =lcpi::lib::structure::t_basic_smart_object_base2<Allocator>;
+ =::lcpi::lib::structure::t_basic_smart_object_base2<Allocator>;
 
 ////////////////////////////////////////////////////////////////////////////////
 

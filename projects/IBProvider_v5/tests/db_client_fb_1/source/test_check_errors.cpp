@@ -79,7 +79,7 @@ void TestCheckErrors::print_exception_ok(TTSO_Tracer&          tracer,
 {
  tracer<<"OK. We got the error."<<send;
 
- TSO_PrintException(tracer,exc);
+ TestFW__PrintException(tracer,exc);
 }//print_exception_ok
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -19,7 +19,8 @@ t_basic_thread_controller__win32<tag_base_smem_obj>::t_basic_thread_controller__
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
 t_basic_thread_controller__win32<tag_base_smem_obj>::~t_basic_thread_controller__win32()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
@@ -114,7 +115,7 @@ HANDLE t_basic_thread_controller__win32<tag_base_smem_obj>::get_stop_event()cons
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
 RELEASE_CODE(inline)
-LONG t_basic_thread_controller__win32<tag_base_smem_obj>::get_stop_signal()const
+unsigned t_basic_thread_controller__win32<tag_base_smem_obj>::get_stop_signal()const
 {
  return m_aStopSignal.load();
 }//get_stop_signal

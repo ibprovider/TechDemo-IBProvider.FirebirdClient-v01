@@ -13,6 +13,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>_UNICODE;UNICODE;INCLUDE_LOCAL_PCH_HEADER;INCLUDE_OLEDB_HEADER;IBP_BINARY_COMPILER_SIGN=vc17;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>_pch_.h</PrecompiledHeaderFile>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>IBP_EDITION_ID=1;IBP_ENGINE_REMOTE_FB=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>

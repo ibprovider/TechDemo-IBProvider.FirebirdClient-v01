@@ -4,86 +4,125 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os-atomic_functions.h>
+
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace detail{
 ////////////////////////////////////////////////////////////////////////////////
+//class interlocked_add_n
+
+template<size_t N>
+class interlocked_add__impl_n LCPI_CPP_CFG__CLASS__FINAL
+{
+};//class interlocked_add__impl_n<N>
+
+////////////////////////////////////////////////////////////////////////////////
+//class interlocked_add_n<4>
+
+template<>
+class interlocked_add__impl_n<sizeof(std::uint32_t)> LCPI_CPP_CFG__CLASS__FINAL
+{
+ public:
+  template<typename T>
+  static T exec(T volatile* const pAddend, T value)
+  {
+   using api_t=std::uint32_t;
+
+   LCPI__assert(pAddend!=nullptr);
+
+   LCPI__assert_s(sizeof(*pAddend)==sizeof(api_t));
+   LCPI__assert_s(sizeof(value)==sizeof(api_t));
+
+   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd32
+               (reinterpret_cast<api_t volatile*>(pAddend),
+                value);
+  }//exec
+};//class interlocked_add__impl_n<sizeof(std::uint32_t)>
+
+////////////////////////////////////////////////////////////////////////////////
+//class interlocked_add_n<8>
+
+template<>
+class interlocked_add__impl_n<sizeof(std::uint64_t)> LCPI_CPP_CFG__CLASS__FINAL
+{
+ public:
+  template<typename T>
+  static T exec(T volatile* const pAddend, T value)
+  {
+   using api_t=std::uint64_t;
+
+   LCPI__assert(pAddend!=nullptr);
+
+   LCPI__assert_s(sizeof(*pAddend)==sizeof(api_t));
+   LCPI__assert_s(sizeof(value)==sizeof(api_t));
+
+   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd64
+               (reinterpret_cast<api_t volatile*>(pAddend),
+                value);
+  }//exec
+};//class interlocked_add__impl_n<sizeof(std::uint64_t)>
+
+////////////////////////////////////////////////////////////////////////////////
 //class interlocked_add__impl
 
 class interlocked_add__impl LCPI_CPP_CFG__CLASS__FINAL
 {
- private:
-  using self_type=interlocked_add__impl;
-
  public:
-  using long_type  =long;
-  using int64_type =signed __int64;
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+  using long_type  =signed long;
+#endif
 
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
   using ulong_type =unsigned long;
-  using uint64_type=unsigned __int64;
+#endif
+
+  using int32_type =std::int32_t;
+  using uint32_type=std::uint32_t;
+
+  using int64_type =std::int64_t;
+  using uint64_type=std::uint64_t;
 
  public:
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
   static long_type exec(long_type volatile* const pAddend,long_type const value)
   {
-   LCPI__assert(pAddend);
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
+  }//exec
+#endif
 
-   return self_type::helper__exec32(pAddend,value);
+  //----------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+  static ulong_type exec(ulong_type volatile* const pAddend,ulong_type const value)
+  {
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
+  }//exec
+#endif
+
+  //----------------------------------------------------------------------
+  static int32_type exec(int32_type volatile* const pAddend,int32_type const value)
+  {
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
   }//exec
 
   //----------------------------------------------------------------------
-  static ulong_type exec(ulong_type volatile* const pAddend,ulong_type const value)
+  static int64_type exec(int64_type volatile* const pAddend,int64_type const value)
   {
-   LCPI__assert(pAddend);
-   LCPI__assert_s(sizeof(ulong_type)==sizeof(long_type));
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
+  }//exec
 
-   return (ulong_type)self_type::helper__exec32(reinterpret_cast<long_type volatile*>(pAddend),(long_type)value);
+  //----------------------------------------------------------------------
+  static uint32_type exec(uint32_type volatile* const pAddend,uint32_type const value)
+  {
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
   }//exec
 
   //----------------------------------------------------------------------
   static uint64_type exec(uint64_type volatile* const pAddend,uint64_type const value)
   {
-   LCPI__assert(pAddend);
-   LCPI__assert_s(sizeof(uint64_type)==sizeof(int64_type));
-
-   return (uint64_type)self_type::helper_exec64(reinterpret_cast<int64_type volatile*>(pAddend),(int64_type)value);
+   return interlocked_add__impl_n<sizeof(*pAddend)>::exec(pAddend,value);
   }//exec
-
- private:
-  static long_type helper__exec32(long_type volatile* const pAddend,long_type const value)
-  {
-   LCPI__assert(pAddend);
-
-   //return InterlockedAdd(pAddend,value);
-
-   long_type Old;
-
-   do
-   {
-    Old=*pAddend;
-   }
-   while(InterlockedCompareExchange(pAddend,Old+value,Old)!=Old);
-
-   return Old+value;
-  }//helper_exec32
-
-  //----------------------------------------------------------------------
-  static uint64_type helper_exec64(int64_type volatile* const pAddend,int64_type const value)
-  {
-   LCPI__assert(pAddend);
-
-   //return InterlockedAdd64(pAddend,value);
-
-   int64_type Old;
-
-   do
-   {
-    Old=*pAddend;
-   }
-   while(InterlockedCompareExchange64(pAddend,Old+value,Old)!=Old);
-
-   return Old+value;
-  }//helper_exec64
 };//class interlocked_add__impl
 
 ////////////////////////////////////////////////////////////////////////////////

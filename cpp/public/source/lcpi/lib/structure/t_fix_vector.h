@@ -11,6 +11,7 @@
 #endif
 
 #include <iterator>
+#include <cstdint>
 #include <cstddef>
 
 namespace lcpi{namespace lib{namespace structure{
@@ -20,26 +21,49 @@ namespace lcpi{namespace lib{namespace structure{
 template<class T,size_t N>
 class t_fix_vector;
 
+namespace detail{
 ////////////////////////////////////////////////////////////////////////////////
+
+template<size_t alignN>
+struct t_fix_vector_base__align_traits;
+
+template<>
+struct t_fix_vector_base__align_traits<1>{typedef std::int8_t type;};
+
+template<>
+struct t_fix_vector_base__align_traits<2>{typedef std::int16_t type;};
+
+template<>
+struct t_fix_vector_base__align_traits<4>{typedef std::int32_t type;};
+
+template<>
+struct t_fix_vector_base__align_traits<8>{typedef std::int64_t type;};
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace detail
+
+ ////////////////////////////////////////////////////////////////////////////////
 //class t_fix_vector
 
 template<class T,size_t N>
 class t_fix_vector_base
 {
  private:
-  typedef t_fix_vector_base<T,N>                           self_type;
+  using self_type=t_fix_vector_base<T,N>;
 
-  t_fix_vector_base(const self_type&);
-  self_type& operator = (const self_type&);
+  t_fix_vector_base(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   enum{num_of_elements=N};
 
-  typedef T                                                value_type;
-  typedef size_t                                           size_type;
+  using value_type=T;
 
-  typedef value_type*                                      pointer;
-  typedef const value_type*                                const_pointer;
+  using size_type=size_t;
+
+  using pointer=value_type*;
+
+  using const_pointer=const value_type*;
 
  public:
   size_type m_size;
@@ -57,25 +81,9 @@ class t_fix_vector_base
   void clear();
 
  private:
-  template<size_t alignN>
-  struct tag_align_traits;
-
-  template<>
-  struct tag_align_traits<1>{typedef __int8 type;};
-
-  template<>
-  struct tag_align_traits<2>{typedef __int16 type;};
-
-  template<>
-  struct tag_align_traits<4>{typedef __int32 type;};
-
-  template<>
-  struct tag_align_traits<8>{typedef __int64 type;};
-
- private:
   union
   {
-   typename tag_align_traits<__alignof(value_type)>::type m_aligner;
+   typename detail::t_fix_vector_base__align_traits<__alignof(value_type)>::type m_aligner;
 
    char m_buffer[((num_of_elements==0)?1:num_of_elements)*sizeof(value_type)];
   };
@@ -117,7 +125,7 @@ class t_fix_vector LCPI_CPP_CFG__CLASS__FINAL
 
   t_fix_vector();
 
-  explicit t_fix_vector(size_t n);
+  explicit t_fix_vector(size_type n);
 
   t_fix_vector(const self_type& x);
 

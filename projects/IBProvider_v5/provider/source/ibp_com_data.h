@@ -21,6 +21,9 @@
 # include <lcpi/lib/structure/t_fix_vector.h>
 #endif
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp
@@ -47,11 +50,11 @@ class IBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
    =lib::structure::t_fix_vector<IBP_OLEDB__ClassFactoryData,10>;
 #endif
 
-  using thread_traits=structure::t_multi_thread_traits;
+  using guard_type
+   =lib::structure::mt::t_guard;
 
-  using guard_type=thread_traits::guard_type;
-
-  using lock_guard_type=thread_traits::lock_guard_type;
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  public:
   ///Identifier of used COM API.
@@ -59,7 +62,7 @@ class IBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   ///Синхронизация модификаций счетчика блокировок модуля.
-  thread_traits::guard_type   m_module_lock_count_guard;
+  guard_type                  m_module_lock_count_guard;
 
   ///Счетчик компонент
   size_t volatile             m_module_lock_count;

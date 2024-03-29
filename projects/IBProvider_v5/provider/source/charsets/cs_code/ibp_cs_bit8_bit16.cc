@@ -64,7 +64,7 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::to_unicode_v2
  const char*       cur_s=s.ptr;
  const char* const end_s=s.ptr+s.len;
 
- wchar_t cvt_wc[data_type::c_max_ucs2_in_one_char];
+ wchar_t cvt_wc[data_type::c_max_ucs2_in_one_symbol];
 
  for(;;)
  {
@@ -198,7 +198,7 @@ db_obj::t_db_cs_result
   return db_obj::db_cs_result__ok;
 
  //----
- wchar_t cvt_wc[data_type::c_max_ucs2_in_one_char];
+ wchar_t cvt_wc[data_type::c_max_ucs2_in_one_symbol];
 
  for(in_buf_iterator cur(in_buf),end;;)
  {
@@ -247,7 +247,7 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::sb_len_as_unicode
   return true;
 
  //----
- wchar_t cvt_wc[data_type::c_max_ucs2_in_one_char];
+ wchar_t cvt_wc[data_type::c_max_ucs2_in_one_symbol];
 
  for(in_buf_iterator cur(in_buf),end;;)
  {

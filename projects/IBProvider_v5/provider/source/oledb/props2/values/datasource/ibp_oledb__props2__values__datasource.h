@@ -139,7 +139,8 @@ class IBP_OLEDB_Props2__Values__DATASOURCE LCPI_CPP_CFG__CLASS__FINAL
                          DBPROPID propId)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_value_with_null<long> long_type_n;
+  using long_type_n
+   =lib::structure::t_value_with_null<long>;
 
   /// <summary>
   ///  Получение первого дня недели.

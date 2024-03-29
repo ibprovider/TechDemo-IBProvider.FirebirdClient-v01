@@ -6,6 +6,7 @@
 
 #include <structure/test_obj/t_tso_message.h>
 #include <structure/test_obj/t_tso_log.h>
+#include <structure/t_smart_object.h>
 #include <structure/t_smart_vector.h>
 #include <structure/t_str_args.h>
 #include <structure/t_string_au.h>
@@ -33,7 +34,7 @@ class t_basic_exception_router;
 // - allocator_type
 
 template<class Allocator>
-class t_basic_message
+class t_basic_message LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__dynamic<t_message,Allocator>
 {
  private:
@@ -78,7 +79,7 @@ class t_basic_message
 //class t_basic_tracer
 
 template<class Allocator>
-class t_basic_tracer
+class t_basic_tracer LCPI_CPP_CFG__CLASS__FINAL
  :public t_basic_str_args<t_message::string_type::value_type,t_basic_tracer<Allocator> >
 {
  private:
@@ -142,7 +143,7 @@ class t_basic_tracer
 ////////////////////////////////////////////////////////////////////////////////
 //t_push_data - tracer manipulator
 
-struct t_push_data
+struct t_push_data LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   using msg_kind_type   =t_message::msg_kind_type;
@@ -189,7 +190,7 @@ t_basic_tracer<t_traits>& send(t_basic_tracer<t_traits>& tracer)
 //class t_basic_log_stream__console
 
 template<class Allocator>
-class t_basic_log_stream__console
+class t_basic_log_stream__console LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__dynamic<t_log_stream,Allocator>
 {
  private:
@@ -218,7 +219,7 @@ class t_basic_log_stream__console
 //class t_basic_root_log__printer
 
 template<class t_log_stream>
-class t_basic_root_log__printer
+class t_basic_root_log__printer LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   using self_type=t_basic_root_log__printer<t_log_stream>;
@@ -322,7 +323,7 @@ class t_basic_root_log
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_exception_router
 
-class t_basic_exception_router
+class t_basic_exception_router LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   using self_type=t_basic_exception_router;

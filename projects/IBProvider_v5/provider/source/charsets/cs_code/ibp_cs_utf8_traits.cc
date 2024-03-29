@@ -33,20 +33,24 @@ namespace lcpi{namespace ibp{
 template<typename InputIterator>
 db_obj::t_db_cs_result
  t_ibp_cs_utf8_traits::convert_single_own_to_unicode_v3
-                                           (InputIterator& source,
-                                            InputIterator  source_end,
-                                            wchar_t* const result_buffer,
-                                            size_t&        result_size)const
+                        (InputIterator& source,
+                         InputIterator  source_end,
+                         wchar_t* const result_buffer,
+                         size_t&        result_size)const
 {
  namespace cs_utf8=structure::charsets::cs_utf8;
 
- cs_utf8::t_cs_cvt_result cvt_result=cs_utf8::cs_cvt_result__ok;
+ cs_utf8::t_cs_cvt_result
+  cvt_result
+   =cs_utf8::cs_cvt_result__ok;
 
- source=cs_utf8::single_utf8_to_ucs2(source,
-                                     source_end,
-                                     result_buffer,
-                                     result_size,
-                                     &cvt_result);
+ source
+  =cs_utf8::single_utf8_to_ucs2
+    (source,
+     source_end,
+     result_buffer,
+     result_size,
+     &cvt_result);
 
  IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
 }//convert_single_own_to_unicode_v3
@@ -55,20 +59,24 @@ db_obj::t_db_cs_result
 template<typename InputIterator>
 db_obj::t_db_cs_result
  t_ibp_cs_utf8_traits::convert_single_unicode_to_own_v3
-                                           (InputIterator&       source,
-                                            InputIterator        source_end,
-                                            char*          const result_buffer,
-                                            size_t&              result_size)const
+                        (InputIterator& source,
+                         InputIterator  source_end,
+                         char*    const result_buffer,
+                         size_t&        result_size)const
 {
  namespace cs_utf8=structure::charsets::cs_utf8;
 
- cs_utf8::t_cs_cvt_result cvt_result=cs_utf8::cs_cvt_result__ok;
+ cs_utf8::t_cs_cvt_result
+  cvt_result
+   =cs_utf8::cs_cvt_result__ok;
 
- source=cs_utf8::single_ucs2_to_utf8(source,
-                                     source_end,
-                                     result_buffer,
-                                     result_size,
-                                     &cvt_result);
+ source
+  =cs_utf8::single_ucs2_to_utf8
+    (source,
+     source_end,
+     result_buffer,
+     result_size,
+     &cvt_result);
 
  IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
 }//convert_single_unicode_to_own_v3
@@ -76,18 +84,23 @@ db_obj::t_db_cs_result
 //------------------------------------------------------------------------
 template<typename InputIterator,typename OutputIterator>
 db_obj::t_db_cs_result
- t_ibp_cs_utf8_traits::ucs2_to_own(InputIterator&  source,
-                                   InputIterator   source_end,
-                                   OutputIterator  dest)const
+ t_ibp_cs_utf8_traits::ucs2_to_own
+                        (InputIterator& source,
+                         InputIterator  source_end,
+                         OutputIterator dest)const
 {
  namespace cs_utf8=structure::charsets::cs_utf8;
 
- cs_utf8::t_cs_cvt_result cvt_result=cs_utf8::cs_cvt_result__ok;
+ cs_utf8::t_cs_cvt_result
+  cvt_result
+   =cs_utf8::cs_cvt_result__ok;
 
- source=cs_utf8::ucs2_to_utf8(source,
-                              source_end,
-                              dest,
-                              &cvt_result);
+ source
+  =cs_utf8::ucs2_to_utf8
+    (source,
+     source_end,
+     dest,
+     &cvt_result);
 
  IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
 }//ucs2_to_own

@@ -108,9 +108,12 @@ void RemoteFB__Port_BASE_v01::tag_reader::begin_read()
  // ---------------------------------------- 1.
 
  const rw_state_type
-  prevState=::InterlockedCompareExchange(&m_spPort->m_read_state,
-                                         c_state__in_use,
-                                         c_state__none);
+  prevState
+   =lib::structure::mt::interlocked::compare_exchange
+     (&m_spPort->m_read_state,
+      c_state__in_use,
+      c_state__none);
+
  switch(prevState)
  {
   case c_state__none:
@@ -166,7 +169,9 @@ void RemoteFB__Port_BASE_v01::tag_reader::end_read(bool const success)
  if(success)
  {
   DEBUG_CODE(const rw_state_type prevState=)
-   InterlockedExchange(&m_spPort->m_read_state,c_state__none);
+   lib::structure::mt::interlocked::exchange
+    (&m_spPort->m_read_state,
+     c_state__none);
 
   assert(prevState==c_state__in_use);
  }
@@ -175,7 +180,9 @@ void RemoteFB__Port_BASE_v01::tag_reader::end_read(bool const success)
   assert(!success);
 
   DEBUG_CODE(const rw_state_type prevState=)
-   InterlockedExchange(&m_spPort->m_read_state,c_state__failed);
+   lib::structure::mt::interlocked::exchange
+    (&m_spPort->m_read_state,
+     c_state__failed);
 
   assert(prevState==c_state__in_use);
  }//else

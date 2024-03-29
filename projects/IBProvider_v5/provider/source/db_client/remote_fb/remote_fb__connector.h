@@ -9,7 +9,10 @@
 
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_obj/isc_base/isc_base.h"
-#include <structure/t_list_external.h>
+
+#include <lcpi/lib/structure/t_list_external.h>
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -584,11 +587,11 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
             const tag_port_factories&                            Factories);
 
  private: //private typedefs ---------------------------------------------
-  typedef structure::t_multi_thread_traits              thread_traits;
+  using guard_type
+   =lib::structure::mt::t_guard;
 
-  typedef thread_traits::guard_type                     guard_type;
-
-  typedef thread_traits::lock_guard_type                lock_guard_type;
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   using tr_handle_data_type
@@ -598,7 +601,7 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
    =tr_handle_data_type::tag_list_adapter;
 
   using tr_handle_list_type
-   =structure::t_list_external<tr_handle_list_traits>;
+   =lib::structure::t_list_external<tr_handle_list_traits>;
 
  private:
   using stmt_handle_data_type
@@ -608,7 +611,7 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
    =stmt_handle_data_type::tag_cn_list_adapter;
 
   using stmt_handle_list_type
-   =structure::t_list_external<stmt_handle_list_traits>;
+   =lib::structure::t_list_external<stmt_handle_list_traits>;
 
  private:
   /// <summary>

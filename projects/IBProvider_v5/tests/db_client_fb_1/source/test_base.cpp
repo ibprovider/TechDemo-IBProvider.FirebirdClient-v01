@@ -63,81 +63,6 @@ extern const TCHAR* const c_prog_arg__cn_str
  =_T("cn_str");
 
 ////////////////////////////////////////////////////////////////////////////////
-//class TSYS_RootLog
-
-TSYS_RootLog::TSYS_RootLog(UINT const CodePage)
- :inherited(CodePage)
- ,m_other_error_count   (0)
- ,m_other_warning_count (0)
- ,m_pass_count          (0)
- ,m_total_test_count    (0)
-{
-}
-
-//------------------------------------------------------------------------
-TSYS_RootLog::TSYS_RootLog(tso_obj::t_log_stream* const pOutputStream)
- :inherited(pOutputStream)
- ,m_other_error_count   (0)
- ,m_other_warning_count (0)
- ,m_pass_count          (0)
- ,m_total_test_count    (0)
-{
-}
-
-//------------------------------------------------------------------------
-TSYS_RootLog::~TSYS_RootLog()
-{
-}
-
-//interface --------------------------------------------------------------
-void TSYS_RootLog::add_other_error_count(count_type const x)
-{
- lib::structure::mt::interlocked::add(&m_other_error_count,x);
-}//add_other_error_count
-
-//------------------------------------------------------------------------
-void TSYS_RootLog::add_other_warning_count(count_type const x)
-{
- lib::structure::mt::interlocked::add(&m_other_warning_count,x);
-}//add_other_warning_count
-
-//------------------------------------------------------------------------
-void TSYS_RootLog::inc_pass_count()
-{
- lib::structure::mt::interlocked::increment(&m_pass_count);
-}//inc_pass_count
-
-//------------------------------------------------------------------------
-void TSYS_RootLog::inc_total_test_count()
-{
- lib::structure::mt::interlocked::increment(&m_total_test_count);
-}//inc_total_test_count
-
-//selectors --------------------------------------------------------------
-TSYS_RootLog::count_type TSYS_RootLog::get_total_error_count()const
-{
- return m_other_error_count+this->get_error_count();
-}//get_total_error_count
-
-//------------------------------------------------------------------------
-TSYS_RootLog::count_type TSYS_RootLog::get_total_warning_count()const
-{
- return m_other_warning_count+this->get_warning_count();
-}//get_total_warning_count
-
-//------------------------------------------------------------------------
-TSYS_RootLog::count_type TSYS_RootLog::get_pass_count()const
-{
- return m_pass_count;
-}//get_pass_count
-
-//------------------------------------------------------------------------
-TSYS_RootLog::count_type TSYS_RootLog::get_total_test_count()const
-{
- return m_total_test_count;
-}//get_total_test_count
-
-////////////////////////////////////////////////////////////////////////////////
 //class TSYS_CommandLine
 
 TSYS_CommandLine::TSYS_CommandLine()
@@ -215,14 +140,14 @@ TSYS_CommandLine::TSYS_CommandLine()
  if(!BaseLogFileName.empty())
   BaseLogFileName+="_";
 
- BaseLogFileName+=TSO_GenerateTimeStampString();
+ BaseLogFileName+=TestFW__GenerateTimeStampString();
 
  //-------------- Build Test Log File BasePath
  std::string LogDir;
 
  structure::tstr_to_tstr(&LogDir,m_args.value_or_default(c_prog_arg__log_dir,_T("")));
 
- m_BaseLogFilePath=TSO_BuildFilePath(LogDir,BaseLogFileName);
+ m_BaseLogFilePath=TestFW__BuildFilePath(LogDir,BaseLogFileName);
 
  //-------------- Build Test RootLog File Path
  m_RootLogFilePath.assign(m_BaseLogFilePath).append(".log");
@@ -390,44 +315,6 @@ bool TTSO_GlobalContext::calc_expression(structure::t_const_str_box const expres
 {
  return m_ExpressionParser.calc(expression)!=m_ExpressionParser.calc_result__no;
 }//calc_expression
-
-////////////////////////////////////////////////////////////////////////////////
-//class TTSO_RunContext
-
-TTSO_RunContext::TTSO_RunContext(log_type* const pLog)
- :m_spLog(lib::structure::not_null_ptr(pLog))
-{
- assert(m_spLog);
-}//TTSO_RunContext
-
-//------------------------------------------------------------------------
-TTSO_RunContext::~TTSO_RunContext()
-{;}
-
-//log interface ----------------------------------------------------------
-void TTSO_RunContext::trace(message_type* const message)
-{
- assert(message);
-
- switch(message->get_msg_kind())
- {
-  case tso_msg_error:
-  {
-   lib::structure::mt::interlocked::increment(&m_test_info.err_count);
-   break;
-  }//case - error
-
-  case tso_msg_warning:
-  {
-   lib::structure::mt::interlocked::increment(&m_test_info.warning_count);
-   break;
-  }//case - warning
- }//switch
-
- assert(m_spLog);
-
- return m_spLog->trace(message);
-}//log
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms ibp_tests*/}/*nms lcpi*/

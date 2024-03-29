@@ -66,7 +66,7 @@ class TTSO_TestFunc_v2
                    const char*             pExecRules=nullptr);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 

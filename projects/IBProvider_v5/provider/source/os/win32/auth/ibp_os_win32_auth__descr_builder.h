@@ -9,8 +9,7 @@
 
 #include "source/os/win32/auth/ibp_os_win32_auth__provider.h"
 
-#include <structure/t_value_with_null.h>
-
+#include <lcpi/lib/structure/t_value_with_null.h>
 #include <lcpi/lib/structure/t_simple_buffer.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
@@ -60,7 +59,7 @@ class t_auth__descr_builder LCPI_CPP_CFG__CLASS__FINAL
    =API::AUTH__SECURITY_STATUS;
   
   using auth_err_code_type_N
-   =structure::t_value_with_null<auth_err_code_type>;
+   =lib::structure::t_value_with_null<auth_err_code_type>;
 
  private:
   auth_err_code_type_N m_LastResultCode;

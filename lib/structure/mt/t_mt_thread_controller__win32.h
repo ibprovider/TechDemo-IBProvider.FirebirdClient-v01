@@ -17,11 +17,11 @@ template<class tag_base_smem_obj>
 class t_basic_thread_controller__win32:public t_basic_thread_controller<tag_base_smem_obj>
 {
  private:
-  typedef t_basic_thread_controller__win32<tag_base_smem_obj>     self_type;
-  typedef t_basic_thread_controller<tag_base_smem_obj>            inherited;
+  using self_type=t_basic_thread_controller__win32<tag_base_smem_obj>;
+  using inherited=t_basic_thread_controller<tag_base_smem_obj>;
 
-  t_basic_thread_controller__win32(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_thread_controller__win32(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  protected:
   virtual ~t_basic_thread_controller__win32();
@@ -43,7 +43,7 @@ class t_basic_thread_controller__win32:public t_basic_thread_controller<tag_base
  protected:
   HANDLE get_stop_event()const;
 
-  LONG   get_stop_signal()const;
+  unsigned get_stop_signal()const;
 
   HANDLE get_thread_handle()const;
 
@@ -52,7 +52,7 @@ class t_basic_thread_controller__win32:public t_basic_thread_controller<tag_base
 
  private:
   win32lib::TEvent       m_StopEvent;
-  std::atomic<LONG>      m_aStopSignal;
+  std::atomic<unsigned>  m_aStopSignal;
 };//class t_basic_thread_controller__win32
 
 ////////////////////////////////////////////////////////////////////////////////

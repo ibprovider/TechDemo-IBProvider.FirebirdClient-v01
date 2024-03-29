@@ -14,20 +14,21 @@ namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_err_record
 
-class LCPI_INFRASTRUCTURE_CORE__CFG__IFACE_STG __declspec(novtable) t_err_record:public t_smart_interface
+class LCPI_INFRASTRUCTURE_CORE__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_err_record
+ :public t_smart_interface
 {
  private:
-  typedef t_err_record                                self_type;
+  using self_type=t_err_record;
 
- public: //typedefs -------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>               self_ptr;
-  typedef t_smart_object_ptr<const self_type>         self_cptr;
+ public: //typedefs ------------------------------------------------------
+  using self_ptr           =t_smart_object_ptr<self_type>;
+  using self_cptr          =t_smart_object_ptr<const self_type>;
 
-  typedef long                                        error_code_type;
-  typedef std::wstring                                string_type;
-  typedef long                                        subsystem_id_type;
-  typedef t_lcid                                      lcid_type;
-  typedef long                                        help_ctx_id_type;
+  using error_code_type    =std::int32_t;
+  using string_type        =std::wstring;
+  using subsystem_id_type  =std::int32_t;
+  using lcid_type          =t_lcid;
+  using help_ctx_id_type   =std::int32_t;
 
   enum system_id_type
   {

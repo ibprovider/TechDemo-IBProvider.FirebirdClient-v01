@@ -307,8 +307,8 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  }//if
 
  //-----------------------------------------------------------------------
- structure::t_value_with_null<status_type> result1;
- structure::t_value_with_null<status_type> result2;
+ lib::structure::t_value_with_null<status_type> result1;
+ lib::structure::t_value_with_null<status_type> result2;
 
  find_next_result_type s(sv_beg,gresult_data_type::create_ok());
 

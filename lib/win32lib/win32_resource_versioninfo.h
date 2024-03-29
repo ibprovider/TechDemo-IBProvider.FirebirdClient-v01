@@ -26,7 +26,8 @@ class t_ver_info_element__VarFileInfo;
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef structure::t_smart_object_ptr<t_ver_info_element> t_ver_info_element_ptr;
+using t_ver_info_element_ptr
+ =structure::t_smart_object_ptr<t_ver_info_element>;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -145,37 +146,39 @@ class t_ver_info_error_traits
   static const msg_entry_type sm_msgs[];
 };//class t_ver_info_error_traits
 
-typedef structure::t_err_record_with_params
-         <t_ver_info_error_traits>                t_ver_info_error_record;
+using t_ver_info_error_record
+ =structure::t_err_record_with_params<t_ver_info_error_traits>                ;
 
-typedef structure::t_err_exception_with_params
-         <t_ver_info_error_record>                t_ver_info_error;
+using t_ver_info_error
+ =structure::t_err_exception_with_params<t_ver_info_error_record>                ;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ver_info_element
 
 class t_ver_info_element
- :public structure::t_basic_smart_interface_impl__dynamic
-          <structure::t_smart_interface,
-           TWin32MemoryAllocator>
+ :public structure::t_basic_smart_memory_object<TWin32MemoryAllocator>
 {
  private:
-  typedef t_ver_info_element                         self_type;
+  using self_type=t_ver_info_element;
 
-  t_ver_info_element(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  protected:
   virtual ~t_ver_info_element();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>   self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_str_parameter<wchar_t>        str_arg_type;
+  using str_arg_type
+   =structure::t_str_parameter<wchar_t>;
 
-  typedef size_t                                     size_type;
+  using size_type
+   =size_t;
 
-  typedef t_ver_info_src_id                          src_id_type;
+  using src_id_type
+   =t_ver_info_src_id;
 
   struct tag_entry
   {
@@ -245,18 +248,19 @@ class t_ver_info_element__VS_VERSION_INFO LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__VS_VERSION_INFO        self_type;
-  typedef t_ver_info_element                         inherited;
+  using self_type=t_ver_info_element__VS_VERSION_INFO;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__VS_VERSION_INFO(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element__VS_VERSION_INFO(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   t_ver_info_element__VS_VERSION_INFO();
 
   virtual ~t_ver_info_element__VS_VERSION_INFO();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>   self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
  public:
   static self_ptr create(const tag_entry& entry);
@@ -273,13 +277,14 @@ class t_ver_info_element__VS_VERSION_INFO LCPI_CPP_CFG__CLASS__FINAL
   virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef TWin32MemoryAllocator                           allocator_type;
+  using allocator_type
+   =TWin32MemoryAllocator;
 
-  typedef structure::t_value_with_null<VS_FIXEDFILEINFO>  ffi_type;
+  using ffi_type
+   =structure::t_value_with_null<VS_FIXEDFILEINFO>;
 
-  typedef structure::t_stl_vector
-            <t_ver_info_element::self_ptr,
-             allocator_type>                              childs_type;
+  using childs_type
+   =structure::t_stl_vector<t_ver_info_element::self_ptr,allocator_type>;
 
  private:
   ffi_type     m_ffi;
@@ -293,20 +298,22 @@ class t_ver_info_element__String LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__String               self_type;
-  typedef t_ver_info_element                       inherited;
+  using self_type=t_ver_info_element__String;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__String(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element__String(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   t_ver_info_element__String();
 
   virtual ~t_ver_info_element__String();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type> self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef std::pair<self_ptr,const void*>          create_result_type;
+  using create_result_type
+   =std::pair<self_ptr,const void*>;
 
  public:
   static create_result_type create(const void* pvBlock,size_t cbBlock);
@@ -333,20 +340,22 @@ class t_ver_info_element__StringTable LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__StringTable          self_type;
-  typedef t_ver_info_element                       inherited;
+  using self_type=t_ver_info_element__StringTable;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__StringTable(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element__StringTable(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   t_ver_info_element__StringTable();
 
   virtual ~t_ver_info_element__StringTable();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type> self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef std::pair<self_ptr,const void*>          create_result_type;
+  using create_result_type
+   =std::pair<self_ptr,const void*>;
 
  public:
   static create_result_type create(const void* pvBlock,size_t cbBlock);
@@ -360,11 +369,11 @@ class t_ver_info_element__StringTable LCPI_CPP_CFG__CLASS__FINAL
   virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef TWin32MemoryAllocator                           allocator_type;
+  using allocator_type
+   =TWin32MemoryAllocator;
 
-  typedef structure::t_stl_vector
-            <t_ver_info_element__String::self_ptr,
-             allocator_type>                              childs_type;
+  using childs_type
+   =structure::t_stl_vector<t_ver_info_element__String::self_ptr,allocator_type>                              ;
 
  private:
   childs_type m_childs;
@@ -377,18 +386,19 @@ class t_ver_info_element__StringFileInfo LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__StringFileInfo        self_type;
-  typedef t_ver_info_element                        inherited;
+  using self_type=t_ver_info_element__StringFileInfo;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__StringFileInfo(const self_type&);
-  self_type& operator = (self_type&);
+  t_ver_info_element__StringFileInfo(const self_type&)=delete;
+  self_type& operator = (self_type&)=delete;
 
   t_ver_info_element__StringFileInfo();
 
   virtual ~t_ver_info_element__StringFileInfo();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>  self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
  public:
   static self_ptr create(const tag_entry& entry);
@@ -402,11 +412,11 @@ class t_ver_info_element__StringFileInfo LCPI_CPP_CFG__CLASS__FINAL
   virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef TWin32MemoryAllocator                           allocator_type;
+  using allocator_type
+   =TWin32MemoryAllocator;
 
-  typedef structure::t_stl_vector
-            <t_ver_info_element__StringTable::self_ptr,
-             allocator_type>                              childs_type;
+  using childs_type
+   =structure::t_stl_vector<t_ver_info_element__StringTable::self_ptr,allocator_type>;
 
  private:
   childs_type m_childs;
@@ -419,20 +429,22 @@ class t_ver_info_element__Var LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__Var                      self_type;
-  typedef t_ver_info_element                           inherited;
+  using self_type=t_ver_info_element__Var;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__Var(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element__Var(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   t_ver_info_element__Var();
 
   virtual ~t_ver_info_element__Var();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>     self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef std::pair<self_ptr,const void*>              create_result_type;
+  using create_result_type
+   =std::pair<self_ptr,const void*>;
 
  public:
   static create_result_type create(const void* pvBlock,size_t cbBlock);
@@ -453,11 +465,11 @@ class t_ver_info_element__Var LCPI_CPP_CFG__CLASS__FINAL
   virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef TWin32MemoryAllocator                           allocator_type;
+  using allocator_type
+   =TWin32MemoryAllocator;
 
-  typedef structure::t_stl_vector
-           <DWORD,
-            allocator_type>                               ids_type;
+  using ids_type
+   =structure::t_stl_vector<DWORD,allocator_type>;
 
  private:
   ids_type m_ids;
@@ -470,18 +482,19 @@ class t_ver_info_element__VarFileInfo LCPI_CPP_CFG__CLASS__FINAL
  :public t_ver_info_element
 {
  private:
-  typedef t_ver_info_element__VarFileInfo              self_type;
-  typedef t_ver_info_element                           inherited;
+  using self_type=t_ver_info_element__VarFileInfo;
+  using inherited=t_ver_info_element;
 
-  t_ver_info_element__VarFileInfo(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ver_info_element__VarFileInfo(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   t_ver_info_element__VarFileInfo();
 
   virtual ~t_ver_info_element__VarFileInfo();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>     self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
  public:
   static self_ptr create(const tag_entry& entry);
@@ -495,11 +508,11 @@ class t_ver_info_element__VarFileInfo LCPI_CPP_CFG__CLASS__FINAL
   virtual const void* internal__load(const tag_entry& entry) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef TWin32MemoryAllocator                           allocator_type;
+  using allocator_type
+   =TWin32MemoryAllocator;
 
-  typedef structure::t_stl_vector
-           <t_ver_info_element__Var::self_ptr,
-            allocator_type>                               childs_type;
+  using childs_type
+   =structure::t_stl_vector<t_ver_info_element__Var::self_ptr,allocator_type>                               ;
 
  private:
   childs_type m_childs;

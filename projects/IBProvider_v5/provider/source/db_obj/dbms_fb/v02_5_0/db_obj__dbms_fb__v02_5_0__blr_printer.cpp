@@ -11,7 +11,7 @@
 #include "source/error_services/ibp_error_utils.h"
 #include "source/error_services/ibp_error.h"
 
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 #include <lcpi/lib/structure/utilities/string/trim.h>
 #include <lcpi/lib/structure/utilities/string/string_length.h>
@@ -916,7 +916,7 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
 #ifdef NDEBUG
  unsigned nn1=0;
 #else
- structure::t_value_with_null<unsigned> nn1;
+ lib::structure::t_value_with_null<unsigned> nn1;
 #endif
 
  for(;*blrOps;++blrOps)
@@ -1232,8 +1232,8 @@ void fb_v02_5_0__blr_printer::helper__print_verb(context_type& ctx,
     unsigned inputs1  = 0;
     unsigned outputs1 = 0;
 #else
-    structure::t_value_with_null<unsigned> inputs1;
-    structure::t_value_with_null<unsigned> outputs1;
+    lib::structure::t_value_with_null<unsigned> inputs1;
+    lib::structure::t_value_with_null<unsigned> outputs1;
 #endif
 
     for(;;)

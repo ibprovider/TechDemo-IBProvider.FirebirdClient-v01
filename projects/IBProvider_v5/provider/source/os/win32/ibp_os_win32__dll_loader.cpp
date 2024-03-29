@@ -135,9 +135,9 @@ IBP_SmartObjectPtr t_ibp_os_win32__dll_loader::get_service_obj
 //------------------------------------------------------------------------
 void t_ibp_os_win32__dll_loader::lock_in_memory()
 {
- /// Устанавливаем m_NoUnLoad равным 1. Используем InterlockedExchange.
+ /// We set 1 in m_NoUnLoad. lib::structure::mt::interlocked::exchange is used.
 
- ::InterlockedExchange(&m_NoUnLoad,1);
+ lib::structure::mt::interlocked::exchange(&m_NoUnLoad,1);
 }//lock_in_memory
 
 //------------------------------------------------------------------------

@@ -10,11 +10,11 @@
 #include "source/error_services/ibp_error_variant.h"
 
 #include <structure/t_str_parameter.h>
-#include <structure/t_const_str_box.h>
 
 #include <ole_lib/oledb/variant/oledb_variant_fwrd.h>
 
 #include <lcpi/lib/structure/error/t_err_text.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -160,16 +160,19 @@ class t_ibp_error_args
 //class t_ibp_error_args_data__value_with_null
 
 template<class TValue>
-class t_ibp_error_args_data__value_with_null
+class t_ibp_error_args_data__value_with_null LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_error_args_data__value_with_null<TValue>   self_type;
+  using self_type=t_ibp_error_args_data__value_with_null<TValue>;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef TValue                                    value_type;
-  typedef structure::t_value_with_null<TValue>      value_type_n;
+  using value_type
+   =TValue;
+  
+  using value_type_n
+   =lib::structure::t_value_with_null<TValue>;
 
  public:
   t_ibp_error_args_data__value_with_null(const value_type_n* const pData)
@@ -208,7 +211,7 @@ class t_ibp_error_args_data__value_with_null
 
 template<class TValue>
 t_ibp_error_args_data__value_with_null<TValue>
- push_value(const structure::t_value_with_null<TValue>& x)
+ push_value(const lib::structure::t_value_with_null<TValue>& x)
 {
  return t_ibp_error_args_data__value_with_null<TValue>(&x);
 }//push_value
@@ -216,8 +219,8 @@ t_ibp_error_args_data__value_with_null<TValue>
 //------------------------------------------------------------------------
 template<class TValue>
 t_ibp_error_args_data__value_with_null<TValue>
- push_value(const structure::t_value_with_null<TValue>& x,
-            const wchar_t* const                        pNullSign)
+ push_value(const lib::structure::t_value_with_null<TValue>& x,
+            const wchar_t* const                             pNullSign)
 {
  assert(pNullSign!=nullptr);
 

@@ -5,6 +5,7 @@
 #define _t_handle_H_
 
 #include <structure/t_smart_object.h>
+#include <structure/t_threads.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,11 +14,15 @@ namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //containing classes
 
+#if 0 // [2024-03-20] deprecated
+
 //Handling of description with explicit referencing count
 //Counter is not checked
 template<class T,
          class tag_thread_traits=t_def_thread_traits>
 class t_handle_counter;
+
+#endif
 
 //auto set and reset of flag
 template<class TFlag,class TSetValue,class TResetValue>
@@ -40,11 +45,13 @@ template<class TData,class THolderBaseClass,class ThreadTraits=t_multi_thread_tr
 class t_mt_data_holder_rw;
 
 //counter increment-decrement
-template<class ThreadTraits>
+template<typename TValue,class ThreadTraits>
 class t_counter_inc_dec;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_handle_counter
+
+#if 0 // [2024-03-20] deprecated
 
 template<class T,class tag_thread_traits>
 class t_handle_counter LCPI_CPP_CFG__CLASS__FINAL
@@ -107,6 +114,8 @@ class t_handle_counter LCPI_CPP_CFG__CLASS__FINAL
  counter_type GetCntRef()const
   {return m_cntRef;}
 };//class t_handle_counter
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_auto_switch
@@ -280,11 +289,11 @@ class t_mt_data_holder_rw LCPI_CPP_CFG__CLASS__FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //template class t_counter_inc_dec
 
-template<class ThreadTraits>
+template<typename TValue,class ThreadTraits>
 class t_counter_inc_dec LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  using self_type=t_counter_inc_dec<ThreadTraits>;
+  using self_type=t_counter_inc_dec;
 
   t_counter_inc_dec(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
@@ -292,7 +301,7 @@ class t_counter_inc_dec LCPI_CPP_CFG__CLASS__FINAL
  public: //typedefs ------------------------------------------------------
   using thread_traits=ThreadTraits;
 
-  using value_type=typename thread_traits::int_type;
+  using value_type=TValue;
 
  public:
   /// <summary>

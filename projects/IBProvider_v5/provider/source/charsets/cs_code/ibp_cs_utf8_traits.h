@@ -19,10 +19,10 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Алгоритмы преобразования кодовой страницы UTF8
 /// </summary>
-class t_ibp_cs_utf8_traits
+class t_ibp_cs_utf8_traits LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_cs_utf8_traits             self_type;
+  using self_type=t_ibp_cs_utf8_traits;
 
  public: //consts --------------------------------------------------------
   ///минимальный размер символа кодовой страницы
@@ -32,7 +32,7 @@ class t_ibp_cs_utf8_traits
   static const size_t c_char_size__max=4*sizeof(char);
 
   ///максимальное количество UCS2 (wchar_t) символов для представления одного UNICODE символа
-  static const size_t c_max_ucs2_in_one_char=2;
+  static const size_t c_max_ucs2_in_one_symbol=2;
 
  public:
   t_ibp_cs_utf8_traits(){;}

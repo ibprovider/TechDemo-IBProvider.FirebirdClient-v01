@@ -7,6 +7,7 @@
 #include <structure/error/t_err_record.h>
 #include <structure/t_str_args.h>
 #include <structure/t_smart_vector.h>
+#include <structure/t_smart_object.h>
 
 #include <type_traits>
 

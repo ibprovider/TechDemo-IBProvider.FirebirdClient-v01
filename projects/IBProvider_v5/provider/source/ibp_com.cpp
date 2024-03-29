@@ -307,7 +307,7 @@ void IBP_ComModule::IncrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
+ const TData::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
 
  lib::structure::mt::interlocked::increment(&sm_pData->m_module_lock_count);
 }//IncrementModuleLockCount
@@ -317,7 +317,7 @@ void IBP_ComModule::DecrementModuleLockCount()
 {
  assert(sm_pData!=nullptr);
 
- const thread_traits::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
+ const TData::lock_guard_type lock(sm_pData->m_module_lock_count_guard);
 
  assert(sm_pData->m_module_lock_count>0);
 

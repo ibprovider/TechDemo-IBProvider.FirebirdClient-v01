@@ -45,7 +45,8 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i4::ExtractValue
 
  assert(tmpValue.vt==VT_I4);
 
- const_cast<value_type&>(tmpValue.lVal); //compiler-time verification
+ LCPI__assert_s(sizeof(tmpValue.lVal)==sizeof(value_type));
+ LCPI__assert_s(sizeof(tmpValue.lVal)==4);
 
  if(std::find(m_first,m_last,tmpValue.lVal)==m_last)
   return false;

@@ -1109,6 +1109,15 @@
     <Filter Include="IBP\source\external\zlib\builtin\v001_002_011\_headers">
       <UniqueIdentifier>{281c35ab-77a9-42ca-8aa8-e46aa73562bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib\structure\test_obj\fw">
+      <UniqueIdentifier>{837133d1-40d2-43b0-a4f3-c381ccdf4ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\structure\test_obj\fw\set01">
+      <UniqueIdentifier>{300c1610-c5c9-491d-bad7-ad987dd5ba2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib\structure\test_obj\fw\set01\_headers">
+      <UniqueIdentifier>{14728e4d-0aa2-4298-89cc-1f690427e730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1180,9 +1189,6 @@
     <ClCompile Include="..\..\source\test_services.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\test_base.cc">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\tests.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -1238,9 +1244,6 @@
       <Filter>IBP\source\db_obj\isc\isc_base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\test_func.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_log_stream.cc">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\test_check_errors.cpp">
@@ -1651,38 +1654,14 @@
     <ClCompile Include="..\..\source\test_func_v2.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\push_test__exec_mt.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_state2.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_state2_storage.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_perf_timers.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp">
       <Filter>lib\win32lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_summary_builder.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\test_tracer_utils.cc">
-      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_time.cpp">
       <Filter>lib\win32lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp">
       <Filter>lib\structure\test_obj</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cc">
-      <Filter>lib\win32lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cpp">
-      <Filter>lib\win32lib</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\push_test__filter.cpp">
       <Filter>source</Filter>
@@ -3835,6 +3814,39 @@
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__thread_api.cpp">
       <Filter>IBP\source\os\win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os-atomic_functions.cpp">
+      <Filter>cpp\infrastructure\lcpi\os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__sys_log.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__base.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__run_context.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__perf_timers.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__exec_mt.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.cc">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.cpp">
+      <Filter>lib\structure\test_obj\fw\set01</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -3944,9 +3956,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\lib\structure\t_smart_object.h">
       <Filter>lib\structure\_root\headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\test_log_stream.h">
-      <Filter>source\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\test_check_errors.h">
       <Filter>source\_headers</Filter>
@@ -4494,23 +4503,8 @@
     <ClInclude Include="..\..\source\test_func_v2.h">
       <Filter>source\_headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\push_test__exec_mt.h">
-      <Filter>source\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\test_state2.h">
-      <Filter>source\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\test_state2_storage.h">
-      <Filter>source\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\test_perf_timers.h">
-      <Filter>source\_headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_mt.h">
       <Filter>lib\win32lib\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\test_summary_builder.h">
-      <Filter>source\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\test_tracer_utils.h">
       <Filter>source\_headers</Filter>
@@ -4520,9 +4514,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.h">
       <Filter>lib\structure\test_obj\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.h">
-      <Filter>lib\win32lib\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\push_test__filter.h">
       <Filter>source\_headers</Filter>
@@ -6090,6 +6081,36 @@
     </ClInclude>
     <ClInclude Include="..\..\source\tests\work\WORK_Test_023__CloseBlob__v0.h">
       <Filter>source\tests\work\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__sys_log.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__tracer_utils.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__base.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__run_context.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__perf_timers.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__exec_mt.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.h">
+      <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,12 +12,14 @@ template<class tag_base_smem_obj>
 t_basic_thread_controller<tag_base_smem_obj>::t_basic_thread_controller()
  :m_result_exc(nullptr)
  ,m_result_normal_exit(true)
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
 t_basic_thread_controller<tag_base_smem_obj>::~t_basic_thread_controller()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>

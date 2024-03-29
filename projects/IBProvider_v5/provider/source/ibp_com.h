@@ -7,7 +7,6 @@
 #ifndef _ibp_com_H_
 #define _ibp_com_H_
 
-#include <structure/t_threads.h>
 #include <structure/t_char_base.h>
 #include <string>
 
@@ -32,8 +31,6 @@ class IBP_ComModule LCPI_CPP_CFG__CLASS__FINAL
   using self_type=IBP_ComModule;
 
  public:  //typedefs -----------------------------------------------------
-  using thread_traits=structure::t_multi_thread_traits;
-
   using string_type=structure::t_string;
 
   using char_type=structure::t_char;

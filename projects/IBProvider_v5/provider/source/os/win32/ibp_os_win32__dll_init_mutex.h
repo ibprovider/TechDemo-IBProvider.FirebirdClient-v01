@@ -11,6 +11,9 @@
 
 #include <structure/t_closure.h>
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_os_win32
@@ -44,14 +47,16 @@ class t_ibp_os_win32__dll_init_mutex LCPI_CPP_CFG__CLASS__FINAL
   void do_uninitialize(op_func_type op_func);
 
  private:
-  typedef structure::t_multi_thread_traits                 thread_traits;
-  typedef thread_traits::guard_type                        guard_type;
-  typedef thread_traits::lock_guard_type                   lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   guard_type m_InitGuard;
 
-  unsigned __int64 m_cInits;
+  std::uint64_t m_cInits;
 };//class t_ibp_os_win32__dll_init_mutex
 
 ////////////////////////////////////////////////////////////////////////////////

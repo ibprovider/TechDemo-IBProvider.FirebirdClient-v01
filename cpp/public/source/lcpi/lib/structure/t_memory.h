@@ -21,14 +21,14 @@ namespace lcpi{namespace lib{namespace structure{
 //declare wrap allocator
 #define LCPI_CPP_LIB__DECLARE_WRAP_ALLOCATOR(AllocatorClassName)              \
                                                                               \
-class AllocatorClassName##_Adapter                                            \
+class AllocatorClassName##_Adapter LCPI_CPP_CFG__CLASS__FINAL                 \
 {                                                                             \
  public:                                                                      \
-  typedef size_t                           size_type;                         \
-  typedef void*                            pointer;                           \
+  using size_type=size_t;                                                     \
+  using pointer=void*;                                                        \
                                                                               \
-  typedef pointer (*AllocFunc)(size_type);                                    \
-  typedef void    (*FreeFunc)(pointer pv);                                    \
+  using AllocFunc=pointer(*)(size_type);                                      \
+  using FreeFunc =void(*)(pointer pv);                                        \
                                                                               \
  public:                                                                      \
   static void SetMemoryManager(AllocFunc const pfAllocMemory,                 \
@@ -71,8 +71,8 @@ class AllocatorClassName##_Adapter                                            \
   static FreeFunc  sm_pfFreeMemory;                                           \
 };                                                                            \
                                                                               \
-typedef ::lcpi::lib::structure::t_raw_allocator<AllocatorClassName##_Adapter> \
-  AllocatorClassName;
+using AllocatorClassName                                                      \
+ =::lcpi::lib::structure::t_raw_allocator<AllocatorClassName##_Adapter>;
 
 //------------------------------------------------------------------------
 //wrap allocator implementation
@@ -101,7 +101,26 @@ class t_allocator_interface;
 
 class t_void_allocator_adapter;
 
-typedef t_raw_allocator<t_void_allocator_adapter> t_void_allocator;
+using t_void_allocator
+ =t_raw_allocator<t_void_allocator_adapter>;
+
+namespace detail{
+////////////////////////////////////////////////////////////////////////////////
+
+template<class RAW,class U>
+struct t_raw_allocator_rebind
+{
+ using other=structure::t_allocator_interface<RAW,U>;
+};//struct t_raw_allocator_rebind<RAW,U>
+
+template<class RAW>
+struct t_raw_allocator_rebind<RAW,void>
+{
+ using other=RAW;
+};//struct t_raw_allocator_rebind<RAW,void>
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace detail
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_raw_allocator
@@ -114,7 +133,7 @@ template<class RawMemManager>
 class t_raw_allocator
 {
  private:
-  typedef t_raw_allocator<RawMemManager>    self_type;
+  using self_type=t_raw_allocator<RawMemManager>;
 
  public: //typedefs
   typedef RawMemManager                     adapter;
@@ -125,17 +144,17 @@ class t_raw_allocator
   typedef const void*                       const_pointer;
   typedef void                              value_type;
 
+  //
+  // [2024-03-18]
+  //
+  //  VS2019 has a problem with "using rebind=detail::t_raw_allocator_rebind<self_type,U>"
+  //
+  //  This compiler can't use t_raw_allocator with t_stl_map container.
+  //
   template<class U>
-  struct rebind
+  class rebind:public detail::t_raw_allocator_rebind<self_type,U>
   {
-   typedef structure::t_allocator_interface<self_type,U> other;
-  };
-
-  template<>
-  struct rebind<void>
-  {
-   typedef self_type                                     other;
-  };
+  };//class rebind
 
  public:
   static self_type instance;
@@ -171,7 +190,7 @@ template<class T>
 class t_allocator_interface__base
 {
  public:
-  typedef T                                            value_type;
+  using value_type=T;
 };//class t_allocator_interface__base
 
 //------------------------------------------------------------------------
@@ -179,27 +198,30 @@ template<class T>
 class t_allocator_interface__base<const T>
 {
  public:
-  typedef T                                            value_type;
+  using value_type=T;
 };//class t_allocator_interface__base - const
 
 //------------------------------------------------------------------------
-//trap for incorrect use of t_allocator_interface
+//trap for incorrect usage of t_allocator_interface
 
 template<>
 class t_allocator_interface__base<void>;
 
 //------------------------------------------------------------------------
 template<class Allocator,class T>
-class t_allocator_interface:private t_allocator_interface__base<T>
+class t_allocator_interface
+ :private t_allocator_interface__base<T>
 {
  private:
-  typedef t_allocator_interface<Allocator,T>               self_type;
-  typedef t_allocator_interface__base<T>                   base_type;
+  using self_type=t_allocator_interface<Allocator,T>;
+  using base_type=t_allocator_interface__base<T>;
 
  public: //typedefs ------------------------------------------------------
-  typedef typename Allocator::template rebind<void>::other raw_allocator_type;
+  using raw_allocator_type
+   =typename Allocator::template rebind<void>::other;
 
-  typedef typename base_type::value_type                   value_type;
+  using value_type
+   =typename base_type::value_type;
 
   typedef value_type*                                      pointer;
   typedef const value_type*                                const_pointer;
@@ -211,10 +233,10 @@ class t_allocator_interface:private t_allocator_interface__base<T>
   typedef const void*                                      const_void_pointer;
 
   template<class U>
-  struct rebind
+  struct rebind LCPI_CPP_CFG__CLASS__FINAL
   {
-   typedef typename Allocator::template rebind<U>::other   other;
-  };
+   using other=typename Allocator::template rebind<U>::other;
+  };//struct rebind
 
  public:
   static self_type instance;
@@ -243,11 +265,11 @@ class t_allocator_interface:private t_allocator_interface__base<T>
   }
 
  public:
-  typename pointer address(reference x)const;
+  pointer address(reference x)const;
 
-  typename size_type max_size()const;
+  size_type max_size()const;
 
-  typename pointer allocate(size_type n,pointer p=nullptr);
+  pointer allocate(size_type n,pointer p=nullptr);
 
   void deallocate(pointer p,size_type n);
 
@@ -263,7 +285,7 @@ class t_allocator_interface:private t_allocator_interface__base<T>
 ////////////////////////////////////////////////////////////////////////////////
 //class t_void_allocator
 
-class t_void_allocator_adapter
+class t_void_allocator_adapter LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static void* raw_allocate(size_t n);

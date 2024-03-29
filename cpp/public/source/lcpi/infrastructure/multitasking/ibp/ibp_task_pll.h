@@ -13,7 +13,7 @@ namespace lcpi{namespace infrastructure{namespace multitasking{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_pll__controller
 
-class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) ibp_task_pll__controller
+class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE ibp_task_pll__controller
  :public core::structure::t_smart_interface
 {
  private:
@@ -77,7 +77,7 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_pll__manager
 
-class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) ibp_task_pll__manager
+class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE ibp_task_pll__manager
  :public core::structure::t_smart_interface
 {
  private:
@@ -109,7 +109,7 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) 
 /// <summary>
 ///  Интерфейс доступа к менеджеру задач.
 /// </summary>
-class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) ibp_task_pll__manager_connector2
+class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE ibp_task_pll__manager_connector2
  :public core::structure::t_smart_interface
 {
  public:

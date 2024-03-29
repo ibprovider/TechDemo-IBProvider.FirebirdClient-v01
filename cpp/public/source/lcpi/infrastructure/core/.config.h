@@ -4,6 +4,8 @@
 #ifndef _lcpi_infrastructre_core__config_H_
 #define _lcpi_infrastructre_core__config_H_
 
+#include <lcpi/.config.h>
+
 ///////////////////////////////////////////////////////////////////////////////
 
 #define LCPI_INFRASTRUCTURE_CORE__BUILD_MODE__NONE                  0

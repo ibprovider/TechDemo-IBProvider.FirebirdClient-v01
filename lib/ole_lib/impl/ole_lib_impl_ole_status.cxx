@@ -43,7 +43,7 @@ HRESULT TOleStatus::set_disp_error(HRESULT hr,bool use_error_info,const std::str
  else
  if(use_error_info)
  {
-  DECLARE_IPTR_TYPE(IErrorInfo);
+  OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
 
   IErrorInfoPtr spErrorInfo;
 

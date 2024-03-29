@@ -122,9 +122,9 @@ void TestsFor__P13_Legacy_Auth_003__connect_db::create(TTSO_PushTest*      const
 }//create
 
 //test interface ---------------------------------------------------------
-std::string TestsFor__P13_Legacy_Auth_003__connect_db::get_id()const
+const char* TestsFor__P13_Legacy_Auth_003__connect_db::get_id()const
 {
- return m_testID;
+ return m_testID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

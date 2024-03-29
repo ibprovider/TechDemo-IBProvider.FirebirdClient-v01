@@ -209,6 +209,21 @@
 # error LCPI_CPP_CFG__DECLSPEC__NOVTABLE is not defined
 #endif
 
+//------------------------------------------------------------------------
+#ifndef LCPI_CPP_CFG__CAN_USE__signed_long
+# error LCPI_CPP_CFG__CAN_USE__signed_long is not defined
+#endif
+
+//------------------------------------------------------------------------
+#ifndef LCPI_CPP_CFG__CAN_USE__unsigned_long
+# error LCPI_CPP_CFG__CAN_USE__unsigned_long is not defined
+#endif
+
+//------------------------------------------------------------------------
+#ifndef LCPI_CPP_CFG__CAN_USE__wchar_t
+# error LCPI_CPP_CFG__CAN_USE__wchar_t is not defined
+#endif
+
 ////////////////////////////////////////////////////////////////////////////////
 //OLD Names [deprecated]
 

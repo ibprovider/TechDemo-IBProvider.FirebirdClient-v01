@@ -20,6 +20,9 @@
 
 #include <lcpi/lib/structure/error/t_err_text.h>
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_err
@@ -98,9 +101,11 @@ class IBP_BindErrorData LCPI_CPP_CFG__CLASS__FINAL
   virtual self_type& add_arg(const base_variant_type& x) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_multi_thread_traits       thread_traits;
-  typedef thread_traits::guard_type              guard_type;
-  typedef thread_traits::lock_guard_type         lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   mutable guard_type           m_guard;

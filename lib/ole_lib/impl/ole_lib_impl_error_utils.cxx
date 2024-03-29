@@ -34,7 +34,7 @@ HRESULT BuildExcepInfo(HRESULT hr,EXCEPINFO* const pExcepInfo)
  if(SUCCEEDED(hr))
   return hr;
 
- DECLARE_IPTR_TYPE(IErrorInfo);
+ OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
 
  try
  {

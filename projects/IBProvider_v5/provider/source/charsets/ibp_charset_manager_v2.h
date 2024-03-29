@@ -36,14 +36,14 @@ const t_ibp_char* const* ibp_get_charset_std_collations(const t_ibp_str_box& cse
 /// <summary>
 ///  Реализация менеджера кодовых страниц
 /// </summary>
-class t_ibp_charset_manager_v2
+class t_ibp_charset_manager_v2 LCPI_CPP_CFG__CLASS__FINAL
  :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(db_obj::t_db_charset_manager_v2)
 {
  private:
-  typedef t_ibp_charset_manager_v2                        self_type;
+  using self_type=t_ibp_charset_manager_v2;
 
-  t_ibp_charset_manager_v2(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_charset_manager_v2(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   /// <summary>
   ///  Деструктор
@@ -96,9 +96,11 @@ class t_ibp_charset_manager_v2
   virtual db_obj::t_db_charset_const_ptr get_charset(db_obj::db_cs_id cs_id) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_multi_thread_traits               thread_traits;
-  typedef thread_traits::guard_type                      guard_type;
-  typedef thread_traits::lock_guard_type                 lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   typedef structure::t_tree_avl<db_obj::t_db_charset_const_ptr,

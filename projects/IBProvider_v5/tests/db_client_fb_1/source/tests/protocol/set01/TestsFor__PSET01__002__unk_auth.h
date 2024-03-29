@@ -31,7 +31,7 @@ class TestsFor__PSET01__002__unk_auth
                      TTSO_GlobalContext* pParams);
 
   //Test interface -------------------------------------------------------
-  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 

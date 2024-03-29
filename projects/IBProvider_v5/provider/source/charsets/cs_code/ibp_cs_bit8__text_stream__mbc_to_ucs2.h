@@ -9,6 +9,9 @@
 
 #include "source/charsets/cs_code/ibp_cs_bit8.h"
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_charset
@@ -61,9 +64,11 @@ class t_ibp_cs_bit8::tag_text_stream__mbc_to_ucs2 LCPI_CPP_CFG__CLASS__FINAL
              size_type*                      cb_readed) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private: //internal typedefs --------------------------------------------
-  typedef structure::t_multi_thread_traits               thread_traits;
-  typedef thread_traits::guard_type                      guard_type;
-  typedef thread_traits::lock_guard_type                 lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   ///MT-защита объекта

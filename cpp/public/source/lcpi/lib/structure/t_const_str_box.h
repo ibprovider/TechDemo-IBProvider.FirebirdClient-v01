@@ -22,81 +22,83 @@ template<typename charT>
 class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_basic_const_str_box<charT>                      self_type;
+  using self_type=t_basic_const_str_box<charT>;
 
  public: //typedefs ------------------------------------------------------
-  typedef charT                                             char_type;
-  typedef size_t                                            size_type;
+  using char_type = charT;
 
-  typedef ptrdiff_t                                         difference_type;
+  using size_type = size_t;
 
-  typedef char_type                                         value_type;
+  using difference_type = ptrdiff_t;
 
-  typedef const value_type*                                 pointer;
-  typedef const value_type&                                 reference;
+  using value_type = char_type;
 
-  typedef structure::t_not_null_ptr<const value_type>       pointer_nn;
+  using pointer = const value_type*;
+
+  using reference = const value_type&;
+
+  using pointer_nn = structure::t_not_null_ptr<const value_type>;
 
  #ifndef NDEBUG
-  typedef structure::t_vector_debug_iterator<const self_type> iterator;
+  using iterator = structure::t_vector_debug_iterator<const self_type>;
  #else
-  typedef const value_type*                                   iterator;
+  using iterator = const value_type*;
  #endif
 
-  typedef std::basic_string<charT>                         string_type;
+  using string_type = std::basic_string<charT>;
 
  public:
-  ///Указатель на массив символов
-  pointer      ptr;
+  /// The pointer to array with chars
+  pointer ptr;
 
-  ///The count of symbols in our string
-  size_type    len;
+  /// The count of symbols in our string
+  size_type len;
 
  public:
   /// <summary>
-  ///  Конструктор по-умолчанию
+  ///  Default constructor
   /// </summary>
   t_basic_const_str_box();
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] x
   t_basic_const_str_box(std::nullptr_t x);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] str
   t_basic_const_str_box(const string_type& str);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] range
   t_basic_const_str_box(const t_first_last<iterator>& range);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] first
   //! \param[in] last
   t_basic_const_str_box(iterator first,iterator last);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] _ptr
   t_basic_const_str_box(pointer _ptr);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] _ptr_nn
   t_basic_const_str_box(pointer_nn _ptr_nn);
 
   /// <summary>
-  ///  Конструктор инициализации
+  ///  Initialization constructor
   /// </summary>
   //! \param[in] _ptr
   //! \param[in] _len
@@ -105,7 +107,7 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
   pointer data()const;
 
   /// <summary>
-  ///  Тестирование отсутствия символов
+  ///  Testing an empty data
   /// </summary>
   bool empty()const;
 
@@ -115,12 +117,12 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
   size_t size()const;
 
   /// <summary>
-  ///  Получение длины в байтах
+  ///  Gettting a length in bytes
   /// </summary>
   size_type byte_count()const;
 
   /// <summary>
-  ///  Получение данных в виде строки
+  ///  Gettiing a data as std::basic_string object
   /// </summary>
   string_type make_str()const;
 
@@ -146,7 +148,7 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   /// <summary>
-  ///  Сравнение содержимого контейнеров.
+  ///  Compaing object datas
   /// </summary>
   //! \param[in] x
   bool equal(const self_type& x)const;
@@ -157,9 +159,15 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef t_basic_const_str_box<char>    t_const_str_box;
+using t_const_str_box
+ =t_basic_const_str_box<char>;
 
-typedef t_basic_const_str_box<wchar_t> t_const_wstr_box;
+#if(LCPI_CPP_CFG__CAN_USE__wchar_t!=0)
+
+using t_const_wstr_box
+ =t_basic_const_str_box<wchar_t> ;
+
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 

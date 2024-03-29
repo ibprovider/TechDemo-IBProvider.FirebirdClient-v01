@@ -14,7 +14,7 @@
 #include "source/db_obj/db_datatypes.h"
 #include "source/db_obj/db_memory.h"
 
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 #include <lcpi/lib/structure/stl/t_stl_vector.h>
 #include <string>
 #include <cstdint>
@@ -33,21 +33,27 @@ namespace lcpi{namespace ibp{namespace db_obj{
 //Тип, используемый для определения имен объектов базы данных
 
 /// Тип для определения названия объекта БД
-typedef std::wstring                                     t_db_object_name;
+using t_db_object_name
+ =std::wstring;
 
 /// Тип для определения названия объекта БД с NULL-состоянием
-typedef structure::t_value_with_null<t_db_object_name>   t_db_object_name_n;
+using t_db_object_name_n
+ =lib::structure::t_value_with_null<t_db_object_name>;
 
 /// Тип для представления строки
-typedef std::wstring                                     t_db_string;
+using t_db_string
+ =std::wstring;
 
 /// Тип для представления строки с NULL-состоянием
-typedef structure::t_value_with_null<t_db_string>        t_db_string_n;
+using t_db_string_n
+ =lib::structure::t_value_with_null<t_db_string>;
 
 /// Тип для представления символа
-typedef t_db_string::value_type                          t_db_char;
+using t_db_char
+ =t_db_string::value_type;
 
-typedef std::uint32_t                                    t_db_utf32;
+using t_db_utf32
+ =std::uint32_t;
 
 /// Контейнер для хранения имен объектов БД
 using t_db_object_name_array

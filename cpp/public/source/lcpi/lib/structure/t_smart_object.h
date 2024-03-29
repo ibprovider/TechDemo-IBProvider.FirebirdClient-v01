@@ -131,7 +131,7 @@ class t_basic_smart_interface_impl__dynamic:public TSmartInterface
 /// <summary>
 ///  Base class of nondelegating smart interface.
 /// </summary>
-class __declspec(novtable) t_nondelegating_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_nondelegating_smart_interface
 {
  public:
   virtual void nondelegating__add_ref()=0;

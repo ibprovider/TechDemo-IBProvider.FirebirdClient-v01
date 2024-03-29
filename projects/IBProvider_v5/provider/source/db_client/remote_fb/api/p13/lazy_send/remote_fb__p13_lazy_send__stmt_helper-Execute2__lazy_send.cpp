@@ -201,7 +201,7 @@ protocol::P_OBJCT
 #ifdef NDEBUG
  protocol::P_OBJCT TrID=0;
 #else
- structure::t_value_with_null<protocol::P_OBJCT> TrID;
+ lib::structure::t_value_with_null<protocol::P_OBJCT> TrID;
 #endif
 
  //флаг активности сторожа сбоев порта

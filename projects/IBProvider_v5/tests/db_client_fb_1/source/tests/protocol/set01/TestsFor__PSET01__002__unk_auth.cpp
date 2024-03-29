@@ -80,9 +80,9 @@ void TestsFor__PSET01__002__unk_auth::create(TTSO_PushTest*      const pTestPush
 }//create
 
 //------------------------------------------------------------------------
-std::string TestsFor__PSET01__002__unk_auth::get_id()const
+const char* TestsFor__PSET01__002__unk_auth::get_id()const
 {
- return m_testID;
+ return m_testID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

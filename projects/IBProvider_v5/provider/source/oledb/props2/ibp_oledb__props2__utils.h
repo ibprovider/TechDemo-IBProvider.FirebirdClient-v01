@@ -73,7 +73,7 @@ class IBP_OLEDB_Props2__Utils
   //! \param[in] rGuid
   //! \return
   //!  true, если набор определяет свойства инициализации источника данных
-  static bool TestDbPropSetGuid__IsDbInitPropSet(REFGUID rGuid);  
+  static bool TestDbPropSetGuid__IsDbInitPropSet(REFGUID rGuid);
 };//class IBP_OLEDB_Props2__Utils
 
 ////////////////////////////////////////////////////////////////////////////////

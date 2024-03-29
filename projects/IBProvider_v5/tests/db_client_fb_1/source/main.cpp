@@ -3,23 +3,31 @@
 #pragma hdrstop
 
 #include "source/tests.h"
-#include "source/test_log_stream.h"
 #include "source/push_test__filter.h"
-#include "source/push_test__exec_mt.h"
-#include "source/test_summary_builder.h"
 
 #include "source/ibp_global_objects_data__dlls.h"
 
-#include <ole_lib/oledb/oledb_memory.h>
-
-#include <win32lib/win32_error.h>
-
 #include <structure/test_obj/t_tso_user.h>
+#include <structure/test_obj/fw/set01/test_fw_set01__exec_mt.h>
+#include <structure/test_obj/fw/set01/test_fw_set01__summary_builder.h>
+#include <structure/test_obj/fw/set01/test_fw_set01__log_stream.h>
 
+#include <thread>
 #include <conio.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 using namespace lcpi::ibp_tests;
+////////////////////////////////////////////////////////////////////////////////
+
+using TTSO_PushTest__ExecutorMT
+ =structure::test_fw::set01::TestFW__ExecutorMT;
+
+using TTSO_SummaryBuilder
+ =structure::test_fw::set01::TestFW__SummaryBuilder;
+
+using TSYS_LogStream
+ =structure::test_fw::set01::TestFW__SysLogStream;
+
 ////////////////////////////////////////////////////////////////////////////////
 //Print Help
 
@@ -89,16 +97,13 @@ static void PrintHelp()
 ////////////////////////////////////////////////////////////////////////////////
 //class TTestListProcessor
 
-class TTestListProcessor
+class TTestListProcessor LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TTestListProcessor                     self_type;
+  using self_type=TTestListProcessor;
 
-  TTestListProcessor(const self_type&);
-  self_type& operator = (const self_type&);
-
- public:
-  typedef TTSO_PushTest__Filter::test_count_type test_count_type;
+  TTestListProcessor(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TTestListProcessor(TTSO_PushTest*      const pTestPush,
@@ -196,7 +201,7 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  spRootLog->print_ts=true;
 
  //-----------------------------------------------------------------------
- TTSO_Tracer RootTracer(spRootLog);
+ TSYS_Tracer RootTracer(spRootLog);
 
  if(pSysCL->args().has(c_prog_arg__stop))
  {
@@ -211,12 +216,33 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
    (lcpi::lib::structure::not_null_ptr
      (new TTSO_GlobalContext(pSysCL)));
 
+ //-----------------------------------------------------------------------
+ size_t thread_count=0;
+
+ if(const auto p=spParams->args().get(c_prog_arg__thread_count,false))
+ {
+  std::string tmp;
+
+  structure::tstr_to_tstr(&tmp,p->m_value);
+
+  thread_count=strtoul(tmp.c_str(),NULL,0);
+ }
+ else
+ {
+  thread_count=std::thread::hardware_concurrency();
+ }//else
+
+ if(thread_count==0)
+  thread_count=1;
+
+ //-----------------------------------------------------------------------
  const TTSO_PushTest__ExecutorMT::self_ptr
   spExecutor
-   (TTSO_PushTest__ExecutorMT::create
-     (spParams,
-      pSysCL->BaseLogFilePath(),
-      spRootLog));
+   (lcpi::lib::structure::not_null_ptr
+     (new TTSO_PushTest__ExecutorMT
+       (pSysCL->BaseLogFilePath(),
+        spRootLog,
+        thread_count)));
 
  //-----------------------------------------------------------------------
  RootTracer<<L"CommandLine:\n\n"
@@ -275,7 +301,7 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  //----
  RootTracer(L"")<<send;
 
- spExecutor->build_summary();
+ const auto summary_info=spExecutor->build_summary2();
 
  //-----------------------------------------
  {
@@ -288,8 +314,8 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
   TTSO_SummaryBuilder::print_total_ex
    (RootTracer,
     L"",
-    spRootLog->get_total_error_count(),
-    spRootLog->get_total_warning_count(),
+    summary_info.nTotalErrors,
+    summary_info.nTotalWarnings,
     spRootLog->get_pass_count(),
     spRootLog->get_total_test_count());
  }//if PrintSummaryErrors

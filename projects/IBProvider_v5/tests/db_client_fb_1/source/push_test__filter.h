@@ -10,21 +10,20 @@ namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest__Filter
 
-class TTSO_PushTest__Filter
+class TTSO_PushTest__Filter LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__dynamic<TTSO_PushTest,TTSO_MemoryAllocator>
 {
  private:
-  typedef TTSO_PushTest__Filter                        self_type;
+  using self_type=TTSO_PushTest__Filter;
 
-  TTSO_PushTest__Filter(const self_type&);
-  self_type& operator = (const self_type&);
+  TTSO_PushTest__Filter(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef structure::t_smart_object_ptr<self_type>     self_ptr;
+  using self_ptr
+   =lib::structure::t_smart_object_ptr<self_type>;
 
   class tag_cancel_exc;
-
-  typedef unsigned __int64                             test_count_type;
 
  public:
   TTSO_PushTest__Filter(const TTSO_GlobalContext* pSD,
@@ -34,7 +33,7 @@ class TTSO_PushTest__Filter
   virtual ~TTSO_PushTest__Filter();
 
   //TTSO_PushTest interface ----------------------------------------------
-  virtual void PushTest(const TTSO_Test* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual void PushTest(const TTSO_Test_base* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   void test_cancel_signal();
@@ -53,7 +52,8 @@ class TTSO_PushTest__Filter
 ////////////////////////////////////////////////////////////////////////////////
 //class TTSO_PushTest__Filter::tag_cancel_exc
 
-class TTSO_PushTest__Filter::tag_cancel_exc:public std::exception
+class TTSO_PushTest__Filter::tag_cancel_exc LCPI_CPP_CFG__CLASS__FINAL
+ :public std::exception
 {
  public:
   tag_cancel_exc(){;}

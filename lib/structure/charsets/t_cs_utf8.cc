@@ -27,9 +27,9 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
                                        /*in-out*/size_t&       sz_utf8,
                                        /*out*/t_cs_cvt_result* cvt_result)
 {
- assert(cvt_result!=NULL);
+ assert(cvt_result!=nullptr);
 
- assert(utf8!=NULL || sz_utf8==0);
+ assert(utf8!=nullptr || sz_utf8==0);
 
  CHECK_WRITE_TYPED_PTR(utf8,sz_utf8);
 
@@ -69,7 +69,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
   //------------ install OUT parameters
   sz_utf8=1;                                // <---!!!
 
-  if(utf8!=NULL)
+  if(utf8!=nullptr)
   {
    if(original_sz_utf8<1)                   // <---!!!
    {
@@ -79,7 +79,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
    }//if
 
    utf8[0]=static_cast<UTF8>(wc);
-  }//if utf8!=NULL
+  }//if utf8!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -102,7 +102,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
   //------------ install OUT parameters
   sz_utf8=2;                                // <---!!!
 
-  if(utf8!=NULL)
+  if(utf8!=nullptr)
   {
    if(original_sz_utf8<2)                   // <---!!!
    {
@@ -116,7 +116,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
    wc>>=6;
 
    utf8[0]=static_cast<traits::UTF8>(wc | 0xC0);
-  }//if utf8!=NULL
+  }//if utf8!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -147,7 +147,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
    //------------ install OUT parameters
    sz_utf8=3;                               // <---!!!
 
-   if(utf8!=NULL)
+   if(utf8!=nullptr)
    {
     if(original_sz_utf8<3)                  // <---!!!
     {
@@ -165,7 +165,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
     wc>>=6;
 
     utf8[0]=static_cast<UTF8>(wc | 0xE0);
-   }//if utf8!=NULL
+   }//if utf8!=nullptr
 
    //---------------------------------------
    (*cvt_result)=cs_cvt_result__ok;
@@ -228,7 +228,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
   //------------ install OUT parameters
   sz_utf8=4;                                // <---!!!
 
-  if(utf8!=NULL)
+  if(utf8!=nullptr)
   {
    if(original_sz_utf8<4)                   // <---!!!
    {
@@ -250,7 +250,7 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
    wc>>=6;
 
    utf8[0]=static_cast<UTF8>(wc | 0xF0);
-  }//if utf8!=NULL
+  }//if utf8!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -278,11 +278,12 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator              source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8(source_beg,
-                              source_end,
-                              reinterpret_cast<traits::UTF8*>(utf8),
-                              sz_utf8,
-                              cvt_result);
+ return __single_ucs2_to_utf8
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF8*>(utf8),
+          sz_utf8,
+          cvt_result);
 }//single_ucs2_to_utf8 - unsigned char
 
 //------------------------------------------------------------------------
@@ -296,11 +297,12 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator              source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8(source_beg,
-                              source_end,
-                              reinterpret_cast<traits::UTF8*>(utf8),
-                              sz_utf8,
-                              cvt_result);
+ return __single_ucs2_to_utf8
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF8*>(utf8),
+          sz_utf8,
+          cvt_result);
 }//single_ucs2_to_utf8 - signed char
 
 //------------------------------------------------------------------------
@@ -314,11 +316,12 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator        source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8(source_beg,
-                              source_end,
-                              reinterpret_cast<traits::UTF8*>(utf8),
-                              sz_utf8,
-                              cvt_result);
+ return __single_ucs2_to_utf8
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF8*>(utf8),
+          sz_utf8,
+          cvt_result);
 }//single_ucs2_to_utf8 - char
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -352,7 +355,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
                                      /*out*/t_cs_cvt_result* const cvt_result)
 {
  assert(cvt_result);
- assert(ucs2!=NULL || sz_ucs2==0);
+ assert(ucs2!=nullptr || sz_ucs2==0);
 
  CHECK_WRITE_TYPED_PTR(ucs2,sz_ucs2);
 
@@ -387,7 +390,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
   //------------ install OUT parameters
   sz_ucs2=1;
 
-  if(ucs2!=NULL)
+  if(ucs2!=nullptr)
   {
    //буфер получателя меньше допустимого?
    if(original_sz_ucs2<1)
@@ -434,7 +437,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
   //------------ install OUT parameters
   sz_ucs2=1;
 
-  if(ucs2!=NULL)
+  if(ucs2!=nullptr)
   {
    //буфер получателя меньше допустимого?
    if(original_sz_ucs2<1)
@@ -447,7 +450,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
    //возвращаем сформированное UCS значение
 
    (*ucs2)=l;
-  }//if ucs2!=NULL
+  }//if ucs2!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -492,7 +495,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
   //------------ install OUT parameters
   sz_ucs2=1;
 
-  if(ucs2!=NULL)
+  if(ucs2!=nullptr)
   {
    //буфер получателя меньше допустимого?
    if(original_sz_ucs2<1)
@@ -505,7 +508,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
    //возвращаем сформированное UCS значение
 
    (*ucs2)=l;
-  }//if ucs2!=NULL
+  }//if ucs2!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -551,7 +554,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
   //------------ install OUT parameters
   sz_ucs2=2;
 
-  if(ucs2!=NULL)
+  if(ucs2!=nullptr)
   {
    //буфер получателя меньше допустимого?
    if(original_sz_ucs2<2)
@@ -575,7 +578,7 @@ TForwardIterator single_utf8_to_ucs2(TForwardIterator              source_beg,
  
    assert(ucs2[1]>=traits::c_SURROGATE_LOW_START);
    assert(ucs2[1]<=traits::c_SURROGATE_LOW_END);
-  }//if ucs2!=NULL
+  }//if ucs2!=nullptr
 
   //----------------------------------------
   (*cvt_result)=cs_cvt_result__ok;
@@ -613,11 +616,13 @@ TForwardIterator ucs2_to_utf8(TForwardIterator              source_beg,
 
  while(source_beg!=source_end)
  {
-  source_beg=__single_ucs2_to_utf8(source_beg,
-                                   source_end,
-                                   utf8_buffer,
-                                   sz_utf8_buffer=_DIM_(utf8_buffer),
-                                   cvt_result);
+  source_beg
+   =__single_ucs2_to_utf8
+     (source_beg,
+      source_end,
+      utf8_buffer,
+      sz_utf8_buffer=_DIM_(utf8_buffer),
+      cvt_result);
 
   assert((*cvt_result)!=cs_cvt_result__small_output);
 
@@ -679,11 +684,13 @@ TForwardIterator utf8_to_ucs2(TForwardIterator              source_beg,
 
  while(source_beg!=source_end)
  {
-  source_beg=single_utf8_to_ucs2(source_beg,
-                                 source_end,
-                                 ucs2_buffer,
-                                 sz_ucs2_buffer=_DIM_(ucs2_buffer),
-                                 cvt_result);
+  source_beg
+   =single_utf8_to_ucs2
+     (source_beg,
+      source_end,
+      ucs2_buffer,
+      sz_ucs2_buffer=_DIM_(ucs2_buffer),
+      cvt_result);
 
   if((*cvt_result)!=cs_cvt_result__ok)
   {

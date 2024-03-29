@@ -51,28 +51,28 @@ std::string t_tso_real_timer::as_str()const
 //------------------------------------------------------------------------
 std::string t_tso_real_timer::as_str(value_type t)
 {
- const __int64 c_sec  =1000*1000*10;
- const __int64 c_min  =c_sec*60;
- const __int64 c_hour =c_min*60;
- const __int64 c_day  =c_hour*24;
+ const std::int64_t c_sec  =1000*1000*10;
+ const std::int64_t c_min  =c_sec*60;
+ const std::int64_t c_hour =c_min*60;
+ const std::int64_t c_day  =c_hour*24;
  
  //---
- __int64 day=t/c_day;
+ std::int64_t day=t/c_day;
  
  t-=day*c_day;
  
  //---
- __int64 hour=t/c_hour;
+ std::int64_t hour=t/c_hour;
  
  t-=hour*c_hour;
 
  //---
- __int64 min=t/c_min;
+ std::int64_t min=t/c_min;
  
  t-=min*c_min;
 
  //---
- __int64 sec=t/c_sec;
+ std::int64_t sec=t/c_sec;
  
  t-=sec*c_sec;
  

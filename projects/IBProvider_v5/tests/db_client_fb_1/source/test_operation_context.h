@@ -41,9 +41,11 @@ class TestOperationContext LCPI_CPP_CFG__CLASS__FINAL
   virtual void pop_operation(db_obj::t_db_operation* op) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
-  typedef structure::t_multi_thread_traits               thread_traits;
-  typedef thread_traits::guard_type                      guard_type;
-  typedef thread_traits::lock_guard_type                 lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   unsigned m_is_cancelled;

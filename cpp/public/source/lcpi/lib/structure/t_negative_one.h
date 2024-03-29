@@ -10,7 +10,7 @@ namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //type t_negative_one
 
-typedef t_numeric_initializator<-1> t_negative_one;
+using t_negative_one=t_numeric_initializator<-1>;
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -30,24 +30,24 @@ inline bool is_negative_one<unsigned char>(unsigned char x)
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<unsigned short>(unsigned short x)
+inline bool is_negative_one<std::uint16_t>(std::uint16_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - unsigned short
+}//is_negative_one - std::uint16_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<unsigned int>(unsigned int x)
+inline bool is_negative_one<std::uint32_t>(std::uint32_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - unsigned int
+}//is_negative_one - std::uint32_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<unsigned __int64>(unsigned __int64 x)
+inline bool is_negative_one<std::uint64_t>(std::uint64_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - unsigned __int64
+}//is_negative_one - std::uint64_t
 
 //------------------------------------------------------------------------
 template<>
@@ -58,38 +58,46 @@ inline bool is_negative_one<signed char>(signed char x)
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<signed short>(signed short x)
+inline bool is_negative_one<std::int16_t>(std::int16_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - signed short
+}//is_negative_one - std::int16_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<signed int>(signed int x)
+inline bool is_negative_one<signed int>(std::int32_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - signed int
+}//is_negative_one - std::int32_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_negative_one<signed __int64>(signed __int64 x)
+inline bool is_negative_one<std::int64_t>(std::int64_t x)
 {
  return structure::negative_one.eq(x);
-}//is_negative_one - signed __int64
+}//is_negative_one - std::int64_t
 
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+
 template<>
 inline bool is_negative_one<signed long>(signed long x)
 {
  return structure::negative_one.eq(x);
 }//is_negative_one - signed long
 
+#endif
+
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+
 template<>
 inline bool is_negative_one<unsigned long>(unsigned long x)
 {
  return structure::negative_one.eq(x);
 }//is_negative_one - unsigned long
+
+#endif
 
 //------------------------------------------------------------------------
 template<>

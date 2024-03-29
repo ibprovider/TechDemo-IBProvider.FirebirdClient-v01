@@ -4,6 +4,8 @@
 #ifndef _lcpi_sdk__ibprovider__v05__types_H_
 #define _lcpi_sdk__ibprovider__v05__types_H_
 
+#include <cstdint>
+
 namespace lcpi{namespace sdk{namespace ibprovider{namespace v05{
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -11,9 +13,9 @@ typedef wchar_t IBP_CHAR;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef short IBP_SHORT;
+typedef std::int16_t IBP_SHORT;
 
-typedef long IBP_LONG;
+typedef std::int32_t IBP_LONG;
 
 ////////////////////////////////////////////////////////////////////////////////
 

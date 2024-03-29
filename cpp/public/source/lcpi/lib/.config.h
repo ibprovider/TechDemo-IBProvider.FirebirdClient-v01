@@ -4,10 +4,7 @@
 #ifndef _cpp_public_lcpi_lib__config_H_
 #define _cpp_public_lcpi_lib__config_H_
 
-#include <lcpi/lib/config/.config_crt.h>
-#include <lcpi/lib/config/.config_stl.h>
-
-#include <lcpi/lib/config/.config_debug.h>
+#include <lcpi/.config.h>
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

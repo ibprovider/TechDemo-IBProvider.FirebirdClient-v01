@@ -57,7 +57,7 @@ class TestsFor__P13_Legacy_Auth_003__connect_db
                      TTSO_GlobalContext* pParams);
 
   //Test interface -------------------------------------------------------
-  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 

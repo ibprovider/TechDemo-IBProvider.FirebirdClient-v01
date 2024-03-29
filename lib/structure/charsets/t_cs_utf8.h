@@ -5,6 +5,7 @@
 #define _structure_charsets_t_cs_utf8_H_
 
 #include <lcpi/lib/.config.h>
+#include <cstdint>
 
 namespace structure{namespace charsets{namespace cs_utf8{
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,9 +14,9 @@ namespace structure{namespace charsets{namespace cs_utf8{
 struct traits
 {
  public:
-  typedef unsigned char                     UTF8;
+  typedef std::uint8_t                      UTF8;
   typedef wchar_t                           UCS2;
-  typedef unsigned long                     UCS4;
+  typedef std::uint32_t                     UCS4;
 
  public:
                                                      //        hh hhhh hhhh

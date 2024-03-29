@@ -33,7 +33,7 @@ enum t_msg_kind
 
 class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_message:public t_smart_interface
 {
- public:
+ private:
   using self_type=t_message;
 
  public: //typedefs ------------------------------------------------------

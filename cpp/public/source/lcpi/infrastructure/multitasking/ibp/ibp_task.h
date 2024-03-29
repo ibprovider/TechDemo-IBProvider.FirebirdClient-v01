@@ -22,7 +22,7 @@ using ibp_task_controller_id=size_t;
 /// <summary>
 ///  —игнал (флаг) задачи
 /// </summary>
-using ibp_task_signal_value=long;
+using ibp_task_signal_value=std::int32_t;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_signals
@@ -30,7 +30,7 @@ using ibp_task_signal_value=long;
 /// <summary>
 ///  »нтерфейс дл€ доступа к управл€ющим сигналам задачи
 /// </summary>
-class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) ibp_task_signals
+class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE ibp_task_signals
 {
  public:
   ibp_task_signals()=default;
@@ -169,7 +169,7 @@ enum class ibp_task_state
 /// <summary>
 ///  Ѕазовый интерфейс задачи
 /// </summary>
-class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG __declspec(novtable) ibp_task
+class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE ibp_task
  :public core::structure::t_smart_interface
 {
  public: //typedefs ------------------------------------------------------

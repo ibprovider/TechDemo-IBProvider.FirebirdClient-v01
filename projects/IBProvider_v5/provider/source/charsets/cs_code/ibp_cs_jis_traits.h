@@ -69,10 +69,11 @@ class t_ibp_cs_jis_0208_traits_base
 /// </summary>
 //! \note Из-за проблем с BCB5 публичные методы этого класса были
 //!       переделаны из статических в собственные константные.
-class t_ibp_cs_sjis_0208_traits:public t_ibp_cs_jis_0208_traits_base
+class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
+ :public t_ibp_cs_jis_0208_traits_base
 {
  private:
-  typedef t_ibp_cs_sjis_0208_traits                  self_type;
+  using self_type=t_ibp_cs_sjis_0208_traits;
 
  public: //consts --------------------------------------------------------
   ///минимальный размер символа кодовой страницы
@@ -82,7 +83,7 @@ class t_ibp_cs_sjis_0208_traits:public t_ibp_cs_jis_0208_traits_base
   static const size_t c_char_size__max=sizeof(ushort_type);
 
   ///максимальное количество UCS2 (wchar_t) символов для представления одного UNICODE символа
-  static const size_t c_max_ucs2_in_one_char=1;
+  static const size_t c_max_ucs2_in_one_symbol=1;
 
  public:
   /// <summary>
@@ -205,10 +206,11 @@ class t_ibp_cs_sjis_0208_traits:public t_ibp_cs_jis_0208_traits_base
 /// </summary>
 //! \note Из-за проблем с BCB5 публичные методы этого класса были
 //!       переделаны из статических в собственные константные.
-class t_ibp_cs_eucj_0208_traits:public t_ibp_cs_jis_0208_traits_base
+class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
+ :public t_ibp_cs_jis_0208_traits_base
 {
  private:
-  typedef t_ibp_cs_eucj_0208_traits                  self_type;
+  using self_type=t_ibp_cs_eucj_0208_traits;
 
  public: //consts --------------------------------------------------------
   ///минимальный размер символа кодовой страницы
@@ -218,7 +220,7 @@ class t_ibp_cs_eucj_0208_traits:public t_ibp_cs_jis_0208_traits_base
   static const size_t c_char_size__max=sizeof(ushort_type);
 
   ///максимальное количество UCS2 (wchar_t) символов для представления одного UNICODE символа
-  static const size_t c_max_ucs2_in_one_char=1;
+  static const size_t c_max_ucs2_in_one_symbol=1;
 
  public:
   /// <summary>

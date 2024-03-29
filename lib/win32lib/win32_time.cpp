@@ -104,11 +104,12 @@ BOOL TThreadTime::Start(bool restart)
 
  FILETIME tmp;
 
- return ::GetThreadTimes(GetCurrentThread(),
-                         &tmp,               //creation time
-                         &tmp,               //exit time
-                         &m_KernelStartTime,
-                         &m_UserStartTime);
+ return ::GetThreadTimes
+           (::GetCurrentThread(),
+            &tmp,               //creation time
+            &tmp,               //exit time
+            &m_KernelStartTime,
+            &m_UserStartTime);
 }//Start
 
 //------------------------------------------------------------------------
@@ -119,7 +120,7 @@ BOOL TThreadTime::Stop()
  FILETIME UserTime;
 
  //Stop and start must be called in one thread :)
- if(BOOL const bRes=::GetThreadTimes(GetCurrentThread(),&tmp,&tmp,&KernelTime,&UserTime))
+ if(BOOL const bRes=::GetThreadTimes(::GetCurrentThread(),&tmp,&tmp,&KernelTime,&UserTime))
  {
   m_KernelSumTime+=FileTimeToQuad(KernelTime)-FileTimeToQuad(m_KernelStartTime);
   m_UserSumTime  +=FileTimeToQuad(UserTime)-FileTimeToQuad(m_UserStartTime);

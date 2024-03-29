@@ -92,7 +92,6 @@
       <SDLCheck>true</SDLCheck>
       <MinimalRebuild>false</MinimalRebuild>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <PrecompiledHeaderFile />
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WarningLevel>Level3</WarningLevel>
       <EnablePREfast>false</EnablePREfast>
@@ -114,8 +113,6 @@
       <SDLCheck>true</SDLCheck>
       <MinimalRebuild>false</MinimalRebuild>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <WarningLevel>Level3</WarningLevel>
       <ConformanceMode>true</ConformanceMode>
@@ -134,7 +131,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=i;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <PrecompiledHeaderFile />
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <ConformanceMode>true</ConformanceMode>
@@ -155,8 +151,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;IBP_BINARY_CONFIGURATION_SIGN=i;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <ConformanceMode>true</ConformanceMode>
@@ -172,6 +166,7 @@
     <ResourceCompile />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os-atomic_functions.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
@@ -192,6 +187,21 @@
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_auto\variant\comparator\ole_auto_variant__comparator_context__std.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_base.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\ole_lib__memory_allocator.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__base.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__exec_mt.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__perf_timers.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__run_context.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.cc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__sys_log.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -208,13 +218,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32lib.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_error.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_library.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp" />
@@ -854,7 +857,6 @@
     <ClCompile Include="..\..\..\..\provider\source_lib\ole_lib\ibp--ole_lib__base_unknown2.cpp" />
     <ClCompile Include="..\..\..\..\provider\source_lib\structure\internal\code\ibp--lcpi.lib.structure.internal.throw_error__parameter_list.cpp" />
     <ClCompile Include="..\..\source\main.cpp" />
-    <ClCompile Include="..\..\source\push_test__exec_mt.cpp" />
     <ClCompile Include="..\..\source\push_test__filter.cpp" />
     <ClCompile Include="..\..\source\tests.cpp" />
     <ClCompile Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.cpp" />
@@ -1115,39 +1117,17 @@
     <ClCompile Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v1_no_lazy.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_036__StmtFetch_M__v2_lazy_send.cpp" />
     <ClCompile Include="..\..\source\tests\work\WORK_Test_M01__WorkWithCursor.cpp" />
-    <ClCompile Include="..\..\source\test_base.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\source\test_base.cpp" />
     <ClCompile Include="..\..\source\test_check_errors.cpp" />
     <ClCompile Include="..\..\source\test_cn_params.cpp" />
     <ClCompile Include="..\..\source\test_expression_parser.cpp" />
     <ClCompile Include="..\..\source\test_func.cpp" />
     <ClCompile Include="..\..\source\test_func_v2.cpp" />
-    <ClCompile Include="..\..\source\test_log_stream.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\source\test_memory.cpp" />
     <ClCompile Include="..\..\source\test_operation_context.cpp" />
-    <ClCompile Include="..\..\source\test_perf_timers.cpp" />
     <ClCompile Include="..\..\source\test_services.cpp" />
     <ClCompile Include="..\..\source\test_services__pset01.cpp" />
     <ClCompile Include="..\..\source\test_services__pset02.cpp" />
-    <ClCompile Include="..\..\source\test_state2.cpp" />
-    <ClCompile Include="..\..\source\test_state2_storage.cpp" />
-    <ClCompile Include="..\..\source\test_summary_builder.cpp" />
-    <ClCompile Include="..\..\source\test_tracer_utils.cc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="..\..\source\test_utilities.cpp" />
     <ClCompile Include="..\..\source\xsqlda_v1_wrapper.cpp" />
   </ItemGroup>
@@ -1155,13 +1135,22 @@
     <ClInclude Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_memory.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\debug\t_debug__mt_guard_rw.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__base.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__exec_mt.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__perf_timers.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__run_context.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__summary_builder.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__sys_log.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__tracer_utils.h" />
+    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\t_list_external.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\t_smart_object.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32lib.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_error.h" />
-    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_file_lib.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_library.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_mt.h" />
@@ -1625,7 +1614,6 @@
     <ClInclude Include="..\..\..\..\provider\source\structure\ibp_biginteger.h" />
     <ClInclude Include="..\..\..\..\provider\source\structure\ibp_sha1.h" />
     <ClInclude Include="..\..\..\..\provider\source\structure\ibp_sha2.h" />
-    <ClInclude Include="..\..\source\push_test__exec_mt.h" />
     <ClInclude Include="..\..\source\push_test__filter.h" />
     <ClInclude Include="..\..\source\tests.h" />
     <ClInclude Include="..\..\source\tests\api\helpers\RemoteFB__API_HLP__ArraySlice_V01__Utilities\TestsFor__RemoteFB__API_HLP__ArraySlice_V01__Utilities__ParseSDL.h" />
@@ -1892,14 +1880,9 @@
     <ClInclude Include="..\..\source\test_expression_parser.h" />
     <ClInclude Include="..\..\source\test_func.h" />
     <ClInclude Include="..\..\source\test_func_v2.h" />
-    <ClInclude Include="..\..\source\test_log_stream.h" />
     <ClInclude Include="..\..\source\test_memory.h" />
     <ClInclude Include="..\..\source\test_operation_context.h" />
-    <ClInclude Include="..\..\source\test_perf_timers.h" />
     <ClInclude Include="..\..\source\test_services.h" />
-    <ClInclude Include="..\..\source\test_state2.h" />
-    <ClInclude Include="..\..\source\test_state2_storage.h" />
-    <ClInclude Include="..\..\source\test_summary_builder.h" />
     <ClInclude Include="..\..\source\test_tracer_utils.h" />
     <ClInclude Include="..\..\source\test_utilities.h" />
     <ClInclude Include="..\..\source\xsqlda_v1_wrapper.h" />

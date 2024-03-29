@@ -28,9 +28,9 @@ TTSO_TestFunc::~TTSO_TestFunc()
 }
 
 //test interface ---------------------------------------------------------
-std::string TTSO_TestFunc::get_id()const
+const char* TTSO_TestFunc::get_id()const
 {
- return m_TestID;
+ return m_TestID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

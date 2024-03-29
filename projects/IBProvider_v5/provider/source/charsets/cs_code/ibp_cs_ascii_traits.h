@@ -18,10 +18,10 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Алгоритмы преобразования кодовой страницы ASCII
 /// </summary>
-class t_ibp_cs_ascii_traits
+class t_ibp_cs_ascii_traits LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_ibp_cs_ascii_traits             self_type;
+  using self_type=t_ibp_cs_ascii_traits;
 
  public: //consts --------------------------------------------------------
   ///минимальный размер символа кодовой страницы
@@ -31,7 +31,7 @@ class t_ibp_cs_ascii_traits
   static const size_t c_char_size__max=sizeof(char);
 
   ///максимальное количество UCS2 (wchar_t) символов для представления одного UNICODE символа
-  static const size_t c_max_ucs2_in_one_char=1;
+  static const size_t c_max_ucs2_in_one_symbol=1;
 
  public:
   t_ibp_cs_ascii_traits(){;}

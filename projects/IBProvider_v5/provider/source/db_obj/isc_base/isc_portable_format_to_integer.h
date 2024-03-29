@@ -8,7 +8,7 @@
 #define _isc_portable_format_to_integer_H_
 
 #include "source/ibp_subsystem_ids.h"
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{namespace isc_base{
 ////////////////////////////////////////////////////////////////////////////////
@@ -22,10 +22,10 @@ bool isc_portable_integer__is_zero(size_t      sz,
 ////////////////////////////////////////////////////////////////////////////////
 //class isc_portable_format_to_integer
 
-class isc_portable_format_to_integer
+class isc_portable_format_to_integer LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef isc_portable_format_to_integer    self_type;
+  using self_type=isc_portable_format_to_integer;
 
  public: //UNSIGNED NUMERIC
   static bool exec_r(size_t            sz,
@@ -62,38 +62,46 @@ class isc_portable_format_to_integer
                      signed long*      result);
 
  public:
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<unsigned __int16>* result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<unsigned __int16>* result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<unsigned __int32>* result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<unsigned __int32>* result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<unsigned __int64>* result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<unsigned __int64>* result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<unsigned long>*    result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<unsigned long>*    result);
 
  public:
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<signed __int16>*   result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<signed __int16>*   result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<signed __int32>*   result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<signed __int32>*   result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<signed __int64>*   result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<signed __int64>*   result);
 
-  static bool exec_r(size_t                                          sz,
-                     const void*                                     pv,
-                     structure::t_value_with_null<signed long>*      result);
+  static bool exec_r
+               (size_t                                               sz,
+                const void*                                          pv,
+                lib::structure::t_value_with_null<signed long>*      result);
 
  public: //UNSIGNED NUMERIC
   static void exec(size_t                   sz,
@@ -146,54 +154,54 @@ class isc_portable_format_to_integer
                    const wchar_t*           value_sign);
 
  public:
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<unsigned __int16>* result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<unsigned __int16>* result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<unsigned __int32>* result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<unsigned __int32>* result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<unsigned __int64>* result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<unsigned __int64>* result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<unsigned long>*    result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<unsigned long>*    result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
  public:
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<signed __int16>*   result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<signed __int16>*   result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<signed __int32>*   result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<signed __int32>*   result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<signed __int64>*   result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<signed __int64>*   result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
-  static void exec(size_t                                          sz,
-                   const void*                                     pv,
-                   structure::t_value_with_null<signed long>*      result,
-                   ibp::t_ibp_subsystem_id                         subsystem,
-                   const wchar_t*                                  value_sign);
+  static void exec(size_t                                               sz,
+                   const void*                                          pv,
+                   lib::structure::t_value_with_null<signed long>*      result,
+                   ibp::t_ibp_subsystem_id                              subsystem,
+                   const wchar_t*                                       value_sign);
 
  private:
   template<typename result_type>
@@ -204,9 +212,9 @@ class isc_portable_format_to_integer
 
   template<typename result_type>
   static bool helper__to_integerN__generic__unsigned
-                (size_t                                     sz,
-                 const void*                                pv,
-                 structure::t_value_with_null<result_type>* result);
+                (size_t                                          sz,
+                 const void*                                     pv,
+                 lib::structure::t_value_with_null<result_type>* result);
 
  private:
   template<typename result_type>
@@ -217,9 +225,9 @@ class isc_portable_format_to_integer
 
   template<typename result_type>
   static bool helper__to_integerN__generic__signed
-                (size_t                                     sz,
-                 const void*                                pv,
-                 structure::t_value_with_null<result_type>* result);
+                (size_t                                          sz,
+                 const void*                                     pv,
+                 lib::structure::t_value_with_null<result_type>* result);
 
  private:
   LCPI_CPP_CFG__DECLSPEC__NORETURN

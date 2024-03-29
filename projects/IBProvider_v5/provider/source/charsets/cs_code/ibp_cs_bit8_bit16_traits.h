@@ -19,7 +19,7 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Структура с данными для преобразования кодовых страниц BIT8_BIT16
 /// </summary>
-struct t_ibp_cs_bit8_bit16_traits
+struct t_ibp_cs_bit8_bit16_traits LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
   typedef unsigned short                    ushort_type;
@@ -27,7 +27,9 @@ struct t_ibp_cs_bit8_bit16_traits
   typedef size_t                            size_type;
 
   ///Указатель на функцию проверки символа
-  typedef bool (*PFnTestChar)(uchar_type ch);
+  using PFnTestChar
+   =bool (*)
+     (uchar_type ch);
 
  public: //consts --------------------------------------------------------
   ///минимальный размер символа кодовой страницы
@@ -37,7 +39,7 @@ struct t_ibp_cs_bit8_bit16_traits
   static const size_t c_char_size__max=sizeof(ushort_type);
 
   ///максимальное количество UCS2 (wchar_t) символов для представления одного UNICODE символа
-  static const size_t c_max_ucs2_in_one_char=1;
+  static const size_t c_max_ucs2_in_one_symbol=1;
 
  public:
   /// <summary>

@@ -12,6 +12,8 @@
 
 #include <ole_lib/ole_base.h>
 #include <lcpi/lib/structure/stl/t_stl_map.h>
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
 
 namespace lcpi{namespace ibp{namespace os{namespace win32{
 ////////////////////////////////////////////////////////////////////////////////
@@ -97,12 +99,14 @@ class t_ibp_os_win32__dll_loader LCPI_CPP_CFG__CLASS__FINAL
   HINSTANCE          m_hDLL;
 
   ///Признак заблокированности DLL в памяти
-  LONG               m_NoUnLoad;
+  unsigned           m_NoUnLoad;
 
  private:
-  typedef structure::t_multi_thread_traits                 thread_traits;
-  typedef thread_traits::guard_type                        guard_type;
-  typedef thread_traits::lock_guard_type                   lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
   using service_objects_map_type
    =lib::structure::t_stl_map

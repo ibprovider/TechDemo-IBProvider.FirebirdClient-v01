@@ -304,7 +304,7 @@ class t_ibp_error LCPI_CPP_CFG__CLASS__FINAL
   void helper__copy_descrs(const std::exception& exc);
 
  private:
-  typedef structure::t_value_with_null<size_t>    primary_err_idx_type_N;
+  using primary_err_idx_type_N=lib::structure::t_value_with_null<size_t>;
 
  private:
   ///Список ошибок
@@ -324,9 +324,9 @@ class t_ibp_error::tag_error_adapter_with_limit LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_error_adapter
 {
  private:
-  typedef tag_error_adapter_with_limit                 self_type;
+  using self_type=tag_error_adapter_with_limit;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   tag_error_adapter_with_limit(const self_type&);

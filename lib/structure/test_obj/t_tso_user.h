@@ -4,7 +4,8 @@
 #ifndef _t_tso_user_H_
 #define _t_tso_user_H_
 
-#include <structure/test_obj/t_tso_lib.h>
+#include <lcpi/lib/.config.h>
+
 #include <iostream>
 #include <sstream>
 
@@ -86,7 +87,7 @@ int route_exception(const char* const source);
 //------------------------------------------------------------------------
 #define _TSO_CHECK_COUT(cond)                                            \
  _TSO_CHECK_COUT_EX(cond,"")
- 
+
 //------------------------------------------------------------------------
 #define _TSO_TRY_                                                        \
  try
@@ -104,19 +105,18 @@ int route_exception(const char* const source);
 struct TestMemAllocatorFunc
 {
  public:
-  typedef t_multi_thread_traits              thread_traits;
-  typedef thread_traits::int_type            cnt_type;
+  using cnt_type=size_t;
 
  public:
   static void* Alloc(size_t sz);
-  
+
   static void  Free(void* pv);
-  
+
   static cnt_type GetBlockCount()
    {return sm_BlockCount;}
-  
+
   static void CheckNoBlock();
-  
+
  private:
   static cnt_type sm_BlockCount;
 };//struct TestMemAllocatorFunc
@@ -124,7 +124,7 @@ struct TestMemAllocatorFunc
 ////////////////////////////////////////////////////////////////////////////////
 #define _TSO_DEF_TEST_DESCR_EX(name,func)   \
  {name,func}
- 
+
 #define _TSO_DEF_TEST_DESCR(func)           \
  _TSO_DEF_TEST_DESCR_EX(#func,func)
 
@@ -135,7 +135,7 @@ template<typename t_func>
 struct t_test_descr
 {
  public:
-  typedef t_func     func_type;
+  using func_type=t_func;
 
  public:
   const char* name;
@@ -173,13 +173,13 @@ int run_tests(const tag_test_descr* pTests,const tag_test_arg& Arg);
 ////////////////////////////////////////////////////////////////////////////////
 //class t_auto_endl
 
-class t_auto_endl
+class t_auto_endl LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_auto_endl              self_type;
+  using self_type=t_auto_endl;
 
-  t_auto_endl(const self_type&);
-  self_type* operator = (const self_type&);
+  t_auto_endl(const self_type&)=delete;
+  self_type* operator = (const self_type&)=delete;
 
  public:
   t_auto_endl()
@@ -189,7 +189,7 @@ class t_auto_endl
  ~t_auto_endl()
   {
    std::cout<<std::endl;
-  }  
+  }
 };//class t_auto_endl
 
 ////////////////////////////////////////////////////////////////////////////////

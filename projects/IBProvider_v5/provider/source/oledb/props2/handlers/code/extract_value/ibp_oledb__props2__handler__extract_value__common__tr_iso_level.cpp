@@ -17,7 +17,11 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 class IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data
 {
  public:
-  static const LONG sm_IsoLevels[];
+  using value_type
+   =IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i4::value_type;
+
+ public:
+  static const value_type sm_IsoLevels[];
 
   static const IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i4
    sm_Instance;
@@ -26,7 +30,8 @@ class IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data
 
-const LONG IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data::sm_IsoLevels[]
+const IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data::value_type
+ IBP_OLEDB_Props2__Handler__ExtractValue__Common__tr_iso_level::tag_data::sm_IsoLevels[]
 {
  {ISOLATIONLEVEL_READCOMMITTED  },
  {ISOLATIONLEVEL_REPEATABLEREAD },

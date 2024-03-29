@@ -5,6 +5,7 @@
 #define _win32_time_H_
 
 #include <win32lib/win32_base.h>
+#include <cstdint>
 
 namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,27 +18,27 @@ class TThreadTime;
 ////////////////////////////////////////////////////////////////////////////////
 //FILETIME transformer
 
-inline __int64 FileTimeToQuad(const FILETIME& FileTime)
+inline std::int64_t FileTimeToQuad(const FILETIME& FileTime)
 {
- return (static_cast<__int64>(FileTime.dwHighDateTime)<<32)+FileTime.dwLowDateTime;
-}
+ return (static_cast<std::int64_t>(FileTime.dwHighDateTime)<<32)+FileTime.dwLowDateTime;
+}//FileTimeToQuad
 
 //------------------------------------------------------------------------
 inline LARGE_INTEGER FileTimeToLargeInt(const FILETIME& FileTime)
 {
- const __int64 i64=FileTimeToQuad(FileTime);
+ const std::int64_t i64=FileTimeToQuad(FileTime);
 
  return *reinterpret_cast<const LARGE_INTEGER*>(&i64);
-}
+}//FileTimeToLargeInt
 
 //------------------------------------------------------------------------
-inline FILETIME& QuadToFileTime(__int64 i64,FILETIME& file_time)
+inline FILETIME& QuadToFileTime(std::int64_t i64,FILETIME& file_time)
 {
  file_time.dwHighDateTime=*(reinterpret_cast<const DWORD*>(&i64)+1);
  file_time.dwLowDateTime =*(reinterpret_cast<const DWORD*>(&i64));
 
  return file_time;
-}
+}//QuadToFileTime
 
 //------------------------------------------------------------------------
 inline FILETIME& LargeIntToFileTime(LARGE_INTEGER large_int,FILETIME& file_time)
@@ -46,16 +47,13 @@ inline FILETIME& LargeIntToFileTime(LARGE_INTEGER large_int,FILETIME& file_time)
  file_time.dwLowDateTime =*(reinterpret_cast<const DWORD*>(&large_int.QuadPart));
 
  return file_time;
-}
+}//LargeIntToFileTime
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TFileTime
 
-class TFileTime
+class TFileTime LCPI_CPP_CFG__CLASS__FINAL
 {
- private:
-  FILETIME m_ftime;
-
  public:
   TFileTime()
   {
@@ -75,7 +73,7 @@ class TFileTime
    LargeIntToFileTime(large_int,m_ftime);
   }
 
-  TFileTime(__int64 large_int)
+  TFileTime(std::int64_t large_int)
   {
    QuadToFileTime(large_int,m_ftime);
   }
@@ -117,14 +115,17 @@ class TFileTime
   operator FILETIME*       ()       {return &m_ftime;}
   operator const FILETIME* () const {return &m_ftime;}
 
-  operator __int64         () const {return FileTimeToQuad(m_ftime);}
+  operator std::int64_t    () const {return FileTimeToQuad(m_ftime);}
   operator LARGE_INTEGER   () const {return FileTimeToLargeInt(m_ftime);}
-};//TFileTime
+
+ private:
+  FILETIME m_ftime;
+};//class TFileTime
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TSystemTime
 
-class TSystemTime
+class TSystemTime LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static t_string Date(const SYSTEMTIME& sys);
@@ -137,14 +138,10 @@ class TSystemTime
 ////////////////////////////////////////////////////////////////////////////////
 //struct TThreadTime
 
-class TThreadTime
+class TThreadTime LCPI_CPP_CFG__CLASS__FINAL
 {
- private:
-  FILETIME m_KernelStartTime;//kernel mode
-  FILETIME m_UserStartTime;  //user mode
-
-  __int64  m_KernelSumTime;
-  __int64  m_UserSumTime;
+ public:
+  using time_ticks_type=std::int64_t;
 
  public:
   TThreadTime()
@@ -153,12 +150,21 @@ class TThreadTime
   }
 
   BOOL Start(bool restart=true);
+
   BOOL Stop();
 
-  const __int64& KernelTime ()const  {return m_KernelSumTime;}
-  const __int64& UserTime   ()const  {return m_UserSumTime;}
-  __int64        Time       ()const  {return KernelTime()+UserTime();}
-};//TThreadTime
+  time_ticks_type KernelTime ()const  {return m_KernelSumTime;}
+  time_ticks_type UserTime   ()const  {return m_UserSumTime;}
+
+  time_ticks_type TotalTime  ()const  {return m_KernelSumTime+m_UserSumTime;}
+
+ private:
+  FILETIME m_KernelStartTime;//kernel mode
+  FILETIME m_UserStartTime;  //user mode
+
+  time_ticks_type m_KernelSumTime;
+  time_ticks_type m_UserSumTime;
+};//class TThreadTime
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace win32lib

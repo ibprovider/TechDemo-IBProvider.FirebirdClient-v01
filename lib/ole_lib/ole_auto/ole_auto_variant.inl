@@ -118,21 +118,25 @@ inline TVariant::TVariant(ULONG data)
  this->vt  =VT_I4;
 }
 #endif
-//------------------------------------------------------------------------
-#if 0 // [2017-02-25]
-inline TVariant::TVariant(int data)
-{
- //TODO: stupid
- this->lVal=(LONG)data;
- this->vt  =VT_I4;
-}
-#endif
 
 //------------------------------------------------------------------------
-inline TVariant::TVariant(short data)
+inline TVariant::TVariant(value_i2_type data)
 {
+ LCPI__assert_s(sizeof(this->iVal)==sizeof(data));
+ LCPI__assert_s(sizeof(this->iVal)==2);
+
  this->iVal=data;
  this->vt  =VT_I2;
+}
+
+//------------------------------------------------------------------------
+inline TVariant::TVariant(value_i4_type data)
+{
+ LCPI__assert_s(sizeof(this->lVal)==sizeof(data));
+ LCPI__assert_s(sizeof(this->lVal)==4);
+
+ this->lVal=data;
+ this->vt  =VT_I4;
 }
 
 //------------------------------------------------------------------------

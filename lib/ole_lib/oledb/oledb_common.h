@@ -82,54 +82,54 @@ const size_t OLEDB_MEM_SIZE_ALIGN     =8;
 //Smart pointers
 
 //CoType TDataSource
-DECLARE_IPTR_TYPE(IDBInitialize)          ;
-DECLARE_IPTR_TYPE(IDBCreateSession)       ;
-DECLARE_IPTR_TYPE(IDBProperties)          ;
-DECLARE_IPTR_TYPE(IDBDataSourceAdmin)     ;
-DECLARE_IPTR_TYPE(IDBInfo)                ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBInitialize)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBCreateSession)       ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBProperties)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBDataSourceAdmin)     ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBInfo)                ;
 
 //CoType TSession
-DECLARE_IPTR_TYPE(IGetDataSource)         ;
-DECLARE_IPTR_TYPE(IOpenRowset)            ;
-DECLARE_IPTR_TYPE(ISessionProperties)     ;
-DECLARE_IPTR_TYPE(IDBCreateCommand)       ;
-DECLARE_IPTR_TYPE(IDBSchemaRowset)        ;
-DECLARE_IPTR_TYPE(ITableDefinition)       ;
-DECLARE_IPTR_TYPE(ITransactionJoin)       ;
-DECLARE_IPTR_TYPE(ITransactionLocal)      ;
+OLE_LIB__DECLARE_IPTR_TYPE(IGetDataSource)         ;
+OLE_LIB__DECLARE_IPTR_TYPE(IOpenRowset)            ;
+OLE_LIB__DECLARE_IPTR_TYPE(ISessionProperties)     ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBCreateCommand)       ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBSchemaRowset)        ;
+OLE_LIB__DECLARE_IPTR_TYPE(ITableDefinition)       ;
+OLE_LIB__DECLARE_IPTR_TYPE(ITransactionJoin)       ;
+OLE_LIB__DECLARE_IPTR_TYPE(ITransactionLocal)      ;
 DECLARE_IPTR_TYPE_NS(,ITransaction)       ;
 DECLARE_IPTR_TYPE_NS(,ITransactionObject) ;
 DECLARE_IPTR_TYPE_NS(,ITransactionOutcomeEvents);
 
 //CoType TCommand
-DECLARE_IPTR_TYPE(IAccessor)              ;
-DECLARE_IPTR_TYPE(IColumnsInfo)           ;
-DECLARE_IPTR_TYPE(IColumnsInfo2)          ;
-DECLARE_IPTR_TYPE(ICommand)               ;
-DECLARE_IPTR_TYPE(ICommandProperties)     ;
-DECLARE_IPTR_TYPE(ICommandText)           ;
-DECLARE_IPTR_TYPE(IConvertType)           ;
-DECLARE_IPTR_TYPE(IColumnsRowset)         ;
-DECLARE_IPTR_TYPE(ICommandPrepare)        ;
-DECLARE_IPTR_TYPE(ICommandWithParameters) ;
+OLE_LIB__DECLARE_IPTR_TYPE(IAccessor)              ;
+OLE_LIB__DECLARE_IPTR_TYPE(IColumnsInfo)           ;
+OLE_LIB__DECLARE_IPTR_TYPE(IColumnsInfo2)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(ICommand)               ;
+OLE_LIB__DECLARE_IPTR_TYPE(ICommandProperties)     ;
+OLE_LIB__DECLARE_IPTR_TYPE(ICommandText)           ;
+OLE_LIB__DECLARE_IPTR_TYPE(IConvertType)           ;
+OLE_LIB__DECLARE_IPTR_TYPE(IColumnsRowset)         ;
+OLE_LIB__DECLARE_IPTR_TYPE(ICommandPrepare)        ;
+OLE_LIB__DECLARE_IPTR_TYPE(ICommandWithParameters) ;
 
 //CoType TRowset
-DECLARE_IPTR_TYPE(IRowset)                ;
-DECLARE_IPTR_TYPE(IRowsetInfo)            ;
-DECLARE_IPTR_TYPE(IRowsetLocate)          ;
-DECLARE_IPTR_TYPE(IRowsetScroll)          ;
-DECLARE_IPTR_TYPE(IRowsetChange)          ;
-DECLARE_IPTR_TYPE(IRowsetUpdate)          ;
-DECLARE_IPTR_TYPE(IRowsetBookmark)        ;
-DECLARE_IPTR_TYPE(IRowsetRefresh)         ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowset)                ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetInfo)            ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetLocate)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetScroll)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetChange)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetUpdate)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetBookmark)        ;
+OLE_LIB__DECLARE_IPTR_TYPE(IRowsetRefresh)         ;
 
 //Errors
-DECLARE_IPTR_TYPE(IErrorRecords)          ;
-DECLARE_IPTR_TYPE(IErrorLookup)           ;
-DECLARE_IPTR_TYPE(ISQLErrorInfo)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IErrorRecords)          ;
+OLE_LIB__DECLARE_IPTR_TYPE(IErrorLookup)           ;
+OLE_LIB__DECLARE_IPTR_TYPE(ISQLErrorInfo)          ;
 
-DECLARE_IPTR_TYPE(IMultipleResults)       ;
-DECLARE_IPTR_TYPE(IDBAsynchStatus)        ;
+OLE_LIB__DECLARE_IPTR_TYPE(IMultipleResults)       ;
+OLE_LIB__DECLARE_IPTR_TYPE(IDBAsynchStatus)        ;
 
 ////////////////////////////////////////////////////////////////////////////////
 //OLEDB Interfaces Names

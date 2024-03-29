@@ -8,7 +8,7 @@
 #define _ibp_error_records_r_H_
 
 #include <lcpi/lib/structure/error/t_err_records_r.h>
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +18,7 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_ibp_error_records_r
  :public lib::structure::t_err_records_r
 {
  public:
-  using size_type_N=structure::t_value_with_null<size_t>;
+  using size_type_N=lib::structure::t_value_with_null<size_t>;
 
  public:
   virtual ~t_ibp_error_records_r()

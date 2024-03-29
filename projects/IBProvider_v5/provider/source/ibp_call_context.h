@@ -98,7 +98,7 @@ class IBP_CallContext LCPI_CPP_CFG__CLASS__FINAL
                             REFIID   exc_iid)const;
 
  private:
-  using size_type_N=structure::t_value_with_null<size_t>;
+  using size_type_N=lib::structure::t_value_with_null<size_t>;
 
   class tag_errors_accessor;
 

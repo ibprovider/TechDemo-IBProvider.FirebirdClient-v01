@@ -232,8 +232,12 @@ void RemoteFB__Port_BASE_v01::set_invalid_port_state_v2(const std::exception* co
 {
  lock_guard_type __lockPortState(m_port_state_guard);
 
- const rw_state_type prevPortState
-  =::InterlockedCompareExchange(&m_port_state,c_state__failed,c_state__none);
+ const rw_state_type
+  prevPortState
+   =lib::structure::mt::interlocked::compare_exchange
+     (&m_port_state,
+      c_state__failed,
+      c_state__none);
 
  if(prevPortState==c_state__failed)
   return; //порт уже был переведен в заблокированное состояние

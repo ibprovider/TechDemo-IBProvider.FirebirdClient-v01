@@ -12,7 +12,7 @@
 //#include "source/db_client/remote_fb/remote_fb__srv_resource_id.h"
 //#include "source/db_client/remote_fb/remote_fb__memory.h"
 //#include "source/db_client/remote_fb/remote_fb__forward.h"
-#include <structure/t_list_external.h>
+#include <lcpi/lib/structure/t_list_external.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
@@ -140,19 +140,19 @@ class RemoteFB__HandleData_Transaction LCPI_CPP_CFG__CLASS__FINAL
    =stmt_data_type::tag_tr_list_adapter;
 
   using stmt_list_type
-   =structure::t_list_external<stmt_list_traits>;
+   =lib::structure::t_list_external<stmt_list_traits>;
 
   using nclosed_stmt_list_traits
    =stmt_data_type::tag_nclosed_stmt_list_adapter;
 
   using nclosed_stmt_list_type
-   =structure::t_list_external<nclosed_stmt_list_traits>;
+   =lib::structure::t_list_external<nclosed_stmt_list_traits>;
 
   using blob_list_traits
    =blob_data_type::tag_tr_list_adapter;
 
   using blob_list_type
-   =structure::t_list_external<blob_list_traits>;
+   =lib::structure::t_list_external<blob_list_traits>;
 
 #ifdef IBP_BUILD_TESTCODE
  public:

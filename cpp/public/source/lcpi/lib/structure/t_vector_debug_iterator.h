@@ -24,7 +24,7 @@ template<class t_vector>
 class t_vector_debug_iterator
 {
  private:
-  typedef t_vector_debug_iterator<t_vector>               self_type;
+  using self_type=t_vector_debug_iterator<t_vector>;
 
  public:
   typedef std::random_access_iterator_tag                 iterator_category;
@@ -37,7 +37,7 @@ class t_vector_debug_iterator
 
  public://constructors -------------------------------------------------
   t_vector_debug_iterator()
-   :m_v(NULL),m_p(NULL){;}
+   :m_v(nullptr),m_p(nullptr){;}
 
   t_vector_debug_iterator(vector_type* const v,pointer const p)
    :m_v(v),m_p(p){;}
@@ -53,8 +53,8 @@ class t_vector_debug_iterator
 
   reference operator * () const
    {
-    assert(m_v!=NULL);
-    //assert(m_p!=NULL);
+    assert(m_v!=nullptr);
+    //assert(m_p!=nullptr);
     assert(m_v->begin().m_p<=m_p);
     assert(m_p<m_v->end().m_p);
 
@@ -65,29 +65,31 @@ class t_vector_debug_iterator
    }//operator *
 
  public: //modificators ------------------------------------------------
-  self_type& operator ++ ()    {assert(m_v!=NULL);++m_p;return *this;}
-  self_type& operator -- ()    {assert(m_v!=NULL);--m_p;return *this;}
+  self_type& operator ++ () {assert(m_v!=nullptr);++m_p;return *this;}
+  self_type& operator -- () {assert(m_v!=nullptr);--m_p;return *this;}
 
-  const self_type  operator ++ (int) {assert(m_v!=NULL);const self_type c(*this);++m_p;return c;}
-  const self_type  operator -- (int) {assert(m_v!=NULL);const self_type c(*this);--m_p;return c;}
+  const self_type operator ++ (int) {assert(m_v!=nullptr);const self_type c(*this);++m_p;return c;}
+  const self_type operator -- (int) {assert(m_v!=nullptr);const self_type c(*this);--m_p;return c;}
 
+ public:
   self_type& operator += (difference_type x)
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     m_p+=x;
     return *this;
    }
 
   self_type& operator -= (difference_type x)
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     m_p-=x;
     return *this;
    }
 
+ public:
   const self_type operator + (difference_type x)const
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     self_type tmp(*this);
     tmp.m_p+=x;
     return tmp;
@@ -95,7 +97,7 @@ class t_vector_debug_iterator
 
   const self_type operator - (difference_type x)const
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     self_type tmp(*this);
     tmp.m_p-=x;
     return tmp;
@@ -170,7 +172,7 @@ class t_vector_debug_const_iterator
 
  public://constructors -------------------------------------------------
   t_vector_debug_const_iterator()
-   :m_v(NULL),m_p(NULL){;}
+   :m_v(nullptr),m_p(nullptr){;}
 
   t_vector_debug_const_iterator(const vector_type* const v,pointer const p)
    :m_v(v),m_p(p){;}
@@ -189,8 +191,8 @@ class t_vector_debug_const_iterator
 
   reference operator * () const
    {
-    assert(m_v!=NULL);
-    //assert(m_p!=NULL);
+    assert(m_v!=nullptr);
+    //assert(m_p!=nullptr);
     assert(m_v->begin().m_p<=m_p);
     assert(m_p<m_v->end().m_p);
 
@@ -201,29 +203,29 @@ class t_vector_debug_const_iterator
    }//operator *
 
  public: //modificators ------------------------------------------------
-  self_type& operator ++ ()    {assert(m_v!=NULL);++m_p;return *this;}
-  self_type& operator -- ()    {assert(m_v!=NULL);--m_p;return *this;}
+  self_type& operator ++ ()    {assert(m_v!=nullptr);++m_p;return *this;}
+  self_type& operator -- ()    {assert(m_v!=nullptr);--m_p;return *this;}
 
-  const self_type  operator ++ (int) {assert(m_v!=NULL);const self_type c(*this);++m_p;return c;}
-  const self_type  operator -- (int) {assert(m_v!=NULL);const self_type c(*this);--m_p;return c;}
+  const self_type  operator ++ (int) {assert(m_v!=nullptr);const self_type c(*this);++m_p;return c;}
+  const self_type  operator -- (int) {assert(m_v!=nullptr);const self_type c(*this);--m_p;return c;}
 
   self_type& operator += (difference_type x)
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     m_p+=x;
     return *this;
    }
 
   self_type& operator -= (difference_type x)
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     m_p-=x;
     return *this;
    }
 
   const self_type operator + (difference_type x)const
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     self_type tmp(*this);
     tmp.m_p+=x;
     return tmp;
@@ -231,7 +233,7 @@ class t_vector_debug_const_iterator
 
   const self_type operator - (difference_type x)const
    {
-    assert(m_v!=NULL);
+    assert(m_v!=nullptr);
     self_type tmp(*this);
     tmp.m_p-=x;
     return tmp;

@@ -38,12 +38,14 @@ bool win32lib::TThread::Create(LPSECURITY_ATTRIBUTES  const pAttributes,
  if(!this->Close())
   return false;
 
- this->handle=::CreateThread(pAttributes,
-                             StackSize,
-                             pStartAddress,
-                             pParameter,
-                             CreationFlag,
-                             &this->ThreadID);
+ this->handle
+   =::CreateThread
+       (pAttributes,
+        StackSize,
+        pStartAddress,
+        pParameter,
+        CreationFlag,
+        &this->ThreadID);
 
  return this->handle!=NULL;
 }//Create
@@ -60,12 +62,16 @@ bool win32lib::TThread::BeginEx(LPSECURITY_ATTRIBUTES      const Attributes,
 
  unsigned uThreadID(0);
 
- this->handle=reinterpret_cast<HANDLE>(_beginthreadex(Attributes,
-                                                      StackSize,
-                                                      pStartAddress,
-                                                      pvParameter,
-                                                      CreationFlag,
-                                                      &uThreadID));
+ this->handle
+  =reinterpret_cast<HANDLE>
+     (_beginthreadex
+       (Attributes,
+        StackSize,
+        pStartAddress,
+        pvParameter,
+        CreationFlag,
+        &uThreadID));
+
  if(this->handle==NULL)
   return false;
 
@@ -90,7 +96,11 @@ bool TMutex::Create(LPSECURITY_ATTRIBUTES const Attributes,
 {
  assert(this->handle==NULL);
 
- this->handle=::CreateMutex(Attributes,InitialOwner,lpName);
+ this->handle
+  =::CreateMutex
+    (Attributes,
+     InitialOwner,
+     lpName);
 
  return this->handle!=NULL;
 }//Create
@@ -152,7 +162,12 @@ bool TEvent::Create(LPSECURITY_ATTRIBUTES const Attributes,
 
  assert(this->handle==NULL);
 
- this->handle=::CreateEvent(Attributes,ManualReset,InitialState,lpName);
+ this->handle
+   =::CreateEvent
+      (Attributes,
+       ManualReset,
+       InitialState,
+       lpName);
 
  return this->handle!=NULL;
 }//Create
@@ -172,7 +187,12 @@ bool TSemaphore::Create(LPSECURITY_ATTRIBUTES const Attributes,
 {
  assert(this->handle==NULL);
 
- this->handle=::CreateSemaphore(Attributes,InitialCount,MaxCount,lpName);
+ this->handle
+  =::CreateSemaphore
+    (Attributes,
+     InitialCount,
+     MaxCount,
+     lpName);
 
  return this->handle!=NULL;
 }//Create

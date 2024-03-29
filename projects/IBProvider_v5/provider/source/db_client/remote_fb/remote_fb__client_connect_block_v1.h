@@ -41,7 +41,7 @@ class RemoteFB__ClientConnectBlock_v1 LCPI_CPP_CFG__CLASS__FINAL
    public:
     using ptype_id_type=unsigned;
 
-    using ptype_id_type_N=structure::t_value_with_null<ptype_id_type>;
+    using ptype_id_type_N=lib::structure::t_value_with_null<ptype_id_type>;
 
    public:
     /// Идентификатор ожидаемого типа (может быть не определен).
@@ -70,7 +70,7 @@ class RemoteFB__ClientConnectBlock_v1 LCPI_CPP_CFG__CLASS__FINAL
    =tag_expected_ptype_descr;
 
   using expected_ptype_descr_type_N
-   =structure::t_value_with_null<expected_ptype_descr_type>;
+   =lib::structure::t_value_with_null<expected_ptype_descr_type>;
 
  public:
   const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE::self_ptr m_spDsPropValues;

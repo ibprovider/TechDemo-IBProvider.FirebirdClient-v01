@@ -149,7 +149,8 @@ IBP_DEF_FWRD_DB_INTERFACE(t_db_array)
 //charset objects --------------------------------------------------------
 class t_db_charset_info;
 
-typedef structure::t_value_with_null<t_db_charset_info> t_db_charset_info_n;
+using t_db_charset_info_n
+ =lib::structure::t_value_with_null<t_db_charset_info>;
 
 IBP_DEF_FWRD_DB_INTERFACE(t_db_charset)
 

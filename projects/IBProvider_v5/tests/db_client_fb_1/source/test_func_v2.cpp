@@ -126,9 +126,9 @@ TTSO_TestFunc_v2::~TTSO_TestFunc_v2()
 }
 
 //test interface ---------------------------------------------------------
-std::string TTSO_TestFunc_v2::get_id()const
+const char* TTSO_TestFunc_v2::get_id()const
 {
- return m_TestID;
+ return m_TestID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

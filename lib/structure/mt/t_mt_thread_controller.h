@@ -4,10 +4,10 @@
 #ifndef _t_mt_thread_controller_H_
 #define _t_mt_thread_controller_H_
 
-#include <structure/error/t_err_records.h>
-
 #ifndef NDEBUG
 #include <structure/debug/t_debug__mt_guard_rw.h>
+#else
+#include <lcpi/lib/.config.h>
 #endif
 
 namespace structure{
@@ -18,11 +18,11 @@ template<class tag_base_smem_obj>
 class t_basic_thread_controller:virtual public tag_base_smem_obj
 {
  private:
-  typedef t_basic_thread_controller<tag_base_smem_obj>  self_type;
-  typedef tag_base_smem_obj                             inherited;
+  using self_type=t_basic_thread_controller<tag_base_smem_obj>;
+  using inherited=tag_base_smem_obj;
 
-  t_basic_thread_controller(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_thread_controller(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
 

@@ -45,7 +45,7 @@ template<class Container>
 typename Container::iterator
  erase_element(Container& x,typename Container::const_reference value)
 {
- const Container::iterator i=find(x.begin(),x.end(),value);
+ const typename Container::iterator i=std::find(x.begin(),x.end(),value);
 
  return (i==x.end())?i:x.erase(i);
 }//erase_element
@@ -55,7 +55,7 @@ template<class Container,class T>
 typename Container::iterator
  remove_element(Container& x,const T& value)
 {
- const Container::iterator i=find(x.begin(),x.end(),value);
+ const typename Container::iterator i=std::find(x.begin(),x.end(),value);
 
  return (i==x.end())?i:x.erase(i);
 }

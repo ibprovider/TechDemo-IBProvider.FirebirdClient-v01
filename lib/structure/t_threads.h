@@ -9,15 +9,16 @@
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//contianings
-
-////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef t_thread_traits__single t_single_thread_traits;
-typedef t_thread_traits__multi  t_multi_thread_traits;
+using t_single_thread_traits
+ =t_thread_traits__single;
 
-typedef t_multi_thread_traits   t_def_thread_traits;
+using t_multi_thread_traits
+ =t_thread_traits__multi;
+
+using t_def_thread_traits
+ =t_multi_thread_traits;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure

@@ -59,8 +59,8 @@ void t_base_ole_error::raise()const //throw
 
 HRESULT t_base_ole_error::set_error_info(REFIID exc_riid)const
 {
- DECLARE_IPTR_TYPE(ICreateErrorInfo);
- DECLARE_IPTR_TYPE(IErrorInfo);
+ OLE_LIB__DECLARE_IPTR_TYPE(ICreateErrorInfo);
+ OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
 
  ICreateErrorInfoPtr spCreateErrorInfo;
 

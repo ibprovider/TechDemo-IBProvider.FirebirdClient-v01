@@ -7,6 +7,9 @@
 #include "source/external/icu/ibp_external__icu__dll.h"
 #include "source/ibp_char.h"
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{namespace external{namespace icu{
 ////////////////////////////////////////////////////////////////////////////////
 //class ICU__Loader
@@ -41,10 +44,11 @@ class ICU__Loader LCPI_CPP_CFG__CLASS__FINAL
   ICU__Dll_Ptr get_dll__icuin();
 
  private:
-  typedef structure::t_multi_thread_traits                 thread_traits;
+  using guard_type
+   =lib::structure::mt::t_guard;
 
-  typedef thread_traits::guard_type                        guard_type;
-  typedef thread_traits::lock_guard_type                   lock_guard_type;
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
   class tag_dll;

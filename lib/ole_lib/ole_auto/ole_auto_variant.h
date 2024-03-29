@@ -26,10 +26,10 @@ class TVariant;
 class TBaseVariant:public VARIANT
 {
  public:
-  typedef TBaseVariant                  self_type;
+  using self_type=TBaseVariant;
 
-  TBaseVariant(const self_type&);
-  self_type& operator = (const self_type&);
+  TBaseVariant(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TBaseVariant();
@@ -59,11 +59,14 @@ class TBaseVariant:public VARIANT
 class TVariant:public TBaseVariant
 {
  private:
-  typedef TVariant      self_type;
+  using self_type=TVariant;
 
  public: //typedefs --------------------------------------------------------
-  typedef structure::t_value_with_null<short>               value_i2_n_type;
-  typedef structure::t_value_with_null<LONG>                value_i4_n_type;
+  using value_i2_type=std::int16_t;
+  using value_i4_type=std::int32_t;
+
+  typedef structure::t_value_with_null<value_i2_type>       value_i2_n_type;
+  typedef structure::t_value_with_null<value_i4_type>       value_i4_n_type;
 
   typedef structure::t_value_with_null<std::string>         value_str_n_type;
   typedef structure::t_value_with_null<std::wstring>        value_wstr_n_type;
@@ -120,11 +123,14 @@ class TVariant:public TBaseVariant
 
   //-------
   TVariant(LONG          data);
-  TVariant(ULONG         data);
-  TVariant(int           data)=delete;
-  TVariant(short         data);
+  TVariant(ULONG         data)=delete;
+
+  TVariant(value_i2_type data);
+  TVariant(value_i4_type data);
+
   TVariant(double        data);
   TVariant(float         data);
+
   TVariant(bool          data);
 
   TVariant(const tagCY&  data);
@@ -178,7 +184,10 @@ class TVariant:public TBaseVariant
   self_type& operator = (const void* pv)=delete;
 
   self_type& operator = (LONG);
-  self_type& operator = (short);
+  self_type& operator = (ULONG)=delete;
+
+  self_type& operator = (value_i2_type);
+  self_type& operator = (value_i4_type);
 
   self_type& operator = (const char* const s)
    {return this->SetStr_v2(s);}

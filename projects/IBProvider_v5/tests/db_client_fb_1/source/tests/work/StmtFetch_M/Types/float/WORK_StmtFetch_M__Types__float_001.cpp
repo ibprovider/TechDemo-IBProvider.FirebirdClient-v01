@@ -39,7 +39,7 @@ class WORK_StmtFetch_M__Types__float_001::tag_impl LCPI_CPP_CFG__CLASS__FINAL
            const TTSO_TestData_v2& Data);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -71,9 +71,9 @@ WORK_StmtFetch_M__Types__float_001::tag_impl::~tag_impl()
 {;}
 
 //test interface ---------------------------------------------------------
-std::string WORK_StmtFetch_M__Types__float_001::tag_impl::get_id()const
+const char* WORK_StmtFetch_M__Types__float_001::tag_impl::get_id()const
 {
- return m_TestID;
+ return m_TestID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

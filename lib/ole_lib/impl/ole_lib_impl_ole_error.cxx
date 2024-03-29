@@ -88,7 +88,7 @@ void t_ole_error::throw_disp_error(HRESULT      const hr,
  //build text ------------------------------
  std::string text(verb.make_str());
 
- DECLARE_IPTR_TYPE(IErrorInfo);
+ OLE_LIB__DECLARE_IPTR_TYPE(IErrorInfo);
 
  IErrorInfoPtr spErrorInfo;
 

@@ -16,7 +16,7 @@
 #include "source/db_obj/isc_base/isc_msg_data_buffer.h"
 #include "source/error_services/ibp_error.h"
 #include "source/structure/ibp_buffer_view.h"
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace handles{
 ////////////////////////////////////////////////////////////////////////////////
@@ -152,10 +152,10 @@ class RemoteFB__HandleData_Statement LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   /// PREPARE DATA: Серверный идентификатор типа запроса
-  structure::t_value_with_null<unsigned long> m_PData__StmtTypeID;
+  lib::structure::t_value_with_null<unsigned long> m_PData__StmtTypeID;
 
   /// PREPARE DATA: Флаг допустимости групповой загрузки записей
-  structure::t_value_with_null<bool> m_PData__BatchFetch;
+  lib::structure::t_value_with_null<bool> m_PData__BatchFetch;
 
   /// <summary>
   ///  PREPARE DATA: Буфер с данными описаний колонок.

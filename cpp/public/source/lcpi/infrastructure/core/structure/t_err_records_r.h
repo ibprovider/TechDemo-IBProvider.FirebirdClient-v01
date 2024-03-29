@@ -10,7 +10,7 @@ namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_err_records_r
 
-class LCPI_INFRASTRUCTURE_CORE__CFG__CLASS_STG __declspec(novtable) t_err_records_r
+class LCPI_INFRASTRUCTURE_CORE__CFG__CLASS_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_err_records_r
 {
  public:
   virtual ~t_err_records_r()

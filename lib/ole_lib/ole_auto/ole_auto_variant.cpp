@@ -386,15 +386,27 @@ TVariant& TVariant::operator = (const VARIANT& x)
 }//operator = VARIANT
 
 //------------------------------------------------------------------------
-TVariant& TVariant::operator = (LONG const Long)
+TVariant& TVariant::operator = (LONG const value)
 {
- COPY_SIMPLE_TYPE(VT_I4,lVal,Long)
+ LCPI__assert_s(sizeof(value)==4);
+
+ COPY_SIMPLE_TYPE(VT_I4,lVal,value)
 }
 
 //------------------------------------------------------------------------
-TVariant& TVariant::operator = (short const Short)
+TVariant& TVariant::operator = (value_i2_type const value)
 {
- COPY_SIMPLE_TYPE(VT_I2,iVal,Short);
+ LCPI__assert_s(sizeof(value)==2);
+
+ COPY_SIMPLE_TYPE(VT_I2,iVal,value);
+}
+
+//------------------------------------------------------------------------
+TVariant& TVariant::operator = (value_i4_type const value)
+{
+ LCPI__assert_s(sizeof(value)==4);
+
+ COPY_SIMPLE_TYPE(VT_I4,lVal,value);
 }
 
 //------------------------------------------------------------------------
@@ -444,7 +456,7 @@ TVariant& TVariant::operator = (const tagDEC& x)
 //------------------------------------------------------------------------
 TVariant& TVariant::operator = (IDispatch* const pDispatch)
 {
- DECLARE_IPTR_TYPE(IDispatch);
+ OLE_LIB__DECLARE_IPTR_TYPE(IDispatch);
 
  IPtr2<IDispatch> spDisp(pDispatch);//блокируем интерфейс в памяти
 

@@ -11,7 +11,7 @@
 #include "source/db_client/remote_fb/remote_fb__memory.h"
 #include "source/db_obj/db_service_provider.h"
 #include "source/error_services/ibp_error_bug_check.h"
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////

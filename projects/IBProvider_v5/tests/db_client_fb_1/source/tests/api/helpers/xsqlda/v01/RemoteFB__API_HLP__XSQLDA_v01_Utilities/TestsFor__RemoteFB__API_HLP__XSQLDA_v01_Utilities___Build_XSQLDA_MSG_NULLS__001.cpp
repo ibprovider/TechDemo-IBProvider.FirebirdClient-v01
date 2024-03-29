@@ -32,7 +32,7 @@ class TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS
            unsigned char               nXVars);
 
   //test interface -------------------------------------------------------
-  virtual std::string get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* get_id()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual bool can_exec()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -67,9 +67,9 @@ TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001:
 {;}
 
 //test interface ---------------------------------------------------------
-std::string TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001::tag_impl::get_id()const
+const char* TestsFor__RemoteFB__API_HLP__XSQLDA_v01_Utilities___Build_XSQLDA_MSG_NULLS__001::tag_impl::get_id()const
 {
- return m_TestID;
+ return m_TestID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

@@ -6,6 +6,8 @@
 
 #include <lcpi/lib/.config.h>
 
+#include <type_traits>
+
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 //class interlocked
@@ -28,6 +30,39 @@ class interlocked LCPI_CPP_CFG__CLASS__FINAL
   template<typename T>
   static T add(T volatile* pAddend,T value);
 };//class interlocked
+
+namespace detail{
+////////////////////////////////////////////////////////////////////////////////
+
+template<class T>
+class interlocked__impl__get_underlying_type__enum LCPI_CPP_CFG__CLASS__FINAL
+{
+ public:
+  using type=typename std::underlying_type<T>::type;
+};//class interlocked__impl__get_underlying_type__enum
+
+//------------------------------------------------------------------------
+template<class T>
+class interlocked__impl__get_underlying_type__std LCPI_CPP_CFG__CLASS__FINAL
+{
+ public:
+  using type=T;
+};//class interlocked__impl__get_underlying_type__std
+
+//------------------------------------------------------------------------
+template<typename T>
+class interlocked__impl__get_underlying_type LCPI_CPP_CFG__CLASS__FINAL
+{
+ public:
+  using type
+   =typename std::conditional
+      <std::is_enum<T>::value,
+       interlocked__impl__get_underlying_type__enum<T>,
+       interlocked__impl__get_underlying_type__std<T>>::type::type;
+};//class interlocked__impl__get_underlying_type
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace detail
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms mt*/}/*nms structure*/}/*nms lib*/}/*nms lcpi*/

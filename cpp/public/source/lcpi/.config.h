@@ -1,0 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+//LCPI C++ Configuration.
+//                                               Dmitry Kovalenko. 26.04.2020.
+#ifndef _cpp_public_lcpi__config_H_
+#define _cpp_public_lcpi__config_H_
+
+//#include <lcpi/config/.config_compiler.h>
+#include <lcpi/config/.config_crt.h>
+#include <lcpi/config/.config_stl.h>
+#include <lcpi/config/.config_debug.h>
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+#endif

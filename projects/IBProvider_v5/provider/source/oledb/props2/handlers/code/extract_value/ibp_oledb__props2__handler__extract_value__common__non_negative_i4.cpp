@@ -51,7 +51,8 @@ bool IBP_OLEDB_Props2__Handler__ExtractValue__Common__non_negative_i4::ExtractVa
 
  assert(tmpValue.vt==VT_I4);
 
- const_cast<value_type&>(tmpValue.lVal); //compiler-time verification
+ LCPI__assert_s(sizeof(tmpValue.lVal)==sizeof(value_type));
+ LCPI__assert_s(sizeof(tmpValue.lVal)==4);
 
  if(tmpValue.lVal<0)
   return false;

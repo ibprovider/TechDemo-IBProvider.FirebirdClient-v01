@@ -65,8 +65,7 @@ class RemoteFB__API_HLP__SrvOperation_v1 LCPI_CPP_CFG__CLASS__FINAL
   void on_after_send();
 
  private:
-  typedef structure::t_multi_thread_traits  thread_traits;
-  typedef thread_traits::int_type           state_type;
+  using state_type=unsigned;
 
  private:
   static const state_type  c_state__before_send =0;
@@ -90,7 +89,7 @@ class RemoteFB__API_HLP__SrvOperation_v1 LCPI_CPP_CFG__CLASS__FINAL
   state_type m_state;
 
  #ifndef NDEBUG
-  thread_traits::int_type m_debug__op_cancel_was_sended;
+  unsigned m_debug__op_cancel_was_sended;
  #endif
 };//class RemoteFB__API_HLP__SrvOperation_v1
 

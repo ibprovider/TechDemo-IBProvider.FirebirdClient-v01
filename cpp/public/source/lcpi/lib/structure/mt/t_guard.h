@@ -4,6 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__t_guard_H_
 #define _cpp_public_lcpi_lib_structure_mt__t_guard_H_
 
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os-critical_section.h>
 #include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
@@ -19,6 +20,11 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public:
+#ifndef NDEBUG
+  using thread_id_type=DWORD;
+#endif
+
+ public:
   t_guard();
 
  ~t_guard();
@@ -30,25 +36,33 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
 
   void unlock();
 
- #ifndef NDEBUG
-  void debug__CheckThreadIsOwner(DWORD ThreadID)const;
+#ifndef NDEBUG
+  void debug__CheckThreadIsOwner(thread_id_type ThreadID)const;
 
-  void debug__CheckThreadIsNotOwner(DWORD ThreadID)const;
+  void debug__CheckThreadIsNotOwner(thread_id_type ThreadID)const;
 
   void debug__CheckCurrentThreadIsOwner()const;
 
   void debug__CheckCurrentThreadIsNotOwner()const;
- #endif
+#endif
 
  private:
-  CRITICAL_SECTION m_cs;
+#ifndef NDEBUG
+ static thread_id_type debug__get_current_thread_id()
+ {
+  return ::GetCurrentThreadId();
+ }
+#endif
 
  private:
- #ifndef NDEBUG
-  LONG m_cntLock;
+  infrastructure::os::LCPI_OS__CriticalSection m_cs;
 
-  DWORD m_OwnerThreadID;
- #endif
+ private:
+#ifndef NDEBUG
+  unsigned m_cntLock;
+
+  thread_id_type m_OwnerThreadID;
+#endif
 };//class t_guard
 
 ////////////////////////////////////////////////////////////////////////////////

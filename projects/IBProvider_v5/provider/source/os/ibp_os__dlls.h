@@ -63,15 +63,17 @@ class t_ibp_os__dlls LCPI_CPP_CFG__CLASS__FINAL
   void DefUnloadOrder(t_ibp_os__dll* pFirst,t_ibp_os__dll* pSecond);
 
  private:
-  typedef structure::t_multi_thread_traits         thread_traits;
+  using guard_type
+   =lib::structure::mt::t_guard;
 
-  typedef thread_traits::guard_type                guard_type;
-  typedef thread_traits::lock_guard_type           lock_guard_type;
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
-  typedef structure::t_tree_avl
-           <t_ibp_os__dll_loader_descr,
-            t_ibp_os__dll_loader_descr_less_operator,
-            IBP_MemoryAllocator>                   items_type;
+  using items_type
+   =structure::t_tree_avl
+     <t_ibp_os__dll_loader_descr,
+      t_ibp_os__dll_loader_descr_less_operator,
+      IBP_MemoryAllocator>;
 
  private:
   void Helper__ReleaseDLL(os::t_ibp_os__dll_loader::self_ptr* pspDllLoader);

@@ -13,17 +13,20 @@ namespace lcpi{namespace lib{namespace structure{
 class cnt_ref_traits LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs ------------------------------------------------------
-  using cnt_ref_type=unsigned __int64;
+  using cnt_ref_type=std::uint64_t;
 
  public:
   static void increment(cnt_ref_type* const pCntRef)
   {
+   assert(pCntRef);
+
 #ifndef NDEBUG
    const auto r=
 #endif
     mt::interlocked::increment(pCntRef);
 
    assert(r>0);
+   assert((*pCntRef)>0);
   }//increment
 
   static cnt_ref_type decrement(cnt_ref_type* const pCntRef)

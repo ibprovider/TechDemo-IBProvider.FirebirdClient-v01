@@ -44,7 +44,9 @@ typename t_simple_buffer<void,Allocator>::pointer
  assert(m_size<=m_capacity);
  assert(i<m_size);
 
- return reinterpret_cast<__int8*>(m_buffer)+i;
+ assert_s(sizeof(char)==1);
+
+ return reinterpret_cast<char*>(m_buffer)+i;
 }//ptr_at
 
 //------------------------------------------------------------------------

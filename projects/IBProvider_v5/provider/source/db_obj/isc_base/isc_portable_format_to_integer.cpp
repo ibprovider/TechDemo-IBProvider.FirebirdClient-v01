@@ -105,65 +105,73 @@ bool isc_portable_format_to_integer::exec_r(size_t            const sz,
 }//exec_r - long
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                          const sz,
-                                            const void*                                     const pv,
-                                            structure::t_value_with_null<unsigned __int16>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int16>* const result)
 {
  return self_type::helper__to_integerN__generic__unsigned(sz,pv,result);
 }//exec_r - uint16_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                          const sz,
-                                            const void*                                     const pv,
-                                            structure::t_value_with_null<unsigned __int32>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int32>* const result)
 {
  return self_type::helper__to_integerN__generic__unsigned(sz,pv,result);
 }//exec_r - uint32_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                          const sz,
-                                            const void*                                     const pv,
-                                            structure::t_value_with_null<unsigned __int64>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int64>* const result)
 {
  return self_type::helper__to_integerN__generic__unsigned(sz,pv,result);
 }//exec_r - uint64_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                       const sz,
-                                            const void*                                  const pv,
-                                            structure::t_value_with_null<unsigned long>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                            const sz,
+       const void*                                       const pv,
+       lib::structure::t_value_with_null<unsigned long>* const result)
 {
  return self_type::helper__to_integerN__generic__unsigned(sz,pv,result);
 }//exec_r - ulong_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                        const sz,
-                                            const void*                                   const pv,
-                                            structure::t_value_with_null<signed __int16>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int16>* const result)
 {
  return self_type::helper__to_integerN__generic__signed(sz,pv,result);
 }//exec_r - int16_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                        const sz,
-                                            const void*                                   const pv,
-                                            structure::t_value_with_null<signed __int32>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int32>* const result)
 {
  return self_type::helper__to_integerN__generic__signed(sz,pv,result);
 }//exec_r - int32_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                        const sz,
-                                            const void*                                   const pv,
-                                            structure::t_value_with_null<signed __int64>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int64>* const result)
 {
  return self_type::helper__to_integerN__generic__signed(sz,pv,result);
 }//exec_r - int64_N
 
 //------------------------------------------------------------------------
-bool isc_portable_format_to_integer::exec_r(size_t                                     const sz,
-                                            const void*                                const pv,
-                                            structure::t_value_with_null<signed long>* const result)
+bool isc_portable_format_to_integer::exec_r
+      (size_t                                          const sz,
+       const void*                                     const pv,
+       lib::structure::t_value_with_null<signed long>* const result)
 {
  return self_type::helper__to_integerN__generic__signed(sz,pv,result);
 }//exec_r - long_N
@@ -305,11 +313,12 @@ void isc_portable_format_to_integer::exec(size_t                  const sz,
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                          const sz,
-                                          const void*                                     const pv,
-                                          structure::t_value_with_null<unsigned __int16>* const result,
-                                          ibp::t_ibp_subsystem_id                         const subsystem,
-                                          const wchar_t*                                  const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int16>* const result,
+       ibp::t_ibp_subsystem_id                              const subsystem,
+       const wchar_t*                                       const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__unsigned(sz,pv,result))
  {
@@ -322,11 +331,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                          const sz,
-                                          const void*                                     const pv,
-                                          structure::t_value_with_null<unsigned __int32>* const result,
-                                          ibp::t_ibp_subsystem_id                         const subsystem,
-                                          const wchar_t*                                  const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int32>* const result,
+       ibp::t_ibp_subsystem_id                              const subsystem,
+       const wchar_t*                                       const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__unsigned(sz,pv,result))
  {
@@ -339,11 +349,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                          const sz,
-                                          const void*                                     const pv,
-                                          structure::t_value_with_null<unsigned __int64>* const result,
-                                          ibp::t_ibp_subsystem_id                         const subsystem,
-                                          const wchar_t*                                  const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                               const sz,
+       const void*                                          const pv,
+       lib::structure::t_value_with_null<unsigned __int64>* const result,
+       ibp::t_ibp_subsystem_id                              const subsystem,
+       const wchar_t*                                       const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__unsigned(sz,pv,result))
  {
@@ -356,11 +367,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                          sz,
-                                          const void*                                     pv,
-                                          structure::t_value_with_null<unsigned long>*    result,
-                                          ibp::t_ibp_subsystem_id                         subsystem,
-                                          const wchar_t*                                  value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                            const sz,
+       const void*                                       const pv,
+       lib::structure::t_value_with_null<unsigned long>* const result,
+       ibp::t_ibp_subsystem_id                           const subsystem,
+       const wchar_t*                                    const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__unsigned(sz,pv,result))
  {
@@ -373,11 +385,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                        const sz,
-                                          const void*                                   const pv,
-                                          structure::t_value_with_null<signed __int16>* const result,
-                                          ibp::t_ibp_subsystem_id                       const subsystem,
-                                          const wchar_t*                                const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int16>* const result,
+       ibp::t_ibp_subsystem_id                            const subsystem,
+       const wchar_t*                                     const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__signed(sz,pv,result))
  {
@@ -390,11 +403,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                        const sz,
-                                          const void*                                   const pv,
-                                          structure::t_value_with_null<signed __int32>* const result,
-                                          ibp::t_ibp_subsystem_id                       const subsystem,
-                                          const wchar_t*                                const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int32>* const result,
+       ibp::t_ibp_subsystem_id                            const subsystem,
+       const wchar_t*                                     const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__signed(sz,pv,result))
  {
@@ -407,11 +421,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                        const sz,
-                                          const void*                                   const pv,
-                                          structure::t_value_with_null<signed __int64>* const result,
-                                          ibp::t_ibp_subsystem_id                       const subsystem,
-                                          const wchar_t*                                const value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                             const sz,
+       const void*                                        const pv,
+       lib::structure::t_value_with_null<signed __int64>* const result,
+       ibp::t_ibp_subsystem_id                            const subsystem,
+       const wchar_t*                                     const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__signed(sz,pv,result))
  {
@@ -424,11 +439,12 @@ void isc_portable_format_to_integer::exec(size_t                                
 }//exec
 
 //------------------------------------------------------------------------
-void isc_portable_format_to_integer::exec(size_t                                        sz,
-                                          const void*                                   pv,
-                                          structure::t_value_with_null<signed long>*    result,
-                                          ibp::t_ibp_subsystem_id                       subsystem,
-                                          const wchar_t*                                value_sign)
+void isc_portable_format_to_integer::exec
+      (size_t                                          const sz,
+       const void*                                     const pv,
+       lib::structure::t_value_with_null<signed long>* const result,
+       ibp::t_ibp_subsystem_id                         const subsystem,
+       const wchar_t*                                  const value_sign)
 {
  if(!self_type::helper__to_integerN__generic__signed(sz,pv,result))
  {
@@ -498,9 +514,9 @@ bool isc_portable_format_to_integer::helper__to_integer__generic__unsigned
 //------------------------------------------------------------------------
 template<typename result_type>
 bool isc_portable_format_to_integer::helper__to_integerN__generic__unsigned
-              (size_t                                     const sz,
-               const void*                                const pv,
-               structure::t_value_with_null<result_type>* const result)
+      (size_t                                          const sz,
+       const void*                                     const pv,
+       lib::structure::t_value_with_null<result_type>* const result)
 {
  assert(result);
 
@@ -519,11 +535,11 @@ bool isc_portable_format_to_integer::helper__to_integerN__generic__unsigned
 //------------------------------------------------------------------------
 template<typename result_type>
 bool isc_portable_format_to_integer::helper__to_integer__generic__signed
-                                           (size_t       const sz,
-                                            const void*  const pv,
-                                            result_type* const result)
+      (size_t       const sz,
+       const void*  const pv,
+       result_type* const result)
 {
- assert(structure::t_numeric_limits<result_type>::is_signed);
+ assert(lib::structure::t_numeric_limits<result_type>::is_signed);
 
  //Алгоритм рассчитан исключительно на 8-битные байты (char).
  #if(CHAR_BIT!=8)
@@ -613,9 +629,9 @@ bool isc_portable_format_to_integer::helper__to_integer__generic__signed
 //------------------------------------------------------------------------
 template<typename result_type>
 bool isc_portable_format_to_integer::helper__to_integerN__generic__signed
-              (size_t                                     const sz,
-               const void*                                const pv,
-               structure::t_value_with_null<result_type>* const result)
+      (size_t                                          const sz,
+       const void*                                     const pv,
+       lib::structure::t_value_with_null<result_type>* const result)
 {
  assert(result);
 
@@ -633,10 +649,10 @@ bool isc_portable_format_to_integer::helper__to_integerN__generic__signed
 
 //------------------------------------------------------------------------
 void isc_portable_format_to_integer::helper__throw_error__bad_format
-                                           (ibp::t_ibp_subsystem_id const subsystem,
-                                            const wchar_t*          const value_sign,
-                                            const wchar_t*          const value_type_sign,
-                                            size_t                  const buf_length)
+      (ibp::t_ibp_subsystem_id const subsystem,
+       const wchar_t*          const value_sign,
+       const wchar_t*          const value_type_sign,
+       size_t                  const buf_length)
 {
  assert(value_sign);
  assert(value_type_sign);

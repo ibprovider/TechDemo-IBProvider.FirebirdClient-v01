@@ -4,7 +4,8 @@
 #ifndef _t_tso_log_H_
 #define _t_tso_log_H_
 
-#include <structure/t_handle.h>
+#include <structure/t_smart_interface.h>
+#include <structure/t_smart_object_ptr.h>
 
 namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////

@@ -29,7 +29,7 @@ class IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i2
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef SHORT                              value_type;
+  using value_type=std::int16_t;
 
  public:
   IBP_OLEDB_Props2__Handler__ExtractValue__Common__enum_i2

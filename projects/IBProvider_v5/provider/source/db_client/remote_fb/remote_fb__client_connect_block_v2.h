@@ -14,7 +14,7 @@
 
 #include "source/oledb/props2/values/datasource/ibp_oledb__props2__values__datasource.h"
 
-#include <structure/t_value_with_null.h>
+#include <lcpi/lib/structure/t_value_with_null.h>
 
 #include <lcpi/lib/structure/stl/t_stl_set.h>
 
@@ -53,7 +53,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
 
    public:
     using ptype_id_type   =unsigned;
-    using ptype_id_type_N =structure::t_value_with_null<ptype_id_type>;
+    using ptype_id_type_N =lib::structure::t_value_with_null<ptype_id_type>;
 
    public:
     /// Идентификатор ожидаемого типа (может быть не определен).
@@ -82,7 +82,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
   using expected_ptype_descr_type=tag_expected_ptype_descr;
 
   using expected_ptype_descr_type_N
-   =structure::t_value_with_null<expected_ptype_descr_type>;
+   =lib::structure::t_value_with_null<expected_ptype_descr_type>;
 
  private:
   using crypt_keys_type
@@ -216,7 +216,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
   ///  Строка с названиями зарегистрированных плагинов аутентификации
   /// </summary>
   ///  Формируется по требованию.
-  structure::t_value_with_null<std::wstring>
+  lib::structure::t_value_with_null<std::wstring>
    m_AuthPluginNames;
 
   /// Множество имен использованных плагинов аутентификации

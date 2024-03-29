@@ -6,7 +6,9 @@
 
 #include <lcpi/lib/structure/t_algorithm.h>
 #include <lcpi/lib/structure/t_memory.h>
+
 #include <iterator>
+#include <memory>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +87,7 @@ template<class T,size_t N>
 template<typename Iterator>
 t_fix_vector<T,N>::t_fix_vector(Iterator first,Iterator last)
 {
- typedef std::iterator_traits<Iterator>::iterator_category __cat;
+ using __cat=typename std::iterator_traits<Iterator>::iterator_category;
 
  this->construct(first,last,__cat());
 }//t_fix_vector
@@ -515,9 +517,9 @@ void t_fix_vector<T,N>::construct(Iterator first,Iterator last,std::random_acces
  if(this->capacity()<n)
   this->helper__throw_bad_alloc(n);
 
- typedef std::pair<Iterator,pointer>    copy_res_type;
-
- LCPI__DEBUG_CODE(const copy_res_type copy_res=)
+#ifndef NDEBUG
+ const std::pair<Iterator,pointer> copy_res=
+#endif
   structure::uninitialized_copy
    (first,
     last,

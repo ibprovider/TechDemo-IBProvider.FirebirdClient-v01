@@ -26,13 +26,14 @@ class IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day
  :public IBP_OLEDB_Props2__Handler__ExtractValue
 {
  private:
-  typedef IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day   self_type;
+  using self_type=IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day;
 
-  IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day(const self_type&);
-  self_type& operator = (const self_type&);
+  IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_value_with_null<long>        long_type_N;
+  using long_type_N
+   =lib::structure::t_value_with_null<long>;
 
  private:
   IBP_OLEDB_Props2__Handler__ExtractValue__Prop__first_week_day();

@@ -125,9 +125,9 @@ void TestsFor__P13_Srp_002__create_db::create(TTSO_PushTest*      const pTestPus
 }//create
 
 //------------------------------------------------------------------------
-std::string TestsFor__P13_Srp_002__create_db::get_id()const
+const char* TestsFor__P13_Srp_002__create_db::get_id()const
 {
- return m_testID;
+ return m_testID.c_str();
 }//get_id
 
 //------------------------------------------------------------------------

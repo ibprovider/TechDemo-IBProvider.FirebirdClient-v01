@@ -28,24 +28,24 @@ inline bool is_zero<unsigned char>(unsigned char x)
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<unsigned short>(unsigned short x)
+inline bool is_zero<std::uint16_t>(std::uint16_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - unsigned short
+}//is_zero - std::uint16_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<unsigned int>(unsigned int x)
+inline bool is_zero<std::uint32_t>(std::uint32_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - unsigned int
+}//is_zero - std::uint32_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<unsigned __int64>(unsigned __int64 x)
+inline bool is_zero<std::uint64_t>(std::uint64_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - unsigned __int64
+}//is_zero - std::uint64_t
 
 //------------------------------------------------------------------------
 template<>
@@ -56,38 +56,46 @@ inline bool is_zero<signed char>(signed char x)
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<signed short>(signed short x)
+inline bool is_zero<std::int16_t>(std::int16_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - signed short
+}//is_zero - std::int16_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<signed int>(signed int x)
+inline bool is_zero<std::int32_t>(std::int32_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - signed int
+}//is_zero - std::int32_t
 
 //------------------------------------------------------------------------
 template<>
-inline bool is_zero<signed __int64>(signed __int64 x)
+inline bool is_zero<std::int64_t>(std::int64_t x)
 {
  return structure::zero.eq(x);
-}//is_zero - signed __int64
+}//is_zero - std::int64_t
 
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+
 template<>
 inline bool is_zero<signed long>(signed long x)
 {
  return structure::zero.eq(x);
 }//is_zero - signed long
 
+#endif
+
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+
 template<>
 inline bool is_zero<unsigned long>(unsigned long x)
 {
  return structure::zero.eq(x);
 }//is_zero - unsigned long
+
+#endif
 
 //------------------------------------------------------------------------
 template<>

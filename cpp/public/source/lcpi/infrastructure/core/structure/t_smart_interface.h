@@ -10,7 +10,7 @@ namespace lcpi{namespace infrastructure{namespace core{namespace structure{
 ///////////////////////////////////////////////////////////////////////////////
 //class t_smart_interface
 
-class LCPI_INFRASTRUCTURE_CORE__CFG__IFACE_STG __declspec(novtable) t_smart_interface
+class LCPI_INFRASTRUCTURE_CORE__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_smart_interface
 {
  public:
   t_smart_interface()=default;

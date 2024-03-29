@@ -28,10 +28,10 @@ class TLockSWMRGToWrite;
 class TSynchronizeObject:public THandleWin32
 {
  private:
-  typedef TSynchronizeObject                self_type;
+  using self_type=TSynchronizeObject;
 
-  TSynchronizeObject(const self_type&);
-  self_type& operator = (const self_type&);
+  TSynchronizeObject(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  protected:
   TSynchronizeObject()
@@ -50,26 +50,39 @@ class TSynchronizeObject:public THandleWin32
 ////////////////////////////////////////////////////////////////////////////////
 //class TCriticalSection
 
-class TCriticalSection
+class TCriticalSection LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  TCriticalSection(const TCriticalSection&);
-  TCriticalSection& operator = (const TCriticalSection&);
+  using self_type=TCriticalSection;
+
+  TCriticalSection(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TCriticalSection()
-   {::InitializeCriticalSection(&m_section);}
+   {
+    ::InitializeCriticalSection(&m_section);
+   }
 
  ~TCriticalSection()
-   {::DeleteCriticalSection(&m_section);}
+  {
+   ::DeleteCriticalSection(&m_section);
+  }
 
-  operator CRITICAL_SECTION& () {return m_section;}
+  operator CRITICAL_SECTION& ()
+  {
+   return m_section;
+  }
 
   void Enter()
-   {::EnterCriticalSection(&m_section);}
+  {
+   ::EnterCriticalSection(&m_section);
+  }
 
   void Leave()
-   {::LeaveCriticalSection(&m_section);}
+  {
+   ::LeaveCriticalSection(&m_section);
+  }
 
  private:
   CRITICAL_SECTION m_section;
@@ -78,21 +91,27 @@ class TCriticalSection
 ////////////////////////////////////////////////////////////////////////////////
 //class TLockCriticalSection
 
-class TLockCriticalSection
+class TLockCriticalSection LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  TLockCriticalSection(const TLockCriticalSection&);
-  TLockCriticalSection(const CRITICAL_SECTION&);
+  using self_type=TLockCriticalSection;
 
-  TLockCriticalSection& operator = (const TLockCriticalSection&);
+  TLockCriticalSection(const self_type&)=delete;
+  TLockCriticalSection(const CRITICAL_SECTION&)=delete;
+
+  self_type& operator = (const self_type&);
 
  public:
   TLockCriticalSection(CRITICAL_SECTION& section)
    :m_section(section)
-   {EnterCriticalSection(&m_section);}
+  {
+   ::EnterCriticalSection(&m_section);
+  }
 
  ~TLockCriticalSection()
-   {LeaveCriticalSection(&m_section);}
+  {
+   ::LeaveCriticalSection(&m_section);
+  }
 
  private:
   CRITICAL_SECTION& m_section;
@@ -101,17 +120,20 @@ class TLockCriticalSection
 ////////////////////////////////////////////////////////////////////////////////
 //class TThread
 
-class TThread:public TSynchronizeObject
+class TThread LCPI_CPP_CFG__CLASS__FINAL
+ :public TSynchronizeObject
 {
  private:
-  typedef TThread                           self_type;
-  typedef TSynchronizeObject                inherited;
+  using self_type=TThread;
+  using inherited=TSynchronizeObject;
 
-  TThread(const self_type&);
-  self_type& operator = (const self_type&);
+  TThread(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef unsigned (__stdcall *thread_entry_point_func_ex)(void* pvParam);
+  using thread_entry_point_func_ex
+   =unsigned (__stdcall *)
+     (void* pvParam);
 
  public:
   DWORD ThreadID;
@@ -151,51 +173,66 @@ class TThread:public TSynchronizeObject
 ////////////////////////////////////////////////////////////////////////////////
 //class TMutex
 
-class TMutex:public TSynchronizeObject
+class TMutex LCPI_CPP_CFG__CLASS__FINAL
+ :public TSynchronizeObject
 {
  private:
-  TMutex(const TMutex&);
-  TMutex& operator = (const TMutex&);
+  using self_type=TMutex;
+  using inherited=TSynchronizeObject;
+
+  TMutex(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TMutex();
 
-  bool Create(LPSECURITY_ATTRIBUTES Attributes,bool InitialOwner,LPCTSTR lpName=NULL);
+  bool Create(LPSECURITY_ATTRIBUTES Attributes,
+              bool                  InitialOwner,
+              LPCTSTR               lpName=NULL);
 
   BOOL Release()
-   {return ::ReleaseMutex(handle);}
+  {
+   return ::ReleaseMutex(handle);
+  }
 };//class TMutex
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TLockMutex
 
-class TLockMutex
+class TLockMutex LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  TLockMutex(const TLockMutex&);
-  TLockMutex& operator = (const TLockMutex&);
+  using self_type=TLockMutex;
+  using inherited=TSynchronizeObject;
+
+  TLockMutex(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  protected:
   HANDLE m_hMutex;
 
  public:
-  TLockMutex(HANDLE  hMutex);
+  TLockMutex(HANDLE hMutex);
+
  ~TLockMutex();
 
-  void Lock(HANDLE  hMutex);
+  void Lock(HANDLE hMutex);
+
   void UnLock();
 };//class TLockMutex
 
 ////////////////////////////////////////////////////////////////////////////////
 //class TEvent
 
-class TEvent:public TSynchronizeObject
+class TEvent LCPI_CPP_CFG__CLASS__FINAL
+ :public TSynchronizeObject
 {
  private:
-  typedef TEvent                            self_type;
+  using self_type=TEvent;
+  using inherited=TSynchronizeObject;
 
-  TEvent(const self_type&);
-  self_type& operator = (const self_type&);
+  TEvent(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TEvent();
@@ -230,11 +267,15 @@ class TEvent:public TSynchronizeObject
 ////////////////////////////////////////////////////////////////////////////////
 //class TSemaphore
 
-class TSemaphore:public TSynchronizeObject
+class TSemaphore LCPI_CPP_CFG__CLASS__FINAL
+ :public TSynchronizeObject
 {
  private:
-  TSemaphore(const TSemaphore&);
-  TSemaphore& operator = (const TSemaphore&);
+  using self_type=TSemaphore;
+  using inherited=TSynchronizeObject;
+
+  TSemaphore(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TSemaphore();

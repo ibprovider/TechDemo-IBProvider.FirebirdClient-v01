@@ -13,6 +13,9 @@
 #include "source/error_services/ibp_error_collection.h"
 #include "source/ibp_debug.h"
 
+#include <lcpi/lib/structure/mt/t_guard.h>
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace ports{namespace base_v01{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup db_client__remote_fb__ports__base_v01
@@ -51,13 +54,13 @@ class RemoteFB__Port_BASE_v01
   RemoteFB__PortStreamPtr m_spSocket;
 
   /// Флаги порта.
-  structure::t_value_with_null<port_flags_type> m_PortFlags;
+  lib::structure::t_value_with_null<port_flags_type> m_PortFlags;
 
   /// Версия протокола подключения.
-  structure::t_value_with_null<protocol::P_PROTOCOL_VERSION> m_ProtocolVersion;
+  lib::structure::t_value_with_null<protocol::P_PROTOCOL_VERSION> m_ProtocolVersion;
 
   /// Архитектура протокола подключения.
-  structure::t_value_with_null<protocol::P_ARCH> m_ProtocolArchitecture;
+  lib::structure::t_value_with_null<protocol::P_ARCH> m_ProtocolArchitecture;
 
   /// Объект отправки/получения пакетов
   transmission::RemoteFB__PacketStream* m_pPacketStream;
@@ -176,8 +179,11 @@ class RemoteFB__Port_BASE_v01
   class tag_reader;
 
  private: //typedefs -----------------------------------------------------
-  typedef structure::t_multi_thread_traits::guard_type          guard_type;
-  typedef structure::t_multi_thread_traits::lock_guard_type     lock_guard_type;
+  using guard_type
+   =lib::structure::mt::t_guard;
+
+  using lock_guard_type
+   =lib::structure::mt::t_lock_guard<guard_type>;
 
   /// MT-блокировка отправки пакетов
   guard_type m_PacketSendGuard;
@@ -189,7 +195,7 @@ class RemoteFB__Port_BASE_v01
  #endif
 
  private:
-  using rw_state_type=ULONG;
+  using rw_state_type=unsigned;
 
   static const rw_state_type c_state__none   =0;
   static const rw_state_type c_state__in_use =1;
@@ -214,7 +220,7 @@ class RemoteFB__Port_BASE_v01
 
  private:
   using services_type
-   =structure::t_stl_map
+   =lib::structure::t_stl_map
      <GUID,
       RemoteFB__SmartObjectPtr,
       ole_lib::TGuidLess,

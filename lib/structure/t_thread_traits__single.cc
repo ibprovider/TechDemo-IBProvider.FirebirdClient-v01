@@ -8,27 +8,39 @@ namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_thread_traits__single
 
-inline void t_thread_traits__single::add(volatile int_type* const x,int_type const a)
+template<typename T1,typename T2>
+inline void t_thread_traits__single::add(volatile T1* const x,T2 const a)
 {
+ assert(x!=nullptr);
+
  (*x)+=a;
 }//add
 
 //------------------------------------------------------------------------
-inline t_thread_traits__single::int_type t_thread_traits__single::increment(volatile int_type* const x)
+template<typename T>
+inline T t_thread_traits__single::increment(volatile T* const x)
 {
+ assert(x!=nullptr);
+
  return ++(*x);
 }//increment
 
 //------------------------------------------------------------------------
-inline t_thread_traits__single::int_type t_thread_traits__single::decrement(volatile int_type* const x)
+template<typename T>
+inline T t_thread_traits__single::decrement(volatile T* const x)
 {
+ assert(x!=nullptr);
+
  return --(*x);
 }//decrement
 
 //------------------------------------------------------------------------
-inline t_thread_traits__single::int_type t_thread_traits__single::exchange(volatile int_type* const target,int_type const value)
+template<typename T1,typename T2>
+inline T1 t_thread_traits__single::exchange(volatile T1* const target,T2 const value)
 {
- const int_type prev_value=*target;
+ assert(target!=nullptr);
+
+ const T1 prev_value=*target;
 
  (*target)=value;
 

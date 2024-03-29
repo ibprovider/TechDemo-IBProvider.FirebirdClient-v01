@@ -13,38 +13,39 @@ namespace win32lib{
 class THandleWin32
 {
  private:
-  typedef THandleWin32                      self_type;
+  using self_type=THandleWin32;
 
-  THandleWin32(const self_type&);
-  self_type& operator = (const self_type&);
+  THandleWin32(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   HANDLE handle;
 
   THandleWin32()
    :handle(NULL)
-  {;}
+  {
+  }
 
   virtual ~THandleWin32()
-   {
-    _VERIFY(this->Close());
-   }
+  {
+   _VERIFY(this->Close());
+  }
 
   operator HANDLE () const
-   {
-    return this->handle;
-   }
+  {
+   return this->handle;
+  }
 
   virtual BOOL Close()
-   {
-    const HANDLE tmp_handle(this->handle);
+  {
+   const HANDLE tmp_handle(this->handle);
 
-    this->handle=NULL;
+   this->handle=0;
 
-    const BOOL bResult=(tmp_handle?::CloseHandle(tmp_handle):TRUE);
+   const BOOL bResult=(tmp_handle?::CloseHandle(tmp_handle):TRUE);
 
-    return bResult;
-   }//Close
+   return bResult;
+  }//Close
 };//class THandleWin32
 
 ////////////////////////////////////////////////////////////////////////////////

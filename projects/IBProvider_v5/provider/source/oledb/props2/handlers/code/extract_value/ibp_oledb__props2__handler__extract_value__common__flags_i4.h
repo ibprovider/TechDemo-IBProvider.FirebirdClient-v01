@@ -29,7 +29,7 @@ class IBP_OLEDB_Props2__Handler__ExtractValue__Common__flags_i4
   self_type& operator = (const self_type&);
 
  public: //typedefs ------------------------------------------------------
-  typedef LONG                              value_type;
+  using value_type=std::int32_t;
 
  public:
   IBP_OLEDB_Props2__Handler__ExtractValue__Common__flags_i4

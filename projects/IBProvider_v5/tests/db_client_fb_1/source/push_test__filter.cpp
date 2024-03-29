@@ -28,18 +28,19 @@ TTSO_PushTest__Filter::~TTSO_PushTest__Filter()
 }
 
 //TTSO_PushTest interface ------------------------------------------------
-void TTSO_PushTest__Filter::PushTest(const TTSO_Test* const pTest)
+void TTSO_PushTest__Filter::PushTest(const TTSO_Test_base* const pTest)
 {
  assert(pTest);
+ assert(dynamic_cast<const TTSO_Test*>(pTest));
 
  this->test_cancel_signal();
 
  m_spSysRootLog->inc_total_test_count();
 
- if(!m_spSD->can_exec(pTest->get_id().c_str()))
+ if(!m_spSD->can_exec(pTest->get_id()))
   return;
 
- if(!m_ignore_rules && !pTest->can_exec())
+ if(!m_ignore_rules && !dynamic_cast<const TTSO_Test*>(pTest)->can_exec())
   return;
 
  return m_spWorker->PushTest(pTest);

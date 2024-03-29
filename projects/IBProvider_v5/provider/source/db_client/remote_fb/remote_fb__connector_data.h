@@ -47,7 +47,7 @@
 
 #include "source/db_obj/db_charset_manager_v2.h"
 
-#include <structure/t_list_external.h>
+#include <lcpi/lib/structure/t_list_external.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
@@ -290,21 +290,21 @@ class RemoteFB__ConnectorData LCPI_CPP_CFG__CLASS__FINAL
    =tr_data_type::tag_list_adapter;
 
   using tr_handle_list_type
-   =structure::t_list_external<tr_handle_list_traits>;
+   =lib::structure::t_list_external<tr_handle_list_traits>;
 
  private:
   using stmt_handle_list_traits
    =stmt_data_type::tag_cn_list_adapter;
 
   using stmt_handle_list_type
-   =structure::t_list_external<stmt_handle_list_traits>;
+   =lib::structure::t_list_external<stmt_handle_list_traits>;
 
  private:
   using nclosed_blob_list_traits
    =blob_data_type::tag_nclosed_blob_list_adapter;
 
   using nclosed_blob_list_type
-   =structure::t_list_external<nclosed_blob_list_traits>;
+   =lib::structure::t_list_external<nclosed_blob_list_traits>;
 
  private:
   /// Порт подключения

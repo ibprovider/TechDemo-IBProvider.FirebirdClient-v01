@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+//LCPI Instrumental Library for C++
+//                                                Dmitry Kovalenko. 18.03.2024.
+#ifndef _lcpi_lib_structure__t_lock_guard_H_
+#define _lcpi_lib_structure__t_lock_guard_H_
+
+#include <lcpi/lib/structure/mt/t_lock_guard.h>
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+//class interlocked
+
+using namespace ::lcpi::lib::structure::mt;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

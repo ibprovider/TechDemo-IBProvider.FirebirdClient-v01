@@ -29,16 +29,16 @@ template<class T,VARTYPE VT>
 ////////////////////////////////////////////////////////////////////////////////
 //class TSafeArrayAutoUnAccessData
 
-class TSafeArrayAutoUnAccessData
+class TSafeArrayAutoUnAccessData LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TSafeArrayAutoUnAccessData         self_type;
+  using self_type=TSafeArrayAutoUnAccessData;
 
-  TSafeArrayAutoUnAccessData(const self_type&);
-  self_type& operator = (const self_type&);
+  TSafeArrayAutoUnAccessData(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  TSafeArrayAutoUnAccessData(SAFEARRAY* lpsa);
+  explicit TSafeArrayAutoUnAccessData(SAFEARRAY* lpsa);
 
  ~TSafeArrayAutoUnAccessData();
 
@@ -51,7 +51,8 @@ class TSafeArrayAutoUnAccessData
 ////////////////////////////////////////////////////////////////////////////////
 //class TSafeArrayBound
 
-class TSafeArrayBound:public SAFEARRAYBOUND
+class TSafeArrayBound LCPI_CPP_CFG__CLASS__FINAL
+ :public SAFEARRAYBOUND
 {
  public:
   TSafeArrayBound()
@@ -74,13 +75,13 @@ class TSafeArrayBound:public SAFEARRAYBOUND
 ////////////////////////////////////////////////////////////////////////////////
 //class TSafeArrayAccessor - блокировщик SAFEARRAY для доступа к данным
 
-class TSafeArrayAccessor
+class TSafeArrayAccessor LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TSafeArrayAccessor                             self_type;
+  using self_type=TSafeArrayAccessor;
 
-  TSafeArrayAccessor(const self_type&);
-  self_type& operator = (const self_type&);
+  TSafeArrayAccessor(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TSafeArrayAccessor(LPSAFEARRAY lpsa,bool throw_error);
@@ -111,14 +112,14 @@ class TSafeArrayAccessor
 class TBaseSafeArray
 {
  private:
-  typedef TBaseSafeArray          self_type;
+  using self_type=TBaseSafeArray;
 
-  TBaseSafeArray(const self_type&);
-  self_type& operator = (const self_type&);
+  TBaseSafeArray(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef SAFEARRAY*                           LPSAFEARRAY;
-  typedef const SAFEARRAY*                     LPCSAFEARRAY;
+  using LPSAFEARRAY  =SAFEARRAY*;
+  using LPCSAFEARRAY =const SAFEARRAY*;
 
  public:
   TBaseSafeArray();
@@ -151,10 +152,10 @@ class TBaseSafeArray
 class TSafeArray:public TBaseSafeArray
 {
  private:
-  typedef TSafeArray                     self_type;
+  using self_type=TSafeArray;
 
-  TSafeArray(const self_type&);
-  self_type& operator = (const self_type&);
+  TSafeArray(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   TSafeArray();
@@ -190,15 +191,15 @@ template<class T,VARTYPE VT>
 class TemplateSafeArray:private TSafeArray
 {
  private:
-  typedef TemplateSafeArray<T,VT>              self_type;
-  typedef TSafeArray                           inherited;
+  using self_type=TemplateSafeArray<T,VT>;
+  using inherited=TSafeArray;
 
-  TemplateSafeArray(const self_type&);
-  self_type& operator = (const self_type&);
+  TemplateSafeArray(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef SAFEARRAY*                           LPSAFEARRAY;
-  typedef const SAFEARRAY*                     LPCSAFEARRAY;
+  using LPSAFEARRAY=SAFEARRAY*;
+  using LPCSAFEARRAY=const SAFEARRAY*;
 
  public:
   using inherited::GetDim;
@@ -245,7 +246,7 @@ class TemplateSafeArray:private TSafeArray
   void PutN(const std::vector<LONG>& x,const T* data);
 };//template class TemplateSafeArray
 
-typedef TemplateSafeArray<VARIANT,VT_VARIANT> TVariantSafeArray;
+using TVariantSafeArray=TemplateSafeArray<VARIANT,VT_VARIANT>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace ole_lib

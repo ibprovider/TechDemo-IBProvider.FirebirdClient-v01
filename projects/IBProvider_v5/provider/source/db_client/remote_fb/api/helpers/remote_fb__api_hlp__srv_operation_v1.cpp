@@ -38,16 +38,22 @@ void RemoteFB__API_HLP__SrvOperation_v1::cancel()
  const wchar_t* const c_bugcheck_src
   =L"RemoteFB__API_HLP__SrvOperation_v1::cancel";
 
- switch(const state_type prevState=::InterlockedExchange(&m_state,c_state__cancelled))
+ const state_type
+  prevState
+   =lib::structure::mt::interlocked::exchange
+     (&m_state,
+      self_type::c_state__cancelled);
+
+ switch(prevState)
  {
   case c_state__after_send:
   {
    //Отправляем op_cancel
    assert(!m_debug__op_cancel_was_sended);
 
-   #ifndef NDEBUG
-    thread_traits::exchange(&m_debug__op_cancel_was_sended,1);
-   #endif
+#ifndef NDEBUG
+   lib::structure::mt::interlocked::exchange(&m_debug__op_cancel_was_sended,1);
+#endif
 
    api::RemoteFB__SVC__CancelDbOperation_Ptr spCancelSvc;
 
@@ -101,9 +107,13 @@ void RemoteFB__API_HLP__SrvOperation_v1::on_before_send()
  const wchar_t* const c_bugcheck_src
   =L"RemoteFB__API_HLP__SrvOperation_v1::on_before_send";
 
- const state_type prevState=::InterlockedCompareExchange(&m_state,
-                                                         c_state__before_send,
-                                                         c_state__after_send);
+ const state_type
+  prevState
+   =lib::structure::mt::interlocked::compare_exchange
+     (&m_state,
+      self_type::c_state__before_send,
+      self_type::c_state__after_send);
+
  switch(prevState)
  {
   case c_state__before_send:
@@ -150,9 +160,13 @@ void RemoteFB__API_HLP__SrvOperation_v1::on_after_send()
 
  try
  {
-  const state_type prevState=::InterlockedCompareExchange(&m_state,
-                                                          c_state__after_send,
-                                                          c_state__before_send);
+  const state_type
+   prevState
+    =lib::structure::mt::interlocked::compare_exchange
+      (&m_state,
+       c_state__after_send,
+       c_state__before_send);
+
   switch(prevState)
   {
    case c_state__before_send:
@@ -169,9 +183,9 @@ void RemoteFB__API_HLP__SrvOperation_v1::on_after_send()
 
     assert(!m_debug__op_cancel_was_sended);
 
-   #ifndef NDEBUG
-    thread_traits::exchange(&m_debug__op_cancel_was_sended,1);
-   #endif
+#ifndef NDEBUG
+    lib::structure::mt::interlocked::exchange(&m_debug__op_cancel_was_sended,1);
+#endif
 
     //отправляем, только если отмена операций поддерживается.
     api::RemoteFB__SVC__CancelDbOperation_Ptr spCancelSvc;
@@ -246,7 +260,8 @@ RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame::tag_send_frame
 
 //------------------------------------------------------------------------
 RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame::~tag_send_frame()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 void RemoteFB__API_HLP__SrvOperation_v1::tag_send_frame::complete()

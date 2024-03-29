@@ -16,9 +16,14 @@ size_t __create_strings2(TContainer&     container,
                          ForwardIterator beg,
                          ForwardIterator end)
 {
- typedef std::iterator_traits<ForwardIterator>::value_type  char_type;
- typedef t_char_traits2<char_type>                          _t2;
- typedef std::basic_string<char_type>                       string_type;
+ using char_type
+  =typename std::iterator_traits<ForwardIterator>::value_type;
+
+ using _t2
+  =t_char_traits2<char_type>;
+
+ using string_type
+  =std::basic_string<char_type>;
 
  ForwardIterator e(beg);
 
