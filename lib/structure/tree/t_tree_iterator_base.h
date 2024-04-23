@@ -158,11 +158,11 @@ void tree_iterator_back(const PNode& start_node,PNode& cur_node)
  if(old_cur_node!=start_node->m_parent && old_cur_node->m_right==cur_node)
  {
   //from right
-  while(old_cur_node->m_left!=NULL)
+  while(old_cur_node->m_left!=nullptr)
   {
    old_cur_node=old_cur_node->m_left;
 
-   while(old_cur_node->m_right!=NULL)
+   while(old_cur_node->m_right!=nullptr)
     old_cur_node = old_cur_node->m_right;
   }//while
  }//if

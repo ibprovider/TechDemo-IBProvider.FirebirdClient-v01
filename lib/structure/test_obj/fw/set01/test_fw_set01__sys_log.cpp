@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__sys_log.h>
 
@@ -8,18 +8,9 @@ namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
 //class TestFW__SysLog
 
-TestFW__SysLog::TestFW__SysLog(unsigned const CodePage)
- :inherited(CodePage)
- ,m_other_error_count   (0)
- ,m_other_warning_count (0)
- ,m_pass_count          (0)
- ,m_total_test_count    (0)
-{
-}
-
-//------------------------------------------------------------------------
-TestFW__SysLog::TestFW__SysLog(tso_obj::t_log_stream* const pOutputStream)
- :inherited(pOutputStream)
+TestFW__SysLog::TestFW__SysLog(tso_obj::t_log*        const pParent,
+                               tso_obj::t_log_stream* const pOutputStream)
+ :inherited(pParent,pOutputStream)
  ,m_other_error_count   (0)
  ,m_other_warning_count (0)
  ,m_pass_count          (0)
@@ -58,17 +49,17 @@ void TestFW__SysLog::inc_total_test_count()
 
 //selectors --------------------------------------------------------------
 TestFW__SysLog::count_type
- TestFW__SysLog::get_total_error_count()const
+ TestFW__SysLog::get_error_count()const
 {
  return m_other_error_count+inherited::get_error_count();
-}//get_total_error_count
+}//get_error_count
 
 //------------------------------------------------------------------------
 TestFW__SysLog::count_type
- TestFW__SysLog::get_total_warning_count()const
+ TestFW__SysLog::get_warning_count()const
 {
  return m_other_warning_count+inherited::get_warning_count();
-}//get_total_warning_count
+}//get_warning_count
 
 //------------------------------------------------------------------------
 TestFW__SysLog::count_type

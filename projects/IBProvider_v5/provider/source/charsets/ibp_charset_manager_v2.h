@@ -103,9 +103,11 @@ class t_ibp_charset_manager_v2 LCPI_CPP_CFG__CLASS__FINAL
    =lib::structure::mt::t_lock_guard<guard_type>;
 
  private:
-  typedef structure::t_tree_avl<db_obj::t_db_charset_const_ptr,
-                                db_obj::t_db_charset::tag_less_by_name,
-                                db_obj::t_db_memory_allocator>    cs_map_type;
+  using cs_map_type
+   =structure::t_tree_avl
+     <db_obj::t_db_charset_const_ptr,
+      db_obj::t_db_charset::tag_less_by_name,
+      db_obj::t_db_memory_allocator>;
 
  private:
   /// <summary>
@@ -161,10 +163,11 @@ class t_ibp_charset_manager_v2 LCPI_CPP_CFG__CLASS__FINAL
                             bool                    process_empty_name)const;
 
  private:
-  typedef ibp::t_ibp_locale_services::self_ptr local_services_ptr;
+  using locale_services_ptr
+   =ibp::t_ibp_locale_services::self_ptr;
 
  private:
-  const local_services_ptr m_spStdLocaleC;
+  const locale_services_ptr m_spStdLocaleC;
 
  private:
   ///¬нешн€€ ICU библиотека
@@ -180,7 +183,7 @@ class t_ibp_charset_manager_v2 LCPI_CPP_CFG__CLASS__FINAL
   charsets::t_ibp_charset_provider_ptr m_icu_provider;
 
   ///ќтображение cs_id на кодовую страницу
-  std::array<db_obj::t_db_charset_const_ptr,4> m_cs_id_names;
+  std::array<db_obj::t_db_charset_const_ptr,5> m_cs_id_names;
 };//class t_ibp_charset_manager_v2
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _structure__t_to_hex_result_H_
-#define _structure__t_to_hex_result_H_
+#ifndef _lcpi_lib_structure__t_to_hex_result_H_
+#define _lcpi_lib_structure__t_to_hex_result_H_
 
 #include <lcpi/lib/structure/t_to_hex_result.h>
 

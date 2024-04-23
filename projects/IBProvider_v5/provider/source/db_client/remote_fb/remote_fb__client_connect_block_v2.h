@@ -86,7 +86,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
 
  private:
   using crypt_keys_type
-   =structure::t_smart_vector
+   =lib::structure::t_smart_vector
      <RemoteFB__InternalCryptKey,
       RemoteFB__MemoryAllocator>;
 
@@ -170,7 +170,7 @@ class RemoteFB__ClientConnectBlock_v2 LCPI_CPP_CFG__CLASS__FINAL
 
  private:
   using auth_plugins_type
-   =structure::t_smart_vector
+   =lib::structure::t_smart_vector
      <plugins::auth::RemoteFB__Plugin_Auth_Factory,
       allocator_type>;
 

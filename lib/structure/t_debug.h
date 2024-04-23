@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Structures for debug and verification code
 //                                                  Kovalenko Dmitry. 26.03.2009
-#ifndef _t_debug_H_
-#define _t_debug_H_
+#ifndef _lcpi_lib_structure__t_debug_H_
+#define _lcpi_lib_structure__t_debug_H_
 
 #include <lcpi/lib/structure/t_debug.h>
 

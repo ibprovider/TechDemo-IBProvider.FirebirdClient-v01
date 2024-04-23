@@ -37,7 +37,7 @@ class interlocked_add__impl_n<sizeof(std::uint32_t)> LCPI_CPP_CFG__CLASS__FINAL
 
    return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd32
                (reinterpret_cast<api_t volatile*>(pAddend),
-                value);
+                static_cast<api_t>(value));
   }//exec
 };//class interlocked_add__impl_n<sizeof(std::uint32_t)>
 
@@ -60,7 +60,7 @@ class interlocked_add__impl_n<sizeof(std::uint64_t)> LCPI_CPP_CFG__CLASS__FINAL
 
    return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd64
                (reinterpret_cast<api_t volatile*>(pAddend),
-                value);
+                static_cast<api_t>(value));
   }//exec
 };//class interlocked_add__impl_n<sizeof(std::uint64_t)>
 

@@ -20,9 +20,9 @@ db_obj::t_db_cs_result
                                              (InputIterator& source,
                                               InputIterator  source_end,
                                               wchar_t*       result_buffer,
-                                              size_t&        result_size)const
+                                              size_t&        result_size)
 {
- CHECK_WRITE_PTR(result_buffer,result_size*sizeof(*result_buffer));
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
 
  //-----
  const size_t original_result_size=result_size;
@@ -56,11 +56,11 @@ db_obj::t_db_cs_result
                                              (InputIterator& source,
                                               InputIterator  source_end,
                                               char*          result_buffer,
-                                              size_t&        result_size)const
+                                              size_t&        result_size)
 {
- CHECK_WRITE_PTR(result_buffer,result_size*sizeof(*result_buffer));
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
 
- //-----
+ //-------
  const size_t original_result_size=result_size;
 
  result_size=0;
@@ -90,7 +90,7 @@ template<typename InputIterator,typename OutputIterator>
 db_obj::t_db_cs_result
  t_ibp_cs_ascii_traits::ucs2_to_own(InputIterator&  source,
                                     InputIterator   source_end,
-                                    OutputIterator  dest)const
+                                    OutputIterator  dest)
 {
  for(;source!=source_end;++source,++dest)
  {

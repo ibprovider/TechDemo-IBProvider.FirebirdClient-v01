@@ -28,6 +28,10 @@
 
 #include "source/db_obj/dbms_fb/v03_0_0/db_obj__dbms_fb__v03_0_0__factories.h"
 #include "source/db_obj/fb_base/fb_api.h"
+#include "source/db_obj/ib_base/ib_sys_data.h"
+#include "source/db_obj/isc_base/isc_initialize_utils.h"
+
+#include "source/external/icu/ibp_external__icu__loader_factory.h"
 
 #include "source/db_obj/db_utility.h"
 #include "source/error_services/ibp_error_messages.h"
@@ -429,8 +433,9 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
 
   protocol::set02::PACKET_V02 packet;
 
-  pPort->receive_packet(portOpCtx,
-                        packet); //throw
+  pPort->receive_packet
+   (portOpCtx,
+    packet); //throw
 
   switch(packet.operation)
   {
@@ -466,9 +471,25 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
     // FB3 возвращает ошибку (isc_random): "Firebird::string - length exceeds predefined limit"
 
     //Настраиваем сервис для обработки серверных ошибок.
+    const external::icu::ICU__Loader::self_ptr
+     spIcuLoader
+      (external::icu::create_icu_loader
+        (pDsPropValues));
+
+    assert(spIcuLoader);
+
+    const db_obj::t_db_charset_manager_v2_ptr
+     spCsMng
+      (isc_base::isc_create_charset_manager_v2
+        (pDsPropValues,
+         spIcuLoader,
+         ib_base::g_ods_cs__ib04_0_0));
+
+    assert(spCsMng);
+
     pPort->RegService
      (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
-      db_obj::dbms_fb::v03_0_0::create_svc__status_vector_utils());
+      db_obj::dbms_fb::v03_0_0::create_svc__status_vector_utils(spCsMng));
 
     api::pset02::RemoteFB__PSET02__ErrorUtilites::ProcessServerResult2
      (pPort,
@@ -504,7 +525,8 @@ bool RemoteFB__PortInitializer_PSET02_v01::Helper__TryConnect
     assert(pAcceptConnectFuncs->P13);
 
     pAcceptConnectFuncs->P13
-     (pPort,
+     (pDsPropValues,
+      pPort,
       packet,
       ucs2_database_name,
       clientConnectBlock,

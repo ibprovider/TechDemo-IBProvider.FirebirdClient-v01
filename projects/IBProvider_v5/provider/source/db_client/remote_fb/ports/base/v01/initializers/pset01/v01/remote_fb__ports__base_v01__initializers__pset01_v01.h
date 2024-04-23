@@ -166,11 +166,12 @@ class RemoteFB__PortInitializer_PSET01_v01
   //!  Блок с данными подключения к базе данных
   //! \param[in] FinalOpFuncs
   static void Helper__FinishConnect_P10
-               (port_type*                         pPort,
-                const protocol::set01::PACKET_V01& packet,
-                wstr_box_type                      ucs2_database_name,
-                RemoteFB__ClientConnectBlock_v1&   clientConnectBlock,
-                const tag_connect_finalizator&     FinalOpFuncs);
+               (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+                port_type*                                   pPort,
+                const protocol::set01::PACKET_V01&           packet,
+                wstr_box_type                                ucs2_database_name,
+                RemoteFB__ClientConnectBlock_v1&             clientConnectBlock,
+                const tag_connect_finalizator&               FinalOpFuncs);
 
   /// <summary>
   ///  Финализатор подключения по 11-му протоколу
@@ -184,11 +185,12 @@ class RemoteFB__PortInitializer_PSET01_v01
   //!  Блок с данными подключения к базе данных
   //! \param[in] FinalOpFuncs
   static void Helper__FinishConnect_P11
-               (port_type*                         pPort,
-                const protocol::set01::PACKET_V01& packet,
-                wstr_box_type                      ucs2_database_name,
-                RemoteFB__ClientConnectBlock_v1&   clientConnectBlock,
-                const tag_connect_finalizator&     FinalOpFuncs);
+               (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+                port_type*                                   pPort,
+                const protocol::set01::PACKET_V01&           packet,
+                wstr_box_type                                ucs2_database_name,
+                RemoteFB__ClientConnectBlock_v1&             clientConnectBlock,
+                const tag_connect_finalizator&               FinalOpFuncs);
 
   /// <summary>
   ///  Финализатор подключения по 12-му протоколу
@@ -202,11 +204,12 @@ class RemoteFB__PortInitializer_PSET01_v01
   //!  Блок с данными подключения к базе данных
   //! \param[in] FinalOpFuncs
   static void Helper__FinishConnect_P12
-               (port_type*                         pPort,
-                const protocol::set01::PACKET_V01& packet,
-                wstr_box_type                      ucs2_database_name,
-                RemoteFB__ClientConnectBlock_v1&   clientConnectBlock,
-                const tag_connect_finalizator&     FinalOpFuncs);
+               (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+                port_type*                                   pPort,
+                const protocol::set01::PACKET_V01&           packet,
+                wstr_box_type                                ucs2_database_name,
+                RemoteFB__ClientConnectBlock_v1&             clientConnectBlock,
+                const tag_connect_finalizator&               FinalOpFuncs);
 
  private:
   /// <summary>

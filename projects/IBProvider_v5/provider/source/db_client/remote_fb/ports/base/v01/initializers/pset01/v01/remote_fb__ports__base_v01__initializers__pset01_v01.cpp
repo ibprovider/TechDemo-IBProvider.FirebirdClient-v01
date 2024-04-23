@@ -448,7 +448,8 @@ bool RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect
    case protocol::FB_PROTOCOL_VERSION10:
    {
     Helper__FinishConnect_P10
-     (pPort,
+     (pDsPropValues,
+      pPort,
       packet,
       ucs2_database_name,
       clientConnectBlock,
@@ -460,7 +461,8 @@ bool RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect
    case protocol::FB_PROTOCOL_VERSION11:
    {
     Helper__FinishConnect_P11
-     (pPort,
+     (pDsPropValues,
+      pPort,
       packet,
       ucs2_database_name,
       clientConnectBlock,
@@ -472,7 +474,8 @@ bool RemoteFB__PortInitializer_PSET01_v01::Helper__TryConnect
    case protocol::FB_PROTOCOL_VERSION12:
    {
     Helper__FinishConnect_P12
-     (pPort,
+     (pDsPropValues,
+      pPort,
       packet,
       ucs2_database_name,
       clientConnectBlock,

@@ -4,8 +4,8 @@
 //! \brief   Structures for work with memory
 //! \author  Kovalenko Dmitry
 //! \date    06.02.2000.
-#ifndef _t_memory_H_
-#define _t_memory_H_
+#ifndef _lcpi_lib_structure__t_memory_H_
+#define _lcpi_lib_structure__t_memory_H_
 
 #include <lcpi/lib/structure/t_memory.h>
 

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //This file turns packing of structures off
 //                                                 Kovalenko Dmitry. 07.09.2010
-#ifndef _t_comp_pop_pack_H_
-#define _t_comp_pop_pack_H_
+#ifndef _lcpi_lib_structure__t_comp_pop_pack_H_
+#define _lcpi_lib_structure__t_comp_pop_pack_H_
 
 ////////////////////////////////////////////////////////////////////////////////
 

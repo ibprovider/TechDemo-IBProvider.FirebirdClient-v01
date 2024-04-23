@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__test_state2.h>
 #include <structure/t_zero.h>
@@ -12,7 +12,9 @@ namespace structure{namespace test_fw{namespace set01{
 TestFW__TestState2::str_box_type
  TestFW__TestState2::get_test_id()const
 {
- const size_t test_id_length=std::find(m_test_id,_END_(m_test_id),0)-m_test_id;
+ const size_t
+  test_id_length
+   =std::find(m_test_id,_END_(m_test_id),0)-m_test_id;
 
  return str_box_type(m_test_id,test_id_length);
 }//get_test_id

@@ -8,6 +8,7 @@
 #pragma hdrstop
 
 #include "source/ibp_debug.h"
+#include <tchar.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////

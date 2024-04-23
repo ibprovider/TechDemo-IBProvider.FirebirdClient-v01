@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Шаблон для работы с массивами фиксированной ёмкости
 //                                        Коваленко Дмитрий. 14 июля 2003 года.
-#ifndef _t_fix_vector_H_
-#define _t_fix_vector_H_
+#ifndef _lcpi_lib_structure__t_fix_vector_H_
+#define _lcpi_lib_structure__t_fix_vector_H_
 
 #include <lcpi/lib/structure/t_fix_vector.h>
 

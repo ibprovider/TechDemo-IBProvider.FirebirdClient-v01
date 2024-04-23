@@ -170,6 +170,8 @@ class RemoteFB__PortInitializer_PSET02_v01
   /// <summary>
   ///  Многошаговая финализация подключения по 13-му протоколу
   /// </summary>
+  //! \param[in] pDsPropValues
+  //!  Not null.
   //! \param[in] pPort
   //!  Not null.
   //! \param[in] acceptPacket
@@ -179,15 +181,18 @@ class RemoteFB__PortInitializer_PSET02_v01
   //!  Блок с данными подключения к базе данных
   //! \param[in] FinalOpFuncs
   static void Helper__FinishConnect_P13__cond_accept
-               (port_type*                         pPort,
-                const protocol::set02::PACKET_V02& acceptPacket,
-                wstr_box_type                      ucs2_database_name,
-                RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
-                const tag_connect_finalizator&     FinalOpFuncs);
+               (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+                port_type*                                   pPort,
+                const protocol::set02::PACKET_V02&           acceptPacket,
+                wstr_box_type                                ucs2_database_name,
+                RemoteFB__ClientConnectBlock_v2&             clientConnectBlock,
+                const tag_connect_finalizator&               FinalOpFuncs);
 
   /// <summary>
   ///  Одношаговая финализация подключения по 13-му протоколу
   /// </summary>
+  //! \param[in] pDsPropValues
+  //!  Not null.
   //! \param[in] pPort
   //!  Not null.
   //! \param[in] acceptPacket
@@ -197,11 +202,12 @@ class RemoteFB__PortInitializer_PSET02_v01
   //!  Блок с данными подключения к базе данных
   //! \param[in] FinalOpFuncs
   static void Helper__FinishConnect_P13__accept_data
-               (port_type*                         pPort,
-                const protocol::set02::PACKET_V02& acceptPacket,
-                wstr_box_type                      ucs2_database_name,
-                RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
-                const tag_connect_finalizator&     FinalOpFuncs);
+               (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+                port_type*                                   pPort,
+                const protocol::set02::PACKET_V02&           acceptPacket,
+                wstr_box_type                                ucs2_database_name,
+                RemoteFB__ClientConnectBlock_v2&             clientConnectBlock,
+                const tag_connect_finalizator&               FinalOpFuncs);
 
  private:
   struct tagAcceptConnectFuncs LCPI_CPP_CFG__CLASS__FINAL
@@ -209,11 +215,12 @@ class RemoteFB__PortInitializer_PSET02_v01
    public:
     using accept_pfunc_pointer
      =void (*)
-       (port_type*                         pPort,
-        const protocol::set02::PACKET_V02& acceptPacket,
-        wstr_box_type                      ucs2_database_name,
-        RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
-        const tag_connect_finalizator&     FinalOpFuncs);
+       (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+        port_type*                                   pPort,
+        const protocol::set02::PACKET_V02&           acceptPacket,
+        wstr_box_type                                ucs2_database_name,
+        RemoteFB__ClientConnectBlock_v2&             clientConnectBlock,
+        const tag_connect_finalizator&               FinalOpFuncs);
 
    public:
     accept_pfunc_pointer P13;

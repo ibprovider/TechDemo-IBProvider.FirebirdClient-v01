@@ -3,8 +3,10 @@
 #define _t_tso_lib_CC_
 
 #include <structure/error/t_err_records_collection.h>
-#include <structure/t_str_formatter.h>
-#include <structure/t_negative_one.h>
+#include <structure/t_str_cvt_traits__utf8.h>
+
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-thread_api.h>
+
 #include <iostream>
 #include <sstream>
 #include <iomanip>
@@ -13,8 +15,8 @@ namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_message
 
-template<class Allocator>
-t_basic_message<Allocator>::t_basic_message(const self_type& x)
+template<class Allocator,class StrCvtTraits>
+t_basic_message<Allocator,StrCvtTraits>::t_basic_message(const self_type& x)
  :m_error_code (x.m_error_code)
  ,m_msg_kind   (x.m_msg_kind)
  ,m_source     (x.m_source)
@@ -23,53 +25,55 @@ t_basic_message<Allocator>::t_basic_message(const self_type& x)
 }
 
 //------------------------------------------------------------------------
-template<class Allocator>
-t_basic_message<Allocator>::t_basic_message()
+template<class Allocator,class StrCvtTraits>
+t_basic_message<Allocator,StrCvtTraits>::t_basic_message()
  :m_error_code(0)
  ,m_msg_kind(tso_msg_info)
 {
 }
 
 //------------------------------------------------------------------------
-template<class Allocator>
-t_basic_message<Allocator>::~t_basic_message()
+template<class Allocator,class StrCvtTraits>
+t_basic_message<Allocator,StrCvtTraits>::~t_basic_message()
 {
 }
 
 //t_message interface ----------------------------------------------------
-template<class Allocator>
-typename t_basic_message<Allocator>::error_code_type
- t_basic_message<Allocator>::get_error_code()const
+template<class Allocator,class StrCvtTraits>
+typename t_basic_message<Allocator,StrCvtTraits>::error_code_type
+ t_basic_message<Allocator,StrCvtTraits>::get_error_code()const
 {
  return m_error_code;
 }//get_error_code
 
 //------------------------------------------------------------------------
-template<class Allocator>
-typename t_basic_message<Allocator>::msg_kind_type
- t_basic_message<Allocator>::get_msg_kind()const
+template<class Allocator,class StrCvtTraits>
+typename t_basic_message<Allocator,StrCvtTraits>::msg_kind_type
+ t_basic_message<Allocator,StrCvtTraits>::get_msg_kind()const
 {
  return m_msg_kind;
 }//get_msg_kind
 
 //------------------------------------------------------------------------
-template<class Allocator>
-bool t_basic_message<Allocator>::get_description(lcid_type    const /*lcid*/,
-                                                 string_type* const source,
-                                                 string_type* const description)const
+template<class Allocator,class StrCvtTraits>
+bool t_basic_message<Allocator,StrCvtTraits>::get_description
+                        (lcid_type    const /*lcid*/,
+                         string_type* const source,
+                         string_type* const description)const
 {
- if(source!=NULL)
+ if(source!=nullptr)
   (*source)=m_source;
 
- if(description!=NULL)
+ if(description!=nullptr)
   (*description)=m_description;
 
  return true;
 }//get_description
 
 //------------------------------------------------------------------------
-template<class Allocator>
-t_message_ptr t_basic_message<Allocator>::clone()const
+template<class Allocator,class StrCvtTraits>
+t_message_ptr
+ t_basic_message<Allocator,StrCvtTraits>::clone()const
 {
  return structure::not_null_ptr(new self_type(*this));
 }//clone
@@ -206,11 +210,17 @@ t_basic_tracer<Allocator>& t_basic_tracer<Allocator>::add_arg(const arg_type& x)
 //class t_basic_log_stream__console
 
 template<class Allocator>
-t_basic_log_stream__console<Allocator>::t_basic_log_stream__console
-                                           (UINT const ConsoleCP)
- :m_ConsoleCP(ConsoleCP)
+t_basic_log_stream__console<Allocator>::t_basic_log_stream__console()
 {
-}
+#if _WIN32
+ {
+  const auto consoleCP=::GetConsoleOutputCP();
+
+  if(consoleCP!=CP_UTF8)
+   throw std::runtime_error("Windows console was not configured for using UTF8.");
+ }
+#endif
+}//t_basic_log_stream__console
 
 //------------------------------------------------------------------------
 template<class Allocator>
@@ -220,11 +230,23 @@ t_basic_log_stream__console<Allocator>::~t_basic_log_stream__console()
 
 //------------------------------------------------------------------------
 template<class Allocator>
-void t_basic_log_stream__console<Allocator>::out(const char_type* s)//abstract
+typename t_basic_log_stream__console<Allocator>::self_ptr
+ t_basic_log_stream__console<Allocator>::create()
 {
- structure::tstr_to_tstr(&m_tmp_buffer,s,structure::t_negative_one(),NULL,m_ConsoleCP);
+ return structure::not_null_ptr(new self_type());
+}//create
 
- std::cout<<m_tmp_buffer;
+//------------------------------------------------------------------------
+template<class Allocator>
+void t_basic_log_stream__console<Allocator>::out(const char_type* s)
+{
+ std::string utf8_str;
+
+ t_str_cvt_traits__utf8::tstr_to_tstr
+  (&utf8_str,
+   s);
+
+ std::cout<<utf8_str;
 }//out
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -277,28 +299,17 @@ t_basic_root_log__printer<t_log_stream>&
 //class t_basic_root_log
 
 template<class Allocator>
-t_basic_root_log<Allocator>::t_basic_root_log(UINT const CodePage)
- :print_ts        (false)
- ,print_thread_id (false)
- ,m_output_guard  () //For PVS-Studio
- ,m_output_stream (structure::not_null_ptr(new t_basic_log_stream__console<Allocator>(CodePage)))
- ,m_unhandled_error_count(0)
- ,m_error_count   (0)
- ,m_warning_count (0)
-{
- assert(m_output_stream);
-}
-
-//------------------------------------------------------------------------
-template<class Allocator>
-t_basic_root_log<Allocator>::t_basic_root_log(t_log_stream* const pOutputStream)
- :print_ts         (false)
- ,print_thread_id  (false)
- ,m_output_guard  () //For PVS-Studio
- ,m_output_stream  (structure::not_null_ptr(pOutputStream))
- ,m_unhandled_error_count(0)
- ,m_error_count    (0)
- ,m_warning_count  (0)
+t_basic_root_log<Allocator>::t_basic_root_log(t_log* const pParent,t_log_stream* const pOutputStream)
+ :print_ts                (false)
+ ,print_thread_id         (false)
+ ,m_parent                (pParent)
+ ,m_output_guard          () //For PVS-Studio
+ ,m_output_stream         (structure::not_null_ptr(pOutputStream))
+ ,m_unhandled_error_count (0)
+ ,m_error_count           (0)
+ ,m_warning_count         (0)
+ ,m_child_error_count     (0)
+ ,m_child_warning_count   (0)
 {
  assert(m_output_stream);
 }
@@ -324,7 +335,7 @@ RELEASE_CODE(inline)
 typename t_basic_root_log<Allocator>::count_type
  t_basic_root_log<Allocator>::get_error_count()const
 {
- return m_error_count;
+ return m_error_count+m_unhandled_error_count;
 }//get_error_count
 
 //------------------------------------------------------------------------
@@ -339,12 +350,69 @@ typename t_basic_root_log<Allocator>::count_type
 //------------------------------------------------------------------------
 template<class Allocator>
 RELEASE_CODE(inline)
+typename t_basic_root_log<Allocator>::count_type
+ t_basic_root_log<Allocator>::get_child_error_count()const
+{
+ return m_child_error_count;
+}//get_child_error_count
+
+//------------------------------------------------------------------------
+template<class Allocator>
+RELEASE_CODE(inline)
+typename t_basic_root_log<Allocator>::count_type
+ t_basic_root_log<Allocator>::get_child_warning_count()const
+{
+ return m_child_warning_count;
+}//get_child_warning_count
+
+//------------------------------------------------------------------------
+template<class Allocator>
+typename t_basic_root_log<Allocator>::count_type
+ t_basic_root_log<Allocator>::get_total_error_count2()const
+{
+ return this->get_error_count()+this->get_child_error_count();
+}//get_total_error_count2
+
+//------------------------------------------------------------------------
+template<class Allocator>
+typename t_basic_root_log<Allocator>::count_type
+ t_basic_root_log<Allocator>::get_total_warning_count2()const
+{
+ return this->get_warning_count()+this->get_child_warning_count();
+}//get_total_warning_count2
+
+//------------------------------------------------------------------------
+template<class Allocator>
 void t_basic_root_log<Allocator>::inc_unhandled_error_count()
 {
- structure::mt::interlocked::increment(&m_error_count);
+ if(m_parent)
+  m_parent->inc_child_error_count();
 
  structure::mt::interlocked::increment(&m_unhandled_error_count);
 }//inc_unhandled_error_count
+
+//------------------------------------------------------------------------
+template<class Allocator>
+void t_basic_root_log<Allocator>::inc_child_error_count()
+{
+ if(m_parent)
+  m_parent->inc_child_error_count();
+
+ structure::mt::interlocked::increment(&m_child_error_count);
+}//inc_child_error_count
+
+//------------------------------------------------------------------------
+template<class Allocator>
+void t_basic_root_log<Allocator>::inc_child_warning_count()
+{
+ if(m_parent)
+  m_parent->inc_child_warning_count();
+
+ structure::mt::interlocked::increment(&m_child_warning_count);
+}//inc_child_error_count
+
+//------------------------------------------------------------------------
+void inc_child_warning_count();
 
 //t_log interface --------------------------------------------------------
 template<class Allocator>
@@ -369,41 +437,47 @@ void t_basic_root_log<Allocator>::trace(message_type* const msg)
  switch(msg->get_msg_kind())
  {
   case tso_msg_info: //[2018-12-23] For PVS-Studio
-   {
-    break;
-   }
+  {
+   break;
+  }
 
   case tso_msg_error:
-   {
-    structure::mt::interlocked::increment(&m_error_count);
+  {
+   if(m_parent)
+    m_parent->inc_child_error_count();
 
-    printer.out(L"ERROR: ");
-    break;
-   }
+   structure::mt::interlocked::increment(&m_error_count);
+
+   printer.out(L"ERROR: ");
+   break;
+  }
 
   case tso_msg_warning:
-   {
-    structure::mt::interlocked::increment(&m_warning_count);
+  {
+   if(m_parent)
+    m_parent->inc_child_warning_count();
 
-    printer.out(L"WARNING: ");
-    break;
-   }
+   structure::mt::interlocked::increment(&m_warning_count);
+
+   printer.out(L"WARNING: ");
+   break;
+  }
 
   case tso_msg_start_test:
-   {
-    printer.send();
-    printer.out(L"***********************************************").send();
-    printer.out(L"* START TEST [").out(source).out(L"]").send();
-    printer.out(L"*").send();
+  {
+   printer.send();
+   printer.out(L"***********************************************").send();
+   printer.out(L"* START TEST [").out(source).out(L"]").send();
+   printer.out(L"*").send();
 
-    return;
-   }//tso_msg_start_test
+   return;
+  }//tso_msg_start_test
 
   case tso_msg_stop_test:
-   {
-    printer.out(L"* STOP TEST [").out(source).out(L"]").send();
-    return;
-   }//tso_msg_stop_test
+  {
+   printer.out(L"* STOP TEST [").out(source).out(L"]").send();
+   return;
+  }//tso_msg_stop_test
  }//switch
 
  if(!source.empty())
@@ -423,24 +497,35 @@ std::wstring t_basic_root_log<Allocator>::build_log_line_prefix()const
   oss<<L"[THR:"
      <<std::setfill(L'0')
      <<std::setw(6)
-     <<GetCurrentThreadId()
+     <<::lcpi::infrastructure::os::mt::LCPI_OS__ThreadApi::GetCurrentThreadId()
      <<L"] ";
  }//if print_thread_id
 
  if(this->print_ts)
  {
-  SYSTEMTIME systime;
+  std::time_t const timer(std::time(nullptr));
 
-  ::GetLocalTime(&systime);
+  if(timer==-1)
+   throw std::runtime_error("An unexpected problem - time returned -1.");
 
-  oss<<L"["
-     <<std::setfill(L'0')<<std::setw(2)<<systime.wDay<<L"."
-     <<std::setfill(L'0')<<std::setw(2)<<systime.wMonth<<L"."
-     <<std::setfill(L'0')<<std::setw(4)<<systime.wYear<<L" "
-     <<std::setfill(L'0')<<std::setw(2)<<systime.wHour<<L":"
-     <<std::setfill(L'0')<<std::setw(2)<<systime.wMinute<<L":"
-     <<std::setfill(L'0')<<std::setw(2)<<systime.wSecond
-     <<L"] ";
+  struct tm t={0};
+
+  if(LCPI_GCRT_localtime_s(&t,&timer)!=0)
+  {
+   //      2024-04-22 10:20:18
+   oss<<L"[#error             ]";
+  }
+  else
+  {
+   oss<<L'['
+      <<std::setfill(L'0')<<std::setw(4)<<(t.tm_year+1900)<<L'-'
+      <<std::setfill(L'0')<<std::setw(2)<<(t.tm_mon+1)<<L'-'
+      <<std::setfill(L'0')<<std::setw(2)<<(t.tm_mday)<<L' '
+      <<std::setfill(L'0')<<std::setw(2)<<(t.tm_hour)<<L':'
+      <<std::setfill(L'0')<<std::setw(2)<<(t.tm_min)<<L':'
+      <<std::setfill(L'0')<<std::setw(2)<<(t.tm_sec)
+      <<L"] ";
+  }//else
  }//if print_ts
 
  return oss.str();
@@ -473,7 +558,7 @@ void t_basic_exception_router::route(t_tracer& tracer)
  }
  catch(...)
  {
-  self_type::route(tracer,NULL);
+  self_type::route(tracer,nullptr);
  }
 }//route
 
@@ -482,7 +567,7 @@ template<class t_tracer>
 void t_basic_exception_router::route(t_tracer&                   tracer,
                                      const std::exception* const exc)
 {
- if(exc==NULL)
+ if(exc==nullptr)
  {
   tracer(tso_msg_error,-1)<<L"Unknown program exception"<<send;
 

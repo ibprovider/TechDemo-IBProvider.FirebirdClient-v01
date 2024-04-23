@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //This file turns 8 byte packing of structures on
 //                                                 Kovalenko Dmitry. 07.09.2010
-#ifndef _t_comp_push_pack8_H_
-#define _t_comp_push_pack8_H_
+#ifndef _lcpi_lib_structure__t_comp_push_pack8_H_
+#define _lcpi_lib_structure__t_comp_push_pack8_H_
 
 ////////////////////////////////////////////////////////////////////////////////
 

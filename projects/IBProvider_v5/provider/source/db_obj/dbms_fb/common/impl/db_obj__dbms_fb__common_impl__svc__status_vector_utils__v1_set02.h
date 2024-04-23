@@ -9,6 +9,7 @@
 
 #include "source/db_obj/dbms_fb/common/db_obj__dbms_fb__common__svc__status_vector_utils.h"
 #include "source/db_obj/isc_base/isc_error_code_descr2.h"
+#include "source/db_obj/db_charset_manager_v2.h"
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{namespace impl{
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +22,7 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common
 ///  Базовая реализация сервиса для работы со статус вектором.
 /// </summary>
 class fb_common_impl__svc__status_vector_utils__v1_set02
- :public IBP_DEF_DB_INTERFACE_IMPL_STATIC(common::fb_common__svc__status_vector_utils)
+ :public IBP_DEF_DB_INTERFACE_IMPL_DYNAMIC(common::fb_common__svc__status_vector_utils)
 {
  private:
   using self_type=fb_common_impl__svc__status_vector_utils__v1_set02;
@@ -33,21 +34,25 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   /// Максимально ожидаемое количество аргументов сообщения об ошибке.
   static const size_t c_max_expected_args_count=10;
 
- public:
+ protected:
   /// <summary>
   ///  Конструктор инициализации.
   /// </summary>
   //! \param[in] cErrDescrs
   //! \param[in] pErrDescrs
+  //! \param[in] pCsMng
+  //!  Not NULL.
   fb_common_impl__svc__status_vector_utils__v1_set02
-   (size_t                                   const cErrDescrs,
-    const isc_base::t_isc_error_code_descr2* const pErrDescrs);
+   (size_t                                   cErrDescrs,
+    const isc_base::t_isc_error_code_descr2* pErrDescrs,
+    db_obj::t_db_charset_manager_v2*         pCsMng);
 
   /// <summary>
   ///  Деструктор.
   /// </summary>
  ~fb_common_impl__svc__status_vector_utils__v1_set02();
 
+ public:
   //interface ------------------------------------------------------------
   /// <summary>
   ///  Получение описания ISC-ошибки
@@ -142,6 +147,14 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
                                        void*              buf_beg,
                                        const void*        buf_end)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
+ protected:
+  enum class arg_cs_kind
+  {
+   connection,
+   metadata,
+   system,
+  };//enum class arg_cs_kind
+
  private:
   using args_type
    =structure::t_stl_vector<IBP_ErrorVariant,db_obj::t_db_memory_allocator>;
@@ -166,6 +179,10 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
 
 
   virtual status_type internal__get_unexpected_error_code()const=0;
+
+  virtual arg_cs_kind internal__get_cs_for_arg
+                   (status_type iscErrorCode,
+                    size_t      argNumber)const=0;
 
  private:
   /// <summary>
@@ -238,11 +255,11 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   /// <summary>
   ///  Трансляция isc_arg_interpreted.
   /// </summary>
-  static gresult_data_type helper__translate_msg_part__arg_interpreted
+  gresult_data_type helper__translate_msg_part__arg_interpreted
                                            (const status_type** pps,
                                             const status_type*  sv_end,
                                             std::wstring*       msg_part,
-                                            LCID                lcid);
+                                            LCID                lcid)const;
 
   /// <summary>
   ///  Трансляция isc_arg_dos.
@@ -326,12 +343,28 @@ class fb_common_impl__svc__status_vector_utils__v1_set02
   /// <summary>
   ///  Формирование списка аргументов ошибки/предупреждения
   /// </summary>
-  static gresult_data_type helper__get_args(const status_type** pps,
-                                            const status_type*  sv_end,
-                                            args_type&          args);
+  gresult_data_type helper__get_args(status_type         iscErrorCode,
+                                     const status_type** pps,
+                                     const status_type*  sv_end,
+                                     args_type&          args)const;
+
+ private:
+  using str_box_type  =lib::structure::t_const_str_box;
+  using wstr_box_type =lib::structure::t_const_wstr_box;
+
+  std::wstring helper__encode_str_arg
+                        (status_type    iscErrorCode,
+                         size_t         argNumber,
+                         str_box_type   strArg)const;
+
+  static std::wstring helper__build_str_raw_info
+                        (wstr_box_type expectedCsName,
+                         str_box_type  strArg);
+
  private:
   size_t                                   const m_cErrDescrs;
   const isc_base::t_isc_error_code_descr2* const m_pErrDescrs;
+  db_obj::t_db_charset_manager_v2_ptr      const m_spCsMng;
 };//class fb_common_impl__svc__status_vector_utils__v1_set02
 
 ////////////////////////////////////////////////////////////////////////////////

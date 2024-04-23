@@ -1,93 +1,35 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__utilities.h>
-#include <sstream>
-#include <iomanip>
 
 namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
 
 std::string TestFW__GenerateTimeStampString()
 {
- SYSTEMTIME systime;
+  std::time_t const timer(std::time(nullptr));
 
- ::GetLocalTime(&systime);
+  if(timer==-1)
+   throw std::runtime_error("An unexpected problem - time returned -1.");
 
- std::stringstream oss;
+  struct tm t={0};
 
- oss<<std::setfill('0')<<std::setw(4)<<systime.wYear
-    <<std::setfill('0')<<std::setw(2)<<systime.wMonth
-    <<std::setfill('0')<<std::setw(2)<<systime.wDay
-    <<"_"
-    <<std::setfill('0')<<std::setw(2)<<systime.wHour
-    <<std::setfill('0')<<std::setw(2)<<systime.wMinute
-    <<std::setfill('0')<<std::setw(2)<<systime.wSecond;
+  if(LCPI_GCRT_localtime_s(&t,&timer)!=0)
+   throw std::runtime_error("An unexpected problem with localtime.");
+
+  std::stringstream oss;
+
+  oss<<std::setfill('0')<<std::setw(4)<<(t.tm_year+1900)
+     <<std::setfill('0')<<std::setw(2)<<(t.tm_mon+1)
+     <<std::setfill('0')<<std::setw(2)<<(t.tm_mday)<<'_' 
+     <<std::setfill('0')<<std::setw(2)<<(t.tm_hour)
+     <<std::setfill('0')<<std::setw(2)<<(t.tm_min)
+     <<std::setfill('0')<<std::setw(2)<<(t.tm_sec);
 
  return oss.str();
 }//TestFW__GenerateTimeStampString
-
-////////////////////////////////////////////////////////////////////////////////
-
-std::string TestFW__TimeToStr(std::int64_t t)
-{
- const std::int64_t c_sec  =1000*1000*10;
- const std::int64_t c_min  =c_sec*60;
- const std::int64_t c_hour =c_min*60;
- const std::int64_t c_day  =c_hour*24;
-
- //---
- std::int64_t day=(t/c_day);
-
- t-=(day*c_day);
-
- //---
- std::int64_t hour=(t/c_hour);
-
- t-=(hour*c_hour);
-
- //---
- std::int64_t min=(t/c_min);
-
- t-=(min*c_min);
-
- //---
- std::int64_t sec=(t/c_sec);
-
- t-=(sec*c_sec);
-
- //---
- std::ostringstream os;
-
- if(day)
- {
-  os<<day<<" day(s)";
- }
-
- os.fill('0');
-
- os<<std::setw(2)<<hour<<':'
-   <<std::setw(2)<<min<<':'
-   <<std::setw(2)<<sec;
-
- if(t)
- {
-  os<<"."<<std::right<<std::setw(7)<<t;
- }
-
- return os.str();
-}//TestFW__TimeToStr
-
-//------------------------------------------------------------------------
-std::string TestFW__TimeToStrEx(std::int64_t t)
-{
- std::ostringstream os;
-
- os<<std::setw(13)<<std::left<<t<<" ["<<TestFW__TimeToStr(t)<<"]";
-
- return os.str();
-}//TestFW__TimeToStrEx
 
 ////////////////////////////////////////////////////////////////////////////////
 

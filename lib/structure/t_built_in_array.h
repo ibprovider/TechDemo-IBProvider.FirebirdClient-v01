@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Template class for managing a built-in array
 //                                                 Kovalenko Dmitry. 18.09.2008.
-#ifndef _t_built_in_array_H_
-#define _t_built_in_array_H_
+#ifndef _lcpi_lib_structure__t_built_in_array_H_
+#define _lcpi_lib_structure__t_built_in_array_H_
 
 #include <structure/t_vector_debug_iterator.h>
 

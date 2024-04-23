@@ -86,8 +86,8 @@ class t_tree_const_iterator
   typedef std::bidirectional_iterator_tag                      iterator_category;
   typedef typename TTree::value_type                           value_type;
   typedef ptrdiff_t                                            difference_type;
-  typedef typename const TTree::value_type*                    pointer;
-  typedef typename const TTree::value_type&                    reference;
+  typedef const typename TTree::value_type*                    pointer;
+  typedef const typename TTree::value_type&                    reference;
 
  public:
   typedef TTree                                                tree_type;

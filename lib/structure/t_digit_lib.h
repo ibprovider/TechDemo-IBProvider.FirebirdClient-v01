@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Набор утилит и классов для работы с большими числами
 //                                                  Kovalenko Dmitry. 24.23.2001
-#ifndef _digit_lib_H_
-#define _digit_lib_H_
+#ifndef _lcpi_lib_structure__t_digit_lib_H_
+#define _lcpi_lib_structure__t_digit_lib_H_
 
 #include <lcpi/lib/.config.h>
 

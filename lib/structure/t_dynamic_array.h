@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Implementation of dynamic array with fixed length
 //                                                Dmitry Kovalenko. 12.06.2004
-#ifndef _t_dynamic_array_H_
-#define _t_dynamic_array_H_
+#ifndef _lcpi_lib_structure__t_dynamic_array_H_
+#define _lcpi_lib_structure__t_dynamic_array_H_
 
 # include <structure/t_simple_buffer.h>
 

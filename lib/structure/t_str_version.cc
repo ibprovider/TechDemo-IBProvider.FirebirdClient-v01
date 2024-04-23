@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_str_version_CC_
-#define _t_str_version_CC_
+#ifndef _lcpi_lib_structure__t_str_version_CC_
+#define _lcpi_lib_structure__t_str_version_CC_
 
 #include <structure/t_char_traits2.h>
 #include <stdexcept>

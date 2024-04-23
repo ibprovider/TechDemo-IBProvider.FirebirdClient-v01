@@ -9,12 +9,12 @@ namespace structure{namespace tso_obj{
 template<class tag_test_descr,class tag_test_arg>
 int run_tests(const tag_test_descr* pTests,const tag_test_arg& Arg)
 {
- if(pTests==NULL)
+ if(pTests==nullptr)
   return 0;
  
  int error_count=0;
 
- for(;pTests->func!=NULL;++pTests)
+ for(;pTests->func!=nullptr;++pTests)
  {
   assert(pTests->name);
 

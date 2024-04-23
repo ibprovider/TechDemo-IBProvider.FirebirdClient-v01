@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Dummy class
 //                                                 Kovalenko Dmitry. 11.12.2006
-#ifndef _t_dummy_H_
-#define _t_dummy_H_
+#ifndef _lcpi_lib_structure__t_dummy_H_
+#define _lcpi_lib_structure__t_dummy_H_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

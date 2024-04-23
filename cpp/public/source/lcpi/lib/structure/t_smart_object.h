@@ -126,6 +126,12 @@ class t_basic_smart_interface_impl__dynamic:public TSmartInterface
 };//class t_basic_smart_interface_impl__dynamic
 
 ////////////////////////////////////////////////////////////////////////////////
+
+template<class Allocator>
+using t_basic_smart_memory_object
+ =t_basic_smart_interface_impl__dynamic<t_smart_interface,Allocator>;
+
+////////////////////////////////////////////////////////////////////////////////
 //class t_nondelegating_smart_interface
 
 /// <summary>

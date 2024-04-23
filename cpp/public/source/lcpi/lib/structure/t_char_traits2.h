@@ -5,6 +5,7 @@
 #define _cpp_public_lcpi_lib_structure__t_char_traits2_H_
 
 #include <lcpi/lib/.config.h>
+#include <type_traits>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,84 +21,80 @@ template<>
 struct t_char_traits2<wchar_t>;
 
 ////////////////////////////////////////////////////////////////////////////////
-//class t_char_traits2 - empty declarations
+//struct t_char_traits2 - empty declarations
 
 template<class T>
-struct t_char_traits2
+struct t_char_traits2 LCPI_CPP_CFG__CLASS__FINAL
 {
  public://typedefs
-  typedef T               char_type;
-};//class t_char_traits2
+  using char_type=T;
+};//struct t_char_traits2
 
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef LCPI__VERIFY_EQ
-# error LCPI__VERIFY_EQ not defined
+# error LCPI__VERIFY_EQ is not defined
 #endif
 
 #ifndef LCPI_GCRT_itoa_s
-# error LCPI_GCRT_itoa_s not defined
+# error LCPI_GCRT_itoa_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ltoa_s
-# error LCPI_GCRT_ltoa_s not defined
+# error LCPI_GCRT_ltoa_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ultoa_s
-# error LCPI_GCRT_ultoa_s not defined
+# error LCPI_GCRT_ultoa_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_i64toa_s
-# error LCPI_GCRT_i64toa_s not defined
+# error LCPI_GCRT_i64toa_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ui64toa_s
-# error LCPI_GCRT_ui64toa_s not defined
+# error LCPI_GCRT_ui64toa_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_itow_s
-# error LCPI_GCRT_itow_s not defined
+# error LCPI_GCRT_itow_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ltow_s
-# error LCPI_GCRT_ltow_s not defined
+# error LCPI_GCRT_ltow_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ultow_s
-# error LCPI_GCRT_ultow_s not defined
+# error LCPI_GCRT_ultow_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_i64tow_s
-# error LCPI_GCRT_i64tow_s not defined
+# error LCPI_GCRT_i64tow_s is not defined
 #endif
 
 #ifndef LCPI_GCRT_ui64tow_s
-# error LCPI_GCRT_ui64tow_s not defined
+# error LCPI_GCRT_ui64tow_s is not defined
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
-//char specifications
+//struct t_char_traits2<char>
 
 template<>
-struct t_char_traits2<char>
+struct t_char_traits2<char> LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_char_traits2<char>                self_type;
+  using self_type=t_char_traits2<char>;
 
  public: //typedefs
-  typedef char            char_type;
-  typedef unsigned char   unsigned_char_type;
+  using char_type=char;
+  using unsigned_char_type=std::make_unsigned<char_type>::type;
 
-  typedef unsigned char   char_comp_type;
-  typedef unsigned char   byte_type;
+  LCPI__assert_s(sizeof(char_type)==sizeof(unsigned_char_type));
 
-  typedef wchar_t         other_char_type;
+  using char_comp_type   = unsigned char;
+  using byte_type        = unsigned char;
 
-  typedef size_t          size_type;
-
- #ifdef _USE_VCL_
-  typedef AnsiString      vcl_string_type;
- #endif
+  using size_type        = size_t;
 
  public: //utility
   static const char_type* str_empty()          {return "";}
@@ -223,31 +220,27 @@ struct t_char_traits2<char>
  // static long double str_to_long_double(const char_type* s,char_type** endptr)
  //  {return _strtold(s,endptr);}
  //#endif
-};//class t_char_traits2<char>
+};//struct t_char_traits2<char>
 
 ////////////////////////////////////////////////////////////////////////////////
-//wchar_t specifications
+//struct t_char_traits2<wchar_t>
 
 template<>
-struct t_char_traits2<wchar_t>
+struct t_char_traits2<wchar_t> LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_char_traits2<wchar_t>              self_type;
+  using self_type=t_char_traits2<wchar_t>;
 
  public: //typedefs
-  typedef wchar_t             char_type;
-  typedef unsigned __int16    unsigned_char_type;
+  using char_type=wchar_t;
+  using unsigned_char_type=std::make_unsigned<char_type>::type;
 
-  typedef wchar_t         char_comp_type;
-  typedef unsigned char   byte_type;
+  LCPI__assert_s(sizeof(char_type)==sizeof(unsigned_char_type));
 
-  typedef char            other_char_type;
+  using char_comp_type   = wchar_t;
+  using byte_type        = unsigned char;
 
-  typedef size_t          size_type;
-
- #ifdef _USE_VCL_
-  typedef WideString      vcl_string_type;
- #endif
+  using size_type        = size_t;
 
  public: //utility
   static const char_type* str_empty()          {return L"";}
@@ -373,7 +366,7 @@ struct t_char_traits2<wchar_t>
  //  static long double str_to_long_double(const char_type* s,char_type** endptr)
  //   {return _wcstold(s,endptr);}
  // #endif
-};//class t_char_traits2<wchar_t>
+};//struct t_char_traits2<wchar_t>
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms structure*/}/*nms lib*/}/*nms lcpi*/

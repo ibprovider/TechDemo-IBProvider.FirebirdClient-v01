@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Builder of linear vector from separated blocks
 //                                                Kovalenko Dmitry. 14.02.2010
-#ifndef _t_deque_adapter_H_
-#define _t_deque_adapter_H_
+#ifndef _lcpi_lib_structure__t_deque_adapter_H_
+#define _lcpi_lib_structure__t_deque_adapter_H_
 
 #include <lcpi/lib/.config.h>
 

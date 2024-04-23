@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Temporary segment-based buffer
 //                                                 Kovalenko Dmitry. 07.05.2008
-#ifndef _t_tmp_seg_buffer_H_
-#define _t_tmp_seg_buffer_H_
+#ifndef _lcpi_lib_structure__t_tmp_seg_buffer_H_
+#define _lcpi_lib_structure__t_tmp_seg_buffer_H_
 
 #include <structure/t_memory.h>
 #include <structure/t_list_external.h>

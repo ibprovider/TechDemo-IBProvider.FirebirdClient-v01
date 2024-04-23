@@ -14,9 +14,9 @@
 
 namespace structure{namespace tso_obj{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
-template<class Allocator>
+template<class Allocator,class StrCvtTraits>
 class t_basic_message;
 
 template<class Allocator>
@@ -30,28 +30,34 @@ class t_basic_exception_router;
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_message
 
-//t_traits
-// - allocator_type
-
-template<class Allocator>
+template<class Allocator,class StrCvtTraits>
 class t_basic_message LCPI_CPP_CFG__CLASS__FINAL
  :public structure::t_basic_smart_interface_impl__dynamic<t_message,Allocator>
 {
  private:
-  using self_type=t_basic_message<Allocator>;
+  using self_type=t_basic_message<Allocator,StrCvtTraits>;
 
   t_basic_message(const self_type&);
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  using self_ptr=structure::t_smart_object_ptr<self_type>;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef t_message::string_type                           string_type;
-  typedef t_message::lcid_type                             lcid_type;
-  typedef t_message::error_code_type                       error_code_type;
-  typedef t_message::msg_kind_type                         msg_kind_type;
+  using string_type
+   =t_message::string_type;
 
-  typedef structure::t_string_au<string_type>              string_au_type;
+  using lcid_type
+   =t_message::lcid_type;
+
+  using error_code_type
+   =t_message::error_code_type;
+
+   using msg_kind_type
+   =t_message::msg_kind_type;
+
+  using string_au_type
+   =structure::t_string_au<string_type,StrCvtTraits>;
 
  public:
   error_code_type  m_error_code;
@@ -89,16 +95,26 @@ class t_basic_tracer LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef typename inherited::string_type                        arg_type;
+  using arg_type
+   =typename inherited::string_type;
 
-  typedef t_simple_log                                           log_type;
-  typedef t_basic_message<Allocator>                             message_type;
+  using str_cvt_traits_type
+   =typename inherited::traits_type::str_cvt_traits_type;
 
-  typedef typename message_type::string_type                     string_type;
-  typedef typename message_type::error_code_type                 error_code_type;
-  typedef typename message_type::msg_kind_type                   msg_kind_type;
+  using log_type
+   =t_simple_log;
 
-  typedef t_string_au<string_type>                               string_au_type;
+  using message_type
+   =t_basic_message<Allocator,str_cvt_traits_type>;
+
+  using error_code_type
+   =typename message_type::error_code_type;
+
+  using msg_kind_type
+   =typename message_type::msg_kind_type;
+
+  using string_au_type
+   =typename message_type::string_au_type;
 
  public:
   t_basic_tracer(const self_type& x);
@@ -157,7 +173,8 @@ struct t_push_data LCPI_CPP_CFG__CLASS__FINAL
               error_code_type const code)
    :m_msg_kind (msg_kind)
    ,m_code     (code)
-  {;}
+  {
+  }
 };//struct t_push_data
 
 //------------------------------------------------------------------------
@@ -200,20 +217,21 @@ class t_basic_log_stream__console LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_log_stream::char_type                         char_type;
+  using self_ptr=structure::t_smart_object_ptr<self_type>;
+ 
+  using char_type=t_log_stream::char_type;
 
- public:
-  t_basic_log_stream__console(UINT ConsoleCP);
+ private:
+  t_basic_log_stream__console();
 
   virtual ~t_basic_log_stream__console();
 
+ public:
+  static self_ptr create();
+
   //t_log_stream interface -----------------------------------------------
   virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;//abstract
-
- private:
-  const UINT  m_ConsoleCP;
-  std::string m_tmp_buffer;
-};//t_basic_log_stream__console
+};//class t_basic_log_stream__console
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_root_log__printer
@@ -228,13 +246,20 @@ class t_basic_root_log__printer LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_log_stream                            log_stream_type;
-  typedef typename log_stream_type::self_ptr      log_stream_ptr;
-  typedef typename log_stream_type::char_type     char_type;
+  using log_stream_type
+   =t_log_stream;
 
-  typedef structure::t_str_parameter<char_type>   str_arg_type;
+  using log_stream_ptr
+   =typename log_stream_type::self_ptr;
 
-  typedef LCPI_STL_DEF_BASIC_STRING(char_type)    string_type;
+  using char_type
+   =typename log_stream_type::char_type;
+
+  using str_arg_type
+   =structure::t_str_parameter<char_type>;
+
+  using string_type
+   =LCPI_STL_DEF_BASIC_STRING(char_type);
 
  public:
   t_basic_root_log__printer(log_stream_type*    stream,
@@ -259,7 +284,7 @@ class t_basic_root_log__printer LCPI_CPP_CFG__CLASS__FINAL
 
 template<class Allocator>
 class t_basic_root_log
- :public structure::t_basic_smart_interface_impl__dynamic<t_simple_log,Allocator>
+ :public structure::t_basic_smart_interface_impl__dynamic<t_log,Allocator>
 {
  private:
   using self_type=t_basic_root_log<Allocator>;
@@ -268,56 +293,80 @@ class t_basic_root_log
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef t_smart_object_ptr<self_type>               self_ptr;
+  using self_ptr
+   =structure::t_smart_object_ptr<self_type>;
 
-  typedef typename t_simple_log::message_type         message_type;
+  using message_type
+   =typename t_simple_log::message_type;
 
-  typedef t_def_thread_traits                         thread_traits;
-  typedef thread_traits::guard_type                   guard_type;
-  typedef thread_traits::lock_guard_type              lock_guard_type;
+  using thread_traits
+   =t_def_thread_traits;
 
-  using count_type=unsigned __int64;
+  using guard_type
+   =thread_traits::guard_type;
+
+  using lock_guard_type
+   =thread_traits::lock_guard_type;
+
+  using count_type
+   =std::uint64_t;
 
  public:
   bool print_ts;
   bool print_thread_id;
 
-  explicit t_basic_root_log(UINT CodePage=CP_OEMCP);
-
-  explicit t_basic_root_log(t_log_stream* pOutputStream);
+  explicit t_basic_root_log(t_log* pParent,t_log_stream* pOutputStream);
 
   virtual ~t_basic_root_log();
 
   //selectors ------------------------------------------------------------
   count_type get_unhandled_error_count()const;
 
-  count_type get_error_count()const;
+  virtual count_type get_error_count()const;
 
-  count_type get_warning_count()const;
+  virtual count_type get_warning_count()const;
+
+  count_type get_child_error_count()const;
+
+  count_type get_child_warning_count()const;
+
+  count_type get_total_error_count2()const;
+
+  count_type get_total_warning_count2()const;
 
   //modificators ---------------------------------------------------------
   void inc_unhandled_error_count();
 
-  //t_log interface ------------------------------------------------------
+  //t_simple_log interface -----------------------------------------------
   virtual void trace(message_type* msg) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
+  //t_log interface ------------------------------------------------------
+  virtual void inc_child_error_count() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+
+  virtual void inc_child_warning_count() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+
+  //modificators ---------------------------------------------------------
   void push_empty_line();
 
  private:
   std::wstring build_log_line_prefix()const;
 
  private:
-  typedef t_log_stream::self_ptr                      log_stream_ptr;
+  structure::t_smart_object_ptr<t_log> const m_parent;
 
  private:
-  guard_type             m_output_guard;
-  log_stream_ptr  const  m_output_stream;
+  guard_type                    m_output_guard;
+  t_log_stream::self_ptr const  m_output_stream;
 
  private:
-  count_type             m_unhandled_error_count;
+  count_type m_unhandled_error_count;
 
-  count_type             m_error_count;
-  count_type             m_warning_count;
+  count_type m_error_count;
+  count_type m_warning_count;
+
+ private:
+  count_type m_child_error_count;
+  count_type m_child_warning_count;
 };//class t_basic_root_log
 
 ////////////////////////////////////////////////////////////////////////////////

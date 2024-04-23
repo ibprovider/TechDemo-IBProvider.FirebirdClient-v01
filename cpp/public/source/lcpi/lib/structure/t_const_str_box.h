@@ -162,12 +162,8 @@ class t_basic_const_str_box LCPI_CPP_CFG__CLASS__FINAL
 using t_const_str_box
  =t_basic_const_str_box<char>;
 
-#if(LCPI_CPP_CFG__CAN_USE__wchar_t!=0)
-
 using t_const_wstr_box
  =t_basic_const_str_box<wchar_t> ;
-
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 

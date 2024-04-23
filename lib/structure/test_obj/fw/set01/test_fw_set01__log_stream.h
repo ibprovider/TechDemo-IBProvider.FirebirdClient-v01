@@ -6,6 +6,7 @@
 
 #include <structure/test_obj/t_tso_log.h>
 #include <structure/t_smart_object.h>
+#include <structure/t_const_str_box.h>
 #include <fstream>
 
 namespace structure{namespace test_fw{namespace set01{
@@ -44,10 +45,10 @@ class Basic_LogStream_ToFile
   //interface ------------------------------------------------------------
   virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE;
 
- private:
-  //temporary buffer for string conversion
-  std::string m_tmp_buffer;
+ protected:
+  virtual void internal__out(t_const_str_box s);
 
+ private:
   std::ofstream m_log_file;
 };//class Basic_LogStream_ToFile
 
@@ -70,18 +71,13 @@ class Basic_LogStream
    =typename inherited::char_type;
 
  public:
-  Basic_LogStream(UINT ConsoleCP,const std::string& LogFilePath);
+  Basic_LogStream(const std::string& LogFilePath);
 
+ protected:
   virtual ~Basic_LogStream();
 
-  //interface ------------------------------------------------------------
-  virtual void out(const char_type* s) LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
-
- private:
-  const UINT m_ConsoleCP;
-
-  //temporary buffer for string conversion
-  std::string m_tmp_buffer;
+ protected:
+  virtual void internal__out(t_const_str_box x) LCPI_CPP_CFG__METHOD__OVERRIDE;
 };//class Basic_LogStream
 
 ////////////////////////////////////////////////////////////////////////////////

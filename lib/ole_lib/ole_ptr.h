@@ -21,19 +21,23 @@ using namespace lcpi::lib::com::base;
 //struct TEnumIPtr2Traits
 
 template<class TEnumItemInterface,class Allocator=structure::t_void_allocator>
-struct TEnumIPtr2Traits
+struct TEnumIPtr2Traits LCPI_CPP_CFG__CLASS__FINAL
 {
  public: //typedefs
-  typedef TEnumItemInterface*                             ole_item_type;
+  using ole_item_type
+   =TEnumItemInterface*;
 
-  typedef IPtr2<TEnumItemInterface>                       user_item_type;
+  using user_item_type
+   =IPtr2<TEnumItemInterface>;
 
-  typedef structure::t_stl_vector
-           <user_item_type,
-            Allocator>                                    storage_type;
+  using storage_type
+   =structure::t_stl_vector<user_item_type,Allocator>;
 
-  typedef typename storage_type::size_type                size_type;
-  typedef typename storage_type::const_reference          const_reference;
+  using size_type
+   =typename storage_type::size_type;
+
+  using const_reference
+   =typename storage_type::const_reference;
 
  public:
   static void CopyInEnumerator(ole_item_type* const ppDestUnk,
@@ -58,7 +62,7 @@ struct TEnumIPtr2Traits
   static void Clear(ole_item_type* const ppUnk);
 };//struct TEnumIPtr2Traits
 
-typedef TEnumIPtr2Traits<IUnknown>                     TEnumUnknownTraits;
+using TEnumUnknownTraits=TEnumIPtr2Traits<IUnknown>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace ole_lib

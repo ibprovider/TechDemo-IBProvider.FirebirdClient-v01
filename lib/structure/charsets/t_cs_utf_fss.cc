@@ -182,11 +182,12 @@ TForwardIterator single_ucs2_to_fss(TForwardIterator              source_beg,
  assert_s(sizeof(*utf_fss)==sizeof(traits::UTF_FSS));
  assert(cvt_result);
 
- return __single_ucs2_to_fss(source_beg,
-                             source_end,
-                             reinterpret_cast<traits::UTF_FSS*>(utf_fss),
-                             sz_utf_fss,
-                             cvt_result);
+ return __single_ucs2_to_fss
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF_FSS*>(utf_fss),
+          sz_utf_fss,
+          cvt_result);
 }//single_ucs2_to_fss - to UTF_FSS
 
 //------------------------------------------------------------------------
@@ -201,11 +202,12 @@ TForwardIterator single_ucs2_to_fss(TForwardIterator              source_beg,
  assert_s(sizeof(*utf_fss)==sizeof(traits::UTF_FSS));
  assert(cvt_result);
 
- return __single_ucs2_to_fss(source_beg,
-                             source_end,
-                             reinterpret_cast<traits::UTF_FSS*>(utf_fss),
-                             sz_utf_fss,
-                             cvt_result);
+ return __single_ucs2_to_fss
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF_FSS*>(utf_fss),
+          sz_utf_fss,
+          cvt_result);
 }//single_ucs2_to_fss - to UTF_FSS_s
 
 //------------------------------------------------------------------------
@@ -220,11 +222,12 @@ TForwardIterator single_ucs2_to_fss(TForwardIterator              source_beg,
  assert_s(sizeof(*utf_fss)==sizeof(traits::UTF_FSS));
  assert(cvt_result);
 
- return __single_ucs2_to_fss(source_beg,
-                             source_end,
-                             reinterpret_cast<traits::UTF_FSS*>(utf_fss),
-                             sz_utf_fss,
-                             cvt_result);
+ return __single_ucs2_to_fss
+         (source_beg,
+          source_end,
+          reinterpret_cast<traits::UTF_FSS*>(utf_fss),
+          sz_utf_fss,
+          cvt_result);
 }//single_ucs2_to_fss - to char
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -429,11 +432,13 @@ TForwardIterator ucs2_to_fss(TForwardIterator       source_beg,
 
  while(source_beg!=source_end)
  {
-  source_beg=__single_ucs2_to_fss(source_beg,
-                                  source_end,
-                                  fss_buffer,
-                                  sz_fss_buffer=_DIM_(fss_buffer),
-                                  cvt_result);
+  source_beg
+   =__single_ucs2_to_fss
+     (source_beg,
+      source_end,
+      fss_buffer,
+      sz_fss_buffer=_DIM_(fss_buffer),
+      cvt_result);
 
   assert((*cvt_result)==cs_cvt_result__ok);
 
@@ -480,11 +485,13 @@ TForwardIterator fss_to_ucs2(TForwardIterator       source_beg,
 
  while(source_beg!=source_end)
  {
-  source_beg=single_fss_to_ucs2(source_beg,
-                                source_end,
-                                &ucs2_ch,
-                                ucs2_count=1,
-                                cvt_result);
+  source_beg
+   =single_fss_to_ucs2
+     (source_beg,
+      source_end,
+      &ucs2_ch,
+      ucs2_count=1,
+      cvt_result);
 
   assert((*cvt_result)!=cs_cvt_result__small_output);
   

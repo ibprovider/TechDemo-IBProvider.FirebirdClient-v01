@@ -24,18 +24,6 @@
 #define _ARRAY_DIM_(__ArrayType__) (sizeof(__ArrayType__)/sizeof((**reinterpret_cast<__ArrayType__*>(0))))
 
 //------------------------------------------------------------------------
-#if 0 // 2018-06-06
-
-#define _ZERO_MEMORY(ptr)\
-        {if((ptr)!=NULL)memset(ptr,0,sizeof(*(ptr)));}
-
-#define _ZERO_INIT(type,var_name)      \
- type var_name;                        \
- memset(&var_name,0,sizeof(var_name));
-
-#endif
-
-//------------------------------------------------------------------------
 
 #define _MAKELONG(a,b) \
  ((LONG) (((WORD) (a)) | (((DWORD) ((WORD) (b))) << 16)))

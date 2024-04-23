@@ -89,15 +89,12 @@ void* RemoteFB__API_P13__ReadBlob::tagOpMemoryBuffer::allocate
   //память под данные уже должны быть зарезервирована
   if(m_pBlobData->m_Buffer.capacity()<sz)
   {
-   structure::wstr_formatter
-    freason(me_bug_check__target_buffer_length_less_than_required_2);
-
-   freason<<m_pBlobData->m_Buffer.capacity()<<sz;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#001",
-     freason.c_str())
+     me_bug_check__target_buffer_length_less_than_required_2,
+     m_pBlobData->m_Buffer.capacity(),
+     sz);
   }//if
 
   DEBUG_CODE(m_DEBUG__BufferForBlobWasAllocated=true;)
@@ -281,15 +278,12 @@ bool RemoteFB__API_P13__ReadBlob::exec
 
    if(cbBufferTail<cbFragment)
    {
-    structure::wstr_formatter
-     freason(me_bug_check__incorrect_blob_data_buffer_format__wrong_fragment_length_2);
-
-    freason<<cbFragment<<cbBufferTail;
-
-    IBP_BUG_CHECK__DEBUG
+    IBP_ErrorUtils::Throw__BugCheck__DEBUG
      (c_bugcheck_src,
       L"#006",
-      freason.c_str())
+      me_bug_check__incorrect_blob_data_buffer_format__wrong_fragment_length_2,
+      cbFragment,
+      cbBufferTail);
    }//if cbBufferTail<cbFragment
 
    (*pBlobHandle)->m_ReadMode__BufferPos+=sizeof(cbFragment);
@@ -452,15 +446,11 @@ void RemoteFB__API_P13__ReadBlob::helper__read_to_buffer
 
      default:
      {
-      structure::wstr_formatter
-       freason(me_bug_check__unexpected_blob_read_result_1);
-
-      freason<<packet.p_resp.p_resp__object;
-
-      IBP_BUG_CHECK__DEBUG
+      IBP_ErrorUtils::Throw__BugCheck__DEBUG
        (c_bugcheck_src,
         L"#002",
-        freason.c_str());
+        me_bug_check__unexpected_blob_read_result_1,
+        packet.p_resp.p_resp__object);
      }//default
     }//switch
    }

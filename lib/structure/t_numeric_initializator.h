@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Generic numeric initializator
 //                                                 Kovalenko Dmitry. 17.08.2015
-#ifndef _t_numeric_initializator_H_
-#define _t_numeric_initializator_H_
+#ifndef _lcpi_lib_structure__t_numeric_initializator_H_
+#define _lcpi_lib_structure__t_numeric_initializator_H_
 
 #include <lcpi/lib/structure/t_numeric_initializator.h>
 

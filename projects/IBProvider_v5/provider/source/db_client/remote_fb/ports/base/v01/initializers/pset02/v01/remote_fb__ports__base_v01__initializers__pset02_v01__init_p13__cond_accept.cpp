@@ -24,6 +24,10 @@
 #include "source/db_client/remote_fb/remote_fb__memory_pool.h"
 
 #include "source/db_obj/dbms_fb/v03_0_0/db_obj__dbms_fb__v03_0_0__factories.h"
+#include "source/db_obj/ib_base/ib_sys_data.h"
+#include "source/db_obj/isc_base/isc_initialize_utils.h"
+
+#include "source/external/icu/ibp_external__icu__loader_factory.h"
 
 #include "source/error_services/ibp_error_utils.h"
 #include "source/error_services/ibp_error_messages.h"
@@ -35,12 +39,14 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace p
 //class RemoteFB__PortInitializer_PSET02_v01
 
 void RemoteFB__PortInitializer_PSET02_v01::Helper__FinishConnect_P13__cond_accept
-                                           (port_type*               const     pPort,
-                                            const protocol::set02::PACKET_V02& acceptPacket,
-                                            wstr_box_type            const     ucs2_database_name,
-                                            RemoteFB__ClientConnectBlock_v2&   clientConnectBlock,
-                                            const tag_connect_finalizator&     FinalOpFuncs)
+                        (const oledb_lib::OLEDB_Props2__Data__Values* const pDsPropValues,
+                         port_type*                                   const pPort,
+                         const protocol::set02::PACKET_V02&                 acceptPacket,
+                         wstr_box_type                                const ucs2_database_name,
+                         RemoteFB__ClientConnectBlock_v2&                   clientConnectBlock,
+                         const tag_connect_finalizator&                     FinalOpFuncs)
 {
+ assert(pDsPropValues);
  assert(pPort);
  assert(!clientConnectBlock.m_authComplete);
 
@@ -91,10 +97,26 @@ void RemoteFB__PortInitializer_PSET02_v01::Helper__FinishConnect_P13__cond_accep
 
  //Регистрация сервисов --------------------------------------------------
 
+ const external::icu::ICU__Loader::self_ptr
+  spIcuLoader
+   (external::icu::create_icu_loader
+     (pDsPropValues));
+
+ assert(spIcuLoader);
+
+ const db_obj::t_db_charset_manager_v2_ptr
+  spCsMng
+   (isc_base::isc_create_charset_manager_v2
+     (pDsPropValues,
+      spIcuLoader,
+      ib_base::g_ods_cs__ib04_0_0));
+
+ assert(spCsMng);
+
  //1. Сервис для обработки ошибок
  pPort->RegService
   (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
-   db_obj::dbms_fb::v03_0_0::create_svc__status_vector_utils());
+   db_obj::dbms_fb::v03_0_0::create_svc__status_vector_utils(spCsMng));
 
  //-----------------------------------------------------------------------
 

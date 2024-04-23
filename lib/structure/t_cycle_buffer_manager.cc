@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Cycle buffer manager
 //                                               Kovalenko Dmitry. 03.09.2015
-#ifndef _t_cycle_buffer_manager_CC_
-#define _t_cycle_buffer_manager_CC_
+#ifndef _lcpi_lib_structure__t_cycle_buffer_manager_CC_
+#define _lcpi_lib_structure__t_cycle_buffer_manager_CC_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

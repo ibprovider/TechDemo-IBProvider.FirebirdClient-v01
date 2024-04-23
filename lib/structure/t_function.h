@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Set of template utilities
 //                                                Dmitry Kovalenko. 15.01.2000.
-#ifndef _t_function_H_
-#define _t_function_H_
+#ifndef _lcpi_lib_structure__t_function_H_
+#define _lcpi_lib_structure__t_function_H_
 
 #include <functional>
 

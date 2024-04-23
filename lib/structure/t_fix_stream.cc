@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Реализация шаблонов <structure/t_fix_stream.h>
 //                                          Коваленко Дмитрий. 2 мая 2002 года.
-#ifndef _t_fix_stream_CC_
-#define _t_fix_stream_CC_
+#ifndef _lcpi_lib_structure__t_fix_stream_CC_
+#define _lcpi_lib_structure__t_fix_stream_CC_
 
 #include <structure/t_numeric_cast.h>
 #include <structure/t_negative_one.h>

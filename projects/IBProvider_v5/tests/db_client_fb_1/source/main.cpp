@@ -8,6 +8,8 @@
 #include "source/ibp_global_objects_data__dlls.h"
 
 #include <structure/test_obj/t_tso_user.h>
+#include <structure/test_obj/t_tso_init_console_cp.h>
+
 #include <structure/test_obj/fw/set01/test_fw_set01__exec_mt.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__summary_builder.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__log_stream.h>
@@ -178,7 +180,9 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  {
   spRootLog
     =lcpi::lib::structure::not_null_ptr
-      (new TSYS_RootLog(CP_OEMCP));
+      (new TSYS_RootLog
+        (nullptr,
+         structure::tso_obj::t_basic_log_stream__console<TSYS_MemoryAllocator>::create()));
  }
  else
  {
@@ -186,15 +190,15 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
    spRootLogStream
     (lcpi::lib::structure::not_null_ptr
       (new TSYS_LogStream
-        (CP_OEMCP,
-         pSysCL->RootLogFilePath())));
+        (pSysCL->RootLogFilePath())));
 
   assert(spRootLogStream);
 
   spRootLog
-    =lcpi::lib::structure::not_null_ptr
-      (new TSYS_RootLog
-        (spRootLogStream));
+   =lcpi::lib::structure::not_null_ptr
+     (new TSYS_RootLog
+       (nullptr,
+        spRootLogStream));
  }//if
 
  //-----------------------------------------------------------------------
@@ -294,14 +298,14 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
  if(cFinishlAllocBlocks!=cInitialAllocBlocks)
  {
   RootTracer(tso_msg_error,-1)
-   <<L"cFinishlAllocBlocks: "<<cFinishlAllocBlocks<<L".  cFinishlAllocBlocks: "<<cFinishlAllocBlocks<<"."
+   <<L"cFinishlAllocBlocks: "<<cFinishlAllocBlocks<<L". cFinishlAllocBlocks: "<<cFinishlAllocBlocks<<"."
    <<send;
  }//if
 
  //----
  RootTracer(L"")<<send;
 
- const auto summary_info=spExecutor->build_summary2();
+ spExecutor->build_summary3();
 
  //-----------------------------------------
  {
@@ -313,12 +317,12 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
 
   TTSO_SummaryBuilder::print_total_ex
    (RootTracer,
-    L"",
-    summary_info.nTotalErrors,
-    summary_info.nTotalWarnings,
+    "",
+    spRootLog->get_total_error_count2(),
+    spRootLog->get_total_warning_count2(),
     spRootLog->get_pass_count(),
     spRootLog->get_total_test_count());
- }//if PrintSummaryErrors
+ }//local
 
  //----------------------------------------- EXIT
 
@@ -329,7 +333,7 @@ static int ExecuteTests(const TSYS_CommandLine* const pSysCL)
   std::cout<<"ROOT LOG FILE: \""<<pSysCL->RootLogFilePath()<<'\"'<<std::endl;
  }//if
 
- return (int)min(spRootLog->get_total_error_count(),INT_MAX);
+ return (int)min(spRootLog->get_total_error_count2(),INT_MAX);
 }//ExecuteTests
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -342,26 +346,35 @@ int main()
 
  _TSO_TRY_
  {
+  const structure::tso_obj::t_tso_init_console_cp
+   __init_console_cp; //throw
+
+  _TSO_TRY_
+  {
   _VERIFY(_Module.Init(::GetModuleHandle(NULL)));
 
-  const TSYS_CommandLine::self_cptr
-   spSysCL(new TSYS_CommandLine());
+   const TSYS_CommandLine::self_cptr
+    spSysCL
+     (structure::not_null_ptr
+       (new TSYS_CommandLine()));
 
-  //--------------
-  if(spSysCL->args().empty())
-  {
-   PrintHelp();
+   //--------------
+   if(spSysCL->args().empty())
+   {
+    PrintHelp();
 
-   err_count=-1;
-  }//if - print help string
-  else
-  {
-   wait_press_any_key_on_exit=spSysCL->WaitPressAnyKeyOnExit();
+    err_count=-1;
+   }//if - print help string
+   else
+   {
+    wait_press_any_key_on_exit=spSysCL->WaitPressAnyKeyOnExit();
 
-   err_count+=ExecuteTests(spSysCL);
+    err_count+=ExecuteTests(spSysCL);
+   }
   }
+  _TSO_CATCHES_("main-2",err_count)
  }
- _TSO_CATCHES_("main",err_count)
+ _TSO_CATCHES_("main-1",err_count)
 
  _Module.Term();
 

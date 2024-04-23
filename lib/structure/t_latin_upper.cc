@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_latin_upper_CC_
-#define _t_latin_upper_CC_
+#ifndef _lcpi_lib_structure__t_latin_upper_CC_
+#define _lcpi_lib_structure__t_latin_upper_CC_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -8,7 +8,7 @@ namespace structure{
 template<typename charT>
 inline charT latin_upper(charT const c)
 {
- typedef t_char_traits2<charT>              ct2;
+ using ct2=t_char_traits2<charT>;
 
  if(c>=ct2::ch_letter_a() && c<=ct2::ch_letter_z())
   return static_cast<charT>(c-ct2::ch_letter_a()+ct2::ch_letter_A());
@@ -21,7 +21,8 @@ inline charT latin_upper(charT const c)
 
 template<typename charT>
 inline t_latin_upper<charT>::t_latin_upper()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 template<typename charT>

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Utilities for work with pointers
 //                                              Kovalenko Dmitry. 14.01.2009
-#ifndef _t_pointer_cast_H_
-#define _t_pointer_cast_H_
+#ifndef _lcpi_lib_structure__t_pointer_cast_H_
+#define _lcpi_lib_structure__t_pointer_cast_H_
 
 #include <lcpi/lib/.config.h>
 

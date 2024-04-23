@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Utilities for latin symbols
 //                                                 Kovalenko Dmitry. 25.01.2011.
-#ifndef _t_latin_H_
-#define _t_latin_H_
+#ifndef _lcpi_lib_structure__t_latin_H_
+#define _lcpi_lib_structure__t_latin_H_
 
 #include <structure/t_latin_upper.h>
 #include <structure/t_latin_lower.h>
@@ -32,7 +32,7 @@ template<typename TChar>
 class t_latin_equal_i
 {
  public: //typedefs ------------------------------------------------------
-  typedef TChar                             char_type;
+  using char_type=TChar;
 
  public:
   t_latin_equal_i()
@@ -53,7 +53,7 @@ template<typename TChar>
 class t_latin_less_i
 {
  public: //typedefs ------------------------------------------------------
-  typedef TChar                             char_type;
+  using char_type=TChar;
 
  public:
   t_latin_less_i()

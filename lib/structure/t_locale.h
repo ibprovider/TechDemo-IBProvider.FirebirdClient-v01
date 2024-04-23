@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Service for work with localization
 //                                                Kovalenko Dmitry. 21.08.2003.
-#ifndef _t_locale_H_
-#define _t_locale_H_
+#ifndef _lcpi_lib_structure__t_locale_H_
+#define _lcpi_lib_structure__t_locale_H_
 
 #include <lcpi/lib/.config.h>
 

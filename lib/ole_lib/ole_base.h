@@ -30,8 +30,6 @@ namespace ole_lib{
 //Containing
 
 class TGuidLess;
-class TOleInitialize2;
-class TComInitialize2;
 class TBSTR;
 class TOleStatus;
 class t_base_com_error;

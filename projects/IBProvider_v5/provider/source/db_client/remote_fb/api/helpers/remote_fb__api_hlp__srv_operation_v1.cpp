@@ -236,14 +236,11 @@ void RemoteFB__API_HLP__SrvOperation_v1::helper__throw_bug_check__unk_state
  assert(place);
  assert(point);
 
- structure::wstr_formatter freason(L"unknown state: %1");
-
- freason<<stateID;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   L"unknown state: %1",
+   stateID);
 }//helper__throw_bug_check__unk_state
 
 ////////////////////////////////////////////////////////////////////////////////

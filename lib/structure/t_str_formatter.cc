@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Реализация шаблона t_basic_str_formatter
 //                                        Коваленко Дмитрий. 8 января 2002 года.
-#ifndef _t_str_formatter_CC_
-#define _t_str_formatter_CC_
+#ifndef _lcpi_lib_structure__t_str_formatter_CC_
+#define _lcpi_lib_structure__t_str_formatter_CC_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -100,8 +100,8 @@ t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value()
 template<class TString>
 t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
                                            (const self_type& x)
- :m_assign(x.m_assign)
- ,m_value(x.m_value)
+ :m_value(x.m_value)
+ ,m_assign(x.m_assign)
 {
 }
 
@@ -111,8 +111,8 @@ t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
 template<class TString>
 t_basic_str_formatter__arg_value<TString>::t_basic_str_formatter__arg_value
                                            (self_type&& x)
- :m_assign  (LCPI_STL_MOVE_VALUE(x.m_assign))
- ,m_value   (LCPI_STL_MOVE_VALUE(x.m_value))
+ :m_value   (LCPI_STL_MOVE_VALUE(x.m_value))
+ ,m_assign  (LCPI_STL_MOVE_VALUE(x.m_assign))
 {
 }
 
@@ -209,8 +209,8 @@ void t_basic_str_formatter__arg_value<TString>::reset()
 //constructors -----------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter()
- :m_next_num_arg (first_num_arg_idx)
- ,m_modes        (self_type::fl_defaults)
+ :m_modes        (self_type::fl_defaults)
+ ,m_next_num_arg (first_num_arg_idx)
 {
 }
 
@@ -218,8 +218,8 @@ t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter()
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (str_box_type const fstr)
- :m_next_num_arg (first_num_arg_idx)
- ,m_modes        (self_type::fl_defaults)
+ :m_modes        (self_type::fl_defaults)
+ ,m_next_num_arg (first_num_arg_idx)
 {
  this->init(fstr);
 }
@@ -229,8 +229,8 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>::t_basic_str_formatter
                                            (const char_type* const fstr,
                                             size_type        const n)
- :m_next_num_arg  (first_num_arg_idx)
- ,m_modes         (self_type::fl_defaults)
+ :m_modes         (self_type::fl_defaults)
+ ,m_next_num_arg  (first_num_arg_idx)
 {
  this->init(fstr,n);
 }
@@ -346,7 +346,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  //[2011-09-10]
  assert(!structure::is_negative_one(n));
 
- if(fstr==NULL)
+ if(fstr==nullptr)
   n=0;
  else
  if(structure::is_negative_one(n))
@@ -482,7 +482,7 @@ t_basic_str_formatter<charT,traits,allocator>::add_text(const char_type* const t
  //[2011-09-10]
  assert(!structure::is_negative_one(n));
 
- if(text==NULL)
+ if(text==nullptr)
   n=0;
  else
  if(structure::is_negative_one(n))
@@ -583,7 +583,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (signed char const value)
 {
- return this->push_next_num_arg(m_traits.arg_long(value));
+ return this->push_next_num_arg(m_traits.arg_int(value)); // WAS ARG_LONG
 }
 
 //------------------------------------------------------------------------
@@ -591,29 +591,29 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (unsigned char const value)
 {
- return this->push_next_num_arg(m_traits.arg_ulong(value));
+ return this->push_next_num_arg(m_traits.arg_uint(value));  // WAS ARG_ULONG
 }
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (signed short const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::int16_t const value)
 {
- return this->push_next_num_arg(m_traits.arg_long(value));
+ return this->push_next_num_arg(m_traits.arg_int(value)); // WAS ARG_LONG
 }
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (unsigned short const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::uint16_t const value)
 {
- return this->push_next_num_arg(m_traits.arg_ulong(value));
+ return this->push_next_num_arg(m_traits.arg_uint(value)); // WAS ARG_ULONG
 }
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (signed int const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::int32_t const value)
 {
  return this->push_next_num_arg(m_traits.arg_int(value));
 }
@@ -621,12 +621,14 @@ t_basic_str_formatter<charT,traits,allocator>&
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (unsigned int const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::uint32_t const value)
 {
  return this->push_next_num_arg(m_traits.arg_uint(value));
 }
 
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (signed long const value)
@@ -634,7 +636,11 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->push_next_num_arg(m_traits.arg_long(value));
 }
 
+#endif
+
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (unsigned long const value)
@@ -642,10 +648,12 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->push_next_num_arg(m_traits.arg_ulong(value));
 }
 
+#endif
+
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (signed __int64 const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::int64_t const value)
 {
  return this->push_next_num_arg(m_traits.arg_int64(value));
 }
@@ -653,7 +661,7 @@ t_basic_str_formatter<charT,traits,allocator>&
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::operator << (unsigned __int64 const value)
+ t_basic_str_formatter<charT,traits,allocator>::operator << (std::uint64_t const value)
 {
  return this->push_next_num_arg(m_traits.arg_uint64(value));
 }
@@ -719,7 +727,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (const asymbol_type& value)
 {
- return this->push_next_num_arg(m_traits.arg_str(&value.symbol,1));
+ return this->push_next_num_arg(m_traits.arg_str2(&value.symbol,1));
 }
 
 //------------------------------------------------------------------------
@@ -727,7 +735,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (const wsymbol_type& value)
 {
- return this->push_next_num_arg(m_traits.arg_str(&value.symbol,1));
+ return this->push_next_num_arg(m_traits.arg_str2(&value.symbol,1));
 }
 
 //------------------------------------------------------------------------
@@ -735,7 +743,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (const astr_box_type& value)
 {
- return this->push_next_num_arg(traits_type::arg_str(value.data(),value.size()));
+ return this->push_next_num_arg(traits_type::arg_str2(value.data(),value.size()));
 }
 
 //------------------------------------------------------------------------
@@ -743,7 +751,7 @@ template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::operator << (const wstr_box_type& value)
 {
- return this->push_next_num_arg(traits_type::arg_str(value.data(),value.size()));
+ return this->push_next_num_arg(traits_type::arg_str2(value.data(),value.size()));
 }
 
 //------------------------------------------------------------------------
@@ -852,7 +860,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     signed char        const value)
 {
- return this->set_num_arg(idx,m_traits.arg_long(value));
+ return this->set_num_arg(idx,m_traits.arg_int(value)); // WAS ARG_LONG
 }//set
 
 //------------------------------------------------------------------------
@@ -861,32 +869,32 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     unsigned char      const value)
 {
- return this->set_num_arg(idx,m_traits.arg_ulong(value));
+ return this->set_num_arg(idx,m_traits.arg_uint(value)); // WAS ARG_ULONG
 }//set
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    signed short       const value)
+                                                    std::int16_t       const value)
 {
- return this->set_num_arg(idx,m_traits.arg_long(value));
+ return this->set_num_arg(idx,m_traits.arg_int(value)); // WAS ARG_LONG
 }//set
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    unsigned short     const value)
+                                                    std::uint16_t      const value)
 {
- return this->set_num_arg(idx,m_traits.arg_ulong(value));
+ return this->set_num_arg(idx,m_traits.arg_uint(value)); // WAS ARG_ULONG
 }//set
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    signed int         const value)
+                                                    std::int32_t       const value)
 {
  return this->set_num_arg(idx,m_traits.arg_int(value));
 }//set
@@ -895,12 +903,14 @@ t_basic_str_formatter<charT,traits,allocator>&
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    unsigned int       const value)
+                                                    std::uint32_t      const value)
 {
  return this->set_num_arg(idx,m_traits.arg_uint(value));
 }//set
 
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
@@ -909,7 +919,11 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->set_num_arg(idx,m_traits.arg_long(value));
 }//set
 
+#endif
+
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
@@ -918,11 +932,13 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->set_num_arg(idx,m_traits.arg_ulong(value));
 }//set
 
+#endif
+
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    signed __int64     const value)
+                                                    std::int64_t       const value)
 {
  return this->set_num_arg(idx,m_traits.arg_int64(value));
 }//set
@@ -931,7 +947,7 @@ t_basic_str_formatter<charT,traits,allocator>&
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
-                                                    unsigned __int64   const value)
+                                                    std::uint64_t      const value)
 {
  return this->set_num_arg(idx,m_traits.arg_uint64(value));
 }//set
@@ -1005,7 +1021,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     const asymbol_type&      value)
 {
- return this->set_num_arg(idx,m_traits.arg_str(&value.symbol,1));
+ return this->set_num_arg(idx,m_traits.arg_str2(&value.symbol,1));
 }//set
 
 //------------------------------------------------------------------------
@@ -1014,7 +1030,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set(num_arg_index_type const idx,
                                                     const wsymbol_type&      value)
 {
- return this->set_num_arg(idx,m_traits.arg_str(&value.symbol,1));
+ return this->set_num_arg(idx,m_traits.arg_str2(&value.symbol,1));
 }//set
 
 //------------------------------------------------------------------------
@@ -1037,7 +1053,7 @@ t_basic_str_formatter<charT,traits,allocator>&
 
 //------------------------------------------------------------------------
 
- #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
+#if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
 
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
@@ -1073,7 +1089,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             signed char   const value)
 {
- return this->set_named_arg(name,m_traits.arg_long(value));
+ return this->set_named_arg(name,m_traits.arg_int(value)); // WAS ARG_LONG
 }//set_by_name
 
 //------------------------------------------------------------------------
@@ -1082,16 +1098,16 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             unsigned char const value)
 {
- return this->set_named_arg(name,m_traits.arg_ulong(value));
+ return this->set_named_arg(name,m_traits.arg_uint(value)); // WAS ARG_ULONG
 }//set_by_name
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
-                                                            signed short  const value)
+                                                            std::int16_t  const value)
 {
- return this->set_named_arg(name,m_traits.arg_long(value));
+ return this->set_named_arg(name,m_traits.arg_int(value)); // WAS ARG_LONG
 }//set_by_name
 
 //------------------------------------------------------------------------
@@ -1100,14 +1116,14 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type  const name,
                                                             unsigned short const value)
 {
- return this->set_named_arg(name,m_traits.arg_ulong(value));
+ return this->set_named_arg(name,m_traits.arg_uint(value)); // WAS ARG_ULONG
 }//set_by_name
 
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
-                                                            signed int    const value)
+                                                            std::int32_t  const value)
 {
  return this->set_named_arg(name,m_traits.arg_int(value));
 }//set_by_name
@@ -1116,12 +1132,14 @@ t_basic_str_formatter<charT,traits,allocator>&
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
-                                                            unsigned int  const value)
+                                                            std::uint32_t const value)
 {
  return this->set_named_arg(name,m_traits.arg_uint(value));
 }//set_by_name
 
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
@@ -1130,7 +1148,11 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->set_named_arg(name,m_traits.arg_long(value));
 }//set_by_name
 
+#endif
+
 //------------------------------------------------------------------------
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
+
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
@@ -1139,11 +1161,13 @@ t_basic_str_formatter<charT,traits,allocator>&
  return this->set_named_arg(name,m_traits.arg_ulong(value));
 }//set_by_name
 
+#endif
+
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type  const name,
-                                                            signed __int64 const value)
+ t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
+                                                            std::int64_t  const value)
 {
  return this->set_named_arg(name,m_traits.arg_int64(value));
 }//set_by_name
@@ -1151,8 +1175,8 @@ t_basic_str_formatter<charT,traits,allocator>&
 //------------------------------------------------------------------------
 template<class charT,class traits,class allocator>
 t_basic_str_formatter<charT,traits,allocator>&
- t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type    const name,
-                                                            unsigned __int64 const value)
+ t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
+                                                            std::uint64_t const value)
 {
  return this->set_named_arg(name,m_traits.arg_uint64(value));
 }//set_by_name
@@ -1226,7 +1250,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             const asymbol_type& value)
 {
- return this->set_named_arg(name,m_traits.arg_str(&value.symbol,1));
+ return this->set_named_arg(name,m_traits.arg_str2(&value.symbol,1));
 }//set_by_name
 
 //------------------------------------------------------------------------
@@ -1235,7 +1259,7 @@ t_basic_str_formatter<charT,traits,allocator>&
  t_basic_str_formatter<charT,traits,allocator>::set_by_name(name_arg_type const name,
                                                             const wsymbol_type& value)
 {
- return this->set_named_arg(name,m_traits.arg_str(&value.symbol,1));
+ return this->set_named_arg(name,m_traits.arg_str2(&value.symbol,1));
 }//set_by_name
 
 //------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Вспомогательные конструкции для работы с символами
 //                                      Коваленко Дмитрий. 21 января 2002 года.
-#ifndef _t_char_traits2_
-#define _t_char_traits2_
+#ifndef _lcpi_lib_structure__t_char_traits2_
+#define _lcpi_lib_structure__t_char_traits2_
 
 #include <lcpi/lib/structure/t_char_traits2.h>
 

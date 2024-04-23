@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_numeric_cast_CC_
-#define _t_numeric_cast_CC_
+#ifndef _lcpi_lib_structure__t_numeric_cast_CC_
+#define _lcpi_lib_structure__t_numeric_cast_CC_
 
 #include <sstream>
 
@@ -26,61 +26,65 @@ class tag_can_numeric_cast;
 #endif
 
 template<>
-class tag_can_numeric_cast<false,true>
+class tag_can_numeric_cast<false,true> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename /*unsigned*/ToType,typename FromType>
-  static RELEASE_CODE(inline) bool test(/*signed*/FromType x)
+  static LCPI__RELEASE_CODE(inline) bool test(/*signed*/FromType x)
   {
-   typedef t_numeric_limits<FromType> from_limits;
-   typedef t_numeric_limits<ToType>   to_limits;
+   using from_limits =t_numeric_limits<FromType>;
+   using to_limits   =t_numeric_limits<ToType>;
 
-   assert(from_limits::is_signed);
-   assert(!to_limits::is_signed);
+   LCPI__assert_s(from_limits::is_signed);
+   LCPI__assert_s(!to_limits::is_signed);
 
-   return x>=0 && from_limits::unsigned_numeric_type(x)<=to_limits::max_value();
-  }
-};//tag_can_numeric_cast
+   using from_unsigned_t=typename from_limits::unsigned_numeric_type;
+
+   return x>=0 && static_cast<from_unsigned_t>(x)<=to_limits::max_value();
+  }//test
+};//class tag_can_numeric_cast<false,true>
 
 ////////////////////////////////////////////////////////////////////////////////
 //Unsigned to Signed
 
 template<>
-class tag_can_numeric_cast<true,false>
+class tag_can_numeric_cast<true,false> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename /*signed*/ToType,typename FromType>
-  static RELEASE_CODE(inline) bool test(/*unsigned*/FromType x)
+  static LCPI__RELEASE_CODE(inline) bool test(/*unsigned*/FromType x)
   {
-   typedef t_numeric_limits<FromType> from_limits;
-   typedef t_numeric_limits<ToType>   to_limits;
+   using from_limits =t_numeric_limits<FromType>;
+   using to_limits   =t_numeric_limits<ToType>;
 
-   assert(!from_limits::is_signed);
-   assert(to_limits::is_signed);
+   LCPI__assert_s(!from_limits::is_signed);
+   LCPI__assert_s(to_limits::is_signed);
 
-   return x<=to_limits::unsigned_numeric_type(to_limits::max_value());
-  }
-};//tag_can_numeric_cast
+   using to_unsigned_t=typename to_limits::unsigned_numeric_type;
+
+   return x<=static_cast<to_unsigned_t>(to_limits::max_value());
+  }//test
+};//class tag_can_numeric_cast<true,false>
 
 ////////////////////////////////////////////////////////////////////////////////
 //Unsigned to Unsigned
 
 template<>
-class tag_can_numeric_cast<false,false>
+class tag_can_numeric_cast<false,false> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename /*unsigned*/ToType,typename FromType>
-  static RELEASE_CODE(inline) bool test(/*unsigned*/FromType x)
+  static LCPI__RELEASE_CODE(inline) bool test(/*unsigned*/FromType x)
   {
-   typedef t_numeric_limits<FromType> from_limits;
-   typedef t_numeric_limits<ToType>   to_limits;
+   using from_limits =t_numeric_limits<FromType>;
+   using to_limits   =t_numeric_limits<ToType>;
 
-   assert(!from_limits::is_signed);
-   assert(!to_limits::is_signed);
+   LCPI__assert_s(!from_limits::is_signed);
+   LCPI__assert_s(!to_limits::is_signed);
 
    return x<=to_limits::max_value();
-  }
-};//tag_can_numeric_cast
+  }//test
+};//class tag_can_numeric_cast<false,false>
 
 #if(defined(COMP_CONF_BORLAND__HAS_BUG_IN_W8012_FOR_TWO_UNSIGNED))
 # if(COMP_CONF_BORLAND__HAS_BUG_IN_W8012_FOR_TWO_UNSIGNED)
@@ -92,21 +96,21 @@ class tag_can_numeric_cast<false,false>
 //Signed to Signed
 
 template<>
-class tag_can_numeric_cast<true,true>
+class tag_can_numeric_cast<true,true> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename /*signed*/ToType,typename FromType>
-  static RELEASE_CODE(inline) bool test(/*signed*/FromType x)
+  static LCPI__RELEASE_CODE(inline) bool test(/*signed*/FromType x)
   {
-   typedef t_numeric_limits<FromType> from_limits;
-   typedef t_numeric_limits<ToType>   to_limits;
+   using from_limits =t_numeric_limits<FromType>;
+   using to_limits   =t_numeric_limits<ToType>;
 
-   assert(from_limits::is_signed);
-   assert(to_limits::is_signed);
+   LCPI__assert_s(from_limits::is_signed);
+   LCPI__assert_s(to_limits::is_signed);
 
    return to_limits::min_value()<=x && x<=to_limits::max_value();
-  }
-};//tag_can_numeric_cast
+  }//test
+};//class tag_can_numeric_cast<true,true>
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace detail
@@ -148,7 +152,7 @@ inline ToType static_numeric_cast(FromType x)
 template<typename ToType,typename FromType>
 inline void static_numeric_cast(ToType* pdest,FromType x)
 {
- assert(pdest);
+ LCPI__assert(pdest);
 
  (*pdest)=static_numeric_cast<ToType,FromType>(x);
 }//static_numeric_cast
@@ -158,8 +162,8 @@ inline void static_numeric_cast(ToType* pdest,FromType x)
 template<typename ToType,typename FromType>
 void raise_numeric_cast_error(FromType x,const char* err_source)
 {
- typedef structure::t_numeric_limits<FromType> from_limits;
- typedef structure::t_numeric_limits<ToType>   to_limits;
+ using from_limits =structure::t_numeric_limits<FromType>;
+ using to_limits   =structure::t_numeric_limits<ToType>;
 
  std::ostringstream fmsg;
 
@@ -195,7 +199,7 @@ ToType verified_numeric_cast(FromType x,const char* err_source)
 template<typename ToType,typename FromType>
 void verified_numeric_cast(ToType* pdest,FromType x,const char* err_source)
 {
- assert(pdest);
+ LCPI__assert(pdest);
 
  (*pdest)=verified_numeric_cast<ToType>(x,err_source);
 }//verified_numeric_cast
@@ -205,8 +209,8 @@ void verified_numeric_cast(ToType* pdest,FromType x,const char* err_source)
 template<typename ToType,typename FromType>
 void raise_length_cast_error(FromType x,const char* err_source)
 {
- typedef structure::t_numeric_limits<FromType> from_limits;
- typedef structure::t_numeric_limits<ToType>   to_limits;
+ using from_limits =structure::t_numeric_limits<FromType>;
+ using to_limits   =structure::t_numeric_limits<ToType>;
 
  std::ostringstream fmsg;
 
@@ -238,7 +242,7 @@ ToType verified_length_cast(FromType x,const char* err_source)
 template<typename ToType,typename FromType>
 void verified_length_cast(ToType* pdest,FromType x,const char* err_source)
 {
- assert(pdest);
+ LCPI__assert(pdest);
 
  (*pdest)=verified_length_cast<ToType>(x,err_source);
 }//verified_length_cast
@@ -252,37 +256,38 @@ class tag_remove_numeric_sign;
 //From unsigned
 
 template<>
-class tag_remove_numeric_sign<false>
+class tag_remove_numeric_sign<false> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename FromType>
-  static RELEASE_CODE(inline)
+  static LCPI__RELEASE_CODE(inline)
    FromType exec(/*unsigned*/FromType x)
   {
-   typedef t_numeric_limits<FromType> from_limits;
+   using from_limits=t_numeric_limits<FromType>;
 
-   assert_s(!from_limits::is_signed);
+   LCPI__assert_s(!from_limits::is_signed);
 
    return x;
   }//exec
-};//tag_remove_numeric_sign<false>
+};//class tag_remove_numeric_sign<false>
 
 ////////////////////////////////////////////////////////////////////////////////
 //From signed
 
 template<>
-class tag_remove_numeric_sign<true>
+class tag_remove_numeric_sign<true> LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   template<typename FromType>
-  static RELEASE_CODE(inline)
+  static LCPI__RELEASE_CODE(inline)
    typename structure::t_numeric_limits<FromType>::unsigned_numeric_type exec(/*signed*/FromType const x)
   {
-   typedef t_numeric_limits<FromType>             from_limits;
-   typedef from_limits::unsigned_numeric_type     result_type;
+   using from_limits=t_numeric_limits<FromType>;
 
-   assert_s(from_limits::is_signed);
-   assert((-from_limits::max_value()-1)==from_limits::min_value());
+   using result_type=typename from_limits::unsigned_numeric_type;
+
+   LCPI__assert_s(from_limits::is_signed);
+   LCPI__assert((-from_limits::max_value()-1)==from_limits::min_value());
 
    if(x>0)
     return static_cast<result_type>(x);
@@ -292,7 +297,7 @@ class tag_remove_numeric_sign<true>
 
    return static_cast<result_type>(-x);
   }//exec
-};//tag_remove_numeric_sign<true>
+};//class tag_remove_numeric_sign<true>
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -300,7 +305,7 @@ template<typename FromType>
 typename structure::t_numeric_limits<FromType>::unsigned_numeric_type
  remove_numeric_sign(FromType const x)
 {
- typedef tag_remove_numeric_sign<t_numeric_limits<FromType>::is_signed> tag;
+ using tag=tag_remove_numeric_sign<t_numeric_limits<FromType>::is_signed>;
 
  return tag::exec(x);
 }//remove_numeric_sign

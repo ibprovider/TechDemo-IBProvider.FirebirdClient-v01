@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__run_context.h>
 
@@ -37,6 +37,11 @@ void TestFW__RunContext::trace(message_type* const message)
    structure::interlocked::increment(&m_test_info.warning_count);
    break;
   }//case - warning
+
+  default:
+  {
+   break;
+  }//default
  }//switch
 
  assert(m_spLog);

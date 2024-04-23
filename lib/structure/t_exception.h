@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Exception classes and services
 //                                                 Dmitry Kovalenko. 05.04.2004.
-#ifndef _t_exception_H_
-#define _t_exception_H_
+#ifndef _lcpi_lib_structure__t_exception_H_
+#define _lcpi_lib_structure__t_exception_H_
 
 #include <lcpi/lib/structure/t_exception.h>
 

@@ -1826,7 +1826,7 @@ _MC("Internal error")
 /*260*/
 MessageId       =IBP_MCE_FB25__DSQL_RELATION_ERR
 Language        =Rus
-_MC("Table unknown")
+_MC("Неизвестная таблица")
 .
 
 //------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_cmd_line_parser_CC_
-#define _t_cmd_line_parser_CC_
+#ifndef _lcpi_lib_structure__t_cmd_line_parser_CC_
+#define _lcpi_lib_structure__t_cmd_line_parser_CC_
 
 #include <structure/utilities/string/trim.h>
 
@@ -62,58 +62,6 @@ inline t_cmd_line_part<ForwardIterator>&
 
  return *this;
 }//operator =
-
-////////////////////////////////////////////////////////////////////////////////
-//Free utilities
-
-template<class ForwardIterator,class partsT>
-void extract_cmd_line_parts(ForwardIterator first,
-                            ForwardIterator last,
-                            partsT&         parts)
-{
- typedef typename partsT::value_type                       part_type;
- typedef std::iterator_traits<ForwardIterator>::value_type char_type;
-
- t_string::const_iterator p_start;
- t_string::const_iterator p_beg;
- t_string::const_iterator p_end;
-
- structure::t_ctype<char_type>  _ctype;
-
- while(first!=last)
- {
-  p_start=first;
-
-  for(;first!=last && _ctype.isspace(*first);++first);
-
-  if(first==last)
-   break;
-
-  if((*first)=='\"')
-  {
-   p_beg=++first;
-
-   for(;first!=last && (*first)!='\"';++first);
-
-   p_end=first;
-
-   if(first!=last)
-    ++first;
-  }
-  else
-  {
-   p_beg=first;
-
-   ++first;
-
-   for(;first!=last && !_ctype.isspace(*first);++first);
-
-   p_end=first;
-  }//else
-
-  parts.push_back(part_type(p_start,first,p_beg,p_end));
- }//while
-}//extract_cmd_line_parts
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_cmd_line_parser_error_traits

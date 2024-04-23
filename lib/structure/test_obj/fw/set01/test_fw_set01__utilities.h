@@ -9,6 +9,10 @@
 
 #include <structure/utilities/string/trim.h>
 
+#include <chrono>
+#include <sstream>
+#include <iomanip>
+
 namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -21,10 +25,87 @@ LCPI_STL_DEF_BASIC_STRING(charT)
                        const LCPI_STL_DEF_BASIC_STRING(charT)& FileName);
 
 //------------------------------------------------------------------------
-std::string TestFW__TimeToStr(std::int64_t t);
+template<class REP,class PERIOD>
+std::string TestFW__TimeToStr(std::chrono::duration<REP,PERIOD> t)
+{
+ using seconds_t = std::chrono::seconds;
+
+ const auto t2=std::chrono::duration_cast<seconds_t>(t);
+
+ const std::int64_t c_sec  =1;
+ const std::int64_t c_min  =c_sec*60;
+ const std::int64_t c_hour =c_min*60;
+ const std::int64_t c_day  =c_hour*24;
+
+ //---
+ auto t3=t2.count();
+
+ const std::int64_t day=(t3/c_day);
+
+ t3-=(day*c_day);
+
+ //---
+ const std::int64_t hour=(t3/c_hour);
+
+ t3-=(hour*c_hour);
+
+ //---
+ const std::int64_t min=(t3/c_min);
+
+ t3-=(min*c_min);
+
+ //---
+ const std::int64_t sec=(t3/c_sec);
+
+ t3-=(sec*c_sec);
+
+ assert(t3==0);
+
+ //---
+ const auto f=t-t2;
+
+ assert(f<seconds_t(1));
+ assert(f>=seconds_t(0));
+
+ //---
+ using tick2_t=std::ratio<1,10*1000*1000>; //10 microseconds
+
+ using fraction2_t=std::chrono::duration<std::int64_t,tick2_t>;
+
+ const auto f2=std::chrono::duration_cast<fraction2_t>(f);
+
+ //---
+ std::ostringstream os;
+
+ if(day)
+ {
+  os<<day<<" day(s)";
+ }
+
+ os.fill('0');
+
+ os<<std::setw(2)<<hour<<':'
+   <<std::setw(2)<<min<<':'
+   <<std::setw(2)<<sec;
+
+ if(f2.count()!=0)
+ {
+  os<<"."<<std::right<<std::setw(7)<<f2.count();
+ }
+
+ return os.str();
+}//TestFW__TimeToStr
 
 //------------------------------------------------------------------------
-std::string TestFW__TimeToStrEx(std::int64_t t);
+template<class REP,class PERIOD>
+std::string TestFW__TimeToStrEx(std::chrono::duration<REP,PERIOD> t)
+{
+ std::ostringstream os;
+
+ os<<std::setw(13)<<std::left<<t.count()<<" ["<<TestFW__TimeToStr(t)<<"]";
+
+ return os.str();
+}//TestFW__TimeToStrEx
 
 //------------------------------------------------------------------------
 std::string TestFW__MemSizeToStrEx_KB(std::uint64_t sz);
@@ -81,7 +162,9 @@ void TestFW__PrintException(TTracer&              tracer,
   structure::t_err_record::string_type err_source;
   structure::t_err_record::string_type err_descr;
 
-  structure::t_err_record::lcid_type lcid(::GetUserDefaultLCID());
+  using lcid_type=structure::t_err_record::lcid_type;
+
+  structure::t_err_record::lcid_type lcid=lcid_type(); // was: GetUserDefaultLCID();
 
   for(size_t i(0),_c(errs->get_record_count());i!=_c;++i)
   {

@@ -239,12 +239,12 @@
 
 //------------------------------------------------------------------------
 /// \brief
-///  Неподдерживаемая версия сервера базы данных.<br>
+///  Unsupported DBMS version.<br>
 /// \b
-///  Params: проанализированная сигнатура сервера.
+///  Params: version string, server signature.
 /// \note
-///  Нужно указывать подсистему ошибки.
-#define IBP_MCE_COMMON__UNSUPPORTED_DBMS_VERSION_1                        1027
+///  Define subsystem id, too.
+#define IBP_MCE_COMMON__UNSUPPORTED_DBMS_VERSION_2                        1027
 
 //------------------------------------------------------------------------
 /// \brief
@@ -702,6 +702,20 @@
 /// \b
 ///  Params: place, point, name, id1, id2
 #define IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_NAME__5         2069
+
+//------------------------------------------------------------------------
+
+/// \brief
+///  Неизвестная кодовая страница системных сообщений.<br>
+/// \b
+///  Params: charset_name
+#define IBP_MCE_DBOBJ__UNKNOWN_SYSTEM_CHARSET_1                           2070
+
+//------------------------------------------------------------------------
+
+/// \brief Ошибка трансляции назщвания кодовой страницы для обработки системных сообщений.<br>
+/// \b Params: charset_name
+#define IBP_MCE_DBOBJ__CANT_TRANSLATE_SYSTEM_CHARSET_NAME_1               2071
 
 ////////////////////////////////////////////////////////////////////////////////
 //Working with COM objects

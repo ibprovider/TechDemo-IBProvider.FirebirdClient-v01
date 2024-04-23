@@ -240,6 +240,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CLEAR_PARAM_INFO                    ,0,"clear_param_info")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE                               ,0,"ctype")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE_NONE                          ,0,"ctype_none")
+ DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE_SYSTEM                        ,0,"ctype_system")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__CTYPE_USER                          ,0,"ctype_user")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBCLIENT_LIBRARY                    ,0,"dbclient_library")
  DEF_INDEX_ITEM(EXT,IBP_DBPROP__INIT__DBCLIENT_LIBRARY_64                 ,0,"dbclient_library_64")

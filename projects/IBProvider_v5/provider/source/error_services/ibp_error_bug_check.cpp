@@ -128,20 +128,26 @@ void IBP_ThrowBugCheck__UnexpectedPropValueType(const wchar_t* const place,
  assert(point);
  assert(prop_name);
 
- structure::wstr_formatter
-  freason(me_bug_check__prop__unexpected_value_type_2);
-
- freason<<prop_name;
-
  if(const ole_lib::TVariantTypeInfo* const x=ole_lib::GetVariantTypeInfo(varType))
-  freason<<x->name;
- else
-  freason<<const_cast<const unsigned short&>(varType); //check expected type
+ {
+  IBP_ErrorUtils::Throw__BugCheck__DEBUG
+   (place,
+    point,
+    me_bug_check__prop__unexpected_value_type_2,
+    prop_name,
+    x->name);
 
- IBP_BUG_CHECK__DEBUG
+  assert_hint(false);
+ }//if x
+
+ LCPI__assert_s(std::is_same<VARTYPE LCPI__LITER_COMMA unsigned short>::value);
+
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str());
+   me_bug_check__prop__unexpected_value_type_2,
+   prop_name,
+   varType);
 }//IBP_ThrowBugCheck__UnexpectedPropValueType
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -175,6 +175,19 @@ void TestCnParams::set_dbprop_init__ctype
 }//set_dbprop_init__ctype
 
 //------------------------------------------------------------------------------
+void TestCnParams::set_dbprop_init__ctype_system
+                                      (structure::t_const_wstr_box const v)
+{
+ assert(m_spDsPropValues);
+
+ m_spDsPropValues->Direct__SetValue
+  (ibprovider::IBP_DBPROPSET_INIT,
+   ibprovider::IBP_DBPROP__INIT__CTYPE_SYSTEM,
+   DBPROPOPTIONS_REQUIRED,
+   ole_lib::TVariant(v));
+}//set_dbprop_init__ctype_system
+
+//------------------------------------------------------------------------------
 void TestCnParams::set_dbprop_init__remote__protocol
                                       (structure::t_const_wstr_box const v)
 {

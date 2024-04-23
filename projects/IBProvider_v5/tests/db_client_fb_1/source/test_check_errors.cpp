@@ -92,7 +92,8 @@ void TestCheckErrors::check_err_count(const structure::t_err_records_r& errs,
  if(actualCount==reqCount)
   return;
 
- structure::str_formatter fmsg("Incorrect error record count: %1. Expected: %2.");
+ structure::str_formatter
+  fmsg("Incorrect error record count: %1. Expected: %2.");
 
  fmsg<<actualCount<<reqCount;
 
@@ -106,7 +107,8 @@ void TestCheckErrors::check_err_code(HRESULT actualHResult,
 {
  if(actualHResult!=expectedHResult)
  {
-  structure::str_formatter fmsg("actual HResult: %1. expected HResult: %2.");
+  structure::str_formatter
+   fmsg("actual HResult: %1. expected HResult: %2.");
 
   fmsg<<ole_lib::TestHResult(actualHResult)
       <<ole_lib::TestHResult(expectedHResult);

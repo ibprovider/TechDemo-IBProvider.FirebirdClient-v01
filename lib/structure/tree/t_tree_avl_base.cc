@@ -492,12 +492,12 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
 
  assert(cur_node_parent_child!=nullptr);
 
- pnode_type new_cur_node=pnode_type();new_cur_node;
- pnode_type update_node =pnode_type();update_node;
+ pnode_type new_cur_node LCPI__DEBUG_CODE(=pnode_type());
+ pnode_type update_node  LCPI__DEBUG_CODE(=pnode_type());
 
- if(!cur_node->m_left)
+ if(cur_node->m_left==nullptr)
  {
-  if(!cur_node->m_right)
+  if(cur_node->m_right==nullptr)
   {
    (*cur_node_parent_child)=nullptr;
 
@@ -508,20 +508,24 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
    return;
   }//if
 
-  assert(cur_node->m_right);
+  assert(cur_node->m_right!=nullptr);
 
-  new_cur_node = cur_node->m_right;
+  new_cur_node=cur_node->m_right;
 
-  update_node = new_cur_node;
+  update_node=new_cur_node;
+
+  assert(update_node!=nullptr);
  }
  else
  if(!cur_node->m_right)
  {
-  assert(cur_node->m_left);
+  assert(cur_node->m_left!=nullptr);
 
-  new_cur_node = cur_node->m_left;
+  new_cur_node=cur_node->m_left;
 
-  update_node = new_cur_node;
+  update_node=new_cur_node;
+
+  assert(update_node!=nullptr);
  }
  else
  {
@@ -533,10 +537,10 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
 
   for(;;)
   {
-   assert(right_node);
-   assert(left_node);
+   assert(right_node!=nullptr);
+   assert(left_node!=nullptr);
 
-   if(right_node->m_left==NULL)
+   if(right_node->m_left==nullptr)
    {
     new_cur_node=cur_node->m_right;
 
@@ -546,10 +550,14 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
 
     update_node=right_node;
 
+    assert(update_node!=nullptr);
+
     break;
    }//if
 
-   if(!left_node->m_right)
+   assert(right_node->m_left!=nullptr);
+
+   if(left_node->m_right==nullptr)
    {
     new_cur_node=cur_node->m_left;
 
@@ -559,15 +567,21 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
 
     update_node=left_node;
 
+    assert(update_node!=nullptr);
+
     break;
    }//if
+
+   assert(left_node->m_right!=nullptr);
 
    right_node = right_node->m_left;
    left_node  = left_node->m_right;
   }//for[ever]
  }//else
 
- assert(new_cur_node);
+ assert(new_cur_node!=nullptr);
+ assert(update_node!=nullptr);
+ assert(update_node!=cur_node);
 
  new_cur_node->m_parent=cur_node->m_parent;
 
@@ -578,7 +592,7 @@ void t_tree_avl_base<T,Compare,Allocator>::erase_node(node_type* const cur_node)
 
  this->internal_free_node2(cur_node);
 
- assert(update_node);
+ assert(update_node!=nullptr);
 
  this->update_tree_balance(update_node);
 }//erase_node
@@ -600,7 +614,7 @@ void t_tree_avl_base<T,Compare,Allocator>::shift_left(node_type* const cur_node)
  {
   node_type* const parent_parent_node = parent_node->m_parent;
 
-  if(parent_parent_node==NULL)
+  if(parent_parent_node==nullptr)
   {
    assert(m_head==parent_node);
 
@@ -648,7 +662,7 @@ void t_tree_avl_base<T,Compare,Allocator>::shift_right(node_type* const cur_node
  {
   node_type* const parent_parent_node=parent_node->m_parent;
 
-  if(parent_parent_node==NULL)
+  if(parent_parent_node==nullptr)
   {
    assert(m_head==parent_node);
 
@@ -695,7 +709,7 @@ void t_tree_avl_base<T,Compare,Allocator>::double_shift_left(node_type* const cu
  {
   node_type* const parent_parent_node=parent_node->m_parent;
 
-  if(parent_parent_node==NULL)
+  if(parent_parent_node==nullptr)
   {
    assert(m_head==parent_node);
 
@@ -753,7 +767,7 @@ void t_tree_avl_base<T,Compare,Allocator>::double_shift_right(node_type* const c
  {
   node_type* const parent_parent_node=parent_node->m_parent;
 
-  if(parent_parent_node==NULL)
+  if(parent_parent_node==nullptr)
   {
    assert(m_head==parent_node);
 
@@ -799,7 +813,7 @@ void t_tree_avl_base<T,Compare,Allocator>::double_shift_right(node_type* const c
 template<class T,class Compare,class Allocator>
 void t_tree_avl_base<T,Compare,Allocator>::update_tree_balance(node_type* cur_node)
 {
- while(cur_node!=NULL)
+ while(cur_node!=nullptr)
  {
   const int left_balance  = this->get_left_balance(cur_node);
   const int right_balance = this->get_right_balance(cur_node);

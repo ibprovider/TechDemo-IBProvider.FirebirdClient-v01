@@ -24,9 +24,10 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 //class RemoteFB__SrvErrorUtils_v1
 
 isc_api::t_ibp_isc_status
- RemoteFB__SrvErrorUtils_v1::GetResultCode(RemoteFB__ConnectorData*       const _pData,
-                                           p_operation_id_type            const _op_id,
-                                           const protocol::P_ISC_STATUS_VECTOR& _status_vector)
+ RemoteFB__SrvErrorUtils_v1::GetResultCode
+                        (RemoteFB__ConnectorData*       const _pData,
+                         p_operation_id_type            const _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector)
 {
  assert(_pData);
 
@@ -72,10 +73,10 @@ isc_api::t_ibp_isc_status
 //------------------------------------------------------------------------
 t_ibp_error_element::self_ptr
  RemoteFB__SrvErrorUtils_v1::BuildServerErrorRecord
-                                           (RemoteFB__ConnectorData*       const _pData,
-                                            p_operation_id_type            const _op_id,
-                                            const protocol::P_ISC_STATUS_VECTOR& _status_vector,
-                                            HRESULT                              _hr)
+                        (RemoteFB__ConnectorData*       const _pData,
+                         p_operation_id_type            const _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector,
+                         HRESULT                              _hr)
 {
  assert(_pData);
 
@@ -114,10 +115,10 @@ t_ibp_error_element::self_ptr
 //------------------------------------------------------------------------
 void
  RemoteFB__SrvErrorUtils_v1::ProcessServerResult
-                                           (RemoteFB__ConnectorData*       const _pData,
-                                            p_operation_id_type            const _op_id,
-                                            const protocol::P_ISC_STATUS_VECTOR& _status_vector,
-                                            HRESULT                        const _hr)
+                        (RemoteFB__ConnectorData*       const _pData,
+                         p_operation_id_type            const _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector,
+                         HRESULT                        const _hr)
 {
  assert(_pData);
 
@@ -140,10 +141,10 @@ void
 //------------------------------------------------------------------------
 t_ibp_error_element::self_ptr
  RemoteFB__SrvErrorUtils_v1::BuildServerErrorRecord2
-                                           (RemoteFB__Port*              const   _pPort,
-                                            p_operation_id_type          const   _op_id,
-                                            const protocol::P_ISC_STATUS_VECTOR& _status_vector,
-                                            HRESULT                      const   _hr)
+                        (RemoteFB__Port*              const   _pPort,
+                         p_operation_id_type          const   _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector,
+                         HRESULT                      const   _hr)
 {
  assert(_pPort);
 
@@ -173,10 +174,10 @@ t_ibp_error_element::self_ptr
 //------------------------------------------------------------------------
 void
  RemoteFB__SrvErrorUtils_v1::ProcessServerResult2
-                                           (RemoteFB__Port*                const _pPort,
-                                            p_operation_id_type            const _op_id,
-                                            const protocol::P_ISC_STATUS_VECTOR& _status_vector,
-                                            HRESULT                        const _hr)
+                        (RemoteFB__Port*                const _pPort,
+                         p_operation_id_type            const _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector,
+                         HRESULT                        const _hr)
 {
  assert(_pPort);
 
@@ -199,10 +200,10 @@ void
 //helper methods ---------------------------------------------------------
 t_ibp_error_element::self_ptr
  RemoteFB__SrvErrorUtils_v1::Helper__BuildServerErrorRecord
-                                           (db_obj::t_db_service_provider* const _pSvcProvider,
-                                            p_operation_id_type                  _op_id,
-                                            const protocol::P_ISC_STATUS_VECTOR& _status_vector,
-                                            HRESULT                              _hr)
+                        (db_obj::t_db_service_provider* const _pSvcProvider,
+                         p_operation_id_type                  _op_id,
+                         const protocol::P_ISC_STATUS_VECTOR& _status_vector,
+                         HRESULT                              _hr)
 {
  assert(_pSvcProvider);
 

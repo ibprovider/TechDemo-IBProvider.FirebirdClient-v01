@@ -107,17 +107,6 @@ RemoteFB__Connector::self_ptr
           sm_port_factories_for_create_db);
 }//CreateDatabase
 
-//t_db_service_provider interface ----------------------------------------
-db_obj::t_db_object_ptr RemoteFB__Connector::query_service(REFGUID UNUSED_ARG(rguidService))
-{
- assert(m_spData);
-
- //! \todo
- //!  [2020-05-08] Изничтожить этот метод
-
- return nullptr;
-}//query_service
-
 //helper methods ---------------------------------------------------------
 RemoteFB__Connector::self_ptr
  RemoteFB__Connector::Helper__Create
@@ -284,7 +273,7 @@ RemoteFB__PortPtr
 
 //helper methods ---------------------------------------------------------
 void RemoteFB__Connector::Helper__FinalInitialize
-      (const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* const DEBUG_CODE(pDsPropValues),
+      (const oledb::props2::IBP_OLEDB_Props2__Values__DATASOURCE* const pDsPropValues,
        cns_type&                                                        cns)
 {
  assert(pDsPropValues);
@@ -381,7 +370,8 @@ void RemoteFB__Connector::Helper__FinalInitialize
  if(cns.dbms.descr_Ex.value().find(isc_base::g_dbms_name_Firebird)!=std::string::npos)
  {
   this->Helper__FinalInitialize__FB
-   (cns);
+   (pDsPropValues,
+    cns);
  }
  else
  {

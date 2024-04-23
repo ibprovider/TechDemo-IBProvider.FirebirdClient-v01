@@ -84,7 +84,8 @@ FB_ErrorTextObj::self_ptr
   throw std::bad_alloc();
 
  const size_t
-  c_bytes_in_actual_sv_elements=(sizeof(status_type)*sv_info__num_of_elements);
+  c_bytes_in_actual_sv_elements
+   =(sizeof(status_type)*sv_info__num_of_elements);
 
  total_sz+=c_bytes_in_actual_sv_elements;
 
@@ -100,8 +101,9 @@ FB_ErrorTextObj::self_ptr
 
  try
  {
-  status_type* const new_sv_beg
-   =reinterpret_cast<status_type*>(reinterpret_cast<char*>(pv)+offset_of_sv);
+  status_type* const
+   new_sv_beg
+    =reinterpret_cast<status_type*>(reinterpret_cast<char*>(pv)+offset_of_sv);
 
   //копируем данные статус вектора в дополнительную область
   memcpy(new_sv_beg,
@@ -109,7 +111,9 @@ FB_ErrorTextObj::self_ptr
          c_bytes_in_actual_sv_elements);
 
   //перемещаем косвенные данные статус вектора
-  unsigned char* const idata_buf=reinterpret_cast<unsigned char*>(pv)+offset_of_idata;
+  unsigned char* const
+   idata_buf
+    =reinterpret_cast<unsigned char*>(pv)+offset_of_idata;
 
   const sv_utils_type::gresult_data_type
    gresult
@@ -133,9 +137,11 @@ FB_ErrorTextObj::self_ptr
   //----------------------------------------
 
   //все, теперь можно конструировать собственно наш объект
-  new(pv)self_type(pStatusVectorUtils,
-                   sv_info__num_of_elements,
-                   new_sv_beg); //throw?
+  new(pv)
+   self_type
+    (pStatusVectorUtils,
+     sv_info__num_of_elements,
+     new_sv_beg); //throw?
  }
  catch(...)
  {
@@ -152,7 +158,7 @@ FB_ErrorTextObj::self_ptr
 
 //interface --------------------------------------------------------------
 bool FB_ErrorTextObj::get_text(lcid_type    const lcid,
-                                 string_type* const text)const
+                               string_type* const text)const
 {
  assert(text);
 

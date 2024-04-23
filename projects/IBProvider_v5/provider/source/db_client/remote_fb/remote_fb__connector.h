@@ -10,6 +10,8 @@
 #include "source/db_client/remote_fb/remote_fb__connector_data.h"
 #include "source/db_obj/isc_base/isc_base.h"
 
+#include <ole_lib/oledb/provider/props2/oledb_props2__forwards.h>
+
 #include <lcpi/lib/structure/t_list_external.h>
 #include <lcpi/lib/structure/mt/t_guard.h>
 #include <lcpi/lib/structure/mt/t_lock_guard.h>
@@ -19,8 +21,7 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 //class RemoteFB__Connector
 
 class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
- :public db_obj::t_db_service_provider
- ,public RemoteFB__SmartObjectBase2
+ :public RemoteFB__SmartMemoryObject
 {
  private:
   using self_type=RemoteFB__Connector;
@@ -70,10 +71,6 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
                     cns_type&                                            cns);
 
   //----------------------------------------------------------------------
-
-  LCPI_CPP_LIB__DECLARE_SMART_OBJ_MANAGEMENT_METHODS__FINAL
-
-  //----------------------------------------------------------------------
  #ifdef IBP_BUILD_TESTCODE
 
   /// <summary>
@@ -88,12 +85,12 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
  #endif
 
   //----------------------------------------------------------------------
-  
+
   /// <summary>
   ///  Тестирование недействительного состояния порта.
   /// </summary>
   bool PortHasInvalidState()const;
-  
+
   //----------------------------------------------------------------------
   /// <summary>
   ///  Получение сведений о сервере и базе данных.
@@ -548,17 +545,6 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
                      size_t                          szArrayData,
                      void*                           pArrayData);
 
-  //t_db_service_provider interface --------------------------------------
-  /// <summary>
-  /// Запрос сервисного объекта
-  /// </summary>
-  //! \param[in] rguidService
-  //!   Идентификатор сервиса
-  //! \return
-  //!   Возвращает указатель на сервисный объект. Если запрашиваемый
-  //!   сервис не поддерживается, то возвращается NULL
-  virtual db_obj::t_db_object_ptr query_service(REFGUID rguidService)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
-
  private:
   struct tag_port_factories;
 
@@ -678,16 +664,20 @@ class RemoteFB__Connector LCPI_CPP_CFG__CLASS__FINAL
   ///  The final initialization. Firebird Server.
   /// </summary>
   void Helper__FinalInitialize__FB
-            (const cns_type& cns);
+            (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+             const cns_type&                              cns);
 
   void Helper__FinalInitialize__FB_02_05
-            (const cns_type& cns);
+            (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+             const cns_type&                              cns);
 
   void Helper__FinalInitialize__FB_03_00
-            (const cns_type& cns);
+            (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+             const cns_type&                              cns);
 
   void Helper__FinalInitialize__FB_04_00
-            (const cns_type& cns);
+            (const oledb_lib::OLEDB_Props2__Data__Values* pDsPropValues,
+             const cns_type&                              cns);
 
  private:
   /// MT-защита объекта

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Dimension iterator.
 //                                                 Kovalenko Dmitry. 03.02.2011.
-#ifndef _t_dimension_iterator_H_
-#define _t_dimension_iterator_H_
+#ifndef _lcpi_lib_structure__t_dimension_iterator_H_
+#define _lcpi_lib_structure__t_dimension_iterator_H_
 
 #include <structure/t_memory.h>
 #include <structure/stl/t_stl_vector.h>

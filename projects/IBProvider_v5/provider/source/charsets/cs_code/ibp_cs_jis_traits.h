@@ -67,8 +67,6 @@ class t_ibp_cs_jis_0208_traits_base
 /// <summary>
 ///  јлгоритмы преобразовани€ кодовой страницы SJIS_0208
 /// </summary>
-//! \note »з-за проблем с BCB5 публичные методы этого класса были
-//!       переделаны из статических в собственные константные.
 class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_cs_jis_0208_traits_base
 {
@@ -87,11 +85,6 @@ class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   /// <summary>
-  ///   онструктор по-умолчанию
-  /// </summary>
-  t_ibp_cs_sjis_0208_traits(){;}
-
-  /// <summary>
   ///  Conversion of single OWN symbol into UNICODE symbol
   /// </summary>
   //! \param[in,out] source
@@ -104,12 +97,12 @@ class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__input_trunc
   //!  - db_cs_result__trunc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_own_to_unicode_v3
     (InputIterator& source,
      InputIterator  source_end,
      wchar_t*       result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Conversion of single UNICODE symbol to OWN symbol
@@ -123,12 +116,12 @@ class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__fail
   //!  - db_cs_result__trunc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_unicode_to_own_v3
     (InputIterator& source,
      InputIterator  source_end,
      char*          result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Generic algorithm for translation of UNICODE chars into own codepage
@@ -137,11 +130,11 @@ class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]     source_end
   //! \param[in]     dest
   template<typename InputIterator,typename OutputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    ucs2_to_own
     (InputIterator&  source,
      InputIterator   source_end,
-     OutputIterator  dest)const;
+     OutputIterator  dest);
 
  private:
   static bool IsAsciiCh(uchar_type x)
@@ -204,8 +197,6 @@ class t_ibp_cs_sjis_0208_traits LCPI_CPP_CFG__CLASS__FINAL
 /// <summary>
 ///  јлгоритмы преобразовани€ кодовой страницы EUCJ_0208
 /// </summary>
-//! \note »з-за проблем с BCB5 публичные методы этого класса были
-//!       переделаны из статических в собственные константные.
 class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
  :public t_ibp_cs_jis_0208_traits_base
 {
@@ -224,11 +215,6 @@ class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
 
  public:
   /// <summary>
-  ///   онструктор по-умолчанию
-  /// </summary>
-  t_ibp_cs_eucj_0208_traits(){;}
-
-  /// <summary>
   ///  Conversion of single OWN symbol into UNICODE symbol
   /// </summary>
   //! \param[in,out] source
@@ -241,12 +227,12 @@ class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__input_tranc
   //!  - db_cs_result__tranc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_own_to_unicode_v3
     (InputIterator& source,
      InputIterator  source_end,
      wchar_t*       result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Conversion of single UNICODE symbol to OWN symbol
@@ -260,12 +246,12 @@ class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__fail
   //!  - db_cs_result__trunc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_unicode_to_own_v3
     (InputIterator& source,
      InputIterator  source_end,
      char*          result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Generic algorithm for translation of UNICODE chars into own codepage
@@ -274,11 +260,11 @@ class t_ibp_cs_eucj_0208_traits LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]     source_end
   //! \param[in]     dest
   template<typename InputIterator,typename OutputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    ucs2_to_own
     (InputIterator&  source,
      InputIterator   source_end,
-     OutputIterator  dest)const;
+     OutputIterator  dest);
 
  private:
   static bool IsSingleCh(uchar_type x)

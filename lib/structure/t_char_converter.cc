@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Implementation of conversion utilities from <t_char.h>
 //                                           Dmitry Kovalenko. 19 august,2002.
-#ifndef _t_char_converter_CC_
-#define _t_char_converter_CC_
+#ifndef _lcpi_lib_structure__t_char_converter_CC_
+#define _lcpi_lib_structure__t_char_converter_CC_
 
 #include <structure/utilities/string/string_builder.h>
 #include <structure/t_simple_buffer.h>
@@ -114,7 +114,7 @@ typename t_ansi_to_unicode<unicode_string>::string_type&
  }//if wlen==0
 
  //reserve memory for all symbols (without terminal symbol)
- assert(structure::can_numeric_cast<buffer_type::size_type>(wlen));
+ assert(structure::can_numeric_cast<typename buffer_type::size_type>(wlen));
 
  buffer_type buf(static_cast<typename buffer_type::size_type>(wlen));
 
@@ -289,7 +289,7 @@ typename t_unicode_to_ansi<ansi_string>::string_type&
  }//if alen==0
 
  //reserve memory for all symbols (without terminal symbol)
- assert(structure::can_numeric_cast<buffer_type::size_type>(alen));
+ assert(structure::can_numeric_cast<typename buffer_type::size_type>(alen));
 
  buffer_type buf(static_cast<typename buffer_type::size_type>(alen));
 
@@ -375,68 +375,58 @@ inline std::string& unicode_to_ansi(std::string* result,t_const_wstr_box t,bool*
 ////////////////////////////////////////////////////////////////////////////////
 //functions for transparent conversion
 
-inline std::wstring& tstr_to_tstr(std::wstring* result,const char* t,size_t n,bool* error,UINT CodePage)
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_str_box t,bool* error,UINT CodePage)
 {
- return ansi_to_unicode(result,t,n,error,CodePage);
-}
+ return ansi_to_unicode(result,t,error,CodePage);
+}//tstr_to_tstr
 
 //------------------------------------------------------------------------
-inline std::string& tstr_to_tstr(std::string* result,const char* t,size_t n,bool* error,UINT /*CodePage*/)
+inline std::string& tstr_to_tstr(std::string* result,t_const_str_box t,bool* error,UINT /*CodePage*/)
 {
- typedef basic_string_builder<std::string> str_builder;
-
- if(error!=NULL)
+ if(error!=nullptr)
   (*error)=false;
 
- return str_builder::build(result,t,n);
+ return result->assign(t.begin(),t.end());
 }//tstr_to_tstr (ansi->ansi)
 
 //------------------------------------------------------------------------
-inline std::wstring& tstr_to_tstr(std::wstring* result,const std::string& s,bool* error,UINT CodePage)
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_str_box s)
 {
- return ansi_to_unicode(result,s,error,CodePage);
-}//tstr_to_tstr (ansi->unicode)
+ return tstr_to_tstr(result,s,nullptr,CP_ACP);
+}//tstr_to_tstr
 
 //------------------------------------------------------------------------
-inline std::string& tstr_to_tstr(std::string* result,const std::string& s,bool* error,UINT /*CodePage*/)
+inline std::string& tstr_to_tstr(std::string* result,t_const_str_box s)
 {
- if(error!=NULL)
-  (*error)=false;
-
- return (*result)=s;
-}//tstr_to_tstr (ansi->ansi)
+ return tstr_to_tstr(result,s,nullptr,CP_ACP);
+}//tstr_to_tstr
 
 //------------------------------------------------------------------------
-inline std::wstring& tstr_to_tstr(std::wstring* result,const wchar_t* t,size_t n,bool* error,UINT /*CodePage*/)
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_wstr_box t,bool* error,UINT /*CodePage*/)
 {
- typedef basic_string_builder<std::wstring> str_builder;
-
- if(error!=NULL)
+ if(error!=nullptr)
   (*error)=false;
 
- return str_builder::build(result,t,n);
+ return result->assign(t.begin(),t.end());
 }//tstr_to_tstr (unicode->unicode)
 
 //------------------------------------------------------------------------
-inline std::string& tstr_to_tstr(std::string* result,const wchar_t* t,size_t n,bool* error,UINT CodePage)
+inline std::string& tstr_to_tstr(std::string* result,t_const_wstr_box t,bool* error,UINT CodePage)
 {
- return unicode_to_ansi(result,t,n,error,CodePage);
+ return unicode_to_ansi(result,t,error,CodePage);
 }//tstr_to_tstr (unicode->ansi)
 
 //------------------------------------------------------------------------
-inline std::wstring& tstr_to_tstr(std::wstring* result,const std::wstring& s,bool* error,UINT /*CodePage*/)
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_wstr_box s)
 {
- if(error!=NULL)
-  (*error)=false;
-
- return (*result)=s;
-}//tstr_to_tstr (unicode->unicode)
+ return tstr_to_tstr(result,s,nullptr,CP_ACP);
+}//tstr_to_tstr
 
 //------------------------------------------------------------------------
-inline std::string& tstr_to_tstr(std::string* result,const std::wstring& s,bool* error,UINT CodePage)
+inline std::string& tstr_to_tstr(std::string* result,t_const_wstr_box s)
 {
- return unicode_to_ansi(result,s,error,CodePage);
-}//tstr_to_tstr (unicode->ansi)
+ return tstr_to_tstr(result,s,nullptr,CP_ACP);
+}//tstr_to_tstr
 
 //TSTR --> ANSI ----------------------------------------------------------
 inline std::string tstr_to_str(const char* const t)
@@ -694,19 +684,21 @@ typename t_ansi1_to_ansi2<ansi_string>::string_type&
 
  std::wstring wstr;
 
- t_ansi_to_unicode<std::wstring>::convert(&wstr,
-                                          s,
-                                          n,
-                                          &_err,
-                                          m_SourceCP/*CP_ACP*/);
+ t_ansi_to_unicode<std::wstring>::convert
+  (&wstr,
+   s,
+   n,
+   &_err,
+   m_SourceCP/*CP_ACP*/);
 
  if(!_err)
  {
-  t_unicode_to_ansi<string_type>::convert(result,
-                                          wstr.c_str(),
-                                          wstr.size(),
-                                          &_err,
-                                          m_DestCP/*CP_OEMCP*/);
+  t_unicode_to_ansi<string_type>::convert
+   (result,
+    wstr.c_str(),
+    wstr.size(),
+    &_err,
+    m_DestCP/*CP_OEMCP*/);
  }//if !_err
 
  if(error!=NULL)

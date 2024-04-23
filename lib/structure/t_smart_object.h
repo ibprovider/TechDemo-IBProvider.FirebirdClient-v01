@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Structures for implementation of smart object classes
 //                                                Kovalenko Dmitry. 10.01.2013.
-#ifndef _lcpi_lib__t_smart_object_H_
-#define _lcpi_lib__t_smart_object_H_
+#ifndef _lcpi_lib_structure__t_smart_object_H_
+#define _lcpi_lib_structure__t_smart_object_H_
 
 #include <structure/t_smart_interface.h>
 #include <structure/t_smart_object_ptr.h>
@@ -34,7 +34,7 @@ using t_basic_smart_object_base2
 
 template<class Allocator>
 using t_basic_smart_memory_object
- =t_basic_smart_interface_impl__dynamic<t_smart_interface,Allocator>;
+ =::lcpi::lib::structure::t_basic_smart_memory_object<Allocator>;
 
 using t_smart_memory_object
  =t_basic_smart_memory_object<t_void_allocator>;

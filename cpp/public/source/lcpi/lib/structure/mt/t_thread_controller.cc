@@ -1,10 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_mt_thread_controller_CC_
-#define _t_mt_thread_controller_CC_
+//LCPI Instrumental Library for C++. Interface of thread controller.
+//                                                Kovalenko Dmitry. 02.03.2009.
+#ifndef _cpp_public_lcpi_lib_structure_mt__t_thread_controller_CC_
+#define _cpp_public_lcpi_lib_structure_mt__t_thread_controller_CC_
 
-#include <structure/t_str_formatter.h>
-
-namespace structure{
+namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_basic_thread_controller
 
@@ -31,7 +30,7 @@ void t_basic_thread_controller<tag_base_smem_obj>::final_release()
  }
  catch(...)
  {
-  assert(false);
+  LCPI__assert(false);
  }//catch
 
  inherited::final_release();
@@ -39,22 +38,22 @@ void t_basic_thread_controller<tag_base_smem_obj>::final_release()
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
-RELEASE_CODE(inline)
-const wchar_t* t_basic_thread_controller<tag_base_smem_obj>::thread_name()const
+LCPI__RELEASE_CODE(inline)
+const char* t_basic_thread_controller<tag_base_smem_obj>::thread_name()const
 {
  return this->thread_name_impl();
 }//thread_name
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
-RELEASE_CODE(inline)
+LCPI__RELEASE_CODE(inline)
 void t_basic_thread_controller<tag_base_smem_obj>::start_thread()
 {
  {
   //reset result data
 
 #ifndef NDEBUG
-  const t_debug__mt_guard_rw_lock_r __lock(m_result_guard___debug);
+  const debug::t_debug__mt_guard_rw_lock_r __lock(m_result_guard___debug);
 #endif
 
   m_result_normal_exit=false;
@@ -67,7 +66,7 @@ void t_basic_thread_controller<tag_base_smem_obj>::start_thread()
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
-RELEASE_CODE(inline)
+LCPI__RELEASE_CODE(inline)
 void t_basic_thread_controller<tag_base_smem_obj>::stop_thread()
 {
  return this->stop_thread_impl();
@@ -75,7 +74,7 @@ void t_basic_thread_controller<tag_base_smem_obj>::stop_thread()
 
 //------------------------------------------------------------------------
 template<class tag_base_smem_obj>
-RELEASE_CODE(inline)
+LCPI__RELEASE_CODE(inline)
 bool t_basic_thread_controller<tag_base_smem_obj>::thread_is_active()
 {
  return this->thread_is_active_impl();
@@ -87,18 +86,20 @@ void t_basic_thread_controller<tag_base_smem_obj>::rethrow_thread_error()
 {
  if(this->thread_is_active())
  {
-  assert(false); //DEBUG BUG-CHECK
+  LCPI__assert(false); //DEBUG BUG-CHECK
 
-  str_formatter fmsg("[BUG CHECK] Can't process the errors of active thread [%1].");
+  std::string msg;
 
-  fmsg<<this->thread_name();
+  msg+="[BUG CHECK] Can't process the errors of active thread.";
+  msg+=this->thread_name();
+  msg+="].";
 
-  throw std::runtime_error(fmsg);
+  throw std::runtime_error(msg);
  }//if
 
  //-----------------------------------------------------------------------
 #ifndef NDEBUG
- const t_debug__mt_guard_rw_lock_r __lock(m_result_guard___debug);
+ const debug::t_debug__mt_guard_rw_lock_r __lock(m_result_guard___debug);
 #endif
 
  if(m_result_exc)
@@ -106,15 +107,17 @@ void t_basic_thread_controller<tag_base_smem_obj>::rethrow_thread_error()
   std::rethrow_exception(m_result_exc);
  }//if
 
- assert_hint(!m_result_exc);
+ LCPI__assert_hint(!m_result_exc);
 
  if(!m_result_normal_exit)
  {
-  str_formatter fmsg("Thread [%1] was terminated by unexpected reason");
+  std::string msg;
 
-  fmsg<<this->thread_name();
+  msg+="Thread [";
+  msg+=this->thread_name();
+  msg+="] was terminated by unexpected reason.";
 
-  throw std::runtime_error(fmsg);
+  throw std::runtime_error(msg);
  }//if
 }//rethrow_thread_error
 
@@ -127,7 +130,7 @@ void t_basic_thread_controller<tag_base_smem_obj>::thread_member()
   this->thread_worker_impl();
 
 #ifndef NDEBUG
-  const t_debug__mt_guard_rw_lock_w __lock(m_result_guard___debug);
+  const debug::t_debug__mt_guard_rw_lock_w __lock(m_result_guard___debug);
 #endif
 
   m_result_normal_exit=true;
@@ -135,15 +138,15 @@ void t_basic_thread_controller<tag_base_smem_obj>::thread_member()
  catch(...)
  {
 #ifndef NDEBUG
-  const t_debug__mt_guard_rw_lock_w __lock(m_result_guard___debug);
+  const debug::t_debug__mt_guard_rw_lock_w __lock(m_result_guard___debug);
 #endif
 
   m_result_exc=std::current_exception(); //no throw
 
-  assert(m_result_exc);
+  LCPI__assert(m_result_exc);
  }//catch
 }//thread_member
 
 ////////////////////////////////////////////////////////////////////////////////
-}//namespace structure
+}/*nms mt*/}/*nms structure*/}/*nms lib*/}/*nms lcpi*/
 #endif

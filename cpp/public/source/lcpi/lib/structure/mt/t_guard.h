@@ -4,6 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__t_guard_H_
 #define _cpp_public_lcpi_lib_structure_mt__t_guard_H_
 
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-thread_api.h>
 #include <lcpi/infrastructure/os/lcpi.infrastructure.os-critical_section.h>
 #include <lcpi/lib/.config.h>
 
@@ -20,8 +21,9 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public:
-#ifndef NDEBUG
-  using thread_id_type=DWORD;
+#if !defined(NDEBUG)
+  using thread_id_type
+   =infrastructure::os::mt::LCPI_OS__ThreadApi::THREAD_ID;
 #endif
 
  public:
@@ -50,7 +52,7 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
 #ifndef NDEBUG
  static thread_id_type debug__get_current_thread_id()
  {
-  return ::GetCurrentThreadId();
+  return infrastructure::os::mt::LCPI_OS__ThreadApi::GetCurrentThreadId();
  }
 #endif
 

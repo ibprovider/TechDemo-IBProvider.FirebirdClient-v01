@@ -4,6 +4,10 @@
 #ifndef _ibp_sys_props_H_
 #define _ibp_sys_props_H_
 
+#include <lcpi/lib/.config.h>
+
+#include <tchar.h>
+
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 

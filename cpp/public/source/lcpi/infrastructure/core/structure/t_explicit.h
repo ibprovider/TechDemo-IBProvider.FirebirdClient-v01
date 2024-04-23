@@ -14,7 +14,7 @@ template<typename T>
 class t_explicit final
 {
  public:
-  typedef T value_type;
+  using value_type=T;
 
  public:
   value_type value;

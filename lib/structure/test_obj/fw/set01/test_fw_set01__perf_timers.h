@@ -5,8 +5,8 @@
 #define _test_fw_set01__perf_timers_H_
 
 #include <structure/test_obj/fw/set01/test_fw_set01__utilities.h>
-#include <structure/test_obj/t_tso_timer.h>
-#include <win32lib/win32_time.h>
+
+#include <chrono>
 
 namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,6 +19,14 @@ class TestFW__PerfTimers LCPI_CPP_CFG__CLASS__FINAL
 
   TestFW__PerfTimers(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
+
+ public:
+  using TICK_VALUE
+   =std::int64_t;
+
+  using tick_type=std::ratio<1,10*1000*1000>; // Windows tick
+
+  using duration_type=std::chrono::duration<TICK_VALUE,tick_type>;
 
  public:
   TestFW__PerfTimers();
@@ -34,19 +42,40 @@ class TestFW__PerfTimers LCPI_CPP_CFG__CLASS__FINAL
   void StopAndPrint(TTracer& tracer);
 
   //----------------------------------------------------------------------
-  std::int64_t UserTime()const;
+  duration_type UserTime()const;
 
-  std::int64_t KernelTime()const;
+  duration_type KernelTime()const;
 
-  std::int64_t RealTime()const;
+  duration_type RealTime()const;
 
   //----------------------------------------------------------------------
   template<class TTracer>
   void Print(TTracer& tracer);
 
  private:
-  structure::tso_obj::t_tso_real_timer      m_RealTimer;
-  win32lib::TThreadTime                     m_ThreadTimer;
+  using timer_type=std::chrono::steady_clock;
+
+  using time_point_type=std::chrono::time_point<timer_type>;
+
+ private:
+  static void Helper__GetTimes
+               (time_point_type* pRealTime,
+                time_point_type* pKernelTime,
+                time_point_type* pUserTime);
+
+  static void Helper__SafeAdd
+                (duration_type* pSum,
+                 duration_type  value);
+
+ private:
+  time_point_type m_Start_RealTime;
+  time_point_type m_Start_KernelTime;
+  time_point_type m_Start_UserTime;
+
+ private:
+  duration_type m_Sum_RealTime;
+  duration_type m_Sum_KernelTime;
+  duration_type m_Sum_UserTime;
 };//class TestFW__PerfTimers
 
 ////////////////////////////////////////////////////////////////////////////////

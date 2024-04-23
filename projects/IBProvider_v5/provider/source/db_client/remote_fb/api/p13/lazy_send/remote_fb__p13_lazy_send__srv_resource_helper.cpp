@@ -521,14 +521,11 @@ void RemoteFB__P13_LAZY_SEND__SrvResourceHelper::Helper__ThrowBugCheck__UnkBlobH
  assert(place);
  assert(point);
 
- structure::wstr_formatter freason(L"unexpected blob handle state: %1");
-
- freason<<blobState;
-
- IBP_BUG_CHECK__DEBUG
+ IBP_ErrorUtils::Throw__BugCheck__DEBUG
   (place,
    point,
-   freason.c_str())
+   L"unexpected blob handle state: %1",
+   blobState);
 }//Helper__ThrowBugCheck__UnkBlobHandleState
 
 ////////////////////////////////////////////////////////////////////////////////

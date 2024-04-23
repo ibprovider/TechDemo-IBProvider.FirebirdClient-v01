@@ -11,30 +11,38 @@
 #include "source/db_obj/dbms_fb/common/api//errors/set02/db_obj__dbms_fb__common__api__errors__set02__scodes.h"
 #include "source/error_services/ibp_sqlstate_codes.h"
 #include "source/error_services/ibp_error_build_message.h"
+#include "source/error_services/ibp_error_utils.h"
 
 #include <structure/t_str_formatter.h>
 
 #include <lcpi/lib/structure/utilities/to_hex.h>
+#include <lcpi/lib/structure/utilities/to_underlying.h>
 #include <lcpi/lib/structure/utilities/string/string_length.h>
 
 #include <array>
+#include <sstream>
+#include <type_traits>
 
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common{namespace impl{
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_common_impl__svc__status_vector_utils__v1_set02
 
 fb_common_impl__svc__status_vector_utils__v1_set02::fb_common_impl__svc__status_vector_utils__v1_set02
-                                           (size_t                                   const cErrDescrs,
-                                            const isc_base::t_isc_error_code_descr2* const pErrDescrs)
+                        (size_t                                   const cErrDescrs,
+                         const isc_base::t_isc_error_code_descr2* const pErrDescrs,
+                         db_obj::t_db_charset_manager_v2*         const pCsMng)
  :m_cErrDescrs(cErrDescrs)
  ,m_pErrDescrs(pErrDescrs)
+ ,m_spCsMng   (lib::structure::not_null_ptr(pCsMng))
 {
  CHECK_READ_TYPED_PTR(m_pErrDescrs,m_cErrDescrs);
+ assert(m_spCsMng);
 }
 
 //------------------------------------------------------------------------
 fb_common_impl__svc__status_vector_utils__v1_set02::~fb_common_impl__svc__status_vector_utils__v1_set02()
-{;}
+{
+}//~fb_common_impl__svc__status_vector_utils__v1_set02
 
 //------------------------------------------------------------------------
 const isc_base::t_isc_error_code_descr2*
@@ -503,10 +511,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
   DEBUG_CODE(const status_type* const copy_s=s;)
 
   const gresult_data_type
-   gresult=self_type::helper__translate_msg_part(&s,
-                                                 sv_end,
-                                                 &msgPart,
-                                                 lcid);
+   gresult
+    =self_type::helper__translate_msg_part
+      (&s,
+       sv_end,
+       &msgPart,
+       lcid);
+
   assert(s>=copy_s);
   assert(s<=sv_end);
 
@@ -888,12 +899,15 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 const fb_common_impl__svc__status_vector_utils__v1_set02::descr2_type*
  fb_common_impl__svc__status_vector_utils__v1_set02::helper__get_err_descr2(status_type status)const
 {
- typedef structure::t_search_result<const isc_base::t_isc_error_code_descr2*> result_type;
+ using result_type
+  =structure::t_search_result<const isc_base::t_isc_error_code_descr2*>;
 
- if(result_type const x=structure::lower_search(m_pErrDescrs,
-                                                m_pErrDescrs+m_cErrDescrs,
-                                                status,
-                                                isc_base::t_isc_error_code_descr2::tag_less()))
+ if(result_type const x
+     =lib::structure::lower_search
+        (m_pErrDescrs,
+         m_pErrDescrs+m_cErrDescrs,
+         status,
+         isc_base::t_isc_error_code_descr2::tag_less()))
  {
   assert(x.position);
   assert(x.position->isc_code==status);
@@ -1127,7 +1141,7 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
                                            (const status_type** const pps,
                                             const status_type*  const sv_end,
                                             std::wstring*       const msg_part,
-                                            LCID                const lcid)
+                                            LCID                const lcid)const
 {
  assert(pps!=nullptr);
  assert((*pps)!=nullptr);
@@ -1154,36 +1168,26 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
  if((*pps)[1]!=0)
  {
-  //! \todo
-  //!  Возможно здесь имеет смысл конвертировать с учетом кодовой страницы подключения.
+  //Здесь нужно конвертировать с учетом кодовой страницы подключения.
 
-  bool error=false;
+  const auto paramValue=reinterpret_cast<const char*>((*pps)[1]);
+
+  db_obj::t_db_charset_const_ptr
+   spCharset
+    =m_spCsMng->get_cn_charset();
+
+  assert(spCharset);
 
   std::wstring tmp;
 
-  structure::ansi_to_unicode
-   (&tmp,
-    reinterpret_cast<const char*>((*pps)[1]),
-    lib::structure::negative_one,
-    &error);
-
-  if(!error)
+  if(spCharset->to_unicode_v2(&tmp,paramValue))
   {
-   msg_part->swap(tmp);
+   (*msg_part)=tmp;
   }
   else
   {
-   const IBP_ErrorVariant arg(L"arg_interpreted");
-
-   TIBP_MessageTextBuilder::Build
-    (msg_part,
-     /*varSubSystemId*/ole_lib::TVariant::empty_variant,
-     ibp_mce_common__translate_sys_data_to_unicode_1,
-     lcid,
-     1,
-     &arg,
-     E_FAIL);
-  }//if
+   (*msg_part)=self_type::helper__build_str_raw_info(spCharset->get_info().name,paramValue);
+  }//else
  }//if
 
  (*pps)+=2;
@@ -1472,7 +1476,9 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  }//if
 
  //-----------------------------------------
- const isc_api::t_ibp_isc_status isc_error_code=(*pps)[1];
+ const isc_api::t_ibp_isc_status
+  isc_error_code
+   =(*pps)[1];
 
  (*pps)+=2;
 
@@ -1484,7 +1490,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  args_type args;
 
  {
-  const gresult_data_type gresult=self_type::helper__get_args(pps,sv_end,args);
+  const gresult_data_type
+   gresult
+    =self_type::helper__get_args
+      (isc_error_code,
+       pps,
+       sv_end,
+       args);
 
   if(gresult!=gresult__ok)
    return gresult;
@@ -1498,7 +1510,8 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
  //----------------------------------------- 2. ищем описание ошибки
  const isc_base::t_isc_error_code_descr2* const
-  isc_error_descr2=this->helper__get_err_descr2(isc_error_code);
+  isc_error_descr2
+   =this->helper__get_err_descr2(isc_error_code);
 
  if(isc_error_descr2==nullptr)
  {
@@ -1534,13 +1547,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     std::wstring paramValue;
 
     TIBP_MessageTextBuilder::Build
-       (&paramValue,
-        /*varSubSystemId*/ole_lib::TVariant::empty_variant,
-        ibp_mce_unknown_error_1,
-        lcid,
-        1,
-        &args[i],
-        E_FAIL);
+     (&paramValue,
+      /*varSubSystemId*/ole_lib::TVariant::empty_variant,
+      ibp_mce_unknown_error_1,
+      lcid,
+      1,
+      &args[i],
+      E_FAIL);
 
     fparamInfo<<paramValue;
 
@@ -1599,7 +1612,9 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  }//if
 
  //-----------------------------------------
- const isc_api::t_ibp_isc_status isc_error_code=(*pps)[1];
+ const isc_api::t_ibp_isc_status
+  isc_error_code
+   =(*pps)[1];
 
  (*pps)+=2;
 
@@ -1611,7 +1626,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  args_type args;
 
  {
-  const gresult_data_type gresult=self_type::helper__get_args(pps,sv_end,args);
+  const gresult_data_type
+   gresult
+    =self_type::helper__get_args
+      (isc_error_code,
+       pps,
+       sv_end,
+       args);
 
   if(gresult!=gresult__ok)
    return gresult;
@@ -1625,7 +1646,8 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
  //----------------------------------------- 2. ищем описание ошибки
  const isc_base::t_isc_error_code_descr2* const
-  isc_error_descr2=this->helper__get_err_descr2(isc_error_code);
+  isc_error_descr2
+   =this->helper__get_err_descr2(isc_error_code);
 
  if(isc_error_descr2==nullptr)
  {
@@ -1661,13 +1683,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     std::wstring paramValue;
 
     TIBP_MessageTextBuilder::Build
-       (&paramValue,
-        /*varSubSystemId*/ole_lib::TVariant::empty_variant,
-        ibp_mce_unknown_error_1,
-        lcid,
-        1,
-        &args[i],
-        E_FAIL);
+     (&paramValue,
+      /*varSubSystemId*/ole_lib::TVariant::empty_variant,
+      ibp_mce_unknown_error_1,
+      lcid,
+      1,
+      &args[i],
+      E_FAIL);
 
     fparamInfo<<paramValue;
 
@@ -1731,16 +1753,18 @@ bool fb_common_impl__svc__status_vector_utils__v1_set02::helper__get_win32_error
 
  WCHAR tmp[2048];
 
- const DWORD r=::FormatMessageW
-                  (/*dwFlags*/FORMAT_MESSAGE_FROM_SYSTEM
-                             |FORMAT_MESSAGE_IGNORE_INSERTS
-                             |FORMAT_MESSAGE_MAX_WIDTH_MASK,
-                   /*lpSource*/nullptr,
-                   /*dwMessageId*/errnum,
-                   /*dwLanguageId*/LANGIDFROMLCID(lcid),
-                   /*lpBuffer*/tmp,
-                   /*nSize*/_DIM_(tmp),
-                   /*Arguments*/nullptr);
+ const DWORD r
+   =::FormatMessageW
+       (/*dwFlags*/FORMAT_MESSAGE_FROM_SYSTEM
+                  |FORMAT_MESSAGE_IGNORE_INSERTS
+                  |FORMAT_MESSAGE_MAX_WIDTH_MASK,
+        /*lpSource*/nullptr,
+        /*dwMessageId*/errnum,
+        /*dwLanguageId*/LANGIDFROMLCID(lcid),
+        /*lpBuffer*/tmp,
+        /*nSize*/_DIM_(tmp),
+        /*Arguments*/nullptr);
+
  if(r==0)
   return false;
 
@@ -1765,9 +1789,10 @@ bool fb_common_impl__svc__status_vector_utils__v1_set02::helper__get_win32_error
 //------------------------------------------------------------------------
 fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
  fb_common_impl__svc__status_vector_utils__v1_set02::helper__get_args
-                                           (const status_type** const pps,
+                                           (status_type         const iscErrorCode,
+                                            const status_type** const pps,
                                             const status_type*  const sv_end,
-                                            args_type&                args)
+                                            args_type&                args)const
 {
  assert(pps!=nullptr);
  assert((*pps)!=nullptr);
@@ -1785,9 +1810,13 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
  args.reserve(min(self_type::c_max_expected_args_count,(sv_end-(*pps))/2));
 
+ size_t argNumber=0;
+
  while((*pps)!=sv_end)
  {
   assert((*pps)<sv_end);
+
+  ++argNumber;
 
   const isc_api::t_ibp_isc_status argID=(*pps)[0];
 
@@ -1801,9 +1830,16 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     return gresult_data_type::create_bad_sv(c_bug_check_src,L"#001");
    }//if
 
-   args.emplace_back(reinterpret_cast<const char*>((*pps)[1]));
+   const std::wstring
+    wstr
+     =this->helper__encode_str_arg
+       (iscErrorCode,
+        argNumber,
+        reinterpret_cast<const char*>((*pps)[1]));
 
-   assert(args.back().Data().vt==IBP_EVT::V_STR);
+   args.emplace_back(wstr);
+
+   assert(args.back().Data().vt==IBP_EVT::V_WSTR);
 
    (*pps)+=2;
 
@@ -1849,9 +1885,16 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
     return gresult_data_type::create_bad_sv(c_bug_check_src,L"#004");
    }//if
 
-   args.emplace_back(structure::make_str_box(ptr,sz));//throw
+   const std::wstring
+    wstr
+     =this->helper__encode_str_arg
+       (iscErrorCode,
+        argNumber,
+        structure::make_str_box(ptr,sz));
 
-   assert(args.back().Data().vt==IBP_EVT::V_STR);
+   args.emplace_back(wstr);//throw
+
+   assert(args.back().Data().vt==IBP_EVT::V_WSTR);
 
    (*pps)+=3;
 
@@ -1863,6 +1906,98 @@ fb_common_impl__svc__status_vector_utils__v1_set02::gresult_data_type
 
  return gresult_data_type::create_ok();
 }//helper__get_args
+
+//------------------------------------------------------------------------
+std::wstring
+ fb_common_impl__svc__status_vector_utils__v1_set02::helper__encode_str_arg
+                                           (status_type    const iscErrorCode,
+                                            size_t         const argNumber,
+                                            str_box_type   const strArg)const
+{
+ assert(m_spCsMng);
+
+ const wchar_t* const c_bugcheck_src
+  =L"fb_common_impl__svc__status_vector_utils__v1_set02::helper__encode_str_arg";
+
+ db_obj::t_db_charset_const_ptr spCharset;
+
+ switch(auto const x=this->internal__get_cs_for_arg(iscErrorCode,argNumber))
+ {
+  case arg_cs_kind::connection:
+   spCharset=m_spCsMng->get_cn_charset();
+   break;
+
+  case arg_cs_kind::metadata:
+   spCharset=m_spCsMng->get_ods_charset();
+   break;
+
+  case arg_cs_kind::system:
+   spCharset=m_spCsMng->get_system_charset();
+   break;
+
+  default:
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
+    (c_bugcheck_src,
+     L"#001",
+     L"unknown arg_cs_kind: %1. iscErrorCode=%2, argNumber=%3",
+     lib::structure::to_underlying(x),
+     iscErrorCode,
+     argNumber);
+ }//switch
+
+ assert(spCharset);
+
+ std::wstring tmp;
+
+ if(spCharset->to_unicode_v2(&tmp,strArg))
+  return tmp;
+
+ //-----------------------------------------
+ return self_type::helper__build_str_raw_info
+         (spCharset->get_info().name,
+          strArg);
+}//helper__encode_str_arg
+
+//------------------------------------------------------------------------
+std::wstring
+ fb_common_impl__svc__status_vector_utils__v1_set02::helper__build_str_raw_info
+                        (wstr_box_type const expectedCsName,
+                         str_box_type  const strArg)
+{
+ assert(!expectedCsName.empty());
+
+ std::wstringstream ws;
+
+ ws<<L"{[";
+ ws.write(expectedCsName.data(),expectedCsName.size());
+ ws<<L"][";
+
+ if(!strArg.empty())
+ {
+  ws<<L"0x";
+
+  for(const auto ch:strArg)
+  {
+   LCPI__assert_s(sizeof(ch)==1);
+
+   auto const uch=(std::make_unsigned<str_box_type::value_type>::type)(ch);
+
+   LCPI__assert_s(sizeof(uch)==sizeof(ch));
+
+   const auto h=uch>>4;
+   const auto l=(uch)&0xF;
+
+   assert(((h<<4)+l)==uch);
+
+   ws<<lib::structure::t_char_traits2<wchar_t>::to_hex_u(h);
+   ws<<lib::structure::t_char_traits2<wchar_t>::to_hex_u(l);
+  }//for ch
+ }//if
+
+ ws<<L"]}";
+
+ return ws.str();
+}//helper__build_str_raw_info
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms impl*/}/*nms common*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/

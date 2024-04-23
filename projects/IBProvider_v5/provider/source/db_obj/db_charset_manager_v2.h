@@ -45,9 +45,12 @@ enum class db_cs_id:unsigned
 
  // одова€ страница дл€ обработки NONE
  none=2,
- 
+
  // одова€ страница системных таблиц базы данных
  ods=3,
+
+ // одова€ страница операционных сообщений
+ system=4,
 };//enum class db_cs_id
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +103,11 @@ class LCPI_CPP_CFG__DECLSPEC__NOVTABLE t_db_charset_manager_v2
   ///  ѕолучение кодовой страницы ODS
   /// </summary>
   t_db_charset_const_ptr get_ods_charset();
+
+  /// <summary>
+  ///  ѕолучение кодовой страницы системы
+  /// </summary>
+  t_db_charset_const_ptr get_system_charset();
 };//class t_db_charset_manager_v2
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -127,6 +135,12 @@ inline t_db_charset_const_ptr t_db_charset_manager_v2::get_ods_charset()
 {
  return this->get_charset(db_cs_id::ods);
 }//get_ods_charset
+
+//------------------------------------------------------------------------
+inline t_db_charset_const_ptr t_db_charset_manager_v2::get_system_charset()
+{
+ return this->get_charset(db_cs_id::system);
+}//get_system_charset
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -13,7 +13,7 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v04_0_
 ////////////////////////////////////////////////////////////////////////////////
 
 db_obj::t_db_object_ptr
- create_svc__status_vector_utils();
+ create_svc__status_vector_utils(db_obj::t_db_charset_manager_v2* const pCsMng);
 
 //------------------------------------------------------------------------
 

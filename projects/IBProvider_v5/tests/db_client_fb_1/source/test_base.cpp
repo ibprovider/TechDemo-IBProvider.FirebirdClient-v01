@@ -8,6 +8,8 @@
 
 #include <lcpi/lib/structure/utilities/string/is_like_str.h>
 
+#include <tchar.h>
+
 namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
 

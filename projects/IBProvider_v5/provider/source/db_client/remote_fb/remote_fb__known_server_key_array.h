@@ -9,7 +9,7 @@
 
 #include "source/db_client/remote_fb/remote_fb__known_server_key.h"
 
-#include <structure/t_smart_vector.h>
+#include <lcpi/lib/structure/t_smart_vector.h>
 #include <lcpi/lib/structure/stl/t_stl_set.h>
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
@@ -65,7 +65,7 @@ class RemoteFB__KnownServerKeyArray LCPI_CPP_CFG__CLASS__FINAL
 
  private:
   using items_type
-   =structure::t_smart_vector
+   =lib::structure::t_smart_vector
      <const RemoteFB__KnownServerKey,
       RemoteFB__MemoryAllocator>;
 

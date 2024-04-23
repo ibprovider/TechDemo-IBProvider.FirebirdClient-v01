@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Construction for meta-programming
 //                                                 Dmitry Kovalenko. 09.04.2005
-#ifndef _t_meta_prog_H_
-#define _t_meta_prog_H_
+#ifndef _lcpi_lib_structure__t_meta_prog_H_
+#define _lcpi_lib_structure__t_meta_prog_H_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

@@ -33,9 +33,7 @@ class TestFW__SysLog LCPI_CPP_CFG__CLASS__FINAL
    =inherited::count_type;
 
  public:
-  explicit TestFW__SysLog(unsigned CodePage);
-
-  explicit TestFW__SysLog(tso_obj::t_log_stream* pOutputStream);
+  TestFW__SysLog(tso_obj::t_log* pParent,tso_obj::t_log_stream* pOutputStream);
 
   //interface ------------------------------------------------------------
   void add_other_error_count(count_type x);
@@ -47,9 +45,9 @@ class TestFW__SysLog LCPI_CPP_CFG__CLASS__FINAL
   void inc_total_test_count();
 
   //selectors ------------------------------------------------------------
-  count_type get_total_error_count()const;
+  virtual count_type get_error_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
-  count_type get_total_warning_count()const;
+  virtual count_type get_warning_count()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   count_type get_pass_count()const;
 

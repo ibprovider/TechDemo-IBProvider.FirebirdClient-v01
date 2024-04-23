@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_numeric_utils_H_
-#define _t_numeric_utils_H_
+#ifndef _lcpi_lib_structure__t_numeric_utils_H_
+#define _lcpi_lib_structure__t_numeric_utils_H_
 
 #ifndef NDEBUG
 # include <structure/t_vector_debug_iterator.h>

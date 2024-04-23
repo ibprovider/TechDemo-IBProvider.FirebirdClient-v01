@@ -52,15 +52,12 @@ void isc_database_info_utils::read_info__isc_implementations
 
  if(actualBlockCount!=expectedBlockCount)
  {
-  structure::wstr_formatter
-   freason(ibp::me_bug_check__unexpected_block_count_2);
-
-  freason<<actualBlockCount<<expectedBlockCount;
-
-  IBP_BUG_CHECK__DEBUG
+  IBP_ErrorUtils::Throw__BugCheck__DEBUG
    (c_bugcheck_src,
     L"#002",
-    freason.c_str());
+    ibp::me_bug_check__unexpected_block_count_2,
+    actualBlockCount,
+    expectedBlockCount);
  }//if actualBlockCount!=expectedBlockCount
 
  assert(actualBlockCount==expectedBlockCount);
@@ -179,11 +176,14 @@ void isc_database_info_utils::read_info__server_version
     szData-2);
  }//if
 
- cns.dbms.descr_Ex=std::string(reinterpret_cast<const char*>(pData+2),fl);
+ cns.dbms.descr_Ex
+  =std::string(reinterpret_cast<const char*>(pData+2),fl);
 
  {
   const std::string
-   tmp_str_with_ver(db_obj::extract_substr_with_version(cns.dbms.descr_Ex.value().c_str()));
+   tmp_str_with_ver
+    (db_obj::extract_substr_with_version
+      (cns.dbms.descr_Ex.value().c_str()));
 
   if(!tmp_str_with_ver.empty())
    cns.dbms.version=tmp_str_with_ver;

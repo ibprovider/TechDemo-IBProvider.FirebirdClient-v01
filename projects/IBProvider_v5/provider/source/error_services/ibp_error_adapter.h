@@ -44,7 +44,7 @@ class t_ibp_error_adapter
 
   typedef structure::t_str_parameter<char>             str_arg_type;
 
-  typedef unsigned __int64                             uint64_type;
+  typedef std::uint64_t                                uint64_type;
 
  public: //---------------------------------------------------------------
   /// <summary>

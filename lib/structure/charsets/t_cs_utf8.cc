@@ -17,15 +17,16 @@ namespace structure{namespace charsets{namespace cs_utf8{
 *  символы UTF8 содержат максимум 4 байта
 */
 
+namespace detail{
 ////////////////////////////////////////////////////////////////////////////////
 //signle UCS2 to UTF8
 
 template<class TForwardIterator>
-TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
-                                       TForwardIterator        source_end,
-                                       traits::UTF8*           utf8,
-                                       /*in-out*/size_t&       sz_utf8,
-                                       /*out*/t_cs_cvt_result* cvt_result)
+TForwardIterator single_ucs2_to_utf8(TForwardIterator        source_beg,
+                                     TForwardIterator        source_end,
+                                     traits::UTF8*           utf8,
+                                     /*in-out*/size_t&       sz_utf8,
+                                     /*out*/t_cs_cvt_result* cvt_result)
 {
  assert(cvt_result!=nullptr);
 
@@ -264,7 +265,10 @@ TForwardIterator __single_ucs2_to_utf8(TForwardIterator        source_beg,
  (*cvt_result)=cs_cvt_result__bad_input;
 
  return source_beg;
-}//__single_ucs2_to_utf8
+}//single_ucs2_to_utf8
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace detail
 
 //------------------------------------------------------------------------
 template<class TForwardIterator>
@@ -278,7 +282,7 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator              source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8
+ return detail::single_ucs2_to_utf8
          (source_beg,
           source_end,
           reinterpret_cast<traits::UTF8*>(utf8),
@@ -297,7 +301,7 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator              source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8
+ return detail::single_ucs2_to_utf8
          (source_beg,
           source_end,
           reinterpret_cast<traits::UTF8*>(utf8),
@@ -316,7 +320,7 @@ TForwardIterator single_ucs2_to_utf8(TForwardIterator        source_beg,
  assert(cvt_result);
  assert_s(sizeof(*utf8)==sizeof(traits::UTF8));
 
- return __single_ucs2_to_utf8
+ return detail::single_ucs2_to_utf8
          (source_beg,
           source_end,
           reinterpret_cast<traits::UTF8*>(utf8),
@@ -617,7 +621,7 @@ TForwardIterator ucs2_to_utf8(TForwardIterator              source_beg,
  while(source_beg!=source_end)
  {
   source_beg
-   =__single_ucs2_to_utf8
+   =detail::single_ucs2_to_utf8
      (source_beg,
       source_end,
       utf8_buffer,

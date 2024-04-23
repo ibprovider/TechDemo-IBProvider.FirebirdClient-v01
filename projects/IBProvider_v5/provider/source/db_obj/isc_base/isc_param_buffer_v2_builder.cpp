@@ -180,7 +180,7 @@ t_isc_param_buffer_v2_builder&
 
  std::string mbc_str;
 
- structure::tstr_to_tstr(&mbc_str,str.ptr,str.len,&error);
+ structure::tstr_to_tstr(&mbc_str,str,&error);
 
  if(error)
  {

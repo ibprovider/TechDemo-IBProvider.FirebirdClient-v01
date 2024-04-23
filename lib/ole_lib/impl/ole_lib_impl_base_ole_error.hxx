@@ -14,13 +14,13 @@
 class t_base_ole_error:public t_base_com_error
 {
  private:
-  typedef t_base_ole_error                          self_type;
-  typedef t_base_com_error                          inherited;
+  using self_type=t_base_ole_error;
+  using inherited=t_base_com_error;
 
-  t_base_ole_error& operator = (const self_type& exc);
+  t_base_ole_error& operator = (const self_type& exc)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_const_str_box                str_box_type;
+  using str_box_type=structure::t_const_str_box;
 
  public:
   t_base_ole_error(const self_type& exc);

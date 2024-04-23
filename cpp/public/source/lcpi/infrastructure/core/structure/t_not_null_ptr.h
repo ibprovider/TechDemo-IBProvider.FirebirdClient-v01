@@ -16,7 +16,7 @@ template<typename T>
 class t_not_null_ptr final
 {
  public:
-  typedef T*                                pointer;
+  using pointer=T*;
 
  public:
   t_not_null_ptr(pointer const p)

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__base.h>
 

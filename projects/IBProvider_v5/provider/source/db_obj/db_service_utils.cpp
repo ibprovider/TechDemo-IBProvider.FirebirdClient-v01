@@ -21,7 +21,8 @@ t_db_object_ptr query_db_service(t_db_object* const service_provider_obj,
  assert(service_provider_obj);
 
  const t_db_service_provider_ptr
-  service_provider(dynamic_cast<t_db_service_provider*>(service_provider_obj));
+  service_provider
+   (dynamic_cast<t_db_service_provider*>(service_provider_obj));
 
  if(!service_provider)
  {
@@ -32,8 +33,10 @@ t_db_object_ptr query_db_service(t_db_object* const service_provider_obj,
     L"service_provider");
  }//if
 
- /*const*/ t_db_object_ptr
-  service_obj(service_provider->query_service(rguidService));
+ t_db_object_ptr /*const*/ 
+  service_obj
+   (service_provider->query_service
+     (rguidService));
 
  if(!service_obj)
  {

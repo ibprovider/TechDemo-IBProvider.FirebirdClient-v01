@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Latin symbol upper operation
 //                                              Kovalenko Dmitry. 25.01.2011
-#ifndef _t_latin_upper_H_
-#define _t_latin_upper_H_
+#ifndef _lcpi_lib_structure__t_latin_upper_H_
+#define _lcpi_lib_structure__t_latin_upper_H_
 
 #include <structure/t_char_traits2.h>
 
@@ -25,7 +25,7 @@ template<typename charT>
 class t_latin_upper
 {
  public: //typedefs ------------------------------------------------------
-  typedef charT                           char_type;
+  using char_type=charT;
 
  public:
   t_latin_upper();

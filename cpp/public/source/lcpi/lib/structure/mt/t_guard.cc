@@ -79,7 +79,7 @@ inline void t_guard::unlock()
 
 #ifndef NDEBUG
  if(interlocked::decrement(&m_cntLock)==0)
-  interlocked::exchange(&m_OwnerThreadID,0);
+  interlocked::exchange(&m_OwnerThreadID,thread_id_type(0));
 #endif
 
  m_cs.unlock();

@@ -4,19 +4,27 @@
 
 #include <structure/t_char_converter.h>
 
+#include <type_traits>
+#include <tchar.h>
+
 namespace win32lib{
 ////////////////////////////////////////////////////////////////////////////////
 //UNICODE support
 
 //typedefs
-using structure::t_string;
 using structure::t_char;
-using structure::t_byte;
+using structure::t_string;
+
 //functions for convert between char sets
 using structure::tstr_to_str;
 using structure::tstr_to_wstr;
+
 using structure::str_to_tstr;
 using structure::wstr_to_tstr;
+
+////////////////////////////////////////////////////////////////////////////////
+
+LCPI__assert_s(std::is_same<win32lib::t_char LCPI__LITER_COMMA TCHAR>::value);
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace win32lib

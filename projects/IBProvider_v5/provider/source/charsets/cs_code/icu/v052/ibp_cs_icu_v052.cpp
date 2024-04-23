@@ -81,7 +81,10 @@ bool t_ibp_cs_icu::tag_conv_holder::create
  ///0.1 Освобождение предыдущего ICU-конвертора
  this->free();
 
- assert(m_ptr==NULL);
+ assert(m_ptr==nullptr);
+
+ if(std::find(icu_cs_name.cbegin(),icu_cs_name.cend(),(char)0)!=icu_cs_name.cend())
+  return false;
 
  ///1. Создание конвертора
  api::UErrorCode icu_status=api::U_ZERO_ERROR;
@@ -90,7 +93,7 @@ bool t_ibp_cs_icu::tag_conv_holder::create
 
  if(icu_status!=api::U_ZERO_ERROR)
  {
-  assert(m_ptr==NULL);
+  assert(m_ptr==nullptr);
 
   if(icu_status==api::U_FILE_ACCESS_ERROR && !must_be_created)
    return false;
@@ -104,7 +107,7 @@ bool t_ibp_cs_icu::tag_conv_holder::create
  }//if - error
 
  //! \todo ICU BUG-CHECK
- assert(m_ptr!=NULL);
+ assert(m_ptr!=nullptr);
 
  ///2. Установка call-back функций
  if((direction_flags&conv_direction__to_unicode)==conv_direction__to_unicode)
@@ -200,7 +203,13 @@ t_ibp_cs_icu::self_ptr
 {
  assert(pICU);
 
- const std::string icu_cs_name(structure::tstr_to_str(cs_name));
+ using str_cvt_traits
+  =structure::t_str_cvt_traits__unicode_or_ascii;
+
+ std::string icu_cs_name;
+
+ if(!str_cvt_traits::try__tstr_to_tstr(&icu_cs_name,cs_name))
+  return nullptr;
 
  tag_conv_holder conv(pICU);
 

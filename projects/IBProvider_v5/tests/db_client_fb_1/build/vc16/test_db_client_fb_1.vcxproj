@@ -167,6 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os-atomic_functions.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os.mt-thread_api.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\ole_lib\oledb\oledb_common.cpp" />
@@ -202,7 +203,6 @@
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.cc">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -220,11 +220,9 @@
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_error.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_library.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_registry.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_resource_versioninfo.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_time.cpp" />
     <ClCompile Include="..\..\..\..\..\..\lib\_pch_.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -593,7 +591,9 @@
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_service_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_types.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\db_utility.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\fb_base\fb_sys_data.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.cpp" />
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\ib_base\ib_sys_data.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.cpp" />
     <ClCompile Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.cpp" />
@@ -1145,7 +1145,6 @@
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__test_state2_storage.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__tracer_utils.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.h" />
-    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_user.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\t_list_external.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\structure\t_smart_object.h" />
@@ -1155,7 +1154,6 @@
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_memory_allocator.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_mt.h" />
     <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_resource.h" />
-    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_time.h" />
     <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_ascii_traits.h" />
     <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime.h" />
     <ClInclude Include="..\..\..\..\provider\source\charsets\cs_code\ibp_cs_base64_mime__text_stream__mbc_buffer_to_ucs2.h" />
@@ -1498,7 +1496,9 @@
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_utility.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\db_datatypes.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_api.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_sys_data.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_charset_utility.h" />
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_sys_data.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\isc_api_hlp__xsqlda__error_utils.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\helpers\xsqlda\set01\isc_api_hlp__xsqlda_set01__msg_utilities.h" />
     <ClInclude Include="..\..\..\..\provider\source\db_obj\isc_base\isc_api.h" />

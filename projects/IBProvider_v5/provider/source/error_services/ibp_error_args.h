@@ -101,17 +101,17 @@ class t_ibp_error_args
 
   out_return_type& operator << (bool               x);
 
-  out_return_type& operator << (signed __int8      x);
-  out_return_type& operator << (unsigned __int8    x);
+  out_return_type& operator << (std::int8_t        x);
+  out_return_type& operator << (std::uint8_t       x);
 
-  out_return_type& operator << (signed __int16     x);
-  out_return_type& operator << (unsigned __int16   x);
+  out_return_type& operator << (std::int16_t       x);
+  out_return_type& operator << (std::uint16_t      x);
 
-  out_return_type& operator << (signed __int32     x);
-  out_return_type& operator << (unsigned __int32   x);
+  out_return_type& operator << (std::int32_t       x);
+  out_return_type& operator << (std::uint32_t      x);
 
-  out_return_type& operator << (signed __int64     x);
-  out_return_type& operator << (unsigned __int64   x);
+  out_return_type& operator << (std::int64_t       x);
+  out_return_type& operator << (std::uint64_t      x);
 
   out_return_type& operator << (signed long        x);
   out_return_type& operator << (unsigned long      x);

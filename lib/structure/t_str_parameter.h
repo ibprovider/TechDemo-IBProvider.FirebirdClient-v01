@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Template wrapper for char* and const string& arguments
 //                                                 Dmitry Kovalenko. 20.11.2006
-#ifndef _t_str_parameter_H_
-#define _t_str_parameter_H_
+#ifndef _lcpi_lib_structure__t_str_parameter_H_
+#define _lcpi_lib_structure__t_str_parameter_H_
 
-#include <structure/t_char_traits2.h>
+#include <lcpi/lib/.config.h>
 #include <string>
 
 namespace structure{
@@ -12,7 +12,7 @@ namespace structure{
 //class t_str_parameter
 
 template<class charT,class strT=LCPI_STL_DEF_BASIC_STRING(charT) >
-class t_str_parameter
+class t_str_parameter LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
   using self_type=t_str_parameter<charT,strT>;
@@ -20,37 +20,29 @@ class t_str_parameter
   self_type& operator = (const self_type&)=delete;
 
  public:
-  typedef strT                                           string_type;
-  typedef typename string_type::value_type               char_type;
-
-  typedef std::char_traits<char_type>                    traits_type;
-
- #ifdef _USE_VCL_
-  typedef t_char_traits2<char_type>::vcl_string_type     vcl_string_type;
- #endif
+  using string_type = strT;
+  using char_type   = typename string_type::value_type;
 
  public:
-   t_str_parameter(const self_type& x)
-    :m_s(x.m_s)
-   {;}
+  t_str_parameter(const self_type& x)
+   :m_s(x.m_s)
+  {
+  }
 
   t_str_parameter(const char_type* const s)
    :m_s(s)
-  {;}
+  {
+  }
 
   t_str_parameter(const string_type& s)
    :m_s(s.c_str())
-  {;}
-
- #ifdef _USE_VCL_
-  t_str_parameter(const vcl_string_type& s)
-   :m_s(s.c_str())
-  {;}
- #endif
+  {
+  }
 
   t_str_parameter(std::nullptr_t const x)
    :m_s(x)
-  {;}
+  {
+  }
 
  public:
   //return: CAN BE NULL
@@ -72,7 +64,10 @@ class t_str_parameter
 
   size_t length()const
   {
-   return m_s?std::char_traits<char_type>::length(m_s):0;
+   if(m_s==nullptr)
+    return 0;
+
+   return std::char_traits<char_type>::length(m_s);
   }//length
 
  private:
@@ -89,8 +84,9 @@ const typename t_str_parameter<charT,strT>::char_type
 ////////////////////////////////////////////////////////////////////////////////
 //typedefs
 
-typedef t_str_parameter<char>           str_parameter;
-typedef t_str_parameter<wchar_t>        wstr_parameter;
+using str_parameter=t_str_parameter<char>;
+
+using wstr_parameter=t_str_parameter<wchar_t>;
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure
@@ -98,9 +94,9 @@ typedef t_str_parameter<wchar_t>        wstr_parameter;
 ////////////////////////////////////////////////////////////////////////////////
 //non member operators
 
-template<class charT>
+template<class charT,class strT>
 std::basic_ostream<charT>& operator << (std::basic_ostream<charT>& os,
-                                        const structure::t_str_parameter<charT>& s)
+                                        const structure::t_str_parameter<charT,strT>& s)
 {
  return os<<s.c_str();
 }//<<

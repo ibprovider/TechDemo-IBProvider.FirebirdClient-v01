@@ -4,8 +4,8 @@
 //и более того, в BCB3 вылазят за границы буфера
 //     (устанавливая 0 за последним символом)
 //                                    Коваленко Дмитрий. 3 марта 2001 года
-#ifndef _t_fix_stream_H_
-#define _t_fix_stream_H_
+#ifndef _lcpi_lib_structure__t_fix_stream_H_
+#define _lcpi_lib_structure__t_fix_stream_H_
 
 #include <lcpi/lib/.config.h>
 #include <ostream>

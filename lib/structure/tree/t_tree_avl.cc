@@ -218,7 +218,8 @@ typename t_tree_avl<T,Compare,Allocator>::pair_type
  t_tree_avl<T,Compare,Allocator>::insert(const value_type& value)
 #endif
 {
- const inherited::pair_type r=this->insert_node(value);
+ const typename inherited::pair_type r
+  =this->insert_node(value);
 
  assert(r.first);
 
@@ -234,17 +235,17 @@ template<class U>
 typename t_tree_avl<T,Compare,Allocator>::pair_type
  t_tree_avl<T,Compare,Allocator>::insert(U&& rrvalue)
 {
- typedef U insert_value_type;
+ using insert_value_type=U;
 
 #else
 typename t_tree_avl<T,Compare,Allocator>::pair_type
  t_tree_avl<T,Compare,Allocator>::insert(value_type&& rrvalue)
 {
- typedef value_type insert_value_type;
+ using insert_value_type=value_type;
 
 #endif
 
- const inherited::pair_type r
+ const typename inherited::pair_type r
   =this->insert_node(LCPI_STL_FORWARD_VALUE(insert_value_type,rrvalue));
 
  assert(r.first);
@@ -286,7 +287,7 @@ template<class... Args>
 typename t_tree_avl<T,Compare,Allocator>::pair_type
  t_tree_avl<T,Compare,Allocator>::emplace(Args&&... args)
 {
- const inherited::pair_type r
+ const typename inherited::pair_type r
   =this->emplace_node(LCPI_STL_FORWARD_VALUE(Args,args)...);
 
  assert(r.first);

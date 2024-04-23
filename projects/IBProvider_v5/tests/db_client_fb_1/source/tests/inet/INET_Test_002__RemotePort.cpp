@@ -705,6 +705,7 @@ void INET_Test_002__RemotePort::tag_impl::test_09__connect__unk_rus_db_name
 
  params.set_dbprop_init__user_id(L"SYSDBA");
  params.set_dbprop_init__password(L"masterkey");
+ params.set_dbprop_init__ctype_system(L"win1251");
 
  try
  {

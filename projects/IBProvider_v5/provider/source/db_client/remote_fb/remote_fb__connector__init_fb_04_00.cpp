@@ -9,21 +9,46 @@
 
 #include "source/db_client/remote_fb/remote_fb__connector.h"
 #include "source/db_obj/dbms_fb/v04_0_0/db_obj__dbms_fb__v04_0_0__factories.h"
+#include "source/db_obj/isc_base/isc_initialize_utils.h"
+#include "source/db_obj/fb_base/fb_sys_data.h"
+
+#include "source/external/icu/ibp_external__icu__loader_factory.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__Connector
 
-void RemoteFB__Connector::Helper__FinalInitialize__FB_04_00(const cns_type& /*cns*/)
+void RemoteFB__Connector::Helper__FinalInitialize__FB_04_00
+                             (const oledb_lib::OLEDB_Props2__Data__Values* const pDsPropValues,
+                              const cns_type&                                    /*cns*/)
 {
+ assert(pDsPropValues);
  assert(m_spData);
  assert(m_spData->GetPort());
+
+ // 00.01 ----------------------------------------------------------------
+ const external::icu::ICU__Loader::self_ptr
+  spIcuLoader
+   (external::icu::create_icu_loader
+     (pDsPropValues));
+
+ assert(spIcuLoader);
+
+ // 00.02 ----------------------------------------------------------------
+ const db_obj::t_db_charset_manager_v2_ptr
+  spCsMng
+   (isc_base::isc_create_charset_manager_v2
+     (pDsPropValues,
+      spIcuLoader,
+      fb_base::g_ods_cs__fb04_0_0));
+
+ assert(spCsMng);
 
  // 01.00. Overriding the error service ----------------------------------
 
  m_spData->RegService
   (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
-   db_obj::dbms_fb::v04_0_0::create_svc__status_vector_utils());
+   db_obj::dbms_fb::v04_0_0::create_svc__status_vector_utils(spCsMng));
 
  // 02.00. t_isc_xsqlda_v1_svc__blr01_builder service --------------------
 

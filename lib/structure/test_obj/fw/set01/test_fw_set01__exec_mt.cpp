@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__exec_mt.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__summary_builder.h>
@@ -11,6 +11,10 @@
 #include <structure/t_numeric_cast.h>
 
 namespace structure{namespace test_fw{namespace set01{
+////////////////////////////////////////////////////////////////////////////////
+
+using ::lcpi::infrastructure::os::mt::LCPI_OS__ThreadApi;
+
 ////////////////////////////////////////////////////////////////////////////////
 //class TestFW__TestQueueMT::tag_test_data
 
@@ -44,18 +48,14 @@ TestFW__TestQueueMT::tag_test_data&
 TestFW__TestQueueMT::TestFW__TestQueueMT(log_ex_type* const pLog,
                                          unsigned     const ExecMultplicator)
  :m_ExecMultiplicator   (ExecMultplicator)
+ ,m_TestQueue_PushEvent(/*manual reset*/true,/*init state*/false)
+ ,m_TestQueue_PopEvent(/*manual reset*/false,/*init state*/false)
  ,m_TestQueue_NoNewTest (0)
  ,m_spLog               (structure::not_null_ptr(pLog))
  ,m_test_num_gen        (0)
 {
  assert(m_ExecMultiplicator>0);
  assert(m_spLog);
-
- if(!m_TestQueue_PushEvent.Create(NULL,/*manual reset*/true,/*init state*/false,NULL))
-  win32lib::t_win32_error::throw_error(::GetLastError(),"TestFW__TestQueueMT::m_TestQueue_PushEvent");
-
- if(!m_TestQueue_PopEvent.Create(NULL,/*manual reset*/false,/*init state*/false,NULL))
-  win32lib::t_win32_error::throw_error(::GetLastError(),"TestFW__TestQueueMT::m_TestQueue_PopEvent");
 }//TestFW__TestQueueMT
 
 //------------------------------------------------------------------------
@@ -78,8 +78,7 @@ void TestFW__TestQueueMT::push_test(const TestFW__Test* const pTest)
 
  m_TestQueue.push_back(pTest);
 
- if(!m_TestQueue_PushEvent.Set())
-  throw std::runtime_error("Can't SetUp Push-Event State");
+ m_TestQueue_PushEvent.Set__Throw();//throw
 }//push_test
 
 //------------------------------------------------------------------------
@@ -102,19 +101,19 @@ void TestFW__TestQueueMT::no_new_test__no_throw(bool const clear)
 
  assert(m_TestQueue_NoNewTest==1);
 
- _VERIFY(m_TestQueue_PushEvent.Set());
+ m_TestQueue_PushEvent.Set__Throw();
 }//no_new_test__no_throw
 
 //------------------------------------------------------------------------
-TestFW__TestCPtr TestFW__TestQueueMT::pop_test(const wchar_t* const ThreadName,
-                                               HANDLE         const hCancelEvent)
+TestFW__TestCPtr TestFW__TestQueueMT::pop_test(str_parameter         const ThreadName,
+                                               LCPI_OS__EVENT_HANDLE const hCancelEvent)
 {
  const TestFW__TestCPtr spTest(this->pop_test_impl(hCancelEvent));
 
  if(spTest)
  {
   //Add log message
-  TestFW__SysTracer tracer(m_spLog,ThreadName);
+  TestFW__SysTracer tracer(m_spLog,ThreadName.c_str());
 
   const lock_guard_type __lock(m_test_num_guard);
 
@@ -129,7 +128,7 @@ TestFW__TestCPtr TestFW__TestQueueMT::pop_test(const wchar_t* const ThreadName,
 }//pop_test
 
 //------------------------------------------------------------------------
-TestFW__TestCPtr TestFW__TestQueueMT::pop_test_impl(HANDLE const hCancelEvent)
+TestFW__TestCPtr TestFW__TestQueueMT::pop_test_impl(LCPI_OS__EVENT_HANDLE const hCancelEvent)
 {
  for(;;)
  {
@@ -154,8 +153,7 @@ TestFW__TestCPtr TestFW__TestQueueMT::pop_test_impl(HANDLE const hCancelEvent)
 
     m_TestQueue.pop_front();
 
-    if(!m_TestQueue_PopEvent.Set())
-     throw std::runtime_error("Can't SetUp Pop-Event State");
+    m_TestQueue_PopEvent.Set__Throw();
 
     return spReturnTest;
    }//if
@@ -163,31 +161,41 @@ TestFW__TestCPtr TestFW__TestQueueMT::pop_test_impl(HANDLE const hCancelEvent)
    if(m_TestQueue_NoNewTest)
     return nullptr;
 
-   if(!m_TestQueue_PushEvent.Reset())
-    throw std::runtime_error("Can't Reset Push-Event State");
+   m_TestQueue_PushEvent.Reset__Throw();
   }//local - lock m_Guard
 
-  const HANDLE hWaitHandles[]={hCancelEvent,m_TestQueue_PushEvent};
+  const LCPI_OS__Event::EVENT_HANDLE hWaitHandles[]
+   ={
+     hCancelEvent,
+     m_TestQueue_PushEvent.GetNativeHandle()
+    };
 
-  switch(::WaitForMultipleObjects(_DIM_(hWaitHandles),hWaitHandles,FALSE,INFINITE))
-  {
-   case WAIT_OBJECT_0+0: //Cancel event
-    return nullptr;
-  }//switch
+  const auto wait_r
+   =LCPI_OS__ThreadApi::WaitForMultipleEvents
+     (_DIM_(hWaitHandles),
+      hWaitHandles,
+      false,
+      LCPI_OS__ThreadApi::Infinite);
+  
+  assert(wait_r.Code==LCPI_OS__ThreadApi::WaitResultCode::Ok);
+
+  if(wait_r.ObjectIndex==0) //Cancel event
+   return nullptr;
  }//for[ever]
 }//pop_test_impl
 
 //------------------------------------------------------------------------
-DWORD TestFW__TestQueueMT::wait_pop_event(DWORD const dwMilliSeconds)
+TestFW__TestQueueMT::WaitResultCode
+ TestFW__TestQueueMT::wait_pop_event(TimeOut_t const dwMilliSeconds)
 {
- return m_TestQueue_PopEvent.Wait(dwMilliSeconds);
+ return m_TestQueue_PopEvent.Wait__Throw(dwMilliSeconds);
 }//wait_pop_event
 
 //------------------------------------------------------------------------
-void TestFW__TestQueueMT::add_result(const wchar_t*      const ThreadName,
+void TestFW__TestQueueMT::add_result(str_parameter       const ThreadName,
                                      const TestFW__TestState2& TestResult)
 {
- assert(ThreadName);
+ assert(!ThreadName.empty());
 
  {
   const lock_guard_type __lock(m_ResultGuard);
@@ -200,7 +208,7 @@ void TestFW__TestQueueMT::add_result(const wchar_t*      const ThreadName,
  //m_spLog->add_other_warning_count (TestResult.warning_count);
 
  //-----------------------------------------
- TestFW__SysTracer tracer(m_spLog,ThreadName);
+ TestFW__SysTracer tracer(m_spLog,ThreadName.c_str());
 
  if(TestResult.err_count)
   tracer<<L"[FAILED ] ";
@@ -218,7 +226,7 @@ void TestFW__TestQueueMT::add_result(const wchar_t*      const ThreadName,
 
 TestFW__TestRunnerMT::TestFW__TestRunnerMT(TestFW__ExecutorMT* const pExecutor,
                                            size_t              const thread_idx,
-                                           const std::wstring&       thread_name,
+                                           const std::string&        thread_name,
                                            log_ex_type*        const pLog)
  :m_pExecutor(structure::not_null_ptr(pExecutor))
  ,m_thread_idx(thread_idx)
@@ -243,15 +251,15 @@ TestFW__TestRunnerMT::self_ptr TestFW__TestRunnerMT::create
  assert(pExecutor);
 
  //---------
- structure::str_formatter fLogFileName("%1_%2.log");
-
- fLogFileName<<BaseLogFilePath<<(ThreadIdx+1);
+ std::string
+  logFileName
+   =BaseLogFilePath+"_"+std::to_string(ThreadIdx+1)+".log";
 
  const TestFW__SysLogStream::self_ptr
   spThreadLogStream
    (structure::not_null_ptr
      (new TestFW__SysLogStream_ToFile
-       (fLogFileName.str())));
+       (logFileName)));
 
  assert(spThreadLogStream);
 
@@ -260,7 +268,8 @@ TestFW__TestRunnerMT::self_ptr TestFW__TestRunnerMT::create
   spThreadLog
    (structure::not_null_ptr
      (new TestFW__WorkerLog
-       (spThreadLogStream)));
+       (pExecutor->GetLog(),
+        spThreadLogStream)));
 
  assert(spThreadLog);
 
@@ -269,21 +278,20 @@ TestFW__TestRunnerMT::self_ptr TestFW__TestRunnerMT::create
  spThreadLog->print_thread_id=true;
 
  //---------
- structure::wstr_formatter fThreadName(L"Thread #%1");
-
- fThreadName<<(ThreadIdx+1);
+ std::string threadName
+  ="Thread #"+std::to_string(ThreadIdx+1);
 
  //---------
  return structure::not_null_ptr
          (new TestFW__TestRunnerMT
            (pExecutor,
             ThreadIdx,
-            fThreadName.str(),
+            threadName,
             spThreadLog));
 }//create
 
 //------------------------------------------------------------------------
-const wchar_t* TestFW__TestRunnerMT::thread_name_impl()const
+const char* TestFW__TestRunnerMT::thread_name_impl()const
 {
  return m_thread_name.c_str();
 }//thread_name_impl
@@ -300,9 +308,9 @@ void TestFW__TestRunnerMT::thread_worker_impl()
 //class TestFW__ExecutorMT
 
 TestFW__ExecutorMT::TestFW__ExecutorMT
-                            (const std::string& BaseLogFilePath,
-                             log_ex_type* const pLog,
-                             size_t       const nThreads)
+                            (const std::string&    BaseLogFilePath,
+                             TestFW__SysLog* const pLog,
+                             size_t          const nThreads)
  :m_BaseLogFilePath (BaseLogFilePath)
  ,m_spLog           (structure::not_null_ptr(pLog))
  ,m_nThreads        (nThreads)
@@ -403,7 +411,7 @@ void TestFW__ExecutorMT::PushTest(const test_type* const pTest)
    }//if
 
    //Wait 1 sec.
-   if(m_spTestQueue->wait_pop_event(1*1000)!=WAIT_TIMEOUT)
+   if(m_spTestQueue->wait_pop_event(1*1000)!=test_queue_type::WaitResultCode::Timeout)
     break; //test queue was changed
 
   }//for[ever] - check threads and wait pop-event
@@ -492,11 +500,11 @@ void TestFW__ExecutorMT::stop__no_throw()
  }//if
 
  //-----------------------------------------
- DEBUG_CODE(structure::interlocked::exchange(&m_debug__IsStopped,1));
+ DEBUG_CODE(structure::interlocked::exchange(&m_debug__IsStopped,unsigned(1)));
 }//stop__no_throw
 
 //------------------------------------------------------------------------
-TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
+void TestFW__ExecutorMT::build_summary3()
 {
  assert(m_debug__IsStopped!=0);
  //this->stop();
@@ -506,7 +514,7 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
  assert(m_spTestQueue);
 
  const char* const c_bugcheck_src
-  ="TestFW__TestQueueMT::build_summary";
+  ="TestFW__ExecutorMT::build_summary3";
 
  using summary_builder_type
   =TestFW__SummaryBuilder;
@@ -524,10 +532,10 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
  //5. Total informations
 
  //----------------------------------------- prepare summary builders
- tag_summary_result result;
-
- result.nTotalErrors   = m_spLog->get_total_error_count();
- result.nTotalWarnings = m_spLog->get_total_warning_count();
+#ifndef NDEBUG
+ auto debug__nTotalErrors   = m_spLog->get_error_count();
+ auto debug__nTotalWarnings = m_spLog->get_warning_count();
+#endif
 
  const summary_builder_type::self_ptr
   spRootBuilder
@@ -545,8 +553,10 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
 
   assert(spThreadLog);
 
-  result.nTotalErrors    +=spThreadLog->get_error_count();
-  result.nTotalWarnings  +=spThreadLog->get_warning_count();
+#ifndef NDEBUG
+  debug__nTotalErrors   +=spThreadLog->get_error_count();
+  debug__nTotalWarnings +=spThreadLog->get_warning_count();
+#endif
 
   const summary_builder_type::self_ptr
    spThreadSummaryBuilder
@@ -575,13 +585,10 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
 
   if(!(Result.thread_idx<m_TestRunners.size()))
   {
-   structure::str_formatter
-    fmsg("[BUG CHECK][%1][#001]\n"
-         "wrong thread_idx [%2] in test state [%3].");
-
-   fmsg<<c_bugcheck_src<<Result.thread_idx<<i;
-
-   throw std::runtime_error(fmsg.str());
+   self_type::Helper__ThrowBugCheck__bad_thread_id
+    (c_bugcheck_src,
+     "#001",
+     Result);
   }//if
 
   assert(Result.thread_idx<m_TestRunners.size());
@@ -600,13 +607,10 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
 
   if(!(Result.thread_idx<m_TestRunners.size()))
   {
-   structure::str_formatter
-    fmsg("[BUG CHECK][%1][#002]\n"
-         "wrong thread_idx [%2] in test state [%3].");
-
-   fmsg<<c_bugcheck_src<<Result.thread_idx<<i;
-
-   throw std::runtime_error(fmsg.str());
+   self_type::Helper__ThrowBugCheck__bad_thread_id
+    (c_bugcheck_src,
+     "#002",
+     Result);
   }//if
 
   assert(Result.thread_idx<m_TestRunners.size());
@@ -620,7 +624,7 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
 
   ThreadBuilders[Result.thread_idx]->print_test_with_error
    (Result,
-    L"");
+    "");
  }//for i
 
  //----------------------------------------- Print tests with warnings
@@ -632,13 +636,10 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
 
   if(!(Result.thread_idx<m_TestRunners.size()))
   {
-   structure::str_formatter
-    fmsg("[BUG CHECK][%1][#003]\n"
-         "wrong thread_idx [%2] in test state [%3].");
-
-   fmsg<<c_bugcheck_src<<Result.thread_idx<<i;
-
-   throw std::runtime_error(fmsg.str());
+   self_type::Helper__ThrowBugCheck__bad_thread_id
+    (c_bugcheck_src,
+     "#003",
+     Result);
   }//if
 
   assert(Result.thread_idx<m_TestRunners.size());
@@ -647,10 +648,12 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
    continue;
 
   spRootBuilder->print_test_with_warning
-   (Result,m_TestRunners[(Result).thread_idx]->thread_name());
+   (Result,
+    m_TestRunners[(Result).thread_idx]->thread_name());
 
   ThreadBuilders[Result.thread_idx]->print_test_with_warning
-   (Result,L"");
+   (Result,
+    "");
  }//for i
 
  //----------------------------------------- Print total infromation
@@ -659,7 +662,7 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
   assert(ThreadBuilders[i]);
 
   ThreadBuilders[i]->print_summary
-   (L"",
+   ("",
     true);
 
   ThreadBuilders[i]->print_summary_ex
@@ -669,17 +672,41 @@ TestFW__ExecutorMT::tag_summary_result TestFW__ExecutorMT::build_summary2()
  }//for i
 
  spRootBuilder->print_total
-  (L"ROOT THREAD",
+  ("ROOT THREAD",
    m_spLog->get_error_count(),
    m_spLog->get_warning_count());
 
  //-------------
  spRootBuilder->print_summary
-  (L"SUMMARY INFORMATION",false);
+  ("SUMMARY INFORMATION",
+   false);
 
  //-------------
- return result;
-}//build_summary2
+ assert(debug__nTotalErrors==m_spLog->get_total_error_count2());
+ assert(debug__nTotalWarnings==m_spLog->get_total_warning_count2());
+}//build_summary3
+
+//------------------------------------------------------------------------
+void TestFW__ExecutorMT::Helper__ThrowBugCheck__bad_thread_id
+   (const char*               place,
+    const char*               point,
+    const TestFW__TestState2& testState)
+{
+ std::string errMsg;
+ 
+ errMsg ="[BUG CHECK][";
+ errMsg+=place;
+ errMsg+="][";
+ errMsg+=point;
+ errMsg+="]\n";
+ errMsg+="Bad thread_idx [";
+ errMsg+=std::to_string(testState.thread_idx);
+ errMsg+="] in test [";
+ errMsg+=testState.get_test_id().make_str();
+ errMsg+="].";
+
+ throw std::runtime_error(errMsg);
+}//Helper__ThrowBugCheck__bad_thread_id
 
 //------------------------------------------------------------------------
 void TestFW__ExecutorMT::Internal__ThreadWorker(const runner_type* const pRunner)const
@@ -696,10 +723,11 @@ void TestFW__ExecutorMT::Internal__ThreadWorker(const runner_type* const pRunner
        (pRunner->thread_log())));
 
  TestFW__SysTracer
-  thread_tracer(pRunner->thread_log());
+  thread_tracer
+   (pRunner->thread_log());
 
  thread_tracer<<L"Thread Name: "<<pRunner->thread_name()<<tso_obj::send;
- thread_tracer<<L"Thread ID  : "<<::GetCurrentThreadId()<<tso_obj::send;
+ thread_tracer<<L"Thread ID  : "<<LCPI_OS__ThreadApi::GetCurrentThreadId()<<tso_obj::send;
  thread_tracer<<tso_obj::send;
 
  //--------------
@@ -739,7 +767,7 @@ void TestFW__ExecutorMT::Internal__ThreadWorker(const runner_type* const pRunner
   spCtx->m_test_info.set_test_id(test_id);
 
   //----------------------------------------
-  TestFW__SysTracer test_tracer(spCtx,structure::tstr_to_wstr(test_id));
+  TestFW__SysTracer test_tracer(spCtx,test_id);
 
   test_tracer(tso_obj::tso_msg_start_test,0)<<tso_obj::send;
 
@@ -779,7 +807,9 @@ void TestFW__ExecutorMT::Internal__ThreadWorker(const runner_type* const pRunner
   test_tracer(tso_obj::tso_msg_stop_test,0)<<tso_obj::send;
 
   //---------
-  m_spTestQueue->add_result(pRunner->thread_name(),spCtx->m_test_info);
+  m_spTestQueue->add_result
+   (pRunner->thread_name(),
+    spCtx->m_test_info);
  }//for[ever]
 }//Internal__ThreadWorker
 

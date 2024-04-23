@@ -26,10 +26,10 @@ namespace lcpi{namespace ibp{
 /// <summary>
 ///  Утилиты для формирования текста ошибки
 /// </summary>
-class TIBP_MessageTextBuilder
+class TIBP_MessageTextBuilder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef TIBP_MessageTextBuilder           self_type;
+  using self_type=TIBP_MessageTextBuilder;
 
  public:
   static std::wstring GetSystemErrorMsg(LCID  lcid,

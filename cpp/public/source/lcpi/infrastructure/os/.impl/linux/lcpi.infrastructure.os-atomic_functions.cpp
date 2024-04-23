@@ -5,7 +5,6 @@
 //#pragma hdrstop
 
 #include <lcpi/infrastructure/os/lcpi.infrastructure.os-atomic_functions.h>
-#include <cassert>
 
 namespace lcpi{namespace infrastructure{namespace os{
 ////////////////////////////////////////////////////////////////////////////////

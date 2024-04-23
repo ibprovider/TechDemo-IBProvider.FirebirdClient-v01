@@ -35,8 +35,6 @@ class t_ibp_cs_utf8_traits LCPI_CPP_CFG__CLASS__FINAL
   static const size_t c_max_ucs2_in_one_symbol=2;
 
  public:
-  t_ibp_cs_utf8_traits(){;}
-
   /// <summary>
   ///  Conversion of single OWN symbol into UNICODE symbol
   /// </summary>
@@ -49,12 +47,12 @@ class t_ibp_cs_utf8_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__fail
   //!  - db_cs_result__trunc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_own_to_unicode_v3
     (InputIterator& source,
      InputIterator  source_end,
      wchar_t*       result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Conversion of single UNICODE symbol to OWN symbol
@@ -68,12 +66,12 @@ class t_ibp_cs_utf8_traits LCPI_CPP_CFG__CLASS__FINAL
   //!  - db_cs_result__fail
   //!  - db_cs_result__trunc
   template<typename InputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    convert_single_unicode_to_own_v3
     (InputIterator& source,
      InputIterator  source_end,
      char*          result_buffer,
-     size_t&        result_size)const;
+     size_t&        result_size);
 
   /// <summary>
   ///  Generic algorithm for translation of UNICODE chars into own codepage
@@ -82,11 +80,11 @@ class t_ibp_cs_utf8_traits LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in]     source_end
   //! \param[in]     dest
   template<typename InputIterator,typename OutputIterator>
-  db_obj::t_db_cs_result
+  static db_obj::t_db_cs_result
    ucs2_to_own
     (InputIterator&  source,
      InputIterator   source_end,
-     OutputIterator  dest)const;
+     OutputIterator  dest);
 };//class t_ibp_cs_utf8_traits
 
 ////////////////////////////////////////////////////////////////////////////////

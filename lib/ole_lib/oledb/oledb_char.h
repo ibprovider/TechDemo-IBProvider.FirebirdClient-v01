@@ -30,7 +30,7 @@ namespace oledb_lib{
 
 //------------------------------------------------------------------------
 #if(_OLEDB_LIB_CFG__UNICODE==0)
-typedef char                         t_oledb_char;
+using t_oledb_char=char;
 
 # define _OLEDB_LIB_T(text)                               text
 
@@ -41,7 +41,7 @@ typedef char                         t_oledb_char;
 # define _OLEDB_LIB_ltot_s                                LCPI_GCRT_ltoa_s
 
 #else
-typedef wchar_t                      t_oledb_char;
+using t_oledb_char=wchar_t;
 
 # define _OLEDB_LIB_T(text)                               L##text
 

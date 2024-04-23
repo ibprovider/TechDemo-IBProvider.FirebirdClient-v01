@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_dynamic_array_CC_
-#define _t_dynamic_array_CC_
+#ifndef _lcpi_lib_structure__t_dynamic_array_CC_
+#define _lcpi_lib_structure__t_dynamic_array_CC_
 
 #include <structure/t_str_formatter.h>
 

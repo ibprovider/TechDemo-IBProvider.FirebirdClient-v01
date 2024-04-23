@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+//Standard thread controller
+//                                                 Kovalenko Dmitry. 26.03.2024.
+#ifndef _t_mt_thread_controller__std_H_
+#define _t_mt_thread_controller__std_H_
+
+#include <lcpi/lib/structure/mt/t_thread_controller__std.h>
+
+namespace structure{
+////////////////////////////////////////////////////////////////////////////////
+
+using namespace ::lcpi::lib::structure::mt;
+
+////////////////////////////////////////////////////////////////////////////////
+}//namespace structure
+#endif

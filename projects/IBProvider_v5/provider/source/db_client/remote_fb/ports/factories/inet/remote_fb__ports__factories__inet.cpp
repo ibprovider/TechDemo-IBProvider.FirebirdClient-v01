@@ -407,8 +407,9 @@ RemoteFB__PortPtr
 
   //----------------------------------------- PSET02 [P13]
   {
-   /*const*/ ports::inet::RemoteFB__Port_INET::self_ptr
-    spPort(ports::inet::RemoteFB__Port_INET::Create_PSET02(spSocket));
+   ports::inet::RemoteFB__Port_INET::self_ptr /*const*/
+    spPort
+     (ports::inet::RemoteFB__Port_INET::Create_PSET02(spSocket));
 
    assert(spPort);
 
@@ -429,8 +430,9 @@ RemoteFB__PortPtr
 
    assert(spSocket);
 
-   /*const*/ ports::inet::RemoteFB__Port_INET::self_ptr
-    spPort(ports::inet::RemoteFB__Port_INET::Create_PSET01(spSocket));
+   ports::inet::RemoteFB__Port_INET::self_ptr /*const*/
+    spPort
+     (ports::inet::RemoteFB__Port_INET::Create_PSET01(spSocket));
 
    assert(spPort);
 

@@ -87,14 +87,11 @@ void RemoteFB__Port_BASE_v01::tag_writer::begin_write()
   {
    //ERROR - [BUG CHECK] неизвестное состояние порта
 
-   structure::wstr_formatter freason(L"unexpected state of port: %1");
-
-   freason<<copyOfPortState;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#001",
-     freason.c_str());
+     L"unexpected state of port: %1",
+     copyOfPortState);
   }//default
  }//switch
 
@@ -137,14 +134,11 @@ void RemoteFB__Port_BASE_v01::tag_writer::begin_write()
   {
    //ERROR - [BUG CHECK] неизвестное write-состояние порта
 
-   structure::wstr_formatter freason(L"unexpected write-state of port: %1");
-
-   freason<<prevState;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#003",
-     freason.c_str());
+     L"unexpected write-state of port: %1",
+     prevState);
   }//default
  }//switch prevState
 }//begin_write

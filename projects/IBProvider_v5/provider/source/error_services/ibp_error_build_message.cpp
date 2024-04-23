@@ -297,7 +297,11 @@ bool TIBP_MessageTextBuilder::Helper__BuildDescription
   std::wstring wstr;
 
   const TIBP_MsgTableLoader::error_code_type
-   ldrErr=MsgTableLoader.GetMessage(msg_code,lcid,wstr);
+   ldrErr
+    =MsgTableLoader.GetMessage
+      (msg_code,
+       lcid,
+       wstr);
 
   if(ldrErr!=TIBP_MsgTableLoader::err_none)
   {

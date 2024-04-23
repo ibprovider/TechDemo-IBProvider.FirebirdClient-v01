@@ -763,6 +763,12 @@ const DBPROPID IBP_DBPROP__INIT__TIMEZONES_SOURCE               =0x0076;
 const DBPROPID IBP_DBPROP__INIT__BLOB_SEND_MODE                 =0x0077;
 
 //------------------------------------------------------------------------
+/// <summary>
+///  Имя кодовой страницы для интерпретации системных сообщений
+/// </summary>
+const DBPROPID IBP_DBPROP__INIT__CTYPE_SYSTEM                   =0x0078;
+
+//------------------------------------------------------------------------
 #if 1 || !defined(IBP_ENGINE_DIRECT_FB) || (IBP_ENGINE_DIRECT_FB!=0)
 
 /// <summary>

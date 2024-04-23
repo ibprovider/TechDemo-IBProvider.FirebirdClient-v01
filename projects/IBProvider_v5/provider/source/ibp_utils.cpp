@@ -10,8 +10,10 @@
 #include "source/ibp_utils.h"
 #include "source/ibp_cfg_structure.h"
 
-#include <structure/charsets/t_cs_utf8.h>
 #include <structure/t_latin.h>
+
+#include <lcpi/lib/structure/charsets/cs_cvt__utf8_to_utf16.h>
+#include <lcpi/lib/structure/charsets/cs_cvt__utf16_to_utf8.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -154,17 +156,17 @@ bool IBP_Utils::Utf8ToWStr__Fast
 
  CHECK_READ_TYPED_PTR(Utf8Str.ptr,Utf8Str.len);
 
- namespace utf8=structure::charsets::cs_utf8;
+ LCPI__assert_s(sizeof((*pWStr)[0])==2);
 
- utf8::t_cs_cvt_result cvt_result=utf8::cs_cvt_result__ok;
+ namespace cs_nms=lib::structure::charsets;
 
- utf8::utf8_to_ucs2
-  (Utf8Str.begin(),
-   Utf8Str.end(),
-   std::back_inserter(*pWStr),
-   &cvt_result);
+ const auto result
+  =cs_nms::cs_cvt__utf8_to_utf16
+    (Utf8Str.begin(),
+     Utf8Str.end(),
+     std::back_inserter(*pWStr));
 
- return cvt_result==utf8::cs_cvt_result__ok;
+ return result.code==cs_nms::cs_cvt_result_code::ok;
 }//Utf8ToWStr__Fast
 
 //------------------------------------------------------------------------
@@ -179,17 +181,17 @@ bool IBP_Utils::WStrToUtf8__Fast
 
  CHECK_READ_TYPED_PTR(WStr.ptr,WStr.len);
 
- namespace utf8=structure::charsets::cs_utf8;
+ LCPI__assert_s(sizeof(WStr[0])==2);
 
- utf8::t_cs_cvt_result cvt_result=utf8::cs_cvt_result__ok;
+ namespace cs_nms=lib::structure::charsets;
 
- utf8::ucs2_to_utf8
-  (WStr.begin(),
-   WStr.end(),
-   std::back_inserter(*pUtf8Str),
-   &cvt_result);
+ const auto result
+  =cs_nms::cs_cvt__utf16_to_utf8
+    (WStr.begin(),
+     WStr.end(),
+     std::back_inserter(*pUtf8Str));
 
- return cvt_result==utf8::cs_cvt_result__ok;
+ return result.code==cs_nms::cs_cvt_result_code::ok;
 }//WStrToUtf8__Fast
 
 //------------------------------------------------------------------------
@@ -334,7 +336,7 @@ bool IBP_Utils::IsValidSimpleString(const wstr_box_type& name)
  }//for p
 
  return true;
-}//return 
+}//return
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

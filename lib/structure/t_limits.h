@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //alternative for std::numeric_limits
 //                                           Dmitry Kovalenko. 12 april, 2003.
-#ifndef _t_limits_H_
-#define _t_limits_H_
+#ifndef _lcpi_lib_structure__t_limits_H_
+#define _lcpi_lib_structure__t_limits_H_
 
 #include <lcpi/lib/structure/t_numeric_limits.h>
 

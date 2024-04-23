@@ -25,6 +25,10 @@
 
   #include <_pch_win_.h>
 
+#elif defined(__linux__)
+
+  #include <_pch_linux_.h>
+
 #else
   #error("unknown target") 
 #endif

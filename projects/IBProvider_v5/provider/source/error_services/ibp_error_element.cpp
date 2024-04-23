@@ -135,19 +135,23 @@ bool t_ibp_error_element::get_description(lcid_type          lcid,
 
  if(source!=nullptr)
  {
-  res1=TIBP_MessageTextBuilder::BuildSrc(&tmp_source,
-                                         m_varSourceID);
+  res1
+   =TIBP_MessageTextBuilder::BuildSrc
+     (&tmp_source,
+      m_varSourceID);
  }//if source!=NULL
 
  if(description!=nullptr)
  {
-  res2=TIBP_MessageTextBuilder::Build(&tmp_description,
-                                      m_varSubSystemID,
-                                      m_msg_code,
-                                      lcid.get_number(),
-                                      m_params.size(),
-                                      m_params.data(),
-                                      m_err_code);
+  res2
+   =TIBP_MessageTextBuilder::Build
+     (&tmp_description,
+      m_varSubSystemID,
+      m_msg_code,
+      lcid.get_number(),
+      m_params.size(),
+      m_params.data(),
+      m_err_code);
  }//if description!=NULL
 
  //----
@@ -166,10 +170,10 @@ bool t_ibp_error_element::get_help_info(lcid_type         const /*lcid*/,
                                         string_type*      const help_file,
                                         help_ctx_id_type* const help_context_id)const
 {
- if(help_file!=NULL)
+ if(help_file!=nullptr)
   help_file->clear();
 
- if(help_context_id!=NULL)
+ if(help_context_id!=nullptr)
   (*help_context_id)=0;
 
  return false;

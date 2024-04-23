@@ -16,8 +16,6 @@
 #include "source/error_services/ibp_error_records_r.h"
 #include "source/ibp_memory.h"
 
-#include <structure/t_smart_vector.h>
-
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_err
@@ -38,10 +36,10 @@ class t_ibp_error_collection LCPI_CPP_CFG__CLASS__FINAL
  ,public t_ibp_error_records_r
 {
  private:
-  typedef t_ibp_error_collection                self_type;
+  using self_type=t_ibp_error_collection;
 
-  t_ibp_error_collection(const self_type&);
-  self_type& operator = (const self_type&);
+  t_ibp_error_collection(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public:
   /// <summary>

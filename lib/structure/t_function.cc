@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Implementation of templates from <t_function.h>
 //                                                 Dmitry Kovalenko. 03.09.2003.
-#ifndef _t_function_CC_
-#define _t_function_CC_
+#ifndef _lcpi_lib_structure__t_function_CC_
+#define _lcpi_lib_structure__t_function_CC_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

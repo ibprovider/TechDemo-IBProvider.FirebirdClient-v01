@@ -36,8 +36,11 @@ db_obj::t_db_cs_result
                                            (InputIterator& source,
                                             InputIterator  source_end,
                                             wchar_t* const result_buffer,
-                                            size_t&        result_size)const
+                                            size_t&        result_size)
 {
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
+
+ //-------
  namespace cs_fss=structure::charsets::cs_utf_fss;
 
  cs_fss::t_cs_cvt_result cvt_result=cs_fss::cs_cvt_result__ok;
@@ -58,8 +61,11 @@ db_obj::t_db_cs_result
                                            (InputIterator&       source,
                                             InputIterator        source_end,
                                             char*          const result_buffer,
-                                            size_t&              result_size)const
+                                            size_t&              result_size)
 {
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
+
+ //-------
  namespace cs_fss=structure::charsets::cs_utf_fss;
 
  cs_fss::t_cs_cvt_result cvt_result=cs_fss::cs_cvt_result__ok;
@@ -78,7 +84,7 @@ template<typename InputIterator,typename OutputIterator>
 db_obj::t_db_cs_result
  t_ibp_cs_unicode_fss_traits::ucs2_to_own(InputIterator&  source,
                                           InputIterator   source_end,
-                                          OutputIterator  dest)const
+                                          OutputIterator  dest)
 {
  namespace cs_fss=structure::charsets::cs_utf_fss;
 

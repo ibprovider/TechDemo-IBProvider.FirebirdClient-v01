@@ -852,6 +852,14 @@ IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
   DBPROPOPTIONS_OPTIONAL,
    .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Prop__blob_send_mode::GetInstancePtr()))
 
+//имя кодовой страницы для интерпретации SYSTEM messages -----------------
+IBP_OLEDB_PROPS2__DESCR_PARAM__WSTR__EMPTY
+ (IBP_DBPROP__INIT__CTYPE_SYSTEM, /*120 (0x78)*/
+  OLEDB_PDESCR2(L"ctype_system"),
+  OLEDB_PROPFLAGS_DBINITRW,
+  DBPROPOPTIONS_OPTIONAL,
+   .PostInit_SetHandler_ExtractValue(IBP_OLEDB_Props2__Handler__ExtractValue__Common__cset_name::GetInstancePtr()))
+
 //------------------------------------------------------------------------
 #if(IBP_ENGINE_DIRECT_FB!=0)
 

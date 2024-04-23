@@ -20,10 +20,10 @@ template<typename T,class Traits>
 class t_basic_istream_buffer
 {
  private:
-  typedef t_basic_istream_buffer<T,Traits>  self_type;
+  using self_type=t_basic_istream_buffer<T,Traits>;
 
-  t_basic_istream_buffer(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_istream_buffer(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   typedef size_t                            size_type;
@@ -36,7 +36,7 @@ class t_basic_istream_buffer
 
   typedef value_type&                       reference;
 
-  typedef unsigned __int64                  stream_size_type;
+  typedef std::uint64_t                     stream_size_type;
 
  public:
   t_basic_istream_buffer();

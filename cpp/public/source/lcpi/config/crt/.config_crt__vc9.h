@@ -133,41 +133,70 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Secure version of localtime
 
-#define LCPI_GCRT_localtime_s                 localtime_s
+#define LCPI_GCRT_localtime_s(_Tm,_Time)    ::localtime_s(_Tm,_Time)
+
+////////////////////////////////////////////////////////////////////////////////
+
+#define LCPI_GCRT_tmpfile_s(pFilePtr)       ::tmpfile_s(pFilePtr)
 
 ////////////////////////////////////////////////////////////////////////////////
 
 #ifndef NDEBUG
 
-static void LCPI_GCRT_run_assert__impl(const wchar_t* const expr,
+namespace lcpi{namespace config{namespace crt{namespace vc9{namespace detail{
+////////////////////////////////////////////////////////////////////////////////
+//class LCPI_GCRT_run_assert__impl
+
+class LCPI_GCRT_run_assert__impl final
+{
+ public:
+  static void exec(const wchar_t* const expr,
+                   const char*          message,
+                   const wchar_t* const file,
+                   unsigned       const line)
+  {
+   const size_t c_wm_size=512;
+
+   wchar_t wm[c_wm_size];
+
+   size_t wm_c=0;
+
+   if(!message)
+    message="";
+
+   size_t message_c=strlen(message);
+
+   if(message_c>(c_wm_size-1))
+    message_c=(c_wm_size-1);
+
+   setlocale(LC_CTYPE,"");
+
+   if(mbstowcs_s(&wm_c,&wm[0],c_wm_size,message,message_c)==0)
+   {
+    wm[c_wm_size-1]=0;
+
+    _wassert(wm,file,line);
+   }//if
+
+   _wassert(expr,file,line);
+  }//exec
+};//class LCPI_GCRT_run_assert__impl
+
+////////////////////////////////////////////////////////////////////////////////
+}/*nms detail*/}/*nms vc9*/}/*nms crt*/}/*nms config*/}/*nms* lcpi*/
+
+////////////////////////////////////////////////////////////////////////////////
+
+inline void LCPI_GCRT_run_assert__impl(const wchar_t* const expr,
                                        const char*          message,
                                        const wchar_t* const file,
                                        unsigned       const line)
 {
- const size_t c_wm_size=512;
-
- wchar_t wm[c_wm_size];
-
- size_t wm_c=0;
-
- if(!message)
-  message="";
-
- size_t message_c=strlen(message);
-
- if(message_c>(c_wm_size-1))
-  message_c=(c_wm_size-1);
-
- setlocale(LC_CTYPE,"");
-
- if(mbstowcs_s(&wm_c,&wm[0],c_wm_size,message,message_c)==0)
- {
-  wm[c_wm_size-1]=0;
-
-  _wassert(wm,file,line);
- }//if
-
- _wassert(expr,file,line);
+ return ::lcpi::config::crt::vc9::detail::LCPI_GCRT_run_assert__impl::exec
+  (expr,
+   message,
+   file,
+   line);
 }//LCPI_GCRT_run_assert__impl
 
 #endif
@@ -176,11 +205,11 @@ static void LCPI_GCRT_run_assert__impl(const wchar_t* const expr,
 
 #define LCPI_GCRT_run_assert(expr,message)                              \
 {                                                                       \
- LCPI_GCRT_run_assert__impl                                             \
-  (_CRT_WIDE(#expr),                                                    \
-   message,                                                             \
-   _CRT_WIDE(__FILE__),                                                 \
-   __LINE__);                                                           \
+ ::LCPI_GCRT_run_assert__impl                                           \
+    (_CRT_WIDE(#expr),                                                  \
+     message,                                                           \
+     _CRT_WIDE(__FILE__),                                               \
+     __LINE__);                                                         \
 }
 
 ////////////////////////////////////////////////////////////////////////////////

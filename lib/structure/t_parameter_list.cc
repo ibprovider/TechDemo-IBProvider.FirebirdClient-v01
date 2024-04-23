@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_basic_parameter_list_CC_
-#define _t_basic_parameter_list_CC_
+#ifndef _lcpi_lib_structure__t_parameter_list_CC_
+#define _lcpi_lib_structure__t_parameter_list_CC_
 
 #include <structure/t_latin_lower.h>
 #include <structure/internal/throw_error.h>

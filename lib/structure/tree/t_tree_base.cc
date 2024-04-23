@@ -141,7 +141,7 @@ void t_tree_base<TNode,Allocator>::init_as_copy(const self_type& tree)
 
   }//for[ever]
 
- }//while(from_node!=NULL)
+ }//while(from_node!=nullptr)
 
  assert(debug__node_count==tree.size());
  assert(debug__node_count==this->size());
@@ -282,7 +282,10 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__from_value(pnode_type const  
 
  try
  {
-  new(p) node_type(parent,node_type::tag_from_value(),x); //throw
+  new(p) node_type
+   (parent,
+    typename node_type::tag_from_value(),
+    x); //throw
  }
  catch(...)
  {
@@ -319,9 +322,10 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__from_value(pnode_type const p
 
  try
  {
-  new(p) node_type(parent,
-                   node_type::tag_from_value(),
-                   LCPI_STL_FORWARD_VALUE(rrx_type,rrx)); //no-throw
+  new(p) node_type
+   (parent,
+    typename node_type::tag_from_value(),
+    LCPI_STL_FORWARD_VALUE(rrx_type,rrx)); //no-throw
  }
  catch(...)
  {
@@ -346,7 +350,10 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__from_node(pnode_type const pa
 
  try
  {
-  new(p) node_type(parent,node_type::tag_from_node(),x); //throw
+  new(p) node_type
+   (parent,
+    typename node_type::tag_from_node(),
+    x); //throw
  }
  catch(...)
  {
@@ -372,9 +379,10 @@ t_tree_base<TNode,Allocator>::internal_alloc_node__emplace(pnode_type parent,
 
  try
  {
-  new(p) node_type(parent,
-                   node_type::tag_from_emplace(),
-                   LCPI_STL_FORWARD_VALUE(Args,args)...); //throw
+  new(p) node_type
+   (parent,
+    typename node_type::tag_from_emplace(),
+    LCPI_STL_FORWARD_VALUE(Args,args)...); //throw
  }
  catch(...)
  {

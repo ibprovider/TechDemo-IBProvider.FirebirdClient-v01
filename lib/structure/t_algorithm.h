@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Set of generic algorithms
 //                                               Dmitry Kovalenko. 21.03.2001.
-#ifndef _t_algorithm_H_
-#define _t_algorithm_H_
+#ifndef _lcpi_lib_structure__t_algorithm_H_
+#define _lcpi_lib_structure__t_algorithm_H_
 
 #include <lcpi/lib/structure/t_algorithm.h>
 

@@ -94,15 +94,12 @@ void* RemoteFB__API_P12_RPC__ReadBlob::tagOpMemoryBuffer::allocate
   //память под данные уже должны быть зарезервирована
   if(m_pBlobData->m_Buffer.capacity()<sz)
   {
-   structure::wstr_formatter
-    freason(me_bug_check__target_buffer_length_less_than_required_2);
-
-   freason<<m_pBlobData->m_Buffer.capacity()<<sz;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bugcheck_src,
      L"#001",
-     freason.c_str())
+     me_bug_check__target_buffer_length_less_than_required_2,
+     m_pBlobData->m_Buffer.capacity(),
+     sz);
   }//if
 
   DEBUG_CODE(m_DEBUG__BufferForBlobWasAllocated=true;)

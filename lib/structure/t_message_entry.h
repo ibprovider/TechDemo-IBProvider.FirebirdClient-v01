@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Utility classes
 //                                               Dmitry Kovalenko. 02.10.2019
-#ifndef _t_message_entry_H_
-#define _t_message_entry_H_
+#ifndef _lcpi_lib_structure__t_message_entry_H_
+#define _lcpi_lib_structure__t_message_entry_H_
 
 #include <lcpi/lib/.config.h>
 
@@ -20,8 +20,8 @@ template<typename codeT,typename msgT>
 class t_message_entry
 {
  public: //typedefs ------------------------------------------------------
-  typedef typename codeT       code_type;
-  typedef typename msgT        msg_type;
+  using code_type = codeT;
+  using msg_type  = msgT;
 
  public: //---------------------------------------------------------------
   code_type code;

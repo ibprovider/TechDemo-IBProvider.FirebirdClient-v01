@@ -23,6 +23,7 @@
 
 #include <lcpi/lib/structure/utilities/string/trim.h>
 #include <lcpi/lib/structure/utilities/string/string_compare.h>
+#include <lcpi/lib/structure/utilities/string/call_to_string.h>
 #include <lcpi/lib/structure/utilities/to_underlying.h>
 
 namespace lcpi{namespace ibp{
@@ -564,18 +565,23 @@ const t_ibp_char* const* ibp_get_charset_std_collations(const t_ibp_str_box& cse
  if(n.empty())
   n=IBP_T("NONE");
 
- typedef structure::t_search_result<const t_ibp_charset_manager_v2::tag_aliase*> result_type;
+ using result_type
+  =structure::t_search_result<const t_ibp_charset_manager_v2::tag_aliase*>;
 
- if(const result_type x=structure::lower_search(g_ibp_aliase_cs_by_name,
-                                                _END_(g_ibp_aliase_cs_by_name),
-                                                n,
-                                                t_ibp_charset_manager_v2::tag_aliase_less_by_name()))
+ if(const result_type x
+     =lib::structure::lower_search
+       (g_ibp_aliase_cs_by_name,
+        _END_(g_ibp_aliase_cs_by_name),
+        n,
+        t_ibp_charset_manager_v2::tag_aliase_less_by_name()))
  {
   assert((x.position)!=NULL);
   assert(!(*x.position).name.empty());
   assert((*x.position).own_cs!=NULL);
 
-  const t_ibp_charset_manager_v2::tag_own_cs* const own_cs=(*x.position).own_cs;
+  const t_ibp_charset_manager_v2::tag_own_cs* const
+   own_cs
+    =(*x.position).own_cs;
 
   assert(own_cs);
 
@@ -720,6 +726,25 @@ void t_ibp_charset_manager_v2::reg_cs_id_name(db_obj::db_cs_id  const cs_id,
   }//case ods
 
   //------------------------------------------------------------
+  case db_obj::db_cs_id::system:
+  {
+   const auto name
+    =self_type::helper__translate_user_cs_name
+      (cs_name,
+       ibp_mce_dbobj__cant_translate_system_charset_name_1);
+
+   m_cs_id_names[idx]
+    =this->helper__get_charset
+      (name,
+       db_obj::db_cs_mng_flag__get_txt_cs_only,
+       ibp_mce_dbobj__unknown_system_charset_1); //throw
+
+   assert(m_cs_id_names[idx]);
+
+   break;
+  }//case system
+
+  //------------------------------------------------------------
   default:
   {
    IBP_ErrorUtils::Throw__BugCheck__DEBUG
@@ -790,7 +815,8 @@ db_obj::t_db_charset_const_ptr
                                                ibp_msg_code_type         const mce_unk_cs_1)
 {
  db_obj::t_db_charset_const_ptr /*const*/
-  spCS(this->helper__get_charset(cs_name,mce_unk_cs_1));
+  spCS
+   (this->helper__get_charset(cs_name,mce_unk_cs_1));
 
  assert(spCS);
 
@@ -832,10 +858,12 @@ db_obj::t_db_charset_const_ptr
 
  typedef structure::t_search_result<const tag_aliase*> result_type;
 
- if(const result_type x=structure::lower_search(g_ibp_aliase_cs_by_name,
-                                                _END_(g_ibp_aliase_cs_by_name),
-                                                cs_name,
-                                                tag_aliase_less_by_name()))
+ if(const result_type x
+     =lib::structure::lower_search
+       (g_ibp_aliase_cs_by_name,
+        _END_(g_ibp_aliase_cs_by_name),
+        cs_name,
+        tag_aliase_less_by_name()))
  {
   assert((x.position)!=NULL);
   assert(!(*x.position).name.empty());
@@ -1014,7 +1042,8 @@ charsets::t_ibp_charset_provider_ptr
    namespace icu_ns=ibp::charsets::cs_code::icu::v003;
 
    return lib::structure::not_null_ptr
-           (new icu_ns::t_ibp_icu_provider(pIcuDll));
+           (new icu_ns::t_ibp_icu_provider
+             (pIcuDll));
   }//if
 
   //ERROR - неподдерживаемая версия ICU
@@ -1038,7 +1067,8 @@ charsets::t_ibp_charset_provider_ptr
    namespace icu_ns=ibp::charsets::cs_code::icu::v063;
 
    return lib::structure::not_null_ptr
-           (new icu_ns::t_ibp_icu_provider(pIcuDll));
+           (new icu_ns::t_ibp_icu_provider
+             (pIcuDll));
   }//if
 
   if(structure::eq_str_version_prefix(ver,L"52.1"))
@@ -1082,8 +1112,9 @@ t_ibp_charset_manager_v2::charset_name_type
      (user_cs_name,
       /*process_empty_name*/true));
 
- UINT  SysCodePageID=0;
- const t_ibp_char* NamePrefix=NULL;
+ UINT SysCodePageID=0;
+
+ const t_ibp_char* NamePrefix=nullptr;
 
  if(cs_name==IBP_T("ACP"))
  {
@@ -1111,17 +1142,20 @@ t_ibp_charset_manager_v2::charset_name_type
     user_cs_name.make_str());
  }//if
 
- structure::t_basic_str_formatter<t_ibp_char> result(IBP_T("%1-%2"));
+ t_ibp_string result;
 
- result<<NamePrefix<<SysCodePageID;
+ result =NamePrefix;
+ result+=IBP_T("-");
+ result+=lib::structure::call_to_string<t_ibp_char>::exec(SysCodePageID);
 
- return result.str();
+ return result;
 }//helper__translate_user_cs_name
 
 //------------------------------------------------------------------------
 t_ibp_charset_manager_v2::charset_name_type
- t_ibp_charset_manager_v2::helper__make_std_cs_name(const cs_name_box_type& cs_name,
-                                                    bool              const process_empty_name)const
+ t_ibp_charset_manager_v2::helper__make_std_cs_name
+                        (const cs_name_box_type& cs_name,
+                         bool              const process_empty_name)const
 {
  CHECK_READ_TYPED_PTR(cs_name.ptr,cs_name.len);
 

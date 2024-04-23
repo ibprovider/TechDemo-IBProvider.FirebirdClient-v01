@@ -7,7 +7,8 @@
 #ifndef _ibp_cs_utf8_traits_CC_
 #define _ibp_cs_utf8_traits_CC_
 
-#include <structure/charsets/t_cs_utf8.h>
+#include <lcpi/lib/structure/charsets/cs_cvt__single_utf8_to_utf16.h>
+#include <lcpi/lib/structure/charsets/cs_cvt__utf16_to_utf8.h>
 
 namespace lcpi{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
@@ -16,13 +17,13 @@ namespace lcpi{namespace ibp{
 #define IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)    \
  switch(cvt_result)                                  \
  {                                                   \
-  case cs_utf8::cs_cvt_result__ok:                   \
+  case cs_nms::cs_cvt_result_code::ok:               \
    return db_obj::db_cs_result__ok;                  \
                                                      \
-  case cs_utf8::cs_cvt_result__small_output:         \
+  case cs_nms::cs_cvt_result_code::small_output:     \
    return db_obj::db_cs_result__trunc;               \
                                                      \
-  case cs_utf8::cs_cvt_result__trunc_input:          \
+  case cs_nms::cs_cvt_result_code::trunc_input:      \
    return db_obj::db_cs_result__input_trunc;         \
                                                      \
   default:                                           \
@@ -36,23 +37,31 @@ db_obj::t_db_cs_result
                         (InputIterator& source,
                          InputIterator  source_end,
                          wchar_t* const result_buffer,
-                         size_t&        result_size)const
+                         size_t&        result_size)
 {
- namespace cs_utf8=structure::charsets::cs_utf8;
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
 
- cs_utf8::t_cs_cvt_result
-  cvt_result
-   =cs_utf8::cs_cvt_result__ok;
+ //-------
+ namespace cs_nms=lib::structure::charsets;
+
+ const auto
+  result
+   =cs_nms::cs_cvt__single_utf8_to_utf16
+     (source,
+      source_end,
+      result_buffer,
+      result_buffer+result_size);
 
  source
-  =cs_utf8::single_utf8_to_ucs2
-    (source,
-     source_end,
-     result_buffer,
-     result_size,
-     &cvt_result);
+  =result.input;
 
- IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
+ LCPI__assert(result.output>=(result_buffer));
+ LCPI__assert(result.output<=(result_buffer+result_size));
+
+ result_size
+  =(result.output-result_buffer);
+
+ IBP_TRANSLATE_UTF8_CVT_RESULT(result.code)
 }//convert_single_own_to_unicode_v3
 
 //------------------------------------------------------------------------
@@ -62,23 +71,31 @@ db_obj::t_db_cs_result
                         (InputIterator& source,
                          InputIterator  source_end,
                          char*    const result_buffer,
-                         size_t&        result_size)const
+                         size_t&        result_size)
 {
- namespace cs_utf8=structure::charsets::cs_utf8;
+ CHECK_WRITE_TYPED_PTR(result_buffer,result_size);
 
- cs_utf8::t_cs_cvt_result
-  cvt_result
-   =cs_utf8::cs_cvt_result__ok;
+ //-------
+ namespace cs_nms=lib::structure::charsets;
+
+ const auto
+  result
+   =cs_nms::cs_cvt__single_utf16_to_utf8
+     (source,
+      source_end,
+      result_buffer,
+      result_buffer+result_size);
 
  source
-  =cs_utf8::single_ucs2_to_utf8
-    (source,
-     source_end,
-     result_buffer,
-     result_size,
-     &cvt_result);
+  =result.input;
 
- IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
+ LCPI__assert(result.output>=(result_buffer));
+ LCPI__assert(result.output<=(result_buffer+result_size));
+
+ result_size
+  =(result.output-result_buffer);
+
+ IBP_TRANSLATE_UTF8_CVT_RESULT(result.code)
 }//convert_single_unicode_to_own_v3
 
 //------------------------------------------------------------------------
@@ -87,22 +104,20 @@ db_obj::t_db_cs_result
  t_ibp_cs_utf8_traits::ucs2_to_own
                         (InputIterator& source,
                          InputIterator  source_end,
-                         OutputIterator dest)const
+                         OutputIterator dest)
 {
- namespace cs_utf8=structure::charsets::cs_utf8;
+ namespace cs_nms=lib::structure::charsets;
 
- cs_utf8::t_cs_cvt_result
-  cvt_result
-   =cs_utf8::cs_cvt_result__ok;
+ const auto
+  result
+   =cs_nms::cs_cvt__utf16_to_utf8
+     (source,
+      source_end,
+      dest);
 
- source
-  =cs_utf8::ucs2_to_utf8
-    (source,
-     source_end,
-     dest,
-     &cvt_result);
+ source=result.input;
 
- IBP_TRANSLATE_UTF8_CVT_RESULT(cvt_result)
+ IBP_TRANSLATE_UTF8_CVT_RESULT(result.code)
 }//ucs2_to_own
 
 //------------------------------------------------------------------------

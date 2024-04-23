@@ -85,7 +85,7 @@ HRESULT TOleStatus::set_error(HRESULT hr)
 //------------------------------------------------------------------------
 std::string TOleStatus::get_msg()const
 {
- t_string msg(tstr_to_tstr(this->get_text()));
+ t_string msg(structure::tstr_to_tstr(this->get_text()));
 
  if(msg.empty())
   msg=win32lib::GetErrorMsg(DWORD(m_last_result),false);

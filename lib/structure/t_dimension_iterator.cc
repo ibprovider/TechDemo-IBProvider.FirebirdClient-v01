@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_dimension_iterator_CC_
-#define _t_dimension_iterator_CC_
+#ifndef _lcpi_lib_structure__t_dimension_iterator_CC_
+#define _lcpi_lib_structure__t_dimension_iterator_CC_
 
 #include <structure/t_str_formatter.h>
 

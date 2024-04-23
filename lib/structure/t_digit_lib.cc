@@ -1,9 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Реализация шаблонов <structure/t_digit_lib.h>
 //                                     Коваленко Дмитрий. 22 декабря 2001 года.
-
-#ifndef _t_digit_lib_CC_
-#define _t_digit_lib_CC_
+#ifndef _lcpi_lib_structure__t_digit_lib_CC_
+#define _lcpi_lib_structure__t_digit_lib_CC_
 
 #include <structure/t_zero.h>
 

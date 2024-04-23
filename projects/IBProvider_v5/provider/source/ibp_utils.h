@@ -8,6 +8,7 @@
 #define _ibp_utils_H_
 
 #include <lcpi/lib/structure/t_const_str_box.h>
+#include <sstream>
 #include <vector>
 
 namespace lcpi{namespace ibp{
@@ -28,10 +29,10 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
  public:
   using wstr_box_type
    =lib::structure::t_const_wstr_box;
- 
+
   using str_box_type
    =lib::structure::t_const_str_box;
- 
+
  public:
   static HRESULT GetAsynchRowsetOpStatus__Complete
                                    (DBCOUNTITEM*   pulProgress,
@@ -156,50 +157,48 @@ class IBP_Utils LCPI_CPP_CFG__CLASS__FINAL
 template<class Allocator>
 std::wstring IBP_Utils::MakePointStr(const std::vector<long,Allocator>& pt)
 {
- std::wstring result;
+ std::wstringstream result_wss;
 
- wchar_t buf[64];
+ const wchar_t* sep=L"";
 
  //обрабатываем в прямом порядке.
  for(size_t x=0,_c=pt.size();x!=_c;++x)
  {
-  if(x!=0)
-   result+=L',';
+  result_wss<<sep;
 
-  LCPI__VERIFY_EQ(LCPI_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
+  sep=L",";
 
-  assert(std::find(buf,_END_(buf),0)!=_END_(buf));
-
-  result+=buf;
+  result_wss<<pt[x];
  }//for x
 
- return result;
+ assert(!result_wss.fail());
+
+ return result_wss.str();
 }//MakePointStr
 
 //------------------------------------------------------------------------
 template<class Allocator>
 std::wstring IBP_Utils::MakePointStr__revert(const std::vector<long,Allocator>& pt)
 {
- std::wstring result;
+ std::wstringstream result_wss;
 
- wchar_t buf[64];
+ const wchar_t* sep=L"";
 
  //обрабатываем в обратном порядке.
- for(size_t x=pt.size(),_c=pt.size();x>0;)
+ for(size_t x=pt.size();x!=0;)
  {
-  if(x!=_c)
-   result+=L',';
-
   --x;
 
-  LCPI__VERIFY_EQ(LCPI_GCRT_itow_s(pt[x],buf,_DIM_(buf),10),0L);
+  result_wss<<sep;
 
-  assert(std::find(buf,_END_(buf),0)!=_END_(buf));
+  sep=L",";
 
-  result+=buf;
+  result_wss<<pt[x];
  }//for x
 
- return result;
+ assert(!result_wss.fail());
+
+ return result_wss.str();
 }//MakePointStr__revert
 
 ////////////////////////////////////////////////////////////////////////////////

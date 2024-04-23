@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Servcies for with version strings
 //                                               Dmitry Kovalenko. 29.03.2005
-#ifndef _t_str_version_H_
-#define _t_str_version_H_
+#ifndef _lcpi_lib_structure__t_str_version_H_
+#define _lcpi_lib_structure__t_str_version_H_
 
 #include <structure/t_const_str_box.h>
 #include <structure/t_memory.h>

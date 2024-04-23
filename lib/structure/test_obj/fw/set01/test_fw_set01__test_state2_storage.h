@@ -17,7 +17,7 @@ class TestFW__TestState2_Storage LCPI_CPP_CFG__CLASS__FINAL
  private:
   using self_type=TestFW__TestState2_Storage;
 
-  typedef TestFW__TestState2_Storage(const self_type&)=delete;
+  TestFW__TestState2_Storage(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------

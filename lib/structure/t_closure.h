@@ -4,8 +4,8 @@
 //будет создано несколько наборов реализаций.
 //                                      Коваленко Дмитрий. 5 мая 2001 года.
 
-#ifndef _t_closure_H_
-#define _t_closure_H_
+#ifndef _lcpi_lib_structure__t_closure_H_
+#define _lcpi_lib_structure__t_closure_H_
 
 #include <lcpi/lib/.config.h>
 

@@ -70,8 +70,11 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::to_unicode_v2
  {
   size_t cvt_sz=_DIM_(cvt_wc);
 
-  //! \todo
-  //!  Добавить контроль движения вперед указателя cur_s
+  //отладочный контроль движения вперед указателя cur_s
+
+#ifndef NDEBUG
+  const auto debug__copy_of_cur_s=cur_s;
+#endif
 
   const db_obj::t_db_cs_result
    cvt_code
@@ -88,6 +91,8 @@ bool t_ibp_cs_bit8_bit16<TCS_Traits>::to_unicode_v2
 
   if(cvt_sz==0)
    break;
+
+  assert(debug__copy_of_cur_s<cur_s);
 
   assert(cvt_sz<=_DIM_(cvt_wc));
 

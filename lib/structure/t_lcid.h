@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Generic class of locale identificier (number/string)
 //                                               Dmitry Kovalenko. 28.08.2004.
-#ifndef _lcpi_lib__t_lcid_H_
-#define _lcpi_lib__t_lcid_H_
+#ifndef _lcpi_lib_structure__t_lcid_H_
+#define _lcpi_lib_structure__t_lcid_H_
 
 #include <lcpi/lib/structure/t_lcid.h>
 

@@ -15,34 +15,43 @@
 namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace v02_5_0{
 ////////////////////////////////////////////////////////////////////////////////
 
-db_obj::t_db_object_ptr create_svc__status_vector_utils()
+db_obj::t_db_object_ptr create_svc__status_vector_utils
+                             (db_obj::t_db_charset_manager_v2* pCsMng)
 {
- return fb_v02_5_0__svc__status_vector_utils::create();
+ assert(pCsMng);
+
+ return fb_v02_5_0__svc__status_vector_utils::create(pCsMng);
 }//create_svc__status_vector_utils
 
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_v02_5_0__svc__status_vector_utils
 
-fb_v02_5_0__svc__status_vector_utils
- fb_v02_5_0__svc__status_vector_utils::sm_Instance;
+TIBP_MsgTableLoader
+ const fb_v02_5_0__svc__status_vector_utils::sm_ErrMsgTableLoader
+  (&ibp::_ResourceLoader,
+   IBP_MSG_TABLE_FB25_ERR);
 
 //------------------------------------------------------------------------
-fb_v02_5_0__svc__status_vector_utils::fb_v02_5_0__svc__status_vector_utils()
+fb_v02_5_0__svc__status_vector_utils::fb_v02_5_0__svc__status_vector_utils
+                        (db_obj::t_db_charset_manager_v2* pCsMng)
  :inherited(_DIM_(api::g_fb_v02_5_0__error_descrs2),
-            api::g_fb_v02_5_0__error_descrs2)
- ,m_ErrMsgTableLoader(&ibp::_ResourceLoader,
-                      IBP_MSG_TABLE_FB25_ERR)
-{;}
+            api::g_fb_v02_5_0__error_descrs2,
+            pCsMng)
+{
+}
 
 //------------------------------------------------------------------------
 fb_v02_5_0__svc__status_vector_utils::~fb_v02_5_0__svc__status_vector_utils()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 common::fb_common__svc__status_vector_utils_ptr
- fb_v02_5_0__svc__status_vector_utils::create()
+ fb_v02_5_0__svc__status_vector_utils::create(db_obj::t_db_charset_manager_v2* pCsMng)
 {
- return lib::structure::not_null_ptr(&sm_Instance);
+ assert(pCsMng);
+
+ return lib::structure::not_null_ptr(new self_type(pCsMng));
 }//create
 
 //internal interface -----------------------------------------------------
@@ -60,7 +69,7 @@ void fb_v02_5_0__svc__status_vector_utils::internal__build_err_message
       lcid,
       cArgs,
       rgArgs,
-      m_ErrMsgTableLoader);
+      sm_ErrMsgTableLoader);
 
  assert_msg(build_result,"msg_code="<<msg_code);
 }//internal__build_err_message
@@ -87,6 +96,48 @@ fb_v02_5_0__svc__status_vector_utils::status_type
 {
  return api::ibp_fb_v25_err__unexpected_error;
 }//internal__get_unexpected_error_code
+
+//------------------------------------------------------------------------
+#define DEF_DESCR(errCode,ArgNumber,CsKind) \
+ {db_obj::dbms_fb::v02_5_0::api::ibp_fb_v25_err__##errCode,ArgNumber,arg_cs_kind::##CsKind},
+
+const fb_v02_5_0__svc__status_vector_utils::tag_arg_descr
+ fb_v02_5_0__svc__status_vector_utils::sm_arg_descrs[]
+{
+ // I/O error during "%1" operation for file "%2".
+ DEF_DESCR(io_error, 2, system)
+
+ // database %1 shutdown
+ DEF_DESCR(shutdown, 1, system)
+
+ // database %1 shutdown in progress
+ DEF_DESCR(shutinprog, 1, system)
+
+ // Target shutdown mode is invalid for database "%1"
+ DEF_DESCR(bad_shutdown_mode, 1, system)
+};//sm_arg_descrs
+
+#undef DEF_DESCR
+
+//------------------------------------------------------------------------
+fb_v02_5_0__svc__status_vector_utils::arg_cs_kind
+ fb_v02_5_0__svc__status_vector_utils::internal__get_cs_for_arg
+                        (status_type const iscErrorCode,
+                         size_t      const argNumber)const
+{
+ for(const auto& x:sm_arg_descrs)
+ {
+  if(x.errCode!=iscErrorCode)
+   continue;
+
+  if(x.argNumber!=argNumber)
+   continue;
+
+  return x.arg_cs_kind;
+ }//for x
+
+ return arg_cs_kind::connection;
+}//internal__get_cs_for_arg
 
 ////////////////////////////////////////////////////////////////////////////////
 }/*nms v02_5_0*/}/*nms dbms_fb*/}/*nms db_obj*/}/*nms ibp*/}/*nms lcpi*/

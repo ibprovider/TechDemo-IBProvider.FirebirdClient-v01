@@ -3,6 +3,7 @@
 #pragma hdrstop
 
 #include <win32lib/win32_registry.h>
+#include <structure/utilities/string/call_to_string.h>
 #include <structure/t_function.h>
 
 namespace win32lib{
@@ -355,19 +356,17 @@ t_string TRegistry::ReadString(HKEY         const hkey,
      assert(buffer.size()==sizeof(DWORD));
 
      if(buffer.size()!=sizeof(DWORD))
+     {
       lResult=ERROR_CANTREAD;
+     }
      else
      {
-      TCHAR tmpStr[64];
-
-      LCPI_GCRT_itot_s(*reinterpret_cast<const DWORD*>(buffer.buffer()),tmpStr,_DIM_(tmpStr),10);
-
-      value=tmpStr;
+      value=structure::call_to_string<TCHAR>::exec(*reinterpret_cast<const DWORD*>(buffer.buffer()));
      }
      break;
     }//DWORD
     
-   default             :
+   default:
     {
      lResult=ERROR_CANTREAD;
      break;
@@ -454,11 +453,11 @@ LONG TRegistry::ReadInteger(HKEY         const hkey,
 
       t_string str(beg,end);
 
-      t_char* endptr=NULL;
+      t_char* endptr=nullptr;
 
       value=_tcstol(str.c_str(),&endptr,0);
 
-      if(endptr!=NULL && t_byte(*endptr)>t_byte(' '))
+      if(endptr!=nullptr && (*endptr)!=0)
        lResult=ERROR_CANTREAD;
      }
      break;

@@ -3,7 +3,6 @@
 #pragma hdrstop
 
 #include <ole_lib/oledb/oledb_memory.h>
-#include <structure/t_char_converter.h>
 
 namespace oledb_lib{
 ////////////////////////////////////////////////////////////////////////////////

@@ -8,7 +8,10 @@
 #include <structure/test_obj/fw/set01/test_fw_set01__utilities.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__tracer_utils.h>
 #include <structure/t_str_parameter.h>
+
+#if _WIN32
 #include <psapi.h>
+#endif
 
 namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,21 +20,21 @@ namespace structure{namespace test_fw{namespace set01{
 class TestFW__SummaryBuilder:public TestFW__SysSmartMemoryObject
 {
  private:
-  typedef TestFW__SummaryBuilder                          self_type;
+  using self_type=TestFW__SummaryBuilder;
 
-  TestFW__SummaryBuilder(const self_type&);
-  self_type& operator = (const self_type&);
+  TestFW__SummaryBuilder(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~TestFW__SummaryBuilder();
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>        self_ptr;
+  using self_ptr=structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::t_str_parameter<wchar_t>             wstr_param_type;
+  using str_param_type=structure::t_str_parameter<char>;
 
-  typedef TestFW__StdMemoryAllocator                      allocator_type;
+  using allocator_type=TestFW__StdMemoryAllocator;
 
-  typedef TestFW__SysTracer                               tracer_type;
+  using tracer_type=TestFW__SysTracer;
 
   using count_type=std::uint64_t;
 
@@ -49,49 +52,56 @@ class TestFW__SummaryBuilder:public TestFW__SysSmartMemoryObject
   template<class TTestState>
   void print_test_with_error
        (const TTestState& test_status,
-        wstr_param_type   ext_info);
+        str_param_type    ext_info);
 
   template<class TTestState>
   void print_test_with_warning
        (const TTestState& test_status,
-        wstr_param_type   ext_info);
+        str_param_type    ext_info);
 
   void print_summary
-        (wstr_param_type header,
-         bool            print_total_from_log);
+        (str_param_type header,
+         bool           print_total_from_log);
 
   void print_total
-        (wstr_param_type header,
-         count_type      nError,
-         count_type      nWarning);
+        (str_param_type header,
+         count_type     nError,
+         count_type     nWarning);
 
  public:
   template<class TTracer>
   void print_summary_ex
-        (TTracer&        tracer,
-         wstr_param_type header,
-         bool            print_total_from_log);
+        (TTracer&       tracer,
+         str_param_type header,
+         bool           print_total_from_log);
 
  public:
   template<class TTracer>
   static void print_total_ex
-               (TTracer&        tracer,
-                wstr_param_type header,
-                count_type      nError,
-                count_type      nWarning);
+               (TTracer&       tracer,
+                str_param_type header,
+                count_type     nError,
+                count_type     nWarning);
 
   template<class TTracer>
   static void print_total_ex
-               (TTracer&        tracer,
-                wstr_param_type header,
-                count_type      nError,
-                count_type      nWarning,
-                count_type      nFullPass,
-                count_type      nTotalTests);
+               (TTracer&       tracer,
+                str_param_type header,
+                count_type     nError,
+                count_type     nWarning,
+                count_type     nFullPass,
+                count_type     nTotalTests);
 
  public:
   template<class TTracer>
   static void print_summary_process_state(TTracer& tracer);
+
+ private:
+  using tick_type
+   =std::ratio<1,10*1000*1000>;
+
+  using duration_type
+   =std::chrono::duration<std::int64_t,tick_type>;
 
  private:
   count_type m_nLogErrors;
@@ -106,9 +116,9 @@ class TestFW__SummaryBuilder:public TestFW__SysSmartMemoryObject
   count_type m_nTestErrors;
   count_type m_nTestWarnings;
 
-  __int64  m_Time_Real;
-  __int64  m_Time_User;
-  __int64  m_Time_Kernel;
+  duration_type m_Time_Real;
+  duration_type m_Time_User;
+  duration_type m_Time_Kernel;
 
  private:
   static const wchar_t* const sm_line1;

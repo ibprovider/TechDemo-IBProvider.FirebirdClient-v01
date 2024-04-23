@@ -128,15 +128,6 @@
     <Filter Include="IBP\source\db_obj\isc\isc_base\_headers">
       <UniqueIdentifier>{80e675f9-0bec-44b9-8908-eb9a530acd5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="IBP\source\db_obj\isc\fb">
-      <UniqueIdentifier>{9ff9e43b-8fb1-4474-88b2-cb7d49165edc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="IBP\source\db_obj\isc\fb\fb_base">
-      <UniqueIdentifier>{7a2181e8-50f5-4b0d-8dcb-21323eece659}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="IBP\source\db_obj\isc\fb\fb_base\_headers">
-      <UniqueIdentifier>{6eb919a1-aaca-4877-97a7-de185a65dd6d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\tests\fb_v25">
       <UniqueIdentifier>{3a1ee296-a464-4d7a-88b2-38db4ac7cab7}</UniqueIdentifier>
     </Filter>
@@ -1118,6 +1109,12 @@
     <Filter Include="lib\structure\test_obj\fw\set01\_headers">
       <UniqueIdentifier>{14728e4d-0aa2-4298-89cc-1f690427e730}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IBP\source\db_obj\isc\fb_base">
+      <UniqueIdentifier>{7a2181e8-50f5-4b0d-8dcb-21323eece659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IBP\source\db_obj\isc\fb_base\_headers">
+      <UniqueIdentifier>{6eb919a1-aaca-4877-97a7-de185a65dd6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\provider\source\db_client\remote_fb\remote_fb__connector.cpp">
@@ -1653,15 +1650,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\test_func_v2.cpp">
       <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_mt.cpp">
-      <Filter>lib\win32lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\win32lib\win32_time.cpp">
-      <Filter>lib\win32lib</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.cpp">
-      <Filter>lib\structure\test_obj</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\push_test__filter.cpp">
       <Filter>source</Filter>
@@ -3847,6 +3835,15 @@
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.cpp">
       <Filter>lib\structure\test_obj\fw\set01</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os.mt-thread_api.cpp">
+      <Filter>cpp\infrastructure\lcpi\os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\ib_base\ib_sys_data.cpp">
+      <Filter>IBP\source\db_obj\isc\ib_base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\provider\source\db_obj\fb_base\fb_sys_data.cpp">
+      <Filter>IBP\source\db_obj\isc\fb_base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\provider\source\db_client\remote_fb\ports\remote_fb__port.h">
@@ -3940,7 +3937,7 @@
       <Filter>IBP\source\db_obj\isc\isc_base\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_api.h">
-      <Filter>IBP\source\db_obj\isc\fb\fb_base\_headers</Filter>
+      <Filter>IBP\source\db_obj\isc\fb_base\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\provider\source\error_services\ibp_error_build_message.h">
       <Filter>IBP\source\services\errors\_headers</Filter>
@@ -4508,12 +4505,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\test_tracer_utils.h">
       <Filter>source\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\lib\win32lib\win32_time.h">
-      <Filter>lib\win32lib\_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\t_tso_timer.h">
-      <Filter>lib\structure\test_obj\_headers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\push_test__filter.h">
       <Filter>source\_headers</Filter>
@@ -6111,6 +6102,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__utilities.h">
       <Filter>lib\structure\test_obj\fw\set01\_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\ib_base\ib_sys_data.h">
+      <Filter>IBP\source\db_obj\isc\ib_base\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\provider\source\db_obj\fb_base\fb_sys_data.h">
+      <Filter>IBP\source\db_obj\isc\fb_base\_headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

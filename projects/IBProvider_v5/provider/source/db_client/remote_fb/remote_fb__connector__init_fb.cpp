@@ -15,8 +15,11 @@ namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__Connector
 
-void RemoteFB__Connector::Helper__FinalInitialize__FB(const cns_type& cns)
+void RemoteFB__Connector::Helper__FinalInitialize__FB
+                             (const oledb_lib::OLEDB_Props2__Data__Values* const pDsPropValues,
+                              const cns_type&                                    cns)
 {
+ assert(pDsPropValues);
  assert(m_spData);
  assert(m_spData->GetPort());
 
@@ -48,7 +51,8 @@ void RemoteFB__Connector::Helper__FinalInitialize__FB(const cns_type& cns)
 
 #else
   return this->Helper__FinalInitialize__FB_04_00
-          (cns);
+          (pDsPropValues,
+           cns);
 #endif
  }//if
 
@@ -56,13 +60,15 @@ void RemoteFB__Connector::Helper__FinalInitialize__FB(const cns_type& cns)
  if(structure::cmp_str_version_prefix(fb_ver_cur,"3")>=0)
  {
   return this->Helper__FinalInitialize__FB_03_00
-          (cns);
+          (pDsPropValues,
+           cns);
  }//if
 
  //---------------------------
  {
   return this->Helper__FinalInitialize__FB_02_05
-          (cns);
+          (pDsPropValues,
+           cns);
  }//local
 }//Helper__FinalInitialize__FB
 

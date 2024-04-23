@@ -14,11 +14,13 @@ namespace lcpi{namespace ibp{
 //class t_ibp_error_collection
 
 t_ibp_error_collection::t_ibp_error_collection()
-{;}
+{
+}
 
 //------------------------------------------------------------------------
 t_ibp_error_collection::~t_ibp_error_collection()
-{;}
+{
+}
 
 //t_err_records_r interface ----------------------------------------------
 size_t t_ibp_error_collection::get_record_count()const

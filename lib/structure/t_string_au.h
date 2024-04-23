@@ -1,107 +1,85 @@
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _t_string_au_H_
-#define _t_string_au_H_
+//LCPI instrumental C++ library.
+//                                                 Dmitry Kovalenko. 28.01.2005.
+#ifndef _lcpi_lib_structure__t_string_au_H_
+#define _lcpi_lib_structure__t_string_au_H_
 
-#include <structure/t_char_converter.h>
-#include <structure/t_char_traits2.h>
+#include <lcpi/lib/.config.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
-//containings
+//content
 
-template<class stringT>
+template<class stringT,class str_cvt_traits>
 class t_string_au;
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_string_au
 
-template<class stringT>
-class t_string_au
+template<class stringT,class str_cvt_traits>
+class t_string_au LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_string_au<stringT>                   self_type;
+  using self_type=t_string_au<stringT,str_cvt_traits>;
 
  public: //typedefs ------------------------------------------------------
-  typedef stringT                                string_type;
-  typedef typename string_type::value_type       char_type;
-  typedef typename string_type::traits_type      traits_type;
-  typedef typename string_type::size_type        size_type;
+  using string_type         = stringT;
+  using str_cvt_traits_type = str_cvt_traits;
 
-  typedef typename string_type::iterator         iterator;
-  typedef typename string_type::const_iterator   const_iterator;
+  using char_type       = typename string_type::value_type;
+  using traits_type     = typename string_type::traits_type;
+  using size_type       = typename string_type::size_type;
 
-  typedef t_char_traits2<char_type>              traits2_type;
-
-  typedef typename traits2_type::other_char_type other_char_type;
-  typedef std::char_traits<other_char_type>      other_traits_type;
-
-  typedef std::basic_string
-   <other_char_type,other_traits_type,
-    std::allocator<other_char_type> >            other_string_type;
+  using iterator        = typename string_type::iterator;
+  using const_iterator  = typename string_type::const_iterator;
 
  public:
   t_string_au()
-   {;}
+  {
+  }
 
   t_string_au(const self_type& x)
    :m_str(x.m_str)
-   {;}
+  {
+  }
 
-  t_string_au(const string_type& s)
-   :m_str(s)
-   {;}
-
-  t_string_au(const char_type* const s,size_type const n=-1)
-   :m_str((s?s:traits2_type::str_empty()),s?((n==-1)?traits_type::length(s):n):0)
-   {;}
-
-  t_string_au(const other_string_type& s)
-   {tstr_to_tstr(&m_str,s);}
-
-  t_string_au(const other_char_type* const s,size_type const n=-1)
-   {tstr_to_tstr(&m_str,s,n);}
+  template<class TSrc>
+  t_string_au(TSrc&& s)
+  {
+   str_cvt_traits_type::tstr_to_tstr(&m_str,std::forward<TSrc>(s));
+  }
 
   //assign operators ------------------------------------------------------
   self_type& operator = (const self_type& x)
-   {m_str=x.m_str;return *this;}
-
-  self_type& operator = (const string_type& s)
-   {m_str=s;return *this;}
-
-  self_type& operator = (const char_type* const s)
-   {m_str=s?s:traits2_type::empty_str();return *this;}
-
-  self_type& operator = (const other_string_type& s)
-   {tstr_to_tstr(m_str,s);return *this;}
-
-  self_type& operator = (const other_char_type* const s)
-   {tstr_to_tstr(m_str,s);return *this;}
+  {
+   m_str=x.m_str;
+   return *this;
+  }
 
   //modificators ----------------------------------------------------------
   self_type& erase()
-   {m_str.erase();return *this;}
+  {
+   m_str.erase();
+   return *this;
+  }
 
-  self_type& append(const self_type& x);
+  self_type& append(const self_type& x)
+  {
+   m_str+=x.m_str;
+   return *this;
+  }
 
-  self_type& append(const string_type& s);
-
-  self_type& append(const char_type* const s,size_type const n=-1);
-
-  self_type& append(const other_string_type& s);
-
-  self_type& append(const other_char_type* const s,size_type const n=-1);
-
-  self_type& operator += (const self_type&);
-
-  self_type& operator += (const string_type&);
-
-  self_type& operator += (const char_type* const);
-
-  self_type& operator += (const other_string_type&);
-
-  self_type& operator += (const other_char_type* const);
+  self_type& operator += (const self_type& x)
+  {
+   return this->append(x);
+  }
 
   //selectors ------------------------------------------------------------
+  bool empty() const
+  {
+   return m_str.empty();
+  }//empty
+
   const string_type& str()const
    {return m_str;}
 
@@ -127,24 +105,27 @@ class t_string_au
   const_iterator end()const
    {return m_str.end();}
 
+  const_iterator cbegin()const
+   {return m_str.cbegin();}
+
+  const_iterator cend()const
+   {return m_str.cend();}
+
  private:
   string_type m_str;
-};//t_string_au
+};//class t_string_au
 
 ////////////////////////////////////////////////////////////////////////////////
 //stream operator
 
-template<class stringT>
+template<class stringT,class str_cvt_traits>
 std::basic_ostream<typename stringT::value_type,typename stringT::traits_type>&
  operator << (std::basic_ostream<typename stringT::value_type,typename stringT::traits_type>& os,
-              const t_string_au<stringT>&                                                     s)
+              const t_string_au<stringT,str_cvt_traits>&                                    s)
 {
  return os<<s.str();
 }//operator <<
 
 ////////////////////////////////////////////////////////////////////////////////
 }//namespace structure
-////////////////////////////////////////////////////////////////////////////////
-#include <structure/t_string_au.cc>
-////////////////////////////////////////////////////////////////////////////////
 #endif

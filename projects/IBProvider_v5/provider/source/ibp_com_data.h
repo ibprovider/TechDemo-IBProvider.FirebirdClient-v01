@@ -72,7 +72,7 @@ class IBP_ComModule::TData LCPI_CPP_CFG__CLASS__FINAL
   size_t volatile             m_component_count;
 
  public:
-  unsigned __int64            m_server_lock_count;
+  std::uint64_t               m_server_lock_count;
 
  public:
 #ifndef IBP_BUILD_TESTCODE

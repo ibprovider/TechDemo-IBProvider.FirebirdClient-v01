@@ -18,12 +18,13 @@ namespace lcpi{namespace ibp{namespace db_obj{namespace dbms_fb{namespace common
 ////////////////////////////////////////////////////////////////////////////////
 //class fb_common__svc__status_vector_utils
 
-class fb_common__svc__status_vector_utils:public db_obj::t_db_smart_interface
+class LCPI_CPP_CFG__DECLSPEC__NOVTABLE fb_common__svc__status_vector_utils
+ :public db_obj::t_db_smart_interface
 {
  public: //typedefs ------------------------------------------------------
-  typedef isc_base::t_isc_error_code_descr2      descr2_type;
+  using descr2_type=isc_base::t_isc_error_code_descr2;
 
-  typedef isc_api::t_ibp_isc_status              status_type;
+  using status_type=isc_api::t_ibp_isc_status;
 
   enum gresult_code_type
   {
@@ -31,10 +32,10 @@ class fb_common__svc__status_vector_utils:public db_obj::t_db_smart_interface
    gresult__bad_sv  =1,
   };//enum gresult_code
 
-  struct gresult_data_type
+  struct gresult_data_type LCPI_CPP_CFG__CLASS__FINAL
   {
    private:
-    typedef gresult_data_type               self_type;
+    using self_type=gresult_data_type;
 
    public:
     gresult_code_type code;

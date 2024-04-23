@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //explicit type of arguments
 //                                                 Dmitry Kovalenko. 16.12.2006.
-#ifndef _lcpi_lib__t_explicit_H_
-#define _lcpi_lib__t_explicit_H_
+#ifndef _lcpi_lib_structure__t_explicit_H_
+#define _lcpi_lib_structure__t_explicit_H_
 
 #include <lcpi/lib/structure/t_explicit.h>
 

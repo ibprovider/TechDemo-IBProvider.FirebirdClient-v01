@@ -21,6 +21,9 @@ class TRegistry LCPI_CPP_CFG__CLASS__FINAL
   self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
+  using char_type
+   =win32lib::t_char;
+
   using allocator_type
    =structure::t_void_allocator;
 
@@ -29,9 +32,6 @@ class TRegistry LCPI_CPP_CFG__CLASS__FINAL
 
   using TDataBuffer
    =structure::t_typed_simple_buffer<BYTE,allocator_type>;
-
-  using char_type
-   =structure::t_char;
 
   using str_arg_type
    =structure::t_str_parameter<char_type>;

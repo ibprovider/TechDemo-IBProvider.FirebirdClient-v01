@@ -10,10 +10,12 @@
 #include "source/test_utilities.h"
 #include "source/xsqlda_v1_wrapper.h"
 #include "source/db_obj/isc_base/isc_connection_settings.h"
-#include <structure/mt/t_mt_thread_controller__win32.h>
 #include <structure/test_obj/t_tso_user.h>
 #include <structure/t_dimension_iterator.h>
+#include <win32lib/win32_mt.h>
 #include <win32lib/win32_error.h>
+
+#include <lcpi/lib/structure/mt/t_thread_controller__std.h>
 
 namespace lcpi{namespace ibp_tests{
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,28 +23,29 @@ using namespace win32lib;
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Cancel_Test_02__StmtFetch::tag_thread
 
-class WORK_Cancel_Test_02__StmtFetch::tag_thread
- :public structure::t_basic_thread_controller__win32<TTSO_SmartMemoryObject>
+class WORK_Cancel_Test_02__StmtFetch::tag_thread LCPI_CPP_CFG__CLASS__FINAL
+ :public lib::structure::mt::t_basic_thread_controller__std<TTSO_SmartMemoryObject>
 {
  private:
-  typedef tag_thread                                         self_type;
-  typedef structure::t_basic_thread_controller__win32
-           <TTSO_SmartMemoryObject>                          inherited;
+  using self_type=tag_thread;
+  using inherited=lib::structure::mt::t_basic_thread_controller__std<TTSO_SmartMemoryObject>;
 
-  tag_thread(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_thread(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
-  typedef structure::t_smart_object_ptr<self_type>           self_ptr;
+  using self_ptr=lib::structure::t_smart_object_ptr<self_type>;
 
-  typedef structure::tso_obj::t_simple_log                   log_type;
-  typedef log_type::self_ptr                                 log_ptr;
+  using log_type=structure::tso_obj::t_simple_log;
+  using log_ptr=log_type::self_ptr;
 
-  typedef remote_fb::handles::RemoteFB__TrHandle             tr_handle_type;
-  typedef remote_fb::handles::RemoteFB__StmtHandle           stmt_handle_type;
+  using tr_handle_type=remote_fb::handles::RemoteFB__TrHandle;
+  using stmt_handle_type=remote_fb::handles::RemoteFB__StmtHandle;
+
+  using event_type=lcpi::infrastructure::os::mt::LCPI_OS__Event;
 
  public:
-  win32lib::TEvent     m_StartEvent;
+  event_type           m_StartEvent;
   ibp::t_ibp_error     m_Exc;
   bool                 m_HasExc;
 
@@ -60,7 +63,7 @@ class WORK_Cancel_Test_02__StmtFetch::tag_thread
   virtual ~tag_thread();
 
  private:
-  virtual const wchar_t* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void thread_worker_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -80,7 +83,8 @@ WORK_Cancel_Test_02__StmtFetch::tag_thread::tag_thread
                                             remote_fb::RemoteFB__Connector*  pConnector,
                                             const tr_handle_type&            hTr,
                                             const stmt_handle_type&          hStmt)
- :m_Exc         (S_OK)
+ :m_StartEvent  (/*manual reset*/false,false)
+ ,m_Exc         (S_OK)
  ,m_HasExc      (false)
  ,m_OpCtx       (cnParams)
  ,m_spLog       (lib::structure::not_null_ptr(pLog))
@@ -92,19 +96,17 @@ WORK_Cancel_Test_02__StmtFetch::tag_thread::tag_thread
  assert(m_spConnector);
  assert(m_hTr);
  assert(m_hStmt);
-
- if(!m_StartEvent.Create(NULL,/*manual reset*/false,false,NULL))
-  t_win32_error::throw_error(::GetLastError(),"Failed to create the tag_thread::m_StartEvent");
 }//tag_thread
 
 //------------------------------------------------------------------------
 WORK_Cancel_Test_02__StmtFetch::tag_thread::~tag_thread()
-{;}
+{
+}
 
 //thread interface -------------------------------------------------------
-const wchar_t* WORK_Cancel_Test_02__StmtFetch::tag_thread::thread_name_impl()const
+const char* WORK_Cancel_Test_02__StmtFetch::tag_thread::thread_name_impl()const
 {
- return L"thread";
+ return "thread";
 }//thread_name_impl
 
 //------------------------------------------------------------------------
@@ -127,8 +129,7 @@ void WORK_Cancel_Test_02__StmtFetch::tag_thread::thread_worker_impl()
  //-------------
  tracer<<L"Begin fetch from cursor"<<send;
 
- if(!m_StartEvent.Set())
-  t_win32_error::throw_error(::GetLastError(),"Set Start Event");
+ m_StartEvent.Set__Throw();
 
  typedef TestServices svc;
 
@@ -138,9 +139,12 @@ void WORK_Cancel_Test_02__StmtFetch::tag_thread::thread_worker_impl()
   {
    tracer<<L"FETCH"<<send;
 
-   const bool fetchResult=m_spConnector->StmtFetch(m_OpCtx,
-                                                   &m_hStmt,
-                                                   xsqlda);
+   const bool
+    fetchResult
+     =m_spConnector->StmtFetch
+       (m_OpCtx,
+        &m_hStmt,
+        xsqlda);
 
    if(!fetchResult)
     break;
@@ -157,14 +161,14 @@ void WORK_Cancel_Test_02__StmtFetch::tag_thread::thread_worker_impl()
 ////////////////////////////////////////////////////////////////////////////////
 //class WORK_Cancel_Test_02__StmtFetch::tag_impl
 
-class WORK_Cancel_Test_02__StmtFetch::tag_impl
- :public structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
+class WORK_Cancel_Test_02__StmtFetch::tag_impl LCPI_CPP_CFG__CLASS__FINAL
+ :public lib::structure::t_basic_smart_interface_impl__dynamic<TTSO_Test,TTSO_MemoryAllocator>
 {
  private:
   using self_type=tag_impl;
 
-  tag_impl(const self_type&);
-  self_type& operator = (const self_type&);
+  tag_impl(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
   virtual ~tag_impl();
 
@@ -192,8 +196,8 @@ class WORK_Cancel_Test_02__StmtFetch::tag_impl
 //class WORK_Cancel_Test_02__StmtFetch::tag_impl
 
 WORK_Cancel_Test_02__StmtFetch::tag_impl::tag_impl(TTSO_GlobalContext*     pParams,
-                                                     const char*             pTestID,
-                                                     const TTSO_TestData_v2& Data)
+                                                   const char*             pTestID,
+                                                   const TTSO_TestData_v2& Data)
  :m_spParams(pParams)
  ,m_TestID(lib::structure::not_null_ptr(pTestID))
  ,m_Data(Data)
@@ -203,7 +207,8 @@ WORK_Cancel_Test_02__StmtFetch::tag_impl::tag_impl(TTSO_GlobalContext*     pPara
 
 //------------------------------------------------------------------------
 WORK_Cancel_Test_02__StmtFetch::tag_impl::~tag_impl()
-{;}
+{
+}
 
 //test interface ---------------------------------------------------------
 const char* WORK_Cancel_Test_02__StmtFetch::tag_impl::get_id()const
@@ -294,11 +299,15 @@ void WORK_Cancel_Test_02__StmtFetch::tag_impl::run(context_type* const pCtx)cons
 
  //---------------
  const tag_thread::self_ptr
-  spThread(lib::structure::not_null_ptr(new tag_thread(pCtx,
-                                                  params,
-                                                  spConnector,
-                                                  hTr,
-                                                  hStmt)));
+  spThread
+   (lib::structure::not_null_ptr
+     (new tag_thread
+       (pCtx,
+        params,
+        spConnector,
+        hTr,
+        hStmt)));
+
  assert(spThread);
 
  tracer<<L"Run thread"<<send;
@@ -308,7 +317,7 @@ void WORK_Cancel_Test_02__StmtFetch::tag_impl::run(context_type* const pCtx)cons
  //--------------- Wait Thread Signals
  const HANDLE hSignals[]=
  {
-  spThread->m_StartEvent.handle,
+  spThread->m_StartEvent.GetNativeHandle(),
   spThread->get_thread_handle()
  };//hSignals
 
@@ -396,7 +405,7 @@ void WORK_Cancel_Test_02__StmtFetch::tag_impl::run(context_type* const pCtx)cons
 //class WORK_Cancel_Test_02__StmtFetch
 
 void WORK_Cancel_Test_02__StmtFetch::create(TTSO_PushTest*      const pTestPusher,
-                                              TTSO_GlobalContext* const pParams)
+                                            TTSO_GlobalContext* const pParams)
 {
  assert(pTestPusher!=nullptr);
  assert(pParams!=nullptr);
@@ -424,12 +433,18 @@ void WORK_Cancel_Test_02__StmtFetch::create(TTSO_PushTest*      const pTestPushe
   Data.m_RemoteFB__ProtocolType
    =g_TestCfg__RemoteFB__ProtocolTypes[it[iPType]];
 
-  ftestID<<structure::flush
-         <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
+  ftestID
+   <<structure::flush
+   <<TSO_RemoteFB_GetProtocolTypeSign(Data.m_RemoteFB__ProtocolType.value());
 
-  const TTSO_TestPtr spTest(new tag_impl(pParams,
-                                         ftestID.c_str(),
-                                         Data));
+  const TTSO_TestPtr
+   spTest
+    (lib::structure::not_null_ptr
+      (new tag_impl
+        (pParams,
+         ftestID.c_str(),
+         Data)));
+
   pTestPusher->PushTest(spTest);
  }//for it
 }//create

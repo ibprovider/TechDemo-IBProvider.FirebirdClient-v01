@@ -174,14 +174,20 @@ void RemoteFB__Port_BASE_v01::send_packet(RemoteFB__PortOperationContext& op_ctx
  const lock_guard_type __lock_send_packet(m_PacketSendGuard);
 
  /// 2. Настройка контекста операции
- RemoteFB__Port_BASE_v01::tag_writer portWriter(this,/*IsDeferredPacket*/false);
+ RemoteFB__Port_BASE_v01::tag_writer
+  portWriter
+   (this,
+    /*IsDeferredPacket*/false);
 
- tag_send_ctx send_ctx(op_ctx,
-                       &portWriter);
+ tag_send_ctx
+  send_ctx
+   (op_ctx,
+    &portWriter);
 
  /// 3. Отправка пакета.
- m_pPacketStream->SendPacket(send_ctx,
-                             packet); //throw
+ m_pPacketStream->SendPacket
+  (send_ctx,
+   packet); //throw
 }//send_packet
 
 //------------------------------------------------------------------------
@@ -199,14 +205,20 @@ void RemoteFB__Port_BASE_v01::send_packet_with_delay(RemoteFB__PortOperationCont
  const lock_guard_type __lock_send_packet(m_PacketSendGuard);
 
  /// 2. Настройка контекста операции
- RemoteFB__Port_BASE_v01::tag_writer portWriter(this,/*IsDeferredPacket*/true);
+ RemoteFB__Port_BASE_v01::tag_writer
+  portWriter
+   (this,
+    /*IsDeferredPacket*/true);
 
- tag_send_ctx send_ctx(op_ctx,
-                       &portWriter);
+ tag_send_ctx
+  send_ctx
+   (op_ctx,
+    &portWriter);
 
  /// 3. Отправка пакета.
- m_pPacketStream->SendPacket(send_ctx,
-                             packet); //throw
+ m_pPacketStream->SendPacket
+  (send_ctx,
+   packet); //throw
 }//send_packet_with_delay
 
 //------------------------------------------------------------------------
@@ -220,11 +232,14 @@ void RemoteFB__Port_BASE_v01::receive_packet(RemoteFB__PortOperationContext& op_
 
  tag_reader portReader(this);
 
- tag_recv_ctx recv_ctx(op_ctx,
-                       &portReader);
+ tag_recv_ctx
+  recv_ctx
+   (op_ctx,
+    &portReader);
 
- return m_pPacketStream->ReceivePacket(recv_ctx,
-                                       packet);
+ return m_pPacketStream->ReceivePacket
+         (recv_ctx,
+          packet);
 }//receive_packet
 
 //------------------------------------------------------------------------

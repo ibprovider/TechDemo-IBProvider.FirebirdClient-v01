@@ -225,7 +225,7 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
  {
   bool err=false;
 
-  structure::tstr_to_tstr(&host,ucs2_host.ptr,ucs2_host.len,&err);
+  structure::tstr_to_tstr(&host,ucs2_host,&err);
 
   if(err)
   {
@@ -244,7 +244,7 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
  {
   bool err=false;
 
-  structure::tstr_to_tstr(&port,ucs2_port.ptr,ucs2_port.len,&err);
+  structure::tstr_to_tstr(&port,ucs2_port,&err);
 
   if(err)
   {
@@ -289,11 +289,12 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
    //    Success returns zero. Failure returns a nonzero Windows Sockets error code,
    //    as found in the Windows Sockets Error Codes.
 
-   const int gai_err_code=pProvider->m_getaddrinfo.point()
-                             (host.c_str(),
-                              port.c_str(),
-                              &gai_hints,
-                              gai_result.pptr());
+   const int gai_err_code
+    =pProvider->m_getaddrinfo.point()
+      (host.c_str(),
+       port.c_str(),
+       &gai_hints,
+       gai_result.pptr());
 
    if(gai_err_code==0)
     break;
@@ -303,9 +304,10 @@ RemoteFB__INET_Socket::self_ptr RemoteFB__INET_Socket::Connect_v2
      ibp_mce_winsock__getaddrinfo_failed_3,
      IBP_CreateCustomErrorFor_CnFailed());
 
-   gai_err<<gai_err_code
-          <<host
-          <<port;
+   gai_err
+    <<gai_err_code
+    <<host
+    <<port;
 
    if(gai_err_code==winsock::API::WinSock__WSATYPE_NOT_FOUND)
    {

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Utility classes
 //                                                  Dmitry Kovalenko. 04.09.2016
-#ifndef _t_first_last_H_
-#define _t_first_last_H_
+#ifndef _lcpi_lib_structure__t_first_last_H_
+#define _lcpi_lib_structure__t_first_last_H_
 
 #include <lcpi/lib/structure/t_first_last.h>
 

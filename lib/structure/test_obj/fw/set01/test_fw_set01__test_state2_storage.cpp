@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__test_state2_storage.h>
 
@@ -38,8 +38,17 @@ void TestFW__TestState2_Storage::append(const item_type& item)
  //-----------------------------------------
  if(m_file==nullptr)
  {
-  if(tmpfile_s(&m_file)!=0)
+  FILE* file=nullptr;
+
+  if(LCPI_GCRT_tmpfile_s(&file)!=0)
    throw std::runtime_error("TestFW__TestState2_Storage did not create a temporary file.");
+
+  assert(file!=nullptr);
+
+  if(file==nullptr)
+   throw std::runtime_error("[BUG CHECK][TestFW__TestState2_Storage::append][#001] file is nullptr.");
+
+  m_file=file;
  }//if
 
  assert(m_file!=nullptr);
@@ -69,7 +78,7 @@ void TestFW__TestState2_Storage::restart()
 //------------------------------------------------------------------------
 void TestFW__TestState2_Storage::fetch(item_type* const item)
 {
- assert(item!=NULL);
+ assert(item!=nullptr);
 
  const lock_guard_type __lock(m_guard);
 

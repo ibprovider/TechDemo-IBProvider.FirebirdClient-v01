@@ -55,7 +55,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (signed __int8 const x)
+ t_ibp_error_args<Traits>::operator << (std::int8_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -69,7 +69,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (unsigned __int8 const x)
+ t_ibp_error_args<Traits>::operator << (std::uint8_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -83,7 +83,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (signed __int16 const x)
+ t_ibp_error_args<Traits>::operator << (std::int16_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -97,7 +97,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (unsigned __int16 const x)
+ t_ibp_error_args<Traits>::operator << (std::uint16_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -111,7 +111,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (signed __int32 const x)
+ t_ibp_error_args<Traits>::operator << (std::int32_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -125,7 +125,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (unsigned __int32 const x)
+ t_ibp_error_args<Traits>::operator << (std::uint32_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -139,7 +139,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (signed __int64 const x)
+ t_ibp_error_args<Traits>::operator << (std::int64_t const x)
 {
  IBP_ERRORVARIANT errVar;
 
@@ -153,7 +153,7 @@ typename t_ibp_error_args<Traits>::out_return_type&
 //------------------------------------------------------------------------
 template<class Traits>
 typename t_ibp_error_args<Traits>::out_return_type&
- t_ibp_error_args<Traits>::operator << (unsigned __int64 const x)
+ t_ibp_error_args<Traits>::operator << (std::uint64_t const x)
 {
  IBP_ERRORVARIANT errVar;
 

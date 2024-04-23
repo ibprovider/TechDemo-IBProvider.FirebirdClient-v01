@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Вспомогательные класс для реализации t_basic_string_formatter
 //                                        Коваленко Дмитрий. 8 января 2002 года.
-#ifndef _t_str_formatter_traits_H_
-#define _t_str_formatter_traits_H_
+#ifndef _lcpi_lib_structure__t_str_formatter_traits_H_
+#define _lcpi_lib_structure__t_str_formatter_traits_H_
 
 #include <structure/t_str_args_traits.h>
 
@@ -26,22 +26,23 @@ template<class charT>
 struct t_str_formatter_traits
 {
  public: //typedefs ------------------------------------------------------
-  typedef charT                                                  char_type;
+  using char_type=charT;
 };//template class t_str_formatter_traits
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_str_formatter_traits<char>
 
 template<>
-struct t_str_formatter_traits<char>:public t_str_args_traits<char>
+struct t_str_formatter_traits<char> LCPI_CPP_CFG__CLASS__FINAL
+ :public t_str_args_traits<char>
 {
  private:
-  typedef t_str_args_traits<char>                                inherited;
+  using inherited=t_str_args_traits<char>;
 
  public: //typedefs ------------------------------------------------------
-  typedef inherited::char_type                                   char_type;
-  typedef inherited::string_type                                 string_type;
-  typedef inherited::size_type                                   size_type;
+  using char_type   = inherited::char_type;
+  using string_type = inherited::string_type;
+  using size_type   = inherited::size_type;
 
  public: //members -------------------------------------------------------
   static char_type arg_prefix()
@@ -71,15 +72,16 @@ struct t_str_formatter_traits<char>:public t_str_args_traits<char>
 //struct t_str_formatter_traits<wchar_t>
 
 template<>
-struct t_str_formatter_traits<wchar_t>:public t_str_args_traits<wchar_t>
+struct t_str_formatter_traits<wchar_t> LCPI_CPP_CFG__CLASS__FINAL
+ :public t_str_args_traits<wchar_t>
 {
  private:
-  typedef t_str_args_traits<wchar_t>                             inherited;
+  using inherited=t_str_args_traits<wchar_t>;
 
  public: //typedefs ------------------------------------------------------
-  typedef inherited::char_type                                   char_type;
-  typedef inherited::string_type                                 string_type;
-  typedef inherited::size_type                                   size_type;
+  using char_type   = inherited::char_type;
+  using string_type = inherited::string_type;
+  using size_type   = inherited::size_type;
 
  public: //members -------------------------------------------------------
   static char_type arg_prefix()

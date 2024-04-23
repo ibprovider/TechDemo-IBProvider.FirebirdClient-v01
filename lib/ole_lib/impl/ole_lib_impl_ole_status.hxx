@@ -8,9 +8,9 @@
 class TOleStatus
 {
  private:
-  typedef TOleStatus                          self_type;
+  using self_type=TOleStatus;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  private:
   std::string m_text;

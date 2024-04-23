@@ -299,13 +299,13 @@ enum ibp_msg_code_type
   =IBP_MCE_COMMON__FAILED_TO_CONVERT_DBMS_HOST_PORT_NAME_TO_SYSTEM_CODEPAGE_0,
 
  /// \brief
- ///  Неподдерживаемая версия сервера базы данных.<br>
+ ///  Unsupported DBMS version.<br>
  /// \b
- ///  Params: проанализированная сигнатура сервера.
+ ///  Params: version string, server signature.
  /// \note
- ///  Нужно указывать подсистему ошибки.
- ibp_mce_common__unsupported_dbms_version_1
-  =IBP_MCE_COMMON__UNSUPPORTED_DBMS_VERSION_1,
+ ///  Define subsystem id, too.
+ ibp_mce_common__unsupported_dbms_version_2
+  =IBP_MCE_COMMON__UNSUPPORTED_DBMS_VERSION_2,
 
  /// \brief
  ///  Ошибка конвертирования имени базы данных в системную кодовую страницу.
@@ -825,6 +825,18 @@ enum ibp_msg_code_type
  ///  Params: place, point, name, id1, id2
  ibp_mce_dbobj__bug_check__duplication_of_timezone_name__5
   =IBP_MCE_DBOBJ__BUG_CHECK__DUPLICATION_OF_TIMEZONE_NAME__5,
+
+ /// \brief
+ ///  Неизвестная кодовая страница операционной системы.<br>
+ /// \b
+ ///  Params: charset_name
+ ibp_mce_dbobj__unknown_system_charset_1
+  =IBP_MCE_DBOBJ__UNKNOWN_SYSTEM_CHARSET_1,
+
+ /// \brief Ошибка трансляции назщвания кодовой страницы для обработки системных сообщений.<br>
+ /// \b Params: charset_name
+ ibp_mce_dbobj__cant_translate_system_charset_name_1
+  =IBP_MCE_DBOBJ__CANT_TRANSLATE_SYSTEM_CHARSET_NAME_1,
 
  //загрузка сведений о доменах -------------------------------------------
 
@@ -2272,7 +2284,7 @@ enum ibp_msg_code_type
  ///  Params: oledb tso
  ibp_mce_datatype__cant_convert_dbtimestampoffset_into_fb040_ts_with_tz__out_of_range__1
   =IBP_MCE_DATATYPE__CANT_CONVERT_DBTIMESTAMPOFFSET_INTO_FB040_TS_WITH_TZ__OUT_OF_RANGE__1,
- 
+
  /// \brief
  ///  The unknown timezone id.<br>
  /// \b
@@ -2349,21 +2361,21 @@ enum ibp_msg_code_type
  ///  Params: timezone name, UTC-time
  ibp_mce_datatype__no_timezone_transition_data_for_utc_time_2
   =IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_UTC_TIME_2,
- 
+
  /// \brief
  ///  No timezone transition data for LOCAL time.
  /// \b
  ///  Params: timezone name, LOCAL-time
  ibp_mce_datatype__no_timezone_transition_data_for_local_time_2
   =IBP_MCE_DATATYPE__NO_TIMEZONE_TRANSITION_DATA_FOR_LOCAL_TIME_2,
- 
+
  /// \brief
  ///  A problem with loading the transition data of timezone.
  /// \b
  ///  Params: timezone name
  ibp_mce_datatype__problem_with_loading_transition_data_of_timezone_1
   =IBP_MCE_DATATYPE__PROBLEM_WITH_LOADING_TRANSITION_DATA_OF_TIMEZONE_1,
- 
+
  /// \brief
  ///  Can't translate local timestamp into UTC timestamp. Out of range.<br>
  /// \b

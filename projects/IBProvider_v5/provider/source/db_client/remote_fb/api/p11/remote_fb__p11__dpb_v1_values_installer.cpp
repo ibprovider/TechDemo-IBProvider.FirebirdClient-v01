@@ -129,7 +129,7 @@ void RemoteFB__P11__DpbV1_ValuesInstaller::set_dbinit_param___auth__password(wst
 
  std::string mbc_str;
 
- structure::tstr_to_tstr(&mbc_str,propValue.ptr,propValue.len,&error);
+ structure::tstr_to_tstr(&mbc_str,propValue,&error);
 
  if(error)
  {

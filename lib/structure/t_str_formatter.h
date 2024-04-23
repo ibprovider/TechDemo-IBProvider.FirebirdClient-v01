@@ -3,12 +3,14 @@
 //                                              Dmitry Kovalenko. 08.01.2002.
 //Sammple
 // string msg=t_str_formatter("%1 %2 !")<<"Hello"<<"World";
-#ifndef _t_string_formatter_H_
-#define _t_string_formatter_H_
+#ifndef _lcpi_lib_structure__t_str_formatter_H_
+#define _lcpi_lib_structure__t_str_formatter_H_
 
 #include <structure/t_str_formatter_traits.h>
 #include <structure/t_str_parameter.h>
 #include <structure/t_const_str_box.h>
+#include <structure/t_memory.h>
+#include <structure/t_char_base.h>
 
 #include <structure/stl/t_stl_vector.h>
 #include <structure/stl/t_stl_map.h>
@@ -26,14 +28,15 @@ class t_basic_str_formatter;
 //template class t_basic_str_formatter__fpart
 
 template<typename TString>
-class t_basic_str_formatter__fpart
+class t_basic_str_formatter__fpart LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_basic_str_formatter__fpart<TString>          self_type;
+  using self_type=t_basic_str_formatter__fpart<TString>;
 
  public: //typedefs ------------------------------------------------------
-  typedef TString                                        string_type;
-  typedef typename string_type::value_type               char_type;
+  using string_type=TString;
+
+  using char_type=typename string_type::value_type;
 
  public:
   bool        is_arg;
@@ -65,13 +68,13 @@ class t_basic_str_formatter__fpart
 //template class t_basic_str_formatter__arg_value
 
 template<typename TString>
-class t_basic_str_formatter__arg_value
+class t_basic_str_formatter__arg_value LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef t_basic_str_formatter__arg_value<TString>              self_type;
+  using self_type=t_basic_str_formatter__arg_value<TString>;
 
  public: //typedefs ------------------------------------------------------
-  typedef TString                                                string_type;
+  using string_type=TString;
 
  public:
   t_basic_str_formatter__arg_value();
@@ -113,7 +116,7 @@ class t_basic_str_formatter__arg_value
 //template struct t_basic_str_formatter__symbol
 
 template<typename charT>
-struct t_basic_str_formatter__symbol
+struct t_basic_str_formatter__symbol LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   charT symbol;
@@ -129,7 +132,7 @@ struct t_basic_str_formatter__symbol
 class t_basic_str_formatter_base
 {
  public: //typedefs ------------------------------------------------------
-  typedef unsigned int                                         modes_type;
+  using modes_type=unsigned int;
 
   enum
   {
@@ -147,10 +150,11 @@ class t_basic_str_formatter_base
 //template class t_basic_str_formatter
 
 template<class charT,class traits,class allocator>
-class t_basic_str_formatter:public t_basic_str_formatter_base
+class t_basic_str_formatter LCPI_CPP_CFG__CLASS__FINAL
+ :public t_basic_str_formatter_base
 {
  private:
-  typedef t_basic_str_formatter<charT,traits,allocator>        self_type;
+  using self_type=t_basic_str_formatter<charT,traits,allocator>;
 
  public://typedefs -------------------------------------------------------
   typedef traits                                               traits_type;
@@ -180,19 +184,17 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   };
 
  public: //---------------------------------------------------------------
-  typedef t_basic_str_formatter__fpart<string_type>     fpart_type;
+  using fpart_type
+   =t_basic_str_formatter__fpart<string_type>;
 
-  typedef t_basic_str_formatter__arg_value<string_type> arg_value_type;
+  using arg_value_type
+   =t_basic_str_formatter__arg_value<string_type>;
 
-  typedef t_stl_vector
-           <fpart_type,
-            allocator_type>                             fparts_type;
+  using fparts_type
+   =t_stl_vector<fpart_type,allocator_type>;
 
-  typedef t_stl_map
-           <string_type,
-            arg_value_type,
-            std::less<string_type>,
-            allocator_type>                             args_type;
+  using args_type
+   =t_stl_map<string_type,arg_value_type,std::less<string_type>,allocator_type>;
 
  public: //constructors/destructor ---------------------------------------
   traits_type m_traits;
@@ -276,14 +278,21 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   self_type& operator << (bool                   );
   self_type& operator << (signed   char          );
   self_type& operator << (unsigned char          );
-  self_type& operator << (signed   short         );
-  self_type& operator << (unsigned short         );
-  self_type& operator << (signed   int           );
-  self_type& operator << (unsigned int           );
+  self_type& operator << (std::int16_t           );
+  self_type& operator << (std::uint16_t          );
+  self_type& operator << (std::int32_t           );
+  self_type& operator << (std::uint32_t          );
+
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
   self_type& operator << (signed   long          );
+#endif
+
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
   self_type& operator << (unsigned long          );
-  self_type& operator << (signed   __int64       );
-  self_type& operator << (unsigned __int64       );
+#endif
+
+  self_type& operator << (std::int64_t           );
+  self_type& operator << (std::uint64_t          );
   self_type& operator << (float                  );
   self_type& operator << (double                 );
   self_type& operator << (long double            );
@@ -299,10 +308,10 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   self_type& operator << (const astr_param_type& );
   self_type& operator << (const wstr_param_type& );
 
- #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
+#if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   self_type& operator << (std::string&&          );
   self_type& operator << (std::wstring&&         );
- #endif
+#endif
 
   //support for manipulators ---------------------------------------------
   typedef const char_type*    tf_fmsg_getter1(self_type&);
@@ -322,17 +331,24 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   self_type& set(num_arg_index_type const idx,bool                       );
   self_type& set(num_arg_index_type const idx,signed   char              );
   self_type& set(num_arg_index_type const idx,unsigned char              );
-  self_type& set(num_arg_index_type const idx,signed   short             );
-  self_type& set(num_arg_index_type const idx,unsigned short             );
-  self_type& set(num_arg_index_type const idx,signed   int               );
-  self_type& set(num_arg_index_type const idx,unsigned int               );
+  self_type& set(num_arg_index_type const idx,std::int16_t               );
+  self_type& set(num_arg_index_type const idx,std::uint16_t              );
+  self_type& set(num_arg_index_type const idx,std::int32_t               );
+  self_type& set(num_arg_index_type const idx,std::uint32_t              );
+
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
   self_type& set(num_arg_index_type const idx,signed   long              );
+#endif
+
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
   self_type& set(num_arg_index_type const idx,unsigned long              );
-  self_type& set(num_arg_index_type const idx,signed   __int64           );
-  self_type& set(num_arg_index_type const idx,unsigned __int64           );
+#endif
+
+  self_type& set(num_arg_index_type const idx,std::int64_t               );
+  self_type& set(num_arg_index_type const idx,std::uint64_t              );
   self_type& set(num_arg_index_type const idx,float                      );
   self_type& set(num_arg_index_type const idx,double                     );
-  self_type& set(num_arg_index_type const idx,long     double            );
+  self_type& set(num_arg_index_type const idx,long double                );
   self_type& set(num_arg_index_type const idx,const char*                );
   self_type& set(num_arg_index_type const idx,const std::string&         );
   self_type& set(num_arg_index_type const idx,const wchar_t*             );
@@ -342,26 +358,33 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   self_type& set(num_arg_index_type const idx,const astr_param_type&     );
   self_type& set(num_arg_index_type const idx,const wstr_param_type&     );
 
- #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
+#if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   self_type& set(num_arg_index_type const idx,std::string&&              );
   self_type& set(num_arg_index_type const idx,std::wstring&&             );
- #endif
+#endif
 
   //named and number args
   self_type& set_by_name(name_arg_type const name,bool                   );
   self_type& set_by_name(name_arg_type const name,signed   char          );
   self_type& set_by_name(name_arg_type const name,unsigned char          );
-  self_type& set_by_name(name_arg_type const name,signed   short         );
-  self_type& set_by_name(name_arg_type const name,unsigned short         );
-  self_type& set_by_name(name_arg_type const name,signed   int           );
-  self_type& set_by_name(name_arg_type const name,unsigned int           );
+  self_type& set_by_name(name_arg_type const name,std::int16_t           );
+  self_type& set_by_name(name_arg_type const name,std::uint16_t          );
+  self_type& set_by_name(name_arg_type const name,std::int32_t           );
+  self_type& set_by_name(name_arg_type const name,std::uint32_t          );
+
+#if (LCPI_CPP_CFG__CAN_USE__signed_long!=0)
   self_type& set_by_name(name_arg_type const name,signed   long          );
+#endif
+
+#if (LCPI_CPP_CFG__CAN_USE__unsigned_long!=0)
   self_type& set_by_name(name_arg_type const name,unsigned long          );
-  self_type& set_by_name(name_arg_type const name,signed   __int64       );
-  self_type& set_by_name(name_arg_type const name,unsigned __int64       );
+#endif
+
+  self_type& set_by_name(name_arg_type const name,std::int64_t           );
+  self_type& set_by_name(name_arg_type const name,std::uint64_t          );
   self_type& set_by_name(name_arg_type const name,float                  );
   self_type& set_by_name(name_arg_type const name,double                 );
-  self_type& set_by_name(name_arg_type const name,long     double        );
+  self_type& set_by_name(name_arg_type const name,long double            );
   self_type& set_by_name(name_arg_type const name,const char*            );
   self_type& set_by_name(name_arg_type const name,const std::string&     );
   self_type& set_by_name(name_arg_type const name,const wchar_t*         );
@@ -374,7 +397,7 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
  #if(COMP_CONF_SUPPORT_RVALUE_REFERENCE!=0)
   self_type& set_by_name(name_arg_type const name,std::string&&          );
   self_type& set_by_name(name_arg_type const name,std::wstring&&         );
- #endif
+#endif
 
  private:
   void append_fpart(const bool       is_arg,
@@ -414,10 +437,17 @@ class t_basic_str_formatter:public t_basic_str_formatter_base
   mutable string_type   m_result;       //result string
 };//class t_basic_str_formatter
 
-//define standart formatter
-typedef t_basic_str_formatter<char>    str_formatter;
-typedef t_basic_str_formatter<wchar_t> wstr_formatter;
-typedef t_basic_str_formatter<t_char>  tstr_formatter;
+////////////////////////////////////////////////////////////////////////////////
+//standard formatters
+
+using str_formatter
+ =t_basic_str_formatter<char>;
+
+using wstr_formatter
+ =t_basic_str_formatter<wchar_t>;
+
+using tstr_formatter
+ =t_basic_str_formatter<t_char>;
 
 ////////////////////////////////////////////////////////////////////////////////
 //stream support

@@ -34,7 +34,7 @@ class AllocatorClassName##_Adapter LCPI_CPP_CFG__CLASS__FINAL                 \
   static void SetMemoryManager(AllocFunc const pfAllocMemory,                 \
                                FreeFunc  const pfFreeMemory)                  \
   {                                                                           \
-   LCPI__assert(sm_is_used==0);                                               \
+   LCPI__assert(sm_debug__is_used==0);                                        \
                                                                               \
    sm_pfAllocMemory=pfAllocMemory;                                            \
    sm_pfFreeMemory =pfFreeMemory;                                             \
@@ -47,11 +47,11 @@ class AllocatorClassName##_Adapter LCPI_CPP_CFG__CLASS__FINAL                 \
    {                                                                          \
     LCPI__DEBUG_CODE                                                          \
     (                                                                         \
-     if(sm_is_used==0)                                                        \
-      ::lcpi::lib::structure::mt::interlocked::exchange(&sm_is_used,1);       \
+     if(sm_debug__is_used==0)                                                 \
+      ::lcpi::lib::structure::mt::interlocked::exchange(&sm_debug__is_used,unsigned(1)); \
     )                                                                         \
                                                                               \
-    LCPI__assert(sm_is_used==1);                                              \
+    LCPI__assert(sm_debug__is_used==1);                                       \
    }                                                                          \
                                                                               \
    return sm_pfAllocMemory(n);                                                \
@@ -65,7 +65,7 @@ class AllocatorClassName##_Adapter LCPI_CPP_CFG__CLASS__FINAL                 \
   }                                                                           \
                                                                               \
  private:                                                                     \
-  LCPI__DEBUG_CODE(static unsigned sm_is_used;)                               \
+  LCPI__DEBUG_CODE(static unsigned sm_debug__is_used;)                        \
                                                                               \
   static AllocFunc sm_pfAllocMemory;                                          \
   static FreeFunc  sm_pfFreeMemory;                                           \
@@ -80,7 +80,7 @@ using AllocatorClassName                                                      \
 #define LCPI_CPP_LIB__DEFINE_WRAP_ALLOCATOR(AllocatorClassName)               \
                                                                               \
 LCPI__DEBUG_CODE                                                              \
- (unsigned AllocatorClassName##_Adapter::sm_is_used=0;)                       \
+ (unsigned AllocatorClassName##_Adapter::sm_debug__is_used=0;)                \
                                                                               \
 AllocatorClassName##_Adapter::AllocFunc                                       \
  AllocatorClassName##_Adapter::sm_pfAllocMemory=                              \

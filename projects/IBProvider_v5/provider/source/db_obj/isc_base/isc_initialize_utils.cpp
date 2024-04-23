@@ -73,12 +73,15 @@ db_obj::t_db_charset_manager_v2_ptr
 
  const t_ibp_string ctype_cn
   =Helper__GetCharsetName(pDsPropValues,ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__CTYPE);
-  
+
  const t_ibp_string ctype_user
   =Helper__GetCharsetName(pDsPropValues,ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__CTYPE_USER);
 
  const t_ibp_string ctype_none
   =Helper__GetCharsetName(pDsPropValues,ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__CTYPE_NONE);
+
+ const t_ibp_string ctype_system
+  =Helper__GetCharsetName(pDsPropValues,ibprovider::IBP_DBPROPSET_INIT,ibprovider::IBP_DBPROP__INIT__CTYPE_SYSTEM);
 
  //--------------
  const auto wchars_in_utf8_symbol
@@ -113,6 +116,10 @@ db_obj::t_db_charset_manager_v2_ptr
  spCsMng->reg_cs_id_name
   (db_obj::db_cs_id::ods,
    pCsName__ODS);
+
+ spCsMng->reg_cs_id_name
+  (db_obj::db_cs_id::system,
+   ctype_system);
 
  //--------------
  return spCsMng.not_null_ptr();

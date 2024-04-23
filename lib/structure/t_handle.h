@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Base classes for resource managements.
 //                                                   Dmitry Kovalenko. 98 year.
-#ifndef _t_handle_H_
-#define _t_handle_H_
+#ifndef _lcpi_lib_structure__t_handle_H_
+#define _lcpi_lib_structure__t_handle_H_
 
 #include <structure/t_smart_object.h>
 #include <structure/t_threads.h>

@@ -31,7 +31,8 @@ class fb_v04_0_0__svc__status_vector_utils LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Конструктор инициализации.
   /// </summary>
-  fb_v04_0_0__svc__status_vector_utils();
+  //! \param[in] pCsMng
+  fb_v04_0_0__svc__status_vector_utils(db_obj::t_db_charset_manager_v2* pCsMng);
 
   /// <summary>
   ///  Деструктор.
@@ -43,7 +44,8 @@ class fb_v04_0_0__svc__status_vector_utils LCPI_CPP_CFG__CLASS__FINAL
   /// <summary>
   ///  Фабрика класса.
   /// </summary>
-  static common::fb_common__svc__status_vector_utils_ptr create();
+  //! \param[in] pCsMng
+  static common::fb_common__svc__status_vector_utils_ptr create(db_obj::t_db_charset_manager_v2* pCsMng);
 
  private:
   /// <summary>
@@ -67,12 +69,21 @@ class fb_v04_0_0__svc__status_vector_utils LCPI_CPP_CFG__CLASS__FINAL
 
   virtual status_type internal__get_unexpected_error_code()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
+  virtual arg_cs_kind internal__get_cs_for_arg
+                   (status_type iscErrorCode,
+                    size_t      argNumber)const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
  private:
-  TIBP_MsgTableLoader m_ErrMsgTableLoader;
+  struct tag_arg_descr LCPI_CPP_CFG__CLASS__FINAL
+  {
+   status_type errCode;
+   size_t      argNumber;
+   arg_cs_kind arg_cs_kind;
+  };//struct tag_arg_descr
 
  private:
-  /// Единственный экземпляр класса
-  static self_type sm_Instance;
+  static const TIBP_MsgTableLoader sm_ErrMsgTableLoader;
+
+  static const tag_arg_descr sm_arg_descrs[];
 };//class fb_v04_0_0__svc__status_vector_utils
 
 ////////////////////////////////////////////////////////////////////////////////

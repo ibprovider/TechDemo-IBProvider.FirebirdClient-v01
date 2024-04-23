@@ -12,19 +12,26 @@
 #include "source/db_client/remote_fb/transmission/pset01/p12/remote_fb__transmission__pset01__p12s__packet_stream.h"
 #include "source/db_client/remote_fb/protocol/set01/remote_fb__protocol_set01.h"
 #include "source/db_client/remote_fb/remote_fb__error_utils.h"
+
 #include "source/db_obj/dbms_fb/v02_5_0/db_obj__dbms_fb__v02_5_0__factories.h"
+#include "source/db_obj/ib_base/ib_sys_data.h"
+#include "source/db_obj/isc_base/isc_initialize_utils.h"
+
+#include "source/external/icu/ibp_external__icu__loader_factory.h"
 
 namespace lcpi{namespace ibp{namespace db_client{namespace remote_fb{namespace ports{namespace base_v01{namespace initializers{namespace pset01{namespace v01{
 ////////////////////////////////////////////////////////////////////////////////
 //class RemoteFB__PortInitializer_PSET01_v01
 
 void RemoteFB__PortInitializer_PSET01_v01::Helper__FinishConnect_P12
-                                           (port_type*                   const pPort,
-                                            const protocol::set01::PACKET_V01& packet,
-                                            wstr_box_type                const ucs2_database_name,
-                                            RemoteFB__ClientConnectBlock_v1&   clientConnectBlock,
-                                            const tag_connect_finalizator&     FinalOpFuncs)
+                        (const oledb_lib::OLEDB_Props2__Data__Values* const pDsPropValues,
+                         port_type*                                   const pPort,
+                         const protocol::set01::PACKET_V01&                 packet,
+                         wstr_box_type                                const ucs2_database_name,
+                         RemoteFB__ClientConnectBlock_v1&                   clientConnectBlock,
+                         const tag_connect_finalizator&                     FinalOpFuncs)
 {
+ assert(pDsPropValues);
  assert(pPort);
  assert(packet.operation==protocol::set01::op_accept);
  assert(packet.p_acpt.p_acpt__version==protocol::FB_PROTOCOL_VERSION12);
@@ -70,10 +77,28 @@ void RemoteFB__PortInitializer_PSET01_v01::Helper__FinishConnect_P12
 
  //Регистрация сервисов --------------------------------------------------
 
- //1. Сервис для обработки ошибок
+ // 00.01
+ const external::icu::ICU__Loader::self_ptr
+  spIcuLoader
+   (external::icu::create_icu_loader
+     (pDsPropValues));
+
+ assert(spIcuLoader);
+
+ // 00.02
+ const db_obj::t_db_charset_manager_v2_ptr
+  spCsMng
+   (isc_base::isc_create_charset_manager_v2
+     (pDsPropValues,
+      spIcuLoader,
+      ib_base::g_ods_cs__ib04_0_0));
+
+ assert(spCsMng);
+
+ // 01. Сервис для обработки ошибок
  pPort->RegService
   (db_obj::__db_guid<db_obj::dbms_fb::common::fb_common__svc__status_vector_utils>(),
-   db_obj::dbms_fb::v02_5_0::create_svc__status_vector_utils());
+   db_obj::dbms_fb::v02_5_0::create_svc__status_vector_utils(spCsMng));
 
  //-----------------------------------------------------------------------
  assert(FinalOpFuncs.P12);

@@ -57,8 +57,7 @@ void RemoteFB__P10__ConnectHelper::exec(RemoteFB__Port*            const pPort,
 
    structure::tstr_to_tstr
     (&tmp__mbc_database_name,
-     ucs2_database_name.ptr,
-     ucs2_database_name.len,
+     ucs2_database_name,
      &error);
 
    if(error)

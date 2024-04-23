@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Library for thread's configurations
 //                                                 Dmitry Kovalenko. 07.09.2019.
-#ifndef _t_thread_traits__single_CC_
-#define _t_thread_traits__single_CC_
+#ifndef _lcpi_lib_structure__t_thread_traits__single_CC_
+#define _lcpi_lib_structure__t_thread_traits__single_CC_
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

@@ -2,7 +2,9 @@
 #ifndef _test_fw_set01__summary_builder_CC_
 #define _test_fw_set01__summary_builder_CC_
 
+#if _WIN32
 #include <win32lib/win32_error.h>
+#endif
 
 namespace structure{namespace test_fw{namespace set01{
 ////////////////////////////////////////////////////////////////////////////////
@@ -19,9 +21,9 @@ TestFW__SummaryBuilder::TestFW__SummaryBuilder(TRootLog* const pLog)
  ,m_nTestSucceeded    (0)
  ,m_nTestErrors       (0)
  ,m_nTestWarnings     (0)
- ,m_Time_Real         (0)
- ,m_Time_User         (0)
- ,m_Time_Kernel       (0)
+ ,m_Time_Real         ()
+ ,m_Time_User         ()
+ ,m_Time_Kernel       ()
 {;}
 
 //------------------------------------------------------------------------
@@ -43,7 +45,7 @@ void TestFW__SummaryBuilder::process_result
 template<class TTestState>
 void TestFW__SummaryBuilder::print_test_with_error
                                       (const TTestState& test_status,
-                                       wstr_param_type   ext_info)
+                                       str_param_type    ext_info)
 {
  if(m_nTestWithErrors==0)
  {
@@ -72,7 +74,7 @@ void TestFW__SummaryBuilder::print_test_with_error
 template<class TTestState>
 void TestFW__SummaryBuilder::print_test_with_warning
                                       (const TTestState& test_status,
-                                       wstr_param_type   ext_info)
+                                       str_param_type    ext_info)
 {
  if(m_nTestWithWarnings==0)
  {
@@ -100,9 +102,9 @@ void TestFW__SummaryBuilder::print_test_with_warning
 //------------------------------------------------------------------------
 template<class TTracer>
 void TestFW__SummaryBuilder::print_summary_ex
-                                      (TTracer&        tracer,
-                                       wstr_param_type header,
-                                       bool  const     print_total_from_log)
+                                      (TTracer&       tracer,
+                                       str_param_type header,
+                                       bool  const    print_total_from_log)
 {
  assert(m_nTestWithErrors   <=m_nTest);
  assert(m_nTestWithWarnings <=m_nTest);
@@ -160,7 +162,7 @@ void TestFW__SummaryBuilder::print_summary_ex
 
   self_type::print_total_ex
    (tracer,
-    L"",
+    "",
     m_nLogErrors,
     m_nLogWarnings);
  }//if
@@ -169,10 +171,10 @@ void TestFW__SummaryBuilder::print_summary_ex
 //------------------------------------------------------------------------
 template<class TTracer>
 void TestFW__SummaryBuilder::print_total_ex
-                                      (TTracer&              tracer,
-                                       wstr_param_type const header,
-                                       count_type      const nError,
-                                       count_type      const nWarning)
+                                      (TTracer&             tracer,
+                                       str_param_type const header,
+                                       count_type     const nError,
+                                       count_type     const nWarning)
 {
  if(header.empty())
  {
@@ -190,12 +192,12 @@ void TestFW__SummaryBuilder::print_total_ex
 //------------------------------------------------------------------------
 template<class TTracer>
 void TestFW__SummaryBuilder::print_total_ex
-                                      (TTracer&              tracer,
-                                       wstr_param_type const header,
-                                       count_type      const nError,
-                                       count_type      const nWarning,
-                                       count_type      const nFullPass,
-                                       count_type      const nTotalTests)
+                                      (TTracer&             tracer,
+                                       str_param_type const header,
+                                       count_type     const nError,
+                                       count_type     const nWarning,
+                                       count_type     const nFullPass,
+                                       count_type     const nTotalTests)
 {
  self_type::print_total_ex(tracer,header,nError,nWarning);
 
@@ -210,6 +212,7 @@ void TestFW__SummaryBuilder::print_summary_process_state
 {
  tracer<<sm_line1<<L" [PROCESS INFORMATION]"<<tso_obj::send;
 
+#if _WIN32
  HANDLE const hCurrentProcess=::GetCurrentProcess();
 
  {
@@ -298,6 +301,7 @@ void TestFW__SummaryBuilder::print_summary_process_state
    <<TestFW_TraceDataOrNA(handle_count_ok,handle_count)
    <<tso_obj::send;
  }//local - handles
+#endif
 }//print_summary_process_state
 
 ////////////////////////////////////////////////////////////////////////////////

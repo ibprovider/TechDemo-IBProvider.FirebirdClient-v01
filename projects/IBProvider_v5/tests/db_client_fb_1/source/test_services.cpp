@@ -131,11 +131,12 @@ TestServices::winsock_provider_ptr
 ////////////////////////////////////////////////////////////////////////////////
 
 TestServices::remote_fb_inet_socket_ptr
- TestServices::RemoteFB_INET_Socket__Connect2(TTSO_Tracer&                 tracer,
-                                              winsock_provider_type* const pProvider,
-                                              int                    const socketFamily,
-                                              const wchar_t*         const ucs2_host,
-                                              const wchar_t*         const ucs2_port)
+ TestServices::RemoteFB_INET_Socket__Connect2
+                        (TTSO_Tracer&                 tracer,
+                         winsock_provider_type* const pProvider,
+                         int                    const socketFamily,
+                         const wchar_t*         const ucs2_host,
+                         const wchar_t*         const ucs2_port)
 {
  assert(pProvider!=nullptr);
 
@@ -172,12 +173,12 @@ TestServices::remote_fb_inet_socket_ptr
 
 TestServices::remote_fb_inet_port_ptr
  TestServices::RemoteFB_INET_Port__ConnectToDatabase
-                                           (TTSO_Tracer&         tracer,
-                                            int            const socketFamily,
-                                            wstr_box_type  const ucs2_host,
-                                            wstr_box_type  const ucs2_port,
-                                            wstr_box_type  const ucs2_database_name,
-                                            const dbprops_type&  params)
+                        (TTSO_Tracer&         tracer,
+                         int            const socketFamily,
+                         wstr_box_type  const ucs2_host,
+                         wstr_box_type  const ucs2_port,
+                         wstr_box_type  const ucs2_database_name,
+                         const dbprops_type&  params)
 {
  tracer<<L"RemoteFB__INET_Port ConnectToDatabase ...";
 
@@ -218,12 +219,12 @@ TestServices::remote_fb_inet_port_ptr
 
 TestServices::remote_fb_inet_port_ptr
  TestServices::RemoteFB_INET_Port__CreateDatabase
-                                           (TTSO_Tracer&         tracer,
-                                            int            const socketFamily,
-                                            const wchar_t* const ucs2_host,
-                                            const wchar_t* const ucs2_port,
-                                            const wchar_t* const ucs2_database_name,
-                                            const dbprops_type&  params)
+                        (TTSO_Tracer&         tracer,
+                         int            const socketFamily,
+                         const wchar_t* const ucs2_host,
+                         const wchar_t* const ucs2_port,
+                         const wchar_t* const ucs2_database_name,
+                         const dbprops_type&  params)
 {
  tracer<<L"RemoteFB__INET_Port CreateDatabase ...";
 
@@ -263,9 +264,10 @@ TestServices::remote_fb_inet_port_ptr
 ////////////////////////////////////////////////////////////////////////////////
 
 TestServices::remote_fb_connector_ptr
- TestServices::RemoteFB_Connector__ConnectToDatabase(TTSO_Tracer&        tracer,
-                                                     const dbprops_type& params,
-                                                     cns_type&           cns)
+ TestServices::RemoteFB_Connector__ConnectToDatabase
+                        (TTSO_Tracer&        tracer,
+                         const dbprops_type& params,
+                         cns_type&           cns)
 {
  tracer<<L"RemoteFB__Connector::ConnectToDatabase ...";
 
@@ -296,9 +298,10 @@ TestServices::remote_fb_connector_ptr
 
 //-------------------------------------------------------------------------
 TestServices::remote_fb_connector_ptr
- TestServices::RemoteFB_Connector__CreateDatabase(TTSO_Tracer&        tracer,
-                                                  const dbprops_type& params,
-                                                  cns_type&           cns)
+ TestServices::RemoteFB_Connector__CreateDatabase
+                        (TTSO_Tracer&        tracer,
+                         const dbprops_type& params,
+                         cns_type&           cns)
 {
  tracer<<L"RemoteFB__Connector::CreateDatabase ...";
 
@@ -329,8 +332,8 @@ TestServices::remote_fb_connector_ptr
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__DetachDatabase
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector)
 {
  assert(pConnector);
 
@@ -354,8 +357,8 @@ void TestServices::RemoteFB_Connector__DetachDatabase
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__DropDatabase
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector)
 {
  assert(pConnector);
 
@@ -379,12 +382,12 @@ void TestServices::RemoteFB_Connector__DropDatabase
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetDatabaseInfo
-                                      (TTSO_Tracer&                     tracer,
-                                       remote_fb_connector_type*        pConnector,
-                                       unsigned short                   Incornation,
-                                       unsigned short                   cItems,
-                                       const unsigned char*             pItems,
-                                       remote_fb::RemoteFB__InfoBuffer& ResultBuffer)
+                        (TTSO_Tracer&                     tracer,
+                         remote_fb_connector_type*        pConnector,
+                         unsigned short                   Incornation,
+                         unsigned short                   cItems,
+                         const unsigned char*             pItems,
+                         remote_fb::RemoteFB__InfoBuffer& ResultBuffer)
 {
  assert(pConnector);
 
@@ -412,9 +415,9 @@ void TestServices::RemoteFB_Connector__GetDatabaseInfo
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StartTransaction
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle)
 {
  assert(pConnector);
 
@@ -441,11 +444,11 @@ void TestServices::RemoteFB_Connector__StartTransaction
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StartTransaction
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle,
-                                        size_t                    const tpb_length,
-                                        const unsigned char*      const tpb)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle,
+                         size_t                    const tpb_length,
+                         const unsigned char*      const tpb)
 {
  assert(pConnector);
 
@@ -472,11 +475,11 @@ void TestServices::RemoteFB_Connector__StartTransaction
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__PrepareTransaction
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle,
-                                        size_t                    const data_length,
-                                        const void*               const data)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle,
+                         size_t                    const data_length,
+                         const void*               const data)
 {
  assert(pConnector);
 
@@ -503,9 +506,9 @@ void TestServices::RemoteFB_Connector__PrepareTransaction
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__Rollback
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle)
 {
  assert(pConnector);
 
@@ -529,9 +532,9 @@ void TestServices::RemoteFB_Connector__Rollback
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__RollbackRetaining
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle)
 {
  assert(pConnector);
 
@@ -555,9 +558,9 @@ void TestServices::RemoteFB_Connector__RollbackRetaining
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__Commit
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle)
 {
  assert(pConnector);
 
@@ -581,9 +584,9 @@ void TestServices::RemoteFB_Connector__Commit
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__CommitRetaining
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type* const pConnector,
-                                        remote_fb_tr_handle_type* const pTrHandle)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         remote_fb_tr_handle_type* const pTrHandle)
 {
  assert(pConnector);
 
@@ -607,14 +610,14 @@ void TestServices::RemoteFB_Connector__CommitRetaining
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__ExecuteImmediate
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type*       pConnector,
-                                        db_obj::t_db_operation_context& op_ctx,
-                                        remote_fb_tr_handle_type*       pTrHandle,
-                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
-                                        structure::t_const_str_box      SQL_str,
-                                        const isc_api::XSQLDA_V1*       pInXSQLDA,
-                                        const isc_api::XSQLDA_V1*       pOutXSQLDA)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type*       pConnector,
+                         db_obj::t_db_operation_context& op_ctx,
+                         remote_fb_tr_handle_type*       pTrHandle,
+                         remote_fb::protocol::P_USHORT   SQL_Dialect,
+                         structure::t_const_str_box      SQL_str,
+                         const isc_api::XSQLDA_V1*       pInXSQLDA,
+                         const isc_api::XSQLDA_V1*       pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -644,12 +647,12 @@ void TestServices::RemoteFB_Connector__ExecuteImmediate
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__ExecuteImmediate_M
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type*       pConnector,
-                                        db_obj::t_db_operation_context& op_ctx,
-                                        remote_fb_tr_handle_type*       pTrHandle,
-                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
-                                        structure::t_const_str_box      SQL_str)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type*       pConnector,
+                         db_obj::t_db_operation_context& op_ctx,
+                         remote_fb_tr_handle_type*       pTrHandle,
+                         remote_fb::protocol::P_USHORT   SQL_Dialect,
+                         structure::t_const_str_box      SQL_str)
 {
  assert(pConnector);
 
@@ -679,14 +682,14 @@ void TestServices::RemoteFB_Connector__ExecuteImmediate_M
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__ExecuteImmediate_M
-                                       (TTSO_Tracer&                    tracer,
-                                        remote_fb_connector_type*       pConnector,
-                                        db_obj::t_db_operation_context& op_ctx,
-                                        remote_fb_tr_handle_type*       pTrHandle,
-                                        remote_fb::protocol::P_USHORT   SQL_Dialect,
-                                        structure::t_const_str_box      SQL_str,
-                                        const remote_fb_in_msg_v1*      pInMsg,
-                                        const remote_fb_out_msg_v1*     pOutMsg)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type*       pConnector,
+                         db_obj::t_db_operation_context& op_ctx,
+                         remote_fb_tr_handle_type*       pTrHandle,
+                         remote_fb::protocol::P_USHORT   SQL_Dialect,
+                         structure::t_const_str_box      SQL_str,
+                         const remote_fb_in_msg_v1*      pInMsg,
+                         const remote_fb_out_msg_v1*     pOutMsg)
 {
  assert(pConnector);
 
@@ -716,9 +719,9 @@ void TestServices::RemoteFB_Connector__ExecuteImmediate_M
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtAllocate
-                                       (TTSO_Tracer&                      tracer,
-                                        remote_fb_connector_type*   const pConnector,
-                                        remote_fb_stmt_handle_type* const pStmtHandle)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_stmt_handle_type* const pStmtHandle)
 {
  assert(pConnector);
 
@@ -742,10 +745,10 @@ void TestServices::RemoteFB_Connector__StmtAllocate
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtDrop
-                                       (TTSO_Tracer&                      tracer,
-                                        remote_fb_connector_type*   const pConnector,
-                                        remote_fb_stmt_handle_type* const pStmtHandle,
-                                        const wchar_t*              const stmtSign)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const wchar_t*              const stmtSign)
 {
  assert(pConnector);
 
@@ -769,10 +772,10 @@ void TestServices::RemoteFB_Connector__StmtDrop
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtClose
-                                       (TTSO_Tracer&                      tracer,
-                                        remote_fb_connector_type*   const pConnector,
-                                        remote_fb_stmt_handle_type* const pStmtHandle,
-                                        const wchar_t*              const stmtSign)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const wchar_t*              const stmtSign)
 {
  assert(pConnector);
 
@@ -796,8 +799,8 @@ void TestServices::RemoteFB_Connector__StmtClose
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtClose
-                                       (remote_fb_connector_type*   const pConnector,
-                                        remote_fb_stmt_handle_type* const pStmtHandle)
+                        (remote_fb_connector_type*   const pConnector,
+                         remote_fb_stmt_handle_type* const pStmtHandle)
 {
  assert(pConnector);
 
@@ -806,13 +809,13 @@ void TestServices::RemoteFB_Connector__StmtClose
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtPrepare
-                             (TTSO_Tracer&                        tracer,
-                              remote_fb_connector_type*     const pConnector,
-                              db_obj::t_db_operation_context&     opCtx,
-                              remote_fb_tr_handle_type*     const pTrHandle,
-                              remote_fb_stmt_handle_type*   const pStmtHandle,
-                              remote_fb::protocol::P_USHORT const SQL_dialect,
-                              structure::t_const_str_box    const SQL_str)
+                        (TTSO_Tracer&                        tracer,
+                         remote_fb_connector_type*     const pConnector,
+                         db_obj::t_db_operation_context&     opCtx,
+                         remote_fb_tr_handle_type*     const pTrHandle,
+                         remote_fb_stmt_handle_type*   const pStmtHandle,
+                         remote_fb::protocol::P_USHORT const SQL_dialect,
+                         structure::t_const_str_box    const SQL_str)
 {
  assert(pConnector);
 
@@ -844,12 +847,12 @@ void TestServices::RemoteFB_Connector__StmtPrepare
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtPrepare
-                             (remote_fb_connector_type*     const pConnector,
-                              db_obj::t_db_operation_context&     opCtx,
-                              remote_fb_tr_handle_type*     const pTrHandle,
-                              remote_fb_stmt_handle_type*   const pStmtHandle,
-                              remote_fb::protocol::P_USHORT const SQL_dialect,
-                              structure::t_const_str_box    const SQL_str)
+                        (remote_fb_connector_type*     const pConnector,
+                         db_obj::t_db_operation_context&     opCtx,
+                         remote_fb_tr_handle_type*     const pTrHandle,
+                         remote_fb_stmt_handle_type*   const pStmtHandle,
+                         remote_fb::protocol::P_USHORT const SQL_dialect,
+                         structure::t_const_str_box    const SQL_str)
 {
  assert(pConnector);
 
@@ -866,11 +869,11 @@ void TestServices::RemoteFB_Connector__StmtPrepare
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetColumns
-                             (TTSO_Tracer&                    tracer,
-                              remote_fb_connector_type*       pConnector,
-                              db_obj::t_db_operation_context& opCtx,
-                              remote_fb_stmt_handle_type*     pStmtHandle,
-                              isc_api::XSQLDA_V1*             xsqlda)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type*       pConnector,
+                         db_obj::t_db_operation_context& opCtx,
+                         remote_fb_stmt_handle_type*     pStmtHandle,
+                         isc_api::XSQLDA_V1*             xsqlda)
 {
  assert(pConnector);
 
@@ -897,11 +900,11 @@ void TestServices::RemoteFB_Connector__GetColumns
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetParameters
-                             (TTSO_Tracer&                    tracer,
-                              remote_fb_connector_type*       pConnector,
-                              db_obj::t_db_operation_context& opCtx,
-                              remote_fb_stmt_handle_type*     pStmtHandle,
-                              isc_api::XSQLDA_V1*             xsqlda)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type*       pConnector,
+                         db_obj::t_db_operation_context& opCtx,
+                         remote_fb_stmt_handle_type*     pStmtHandle,
+                         isc_api::XSQLDA_V1*             xsqlda)
 {
  assert(pConnector);
 
@@ -928,14 +931,14 @@ void TestServices::RemoteFB_Connector__GetParameters
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetStatementInfo
-                             (TTSO_Tracer&                     tracer,
-                              remote_fb_connector_type*        pConnector,
-                              db_obj::t_db_operation_context&  opCtx,
-                              remote_fb_stmt_handle_type*      pStmtHandle,
-                              unsigned short                   Incornation,
-                              unsigned short                   cItems,
-                              const unsigned char*             pItems,
-                              remote_fb::RemoteFB__InfoBuffer& ResultBuffer)
+                        (TTSO_Tracer&                     tracer,
+                         remote_fb_connector_type*        pConnector,
+                         db_obj::t_db_operation_context&  opCtx,
+                         remote_fb_stmt_handle_type*      pStmtHandle,
+                         unsigned short                   Incornation,
+                         unsigned short                   cItems,
+                         const unsigned char*             pItems,
+                         remote_fb::RemoteFB__InfoBuffer& ResultBuffer)
 {
  assert(pConnector);
 
@@ -965,13 +968,13 @@ void TestServices::RemoteFB_Connector__GetStatementInfo
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtExecute
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   op_ctx,
-                              remote_fb_tr_handle_type*   const pTrHandle,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pInXSQLDA,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pInXSQLDA,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1000,12 +1003,12 @@ void TestServices::RemoteFB_Connector__StmtExecute
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtExecute
-                             (remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   op_ctx,
-                              remote_fb_tr_handle_type*   const pTrHandle,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pInXSQLDA,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pInXSQLDA,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1019,11 +1022,11 @@ void TestServices::RemoteFB_Connector__StmtExecute
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtExecute_M
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   op_ctx,
-                              remote_fb_tr_handle_type*   const pTrHandle,
-                              remote_fb_stmt_handle_type* const pStmtHandle)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_stmt_handle_type* const pStmtHandle)
 {
  assert(pConnector);
 
@@ -1052,13 +1055,13 @@ void TestServices::RemoteFB_Connector__StmtExecute_M
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtExecute_M
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   op_ctx,
-                              remote_fb_tr_handle_type*   const pTrHandle,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_in_msg_v1*  const pInMsg,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   op_ctx,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_in_msg_v1*  const pInMsg,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1087,11 +1090,11 @@ void TestServices::RemoteFB_Connector__StmtExecute_M
 
 //-------------------------------------------------------------------------
 bool TestServices::RemoteFB_Connector__StmtFetch
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1123,11 +1126,11 @@ bool TestServices::RemoteFB_Connector__StmtFetch
 
 //-------------------------------------------------------------------------
 bool TestServices::RemoteFB_Connector__StmtFetch_M
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1160,11 +1163,11 @@ bool TestServices::RemoteFB_Connector__StmtFetch_M
 ////////////////////////////////////////////////////////////////////////////////
 
 void TestServices::RemoteFB_Connector__StmtFetch_ToRow
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1197,10 +1200,10 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToRow
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_ToRow
-                             (remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1216,11 +1219,11 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToRow
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1253,10 +1256,10 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
-                             (remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const isc_api::XSQLDA_V1*   const pOutXSQLDA)
+                        (remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const isc_api::XSQLDA_V1*   const pOutXSQLDA)
 {
  assert(pConnector);
 
@@ -1273,11 +1276,11 @@ void TestServices::RemoteFB_Connector__StmtFetch_ToEOF
 ////////////////////////////////////////////////////////////////////////////////
 
 void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1310,10 +1313,10 @@ void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
-                             (remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1329,11 +1332,11 @@ void TestServices::RemoteFB_Connector__StmtFetch_M_ToRow
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
-                             (TTSO_Tracer&                      tracer,
-                              remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1366,10 +1369,10 @@ void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
 
 //-------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
-                             (remote_fb_connector_type*   const pConnector,
-                              db_obj::t_db_operation_context&   opCtx,
-                              remote_fb_stmt_handle_type* const pStmtHandle,
-                              const remote_fb_out_msg_v1* const pOutMsg)
+                        (remote_fb_connector_type*   const pConnector,
+                         db_obj::t_db_operation_context&   opCtx,
+                         remote_fb_stmt_handle_type* const pStmtHandle,
+                         const remote_fb_out_msg_v1* const pOutMsg)
 {
  assert(pConnector);
 
@@ -1386,11 +1389,11 @@ void TestServices::RemoteFB_Connector__StmtFetch_M_ToEOF
 ////////////////////////////////////////////////////////////////////////////////
 
 void TestServices::RemoteFB_Connector__OpenBlob
-                                           (TTSO_Tracer&                      tracer,
-                                            remote_fb_connector_type*   const pConnector,
-                                            remote_fb_tr_handle_type*   const pTrHandle,
-                                            remote_fb_blob_handle_type* const pBlobHandle,
-                                            const db_obj::DB_IBBLOBID&        blobID)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_blob_handle_type* const pBlobHandle,
+                         const db_obj::DB_IBBLOBID&        blobID)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -1419,11 +1422,11 @@ void TestServices::RemoteFB_Connector__OpenBlob
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__CreateBlob
-                                           (TTSO_Tracer&                      tracer,
-                                            remote_fb_connector_type*   const pConnector,
-                                            remote_fb_tr_handle_type*   const pTrHandle,
-                                            remote_fb_blob_handle_type* const pBlobHandle,
-                                            db_obj::DB_IBBLOBID*        const pBlobID)
+                        (TTSO_Tracer&                      tracer,
+                         remote_fb_connector_type*   const pConnector,
+                         remote_fb_tr_handle_type*   const pTrHandle,
+                         remote_fb_blob_handle_type* const pBlobHandle,
+                         db_obj::DB_IBBLOBID*        const pBlobID)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -1455,13 +1458,13 @@ void TestServices::RemoteFB_Connector__CreateBlob
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__CreateBlob
-                         (TTSO_Tracer&                               tracer,
-                          remote_fb_connector_type*            const pConnector,
-                          remote_fb_tr_handle_type*            const pTrHandle,
-                          remote_fb_blob_handle_type*          const pBlobHandle,
-                          db_obj::DB_IBBLOBID*                 const pBlobID,
-                           size_t                              const szBPB,
-                           const remote_fb::protocol::P_UCHAR* const pBPB)
+                        (TTSO_Tracer&                              tracer,
+                         remote_fb_connector_type*           const pConnector,
+                         remote_fb_tr_handle_type*           const pTrHandle,
+                         remote_fb_blob_handle_type*         const pBlobHandle,
+                         db_obj::DB_IBBLOBID*                const pBlobID,
+                         size_t                              const szBPB,
+                         const remote_fb::protocol::P_UCHAR* const pBPB)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -1693,15 +1696,15 @@ void TestServices::RemoteFB_Connector__FlushBlob
 ////////////////////////////////////////////////////////////////////////////////
 
 void TestServices::RemoteFB_Connector__PutArraySlice
-                                           (TTSO_Tracer&                    tracer,
-                                            remote_fb_connector_type* const pConnector,
-                                            db_obj::t_db_operation_context& op_ctx,
-                                            remote_fb_tr_handle_type* const pTrHandle,
-                                            db_obj::DB_IBARRAYID*     const pArrayID,
-                                            size_t                    const szArraySDL,
-                                            const unsigned char*      const pArraySDL,
-                                            size_t                    const szArrayData,
-                                            const void*               const pArrayData)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         db_obj::t_db_operation_context& op_ctx,
+                         remote_fb_tr_handle_type* const pTrHandle,
+                         db_obj::DB_IBARRAYID*     const pArrayID,
+                         size_t                    const szArraySDL,
+                         const unsigned char*      const pArraySDL,
+                         size_t                    const szArrayData,
+                         const void*               const pArrayData)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -1734,15 +1737,15 @@ void TestServices::RemoteFB_Connector__PutArraySlice
 
 //------------------------------------------------------------------------
 void TestServices::RemoteFB_Connector__GetArraySlice
-                                           (TTSO_Tracer&                    tracer,
-                                            remote_fb_connector_type* const pConnector,
-                                            db_obj::t_db_operation_context& op_ctx,
-                                            remote_fb_tr_handle_type* const pTrHandle,
-                                            const db_obj::DB_IBARRAYID&     ArrayID,
-                                            size_t                    const szArraySDL,
-                                            const unsigned char*      const pArraySDL,
-                                            size_t                    const szArrayData,
-                                            void*                     const pArrayData)
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector,
+                         db_obj::t_db_operation_context& op_ctx,
+                         remote_fb_tr_handle_type* const pTrHandle,
+                         const db_obj::DB_IBARRAYID&     ArrayID,
+                         size_t                    const szArraySDL,
+                         const unsigned char*      const pArraySDL,
+                         size_t                    const szArrayData,
+                         void*                     const pArrayData)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -1774,9 +1777,10 @@ void TestServices::RemoteFB_Connector__GetArraySlice
 
 ////////////////////////////////////////////////////////////////////////////////
 
-void TestServices::XSQLDA_check_sqld(TTSO_Tracer&                    tracer,
-                                     const isc_api::XSQLDA_V1* const xsqlda,
-                                     short                     const sqld)
+void TestServices::XSQLDA_check_sqld
+                        (TTSO_Tracer&                    tracer,
+                         const isc_api::XSQLDA_V1* const xsqlda,
+                         short                     const sqld)
 {
  assert(xsqlda);
 
@@ -1807,9 +1811,10 @@ void TestServices::XSQLDA_check_sqld(TTSO_Tracer&                    tracer,
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void TestServices::XSQLVAR_check_sqltype(TTSO_Tracer&                     tracer,
-                                         const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         short                      const sqltype)
+void TestServices::XSQLVAR_check_sqltype
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqltype)
 {
  assert(xsqlvar);
 
@@ -1839,9 +1844,10 @@ void TestServices::XSQLVAR_check_sqltype(TTSO_Tracer&                     tracer
 }//XSQLVAR_check_sqltype
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlsubtype(TTSO_Tracer&                     tracer,
-                                            const isc_api::XSQLVAR_V1* const xsqlvar,
-                                            short                      const sqlsubtype)
+void TestServices::XSQLVAR_check_sqlsubtype
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqlsubtype)
 {
  assert(xsqlvar);
 
@@ -1871,9 +1877,10 @@ void TestServices::XSQLVAR_check_sqlsubtype(TTSO_Tracer&                     tra
 }//XSQLVAR_check_sqlsubtype
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlscale(TTSO_Tracer&                     tracer,
-                                          const isc_api::XSQLVAR_V1* const xsqlvar,
-                                          short                      const sqlscale)
+void TestServices::XSQLVAR_check_sqlscale
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqlscale)
 {
  assert(xsqlvar);
 
@@ -1903,9 +1910,10 @@ void TestServices::XSQLVAR_check_sqlscale(TTSO_Tracer&                     trace
 }//XSQLVAR_check_sqlscale
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqllen(TTSO_Tracer&                     tracer,
-                                        const isc_api::XSQLVAR_V1* const xsqlvar,
-                                        short                      const sqllen)
+void TestServices::XSQLVAR_check_sqllen
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqllen)
 {
  assert(xsqlvar);
 
@@ -1935,9 +1943,10 @@ void TestServices::XSQLVAR_check_sqllen(TTSO_Tracer&                     tracer,
 }//XSQLVAR_check_sqllen
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlname(TTSO_Tracer&                     tracer,
-                                         const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const sqlname)
+void TestServices::XSQLVAR_check_sqlname
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const sqlname)
 {
  assert(xsqlvar);
 
@@ -1990,9 +1999,10 @@ void TestServices::XSQLVAR_check_sqlname(TTSO_Tracer&                     tracer
 }//XSQLVAR_check_sqlname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_relname(TTSO_Tracer&                     tracer,
-                                         const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const relname)
+void TestServices::XSQLVAR_check_relname
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const relname)
 {
  assert(xsqlvar);
 
@@ -2045,9 +2055,10 @@ void TestServices::XSQLVAR_check_relname(TTSO_Tracer&                     tracer
 }//XSQLVAR_check_relname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_ownname(TTSO_Tracer&                     tracer,
-                                         const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const ownname)
+void TestServices::XSQLVAR_check_ownname
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const ownname)
 {
  assert(xsqlvar);
 
@@ -2100,9 +2111,10 @@ void TestServices::XSQLVAR_check_ownname(TTSO_Tracer&                     tracer
 }//XSQLVAR_check_ownname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_aliasname(TTSO_Tracer&                     tracer,
-                                           const isc_api::XSQLVAR_V1* const xsqlvar,
-                                           str_box_type               const aliasname)
+void TestServices::XSQLVAR_check_aliasname
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const aliasname)
 {
  assert(xsqlvar);
 
@@ -2155,16 +2167,17 @@ void TestServices::XSQLVAR_check_aliasname(TTSO_Tracer&                     trac
 }//XSQLVAR_check_aliasname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check(TTSO_Tracer&                     tracer,
-                                 const isc_api::XSQLVAR_V1* const xsqlvar,
-                                 short                      const sqltype,
-                                 short                      const sqlsubtype,
-                                 short                      const sqlscale,
-                                 short                      const sqllen,
-                                 str_box_type               const sqlname,
-                                 str_box_type               const relname,
-                                 str_box_type               const ownname,
-                                 str_box_type               const aliasname)
+void TestServices::XSQLVAR_check
+                        (TTSO_Tracer&                     tracer,
+                         const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqltype,
+                         short                      const sqlsubtype,
+                         short                      const sqlscale,
+                         short                      const sqllen,
+                         str_box_type               const sqlname,
+                         str_box_type               const relname,
+                         str_box_type               const ownname,
+                         str_box_type               const aliasname)
 {
  XSQLVAR_check_sqltype
   (tracer,
@@ -2209,8 +2222,9 @@ void TestServices::XSQLVAR_check(TTSO_Tracer&                     tracer,
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void TestServices::XSQLVAR_check_sqltype(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         short                      const sqltype)
+void TestServices::XSQLVAR_check_sqltype
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqltype)
 {
  assert(xsqlvar);
 
@@ -2225,8 +2239,9 @@ void TestServices::XSQLVAR_check_sqltype(const isc_api::XSQLVAR_V1* const xsqlva
 }//XSQLVAR_check_sqltype
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlsubtype(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                            short                      const sqlsubtype)
+void TestServices::XSQLVAR_check_sqlsubtype
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqlsubtype)
 {
  assert(xsqlvar);
 
@@ -2241,8 +2256,9 @@ void TestServices::XSQLVAR_check_sqlsubtype(const isc_api::XSQLVAR_V1* const xsq
 }//XSQLVAR_check_sqlsubtype
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlscale(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                          short                      const sqlscale)
+void TestServices::XSQLVAR_check_sqlscale
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqlscale)
 {
  assert(xsqlvar);
 
@@ -2257,8 +2273,9 @@ void TestServices::XSQLVAR_check_sqlscale(const isc_api::XSQLVAR_V1* const xsqlv
 }//XSQLVAR_check_sqlscale
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqllen(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                        short                      const sqllen)
+void TestServices::XSQLVAR_check_sqllen
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqllen)
 {
  assert(xsqlvar);
 
@@ -2273,8 +2290,9 @@ void TestServices::XSQLVAR_check_sqllen(const isc_api::XSQLVAR_V1* const xsqlvar
 }//XSQLVAR_check_sqllen
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_sqlname(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const sqlname)
+void TestServices::XSQLVAR_check_sqlname
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const sqlname)
 {
  assert(xsqlvar);
 
@@ -2306,8 +2324,9 @@ void TestServices::XSQLVAR_check_sqlname(const isc_api::XSQLVAR_V1* const xsqlva
 }//XSQLVAR_check_sqlname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_relname(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const relname)
+void TestServices::XSQLVAR_check_relname
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const relname)
 {
  assert(xsqlvar);
 
@@ -2339,8 +2358,9 @@ void TestServices::XSQLVAR_check_relname(const isc_api::XSQLVAR_V1* const xsqlva
 }//XSQLVAR_check_relname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_ownname(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                         str_box_type               const ownname)
+void TestServices::XSQLVAR_check_ownname
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const ownname)
 {
  assert(xsqlvar);
 
@@ -2372,8 +2392,9 @@ void TestServices::XSQLVAR_check_ownname(const isc_api::XSQLVAR_V1* const xsqlva
 }//XSQLVAR_check_ownname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check_aliasname(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                           str_box_type               const aliasname)
+void TestServices::XSQLVAR_check_aliasname
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         str_box_type               const aliasname)
 {
  assert(xsqlvar);
 
@@ -2405,15 +2426,16 @@ void TestServices::XSQLVAR_check_aliasname(const isc_api::XSQLVAR_V1* const xsql
 }//XSQLVAR_check_aliasname
 
 //------------------------------------------------------------------------
-void TestServices::XSQLVAR_check(const isc_api::XSQLVAR_V1* const xsqlvar,
-                                 short                      const sqltype,
-                                 short                      const sqlsubtype,
-                                 short                      const sqlscale,
-                                 short                      const sqllen,
-                                 str_box_type               const sqlname,
-                                 str_box_type               const relname,
-                                 str_box_type               const ownname,
-                                 str_box_type               const aliasname)
+void TestServices::XSQLVAR_check
+                        (const isc_api::XSQLVAR_V1* const xsqlvar,
+                         short                      const sqltype,
+                         short                      const sqlsubtype,
+                         short                      const sqlscale,
+                         short                      const sqllen,
+                         str_box_type               const sqlname,
+                         str_box_type               const relname,
+                         str_box_type               const ownname,
+                         str_box_type               const aliasname)
 {
  XSQLVAR_check_sqltype
   (xsqlvar,
@@ -2450,8 +2472,9 @@ void TestServices::XSQLVAR_check(const isc_api::XSQLVAR_V1* const xsqlvar,
 
 /////////////////////////////////////////////////////////////////////////////////
 
-void TestServices::HACK__DetachCn(TTSO_Tracer&                    tracer,
-                                  remote_fb_connector_type* const pConnector)
+void TestServices::HACK__DetachCn
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector)
 {
  assert(pConnector);
 
@@ -2483,8 +2506,9 @@ void TestServices::HACK__DetachCn(TTSO_Tracer&                    tracer,
 }//HACK__DetachCn
 
 //------------------------------------------------------------------------
-void TestServices::HACK__DropDb(TTSO_Tracer&                    tracer,
-                                remote_fb_connector_type* const pConnector)
+void TestServices::HACK__DropDb
+                        (TTSO_Tracer&                    tracer,
+                         remote_fb_connector_type* const pConnector)
 {
  assert(pConnector);
 
@@ -2516,9 +2540,10 @@ void TestServices::HACK__DropDb(TTSO_Tracer&                    tracer,
 }//HACK__DropDb
 
 //------------------------------------------------------------------------
-void TestServices::HACK__DropStmt(TTSO_Tracer&                                    tracer,
-                                  remote_fb_connector_type*                 const pConnector,
-                                  remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
+void TestServices::HACK__DropStmt
+                        (TTSO_Tracer&                                    tracer,
+                         remote_fb_connector_type*                 const pConnector,
+                         remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
 {
  assert(pConnector);
  assert(pStmtHandle);
@@ -2555,9 +2580,10 @@ void TestServices::HACK__DropStmt(TTSO_Tracer&                                  
 }//HACK__DropStmt
 
 //------------------------------------------------------------------------
-void TestServices::HACK__CloseStmt(TTSO_Tracer&                                    tracer,
-                                   remote_fb_connector_type*                 const pConnector,
-                                   remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
+void TestServices::HACK__CloseStmt
+                        (TTSO_Tracer&                                    tracer,
+                         remote_fb_connector_type*                 const pConnector,
+                         remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
 {
  assert(pConnector);
  assert(pStmtHandle);
@@ -2594,9 +2620,10 @@ void TestServices::HACK__CloseStmt(TTSO_Tracer&                                 
 }//HACK__CloseStmt
 
 //------------------------------------------------------------------------
-void TestServices::HACK__UnprepareStmt(TTSO_Tracer&                                    tracer,
-                                       remote_fb_connector_type*                 const pConnector,
-                                       remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
+void TestServices::HACK__UnprepareStmt
+                        (TTSO_Tracer&                                    tracer,
+                         remote_fb_connector_type*                 const pConnector,
+                         remote_fb::handles::RemoteFB__StmtHandle* const pStmtHandle)
 {
  assert(pConnector);
  assert(pStmtHandle);
@@ -2633,9 +2660,10 @@ void TestServices::HACK__UnprepareStmt(TTSO_Tracer&                             
 }//HACK__UnprepareStmt
 
 //------------------------------------------------------------------------
-void TestServices::HACK__CommitTr(TTSO_Tracer&                            tracer,
-                                  remote_fb_connector_type*               pConnector,
-                                  remote_fb::handles::RemoteFB__TrHandle* pTrHandle)
+void TestServices::HACK__CommitTr
+                        (TTSO_Tracer&                            tracer,
+                         remote_fb_connector_type*               pConnector,
+                         remote_fb::handles::RemoteFB__TrHandle* pTrHandle)
 {
  assert(pConnector);
  assert(pTrHandle);
@@ -2672,9 +2700,10 @@ void TestServices::HACK__CommitTr(TTSO_Tracer&                            tracer
 }//HACK__CommitTr
 
 //------------------------------------------------------------------------
-void TestServices::HACK__CloseBlob(TTSO_Tracer&                              tracer,
-                                   remote_fb_connector_type*                 pConnector,
-                                   remote_fb::handles::RemoteFB__BlobHandle* pBlobHandle)
+void TestServices::HACK__CloseBlob
+                        (TTSO_Tracer&                              tracer,
+                         remote_fb_connector_type*                 pConnector,
+                         remote_fb::handles::RemoteFB__BlobHandle* pBlobHandle)
 {
  assert(pConnector);
  assert(pBlobHandle);
@@ -2713,11 +2742,11 @@ void TestServices::HACK__CloseBlob(TTSO_Tracer&                              tra
 ////////////////////////////////////////////////////////////////////////////////
 
 bool TestServices::checkValue__I2
-                             (TTSO_Tracer&                 tracer,
-                              short                  const actualSqlInd,
-                              db_obj::t_dbvalue__i2  const actualSqlValue,
-                              short                  const expectedSqlInd,
-                              db_obj::t_dbvalue__i2  const expectedSqlValue)
+                        (TTSO_Tracer&                 tracer,
+                         short                  const actualSqlInd,
+                         db_obj::t_dbvalue__i2  const actualSqlValue,
+                         short                  const expectedSqlInd,
+                         db_obj::t_dbvalue__i2  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2750,11 +2779,11 @@ bool TestServices::checkValue__I2
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__I4
-                             (TTSO_Tracer&                 tracer,
-                              short                  const actualSqlInd,
-                              db_obj::t_dbvalue__i4  const actualSqlValue,
-                              short                  const expectedSqlInd,
-                              db_obj::t_dbvalue__i4  const expectedSqlValue)
+                        (TTSO_Tracer&                 tracer,
+                         short                  const actualSqlInd,
+                         db_obj::t_dbvalue__i4  const actualSqlValue,
+                         short                  const expectedSqlInd,
+                         db_obj::t_dbvalue__i4  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2787,11 +2816,11 @@ bool TestServices::checkValue__I4
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__I8
-                             (TTSO_Tracer&                 tracer,
-                              short                  const actualSqlInd,
-                              db_obj::t_dbvalue__i8  const actualSqlValue,
-                              short                  const expectedSqlInd,
-                              db_obj::t_dbvalue__i8  const expectedSqlValue)
+                        (TTSO_Tracer&                 tracer,
+                         short                  const actualSqlInd,
+                         db_obj::t_dbvalue__i8  const actualSqlValue,
+                         short                  const expectedSqlInd,
+                         db_obj::t_dbvalue__i8  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2824,11 +2853,11 @@ bool TestServices::checkValue__I8
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__R4
-                             (TTSO_Tracer&                 tracer,
-                              short                  const actualSqlInd,
-                              db_obj::t_dbvalue__r4  const actualSqlValue,
-                              short                  const expectedSqlInd,
-                              db_obj::t_dbvalue__r4  const expectedSqlValue)
+                        (TTSO_Tracer&                 tracer,
+                         short                  const actualSqlInd,
+                         db_obj::t_dbvalue__r4  const actualSqlValue,
+                         short                  const expectedSqlInd,
+                         db_obj::t_dbvalue__r4  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2861,11 +2890,11 @@ bool TestServices::checkValue__R4
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__R8
-                             (TTSO_Tracer&                 tracer,
-                              short                  const actualSqlInd,
-                              db_obj::t_dbvalue__r8  const actualSqlValue,
-                              short                  const expectedSqlInd,
-                              db_obj::t_dbvalue__r8  const expectedSqlValue)
+                        (TTSO_Tracer&                 tracer,
+                         short                  const actualSqlInd,
+                         db_obj::t_dbvalue__r8  const actualSqlValue,
+                         short                  const expectedSqlInd,
+                         db_obj::t_dbvalue__r8  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2898,11 +2927,11 @@ bool TestServices::checkValue__R8
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__TIME
-                             (TTSO_Tracer&                   tracer,
-                              short                    const actualSqlInd,
-                              isc_api::t_ibp_isc_time  const actualSqlValue,
-                              short                    const expectedSqlInd,
-                              isc_api::t_ibp_isc_time  const expectedSqlValue)
+                        (TTSO_Tracer&                   tracer,
+                         short                    const actualSqlInd,
+                         isc_api::t_ibp_isc_time  const actualSqlValue,
+                         short                    const expectedSqlInd,
+                         isc_api::t_ibp_isc_time  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2935,11 +2964,11 @@ bool TestServices::checkValue__TIME
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__DATE
-                             (TTSO_Tracer&                   tracer,
-                              short                    const actualSqlInd,
-                              isc_api::t_ibp_isc_date  const actualSqlValue,
-                              short                    const expectedSqlInd,
-                              isc_api::t_ibp_isc_date  const expectedSqlValue)
+                        (TTSO_Tracer&                   tracer,
+                         short                    const actualSqlInd,
+                         isc_api::t_ibp_isc_date  const actualSqlValue,
+                         short                    const expectedSqlInd,
+                         isc_api::t_ibp_isc_date  const expectedSqlValue)
 {
  for(;;)
  {
@@ -2972,11 +3001,11 @@ bool TestServices::checkValue__DATE
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__TIMESTAMP
-                             (TTSO_Tracer&                        tracer,
-                              short                               actualSqlInd,
-                              const isc_api::t_ibp_isc_timestamp& actualSqlValue,
-                              short                               expectedSqlInd,
-                              const isc_api::t_ibp_isc_timestamp& expectedSqlValue)
+                        (TTSO_Tracer&                        tracer,
+                         short                               actualSqlInd,
+                         const isc_api::t_ibp_isc_timestamp& actualSqlValue,
+                         short                               expectedSqlInd,
+                         const isc_api::t_ibp_isc_timestamp& expectedSqlValue)
 {
  for(;;)
  {
@@ -3009,11 +3038,11 @@ bool TestServices::checkValue__TIMESTAMP
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__TIMESTAMP_WITH_TZ
-                             (TTSO_Tracer&                                  tracer,
-                              short                                         actualSqlInd,
-                              const isc_api::t_ibp_fb040_timestamp_with_tz& actualSqlValue,
-                              short                                         expectedSqlInd,
-                              const isc_api::t_ibp_fb040_timestamp_with_tz& expectedSqlValue)
+                        (TTSO_Tracer&                                  tracer,
+                         short                                         actualSqlInd,
+                         const isc_api::t_ibp_fb040_timestamp_with_tz& actualSqlValue,
+                         short                                         expectedSqlInd,
+                         const isc_api::t_ibp_fb040_timestamp_with_tz& expectedSqlValue)
 {
  for(;;)
  {
@@ -3046,11 +3075,11 @@ bool TestServices::checkValue__TIMESTAMP_WITH_TZ
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__TIME_WITH_TZ
-                             (TTSO_Tracer&                             tracer,
-                              short                                    actualSqlInd,
-                              const isc_api::t_ibp_fb040_time_with_tz& actualSqlValue,
-                              short                                    expectedSqlInd,
-                              const isc_api::t_ibp_fb040_time_with_tz& expectedSqlValue)
+                        (TTSO_Tracer&                             tracer,
+                         short                                    actualSqlInd,
+                         const isc_api::t_ibp_fb040_time_with_tz& actualSqlValue,
+                         short                                    expectedSqlInd,
+                         const isc_api::t_ibp_fb040_time_with_tz& expectedSqlValue)
 {
  for(;;)
  {
@@ -3082,11 +3111,12 @@ bool TestServices::checkValue__TIME_WITH_TZ
 }//checkValue__TIME_WITH_TZ
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__TEXT(TTSO_Tracer&                        tracer,
-                                    short                               actualSqlInd,
-                                    const structure::t_const_str_box&   actualSqlValue,
-                                    short                               expectedSqlInd,
-                                    const structure::t_const_str_box&   expectedSqlValue)
+bool TestServices::checkValue__TEXT
+                        (TTSO_Tracer&                        tracer,
+                         short                               actualSqlInd,
+                         const structure::t_const_str_box&   actualSqlValue,
+                         short                               expectedSqlInd,
+                         const structure::t_const_str_box&   expectedSqlValue)
 {
  for(;;)
  {
@@ -3119,11 +3149,12 @@ bool TestServices::checkValue__TEXT(TTSO_Tracer&                        tracer,
 }//checkValue__TEXT
 
 //------------------------------------------------------------------------
-bool TestServices::checkValue__BOOLEAN(TTSO_Tracer&                     tracer,
-                                       short                      const actualSqlInd,
-                                       isc_api::t_ibp_fb030_bool  const actualSqlValue,
-                                       short                      const expectedSqlInd,
-                                       isc_api::t_ibp_fb030_bool  const expectedSqlValue)
+bool TestServices::checkValue__BOOLEAN
+                        (TTSO_Tracer&                     tracer,
+                         short                      const actualSqlInd,
+                         isc_api::t_ibp_fb030_bool  const actualSqlValue,
+                         short                      const expectedSqlInd,
+                         isc_api::t_ibp_fb030_bool  const expectedSqlValue)
 {
  for(;;)
  {
@@ -3156,11 +3187,11 @@ bool TestServices::checkValue__BOOLEAN(TTSO_Tracer&                     tracer,
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__INT128
-                             (TTSO_Tracer&                tracer,
-                              short                       actualSqlInd,
-                              isc_api::t_ibp_fb040_int128 actualSqlValue,
-                              short                       expectedSqlInd,
-                              isc_api::t_ibp_fb040_int128 expectedSqlValue)
+                        (TTSO_Tracer&                tracer,
+                         short                       actualSqlInd,
+                         isc_api::t_ibp_fb040_int128 actualSqlValue,
+                         short                       expectedSqlInd,
+                         isc_api::t_ibp_fb040_int128 expectedSqlValue)
 {
  for(;;)
  {
@@ -3197,11 +3228,11 @@ bool TestServices::checkValue__INT128
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__DECFLOAT16
-                             (TTSO_Tracer&                    tracer,
-                              short                           actualSqlInd,
-                              isc_api::t_ibp_fb040_decfloat16 actualSqlValue,
-                              short                           expectedSqlInd,
-                              isc_api::t_ibp_fb040_decfloat16 expectedSqlValue)
+                        (TTSO_Tracer&                    tracer,
+                         short                           actualSqlInd,
+                         isc_api::t_ibp_fb040_decfloat16 actualSqlValue,
+                         short                           expectedSqlInd,
+                         isc_api::t_ibp_fb040_decfloat16 expectedSqlValue)
 {
  for(;;)
  {
@@ -3238,11 +3269,11 @@ bool TestServices::checkValue__DECFLOAT16
 
 //------------------------------------------------------------------------
 bool TestServices::checkValue__DECFLOAT34
-                             (TTSO_Tracer&                    tracer,
-                              short                           actualSqlInd,
-                              isc_api::t_ibp_fb040_decfloat34 actualSqlValue,
-                              short                           expectedSqlInd,
-                              isc_api::t_ibp_fb040_decfloat34 expectedSqlValue)
+                        (TTSO_Tracer&                    tracer,
+                         short                           actualSqlInd,
+                         isc_api::t_ibp_fb040_decfloat34 actualSqlValue,
+                         short                           expectedSqlInd,
+                         isc_api::t_ibp_fb040_decfloat34 expectedSqlValue)
 {
  for(;;)
  {

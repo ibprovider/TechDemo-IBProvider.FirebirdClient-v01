@@ -92,7 +92,13 @@
 // LCPI_STL_HAS_NEGATION
 //  0 : hasn't 'std::negation' function
 //  1 : has
-
+//
+// LCPI_STL_TO_STRING(value)
+//   std::to_string(value)
+//
+// LCPI_STL_TO_WSTRING(value)
+//   std::to_wstring(value)
+//
 ///////////////////////////////////////////////////////////////////////////////
 //Detect CRT Library ID
 

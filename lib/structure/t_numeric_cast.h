@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Template services for cast numeric types
 //                                               Kovalenko Dmitry. 29.03.2007
-#ifndef _t_numeric_cast_H_
-#define _t_numeric_cast_H_
+#ifndef _lcpi_lib_structure__t_numeric_cast_H_
+#define _lcpi_lib_structure__t_numeric_cast_H_
 
 #include <structure/t_limits.h>
 

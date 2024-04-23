@@ -178,8 +178,12 @@ typename t_mem_cluster_allocator<T,BaseAllocator>::size_type
 {
  DEBUG_CODE(this->debug__check_state();)
 
+ assert(m_space_beg<=m_space_end);
+
  size_type const x1=m_stats.free_block_count;
- size_type const x2=m_space_end-m_space_beg;
+ size_type const x2=static_cast<size_type>(m_space_end-m_space_beg);
+
+ assert((m_space_beg+x2)==m_space_end);
 
  assert(x1<=structure::t_numeric_limits<size_type>::max_value());
  assert(x2<=structure::t_numeric_limits<size_type>::max_value());

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Generic negative one value
 //                                                 Kovalenko Dmitry. 15.04.2009
-#ifndef _t_negative_one_H_
-#define _t_negative_one_H_
+#ifndef _lcpi_lib_structure__t_negative_one_H_
+#define _lcpi_lib_structure__t_negative_one_H_
 
 #include <lcpi/lib/structure/t_negative_one.h>
 

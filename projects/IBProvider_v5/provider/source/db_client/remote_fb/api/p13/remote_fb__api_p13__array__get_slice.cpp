@@ -86,15 +86,12 @@ void* RemoteFB__API_P13__GetArraySlice::tagOpMemoryBuffer::allocate
 
   if(m_szSliceData!=sz)
   {
-   structure::wstr_formatter
-    freason(me_bug_check__array_slice_size_not_equal_to_expected_2);
-
-   freason<<m_szSliceData<<sz;
-
-   IBP_BUG_CHECK__DEBUG
+   IBP_ErrorUtils::Throw__BugCheck__DEBUG
     (c_bug_check_src,
      L"#001",
-     freason.c_str())
+     me_bug_check__array_slice_size_not_equal_to_expected_2,
+     m_szSliceData,
+     sz);
   }//if
 
   //разрешаем только однократное выделение памяти

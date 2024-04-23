@@ -7,7 +7,7 @@
 #include <structure/test_obj/fw/set01/test_fw_set01__base.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__sys_log.h>
 #include <structure/test_obj/fw/set01/test_fw_set01__test_state2_storage.h>
-#include <structure/mt/t_mt_thread_controller__win32.h>
+#include <structure/mt/t_mt_thread_controller__std.h>
 #include <structure/stl/t_stl_list.h>
 
 namespace structure{namespace test_fw{namespace set01{
@@ -71,6 +71,19 @@ class TestFW__TestQueueMT LCPI_CPP_CFG__CLASS__FINAL
    =TestFW__TestState2_Storage;
 
  public:
+  using LCPI_OS__Event
+   =lcpi::infrastructure::os::mt::LCPI_OS__Event;
+
+  using WaitResultCode
+   =LCPI_OS__Event::WaitResultCode;
+
+  using LCPI_OS__EVENT_HANDLE
+   =LCPI_OS__Event::EVENT_HANDLE;
+
+  using TimeOut_t
+   =LCPI_OS__Event::TimeOut_t;
+
+ public:
   mutable guard_type m_ResultGuard;
   test_results_type  m_Results;
 
@@ -95,25 +108,25 @@ class TestFW__TestQueueMT LCPI_CPP_CFG__CLASS__FINAL
 
   void no_new_test__no_throw(bool clear);
 
-  TestFW__TestCPtr pop_test(const wchar_t* ThreadName,
-                            HANDLE         hCancelEvent);
+  TestFW__TestCPtr pop_test(str_parameter         ThreadName,
+                            LCPI_OS__EVENT_HANDLE hCancelEvent);
 
-  DWORD wait_pop_event(DWORD dwMilliSeconds);
+  WaitResultCode wait_pop_event(TimeOut_t dwMilliSeconds);
 
   //----------------------------------------------------------------------
-  void add_result(const wchar_t*            ThreadName,
+  void add_result(str_parameter             ThreadName,
                   const TestFW__TestState2& TestResult);
 
  private:
-  TestFW__TestCPtr pop_test_impl(HANDLE hCancelEvent);
+  TestFW__TestCPtr pop_test_impl(LCPI_OS__EVENT_HANDLE hCancelEvent);
 
  private:
   const unsigned     m_ExecMultiplicator;
 
   mutable guard_type m_TestQueueGuard;
   test_queue_type    m_TestQueue;
-  win32lib::TEvent   m_TestQueue_PushEvent;
-  win32lib::TEvent   m_TestQueue_PopEvent;
+  LCPI_OS__Event     m_TestQueue_PushEvent;
+  LCPI_OS__Event     m_TestQueue_PopEvent;
 
   long               m_TestQueue_NoNewTest;
 
@@ -130,11 +143,11 @@ class TestFW__TestQueueMT LCPI_CPP_CFG__CLASS__FINAL
 //class TestFW__TestRunnerMT
 
 class TestFW__TestRunnerMT LCPI_CPP_CFG__CLASS__FINAL
- :public structure::t_basic_thread_controller__win32<TestFW__SysSmartMemoryObject>
+ :public structure::t_basic_thread_controller__std<TestFW__SysSmartMemoryObject>
 {
  public:
   using self_type=TestFW__TestRunnerMT;
-  using inherited=structure::t_basic_thread_controller__win32<TestFW__SysSmartMemoryObject>;
+  using inherited=structure::t_basic_thread_controller__std<TestFW__SysSmartMemoryObject>;
 
   TestFW__TestRunnerMT(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
@@ -151,7 +164,7 @@ class TestFW__TestRunnerMT LCPI_CPP_CFG__CLASS__FINAL
  private:
   TestFW__TestRunnerMT(TestFW__ExecutorMT*  pExecutor,
                        size_t               thread_idx,
-                       const std::wstring&  thread_name,
+                       const std::string&   thread_name,
                        log_ex_type*         pLog);
 
   virtual ~TestFW__TestRunnerMT();
@@ -162,24 +175,35 @@ class TestFW__TestRunnerMT LCPI_CPP_CFG__CLASS__FINAL
                          const std::string&   BaseLogFilePath);
 
  public:
-  using inherited::get_stop_signal;
-  using inherited::get_stop_event;
+  EVENT_HANDLE get_stop_event()const
+  {
+   return inherited::get_stop_event();
+  }
 
+  STOP_SIGNAL_TYPE get_stop_signal()const
+  {
+   return inherited::get_stop_signal();
+  }
+  
   const log_ex_ptr& thread_log()const
-   {return m_log;}
+  {
+   return m_log;
+  }
 
   size_t thread_idx()const
-   {return m_thread_idx;}
+  {
+   return m_thread_idx;
+  }
 
  private:
-  virtual const wchar_t* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
+  virtual const char* thread_name_impl()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
   virtual void thread_worker_impl() LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  private:
   TestFW__ExecutorMT* const m_pExecutor;
   const size_t              m_thread_idx;
-  const std::wstring        m_thread_name;
+  const std::string         m_thread_name;
   const log_ex_ptr          m_log;
 };//class TestFW__TestRunnerMT
 
@@ -199,14 +223,9 @@ class TestFW__ExecutorMT
  public: //typedefs ------------------------------------------------------
   using self_ptr=structure::t_smart_object_ptr<self_type>;
 
-  using log_ex_type =TestFW__SysLog;
-  using log_ex_ptr  =log_ex_type::self_ptr;
-
-  using count_type=log_ex_type::count_type;
-
  public:
   TestFW__ExecutorMT(const std::string& BaseLogFilePath,
-                     log_ex_type*       pLog,
+                     TestFW__SysLog*    pLog,
                      size_t             nThreads);
 
  protected:
@@ -216,6 +235,11 @@ class TestFW__ExecutorMT
   virtual void final_release()LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
  public:
+  const TestFW__SysLog::self_ptr& GetLog()const
+  {
+   return m_spLog;
+  }
+ 
   //TestFW__PushTest interface -------------------------------------------
   virtual void PushTest(const test_type* pTest)LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
 
@@ -225,25 +249,12 @@ class TestFW__ExecutorMT
   void stop__no_throw();
 
  public:
-  class tag_summary_result LCPI_CPP_CFG__CLASS__FINAL
-  {
-   public:
-    std::uint64_t nTotalErrors;
-    std::uint64_t nTotalWarnings;
-
-    tag_summary_result()
-    {
-     this->nTotalErrors=0;
-     this->nTotalWarnings=0;
-    }
-  };//struct tag_summary_result
-
   /// <summary>
   ///  Build summary information
   /// </summary>
   //! \return
   //!  Total Error Count
-  tag_summary_result build_summary2();
+  void build_summary3();
 
  protected:
   friend class TestFW__TestRunnerMT;
@@ -253,9 +264,16 @@ class TestFW__ExecutorMT
   virtual void Internal__ThreadWorker(const runner_type* pRunner)const;
 
  private:
-  std::string  const  m_BaseLogFilePath;
-  log_ex_ptr   const  m_spLog;
-  size_t       const  m_nThreads;
+  LCPI_CPP_CFG__DECLSPEC__NORETURN
+  static void Helper__ThrowBugCheck__bad_thread_id
+   (const char*               place,
+    const char*               point,
+    const TestFW__TestState2& testState);
+
+ private:
+  std::string              const m_BaseLogFilePath;
+  TestFW__SysLog::self_ptr const m_spLog;
+  size_t                   const m_nThreads;
 
  private: //internal typedefs --------------------------------------------
   using runners_type

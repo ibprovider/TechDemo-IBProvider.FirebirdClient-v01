@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Chars convertions library
 //                                                 Dmitry Kovalenko. 19.04.2004
-#ifndef _t_char_converter_H_
-#define _t_char_converter_H_
+#ifndef _lcpi_lib_structure__t_char_converter_H_
+#define _lcpi_lib_structure__t_char_converter_H_
 
 #include <structure/t_char_base.h>
 #include <structure/t_const_str_box.h>
@@ -51,18 +51,18 @@ inline std::string  oem_to_ansi(t_const_str_box s,bool* error=NULL);
 //functions for transparent conversion
 
 //from ANSI
-inline std::wstring& tstr_to_tstr(std::wstring* result,const char* t,size_t n=-1,bool* error=NULL,UINT CodePage=CP_ACP);
-inline std::string&  tstr_to_tstr(std::string*  result,const char* t,size_t n=-1,bool* error=NULL,UINT CodePage=CP_ACP);
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_str_box s,bool* error,UINT CodePage=CP_ACP);
+inline std::string&  tstr_to_tstr(std::string*  result,t_const_str_box s,bool* error,UINT CodePage=CP_ACP);
 
-inline std::wstring& tstr_to_tstr(std::wstring* result,const std::string& s,bool* error=NULL,UINT CodePage=CP_ACP);
-inline std::string&  tstr_to_tstr(std::string*  result,const std::string& s,bool* error=NULL,UINT CodePage=CP_ACP);
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_str_box s);
+inline std::string&  tstr_to_tstr(std::string*  result,t_const_str_box s);
 
 //from UNICODE
-inline std::wstring& tstr_to_tstr(std::wstring* result,const wchar_t* t,size_t n=-1,bool* error=NULL,UINT CodePage=CP_ACP);
-inline std::string&  tstr_to_tstr(std::string*  result,const wchar_t* t,size_t n=-1,bool* error=NULL,UINT CodePage=CP_ACP);
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_wstr_box s,bool* error,UINT CodePage=CP_ACP);
+inline std::string&  tstr_to_tstr(std::string*  result,t_const_wstr_box s,bool* error,UINT CodePage=CP_ACP);
 
-inline std::wstring& tstr_to_tstr(std::wstring* result,const std::wstring& s,bool* error=NULL,UINT CodePage=CP_ACP);
-inline std::string&  tstr_to_tstr(std::string*  result,const std::wstring& s,bool* error=NULL,UINT CodePage=CP_ACP);
+inline std::wstring& tstr_to_tstr(std::wstring* result,t_const_wstr_box s);
+inline std::string&  tstr_to_tstr(std::string*  result,t_const_wstr_box s);
 
 //TSTR --> ANSI
 inline std::string tstr_to_str(const char* t);

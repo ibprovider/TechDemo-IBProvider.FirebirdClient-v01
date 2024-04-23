@@ -122,11 +122,12 @@ struct TestMemAllocatorFunc
 };//struct TestMemAllocatorFunc
 
 ////////////////////////////////////////////////////////////////////////////////
+
 #define _TSO_DEF_TEST_DESCR_EX(name,func)   \
- {name,func}
+ {(name),(func)}
 
 #define _TSO_DEF_TEST_DESCR(func)           \
- _TSO_DEF_TEST_DESCR_EX(#func,func)
+ _TSO_DEF_TEST_DESCR_EX(#func,(func))
 
 ////////////////////////////////////////////////////////////////////////////////
 //struct t_test_descr

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Command line parser
 //                                                Dmitry Kovalenko. 31.01.2005.
-#ifndef _t_cmd_line_parser_H_
-#define _t_cmd_line_parser_H_
+#ifndef _lcpi_lib_structure__t_cmd_line_parser_H_
+#define _lcpi_lib_structure__t_cmd_line_parser_H_
 
 #include <structure/t_smart_vector.h>
 #include <structure/t_locale.h>
@@ -37,10 +37,10 @@ template<class ForwardIterator>
 class t_cmd_line_part
 {
  private:
-  typedef t_cmd_line_part<ForwardIterator>               self_type;
+  using self_type=t_cmd_line_part<ForwardIterator>;
 
  public:
-  typedef ForwardIterator                                iterator_type;
+  using iterator_type=ForwardIterator;
 
  public:
   iterator_type  m_start;
@@ -61,15 +61,6 @@ class t_cmd_line_part
 
   self_type& operator = (const self_type&);
 };//class t_cmd_line_part
-
-////////////////////////////////////////////////////////////////////////////////
-//Free utilities
-
-//partsT - class of container t_cmd_line_part
-template<class ForwardIterator,class partsT>
-void extract_cmd_line_parts(ForwardIterator first,
-                            ForwardIterator last,
-                            partsT&         parts);
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_cmd_line_error_codes
@@ -196,15 +187,16 @@ class t_basic_cmd_line_parser_base
 //class t_basic_cmd_line_parser
 
 template<class charT,class Allocator>
-class t_basic_cmd_line_parser:private t_basic_cmd_line_parser_base<charT>,
-                              public  t_cmd_line_error_codes
+class t_basic_cmd_line_parser
+ :private t_basic_cmd_line_parser_base<charT>
+ ,public  t_cmd_line_error_codes
 {
  private:
-  typedef t_basic_cmd_line_parser<charT,Allocator>               self_type;
-  typedef t_basic_cmd_line_parser_base<charT>                    inherited;
+  using self_type=t_basic_cmd_line_parser<charT,Allocator>;
+  using inherited=t_basic_cmd_line_parser_base<charT>;
 
-  t_basic_cmd_line_parser(const self_type&);
-  self_type& operator = (const self_type&);
+  t_basic_cmd_line_parser(const self_type&)=delete;
+  self_type& operator = (const self_type&)=delete;
 
  public: //typedefs ------------------------------------------------------
   enum tag_arg_flags
@@ -279,14 +271,14 @@ class t_basic_cmd_line_parser:private t_basic_cmd_line_parser_base<charT>,
   bool has(str_box_type name)const;
 
   //iterators ------------------------------------------------------------
-  typename iterator begin();
-  typename iterator end();
+  iterator begin();
+  iterator end();
 
-  typename const_iterator begin()const;
-  typename const_iterator end()const;
+  const_iterator begin()const;
+  const_iterator end()const;
 
-  typename const_iterator cbegin()const;
-  typename const_iterator cend()const;
+  const_iterator cbegin()const;
+  const_iterator cend()const;
 
   //modificators ----------------------------------------------------------
   iterator erase(iterator x);

@@ -14,10 +14,10 @@
 class t_base_com_error:virtual public structure::t_exception
 {
  private:
-  typedef t_base_com_error                        self_type;
-  typedef structure::t_exception                  inherited;
+  using self_type=t_base_com_error;
+  using inherited=structure::t_exception;
 
-  self_type& operator = (const self_type&);
+  self_type& operator = (const self_type&)=delete;
 
  public:
   t_base_com_error(const self_type&);

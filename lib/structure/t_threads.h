@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //Library for thread's configurations
 //                                               Dmitry Kovalenko. 21.04.2004
-#ifndef _t_threads_H_
-#define _t_threads_H_
+#ifndef _lcpi_lib_structure__t_threads_H_
+#define _lcpi_lib_structure__t_threads_H_
 
 #include <structure/t_thread_traits__single.h>
 #include <structure/t_thread_traits__multi.h>

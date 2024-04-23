@@ -10,6 +10,8 @@
 #include "source/os/win32/auth/ibp_os_win32_auth__provider.h"
 #include "source/error_services/ibp_error_utils.h"
 
+#include <tchar.h>
+
 namespace lcpi{namespace ibp{namespace os{namespace win32{namespace auth{
 ////////////////////////////////////////////////////////////////////////////////
 //class t_auth__provider

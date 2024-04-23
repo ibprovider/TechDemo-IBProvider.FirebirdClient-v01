@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include <_pch_.h>
-#pragma hdrstop
+//#pragma hdrstop
 
 #include <structure/test_obj/fw/set01/test_fw_set01__summary_builder.h>
 
@@ -23,8 +23,8 @@ TestFW__SummaryBuilder::~TestFW__SummaryBuilder()
 
 //------------------------------------------------------------------------
 void TestFW__SummaryBuilder::print_summary
-                                      (wstr_param_type header,
-                                       bool  const     print_total_from_log)
+                                      (str_param_type header,
+                                       bool  const    print_total_from_log)
 {
  this->print_summary_ex
   (m_Tracer,
@@ -34,9 +34,9 @@ void TestFW__SummaryBuilder::print_summary
 
 //------------------------------------------------------------------------
 void TestFW__SummaryBuilder::print_total
-                                      (wstr_param_type const header,
-                                       count_type      const nError,
-                                       count_type      const nWarning)
+                                      (str_param_type const header,
+                                       count_type     const nError,
+                                       count_type     const nWarning)
 {
  self_type::print_total_ex
   (m_Tracer,

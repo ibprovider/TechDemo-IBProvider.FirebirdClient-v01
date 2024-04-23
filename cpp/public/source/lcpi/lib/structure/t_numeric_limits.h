@@ -8,6 +8,9 @@
 
 #include <cstdint>
 #include <limits>
+#include <cfloat>
+
+#include <limits.h>
 
 namespace lcpi{namespace lib{namespace structure{
 ////////////////////////////////////////////////////////////////////////////////

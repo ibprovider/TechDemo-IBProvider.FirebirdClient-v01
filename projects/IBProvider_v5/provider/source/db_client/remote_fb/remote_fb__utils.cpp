@@ -59,8 +59,7 @@ t_ibp_string RemoteFB__Utils::GetSystemUserName()
 
  structure::tstr_to_tstr
   (&UserName,
-   tmp_buf.buffer(),
-   tmp_buf.size(),
+   lib::structure::make_str_box(tmp_buf.buffer(),tmp_buf.size()),
    &CvtFailed);
 
  if(CvtFailed)
@@ -105,13 +104,12 @@ t_ibp_string RemoteFB__Utils::GetComputerName()
 
  structure::tstr_to_tstr
   (&ComputerName,
-   tmp_buf.buffer(),
-   tmp_buf.size(),
+   lib::structure::make_str_box(tmp_buf.buffer(),tmp_buf.size()),
    &CvtFailed);
 
  if(CvtFailed)
  {
-  //ERROR - Can't translate ComputerName between code pages
+  // ERROR - Can't translate ComputerName between code pages
 
   IBP_ThrowCantTranslateSysData<t_ibp_string::value_type>(L"Local Computer Name");
  }//if CvtFailed
@@ -151,13 +149,12 @@ t_ibp_string RemoteFB__Utils::GetComputerName_U()
 
  structure::tstr_to_tstr
   (&ComputerName,
-   tmp_buf.buffer(),
-   tmp_buf.size(),
+   lib::structure::make_str_box(tmp_buf.buffer(),tmp_buf.size()),
    &CvtFailed);
 
  if(CvtFailed)
  {
-  //ERROR - Can't translate ComputerName between code pages
+  // ERROR - Can't translate ComputerName between code pages
 
   IBP_ThrowCantTranslateSysData<t_ibp_string::value_type>(L"Local Computer Name");
  }//if CvtFailed
@@ -199,7 +196,7 @@ t_ibp_string RemoteFB__Utils::GetCurrentProcessName()
 
  if(CvtFailed)
  {
-  //ERROR - Can't translate ProcessName between code pages
+  // ERROR - Can't translate ProcessName between code pages
 
   IBP_ThrowCantTranslateSysData<t_ibp_string::value_type>(L"Current Process Name");
  }//if CvtFailed
