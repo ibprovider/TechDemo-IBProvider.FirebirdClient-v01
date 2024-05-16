@@ -13,10 +13,10 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{namespace data{
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_EXT
 
-class IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_EXT
+class IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_EXT LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_EXT self_type;
+  using self_type=IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_EXT;
 
  public:
   static IBP_OLEDB_Props2__DescrDataRange GetDataRange();

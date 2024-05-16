@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_decrement_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_decrement_CC_
 
-#include <lcpi/infrastructure/os/lcpi.infrastructure.os-atomic_functions.h>
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-atomic_functions.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +34,7 @@ class interlocked_decrement__impl_n<sizeof(std::uint32_t)> LCPI_CPP_CFG__CLASS__
 
    LCPI__assert_s(sizeof(*pValue)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedDecrement32
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedDecrement32
                (reinterpret_cast<api_t volatile*>(pValue));
   }//exec
 };//class interlocked_decrement__impl_n<sizeof(std::uint32_t)>
@@ -55,7 +55,7 @@ class interlocked_decrement__impl_n<sizeof(std::uint64_t)> LCPI_CPP_CFG__CLASS__
 
    LCPI__assert_s(sizeof(*pValue)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedDecrement64
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedDecrement64
                (reinterpret_cast<api_t volatile*>(pValue));
   }//exec
 };//class interlocked_decrement__impl_n<sizeof(std::uint64_t)>

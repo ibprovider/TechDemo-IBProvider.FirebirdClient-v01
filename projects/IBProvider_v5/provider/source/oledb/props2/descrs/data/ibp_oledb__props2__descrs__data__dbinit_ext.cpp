@@ -103,7 +103,7 @@ STARTUP_CODE__DEBUG(DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__DBINIT_EXT__sm_
 IBP_OLEDB_Props2__DescrDataPtrRange
  IBP_OLEDB_Props2__Descrs__Data__DBINIT_EXT::GetDataPtrRange()
 {
- return IBP_OLEDB_Props2__DescrDataPtrRange(sm_descrs,_END_(sm_descrs));
+ return IBP_OLEDB_Props2__DescrDataPtrRange(_BEG_END_(sm_descrs));
 }//GetDataPtrRange
 
 //------------------------------------------------------------------------

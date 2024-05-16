@@ -856,7 +856,8 @@ db_obj::t_db_charset_const_ptr
 
  //создаем экземпляр новой кодовой страницы
 
- typedef structure::t_search_result<const tag_aliase*> result_type;
+ using result_type
+  =lib::structure::t_search_result<const tag_aliase*>;
 
  if(const result_type x
      =lib::structure::lower_search

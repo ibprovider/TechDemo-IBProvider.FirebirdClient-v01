@@ -18,15 +18,18 @@ t_string GetErrorMsg(DWORD const dwErrorCode,
 
  TCHAR* Pointer=nullptr;
 
- const DWORD res=::FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                                 FORMAT_MESSAGE_IGNORE_INSERTS |
-                                 FORMAT_MESSAGE_FROM_SYSTEM,
-                                 0,
-                                 dwErrorCode,
-                                 0,
-                                 (TCHAR*)&Pointer,
-                                 0,
-                                 nullptr);
+ const DWORD res
+   =::FormatMessage
+       (FORMAT_MESSAGE_ALLOCATE_BUFFER |
+        FORMAT_MESSAGE_IGNORE_INSERTS |
+        FORMAT_MESSAGE_FROM_SYSTEM,
+        0,
+        dwErrorCode,
+        0,
+        (TCHAR*)&Pointer,
+        0,
+        nullptr);
+
  if(Pointer && res>0)
  {
   typedef HLOCAL __stdcall t_local_free(HLOCAL);

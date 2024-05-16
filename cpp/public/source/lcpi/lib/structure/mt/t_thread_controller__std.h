@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__t_mt_thread_controller__std_H_
 #define _cpp_public_lcpi_lib_structure_mt__t_mt_thread_controller__std_H_
 
-#include <structure/mt/t_mt_thread_controller.h>
+#include <lcpi/lib/structure/mt/t_thread_controller.h>
 
 #include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-event.h>
 

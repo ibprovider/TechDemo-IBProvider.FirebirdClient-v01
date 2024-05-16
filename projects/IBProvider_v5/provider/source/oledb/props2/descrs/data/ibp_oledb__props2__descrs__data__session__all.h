@@ -26,17 +26,17 @@ static const IBP_OLEDB_Props2__DescrData                                  \
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL
 
-class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL
+class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL   self_type;
+  using self_type=IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL;
 
  public: //typedefs ------------------------------------------------------
   class tag_data;
 
-  typedef std::pair<const GUID*,const IBP_OLEDB_Props2__DescrData*> find_result_type;
+  using find_result_type=std::pair<const GUID*,const IBP_OLEDB_Props2__DescrData*>;
 
-  typedef structure::t_const_wstr_box wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   struct STD
@@ -62,7 +62,7 @@ class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL
 #ifndef NDEBUG
   static void DEBUG__Check_sm_IndexByName();
 
-  typedef structure::t_first_last<const IBP_OLEDB_Props2__DescrData_IndexByName_Item*> DEBUG__items_range_type;
+  using DEBUG__items_range_type=lib::structure::t_first_last<const IBP_OLEDB_Props2__DescrData_IndexByName_Item*>;
 
   static DEBUG__items_range_type DEBUG__GetRange_STD();
 

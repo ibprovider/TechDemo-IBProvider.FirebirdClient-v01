@@ -13,7 +13,7 @@ namespace lcpi{namespace ibp{namespace oledb{namespace props2{namespace data{
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Descrs__Data__SESSION_STD
 
-class IBP_OLEDB_Props2__Descrs__Data__SESSION_STD
+class IBP_OLEDB_Props2__Descrs__Data__SESSION_STD LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static IBP_OLEDB_Props2__DescrDataPtrRange GetDataPtrRange();

@@ -26,17 +26,17 @@ static const IBP_OLEDB_Props2__DescrData                                  \
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Descrs__Data__DATASOURCECREATE__ALL
 
-class IBP_OLEDB_Props2__Descrs__Data__DATASOURCECREATE__ALL
+class IBP_OLEDB_Props2__Descrs__Data__DATASOURCECREATE__ALL LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_OLEDB_Props2__Descrs__Data__DATASOURCECREATE__ALL   self_type;
+  using self_type=IBP_OLEDB_Props2__Descrs__Data__DATASOURCECREATE__ALL;
 
  public: //typedefs ------------------------------------------------------
   class tag_data;
 
-  typedef std::pair<const GUID*,const IBP_OLEDB_Props2__DescrData*> find_result_type;
+  using find_result_type=std::pair<const GUID*,const IBP_OLEDB_Props2__DescrData*>;
 
-  typedef structure::t_const_wstr_box wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   struct EXT

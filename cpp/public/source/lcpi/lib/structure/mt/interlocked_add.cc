@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_add_CC_
 
-#include <lcpi/infrastructure/os/lcpi.infrastructure.os-atomic_functions.h>
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-atomic_functions.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ class interlocked_add__impl_n<sizeof(std::uint32_t)> LCPI_CPP_CFG__CLASS__FINAL
    LCPI__assert_s(sizeof(*pAddend)==sizeof(api_t));
    LCPI__assert_s(sizeof(value)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd32
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedAdd32
                (reinterpret_cast<api_t volatile*>(pAddend),
                 static_cast<api_t>(value));
   }//exec
@@ -58,7 +58,7 @@ class interlocked_add__impl_n<sizeof(std::uint64_t)> LCPI_CPP_CFG__CLASS__FINAL
    LCPI__assert_s(sizeof(*pAddend)==sizeof(api_t));
    LCPI__assert_s(sizeof(value)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedAdd64
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedAdd64
                (reinterpret_cast<api_t volatile*>(pAddend),
                 static_cast<api_t>(value));
   }//exec

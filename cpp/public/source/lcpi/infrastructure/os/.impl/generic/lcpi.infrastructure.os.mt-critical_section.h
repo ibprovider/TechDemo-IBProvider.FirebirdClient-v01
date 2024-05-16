@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI C++ Infrastructure. OS API. Critical Section.
 //                                                 Kovalenko Dmitry. 18.03.2024.
-#ifndef _lcpi_infrastructure_os_impl_generic__critical_section_H_
-#define _lcpi_infrastructure_os_impl_generic__critical_section_H_
+#ifndef _lcpi_infrastructure_os_mt_impl_generic__critical_section_H_
+#define _lcpi_infrastructure_os_mt_impl_generic__critical_section_H_
 
 #include <lcpi/.config.h>
 
 #include <mutex>
 
-namespace lcpi{namespace infrastructure{namespace os{
+namespace lcpi{namespace infrastructure{namespace os{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 //class LCPI_OS__CriticalSection
 
@@ -50,5 +50,5 @@ class LCPI_OS__CriticalSection LCPI_CPP_CFG__CLASS__FINAL
 };//class LCPI_OS__CriticalSection
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms os*/}/*nms infrastructure*/}/*nms lcpi*/
+}/*nms mt*/}/*nms os*/}/*nms infrastructure*/}/*nms lcpi*/
 #endif

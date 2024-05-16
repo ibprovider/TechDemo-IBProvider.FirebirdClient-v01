@@ -314,7 +314,7 @@
 #  if defined(NDEBUG)
 #   define LCPI_CPP_CFG__BUILD_UNUSED_CODE            0
 #  else
-#   define LCPI_CPP_CFG__BUILD_UNUSED_CODE            1
+#   define LCPI_CPP_CFG__BUILD_UNUSED_CODE            0
 #  endif
 # else
 #  error Unexpected value of LCPI_CPP_CFG__CAN_DETECT_UNUSED_CODE.

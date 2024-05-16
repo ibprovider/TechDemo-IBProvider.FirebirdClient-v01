@@ -166,7 +166,7 @@
     <ResourceCompile />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os-atomic_functions.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os.mt-atomic_functions.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os.mt-thread_api.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\lcpi.infrastructure.os-com_api_ids.cpp" />
     <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\lib\com\base\com_base__co_task_memory.cpp" />

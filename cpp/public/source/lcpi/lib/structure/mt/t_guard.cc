@@ -89,6 +89,18 @@ inline void t_guard::unlock()
 #ifndef NDEBUG
 
 inline
+void t_guard::debug__CheckIsUnlocked()const
+{
+ LCPI__assert_msg(m_cntLock==0,"m_cntLock="<<m_cntLock<<". m_OwnerThreadID="<<m_OwnerThreadID);
+ LCPI__assert_msg(m_OwnerThreadID==0,"m_OwnerThreadID="<<m_OwnerThreadID);
+}//debug__CheckIsUnlocked
+
+#endif // !NDEBUG
+
+//------------------------------------------------------------------------
+#ifndef NDEBUG
+
+inline
 void t_guard::debug__CheckThreadIsOwner(thread_id_type const ThreadID)const
 {
  LCPI__assert(m_cntLock>0);

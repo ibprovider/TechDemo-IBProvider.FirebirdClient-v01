@@ -8,7 +8,6 @@
 #include <structure/t_exception.h>
 #include <structure/t_str_args.h>
 #include <structure/t_smart_vector.h>
-#include <structure/t_dummy.h>
 
 namespace structure{
 ////////////////////////////////////////////////////////////////////////////////
@@ -61,17 +60,11 @@ class t_err_exception_with_params2
    =size_t;
 
  public:
-  //Временный вариант. Лет на 100. Изменено поведение конструктора по-умолчанию.
-  // Поэтому добавлен этот параметр t_dummy
-  explicit t_err_exception_with_params2(const structure::t_dummy&);
-
   t_err_exception_with_params2(const self_type& x);
 
   explicit t_err_exception_with_params2(const std::exception& exc);
 
- #if 0 //03.06.2007, 05.06.2019
-  explicit t_err_exception_with_params2(record_type* record);
-#endif
+  explicit t_err_exception_with_params2(record_type* record)=delete;
 
   t_err_exception_with_params2(system_id_type     system_id,
                               subsystem_id_type  subsystem_id,

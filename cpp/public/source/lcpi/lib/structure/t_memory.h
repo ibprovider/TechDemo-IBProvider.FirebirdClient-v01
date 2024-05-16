@@ -136,13 +136,13 @@ class t_raw_allocator
   using self_type=t_raw_allocator<RawMemManager>;
 
  public: //typedefs
-  typedef RawMemManager                     adapter;
+  using adapter         = RawMemManager;
 
-  typedef size_t                            size_type;
-  typedef ptrdiff_t                         difference_type;
-  typedef void*                             pointer;
-  typedef const void*                       const_pointer;
-  typedef void                              value_type;
+  using size_type       = size_t;
+  using difference_type = ptrdiff_t;
+  using pointer         = void*;
+  using const_pointer   = const void*;
+  using value_type      = void;
 
   //
   // [2024-03-18]
@@ -220,17 +220,16 @@ class t_allocator_interface
   using raw_allocator_type
    =typename Allocator::template rebind<void>::other;
 
-  using value_type
-   =typename base_type::value_type;
+  using value_type         = typename base_type::value_type;
 
-  typedef value_type*                                      pointer;
-  typedef const value_type*                                const_pointer;
-  typedef value_type&                                      reference;
-  typedef const value_type&                                const_reference;
-  typedef typename raw_allocator_type::size_type           size_type;
-  typedef typename raw_allocator_type::difference_type     difference_type;
-  typedef void*                                            void_pointer;
-  typedef const void*                                      const_void_pointer;
+  using pointer            = value_type*;
+  using const_pointer      = const value_type*;
+  using reference          = value_type&;
+  using const_reference    = const value_type&;
+  using size_type          = typename raw_allocator_type::size_type;
+  using difference_type    = typename raw_allocator_type::difference_type;
+  using void_pointer       = void*;
+  using const_void_pointer = const void*;
 
   template<class U>
   struct rebind LCPI_CPP_CFG__CLASS__FINAL

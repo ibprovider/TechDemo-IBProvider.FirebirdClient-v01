@@ -3802,7 +3802,7 @@
     <ClCompile Include="..\..\..\..\provider\source\os\win32\ibp_os_win32__thread_api.cpp">
       <Filter>IBP\source\os\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os-atomic_functions.cpp">
+    <ClCompile Include="..\..\..\..\..\..\cpp\public\source\lcpi\infrastructure\os\.impl\windows\lcpi.infrastructure.os.mt-atomic_functions.cpp">
       <Filter>cpp\infrastructure\lcpi\os</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\lib\structure\test_obj\fw\set01\test_fw_set01__sys_log.cpp">

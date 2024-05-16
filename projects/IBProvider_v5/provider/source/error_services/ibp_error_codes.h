@@ -2843,6 +2843,13 @@ enum ibp_msg_code_type
  ibp_mce_icu__failed_to_tzdata_files_dir_1
   =IBP_MCE_ICU__FAILED_TO_TZDATA_FILES_DIR_1,
 
+ /// \brief
+ ///  ICU: [BUG CHECK] The function for creating a codepage converter returned a NULL pointer.<br>
+ /// \b
+ ///  Params: Function Name, CodePage Name
+ ibp_mce_icu__bug_check_func_for_create_cs_conv_return_null_ptr_2
+  =IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_CREATE_CS_CONV_RETURN_NULL_PTR_2,
+
  ///////////////////////////////////////////////////////////////////////////////
  //Messages for Generators of Database Object Scripts
 

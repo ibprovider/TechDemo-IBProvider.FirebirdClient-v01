@@ -1,14 +1,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 //LCPI C++ Infrastructure. OS API. Atomic functions.
 //                                                 Kovalenko Dmitry. 15.03.2024.
-#ifndef _lcpi_infrastructure_os__atomic_functions_H_
-#define _lcpi_infrastructure_os__atomic_functions_H_
+#ifndef _lcpi_infrastructure_os_mt__atomic_functions_H_
+#define _lcpi_infrastructure_os_mt__atomic_functions_H_
 
 #include <lcpi/.config.h>
 
 #include <cstdint>
 
-namespace lcpi{namespace infrastructure{namespace os{
+namespace lcpi{namespace infrastructure{namespace os{namespace mt{
 ////////////////////////////////////////////////////////////////////////////////
 
 std::uint32_t LCPI_OS__InterlockedIncrement32(std::uint32_t volatile* pValue);
@@ -64,5 +64,5 @@ std::uint64_t LCPI_OS__InterlockedAdd64
                          std::uint64_t           Value);
 
 ////////////////////////////////////////////////////////////////////////////////
-}/*nms os*/}/*nms infrastructure*/}/*nms lcpi*/
+}/*nms mt*/}/*nms os*/}/*nms infrastructure*/}/*nms lcpi*/
 #endif

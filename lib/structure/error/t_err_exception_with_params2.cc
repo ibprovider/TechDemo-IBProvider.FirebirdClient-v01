@@ -10,13 +10,6 @@ namespace structure{
 
 template<class t_record,class charT,class StrCvtTraits,class Allocator>
 t_err_exception_with_params2<t_record,charT,StrCvtTraits,Allocator>::t_err_exception_with_params2
-                                           (const structure::t_dummy&)
-{
-}
-
-//------------------------------------------------------------------------
-template<class t_record,class charT,class StrCvtTraits,class Allocator>
-t_err_exception_with_params2<t_record,charT,StrCvtTraits,Allocator>::t_err_exception_with_params2
                                            (const self_type& x)
  :inherited    (x)
  ,m_cur_record (x.m_cur_record)

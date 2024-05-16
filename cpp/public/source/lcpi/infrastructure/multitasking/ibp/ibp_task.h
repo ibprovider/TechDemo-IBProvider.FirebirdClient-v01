@@ -8,6 +8,8 @@
 #include <lcpi/infrastructure/core/structure/t_smart_interface.h>
 #include <lcpi/infrastructure/core/structure/t_smart_object_ptr.h>
 
+#include <cstdint>
+
 namespace lcpi{namespace infrastructure{namespace multitasking{namespace ibp{
 ////////////////////////////////////////////////////////////////////////////////
 //! \addtogroup ibp_task

@@ -73,9 +73,9 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
   //! \param[in] cs_name
   //!  Название кодовой страницы
   //! \param[in] must_be_created
-  static self_ptr create(t_ibp_icu_provider*      pICU,
-                         const cs_name_box_type&  cs_name,
-                         bool                     must_be_created);
+  static self_ptr create(t_ibp_icu_provider*     pICU,
+                         const cs_name_box_type& cs_name,
+                         bool                    must_be_created);
 
   //t_db_charset interface -----------------------------------------------
   virtual const db_obj::t_db_charset_info& get_info()const LCPI_CPP_CFG__METHOD__OVERRIDE_FINAL;
@@ -219,7 +219,7 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
 class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_conv_holder                   self_type;
+  using self_type=tag_conv_holder;
 
   tag_conv_holder(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
@@ -234,7 +234,7 @@ class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
                                  conv_direction__from_unicode
   };//enum_conv_direction
 
-  typedef unsigned conv_direction_flags_type;
+  using conv_direction_flags_type=unsigned;
 
  public:
   /// <summary>
@@ -296,6 +296,24 @@ class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
   ///  Освобождение ICU-конвертора
   /// <summary>
   void free();
+
+ private:
+  static void __cdecl Helper__UCNV_TO_U_CALLBACK_STOP
+   (const void*                   context,
+    api::UConverterToUnicodeArgs* toUArgs,
+    const char*                   codeUnits,
+    int32_t                       length,
+    api::UConverterCallbackReason reason,
+    api::UErrorCode*              err);
+
+  static void __cdecl Helper__UCNV_FROM_U_CALLBACK_STOP
+   (const void*                     context,
+    api::UConverterFromUnicodeArgs* fromUArgs,
+    const api::UChar*               codeUnits,
+    int32_t                         length,
+    api::UChar32                    codePoint,
+    api::UConverterCallbackReason   reason,
+    api::UErrorCode*                err);
 
  private:
   ///Указатель на провайдер ICU API

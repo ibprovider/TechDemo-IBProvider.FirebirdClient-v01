@@ -87,26 +87,42 @@ bool t_ibp_cs_icu::tag_conv_holder::create
   return false;
 
  ///1. Создание конвертора
- api::UErrorCode icu_status=api::U_ZERO_ERROR;
-
- m_ptr=m_spICU->m_ucnv_open.point()(icu_cs_name.c_str(),&icu_status);
-
- if(icu_status!=api::U_ZERO_ERROR)
  {
-  assert(m_ptr==nullptr);
+  api::UErrorCode icu_status=api::U_ZERO_ERROR;
 
-  if(icu_status==api::U_FILE_ACCESS_ERROR && !must_be_created)
-   return false;
+  m_ptr=m_spICU->m_ucnv_open.point()(icu_cs_name.c_str(),&icu_status);
 
+  //
+  // icu_status for codepage TIS620 is U_AMBIGUOUS_ALIAS_WARNING
+  //
+
+  if(api::U_FAILURE(icu_status))
+  {
+   assert(m_ptr==nullptr);
+
+   if(icu_status==api::U_FILE_ACCESS_ERROR && !must_be_created)
+    return false;
+
+   IBP_ErrorUtils::Throw__Error
+    (E_FAIL,
+     ibp_mce_icu__create_cs_conv_3,
+     m_spICU->id(),
+     icu_cs_name,
+     icu_status);
+  }//if - error
+
+  assert(api::U_SUCCESS(icu_status));
+ }//local
+
+ if(m_ptr==nullptr)
+ {
   IBP_ErrorUtils::Throw__Error
    (E_FAIL,
-    ibp_mce_icu__create_cs_conv_3,
-    m_spICU->id(),
-    icu_cs_name,
-    icu_status);
- }//if - error
+    ibp_mce_icu__bug_check_func_for_create_cs_conv_return_null_ptr_2,
+    m_spICU->m_ucnv_open.point_name(),
+    icu_cs_name);
+ }//if
 
- //! \todo ICU BUG-CHECK
  assert(m_ptr!=nullptr);
 
  ///2. Установка call-back функций
@@ -115,9 +131,11 @@ bool t_ibp_cs_icu::tag_conv_holder::create
   const void*                oldContext=NULL;
   api::UConverterToUCallback oldToAction=NULL;
 
+  api::UErrorCode icu_status=api::U_ZERO_ERROR;
+
   m_spICU->m_ucnv_setToUCallBack.point()
    (m_ptr,
-    m_spICU->m_UCNV_TO_U_CALLBACK_STOP.point(),
+    self_type::Helper__UCNV_TO_U_CALLBACK_STOP,
     NULL,
     &oldToAction,
     &oldContext,
@@ -133,6 +151,8 @@ bool t_ibp_cs_icu::tag_conv_holder::create
      m_spICU->m_ucnv_setToUCallBack.point_name(),
      icu_status);
   }//if
+
+  assert(icu_status==api::U_ZERO_ERROR);
  }//if conv_direction__to_unicode
 
  //------
@@ -141,9 +161,11 @@ bool t_ibp_cs_icu::tag_conv_holder::create
   const void*                  oldContext=NULL;
   api::UConverterFromUCallback oldFromAction=NULL;
 
+  api::UErrorCode icu_status=api::U_ZERO_ERROR;
+
   m_spICU->m_ucnv_setFromUCallBack.point()
    (m_ptr,
-    m_spICU->m_UCNV_FROM_U_CALLBACK_STOP.point(),
+    self_type::Helper__UCNV_FROM_U_CALLBACK_STOP,
     NULL,
     &oldFromAction,
     &oldContext,
@@ -159,6 +181,8 @@ bool t_ibp_cs_icu::tag_conv_holder::create
      m_spICU->m_ucnv_setFromUCallBack.point_name(),
      icu_status);
   }//if
+
+  assert(icu_status==api::U_ZERO_ERROR);
  }//conv_direction__from_unicode
 
  return true;
@@ -176,6 +200,33 @@ void t_ibp_cs_icu::tag_conv_holder::free()
   m_ptr=NULL;
  }//if
 }//free
+
+//------------------------------------------------------------------------
+void __cdecl t_ibp_cs_icu::tag_conv_holder::Helper__UCNV_TO_U_CALLBACK_STOP
+   (const void*                   UNUSED_ARG(context),
+    api::UConverterToUnicodeArgs* UNUSED_ARG(toUArgs),
+    const char*                   UNUSED_ARG(codeUnits),
+    int32_t                       UNUSED_ARG(length),
+    api::UConverterCallbackReason UNUSED_ARG(reason),
+    api::UErrorCode*              UNUSED_ARG(err))
+{
+ /* the caller must have set the error code accordingly */
+ return;
+}//Helper__UCNV_FROM_U_CALLBACK_STOP
+
+//------------------------------------------------------------------------
+void __cdecl t_ibp_cs_icu::tag_conv_holder::Helper__UCNV_FROM_U_CALLBACK_STOP
+   (const void*                     UNUSED_ARG(context),
+    api::UConverterFromUnicodeArgs* UNUSED_ARG(fromUArgs),
+    const api::UChar*               UNUSED_ARG(codeUnits),
+    int32_t                         UNUSED_ARG(length),
+    api::UChar32                    UNUSED_ARG(codePoint),
+    api::UConverterCallbackReason   UNUSED_ARG(reason),
+    api::UErrorCode*                UNUSED_ARG(err))
+{
+ /* the caller must have set the error code accordingly */
+ return;
+}//Helper__UCNV_FROM_U_CALLBACK_STOP
 
 ////////////////////////////////////////////////////////////////////////////////
 //class t_ibp_cs_icu

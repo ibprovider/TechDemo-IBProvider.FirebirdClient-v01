@@ -43,7 +43,7 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPE
   virtual void stop(bool forced)=0;
 
   /// <summary>
-  ///  Отмена задания
+  ///  Возведение сигналов прерывания работы задания
   /// </summary>
   //! \param[in] forced
   //!  Форсировать отмену задания
@@ -144,9 +144,6 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPE
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_seq__factory
 
-#if(LCPI_INFRASTRUCTURE_MULTITASKING_IBP__BUILD_MODE==LCPI_INFRASTRUCTURE_CORE__BUILD_MODE__NONE)
-#else
-
 class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__CLASS_STG ibp_task_seq__factory
 {
  public:
@@ -170,8 +167,6 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__CLASS_STG ibp_task_seq__factory
  public:
   static task_manager_ptr create_manager(ibp_task_pll__manager_connector2* connector);
 };//class ibp_task_seq__factory 
-
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

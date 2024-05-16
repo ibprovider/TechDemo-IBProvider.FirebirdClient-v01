@@ -9,7 +9,7 @@
 
 #include "source/oledb/props2/ibp_oledb__props2__forward.h"
 
-#include <structure/t_const_str_box.h>
+#include <lcpi/lib/structure/t_const_str_box.h>
 
 namespace lcpi{namespace ibp{namespace oledb{namespace props2{
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,10 +21,10 @@ class IBP_OLEDB_Props2__DescrData_IndexByName_Less;
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__DescrData_IndexByName_Item
 
-class IBP_OLEDB_Props2__DescrData_IndexByName_Item
+class IBP_OLEDB_Props2__DescrData_IndexByName_Item LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef IBP_OLEDB_Props2__DescrData_IndexByName_Item   self_type;
+  using self_type=IBP_OLEDB_Props2__DescrData_IndexByName_Item;
 
  public:
   const wchar_t*                      pName;
@@ -44,10 +44,10 @@ class IBP_OLEDB_Props2__DescrData_IndexByName_Item
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__DescrData_IndexByName_Less
 
-class IBP_OLEDB_Props2__DescrData_IndexByName_Less
+class IBP_OLEDB_Props2__DescrData_IndexByName_Less LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
-  typedef structure::t_const_wstr_box       wstr_box_type;
+  using wstr_box_type=lib::structure::t_const_wstr_box;
 
  public:
   bool operator () (const IBP_OLEDB_Props2__DescrData_IndexByName_Item& x1,

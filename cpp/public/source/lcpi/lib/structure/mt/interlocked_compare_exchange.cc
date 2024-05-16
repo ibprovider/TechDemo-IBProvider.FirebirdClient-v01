@@ -4,7 +4,7 @@
 #ifndef _cpp_public_lcpi_lib_structure_mt__interlocked_compare_exchange_CC_
 #define _cpp_public_lcpi_lib_structure_mt__interlocked_compare_exchange_CC_
 
-#include <lcpi/infrastructure/os/lcpi.infrastructure.os-atomic_functions.h>
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-atomic_functions.h>
 
 #include <type_traits>
 
@@ -40,7 +40,7 @@ class interlocked_compare_exchange__impl_n<sizeof(std::uint32_t)>
    LCPI__assert_s(sizeof(newValue)==sizeof(api_t));
    LCPI__assert_s(sizeof(testValue)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedCompareExchange32
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedCompareExchange32
                (reinterpret_cast<api_t volatile*>(pValue),
                 (api_t)newValue,
                 (api_t)testValue);
@@ -67,7 +67,7 @@ class interlocked_compare_exchange__impl_n<sizeof(std::uint64_t)>
    LCPI__assert_s(sizeof(newValue)==sizeof(api_t));
    LCPI__assert_s(sizeof(testValue)==sizeof(api_t));
 
-   return (T) lcpi::infrastructure::os::LCPI_OS__InterlockedCompareExchange64
+   return (T) lcpi::infrastructure::os::mt::LCPI_OS__InterlockedCompareExchange64
                (reinterpret_cast<api_t volatile*>(pValue),
                 (api_t)newValue,
                 (api_t)testValue);

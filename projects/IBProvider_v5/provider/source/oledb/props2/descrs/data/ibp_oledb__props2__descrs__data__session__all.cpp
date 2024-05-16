@@ -98,7 +98,7 @@ const IBP_OLEDB_Props2__DescrData                                         \
 ////////////////////////////////////////////////////////////////////////////////
 //class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data
 
-class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data
+class IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data LCPI_CPP_CFG__CLASS__FINAL
 {
  public:
   static const IBP_OLEDB_Props2__DescrData_IndexByName_Item sm_IndexByName__std[];
@@ -120,8 +120,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
 static void DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL__tag_data__sm_IndexByName__std()
 {
  IBP_OLEDB_Props2__DescrData_IndexByName_Item::DEBUG_Check_Range
-  (IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__std,
-   _END_(IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__std));
+  (_BEG_END_(IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__std));
 }//DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL__tag_data__sm_IndexByName__std
 
 STARTUP_CODE__DEBUG
@@ -154,8 +153,7 @@ const IBP_OLEDB_Props2__DescrData_IndexByName_Item
 static void DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL__tag_data__sm_IndexByName__ext()
 {
  IBP_OLEDB_Props2__DescrData_IndexByName_Item::DEBUG_Check_Range
-  (IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__ext,
-   _END_(IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__ext));
+  (_BEG_END_(IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::tag_data::sm_IndexByName__ext));
 }//DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL__tag_data__sm_IndexByName__ext
 
 STARTUP_CODE__DEBUG
@@ -173,20 +171,22 @@ IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::find_result_type
 {
  CHECK_READ_TYPED_PTR(Name.ptr,Name.len);
 
- if(auto const r=structure::lower_search(std::begin(tag_data::sm_IndexByName__std),
-                                         std::end(tag_data::sm_IndexByName__std),
-                                         Name,
-                                         IBP_OLEDB_Props2__DescrData_IndexByName_Less()))
+ if(auto const r
+     =lib::structure::lower_search
+       (_BEG_END_(tag_data::sm_IndexByName__std),
+        Name,
+        IBP_OLEDB_Props2__DescrData_IndexByName_Less()))
  {
   assert((*r.position).pDescr);
 
   return find_result_type(&DBPROPSET_SESSION,(*r.position).pDescr);
  }//if
 
- if(auto const r=structure::lower_search(std::begin(tag_data::sm_IndexByName__ext),
-                                         std::end(tag_data::sm_IndexByName__ext),
-                                         Name,
-                                         IBP_OLEDB_Props2__DescrData_IndexByName_Less()))
+ if(auto const r
+     =lib::structure::lower_search
+       (_BEG_END_(tag_data::sm_IndexByName__ext),
+        Name,
+        IBP_OLEDB_Props2__DescrData_IndexByName_Less()))
  {
   assert((*r.position).pDescr);
 
@@ -201,6 +201,25 @@ IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::find_result_type
 
 void IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName()
 {
+ struct tag_check LCPI_CPP_CFG__CLASS__FINAL
+ {
+  public:
+   static void exec(const wchar_t* propDescr,REFGUID setId,DBPROPID propId)
+   {
+    assert(propDescr);
+
+    for(const wchar_t* p=propDescr;*p;p+=wcslen(p)+1)
+    {
+     auto const x=self_type::Find(p);
+                                                                          
+     assert(x.first);
+     assert(ole_lib::GuidEqual(*x.first,setId));
+     assert(x.second);
+     assert(x.second->m_PropId==propId);
+    }//for
+   }//exec
+ };//struct tag_check
+
  //----------------------------------------- check index for all descrs
 #define IBP_OLEDB_PROPS2__DESCR_DATA(InitTag,                             \
                                      PropId,                              \
@@ -209,17 +228,9 @@ void IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName()
                                      PropRules,                           \
                                      ListOfAdditionalParams,              \
                                      POST_INIT_CALLS)                     \
- for(const wchar_t* p=PropDescr.ptr();*p;p+=wcslen(p)+1)                  \
- {                                                                        \
-  auto const x=self_type::Find(p);                                        \
-                                                                          \
-  assert(x.first);                                                        \
-  assert(ole_lib::GuidEqual(*x.first,DBPROPSET_SESSION));                 \
-  assert(x.second);                                                       \
-  assert(x.second->m_PropId==PropId);                                     \
- }
+ tag_check::exec(PropDescr.ptr(),DBPROPSET_SESSION,PropId);
 
-#include "source/oledb/props2/descrs/data/ibp_oledb__props2__descrs__data__dbinit_std.dat"
+#include "source/oledb/props2/descrs/data/ibp_oledb__props2__descrs__data__session_std.dat"
 
 #undef IBP_OLEDB_PROPS2__DESCR_DATA
 
@@ -231,17 +242,9 @@ void IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName()
                                      PropRules,                           \
                                      ListOfAdditionalParams,              \
                                      POST_INIT_CALLS)                     \
- for(const wchar_t* p=PropDescr.ptr();*p;p+=wcslen(p)+1)                  \
- {                                                                        \
-  auto const x=self_type::Find(p);                                        \
-                                                                          \
-  assert(x.first);                                                        \
-  assert(ole_lib::GuidEqual(*x.first,ibprovider::IBP_DBPROPSET_SESSION)); \
-  assert(x.second);                                                       \
-  assert(x.second->m_PropId==ibprovider::PropId);                         \
- }
+ tag_check::exec(PropDescr.ptr(),ibprovider::IBP_DBPROPSET_SESSION,ibprovider::PropId);
 
-#include "source/oledb/props2/descrs/data/ibp_oledb__props2__descrs__data__dbinit_ext.dat"
+#include "source/oledb/props2/descrs/data/ibp_oledb__props2__descrs__data__session_ext.dat"
 
 #undef IBP_OLEDB_PROPS2__DESCR_DATA
 
@@ -262,6 +265,10 @@ void IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName()
  }//for x
 }//DEBUG__Check_sm_IndexByName
 
+//------------------------------------------------------------------------
+STARTUP_CODE_EX__DEBUG
+ (IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL__DEBUG__Check_sm_IndexByName,
+  IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName);
 #endif // NDEBUG
 
 //------------------------------------------------------------------------
@@ -270,14 +277,14 @@ void IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__Check_sm_IndexByName()
 IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__items_range_type
  IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__GetRange_STD()
 {
- return DEBUG__items_range_type(tag_data::sm_IndexByName__std,_END_(tag_data::sm_IndexByName__std));
+ return DEBUG__items_range_type(_BEG_END_(tag_data::sm_IndexByName__std));
 }//DEBUG__GetRange_STD
 
 //------------------------------------------------------------------------
 IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__items_range_type
  IBP_OLEDB_Props2__Descrs__Data__SESSION__ALL::DEBUG__GetRange_EXT()
 {
- return DEBUG__items_range_type(tag_data::sm_IndexByName__ext,_END_(tag_data::sm_IndexByName__ext));
+ return DEBUG__items_range_type(_BEG_END_(tag_data::sm_IndexByName__ext));
 }//DEBUG__GetRange_EXT
 
 #endif //NDEBUG

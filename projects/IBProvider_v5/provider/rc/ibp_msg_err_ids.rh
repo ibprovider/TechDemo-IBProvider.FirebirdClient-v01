@@ -2204,6 +2204,13 @@
 ///  Params: ICU Error Code
 #define IBP_MCE_ICU__FAILED_TO_TZDATA_FILES_DIR_1                         12824
 
+//------------------------------------------------------------------------
+/// \brief
+///  ///  ICU: [BUG CHECK] The function for creating a codepage converter returned a NULL pointer.<br>
+/// \b
+///  Params: Function Name, CodePage Name
+#define IBP_MCE_ICU__BUG_CHECK_FUNC_FOR_CREATE_CS_CONV_RETURN_NULL_PTR_2  12825
+
 ////////////////////////////////////////////////////////////////////////////////
 //Messages for Generators of Database Object Scripts
 

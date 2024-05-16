@@ -59,9 +59,6 @@ class t_ibp_icu_provider LCPI_CPP_CFG__CLASS__FINAL
   DEF_ICU_POINT(ucnv_setToUCallBack);
   DEF_ICU_POINT(ucnv_setFromUCallBack);
 
-  DEF_ICU_POINT(UCNV_TO_U_CALLBACK_STOP);
-  DEF_ICU_POINT(UCNV_FROM_U_CALLBACK_STOP);
-
   DEF_ICU_POINT(ucnv_fromUnicode);
   DEF_ICU_POINT(ucnv_toUnicode);
 

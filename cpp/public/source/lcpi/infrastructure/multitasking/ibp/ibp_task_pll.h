@@ -131,9 +131,6 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__IFACE_STG LCPI_CPP_CFG__DECLSPE
 ////////////////////////////////////////////////////////////////////////////////
 //class ibp_task_pll__factory
 
-#if(LCPI_INFRASTRUCTURE_MULTITASKING_IBP__BUILD_MODE==LCPI_INFRASTRUCTURE_CORE__BUILD_MODE__NONE)
-#else
-
 class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__CLASS_STG ibp_task_pll__factory
 {
  public:
@@ -159,8 +156,6 @@ class LCPI_INFRASTRUCTURE_MULTITASKING_IBP__CFG__CLASS_STG ibp_task_pll__factory
 
   static task_manager_ptr get_manager();
 };//class ibp_task_pll__factory 
-
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 //! @}

@@ -5,7 +5,7 @@
 #define _cpp_public_lcpi_lib_structure_mt__t_guard_H_
 
 #include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-thread_api.h>
-#include <lcpi/infrastructure/os/lcpi.infrastructure.os-critical_section.h>
+#include <lcpi/infrastructure/os/lcpi.infrastructure.os.mt-critical_section.h>
 #include <lcpi/lib/.config.h>
 
 namespace lcpi{namespace lib{namespace structure{namespace mt{
@@ -39,6 +39,8 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
   void unlock();
 
 #ifndef NDEBUG
+  void debug__CheckIsUnlocked()const;
+
   void debug__CheckThreadIsOwner(thread_id_type ThreadID)const;
 
   void debug__CheckThreadIsNotOwner(thread_id_type ThreadID)const;
@@ -57,7 +59,7 @@ class t_guard LCPI_CPP_CFG__CLASS__FINAL
 #endif
 
  private:
-  infrastructure::os::LCPI_OS__CriticalSection m_cs;
+  infrastructure::os::mt::LCPI_OS__CriticalSection m_cs;
 
  private:
 #ifndef NDEBUG

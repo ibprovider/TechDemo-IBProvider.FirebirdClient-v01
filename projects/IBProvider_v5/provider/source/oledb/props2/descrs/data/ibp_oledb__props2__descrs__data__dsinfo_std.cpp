@@ -519,7 +519,7 @@ STARTUP_CODE__DEBUG(DEBUG__check_IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_
 IBP_OLEDB_Props2__DescrDataRange
  IBP_OLEDB_Props2__Descrs__Data__DATASOURCEINFO_STD::GetDataRange()
 {
- return IBP_OLEDB_Props2__DescrDataRange(sm_descrs,_END_(sm_descrs));
+ return IBP_OLEDB_Props2__DescrDataRange(_BEG_END_(sm_descrs));
 }//GetDataRange
 
 //------------------------------------------------------------------------

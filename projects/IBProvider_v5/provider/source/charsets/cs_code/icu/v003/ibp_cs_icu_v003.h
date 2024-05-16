@@ -36,7 +36,7 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
 
   ///Self smart-pointer
   using self_cptr
-   =structure::t_smart_object_ptr<const self_type>;
+   =lib::structure::t_smart_object_ptr<const self_type>;
 
   using cs_name_box_type
    =lib::structure::t_basic_const_str_box<db_obj::t_db_charset_info::charset_name_type::value_type>;
@@ -219,7 +219,7 @@ class t_ibp_cs_icu LCPI_CPP_CFG__CLASS__FINAL
 class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
 {
  private:
-  typedef tag_conv_holder                   self_type;
+  using self_type=tag_conv_holder;
 
   tag_conv_holder(const self_type&)=delete;
   self_type& operator = (const self_type&)=delete;
@@ -234,7 +234,7 @@ class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
                                  conv_direction__from_unicode
   };//enum_conv_direction
 
-  typedef unsigned conv_direction_flags_type;
+  using conv_direction_flags_type=unsigned;
 
  public:
   /// <summary>
@@ -296,6 +296,24 @@ class t_ibp_cs_icu::tag_conv_holder LCPI_CPP_CFG__CLASS__FINAL
   ///  Освобождение ICU-конвертора
   /// <summary>
   void free();
+
+ private:
+  static void __cdecl Helper__UCNV_TO_U_CALLBACK_STOP
+   (const void*                   context,
+    api::UConverterToUnicodeArgs* toUArgs,
+    const char*                   codeUnits,
+    int32_t                       length,
+    api::UConverterCallbackReason reason,
+    api::UErrorCode*              err);
+
+  static void __cdecl Helper__UCNV_FROM_U_CALLBACK_STOP
+   (const void*                     context,
+    api::UConverterFromUnicodeArgs* fromUArgs,
+    const api::UChar*               codeUnits,
+    int32_t                         length,
+    api::UChar32                    codePoint,
+    api::UConverterCallbackReason   reason,
+    api::UErrorCode*                err);
 
  private:
   ///Указатель на провайдер ICU API
